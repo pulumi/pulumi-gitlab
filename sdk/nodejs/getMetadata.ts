@@ -65,7 +65,7 @@ export interface GetMetadataResult {
  * const this = gitlab.getMetadata({});
  * ```
  */
-export function getMetadataOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetMetadataResult> {
+export function getMetadataOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getMetadata:getMetadata", {
     }, opts);

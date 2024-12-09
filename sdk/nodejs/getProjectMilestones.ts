@@ -95,7 +95,7 @@ export interface GetProjectMilestonesResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
  */
-export function getProjectMilestonesOutput(args: GetProjectMilestonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMilestonesResult> {
+export function getProjectMilestonesOutput(args: GetProjectMilestonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMilestonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectMilestones:getProjectMilestones", {
         "iids": args.iids,

@@ -53,7 +53,7 @@ export interface GetInstanceVariablesResult {
  * const vars = gitlab.getInstanceVariables({});
  * ```
  */
-export function getInstanceVariablesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceVariablesResult> {
+export function getInstanceVariablesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceVariablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getInstanceVariables:getInstanceVariables", {
     }, opts);

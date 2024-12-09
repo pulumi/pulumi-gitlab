@@ -472,7 +472,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
                         with_merge_requests_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                         with_programming_language: Optional[pulumi.Input[Optional[str]]] = None,
                         with_shared: Optional[pulumi.Input[Optional[bool]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     The `get_projects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
 
@@ -546,7 +546,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['withMergeRequestsEnabled'] = with_merge_requests_enabled
     __args__['withProgrammingLanguage'] = with_programming_language
     __args__['withShared'] = with_shared
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
     return __ret__.apply(lambda __response__: GetProjectsResult(
         archived=pulumi.get(__response__, 'archived'),

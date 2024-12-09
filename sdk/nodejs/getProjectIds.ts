@@ -83,7 +83,7 @@ export interface GetProjectIdsResult {
  * export const graphQLId = foo.then(foo => foo.projectGraphqlId);
  * ```
  */
-export function getProjectIdsOutput(args: GetProjectIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIdsResult> {
+export function getProjectIdsOutput(args: GetProjectIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectIds:getProjectIds", {
         "project": args.project,

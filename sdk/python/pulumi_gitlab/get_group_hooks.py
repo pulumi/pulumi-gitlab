@@ -94,7 +94,7 @@ def get_group_hooks(group: Optional[str] = None,
         hooks=pulumi.get(__ret__, 'hooks'),
         id=pulumi.get(__ret__, 'id'))
 def get_group_hooks_output(group: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupHooksResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupHooksResult]:
     """
     The `get_group_hooks` data source allows to retrieve details about hooks in a group.
 
@@ -105,7 +105,7 @@ def get_group_hooks_output(group: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['group'] = group
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupHooks:getGroupHooks', __args__, opts=opts, typ=GetGroupHooksResult)
     return __ret__.apply(lambda __response__: GetGroupHooksResult(
         group=pulumi.get(__response__, 'group'),

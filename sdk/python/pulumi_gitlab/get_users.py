@@ -246,7 +246,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
                      order_by: Optional[pulumi.Input[Optional[str]]] = None,
                      search: Optional[pulumi.Input[Optional[str]]] = None,
                      sort: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     The `get_users` data source allows details of multiple users to be retrieved given some optional filter criteria.
 
@@ -289,7 +289,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
         active=pulumi.get(__response__, 'active'),

@@ -145,7 +145,7 @@ def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[str]]] = No
                             project: Optional[pulumi.Input[str]] = None,
                             search: Optional[pulumi.Input[Optional[str]]] = None,
                             sort: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectTagsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectTagsResult]:
     """
     The `get_project_tags` data source allows details of project tags to be retrieved by some search criteria.
 
@@ -162,7 +162,7 @@ def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[str]]] = No
     __args__['project'] = project
     __args__['search'] = search
     __args__['sort'] = sort
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectTags:getProjectTags', __args__, opts=opts, typ=GetProjectTagsResult)
     return __ret__.apply(lambda __response__: GetProjectTagsResult(
         id=pulumi.get(__response__, 'id'),

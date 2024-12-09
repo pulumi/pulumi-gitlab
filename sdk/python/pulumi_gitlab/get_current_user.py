@@ -174,7 +174,7 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         public_email=pulumi.get(__ret__, 'public_email'),
         username=pulumi.get(__ret__, 'username'))
-def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
+def get_current_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
     The `get_current_user` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
 
@@ -190,7 +190,7 @@ def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult)
     return __ret__.apply(lambda __response__: GetCurrentUserResult(
         bot=pulumi.get(__response__, 'bot'),

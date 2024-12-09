@@ -257,7 +257,7 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
                                sort: Optional[pulumi.Input[Optional[str]]] = None,
                                statistics: Optional[pulumi.Input[Optional[bool]]] = None,
                                with_custom_attributes: Optional[pulumi.Input[Optional[bool]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupSubgroupsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupSubgroupsResult]:
     """
     The `get_group_subgroups` data source allows to get subgroups of a group.
 
@@ -296,7 +296,7 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[boo
     __args__['sort'] = sort
     __args__['statistics'] = statistics
     __args__['withCustomAttributes'] = with_custom_attributes
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupSubgroups:getGroupSubgroups', __args__, opts=opts, typ=GetGroupSubgroupsResult)
     return __ret__.apply(lambda __response__: GetGroupSubgroupsResult(
         all_available=pulumi.get(__response__, 'all_available'),

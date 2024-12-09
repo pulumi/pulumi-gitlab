@@ -104,7 +104,7 @@ def get_project_hooks(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
 def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectHooksResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectHooksResult]:
     """
     The `get_project_hooks` data source allows to retrieve details about hooks in a project.
 
@@ -125,7 +125,7 @@ def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectHooks:getProjectHooks', __args__, opts=opts, typ=GetProjectHooksResult)
     return __ret__.apply(lambda __response__: GetProjectHooksResult(
         hooks=pulumi.get(__response__, 'hooks'),

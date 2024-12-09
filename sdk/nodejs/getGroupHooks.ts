@@ -50,7 +50,7 @@ export interface GetGroupHooksResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-group-hooks)
  */
-export function getGroupHooksOutput(args: GetGroupHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupHooksResult> {
+export function getGroupHooksOutput(args: GetGroupHooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupHooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupHooks:getGroupHooks", {
         "group": args.group,

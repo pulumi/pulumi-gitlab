@@ -59,7 +59,7 @@ export interface GetProjectProtectedTagResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)
  */
-export function getProjectProtectedTagOutput(args: GetProjectProtectedTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedTagResult> {
+export function getProjectProtectedTagOutput(args: GetProjectProtectedTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectProtectedTagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", {
         "project": args.project,

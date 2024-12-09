@@ -154,7 +154,7 @@ def get_project_environments_output(name: Optional[pulumi.Input[Optional[str]]] 
                                     project: Optional[pulumi.Input[str]] = None,
                                     search: Optional[pulumi.Input[Optional[str]]] = None,
                                     states: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectEnvironmentsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectEnvironmentsResult]:
     """
     The `get_project_environments` data source retrieves information about all environments of the given project.
 
@@ -183,7 +183,7 @@ def get_project_environments_output(name: Optional[pulumi.Input[Optional[str]]] 
     __args__['project'] = project
     __args__['search'] = search
     __args__['states'] = states
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectEnvironments:getProjectEnvironments', __args__, opts=opts, typ=GetProjectEnvironmentsResult)
     return __ret__.apply(lambda __response__: GetProjectEnvironmentsResult(
         environments=pulumi.get(__response__, 'environments'),
