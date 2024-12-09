@@ -206,7 +206,7 @@ def get_project_variable(environment_scope: Optional[str] = None,
 def get_project_variable_output(environment_scope: Optional[pulumi.Input[Optional[str]]] = None,
                                 key: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVariableResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectVariableResult]:
     """
     The `ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
 
@@ -235,7 +235,7 @@ def get_project_variable_output(environment_scope: Optional[pulumi.Input[Optiona
     __args__['environmentScope'] = environment_scope
     __args__['key'] = key
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectVariable:getProjectVariable', __args__, opts=opts, typ=GetProjectVariableResult)
     return __ret__.apply(lambda __response__: GetProjectVariableResult(
         description=pulumi.get(__response__, 'description'),

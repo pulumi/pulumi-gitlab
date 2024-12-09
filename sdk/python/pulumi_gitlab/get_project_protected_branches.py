@@ -99,7 +99,7 @@ def get_project_protected_branches(project_id: Optional[str] = None,
         protected_branches=pulumi.get(__ret__, 'protected_branches'))
 def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]] = None,
                                           protected_branches: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']]]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
     """
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.
 
@@ -112,7 +112,7 @@ def get_project_protected_branches_output(project_id: Optional[pulumi.Input[str]
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['protectedBranches'] = protected_branches
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches', __args__, opts=opts, typ=GetProjectProtectedBranchesResult)
     return __ret__.apply(lambda __response__: GetProjectProtectedBranchesResult(
         id=pulumi.get(__response__, 'id'),

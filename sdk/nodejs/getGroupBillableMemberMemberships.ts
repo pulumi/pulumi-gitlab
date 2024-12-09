@@ -93,7 +93,7 @@ export interface GetGroupBillableMemberMembershipsResult {
  * });
  * ```
  */
-export function getGroupBillableMemberMembershipsOutput(args: GetGroupBillableMemberMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupBillableMemberMembershipsResult> {
+export function getGroupBillableMemberMembershipsOutput(args: GetGroupBillableMemberMembershipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupBillableMemberMembershipsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", {
         "groupId": args.groupId,

@@ -126,7 +126,7 @@ def get_group_billable_member_memberships(group_id: Optional[str] = None,
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_group_billable_member_memberships_output(group_id: Optional[pulumi.Input[str]] = None,
                                                  user_id: Optional[pulumi.Input[int]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupBillableMemberMembershipsResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupBillableMemberMembershipsResult]:
     """
     The `get_group_billable_member_memberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
 
@@ -154,7 +154,7 @@ def get_group_billable_member_memberships_output(group_id: Optional[pulumi.Input
     __args__ = dict()
     __args__['groupId'] = group_id
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships', __args__, opts=opts, typ=GetGroupBillableMemberMembershipsResult)
     return __ret__.apply(lambda __response__: GetGroupBillableMemberMembershipsResult(
         group_id=pulumi.get(__response__, 'group_id'),

@@ -235,7 +235,7 @@ export interface GetProjectIssueResult {
  * export const welcomeIssueWebUrl = webUrl;
  * ```
  */
-export function getProjectIssueOutput(args: GetProjectIssueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssueResult> {
+export function getProjectIssueOutput(args: GetProjectIssueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectIssueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectIssue:getProjectIssue", {
         "iid": args.iid,

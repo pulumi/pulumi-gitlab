@@ -91,7 +91,7 @@ export interface GetGroupVariablesResult {
  * });
  * ```
  */
-export function getGroupVariablesOutput(args: GetGroupVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupVariablesResult> {
+export function getGroupVariablesOutput(args: GetGroupVariablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupVariablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupVariables:getGroupVariables", {
         "environmentScope": args.environmentScope,

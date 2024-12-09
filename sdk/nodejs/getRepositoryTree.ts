@@ -105,7 +105,7 @@ export interface GetRepositoryTreeResult {
  * });
  * ```
  */
-export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryTreeResult> {
+export function getRepositoryTreeOutput(args: GetRepositoryTreeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryTreeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getRepositoryTree:getRepositoryTree", {
         "path": args.path,

@@ -77,7 +77,7 @@ export interface GetProjectTagsResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
  */
-export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectTagsResult> {
+export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectTags:getProjectTags", {
         "orderBy": args.orderBy,

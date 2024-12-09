@@ -79,7 +79,7 @@ export interface GetCurrentUserResult {
  * const example = gitlab.getCurrentUser({});
  * ```
  */
-export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
+export function getCurrentUserOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getCurrentUser:getCurrentUser", {
     }, opts);

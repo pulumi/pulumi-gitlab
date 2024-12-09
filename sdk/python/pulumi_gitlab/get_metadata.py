@@ -123,7 +123,7 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
         kas=pulumi.get(__ret__, 'kas'),
         revision=pulumi.get(__ret__, 'revision'),
         version=pulumi.get(__ret__, 'version'))
-def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetadataResult]:
+def get_metadata_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetadataResult]:
     """
     The `get_metadata` data source retrieves the metadata of the GitLab instance.
 
@@ -139,7 +139,7 @@ def get_metadata_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getMetadata:getMetadata', __args__, opts=opts, typ=GetMetadataResult)
     return __ret__.apply(lambda __response__: GetMetadataResult(
         enterprise=pulumi.get(__response__, 'enterprise'),

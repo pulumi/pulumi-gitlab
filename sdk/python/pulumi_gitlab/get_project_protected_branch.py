@@ -159,7 +159,7 @@ def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Inp
                                         name: Optional[pulumi.Input[str]] = None,
                                         project_id: Optional[pulumi.Input[str]] = None,
                                         push_access_levels: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchPushAccessLevelArgs', 'GetProjectProtectedBranchPushAccessLevelArgsDict']]]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedBranchResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectProtectedBranchResult]:
     """
     The `get_project_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 
@@ -176,7 +176,7 @@ def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Inp
     __args__['name'] = name
     __args__['projectId'] = project_id
     __args__['pushAccessLevels'] = push_access_levels
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch', __args__, opts=opts, typ=GetProjectProtectedBranchResult)
     return __ret__.apply(lambda __response__: GetProjectProtectedBranchResult(
         allow_force_push=pulumi.get(__response__, 'allow_force_push'),

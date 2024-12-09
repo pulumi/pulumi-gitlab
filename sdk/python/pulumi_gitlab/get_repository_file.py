@@ -242,7 +242,7 @@ def get_repository_file(file_path: Optional[str] = None,
 def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[str]] = None,
                                ref: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryFileResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryFileResult]:
     """
     The `RepositoryFile` data source allows details of a file in a repository to be retrieved.
 
@@ -268,7 +268,7 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
     __args__['filePath'] = file_path
     __args__['project'] = project
     __args__['ref'] = ref
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRepositoryFile:getRepositoryFile', __args__, opts=opts, typ=GetRepositoryFileResult)
     return __ret__.apply(lambda __response__: GetRepositoryFileResult(
         blob_id=pulumi.get(__response__, 'blob_id'),

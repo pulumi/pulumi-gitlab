@@ -145,7 +145,7 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
                                 full_path: Optional[pulumi.Input[Optional[str]]] = None,
                                 group_id: Optional[pulumi.Input[Optional[int]]] = None,
                                 inherited: Optional[pulumi.Input[Optional[bool]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMembershipResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupMembershipResult]:
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
@@ -162,7 +162,7 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
     __args__['fullPath'] = full_path
     __args__['groupId'] = group_id
     __args__['inherited'] = inherited
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupMembership:getGroupMembership', __args__, opts=opts, typ=GetGroupMembershipResult)
     return __ret__.apply(lambda __response__: GetGroupMembershipResult(
         access_level=pulumi.get(__response__, 'access_level'),

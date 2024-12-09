@@ -76,7 +76,7 @@ export interface GetClusterAgentsResult {
  * });
  * ```
  */
-export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAgentsResult> {
+export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterAgentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getClusterAgents:getClusterAgents", {
         "project": args.project,

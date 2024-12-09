@@ -123,7 +123,7 @@ export interface GetRunnersResult {
  * });
  * ```
  */
-export function getRunnersOutput(args?: GetRunnersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRunnersResult> {
+export function getRunnersOutput(args?: GetRunnersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRunnersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getRunners:getRunners", {

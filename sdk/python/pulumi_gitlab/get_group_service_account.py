@@ -128,7 +128,7 @@ def get_group_service_account_output(group: Optional[pulumi.Input[str]] = None,
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
                                      service_account_id: Optional[pulumi.Input[str]] = None,
                                      username: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
     The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
 
@@ -145,7 +145,7 @@ def get_group_service_account_output(group: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['serviceAccountId'] = service_account_id
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult)
     return __ret__.apply(lambda __response__: GetGroupServiceAccountResult(
         group=pulumi.get(__response__, 'group'),

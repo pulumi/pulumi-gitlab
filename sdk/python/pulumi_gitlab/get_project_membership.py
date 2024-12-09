@@ -147,7 +147,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
                                   inherited: Optional[pulumi.Input[Optional[bool]]] = None,
                                   project_id: Optional[pulumi.Input[Optional[int]]] = None,
                                   query: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectMembershipResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMembershipResult]:
     """
     The `ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
 
@@ -166,7 +166,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
     __args__['inherited'] = inherited
     __args__['projectId'] = project_id
     __args__['query'] = query
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult)
     return __ret__.apply(lambda __response__: GetProjectMembershipResult(
         full_path=pulumi.get(__response__, 'full_path'),
