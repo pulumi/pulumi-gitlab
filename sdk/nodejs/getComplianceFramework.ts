@@ -94,7 +94,7 @@ export interface GetComplianceFrameworkResult {
  * });
  * ```
  */
-export function getComplianceFrameworkOutput(args: GetComplianceFrameworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComplianceFrameworkResult> {
+export function getComplianceFrameworkOutput(args: GetComplianceFrameworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComplianceFrameworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getComplianceFramework:getComplianceFramework", {
         "name": args.name,

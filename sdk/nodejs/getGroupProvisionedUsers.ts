@@ -105,7 +105,7 @@ export interface GetGroupProvisionedUsersResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
  */
-export function getGroupProvisionedUsersOutput(args: GetGroupProvisionedUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupProvisionedUsersResult> {
+export function getGroupProvisionedUsersOutput(args: GetGroupProvisionedUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupProvisionedUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", {
         "active": args.active,

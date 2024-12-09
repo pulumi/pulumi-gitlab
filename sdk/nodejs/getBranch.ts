@@ -87,7 +87,7 @@ export interface GetBranchResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
  */
-export function getBranchOutput(args: GetBranchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBranchResult> {
+export function getBranchOutput(args: GetBranchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBranchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getBranch:getBranch", {
         "name": args.name,

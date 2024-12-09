@@ -60,7 +60,7 @@ export interface GetUserSshkeysResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
  */
-export function getUserSshkeysOutput(args?: GetUserSshkeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserSshkeysResult> {
+export function getUserSshkeysOutput(args?: GetUserSshkeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserSshkeysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getUserSshkeys:getUserSshkeys", {

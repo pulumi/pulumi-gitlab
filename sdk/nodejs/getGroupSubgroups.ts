@@ -163,7 +163,7 @@ export interface GetGroupSubgroupsResult {
  * }
  * ```
  */
-export function getGroupSubgroupsOutput(args: GetGroupSubgroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupSubgroupsResult> {
+export function getGroupSubgroupsOutput(args: GetGroupSubgroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupSubgroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupSubgroups:getGroupSubgroups", {
         "allAvailable": args.allAvailable,

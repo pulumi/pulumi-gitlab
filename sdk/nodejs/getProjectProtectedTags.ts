@@ -50,7 +50,7 @@ export interface GetProjectProtectedTagsResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
  */
-export function getProjectProtectedTagsOutput(args: GetProjectProtectedTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedTagsResult> {
+export function getProjectProtectedTagsOutput(args: GetProjectProtectedTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectProtectedTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", {
         "project": args.project,

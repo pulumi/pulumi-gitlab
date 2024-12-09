@@ -100,7 +100,7 @@ def get_pipeline_schedules(project: Optional[str] = None,
         pipeline_schedules=pulumi.get(__ret__, 'pipeline_schedules'),
         project=pulumi.get(__ret__, 'project'))
 def get_pipeline_schedules_output(project: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelineSchedulesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineSchedulesResult]:
     """
     The `PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
 
@@ -120,7 +120,7 @@ def get_pipeline_schedules_output(project: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getPipelineSchedules:getPipelineSchedules', __args__, opts=opts, typ=GetPipelineSchedulesResult)
     return __ret__.apply(lambda __response__: GetPipelineSchedulesResult(
         id=pulumi.get(__response__, 'id'),

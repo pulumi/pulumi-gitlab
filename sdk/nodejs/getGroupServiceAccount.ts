@@ -68,7 +68,7 @@ export interface GetGroupServiceAccountResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
  */
-export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupServiceAccountResult> {
+export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", {
         "group": args.group,

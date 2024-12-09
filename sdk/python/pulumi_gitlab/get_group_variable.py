@@ -206,7 +206,7 @@ def get_group_variable(environment_scope: Optional[str] = None,
 def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[str]]] = None,
                               group: Optional[pulumi.Input[str]] = None,
                               key: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupVariableResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupVariableResult]:
     """
     The `GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
 
@@ -235,7 +235,7 @@ def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[
     __args__['environmentScope'] = environment_scope
     __args__['group'] = group
     __args__['key'] = key
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupVariable:getGroupVariable', __args__, opts=opts, typ=GetGroupVariableResult)
     return __ret__.apply(lambda __response__: GetGroupVariableResult(
         description=pulumi.get(__response__, 'description'),

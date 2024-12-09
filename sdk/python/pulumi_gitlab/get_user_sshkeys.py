@@ -111,7 +111,7 @@ def get_user_sshkeys(user_id: Optional[int] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_user_sshkeys_output(user_id: Optional[pulumi.Input[Optional[int]]] = None,
                             username: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserSshkeysResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserSshkeysResult]:
     """
     The `get_user_sshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
 
@@ -124,7 +124,7 @@ def get_user_sshkeys_output(user_id: Optional[pulumi.Input[Optional[int]]] = Non
     __args__ = dict()
     __args__['userId'] = user_id
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getUserSshkeys:getUserSshkeys', __args__, opts=opts, typ=GetUserSshkeysResult)
     return __ret__.apply(lambda __response__: GetUserSshkeysResult(
         id=pulumi.get(__response__, 'id'),

@@ -461,7 +461,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     namespace_id: Optional[pulumi.Input[Optional[int]]] = None,
                     user_id: Optional[pulumi.Input[Optional[int]]] = None,
                     username: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     The `User` data source allows details of a user to be retrieved by either the user ID, username or email address.
 
@@ -483,7 +483,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['namespaceId'] = namespace_id
     __args__['userId'] = user_id
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         avatar_url=pulumi.get(__response__, 'avatar_url'),

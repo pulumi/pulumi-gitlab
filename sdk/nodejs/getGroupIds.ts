@@ -83,7 +83,7 @@ export interface GetGroupIdsResult {
  * export const graphQLId = foo.then(foo => foo.groupGraphqlId);
  * ```
  */
-export function getGroupIdsOutput(args: GetGroupIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupIdsResult> {
+export function getGroupIdsOutput(args: GetGroupIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupIds:getGroupIds", {
         "group": args.group,
