@@ -91,7 +91,7 @@ export interface GetProjectVariablesResult {
  * });
  * ```
  */
-export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVariablesResult> {
+export function getProjectVariablesOutput(args: GetProjectVariablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectVariablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectVariables:getProjectVariables", {
         "environmentScope": args.environmentScope,

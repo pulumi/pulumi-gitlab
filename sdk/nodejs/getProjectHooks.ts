@@ -78,7 +78,7 @@ export interface GetProjectHooksResult {
  * }));
  * ```
  */
-export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectHooksResult> {
+export function getProjectHooksOutput(args: GetProjectHooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectHooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectHooks:getProjectHooks", {
         "project": args.project,

@@ -217,7 +217,7 @@ def get_project_merge_request(iid: Optional[float] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_project_merge_request_output(iid: Optional[pulumi.Input[float]] = None,
                                      project: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectMergeRequestResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMergeRequestResult]:
     """
     The `get_project_merge_request` data source retrieves
     information about a single merge request related to a specific project.
@@ -243,7 +243,7 @@ def get_project_merge_request_output(iid: Optional[pulumi.Input[float]] = None,
     __args__ = dict()
     __args__['iid'] = iid
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMergeRequest:getProjectMergeRequest', __args__, opts=opts, typ=GetProjectMergeRequestResult)
     return __ret__.apply(lambda __response__: GetProjectMergeRequestResult(
         assignee=pulumi.get(__response__, 'assignee'),

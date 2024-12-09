@@ -188,7 +188,7 @@ def get_group_provisioned_users_output(active: Optional[pulumi.Input[Optional[bo
                                        provisioned_users: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']]]]] = None,
                                        search: Optional[pulumi.Input[Optional[str]]] = None,
                                        username: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupProvisionedUsersResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupProvisionedUsersResult]:
     """
     The `get_group_provisioned_users` data source allows details of the provisioned users of a given group.
 
@@ -213,7 +213,7 @@ def get_group_provisioned_users_output(active: Optional[pulumi.Input[Optional[bo
     __args__['provisionedUsers'] = provisioned_users
     __args__['search'] = search
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers', __args__, opts=opts, typ=GetGroupProvisionedUsersResult)
     return __ret__.apply(lambda __response__: GetGroupProvisionedUsersResult(
         active=pulumi.get(__response__, 'active'),

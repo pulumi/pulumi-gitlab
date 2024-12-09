@@ -305,7 +305,7 @@ export interface GetProjectIssuesResult {
  * }));
  * ```
  */
-export function getProjectIssuesOutput(args: GetProjectIssuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIssuesResult> {
+export function getProjectIssuesOutput(args: GetProjectIssuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectIssuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectIssues:getProjectIssues", {
         "assigneeId": args.assigneeId,

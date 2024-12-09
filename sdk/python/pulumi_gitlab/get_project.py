@@ -977,7 +977,7 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        path_with_namespace: Optional[pulumi.Input[Optional[str]]] = None,
                        public_builds: Optional[pulumi.Input[Optional[bool]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 
@@ -994,7 +994,7 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
     __args__['id'] = id
     __args__['pathWithNamespace'] = path_with_namespace
     __args__['publicBuilds'] = public_builds
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
     return __ret__.apply(lambda __response__: GetProjectResult(
         allow_pipeline_trigger_approve_deployment=pulumi.get(__response__, 'allow_pipeline_trigger_approve_deployment'),

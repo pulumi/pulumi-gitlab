@@ -90,7 +90,7 @@ export interface GetInstanceVariableResult {
  * });
  * ```
  */
-export function getInstanceVariableOutput(args: GetInstanceVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceVariableResult> {
+export function getInstanceVariableOutput(args: GetInstanceVariableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceVariableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getInstanceVariable:getInstanceVariable", {
         "key": args.key,

@@ -69,7 +69,7 @@ export interface GetPipelineSchedulesResult {
  * });
  * ```
  */
-export function getPipelineSchedulesOutput(args: GetPipelineSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineSchedulesResult> {
+export function getPipelineSchedulesOutput(args: GetPipelineSchedulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineSchedulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getPipelineSchedules:getPipelineSchedules", {
         "project": args.project,

@@ -55,7 +55,7 @@ export interface GetProjectProtectedBranchesResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
  */
-export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectProtectedBranchesResult> {
+export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranchesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectProtectedBranchesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", {
         "projectId": args.projectId,

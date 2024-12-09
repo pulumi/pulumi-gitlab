@@ -129,7 +129,7 @@ def get_group_ids(group: Optional[str] = None,
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'))
 def get_group_ids_output(group: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupIdsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupIdsResult]:
     """
     The `get_group_ids` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.
 
@@ -153,7 +153,7 @@ def get_group_ids_output(group: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['group'] = group
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupIds:getGroupIds', __args__, opts=opts, typ=GetGroupIdsResult)
     return __ret__.apply(lambda __response__: GetGroupIdsResult(
         group=pulumi.get(__response__, 'group'),

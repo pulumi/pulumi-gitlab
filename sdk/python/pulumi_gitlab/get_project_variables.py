@@ -123,7 +123,7 @@ def get_project_variables(environment_scope: Optional[str] = None,
         variables=pulumi.get(__ret__, 'variables'))
 def get_project_variables_output(environment_scope: Optional[pulumi.Input[Optional[str]]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVariablesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectVariablesResult]:
     """
     The `get_project_variables` data source allows to retrieve all project-level CI/CD variables.
 
@@ -148,7 +148,7 @@ def get_project_variables_output(environment_scope: Optional[pulumi.Input[Option
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectVariables:getProjectVariables', __args__, opts=opts, typ=GetProjectVariablesResult)
     return __ret__.apply(lambda __response__: GetProjectVariablesResult(
         environment_scope=pulumi.get(__response__, 'environment_scope'),

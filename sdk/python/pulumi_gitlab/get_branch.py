@@ -202,7 +202,7 @@ def get_branch(name: Optional[str] = None,
         web_url=pulumi.get(__ret__, 'web_url'))
 def get_branch_output(name: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBranchResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBranchResult]:
     """
     The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
 
@@ -215,7 +215,7 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getBranch:getBranch', __args__, opts=opts, typ=GetBranchResult)
     return __ret__.apply(lambda __response__: GetBranchResult(
         can_push=pulumi.get(__response__, 'can_push'),
