@@ -160,7 +160,7 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
                       search: Optional[pulumi.Input[Optional[str]]] = None,
                       sort: Optional[pulumi.Input[Optional[str]]] = None,
                       top_level_only: Optional[pulumi.Input[Optional[bool]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     The `get_groups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
 
@@ -192,7 +192,7 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['search'] = search
     __args__['sort'] = sort
     __args__['topLevelOnly'] = top_level_only
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
     return __ret__.apply(lambda __response__: GetGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

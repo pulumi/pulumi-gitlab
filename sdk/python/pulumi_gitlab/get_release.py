@@ -176,7 +176,7 @@ def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssets
 def get_release_output(assets: Optional[pulumi.Input[Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict']]]] = None,
                        project_id: Optional[pulumi.Input[str]] = None,
                        tag_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReleaseResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReleaseResult]:
     """
     The `get_release` data source retrieves information about a gitlab release for a project.
 
@@ -202,7 +202,7 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[Union['GetReleaseA
     __args__['assets'] = assets
     __args__['projectId'] = project_id
     __args__['tagName'] = tag_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRelease:getRelease', __args__, opts=opts, typ=GetReleaseResult)
     return __ret__.apply(lambda __response__: GetReleaseResult(
         assets=pulumi.get(__response__, 'assets'),

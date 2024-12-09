@@ -240,7 +240,7 @@ def get_project_milestone(milestone_id: Optional[int] = None,
         web_url=pulumi.get(__ret__, 'web_url'))
 def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectMilestoneResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMilestoneResult]:
     """
     The `ProjectMilestone` data source allows get details of a project milestone.
 
@@ -253,7 +253,7 @@ def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = Non
     __args__ = dict()
     __args__['milestoneId'] = milestone_id
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMilestone:getProjectMilestone', __args__, opts=opts, typ=GetProjectMilestoneResult)
     return __ret__.apply(lambda __response__: GetProjectMilestoneResult(
         created_at=pulumi.get(__response__, 'created_at'),

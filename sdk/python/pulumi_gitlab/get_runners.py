@@ -163,7 +163,7 @@ def get_runners_output(paused: Optional[pulumi.Input[Optional[bool]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
                        tag_lists: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRunnersResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRunnersResult]:
     """
     The `get_runners` data source retrieves information about all gitlab runners.
 
@@ -201,7 +201,7 @@ def get_runners_output(paused: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['status'] = status
     __args__['tagLists'] = tag_lists
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRunners:getRunners', __args__, opts=opts, typ=GetRunnersResult)
     return __ret__.apply(lambda __response__: GetRunnersResult(
         id=pulumi.get(__response__, 'id'),

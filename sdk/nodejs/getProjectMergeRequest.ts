@@ -123,7 +123,7 @@ export interface GetProjectMergeRequestResult {
  * });
  * ```
  */
-export function getProjectMergeRequestOutput(args: GetProjectMergeRequestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMergeRequestResult> {
+export function getProjectMergeRequestOutput(args: GetProjectMergeRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMergeRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", {
         "iid": args.iid,

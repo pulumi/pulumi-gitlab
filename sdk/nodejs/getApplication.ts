@@ -50,7 +50,7 @@ export interface GetApplicationResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
  */
-export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
+export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getApplication:getApplication", {
         "id": args.id,

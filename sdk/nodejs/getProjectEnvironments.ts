@@ -104,7 +104,7 @@ export interface GetProjectEnvironmentsResult {
  * });
  * ```
  */
-export function getProjectEnvironmentsOutput(args: GetProjectEnvironmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectEnvironmentsResult> {
+export function getProjectEnvironmentsOutput(args: GetProjectEnvironmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectEnvironmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectEnvironments:getProjectEnvironments", {
         "name": args.name,

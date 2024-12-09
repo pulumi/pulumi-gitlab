@@ -103,7 +103,7 @@ export interface GetReleaseResult {
  * });
  * ```
  */
-export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseResult> {
+export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReleaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getRelease:getRelease", {
         "assets": args.assets,

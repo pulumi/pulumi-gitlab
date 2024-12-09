@@ -111,7 +111,7 @@ def get_release_links(project: Optional[str] = None,
         tag_name=pulumi.get(__ret__, 'tag_name'))
 def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
                              tag_name: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReleaseLinksResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReleaseLinksResult]:
     """
     The `get_release_links` data source allows get details of release links.
 
@@ -124,7 +124,7 @@ def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['tagName'] = tag_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getReleaseLinks:getReleaseLinks', __args__, opts=opts, typ=GetReleaseLinksResult)
     return __ret__.apply(lambda __response__: GetReleaseLinksResult(
         id=pulumi.get(__response__, 'id'),

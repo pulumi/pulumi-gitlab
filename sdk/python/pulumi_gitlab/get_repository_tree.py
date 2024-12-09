@@ -157,7 +157,7 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
                                project: Optional[pulumi.Input[str]] = None,
                                recursive: Optional[pulumi.Input[Optional[bool]]] = None,
                                ref: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryTreeResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryTreeResult]:
     """
     The `get_repository_tree` data source allows details of directories and files in a repository to be retrieved.
 
@@ -186,7 +186,7 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['project'] = project
     __args__['recursive'] = recursive
     __args__['ref'] = ref
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getRepositoryTree:getRepositoryTree', __args__, opts=opts, typ=GetRepositoryTreeResult)
     return __ret__.apply(lambda __response__: GetRepositoryTreeResult(
         id=pulumi.get(__response__, 'id'),

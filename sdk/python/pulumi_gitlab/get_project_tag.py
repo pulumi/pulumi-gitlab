@@ -163,7 +163,7 @@ def get_project_tag(name: Optional[str] = None,
         target=pulumi.get(__ret__, 'target'))
 def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectTagResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectTagResult]:
     """
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 
@@ -176,7 +176,7 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectTag:getProjectTag', __args__, opts=opts, typ=GetProjectTagResult)
     return __ret__.apply(lambda __response__: GetProjectTagResult(
         commits=pulumi.get(__response__, 'commits'),

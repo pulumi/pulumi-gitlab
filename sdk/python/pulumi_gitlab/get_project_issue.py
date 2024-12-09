@@ -591,7 +591,7 @@ def get_project_issue(iid: Optional[int] = None,
         weight=pulumi.get(__ret__, 'weight'))
 def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
                              project: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIssueResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIssueResult]:
     """
     The `ProjectIssue` data source allows to retrieve details about an issue in a project.
 
@@ -616,7 +616,7 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
     __args__ = dict()
     __args__['iid'] = iid
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectIssue:getProjectIssue', __args__, opts=opts, typ=GetProjectIssueResult)
     return __ret__.apply(lambda __response__: GetProjectIssueResult(
         assignee_ids=pulumi.get(__response__, 'assignee_ids'),

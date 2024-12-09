@@ -334,7 +334,7 @@ export interface GetProjectResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
  */
-export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProject:getProject", {

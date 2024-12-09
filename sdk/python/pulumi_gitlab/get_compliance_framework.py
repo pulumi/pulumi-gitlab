@@ -169,7 +169,7 @@ def get_compliance_framework(name: Optional[str] = None,
         pipeline_configuration_full_path=pulumi.get(__ret__, 'pipeline_configuration_full_path'))
 def get_compliance_framework_output(name: Optional[pulumi.Input[str]] = None,
                                     namespace_path: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComplianceFrameworkResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComplianceFrameworkResult]:
     """
     The `ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.
 
@@ -192,7 +192,7 @@ def get_compliance_framework_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['namespacePath'] = namespace_path
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getComplianceFramework:getComplianceFramework', __args__, opts=opts, typ=GetComplianceFrameworkResult)
     return __ret__.apply(lambda __response__: GetComplianceFrameworkResult(
         color=pulumi.get(__response__, 'color'),

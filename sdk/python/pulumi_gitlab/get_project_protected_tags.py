@@ -94,7 +94,7 @@ def get_project_protected_tags(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         protected_tags=pulumi.get(__ret__, 'protected_tags'))
 def get_project_protected_tags_output(project: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectProtectedTagsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectProtectedTagsResult]:
     """
     The `get_project_protected_tags` data source allows details of the protected tags of a given project.
 
@@ -105,7 +105,7 @@ def get_project_protected_tags_output(project: Optional[pulumi.Input[str]] = Non
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectProtectedTags:getProjectProtectedTags', __args__, opts=opts, typ=GetProjectProtectedTagsResult)
     return __ret__.apply(lambda __response__: GetProjectProtectedTagsResult(
         id=pulumi.get(__response__, 'id'),

@@ -345,7 +345,7 @@ def get_group(full_path: Optional[str] = None,
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'))
 def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
                      group_id: Optional[pulumi.Input[Optional[int]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     The `Group` data source allows details of a group to be retrieved by its id or full path.
 
@@ -358,7 +358,7 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['fullPath'] = full_path
     __args__['groupId'] = group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
     return __ret__.apply(lambda __response__: GetGroupResult(
         default_branch=pulumi.get(__response__, 'default_branch'),

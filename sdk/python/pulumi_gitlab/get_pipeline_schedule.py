@@ -252,7 +252,7 @@ def get_pipeline_schedule(cron_timezone: Optional[str] = None,
 def get_pipeline_schedule_output(cron_timezone: Optional[pulumi.Input[Optional[str]]] = None,
                                  pipeline_schedule_id: Optional[pulumi.Input[int]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelineScheduleResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineScheduleResult]:
     """
     The `PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
 
@@ -277,7 +277,7 @@ def get_pipeline_schedule_output(cron_timezone: Optional[pulumi.Input[Optional[s
     __args__['cronTimezone'] = cron_timezone
     __args__['pipelineScheduleId'] = pipeline_schedule_id
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getPipelineSchedule:getPipelineSchedule', __args__, opts=opts, typ=GetPipelineScheduleResult)
     return __ret__.apply(lambda __response__: GetPipelineScheduleResult(
         active=pulumi.get(__response__, 'active'),
