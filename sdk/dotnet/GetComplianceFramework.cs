@@ -64,6 +64,33 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetComplianceFrameworkResult> Invoke(GetComplianceFrameworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComplianceFrameworkResult>("gitlab:index/getComplianceFramework:getComplianceFramework", args ?? new GetComplianceFrameworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.
+        /// 
+        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querynamespace)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
+        ///     {
+        ///         NamespacePath = "top-level-group",
+        ///         Name = "HIPAA",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetComplianceFrameworkResult> Invoke(GetComplianceFrameworkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetComplianceFrameworkResult>("gitlab:index/getComplianceFramework:getComplianceFramework", args ?? new GetComplianceFrameworkInvokeArgs(), options.WithDefaults());
     }
 
 

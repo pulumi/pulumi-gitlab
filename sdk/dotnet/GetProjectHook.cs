@@ -74,6 +74,38 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectHookResult> Invoke(GetProjectHookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectHookResult>("gitlab:index/getProjectHook:getProjectHook", args ?? new GetProjectHookInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-project-hook)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetProject.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     var exampleGetProjectHook = GitLab.GetProjectHook.Invoke(new()
+        ///     {
+        ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
+        ///         HookId = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectHookResult> Invoke(GetProjectHookInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectHookResult>("gitlab:index/getProjectHook:getProjectHook", args ?? new GetProjectHookInvokeArgs(), options.WithDefaults());
     }
 
 

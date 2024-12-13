@@ -64,18 +64,8 @@ type GetMetadataResult struct {
 
 func GetMetadataOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetMetadataResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetMetadataResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetMetadataResult
-		secret, err := ctx.InvokePackageRaw("gitlab:index/getMetadata:getMetadata", nil, &rv, "", opts...)
-		if err != nil {
-			return GetMetadataResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetMetadataResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetMetadataResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("gitlab:index/getMetadata:getMetadata", nil, GetMetadataResultOutput{}, options).(GetMetadataResultOutput), nil
 	}).(GetMetadataResultOutput)
 }
 

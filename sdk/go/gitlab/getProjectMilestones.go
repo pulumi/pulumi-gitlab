@@ -61,21 +61,11 @@ type GetProjectMilestonesResult struct {
 }
 
 func GetProjectMilestonesOutput(ctx *pulumi.Context, args GetProjectMilestonesOutputArgs, opts ...pulumi.InvokeOption) GetProjectMilestonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectMilestonesResultOutput, error) {
 			args := v.(GetProjectMilestonesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectMilestonesResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectMilestones:getProjectMilestones", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectMilestonesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectMilestonesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectMilestonesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getProjectMilestones:getProjectMilestones", args, GetProjectMilestonesResultOutput{}, options).(GetProjectMilestonesResultOutput), nil
 		}).(GetProjectMilestonesResultOutput)
 }
 

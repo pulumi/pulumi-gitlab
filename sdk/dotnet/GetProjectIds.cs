@@ -78,6 +78,40 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectIdsResult> Invoke(GetProjectIdsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectIdsResult>("gitlab:index/getProjectIds:getProjectIds", args ?? new GetProjectIdsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
+        /// 
+        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var newProject = new GitLab.Project("new_project");
+        /// 
+        ///     // use project IDs to get additional information, such as the GraphQL ID
+        ///     // for other resources
+        ///     var foo = GitLab.GetProjectIds.Invoke(new()
+        ///     {
+        ///         Project = "gitlab_project.new_project.id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["graphQLId"] = foo.Apply(getProjectIdsResult =&gt; getProjectIdsResult.ProjectGraphqlId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectIdsResult> Invoke(GetProjectIdsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectIdsResult>("gitlab:index/getProjectIds:getProjectIds", args ?? new GetProjectIdsInvokeArgs(), options.WithDefaults());
     }
 
 

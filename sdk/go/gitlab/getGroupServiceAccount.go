@@ -50,21 +50,11 @@ type LookupGroupServiceAccountResult struct {
 }
 
 func LookupGroupServiceAccountOutput(ctx *pulumi.Context, args LookupGroupServiceAccountOutputArgs, opts ...pulumi.InvokeOption) LookupGroupServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGroupServiceAccountResultOutput, error) {
 			args := v.(LookupGroupServiceAccountArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGroupServiceAccountResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGroupServiceAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGroupServiceAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGroupServiceAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args, LookupGroupServiceAccountResultOutput{}, options).(LookupGroupServiceAccountResultOutput), nil
 		}).(LookupGroupServiceAccountResultOutput)
 }
 

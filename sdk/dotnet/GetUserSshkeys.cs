@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetUserSshkeysResult> Invoke(GetUserSshkeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserSshkeysResult>("gitlab:index/getUserSshkeys:getUserSshkeys", args ?? new GetUserSshkeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+        /// </summary>
+        public static Output<GetUserSshkeysResult> Invoke(GetUserSshkeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserSshkeysResult>("gitlab:index/getUserSshkeys:getUserSshkeys", args ?? new GetUserSshkeysInvokeArgs(), options.WithDefaults());
     }
 
 

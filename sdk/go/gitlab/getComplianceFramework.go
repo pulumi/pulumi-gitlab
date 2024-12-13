@@ -79,21 +79,11 @@ type LookupComplianceFrameworkResult struct {
 }
 
 func LookupComplianceFrameworkOutput(ctx *pulumi.Context, args LookupComplianceFrameworkOutputArgs, opts ...pulumi.InvokeOption) LookupComplianceFrameworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComplianceFrameworkResultOutput, error) {
 			args := v.(LookupComplianceFrameworkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupComplianceFrameworkResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getComplianceFramework:getComplianceFramework", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComplianceFrameworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComplianceFrameworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComplianceFrameworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getComplianceFramework:getComplianceFramework", args, LookupComplianceFrameworkResultOutput{}, options).(LookupComplianceFrameworkResultOutput), nil
 		}).(LookupComplianceFrameworkResultOutput)
 }
 

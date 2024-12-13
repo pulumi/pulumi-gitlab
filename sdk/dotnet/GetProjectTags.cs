@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectTagsResult> Invoke(GetProjectTagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagsResult>("gitlab:index/getProjectTags:getProjectTags", args ?? new GetProjectTagsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+        /// </summary>
+        public static Output<GetProjectTagsResult> Invoke(GetProjectTagsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagsResult>("gitlab:index/getProjectTags:getProjectTags", args ?? new GetProjectTagsInvokeArgs(), options.WithDefaults());
     }
 
 

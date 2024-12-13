@@ -62,6 +62,32 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetPipelineSchedulesResult> Invoke(GetPipelineSchedulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineSchedulesResult>("gitlab:index/getPipelineSchedules:getPipelineSchedules", args ?? new GetPipelineSchedulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetPipelineSchedules.Invoke(new()
+        ///     {
+        ///         Project = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPipelineSchedulesResult> Invoke(GetPipelineSchedulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPipelineSchedulesResult>("gitlab:index/getPipelineSchedules:getPipelineSchedules", args ?? new GetPipelineSchedulesInvokeArgs(), options.WithDefaults());
     }
 
 

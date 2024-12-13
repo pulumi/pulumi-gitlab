@@ -66,6 +66,34 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetRepositoryFileResult> Invoke(GetRepositoryFileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryFileResult>("gitlab:index/getRepositoryFile:getRepositoryFile", args ?? new GetRepositoryFileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetRepositoryFile.Invoke(new()
+        ///     {
+        ///         Project = "example",
+        ///         Ref = "main",
+        ///         FilePath = "README.md",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRepositoryFileResult> Invoke(GetRepositoryFileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryFileResult>("gitlab:index/getRepositoryFile:getRepositoryFile", args ?? new GetRepositoryFileInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectProtectedTagsResult> Invoke(GetProjectProtectedTagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedTagsResult>("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", args ?? new GetProjectProtectedTagsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+        /// </summary>
+        public static Output<GetProjectProtectedTagsResult> Invoke(GetProjectProtectedTagsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedTagsResult>("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", args ?? new GetProjectProtectedTagsInvokeArgs(), options.WithDefaults());
     }
 
 

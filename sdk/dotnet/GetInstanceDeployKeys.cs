@@ -30,6 +30,16 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetInstanceDeployKeysResult> Invoke(GetInstanceDeployKeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getInstanceDeployKeys` data source allows to retrieve a list of deploy keys for a GitLab instance.
+        /// 
+        /// &gt; This data source requires administration privileges.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+        /// </summary>
+        public static Output<GetInstanceDeployKeysResult> Invoke(GetInstanceDeployKeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());
     }
 
 

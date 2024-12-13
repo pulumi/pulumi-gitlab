@@ -93,21 +93,11 @@ type LookupRepositoryFileResult struct {
 }
 
 func LookupRepositoryFileOutput(ctx *pulumi.Context, args LookupRepositoryFileOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryFileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRepositoryFileResultOutput, error) {
 			args := v.(LookupRepositoryFileArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRepositoryFileResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getRepositoryFile:getRepositoryFile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRepositoryFileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRepositoryFileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRepositoryFileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getRepositoryFile:getRepositoryFile", args, LookupRepositoryFileResultOutput{}, options).(LookupRepositoryFileResultOutput), nil
 		}).(LookupRepositoryFileResultOutput)
 }
 

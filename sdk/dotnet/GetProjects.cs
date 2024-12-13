@@ -102,6 +102,52 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
+        /// 
+        /// &gt; This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+        /// 
+        /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List projects within a group tree
+        ///     var mygroup = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         FullPath = "mygroup",
+        ///     });
+        /// 
+        ///     var groupProjects = GitLab.GetProjects.Invoke(new()
+        ///     {
+        ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         OrderBy = "name",
+        ///         IncludeSubgroups = true,
+        ///         WithShared = false,
+        ///     });
+        /// 
+        ///     // List projects using the search syntax
+        ///     var projects = GitLab.GetProjects.Invoke(new()
+        ///     {
+        ///         Search = "postgresql",
+        ///         Visibility = "private",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("gitlab:index/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
     }
 
 

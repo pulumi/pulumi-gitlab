@@ -84,6 +84,43 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("gitlab:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.
+        /// 
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not.
+        /// 
+        /// &gt; Some available options require administrator privileges.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetUsers.Invoke(new()
+        ///     {
+        ///         Sort = "desc",
+        ///         OrderBy = "name",
+        ///         CreatedBefore = "2019-01-01",
+        ///     });
+        /// 
+        ///     var example_two = GitLab.GetUsers.Invoke(new()
+        ///     {
+        ///         Search = "username",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("gitlab:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
 
 

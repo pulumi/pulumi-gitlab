@@ -41,21 +41,11 @@ type GetGroupHooksResult struct {
 }
 
 func GetGroupHooksOutput(ctx *pulumi.Context, args GetGroupHooksOutputArgs, opts ...pulumi.InvokeOption) GetGroupHooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupHooksResultOutput, error) {
 			args := v.(GetGroupHooksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupHooksResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupHooks:getGroupHooks", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupHooksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupHooksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupHooksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getGroupHooks:getGroupHooks", args, GetGroupHooksResultOutput{}, options).(GetGroupHooksResultOutput), nil
 		}).(GetGroupHooksResultOutput)
 }
 

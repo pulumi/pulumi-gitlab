@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetReleaseLinkResult> Invoke(GetReleaseLinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.ReleaseLink` data source allows get details of a release link.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+        /// </summary>
+        public static Output<GetReleaseLinkResult> Invoke(GetReleaseLinkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
     }
 
 
