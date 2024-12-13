@@ -78,6 +78,40 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectMergeRequestResult> Invoke(GetProjectMergeRequestInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMergeRequestResult>("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", args ?? new GetProjectMergeRequestInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectMergeRequest` data source retrieves
+        /// information about a single merge request related to a specific project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byProjectId = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     {
+        ///         Project = "123",
+        ///         Iid = 456,
+        ///     });
+        /// 
+        ///     var byProjectName = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     {
+        ///         Project = "company/group/project1",
+        ///         Iid = 3,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectMergeRequestResult> Invoke(GetProjectMergeRequestInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectMergeRequestResult>("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", args ?? new GetProjectMergeRequestInvokeArgs(), options.WithDefaults());
     }
 
 

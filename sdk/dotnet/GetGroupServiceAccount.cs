@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+        /// </summary>
+        public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

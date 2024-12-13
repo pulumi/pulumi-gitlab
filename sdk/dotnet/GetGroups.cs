@@ -82,6 +82,42 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("gitlab:index/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getGroups` data source allows details of multiple groups to be retrieved given some optional filter criteria.
+        /// 
+        /// &gt; Some attributes might not be returned depending on if you're an admin or not.
+        /// 
+        /// &gt; Some available options require administrator privileges.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroups.Invoke(new()
+        ///     {
+        ///         Sort = "desc",
+        ///         OrderBy = "name",
+        ///     });
+        /// 
+        ///     var example_two = GitLab.GetGroups.Invoke(new()
+        ///     {
+        ///         Search = "GitLab",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("gitlab:index/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

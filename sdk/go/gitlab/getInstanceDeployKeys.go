@@ -43,21 +43,11 @@ type GetInstanceDeployKeysResult struct {
 }
 
 func GetInstanceDeployKeysOutput(ctx *pulumi.Context, args GetInstanceDeployKeysOutputArgs, opts ...pulumi.InvokeOption) GetInstanceDeployKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceDeployKeysResultOutput, error) {
 			args := v.(GetInstanceDeployKeysArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetInstanceDeployKeysResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args, &rv, "", opts...)
-			if err != nil {
-				return GetInstanceDeployKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInstanceDeployKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInstanceDeployKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args, GetInstanceDeployKeysResultOutput{}, options).(GetInstanceDeployKeysResultOutput), nil
 		}).(GetInstanceDeployKeysResultOutput)
 }
 

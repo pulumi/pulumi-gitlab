@@ -96,21 +96,11 @@ type GetProjectMergeRequestResult struct {
 }
 
 func GetProjectMergeRequestOutput(ctx *pulumi.Context, args GetProjectMergeRequestOutputArgs, opts ...pulumi.InvokeOption) GetProjectMergeRequestResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectMergeRequestResultOutput, error) {
 			args := v.(GetProjectMergeRequestArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectMergeRequestResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectMergeRequestResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectMergeRequestResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectMergeRequestResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", args, GetProjectMergeRequestResultOutput{}, options).(GetProjectMergeRequestResultOutput), nil
 		}).(GetProjectMergeRequestResultOutput)
 }
 

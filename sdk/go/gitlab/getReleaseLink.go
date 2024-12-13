@@ -59,21 +59,11 @@ type LookupReleaseLinkResult struct {
 }
 
 func LookupReleaseLinkOutput(ctx *pulumi.Context, args LookupReleaseLinkOutputArgs, opts ...pulumi.InvokeOption) LookupReleaseLinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReleaseLinkResultOutput, error) {
 			args := v.(LookupReleaseLinkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupReleaseLinkResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getReleaseLink:getReleaseLink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReleaseLinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReleaseLinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReleaseLinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getReleaseLink:getReleaseLink", args, LookupReleaseLinkResultOutput{}, options).(LookupReleaseLinkResultOutput), nil
 		}).(LookupReleaseLinkResultOutput)
 }
 

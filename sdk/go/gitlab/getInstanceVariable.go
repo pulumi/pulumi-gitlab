@@ -77,21 +77,11 @@ type LookupInstanceVariableResult struct {
 }
 
 func LookupInstanceVariableOutput(ctx *pulumi.Context, args LookupInstanceVariableOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceVariableResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInstanceVariableResultOutput, error) {
 			args := v.(LookupInstanceVariableArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupInstanceVariableResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getInstanceVariable:getInstanceVariable", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInstanceVariableResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInstanceVariableResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInstanceVariableResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getInstanceVariable:getInstanceVariable", args, LookupInstanceVariableResultOutput{}, options).(LookupInstanceVariableResultOutput), nil
 		}).(LookupInstanceVariableResultOutput)
 }
 

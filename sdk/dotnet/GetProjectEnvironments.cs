@@ -74,6 +74,38 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectEnvironmentsResult> Invoke(GetProjectEnvironmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectEnvironmentsResult>("gitlab:index/getProjectEnvironments:getProjectEnvironments", args ?? new GetProjectEnvironmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectEnvironments` data source retrieves information about all environments of the given project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisProject = new GitLab.Project("this", new()
+        ///     {
+        ///         Name = "example",
+        ///         InitializeWithReadme = true,
+        ///     });
+        /// 
+        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
+        ///     {
+        ///         Project = thisProject.PathWithNamespace,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectEnvironmentsResult> Invoke(GetProjectEnvironmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectEnvironmentsResult>("gitlab:index/getProjectEnvironments:getProjectEnvironments", args ?? new GetProjectEnvironmentsInvokeArgs(), options.WithDefaults());
     }
 
 

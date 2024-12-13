@@ -74,6 +74,38 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetGroupBillableMemberMembershipsResult> Invoke(GetGroupBillableMemberMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupBillableMemberMembershipsResult>("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", args ?? new GetGroupBillableMemberMembershipsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getGroupBillableMemberMemberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
+        /// 
+        /// &gt; You must be an administrator!
+        /// 
+        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+        /// the most related match will prioritize an exact match if one is available.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-memberships-for-a-billable-member-of-a-group)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testUserMembership = GitLab.GetGroupBillableMemberMemberships.Invoke(new()
+        ///     {
+        ///         UserId = 21,
+        ///         GroupId = "42",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupBillableMemberMembershipsResult> Invoke(GetGroupBillableMemberMembershipsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupBillableMemberMembershipsResult>("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", args ?? new GetGroupBillableMemberMembershipsInvokeArgs(), options.WithDefaults());
     }
 
 

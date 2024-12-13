@@ -65,21 +65,11 @@ type GetGroupProvisionedUsersResult struct {
 }
 
 func GetGroupProvisionedUsersOutput(ctx *pulumi.Context, args GetGroupProvisionedUsersOutputArgs, opts ...pulumi.InvokeOption) GetGroupProvisionedUsersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupProvisionedUsersResultOutput, error) {
 			args := v.(GetGroupProvisionedUsersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupProvisionedUsersResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupProvisionedUsersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupProvisionedUsersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupProvisionedUsersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args, GetGroupProvisionedUsersResultOutput{}, options).(GetGroupProvisionedUsersResultOutput), nil
 		}).(GetGroupProvisionedUsersResultOutput)
 }
 

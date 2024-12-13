@@ -76,6 +76,39 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectVariablesResult> Invoke(GetProjectVariablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectVariables` data source allows to retrieve all project-level CI/CD variables.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vars = GitLab.GetProjectVariables.Invoke(new()
+        ///     {
+        ///         Project = "my/example/project",
+        ///     });
+        /// 
+        ///     // Using an environment scope
+        ///     var stagingVars = GitLab.GetProjectVariables.Invoke(new()
+        ///     {
+        ///         Project = "my/example/project",
+        ///         EnvironmentScope = "staging/*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectVariablesResult> Invoke(GetProjectVariablesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectVariablesResult>("gitlab:index/getProjectVariables:getProjectVariables", args ?? new GetProjectVariablesInvokeArgs(), options.WithDefaults());
     }
 
 

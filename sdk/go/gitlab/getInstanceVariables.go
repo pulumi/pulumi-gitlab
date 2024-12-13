@@ -58,18 +58,8 @@ type GetInstanceVariablesResult struct {
 
 func GetInstanceVariablesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInstanceVariablesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetInstanceVariablesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetInstanceVariablesResult
-		secret, err := ctx.InvokePackageRaw("gitlab:index/getInstanceVariables:getInstanceVariables", nil, &rv, "", opts...)
-		if err != nil {
-			return GetInstanceVariablesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetInstanceVariablesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetInstanceVariablesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("gitlab:index/getInstanceVariables:getInstanceVariables", nil, GetInstanceVariablesResultOutput{}, options).(GetInstanceVariablesResultOutput), nil
 	}).(GetInstanceVariablesResultOutput)
 }
 

@@ -68,6 +68,35 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetClusterAgentResult> Invoke(GetClusterAgentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+        /// 
+        /// &gt; Requires at least GitLab 14.10
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetClusterAgent.Invoke(new()
+        ///     {
+        ///         Project = "12345",
+        ///         AgentId = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClusterAgentResult> Invoke(GetClusterAgentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentInvokeArgs(), options.WithDefaults());
     }
 
 

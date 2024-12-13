@@ -56,6 +56,29 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetMetadataResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetadataResult>("gitlab:index/getMetadata:getMetadata", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = GitLab.GetMetadata.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMetadataResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetadataResult>("gitlab:index/getMetadata:getMetadata", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

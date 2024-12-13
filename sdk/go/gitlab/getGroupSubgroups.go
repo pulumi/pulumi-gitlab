@@ -104,21 +104,11 @@ type GetGroupSubgroupsResult struct {
 }
 
 func GetGroupSubgroupsOutput(ctx *pulumi.Context, args GetGroupSubgroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupSubgroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupSubgroupsResultOutput, error) {
 			args := v.(GetGroupSubgroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupSubgroupsResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupSubgroups:getGroupSubgroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupSubgroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupSubgroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupSubgroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getGroupSubgroups:getGroupSubgroups", args, GetGroupSubgroupsResultOutput{}, options).(GetGroupSubgroupsResultOutput), nil
 		}).(GetGroupSubgroupsResultOutput)
 }
 
