@@ -80,6 +80,41 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetGroupVariableResult> Invoke(GetGroupVariableInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupVariableResult>("gitlab:index/getGroupVariable:getGroupVariable", args ?? new GetGroupVariableInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
+        ///     {
+        ///         Group = "my/example/group",
+        ///         Key = "foo",
+        ///     });
+        /// 
+        ///     // Using an environment scope
+        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
+        ///     {
+        ///         Group = "my/example/group",
+        ///         Key = "bar",
+        ///         EnvironmentScope = "staging/*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupVariableResult> Invoke(GetGroupVariableInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupVariableResult>("gitlab:index/getGroupVariable:getGroupVariable", args ?? new GetGroupVariableInvokeArgs(), options.WithDefaults());
     }
 
 

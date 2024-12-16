@@ -66,21 +66,11 @@ type GetPipelineSchedulesResult struct {
 }
 
 func GetPipelineSchedulesOutput(ctx *pulumi.Context, args GetPipelineSchedulesOutputArgs, opts ...pulumi.InvokeOption) GetPipelineSchedulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPipelineSchedulesResultOutput, error) {
 			args := v.(GetPipelineSchedulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPipelineSchedulesResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getPipelineSchedules:getPipelineSchedules", args, &rv, "", opts...)
-			if err != nil {
-				return GetPipelineSchedulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPipelineSchedulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPipelineSchedulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getPipelineSchedules:getPipelineSchedules", args, GetPipelineSchedulesResultOutput{}, options).(GetPipelineSchedulesResultOutput), nil
 		}).(GetPipelineSchedulesResultOutput)
 }
 

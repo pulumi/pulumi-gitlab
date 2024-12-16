@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetProjectMilestonesResult> Invoke(GetProjectMilestonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// </summary>
+        public static Output<GetProjectMilestonesResult> Invoke(GetProjectMilestonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -79,21 +79,11 @@ type GetProjectVariablesResult struct {
 }
 
 func GetProjectVariablesOutput(ctx *pulumi.Context, args GetProjectVariablesOutputArgs, opts ...pulumi.InvokeOption) GetProjectVariablesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectVariablesResultOutput, error) {
 			args := v.(GetProjectVariablesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectVariablesResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectVariables:getProjectVariables", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectVariablesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectVariablesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectVariablesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getProjectVariables:getProjectVariables", args, GetProjectVariablesResultOutput{}, options).(GetProjectVariablesResultOutput), nil
 		}).(GetProjectVariablesResultOutput)
 }
 

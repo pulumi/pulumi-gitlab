@@ -62,6 +62,32 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetInstanceVariableResult> Invoke(GetInstanceVariableInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceVariableResult>("gitlab:index/getInstanceVariable:getInstanceVariable", args ?? new GetInstanceVariableInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = GitLab.GetInstanceVariable.Invoke(new()
+        ///     {
+        ///         Key = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceVariableResult> Invoke(GetInstanceVariableInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceVariableResult>("gitlab:index/getInstanceVariable:getInstanceVariable", args ?? new GetInstanceVariableInvokeArgs(), options.WithDefaults());
     }
 
 

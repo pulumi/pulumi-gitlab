@@ -66,6 +66,34 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetReleaseResult> Invoke(GetReleaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("gitlab:index/getRelease:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // By project ID and tag_name
+        ///     var example = GitLab.GetRelease.Invoke(new()
+        ///     {
+        ///         ProjectId = "1234",
+        ///         TagName = "v1.0",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetReleaseResult> Invoke(GetReleaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("gitlab:index/getRelease:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
     }
 
 

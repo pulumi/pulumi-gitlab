@@ -77,21 +77,11 @@ type GetGroupBillableMemberMembershipsResult struct {
 }
 
 func GetGroupBillableMemberMembershipsOutput(ctx *pulumi.Context, args GetGroupBillableMemberMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupBillableMemberMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupBillableMemberMembershipsResultOutput, error) {
 			args := v.(GetGroupBillableMemberMembershipsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupBillableMemberMembershipsResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupBillableMemberMembershipsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupBillableMemberMembershipsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupBillableMemberMembershipsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships", args, GetGroupBillableMemberMembershipsResultOutput{}, options).(GetGroupBillableMemberMembershipsResultOutput), nil
 		}).(GetGroupBillableMemberMembershipsResultOutput)
 }
 

@@ -96,6 +96,49 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetRunnersResult> Invoke(GetRunnersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRunnersResult>("gitlab:index/getRunners:getRunners", args ?? new GetRunnersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getRunners` data source retrieves information about all gitlab runners.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisUserRunner = new GitLab.UserRunner("this", new()
+        ///     {
+        ///         RunnerType = "instance_type",
+        ///         TagLists = new[]
+        ///         {
+        ///             "tag1",
+        ///             "tag2",
+        ///         },
+        ///     });
+        /// 
+        ///     var @this = GitLab.GetRunners.Invoke(new()
+        ///     {
+        ///         Paused = false,
+        ///         Status = "online",
+        ///         TagLists = new[]
+        ///         {
+        ///             "tag1",
+        ///             "tag2",
+        ///         },
+        ///         Type = "instance_type",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRunnersResult> Invoke(GetRunnersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRunnersResult>("gitlab:index/getRunners:getRunners", args ?? new GetRunnersInvokeArgs(), options.WithDefaults());
     }
 
 

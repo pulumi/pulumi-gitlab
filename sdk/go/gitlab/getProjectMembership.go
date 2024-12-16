@@ -55,21 +55,11 @@ type LookupProjectMembershipResult struct {
 }
 
 func LookupProjectMembershipOutput(ctx *pulumi.Context, args LookupProjectMembershipOutputArgs, opts ...pulumi.InvokeOption) LookupProjectMembershipResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectMembershipResultOutput, error) {
 			args := v.(LookupProjectMembershipArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupProjectMembershipResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getProjectMembership:getProjectMembership", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProjectMembershipResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProjectMembershipResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProjectMembershipResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getProjectMembership:getProjectMembership", args, LookupProjectMembershipResultOutput{}, options).(LookupProjectMembershipResultOutput), nil
 		}).(LookupProjectMembershipResultOutput)
 }
 

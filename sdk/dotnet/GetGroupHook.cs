@@ -26,6 +26,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetGroupHookResult> Invoke(GetGroupHookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#get-group-hook)
+        /// </summary>
+        public static Output<GetGroupHookResult> Invoke(GetGroupHookInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookInvokeArgs(), options.WithDefaults());
     }
 
 

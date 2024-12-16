@@ -68,6 +68,35 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetRepositoryTreeResult> Invoke(GetRepositoryTreeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryTreeResult>("gitlab:index/getRepositoryTree:getRepositoryTree", args ?? new GetRepositoryTreeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getRepositoryTree` data source allows details of directories and files in a repository to be retrieved.
+        /// 
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = GitLab.GetRepositoryTree.Invoke(new()
+        ///     {
+        ///         Project = "example",
+        ///         Ref = "main",
+        ///         Path = "ExampleSubFolder",
+        ///         Recursive = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRepositoryTreeResult> Invoke(GetRepositoryTreeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryTreeResult>("gitlab:index/getRepositoryTree:getRepositoryTree", args ?? new GetRepositoryTreeInvokeArgs(), options.WithDefaults());
     }
 
 

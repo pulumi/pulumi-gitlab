@@ -78,6 +78,40 @@ namespace Pulumi.GitLab
         /// </summary>
         public static Output<GetGroupIdsResult> Invoke(GetGroupIdsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupIdsResult>("gitlab:index/getGroupIds:getGroupIds", args ?? new GetGroupIdsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `gitlab.getGroupIds` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.
+        /// 
+        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#querygroup)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var newGroup = new GitLab.Group("new_group");
+        /// 
+        ///     // use group IDs to get additional information, such as the GraphQL ID
+        ///     // for other resources
+        ///     var foo = GitLab.GetGroupIds.Invoke(new()
+        ///     {
+        ///         Group = "gitlab_group.new_group.id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["graphQLId"] = foo.Apply(getGroupIdsResult =&gt; getGroupIdsResult.GroupGraphqlId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupIdsResult> Invoke(GetGroupIdsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupIdsResult>("gitlab:index/getGroupIds:getGroupIds", args ?? new GetGroupIdsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -81,21 +81,11 @@ type LookupGroupHookResult struct {
 }
 
 func LookupGroupHookOutput(ctx *pulumi.Context, args LookupGroupHookOutputArgs, opts ...pulumi.InvokeOption) LookupGroupHookResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGroupHookResultOutput, error) {
 			args := v.(LookupGroupHookArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGroupHookResult
-			secret, err := ctx.InvokePackageRaw("gitlab:index/getGroupHook:getGroupHook", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGroupHookResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGroupHookResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGroupHookResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gitlab:index/getGroupHook:getGroupHook", args, LookupGroupHookResultOutput{}, options).(LookupGroupHookResultOutput), nil
 		}).(LookupGroupHookResultOutput)
 }
 
