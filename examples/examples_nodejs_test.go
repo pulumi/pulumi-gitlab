@@ -25,6 +25,13 @@ func TestAccProject(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "project"),
+			// TODO[https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/6408]:
+			//
+			// There is an upstream bug that prevents a clean refresh. This
+			// should be removed when we upgrade to a version that has
+			// addressed #6408.
+			AllowEmptyPreviewChanges: true,
+			AllowEmptyUpdateChanges:  true,
 		})
 
 	integration.ProgramTest(t, &test)
