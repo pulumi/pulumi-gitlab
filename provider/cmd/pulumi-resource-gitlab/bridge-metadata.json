@@ -278,6 +278,10 @@
                 "current": "gitlab:index/instanceCluster:InstanceCluster",
                 "majorVersion": 8
             },
+            "gitlab_instance_service_account": {
+                "current": "gitlab:index/instanceServiceAccount:InstanceServiceAccount",
+                "majorVersion": 8
+            },
             "gitlab_instance_variable": {
                 "current": "gitlab:index/instanceVariable:InstanceVariable",
                 "majorVersion": 8
@@ -1296,6 +1300,7 @@
             "gitlab:index/groupShareGroup:GroupShareGroup": 0,
             "gitlab:index/groupVariable:GroupVariable": 0,
             "gitlab:index/instanceCluster:InstanceCluster": 0,
+            "gitlab:index/instanceServiceAccount:InstanceServiceAccount": 1,
             "gitlab:index/instanceVariable:InstanceVariable": 0,
             "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker": 1,
             "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush": 0,

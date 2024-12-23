@@ -106,14 +106,14 @@
                 "allowedToMerges": {
                     "type": "array",
                     "items": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "integer"
                     },
                     "description": "An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).\n"
                 },
                 "allowedToPushes": {
                     "type": "array",
                     "items": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "integer"
                     },
                     "description": "An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).\n"
                 },
@@ -584,6 +584,15 @@
             "required": [
                 "rotateBeforeDays"
             ]
+        },
+        "gitlab:index/InstanceServiceAccountTimeouts:InstanceServiceAccountTimeouts": {
+            "properties": {
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                }
+            },
+            "type": "object"
         },
         "gitlab:index/PersonalAccessTokenRotationConfiguration:PersonalAccessTokenRotationConfiguration": {
             "properties": {
@@ -4030,6 +4039,10 @@
                     },
                     "description": "Permissions for the project.\n"
                 },
+                "preventMergeWithoutJiraIssue": {
+                    "type": "boolean",
+                    "description": "Whether merge requests require an associated issue from Jira. Premium and Ultimate only.\n"
+                },
                 "publicBuilds": {
                     "type": "boolean",
                     "description": "Whether public builds are enabled for the project.\n"
@@ -4224,6 +4237,7 @@
                 "path",
                 "pathWithNamespace",
                 "permissions",
+                "preventMergeWithoutJiraIssue",
                 "publicBuilds",
                 "readmeUrl",
                 "releasesAccessLevel",
@@ -9399,6 +9413,10 @@
                     "type": "boolean",
                     "description": "Bool, true if developer level access allows git push.\n"
                 },
+                "keepOnDestroy": {
+                    "type": "boolean",
+                    "description": "Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).\n"
+                },
                 "merged": {
                     "type": "boolean",
                     "description": "Bool, true if the branch has been merged into it's parent.\n"
@@ -9438,6 +9456,10 @@
                 "webUrl"
             ],
             "inputProperties": {
+                "keepOnDestroy": {
+                    "type": "boolean",
+                    "description": "Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name for this branch.\n",
@@ -9483,6 +9505,10 @@
                     "developerCanPush": {
                         "type": "boolean",
                         "description": "Bool, true if developer level access allows git push.\n"
+                    },
+                    "keepOnDestroy": {
+                        "type": "boolean",
+                        "description": "Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).\n"
                     },
                     "merged": {
                         "type": "boolean",
@@ -13234,6 +13260,64 @@
                 "type": "object"
             }
         },
+        "gitlab:index/instanceServiceAccount:InstanceServiceAccount": {
+            "description": "The `gitlab.InstanceServiceAccount` resource allows creating a GitLab instance service account.\n\n\u003e In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/user_service_accounts.html)\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                },
+                "serviceAccountId": {
+                    "type": "string",
+                    "description": "The service account id.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/gitlab:index/InstanceServiceAccountTimeouts:InstanceServiceAccountTimeouts"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user. If not specified, it’s automatically generated.\n"
+                }
+            },
+            "required": [
+                "name",
+                "serviceAccountId"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/gitlab:index/InstanceServiceAccountTimeouts:InstanceServiceAccountTimeouts"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username of the user. If not specified, it’s automatically generated.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InstanceServiceAccount resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the user. If not specified, the default Service account user name is used.\n"
+                    },
+                    "serviceAccountId": {
+                        "type": "string",
+                        "description": "The service account id.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/gitlab:index/InstanceServiceAccountTimeouts:InstanceServiceAccountTimeouts"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user. If not specified, it’s automatically generated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/instanceVariable:InstanceVariable": {
             "description": "The `gitlab.InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = new gitlab.InstanceVariable(\"example\", {\n    key: \"instance_variable_key\",\n    value: \"instance_variable_value\",\n    \"protected\": false,\n    masked: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.InstanceVariable(\"example\",\n    key=\"instance_variable_key\",\n    value=\"instance_variable_value\",\n    protected=False,\n    masked=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new GitLab.InstanceVariable(\"example\", new()\n    {\n        Key = \"instance_variable_key\",\n        Value = \"instance_variable_value\",\n        Protected = false,\n        Masked = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewInstanceVariable(ctx, \"example\", \u0026gitlab.InstanceVariableArgs{\n\t\t\tKey:       pulumi.String(\"instance_variable_key\"),\n\t\t\tValue:     pulumi.String(\"instance_variable_value\"),\n\t\t\tProtected: pulumi.Bool(false),\n\t\t\tMasked:    pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.InstanceVariable;\nimport com.pulumi.gitlab.InstanceVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InstanceVariable(\"example\", InstanceVariableArgs.builder()\n            .key(\"instance_variable_key\")\n            .value(\"instance_variable_value\")\n            .protected_(false)\n            .masked(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: gitlab:InstanceVariable\n    properties:\n      key: instance_variable_key\n      value: instance_variable_value\n      protected: false\n      masked: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_variable`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_instance_variable.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImport using the CLI is supported using the following syntax:\n\nGitLab instance variables can be imported using an id made up of `variablename`, e.g.\n\n```sh\n$ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key\n```\n\n",
             "properties": {
@@ -13976,8 +14060,7 @@
                     "description": "Regular expression to match Jira issue keys.\n"
                 },
                 "jiraIssueTransitionAutomatic": {
-                    "type": "boolean",
-                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
+                    "type": "boolean"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
@@ -14070,8 +14153,7 @@
                     "description": "Regular expression to match Jira issue keys.\n"
                 },
                 "jiraIssueTransitionAutomatic": {
-                    "type": "boolean",
-                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
+                    "type": "boolean"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
@@ -14160,8 +14242,7 @@
                         "description": "Regular expression to match Jira issue keys.\n"
                     },
                     "jiraIssueTransitionAutomatic": {
-                        "type": "boolean",
-                        "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
+                        "type": "boolean"
                     },
                     "jiraIssueTransitionId": {
                         "type": "string",
@@ -14845,7 +14926,7 @@
                 },
                 "jobEvents": {
                     "type": "boolean",
-                    "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.\n"
+                    "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.\n"
                 },
                 "mergeRequestChannel": {
                     "type": "string",
@@ -15072,7 +15153,7 @@
                     },
                     "jobEvents": {
                         "type": "boolean",
-                        "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.\n"
+                        "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.\n"
                     },
                     "mergeRequestChannel": {
                         "type": "string",
@@ -16403,6 +16484,10 @@
                     "type": "boolean",
                     "description": "Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.\n"
                 },
+                "preventMergeWithoutJiraIssue": {
+                    "type": "boolean",
+                    "description": "Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.\n"
+                },
                 "printingMergeRequestLinkEnabled": {
                     "type": "boolean",
                     "description": "Show link to create/view merge request when pushing from the command line\n"
@@ -16590,6 +16675,7 @@
                 "pathWithNamespace",
                 "pipelinesEnabled",
                 "preReceiveSecretDetectionEnabled",
+                "preventMergeWithoutJiraIssue",
                 "printingMergeRequestLinkEnabled",
                 "publicBuilds",
                 "publicJobs",
@@ -16600,6 +16686,7 @@
                 "repositoryStorage",
                 "requestAccessEnabled",
                 "requirementsAccessLevel",
+                "restrictUserDefinedVariables",
                 "runnersToken",
                 "securityAndComplianceAccessLevel",
                 "sharedRunnersEnabled",
@@ -16894,6 +16981,10 @@
                 "preReceiveSecretDetectionEnabled": {
                     "type": "boolean",
                     "description": "Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.\n"
+                },
+                "preventMergeWithoutJiraIssue": {
+                    "type": "boolean",
+                    "description": "Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.\n"
                 },
                 "printingMergeRequestLinkEnabled": {
                     "type": "boolean",
@@ -17315,6 +17406,10 @@
                     "preReceiveSecretDetectionEnabled": {
                         "type": "boolean",
                         "description": "Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.\n"
+                    },
+                    "preventMergeWithoutJiraIssue": {
+                        "type": "boolean",
+                        "description": "Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.\n"
                     },
                     "printingMergeRequestLinkEnabled": {
                         "type": "boolean",
@@ -22081,8 +22176,7 @@
                     "description": "Regular expression to match Jira issue keys.\n"
                 },
                 "jiraIssueTransitionAutomatic": {
-                    "type": "boolean",
-                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
+                    "type": "boolean"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
@@ -22175,8 +22269,7 @@
                     "description": "Regular expression to match Jira issue keys.\n"
                 },
                 "jiraIssueTransitionAutomatic": {
-                    "type": "boolean",
-                    "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
+                    "type": "boolean"
                 },
                 "jiraIssueTransitionId": {
                     "type": "string",
@@ -22265,8 +22358,7 @@
                         "description": "Regular expression to match Jira issue keys.\n"
                     },
                     "jiraIssueTransitionAutomatic": {
-                        "type": "boolean",
-                        "description": "Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.\n"
+                        "type": "boolean"
                     },
                     "jiraIssueTransitionId": {
                         "type": "string",
@@ -22640,7 +22732,7 @@
                 },
                 "jobEvents": {
                     "type": "boolean",
-                    "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.\n"
+                    "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.\n"
                 },
                 "mergeRequestChannel": {
                     "type": "string",
@@ -22867,7 +22959,7 @@
                     },
                     "jobEvents": {
                         "type": "boolean",
-                        "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.\n"
+                        "description": "Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.\n"
                     },
                     "mergeRequestChannel": {
                         "type": "string",
@@ -25843,6 +25935,10 @@
                         "description": "Enable pipelines for the project.\n",
                         "type": "boolean"
                     },
+                    "preventMergeWithoutJiraIssue": {
+                        "description": "Whether merge requests require an associated issue from Jira. Premium and Ultimate only.\n",
+                        "type": "boolean"
+                    },
                     "printingMergeRequestLinkEnabled": {
                         "description": "Show link to create/view merge request when pushing from the command line\n",
                         "type": "boolean"
@@ -25997,6 +26093,7 @@
                     "path",
                     "pathWithNamespace",
                     "pipelinesEnabled",
+                    "preventMergeWithoutJiraIssue",
                     "printingMergeRequestLinkEnabled",
                     "pushRules",
                     "releasesAccessLevel",
