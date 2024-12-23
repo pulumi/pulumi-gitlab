@@ -221,17 +221,9 @@ public class ServiceJira extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> jiraIssueRegex() {
         return Codegen.optional(this.jiraIssueRegex);
     }
-    /**
-     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-     * 
-     */
     @Export(name="jiraIssueTransitionAutomatic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jiraIssueTransitionAutomatic;
 
-    /**
-     * @return Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-     * 
-     */
     public Output<Optional<Boolean>> jiraIssueTransitionAutomatic() {
         return Codegen.optional(this.jiraIssueTransitionAutomatic);
     }

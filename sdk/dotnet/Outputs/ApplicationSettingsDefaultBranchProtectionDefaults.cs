@@ -20,11 +20,11 @@ namespace Pulumi.GitLab.Outputs
         /// <summary>
         /// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         /// </summary>
-        public readonly ImmutableArray<object> AllowedToMerges;
+        public readonly ImmutableArray<int> AllowedToMerges;
         /// <summary>
         /// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         /// </summary>
-        public readonly ImmutableArray<object> AllowedToPushes;
+        public readonly ImmutableArray<int> AllowedToPushes;
         /// <summary>
         /// Allow developers to initial push.
         /// </summary>
@@ -34,9 +34,9 @@ namespace Pulumi.GitLab.Outputs
         private ApplicationSettingsDefaultBranchProtectionDefaults(
             bool? allowForcePush,
 
-            ImmutableArray<object> allowedToMerges,
+            ImmutableArray<int> allowedToMerges,
 
-            ImmutableArray<object> allowedToPushes,
+            ImmutableArray<int> allowedToPushes,
 
             bool? developerCanInitialPush)
         {

@@ -98,6 +98,12 @@ namespace Pulumi.GitLab
         public Output<bool> DeveloperCanPush { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+        /// </summary>
+        [Output("keepOnDestroy")]
+        public Output<bool?> KeepOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// Bool, true if the branch has been merged into it's parent.
         /// </summary>
         [Output("merged")]
@@ -180,6 +186,12 @@ namespace Pulumi.GitLab
     public sealed class BranchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+        /// </summary>
+        [Input("keepOnDestroy")]
+        public Input<bool>? KeepOnDestroy { get; set; }
+
+        /// <summary>
         /// The name for this branch.
         /// </summary>
         [Input("name")]
@@ -240,6 +252,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("developerCanPush")]
         public Input<bool>? DeveloperCanPush { get; set; }
+
+        /// <summary>
+        /// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+        /// </summary>
+        [Input("keepOnDestroy")]
+        public Input<bool>? KeepOnDestroy { get; set; }
 
         /// <summary>
         /// Bool, true if the branch has been merged into it's parent.

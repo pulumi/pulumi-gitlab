@@ -90,6 +90,7 @@ from .group_service_account_access_token import *
 from .group_share_group import *
 from .group_variable import *
 from .instance_cluster import *
+from .instance_service_account import *
 from .instance_variable import *
 from .integration_custom_issue_tracker import *
 from .integration_emails_on_push import *
@@ -417,6 +418,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/instanceCluster:InstanceCluster": "InstanceCluster"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/instanceServiceAccount",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/instanceServiceAccount:InstanceServiceAccount": "InstanceServiceAccount"
   }
  },
  {

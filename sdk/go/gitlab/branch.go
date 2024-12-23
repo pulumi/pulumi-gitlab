@@ -87,6 +87,8 @@ type Branch struct {
 	DeveloperCanMerge pulumi.BoolOutput `pulumi:"developerCanMerge"`
 	// Bool, true if developer level access allows git push.
 	DeveloperCanPush pulumi.BoolOutput `pulumi:"developerCanPush"`
+	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+	KeepOnDestroy pulumi.BoolPtrOutput `pulumi:"keepOnDestroy"`
 	// Bool, true if the branch has been merged into it's parent.
 	Merged pulumi.BoolOutput `pulumi:"merged"`
 	// The name for this branch.
@@ -147,6 +149,8 @@ type branchState struct {
 	DeveloperCanMerge *bool `pulumi:"developerCanMerge"`
 	// Bool, true if developer level access allows git push.
 	DeveloperCanPush *bool `pulumi:"developerCanPush"`
+	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+	KeepOnDestroy *bool `pulumi:"keepOnDestroy"`
 	// Bool, true if the branch has been merged into it's parent.
 	Merged *bool `pulumi:"merged"`
 	// The name for this branch.
@@ -172,6 +176,8 @@ type BranchState struct {
 	DeveloperCanMerge pulumi.BoolPtrInput
 	// Bool, true if developer level access allows git push.
 	DeveloperCanPush pulumi.BoolPtrInput
+	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+	KeepOnDestroy pulumi.BoolPtrInput
 	// Bool, true if the branch has been merged into it's parent.
 	Merged pulumi.BoolPtrInput
 	// The name for this branch.
@@ -191,6 +197,8 @@ func (BranchState) ElementType() reflect.Type {
 }
 
 type branchArgs struct {
+	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+	KeepOnDestroy *bool `pulumi:"keepOnDestroy"`
 	// The name for this branch.
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project which the branch is created against.
@@ -201,6 +209,8 @@ type branchArgs struct {
 
 // The set of arguments for constructing a Branch resource.
 type BranchArgs struct {
+	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+	KeepOnDestroy pulumi.BoolPtrInput
 	// The name for this branch.
 	Name pulumi.StringPtrInput
 	// The ID or full path of the project which the branch is created against.
@@ -319,6 +329,11 @@ func (o BranchOutput) DeveloperCanMerge() pulumi.BoolOutput {
 // Bool, true if developer level access allows git push.
 func (o BranchOutput) DeveloperCanPush() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.DeveloperCanPush }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+func (o BranchOutput) KeepOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Branch) pulumi.BoolPtrOutput { return v.KeepOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Bool, true if the branch has been merged into it's parent.

@@ -200,6 +200,8 @@ type Project struct {
 	PipelinesEnabled pulumi.BoolOutput `pulumi:"pipelinesEnabled"`
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
 	PreReceiveSecretDetectionEnabled pulumi.BoolOutput `pulumi:"preReceiveSecretDetectionEnabled"`
+	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue pulumi.BoolOutput `pulumi:"preventMergeWithoutJiraIssue"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolOutput `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -225,7 +227,7 @@ type Project struct {
 	// Automatically resolve merge request diffs discussions on lines changed with a push.
 	ResolveOutdatedDiffDiscussions pulumi.BoolPtrOutput `pulumi:"resolveOutdatedDiffDiscussions"`
 	// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
-	RestrictUserDefinedVariables pulumi.BoolPtrOutput `pulumi:"restrictUserDefinedVariables"`
+	RestrictUserDefinedVariables pulumi.BoolOutput `pulumi:"restrictUserDefinedVariables"`
 	// Registration token to use during runner setup.
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -463,6 +465,8 @@ type projectState struct {
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
 	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
+	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue *bool `pulumi:"preventMergeWithoutJiraIssue"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -689,6 +693,8 @@ type ProjectState struct {
 	PipelinesEnabled pulumi.BoolPtrInput
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
 	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
+	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
@@ -911,6 +917,8 @@ type projectArgs struct {
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
 	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
+	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue *bool `pulumi:"preventMergeWithoutJiraIssue"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled *bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -1124,6 +1132,8 @@ type ProjectArgs struct {
 	PipelinesEnabled pulumi.BoolPtrInput
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
 	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
+	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue pulumi.BoolPtrInput
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
@@ -1649,6 +1659,11 @@ func (o ProjectOutput) PreReceiveSecretDetectionEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PreReceiveSecretDetectionEnabled }).(pulumi.BoolOutput)
 }
 
+// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+func (o ProjectOutput) PreventMergeWithoutJiraIssue() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PreventMergeWithoutJiraIssue }).(pulumi.BoolOutput)
+}
+
 // Show link to create/view merge request when pushing from the command line
 func (o ProjectOutput) PrintingMergeRequestLinkEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PrintingMergeRequestLinkEnabled }).(pulumi.BoolOutput)
@@ -1707,8 +1722,8 @@ func (o ProjectOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolPtrOutput {
 }
 
 // Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
-func (o ProjectOutput) RestrictUserDefinedVariables() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.RestrictUserDefinedVariables }).(pulumi.BoolPtrOutput)
+func (o ProjectOutput) RestrictUserDefinedVariables() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.RestrictUserDefinedVariables }).(pulumi.BoolOutput)
 }
 
 // Registration token to use during runner setup.

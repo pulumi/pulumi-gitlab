@@ -94,7 +94,7 @@ type ServiceSlack struct {
 	IssueChannel pulumi.StringPtrOutput `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrOutput `pulumi:"mergeRequestChannel"`
@@ -184,7 +184,7 @@ type serviceSlackState struct {
 	IssueChannel *string `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
 	JobEvents *bool `pulumi:"jobEvents"`
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel *string `pulumi:"mergeRequestChannel"`
@@ -239,7 +239,7 @@ type ServiceSlackState struct {
 	IssueChannel pulumi.StringPtrInput
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+	// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
 	JobEvents pulumi.BoolPtrInput
 	// The name of the channel to receive merge request events notifications.
 	MergeRequestChannel pulumi.StringPtrInput
@@ -512,7 +512,7 @@ func (o ServiceSlackOutput) IssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
 func (o ServiceSlackOutput) JobEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceSlack) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
 }

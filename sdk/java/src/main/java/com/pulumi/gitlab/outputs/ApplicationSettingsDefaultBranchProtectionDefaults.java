@@ -5,7 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Object;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,12 +22,12 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaults {
      * @return An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
      * 
      */
-    private @Nullable List<Object> allowedToMerges;
+    private @Nullable List<Integer> allowedToMerges;
     /**
      * @return An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
      * 
      */
-    private @Nullable List<Object> allowedToPushes;
+    private @Nullable List<Integer> allowedToPushes;
     /**
      * @return Allow developers to initial push.
      * 
@@ -46,14 +46,14 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaults {
      * @return An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
      * 
      */
-    public List<Object> allowedToMerges() {
+    public List<Integer> allowedToMerges() {
         return this.allowedToMerges == null ? List.of() : this.allowedToMerges;
     }
     /**
      * @return An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
      * 
      */
-    public List<Object> allowedToPushes() {
+    public List<Integer> allowedToPushes() {
         return this.allowedToPushes == null ? List.of() : this.allowedToPushes;
     }
     /**
@@ -74,8 +74,8 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaults {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowForcePush;
-        private @Nullable List<Object> allowedToMerges;
-        private @Nullable List<Object> allowedToPushes;
+        private @Nullable List<Integer> allowedToMerges;
+        private @Nullable List<Integer> allowedToPushes;
         private @Nullable Boolean developerCanInitialPush;
         public Builder() {}
         public Builder(ApplicationSettingsDefaultBranchProtectionDefaults defaults) {
@@ -93,21 +93,21 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaults {
             return this;
         }
         @CustomType.Setter
-        public Builder allowedToMerges(@Nullable List<Object> allowedToMerges) {
+        public Builder allowedToMerges(@Nullable List<Integer> allowedToMerges) {
 
             this.allowedToMerges = allowedToMerges;
             return this;
         }
-        public Builder allowedToMerges(Object... allowedToMerges) {
+        public Builder allowedToMerges(Integer... allowedToMerges) {
             return allowedToMerges(List.of(allowedToMerges));
         }
         @CustomType.Setter
-        public Builder allowedToPushes(@Nullable List<Object> allowedToPushes) {
+        public Builder allowedToPushes(@Nullable List<Integer> allowedToPushes) {
 
             this.allowedToPushes = allowedToPushes;
             return this;
         }
-        public Builder allowedToPushes(Object... allowedToPushes) {
+        public Builder allowedToPushes(Integer... allowedToPushes) {
             return allowedToPushes(List.of(allowedToPushes));
         }
         @CustomType.Setter

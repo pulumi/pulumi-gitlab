@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class BranchArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BranchArgs Empty = new BranchArgs();
+
+    /**
+     * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     * 
+     */
+    @Import(name="keepOnDestroy")
+    private @Nullable Output<Boolean> keepOnDestroy;
+
+    /**
+     * @return Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     * 
+     */
+    public Optional<Output<Boolean>> keepOnDestroy() {
+        return Optional.ofNullable(this.keepOnDestroy);
+    }
 
     /**
      * The name for this branch.
@@ -64,6 +80,7 @@ public final class BranchArgs extends com.pulumi.resources.ResourceArgs {
     private BranchArgs() {}
 
     private BranchArgs(BranchArgs $) {
+        this.keepOnDestroy = $.keepOnDestroy;
         this.name = $.name;
         this.project = $.project;
         this.ref = $.ref;
@@ -85,6 +102,27 @@ public final class BranchArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BranchArgs defaults) {
             $ = new BranchArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param keepOnDestroy Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepOnDestroy(@Nullable Output<Boolean> keepOnDestroy) {
+            $.keepOnDestroy = keepOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param keepOnDestroy Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepOnDestroy(Boolean keepOnDestroy) {
+            return keepOnDestroy(Output.of(keepOnDestroy));
         }
 
         /**

@@ -43,6 +43,8 @@ __all__ = [
     'GroupPushRulesArgsDict',
     'GroupServiceAccountAccessTokenRotationConfigurationArgs',
     'GroupServiceAccountAccessTokenRotationConfigurationArgsDict',
+    'InstanceServiceAccountTimeoutsArgs',
+    'InstanceServiceAccountTimeoutsArgsDict',
     'PersonalAccessTokenRotationConfigurationArgs',
     'PersonalAccessTokenRotationConfigurationArgsDict',
     'ProjectAccessTokenRotationConfigurationArgs',
@@ -95,11 +97,11 @@ if not MYPY:
         """
         Allow force push for all users with push access.
         """
-        allowed_to_merges: NotRequired[pulumi.Input[Sequence[Any]]]
+        allowed_to_merges: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
         An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         """
-        allowed_to_pushes: NotRequired[pulumi.Input[Sequence[Any]]]
+        allowed_to_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
         An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         """
@@ -114,13 +116,13 @@ elif False:
 class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
     def __init__(__self__, *,
                  allow_force_push: Optional[pulumi.Input[bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[Any]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  developer_can_initial_push: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] allow_force_push: Allow force push for all users with push access.
-        :param pulumi.Input[Sequence[Any]] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
-        :param pulumi.Input[Sequence[Any]] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         :param pulumi.Input[bool] developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -146,26 +148,26 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
 
     @property
     @pulumi.getter(name="allowedToMerges")
-    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         """
         return pulumi.get(self, "allowed_to_merges")
 
     @allowed_to_merges.setter
-    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_to_merges", value)
 
     @property
     @pulumi.getter(name="allowedToPushes")
-    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         """
         return pulumi.get(self, "allowed_to_pushes")
 
     @allowed_to_pushes.setter
-    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_to_pushes", value)
 
     @property
@@ -1630,6 +1632,38 @@ class GroupServiceAccountAccessTokenRotationConfigurationArgs:
     @rotate_before_days.setter
     def rotate_before_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "rotate_before_days", value)
+
+
+if not MYPY:
+    class InstanceServiceAccountTimeoutsArgsDict(TypedDict):
+        delete: NotRequired[pulumi.Input[str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+elif False:
+    InstanceServiceAccountTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceServiceAccountTimeoutsArgs:
+    def __init__(__self__, *,
+                 delete: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete", value)
 
 
 if not MYPY:

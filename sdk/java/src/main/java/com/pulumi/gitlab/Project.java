@@ -1096,6 +1096,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.preReceiveSecretDetectionEnabled;
     }
     /**
+     * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="preventMergeWithoutJiraIssue", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventMergeWithoutJiraIssue;
+
+    /**
+     * @return Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> preventMergeWithoutJiraIssue() {
+        return this.preventMergeWithoutJiraIssue;
+    }
+    /**
      * Show link to create/view merge request when pushing from the command line
      * 
      */
@@ -1258,14 +1272,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="restrictUserDefinedVariables", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> restrictUserDefinedVariables;
+    private Output<Boolean> restrictUserDefinedVariables;
 
     /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
      */
-    public Output<Optional<Boolean>> restrictUserDefinedVariables() {
-        return Codegen.optional(this.restrictUserDefinedVariables);
+    public Output<Boolean> restrictUserDefinedVariables() {
+        return this.restrictUserDefinedVariables;
     }
     /**
      * Registration token to use during runner setup.

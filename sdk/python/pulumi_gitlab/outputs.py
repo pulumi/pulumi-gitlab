@@ -30,6 +30,7 @@ __all__ = [
     'GroupProtectedEnvironmentDeployAccessLevel',
     'GroupPushRules',
     'GroupServiceAccountAccessTokenRotationConfiguration',
+    'InstanceServiceAccountTimeouts',
     'PersonalAccessTokenRotationConfiguration',
     'ProjectAccessTokenRotationConfiguration',
     'ProjectContainerExpirationPolicy',
@@ -134,13 +135,13 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
 
     def __init__(__self__, *,
                  allow_force_push: Optional[bool] = None,
-                 allowed_to_merges: Optional[Sequence[Any]] = None,
-                 allowed_to_pushes: Optional[Sequence[Any]] = None,
+                 allowed_to_merges: Optional[Sequence[int]] = None,
+                 allowed_to_pushes: Optional[Sequence[int]] = None,
                  developer_can_initial_push: Optional[bool] = None):
         """
         :param bool allow_force_push: Allow force push for all users with push access.
-        :param Sequence[Any] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
-        :param Sequence[Any] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        :param Sequence[int] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
+        :param Sequence[int] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         :param bool developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -162,7 +163,7 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
 
     @property
     @pulumi.getter(name="allowedToMerges")
-    def allowed_to_merges(self) -> Optional[Sequence[Any]]:
+    def allowed_to_merges(self) -> Optional[Sequence[int]]:
         """
         An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         """
@@ -170,7 +171,7 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
 
     @property
     @pulumi.getter(name="allowedToPushes")
-    def allowed_to_pushes(self) -> Optional[Sequence[Any]]:
+    def allowed_to_pushes(self) -> Optional[Sequence[int]]:
         """
         An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         """
@@ -1337,6 +1338,25 @@ class GroupServiceAccountAccessTokenRotationConfiguration(dict):
         The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         """
         return pulumi.get(self, "rotate_before_days")
+
+
+@pulumi.output_type
+class InstanceServiceAccountTimeouts(dict):
+    def __init__(__self__, *,
+                 delete: Optional[str] = None):
+        """
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
 
 
 @pulumi.output_type
@@ -7447,6 +7467,7 @@ class GetProjectsProjectResult(dict):
                  path: str,
                  path_with_namespace: str,
                  permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
+                 prevent_merge_without_jira_issue: bool,
                  public_builds: bool,
                  readme_url: str,
                  releases_access_level: str,
@@ -7547,6 +7568,7 @@ class GetProjectsProjectResult(dict):
         :param str path: The path of the project.
         :param str path_with_namespace: In `group/subgroup/project` or `user/project` format.
         :param Sequence['GetProjectsProjectPermissionArgs'] permissions: Permissions for the project.
+        :param bool prevent_merge_without_jira_issue: Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param bool public_builds: Whether public builds are enabled for the project.
         :param str readme_url: The remote url of the project.
         :param str releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
@@ -7648,6 +7670,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "prevent_merge_without_jira_issue", prevent_merge_without_jira_issue)
         pulumi.set(__self__, "public_builds", public_builds)
         pulumi.set(__self__, "readme_url", readme_url)
         pulumi.set(__self__, "releases_access_level", releases_access_level)
@@ -8263,6 +8286,14 @@ class GetProjectsProjectResult(dict):
         Permissions for the project.
         """
         return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter(name="preventMergeWithoutJiraIssue")
+    def prevent_merge_without_jira_issue(self) -> bool:
+        """
+        Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "prevent_merge_without_jira_issue")
 
     @property
     @pulumi.getter(name="publicBuilds")

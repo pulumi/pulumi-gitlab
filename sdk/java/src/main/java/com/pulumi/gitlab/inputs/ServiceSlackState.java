@@ -122,14 +122,14 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
      * 
      */
     @Import(name="jobEvents")
     private @Nullable Output<Boolean> jobEvents;
 
     /**
-     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * @return Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
      * 
      */
     public Optional<Output<Boolean>> jobEvents() {
@@ -595,7 +595,7 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class ServiceSlackState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+         * @param jobEvents Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
          * 
          * @return builder
          * 

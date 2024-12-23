@@ -48,7 +48,6 @@ class ServiceJiraArgs:
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
@@ -211,9 +210,6 @@ class ServiceJiraArgs:
     @property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
     def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-        """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @jira_issue_transition_automatic.setter
@@ -328,7 +324,6 @@ class _ServiceJiraState:
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
@@ -495,9 +490,6 @@ class _ServiceJiraState:
     @property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
     def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-        """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @jira_issue_transition_automatic.setter
@@ -715,7 +707,6 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
@@ -895,7 +886,6 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
         :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
@@ -1010,9 +1000,6 @@ class ServiceJira(pulumi.CustomResource):
     @property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
     def jira_issue_transition_automatic(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-        """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @property

@@ -307,6 +307,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
         /// <summary>
+        /// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        /// </summary>
+        public readonly bool PreventMergeWithoutJiraIssue;
+        /// <summary>
         /// Whether public builds are enabled for the project.
         /// </summary>
         public readonly bool PublicBuilds;
@@ -561,6 +565,8 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<Outputs.GetProjectsProjectPermissionResult> permissions,
 
+            bool preventMergeWithoutJiraIssue,
+
             bool publicBuilds,
 
             string readmeUrl,
@@ -687,6 +693,7 @@ namespace Pulumi.GitLab.Outputs
             Path = path;
             PathWithNamespace = pathWithNamespace;
             Permissions = permissions;
+            PreventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
             PublicBuilds = publicBuilds;
             ReadmeUrl = readmeUrl;
             ReleasesAccessLevel = releasesAccessLevel;

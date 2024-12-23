@@ -116,9 +116,6 @@ export class ServiceJira extends pulumi.CustomResource {
      * Regular expression to match Jira issue keys.
      */
     public readonly jiraIssueRegex!: pulumi.Output<string | undefined>;
-    /**
-     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-     */
     public readonly jiraIssueTransitionAutomatic!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -279,9 +276,6 @@ export interface ServiceJiraState {
      * Regular expression to match Jira issue keys.
      */
     jiraIssueRegex?: pulumi.Input<string>;
-    /**
-     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-     */
     jiraIssueTransitionAutomatic?: pulumi.Input<boolean>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
@@ -361,9 +355,6 @@ export interface ServiceJiraArgs {
      * Regular expression to match Jira issue keys.
      */
     jiraIssueRegex?: pulumi.Input<string>;
-    /**
-     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-     */
     jiraIssueTransitionAutomatic?: pulumi.Input<boolean>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
