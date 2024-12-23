@@ -123,9 +123,6 @@ namespace Pulumi.GitLab
         [Output("jiraIssueRegex")]
         public Output<string?> JiraIssueRegex { get; private set; } = null!;
 
-        /// <summary>
-        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-        /// </summary>
         [Output("jiraIssueTransitionAutomatic")]
         public Output<bool?> JiraIssueTransitionAutomatic { get; private set; } = null!;
 
@@ -287,9 +284,6 @@ namespace Pulumi.GitLab
         [Input("jiraIssueRegex")]
         public Input<string>? JiraIssueRegex { get; set; }
 
-        /// <summary>
-        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-        /// </summary>
         [Input("jiraIssueTransitionAutomatic")]
         public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 
@@ -425,9 +419,6 @@ namespace Pulumi.GitLab
         [Input("jiraIssueRegex")]
         public Input<string>? JiraIssueRegex { get; set; }
 
-        /// <summary>
-        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-        /// </summary>
         [Input("jiraIssueTransitionAutomatic")]
         public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 

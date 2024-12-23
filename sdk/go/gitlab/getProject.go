@@ -130,6 +130,8 @@ type LookupProjectResult struct {
 	PathWithNamespace string `pulumi:"pathWithNamespace"`
 	// Enable pipelines for the project.
 	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
+	// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue bool `pulumi:"preventMergeWithoutJiraIssue"`
 	// Show link to create/view merge request when pushing from the command line
 	PrintingMergeRequestLinkEnabled bool `pulumi:"printingMergeRequestLinkEnabled"`
 	// If true, jobs can be viewed by non-project members.
@@ -450,6 +452,11 @@ func (o LookupProjectResultOutput) PathWithNamespace() pulumi.StringOutput {
 // Enable pipelines for the project.
 func (o LookupProjectResultOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.PipelinesEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+func (o LookupProjectResultOutput) PreventMergeWithoutJiraIssue() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.PreventMergeWithoutJiraIssue }).(pulumi.BoolOutput)
 }
 
 // Show link to create/view merge request when pushing from the command line

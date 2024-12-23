@@ -447,7 +447,7 @@ class _ServiceSlackState:
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
@@ -608,7 +608,7 @@ class _ServiceSlackState:
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
         """
         return pulumi.get(self, "job_events")
 
@@ -1105,7 +1105,7 @@ class ServiceSlack(pulumi.CustomResource):
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[str] issue_channel: The name of the channel to receive issue events notifications.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
-        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        :param pulumi.Input[bool] job_events: Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
         :param pulumi.Input[str] merge_request_channel: The name of the channel to receive merge request events notifications.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge requests events.
         :param pulumi.Input[str] note_channel: The name of the channel to receive note events notifications.
@@ -1215,7 +1215,7 @@ class ServiceSlack(pulumi.CustomResource):
     @pulumi.getter(name="jobEvents")
     def job_events(self) -> pulumi.Output[bool]:
         """
-        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
         """
         return pulumi.get(self, "job_events")
 

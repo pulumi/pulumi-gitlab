@@ -23,15 +23,19 @@ class BranchArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  ref: pulumi.Input[str],
+                 keep_on_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Branch resource.
         :param pulumi.Input[str] project: The ID or full path of the project which the branch is created against.
         :param pulumi.Input[str] ref: The ref which the branch is created from.
+        :param pulumi.Input[bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         :param pulumi.Input[str] name: The name for this branch.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "ref", ref)
+        if keep_on_destroy is not None:
+            pulumi.set(__self__, "keep_on_destroy", keep_on_destroy)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -60,6 +64,18 @@ class BranchArgs:
         pulumi.set(self, "ref", value)
 
     @property
+    @pulumi.getter(name="keepOnDestroy")
+    def keep_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+        """
+        return pulumi.get(self, "keep_on_destroy")
+
+    @keep_on_destroy.setter
+    def keep_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_on_destroy", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -80,6 +96,7 @@ class _BranchState:
                  default: Optional[pulumi.Input[bool]] = None,
                  developer_can_merge: Optional[pulumi.Input[bool]] = None,
                  developer_can_push: Optional[pulumi.Input[bool]] = None,
+                 keep_on_destroy: Optional[pulumi.Input[bool]] = None,
                  merged: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -93,6 +110,7 @@ class _BranchState:
         :param pulumi.Input[bool] default: Bool, true if branch is the default branch for the project.
         :param pulumi.Input[bool] developer_can_merge: Bool, true if developer level access allows to merge branch.
         :param pulumi.Input[bool] developer_can_push: Bool, true if developer level access allows git push.
+        :param pulumi.Input[bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         :param pulumi.Input[bool] merged: Bool, true if the branch has been merged into it's parent.
         :param pulumi.Input[str] name: The name for this branch.
         :param pulumi.Input[str] project: The ID or full path of the project which the branch is created against.
@@ -110,6 +128,8 @@ class _BranchState:
             pulumi.set(__self__, "developer_can_merge", developer_can_merge)
         if developer_can_push is not None:
             pulumi.set(__self__, "developer_can_push", developer_can_push)
+        if keep_on_destroy is not None:
+            pulumi.set(__self__, "keep_on_destroy", keep_on_destroy)
         if merged is not None:
             pulumi.set(__self__, "merged", merged)
         if name is not None:
@@ -182,6 +202,18 @@ class _BranchState:
     @developer_can_push.setter
     def developer_can_push(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "developer_can_push", value)
+
+    @property
+    @pulumi.getter(name="keepOnDestroy")
+    def keep_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+        """
+        return pulumi.get(self, "keep_on_destroy")
+
+    @keep_on_destroy.setter
+    def keep_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_on_destroy", value)
 
     @property
     @pulumi.getter
@@ -261,6 +293,7 @@ class Branch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 keep_on_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
@@ -311,6 +344,7 @@ class Branch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         :param pulumi.Input[str] name: The name for this branch.
         :param pulumi.Input[str] project: The ID or full path of the project which the branch is created against.
         :param pulumi.Input[str] ref: The ref which the branch is created from.
@@ -380,6 +414,7 @@ class Branch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 keep_on_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
@@ -392,6 +427,7 @@ class Branch(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BranchArgs.__new__(BranchArgs)
 
+            __props__.__dict__["keep_on_destroy"] = keep_on_destroy
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -422,6 +458,7 @@ class Branch(pulumi.CustomResource):
             default: Optional[pulumi.Input[bool]] = None,
             developer_can_merge: Optional[pulumi.Input[bool]] = None,
             developer_can_push: Optional[pulumi.Input[bool]] = None,
+            keep_on_destroy: Optional[pulumi.Input[bool]] = None,
             merged: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -440,6 +477,7 @@ class Branch(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Bool, true if branch is the default branch for the project.
         :param pulumi.Input[bool] developer_can_merge: Bool, true if developer level access allows to merge branch.
         :param pulumi.Input[bool] developer_can_push: Bool, true if developer level access allows git push.
+        :param pulumi.Input[bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         :param pulumi.Input[bool] merged: Bool, true if the branch has been merged into it's parent.
         :param pulumi.Input[str] name: The name for this branch.
         :param pulumi.Input[str] project: The ID or full path of the project which the branch is created against.
@@ -456,6 +494,7 @@ class Branch(pulumi.CustomResource):
         __props__.__dict__["default"] = default
         __props__.__dict__["developer_can_merge"] = developer_can_merge
         __props__.__dict__["developer_can_push"] = developer_can_push
+        __props__.__dict__["keep_on_destroy"] = keep_on_destroy
         __props__.__dict__["merged"] = merged
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -503,6 +542,14 @@ class Branch(pulumi.CustomResource):
         Bool, true if developer level access allows git push.
         """
         return pulumi.get(self, "developer_can_push")
+
+    @property
+    @pulumi.getter(name="keepOnDestroy")
+    def keep_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+        """
+        return pulumi.get(self, "keep_on_destroy")
 
     @property
     @pulumi.getter

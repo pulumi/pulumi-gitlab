@@ -17,9 +17,9 @@ type ApplicationSettingsDefaultBranchProtectionDefaults struct {
 	// Allow force push for all users with push access.
 	AllowForcePush *bool `pulumi:"allowForcePush"`
 	// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
-	AllowedToMerges []interface{} `pulumi:"allowedToMerges"`
+	AllowedToMerges []int `pulumi:"allowedToMerges"`
 	// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
-	AllowedToPushes []interface{} `pulumi:"allowedToPushes"`
+	AllowedToPushes []int `pulumi:"allowedToPushes"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush *bool `pulumi:"developerCanInitialPush"`
 }
@@ -39,9 +39,9 @@ type ApplicationSettingsDefaultBranchProtectionDefaultsArgs struct {
 	// Allow force push for all users with push access.
 	AllowForcePush pulumi.BoolPtrInput `pulumi:"allowForcePush"`
 	// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
-	AllowedToMerges pulumi.ArrayInput `pulumi:"allowedToMerges"`
+	AllowedToMerges pulumi.IntArrayInput `pulumi:"allowedToMerges"`
 	// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
-	AllowedToPushes pulumi.ArrayInput `pulumi:"allowedToPushes"`
+	AllowedToPushes pulumi.IntArrayInput `pulumi:"allowedToPushes"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush pulumi.BoolPtrInput `pulumi:"developerCanInitialPush"`
 }
@@ -129,13 +129,13 @@ func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowForcePush
 }
 
 // An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
-func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToMerges() pulumi.ArrayOutput {
-	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} { return v.AllowedToMerges }).(pulumi.ArrayOutput)
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToMerges() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []int { return v.AllowedToMerges }).(pulumi.IntArrayOutput)
 }
 
 // An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
-func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToPushes() pulumi.ArrayOutput {
-	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} { return v.AllowedToPushes }).(pulumi.ArrayOutput)
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToPushes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []int { return v.AllowedToPushes }).(pulumi.IntArrayOutput)
 }
 
 // Allow developers to initial push.
@@ -178,23 +178,23 @@ func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowForceP
 }
 
 // An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
-func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToMerges() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} {
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToMerges() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) []int {
 		if v == nil {
 			return nil
 		}
 		return v.AllowedToMerges
-	}).(pulumi.ArrayOutput)
+	}).(pulumi.IntArrayOutput)
 }
 
 // An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
-func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToPushes() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) []interface{} {
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToPushes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) []int {
 		if v == nil {
 			return nil
 		}
 		return v.AllowedToPushes
-	}).(pulumi.ArrayOutput)
+	}).(pulumi.IntArrayOutput)
 }
 
 // Allow developers to initial push.
@@ -2254,6 +2254,143 @@ func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) RotateBefo
 		}
 		return &v.RotateBeforeDays
 	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceServiceAccountTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+}
+
+// InstanceServiceAccountTimeoutsInput is an input type that accepts InstanceServiceAccountTimeoutsArgs and InstanceServiceAccountTimeoutsOutput values.
+// You can construct a concrete instance of `InstanceServiceAccountTimeoutsInput` via:
+//
+//	InstanceServiceAccountTimeoutsArgs{...}
+type InstanceServiceAccountTimeoutsInput interface {
+	pulumi.Input
+
+	ToInstanceServiceAccountTimeoutsOutput() InstanceServiceAccountTimeoutsOutput
+	ToInstanceServiceAccountTimeoutsOutputWithContext(context.Context) InstanceServiceAccountTimeoutsOutput
+}
+
+type InstanceServiceAccountTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (InstanceServiceAccountTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (i InstanceServiceAccountTimeoutsArgs) ToInstanceServiceAccountTimeoutsOutput() InstanceServiceAccountTimeoutsOutput {
+	return i.ToInstanceServiceAccountTimeoutsOutputWithContext(context.Background())
+}
+
+func (i InstanceServiceAccountTimeoutsArgs) ToInstanceServiceAccountTimeoutsOutputWithContext(ctx context.Context) InstanceServiceAccountTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceServiceAccountTimeoutsOutput)
+}
+
+func (i InstanceServiceAccountTimeoutsArgs) ToInstanceServiceAccountTimeoutsPtrOutput() InstanceServiceAccountTimeoutsPtrOutput {
+	return i.ToInstanceServiceAccountTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceServiceAccountTimeoutsArgs) ToInstanceServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) InstanceServiceAccountTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceServiceAccountTimeoutsOutput).ToInstanceServiceAccountTimeoutsPtrOutputWithContext(ctx)
+}
+
+// InstanceServiceAccountTimeoutsPtrInput is an input type that accepts InstanceServiceAccountTimeoutsArgs, InstanceServiceAccountTimeoutsPtr and InstanceServiceAccountTimeoutsPtrOutput values.
+// You can construct a concrete instance of `InstanceServiceAccountTimeoutsPtrInput` via:
+//
+//	        InstanceServiceAccountTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceServiceAccountTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceServiceAccountTimeoutsPtrOutput() InstanceServiceAccountTimeoutsPtrOutput
+	ToInstanceServiceAccountTimeoutsPtrOutputWithContext(context.Context) InstanceServiceAccountTimeoutsPtrOutput
+}
+
+type instanceServiceAccountTimeoutsPtrType InstanceServiceAccountTimeoutsArgs
+
+func InstanceServiceAccountTimeoutsPtr(v *InstanceServiceAccountTimeoutsArgs) InstanceServiceAccountTimeoutsPtrInput {
+	return (*instanceServiceAccountTimeoutsPtrType)(v)
+}
+
+func (*instanceServiceAccountTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (i *instanceServiceAccountTimeoutsPtrType) ToInstanceServiceAccountTimeoutsPtrOutput() InstanceServiceAccountTimeoutsPtrOutput {
+	return i.ToInstanceServiceAccountTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceServiceAccountTimeoutsPtrType) ToInstanceServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) InstanceServiceAccountTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceServiceAccountTimeoutsPtrOutput)
+}
+
+type InstanceServiceAccountTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (InstanceServiceAccountTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (o InstanceServiceAccountTimeoutsOutput) ToInstanceServiceAccountTimeoutsOutput() InstanceServiceAccountTimeoutsOutput {
+	return o
+}
+
+func (o InstanceServiceAccountTimeoutsOutput) ToInstanceServiceAccountTimeoutsOutputWithContext(ctx context.Context) InstanceServiceAccountTimeoutsOutput {
+	return o
+}
+
+func (o InstanceServiceAccountTimeoutsOutput) ToInstanceServiceAccountTimeoutsPtrOutput() InstanceServiceAccountTimeoutsPtrOutput {
+	return o.ToInstanceServiceAccountTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceServiceAccountTimeoutsOutput) ToInstanceServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) InstanceServiceAccountTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceServiceAccountTimeouts) *InstanceServiceAccountTimeouts {
+		return &v
+	}).(InstanceServiceAccountTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o InstanceServiceAccountTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceServiceAccountTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+type InstanceServiceAccountTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceServiceAccountTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (o InstanceServiceAccountTimeoutsPtrOutput) ToInstanceServiceAccountTimeoutsPtrOutput() InstanceServiceAccountTimeoutsPtrOutput {
+	return o
+}
+
+func (o InstanceServiceAccountTimeoutsPtrOutput) ToInstanceServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) InstanceServiceAccountTimeoutsPtrOutput {
+	return o
+}
+
+func (o InstanceServiceAccountTimeoutsPtrOutput) Elem() InstanceServiceAccountTimeoutsOutput {
+	return o.ApplyT(func(v *InstanceServiceAccountTimeouts) InstanceServiceAccountTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceServiceAccountTimeouts
+		return ret
+	}).(InstanceServiceAccountTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o InstanceServiceAccountTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceServiceAccountTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
 }
 
 type PersonalAccessTokenRotationConfiguration struct {
@@ -12129,6 +12266,8 @@ type GetProjectsProject struct {
 	PathWithNamespace string `pulumi:"pathWithNamespace"`
 	// Permissions for the project.
 	Permissions []GetProjectsProjectPermission `pulumi:"permissions"`
+	// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue bool `pulumi:"preventMergeWithoutJiraIssue"`
 	// Whether public builds are enabled for the project.
 	PublicBuilds bool `pulumi:"publicBuilds"`
 	// The remote url of the project.
@@ -12342,6 +12481,8 @@ type GetProjectsProjectArgs struct {
 	PathWithNamespace pulumi.StringInput `pulumi:"pathWithNamespace"`
 	// Permissions for the project.
 	Permissions GetProjectsProjectPermissionArrayInput `pulumi:"permissions"`
+	// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+	PreventMergeWithoutJiraIssue pulumi.BoolInput `pulumi:"preventMergeWithoutJiraIssue"`
 	// Whether public builds are enabled for the project.
 	PublicBuilds pulumi.BoolInput `pulumi:"publicBuilds"`
 	// The remote url of the project.
@@ -12816,6 +12957,11 @@ func (o GetProjectsProjectOutput) PathWithNamespace() pulumi.StringOutput {
 // Permissions for the project.
 func (o GetProjectsProjectOutput) Permissions() GetProjectsProjectPermissionArrayOutput {
 	return o.ApplyT(func(v GetProjectsProject) []GetProjectsProjectPermission { return v.Permissions }).(GetProjectsProjectPermissionArrayOutput)
+}
+
+// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+func (o GetProjectsProjectOutput) PreventMergeWithoutJiraIssue() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.PreventMergeWithoutJiraIssue }).(pulumi.BoolOutput)
 }
 
 // Whether public builds are enabled for the project.
@@ -15150,6 +15296,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServiceAccountTimeoutsInput)(nil)).Elem(), InstanceServiceAccountTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServiceAccountTimeoutsPtrInput)(nil)).Elem(), InstanceServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
@@ -15322,6 +15470,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceServiceAccountTimeoutsOutput{})
+	pulumi.RegisterOutputType(InstanceServiceAccountTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationOutput{})

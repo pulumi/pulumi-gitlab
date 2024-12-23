@@ -101,6 +101,7 @@
         "groupVariable.ts",
         "index.ts",
         "instanceCluster.ts",
+        "instanceServiceAccount.ts",
         "instanceVariable.ts",
         "integrationCustomIssueTracker.ts",
         "integrationEmailsOnPush.ts",

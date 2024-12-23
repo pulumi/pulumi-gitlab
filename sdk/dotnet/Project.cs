@@ -487,6 +487,12 @@ namespace Pulumi.GitLab
         public Output<bool> PreReceiveSecretDetectionEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        /// </summary>
+        [Output("preventMergeWithoutJiraIssue")]
+        public Output<bool> PreventMergeWithoutJiraIssue { get; private set; } = null!;
+
+        /// <summary>
         /// Show link to create/view merge request when pushing from the command line
         /// </summary>
         [Output("printingMergeRequestLinkEnabled")]
@@ -556,7 +562,7 @@ namespace Pulumi.GitLab
         /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         /// </summary>
         [Output("restrictUserDefinedVariables")]
-        public Output<bool?> RestrictUserDefinedVariables { get; private set; } = null!;
+        public Output<bool> RestrictUserDefinedVariables { get; private set; } = null!;
 
         /// <summary>
         /// Registration token to use during runner setup.
@@ -1153,6 +1159,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("preReceiveSecretDetectionEnabled")]
         public Input<bool>? PreReceiveSecretDetectionEnabled { get; set; }
+
+        /// <summary>
+        /// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        /// </summary>
+        [Input("preventMergeWithoutJiraIssue")]
+        public Input<bool>? PreventMergeWithoutJiraIssue { get; set; }
 
         /// <summary>
         /// Show link to create/view merge request when pushing from the command line
@@ -1796,6 +1808,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("preReceiveSecretDetectionEnabled")]
         public Input<bool>? PreReceiveSecretDetectionEnabled { get; set; }
+
+        /// <summary>
+        /// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        /// </summary>
+        [Input("preventMergeWithoutJiraIssue")]
+        public Input<bool>? PreventMergeWithoutJiraIssue { get; set; }
 
         /// <summary>
         /// Show link to create/view merge request when pushing from the command line

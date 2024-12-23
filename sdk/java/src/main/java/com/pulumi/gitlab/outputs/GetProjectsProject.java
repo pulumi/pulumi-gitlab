@@ -387,6 +387,11 @@ public final class GetProjectsProject {
      */
     private List<GetProjectsProjectPermission> permissions;
     /**
+     * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    private Boolean preventMergeWithoutJiraIssue;
+    /**
      * @return Whether public builds are enabled for the project.
      * 
      */
@@ -1033,6 +1038,13 @@ public final class GetProjectsProject {
         return this.permissions;
     }
     /**
+     * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    public Boolean preventMergeWithoutJiraIssue() {
+        return this.preventMergeWithoutJiraIssue;
+    }
+    /**
      * @return Whether public builds are enabled for the project.
      * 
      */
@@ -1298,6 +1310,7 @@ public final class GetProjectsProject {
         private String path;
         private String pathWithNamespace;
         private List<GetProjectsProjectPermission> permissions;
+        private Boolean preventMergeWithoutJiraIssue;
         private Boolean publicBuilds;
         private String readmeUrl;
         private String releasesAccessLevel;
@@ -1401,6 +1414,7 @@ public final class GetProjectsProject {
     	      this.path = defaults.path;
     	      this.pathWithNamespace = defaults.pathWithNamespace;
     	      this.permissions = defaults.permissions;
+    	      this.preventMergeWithoutJiraIssue = defaults.preventMergeWithoutJiraIssue;
     	      this.publicBuilds = defaults.publicBuilds;
     	      this.readmeUrl = defaults.readmeUrl;
     	      this.releasesAccessLevel = defaults.releasesAccessLevel;
@@ -2037,6 +2051,14 @@ public final class GetProjectsProject {
             return permissions(List.of(permissions));
         }
         @CustomType.Setter
+        public Builder preventMergeWithoutJiraIssue(Boolean preventMergeWithoutJiraIssue) {
+            if (preventMergeWithoutJiraIssue == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "preventMergeWithoutJiraIssue");
+            }
+            this.preventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
+            return this;
+        }
+        @CustomType.Setter
         public Builder publicBuilds(Boolean publicBuilds) {
             if (publicBuilds == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "publicBuilds");
@@ -2329,6 +2351,7 @@ public final class GetProjectsProject {
             _resultValue.path = path;
             _resultValue.pathWithNamespace = pathWithNamespace;
             _resultValue.permissions = permissions;
+            _resultValue.preventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
             _resultValue.publicBuilds = publicBuilds;
             _resultValue.readmeUrl = readmeUrl;
             _resultValue.releasesAccessLevel = releasesAccessLevel;

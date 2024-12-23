@@ -101,6 +101,10 @@ export class Branch extends pulumi.CustomResource {
      */
     public /*out*/ readonly developerCanPush!: pulumi.Output<boolean>;
     /**
+     * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     */
+    public readonly keepOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * Bool, true if the branch has been merged into it's parent.
      */
     public /*out*/ readonly merged!: pulumi.Output<boolean>;
@@ -143,6 +147,7 @@ export class Branch extends pulumi.CustomResource {
             resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["developerCanMerge"] = state ? state.developerCanMerge : undefined;
             resourceInputs["developerCanPush"] = state ? state.developerCanPush : undefined;
+            resourceInputs["keepOnDestroy"] = state ? state.keepOnDestroy : undefined;
             resourceInputs["merged"] = state ? state.merged : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -157,6 +162,7 @@ export class Branch extends pulumi.CustomResource {
             if ((!args || args.ref === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ref'");
             }
+            resourceInputs["keepOnDestroy"] = args ? args.keepOnDestroy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["ref"] = args ? args.ref : undefined;
@@ -199,6 +205,10 @@ export interface BranchState {
      */
     developerCanPush?: pulumi.Input<boolean>;
     /**
+     * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     */
+    keepOnDestroy?: pulumi.Input<boolean>;
+    /**
      * Bool, true if the branch has been merged into it's parent.
      */
     merged?: pulumi.Input<boolean>;
@@ -228,6 +238,10 @@ export interface BranchState {
  * The set of arguments for constructing a Branch resource.
  */
 export interface BranchArgs {
+    /**
+     * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     */
+    keepOnDestroy?: pulumi.Input<boolean>;
     /**
      * The name for this branch.
      */

@@ -290,6 +290,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool PipelinesEnabled;
         /// <summary>
+        /// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        /// </summary>
+        public readonly bool PreventMergeWithoutJiraIssue;
+        /// <summary>
         /// Show link to create/view merge request when pushing from the command line
         /// </summary>
         public readonly bool PrintingMergeRequestLinkEnabled;
@@ -480,6 +484,8 @@ namespace Pulumi.GitLab
 
             bool pipelinesEnabled,
 
+            bool preventMergeWithoutJiraIssue,
+
             bool printingMergeRequestLinkEnabled,
 
             bool? publicBuilds,
@@ -574,6 +580,7 @@ namespace Pulumi.GitLab
             Path = path;
             PathWithNamespace = pathWithNamespace;
             PipelinesEnabled = pipelinesEnabled;
+            PreventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
             PrintingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
             PublicBuilds = publicBuilds;
             PushRules = pushRules;

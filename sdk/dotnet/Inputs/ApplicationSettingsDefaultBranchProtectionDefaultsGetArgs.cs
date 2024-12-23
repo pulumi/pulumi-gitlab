@@ -19,26 +19,26 @@ namespace Pulumi.GitLab.Inputs
         public Input<bool>? AllowForcePush { get; set; }
 
         [Input("allowedToMerges")]
-        private InputList<object>? _allowedToMerges;
+        private InputList<int>? _allowedToMerges;
 
         /// <summary>
         /// An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         /// </summary>
-        public InputList<object> AllowedToMerges
+        public InputList<int> AllowedToMerges
         {
-            get => _allowedToMerges ?? (_allowedToMerges = new InputList<object>());
+            get => _allowedToMerges ?? (_allowedToMerges = new InputList<int>());
             set => _allowedToMerges = value;
         }
 
         [Input("allowedToPushes")]
-        private InputList<object>? _allowedToPushes;
+        private InputList<int>? _allowedToPushes;
 
         /// <summary>
         /// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         /// </summary>
-        public InputList<object> AllowedToPushes
+        public InputList<int> AllowedToPushes
         {
-            get => _allowedToPushes ?? (_allowedToPushes = new InputList<object>());
+            get => _allowedToPushes ?? (_allowedToPushes = new InputList<int>());
             set => _allowedToPushes = value;
         }
 

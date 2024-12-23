@@ -233,6 +233,10 @@ export interface GetProjectResult {
      */
     readonly pipelinesEnabled: boolean;
     /**
+     * Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     */
+    readonly preventMergeWithoutJiraIssue: boolean;
+    /**
      * Show link to create/view merge request when pushing from the command line
      */
     readonly printingMergeRequestLinkEnabled: boolean;

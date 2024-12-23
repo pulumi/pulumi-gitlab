@@ -113,7 +113,7 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
         /// </summary>
         [Output("jobEvents")]
         public Output<bool> JobEvents { get; private set; } = null!;
@@ -461,7 +461,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+        /// Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
         /// </summary>
         [Input("jobEvents")]
         public Input<bool>? JobEvents { get; set; }

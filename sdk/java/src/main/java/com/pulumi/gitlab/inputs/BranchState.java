@@ -94,6 +94,21 @@ public final class BranchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     * 
+     */
+    @Import(name="keepOnDestroy")
+    private @Nullable Output<Boolean> keepOnDestroy;
+
+    /**
+     * @return Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     * 
+     */
+    public Optional<Output<Boolean>> keepOnDestroy() {
+        return Optional.ofNullable(this.keepOnDestroy);
+    }
+
+    /**
      * Bool, true if the branch has been merged into it&#39;s parent.
      * 
      */
@@ -191,6 +206,7 @@ public final class BranchState extends com.pulumi.resources.ResourceArgs {
         this.default_ = $.default_;
         this.developerCanMerge = $.developerCanMerge;
         this.developerCanPush = $.developerCanPush;
+        this.keepOnDestroy = $.keepOnDestroy;
         this.merged = $.merged;
         this.name = $.name;
         this.project = $.project;
@@ -330,6 +346,27 @@ public final class BranchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder developerCanPush(Boolean developerCanPush) {
             return developerCanPush(Output.of(developerCanPush));
+        }
+
+        /**
+         * @param keepOnDestroy Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepOnDestroy(@Nullable Output<Boolean> keepOnDestroy) {
+            $.keepOnDestroy = keepOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param keepOnDestroy Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepOnDestroy(Boolean keepOnDestroy) {
+            return keepOnDestroy(Output.of(keepOnDestroy));
         }
 
         /**

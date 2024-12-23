@@ -430,6 +430,11 @@ export type InstanceCluster = import("./instanceCluster").InstanceCluster;
 export const InstanceCluster: typeof import("./instanceCluster").InstanceCluster = null as any;
 utilities.lazyLoad(exports, ["InstanceCluster"], () => require("./instanceCluster"));
 
+export { InstanceServiceAccountArgs, InstanceServiceAccountState } from "./instanceServiceAccount";
+export type InstanceServiceAccount = import("./instanceServiceAccount").InstanceServiceAccount;
+export const InstanceServiceAccount: typeof import("./instanceServiceAccount").InstanceServiceAccount = null as any;
+utilities.lazyLoad(exports, ["InstanceServiceAccount"], () => require("./instanceServiceAccount"));
+
 export { InstanceVariableArgs, InstanceVariableState } from "./instanceVariable";
 export type InstanceVariable = import("./instanceVariable").InstanceVariable;
 export const InstanceVariable: typeof import("./instanceVariable").InstanceVariable = null as any;
@@ -846,6 +851,8 @@ const _module = {
                 return new GroupVariable(name, <any>undefined, { urn })
             case "gitlab:index/instanceCluster:InstanceCluster":
                 return new InstanceCluster(name, <any>undefined, { urn })
+            case "gitlab:index/instanceServiceAccount:InstanceServiceAccount":
+                return new InstanceServiceAccount(name, <any>undefined, { urn })
             case "gitlab:index/instanceVariable:InstanceVariable":
                 return new InstanceVariable(name, <any>undefined, { urn })
             case "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker":
@@ -1016,6 +1023,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupServiceAccountAccess
 pulumi.runtime.registerResourceModule("gitlab", "index/groupShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/instanceServiceAccount", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationCustomIssueTracker", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationEmailsOnPush", _module)

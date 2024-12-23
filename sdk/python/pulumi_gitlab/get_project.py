@@ -27,7 +27,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_pipeline_variables_minimum_override_role=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_pipeline_variables_minimum_override_role=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, prevent_merge_without_jira_issue=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if allow_pipeline_trigger_approve_deployment and not isinstance(allow_pipeline_trigger_approve_deployment, bool):
             raise TypeError("Expected argument 'allow_pipeline_trigger_approve_deployment' to be a bool")
         pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
@@ -166,6 +166,9 @@ class GetProjectResult:
         if pipelines_enabled and not isinstance(pipelines_enabled, bool):
             raise TypeError("Expected argument 'pipelines_enabled' to be a bool")
         pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
+        if prevent_merge_without_jira_issue and not isinstance(prevent_merge_without_jira_issue, bool):
+            raise TypeError("Expected argument 'prevent_merge_without_jira_issue' to be a bool")
+        pulumi.set(__self__, "prevent_merge_without_jira_issue", prevent_merge_without_jira_issue)
         if printing_merge_request_link_enabled and not isinstance(printing_merge_request_link_enabled, bool):
             raise TypeError("Expected argument 'printing_merge_request_link_enabled' to be a bool")
         pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
@@ -608,6 +611,14 @@ class GetProjectResult:
         return pulumi.get(self, "pipelines_enabled")
 
     @property
+    @pulumi.getter(name="preventMergeWithoutJiraIssue")
+    def prevent_merge_without_jira_issue(self) -> bool:
+        """
+        Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "prevent_merge_without_jira_issue")
+
+    @property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
     def printing_merge_request_link_enabled(self) -> bool:
         """
@@ -852,6 +863,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             path=self.path,
             path_with_namespace=self.path_with_namespace,
             pipelines_enabled=self.pipelines_enabled,
+            prevent_merge_without_jira_issue=self.prevent_merge_without_jira_issue,
             printing_merge_request_link_enabled=self.printing_merge_request_link_enabled,
             public_builds=self.public_builds,
             push_rules=self.push_rules,
@@ -949,6 +961,7 @@ def get_project(ci_default_git_depth: Optional[int] = None,
         path=pulumi.get(__ret__, 'path'),
         path_with_namespace=pulumi.get(__ret__, 'path_with_namespace'),
         pipelines_enabled=pulumi.get(__ret__, 'pipelines_enabled'),
+        prevent_merge_without_jira_issue=pulumi.get(__ret__, 'prevent_merge_without_jira_issue'),
         printing_merge_request_link_enabled=pulumi.get(__ret__, 'printing_merge_request_link_enabled'),
         public_builds=pulumi.get(__ret__, 'public_builds'),
         push_rules=pulumi.get(__ret__, 'push_rules'),
@@ -1043,6 +1056,7 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
         path=pulumi.get(__response__, 'path'),
         path_with_namespace=pulumi.get(__response__, 'path_with_namespace'),
         pipelines_enabled=pulumi.get(__response__, 'pipelines_enabled'),
+        prevent_merge_without_jira_issue=pulumi.get(__response__, 'prevent_merge_without_jira_issue'),
         printing_merge_request_link_enabled=pulumi.get(__response__, 'printing_merge_request_link_enabled'),
         public_builds=pulumi.get(__response__, 'public_builds'),
         push_rules=pulumi.get(__response__, 'push_rules'),

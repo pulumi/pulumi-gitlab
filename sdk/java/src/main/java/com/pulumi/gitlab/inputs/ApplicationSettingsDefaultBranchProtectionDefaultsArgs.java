@@ -6,7 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,13 +37,13 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
      * 
      */
     @Import(name="allowedToMerges")
-    private @Nullable Output<List<Object>> allowedToMerges;
+    private @Nullable Output<List<Integer>> allowedToMerges;
 
     /**
      * @return An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
      * 
      */
-    public Optional<Output<List<Object>>> allowedToMerges() {
+    public Optional<Output<List<Integer>>> allowedToMerges() {
         return Optional.ofNullable(this.allowedToMerges);
     }
 
@@ -52,13 +52,13 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
      * 
      */
     @Import(name="allowedToPushes")
-    private @Nullable Output<List<Object>> allowedToPushes;
+    private @Nullable Output<List<Integer>> allowedToPushes;
 
     /**
      * @return An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
      * 
      */
-    public Optional<Output<List<Object>>> allowedToPushes() {
+    public Optional<Output<List<Integer>>> allowedToPushes() {
         return Optional.ofNullable(this.allowedToPushes);
     }
 
@@ -131,7 +131,7 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
          * @return builder
          * 
          */
-        public Builder allowedToMerges(@Nullable Output<List<Object>> allowedToMerges) {
+        public Builder allowedToMerges(@Nullable Output<List<Integer>> allowedToMerges) {
             $.allowedToMerges = allowedToMerges;
             return this;
         }
@@ -142,7 +142,7 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
          * @return builder
          * 
          */
-        public Builder allowedToMerges(List<Object> allowedToMerges) {
+        public Builder allowedToMerges(List<Integer> allowedToMerges) {
             return allowedToMerges(Output.of(allowedToMerges));
         }
 
@@ -152,7 +152,7 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
          * @return builder
          * 
          */
-        public Builder allowedToMerges(Object... allowedToMerges) {
+        public Builder allowedToMerges(Integer... allowedToMerges) {
             return allowedToMerges(List.of(allowedToMerges));
         }
 
@@ -162,7 +162,7 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
          * @return builder
          * 
          */
-        public Builder allowedToPushes(@Nullable Output<List<Object>> allowedToPushes) {
+        public Builder allowedToPushes(@Nullable Output<List<Integer>> allowedToPushes) {
             $.allowedToPushes = allowedToPushes;
             return this;
         }
@@ -173,7 +173,7 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
          * @return builder
          * 
          */
-        public Builder allowedToPushes(List<Object> allowedToPushes) {
+        public Builder allowedToPushes(List<Integer> allowedToPushes) {
             return allowedToPushes(Output.of(allowedToPushes));
         }
 
@@ -183,7 +183,7 @@ public final class ApplicationSettingsDefaultBranchProtectionDefaultsArgs extend
          * @return builder
          * 
          */
-        public Builder allowedToPushes(Object... allowedToPushes) {
+        public Builder allowedToPushes(Integer... allowedToPushes) {
             return allowedToPushes(List.of(allowedToPushes));
         }
 

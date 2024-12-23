@@ -249,6 +249,11 @@ public final class GetProjectResult {
      */
     private Boolean pipelinesEnabled;
     /**
+     * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    private Boolean preventMergeWithoutJiraIssue;
+    /**
      * @return Show link to create/view merge request when pushing from the command line
      * 
      */
@@ -693,6 +698,13 @@ public final class GetProjectResult {
         return this.pipelinesEnabled;
     }
     /**
+     * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    public Boolean preventMergeWithoutJiraIssue() {
+        return this.preventMergeWithoutJiraIssue;
+    }
+    /**
      * @return Show link to create/view merge request when pushing from the command line
      * 
      */
@@ -916,6 +928,7 @@ public final class GetProjectResult {
         private String path;
         private String pathWithNamespace;
         private Boolean pipelinesEnabled;
+        private Boolean preventMergeWithoutJiraIssue;
         private Boolean printingMergeRequestLinkEnabled;
         private @Nullable Boolean publicBuilds;
         private List<GetProjectPushRule> pushRules;
@@ -989,6 +1002,7 @@ public final class GetProjectResult {
     	      this.path = defaults.path;
     	      this.pathWithNamespace = defaults.pathWithNamespace;
     	      this.pipelinesEnabled = defaults.pipelinesEnabled;
+    	      this.preventMergeWithoutJiraIssue = defaults.preventMergeWithoutJiraIssue;
     	      this.printingMergeRequestLinkEnabled = defaults.printingMergeRequestLinkEnabled;
     	      this.publicBuilds = defaults.publicBuilds;
     	      this.pushRules = defaults.pushRules;
@@ -1387,6 +1401,14 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder preventMergeWithoutJiraIssue(Boolean preventMergeWithoutJiraIssue) {
+            if (preventMergeWithoutJiraIssue == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "preventMergeWithoutJiraIssue");
+            }
+            this.preventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
+            return this;
+        }
+        @CustomType.Setter
         public Builder printingMergeRequestLinkEnabled(Boolean printingMergeRequestLinkEnabled) {
             if (printingMergeRequestLinkEnabled == null) {
               throw new MissingRequiredPropertyException("GetProjectResult", "printingMergeRequestLinkEnabled");
@@ -1633,6 +1655,7 @@ public final class GetProjectResult {
             _resultValue.path = path;
             _resultValue.pathWithNamespace = pathWithNamespace;
             _resultValue.pipelinesEnabled = pipelinesEnabled;
+            _resultValue.preventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
             _resultValue.printingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
             _resultValue.publicBuilds = publicBuilds;
             _resultValue.pushRules = pushRules;

@@ -108,7 +108,7 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     public readonly issuesEvents!: pulumi.Output<boolean>;
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
      */
     public /*out*/ readonly jobEvents!: pulumi.Output<boolean>;
     /**
@@ -292,7 +292,7 @@ export interface IntegrationSlackState {
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://github.com/xanzy/go-gitlab/issues/1354.
+     * Enable notifications for job events. **ATTENTION**: This attribute is currently not being submitted to the GitLab API, due to https://gitlab.com/gitlab-org/api/client-go/issues/1354.
      */
     jobEvents?: pulumi.Input<boolean>;
     /**

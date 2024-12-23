@@ -1146,6 +1146,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="preventMergeWithoutJiraIssue")
+    private @Nullable Output<Boolean> preventMergeWithoutJiraIssue;
+
+    /**
+     * @return Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> preventMergeWithoutJiraIssue() {
+        return Optional.ofNullable(this.preventMergeWithoutJiraIssue);
+    }
+
+    /**
      * Show link to create/view merge request when pushing from the command line
      * 
      */
@@ -1702,6 +1717,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.pathWithNamespace = $.pathWithNamespace;
         this.pipelinesEnabled = $.pipelinesEnabled;
         this.preReceiveSecretDetectionEnabled = $.preReceiveSecretDetectionEnabled;
+        this.preventMergeWithoutJiraIssue = $.preventMergeWithoutJiraIssue;
         this.printingMergeRequestLinkEnabled = $.printingMergeRequestLinkEnabled;
         this.publicBuilds = $.publicBuilds;
         this.publicJobs = $.publicJobs;
@@ -3314,6 +3330,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder preReceiveSecretDetectionEnabled(Boolean preReceiveSecretDetectionEnabled) {
             return preReceiveSecretDetectionEnabled(Output.of(preReceiveSecretDetectionEnabled));
+        }
+
+        /**
+         * @param preventMergeWithoutJiraIssue Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeWithoutJiraIssue(@Nullable Output<Boolean> preventMergeWithoutJiraIssue) {
+            $.preventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
+            return this;
+        }
+
+        /**
+         * @param preventMergeWithoutJiraIssue Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeWithoutJiraIssue(Boolean preventMergeWithoutJiraIssue) {
+            return preventMergeWithoutJiraIssue(Output.of(preventMergeWithoutJiraIssue));
         }
 
         /**

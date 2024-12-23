@@ -83,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupVariable{}
 	case "gitlab:index/instanceCluster:InstanceCluster":
 		r = &InstanceCluster{}
+	case "gitlab:index/instanceServiceAccount:InstanceServiceAccount":
+		r = &InstanceServiceAccount{}
 	case "gitlab:index/instanceVariable:InstanceVariable":
 		r = &InstanceVariable{}
 	case "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker":
@@ -401,6 +403,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/instanceCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/instanceServiceAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

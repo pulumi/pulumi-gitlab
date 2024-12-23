@@ -369,6 +369,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly preReceiveSecretDetectionEnabled!: pulumi.Output<boolean>;
     /**
+     * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     */
+    public readonly preventMergeWithoutJiraIssue!: pulumi.Output<boolean>;
+    /**
      * Show link to create/view merge request when pushing from the command line
      */
     public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean>;
@@ -417,7 +421,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      */
-    public readonly restrictUserDefinedVariables!: pulumi.Output<boolean | undefined>;
+    public readonly restrictUserDefinedVariables!: pulumi.Output<boolean>;
     /**
      * Registration token to use during runner setup.
      */
@@ -585,6 +589,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
             resourceInputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
             resourceInputs["preReceiveSecretDetectionEnabled"] = state ? state.preReceiveSecretDetectionEnabled : undefined;
+            resourceInputs["preventMergeWithoutJiraIssue"] = state ? state.preventMergeWithoutJiraIssue : undefined;
             resourceInputs["printingMergeRequestLinkEnabled"] = state ? state.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = state ? state.publicBuilds : undefined;
             resourceInputs["publicJobs"] = state ? state.publicJobs : undefined;
@@ -687,6 +692,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
             resourceInputs["preReceiveSecretDetectionEnabled"] = args ? args.preReceiveSecretDetectionEnabled : undefined;
+            resourceInputs["preventMergeWithoutJiraIssue"] = args ? args.preventMergeWithoutJiraIssue : undefined;
             resourceInputs["printingMergeRequestLinkEnabled"] = args ? args.printingMergeRequestLinkEnabled : undefined;
             resourceInputs["publicBuilds"] = args ? args.publicBuilds : undefined;
             resourceInputs["publicJobs"] = args ? args.publicJobs : undefined;
@@ -1035,6 +1041,10 @@ export interface ProjectState {
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     */
+    preventMergeWithoutJiraIssue?: pulumi.Input<boolean>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */
@@ -1456,6 +1466,10 @@ export interface ProjectArgs {
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     */
+    preventMergeWithoutJiraIssue?: pulumi.Input<boolean>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */

@@ -96,9 +96,8 @@ type ServiceJira struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrOutput `pulumi:"jiraIssuePrefix"`
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex pulumi.StringPtrOutput `pulumi:"jiraIssueRegex"`
-	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-	JiraIssueTransitionAutomatic pulumi.BoolPtrOutput `pulumi:"jiraIssueTransitionAutomatic"`
+	JiraIssueRegex               pulumi.StringPtrOutput `pulumi:"jiraIssueRegex"`
+	JiraIssueTransitionAutomatic pulumi.BoolPtrOutput   `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
@@ -186,9 +185,8 @@ type serviceJiraState struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex *string `pulumi:"jiraIssueRegex"`
-	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-	JiraIssueTransitionAutomatic *bool `pulumi:"jiraIssueTransitionAutomatic"`
+	JiraIssueRegex               *string `pulumi:"jiraIssueRegex"`
+	JiraIssueTransitionAutomatic *bool   `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
@@ -231,8 +229,7 @@ type ServiceJiraState struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrInput
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex pulumi.StringPtrInput
-	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueRegex               pulumi.StringPtrInput
 	JiraIssueTransitionAutomatic pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrInput
@@ -276,9 +273,8 @@ type serviceJiraArgs struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex *string `pulumi:"jiraIssueRegex"`
-	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
-	JiraIssueTransitionAutomatic *bool `pulumi:"jiraIssueTransitionAutomatic"`
+	JiraIssueRegex               *string `pulumi:"jiraIssueRegex"`
+	JiraIssueTransitionAutomatic *bool   `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
@@ -314,8 +310,7 @@ type ServiceJiraArgs struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrInput
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex pulumi.StringPtrInput
-	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
+	JiraIssueRegex               pulumi.StringPtrInput
 	JiraIssueTransitionAutomatic pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
 	JiraIssueTransitionId pulumi.StringPtrInput
@@ -469,7 +464,6 @@ func (o ServiceJiraOutput) JiraIssueRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.StringPtrOutput { return v.JiraIssueRegex }).(pulumi.StringPtrOutput)
 }
 
-// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false.
 func (o ServiceJiraOutput) JiraIssueTransitionAutomatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceJira) pulumi.BoolPtrOutput { return v.JiraIssueTransitionAutomatic }).(pulumi.BoolPtrOutput)
 }

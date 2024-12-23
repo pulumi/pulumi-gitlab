@@ -14,6 +14,7 @@ import com.pulumi.gitlab.outputs.BranchCommit;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -161,6 +162,20 @@ public class Branch extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> developerCanPush() {
         return this.developerCanPush;
+    }
+    /**
+     * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     * 
+     */
+    @Export(name="keepOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> keepOnDestroy;
+
+    /**
+     * @return Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
+     * 
+     */
+    public Output<Optional<Boolean>> keepOnDestroy() {
+        return Codegen.optional(this.keepOnDestroy);
     }
     /**
      * Bool, true if the branch has been merged into it&#39;s parent.

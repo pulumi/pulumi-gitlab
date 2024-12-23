@@ -13,11 +13,11 @@ export interface ApplicationSettingsDefaultBranchProtectionDefaults {
     /**
      * An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
      */
-    allowedToMerges: any[];
+    allowedToMerges: number[];
     /**
      * An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
      */
-    allowedToPushes: any[];
+    allowedToPushes: number[];
     /**
      * Allow developers to initial push.
      */
@@ -2185,6 +2185,10 @@ export interface GetProjectsProject {
      */
     permissions: outputs.GetProjectsProjectPermission[];
     /**
+     * Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+     */
+    preventMergeWithoutJiraIssue: boolean;
+    /**
      * Whether public builds are enabled for the project.
      */
     publicBuilds: boolean;
@@ -2903,6 +2907,13 @@ export interface GroupServiceAccountAccessTokenRotationConfiguration {
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
     rotateBeforeDays: number;
+}
+
+export interface InstanceServiceAccountTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
 }
 
 export interface PersonalAccessTokenRotationConfiguration {

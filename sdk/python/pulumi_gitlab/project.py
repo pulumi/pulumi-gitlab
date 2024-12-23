@@ -90,6 +90,7 @@ class ProjectArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
+                 prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  public_jobs: Optional[pulumi.Input[bool]] = None,
@@ -192,6 +193,7 @@ class ProjectArgs:
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
@@ -372,6 +374,8 @@ class ProjectArgs:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if pre_receive_secret_detection_enabled is not None:
             pulumi.set(__self__, "pre_receive_secret_detection_enabled", pre_receive_secret_detection_enabled)
+        if prevent_merge_without_jira_issue is not None:
+            pulumi.set(__self__, "prevent_merge_without_jira_issue", prevent_merge_without_jira_issue)
         if printing_merge_request_link_enabled is not None:
             pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if public_builds is not None:
@@ -1267,6 +1271,18 @@ class ProjectArgs:
         pulumi.set(self, "pre_receive_secret_detection_enabled", value)
 
     @property
+    @pulumi.getter(name="preventMergeWithoutJiraIssue")
+    def prevent_merge_without_jira_issue(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "prevent_merge_without_jira_issue")
+
+    @prevent_merge_without_jira_issue.setter
+    def prevent_merge_without_jira_issue(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_merge_without_jira_issue", value)
+
+    @property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
     def printing_merge_request_link_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1684,6 +1700,7 @@ class _ProjectState:
                  path_with_namespace: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
+                 prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  public_jobs: Optional[pulumi.Input[bool]] = None,
@@ -1793,6 +1810,7 @@ class _ProjectState:
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
@@ -1984,6 +2002,8 @@ class _ProjectState:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if pre_receive_secret_detection_enabled is not None:
             pulumi.set(__self__, "pre_receive_secret_detection_enabled", pre_receive_secret_detection_enabled)
+        if prevent_merge_without_jira_issue is not None:
+            pulumi.set(__self__, "prevent_merge_without_jira_issue", prevent_merge_without_jira_issue)
         if printing_merge_request_link_enabled is not None:
             pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
         if public_builds is not None:
@@ -2933,6 +2953,18 @@ class _ProjectState:
         pulumi.set(self, "pre_receive_secret_detection_enabled", value)
 
     @property
+    @pulumi.getter(name="preventMergeWithoutJiraIssue")
+    def prevent_merge_without_jira_issue(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "prevent_merge_without_jira_issue")
+
+    @prevent_merge_without_jira_issue.setter
+    def prevent_merge_without_jira_issue(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_merge_without_jira_issue", value)
+
+    @property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
     def printing_merge_request_link_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3384,6 +3416,7 @@ class Project(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
+                 prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  public_jobs: Optional[pulumi.Input[bool]] = None,
@@ -3520,6 +3553,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
@@ -3676,6 +3710,7 @@ class Project(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
+                 prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
                  printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
                  public_builds: Optional[pulumi.Input[bool]] = None,
                  public_jobs: Optional[pulumi.Input[bool]] = None,
@@ -3782,6 +3817,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["path"] = path
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
             __props__.__dict__["pre_receive_secret_detection_enabled"] = pre_receive_secret_detection_enabled
+            __props__.__dict__["prevent_merge_without_jira_issue"] = prevent_merge_without_jira_issue
             __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
             __props__.__dict__["public_builds"] = public_builds
             __props__.__dict__["public_jobs"] = public_jobs
@@ -3902,6 +3938,7 @@ class Project(pulumi.CustomResource):
             path_with_namespace: Optional[pulumi.Input[str]] = None,
             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
             pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
+            prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
             printing_merge_request_link_enabled: Optional[pulumi.Input[bool]] = None,
             public_builds: Optional[pulumi.Input[bool]] = None,
             public_jobs: Optional[pulumi.Input[bool]] = None,
@@ -4016,6 +4053,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[bool] public_jobs: If true, jobs can be viewed by non-project members.
@@ -4129,6 +4167,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["path_with_namespace"] = path_with_namespace
         __props__.__dict__["pipelines_enabled"] = pipelines_enabled
         __props__.__dict__["pre_receive_secret_detection_enabled"] = pre_receive_secret_detection_enabled
+        __props__.__dict__["prevent_merge_without_jira_issue"] = prevent_merge_without_jira_issue
         __props__.__dict__["printing_merge_request_link_enabled"] = printing_merge_request_link_enabled
         __props__.__dict__["public_builds"] = public_builds
         __props__.__dict__["public_jobs"] = public_jobs
@@ -4753,6 +4792,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "pre_receive_secret_detection_enabled")
 
     @property
+    @pulumi.getter(name="preventMergeWithoutJiraIssue")
+    def prevent_merge_without_jira_issue(self) -> pulumi.Output[bool]:
+        """
+        Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "prevent_merge_without_jira_issue")
+
+    @property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
     def printing_merge_request_link_enabled(self) -> pulumi.Output[bool]:
         """
@@ -4843,7 +4890,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restrictUserDefinedVariables")
-    def restrict_user_defined_variables(self) -> pulumi.Output[Optional[bool]]:
+    def restrict_user_defined_variables(self) -> pulumi.Output[bool]:
         """
         Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         """
