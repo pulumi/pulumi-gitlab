@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -77,6 +78,21 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.query);
     }
 
+    /**
+     * List of user ids to filter members by
+     * 
+     */
+    @Import(name="userIds")
+    private @Nullable Output<List<Integer>> userIds;
+
+    /**
+     * @return List of user ids to filter members by
+     * 
+     */
+    public Optional<Output<List<Integer>>> userIds() {
+        return Optional.ofNullable(this.userIds);
+    }
+
     private GetProjectMembershipArgs() {}
 
     private GetProjectMembershipArgs(GetProjectMembershipArgs $) {
@@ -84,6 +100,7 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
         this.inherited = $.inherited;
         this.projectId = $.projectId;
         this.query = $.query;
+        this.userIds = $.userIds;
     }
 
     public static Builder builder() {
@@ -186,6 +203,37 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
          */
         public Builder query(String query) {
             return query(Output.of(query));
+        }
+
+        /**
+         * @param userIds List of user ids to filter members by
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIds(@Nullable Output<List<Integer>> userIds) {
+            $.userIds = userIds;
+            return this;
+        }
+
+        /**
+         * @param userIds List of user ids to filter members by
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIds(List<Integer> userIds) {
+            return userIds(Output.of(userIds));
+        }
+
+        /**
+         * @param userIds List of user ids to filter members by
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIds(Integer... userIds) {
+            return userIds(List.of(userIds));
         }
 
         public GetProjectMembershipArgs build() {

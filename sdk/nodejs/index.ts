@@ -775,6 +775,11 @@ export type UserSshKey = import("./userSshKey").UserSshKey;
 export const UserSshKey: typeof import("./userSshKey").UserSshKey = null as any;
 utilities.lazyLoad(exports, ["UserSshKey"], () => require("./userSshKey"));
 
+export { ValueStreamAnalyticsArgs, ValueStreamAnalyticsState } from "./valueStreamAnalytics";
+export type ValueStreamAnalytics = import("./valueStreamAnalytics").ValueStreamAnalytics;
+export const ValueStreamAnalytics: typeof import("./valueStreamAnalytics").ValueStreamAnalytics = null as any;
+utilities.lazyLoad(exports, ["ValueStreamAnalytics"], () => require("./valueStreamAnalytics"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -987,6 +992,8 @@ const _module = {
                 return new UserRunner(name, <any>undefined, { urn })
             case "gitlab:index/userSshKey:UserSshKey":
                 return new UserSshKey(name, <any>undefined, { urn })
+            case "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics":
+                return new ValueStreamAnalytics(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -1091,6 +1098,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userImpersonationToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userRunner", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/valueStreamAnalytics", _module)
 pulumi.runtime.registerResourcePackage("gitlab", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

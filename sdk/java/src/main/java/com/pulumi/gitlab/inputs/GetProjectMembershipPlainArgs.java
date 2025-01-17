@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,21 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.query);
     }
 
+    /**
+     * List of user ids to filter members by
+     * 
+     */
+    @Import(name="userIds")
+    private @Nullable List<Integer> userIds;
+
+    /**
+     * @return List of user ids to filter members by
+     * 
+     */
+    public Optional<List<Integer>> userIds() {
+        return Optional.ofNullable(this.userIds);
+    }
+
     private GetProjectMembershipPlainArgs() {}
 
     private GetProjectMembershipPlainArgs(GetProjectMembershipPlainArgs $) {
@@ -83,6 +99,7 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
         this.inherited = $.inherited;
         this.projectId = $.projectId;
         this.query = $.query;
+        this.userIds = $.userIds;
     }
 
     public static Builder builder() {
@@ -145,6 +162,27 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
         public Builder query(@Nullable String query) {
             $.query = query;
             return this;
+        }
+
+        /**
+         * @param userIds List of user ids to filter members by
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIds(@Nullable List<Integer> userIds) {
+            $.userIds = userIds;
+            return this;
+        }
+
+        /**
+         * @param userIds List of user ids to filter members by
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIds(Integer... userIds) {
+            return userIds(List.of(userIds));
         }
 
         public GetProjectMembershipPlainArgs build() {

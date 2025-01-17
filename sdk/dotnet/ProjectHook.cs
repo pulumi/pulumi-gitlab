@@ -28,6 +28,8 @@ namespace Pulumi.GitLab
     ///     {
     ///         Project = "example/hooked",
     ///         Url = "https://example.com/hook/example",
+    ///         Name = "example",
+    ///         Description = "Example hook",
     ///         MergeRequestsEvents = true,
     ///     });
     /// 
@@ -114,6 +116,12 @@ namespace Pulumi.GitLab
         public Output<bool> DeploymentEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Description of the webhook.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Output("enableSslVerification")]
@@ -142,6 +150,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("mergeRequestsEvents")]
         public Output<bool> MergeRequestsEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the project webhook.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for note events.
@@ -296,6 +310,12 @@ namespace Pulumi.GitLab
         public Input<bool>? DeploymentEvents { get; set; }
 
         /// <summary>
+        /// Description of the webhook.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
@@ -318,6 +338,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
+
+        /// <summary>
+        /// Name of the project webhook.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Invoke the hook for note events.
@@ -434,6 +460,12 @@ namespace Pulumi.GitLab
         public Input<bool>? DeploymentEvents { get; set; }
 
         /// <summary>
+        /// Description of the webhook.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
@@ -462,6 +494,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
+
+        /// <summary>
+        /// Name of the project webhook.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Invoke the hook for note events.

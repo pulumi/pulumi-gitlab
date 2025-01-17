@@ -4412,6 +4412,166 @@ func (o TagProtectionAllowedToCreateArrayOutput) Index(i pulumi.IntInput) TagPro
 	}).(TagProtectionAllowedToCreateOutput)
 }
 
+type ValueStreamAnalyticsStage struct {
+	// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
+	Custom *bool `pulumi:"custom"`
+	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	EndEventIdentifier *string `pulumi:"endEventIdentifier"`
+	// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+	EndEventLabelId *string `pulumi:"endEventLabelId"`
+	// Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
+	Hidden *bool `pulumi:"hidden"`
+	// The ID of the value stream stage.
+	Id *string `pulumi:"id"`
+	// The name of the value stream stage.
+	Name string `pulumi:"name"`
+	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	StartEventIdentifier *string `pulumi:"startEventIdentifier"`
+	// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+	StartEventLabelId *string `pulumi:"startEventLabelId"`
+}
+
+// ValueStreamAnalyticsStageInput is an input type that accepts ValueStreamAnalyticsStageArgs and ValueStreamAnalyticsStageOutput values.
+// You can construct a concrete instance of `ValueStreamAnalyticsStageInput` via:
+//
+//	ValueStreamAnalyticsStageArgs{...}
+type ValueStreamAnalyticsStageInput interface {
+	pulumi.Input
+
+	ToValueStreamAnalyticsStageOutput() ValueStreamAnalyticsStageOutput
+	ToValueStreamAnalyticsStageOutputWithContext(context.Context) ValueStreamAnalyticsStageOutput
+}
+
+type ValueStreamAnalyticsStageArgs struct {
+	// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
+	Custom pulumi.BoolPtrInput `pulumi:"custom"`
+	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	EndEventIdentifier pulumi.StringPtrInput `pulumi:"endEventIdentifier"`
+	// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+	EndEventLabelId pulumi.StringPtrInput `pulumi:"endEventLabelId"`
+	// Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
+	Hidden pulumi.BoolPtrInput `pulumi:"hidden"`
+	// The ID of the value stream stage.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the value stream stage.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	StartEventIdentifier pulumi.StringPtrInput `pulumi:"startEventIdentifier"`
+	// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+	StartEventLabelId pulumi.StringPtrInput `pulumi:"startEventLabelId"`
+}
+
+func (ValueStreamAnalyticsStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueStreamAnalyticsStage)(nil)).Elem()
+}
+
+func (i ValueStreamAnalyticsStageArgs) ToValueStreamAnalyticsStageOutput() ValueStreamAnalyticsStageOutput {
+	return i.ToValueStreamAnalyticsStageOutputWithContext(context.Background())
+}
+
+func (i ValueStreamAnalyticsStageArgs) ToValueStreamAnalyticsStageOutputWithContext(ctx context.Context) ValueStreamAnalyticsStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueStreamAnalyticsStageOutput)
+}
+
+// ValueStreamAnalyticsStageArrayInput is an input type that accepts ValueStreamAnalyticsStageArray and ValueStreamAnalyticsStageArrayOutput values.
+// You can construct a concrete instance of `ValueStreamAnalyticsStageArrayInput` via:
+//
+//	ValueStreamAnalyticsStageArray{ ValueStreamAnalyticsStageArgs{...} }
+type ValueStreamAnalyticsStageArrayInput interface {
+	pulumi.Input
+
+	ToValueStreamAnalyticsStageArrayOutput() ValueStreamAnalyticsStageArrayOutput
+	ToValueStreamAnalyticsStageArrayOutputWithContext(context.Context) ValueStreamAnalyticsStageArrayOutput
+}
+
+type ValueStreamAnalyticsStageArray []ValueStreamAnalyticsStageInput
+
+func (ValueStreamAnalyticsStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ValueStreamAnalyticsStage)(nil)).Elem()
+}
+
+func (i ValueStreamAnalyticsStageArray) ToValueStreamAnalyticsStageArrayOutput() ValueStreamAnalyticsStageArrayOutput {
+	return i.ToValueStreamAnalyticsStageArrayOutputWithContext(context.Background())
+}
+
+func (i ValueStreamAnalyticsStageArray) ToValueStreamAnalyticsStageArrayOutputWithContext(ctx context.Context) ValueStreamAnalyticsStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueStreamAnalyticsStageArrayOutput)
+}
+
+type ValueStreamAnalyticsStageOutput struct{ *pulumi.OutputState }
+
+func (ValueStreamAnalyticsStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueStreamAnalyticsStage)(nil)).Elem()
+}
+
+func (o ValueStreamAnalyticsStageOutput) ToValueStreamAnalyticsStageOutput() ValueStreamAnalyticsStageOutput {
+	return o
+}
+
+func (o ValueStreamAnalyticsStageOutput) ToValueStreamAnalyticsStageOutputWithContext(ctx context.Context) ValueStreamAnalyticsStageOutput {
+	return o
+}
+
+// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
+func (o ValueStreamAnalyticsStageOutput) Custom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *bool { return v.Custom }).(pulumi.BoolPtrOutput)
+}
+
+// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+func (o ValueStreamAnalyticsStageOutput) EndEventIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.EndEventIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+func (o ValueStreamAnalyticsStageOutput) EndEventLabelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.EndEventLabelId }).(pulumi.StringPtrOutput)
+}
+
+// Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
+func (o ValueStreamAnalyticsStageOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the value stream stage.
+func (o ValueStreamAnalyticsStageOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the value stream stage.
+func (o ValueStreamAnalyticsStageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+func (o ValueStreamAnalyticsStageOutput) StartEventIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.StartEventIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+func (o ValueStreamAnalyticsStageOutput) StartEventLabelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.StartEventLabelId }).(pulumi.StringPtrOutput)
+}
+
+type ValueStreamAnalyticsStageArrayOutput struct{ *pulumi.OutputState }
+
+func (ValueStreamAnalyticsStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ValueStreamAnalyticsStage)(nil)).Elem()
+}
+
+func (o ValueStreamAnalyticsStageArrayOutput) ToValueStreamAnalyticsStageArrayOutput() ValueStreamAnalyticsStageArrayOutput {
+	return o
+}
+
+func (o ValueStreamAnalyticsStageArrayOutput) ToValueStreamAnalyticsStageArrayOutputWithContext(ctx context.Context) ValueStreamAnalyticsStageArrayOutput {
+	return o
+}
+
+func (o ValueStreamAnalyticsStageArrayOutput) Index(i pulumi.IntInput) ValueStreamAnalyticsStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ValueStreamAnalyticsStage {
+		return vs[0].([]ValueStreamAnalyticsStage)[vs[1].(int)]
+	}).(ValueStreamAnalyticsStageOutput)
+}
+
 type GetBranchCommit struct {
 	// The email of the author.
 	AuthorEmail string `pulumi:"authorEmail"`
@@ -15322,6 +15482,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseArrayInput)(nil)).Elem(), ProjectTagReleaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateInput)(nil)).Elem(), TagProtectionAllowedToCreateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateArrayInput)(nil)).Elem(), TagProtectionAllowedToCreateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueStreamAnalyticsStageInput)(nil)).Elem(), ValueStreamAnalyticsStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValueStreamAnalyticsStageArrayInput)(nil)).Elem(), ValueStreamAnalyticsStageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitInput)(nil)).Elem(), GetBranchCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAgentsClusterAgentInput)(nil)).Elem(), GetClusterAgentsClusterAgentArgs{})
@@ -15496,6 +15658,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectTagReleaseArrayOutput{})
 	pulumi.RegisterOutputType(TagProtectionAllowedToCreateOutput{})
 	pulumi.RegisterOutputType(TagProtectionAllowedToCreateArrayOutput{})
+	pulumi.RegisterOutputType(ValueStreamAnalyticsStageOutput{})
+	pulumi.RegisterOutputType(ValueStreamAnalyticsStageArrayOutput{})
 	pulumi.RegisterOutputType(GetBranchCommitOutput{})
 	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAgentsClusterAgentOutput{})

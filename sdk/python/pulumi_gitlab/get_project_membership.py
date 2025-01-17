@@ -27,7 +27,7 @@ class GetProjectMembershipResult:
     """
     A collection of values returned by getProjectMembership.
     """
-    def __init__(__self__, full_path=None, id=None, inherited=None, members=None, project_id=None, query=None):
+    def __init__(__self__, full_path=None, id=None, inherited=None, members=None, project_id=None, query=None, user_ids=None):
         if full_path and not isinstance(full_path, str):
             raise TypeError("Expected argument 'full_path' to be a str")
         pulumi.set(__self__, "full_path", full_path)
@@ -46,6 +46,9 @@ class GetProjectMembershipResult:
         if query and not isinstance(query, str):
             raise TypeError("Expected argument 'query' to be a str")
         pulumi.set(__self__, "query", query)
+        if user_ids and not isinstance(user_ids, list):
+            raise TypeError("Expected argument 'user_ids' to be a list")
+        pulumi.set(__self__, "user_ids", user_ids)
 
     @property
     @pulumi.getter(name="fullPath")
@@ -95,6 +98,14 @@ class GetProjectMembershipResult:
         """
         return pulumi.get(self, "query")
 
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[Sequence[int]]:
+        """
+        List of user ids to filter members by
+        """
+        return pulumi.get(self, "user_ids")
+
 
 class AwaitableGetProjectMembershipResult(GetProjectMembershipResult):
     # pylint: disable=using-constant-test
@@ -107,13 +118,15 @@ class AwaitableGetProjectMembershipResult(GetProjectMembershipResult):
             inherited=self.inherited,
             members=self.members,
             project_id=self.project_id,
-            query=self.query)
+            query=self.query,
+            user_ids=self.user_ids)
 
 
 def get_project_membership(full_path: Optional[str] = None,
                            inherited: Optional[bool] = None,
                            project_id: Optional[int] = None,
                            query: Optional[str] = None,
+                           user_ids: Optional[Sequence[int]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectMembershipResult:
     """
     The `ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
@@ -127,12 +140,14 @@ def get_project_membership(full_path: Optional[str] = None,
     :param bool inherited: Return all project members including members through ancestor groups
     :param int project_id: The ID of the project.
     :param str query: A query string to search for members
+    :param Sequence[int] user_ids: List of user ids to filter members by
     """
     __args__ = dict()
     __args__['fullPath'] = full_path
     __args__['inherited'] = inherited
     __args__['projectId'] = project_id
     __args__['query'] = query
+    __args__['userIds'] = user_ids
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult).value
 
@@ -142,11 +157,13 @@ def get_project_membership(full_path: Optional[str] = None,
         inherited=pulumi.get(__ret__, 'inherited'),
         members=pulumi.get(__ret__, 'members'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        query=pulumi.get(__ret__, 'query'))
+        query=pulumi.get(__ret__, 'query'),
+        user_ids=pulumi.get(__ret__, 'user_ids'))
 def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]]] = None,
                                   inherited: Optional[pulumi.Input[Optional[bool]]] = None,
                                   project_id: Optional[pulumi.Input[Optional[int]]] = None,
                                   query: Optional[pulumi.Input[Optional[str]]] = None,
+                                  user_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMembershipResult]:
     """
     The `ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
@@ -160,12 +177,14 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
     :param bool inherited: Return all project members including members through ancestor groups
     :param int project_id: The ID of the project.
     :param str query: A query string to search for members
+    :param Sequence[int] user_ids: List of user ids to filter members by
     """
     __args__ = dict()
     __args__['fullPath'] = full_path
     __args__['inherited'] = inherited
     __args__['projectId'] = project_id
     __args__['query'] = query
+    __args__['userIds'] = user_ids
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult)
     return __ret__.apply(lambda __response__: GetProjectMembershipResult(
@@ -174,4 +193,5 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
         inherited=pulumi.get(__response__, 'inherited'),
         members=pulumi.get(__response__, 'members'),
         project_id=pulumi.get(__response__, 'project_id'),
-        query=pulumi.get(__response__, 'query')))
+        query=pulumi.get(__response__, 'query'),
+        user_ids=pulumi.get(__response__, 'user_ids')))

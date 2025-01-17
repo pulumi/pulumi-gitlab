@@ -69,6 +69,18 @@ namespace Pulumi.GitLab
         [Input("query")]
         public string? Query { get; set; }
 
+        [Input("userIds")]
+        private List<int>? _userIds;
+
+        /// <summary>
+        /// List of user ids to filter members by
+        /// </summary>
+        public List<int> UserIds
+        {
+            get => _userIds ?? (_userIds = new List<int>());
+            set => _userIds = value;
+        }
+
         public GetProjectMembershipArgs()
         {
         }
@@ -100,6 +112,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }
+
+        [Input("userIds")]
+        private InputList<int>? _userIds;
+
+        /// <summary>
+        /// List of user ids to filter members by
+        /// </summary>
+        public InputList<int> UserIds
+        {
+            get => _userIds ?? (_userIds = new InputList<int>());
+            set => _userIds = value;
+        }
 
         public GetProjectMembershipInvokeArgs()
         {
@@ -135,6 +159,10 @@ namespace Pulumi.GitLab
         /// A query string to search for members
         /// </summary>
         public readonly string? Query;
+        /// <summary>
+        /// List of user ids to filter members by
+        /// </summary>
+        public readonly ImmutableArray<int> UserIds;
 
         [OutputConstructor]
         private GetProjectMembershipResult(
@@ -148,7 +176,9 @@ namespace Pulumi.GitLab
 
             int projectId,
 
-            string? query)
+            string? query,
+
+            ImmutableArray<int> userIds)
         {
             FullPath = fullPath;
             Id = id;
@@ -156,6 +186,7 @@ namespace Pulumi.GitLab
             Members = members;
             ProjectId = projectId;
             Query = query;
+            UserIds = userIds;
         }
     }
 }

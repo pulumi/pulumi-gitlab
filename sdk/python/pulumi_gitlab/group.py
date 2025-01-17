@@ -72,7 +72,7 @@ class GroupArgs:
         :param pulumi.Input[int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
@@ -380,7 +380,7 @@ class GroupArgs:
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -571,7 +571,7 @@ class _GroupState:
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
@@ -928,7 +928,7 @@ class _GroupState:
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
 
@@ -1232,7 +1232,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
@@ -1511,7 +1511,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path of the group.
         :param pulumi.Input[bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
-        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        :param pulumi.Input[str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
         :param pulumi.Input[bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
@@ -1747,7 +1747,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> pulumi.Output[str]:
         """
-        Determine if developers can create projects in the group. Valid values are: `noone`, `maintainer`, `developer`
+        Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
         """
         return pulumi.get(self, "project_creation_level")
 

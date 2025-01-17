@@ -28,10 +28,12 @@ class ProjectHookArgs:
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
@@ -49,10 +51,12 @@ class ProjectHookArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the project webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
@@ -74,6 +78,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
             pulumi.set(__self__, "deployment_events", deployment_events)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if issues_events is not None:
@@ -82,6 +88,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if note_events is not None:
             pulumi.set(__self__, "note_events", note_events)
         if pipeline_events is not None:
@@ -184,6 +192,18 @@ class ProjectHookArgs:
         pulumi.set(self, "deployment_events", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the webhook.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -230,6 +250,18 @@ class ProjectHookArgs:
     @merge_requests_events.setter
     def merge_requests_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "merge_requests_events", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the project webhook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="noteEvents")
@@ -336,11 +368,13 @@ class _ProjectHookState:
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  hook_id: Optional[pulumi.Input[int]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -359,11 +393,13 @@ class _ProjectHookState:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[int] hook_id: The id of the project hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the project webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
@@ -386,6 +422,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
             pulumi.set(__self__, "deployment_events", deployment_events)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if hook_id is not None:
@@ -396,6 +434,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if note_events is not None:
             pulumi.set(__self__, "note_events", note_events)
         if pipeline_events is not None:
@@ -480,6 +520,18 @@ class _ProjectHookState:
         pulumi.set(self, "deployment_events", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the webhook.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -538,6 +590,18 @@ class _ProjectHookState:
     @merge_requests_events.setter
     def merge_requests_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "merge_requests_events", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the project webhook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="noteEvents")
@@ -682,10 +746,12 @@ class ProjectHook(pulumi.CustomResource):
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -711,6 +777,8 @@ class ProjectHook(pulumi.CustomResource):
         example = gitlab.ProjectHook("example",
             project="example/hooked",
             url="https://example.com/hook/example",
+            name="example",
+            description="Example hook",
             merge_requests_events=True)
         # Using Custom Headers
         # Values of headers can't be imported
@@ -761,10 +829,12 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the project webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
@@ -796,6 +866,8 @@ class ProjectHook(pulumi.CustomResource):
         example = gitlab.ProjectHook("example",
             project="example/hooked",
             url="https://example.com/hook/example",
+            name="example",
+            description="Example hook",
             merge_requests_events=True)
         # Using Custom Headers
         # Values of headers can't be imported
@@ -859,10 +931,12 @@ class ProjectHook(pulumi.CustomResource):
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -887,10 +961,12 @@ class ProjectHook(pulumi.CustomResource):
             __props__.__dict__["custom_headers"] = custom_headers
             __props__.__dict__["custom_webhook_template"] = custom_webhook_template
             __props__.__dict__["deployment_events"] = deployment_events
+            __props__.__dict__["description"] = description
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
             __props__.__dict__["issues_events"] = issues_events
             __props__.__dict__["job_events"] = job_events
             __props__.__dict__["merge_requests_events"] = merge_requests_events
+            __props__.__dict__["name"] = name
             __props__.__dict__["note_events"] = note_events
             __props__.__dict__["pipeline_events"] = pipeline_events
             if project is None and not opts.urn:
@@ -924,11 +1000,13 @@ class ProjectHook(pulumi.CustomResource):
             custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
             custom_webhook_template: Optional[pulumi.Input[str]] = None,
             deployment_events: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
             hook_id: Optional[pulumi.Input[int]] = None,
             issues_events: Optional[pulumi.Input[bool]] = None,
             job_events: Optional[pulumi.Input[bool]] = None,
             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
             note_events: Optional[pulumi.Input[bool]] = None,
             pipeline_events: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -952,11 +1030,13 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[int] hook_id: The id of the project hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the project webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[str] project: The name or id of the project to add the hook to.
@@ -978,11 +1058,13 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
+        __props__.__dict__["description"] = description
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
         __props__.__dict__["hook_id"] = hook_id
         __props__.__dict__["issues_events"] = issues_events
         __props__.__dict__["job_events"] = job_events
         __props__.__dict__["merge_requests_events"] = merge_requests_events
+        __props__.__dict__["name"] = name
         __props__.__dict__["note_events"] = note_events
         __props__.__dict__["pipeline_events"] = pipeline_events
         __props__.__dict__["project"] = project
@@ -1037,6 +1119,14 @@ class ProjectHook(pulumi.CustomResource):
         return pulumi.get(self, "deployment_events")
 
     @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of the webhook.
+        """
+        return pulumi.get(self, "description")
+
+    @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> pulumi.Output[bool]:
         """
@@ -1075,6 +1165,14 @@ class ProjectHook(pulumi.CustomResource):
         Invoke the hook for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the project webhook.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="noteEvents")

@@ -36,6 +36,8 @@ type LookupProjectMembershipArgs struct {
 	ProjectId *int `pulumi:"projectId"`
 	// A query string to search for members
 	Query *string `pulumi:"query"`
+	// List of user ids to filter members by
+	UserIds []int `pulumi:"userIds"`
 }
 
 // A collection of values returned by getProjectMembership.
@@ -52,6 +54,8 @@ type LookupProjectMembershipResult struct {
 	ProjectId int `pulumi:"projectId"`
 	// A query string to search for members
 	Query *string `pulumi:"query"`
+	// List of user ids to filter members by
+	UserIds []int `pulumi:"userIds"`
 }
 
 func LookupProjectMembershipOutput(ctx *pulumi.Context, args LookupProjectMembershipOutputArgs, opts ...pulumi.InvokeOption) LookupProjectMembershipResultOutput {
@@ -73,6 +77,8 @@ type LookupProjectMembershipOutputArgs struct {
 	ProjectId pulumi.IntPtrInput `pulumi:"projectId"`
 	// A query string to search for members
 	Query pulumi.StringPtrInput `pulumi:"query"`
+	// List of user ids to filter members by
+	UserIds pulumi.IntArrayInput `pulumi:"userIds"`
 }
 
 func (LookupProjectMembershipOutputArgs) ElementType() reflect.Type {
@@ -122,6 +128,11 @@ func (o LookupProjectMembershipResultOutput) ProjectId() pulumi.IntOutput {
 // A query string to search for members
 func (o LookupProjectMembershipResultOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectMembershipResult) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// List of user ids to filter members by
+func (o LookupProjectMembershipResultOutput) UserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupProjectMembershipResult) []int { return v.UserIds }).(pulumi.IntArrayOutput)
 }
 
 func init() {

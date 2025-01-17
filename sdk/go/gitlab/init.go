@@ -219,6 +219,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserRunner{}
 	case "gitlab:index/userSshKey:UserSshKey":
 		r = &UserSshKey{}
+	case "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics":
+		r = &ValueStreamAnalytics{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -743,6 +745,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userSshKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/valueStreamAnalytics",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

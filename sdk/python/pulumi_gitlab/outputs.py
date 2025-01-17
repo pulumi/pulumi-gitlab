@@ -43,6 +43,7 @@ __all__ = [
     'ProjectTagCommit',
     'ProjectTagRelease',
     'TagProtectionAllowedToCreate',
+    'ValueStreamAnalyticsStage',
     'GetBranchCommitResult',
     'GetClusterAgentsClusterAgentResult',
     'GetGroupBillableMemberMembershipsMembershipResult',
@@ -2485,6 +2486,131 @@ class TagProtectionAllowedToCreate(dict):
         The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
         return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class ValueStreamAnalyticsStage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endEventIdentifier":
+            suggest = "end_event_identifier"
+        elif key == "endEventLabelId":
+            suggest = "end_event_label_id"
+        elif key == "startEventIdentifier":
+            suggest = "start_event_identifier"
+        elif key == "startEventLabelId":
+            suggest = "start_event_label_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValueStreamAnalyticsStage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValueStreamAnalyticsStage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValueStreamAnalyticsStage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 custom: Optional[bool] = None,
+                 end_event_identifier: Optional[str] = None,
+                 end_event_label_id: Optional[str] = None,
+                 hidden: Optional[bool] = None,
+                 id: Optional[str] = None,
+                 start_event_identifier: Optional[str] = None,
+                 start_event_label_id: Optional[str] = None):
+        """
+        :param str name: The name of the value stream stage.
+        :param bool custom: Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
+        :param str end_event_identifier: End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        :param str end_event_label_id: Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+        :param bool hidden: Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
+        :param str id: The ID of the value stream stage.
+        :param str start_event_identifier: Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        :param str start_event_label_id: Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+        """
+        pulumi.set(__self__, "name", name)
+        if custom is not None:
+            pulumi.set(__self__, "custom", custom)
+        if end_event_identifier is not None:
+            pulumi.set(__self__, "end_event_identifier", end_event_identifier)
+        if end_event_label_id is not None:
+            pulumi.set(__self__, "end_event_label_id", end_event_label_id)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if start_event_identifier is not None:
+            pulumi.set(__self__, "start_event_identifier", start_event_identifier)
+        if start_event_label_id is not None:
+            pulumi.set(__self__, "start_event_label_id", start_event_label_id)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the value stream stage.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def custom(self) -> Optional[bool]:
+        """
+        Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
+        """
+        return pulumi.get(self, "custom")
+
+    @property
+    @pulumi.getter(name="endEventIdentifier")
+    def end_event_identifier(self) -> Optional[str]:
+        """
+        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        """
+        return pulumi.get(self, "end_event_identifier")
+
+    @property
+    @pulumi.getter(name="endEventLabelId")
+    def end_event_label_id(self) -> Optional[str]:
+        """
+        Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+        """
+        return pulumi.get(self, "end_event_label_id")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[bool]:
+        """
+        Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
+        """
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of the value stream stage.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="startEventIdentifier")
+    def start_event_identifier(self) -> Optional[str]:
+        """
+        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        """
+        return pulumi.get(self, "start_event_identifier")
+
+    @property
+    @pulumi.getter(name="startEventLabelId")
+    def start_event_label_id(self) -> Optional[str]:
+        """
+        Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
+        """
+        return pulumi.get(self, "start_event_label_id")
 
 
 @pulumi.output_type
