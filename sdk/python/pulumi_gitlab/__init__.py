@@ -159,6 +159,7 @@ from .user_gpg_key import *
 from .user_impersonation_token import *
 from .user_runner import *
 from .user_ssh_key import *
+from .value_stream_analytics import *
 from ._inputs import *
 from . import outputs
 
@@ -962,6 +963,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userSshKey:UserSshKey": "UserSshKey"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/valueStreamAnalytics",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics": "ValueStreamAnalytics"
   }
  }
 ]

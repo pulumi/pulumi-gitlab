@@ -689,6 +689,15 @@
             "gitlab_user_sshkey": {
                 "current": "gitlab:index/userSshKey:UserSshKey",
                 "majorVersion": 8
+            },
+            "gitlab_value_stream_analytics": {
+                "current": "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics",
+                "majorVersion": 8,
+                "fields": {
+                    "stages": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -1003,6 +1012,9 @@
                 "fields": {
                     "members": {
                         "maxItemsOne": false
+                    },
+                    "user_ids": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1266,7 +1278,17 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "datasources": {
+            "gitlab_project_issues": {
+                "maxItemsOneOverrides": {
+                    "not_assignee_id": false,
+                    "not_author_id": false,
+                    "not_my_reaction_emoji": false
+                }
+            }
+        }
+    },
     "mux": {
         "resources": {
             "gitlab:index/application:Application": 1,
@@ -1367,7 +1389,8 @@
             "gitlab:index/userGpgKey:UserGpgKey": 0,
             "gitlab:index/userImpersonationToken:UserImpersonationToken": 1,
             "gitlab:index/userRunner:UserRunner": 1,
-            "gitlab:index/userSshKey:UserSshKey": 0
+            "gitlab:index/userSshKey:UserSshKey": 0,
+            "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics": 1
         },
         "functions": {
             "gitlab:index/getApplication:getApplication": 1,

@@ -33,6 +33,8 @@ import (
 //			_, err := gitlab.NewProjectHook(ctx, "example", &gitlab.ProjectHookArgs{
 //				Project:             pulumi.String("example/hooked"),
 //				Url:                 pulumi.String("https://example.com/hook/example"),
+//				Name:                pulumi.String("example"),
+//				Description:         pulumi.String("Example hook"),
 //				MergeRequestsEvents: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -100,6 +102,8 @@ type ProjectHook struct {
 	CustomWebhookTemplate pulumi.StringOutput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolOutput `pulumi:"deploymentEvents"`
+	// Description of the webhook.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolOutput `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -110,6 +114,8 @@ type ProjectHook struct {
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// Invoke the hook for merge requests events.
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
+	// Name of the project webhook.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Invoke the hook for note events.
 	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
@@ -187,6 +193,8 @@ type projectHookState struct {
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
+	// Description of the webhook.
+	Description *string `pulumi:"description"`
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -197,6 +205,8 @@ type projectHookState struct {
 	JobEvents *bool `pulumi:"jobEvents"`
 	// Invoke the hook for merge requests events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Name of the project webhook.
+	Name *string `pulumi:"name"`
 	// Invoke the hook for note events.
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
@@ -232,6 +242,8 @@ type ProjectHookState struct {
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrInput
+	// Description of the webhook.
+	Description pulumi.StringPtrInput
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// The id of the project hook.
@@ -242,6 +254,8 @@ type ProjectHookState struct {
 	JobEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events.
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Name of the project webhook.
+	Name pulumi.StringPtrInput
 	// Invoke the hook for note events.
 	NoteEvents pulumi.BoolPtrInput
 	// Invoke the hook for pipeline events.
@@ -281,6 +295,8 @@ type projectHookArgs struct {
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
+	// Description of the webhook.
+	Description *string `pulumi:"description"`
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Invoke the hook for issues events.
@@ -289,6 +305,8 @@ type projectHookArgs struct {
 	JobEvents *bool `pulumi:"jobEvents"`
 	// Invoke the hook for merge requests events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Name of the project webhook.
+	Name *string `pulumi:"name"`
 	// Invoke the hook for note events.
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
@@ -323,6 +341,8 @@ type ProjectHookArgs struct {
 	CustomWebhookTemplate pulumi.StringPtrInput
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolPtrInput
+	// Description of the webhook.
+	Description pulumi.StringPtrInput
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Invoke the hook for issues events.
@@ -331,6 +351,8 @@ type ProjectHookArgs struct {
 	JobEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events.
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Name of the project webhook.
+	Name pulumi.StringPtrInput
 	// Invoke the hook for note events.
 	NoteEvents pulumi.BoolPtrInput
 	// Invoke the hook for pipeline events.
@@ -465,6 +487,11 @@ func (o ProjectHookOutput) DeploymentEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.DeploymentEvents }).(pulumi.BoolOutput)
 }
 
+// Description of the webhook.
+func (o ProjectHookOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
 // Enable SSL verification when invoking the hook.
 func (o ProjectHookOutput) EnableSslVerification() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.EnableSslVerification }).(pulumi.BoolOutput)
@@ -488,6 +515,11 @@ func (o ProjectHookOutput) JobEvents() pulumi.BoolOutput {
 // Invoke the hook for merge requests events.
 func (o ProjectHookOutput) MergeRequestsEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
+}
+
+// Name of the project webhook.
+func (o ProjectHookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Invoke the hook for note events.

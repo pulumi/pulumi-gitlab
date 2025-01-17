@@ -95,6 +95,21 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Description of the webhook.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of the webhook.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Enable SSL verification when invoking the hook.
      * 
      */
@@ -167,6 +182,21 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> mergeRequestsEvents() {
         return Optional.ofNullable(this.mergeRequestsEvents);
+    }
+
+    /**
+     * Name of the project webhook.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of the project webhook.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -342,11 +372,13 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         this.customHeaders = $.customHeaders;
         this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
+        this.description = $.description;
         this.enableSslVerification = $.enableSslVerification;
         this.hookId = $.hookId;
         this.issuesEvents = $.issuesEvents;
         this.jobEvents = $.jobEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
+        this.name = $.name;
         this.noteEvents = $.noteEvents;
         this.pipelineEvents = $.pipelineEvents;
         this.project = $.project;
@@ -494,6 +526,27 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param description Description of the webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of the webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param enableSslVerification Enable SSL verification when invoking the hook.
          * 
          * @return builder
@@ -596,6 +649,27 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mergeRequestsEvents(Boolean mergeRequestsEvents) {
             return mergeRequestsEvents(Output.of(mergeRequestsEvents));
+        }
+
+        /**
+         * @param name Name of the project webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of the project webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

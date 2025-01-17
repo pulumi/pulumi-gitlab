@@ -46,6 +46,11 @@ public final class GetProjectMembershipResult {
      * 
      */
     private @Nullable String query;
+    /**
+     * @return List of user ids to filter members by
+     * 
+     */
+    private @Nullable List<Integer> userIds;
 
     private GetProjectMembershipResult() {}
     /**
@@ -90,6 +95,13 @@ public final class GetProjectMembershipResult {
     public Optional<String> query() {
         return Optional.ofNullable(this.query);
     }
+    /**
+     * @return List of user ids to filter members by
+     * 
+     */
+    public List<Integer> userIds() {
+        return this.userIds == null ? List.of() : this.userIds;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -106,6 +118,7 @@ public final class GetProjectMembershipResult {
         private List<GetProjectMembershipMember> members;
         private Integer projectId;
         private @Nullable String query;
+        private @Nullable List<Integer> userIds;
         public Builder() {}
         public Builder(GetProjectMembershipResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,6 +128,7 @@ public final class GetProjectMembershipResult {
     	      this.members = defaults.members;
     	      this.projectId = defaults.projectId;
     	      this.query = defaults.query;
+    	      this.userIds = defaults.userIds;
         }
 
         @CustomType.Setter
@@ -164,6 +178,15 @@ public final class GetProjectMembershipResult {
             this.query = query;
             return this;
         }
+        @CustomType.Setter
+        public Builder userIds(@Nullable List<Integer> userIds) {
+
+            this.userIds = userIds;
+            return this;
+        }
+        public Builder userIds(Integer... userIds) {
+            return userIds(List.of(userIds));
+        }
         public GetProjectMembershipResult build() {
             final var _resultValue = new GetProjectMembershipResult();
             _resultValue.fullPath = fullPath;
@@ -172,6 +195,7 @@ public final class GetProjectMembershipResult {
             _resultValue.members = members;
             _resultValue.projectId = projectId;
             _resultValue.query = query;
+            _resultValue.userIds = userIds;
             return _resultValue;
         }
     }

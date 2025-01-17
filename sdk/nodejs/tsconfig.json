@@ -173,6 +173,7 @@
         "userImpersonationToken.ts",
         "userRunner.ts",
         "userSshKey.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "valueStreamAnalytics.ts"
     ]
 }

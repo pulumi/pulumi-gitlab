@@ -21,6 +21,7 @@ export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pul
         "inherited": args.inherited,
         "projectId": args.projectId,
         "query": args.query,
+        "userIds": args.userIds,
     }, opts);
 }
 
@@ -44,6 +45,10 @@ export interface GetProjectMembershipArgs {
      * A query string to search for members
      */
     query?: string;
+    /**
+     * List of user ids to filter members by
+     */
+    userIds?: number[];
 }
 
 /**
@@ -74,6 +79,10 @@ export interface GetProjectMembershipResult {
      * A query string to search for members
      */
     readonly query?: string;
+    /**
+     * List of user ids to filter members by
+     */
+    readonly userIds?: number[];
 }
 /**
  * The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
@@ -90,6 +99,7 @@ export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs
         "inherited": args.inherited,
         "projectId": args.projectId,
         "query": args.query,
+        "userIds": args.userIds,
     }, opts);
 }
 
@@ -113,4 +123,8 @@ export interface GetProjectMembershipOutputArgs {
      * A query string to search for members
      */
     query?: pulumi.Input<string>;
+    /**
+     * List of user ids to filter members by
+     */
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
 }

@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  *         var example = new ProjectHook("example", ProjectHookArgs.builder()
  *             .project("example/hooked")
  *             .url("https://example.com/hook/example")
+ *             .name("example")
+ *             .description("Example hook")
  *             .mergeRequestsEvents(true)
  *             .build());
  * 
@@ -176,6 +178,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.deploymentEvents;
     }
     /**
+     * Description of the webhook.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return Description of the webhook.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
      * Enable SSL verification when invoking the hook.
      * 
      */
@@ -244,6 +260,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mergeRequestsEvents() {
         return this.mergeRequestsEvents;
+    }
+    /**
+     * Name of the project webhook.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return Name of the project webhook.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * Invoke the hook for note events.

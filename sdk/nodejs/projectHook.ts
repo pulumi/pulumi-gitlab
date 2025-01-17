@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  * const example = new gitlab.ProjectHook("example", {
  *     project: "example/hooked",
  *     url: "https://example.com/hook/example",
+ *     name: "example",
+ *     description: "Example hook",
  *     mergeRequestsEvents: true,
  * });
  * // Using Custom Headers
@@ -114,6 +116,10 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly deploymentEvents!: pulumi.Output<boolean>;
     /**
+     * Description of the webhook.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     public readonly enableSslVerification!: pulumi.Output<boolean>;
@@ -133,6 +139,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * Invoke the hook for merge requests events.
      */
     public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
+    /**
+     * Name of the project webhook.
+     */
+    public readonly name!: pulumi.Output<string>;
     /**
      * Invoke the hook for note events.
      */
@@ -196,11 +206,13 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["customHeaders"] = state ? state.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
             resourceInputs["hookId"] = state ? state.hookId : undefined;
             resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
             resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
             resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
             resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -225,10 +237,12 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
             resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
             resourceInputs["jobEvents"] = args ? args.jobEvents : undefined;
             resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
             resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -274,6 +288,10 @@ export interface ProjectHookState {
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
+     * Description of the webhook.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     enableSslVerification?: pulumi.Input<boolean>;
@@ -293,6 +311,10 @@ export interface ProjectHookState {
      * Invoke the hook for merge requests events.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
+    /**
+     * Name of the project webhook.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Invoke the hook for note events.
      */
@@ -364,6 +386,10 @@ export interface ProjectHookArgs {
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
+     * Description of the webhook.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     enableSslVerification?: pulumi.Input<boolean>;
@@ -379,6 +405,10 @@ export interface ProjectHookArgs {
      * Invoke the hook for merge requests events.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
+    /**
+     * Name of the project webhook.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Invoke the hook for note events.
      */
