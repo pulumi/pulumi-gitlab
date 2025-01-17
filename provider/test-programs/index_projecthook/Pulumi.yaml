@@ -14,6 +14,7 @@ resources:
     type: gitlab:Project
   my_gitlab_projecthook:
     properties:
+      name: webhook-receiver
       confidentialIssuesEvents: true
       issuesEvents: true
       jobEvents: true
