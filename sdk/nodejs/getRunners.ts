@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *         "tag2",
  *     ],
  * });
- * const this = gitlab.getRunners({
+ * const _this = gitlab.getRunners({
  *     paused: false,
  *     status: "online",
  *     tagLists: [
@@ -112,7 +112,7 @@ export interface GetRunnersResult {
  *         "tag2",
  *     ],
  * });
- * const this = gitlab.getRunners({
+ * const _this = gitlab.getRunners({
  *     paused: false,
  *     status: "online",
  *     tagLists: [

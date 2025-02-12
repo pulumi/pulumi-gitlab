@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     name: "example",
  *     initializeWithReadme: true,
  * });
- * const this = gitlab.getProjectEnvironmentsOutput({
+ * const _this = gitlab.getProjectEnvironmentsOutput({
  *     project: thisProject.pathWithNamespace,
  * });
  * ```
@@ -99,7 +99,7 @@ export interface GetProjectEnvironmentsResult {
  *     name: "example",
  *     initializeWithReadme: true,
  * });
- * const this = gitlab.getProjectEnvironmentsOutput({
+ * const _this = gitlab.getProjectEnvironmentsOutput({
  *     project: thisProject.pathWithNamespace,
  * });
  * ```
