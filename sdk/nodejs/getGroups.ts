@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     sort: "desc",
  *     orderBy: "name",
  * });
- * const example-two = gitlab.getGroups({
+ * const example_two = gitlab.getGroups({
  *     search: "GitLab",
  * });
  * ```
@@ -111,7 +111,7 @@ export interface GetGroupsResult {
  *     sort: "desc",
  *     orderBy: "name",
  * });
- * const example-two = gitlab.getGroups({
+ * const example_two = gitlab.getGroups({
  *     search: "GitLab",
  * });
  * ```

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     orderBy: "name",
  *     createdBefore: "2019-01-01",
  * });
- * const example-two = gitlab.getUsers({
+ * const example_two = gitlab.getUsers({
  *     search: "username",
  * });
  * ```
@@ -158,7 +158,7 @@ export interface GetUsersResult {
  *     orderBy: "name",
  *     createdBefore: "2019-01-01",
  * });
- * const example-two = gitlab.getUsers({
+ * const example_two = gitlab.getUsers({
  *     search: "username",
  * });
  * ```
