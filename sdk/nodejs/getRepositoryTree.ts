@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const this = gitlab.getRepositoryTree({
+ * const _this = gitlab.getRepositoryTree({
  *     project: "example",
  *     ref: "main",
  *     path: "ExampleSubFolder",
@@ -97,7 +97,7 @@ export interface GetRepositoryTreeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const this = gitlab.getRepositoryTree({
+ * const _this = gitlab.getRepositoryTree({
  *     project: "example",
  *     ref: "main",
  *     path: "ExampleSubFolder",

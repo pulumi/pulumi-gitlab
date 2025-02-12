@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const this = gitlab.getMetadata({});
+ * const _this = gitlab.getMetadata({});
  * ```
  */
 export function getMetadata(opts?: pulumi.InvokeOptions): Promise<GetMetadataResult> {
@@ -62,7 +62,7 @@ export interface GetMetadataResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const this = gitlab.getMetadata({});
+ * const _this = gitlab.getMetadata({});
  * ```
  */
 export function getMetadataOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetadataResult> {

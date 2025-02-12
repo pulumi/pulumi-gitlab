@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * // The following example creates a GitLab Agent for Kubernetes in a given project,
  * // creates a token and install the `gitlab-agent` Helm Chart.
  * // (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
- * const this = gitlab.getProject({
+ * const _this = gitlab.getProject({
  *     pathWithNamespace: "my-org/example",
  * });
  * const thisClusterAgent = new gitlab.ClusterAgent("this", {
