@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Managing GPG keys for arbitrary users requires admin privileges.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#get-a-specific-gpg-key)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-specific-gpg-key)
     /// 
     /// ## Example Usage
     /// 

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
  *
  * ## Import
  *
@@ -60,7 +60,7 @@ export class PagesDomain extends pulumi.CustomResource {
     }
 
     /**
-     * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+     * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
      */
     public readonly autoSslEnabled!: pulumi.Output<boolean>;
     /**
@@ -80,7 +80,7 @@ export class PagesDomain extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string | undefined>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export class PagesDomain extends pulumi.CustomResource {
  */
 export interface PagesDomainState {
     /**
-     * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+     * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
      */
     autoSslEnabled?: pulumi.Input<boolean>;
     /**
@@ -168,7 +168,7 @@ export interface PagesDomainState {
      */
     key?: pulumi.Input<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      */
     project?: pulumi.Input<string>;
     /**
@@ -190,7 +190,7 @@ export interface PagesDomainState {
  */
 export interface PagesDomainArgs {
     /**
-     * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+     * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
      */
     autoSslEnabled?: pulumi.Input<boolean>;
     /**
@@ -210,7 +210,7 @@ export interface PagesDomainArgs {
      */
     key?: pulumi.Input<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      */
     project: pulumi.Input<string>;
 }

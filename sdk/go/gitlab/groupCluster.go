@@ -16,7 +16,7 @@ import (
 //
 // > This is deprecated GitLab feature since 14.5
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_clusters/)
 //
 // ## Example Usage
 //

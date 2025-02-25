@@ -13,7 +13,7 @@ import (
 
 // The `getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 //
 // ## Example Usage
 //
@@ -72,8 +72,7 @@ type GetGroupVariablesResult struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id    string `pulumi:"id"`
 	// The list of variables returned by the search
 	Variables []GetGroupVariablesVariable `pulumi:"variables"`
 }
@@ -124,7 +123,6 @@ func (o GetGroupVariablesResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetGroupVariablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -19,14 +19,12 @@ import javax.annotation.Nullable;
  * 
  * &gt; Note that this resource only registers the agent, but doesn&#39;t configure it.
  *    The configuration needs to be manually added as described in
- *    [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
+ *    [the docs](https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file).
  *    However, a `gitlab.RepositoryFile` resource may be used to achieve that.
  * 
  * &gt; Requires at least maintainer permissions on the project.
  * 
- * &gt; Requires at least GitLab 14.10
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
  * 
  * ## Example Usage
  * 
@@ -61,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Optionally, configure the agent as described in
- *         // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
+ *         // https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file
  *         var exampleAgentConfig = new RepositoryFile("exampleAgentConfig", RepositoryFileArgs.builder()
  *             .project(example.project())
  *             .branch("main")

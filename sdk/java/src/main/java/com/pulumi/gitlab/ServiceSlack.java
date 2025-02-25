@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource is deprecated. use `gitlab.IntegrationSlack`instead!
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#slack-notifications)
  * 
  * ## Example Usage
  * 

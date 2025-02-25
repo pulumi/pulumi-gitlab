@@ -63,6 +63,21 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    @Import(name="hidden")
+    private @Nullable Output<Boolean> hidden;
+
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    public Optional<Output<Boolean>> hidden() {
+        return Optional.ofNullable(this.hidden);
+    }
+
+    /**
      * The name of the variable.
      * 
      */
@@ -78,14 +93,14 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     @Import(name="masked")
     private @Nullable Output<Boolean> masked;
 
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     public Optional<Output<Boolean>> masked() {
@@ -93,14 +108,14 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     @Import(name="protected")
     private @Nullable Output<Boolean> protected_;
 
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     public Optional<Output<Boolean>> protected_() {
@@ -108,14 +123,14 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      * 
      */
     @Import(name="raw")
     private @Nullable Output<Boolean> raw;
 
     /**
-     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * @return Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      * 
      */
     public Optional<Output<Boolean>> raw() {
@@ -138,14 +153,14 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Valid values are: `env_var`, `file`.
      * 
      */
     @Import(name="variableType")
     private @Nullable Output<String> variableType;
 
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of a variable. Valid values are: `env_var`, `file`.
      * 
      */
     public Optional<Output<String>> variableType() {
@@ -158,6 +173,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.environmentScope = $.environmentScope;
         this.group = $.group;
+        this.hidden = $.hidden;
         this.key = $.key;
         this.masked = $.masked;
         this.protected_ = $.protected_;
@@ -248,6 +264,27 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hidden If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(@Nullable Output<Boolean> hidden) {
+            $.hidden = hidden;
+            return this;
+        }
+
+        /**
+         * @param hidden If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(Boolean hidden) {
+            return hidden(Output.of(hidden));
+        }
+
+        /**
          * @param key The name of the variable.
          * 
          * @return builder
@@ -269,7 +306,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masked If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+         * @param masked If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
          * 
          * @return builder
          * 
@@ -280,7 +317,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masked If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+         * @param masked If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
          * 
          * @return builder
          * 
@@ -290,7 +327,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protected_ If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+         * @param protected_ If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
          * 
          * @return builder
          * 
@@ -301,7 +338,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protected_ If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+         * @param protected_ If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
          * 
          * @return builder
          * 
@@ -311,7 +348,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param raw Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+         * @param raw Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
          * 
          * @return builder
          * 
@@ -322,7 +359,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param raw Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+         * @param raw Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
          * 
          * @return builder
          * 
@@ -353,7 +390,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variableType The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+         * @param variableType The type of a variable. Valid values are: `env_var`, `file`.
          * 
          * @return builder
          * 
@@ -364,7 +401,7 @@ public final class GroupVariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variableType The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+         * @param variableType The type of a variable. Valid values are: `env_var`, `file`.
          * 
          * @return builder
          * 

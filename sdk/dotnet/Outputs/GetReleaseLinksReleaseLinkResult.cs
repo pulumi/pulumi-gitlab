@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetReleaseLinksReleaseLinkResult
     {
         /// <summary>
-        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         public readonly string DirectAssetUrl;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool External;
         /// <summary>
-        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         public readonly string Filepath;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         public readonly string Project;
         /// <summary>

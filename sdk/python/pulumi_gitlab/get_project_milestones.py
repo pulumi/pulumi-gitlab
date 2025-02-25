@@ -73,7 +73,7 @@ class GetProjectMilestonesResult:
     @pulumi.getter(name="includeParentMilestones")
     def include_parent_milestones(self) -> Optional[bool]:
         """
-        Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+        Include group milestones from parent group and its ancestors.
         """
         return pulumi.get(self, "include_parent_milestones")
 
@@ -144,11 +144,11 @@ def get_project_milestones(iids: Optional[Sequence[int]] = None,
     """
     The `get_project_milestones` data source allows get details of a project milestones.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
-    :param bool include_parent_milestones: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+    :param bool include_parent_milestones: Include group milestones from parent group and its ancestors.
     :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     :param str search: Return only milestones with a title or description matching the provided string.
     :param str state: Return only `active` or `closed` milestones.
@@ -183,11 +183,11 @@ def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[
     """
     The `get_project_milestones` data source allows get details of a project milestones.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 
 
     :param Sequence[int] iids: Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
-    :param bool include_parent_milestones: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+    :param bool include_parent_milestones: Include group milestones from parent group and its ancestors.
     :param str project: The ID or URL-encoded path of the project owned by the authenticated user.
     :param str search: Return only milestones with a title or description matching the provided string.
     :param str state: Return only `active` or `closed` milestones.
