@@ -14,7 +14,7 @@ import (
 
 // The `Branch` resource allows to manage the lifecycle of a repository branch.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
 //
 // ## Example Usage
 //

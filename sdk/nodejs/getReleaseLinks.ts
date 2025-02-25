@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getReleaseLinks` data source allows get details of release links.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  */
 export function getReleaseLinks(args: GetReleaseLinksArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,7 +57,7 @@ export interface GetReleaseLinksResult {
 /**
  * The `gitlab.getReleaseLinks` data source allows get details of release links.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  */
 export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReleaseLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

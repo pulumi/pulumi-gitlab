@@ -138,14 +138,14 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * Enables or disables the execute flag on the file.
      * 
      */
     @Import(name="executeFilemode")
     private @Nullable Output<Boolean> executeFilemode;
 
     /**
-     * @return Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * @return Enables or disables the execute flag on the file.
      * 
      */
     public Optional<Output<Boolean>> executeFilemode() {
@@ -433,7 +433,7 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param executeFilemode Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+         * @param executeFilemode Enables or disables the execute flag on the file.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param executeFilemode Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+         * @param executeFilemode Enables or disables the execute flag on the file.
          * 
          * @return builder
          * 

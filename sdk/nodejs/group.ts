@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
  *
  * ## Example Usage
  *
@@ -159,7 +159,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly defaultBranch!: pulumi.Output<string | undefined>;
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
      * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
      */
@@ -402,7 +402,7 @@ export interface GroupState {
      */
     defaultBranch?: pulumi.Input<string>;
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
      * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
      */
@@ -546,7 +546,7 @@ export interface GroupArgs {
      */
     defaultBranch?: pulumi.Input<string>;
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
      * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
      */

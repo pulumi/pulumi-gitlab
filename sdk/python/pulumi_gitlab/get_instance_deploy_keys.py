@@ -81,7 +81,7 @@ def get_instance_deploy_keys(public: Optional[bool] = None,
 
     > This data source requires administration privileges.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
 
 
     :param bool public: Only return deploy keys that are public.
@@ -102,7 +102,7 @@ def get_instance_deploy_keys_output(public: Optional[pulumi.Input[Optional[bool]
 
     > This data source requires administration privileges.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
 
 
     :param bool public: Only return deploy keys that are public.

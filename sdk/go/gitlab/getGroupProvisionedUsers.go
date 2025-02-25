@@ -13,7 +13,7 @@ import (
 
 // The `getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
 func GetGroupProvisionedUsers(ctx *pulumi.Context, args *GetGroupProvisionedUsersArgs, opts ...pulumi.InvokeOption) (*GetGroupProvisionedUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupProvisionedUsersResult

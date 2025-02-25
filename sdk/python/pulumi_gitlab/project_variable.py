@@ -35,10 +35,10 @@ class ProjectVariableArgs:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project", project)
@@ -120,7 +120,7 @@ class ProjectVariableArgs:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -132,7 +132,7 @@ class ProjectVariableArgs:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -144,7 +144,7 @@ class ProjectVariableArgs:
     @pulumi.getter
     def raw(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
@@ -156,7 +156,7 @@ class ProjectVariableArgs:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -182,12 +182,12 @@ class _ProjectVariableState:
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[str] project: The name or id of the project.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -248,7 +248,7 @@ class _ProjectVariableState:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -272,7 +272,7 @@ class _ProjectVariableState:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -284,7 +284,7 @@ class _ProjectVariableState:
     @pulumi.getter
     def raw(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
@@ -308,7 +308,7 @@ class _ProjectVariableState:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -333,11 +333,9 @@ class ProjectVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `ProjectVariable` resource allows to manage the lifecycle of a CI/CD variable for a project.
+        The `ProjectVariable` resource allows creating and managing a GitLab project level variable.
 
-        > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 
         ## Example Usage
 
@@ -379,12 +377,12 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[str] project: The name or id of the project.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         ...
     @overload
@@ -393,11 +391,9 @@ class ProjectVariable(pulumi.CustomResource):
                  args: ProjectVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectVariable` resource allows to manage the lifecycle of a CI/CD variable for a project.
+        The `ProjectVariable` resource allows creating and managing a GitLab project level variable.
 
-        > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 
         ## Example Usage
 
@@ -511,12 +507,12 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[str] project: The name or id of the project.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -535,7 +531,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the variable.
         """
@@ -543,7 +539,7 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> pulumi.Output[Optional[str]]:
+    def environment_scope(self) -> pulumi.Output[str]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         """
@@ -559,9 +555,9 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def masked(self) -> pulumi.Output[Optional[bool]]:
+    def masked(self) -> pulumi.Output[bool]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -575,17 +571,17 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protected(self) -> pulumi.Output[Optional[bool]]:
+    def protected(self) -> pulumi.Output[bool]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
-    def raw(self) -> pulumi.Output[Optional[bool]]:
+    def raw(self) -> pulumi.Output[bool]:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
@@ -599,9 +595,9 @@ class ProjectVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> pulumi.Output[Optional[str]]:
+    def variable_type(self) -> pulumi.Output[str]:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 

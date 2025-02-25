@@ -12,11 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectVariable` resource allows to manage the lifecycle of a CI/CD variable for a project.
+// The `ProjectVariable` resource allows creating and managing a GitLab project level variable.
 //
-// > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 //
 // ## Example Usage
 //
@@ -72,23 +70,23 @@ type ProjectVariable struct {
 	pulumi.CustomResourceState
 
 	// The description of the variable.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
+	EnvironmentScope pulumi.StringOutput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+	Masked pulumi.BoolOutput `pulumi:"masked"`
 	// The name or id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-	Raw pulumi.BoolPtrOutput `pulumi:"raw"`
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+	Protected pulumi.BoolOutput `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+	Raw pulumi.BoolOutput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-	VariableType pulumi.StringPtrOutput `pulumi:"variableType"`
+	// The type of a variable. Valid values are: `envVar`, `file`.
+	VariableType pulumi.StringOutput `pulumi:"variableType"`
 }
 
 // NewProjectVariable registers a new resource with the given unique name, arguments, and options.
@@ -136,17 +134,17 @@ type projectVariableState struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project *string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected *bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType *string `pulumi:"variableType"`
 }
 
@@ -157,17 +155,17 @@ type ProjectVariableState struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolPtrInput
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -182,17 +180,17 @@ type projectVariableArgs struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected *bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType *string `pulumi:"variableType"`
 }
 
@@ -204,17 +202,17 @@ type ProjectVariableArgs struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolPtrInput
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -306,13 +304,13 @@ func (o ProjectVariableOutput) ToProjectVariableOutputWithContext(ctx context.Co
 }
 
 // The description of the variable.
-func (o ProjectVariableOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ProjectVariableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-func (o ProjectVariableOutput) EnvironmentScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+func (o ProjectVariableOutput) EnvironmentScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.EnvironmentScope }).(pulumi.StringOutput)
 }
 
 // The name of the variable.
@@ -320,9 +318,9 @@ func (o ProjectVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-func (o ProjectVariableOutput) Masked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
+// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+func (o ProjectVariableOutput) Masked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolOutput { return v.Masked }).(pulumi.BoolOutput)
 }
 
 // The name or id of the project.
@@ -330,14 +328,14 @@ func (o ProjectVariableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-func (o ProjectVariableOutput) Protected() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+func (o ProjectVariableOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolOutput { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-func (o ProjectVariableOutput) Raw() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolPtrOutput { return v.Raw }).(pulumi.BoolPtrOutput)
+// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+func (o ProjectVariableOutput) Raw() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolOutput { return v.Raw }).(pulumi.BoolOutput)
 }
 
 // The value of the variable.
@@ -345,9 +343,9 @@ func (o ProjectVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-func (o ProjectVariableOutput) VariableType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
+// The type of a variable. Valid values are: `envVar`, `file`.
+func (o ProjectVariableOutput) VariableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.VariableType }).(pulumi.StringOutput)
 }
 
 type ProjectVariableArrayOutput struct{ *pulumi.OutputState }

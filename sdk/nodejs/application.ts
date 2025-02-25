@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * > In order to use a user for a user to create an application, they must have admin privileges at the instance level.
  * To create an OIDC application, a scope of "openid".
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
  *
  * ## Example Usage
  *

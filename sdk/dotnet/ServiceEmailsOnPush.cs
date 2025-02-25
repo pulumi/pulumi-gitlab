@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource is deprecated. Please use `gitlab.IntegrationEmailsOnPush` instead!
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#emails-on-push)
     /// 
     /// ## Example Usage
     /// 

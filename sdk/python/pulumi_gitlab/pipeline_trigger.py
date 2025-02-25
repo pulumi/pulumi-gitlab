@@ -137,7 +137,7 @@ class PipelineTrigger(pulumi.CustomResource):
         """
         The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_triggers/)
 
         ## Example Usage
 
@@ -186,7 +186,7 @@ class PipelineTrigger(pulumi.CustomResource):
         """
         The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_triggers/)
 
         ## Example Usage
 
