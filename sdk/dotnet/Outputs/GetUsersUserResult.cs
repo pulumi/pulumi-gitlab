@@ -42,7 +42,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string CurrentSignInAt;
         /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        /// The public email address of the user.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        /// The ID of the user's namespace. Requires admin token to access this field.
         /// </summary>
         public readonly int NamespaceId;
         /// <summary>

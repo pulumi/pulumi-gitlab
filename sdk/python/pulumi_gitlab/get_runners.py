@@ -115,7 +115,7 @@ def get_runners(paused: Optional[bool] = None,
     """
     The `get_runners` data source retrieves information about all gitlab runners.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#list-all-runners)
 
     ## Example Usage
 
@@ -167,7 +167,7 @@ def get_runners_output(paused: Optional[pulumi.Input[Optional[bool]]] = None,
     """
     The `get_runners` data source retrieves information about all gitlab runners.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#list-all-runners)
 
     ## Example Usage
 

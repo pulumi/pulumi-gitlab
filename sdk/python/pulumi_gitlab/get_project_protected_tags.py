@@ -79,7 +79,7 @@ def get_project_protected_tags(project: Optional[str] = None,
     """
     The `get_project_protected_tags` data source allows details of the protected tags of a given project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#list-protected-tags)
 
 
     :param str project: The integer or path with namespace that uniquely identifies the project.
@@ -98,7 +98,7 @@ def get_project_protected_tags_output(project: Optional[pulumi.Input[str]] = Non
     """
     The `get_project_protected_tags` data source allows details of the protected tags of a given project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#list-protected-tags)
 
 
     :param str project: The integer or path with namespace that uniquely identifies the project.

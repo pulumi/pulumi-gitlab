@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
  *
  * ## Example Usage
  *
@@ -88,7 +88,7 @@ export class IntegrationTelegram extends pulumi.CustomResource {
     }
 
     /**
-     * Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      */
     public readonly branchesToBeNotified!: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export class IntegrationTelegram extends pulumi.CustomResource {
  */
 export interface IntegrationTelegramState {
     /**
-     * Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -298,7 +298,7 @@ export interface IntegrationTelegramState {
  */
 export interface IntegrationTelegramArgs {
     /**
-     * Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**

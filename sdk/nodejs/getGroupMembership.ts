@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
  */
 export function getGroupMembership(args?: GetGroupMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipResult> {
     args = args || {};
@@ -61,7 +61,7 @@ export interface GetGroupMembershipResult {
      */
     readonly groupId: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of the group membership. In the format of `<group-id:access-level>`.
      */
     readonly id: string;
     /**
@@ -76,7 +76,7 @@ export interface GetGroupMembershipResult {
 /**
  * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
  */
 export function getGroupMembershipOutput(args?: GetGroupMembershipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupMembershipResult> {
     args = args || {};

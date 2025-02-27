@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
         /// 
         /// ## Example Usage
         /// 
@@ -164,9 +164,6 @@ namespace Pulumi.GitLab
         /// The name or id of the group.
         /// </summary>
         public readonly string Group;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The list of variables returned by the search

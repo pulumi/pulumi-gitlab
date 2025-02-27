@@ -1759,7 +1759,7 @@ type GroupPushRules struct {
 	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
 	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
 	BranchNameRegex *string `pulumi:"branchNameRegex"`
-	// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	// Only commits pushed using verified emails are allowed.
 	CommitCommitterCheck *bool `pulumi:"commitCommitterCheck"`
 	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
 	CommitCommitterNameCheck *bool `pulumi:"commitCommitterNameCheck"`
@@ -1779,7 +1779,7 @@ type GroupPushRules struct {
 	PreventSecrets *bool `pulumi:"preventSecrets"`
 	// Reject commit when it’s not DCO certified.
 	RejectNonDcoCommits *bool `pulumi:"rejectNonDcoCommits"`
-	// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	// Only commits signed through GPG are allowed.
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
 
@@ -1799,7 +1799,7 @@ type GroupPushRulesArgs struct {
 	AuthorEmailRegex pulumi.StringPtrInput `pulumi:"authorEmailRegex"`
 	// All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
 	BranchNameRegex pulumi.StringPtrInput `pulumi:"branchNameRegex"`
-	// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	// Only commits pushed using verified emails are allowed.
 	CommitCommitterCheck pulumi.BoolPtrInput `pulumi:"commitCommitterCheck"`
 	// Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
 	CommitCommitterNameCheck pulumi.BoolPtrInput `pulumi:"commitCommitterNameCheck"`
@@ -1819,7 +1819,7 @@ type GroupPushRulesArgs struct {
 	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
 	// Reject commit when it’s not DCO certified.
 	RejectNonDcoCommits pulumi.BoolPtrInput `pulumi:"rejectNonDcoCommits"`
-	// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+	// Only commits signed through GPG are allowed.
 	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
 }
 
@@ -1910,7 +1910,7 @@ func (o GroupPushRulesOutput) BranchNameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *string { return v.BranchNameRegex }).(pulumi.StringPtrOutput)
 }
 
-// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+// Only commits pushed using verified emails are allowed.
 func (o GroupPushRulesOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *bool { return v.CommitCommitterCheck }).(pulumi.BoolPtrOutput)
 }
@@ -1960,7 +1960,7 @@ func (o GroupPushRulesOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *bool { return v.RejectNonDcoCommits }).(pulumi.BoolPtrOutput)
 }
 
-// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+// Only commits signed through GPG are allowed.
 func (o GroupPushRulesOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupPushRules) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
 }
@@ -2009,7 +2009,7 @@ func (o GroupPushRulesPtrOutput) BranchNameRegex() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+// Only commits pushed using verified emails are allowed.
 func (o GroupPushRulesPtrOutput) CommitCommitterCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GroupPushRules) *bool {
 		if v == nil {
@@ -2109,7 +2109,7 @@ func (o GroupPushRulesPtrOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+// Only commits signed through GPG are allowed.
 func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GroupPushRules) *bool {
 		if v == nil {
@@ -4288,6 +4288,972 @@ func (o ProjectTagReleaseArrayOutput) Index(i pulumi.IntInput) ProjectTagRelease
 	}).(ProjectTagReleaseOutput)
 }
 
+type ReleaseAssets struct {
+	// The total count of assets in this release.
+	Count *int `pulumi:"count"`
+}
+
+// ReleaseAssetsInput is an input type that accepts ReleaseAssetsArgs and ReleaseAssetsOutput values.
+// You can construct a concrete instance of `ReleaseAssetsInput` via:
+//
+//	ReleaseAssetsArgs{...}
+type ReleaseAssetsInput interface {
+	pulumi.Input
+
+	ToReleaseAssetsOutput() ReleaseAssetsOutput
+	ToReleaseAssetsOutputWithContext(context.Context) ReleaseAssetsOutput
+}
+
+type ReleaseAssetsArgs struct {
+	// The total count of assets in this release.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+}
+
+func (ReleaseAssetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseAssets)(nil)).Elem()
+}
+
+func (i ReleaseAssetsArgs) ToReleaseAssetsOutput() ReleaseAssetsOutput {
+	return i.ToReleaseAssetsOutputWithContext(context.Background())
+}
+
+func (i ReleaseAssetsArgs) ToReleaseAssetsOutputWithContext(ctx context.Context) ReleaseAssetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseAssetsOutput)
+}
+
+func (i ReleaseAssetsArgs) ToReleaseAssetsPtrOutput() ReleaseAssetsPtrOutput {
+	return i.ToReleaseAssetsPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseAssetsArgs) ToReleaseAssetsPtrOutputWithContext(ctx context.Context) ReleaseAssetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseAssetsOutput).ToReleaseAssetsPtrOutputWithContext(ctx)
+}
+
+// ReleaseAssetsPtrInput is an input type that accepts ReleaseAssetsArgs, ReleaseAssetsPtr and ReleaseAssetsPtrOutput values.
+// You can construct a concrete instance of `ReleaseAssetsPtrInput` via:
+//
+//	        ReleaseAssetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseAssetsPtrInput interface {
+	pulumi.Input
+
+	ToReleaseAssetsPtrOutput() ReleaseAssetsPtrOutput
+	ToReleaseAssetsPtrOutputWithContext(context.Context) ReleaseAssetsPtrOutput
+}
+
+type releaseAssetsPtrType ReleaseAssetsArgs
+
+func ReleaseAssetsPtr(v *ReleaseAssetsArgs) ReleaseAssetsPtrInput {
+	return (*releaseAssetsPtrType)(v)
+}
+
+func (*releaseAssetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseAssets)(nil)).Elem()
+}
+
+func (i *releaseAssetsPtrType) ToReleaseAssetsPtrOutput() ReleaseAssetsPtrOutput {
+	return i.ToReleaseAssetsPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseAssetsPtrType) ToReleaseAssetsPtrOutputWithContext(ctx context.Context) ReleaseAssetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseAssetsPtrOutput)
+}
+
+type ReleaseAssetsOutput struct{ *pulumi.OutputState }
+
+func (ReleaseAssetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseAssets)(nil)).Elem()
+}
+
+func (o ReleaseAssetsOutput) ToReleaseAssetsOutput() ReleaseAssetsOutput {
+	return o
+}
+
+func (o ReleaseAssetsOutput) ToReleaseAssetsOutputWithContext(ctx context.Context) ReleaseAssetsOutput {
+	return o
+}
+
+func (o ReleaseAssetsOutput) ToReleaseAssetsPtrOutput() ReleaseAssetsPtrOutput {
+	return o.ToReleaseAssetsPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseAssetsOutput) ToReleaseAssetsPtrOutputWithContext(ctx context.Context) ReleaseAssetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseAssets) *ReleaseAssets {
+		return &v
+	}).(ReleaseAssetsPtrOutput)
+}
+
+// The total count of assets in this release.
+func (o ReleaseAssetsOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReleaseAssets) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+type ReleaseAssetsPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseAssetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseAssets)(nil)).Elem()
+}
+
+func (o ReleaseAssetsPtrOutput) ToReleaseAssetsPtrOutput() ReleaseAssetsPtrOutput {
+	return o
+}
+
+func (o ReleaseAssetsPtrOutput) ToReleaseAssetsPtrOutputWithContext(ctx context.Context) ReleaseAssetsPtrOutput {
+	return o
+}
+
+func (o ReleaseAssetsPtrOutput) Elem() ReleaseAssetsOutput {
+	return o.ApplyT(func(v *ReleaseAssets) ReleaseAssets {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseAssets
+		return ret
+	}).(ReleaseAssetsOutput)
+}
+
+// The total count of assets in this release.
+func (o ReleaseAssetsPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReleaseAssets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+type ReleaseAuthor struct {
+	// The url of the author's' user avatar.
+	AvatarUrl *string `pulumi:"avatarUrl"`
+	// The ID of the author's user.
+	Id *int `pulumi:"id"`
+	// The name of the author.
+	Name *string `pulumi:"name"`
+	// The state of the author's user.
+	State *string `pulumi:"state"`
+	// The username of the author.
+	Username *string `pulumi:"username"`
+	// The url to the author's user profile.
+	WebUrl *string `pulumi:"webUrl"`
+}
+
+// ReleaseAuthorInput is an input type that accepts ReleaseAuthorArgs and ReleaseAuthorOutput values.
+// You can construct a concrete instance of `ReleaseAuthorInput` via:
+//
+//	ReleaseAuthorArgs{...}
+type ReleaseAuthorInput interface {
+	pulumi.Input
+
+	ToReleaseAuthorOutput() ReleaseAuthorOutput
+	ToReleaseAuthorOutputWithContext(context.Context) ReleaseAuthorOutput
+}
+
+type ReleaseAuthorArgs struct {
+	// The url of the author's' user avatar.
+	AvatarUrl pulumi.StringPtrInput `pulumi:"avatarUrl"`
+	// The ID of the author's user.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The name of the author.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The state of the author's user.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The username of the author.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The url to the author's user profile.
+	WebUrl pulumi.StringPtrInput `pulumi:"webUrl"`
+}
+
+func (ReleaseAuthorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseAuthor)(nil)).Elem()
+}
+
+func (i ReleaseAuthorArgs) ToReleaseAuthorOutput() ReleaseAuthorOutput {
+	return i.ToReleaseAuthorOutputWithContext(context.Background())
+}
+
+func (i ReleaseAuthorArgs) ToReleaseAuthorOutputWithContext(ctx context.Context) ReleaseAuthorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseAuthorOutput)
+}
+
+func (i ReleaseAuthorArgs) ToReleaseAuthorPtrOutput() ReleaseAuthorPtrOutput {
+	return i.ToReleaseAuthorPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseAuthorArgs) ToReleaseAuthorPtrOutputWithContext(ctx context.Context) ReleaseAuthorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseAuthorOutput).ToReleaseAuthorPtrOutputWithContext(ctx)
+}
+
+// ReleaseAuthorPtrInput is an input type that accepts ReleaseAuthorArgs, ReleaseAuthorPtr and ReleaseAuthorPtrOutput values.
+// You can construct a concrete instance of `ReleaseAuthorPtrInput` via:
+//
+//	        ReleaseAuthorArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseAuthorPtrInput interface {
+	pulumi.Input
+
+	ToReleaseAuthorPtrOutput() ReleaseAuthorPtrOutput
+	ToReleaseAuthorPtrOutputWithContext(context.Context) ReleaseAuthorPtrOutput
+}
+
+type releaseAuthorPtrType ReleaseAuthorArgs
+
+func ReleaseAuthorPtr(v *ReleaseAuthorArgs) ReleaseAuthorPtrInput {
+	return (*releaseAuthorPtrType)(v)
+}
+
+func (*releaseAuthorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseAuthor)(nil)).Elem()
+}
+
+func (i *releaseAuthorPtrType) ToReleaseAuthorPtrOutput() ReleaseAuthorPtrOutput {
+	return i.ToReleaseAuthorPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseAuthorPtrType) ToReleaseAuthorPtrOutputWithContext(ctx context.Context) ReleaseAuthorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseAuthorPtrOutput)
+}
+
+type ReleaseAuthorOutput struct{ *pulumi.OutputState }
+
+func (ReleaseAuthorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseAuthor)(nil)).Elem()
+}
+
+func (o ReleaseAuthorOutput) ToReleaseAuthorOutput() ReleaseAuthorOutput {
+	return o
+}
+
+func (o ReleaseAuthorOutput) ToReleaseAuthorOutputWithContext(ctx context.Context) ReleaseAuthorOutput {
+	return o
+}
+
+func (o ReleaseAuthorOutput) ToReleaseAuthorPtrOutput() ReleaseAuthorPtrOutput {
+	return o.ToReleaseAuthorPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseAuthorOutput) ToReleaseAuthorPtrOutputWithContext(ctx context.Context) ReleaseAuthorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseAuthor) *ReleaseAuthor {
+		return &v
+	}).(ReleaseAuthorPtrOutput)
+}
+
+// The url of the author's' user avatar.
+func (o ReleaseAuthorOutput) AvatarUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseAuthor) *string { return v.AvatarUrl }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the author's user.
+func (o ReleaseAuthorOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReleaseAuthor) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The name of the author.
+func (o ReleaseAuthorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseAuthor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The state of the author's user.
+func (o ReleaseAuthorOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseAuthor) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The username of the author.
+func (o ReleaseAuthorOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseAuthor) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// The url to the author's user profile.
+func (o ReleaseAuthorOutput) WebUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseAuthor) *string { return v.WebUrl }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseAuthorPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseAuthorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseAuthor)(nil)).Elem()
+}
+
+func (o ReleaseAuthorPtrOutput) ToReleaseAuthorPtrOutput() ReleaseAuthorPtrOutput {
+	return o
+}
+
+func (o ReleaseAuthorPtrOutput) ToReleaseAuthorPtrOutputWithContext(ctx context.Context) ReleaseAuthorPtrOutput {
+	return o
+}
+
+func (o ReleaseAuthorPtrOutput) Elem() ReleaseAuthorOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) ReleaseAuthor {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseAuthor
+		return ret
+	}).(ReleaseAuthorOutput)
+}
+
+// The url of the author's' user avatar.
+func (o ReleaseAuthorPtrOutput) AvatarUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvatarUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the author's user.
+func (o ReleaseAuthorPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the author.
+func (o ReleaseAuthorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The state of the author's user.
+func (o ReleaseAuthorPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username of the author.
+func (o ReleaseAuthorPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The url to the author's user profile.
+func (o ReleaseAuthorPtrOutput) WebUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseAuthor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReleaseCommit struct {
+	// The email address of the commit author.
+	AuthorEmail *string `pulumi:"authorEmail"`
+	// The name of the commit author.
+	AuthorName *string `pulumi:"authorName"`
+	// The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+	AuthoredDate *string `pulumi:"authoredDate"`
+	// The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+	CommittedDate *string `pulumi:"committedDate"`
+	// The email address of the committer.
+	CommitterEmail *string `pulumi:"committerEmail"`
+	// The name of the committer.
+	CommitterName *string `pulumi:"committerName"`
+	// The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The git commit full SHA
+	Id *string `pulumi:"id"`
+	// The commit message.
+	Message *string `pulumi:"message"`
+	// The full SHA of any parent commits.
+	ParentIds []string `pulumi:"parentIds"`
+	// The git commit short SHA.
+	ShortId *string `pulumi:"shortId"`
+	// The title of the commit.
+	Title *string `pulumi:"title"`
+}
+
+// ReleaseCommitInput is an input type that accepts ReleaseCommitArgs and ReleaseCommitOutput values.
+// You can construct a concrete instance of `ReleaseCommitInput` via:
+//
+//	ReleaseCommitArgs{...}
+type ReleaseCommitInput interface {
+	pulumi.Input
+
+	ToReleaseCommitOutput() ReleaseCommitOutput
+	ToReleaseCommitOutputWithContext(context.Context) ReleaseCommitOutput
+}
+
+type ReleaseCommitArgs struct {
+	// The email address of the commit author.
+	AuthorEmail pulumi.StringPtrInput `pulumi:"authorEmail"`
+	// The name of the commit author.
+	AuthorName pulumi.StringPtrInput `pulumi:"authorName"`
+	// The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+	AuthoredDate pulumi.StringPtrInput `pulumi:"authoredDate"`
+	// The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+	CommittedDate pulumi.StringPtrInput `pulumi:"committedDate"`
+	// The email address of the committer.
+	CommitterEmail pulumi.StringPtrInput `pulumi:"committerEmail"`
+	// The name of the committer.
+	CommitterName pulumi.StringPtrInput `pulumi:"committerName"`
+	// The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The git commit full SHA
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The commit message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// The full SHA of any parent commits.
+	ParentIds pulumi.StringArrayInput `pulumi:"parentIds"`
+	// The git commit short SHA.
+	ShortId pulumi.StringPtrInput `pulumi:"shortId"`
+	// The title of the commit.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (ReleaseCommitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseCommit)(nil)).Elem()
+}
+
+func (i ReleaseCommitArgs) ToReleaseCommitOutput() ReleaseCommitOutput {
+	return i.ToReleaseCommitOutputWithContext(context.Background())
+}
+
+func (i ReleaseCommitArgs) ToReleaseCommitOutputWithContext(ctx context.Context) ReleaseCommitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseCommitOutput)
+}
+
+func (i ReleaseCommitArgs) ToReleaseCommitPtrOutput() ReleaseCommitPtrOutput {
+	return i.ToReleaseCommitPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseCommitArgs) ToReleaseCommitPtrOutputWithContext(ctx context.Context) ReleaseCommitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseCommitOutput).ToReleaseCommitPtrOutputWithContext(ctx)
+}
+
+// ReleaseCommitPtrInput is an input type that accepts ReleaseCommitArgs, ReleaseCommitPtr and ReleaseCommitPtrOutput values.
+// You can construct a concrete instance of `ReleaseCommitPtrInput` via:
+//
+//	        ReleaseCommitArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseCommitPtrInput interface {
+	pulumi.Input
+
+	ToReleaseCommitPtrOutput() ReleaseCommitPtrOutput
+	ToReleaseCommitPtrOutputWithContext(context.Context) ReleaseCommitPtrOutput
+}
+
+type releaseCommitPtrType ReleaseCommitArgs
+
+func ReleaseCommitPtr(v *ReleaseCommitArgs) ReleaseCommitPtrInput {
+	return (*releaseCommitPtrType)(v)
+}
+
+func (*releaseCommitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseCommit)(nil)).Elem()
+}
+
+func (i *releaseCommitPtrType) ToReleaseCommitPtrOutput() ReleaseCommitPtrOutput {
+	return i.ToReleaseCommitPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseCommitPtrType) ToReleaseCommitPtrOutputWithContext(ctx context.Context) ReleaseCommitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseCommitPtrOutput)
+}
+
+type ReleaseCommitOutput struct{ *pulumi.OutputState }
+
+func (ReleaseCommitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseCommit)(nil)).Elem()
+}
+
+func (o ReleaseCommitOutput) ToReleaseCommitOutput() ReleaseCommitOutput {
+	return o
+}
+
+func (o ReleaseCommitOutput) ToReleaseCommitOutputWithContext(ctx context.Context) ReleaseCommitOutput {
+	return o
+}
+
+func (o ReleaseCommitOutput) ToReleaseCommitPtrOutput() ReleaseCommitPtrOutput {
+	return o.ToReleaseCommitPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseCommitOutput) ToReleaseCommitPtrOutputWithContext(ctx context.Context) ReleaseCommitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseCommit) *ReleaseCommit {
+		return &v
+	}).(ReleaseCommitPtrOutput)
+}
+
+// The email address of the commit author.
+func (o ReleaseCommitOutput) AuthorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+// The name of the commit author.
+func (o ReleaseCommitOutput) AuthorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.AuthorName }).(pulumi.StringPtrOutput)
+}
+
+// The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+func (o ReleaseCommitOutput) AuthoredDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.AuthoredDate }).(pulumi.StringPtrOutput)
+}
+
+// The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+func (o ReleaseCommitOutput) CommittedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.CommittedDate }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the committer.
+func (o ReleaseCommitOutput) CommitterEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.CommitterEmail }).(pulumi.StringPtrOutput)
+}
+
+// The name of the committer.
+func (o ReleaseCommitOutput) CommitterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.CommitterName }).(pulumi.StringPtrOutput)
+}
+
+// The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+func (o ReleaseCommitOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The git commit full SHA
+func (o ReleaseCommitOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The commit message.
+func (o ReleaseCommitOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The full SHA of any parent commits.
+func (o ReleaseCommitOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleaseCommit) []string { return v.ParentIds }).(pulumi.StringArrayOutput)
+}
+
+// The git commit short SHA.
+func (o ReleaseCommitOutput) ShortId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.ShortId }).(pulumi.StringPtrOutput)
+}
+
+// The title of the commit.
+func (o ReleaseCommitOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseCommit) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseCommitPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseCommitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseCommit)(nil)).Elem()
+}
+
+func (o ReleaseCommitPtrOutput) ToReleaseCommitPtrOutput() ReleaseCommitPtrOutput {
+	return o
+}
+
+func (o ReleaseCommitPtrOutput) ToReleaseCommitPtrOutputWithContext(ctx context.Context) ReleaseCommitPtrOutput {
+	return o
+}
+
+func (o ReleaseCommitPtrOutput) Elem() ReleaseCommitOutput {
+	return o.ApplyT(func(v *ReleaseCommit) ReleaseCommit {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseCommit
+		return ret
+	}).(ReleaseCommitOutput)
+}
+
+// The email address of the commit author.
+func (o ReleaseCommitPtrOutput) AuthorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the commit author.
+func (o ReleaseCommitPtrOutput) AuthorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+func (o ReleaseCommitPtrOutput) AuthoredDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthoredDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+func (o ReleaseCommitPtrOutput) CommittedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommittedDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address of the committer.
+func (o ReleaseCommitPtrOutput) CommitterEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitterEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the committer.
+func (o ReleaseCommitPtrOutput) CommitterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+func (o ReleaseCommitPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The git commit full SHA
+func (o ReleaseCommitPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The commit message.
+func (o ReleaseCommitPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full SHA of any parent commits.
+func (o ReleaseCommitPtrOutput) ParentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReleaseCommit) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ParentIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The git commit short SHA.
+func (o ReleaseCommitPtrOutput) ShortId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the commit.
+func (o ReleaseCommitPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseCommit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReleaseLinks struct {
+	// URL of the release's closed issues.
+	ClosedIssuesUrl *string `pulumi:"closedIssuesUrl"`
+	// URL of the release's closed merge requests.
+	ClosedMergeRequestsUrl *string `pulumi:"closedMergeRequestsUrl"`
+	// URL of the release's edit page.
+	EditUrl *string `pulumi:"editUrl"`
+	// URL of the release's merged merge requests.
+	MergedMergeRequestsUrl *string `pulumi:"mergedMergeRequestsUrl"`
+	// URL of the release's open issues.
+	OpenedIssuesUrl *string `pulumi:"openedIssuesUrl"`
+	// URL of the release's open merge requests.
+	OpenedMergeRequestsUrl *string `pulumi:"openedMergeRequestsUrl"`
+	// URL of the release.
+	Self *string `pulumi:"self"`
+}
+
+// ReleaseLinksInput is an input type that accepts ReleaseLinksArgs and ReleaseLinksOutput values.
+// You can construct a concrete instance of `ReleaseLinksInput` via:
+//
+//	ReleaseLinksArgs{...}
+type ReleaseLinksInput interface {
+	pulumi.Input
+
+	ToReleaseLinksOutput() ReleaseLinksOutput
+	ToReleaseLinksOutputWithContext(context.Context) ReleaseLinksOutput
+}
+
+type ReleaseLinksArgs struct {
+	// URL of the release's closed issues.
+	ClosedIssuesUrl pulumi.StringPtrInput `pulumi:"closedIssuesUrl"`
+	// URL of the release's closed merge requests.
+	ClosedMergeRequestsUrl pulumi.StringPtrInput `pulumi:"closedMergeRequestsUrl"`
+	// URL of the release's edit page.
+	EditUrl pulumi.StringPtrInput `pulumi:"editUrl"`
+	// URL of the release's merged merge requests.
+	MergedMergeRequestsUrl pulumi.StringPtrInput `pulumi:"mergedMergeRequestsUrl"`
+	// URL of the release's open issues.
+	OpenedIssuesUrl pulumi.StringPtrInput `pulumi:"openedIssuesUrl"`
+	// URL of the release's open merge requests.
+	OpenedMergeRequestsUrl pulumi.StringPtrInput `pulumi:"openedMergeRequestsUrl"`
+	// URL of the release.
+	Self pulumi.StringPtrInput `pulumi:"self"`
+}
+
+func (ReleaseLinksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseLinks)(nil)).Elem()
+}
+
+func (i ReleaseLinksArgs) ToReleaseLinksOutput() ReleaseLinksOutput {
+	return i.ToReleaseLinksOutputWithContext(context.Background())
+}
+
+func (i ReleaseLinksArgs) ToReleaseLinksOutputWithContext(ctx context.Context) ReleaseLinksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseLinksOutput)
+}
+
+func (i ReleaseLinksArgs) ToReleaseLinksPtrOutput() ReleaseLinksPtrOutput {
+	return i.ToReleaseLinksPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseLinksArgs) ToReleaseLinksPtrOutputWithContext(ctx context.Context) ReleaseLinksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseLinksOutput).ToReleaseLinksPtrOutputWithContext(ctx)
+}
+
+// ReleaseLinksPtrInput is an input type that accepts ReleaseLinksArgs, ReleaseLinksPtr and ReleaseLinksPtrOutput values.
+// You can construct a concrete instance of `ReleaseLinksPtrInput` via:
+//
+//	        ReleaseLinksArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseLinksPtrInput interface {
+	pulumi.Input
+
+	ToReleaseLinksPtrOutput() ReleaseLinksPtrOutput
+	ToReleaseLinksPtrOutputWithContext(context.Context) ReleaseLinksPtrOutput
+}
+
+type releaseLinksPtrType ReleaseLinksArgs
+
+func ReleaseLinksPtr(v *ReleaseLinksArgs) ReleaseLinksPtrInput {
+	return (*releaseLinksPtrType)(v)
+}
+
+func (*releaseLinksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseLinks)(nil)).Elem()
+}
+
+func (i *releaseLinksPtrType) ToReleaseLinksPtrOutput() ReleaseLinksPtrOutput {
+	return i.ToReleaseLinksPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseLinksPtrType) ToReleaseLinksPtrOutputWithContext(ctx context.Context) ReleaseLinksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseLinksPtrOutput)
+}
+
+type ReleaseLinksOutput struct{ *pulumi.OutputState }
+
+func (ReleaseLinksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseLinks)(nil)).Elem()
+}
+
+func (o ReleaseLinksOutput) ToReleaseLinksOutput() ReleaseLinksOutput {
+	return o
+}
+
+func (o ReleaseLinksOutput) ToReleaseLinksOutputWithContext(ctx context.Context) ReleaseLinksOutput {
+	return o
+}
+
+func (o ReleaseLinksOutput) ToReleaseLinksPtrOutput() ReleaseLinksPtrOutput {
+	return o.ToReleaseLinksPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseLinksOutput) ToReleaseLinksPtrOutputWithContext(ctx context.Context) ReleaseLinksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseLinks) *ReleaseLinks {
+		return &v
+	}).(ReleaseLinksPtrOutput)
+}
+
+// URL of the release's closed issues.
+func (o ReleaseLinksOutput) ClosedIssuesUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.ClosedIssuesUrl }).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's closed merge requests.
+func (o ReleaseLinksOutput) ClosedMergeRequestsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.ClosedMergeRequestsUrl }).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's edit page.
+func (o ReleaseLinksOutput) EditUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.EditUrl }).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's merged merge requests.
+func (o ReleaseLinksOutput) MergedMergeRequestsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.MergedMergeRequestsUrl }).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's open issues.
+func (o ReleaseLinksOutput) OpenedIssuesUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.OpenedIssuesUrl }).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's open merge requests.
+func (o ReleaseLinksOutput) OpenedMergeRequestsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.OpenedMergeRequestsUrl }).(pulumi.StringPtrOutput)
+}
+
+// URL of the release.
+func (o ReleaseLinksOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseLinks) *string { return v.Self }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseLinksPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseLinksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseLinks)(nil)).Elem()
+}
+
+func (o ReleaseLinksPtrOutput) ToReleaseLinksPtrOutput() ReleaseLinksPtrOutput {
+	return o
+}
+
+func (o ReleaseLinksPtrOutput) ToReleaseLinksPtrOutputWithContext(ctx context.Context) ReleaseLinksPtrOutput {
+	return o
+}
+
+func (o ReleaseLinksPtrOutput) Elem() ReleaseLinksOutput {
+	return o.ApplyT(func(v *ReleaseLinks) ReleaseLinks {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseLinks
+		return ret
+	}).(ReleaseLinksOutput)
+}
+
+// URL of the release's closed issues.
+func (o ReleaseLinksPtrOutput) ClosedIssuesUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClosedIssuesUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's closed merge requests.
+func (o ReleaseLinksPtrOutput) ClosedMergeRequestsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClosedMergeRequestsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's edit page.
+func (o ReleaseLinksPtrOutput) EditUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EditUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's merged merge requests.
+func (o ReleaseLinksPtrOutput) MergedMergeRequestsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MergedMergeRequestsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's open issues.
+func (o ReleaseLinksPtrOutput) OpenedIssuesUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpenedIssuesUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the release's open merge requests.
+func (o ReleaseLinksPtrOutput) OpenedMergeRequestsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpenedMergeRequestsUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the release.
+func (o ReleaseLinksPtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Self
+	}).(pulumi.StringPtrOutput)
+}
+
 type TagProtectionAllowedToCreate struct {
 	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -4415,7 +5381,7 @@ func (o TagProtectionAllowedToCreateArrayOutput) Index(i pulumi.IntInput) TagPro
 type ValueStreamAnalyticsStage struct {
 	// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
 	Custom *bool `pulumi:"custom"`
-	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
 	EndEventIdentifier *string `pulumi:"endEventIdentifier"`
 	// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	EndEventLabelId *string `pulumi:"endEventLabelId"`
@@ -4425,7 +5391,7 @@ type ValueStreamAnalyticsStage struct {
 	Id *string `pulumi:"id"`
 	// The name of the value stream stage.
 	Name string `pulumi:"name"`
-	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
 	StartEventIdentifier *string `pulumi:"startEventIdentifier"`
 	// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	StartEventLabelId *string `pulumi:"startEventLabelId"`
@@ -4445,7 +5411,7 @@ type ValueStreamAnalyticsStageInput interface {
 type ValueStreamAnalyticsStageArgs struct {
 	// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
 	Custom pulumi.BoolPtrInput `pulumi:"custom"`
-	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
 	EndEventIdentifier pulumi.StringPtrInput `pulumi:"endEventIdentifier"`
 	// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	EndEventLabelId pulumi.StringPtrInput `pulumi:"endEventLabelId"`
@@ -4455,7 +5421,7 @@ type ValueStreamAnalyticsStageArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the value stream stage.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
 	StartEventIdentifier pulumi.StringPtrInput `pulumi:"startEventIdentifier"`
 	// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	StartEventLabelId pulumi.StringPtrInput `pulumi:"startEventLabelId"`
@@ -4517,7 +5483,7 @@ func (o ValueStreamAnalyticsStageOutput) Custom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) *bool { return v.Custom }).(pulumi.BoolPtrOutput)
 }
 
-// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
 func (o ValueStreamAnalyticsStageOutput) EndEventIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.EndEventIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -4542,7 +5508,7 @@ func (o ValueStreamAnalyticsStageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
 func (o ValueStreamAnalyticsStageOutput) StartEventIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.StartEventIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -4893,7 +5859,7 @@ func (o GetClusterAgentsClusterAgentArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetGroupBillableMemberMembershipsMembership struct {
-	// Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+	// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
 	AccessLevel string `pulumi:"accessLevel"`
 	// Datetime when the membership was first added.
 	CreatedAt string `pulumi:"createdAt"`
@@ -4921,7 +5887,7 @@ type GetGroupBillableMemberMembershipsMembershipInput interface {
 }
 
 type GetGroupBillableMemberMembershipsMembershipArgs struct {
-	// Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+	// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Datetime when the membership was first added.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
@@ -4988,7 +5954,7 @@ func (o GetGroupBillableMemberMembershipsMembershipOutput) ToGetGroupBillableMem
 	return o
 }
 
-// Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
 func (o GetGroupBillableMemberMembershipsMembershipOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupBillableMemberMembershipsMembership) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -6183,24 +7149,15 @@ func (o GetGroupSubgroupsSubgroupArrayOutput) Index(i pulumi.IntInput) GetGroupS
 }
 
 type GetGroupVariablesVariable struct {
-	// The description of the variable.
-	Description string `pulumi:"description"`
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	Description      string `pulumi:"description"`
 	EnvironmentScope string `pulumi:"environmentScope"`
-	// The name or id of the group.
-	Group string `pulumi:"group"`
-	// The name of the variable.
-	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-	Masked bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-	Protected bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-	Raw bool `pulumi:"raw"`
-	// The value of the variable.
-	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-	VariableType string `pulumi:"variableType"`
+	Group            string `pulumi:"group"`
+	Key              string `pulumi:"key"`
+	Masked           bool   `pulumi:"masked"`
+	Protected        bool   `pulumi:"protected"`
+	Raw              bool   `pulumi:"raw"`
+	Value            string `pulumi:"value"`
+	VariableType     string `pulumi:"variableType"`
 }
 
 // GetGroupVariablesVariableInput is an input type that accepts GetGroupVariablesVariableArgs and GetGroupVariablesVariableOutput values.
@@ -6215,24 +7172,15 @@ type GetGroupVariablesVariableInput interface {
 }
 
 type GetGroupVariablesVariableArgs struct {
-	// The description of the variable.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	Description      pulumi.StringInput `pulumi:"description"`
 	EnvironmentScope pulumi.StringInput `pulumi:"environmentScope"`
-	// The name or id of the group.
-	Group pulumi.StringInput `pulumi:"group"`
-	// The name of the variable.
-	Key pulumi.StringInput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-	Masked pulumi.BoolInput `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-	Protected pulumi.BoolInput `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-	Raw pulumi.BoolInput `pulumi:"raw"`
-	// The value of the variable.
-	Value pulumi.StringInput `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-	VariableType pulumi.StringInput `pulumi:"variableType"`
+	Group            pulumi.StringInput `pulumi:"group"`
+	Key              pulumi.StringInput `pulumi:"key"`
+	Masked           pulumi.BoolInput   `pulumi:"masked"`
+	Protected        pulumi.BoolInput   `pulumi:"protected"`
+	Raw              pulumi.BoolInput   `pulumi:"raw"`
+	Value            pulumi.StringInput `pulumi:"value"`
+	VariableType     pulumi.StringInput `pulumi:"variableType"`
 }
 
 func (GetGroupVariablesVariableArgs) ElementType() reflect.Type {
@@ -6286,47 +7234,38 @@ func (o GetGroupVariablesVariableOutput) ToGetGroupVariablesVariableOutputWithCo
 	return o
 }
 
-// The description of the variable.
 func (o GetGroupVariablesVariableOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 func (o GetGroupVariablesVariableOutput) EnvironmentScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.EnvironmentScope }).(pulumi.StringOutput)
 }
 
-// The name or id of the group.
 func (o GetGroupVariablesVariableOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.Group }).(pulumi.StringOutput)
 }
 
-// The name of the variable.
 func (o GetGroupVariablesVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
 func (o GetGroupVariablesVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 func (o GetGroupVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
 func (o GetGroupVariablesVariableOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
 
-// The value of the variable.
 func (o GetGroupVariablesVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
 func (o GetGroupVariablesVariableOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesVariable) string { return v.VariableType }).(pulumi.StringOutput)
 }
@@ -6883,7 +7822,7 @@ type GetInstanceVariablesVariable struct {
 	Description string `pulumi:"description"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked bool `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected bool `pulumi:"protected"`
@@ -6911,7 +7850,7 @@ type GetInstanceVariablesVariableArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolInput `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolInput `pulumi:"protected"`
@@ -6984,7 +7923,7 @@ func (o GetInstanceVariablesVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 func (o GetInstanceVariablesVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Masked }).(pulumi.BoolOutput)
 }
@@ -12116,7 +13055,7 @@ type GetProjectVariablesVariable struct {
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
@@ -12148,7 +13087,7 @@ type GetProjectVariablesVariableArgs struct {
 	EnvironmentScope pulumi.StringInput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolInput `pulumi:"masked"`
 	// The name or id of the project.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -12228,7 +13167,7 @@ func (o GetProjectVariablesVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 func (o GetProjectVariablesVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) bool { return v.Masked }).(pulumi.BoolOutput)
 }
@@ -12317,7 +13256,7 @@ type GetProjectsProject struct {
 	CiForwardDeploymentEnabled bool `pulumi:"ciForwardDeploymentEnabled"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicies []GetProjectsProjectContainerExpirationPolicy `pulumi:"containerExpirationPolicies"`
@@ -12377,7 +13316,7 @@ type GetProjectsProject struct {
 	LastActivityAt string `pulumi:"lastActivityAt"`
 	// Whether LFS (large file storage) is enabled for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate string `pulumi:"mergeCommitTemplate"`
 	// Merge method for the project.
 	MergeMethod string `pulumi:"mergeMethod"`
@@ -12458,7 +13397,7 @@ type GetProjectsProject struct {
 	SnippetsAccessLevel string `pulumi:"snippetsAccessLevel"`
 	// Whether snippets are enabled for the project.
 	SnippetsEnabled bool `pulumi:"snippetsEnabled"`
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate string `pulumi:"squashCommitTemplate"`
 	// The SSH clone URL of the project.
 	SshUrlToRepo string `pulumi:"sshUrlToRepo"`
@@ -12532,7 +13471,7 @@ type GetProjectsProjectArgs struct {
 	CiForwardDeploymentEnabled pulumi.BoolInput `pulumi:"ciForwardDeploymentEnabled"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringInput `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringInput `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
 	ContainerExpirationPolicies GetProjectsProjectContainerExpirationPolicyArrayInput `pulumi:"containerExpirationPolicies"`
@@ -12592,7 +13531,7 @@ type GetProjectsProjectArgs struct {
 	LastActivityAt pulumi.StringInput `pulumi:"lastActivityAt"`
 	// Whether LFS (large file storage) is enabled for the project.
 	LfsEnabled pulumi.BoolInput `pulumi:"lfsEnabled"`
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate pulumi.StringInput `pulumi:"mergeCommitTemplate"`
 	// Merge method for the project.
 	MergeMethod pulumi.StringInput `pulumi:"mergeMethod"`
@@ -12673,7 +13612,7 @@ type GetProjectsProjectArgs struct {
 	SnippetsAccessLevel pulumi.StringInput `pulumi:"snippetsAccessLevel"`
 	// Whether snippets are enabled for the project.
 	SnippetsEnabled pulumi.BoolInput `pulumi:"snippetsEnabled"`
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringInput `pulumi:"squashCommitTemplate"`
 	// The SSH clone URL of the project.
 	SshUrlToRepo pulumi.StringInput `pulumi:"sshUrlToRepo"`
@@ -12843,7 +13782,7 @@ func (o GetProjectsProjectOutput) CiPipelineVariablesMinimumOverrideRole() pulum
 	return o.ApplyT(func(v GetProjectsProject) string { return v.CiPipelineVariablesMinimumOverrideRole }).(pulumi.StringOutput)
 }
 
-// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 func (o GetProjectsProjectOutput) CiRestrictPipelineCancellationRole() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.CiRestrictPipelineCancellationRole }).(pulumi.StringOutput)
 }
@@ -12995,7 +13934,7 @@ func (o GetProjectsProjectOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
-// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+// Template used to create merge commit message in merge requests.
 func (o GetProjectsProjectOutput) MergeCommitTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeCommitTemplate }).(pulumi.StringOutput)
 }
@@ -13199,7 +14138,7 @@ func (o GetProjectsProjectOutput) SnippetsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.SnippetsEnabled }).(pulumi.BoolOutput)
 }
 
-// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+// Template used to create squash commit message in merge requests.
 func (o GetProjectsProjectOutput) SquashCommitTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.SquashCommitTemplate }).(pulumi.StringOutput)
 }
@@ -14493,11 +15432,11 @@ func (o GetReleaseAssetsSourceArrayOutput) Index(i pulumi.IntInput) GetReleaseAs
 }
 
 type GetReleaseLinksReleaseLink struct {
-	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 	DirectAssetUrl string `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External bool `pulumi:"external"`
-	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 	Filepath string `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId int `pulumi:"linkId"`
@@ -14505,7 +15444,7 @@ type GetReleaseLinksReleaseLink struct {
 	LinkType string `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name string `pulumi:"name"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 	Project string `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
@@ -14525,11 +15464,11 @@ type GetReleaseLinksReleaseLinkInput interface {
 }
 
 type GetReleaseLinksReleaseLinkArgs struct {
-	// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 	DirectAssetUrl pulumi.StringInput `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External pulumi.BoolInput `pulumi:"external"`
-	// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 	Filepath pulumi.StringInput `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId pulumi.IntInput `pulumi:"linkId"`
@@ -14537,7 +15476,7 @@ type GetReleaseLinksReleaseLinkArgs struct {
 	LinkType pulumi.StringInput `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 	Project pulumi.StringInput `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -14596,7 +15535,7 @@ func (o GetReleaseLinksReleaseLinkOutput) ToGetReleaseLinksReleaseLinkOutputWith
 	return o
 }
 
-// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 func (o GetReleaseLinksReleaseLinkOutput) DirectAssetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.DirectAssetUrl }).(pulumi.StringOutput)
 }
@@ -14606,7 +15545,7 @@ func (o GetReleaseLinksReleaseLinkOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) bool { return v.External }).(pulumi.BoolOutput)
 }
 
-// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 func (o GetReleaseLinksReleaseLinkOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.Filepath }).(pulumi.StringOutput)
 }
@@ -14626,7 +15565,7 @@ func (o GetReleaseLinksReleaseLinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 func (o GetReleaseLinksReleaseLinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -15102,7 +16041,7 @@ type GetUsersUser struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Current user's sign-in date.
 	CurrentSignInAt string `pulumi:"currentSignInAt"`
-	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	// The public email address of the user.
 	Email string `pulumi:"email"`
 	// The external UID of the user.
 	ExternUid string `pulumi:"externUid"`
@@ -15122,7 +16061,7 @@ type GetUsersUser struct {
 	Location string `pulumi:"location"`
 	// The name of the user.
 	Name string `pulumi:"name"`
-	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId int `pulumi:"namespaceId"`
 	// The organization of the user.
 	Organization string `pulumi:"organization"`
@@ -15172,7 +16111,7 @@ type GetUsersUserArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Current user's sign-in date.
 	CurrentSignInAt pulumi.StringInput `pulumi:"currentSignInAt"`
-	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	// The public email address of the user.
 	Email pulumi.StringInput `pulumi:"email"`
 	// The external UID of the user.
 	ExternUid pulumi.StringInput `pulumi:"externUid"`
@@ -15192,7 +16131,7 @@ type GetUsersUserArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// The name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId pulumi.IntInput `pulumi:"namespaceId"`
 	// The organization of the user.
 	Organization pulumi.StringInput `pulumi:"organization"`
@@ -15302,7 +16241,7 @@ func (o GetUsersUserOutput) CurrentSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
 }
 
-// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+// The public email address of the user.
 func (o GetUsersUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -15352,7 +16291,7 @@ func (o GetUsersUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+// The ID of the user's namespace. Requires admin token to access this field.
 func (o GetUsersUserOutput) NamespaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetUsersUser) int { return v.NamespaceId }).(pulumi.IntOutput)
 }
@@ -15480,6 +16419,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitArrayInput)(nil)).Elem(), ProjectTagCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseInput)(nil)).Elem(), ProjectTagReleaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagReleaseArrayInput)(nil)).Elem(), ProjectTagReleaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseAssetsInput)(nil)).Elem(), ReleaseAssetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseAssetsPtrInput)(nil)).Elem(), ReleaseAssetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseAuthorInput)(nil)).Elem(), ReleaseAuthorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseAuthorPtrInput)(nil)).Elem(), ReleaseAuthorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseCommitInput)(nil)).Elem(), ReleaseCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseCommitPtrInput)(nil)).Elem(), ReleaseCommitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseLinksInput)(nil)).Elem(), ReleaseLinksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseLinksPtrInput)(nil)).Elem(), ReleaseLinksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateInput)(nil)).Elem(), TagProtectionAllowedToCreateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateArrayInput)(nil)).Elem(), TagProtectionAllowedToCreateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueStreamAnalyticsStageInput)(nil)).Elem(), ValueStreamAnalyticsStageArgs{})
@@ -15656,6 +16603,14 @@ func init() {
 	pulumi.RegisterOutputType(ProjectTagCommitArrayOutput{})
 	pulumi.RegisterOutputType(ProjectTagReleaseOutput{})
 	pulumi.RegisterOutputType(ProjectTagReleaseArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseAssetsOutput{})
+	pulumi.RegisterOutputType(ReleaseAssetsPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseAuthorOutput{})
+	pulumi.RegisterOutputType(ReleaseAuthorPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseCommitOutput{})
+	pulumi.RegisterOutputType(ReleaseCommitPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseLinksOutput{})
+	pulumi.RegisterOutputType(ReleaseLinksPtrOutput{})
 	pulumi.RegisterOutputType(TagProtectionAllowedToCreateOutput{})
 	pulumi.RegisterOutputType(TagProtectionAllowedToCreateArrayOutput{})
 	pulumi.RegisterOutputType(ValueStreamAnalyticsStageOutput{})
