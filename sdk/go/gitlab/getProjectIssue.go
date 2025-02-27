@@ -13,7 +13,7 @@ import (
 
 // The `ProjectIssue` data source allows to retrieve details about an issue in a project.
 //
-// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
 //
 // ## Example Usage
 //

@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.GitLab
     public sealed class GetMetadataResult
     {
         /// <summary>
-        /// If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+        /// If the GitLab instance is an enterprise instance or not.
         /// </summary>
         public readonly bool Enterprise;
         /// <summary>

@@ -26,10 +26,6 @@ public final class GetGroupVariableResult {
      * 
      */
     private String group;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The name of the variable.
@@ -37,12 +33,12 @@ public final class GetGroupVariableResult {
      */
     private String key;
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
      * 
      */
     private Boolean masked;
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
      * 
      */
     private Boolean protected_;
@@ -57,7 +53,7 @@ public final class GetGroupVariableResult {
      */
     private String value;
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of a variable. Valid values are: `env_var`, `file`.
      * 
      */
     private String variableType;
@@ -84,10 +80,6 @@ public final class GetGroupVariableResult {
     public String group() {
         return this.group;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -99,14 +91,14 @@ public final class GetGroupVariableResult {
         return this.key;
     }
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
      * 
      */
     public Boolean masked() {
         return this.masked;
     }
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
      * 
      */
     public Boolean protected_() {
@@ -127,7 +119,7 @@ public final class GetGroupVariableResult {
         return this.value;
     }
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of a variable. Valid values are: `env_var`, `file`.
      * 
      */
     public String variableType() {

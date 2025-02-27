@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
         /// </summary>
         public static Task<GetProjectMilestonesResult> InvokeAsync(GetProjectMilestonesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
         /// </summary>
         public static Output<GetProjectMilestonesResult> Invoke(GetProjectMilestonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
         /// </summary>
         public static Output<GetProjectMilestonesResult> Invoke(GetProjectMilestonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestonesResult>("gitlab:index/getProjectMilestones:getProjectMilestones", args ?? new GetProjectMilestonesInvokeArgs(), options.WithDefaults());
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+        /// Include group milestones from parent group and its ancestors.
         /// </summary>
         [Input("includeParentMilestones")]
         public bool? IncludeParentMilestones { get; set; }
@@ -102,7 +102,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+        /// Include group milestones from parent group and its ancestors.
         /// </summary>
         [Input("includeParentMilestones")]
         public Input<bool>? IncludeParentMilestones { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<int> Iids;
         /// <summary>
-        /// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+        /// Include group milestones from parent group and its ancestors.
         /// </summary>
         public readonly bool? IncludeParentMilestones;
         /// <summary>

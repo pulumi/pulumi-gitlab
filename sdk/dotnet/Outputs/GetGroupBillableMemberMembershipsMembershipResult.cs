@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetGroupBillableMemberMembershipsMembershipResult
     {
         /// <summary>
-        /// Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+        /// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
         /// </summary>
         public readonly string AccessLevel;
         /// <summary>

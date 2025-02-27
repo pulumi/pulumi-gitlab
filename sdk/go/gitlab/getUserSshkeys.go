@@ -13,7 +13,7 @@ import (
 
 // The `getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
 func GetUserSshkeys(ctx *pulumi.Context, args *GetUserSshkeysArgs, opts ...pulumi.InvokeOption) (*GetUserSshkeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserSshkeysResult

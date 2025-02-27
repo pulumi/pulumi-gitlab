@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProjectJobTokenScopeArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,24 +33,40 @@ public final class ProjectJobTokenScopeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    @Import(name="targetGroupId")
+    private @Nullable Output<Integer> targetGroupId;
+
+    /**
+     * @return The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    public Optional<Output<Integer>> targetGroupId() {
+        return Optional.ofNullable(this.targetGroupId);
+    }
+
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
-    @Import(name="targetProjectId", required=true)
-    private Output<Integer> targetProjectId;
+    @Import(name="targetProjectId")
+    private @Nullable Output<Integer> targetProjectId;
 
     /**
      * @return The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
-    public Output<Integer> targetProjectId() {
-        return this.targetProjectId;
+    public Optional<Output<Integer>> targetProjectId() {
+        return Optional.ofNullable(this.targetProjectId);
     }
 
     private ProjectJobTokenScopeArgs() {}
 
     private ProjectJobTokenScopeArgs(ProjectJobTokenScopeArgs $) {
         this.project = $.project;
+        this.targetGroupId = $.targetGroupId;
         this.targetProjectId = $.targetProjectId;
     }
 
@@ -92,12 +110,33 @@ public final class ProjectJobTokenScopeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param targetGroupId The ID of the group that is in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupId(@Nullable Output<Integer> targetGroupId) {
+            $.targetGroupId = targetGroupId;
+            return this;
+        }
+
+        /**
+         * @param targetGroupId The ID of the group that is in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupId(Integer targetGroupId) {
+            return targetGroupId(Output.of(targetGroupId));
+        }
+
+        /**
          * @param targetProjectId The ID of the project that is in the CI/CD job token inbound allowlist.
          * 
          * @return builder
          * 
          */
-        public Builder targetProjectId(Output<Integer> targetProjectId) {
+        public Builder targetProjectId(@Nullable Output<Integer> targetProjectId) {
             $.targetProjectId = targetProjectId;
             return this;
         }
@@ -115,9 +154,6 @@ public final class ProjectJobTokenScopeArgs extends com.pulumi.resources.Resourc
         public ProjectJobTokenScopeArgs build() {
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("ProjectJobTokenScopeArgs", "project");
-            }
-            if ($.targetProjectId == null) {
-                throw new MissingRequiredPropertyException("ProjectJobTokenScopeArgs", "targetProjectId");
             }
             return $;
         }
