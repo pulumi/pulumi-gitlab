@@ -62,7 +62,7 @@ func GetProjectMergeRequest(ctx *pulumi.Context, args *GetProjectMergeRequestArg
 // A collection of arguments for invoking getProjectMergeRequest.
 type GetProjectMergeRequestArgs struct {
 	// The unique project level ID of the merge request.
-	Iid float64 `pulumi:"iid"`
+	Iid int `pulumi:"iid"`
 	// The ID or path of the project.
 	Project string `pulumi:"project"`
 }
@@ -88,9 +88,9 @@ type GetProjectMergeRequestResult struct {
 	// Timestamp of when the merge request was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique instance level ID of the merge request.
-	Id float64 `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// The unique project level ID of the merge request.
-	Iid float64 `pulumi:"iid"`
+	Iid int `pulumi:"iid"`
 	// The ID or path of the project.
 	Project string `pulumi:"project"`
 }
@@ -107,7 +107,7 @@ func GetProjectMergeRequestOutput(ctx *pulumi.Context, args GetProjectMergeReque
 // A collection of arguments for invoking getProjectMergeRequest.
 type GetProjectMergeRequestOutputArgs struct {
 	// The unique project level ID of the merge request.
-	Iid pulumi.Float64Input `pulumi:"iid"`
+	Iid pulumi.IntInput `pulumi:"iid"`
 	// The ID or path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 }
@@ -174,13 +174,13 @@ func (o GetProjectMergeRequestResultOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The unique instance level ID of the merge request.
-func (o GetProjectMergeRequestResultOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProjectMergeRequestResult) float64 { return v.Id }).(pulumi.Float64Output)
+func (o GetProjectMergeRequestResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The unique project level ID of the merge request.
-func (o GetProjectMergeRequestResultOutput) Iid() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProjectMergeRequestResult) float64 { return v.Iid }).(pulumi.Float64Output)
+func (o GetProjectMergeRequestResultOutput) Iid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestResult) int { return v.Iid }).(pulumi.IntOutput)
 }
 
 // The ID or path of the project.

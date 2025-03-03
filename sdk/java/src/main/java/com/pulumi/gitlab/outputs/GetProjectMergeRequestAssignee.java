@@ -5,7 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -20,7 +20,7 @@ public final class GetProjectMergeRequestAssignee {
      * @return The internal ID number of the user.
      * 
      */
-    private Double id;
+    private Integer id;
     /**
      * @return The name of the user.
      * 
@@ -54,7 +54,7 @@ public final class GetProjectMergeRequestAssignee {
      * @return The internal ID number of the user.
      * 
      */
-    public Double id() {
+    public Integer id() {
         return this.id;
     }
     /**
@@ -96,7 +96,7 @@ public final class GetProjectMergeRequestAssignee {
     @CustomType.Builder
     public static final class Builder {
         private String avatarUrl;
-        private Double id;
+        private Integer id;
         private String name;
         private String state;
         private String username;
@@ -121,7 +121,7 @@ public final class GetProjectMergeRequestAssignee {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Double id) {
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetProjectMergeRequestAssignee", "id");
             }

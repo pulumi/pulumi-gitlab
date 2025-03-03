@@ -9,7 +9,7 @@ import com.pulumi.gitlab.outputs.GetProjectMergeRequestAssignee;
 import com.pulumi.gitlab.outputs.GetProjectMergeRequestAuthor;
 import com.pulumi.gitlab.outputs.GetProjectMergeRequestClosedBy;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -62,12 +62,12 @@ public final class GetProjectMergeRequestResult {
      * @return The unique instance level ID of the merge request.
      * 
      */
-    private Double id;
+    private Integer id;
     /**
      * @return The unique project level ID of the merge request.
      * 
      */
-    private Double iid;
+    private Integer iid;
     /**
      * @return The ID or path of the project.
      * 
@@ -137,14 +137,14 @@ public final class GetProjectMergeRequestResult {
      * @return The unique instance level ID of the merge request.
      * 
      */
-    public Double id() {
+    public Integer id() {
         return this.id;
     }
     /**
      * @return The unique project level ID of the merge request.
      * 
      */
-    public Double iid() {
+    public Integer iid() {
         return this.iid;
     }
     /**
@@ -172,8 +172,8 @@ public final class GetProjectMergeRequestResult {
         private String closedAt;
         private GetProjectMergeRequestClosedBy closedBy;
         private String createdAt;
-        private Double id;
-        private Double iid;
+        private Integer id;
+        private Integer iid;
         private String project;
         public Builder() {}
         public Builder(GetProjectMergeRequestResult defaults) {
@@ -259,7 +259,7 @@ public final class GetProjectMergeRequestResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Double id) {
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetProjectMergeRequestResult", "id");
             }
@@ -267,7 +267,7 @@ public final class GetProjectMergeRequestResult {
             return this;
         }
         @CustomType.Setter
-        public Builder iid(Double iid) {
+        public Builder iid(Integer iid) {
             if (iid == null) {
               throw new MissingRequiredPropertyException("GetProjectMergeRequestResult", "iid");
             }

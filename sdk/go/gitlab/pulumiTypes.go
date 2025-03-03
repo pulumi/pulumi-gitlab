@@ -9477,7 +9477,7 @@ type GetProjectMergeRequestAssignee struct {
 	// A link to the user's avatar image.
 	AvatarUrl string `pulumi:"avatarUrl"`
 	// The internal ID number of the user.
-	Id float64 `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// The name of the user.
 	Name string `pulumi:"name"`
 	// The state of the user account.
@@ -9503,7 +9503,7 @@ type GetProjectMergeRequestAssigneeArgs struct {
 	// A link to the user's avatar image.
 	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
 	// The internal ID number of the user.
-	Id pulumi.Float64Input `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 	// The name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The state of the user account.
@@ -9571,8 +9571,8 @@ func (o GetProjectMergeRequestAssigneeOutput) AvatarUrl() pulumi.StringOutput {
 }
 
 // The internal ID number of the user.
-func (o GetProjectMergeRequestAssigneeOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProjectMergeRequestAssignee) float64 { return v.Id }).(pulumi.Float64Output)
+func (o GetProjectMergeRequestAssigneeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAssignee) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The name of the user.
@@ -9619,7 +9619,7 @@ type GetProjectMergeRequestAuthor struct {
 	// A link to the user's avatar image.
 	AvatarUrl string `pulumi:"avatarUrl"`
 	// The internal ID number of the user.
-	Id float64 `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// The name of the user.
 	Name string `pulumi:"name"`
 	// The state of the user account.
@@ -9645,7 +9645,7 @@ type GetProjectMergeRequestAuthorArgs struct {
 	// A link to the user's avatar image.
 	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
 	// The internal ID number of the user.
-	Id pulumi.Float64Input `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 	// The name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The state of the user account.
@@ -9688,8 +9688,8 @@ func (o GetProjectMergeRequestAuthorOutput) AvatarUrl() pulumi.StringOutput {
 }
 
 // The internal ID number of the user.
-func (o GetProjectMergeRequestAuthorOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProjectMergeRequestAuthor) float64 { return v.Id }).(pulumi.Float64Output)
+func (o GetProjectMergeRequestAuthorOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestAuthor) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The name of the user.
@@ -9716,7 +9716,7 @@ type GetProjectMergeRequestClosedBy struct {
 	// A link to the user's avatar image.
 	AvatarUrl string `pulumi:"avatarUrl"`
 	// The internal ID number of the user.
-	Id float64 `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// The name of the user.
 	Name string `pulumi:"name"`
 	// The state of the user account.
@@ -9742,7 +9742,7 @@ type GetProjectMergeRequestClosedByArgs struct {
 	// A link to the user's avatar image.
 	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
 	// The internal ID number of the user.
-	Id pulumi.Float64Input `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 	// The name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The state of the user account.
@@ -9785,8 +9785,8 @@ func (o GetProjectMergeRequestClosedByOutput) AvatarUrl() pulumi.StringOutput {
 }
 
 // The internal ID number of the user.
-func (o GetProjectMergeRequestClosedByOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) float64 { return v.Id }).(pulumi.Float64Output)
+func (o GetProjectMergeRequestClosedByOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The name of the user.

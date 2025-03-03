@@ -121,7 +121,7 @@ namespace Pulumi.GitLab
         /// The unique project level ID of the merge request.
         /// </summary>
         [Input("iid", required: true)]
-        public double Iid { get; set; }
+        public int Iid { get; set; }
 
         /// <summary>
         /// The ID or path of the project.
@@ -141,7 +141,7 @@ namespace Pulumi.GitLab
         /// The unique project level ID of the merge request.
         /// </summary>
         [Input("iid", required: true)]
-        public Input<double> Iid { get; set; } = null!;
+        public Input<int> Iid { get; set; } = null!;
 
         /// <summary>
         /// The ID or path of the project.
@@ -196,11 +196,11 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The unique instance level ID of the merge request.
         /// </summary>
-        public readonly double Id;
+        public readonly int Id;
         /// <summary>
         /// The unique project level ID of the merge request.
         /// </summary>
-        public readonly double Iid;
+        public readonly int Iid;
         /// <summary>
         /// The ID or path of the project.
         /// </summary>
@@ -224,9 +224,9 @@ namespace Pulumi.GitLab
 
             string createdAt,
 
-            double id,
+            int id,
 
-            double iid,
+            int iid,
 
             string project)
         {
