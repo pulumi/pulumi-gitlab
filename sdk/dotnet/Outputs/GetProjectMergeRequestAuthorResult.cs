@@ -20,7 +20,7 @@ namespace Pulumi.GitLab.Outputs
         /// <summary>
         /// The internal ID number of the user.
         /// </summary>
-        public readonly double Id;
+        public readonly int Id;
         /// <summary>
         /// The name of the user.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab.Outputs
         private GetProjectMergeRequestAuthorResult(
             string avatarUrl,
 
-            double id,
+            int id,
 
             string name,
 
