@@ -14,7 +14,7 @@ import (
 
 // The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 //
 // ## Example Usage
 //
@@ -73,7 +73,7 @@ type InstanceVariable struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
@@ -125,7 +125,7 @@ type instanceVariableState struct {
 	Description *string `pulumi:"description"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
@@ -142,7 +142,7 @@ type InstanceVariableState struct {
 	Description pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
@@ -163,7 +163,7 @@ type instanceVariableArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked *bool `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected *bool `pulumi:"protected"`
@@ -181,7 +181,7 @@ type InstanceVariableArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked pulumi.BoolPtrInput
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
 	Protected pulumi.BoolPtrInput
@@ -290,7 +290,7 @@ func (o InstanceVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 func (o InstanceVariableOutput) Masked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
 }

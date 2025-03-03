@@ -12,40 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+// The `GroupVariable` resource allows creating a GitLab group level variables.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
-//				Group:            pulumi.String("12345"),
-//				Key:              pulumi.String("group_variable_key"),
-//				Value:            pulumi.String("group_variable_value"),
-//				Protected:        pulumi.Bool(false),
-//				Masked:           pulumi.Bool(false),
-//				EnvironmentScope: pulumi.String("*"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 //
 // ## Import
 //
@@ -72,23 +41,25 @@ type GroupVariable struct {
 	pulumi.CustomResourceState
 
 	// The description of the variable.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-	EnvironmentScope pulumi.StringPtrOutput `pulumi:"environmentScope"`
+	EnvironmentScope pulumi.StringOutput `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group pulumi.StringOutput `pulumi:"group"`
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden pulumi.BoolOutput `pulumi:"hidden"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-	Masked pulumi.BoolPtrOutput `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-	Raw pulumi.BoolPtrOutput `pulumi:"raw"`
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+	Masked pulumi.BoolOutput `pulumi:"masked"`
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+	Protected pulumi.BoolOutput `pulumi:"protected"`
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+	Raw pulumi.BoolOutput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-	VariableType pulumi.StringPtrOutput `pulumi:"variableType"`
+	// The type of a variable. Valid values are: `envVar`, `file`.
+	VariableType pulumi.StringOutput `pulumi:"variableType"`
 }
 
 // NewGroupVariable registers a new resource with the given unique name, arguments, and options.
@@ -136,17 +107,19 @@ type groupVariableState struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group *string `pulumi:"group"`
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden *bool `pulumi:"hidden"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked *bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected *bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value *string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType *string `pulumi:"variableType"`
 }
 
@@ -157,17 +130,19 @@ type GroupVariableState struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The name or id of the group.
 	Group pulumi.StringPtrInput
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden pulumi.BoolPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolPtrInput
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringPtrInput
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -182,17 +157,19 @@ type groupVariableArgs struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden *bool `pulumi:"hidden"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked *bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected *bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw *bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType *string `pulumi:"variableType"`
 }
 
@@ -204,17 +181,19 @@ type GroupVariableArgs struct {
 	EnvironmentScope pulumi.StringPtrInput
 	// The name or id of the group.
 	Group pulumi.StringInput
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden pulumi.BoolPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolPtrInput
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolPtrInput
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolPtrInput
 	// The value of the variable.
 	Value pulumi.StringInput
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringPtrInput
 }
 
@@ -306,13 +285,13 @@ func (o GroupVariableOutput) ToGroupVariableOutputWithContext(ctx context.Contex
 }
 
 // The description of the variable.
-func (o GroupVariableOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o GroupVariableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-func (o GroupVariableOutput) EnvironmentScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
+func (o GroupVariableOutput) EnvironmentScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.EnvironmentScope }).(pulumi.StringOutput)
 }
 
 // The name or id of the group.
@@ -320,24 +299,29 @@ func (o GroupVariableOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
+// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+func (o GroupVariableOutput) Hidden() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.BoolOutput { return v.Hidden }).(pulumi.BoolOutput)
+}
+
 // The name of the variable.
 func (o GroupVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-func (o GroupVariableOutput) Masked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupVariable) pulumi.BoolPtrOutput { return v.Masked }).(pulumi.BoolPtrOutput)
+// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+func (o GroupVariableOutput) Masked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.BoolOutput { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-func (o GroupVariableOutput) Protected() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupVariable) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+func (o GroupVariableOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.BoolOutput { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-func (o GroupVariableOutput) Raw() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GroupVariable) pulumi.BoolPtrOutput { return v.Raw }).(pulumi.BoolPtrOutput)
+// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+func (o GroupVariableOutput) Raw() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.BoolOutput { return v.Raw }).(pulumi.BoolOutput)
 }
 
 // The value of the variable.
@@ -345,9 +329,9 @@ func (o GroupVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-func (o GroupVariableOutput) VariableType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupVariable) pulumi.StringPtrOutput { return v.VariableType }).(pulumi.StringPtrOutput)
+// The type of a variable. Valid values are: `envVar`, `file`.
+func (o GroupVariableOutput) VariableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupVariable) pulumi.StringOutput { return v.VariableType }).(pulumi.StringOutput)
 }
 
 type GroupVariableArrayOutput struct{ *pulumi.OutputState }

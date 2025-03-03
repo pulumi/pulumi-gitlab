@@ -13,7 +13,7 @@ import (
 
 // The `getRunners` data source retrieves information about all gitlab runners.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/runners.html#list-all-runners)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#list-all-runners)
 //
 // ## Example Usage
 //

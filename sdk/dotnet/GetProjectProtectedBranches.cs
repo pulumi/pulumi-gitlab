@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#list-protected-branches)
         /// </summary>
         public static Task<GetProjectProtectedBranchesResult> InvokeAsync(GetProjectProtectedBranchesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#list-protected-branches)
         /// </summary>
         public static Output<GetProjectProtectedBranchesResult> Invoke(GetProjectProtectedBranchesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#list-protected-branches)
         /// </summary>
         public static Output<GetProjectProtectedBranchesResult> Invoke(GetProjectProtectedBranchesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedBranchesResult>("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", args ?? new GetProjectProtectedBranchesInvokeArgs(), options.WithDefaults());

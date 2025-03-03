@@ -18,7 +18,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some available options require administrator privileges.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-groups)
         /// 
         /// ## Example Usage
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some available options require administrator privileges.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-groups)
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some available options require administrator privileges.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-groups)
         /// 
         /// ## Example Usage
         /// 

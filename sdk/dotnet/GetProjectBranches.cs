@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#list-repository-branches)
         /// </summary>
         public static Task<GetProjectBranchesResult> InvokeAsync(GetProjectBranchesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectBranchesResult>("gitlab:index/getProjectBranches:getProjectBranches", args ?? new GetProjectBranchesArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#list-repository-branches)
         /// </summary>
         public static Output<GetProjectBranchesResult> Invoke(GetProjectBranchesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectBranchesResult>("gitlab:index/getProjectBranches:getProjectBranches", args ?? new GetProjectBranchesInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#list-repository-branches)
         /// </summary>
         public static Output<GetProjectBranchesResult> Invoke(GetProjectBranchesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectBranchesResult>("gitlab:index/getProjectBranches:getProjectBranches", args ?? new GetProjectBranchesInvokeArgs(), options.WithDefaults());

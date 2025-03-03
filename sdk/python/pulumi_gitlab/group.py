@@ -59,7 +59,7 @@ class GroupArgs:
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] default_branch: Initial default branch name.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
@@ -224,7 +224,7 @@ class GroupArgs:
     @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -555,7 +555,7 @@ class _GroupState:
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[str] default_branch: Initial default branch name.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
@@ -736,7 +736,7 @@ class _GroupState:
     @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[int]]:
         """
-        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -1122,7 +1122,7 @@ class Group(pulumi.CustomResource):
 
         > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
 
         ## Example Usage
 
@@ -1218,7 +1218,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] default_branch: Initial default branch name.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
@@ -1255,7 +1255,7 @@ class Group(pulumi.CustomResource):
 
         > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
 
         ## Example Usage
 
@@ -1495,7 +1495,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[str] default_branch: Initial default branch name.
-        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        :param pulumi.Input[int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[str] description: The group's description.
         :param pulumi.Input[bool] emails_enabled: Enable email notifications.
@@ -1619,7 +1619,7 @@ class Group(pulumi.CustomResource):
     @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> pulumi.Output[int]:
         """
-        See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 

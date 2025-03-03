@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
  * 
  * ## Example Usage
  * 
@@ -101,14 +101,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/integrationTelegram:IntegrationTelegram")
 public class IntegrationTelegram extends com.pulumi.resources.CustomResource {
     /**
-     * Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
      * 
      */
     public Output<String> branchesToBeNotified() {
