@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GlobalLevelNotifications` resource allows to manage global notifications.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
  * 
  * ## Import
  * 

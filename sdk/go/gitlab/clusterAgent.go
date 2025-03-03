@@ -17,14 +17,12 @@ import (
 // > Note that this resource only registers the agent, but doesn't configure it.
 //
 //	The configuration needs to be manually added as described in
-//	[the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
+//	[the docs](https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file).
 //	However, a `RepositoryFile` resource may be used to achieve that.
 //
 // > Requires at least maintainer permissions on the project.
 //
-// > Requires at least GitLab 14.10
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 //
 // ## Example Usage
 //
@@ -57,7 +55,7 @@ import (
 //				return err
 //			}
 //			// Optionally, configure the agent as described in
-//			// https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
+//			// https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file
 //			_, err = gitlab.NewRepositoryFile(ctx, "example_agent_config", &gitlab.RepositoryFileArgs{
 //				Project: example.Project,
 //				Branch:  pulumi.String("main"),

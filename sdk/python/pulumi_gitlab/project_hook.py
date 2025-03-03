@@ -39,6 +39,7 @@ class ProjectHookArgs:
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
                  releases_events: Optional[pulumi.Input[bool]] = None,
+                 resource_access_token_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
@@ -62,6 +63,7 @@ class ProjectHookArgs:
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
+        :param pulumi.Input[bool] resource_access_token_events: Invoke the hook for project access token expiry events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
@@ -100,6 +102,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
             pulumi.set(__self__, "releases_events", releases_events)
+        if resource_access_token_events is not None:
+            pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
@@ -324,6 +328,18 @@ class ProjectHookArgs:
         pulumi.set(self, "releases_events", value)
 
     @property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for project access token expiry events.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @resource_access_token_events.setter
+    def resource_access_token_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "resource_access_token_events", value)
+
+    @property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -382,6 +398,7 @@ class _ProjectHookState:
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
                  releases_events: Optional[pulumi.Input[bool]] = None,
+                 resource_access_token_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -407,6 +424,7 @@ class _ProjectHookState:
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
+        :param pulumi.Input[bool] resource_access_token_events: Invoke the hook for project access token expiry events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -450,6 +468,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
             pulumi.set(__self__, "releases_events", releases_events)
+        if resource_access_token_events is not None:
+            pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
@@ -688,6 +708,18 @@ class _ProjectHookState:
         pulumi.set(self, "releases_events", value)
 
     @property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for project access token expiry events.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @resource_access_token_events.setter
+    def resource_access_token_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "resource_access_token_events", value)
+
+    @property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -758,6 +790,7 @@ class ProjectHook(pulumi.CustomResource):
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
                  releases_events: Optional[pulumi.Input[bool]] = None,
+                 resource_access_token_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -766,7 +799,7 @@ class ProjectHook(pulumi.CustomResource):
         """
         The `ProjectHook` resource allows to manage the lifecycle of a project hook.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
 
         ## Example Usage
 
@@ -841,6 +874,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
+        :param pulumi.Input[bool] resource_access_token_events: Invoke the hook for project access token expiry events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -855,7 +889,7 @@ class ProjectHook(pulumi.CustomResource):
         """
         The `ProjectHook` resource allows to manage the lifecycle of a project hook.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
 
         ## Example Usage
 
@@ -943,6 +977,7 @@ class ProjectHook(pulumi.CustomResource):
                  push_events: Optional[pulumi.Input[bool]] = None,
                  push_events_branch_filter: Optional[pulumi.Input[str]] = None,
                  releases_events: Optional[pulumi.Input[bool]] = None,
+                 resource_access_token_events: Optional[pulumi.Input[bool]] = None,
                  tag_push_events: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -975,6 +1010,7 @@ class ProjectHook(pulumi.CustomResource):
             __props__.__dict__["push_events"] = push_events
             __props__.__dict__["push_events_branch_filter"] = push_events_branch_filter
             __props__.__dict__["releases_events"] = releases_events
+            __props__.__dict__["resource_access_token_events"] = resource_access_token_events
             __props__.__dict__["tag_push_events"] = tag_push_events
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             if url is None and not opts.urn:
@@ -1014,6 +1050,7 @@ class ProjectHook(pulumi.CustomResource):
             push_events: Optional[pulumi.Input[bool]] = None,
             push_events_branch_filter: Optional[pulumi.Input[str]] = None,
             releases_events: Optional[pulumi.Input[bool]] = None,
+            resource_access_token_events: Optional[pulumi.Input[bool]] = None,
             tag_push_events: Optional[pulumi.Input[bool]] = None,
             token: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -1044,6 +1081,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
         :param pulumi.Input[str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[bool] releases_events: Invoke the hook for release events.
+        :param pulumi.Input[bool] resource_access_token_events: Invoke the hook for project access token expiry events.
         :param pulumi.Input[bool] tag_push_events: Invoke the hook for tag push events.
         :param pulumi.Input[str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
@@ -1072,6 +1110,7 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["push_events"] = push_events
         __props__.__dict__["push_events_branch_filter"] = push_events_branch_filter
         __props__.__dict__["releases_events"] = releases_events
+        __props__.__dict__["resource_access_token_events"] = resource_access_token_events
         __props__.__dict__["tag_push_events"] = tag_push_events
         __props__.__dict__["token"] = token
         __props__.__dict__["url"] = url
@@ -1229,6 +1268,14 @@ class ProjectHook(pulumi.CustomResource):
         Invoke the hook for release events.
         """
         return pulumi.get(self, "releases_events")
+
+    @property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> pulumi.Output[bool]:
+        """
+        Invoke the hook for project access token expiry events.
+        """
+        return pulumi.get(self, "resource_access_token_events")
 
     @property
     @pulumi.getter(name="tagPushEvents")

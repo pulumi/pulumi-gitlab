@@ -13,7 +13,7 @@ import (
 
 // The `getProjectHooks` data source allows to retrieve details about hooks in a project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
 //
 // ## Example Usage
 //

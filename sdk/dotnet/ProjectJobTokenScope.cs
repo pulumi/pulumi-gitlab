@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Conflicts with the use of `gitlab.ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
     /// 
     /// ## Import
     /// 
@@ -49,10 +49,16 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the group that is in the CI/CD job token inbound allowlist.
+        /// </summary>
+        [Output("targetGroupId")]
+        public Output<int?> TargetGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project that is in the CI/CD job token inbound allowlist.
         /// </summary>
         [Output("targetProjectId")]
-        public Output<int> TargetProjectId { get; private set; } = null!;
+        public Output<int?> TargetProjectId { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,10 +113,16 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the group that is in the CI/CD job token inbound allowlist.
+        /// </summary>
+        [Input("targetGroupId")]
+        public Input<int>? TargetGroupId { get; set; }
+
+        /// <summary>
         /// The ID of the project that is in the CI/CD job token inbound allowlist.
         /// </summary>
-        [Input("targetProjectId", required: true)]
-        public Input<int> TargetProjectId { get; set; } = null!;
+        [Input("targetProjectId")]
+        public Input<int>? TargetProjectId { get; set; }
 
         public ProjectJobTokenScopeArgs()
         {
@@ -125,6 +137,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The ID of the group that is in the CI/CD job token inbound allowlist.
+        /// </summary>
+        [Input("targetGroupId")]
+        public Input<int>? TargetGroupId { get; set; }
 
         /// <summary>
         /// The ID of the project that is in the CI/CD job token inbound allowlist.

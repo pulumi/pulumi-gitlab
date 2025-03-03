@@ -14,7 +14,7 @@ import (
 
 // The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#mattermost-notifications)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#mattermost-notifications)
 //
 // ## Example Usage
 //

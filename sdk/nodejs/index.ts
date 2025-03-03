@@ -150,6 +150,11 @@ export const getInstanceDeployKeys: typeof import("./getInstanceDeployKeys").get
 export const getInstanceDeployKeysOutput: typeof import("./getInstanceDeployKeys").getInstanceDeployKeysOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceDeployKeys","getInstanceDeployKeysOutput"], () => require("./getInstanceDeployKeys"));
 
+export { GetInstanceServiceAccountArgs, GetInstanceServiceAccountResult, GetInstanceServiceAccountOutputArgs } from "./getInstanceServiceAccount";
+export const getInstanceServiceAccount: typeof import("./getInstanceServiceAccount").getInstanceServiceAccount = null as any;
+export const getInstanceServiceAccountOutput: typeof import("./getInstanceServiceAccount").getInstanceServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceServiceAccount","getInstanceServiceAccountOutput"], () => require("./getInstanceServiceAccount"));
+
 export { GetInstanceVariableArgs, GetInstanceVariableResult, GetInstanceVariableOutputArgs } from "./getInstanceVariable";
 export const getInstanceVariable: typeof import("./getInstanceVariable").getInstanceVariable = null as any;
 export const getInstanceVariableOutput: typeof import("./getInstanceVariable").getInstanceVariableOutput = null as any;
@@ -670,10 +675,20 @@ export type ProjectVariable = import("./projectVariable").ProjectVariable;
 export const ProjectVariable: typeof import("./projectVariable").ProjectVariable = null as any;
 utilities.lazyLoad(exports, ["ProjectVariable"], () => require("./projectVariable"));
 
+export { ProjectWikiPageArgs, ProjectWikiPageState } from "./projectWikiPage";
+export type ProjectWikiPage = import("./projectWikiPage").ProjectWikiPage;
+export const ProjectWikiPage: typeof import("./projectWikiPage").ProjectWikiPage = null as any;
+utilities.lazyLoad(exports, ["ProjectWikiPage"], () => require("./projectWikiPage"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ReleaseArgs, ReleaseState } from "./release";
+export type Release = import("./release").Release;
+export const Release: typeof import("./release").Release = null as any;
+utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 
 export { ReleaseLinkArgs, ReleaseLinkState } from "./releaseLink";
 export type ReleaseLink = import("./releaseLink").ReleaseLink;
@@ -952,6 +967,10 @@ const _module = {
                 return new ProjectTag(name, <any>undefined, { urn })
             case "gitlab:index/projectVariable:ProjectVariable":
                 return new ProjectVariable(name, <any>undefined, { urn })
+            case "gitlab:index/projectWikiPage:ProjectWikiPage":
+                return new ProjectWikiPage(name, <any>undefined, { urn })
+            case "gitlab:index/release:Release":
+                return new Release(name, <any>undefined, { urn })
             case "gitlab:index/releaseLink:ReleaseLink":
                 return new ReleaseLink(name, <any>undefined, { urn })
             case "gitlab:index/repositoryFile:RepositoryFile":
@@ -1078,6 +1097,8 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAtta
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectWikiPage", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/release", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runner", _module)
