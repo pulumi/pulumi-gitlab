@@ -2902,7 +2902,7 @@
                     "description": "A link to the user's avatar image.\n"
                 },
                 "id": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The internal ID number of the user.\n"
                 },
                 "name": {
@@ -2944,7 +2944,7 @@
                     "description": "A link to the user's avatar image.\n"
                 },
                 "id": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The internal ID number of the user.\n"
                 },
                 "name": {
@@ -2986,7 +2986,7 @@
                     "description": "A link to the user's avatar image.\n"
                 },
                 "id": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The internal ID number of the user.\n"
                 },
                 "name": {
@@ -27208,7 +27208,7 @@
                 "description": "A collection of arguments for invoking getProjectMergeRequest.\n",
                 "properties": {
                     "iid": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The unique project level ID of the merge request.\n"
                     },
                     "project": {
@@ -27262,11 +27262,11 @@
                     },
                     "id": {
                         "description": "The unique instance level ID of the merge request.\n",
-                        "type": "number"
+                        "type": "integer"
                     },
                     "iid": {
                         "description": "The unique project level ID of the merge request.\n",
-                        "type": "number"
+                        "type": "integer"
                     },
                     "project": {
                         "description": "The ID or path of the project.\n",
