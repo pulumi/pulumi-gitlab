@@ -209,7 +209,7 @@ class GroupIssueBoard(pulumi.CustomResource):
 
         > Multiple issue boards on one group requires a GitLab Premium or above License.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -230,7 +230,7 @@ class GroupIssueBoard(pulumi.CustomResource):
 
         > Multiple issue boards on one group requires a GitLab Premium or above License.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
 
         :param str resource_name: The name of the resource.
         :param GroupIssueBoardArgs args: The arguments to use to populate this resource's properties.

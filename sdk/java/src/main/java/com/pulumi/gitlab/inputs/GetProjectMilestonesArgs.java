@@ -35,14 +35,14 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * Include group milestones from parent group and its ancestors.
      * 
      */
     @Import(name="includeParentMilestones")
     private @Nullable Output<Boolean> includeParentMilestones;
 
     /**
-     * @return Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * @return Include group milestones from parent group and its ancestors.
      * 
      */
     public Optional<Output<Boolean>> includeParentMilestones() {
@@ -170,7 +170,7 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param includeParentMilestones Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+         * @param includeParentMilestones Include group milestones from parent group and its ancestors.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param includeParentMilestones Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+         * @param includeParentMilestones Include group milestones from parent group and its ancestors.
          * 
          * @return builder
          * 

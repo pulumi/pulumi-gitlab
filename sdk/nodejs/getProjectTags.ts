@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/tags/#list-project-repository-tags)
  */
 export function getProjectTags(args: GetProjectTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,7 +75,7 @@ export interface GetProjectTagsResult {
 /**
  * The `gitlab.getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/tags/#list-project-repository-tags)
  */
 export function getProjectTagsOutput(args: GetProjectTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -14,11 +14,7 @@ import * as utilities from "./utilities";
  *    If you manually set `keepDivergentRefs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
  *    This action can result in unexpected branch deletions.
  *
- * > **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
- *    Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
- *    For older versions, the mirror will be disabled and the resource will be destroyed.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
  *
  * ## Example Usage
  *
@@ -85,11 +81,11 @@ export class ProjectMirror extends pulumi.CustomResource {
     /**
      * Determines if the mirror is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * Determines if divergent refs are skipped.
      */
-    public readonly keepDivergentRefs!: pulumi.Output<boolean | undefined>;
+    public readonly keepDivergentRefs!: pulumi.Output<boolean>;
     /**
      * Mirror ID.
      */
@@ -97,7 +93,7 @@ export class ProjectMirror extends pulumi.CustomResource {
     /**
      * Determines if only protected branches are mirrored.
      */
-    public readonly onlyProtectedBranches!: pulumi.Output<boolean | undefined>;
+    public readonly onlyProtectedBranches!: pulumi.Output<boolean>;
     /**
      * The id of the project.
      */

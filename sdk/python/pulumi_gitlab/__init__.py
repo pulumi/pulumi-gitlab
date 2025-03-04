@@ -34,6 +34,7 @@ from .get_group_variable import *
 from .get_group_variables import *
 from .get_groups import *
 from .get_instance_deploy_keys import *
+from .get_instance_service_account import *
 from .get_instance_variable import *
 from .get_instance_variables import *
 from .get_metadata import *
@@ -138,7 +139,9 @@ from .project_security_policy_attachment import *
 from .project_share_group import *
 from .project_tag import *
 from .project_variable import *
+from .project_wiki_page import *
 from .provider import *
+from .release import *
 from .release_link import *
 from .repository_file import *
 from .runner import *
@@ -803,6 +806,22 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectVariable:ProjectVariable": "ProjectVariable"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectWikiPage",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectWikiPage:ProjectWikiPage": "ProjectWikiPage"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/release",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/release:Release": "Release"
   }
  },
  {

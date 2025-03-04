@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ReleaseLink` resource allows to manage the lifecycle of a release link.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
     /// 
     /// ## Example Usage
     /// 
@@ -69,7 +69,7 @@ namespace Pulumi.GitLab
     public partial class ReleaseLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         [Output("directAssetUrl")]
         public Output<string> DirectAssetUrl { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.GitLab
         public Output<bool> External { get; private set; } = null!;
 
         /// <summary>
-        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         [Output("filepath")]
         public Output<string?> Filepath { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GitLab
     public sealed class ReleaseLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         [Input("filepath")]
         public Input<string>? Filepath { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.GitLab
     public sealed class ReleaseLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         [Input("directAssetUrl")]
         public Input<string>? DirectAssetUrl { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.GitLab
         public Input<bool>? External { get; set; }
 
         /// <summary>
-        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         [Input("filepath")]
         public Input<string>? Filepath { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

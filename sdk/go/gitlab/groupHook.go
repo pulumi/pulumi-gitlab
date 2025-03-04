@@ -14,7 +14,7 @@ import (
 
 // The `GroupHook` resource allows to manage the lifecycle of a group hook.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
 //
 // ## Import
 //

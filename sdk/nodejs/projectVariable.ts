@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectVariable` resource allows to manage the lifecycle of a CI/CD variable for a project.
+ * The `gitlab.ProjectVariable` resource allows creating and managing a GitLab project level variable.
  *
- * > **Important:** If your GitLab version is older than 13.4, you may see nondeterministic behavior when updating or deleting gitlab.ProjectVariable resources with non-unique keys, for example if there is another variable with the same key and different environment scope. See [this GitLab issue](https://gitlab.com/gitlab-org/gitlab/-/issues/9912).
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
  *
  * ## Example Usage
  *
@@ -78,39 +76,39 @@ export class ProjectVariable extends pulumi.CustomResource {
     /**
      * The description of the variable.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
-    public readonly environmentScope!: pulumi.Output<string | undefined>;
+    public readonly environmentScope!: pulumi.Output<string>;
     /**
      * The name of the variable.
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
      */
-    public readonly masked!: pulumi.Output<boolean | undefined>;
+    public readonly masked!: pulumi.Output<boolean>;
     /**
      * The name or id of the project.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
-    public readonly protected!: pulumi.Output<boolean | undefined>;
+    public readonly protected!: pulumi.Output<boolean>;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      */
-    public readonly raw!: pulumi.Output<boolean | undefined>;
+    public readonly raw!: pulumi.Output<boolean>;
     /**
      * The value of the variable.
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of a variable. Valid values are: `envVar`, `file`.
      */
-    public readonly variableType!: pulumi.Output<string | undefined>;
+    public readonly variableType!: pulumi.Output<string>;
 
     /**
      * Create a ProjectVariable resource with the given unique name, arguments, and options.
@@ -177,7 +175,7 @@ export interface ProjectVariableState {
      */
     key?: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -185,11 +183,11 @@ export interface ProjectVariableState {
      */
     project?: pulumi.Input<string>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     protected?: pulumi.Input<boolean>;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      */
     raw?: pulumi.Input<boolean>;
     /**
@@ -197,7 +195,7 @@ export interface ProjectVariableState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of a variable. Valid values are: `envVar`, `file`.
      */
     variableType?: pulumi.Input<string>;
 }
@@ -219,7 +217,7 @@ export interface ProjectVariableArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -227,11 +225,11 @@ export interface ProjectVariableArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     protected?: pulumi.Input<boolean>;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      */
     raw?: pulumi.Input<boolean>;
     /**
@@ -239,7 +237,7 @@ export interface ProjectVariableArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of a variable. Valid values are: `envVar`, `file`.
      */
     variableType?: pulumi.Input<string>;
 }

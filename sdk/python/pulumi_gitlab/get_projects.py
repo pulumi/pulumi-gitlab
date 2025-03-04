@@ -153,7 +153,7 @@ class GetProjectsResult:
     @pulumi.getter(name="minAccessLevel")
     def min_access_level(self) -> Optional[int]:
         """
-        Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+        Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
         """
         return pulumi.get(self, "min_access_level")
 
@@ -161,7 +161,7 @@ class GetProjectsResult:
     @pulumi.getter(name="orderBy")
     def order_by(self) -> Optional[str]:
         """
-        Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+        Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         """
         return pulumi.get(self, "order_by")
 
@@ -352,11 +352,11 @@ def get_projects(archived: Optional[bool] = None,
     """
     The `get_projects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
 
-    > This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+    > This data source supports all available filters exposed by the [client-go](https://gitlab.com/gitlab-org/api/client-go) package, which might not expose all available filters exposed by the GitLab APIs.
 
-    > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+    > The owner sub-attributes are only populated if the GitLab token used has an administrator scope.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-all-projects)
 
     ## Example Usage
 
@@ -381,8 +381,8 @@ def get_projects(archived: Optional[bool] = None,
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
-    :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-    :param str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+    :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+    :param str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
     :param bool owned: Limit by projects owned by the current user.
     :param int page: The first page to begin the query on.
     :param int per_page: The number of results to return per page.
@@ -476,11 +476,11 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     """
     The `get_projects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
 
-    > This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+    > This data source supports all available filters exposed by the [client-go](https://gitlab.com/gitlab-org/api/client-go) package, which might not expose all available filters exposed by the GitLab APIs.
 
-    > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+    > The owner sub-attributes are only populated if the GitLab token used has an administrator scope.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-all-projects)
 
     ## Example Usage
 
@@ -505,8 +505,8 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
     :param bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param bool membership: Limit by projects that the current user is a member of.
-    :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
-    :param str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+    :param int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+    :param str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
     :param bool owned: Limit by projects owned by the current user.
     :param int page: The first page to begin the query on.
     :param int per_page: The number of results to return per page.

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
@@ -101,7 +101,7 @@ export interface GetProjectResult {
      */
     readonly ciPipelineVariablesMinimumOverrideRole: string;
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     readonly ciRestrictPipelineCancellationRole: string;
     /**
@@ -181,7 +181,7 @@ export interface GetProjectResult {
      */
     readonly lfsEnabled: boolean;
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      */
     readonly mergeCommitTemplate: string;
     /**
@@ -301,7 +301,7 @@ export interface GetProjectResult {
      */
     readonly snippetsEnabled: boolean;
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      */
     readonly squashCommitTemplate: string;
     /**
@@ -336,7 +336,7 @@ export interface GetProjectResult {
 /**
  * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     args = args || {};

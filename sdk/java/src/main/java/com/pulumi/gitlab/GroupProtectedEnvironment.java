@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  *    In order to use a group_id in the `deploy_access_levels` configuration,
  *    the group_id must be a sub-group under the given group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_environments/)
  * 
  * ## Import
  * 
