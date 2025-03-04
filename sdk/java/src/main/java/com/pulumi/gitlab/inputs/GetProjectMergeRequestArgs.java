@@ -6,7 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -20,13 +20,13 @@ public final class GetProjectMergeRequestArgs extends com.pulumi.resources.Invok
      * 
      */
     @Import(name="iid", required=true)
-    private Output<Double> iid;
+    private Output<Integer> iid;
 
     /**
      * @return The unique project level ID of the merge request.
      * 
      */
-    public Output<Double> iid() {
+    public Output<Integer> iid() {
         return this.iid;
     }
 
@@ -76,7 +76,7 @@ public final class GetProjectMergeRequestArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder iid(Output<Double> iid) {
+        public Builder iid(Output<Integer> iid) {
             $.iid = iid;
             return this;
         }
@@ -87,7 +87,7 @@ public final class GetProjectMergeRequestArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder iid(Double iid) {
+        public Builder iid(Integer iid) {
             return iid(Output.of(iid));
         }
 

@@ -52,11 +52,11 @@ class GetProjectMergeRequestResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
-        if id and not isinstance(id, float):
-            raise TypeError("Expected argument 'id' to be a float")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
-        if iid and not isinstance(iid, float):
-            raise TypeError("Expected argument 'iid' to be a float")
+        if iid and not isinstance(iid, int):
+            raise TypeError("Expected argument 'iid' to be a int")
         pulumi.set(__self__, "iid", iid)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
@@ -130,7 +130,7 @@ class GetProjectMergeRequestResult:
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The unique instance level ID of the merge request.
         """
@@ -138,7 +138,7 @@ class GetProjectMergeRequestResult:
 
     @property
     @pulumi.getter
-    def iid(self) -> float:
+    def iid(self) -> int:
         """
         The unique project level ID of the merge request.
         """
@@ -172,7 +172,7 @@ class AwaitableGetProjectMergeRequestResult(GetProjectMergeRequestResult):
             project=self.project)
 
 
-def get_project_merge_request(iid: Optional[float] = None,
+def get_project_merge_request(iid: Optional[int] = None,
                               project: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectMergeRequestResult:
     """
@@ -194,7 +194,7 @@ def get_project_merge_request(iid: Optional[float] = None,
     ```
 
 
-    :param float iid: The unique project level ID of the merge request.
+    :param int iid: The unique project level ID of the merge request.
     :param str project: The ID or path of the project.
     """
     __args__ = dict()
@@ -215,7 +215,7 @@ def get_project_merge_request(iid: Optional[float] = None,
         id=pulumi.get(__ret__, 'id'),
         iid=pulumi.get(__ret__, 'iid'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_merge_request_output(iid: Optional[pulumi.Input[float]] = None,
+def get_project_merge_request_output(iid: Optional[pulumi.Input[int]] = None,
                                      project: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMergeRequestResult]:
     """
@@ -237,7 +237,7 @@ def get_project_merge_request_output(iid: Optional[pulumi.Input[float]] = None,
     ```
 
 
-    :param float iid: The unique project level ID of the merge request.
+    :param int iid: The unique project level ID of the merge request.
     :param str project: The ID or path of the project.
     """
     __args__ = dict()
