@@ -5989,14 +5989,14 @@ class GetProjectMembershipMemberResult(dict):
 class GetProjectMergeRequestAssigneeResult(dict):
     def __init__(__self__, *,
                  avatar_url: str,
-                 id: float,
+                 id: int,
                  name: str,
                  state: str,
                  username: str,
                  web_url: str):
         """
         :param str avatar_url: A link to the user's avatar image.
-        :param float id: The internal ID number of the user.
+        :param int id: The internal ID number of the user.
         :param str name: The name of the user.
         :param str state: The state of the user account.
         :param str username: The username of the user.
@@ -6019,7 +6019,7 @@ class GetProjectMergeRequestAssigneeResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The internal ID number of the user.
         """
@@ -6062,14 +6062,14 @@ class GetProjectMergeRequestAssigneeResult(dict):
 class GetProjectMergeRequestAuthorResult(dict):
     def __init__(__self__, *,
                  avatar_url: str,
-                 id: float,
+                 id: int,
                  name: str,
                  state: str,
                  username: str,
                  web_url: str):
         """
         :param str avatar_url: A link to the user's avatar image.
-        :param float id: The internal ID number of the user.
+        :param int id: The internal ID number of the user.
         :param str name: The name of the user.
         :param str state: The state of the user account.
         :param str username: The username of the user.
@@ -6092,7 +6092,7 @@ class GetProjectMergeRequestAuthorResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The internal ID number of the user.
         """
@@ -6135,14 +6135,14 @@ class GetProjectMergeRequestAuthorResult(dict):
 class GetProjectMergeRequestClosedByResult(dict):
     def __init__(__self__, *,
                  avatar_url: str,
-                 id: float,
+                 id: int,
                  name: str,
                  state: str,
                  username: str,
                  web_url: str):
         """
         :param str avatar_url: A link to the user's avatar image.
-        :param float id: The internal ID number of the user.
+        :param int id: The internal ID number of the user.
         :param str name: The name of the user.
         :param str state: The state of the user account.
         :param str username: The username of the user.
@@ -6165,7 +6165,7 @@ class GetProjectMergeRequestClosedByResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> float:
+    def id(self) -> int:
         """
         The internal ID number of the user.
         """
