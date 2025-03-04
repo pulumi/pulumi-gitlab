@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
  * 
  * ## Example Usage
  * 
@@ -126,14 +126,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="commentOnEventEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> commentOnEventEnabled;
+    private Output<Boolean> commentOnEventEnabled;
 
     /**
      * @return Enable comments inside Jira issues on each GitLab event (commit / merge request)
      * 
      */
-    public Output<Optional<Boolean>> commentOnEventEnabled() {
-        return Codegen.optional(this.commentOnEventEnabled);
+    public Output<Boolean> commentOnEventEnabled() {
+        return this.commentOnEventEnabled;
     }
     /**
      * Enable notifications for commit events
@@ -226,14 +226,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jiraIssueTransitionAutomatic);
     }
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
     @Export(name="jiraIssueTransitionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jiraIssueTransitionId;
 
     /**
-     * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+     * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
     public Output<Optional<String>> jiraIssueTransitionId() {

@@ -16,7 +16,7 @@ import (
 //
 // > Multiple issue boards on one group requires a GitLab Premium or above License.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
 type GroupIssueBoard struct {
 	pulumi.CustomResourceState
 

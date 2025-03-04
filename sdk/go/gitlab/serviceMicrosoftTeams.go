@@ -16,7 +16,7 @@ import (
 //
 // > This resource is deprecated. use `IntegrationMicrosoftTeams`instead!
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#microsoft-teams)
 //
 // ## Example Usage
 //

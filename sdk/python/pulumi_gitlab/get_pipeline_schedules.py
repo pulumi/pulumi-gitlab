@@ -76,7 +76,7 @@ def get_pipeline_schedules(project: Optional[str] = None,
     """
     The `PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 
     ## Example Usage
 
@@ -104,7 +104,7 @@ def get_pipeline_schedules_output(project: Optional[pulumi.Input[str]] = None,
     """
     The `PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 
     ## Example Usage
 

@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
         /// 
-        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#queryproject)
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
         /// 
-        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#queryproject)
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectIds` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.
         /// 
-        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#queryproject)
+        /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#queryproject)
         /// 
         /// ## Example Usage
         /// 

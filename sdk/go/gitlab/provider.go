@@ -32,8 +32,7 @@ type Provider struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 	// used in this provider for authentication (using Bearer authorization token). See
-	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-	// variable.
+	// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
@@ -82,8 +81,7 @@ type providerArgs struct {
 	Retries *int `pulumi:"retries"`
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 	// used in this provider for authentication (using Bearer authorization token). See
-	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-	// variable.
+	// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
 	Token *string `pulumi:"token"`
 }
 
@@ -110,8 +108,7 @@ type ProviderArgs struct {
 	Retries pulumi.IntPtrInput
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 	// used in this provider for authentication (using Bearer authorization token). See
-	// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-	// variable.
+	// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
 	Token pulumi.StringPtrInput
 }
 
@@ -178,8 +175,7 @@ func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
 
 // The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
 // used in this provider for authentication (using Bearer authorization token). See
-// https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-// variable.
+// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }

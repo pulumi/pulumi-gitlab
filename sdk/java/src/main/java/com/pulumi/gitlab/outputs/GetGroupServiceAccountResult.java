@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupServiceAccountResult {
@@ -22,7 +20,7 @@ public final class GetGroupServiceAccountResult {
      * @return The name of the user. If not specified, the default Service account user name is used.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return The service account id.
      * 
@@ -32,7 +30,7 @@ public final class GetGroupServiceAccountResult {
      * @return The username of the user. If not specified, it&#39;s automatically generated.
      * 
      */
-    private @Nullable String username;
+    private String username;
 
     private GetGroupServiceAccountResult() {}
     /**
@@ -49,8 +47,8 @@ public final class GetGroupServiceAccountResult {
      * @return The name of the user. If not specified, the default Service account user name is used.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return The service account id.
@@ -63,8 +61,8 @@ public final class GetGroupServiceAccountResult {
      * @return The username of the user. If not specified, it&#39;s automatically generated.
      * 
      */
-    public Optional<String> username() {
-        return Optional.ofNullable(this.username);
+    public String username() {
+        return this.username;
     }
 
     public static Builder builder() {
@@ -78,9 +76,9 @@ public final class GetGroupServiceAccountResult {
     public static final class Builder {
         private String group;
         private String id;
-        private @Nullable String name;
+        private String name;
         private String serviceAccountId;
-        private @Nullable String username;
+        private String username;
         public Builder() {}
         public Builder(GetGroupServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -108,8 +106,10 @@ public final class GetGroupServiceAccountResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupServiceAccountResult", "name");
+            }
             this.name = name;
             return this;
         }
@@ -122,8 +122,10 @@ public final class GetGroupServiceAccountResult {
             return this;
         }
         @CustomType.Setter
-        public Builder username(@Nullable String username) {
-
+        public Builder username(String username) {
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetGroupServiceAccountResult", "username");
+            }
             this.username = username;
             return this;
         }

@@ -67,6 +67,14 @@ __all__ = [
     'ProjectTagCommitArgsDict',
     'ProjectTagReleaseArgs',
     'ProjectTagReleaseArgsDict',
+    'ReleaseAssetsArgs',
+    'ReleaseAssetsArgsDict',
+    'ReleaseAuthorArgs',
+    'ReleaseAuthorArgsDict',
+    'ReleaseCommitArgs',
+    'ReleaseCommitArgsDict',
+    'ReleaseLinksArgs',
+    'ReleaseLinksArgsDict',
     'TagProtectionAllowedToCreateArgs',
     'TagProtectionAllowedToCreateArgsDict',
     'ValueStreamAnalyticsStageArgs',
@@ -1345,7 +1353,7 @@ if not MYPY:
         """
         commit_committer_check: NotRequired[pulumi.Input[bool]]
         """
-        Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        Only commits pushed using verified emails are allowed.
         """
         commit_committer_name_check: NotRequired[pulumi.Input[bool]]
         """
@@ -1385,7 +1393,7 @@ if not MYPY:
         """
         reject_unsigned_commits: NotRequired[pulumi.Input[bool]]
         """
-        Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        Only commits signed through GPG are allowed.
         """
 elif False:
     GroupPushRulesArgsDict: TypeAlias = Mapping[str, Any]
@@ -1409,7 +1417,7 @@ class GroupPushRulesArgs:
         """
         :param pulumi.Input[str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
-        :param pulumi.Input[bool] commit_committer_check: Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param pulumi.Input[bool] commit_committer_check: Only commits pushed using verified emails are allowed.
         :param pulumi.Input[bool] commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         :param pulumi.Input[str] commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param pulumi.Input[str] commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
@@ -1419,7 +1427,7 @@ class GroupPushRulesArgs:
         :param pulumi.Input[bool] member_check: Allows only GitLab users to author commits.
         :param pulumi.Input[bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param pulumi.Input[bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
-        :param pulumi.Input[bool] reject_unsigned_commits: Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param pulumi.Input[bool] reject_unsigned_commits: Only commits signed through GPG are allowed.
         """
         if author_email_regex is not None:
             pulumi.set(__self__, "author_email_regex", author_email_regex)
@@ -1476,7 +1484,7 @@ class GroupPushRulesArgs:
     @pulumi.getter(name="commitCommitterCheck")
     def commit_committer_check(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        Only commits pushed using verified emails are allowed.
         """
         return pulumi.get(self, "commit_committer_check")
 
@@ -1596,7 +1604,7 @@ class GroupPushRulesArgs:
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        Only commits signed through GPG are allowed.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
@@ -3019,6 +3027,574 @@ class ProjectTagReleaseArgs:
 
 
 if not MYPY:
+    class ReleaseAssetsArgsDict(TypedDict):
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The total count of assets in this release.
+        """
+elif False:
+    ReleaseAssetsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReleaseAssetsArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] count: The total count of assets in this release.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The total count of assets in this release.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+
+if not MYPY:
+    class ReleaseAuthorArgsDict(TypedDict):
+        avatar_url: NotRequired[pulumi.Input[str]]
+        """
+        The url of the author's' user avatar.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the author's user.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the author.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The state of the author's user.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username of the author.
+        """
+        web_url: NotRequired[pulumi.Input[str]]
+        """
+        The url to the author's user profile.
+        """
+elif False:
+    ReleaseAuthorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReleaseAuthorArgs:
+    def __init__(__self__, *,
+                 avatar_url: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 web_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] avatar_url: The url of the author's' user avatar.
+        :param pulumi.Input[int] id: The ID of the author's user.
+        :param pulumi.Input[str] name: The name of the author.
+        :param pulumi.Input[str] state: The state of the author's user.
+        :param pulumi.Input[str] username: The username of the author.
+        :param pulumi.Input[str] web_url: The url to the author's user profile.
+        """
+        if avatar_url is not None:
+            pulumi.set(__self__, "avatar_url", avatar_url)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if web_url is not None:
+            pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of the author's' user avatar.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @avatar_url.setter
+    def avatar_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avatar_url", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the author's user.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the author.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the author's user.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of the author.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url to the author's user profile.
+        """
+        return pulumi.get(self, "web_url")
+
+    @web_url.setter
+    def web_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "web_url", value)
+
+
+if not MYPY:
+    class ReleaseCommitArgsDict(TypedDict):
+        author_email: NotRequired[pulumi.Input[str]]
+        """
+        The email address of the commit author.
+        """
+        author_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the commit author.
+        """
+        authored_date: NotRequired[pulumi.Input[str]]
+        """
+        The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        committed_date: NotRequired[pulumi.Input[str]]
+        """
+        The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        committer_email: NotRequired[pulumi.Input[str]]
+        """
+        The email address of the committer.
+        """
+        committer_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the committer.
+        """
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The git commit full SHA
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        The commit message.
+        """
+        parent_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The full SHA of any parent commits.
+        """
+        short_id: NotRequired[pulumi.Input[str]]
+        """
+        The git commit short SHA.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the commit.
+        """
+elif False:
+    ReleaseCommitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReleaseCommitArgs:
+    def __init__(__self__, *,
+                 author_email: Optional[pulumi.Input[str]] = None,
+                 author_name: Optional[pulumi.Input[str]] = None,
+                 authored_date: Optional[pulumi.Input[str]] = None,
+                 committed_date: Optional[pulumi.Input[str]] = None,
+                 committer_email: Optional[pulumi.Input[str]] = None,
+                 committer_name: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 short_id: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] author_email: The email address of the commit author.
+        :param pulumi.Input[str] author_name: The name of the commit author.
+        :param pulumi.Input[str] authored_date: The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+        :param pulumi.Input[str] committed_date: The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+        :param pulumi.Input[str] committer_email: The email address of the committer.
+        :param pulumi.Input[str] committer_name: The name of the committer.
+        :param pulumi.Input[str] created_at: The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+        :param pulumi.Input[str] id: The git commit full SHA
+        :param pulumi.Input[str] message: The commit message.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] parent_ids: The full SHA of any parent commits.
+        :param pulumi.Input[str] short_id: The git commit short SHA.
+        :param pulumi.Input[str] title: The title of the commit.
+        """
+        if author_email is not None:
+            pulumi.set(__self__, "author_email", author_email)
+        if author_name is not None:
+            pulumi.set(__self__, "author_name", author_name)
+        if authored_date is not None:
+            pulumi.set(__self__, "authored_date", authored_date)
+        if committed_date is not None:
+            pulumi.set(__self__, "committed_date", committed_date)
+        if committer_email is not None:
+            pulumi.set(__self__, "committer_email", committer_email)
+        if committer_name is not None:
+            pulumi.set(__self__, "committer_name", committer_name)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if parent_ids is not None:
+            pulumi.set(__self__, "parent_ids", parent_ids)
+        if short_id is not None:
+            pulumi.set(__self__, "short_id", short_id)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the commit author.
+        """
+        return pulumi.get(self, "author_email")
+
+    @author_email.setter
+    def author_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author_email", value)
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the commit author.
+        """
+        return pulumi.get(self, "author_name")
+
+    @author_name.setter
+    def author_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author_name", value)
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        return pulumi.get(self, "authored_date")
+
+    @authored_date.setter
+    def authored_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authored_date", value)
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        return pulumi.get(self, "committed_date")
+
+    @committed_date.setter
+    def committed_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "committed_date", value)
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the committer.
+        """
+        return pulumi.get(self, "committer_email")
+
+    @committer_email.setter
+    def committer_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "committer_email", value)
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the committer.
+        """
+        return pulumi.get(self, "committer_name")
+
+    @committer_name.setter
+    def committer_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "committer_name", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The git commit full SHA
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The full SHA of any parent commits.
+        """
+        return pulumi.get(self, "parent_ids")
+
+    @parent_ids.setter
+    def parent_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "parent_ids", value)
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The git commit short SHA.
+        """
+        return pulumi.get(self, "short_id")
+
+    @short_id.setter
+    def short_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_id", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the commit.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class ReleaseLinksArgsDict(TypedDict):
+        closed_issues_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release's closed issues.
+        """
+        closed_merge_requests_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release's closed merge requests.
+        """
+        edit_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release's edit page.
+        """
+        merged_merge_requests_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release's merged merge requests.
+        """
+        opened_issues_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release's open issues.
+        """
+        opened_merge_requests_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release's open merge requests.
+        """
+        self: NotRequired[pulumi.Input[str]]
+        """
+        URL of the release.
+        """
+elif False:
+    ReleaseLinksArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReleaseLinksArgs:
+    def __init__(__self__, *,
+                 closed_issues_url: Optional[pulumi.Input[str]] = None,
+                 closed_merge_requests_url: Optional[pulumi.Input[str]] = None,
+                 edit_url: Optional[pulumi.Input[str]] = None,
+                 merged_merge_requests_url: Optional[pulumi.Input[str]] = None,
+                 opened_issues_url: Optional[pulumi.Input[str]] = None,
+                 opened_merge_requests_url: Optional[pulumi.Input[str]] = None,
+                 self: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] closed_issues_url: URL of the release's closed issues.
+        :param pulumi.Input[str] closed_merge_requests_url: URL of the release's closed merge requests.
+        :param pulumi.Input[str] edit_url: URL of the release's edit page.
+        :param pulumi.Input[str] merged_merge_requests_url: URL of the release's merged merge requests.
+        :param pulumi.Input[str] opened_issues_url: URL of the release's open issues.
+        :param pulumi.Input[str] opened_merge_requests_url: URL of the release's open merge requests.
+        :param pulumi.Input[str] self: URL of the release.
+        """
+        if closed_issues_url is not None:
+            pulumi.set(__self__, "closed_issues_url", closed_issues_url)
+        if closed_merge_requests_url is not None:
+            pulumi.set(__self__, "closed_merge_requests_url", closed_merge_requests_url)
+        if edit_url is not None:
+            pulumi.set(__self__, "edit_url", edit_url)
+        if merged_merge_requests_url is not None:
+            pulumi.set(__self__, "merged_merge_requests_url", merged_merge_requests_url)
+        if opened_issues_url is not None:
+            pulumi.set(__self__, "opened_issues_url", opened_issues_url)
+        if opened_merge_requests_url is not None:
+            pulumi.set(__self__, "opened_merge_requests_url", opened_merge_requests_url)
+        if self is not None:
+            pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter(name="closedIssuesUrl")
+    def closed_issues_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release's closed issues.
+        """
+        return pulumi.get(self, "closed_issues_url")
+
+    @closed_issues_url.setter
+    def closed_issues_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "closed_issues_url", value)
+
+    @property
+    @pulumi.getter(name="closedMergeRequestsUrl")
+    def closed_merge_requests_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release's closed merge requests.
+        """
+        return pulumi.get(self, "closed_merge_requests_url")
+
+    @closed_merge_requests_url.setter
+    def closed_merge_requests_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "closed_merge_requests_url", value)
+
+    @property
+    @pulumi.getter(name="editUrl")
+    def edit_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release's edit page.
+        """
+        return pulumi.get(self, "edit_url")
+
+    @edit_url.setter
+    def edit_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edit_url", value)
+
+    @property
+    @pulumi.getter(name="mergedMergeRequestsUrl")
+    def merged_merge_requests_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release's merged merge requests.
+        """
+        return pulumi.get(self, "merged_merge_requests_url")
+
+    @merged_merge_requests_url.setter
+    def merged_merge_requests_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "merged_merge_requests_url", value)
+
+    @property
+    @pulumi.getter(name="openedIssuesUrl")
+    def opened_issues_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release's open issues.
+        """
+        return pulumi.get(self, "opened_issues_url")
+
+    @opened_issues_url.setter
+    def opened_issues_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opened_issues_url", value)
+
+    @property
+    @pulumi.getter(name="openedMergeRequestsUrl")
+    def opened_merge_requests_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release's open merge requests.
+        """
+        return pulumi.get(self, "opened_merge_requests_url")
+
+    @opened_merge_requests_url.setter
+    def opened_merge_requests_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opened_merge_requests_url", value)
+
+    @property
+    @pulumi.getter
+    def self(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the release.
+        """
+        return pulumi.get(self, "self")
+
+    @self.setter
+    def self(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self", value)
+
+
+if not MYPY:
     class TagProtectionAllowedToCreateArgsDict(TypedDict):
         access_level: NotRequired[pulumi.Input[str]]
         """
@@ -3122,7 +3698,7 @@ if not MYPY:
         """
         end_event_identifier: NotRequired[pulumi.Input[str]]
         """
-        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         end_event_label_id: NotRequired[pulumi.Input[str]]
         """
@@ -3138,7 +3714,7 @@ if not MYPY:
         """
         start_event_identifier: NotRequired[pulumi.Input[str]]
         """
-        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         start_event_label_id: NotRequired[pulumi.Input[str]]
         """
@@ -3161,11 +3737,11 @@ class ValueStreamAnalyticsStageArgs:
         """
         :param pulumi.Input[str] name: The name of the value stream stage.
         :param pulumi.Input[bool] custom: Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
-        :param pulumi.Input[str] end_event_identifier: End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        :param pulumi.Input[str] end_event_identifier: End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         :param pulumi.Input[str] end_event_label_id: Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
         :param pulumi.Input[bool] hidden: Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
         :param pulumi.Input[str] id: The ID of the value stream stage.
-        :param pulumi.Input[str] start_event_identifier: Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        :param pulumi.Input[str] start_event_identifier: Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         :param pulumi.Input[str] start_event_label_id: Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
         """
         pulumi.set(__self__, "name", name)
@@ -3212,7 +3788,7 @@ class ValueStreamAnalyticsStageArgs:
     @pulumi.getter(name="endEventIdentifier")
     def end_event_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         return pulumi.get(self, "end_event_identifier")
 
@@ -3260,7 +3836,7 @@ class ValueStreamAnalyticsStageArgs:
     @pulumi.getter(name="startEventIdentifier")
     def start_event_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         return pulumi.get(self, "start_event_identifier")
 
