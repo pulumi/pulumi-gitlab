@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
  * 
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationvaluestreamcreate)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
  * 
  * ## Example Usage
  * 
@@ -185,7 +185,7 @@ public class ValueStreamAnalytics extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ValueStreamAnalytics(java.lang.String name) {
+    public ValueStreamAnalytics(String name) {
         this(name, ValueStreamAnalyticsArgs.Empty);
     }
     /**
@@ -193,7 +193,7 @@ public class ValueStreamAnalytics extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ValueStreamAnalytics(java.lang.String name, ValueStreamAnalyticsArgs args) {
+    public ValueStreamAnalytics(String name, ValueStreamAnalyticsArgs args) {
         this(name, args, null);
     }
     /**
@@ -202,22 +202,15 @@ public class ValueStreamAnalytics extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ValueStreamAnalytics(java.lang.String name, ValueStreamAnalyticsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/valueStreamAnalytics:ValueStreamAnalytics", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ValueStreamAnalytics(String name, ValueStreamAnalyticsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/valueStreamAnalytics:ValueStreamAnalytics", name, args == null ? ValueStreamAnalyticsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ValueStreamAnalytics(java.lang.String name, Output<java.lang.String> id, @Nullable ValueStreamAnalyticsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/valueStreamAnalytics:ValueStreamAnalytics", name, state, makeResourceOptions(options, id), false);
+    private ValueStreamAnalytics(String name, Output<String> id, @Nullable ValueStreamAnalyticsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/valueStreamAnalytics:ValueStreamAnalytics", name, state, makeResourceOptions(options, id));
     }
 
-    private static ValueStreamAnalyticsArgs makeArgs(ValueStreamAnalyticsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ValueStreamAnalyticsArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -233,7 +226,7 @@ public class ValueStreamAnalytics extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ValueStreamAnalytics get(java.lang.String name, Output<java.lang.String> id, @Nullable ValueStreamAnalyticsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ValueStreamAnalytics get(String name, Output<String> id, @Nullable ValueStreamAnalyticsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ValueStreamAnalytics(name, id, state, options);
     }
 }

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
  *
  * ## Example Usage
  *
@@ -172,6 +172,10 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     public readonly releasesEvents!: pulumi.Output<boolean>;
     /**
+     * Invoke the hook for project access token expiry events.
+     */
+    public readonly resourceAccessTokenEvents!: pulumi.Output<boolean>;
+    /**
      * Invoke the hook for tag push events.
      */
     public readonly tagPushEvents!: pulumi.Output<boolean>;
@@ -220,6 +224,7 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
             resourceInputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
             resourceInputs["releasesEvents"] = state ? state.releasesEvents : undefined;
+            resourceInputs["resourceAccessTokenEvents"] = state ? state.resourceAccessTokenEvents : undefined;
             resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -249,6 +254,7 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
             resourceInputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
             resourceInputs["releasesEvents"] = args ? args.releasesEvents : undefined;
+            resourceInputs["resourceAccessTokenEvents"] = args ? args.resourceAccessTokenEvents : undefined;
             resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
@@ -344,6 +350,10 @@ export interface ProjectHookState {
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
+     * Invoke the hook for project access token expiry events.
+     */
+    resourceAccessTokenEvents?: pulumi.Input<boolean>;
+    /**
      * Invoke the hook for tag push events.
      */
     tagPushEvents?: pulumi.Input<boolean>;
@@ -433,6 +443,10 @@ export interface ProjectHookArgs {
      * Invoke the hook for release events.
      */
     releasesEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for project access token expiry events.
+     */
+    resourceAccessTokenEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for tag push events.
      */

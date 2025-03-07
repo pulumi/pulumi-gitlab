@@ -115,7 +115,7 @@ def get_project_environments(name: Optional[str] = None,
     """
     The `get_project_environments` data source retrieves information about all environments of the given project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/#list-environments)
 
     ## Example Usage
 
@@ -158,7 +158,7 @@ def get_project_environments_output(name: Optional[pulumi.Input[Optional[str]]] 
     """
     The `get_project_environments` data source retrieves information about all environments of the given project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/#list-environments)
 
     ## Example Usage
 

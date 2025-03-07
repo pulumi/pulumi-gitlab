@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
     /// 
     /// ## Example Usage
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.GitLab
     public partial class GroupBadge : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The id of the group to add the badge to.
+        /// The ID or URL-encoded path of the group to add the badge to.
         /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.GitLab
     public sealed class GroupBadgeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the group to add the badge to.
+        /// The ID or URL-encoded path of the group to add the badge to.
         /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.GitLab
     public sealed class GroupBadgeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the group to add the badge to.
+        /// The ID or URL-encoded path of the group to add the badge to.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }

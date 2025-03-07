@@ -14,7 +14,7 @@ import (
 
 // The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
 //
 // ## Import
 //
@@ -40,7 +40,7 @@ import (
 type PagesDomain struct {
 	pulumi.CustomResourceState
 
-	// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+	// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 	AutoSslEnabled pulumi.BoolOutput `pulumi:"autoSslEnabled"`
 	// The certificate in PEM format with intermediates following in most specific to least specific order.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
@@ -50,7 +50,7 @@ type PagesDomain struct {
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// The certificate key in PEM format.
 	Key pulumi.StringPtrOutput `pulumi:"key"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL for the given domain.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -100,7 +100,7 @@ func GetPagesDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PagesDomain resources.
 type pagesDomainState struct {
-	// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+	// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 	AutoSslEnabled *bool `pulumi:"autoSslEnabled"`
 	// The certificate in PEM format with intermediates following in most specific to least specific order.
 	Certificate *string `pulumi:"certificate"`
@@ -110,7 +110,7 @@ type pagesDomainState struct {
 	Expired *bool `pulumi:"expired"`
 	// The certificate key in PEM format.
 	Key *string `pulumi:"key"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
 	Project *string `pulumi:"project"`
 	// The URL for the given domain.
 	Url *string `pulumi:"url"`
@@ -121,7 +121,7 @@ type pagesDomainState struct {
 }
 
 type PagesDomainState struct {
-	// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+	// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 	AutoSslEnabled pulumi.BoolPtrInput
 	// The certificate in PEM format with intermediates following in most specific to least specific order.
 	Certificate pulumi.StringPtrInput
@@ -131,7 +131,7 @@ type PagesDomainState struct {
 	Expired pulumi.BoolPtrInput
 	// The certificate key in PEM format.
 	Key pulumi.StringPtrInput
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
 	Project pulumi.StringPtrInput
 	// The URL for the given domain.
 	Url pulumi.StringPtrInput
@@ -146,7 +146,7 @@ func (PagesDomainState) ElementType() reflect.Type {
 }
 
 type pagesDomainArgs struct {
-	// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+	// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 	AutoSslEnabled *bool `pulumi:"autoSslEnabled"`
 	// The certificate in PEM format with intermediates following in most specific to least specific order.
 	Certificate *string `pulumi:"certificate"`
@@ -156,13 +156,13 @@ type pagesDomainArgs struct {
 	Expired *bool `pulumi:"expired"`
 	// The certificate key in PEM format.
 	Key *string `pulumi:"key"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a PagesDomain resource.
 type PagesDomainArgs struct {
-	// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+	// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 	AutoSslEnabled pulumi.BoolPtrInput
 	// The certificate in PEM format with intermediates following in most specific to least specific order.
 	Certificate pulumi.StringPtrInput
@@ -172,7 +172,7 @@ type PagesDomainArgs struct {
 	Expired pulumi.BoolPtrInput
 	// The certificate key in PEM format.
 	Key pulumi.StringPtrInput
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
 	Project pulumi.StringInput
 }
 
@@ -263,7 +263,7 @@ func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 func (o PagesDomainOutput) AutoSslEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.BoolOutput { return v.AutoSslEnabled }).(pulumi.BoolOutput)
 }
@@ -288,7 +288,7 @@ func (o PagesDomainOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
 func (o PagesDomainOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -118,7 +118,7 @@ def get_project_tags(order_by: Optional[str] = None,
     """
     The `get_project_tags` data source allows details of project tags to be retrieved by some search criteria.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/tags/#list-project-repository-tags)
 
 
     :param str order_by: Return tags ordered by `name` or `updated` fields. Default is `updated`.
@@ -149,7 +149,7 @@ def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[str]]] = No
     """
     The `get_project_tags` data source allows details of project tags to be retrieved by some search criteria.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/tags/#list-project-repository-tags)
 
 
     :param str order_by: Return tags ordered by `name` or `updated` fields. Default is `updated`.

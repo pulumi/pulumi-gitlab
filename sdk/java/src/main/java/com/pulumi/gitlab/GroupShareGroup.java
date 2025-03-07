@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#share-groups-with-groups)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
  * 
  * ## Example Usage
  * 
@@ -144,7 +144,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupShareGroup(java.lang.String name) {
+    public GroupShareGroup(String name) {
         this(name, GroupShareGroupArgs.Empty);
     }
     /**
@@ -152,7 +152,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupShareGroup(java.lang.String name, GroupShareGroupArgs args) {
+    public GroupShareGroup(String name, GroupShareGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -161,22 +161,15 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupShareGroup(java.lang.String name, GroupShareGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupShareGroup:GroupShareGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupShareGroup(String name, GroupShareGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupShareGroup:GroupShareGroup", name, args == null ? GroupShareGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupShareGroup(java.lang.String name, Output<java.lang.String> id, @Nullable GroupShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupShareGroup:GroupShareGroup", name, state, makeResourceOptions(options, id), false);
+    private GroupShareGroup(String name, Output<String> id, @Nullable GroupShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupShareGroup:GroupShareGroup", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupShareGroupArgs makeArgs(GroupShareGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupShareGroupArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -192,7 +185,7 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupShareGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupShareGroup get(String name, Output<String> id, @Nullable GroupShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupShareGroup(name, id, state, options);
     }
 }

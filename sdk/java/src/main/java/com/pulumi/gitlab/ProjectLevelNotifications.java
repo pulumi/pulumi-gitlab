@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; While the API supports both groups and projects, this resource only supports projects currently.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
  * 
  */
 @ResourceType(type="gitlab:index/projectLevelNotifications:ProjectLevelNotifications")
@@ -295,7 +295,7 @@ public class ProjectLevelNotifications extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectLevelNotifications(java.lang.String name) {
+    public ProjectLevelNotifications(String name) {
         this(name, ProjectLevelNotificationsArgs.Empty);
     }
     /**
@@ -303,7 +303,7 @@ public class ProjectLevelNotifications extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectLevelNotifications(java.lang.String name, ProjectLevelNotificationsArgs args) {
+    public ProjectLevelNotifications(String name, ProjectLevelNotificationsArgs args) {
         this(name, args, null);
     }
     /**
@@ -312,22 +312,15 @@ public class ProjectLevelNotifications extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectLevelNotifications(java.lang.String name, ProjectLevelNotificationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectLevelNotifications:ProjectLevelNotifications", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectLevelNotifications(String name, ProjectLevelNotificationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLevelNotifications:ProjectLevelNotifications", name, args == null ? ProjectLevelNotificationsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectLevelNotifications(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectLevelNotifications:ProjectLevelNotifications", name, state, makeResourceOptions(options, id), false);
+    private ProjectLevelNotifications(String name, Output<String> id, @Nullable ProjectLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLevelNotifications:ProjectLevelNotifications", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectLevelNotificationsArgs makeArgs(ProjectLevelNotificationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectLevelNotificationsArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -343,7 +336,7 @@ public class ProjectLevelNotifications extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectLevelNotifications get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectLevelNotifications get(String name, Output<String> id, @Nullable ProjectLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectLevelNotifications(name, id, state, options);
     }
 }

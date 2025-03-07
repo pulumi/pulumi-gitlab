@@ -12,53 +12,12 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupVariableState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+ * The `gitlab.GroupVariable` resource allows creating a GitLab group level variables.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.GroupVariable;
- * import com.pulumi.gitlab.GroupVariableArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new GroupVariable("example", GroupVariableArgs.builder()
- *             .group("12345")
- *             .key("group_variable_key")
- *             .value("group_variable_value")
- *             .protected_(false)
- *             .masked(false)
- *             .environmentScope("*")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
  * 
  * ## Import
  * 
@@ -90,28 +49,28 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the variable.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
      */
     @Export(name="environmentScope", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> environmentScope;
+    private Output<String> environmentScope;
 
     /**
      * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      * 
      */
-    public Output<Optional<String>> environmentScope() {
-        return Codegen.optional(this.environmentScope);
+    public Output<String> environmentScope() {
+        return this.environmentScope;
     }
     /**
      * The name or id of the group.
@@ -128,6 +87,20 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    @Export(name="hidden", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hidden;
+
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    public Output<Boolean> hidden() {
+        return this.hidden;
+    }
+    /**
      * The name of the variable.
      * 
      */
@@ -142,46 +115,46 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     @Export(name="masked", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> masked;
+    private Output<Boolean> masked;
 
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
-    public Output<Optional<Boolean>> masked() {
-        return Codegen.optional(this.masked);
+    public Output<Boolean> masked() {
+        return this.masked;
     }
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     @Export(name="protected", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> protected_;
+    private Output<Boolean> protected_;
 
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
-    public Output<Optional<Boolean>> protected_() {
-        return Codegen.optional(this.protected_);
+    public Output<Boolean> protected_() {
+        return this.protected_;
     }
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      * 
      */
     @Export(name="raw", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> raw;
+    private Output<Boolean> raw;
 
     /**
-     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * @return Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      * 
      */
-    public Output<Optional<Boolean>> raw() {
-        return Codegen.optional(this.raw);
+    public Output<Boolean> raw() {
+        return this.raw;
     }
     /**
      * The value of the variable.
@@ -198,25 +171,25 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
         return this.value;
     }
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Valid values are: `env_var`, `file`.
      * 
      */
     @Export(name="variableType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> variableType;
+    private Output<String> variableType;
 
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of a variable. Valid values are: `env_var`, `file`.
      * 
      */
-    public Output<Optional<String>> variableType() {
-        return Codegen.optional(this.variableType);
+    public Output<String> variableType() {
+        return this.variableType;
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupVariable(java.lang.String name) {
+    public GroupVariable(String name) {
         this(name, GroupVariableArgs.Empty);
     }
     /**
@@ -224,7 +197,7 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupVariable(java.lang.String name, GroupVariableArgs args) {
+    public GroupVariable(String name, GroupVariableArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,22 +206,15 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupVariable(java.lang.String name, GroupVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupVariable:GroupVariable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupVariable(String name, GroupVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupVariable:GroupVariable", name, args == null ? GroupVariableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupVariable(java.lang.String name, Output<java.lang.String> id, @Nullable GroupVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupVariable:GroupVariable", name, state, makeResourceOptions(options, id), false);
+    private GroupVariable(String name, Output<String> id, @Nullable GroupVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupVariable:GroupVariable", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupVariableArgs makeArgs(GroupVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupVariableArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -264,7 +230,7 @@ public class GroupVariable extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupVariable get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupVariable get(String name, Output<String> id, @Nullable GroupVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupVariable(name, id, state, options);
     }
 }

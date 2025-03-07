@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectBadge` resource allows to manage the lifecycle of project badges.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
  * 
  * ## Example Usage
  * 
@@ -200,7 +200,7 @@ public class ProjectBadge extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectBadge(java.lang.String name) {
+    public ProjectBadge(String name) {
         this(name, ProjectBadgeArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class ProjectBadge extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectBadge(java.lang.String name, ProjectBadgeArgs args) {
+    public ProjectBadge(String name, ProjectBadgeArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,22 +217,15 @@ public class ProjectBadge extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectBadge(java.lang.String name, ProjectBadgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectBadge:ProjectBadge", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectBadge(String name, ProjectBadgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectBadge:ProjectBadge", name, args == null ? ProjectBadgeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectBadge(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectBadge:ProjectBadge", name, state, makeResourceOptions(options, id), false);
+    private ProjectBadge(String name, Output<String> id, @Nullable ProjectBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectBadge:ProjectBadge", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectBadgeArgs makeArgs(ProjectBadgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectBadgeArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +241,7 @@ public class ProjectBadge extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectBadge get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectBadge get(String name, Output<String> id, @Nullable ProjectBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectBadge(name, id, state, options);
     }
 }

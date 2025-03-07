@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; If a project should grant membership to an entire group use the `gitlab.ProjectShareGroup` resource instead.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
  * 
  * ## Example Usage
  * 
@@ -120,6 +120,20 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiresAt);
     }
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Output<Optional<Integer>> memberRoleId() {
+        return Codegen.optional(this.memberRoleId);
+    }
+    /**
      * The ID or URL-encoded path of the project.
      * 
      */
@@ -152,7 +166,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectMembership(java.lang.String name) {
+    public ProjectMembership(String name) {
         this(name, ProjectMembershipArgs.Empty);
     }
     /**
@@ -160,7 +174,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectMembership(java.lang.String name, ProjectMembershipArgs args) {
+    public ProjectMembership(String name, ProjectMembershipArgs args) {
         this(name, args, null);
     }
     /**
@@ -169,22 +183,15 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectMembership(java.lang.String name, ProjectMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMembership:ProjectMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectMembership(String name, ProjectMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMembership:ProjectMembership", name, args == null ? ProjectMembershipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectMembership(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMembership:ProjectMembership", name, state, makeResourceOptions(options, id), false);
+    private ProjectMembership(String name, Output<String> id, @Nullable ProjectMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMembership:ProjectMembership", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectMembershipArgs makeArgs(ProjectMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectMembershipArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -200,7 +207,7 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectMembership get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectMembership get(String name, Output<String> id, @Nullable ProjectMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectMembership(name, id, state, options);
     }
 }

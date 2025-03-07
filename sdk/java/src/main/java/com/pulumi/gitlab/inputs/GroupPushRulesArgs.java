@@ -48,14 +48,14 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * Only commits pushed using verified emails are allowed.
      * 
      */
     @Import(name="commitCommitterCheck")
     private @Nullable Output<Boolean> commitCommitterCheck;
 
     /**
-     * @return Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * @return Only commits pushed using verified emails are allowed.
      * 
      */
     public Optional<Output<Boolean>> commitCommitterCheck() {
@@ -198,14 +198,14 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * Only commits signed through GPG are allowed.
      * 
      */
     @Import(name="rejectUnsignedCommits")
     private @Nullable Output<Boolean> rejectUnsignedCommits;
 
     /**
-     * @return Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * @return Only commits signed through GPG are allowed.
      * 
      */
     public Optional<Output<Boolean>> rejectUnsignedCommits() {
@@ -291,7 +291,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param commitCommitterCheck Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+         * @param commitCommitterCheck Only commits pushed using verified emails are allowed.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param commitCommitterCheck Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+         * @param commitCommitterCheck Only commits pushed using verified emails are allowed.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rejectUnsignedCommits Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+         * @param rejectUnsignedCommits Only commits signed through GPG are allowed.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class GroupPushRulesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rejectUnsignedCommits Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+         * @param rejectUnsignedCommits Only commits signed through GPG are allowed.
          * 
          * @return builder
          * 

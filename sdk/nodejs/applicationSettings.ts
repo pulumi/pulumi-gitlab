@@ -114,7 +114,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly authorizedKeysEnabled!: pulumi.Output<boolean>;
     /**
-     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      */
     public readonly autoBanUserOnExcessiveProjectsDownload!: pulumi.Output<boolean>;
     /**
@@ -134,15 +134,15 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly bulkImportConcurrentPipelineBatchLimit!: pulumi.Output<number>;
     /**
-     * Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * Enable migrating GitLab groups by direct transfer.
      */
     public readonly bulkImportEnabled!: pulumi.Output<boolean>;
     /**
-     * Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * Maximum download file size when importing from source GitLab instances by direct transfer.
      */
     public readonly bulkImportMaxDownloadFileSize!: pulumi.Output<number>;
     /**
-     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * Indicates whether users can create top-level groups.
      */
     public readonly canCreateGroup!: pulumi.Output<boolean>;
     /**
@@ -162,15 +162,15 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly commitEmailHostname!: pulumi.Output<string>;
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      */
     public readonly concurrentBitbucketImportJobsLimit!: pulumi.Output<number>;
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      */
     public readonly concurrentBitbucketServerImportJobsLimit!: pulumi.Output<number>;
     /**
-     * Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the GitHub importer.
      */
     public readonly concurrentGithubImportJobsLimit!: pulumi.Output<number>;
     /**
@@ -202,11 +202,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly deactivateDormantUsers!: pulumi.Output<boolean>;
     /**
-     * Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * Length of time (in days) after which a user is considered dormant.
      */
     public readonly deactivateDormantUsersPeriod!: pulumi.Output<number>;
     /**
-     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      */
     public readonly decompressArchiveFileTimeout!: pulumi.Output<number>;
     /**
@@ -214,7 +214,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly defaultArtifactsExpireIn!: pulumi.Output<string>;
     /**
-     * Instance-level custom initial branch name (introduced in GitLab 13.2).
+     * Instance-level custom initial branch name
      */
     public readonly defaultBranchName!: pulumi.Output<string>;
     /**
@@ -258,11 +258,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly defaultSyntaxHighlightingTheme!: pulumi.Output<number>;
     /**
-     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+     * Enable inactive project deletion feature.
      */
     public readonly deleteInactiveProjects!: pulumi.Output<boolean>;
     /**
-     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      */
     public readonly deleteUnconfirmedUsers!: pulumi.Output<boolean>;
     /**
@@ -290,15 +290,15 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly diffMaxPatchBytes!: pulumi.Output<number>;
     /**
-     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      */
     public readonly disableAdminOauthScopes!: pulumi.Output<boolean>;
     /**
-     * Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+     * Disable display of RSS/Atom and calendar feed tokens.
      */
     public readonly disableFeedToken!: pulumi.Output<boolean>;
     /**
-     * Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
     public readonly disablePersonalAccessTokens!: pulumi.Output<boolean>;
     /**
@@ -322,7 +322,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly domainDenylists!: pulumi.Output<string[]>;
     /**
-     * Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * Maximum downstream pipeline trigger rate.
      */
     public readonly downstreamPipelineTriggerLimitPerProjectUserSha!: pulumi.Output<number>;
     /**
@@ -330,7 +330,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly dsaKeyRestriction!: pulumi.Output<number>;
     /**
-     * Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      */
     public readonly duoFeaturesEnabled!: pulumi.Output<boolean>;
     /**
@@ -530,11 +530,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly geoStatusTimeout!: pulumi.Output<number>;
     /**
-     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      */
     public readonly gitRateLimitUsersAlertlists!: pulumi.Output<number[]>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      */
     public readonly gitRateLimitUsersAllowlists!: pulumi.Output<string[]>;
     /**
@@ -562,7 +562,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly gitlabEnvironmentToolkitInstance!: pulumi.Output<boolean>;
     /**
-     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * Maximum number of Git operations per minute a user can perform.
      */
     public readonly gitlabShellOperationLimit!: pulumi.Output<number>;
     /**
@@ -662,19 +662,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly inProductMarketingEmailsEnabled!: pulumi.Output<boolean>;
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      */
     public readonly inactiveProjectsDeleteAfterMonths!: pulumi.Output<number>;
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      */
     public readonly inactiveProjectsMinSizeMb!: pulumi.Output<number>;
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      */
     public readonly inactiveProjectsSendWarningEmailAfterMonths!: pulumi.Output<number>;
     /**
-     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * Whether or not optional metrics are enabled in Service Ping.
      */
     public readonly includeOptionalMetricsInServicePing!: pulumi.Output<boolean>;
     /**
@@ -706,7 +706,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly localMarkdownVersion!: pulumi.Output<number>;
     /**
-     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
     public readonly lockDuoFeaturesEnabled!: pulumi.Output<boolean>;
     /**
@@ -746,7 +746,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly maxExportSize!: pulumi.Output<number>;
     /**
-     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * Maximum remote file size for imports from external object storages.
      */
     public readonly maxImportRemoteFileSize!: pulumi.Output<number>;
     /**
@@ -758,11 +758,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly maxLoginAttempts!: pulumi.Output<number>;
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      */
     public readonly maxNumberOfRepositoryDownloads!: pulumi.Output<number>;
     /**
-     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      */
     public readonly maxNumberOfRepositoryDownloadsWithinTimePeriod!: pulumi.Output<number>;
     /**
@@ -774,7 +774,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly maxPersonalAccessTokenLifetime!: pulumi.Output<number>;
     /**
-     * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
+     * Maximum allowable lifetime for SSH keys in days.
      */
     public readonly maxSshKeyLifetime!: pulumi.Output<number>;
     public readonly maxTerraformStateSizeBytes!: pulumi.Output<number>;
@@ -783,7 +783,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly metricsMethodCallThreshold!: pulumi.Output<number>;
     /**
-     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      */
     public readonly minimumPasswordLength!: pulumi.Output<number>;
     /**
@@ -839,19 +839,19 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly passwordAuthenticationEnabledForWeb!: pulumi.Output<boolean>;
     /**
-     * Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one lowercase letter.
      */
     public readonly passwordLowercaseRequired!: pulumi.Output<boolean>;
     /**
-     * Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one number.
      */
     public readonly passwordNumberRequired!: pulumi.Output<boolean>;
     /**
-     * Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one symbol character.
      */
     public readonly passwordSymbolRequired!: pulumi.Output<boolean>;
     /**
-     * Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one uppercase letter.
      */
     public readonly passwordUppercaseRequired!: pulumi.Output<boolean>;
     /**
@@ -883,11 +883,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly projectExportEnabled!: pulumi.Output<boolean>;
     /**
-     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * Maximum authenticated requests to /project/:id/jobs per minute.
      */
     public readonly projectJobsApiRateLimit!: pulumi.Output<number>;
     /**
-     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      */
     public readonly projectsApiRateLimitUnauthenticated!: pulumi.Output<number>;
     /**
@@ -939,7 +939,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly receptiveClusterAgentsEnabled!: pulumi.Output<boolean>;
     /**
-     * Enable Remember me setting. Introduced in GitLab 16.0.
+     * Enable Remember me setting.
      */
     public readonly rememberMeEnabled!: pulumi.Output<boolean>;
     /**
@@ -999,7 +999,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly securityPolicyGlobalGroupApproversEnabled!: pulumi.Output<boolean>;
     /**
-     * Public security contact information. Introduced in GitLab 16.7.
+     * Public security contact information.
      */
     public readonly securityTxtContent!: pulumi.Output<string>;
     /**
@@ -1223,7 +1223,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly twoFactorGracePeriod!: pulumi.Output<number>;
     /**
-     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      */
     public readonly unconfirmedUsersDeleteAfterDays!: pulumi.Output<number>;
     /**
@@ -1263,7 +1263,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly userDefaultInternalRegex!: pulumi.Output<string>;
     /**
-     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * Newly created users have private profile by default.
      */
     public readonly userDefaultsToPrivateProfile!: pulumi.Output<boolean>;
     /**
@@ -2025,7 +2025,7 @@ export interface ApplicationSettingsState {
      */
     authorizedKeysEnabled?: pulumi.Input<boolean>;
     /**
-     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      */
     autoBanUserOnExcessiveProjectsDownload?: pulumi.Input<boolean>;
     /**
@@ -2045,15 +2045,15 @@ export interface ApplicationSettingsState {
      */
     bulkImportConcurrentPipelineBatchLimit?: pulumi.Input<number>;
     /**
-     * Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * Enable migrating GitLab groups by direct transfer.
      */
     bulkImportEnabled?: pulumi.Input<boolean>;
     /**
-     * Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * Maximum download file size when importing from source GitLab instances by direct transfer.
      */
     bulkImportMaxDownloadFileSize?: pulumi.Input<number>;
     /**
-     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * Indicates whether users can create top-level groups.
      */
     canCreateGroup?: pulumi.Input<boolean>;
     /**
@@ -2073,15 +2073,15 @@ export interface ApplicationSettingsState {
      */
     commitEmailHostname?: pulumi.Input<string>;
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      */
     concurrentBitbucketImportJobsLimit?: pulumi.Input<number>;
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      */
     concurrentBitbucketServerImportJobsLimit?: pulumi.Input<number>;
     /**
-     * Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the GitHub importer.
      */
     concurrentGithubImportJobsLimit?: pulumi.Input<number>;
     /**
@@ -2113,11 +2113,11 @@ export interface ApplicationSettingsState {
      */
     deactivateDormantUsers?: pulumi.Input<boolean>;
     /**
-     * Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * Length of time (in days) after which a user is considered dormant.
      */
     deactivateDormantUsersPeriod?: pulumi.Input<number>;
     /**
-     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      */
     decompressArchiveFileTimeout?: pulumi.Input<number>;
     /**
@@ -2125,7 +2125,7 @@ export interface ApplicationSettingsState {
      */
     defaultArtifactsExpireIn?: pulumi.Input<string>;
     /**
-     * Instance-level custom initial branch name (introduced in GitLab 13.2).
+     * Instance-level custom initial branch name
      */
     defaultBranchName?: pulumi.Input<string>;
     /**
@@ -2169,11 +2169,11 @@ export interface ApplicationSettingsState {
      */
     defaultSyntaxHighlightingTheme?: pulumi.Input<number>;
     /**
-     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+     * Enable inactive project deletion feature.
      */
     deleteInactiveProjects?: pulumi.Input<boolean>;
     /**
-     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      */
     deleteUnconfirmedUsers?: pulumi.Input<boolean>;
     /**
@@ -2201,15 +2201,15 @@ export interface ApplicationSettingsState {
      */
     diffMaxPatchBytes?: pulumi.Input<number>;
     /**
-     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      */
     disableAdminOauthScopes?: pulumi.Input<boolean>;
     /**
-     * Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+     * Disable display of RSS/Atom and calendar feed tokens.
      */
     disableFeedToken?: pulumi.Input<boolean>;
     /**
-     * Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
     disablePersonalAccessTokens?: pulumi.Input<boolean>;
     /**
@@ -2233,7 +2233,7 @@ export interface ApplicationSettingsState {
      */
     domainDenylists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * Maximum downstream pipeline trigger rate.
      */
     downstreamPipelineTriggerLimitPerProjectUserSha?: pulumi.Input<number>;
     /**
@@ -2241,7 +2241,7 @@ export interface ApplicationSettingsState {
      */
     dsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      */
     duoFeaturesEnabled?: pulumi.Input<boolean>;
     /**
@@ -2441,11 +2441,11 @@ export interface ApplicationSettingsState {
      */
     geoStatusTimeout?: pulumi.Input<number>;
     /**
-     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      */
     gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      */
     gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2473,7 +2473,7 @@ export interface ApplicationSettingsState {
      */
     gitlabEnvironmentToolkitInstance?: pulumi.Input<boolean>;
     /**
-     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * Maximum number of Git operations per minute a user can perform.
      */
     gitlabShellOperationLimit?: pulumi.Input<number>;
     /**
@@ -2573,19 +2573,19 @@ export interface ApplicationSettingsState {
      */
     inProductMarketingEmailsEnabled?: pulumi.Input<boolean>;
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      */
     inactiveProjectsDeleteAfterMonths?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      */
     inactiveProjectsMinSizeMb?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
-     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * Whether or not optional metrics are enabled in Service Ping.
      */
     includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
     /**
@@ -2617,7 +2617,7 @@ export interface ApplicationSettingsState {
      */
     localMarkdownVersion?: pulumi.Input<number>;
     /**
-     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
     lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
     /**
@@ -2657,7 +2657,7 @@ export interface ApplicationSettingsState {
      */
     maxExportSize?: pulumi.Input<number>;
     /**
-     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * Maximum remote file size for imports from external object storages.
      */
     maxImportRemoteFileSize?: pulumi.Input<number>;
     /**
@@ -2669,11 +2669,11 @@ export interface ApplicationSettingsState {
      */
     maxLoginAttempts?: pulumi.Input<number>;
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      */
     maxNumberOfRepositoryDownloads?: pulumi.Input<number>;
     /**
-     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      */
     maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number>;
     /**
@@ -2685,7 +2685,7 @@ export interface ApplicationSettingsState {
      */
     maxPersonalAccessTokenLifetime?: pulumi.Input<number>;
     /**
-     * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
+     * Maximum allowable lifetime for SSH keys in days.
      */
     maxSshKeyLifetime?: pulumi.Input<number>;
     maxTerraformStateSizeBytes?: pulumi.Input<number>;
@@ -2694,7 +2694,7 @@ export interface ApplicationSettingsState {
      */
     metricsMethodCallThreshold?: pulumi.Input<number>;
     /**
-     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      */
     minimumPasswordLength?: pulumi.Input<number>;
     /**
@@ -2750,19 +2750,19 @@ export interface ApplicationSettingsState {
      */
     passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one lowercase letter.
      */
     passwordLowercaseRequired?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one number.
      */
     passwordNumberRequired?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one symbol character.
      */
     passwordSymbolRequired?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one uppercase letter.
      */
     passwordUppercaseRequired?: pulumi.Input<boolean>;
     /**
@@ -2794,11 +2794,11 @@ export interface ApplicationSettingsState {
      */
     projectExportEnabled?: pulumi.Input<boolean>;
     /**
-     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * Maximum authenticated requests to /project/:id/jobs per minute.
      */
     projectJobsApiRateLimit?: pulumi.Input<number>;
     /**
-     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      */
     projectsApiRateLimitUnauthenticated?: pulumi.Input<number>;
     /**
@@ -2850,7 +2850,7 @@ export interface ApplicationSettingsState {
      */
     receptiveClusterAgentsEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable Remember me setting. Introduced in GitLab 16.0.
+     * Enable Remember me setting.
      */
     rememberMeEnabled?: pulumi.Input<boolean>;
     /**
@@ -2910,7 +2910,7 @@ export interface ApplicationSettingsState {
      */
     securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean>;
     /**
-     * Public security contact information. Introduced in GitLab 16.7.
+     * Public security contact information.
      */
     securityTxtContent?: pulumi.Input<string>;
     /**
@@ -3134,7 +3134,7 @@ export interface ApplicationSettingsState {
      */
     twoFactorGracePeriod?: pulumi.Input<number>;
     /**
-     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      */
     unconfirmedUsersDeleteAfterDays?: pulumi.Input<number>;
     /**
@@ -3174,7 +3174,7 @@ export interface ApplicationSettingsState {
      */
     userDefaultInternalRegex?: pulumi.Input<string>;
     /**
-     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * Newly created users have private profile by default.
      */
     userDefaultsToPrivateProfile?: pulumi.Input<boolean>;
     /**
@@ -3288,7 +3288,7 @@ export interface ApplicationSettingsArgs {
      */
     authorizedKeysEnabled?: pulumi.Input<boolean>;
     /**
-     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      */
     autoBanUserOnExcessiveProjectsDownload?: pulumi.Input<boolean>;
     /**
@@ -3308,15 +3308,15 @@ export interface ApplicationSettingsArgs {
      */
     bulkImportConcurrentPipelineBatchLimit?: pulumi.Input<number>;
     /**
-     * Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * Enable migrating GitLab groups by direct transfer.
      */
     bulkImportEnabled?: pulumi.Input<boolean>;
     /**
-     * Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * Maximum download file size when importing from source GitLab instances by direct transfer.
      */
     bulkImportMaxDownloadFileSize?: pulumi.Input<number>;
     /**
-     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * Indicates whether users can create top-level groups.
      */
     canCreateGroup?: pulumi.Input<boolean>;
     /**
@@ -3336,15 +3336,15 @@ export interface ApplicationSettingsArgs {
      */
     commitEmailHostname?: pulumi.Input<string>;
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      */
     concurrentBitbucketImportJobsLimit?: pulumi.Input<number>;
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      */
     concurrentBitbucketServerImportJobsLimit?: pulumi.Input<number>;
     /**
-     * Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the GitHub importer.
      */
     concurrentGithubImportJobsLimit?: pulumi.Input<number>;
     /**
@@ -3376,11 +3376,11 @@ export interface ApplicationSettingsArgs {
      */
     deactivateDormantUsers?: pulumi.Input<boolean>;
     /**
-     * Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * Length of time (in days) after which a user is considered dormant.
      */
     deactivateDormantUsersPeriod?: pulumi.Input<number>;
     /**
-     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      */
     decompressArchiveFileTimeout?: pulumi.Input<number>;
     /**
@@ -3388,7 +3388,7 @@ export interface ApplicationSettingsArgs {
      */
     defaultArtifactsExpireIn?: pulumi.Input<string>;
     /**
-     * Instance-level custom initial branch name (introduced in GitLab 13.2).
+     * Instance-level custom initial branch name
      */
     defaultBranchName?: pulumi.Input<string>;
     /**
@@ -3432,11 +3432,11 @@ export interface ApplicationSettingsArgs {
      */
     defaultSyntaxHighlightingTheme?: pulumi.Input<number>;
     /**
-     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+     * Enable inactive project deletion feature.
      */
     deleteInactiveProjects?: pulumi.Input<boolean>;
     /**
-     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      */
     deleteUnconfirmedUsers?: pulumi.Input<boolean>;
     /**
@@ -3464,15 +3464,15 @@ export interface ApplicationSettingsArgs {
      */
     diffMaxPatchBytes?: pulumi.Input<number>;
     /**
-     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      */
     disableAdminOauthScopes?: pulumi.Input<boolean>;
     /**
-     * Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+     * Disable display of RSS/Atom and calendar feed tokens.
      */
     disableFeedToken?: pulumi.Input<boolean>;
     /**
-     * Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
     disablePersonalAccessTokens?: pulumi.Input<boolean>;
     /**
@@ -3496,7 +3496,7 @@ export interface ApplicationSettingsArgs {
      */
     domainDenylists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * Maximum downstream pipeline trigger rate.
      */
     downstreamPipelineTriggerLimitPerProjectUserSha?: pulumi.Input<number>;
     /**
@@ -3504,7 +3504,7 @@ export interface ApplicationSettingsArgs {
      */
     dsaKeyRestriction?: pulumi.Input<number>;
     /**
-     * Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      */
     duoFeaturesEnabled?: pulumi.Input<boolean>;
     /**
@@ -3704,11 +3704,11 @@ export interface ApplicationSettingsArgs {
      */
     geoStatusTimeout?: pulumi.Input<number>;
     /**
-     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      */
     gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      */
     gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3728,7 +3728,7 @@ export interface ApplicationSettingsArgs {
      */
     gitalyTimeoutMedium?: pulumi.Input<number>;
     /**
-     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * Maximum number of Git operations per minute a user can perform.
      */
     gitlabShellOperationLimit?: pulumi.Input<number>;
     /**
@@ -3828,19 +3828,19 @@ export interface ApplicationSettingsArgs {
      */
     inProductMarketingEmailsEnabled?: pulumi.Input<boolean>;
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      */
     inactiveProjectsDeleteAfterMonths?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      */
     inactiveProjectsMinSizeMb?: pulumi.Input<number>;
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
-     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * Whether or not optional metrics are enabled in Service Ping.
      */
     includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
     /**
@@ -3872,7 +3872,7 @@ export interface ApplicationSettingsArgs {
      */
     localMarkdownVersion?: pulumi.Input<number>;
     /**
-     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
     lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
     /**
@@ -3912,7 +3912,7 @@ export interface ApplicationSettingsArgs {
      */
     maxExportSize?: pulumi.Input<number>;
     /**
-     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * Maximum remote file size for imports from external object storages.
      */
     maxImportRemoteFileSize?: pulumi.Input<number>;
     /**
@@ -3924,11 +3924,11 @@ export interface ApplicationSettingsArgs {
      */
     maxLoginAttempts?: pulumi.Input<number>;
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      */
     maxNumberOfRepositoryDownloads?: pulumi.Input<number>;
     /**
-     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      */
     maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number>;
     /**
@@ -3940,7 +3940,7 @@ export interface ApplicationSettingsArgs {
      */
     maxPersonalAccessTokenLifetime?: pulumi.Input<number>;
     /**
-     * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
+     * Maximum allowable lifetime for SSH keys in days.
      */
     maxSshKeyLifetime?: pulumi.Input<number>;
     maxTerraformStateSizeBytes?: pulumi.Input<number>;
@@ -3949,7 +3949,7 @@ export interface ApplicationSettingsArgs {
      */
     metricsMethodCallThreshold?: pulumi.Input<number>;
     /**
-     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      */
     minimumPasswordLength?: pulumi.Input<number>;
     /**
@@ -4005,19 +4005,19 @@ export interface ApplicationSettingsArgs {
      */
     passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one lowercase letter.
      */
     passwordLowercaseRequired?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one number.
      */
     passwordNumberRequired?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one symbol character.
      */
     passwordSymbolRequired?: pulumi.Input<boolean>;
     /**
-     * Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one uppercase letter.
      */
     passwordUppercaseRequired?: pulumi.Input<boolean>;
     /**
@@ -4049,11 +4049,11 @@ export interface ApplicationSettingsArgs {
      */
     projectExportEnabled?: pulumi.Input<boolean>;
     /**
-     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * Maximum authenticated requests to /project/:id/jobs per minute.
      */
     projectJobsApiRateLimit?: pulumi.Input<number>;
     /**
-     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      */
     projectsApiRateLimitUnauthenticated?: pulumi.Input<number>;
     /**
@@ -4105,7 +4105,7 @@ export interface ApplicationSettingsArgs {
      */
     receptiveClusterAgentsEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable Remember me setting. Introduced in GitLab 16.0.
+     * Enable Remember me setting.
      */
     rememberMeEnabled?: pulumi.Input<boolean>;
     /**
@@ -4165,7 +4165,7 @@ export interface ApplicationSettingsArgs {
      */
     securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean>;
     /**
-     * Public security contact information. Introduced in GitLab 16.7.
+     * Public security contact information.
      */
     securityTxtContent?: pulumi.Input<string>;
     /**
@@ -4389,7 +4389,7 @@ export interface ApplicationSettingsArgs {
      */
     twoFactorGracePeriod?: pulumi.Input<number>;
     /**
-     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      */
     unconfirmedUsersDeleteAfterDays?: pulumi.Input<number>;
     /**
@@ -4429,7 +4429,7 @@ export interface ApplicationSettingsArgs {
      */
     userDefaultInternalRegex?: pulumi.Input<string>;
     /**
-     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * Newly created users have private profile by default.
      */
     userDefaultsToPrivateProfile?: pulumi.Input<boolean>;
     /**

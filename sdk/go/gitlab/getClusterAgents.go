@@ -13,9 +13,7 @@ import (
 
 // The `getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
 //
-// > Requires at least GitLab 14.10
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 //
 // ## Example Usage
 //

@@ -62,7 +62,7 @@ class GetReleaseLinkResult:
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> str:
         """
-        Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
@@ -78,7 +78,7 @@ class GetReleaseLinkResult:
     @pulumi.getter
     def filepath(self) -> str:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -118,7 +118,7 @@ class GetReleaseLinkResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         """
         return pulumi.get(self, "project")
 
@@ -164,11 +164,11 @@ def get_release_link(link_id: Optional[int] = None,
     """
     The `ReleaseLink` data source allows get details of a release link.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
 
     :param int link_id: The ID of the link.
-    :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+    :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
     :param str tag_name: The tag associated with the Release.
     """
     __args__ = dict()
@@ -196,11 +196,11 @@ def get_release_link_output(link_id: Optional[pulumi.Input[int]] = None,
     """
     The `ReleaseLink` data source allows get details of a release link.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
 
     :param int link_id: The ID of the link.
-    :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+    :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
     :param str tag_name: The tag associated with the Release.
     """
     __args__ = dict()

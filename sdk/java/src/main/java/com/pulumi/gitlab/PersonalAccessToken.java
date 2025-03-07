@@ -25,13 +25,13 @@ import javax.annotation.Nullable;
  * 
  * &gt; Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
  * 
- * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
  * 
  * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
  * 
- * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/personal_access_tokens.html#automatic-reuse-detection) it&#39;s possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+ * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/personal_access_tokens/#automatic-reuse-detection) it&#39;s possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  * 
- * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/personal_access_tokens.html)
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/personal_access_tokens/)
  * 
  * ## Example Usage
  * 
@@ -237,7 +237,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PersonalAccessToken(java.lang.String name) {
+    public PersonalAccessToken(String name) {
         this(name, PersonalAccessTokenArgs.Empty);
     }
     /**
@@ -245,7 +245,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PersonalAccessToken(java.lang.String name, PersonalAccessTokenArgs args) {
+    public PersonalAccessToken(String name, PersonalAccessTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -254,22 +254,15 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PersonalAccessToken(java.lang.String name, PersonalAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/personalAccessToken:PersonalAccessToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public PersonalAccessToken(String name, PersonalAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/personalAccessToken:PersonalAccessToken", name, args == null ? PersonalAccessTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private PersonalAccessToken(java.lang.String name, Output<java.lang.String> id, @Nullable PersonalAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/personalAccessToken:PersonalAccessToken", name, state, makeResourceOptions(options, id), false);
+    private PersonalAccessToken(String name, Output<String> id, @Nullable PersonalAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/personalAccessToken:PersonalAccessToken", name, state, makeResourceOptions(options, id));
     }
 
-    private static PersonalAccessTokenArgs makeArgs(PersonalAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? PersonalAccessTokenArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -288,7 +281,7 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PersonalAccessToken get(java.lang.String name, Output<java.lang.String> id, @Nullable PersonalAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PersonalAccessToken get(String name, Output<String> id, @Nullable PersonalAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PersonalAccessToken(name, id, state, options);
     }
 }

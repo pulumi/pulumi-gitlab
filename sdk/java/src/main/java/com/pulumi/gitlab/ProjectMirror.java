@@ -14,7 +14,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -27,11 +26,7 @@ import javax.annotation.Nullable;
  *    If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren&#39;t in the source.
  *    This action can result in unexpected branch deletions.
  * 
- * &gt; **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
- *    Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
- *    For older versions, the mirror will be disabled and the resource will be destroyed.
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
  * 
  * ## Example Usage
  * 
@@ -52,19 +47,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var foo = new ProjectMirror("foo", ProjectMirrorArgs.builder()
  *             .project("1")
- *             .url("https://username:password}{@literal @}{@code github.com/org/repository.git")
+ *             .url("https://username:password{@literal @}github.com/org/repository.git")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -99,28 +94,28 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Determines if the mirror is enabled.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * Determines if divergent refs are skipped.
      * 
      */
     @Export(name="keepDivergentRefs", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> keepDivergentRefs;
+    private Output<Boolean> keepDivergentRefs;
 
     /**
      * @return Determines if divergent refs are skipped.
      * 
      */
-    public Output<Optional<Boolean>> keepDivergentRefs() {
-        return Codegen.optional(this.keepDivergentRefs);
+    public Output<Boolean> keepDivergentRefs() {
+        return this.keepDivergentRefs;
     }
     /**
      * Mirror ID.
@@ -141,14 +136,14 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="onlyProtectedBranches", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> onlyProtectedBranches;
+    private Output<Boolean> onlyProtectedBranches;
 
     /**
      * @return Determines if only protected branches are mirrored.
      * 
      */
-    public Output<Optional<Boolean>> onlyProtectedBranches() {
-        return Codegen.optional(this.onlyProtectedBranches);
+    public Output<Boolean> onlyProtectedBranches() {
+        return this.onlyProtectedBranches;
     }
     /**
      * The id of the project.
@@ -183,7 +178,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectMirror(java.lang.String name) {
+    public ProjectMirror(String name) {
         this(name, ProjectMirrorArgs.Empty);
     }
     /**
@@ -191,7 +186,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectMirror(java.lang.String name, ProjectMirrorArgs args) {
+    public ProjectMirror(String name, ProjectMirrorArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,22 +195,15 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectMirror(java.lang.String name, ProjectMirrorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMirror:ProjectMirror", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectMirror(String name, ProjectMirrorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMirror:ProjectMirror", name, args == null ? ProjectMirrorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectMirror(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMirror:ProjectMirror", name, state, makeResourceOptions(options, id), false);
+    private ProjectMirror(String name, Output<String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMirror:ProjectMirror", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectMirrorArgs makeArgs(ProjectMirrorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectMirrorArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -234,7 +222,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectMirror get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectMirror get(String name, Output<String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectMirror(name, id, state, options);
     }
 }

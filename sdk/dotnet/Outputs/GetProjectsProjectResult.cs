@@ -90,7 +90,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string CiPipelineVariablesMinimumOverrideRole;
         /// <summary>
-        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         public readonly string CiRestrictPipelineCancellationRole;
         /// <summary>
@@ -210,7 +210,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
-        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// Template used to create merge commit message in merge requests.
         /// </summary>
         public readonly string MergeCommitTemplate;
         /// <summary>
@@ -371,7 +371,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool SnippetsEnabled;
         /// <summary>
-        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// Template used to create squash commit message in merge requests.
         /// </summary>
         public readonly string SquashCommitTemplate;
         /// <summary>

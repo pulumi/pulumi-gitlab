@@ -12,6 +12,7 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectJobTokenScopeState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -20,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Conflicts with the use of `gitlab.ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
  * 
  * ## Import
  * 
@@ -62,25 +63,39 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    @Export(name="targetGroupId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> targetGroupId;
+
+    /**
+     * @return The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    public Output<Optional<Integer>> targetGroupId() {
+        return Codegen.optional(this.targetGroupId);
+    }
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
     @Export(name="targetProjectId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> targetProjectId;
+    private Output</* @Nullable */ Integer> targetProjectId;
 
     /**
      * @return The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
-    public Output<Integer> targetProjectId() {
-        return this.targetProjectId;
+    public Output<Optional<Integer>> targetProjectId() {
+        return Codegen.optional(this.targetProjectId);
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectJobTokenScope(java.lang.String name) {
+    public ProjectJobTokenScope(String name) {
         this(name, ProjectJobTokenScopeArgs.Empty);
     }
     /**
@@ -88,7 +103,7 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectJobTokenScope(java.lang.String name, ProjectJobTokenScopeArgs args) {
+    public ProjectJobTokenScope(String name, ProjectJobTokenScopeArgs args) {
         this(name, args, null);
     }
     /**
@@ -97,22 +112,15 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectJobTokenScope(java.lang.String name, ProjectJobTokenScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectJobTokenScope:ProjectJobTokenScope", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectJobTokenScope(String name, ProjectJobTokenScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectJobTokenScope:ProjectJobTokenScope", name, args == null ? ProjectJobTokenScopeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectJobTokenScope(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectJobTokenScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectJobTokenScope:ProjectJobTokenScope", name, state, makeResourceOptions(options, id), false);
+    private ProjectJobTokenScope(String name, Output<String> id, @Nullable ProjectJobTokenScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectJobTokenScope:ProjectJobTokenScope", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectJobTokenScopeArgs makeArgs(ProjectJobTokenScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectJobTokenScopeArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -128,7 +136,7 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectJobTokenScope get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectJobTokenScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectJobTokenScope get(String name, Output<String> id, @Nullable ProjectJobTokenScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectJobTokenScope(name, id, state, options);
     }
 }

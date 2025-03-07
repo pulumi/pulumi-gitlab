@@ -13,7 +13,7 @@ import (
 
 // The `getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#get-a-single-protected-tag-or-wildcard-protected-tag)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
 func GetProjectProtectedTag(ctx *pulumi.Context, args *GetProjectProtectedTagArgs, opts ...pulumi.InvokeOption) (*GetProjectProtectedTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectProtectedTagResult

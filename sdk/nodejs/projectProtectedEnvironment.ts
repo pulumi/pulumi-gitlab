@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
  *    In case this happens you will get perpetual state diffs.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_environments.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_environments/)
  *
  * ## Import
  *

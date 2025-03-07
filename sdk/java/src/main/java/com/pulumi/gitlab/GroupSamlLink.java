@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#saml-group-links)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#saml-group-links)
  * 
  * ## Example Usage
  * 
@@ -154,7 +154,7 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupSamlLink(java.lang.String name) {
+    public GroupSamlLink(String name) {
         this(name, GroupSamlLinkArgs.Empty);
     }
     /**
@@ -162,7 +162,7 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupSamlLink(java.lang.String name, GroupSamlLinkArgs args) {
+    public GroupSamlLink(String name, GroupSamlLinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -171,22 +171,15 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupSamlLink(java.lang.String name, GroupSamlLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupSamlLink:GroupSamlLink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupSamlLink(String name, GroupSamlLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupSamlLink:GroupSamlLink", name, args == null ? GroupSamlLinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupSamlLink(java.lang.String name, Output<java.lang.String> id, @Nullable GroupSamlLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupSamlLink:GroupSamlLink", name, state, makeResourceOptions(options, id), false);
+    private GroupSamlLink(String name, Output<String> id, @Nullable GroupSamlLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupSamlLink:GroupSamlLink", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupSamlLinkArgs makeArgs(GroupSamlLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupSamlLinkArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -202,7 +195,7 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupSamlLink get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupSamlLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupSamlLink get(String name, Output<String> id, @Nullable GroupSamlLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupSamlLink(name, id, state, options);
     }
 }

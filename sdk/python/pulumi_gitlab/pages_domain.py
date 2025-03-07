@@ -28,8 +28,8 @@ class PagesDomainArgs:
         """
         The set of arguments for constructing a PagesDomain resource.
         :param pulumi.Input[str] domain: The custom domain indicated by the user.
-        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
-        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         :param pulumi.Input[str] certificate: The certificate in PEM format with intermediates following in most specific to least specific order.
         :param pulumi.Input[bool] expired: Whether the certificate is expired.
         :param pulumi.Input[str] key: The certificate key in PEM format.
@@ -61,7 +61,7 @@ class PagesDomainArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
@@ -73,7 +73,7 @@ class PagesDomainArgs:
     @pulumi.getter(name="autoSslEnabled")
     def auto_ssl_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         """
         return pulumi.get(self, "auto_ssl_enabled")
 
@@ -132,12 +132,12 @@ class _PagesDomainState:
                  verified: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
-        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         :param pulumi.Input[str] certificate: The certificate in PEM format with intermediates following in most specific to least specific order.
         :param pulumi.Input[str] domain: The custom domain indicated by the user.
         :param pulumi.Input[bool] expired: Whether the certificate is expired.
         :param pulumi.Input[str] key: The certificate key in PEM format.
-        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         :param pulumi.Input[str] url: The URL for the given domain.
         :param pulumi.Input[str] verification_code: The verification code for the domain.
         :param pulumi.Input[bool] verified: The certificate data.
@@ -165,7 +165,7 @@ class _PagesDomainState:
     @pulumi.getter(name="autoSslEnabled")
     def auto_ssl_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         """
         return pulumi.get(self, "auto_ssl_enabled")
 
@@ -225,7 +225,7 @@ class _PagesDomainState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
@@ -285,7 +285,7 @@ class PagesDomain(pulumi.CustomResource):
         """
         The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
 
         ## Import
 
@@ -311,12 +311,12 @@ class PagesDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         :param pulumi.Input[str] certificate: The certificate in PEM format with intermediates following in most specific to least specific order.
         :param pulumi.Input[str] domain: The custom domain indicated by the user.
         :param pulumi.Input[bool] expired: Whether the certificate is expired.
         :param pulumi.Input[str] key: The certificate key in PEM format.
-        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         """
         ...
     @overload
@@ -327,7 +327,7 @@ class PagesDomain(pulumi.CustomResource):
         """
         The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
 
         ## Import
 
@@ -422,12 +422,12 @@ class PagesDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        :param pulumi.Input[bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         :param pulumi.Input[str] certificate: The certificate in PEM format with intermediates following in most specific to least specific order.
         :param pulumi.Input[str] domain: The custom domain indicated by the user.
         :param pulumi.Input[bool] expired: Whether the certificate is expired.
         :param pulumi.Input[str] key: The certificate key in PEM format.
-        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         :param pulumi.Input[str] url: The URL for the given domain.
         :param pulumi.Input[str] verification_code: The verification code for the domain.
         :param pulumi.Input[bool] verified: The certificate data.
@@ -451,7 +451,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter(name="autoSslEnabled")
     def auto_ssl_enabled(self) -> pulumi.Output[bool]:
         """
-        Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         """
         return pulumi.get(self, "auto_ssl_enabled")
 
@@ -491,7 +491,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 

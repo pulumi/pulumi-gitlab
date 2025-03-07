@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * > Conflicts with the use of `gitlab.ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
  *
  * ## Import
  *
@@ -67,9 +67,13 @@ export class ProjectJobTokenScope extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     */
+    public readonly targetGroupId!: pulumi.Output<number | undefined>;
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      */
-    public readonly targetProjectId!: pulumi.Output<number>;
+    public readonly targetProjectId!: pulumi.Output<number | undefined>;
 
     /**
      * Create a ProjectJobTokenScope resource with the given unique name, arguments, and options.
@@ -85,16 +89,15 @@ export class ProjectJobTokenScope extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectJobTokenScopeState | undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["targetGroupId"] = state ? state.targetGroupId : undefined;
             resourceInputs["targetProjectId"] = state ? state.targetProjectId : undefined;
         } else {
             const args = argsOrState as ProjectJobTokenScopeArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.targetProjectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetProjectId'");
-            }
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["targetGroupId"] = args ? args.targetGroupId : undefined;
             resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -111,6 +114,10 @@ export interface ProjectJobTokenScopeState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     */
+    targetGroupId?: pulumi.Input<number>;
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      */
     targetProjectId?: pulumi.Input<number>;
@@ -125,7 +132,11 @@ export interface ProjectJobTokenScopeArgs {
      */
     project: pulumi.Input<string>;
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     */
+    targetGroupId?: pulumi.Input<number>;
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      */
-    targetProjectId: pulumi.Input<number>;
+    targetProjectId?: pulumi.Input<number>;
 }

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/#pipeline-schedule-variables)
  * 
  * ## Example Usage
  * 
@@ -166,7 +166,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PipelineScheduleVariable(java.lang.String name) {
+    public PipelineScheduleVariable(String name) {
         this(name, PipelineScheduleVariableArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PipelineScheduleVariable(java.lang.String name, PipelineScheduleVariableArgs args) {
+    public PipelineScheduleVariable(String name, PipelineScheduleVariableArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,22 +183,15 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PipelineScheduleVariable(java.lang.String name, PipelineScheduleVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public PipelineScheduleVariable(String name, PipelineScheduleVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable", name, args == null ? PipelineScheduleVariableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private PipelineScheduleVariable(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineScheduleVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable", name, state, makeResourceOptions(options, id), false);
+    private PipelineScheduleVariable(String name, Output<String> id, @Nullable PipelineScheduleVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable", name, state, makeResourceOptions(options, id));
     }
 
-    private static PipelineScheduleVariableArgs makeArgs(PipelineScheduleVariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? PipelineScheduleVariableArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -214,7 +207,7 @@ public class PipelineScheduleVariable extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PipelineScheduleVariable get(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineScheduleVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PipelineScheduleVariable get(String name, Output<String> id, @Nullable PipelineScheduleVariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PipelineScheduleVariable(name, id, state, options);
     }
 }

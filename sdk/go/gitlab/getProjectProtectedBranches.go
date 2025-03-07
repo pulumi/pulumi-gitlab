@@ -13,7 +13,7 @@ import (
 
 // The `getProjectProtectedBranches` data source allows details of the protected branches of a given project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#list-protected-branches)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#list-protected-branches)
 func GetProjectProtectedBranches(ctx *pulumi.Context, args *GetProjectProtectedBranchesArgs, opts ...pulumi.InvokeOption) (*GetProjectProtectedBranchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectProtectedBranchesResult

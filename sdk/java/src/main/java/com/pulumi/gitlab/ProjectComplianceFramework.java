@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires a GitLab Enterprise instance with a Premium license to set the compliance framework on a project.
  * 
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectsetcomplianceframework)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojectsetcomplianceframework)
  * 
  * ## Example Usage
  * 
@@ -41,19 +41,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var sample = new ComplianceFramework("sample", ComplianceFrameworkArgs.builder()
  *             .namespacePath("top-level-group")
  *             .name("HIPAA")
  *             .description("A HIPAA Compliance Framework")
  *             .color("#87BEEF")
  *             .default_(false)
- *             .pipelineConfigurationFullPath(".hipaa.yml}{@literal @}{@code top-level-group/compliance-frameworks")
+ *             .pipelineConfigurationFullPath(".hipaa.yml{@literal @}top-level-group/compliance-frameworks")
  *             .build());
  * 
  *         var sampleProjectComplianceFramework = new ProjectComplianceFramework("sampleProjectComplianceFramework", ProjectComplianceFrameworkArgs.builder()
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .project("12345678")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -125,7 +125,7 @@ public class ProjectComplianceFramework extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectComplianceFramework(java.lang.String name) {
+    public ProjectComplianceFramework(String name) {
         this(name, ProjectComplianceFrameworkArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class ProjectComplianceFramework extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectComplianceFramework(java.lang.String name, ProjectComplianceFrameworkArgs args) {
+    public ProjectComplianceFramework(String name, ProjectComplianceFrameworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,22 +142,15 @@ public class ProjectComplianceFramework extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectComplianceFramework(java.lang.String name, ProjectComplianceFrameworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectComplianceFramework:ProjectComplianceFramework", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectComplianceFramework(String name, ProjectComplianceFrameworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectComplianceFramework:ProjectComplianceFramework", name, args == null ? ProjectComplianceFrameworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectComplianceFramework(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectComplianceFramework:ProjectComplianceFramework", name, state, makeResourceOptions(options, id), false);
+    private ProjectComplianceFramework(String name, Output<String> id, @Nullable ProjectComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectComplianceFramework:ProjectComplianceFramework", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectComplianceFrameworkArgs makeArgs(ProjectComplianceFrameworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectComplianceFrameworkArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -173,7 +166,7 @@ public class ProjectComplianceFramework extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectComplianceFramework get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectComplianceFramework get(String name, Output<String> id, @Nullable ProjectComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectComplianceFramework(name, id, state, options);
     }
 }

@@ -19,9 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.SystemHook` resource allows to manage the lifecycle of a system hook.
  * 
- * &gt; This resource requires GitLab 14.9
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
  * 
  * ## Example Usage
  * 
@@ -208,7 +206,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SystemHook(java.lang.String name) {
+    public SystemHook(String name) {
         this(name, SystemHookArgs.Empty);
     }
     /**
@@ -216,7 +214,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SystemHook(java.lang.String name, SystemHookArgs args) {
+    public SystemHook(String name, SystemHookArgs args) {
         this(name, args, null);
     }
     /**
@@ -225,22 +223,15 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SystemHook(java.lang.String name, SystemHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/systemHook:SystemHook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public SystemHook(String name, SystemHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/systemHook:SystemHook", name, args == null ? SystemHookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private SystemHook(java.lang.String name, Output<java.lang.String> id, @Nullable SystemHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/systemHook:SystemHook", name, state, makeResourceOptions(options, id), false);
+    private SystemHook(String name, Output<String> id, @Nullable SystemHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/systemHook:SystemHook", name, state, makeResourceOptions(options, id));
     }
 
-    private static SystemHookArgs makeArgs(SystemHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? SystemHookArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -259,7 +250,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SystemHook get(java.lang.String name, Output<java.lang.String> id, @Nullable SystemHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SystemHook get(String name, Output<String> id, @Nullable SystemHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SystemHook(name, id, state, options);
     }
 }

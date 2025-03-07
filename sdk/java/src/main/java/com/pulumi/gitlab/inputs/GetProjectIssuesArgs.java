@@ -140,14 +140,14 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+     * Filter to a given type of issue. Valid values are [issue incident test_case].
      * 
      */
     @Import(name="issueType")
     private @Nullable Output<String> issueType;
 
     /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+     * @return Filter to a given type of issue. Valid values are [issue incident test_case].
      * 
      */
     public Optional<Output<String>> issueType() {
@@ -395,14 +395,14 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      * 
      */
     @Import(name="withLabelsDetails")
     private @Nullable Output<Boolean> withLabelsDetails;
 
     /**
-     * @return If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+     * @return If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      * 
      */
     public Optional<Output<Boolean>> withLabelsDetails() {
@@ -637,7 +637,7 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param issueType Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+         * @param issueType Filter to a given type of issue. Valid values are [issue incident test_case].
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param issueType Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+         * @param issueType Filter to a given type of issue. Valid values are [issue incident test_case].
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param withLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+         * @param withLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param withLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+         * @param withLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
          * 
          * @return builder
          * 

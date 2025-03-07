@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
  * 
  * ## Example Usage
  * 
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new GroupMembership("test", GroupMembershipArgs.builder()
- *             .groupId("12345")
+ *             .groupId(12345)
  *             .userId(1337)
  *             .accessLevel("guest")
  *             .expiresAt("2020-12-31")
@@ -115,17 +115,17 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiresAt);
     }
     /**
-     * The id of the group.
+     * The ID of the group.
      * 
      */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
-    private Output<String> groupId;
+    @Export(name="groupId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupId;
 
     /**
-     * @return The id of the group.
+     * @return The ID of the group.
      * 
      */
-    public Output<String> groupId() {
+    public Output<Integer> groupId() {
         return this.groupId;
     }
     /**
@@ -147,38 +147,38 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="skipSubresourcesOnDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> skipSubresourcesOnDestroy;
+    private Output<Boolean> skipSubresourcesOnDestroy;
 
     /**
      * @return Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      * 
      */
-    public Output<Optional<Boolean>> skipSubresourcesOnDestroy() {
-        return Codegen.optional(this.skipSubresourcesOnDestroy);
+    public Output<Boolean> skipSubresourcesOnDestroy() {
+        return this.skipSubresourcesOnDestroy;
     }
     /**
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      * 
      */
     @Export(name="unassignIssuablesOnDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> unassignIssuablesOnDestroy;
+    private Output<Boolean> unassignIssuablesOnDestroy;
 
     /**
      * @return Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      * 
      */
-    public Output<Optional<Boolean>> unassignIssuablesOnDestroy() {
-        return Codegen.optional(this.unassignIssuablesOnDestroy);
+    public Output<Boolean> unassignIssuablesOnDestroy() {
+        return this.unassignIssuablesOnDestroy;
     }
     /**
-     * The id of the user.
+     * The ID of the user.
      * 
      */
     @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
-     * @return The id of the user.
+     * @return The ID of the user.
      * 
      */
     public Output<Integer> userId() {
@@ -189,7 +189,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupMembership(java.lang.String name) {
+    public GroupMembership(String name) {
         this(name, GroupMembershipArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupMembership(java.lang.String name, GroupMembershipArgs args) {
+    public GroupMembership(String name, GroupMembershipArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,22 +206,15 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupMembership(java.lang.String name, GroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupMembership:GroupMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupMembership(String name, GroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupMembership:GroupMembership", name, args == null ? GroupMembershipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupMembership(java.lang.String name, Output<java.lang.String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupMembership:GroupMembership", name, state, makeResourceOptions(options, id), false);
+    private GroupMembership(String name, Output<String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupMembership:GroupMembership", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupMembershipArgs makeArgs(GroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupMembershipArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +230,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupMembership get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupMembership get(String name, Output<String> id, @Nullable GroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupMembership(name, id, state, options);
     }
 }

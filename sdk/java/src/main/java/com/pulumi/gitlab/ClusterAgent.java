@@ -19,14 +19,12 @@ import javax.annotation.Nullable;
  * 
  * &gt; Note that this resource only registers the agent, but doesn&#39;t configure it.
  *    The configuration needs to be manually added as described in
- *    [the docs](https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file).
+ *    [the docs](https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file).
  *    However, a `gitlab.RepositoryFile` resource may be used to achieve that.
  * 
  * &gt; Requires at least maintainer permissions on the project.
  * 
- * &gt; Requires at least GitLab 14.10
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
  * 
  * ## Example Usage
  * 
@@ -49,19 +47,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var example = new ClusterAgent("example", ClusterAgentArgs.builder()
  *             .project("12345")
  *             .name("agent-1")
  *             .build());
  * 
  *         // Optionally, configure the agent as described in
- *         // https://docs.gitlab.com/ee/user/clusters/agent/install/index.html#create-an-agent-configuration-file
+ *         // https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file
  *         var exampleAgentConfig = new RepositoryFile("exampleAgentConfig", RepositoryFileArgs.builder()
  *             .project(example.project())
  *             .branch("main")
@@ -71,13 +69,13 @@ import javax.annotation.Nullable;
  * # the GitLab Agent for Kubernetes configuration goes here ...
  *                 """)
  *                 .build()).result())
- *             .authorEmail("terraform}{@literal @}{@code example.com")
+ *             .authorEmail("terraform{@literal @}example.com")
  *             .authorName("Terraform")
  *             .commitMessage(example.name().applyValue(name -> String.format("feature: add agent config for %s [skip ci]", name)))
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -182,7 +180,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterAgent(java.lang.String name) {
+    public ClusterAgent(String name) {
         this(name, ClusterAgentArgs.Empty);
     }
     /**
@@ -190,7 +188,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterAgent(java.lang.String name, ClusterAgentArgs args) {
+    public ClusterAgent(String name, ClusterAgentArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,22 +197,15 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterAgent(java.lang.String name, ClusterAgentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/clusterAgent:ClusterAgent", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ClusterAgent(String name, ClusterAgentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/clusterAgent:ClusterAgent", name, args == null ? ClusterAgentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ClusterAgent(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/clusterAgent:ClusterAgent", name, state, makeResourceOptions(options, id), false);
+    private ClusterAgent(String name, Output<String> id, @Nullable ClusterAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/clusterAgent:ClusterAgent", name, state, makeResourceOptions(options, id));
     }
 
-    private static ClusterAgentArgs makeArgs(ClusterAgentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ClusterAgentArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +221,7 @@ public class ClusterAgent extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterAgent get(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClusterAgent get(String name, Output<String> id, @Nullable ClusterAgentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClusterAgent(name, id, state, options);
     }
 }

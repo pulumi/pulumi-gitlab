@@ -13,7 +13,7 @@ import (
 
 // The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
@@ -64,7 +64,7 @@ type LookupProjectResult struct {
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches bool `pulumi:"ciSeparatedCaches"`
@@ -104,7 +104,7 @@ type LookupProjectResult struct {
 	KeepLatestArtifact bool `pulumi:"keepLatestArtifact"`
 	// Enable LFS for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate string `pulumi:"mergeCommitTemplate"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled bool `pulumi:"mergePipelinesEnabled"`
@@ -164,7 +164,7 @@ type LookupProjectResult struct {
 	SnippetsAccessLevel string `pulumi:"snippetsAccessLevel"`
 	// Enable snippets for the project.
 	SnippetsEnabled bool `pulumi:"snippetsEnabled"`
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate string `pulumi:"squashCommitTemplate"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo string `pulumi:"sshUrlToRepo"`
@@ -287,7 +287,7 @@ func (o LookupProjectResultOutput) CiPipelineVariablesMinimumOverrideRole() pulu
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CiPipelineVariablesMinimumOverrideRole }).(pulumi.StringOutput)
 }
 
-// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 func (o LookupProjectResultOutput) CiRestrictPipelineCancellationRole() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CiRestrictPipelineCancellationRole }).(pulumi.StringOutput)
 }
@@ -389,7 +389,7 @@ func (o LookupProjectResultOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
-// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+// Template used to create merge commit message in merge requests.
 func (o LookupProjectResultOutput) MergeCommitTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.MergeCommitTemplate }).(pulumi.StringOutput)
 }
@@ -539,7 +539,7 @@ func (o LookupProjectResultOutput) SnippetsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.SnippetsEnabled }).(pulumi.BoolOutput)
 }
 
-// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+// Template used to create squash commit message in merge requests.
 func (o LookupProjectResultOutput) SquashCommitTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SquashCommitTemplate }).(pulumi.StringOutput)
 }

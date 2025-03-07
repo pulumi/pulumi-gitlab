@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
  * 
  * ## Example Usage
  * 
@@ -374,6 +374,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.releasesEvents;
     }
     /**
+     * Invoke the hook for project access token expiry events.
+     * 
+     */
+    @Export(name="resourceAccessTokenEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> resourceAccessTokenEvents;
+
+    /**
+     * @return Invoke the hook for project access token expiry events.
+     * 
+     */
+    public Output<Boolean> resourceAccessTokenEvents() {
+        return this.resourceAccessTokenEvents;
+    }
+    /**
      * Invoke the hook for tag push events.
      * 
      */
@@ -434,7 +448,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectHook(java.lang.String name) {
+    public ProjectHook(String name) {
         this(name, ProjectHookArgs.Empty);
     }
     /**
@@ -442,7 +456,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectHook(java.lang.String name, ProjectHookArgs args) {
+    public ProjectHook(String name, ProjectHookArgs args) {
         this(name, args, null);
     }
     /**
@@ -451,22 +465,15 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectHook(java.lang.String name, ProjectHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectHook:ProjectHook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectHook(String name, ProjectHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectHook:ProjectHook", name, args == null ? ProjectHookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectHook(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectHook:ProjectHook", name, state, makeResourceOptions(options, id), false);
+    private ProjectHook(String name, Output<String> id, @Nullable ProjectHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectHook:ProjectHook", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectHookArgs makeArgs(ProjectHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectHookArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -485,7 +492,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectHook get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectHook get(String name, Output<String> id, @Nullable ProjectHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectHook(name, id, state, options);
     }
 }

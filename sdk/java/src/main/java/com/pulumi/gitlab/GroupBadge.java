@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
  * 
  * ## Example Usage
  * 
@@ -108,14 +108,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupBadge:GroupBadge")
 public class GroupBadge extends com.pulumi.resources.CustomResource {
     /**
-     * The id of the group to add the badge to.
+     * The ID or URL-encoded path of the group to add the badge to.
      * 
      */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
-     * @return The id of the group to add the badge to.
+     * @return The ID or URL-encoded path of the group to add the badge to.
      * 
      */
     public Output<String> group() {
@@ -196,7 +196,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupBadge(java.lang.String name) {
+    public GroupBadge(String name) {
         this(name, GroupBadgeArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupBadge(java.lang.String name, GroupBadgeArgs args) {
+    public GroupBadge(String name, GroupBadgeArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,22 +213,15 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupBadge(java.lang.String name, GroupBadgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupBadge:GroupBadge", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupBadge(String name, GroupBadgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupBadge:GroupBadge", name, args == null ? GroupBadgeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupBadge(java.lang.String name, Output<java.lang.String> id, @Nullable GroupBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupBadge:GroupBadge", name, state, makeResourceOptions(options, id), false);
+    private GroupBadge(String name, Output<String> id, @Nullable GroupBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupBadge:GroupBadge", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupBadgeArgs makeArgs(GroupBadgeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupBadgeArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +237,7 @@ public class GroupBadge extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupBadge get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupBadge get(String name, Output<String> id, @Nullable GroupBadgeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupBadge(name, id, state, options);
     }
 }

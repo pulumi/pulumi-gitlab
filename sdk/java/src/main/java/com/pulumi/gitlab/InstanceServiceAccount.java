@@ -20,7 +20,33 @@ import javax.annotation.Nullable;
  * 
  * &gt; In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/user_service_accounts.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+ * 
+ * ## Import
+ * 
+ * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_service_account`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_instance_service_account.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Import using the CLI is supported using the following syntax:
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount You can import a group service account using `&lt;resource&gt; &lt;id&gt;`. The
+ * ```
+ * 
+ * `id` is the id of the service account
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
+ * ```
  * 
  */
 @ResourceType(type="gitlab:index/instanceServiceAccount:InstanceServiceAccount")
@@ -78,7 +104,7 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceServiceAccount(java.lang.String name) {
+    public InstanceServiceAccount(String name) {
         this(name, InstanceServiceAccountArgs.Empty);
     }
     /**
@@ -86,7 +112,7 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceServiceAccount(java.lang.String name, @Nullable InstanceServiceAccountArgs args) {
+    public InstanceServiceAccount(String name, @Nullable InstanceServiceAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -95,22 +121,15 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceServiceAccount(java.lang.String name, @Nullable InstanceServiceAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/instanceServiceAccount:InstanceServiceAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public InstanceServiceAccount(String name, @Nullable InstanceServiceAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/instanceServiceAccount:InstanceServiceAccount", name, args == null ? InstanceServiceAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private InstanceServiceAccount(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/instanceServiceAccount:InstanceServiceAccount", name, state, makeResourceOptions(options, id), false);
+    private InstanceServiceAccount(String name, Output<String> id, @Nullable InstanceServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/instanceServiceAccount:InstanceServiceAccount", name, state, makeResourceOptions(options, id));
     }
 
-    private static InstanceServiceAccountArgs makeArgs(@Nullable InstanceServiceAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? InstanceServiceAccountArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -126,7 +145,7 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceServiceAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceServiceAccount get(String name, Output<String> id, @Nullable InstanceServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceServiceAccount(name, id, state, options);
     }
 }

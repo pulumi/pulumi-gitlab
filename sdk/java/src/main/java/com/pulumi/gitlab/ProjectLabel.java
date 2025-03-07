@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
  * 
  * ## Example Usage
  * 
@@ -166,7 +166,7 @@ public class ProjectLabel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectLabel(java.lang.String name) {
+    public ProjectLabel(String name) {
         this(name, ProjectLabelArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class ProjectLabel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectLabel(java.lang.String name, ProjectLabelArgs args) {
+    public ProjectLabel(String name, ProjectLabelArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,22 +183,15 @@ public class ProjectLabel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectLabel(java.lang.String name, ProjectLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectLabel:ProjectLabel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectLabel(String name, ProjectLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLabel:ProjectLabel", name, args == null ? ProjectLabelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectLabel(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectLabel:ProjectLabel", name, state, makeResourceOptions(options, id), false);
+    private ProjectLabel(String name, Output<String> id, @Nullable ProjectLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLabel:ProjectLabel", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectLabelArgs makeArgs(ProjectLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectLabelArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -214,7 +207,7 @@ public class ProjectLabel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectLabel get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectLabel get(String name, Output<String> id, @Nullable ProjectLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectLabel(name, id, state, options);
     }
 }

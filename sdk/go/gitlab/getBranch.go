@@ -13,7 +13,7 @@ import (
 
 // The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)
 func LookupBranch(ctx *pulumi.Context, args *LookupBranchArgs, opts ...pulumi.InvokeOption) (*LookupBranchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBranchResult

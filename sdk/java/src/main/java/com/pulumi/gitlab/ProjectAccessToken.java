@@ -21,13 +21,13 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
  * 
- * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
  * 
  * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
  * 
- * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/project_access_tokens.html#automatic-reuse-detection) it&#39;s possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+ * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/project_access_tokens/#automatic-reuse-detection) it&#39;s possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  * 
- * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/project_access_tokens.html)
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/project_access_tokens/)
  * 
  * ## Example Usage
  * 
@@ -262,7 +262,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectAccessToken(java.lang.String name) {
+    public ProjectAccessToken(String name) {
         this(name, ProjectAccessTokenArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectAccessToken(java.lang.String name, ProjectAccessTokenArgs args) {
+    public ProjectAccessToken(String name, ProjectAccessTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,22 +279,15 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectAccessToken(java.lang.String name, ProjectAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectAccessToken:ProjectAccessToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectAccessToken(String name, ProjectAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectAccessToken:ProjectAccessToken", name, args == null ? ProjectAccessTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectAccessToken(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectAccessToken:ProjectAccessToken", name, state, makeResourceOptions(options, id), false);
+    private ProjectAccessToken(String name, Output<String> id, @Nullable ProjectAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectAccessToken:ProjectAccessToken", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectAccessTokenArgs makeArgs(ProjectAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectAccessTokenArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -313,7 +306,7 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectAccessToken get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectAccessToken get(String name, Output<String> id, @Nullable ProjectAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectAccessToken(name, id, state, options);
     }
 }

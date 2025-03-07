@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Application` data source retrieves information about a gitlab application.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("gitlab:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Application` data source retrieves information about a gitlab application.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("gitlab:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Application` data source retrieves information about a gitlab application.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("gitlab:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());

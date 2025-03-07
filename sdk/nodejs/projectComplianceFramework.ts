@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance framework on a project.
  *
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectsetcomplianceframework)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojectsetcomplianceframework)
  *
  * ## Example Usage
  *

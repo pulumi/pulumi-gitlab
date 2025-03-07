@@ -29,7 +29,7 @@ class GroupLdapLinkArgs:
         """
         The set of arguments for constructing a GroupLdapLink resource.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
-        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         :param pulumi.Input[str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
@@ -68,7 +68,7 @@ class GroupLdapLinkArgs:
     @pulumi.getter(name="ldapProvider")
     def ldap_provider(self) -> pulumi.Input[str]:
         """
-        The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         return pulumi.get(self, "ldap_provider")
 
@@ -156,7 +156,7 @@ class _GroupLdapLinkState:
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
-        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
@@ -253,7 +253,7 @@ class _GroupLdapLinkState:
     @pulumi.getter(name="ldapProvider")
     def ldap_provider(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         return pulumi.get(self, "ldap_provider")
 
@@ -278,7 +278,7 @@ class GroupLdapLink(pulumi.CustomResource):
         """
         The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#ldap-group-links)
 
         ## Import
 
@@ -318,7 +318,7 @@ class GroupLdapLink(pulumi.CustomResource):
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
-        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         ...
     @overload
@@ -329,7 +329,7 @@ class GroupLdapLink(pulumi.CustomResource):
         """
         The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#ldap-group-links)
 
         ## Import
 
@@ -433,7 +433,7 @@ class GroupLdapLink(pulumi.CustomResource):
         :param pulumi.Input[bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
-        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -501,7 +501,7 @@ class GroupLdapLink(pulumi.CustomResource):
     @pulumi.getter(name="ldapProvider")
     def ldap_provider(self) -> pulumi.Output[str]:
         """
-        The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         return pulumi.get(self, "ldap_provider")
 

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#microsoft-teams)
  * 
  * ## Example Usage
  * 
@@ -319,7 +319,7 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationMicrosoftTeams(java.lang.String name) {
+    public IntegrationMicrosoftTeams(String name) {
         this(name, IntegrationMicrosoftTeamsArgs.Empty);
     }
     /**
@@ -327,7 +327,7 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationMicrosoftTeams(java.lang.String name, IntegrationMicrosoftTeamsArgs args) {
+    public IntegrationMicrosoftTeams(String name, IntegrationMicrosoftTeamsArgs args) {
         this(name, args, null);
     }
     /**
@@ -336,22 +336,15 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationMicrosoftTeams(java.lang.String name, IntegrationMicrosoftTeamsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public IntegrationMicrosoftTeams(String name, IntegrationMicrosoftTeamsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams", name, args == null ? IntegrationMicrosoftTeamsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IntegrationMicrosoftTeams(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams", name, state, makeResourceOptions(options, id), false);
+    private IntegrationMicrosoftTeams(String name, Output<String> id, @Nullable IntegrationMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams", name, state, makeResourceOptions(options, id));
     }
 
-    private static IntegrationMicrosoftTeamsArgs makeArgs(IntegrationMicrosoftTeamsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? IntegrationMicrosoftTeamsArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -367,7 +360,7 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationMicrosoftTeams get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationMicrosoftTeams get(String name, Output<String> id, @Nullable IntegrationMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationMicrosoftTeams(name, id, state, options);
     }
 }

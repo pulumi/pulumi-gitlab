@@ -43,8 +43,7 @@ class ProviderArgs:
         :param pulumi.Input[int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
-               https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-               variable.
+               https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
@@ -168,8 +167,7 @@ class ProviderArgs:
         """
         The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
         used in this provider for authentication (using Bearer authorization token). See
-        https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-        variable.
+        https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         return pulumi.get(self, "token")
 
@@ -214,8 +212,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         :param pulumi.Input[str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
                used in this provider for authentication (using Bearer authorization token). See
-               https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-               variable.
+               https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         ...
     @overload
@@ -321,8 +318,7 @@ class Provider(pulumi.ProviderResource):
         """
         The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
         used in this provider for authentication (using Bearer authorization token). See
-        https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-        variable.
+        https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         return pulumi.get(self, "token")
 

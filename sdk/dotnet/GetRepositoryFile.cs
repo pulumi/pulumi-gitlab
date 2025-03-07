@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.RepositoryFile` data source allows details of a file in a repository to be retrieved.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
         /// 
         /// ## Example Usage
         /// 
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Encoding;
         /// <summary>
-        /// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        /// Enables or disables the execute flag on the file.
         /// </summary>
         public readonly bool ExecuteFilemode;
         /// <summary>

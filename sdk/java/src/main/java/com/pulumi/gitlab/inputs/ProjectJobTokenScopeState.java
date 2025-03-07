@@ -32,6 +32,21 @@ public final class ProjectJobTokenScopeState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    @Import(name="targetGroupId")
+    private @Nullable Output<Integer> targetGroupId;
+
+    /**
+     * @return The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    public Optional<Output<Integer>> targetGroupId() {
+        return Optional.ofNullable(this.targetGroupId);
+    }
+
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
@@ -50,6 +65,7 @@ public final class ProjectJobTokenScopeState extends com.pulumi.resources.Resour
 
     private ProjectJobTokenScopeState(ProjectJobTokenScopeState $) {
         this.project = $.project;
+        this.targetGroupId = $.targetGroupId;
         this.targetProjectId = $.targetProjectId;
     }
 
@@ -90,6 +106,27 @@ public final class ProjectJobTokenScopeState extends com.pulumi.resources.Resour
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param targetGroupId The ID of the group that is in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupId(@Nullable Output<Integer> targetGroupId) {
+            $.targetGroupId = targetGroupId;
+            return this;
+        }
+
+        /**
+         * @param targetGroupId The ID of the group that is in the CI/CD job token inbound allowlist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetGroupId(Integer targetGroupId) {
+            return targetGroupId(Output.of(targetGroupId));
         }
 
         /**

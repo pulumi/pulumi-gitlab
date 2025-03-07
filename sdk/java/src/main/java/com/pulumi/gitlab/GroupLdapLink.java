@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#ldap-group-links)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#ldap-group-links)
  * 
  * ## Example Usage
  * 
@@ -147,14 +147,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.groupAccess);
     }
     /**
-     * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+     * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      * 
      */
     @Export(name="ldapProvider", refs={String.class}, tree="[0]")
     private Output<String> ldapProvider;
 
     /**
-     * @return The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/ee/administration/raketasks/ldap.html#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+     * @return The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      * 
      */
     public Output<String> ldapProvider() {
@@ -165,7 +165,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupLdapLink(java.lang.String name) {
+    public GroupLdapLink(String name) {
         this(name, GroupLdapLinkArgs.Empty);
     }
     /**
@@ -173,7 +173,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupLdapLink(java.lang.String name, GroupLdapLinkArgs args) {
+    public GroupLdapLink(String name, GroupLdapLinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -182,22 +182,15 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupLdapLink(java.lang.String name, GroupLdapLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupLdapLink:GroupLdapLink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupLdapLink(String name, GroupLdapLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupLdapLink:GroupLdapLink", name, args == null ? GroupLdapLinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupLdapLink(java.lang.String name, Output<java.lang.String> id, @Nullable GroupLdapLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupLdapLink:GroupLdapLink", name, state, makeResourceOptions(options, id), false);
+    private GroupLdapLink(String name, Output<String> id, @Nullable GroupLdapLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupLdapLink:GroupLdapLink", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupLdapLinkArgs makeArgs(GroupLdapLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupLdapLinkArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -213,7 +206,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupLdapLink get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupLdapLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupLdapLink get(String name, Output<String> id, @Nullable GroupLdapLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupLdapLink(name, id, state, options);
     }
 }

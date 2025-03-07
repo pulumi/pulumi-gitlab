@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#emails-on-push)
  * 
  * ## Example Usage
  * 
@@ -41,12 +41,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  * 
  *         var emails = new IntegrationEmailsOnPush("emails", IntegrationEmailsOnPushArgs.builder()
  *             .project(awesomeProject.id())
- *             .recipients("myrecipient}{@literal @}{@code example.com myotherrecipient}{@literal @}{@code example.com")
+ *             .recipients("myrecipient{@literal @}example.com myotherrecipient{@literal @}example.com")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -262,7 +262,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationEmailsOnPush(java.lang.String name) {
+    public IntegrationEmailsOnPush(String name) {
         this(name, IntegrationEmailsOnPushArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationEmailsOnPush(java.lang.String name, IntegrationEmailsOnPushArgs args) {
+    public IntegrationEmailsOnPush(String name, IntegrationEmailsOnPushArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,22 +279,15 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationEmailsOnPush(java.lang.String name, IntegrationEmailsOnPushArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public IntegrationEmailsOnPush(String name, IntegrationEmailsOnPushArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush", name, args == null ? IntegrationEmailsOnPushArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IntegrationEmailsOnPush(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationEmailsOnPushState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush", name, state, makeResourceOptions(options, id), false);
+    private IntegrationEmailsOnPush(String name, Output<String> id, @Nullable IntegrationEmailsOnPushState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush", name, state, makeResourceOptions(options, id));
     }
 
-    private static IntegrationEmailsOnPushArgs makeArgs(IntegrationEmailsOnPushArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? IntegrationEmailsOnPushArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -310,7 +303,7 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationEmailsOnPush get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationEmailsOnPushState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationEmailsOnPush get(String name, Output<String> id, @Nullable IntegrationEmailsOnPushState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationEmailsOnPush(name, id, state, options);
     }
 }

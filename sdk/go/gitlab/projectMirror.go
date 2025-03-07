@@ -22,12 +22,7 @@ import (
 //	If you manually set `keepDivergentRefs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
 //	This action can result in unexpected branch deletions.
 //
-// > **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
-//
-//	Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
-//	For older versions, the mirror will be disabled and the resource will be destroyed.
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
 //
 // ## Example Usage
 //
@@ -81,13 +76,13 @@ type ProjectMirror struct {
 	pulumi.CustomResourceState
 
 	// Determines if the mirror is enabled.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Determines if divergent refs are skipped.
-	KeepDivergentRefs pulumi.BoolPtrOutput `pulumi:"keepDivergentRefs"`
+	KeepDivergentRefs pulumi.BoolOutput `pulumi:"keepDivergentRefs"`
 	// Mirror ID.
 	MirrorId pulumi.IntOutput `pulumi:"mirrorId"`
 	// Determines if only protected branches are mirrored.
-	OnlyProtectedBranches pulumi.BoolPtrOutput `pulumi:"onlyProtectedBranches"`
+	OnlyProtectedBranches pulumi.BoolOutput `pulumi:"onlyProtectedBranches"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL of the remote repository to be mirrored.
@@ -285,13 +280,13 @@ func (o ProjectMirrorOutput) ToProjectMirrorOutputWithContext(ctx context.Contex
 }
 
 // Determines if the mirror is enabled.
-func (o ProjectMirrorOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o ProjectMirrorOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Determines if divergent refs are skipped.
-func (o ProjectMirrorOutput) KeepDivergentRefs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolPtrOutput { return v.KeepDivergentRefs }).(pulumi.BoolPtrOutput)
+func (o ProjectMirrorOutput) KeepDivergentRefs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolOutput { return v.KeepDivergentRefs }).(pulumi.BoolOutput)
 }
 
 // Mirror ID.
@@ -300,8 +295,8 @@ func (o ProjectMirrorOutput) MirrorId() pulumi.IntOutput {
 }
 
 // Determines if only protected branches are mirrored.
-func (o ProjectMirrorOutput) OnlyProtectedBranches() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolPtrOutput { return v.OnlyProtectedBranches }).(pulumi.BoolPtrOutput)
+func (o ProjectMirrorOutput) OnlyProtectedBranches() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolOutput { return v.OnlyProtectedBranches }).(pulumi.BoolOutput)
 }
 
 // The id of the project.

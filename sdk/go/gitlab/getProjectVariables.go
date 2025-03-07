@@ -13,7 +13,7 @@ import (
 
 // The `getProjectVariables` data source allows to retrieve all project-level CI/CD variables.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 //
 // ## Example Usage
 //

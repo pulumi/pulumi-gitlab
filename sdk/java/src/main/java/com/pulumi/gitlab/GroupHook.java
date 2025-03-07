@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#hooks)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
  * 
  * ## Import
  * 
@@ -363,7 +363,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupHook(java.lang.String name) {
+    public GroupHook(String name) {
         this(name, GroupHookArgs.Empty);
     }
     /**
@@ -371,7 +371,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupHook(java.lang.String name, GroupHookArgs args) {
+    public GroupHook(String name, GroupHookArgs args) {
         this(name, args, null);
     }
     /**
@@ -380,22 +380,15 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupHook(java.lang.String name, GroupHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupHook:GroupHook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupHook(String name, GroupHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupHook:GroupHook", name, args == null ? GroupHookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupHook(java.lang.String name, Output<java.lang.String> id, @Nullable GroupHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupHook:GroupHook", name, state, makeResourceOptions(options, id), false);
+    private GroupHook(String name, Output<String> id, @Nullable GroupHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupHook:GroupHook", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupHookArgs makeArgs(GroupHookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupHookArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -414,7 +407,7 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupHook get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupHook get(String name, Output<String> id, @Nullable GroupHookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupHook(name, id, state, options);
     }
 }

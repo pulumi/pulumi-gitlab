@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectCustomAttribute` resource allows to manage custom attributes for a project.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
  * 
  * ## Example Usage
  * 
@@ -128,7 +128,7 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectCustomAttribute(java.lang.String name) {
+    public ProjectCustomAttribute(String name) {
         this(name, ProjectCustomAttributeArgs.Empty);
     }
     /**
@@ -136,7 +136,7 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectCustomAttribute(java.lang.String name, ProjectCustomAttributeArgs args) {
+    public ProjectCustomAttribute(String name, ProjectCustomAttributeArgs args) {
         this(name, args, null);
     }
     /**
@@ -145,22 +145,15 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectCustomAttribute(java.lang.String name, ProjectCustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectCustomAttribute:ProjectCustomAttribute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectCustomAttribute(String name, ProjectCustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectCustomAttribute:ProjectCustomAttribute", name, args == null ? ProjectCustomAttributeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectCustomAttribute(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectCustomAttribute:ProjectCustomAttribute", name, state, makeResourceOptions(options, id), false);
+    private ProjectCustomAttribute(String name, Output<String> id, @Nullable ProjectCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectCustomAttribute:ProjectCustomAttribute", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectCustomAttributeArgs makeArgs(ProjectCustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectCustomAttributeArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -176,7 +169,7 @@ public class ProjectCustomAttribute extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectCustomAttribute get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectCustomAttribute get(String name, Output<String> id, @Nullable ProjectCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectCustomAttribute(name, id, state, options);
     }
 }

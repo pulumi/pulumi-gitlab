@@ -18,14 +18,14 @@ public final class IntegrationTelegramArgs extends com.pulumi.resources.Resource
     public static final IntegrationTelegramArgs Empty = new IntegrationTelegramArgs();
 
     /**
-     * Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -265,7 +265,7 @@ public final class IntegrationTelegramArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class IntegrationTelegramArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
          * 
          * @return builder
          * 

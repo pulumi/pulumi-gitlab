@@ -24,7 +24,7 @@ public final class GroupPushRules {
      */
     private @Nullable String branchNameRegex;
     /**
-     * @return Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * @return Only commits pushed using verified emails are allowed.
      * 
      */
     private @Nullable Boolean commitCommitterCheck;
@@ -74,7 +74,7 @@ public final class GroupPushRules {
      */
     private @Nullable Boolean rejectNonDcoCommits;
     /**
-     * @return Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * @return Only commits signed through GPG are allowed.
      * 
      */
     private @Nullable Boolean rejectUnsignedCommits;
@@ -95,7 +95,7 @@ public final class GroupPushRules {
         return Optional.ofNullable(this.branchNameRegex);
     }
     /**
-     * @return Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * @return Only commits pushed using verified emails are allowed.
      * 
      */
     public Optional<Boolean> commitCommitterCheck() {
@@ -165,7 +165,7 @@ public final class GroupPushRules {
         return Optional.ofNullable(this.rejectNonDcoCommits);
     }
     /**
-     * @return Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+     * @return Only commits signed through GPG are allowed.
      * 
      */
     public Optional<Boolean> rejectUnsignedCommits() {

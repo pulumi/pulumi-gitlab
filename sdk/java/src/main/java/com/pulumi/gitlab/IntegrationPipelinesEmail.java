@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationPipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#pipeline-emails)
  * 
  * ## Example Usage
  * 
@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
@@ -56,13 +56,13 @@ import javax.annotation.Nullable;
  * 
  *         var email = new IntegrationPipelinesEmail("email", IntegrationPipelinesEmailArgs.builder()
  *             .project(awesomeProject.id())
- *             .recipients("gitlab}{@literal @}{@code user.create")
+ *             .recipients("gitlab{@literal @}user.create")
  *             .notifyOnlyBrokenPipelines(true)
  *             .branchesToBeNotified("all")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -153,7 +153,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationPipelinesEmail(java.lang.String name) {
+    public IntegrationPipelinesEmail(String name) {
         this(name, IntegrationPipelinesEmailArgs.Empty);
     }
     /**
@@ -161,7 +161,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationPipelinesEmail(java.lang.String name, IntegrationPipelinesEmailArgs args) {
+    public IntegrationPipelinesEmail(String name, IntegrationPipelinesEmailArgs args) {
         this(name, args, null);
     }
     /**
@@ -170,22 +170,15 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationPipelinesEmail(java.lang.String name, IntegrationPipelinesEmailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public IntegrationPipelinesEmail(String name, IntegrationPipelinesEmailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail", name, args == null ? IntegrationPipelinesEmailArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IntegrationPipelinesEmail(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationPipelinesEmailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail", name, state, makeResourceOptions(options, id), false);
+    private IntegrationPipelinesEmail(String name, Output<String> id, @Nullable IntegrationPipelinesEmailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail", name, state, makeResourceOptions(options, id));
     }
 
-    private static IntegrationPipelinesEmailArgs makeArgs(IntegrationPipelinesEmailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? IntegrationPipelinesEmailArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -201,7 +194,7 @@ public class IntegrationPipelinesEmail extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationPipelinesEmail get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationPipelinesEmailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationPipelinesEmail get(String name, Output<String> id, @Nullable IntegrationPipelinesEmailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationPipelinesEmail(name, id, state, options);
     }
 }

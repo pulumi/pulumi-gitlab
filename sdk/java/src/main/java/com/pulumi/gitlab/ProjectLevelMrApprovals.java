@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires a GitLab Enterprise instance.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#merge-request-level-mr-approvals)
  * 
  * ## Example Usage
  * 
@@ -201,7 +201,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectLevelMrApprovals(java.lang.String name) {
+    public ProjectLevelMrApprovals(String name) {
         this(name, ProjectLevelMrApprovalsArgs.Empty);
     }
     /**
@@ -209,7 +209,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectLevelMrApprovals(java.lang.String name, ProjectLevelMrApprovalsArgs args) {
+    public ProjectLevelMrApprovals(String name, ProjectLevelMrApprovalsArgs args) {
         this(name, args, null);
     }
     /**
@@ -218,22 +218,15 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectLevelMrApprovals(java.lang.String name, ProjectLevelMrApprovalsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectLevelMrApprovals(String name, ProjectLevelMrApprovalsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", name, args == null ? ProjectLevelMrApprovalsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectLevelMrApprovals(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectLevelMrApprovalsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", name, state, makeResourceOptions(options, id), false);
+    private ProjectLevelMrApprovals(String name, Output<String> id, @Nullable ProjectLevelMrApprovalsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectLevelMrApprovalsArgs makeArgs(ProjectLevelMrApprovalsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectLevelMrApprovalsArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -249,7 +242,7 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectLevelMrApprovals get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectLevelMrApprovalsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectLevelMrApprovals get(String name, Output<String> id, @Nullable ProjectLevelMrApprovalsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectLevelMrApprovals(name, id, state, options);
     }
 }

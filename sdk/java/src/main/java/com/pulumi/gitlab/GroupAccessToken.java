@@ -21,13 +21,13 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupAccessToken` resource allows to manage the lifecycle of a group access token.
  * 
- * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/ee/operations/tracing.html)
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
  * 
  * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
  * 
- * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/ee/api/group_access_tokens.html#automatic-reuse-detection) it&#39;s possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+ * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/group_access_tokens/#automatic-reuse-detection) it&#39;s possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  * 
- * **Upstream API**: [GitLab REST API](https://docs.gitlab.com/ee/api/group_access_tokens.html)
+ * **Upstream API**: [GitLab REST API](https://docs.gitlab.com/api/group_access_tokens/)
  * 
  * ## Example Usage
  * 
@@ -262,7 +262,7 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupAccessToken(java.lang.String name) {
+    public GroupAccessToken(String name) {
         this(name, GroupAccessTokenArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupAccessToken(java.lang.String name, GroupAccessTokenArgs args) {
+    public GroupAccessToken(String name, GroupAccessTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,22 +279,15 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupAccessToken(java.lang.String name, GroupAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupAccessToken:GroupAccessToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupAccessToken(String name, GroupAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupAccessToken:GroupAccessToken", name, args == null ? GroupAccessTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupAccessToken(java.lang.String name, Output<java.lang.String> id, @Nullable GroupAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupAccessToken:GroupAccessToken", name, state, makeResourceOptions(options, id), false);
+    private GroupAccessToken(String name, Output<String> id, @Nullable GroupAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupAccessToken:GroupAccessToken", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupAccessTokenArgs makeArgs(GroupAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupAccessTokenArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -313,7 +306,7 @@ public class GroupAccessToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupAccessToken get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupAccessToken get(String name, Output<String> id, @Nullable GroupAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupAccessToken(name, id, state, options);
     }
 }

@@ -131,7 +131,7 @@ def get_project_protected_branch(merge_access_levels: Optional[Sequence[Union['G
     """
     The `get_project_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
 
 
     :param Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
@@ -163,7 +163,7 @@ def get_project_protected_branch_output(merge_access_levels: Optional[pulumi.Inp
     """
     The `get_project_protected_branch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
 
 
     :param Sequence[Union['GetProjectProtectedBranchMergeAccessLevelArgs', 'GetProjectProtectedBranchMergeAccessLevelArgsDict']] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.

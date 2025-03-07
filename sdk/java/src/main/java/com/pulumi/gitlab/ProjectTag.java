@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectTag` resource allows to manage the lifecycle of a tag in a project.
  * 
- * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
  * 
  * ## Example Usage
  * 
@@ -213,7 +213,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectTag(java.lang.String name) {
+    public ProjectTag(String name) {
         this(name, ProjectTagArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectTag(java.lang.String name, ProjectTagArgs args) {
+    public ProjectTag(String name, ProjectTagArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,22 +230,15 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectTag(java.lang.String name, ProjectTagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectTag:ProjectTag", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectTag(String name, ProjectTagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectTag:ProjectTag", name, args == null ? ProjectTagArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectTag(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectTag:ProjectTag", name, state, makeResourceOptions(options, id), false);
+    private ProjectTag(String name, Output<String> id, @Nullable ProjectTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectTag:ProjectTag", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectTagArgs makeArgs(ProjectTagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectTagArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -261,7 +254,7 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectTag get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectTag get(String name, Output<String> id, @Nullable ProjectTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectTag(name, id, state, options);
     }
 }

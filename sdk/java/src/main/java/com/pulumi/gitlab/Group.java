@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
  * 
  * ## Example Usage
  * 
@@ -49,12 +49,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var example = new Group("example", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .path("example-two")
  *             .description("An example group with push rules")
  *             .pushRules(GroupPushRulesArgs.builder()
- *                 .authorEmailRegex("}{@literal @}{@code example\\.com$")
+ *                 .authorEmailRegex("{@literal @}example\\.com$")
  *                 .commitCommitterCheck(true)
  *                 .memberCheck(true)
  *                 .preventSecrets(true)
@@ -117,8 +117,8 @@ import javax.annotation.Nullable;
  *             .description("An example group with a default branch name")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -239,7 +239,7 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultBranch);
     }
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
      * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
@@ -250,7 +250,7 @@ public class Group extends com.pulumi.resources.CustomResource {
     private Output<Integer> defaultBranchProtection;
 
     /**
-     * @return See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * @return See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     public Output<Integer> defaultBranchProtection() {
@@ -653,7 +653,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Group(java.lang.String name) {
+    public Group(String name) {
         this(name, GroupArgs.Empty);
     }
     /**
@@ -661,7 +661,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Group(java.lang.String name, GroupArgs args) {
+    public Group(String name, GroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -670,22 +670,15 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Group(java.lang.String name, GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/group:Group", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public Group(String name, GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/group:Group", name, args == null ? GroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Group(java.lang.String name, Output<java.lang.String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/group:Group", name, state, makeResourceOptions(options, id), false);
+    private Group(String name, Output<String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/group:Group", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupArgs makeArgs(GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -704,7 +697,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Group get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Group get(String name, Output<String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Group(name, id, state, options);
     }
 }

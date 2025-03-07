@@ -190,7 +190,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectApprovalRule(java.lang.String name) {
+    public ProjectApprovalRule(String name) {
         this(name, ProjectApprovalRuleArgs.Empty);
     }
     /**
@@ -198,7 +198,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectApprovalRule(java.lang.String name, ProjectApprovalRuleArgs args) {
+    public ProjectApprovalRule(String name, ProjectApprovalRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -207,22 +207,15 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectApprovalRule(java.lang.String name, ProjectApprovalRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectApprovalRule:ProjectApprovalRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectApprovalRule(String name, ProjectApprovalRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectApprovalRule:ProjectApprovalRule", name, args == null ? ProjectApprovalRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectApprovalRule(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectApprovalRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectApprovalRule:ProjectApprovalRule", name, state, makeResourceOptions(options, id), false);
+    private ProjectApprovalRule(String name, Output<String> id, @Nullable ProjectApprovalRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectApprovalRule:ProjectApprovalRule", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectApprovalRuleArgs makeArgs(ProjectApprovalRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectApprovalRuleArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -238,7 +231,7 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectApprovalRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectApprovalRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectApprovalRule get(String name, Output<String> id, @Nullable ProjectApprovalRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectApprovalRule(name, id, state, options);
     }
 }

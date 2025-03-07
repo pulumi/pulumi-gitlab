@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource is deprecated. use `gitlab.IntegrationGithub`instead!
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
  * 
  * ## Example Usage
  * 
@@ -206,7 +206,7 @@ public class ServiceGithub extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceGithub(java.lang.String name) {
+    public ServiceGithub(String name) {
         this(name, ServiceGithubArgs.Empty);
     }
     /**
@@ -214,7 +214,7 @@ public class ServiceGithub extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceGithub(java.lang.String name, ServiceGithubArgs args) {
+    public ServiceGithub(String name, ServiceGithubArgs args) {
         this(name, args, null);
     }
     /**
@@ -223,22 +223,15 @@ public class ServiceGithub extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceGithub(java.lang.String name, ServiceGithubArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/serviceGithub:ServiceGithub", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ServiceGithub(String name, ServiceGithubArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/serviceGithub:ServiceGithub", name, args == null ? ServiceGithubArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ServiceGithub(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceGithubState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/serviceGithub:ServiceGithub", name, state, makeResourceOptions(options, id), false);
+    private ServiceGithub(String name, Output<String> id, @Nullable ServiceGithubState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/serviceGithub:ServiceGithub", name, state, makeResourceOptions(options, id));
     }
 
-    private static ServiceGithubArgs makeArgs(ServiceGithubArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ServiceGithubArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -257,7 +250,7 @@ public class ServiceGithub extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceGithub get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceGithubState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceGithub get(String name, Output<String> id, @Nullable ServiceGithubState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceGithub(name, id, state, options);
     }
 }

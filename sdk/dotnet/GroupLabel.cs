@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupLabel` resource allows to manage the lifecycle of labels within a group.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
     /// 
     /// ## Example Usage
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         /// The description of the label.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The name or id of the group to add the label to.

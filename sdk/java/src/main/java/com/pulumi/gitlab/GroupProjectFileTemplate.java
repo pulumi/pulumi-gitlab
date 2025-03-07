@@ -18,11 +18,11 @@ import javax.annotation.Nullable;
  * custom file templates will be loaded. In order to use this resource, the project selected must be a direct child of
  * the group selected. After the resource has run, `gitlab_project_template.template_project_id` is available for use.
  * For more information about which file types are available as templates, view
- * [GitLab&#39;s documentation](https://docs.gitlab.com/ee/user/group/custom_project_templates.html)
+ * [GitLab&#39;s documentation](https://docs.gitlab.com/user/group/custom_project_templates/)
  * 
  * &gt; This resource requires a GitLab Enterprise instance with a Premium license.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#update-group)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#update-group)
  * 
  * ## Example Usage
  * 
@@ -117,7 +117,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupProjectFileTemplate(java.lang.String name) {
+    public GroupProjectFileTemplate(String name) {
         this(name, GroupProjectFileTemplateArgs.Empty);
     }
     /**
@@ -125,7 +125,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupProjectFileTemplate(java.lang.String name, GroupProjectFileTemplateArgs args) {
+    public GroupProjectFileTemplate(String name, GroupProjectFileTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -134,22 +134,15 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupProjectFileTemplate(java.lang.String name, GroupProjectFileTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupProjectFileTemplate(String name, GroupProjectFileTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate", name, args == null ? GroupProjectFileTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupProjectFileTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable GroupProjectFileTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate", name, state, makeResourceOptions(options, id), false);
+    private GroupProjectFileTemplate(String name, Output<String> id, @Nullable GroupProjectFileTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupProjectFileTemplateArgs makeArgs(GroupProjectFileTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupProjectFileTemplateArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -165,7 +158,7 @@ public class GroupProjectFileTemplate extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupProjectFileTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupProjectFileTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupProjectFileTemplate get(String name, Output<String> id, @Nullable GroupProjectFileTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupProjectFileTemplate(name, id, state, options);
     }
 }

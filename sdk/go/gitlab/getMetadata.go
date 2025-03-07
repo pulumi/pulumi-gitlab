@@ -13,7 +13,7 @@ import (
 
 // The `getMetadata` data source retrieves the metadata of the GitLab instance.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
 //
 // ## Example Usage
 //
@@ -50,7 +50,7 @@ func GetMetadata(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetMetadata
 
 // A collection of values returned by getMetadata.
 type GetMetadataResult struct {
-	// If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+	// If the GitLab instance is an enterprise instance or not.
 	Enterprise bool `pulumi:"enterprise"`
 	// The id of the data source. It will always be `1`
 	Id string `pulumi:"id"`
@@ -84,7 +84,7 @@ func (o GetMetadataResultOutput) ToGetMetadataResultOutputWithContext(ctx contex
 	return o
 }
 
-// If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+// If the GitLab instance is an enterprise instance or not.
 func (o GetMetadataResultOutput) Enterprise() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMetadataResult) bool { return v.Enterprise }).(pulumi.BoolOutput)
 }

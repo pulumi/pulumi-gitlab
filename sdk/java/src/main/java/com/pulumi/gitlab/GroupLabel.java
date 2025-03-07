@@ -12,13 +12,12 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupLabelState;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * The `gitlab.GroupLabel` resource allows to manage the lifecycle of labels within a group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
  * 
  * ## Example Usage
  * 
@@ -102,14 +101,14 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the label.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * The name or id of the group to add the label to.
@@ -158,7 +157,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupLabel(java.lang.String name) {
+    public GroupLabel(String name) {
         this(name, GroupLabelArgs.Empty);
     }
     /**
@@ -166,7 +165,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupLabel(java.lang.String name, GroupLabelArgs args) {
+    public GroupLabel(String name, GroupLabelArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,22 +174,15 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupLabel(java.lang.String name, GroupLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupLabel:GroupLabel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupLabel(String name, GroupLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupLabel:GroupLabel", name, args == null ? GroupLabelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupLabel(java.lang.String name, Output<java.lang.String> id, @Nullable GroupLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupLabel:GroupLabel", name, state, makeResourceOptions(options, id), false);
+    private GroupLabel(String name, Output<String> id, @Nullable GroupLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupLabel:GroupLabel", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupLabelArgs makeArgs(GroupLabelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupLabelArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -206,7 +198,7 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupLabel get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupLabel get(String name, Output<String> id, @Nullable GroupLabelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupLabel(name, id, state, options);
     }
 }

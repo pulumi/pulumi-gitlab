@@ -204,7 +204,7 @@ export interface GetClusterAgentsClusterAgent {
 
 export interface GetGroupBillableMemberMembershipsMembership {
     /**
-     * Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+     * Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
      */
     accessLevel: string;
     /**
@@ -513,41 +513,14 @@ export interface GetGroupSubgroupsSubgroup {
 }
 
 export interface GetGroupVariablesVariable {
-    /**
-     * The description of the variable.
-     */
     description: string;
-    /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-     */
     environmentScope: string;
-    /**
-     * The name or id of the group.
-     */
     group: string;
-    /**
-     * The name of the variable.
-     */
     key: string;
-    /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-     */
     masked: boolean;
-    /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-     */
     protected: boolean;
-    /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-     */
     raw: boolean;
-    /**
-     * The value of the variable.
-     */
     value: string;
-    /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
-     */
     variableType: string;
 }
 
@@ -686,7 +659,7 @@ export interface GetInstanceVariablesVariable {
      */
     key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked: boolean;
     /**
@@ -1865,7 +1838,7 @@ export interface GetProjectVariablesVariable {
      */
     key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
      */
     masked: boolean;
     /**
@@ -1968,7 +1941,7 @@ export interface GetProjectsProject {
      */
     ciPipelineVariablesMinimumOverrideRole: string;
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     ciRestrictPipelineCancellationRole: string;
     /**
@@ -2088,7 +2061,7 @@ export interface GetProjectsProject {
      */
     lfsEnabled: boolean;
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      */
     mergeCommitTemplate: string;
     /**
@@ -2249,7 +2222,7 @@ export interface GetProjectsProject {
      */
     snippetsEnabled: boolean;
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      */
     squashCommitTemplate: string;
     /**
@@ -2485,7 +2458,7 @@ export interface GetReleaseAssetsSource {
 
 export interface GetReleaseLinksReleaseLink {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      */
     directAssetUrl: string;
     /**
@@ -2493,7 +2466,7 @@ export interface GetReleaseLinksReleaseLink {
      */
     external: boolean;
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      */
     filepath: string;
     /**
@@ -2509,7 +2482,7 @@ export interface GetReleaseLinksReleaseLink {
      */
     name: string;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     project: string;
     /**
@@ -2633,7 +2606,7 @@ export interface GetUsersUser {
      */
     currentSignInAt: string;
     /**
-     * The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * The public email address of the user.
      */
     email: string;
     /**
@@ -2673,7 +2646,7 @@ export interface GetUsersUser {
      */
     name: string;
     /**
-     * The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * The ID of the user's namespace. Requires admin token to access this field.
      */
     namespaceId: number;
     /**
@@ -2857,7 +2830,7 @@ export interface GroupPushRules {
      */
     branchNameRegex: string;
     /**
-     * Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+     * Only commits pushed using verified emails are allowed.
      */
     commitCommitterCheck: boolean;
     /**
@@ -2897,7 +2870,7 @@ export interface GroupPushRules {
      */
     rejectNonDcoCommits: boolean;
     /**
-     * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+     * Only commits signed through GPG are allowed.
      */
     rejectUnsignedCommits: boolean;
 }
@@ -3195,6 +3168,122 @@ export interface ProjectTagRelease {
     tagName: string;
 }
 
+export interface ReleaseAssets {
+    /**
+     * The total count of assets in this release.
+     */
+    count: number;
+}
+
+export interface ReleaseAuthor {
+    /**
+     * The url of the author's' user avatar.
+     */
+    avatarUrl: string;
+    /**
+     * The ID of the author's user.
+     */
+    id: number;
+    /**
+     * The name of the author.
+     */
+    name: string;
+    /**
+     * The state of the author's user.
+     */
+    state: string;
+    /**
+     * The username of the author.
+     */
+    username: string;
+    /**
+     * The url to the author's user profile.
+     */
+    webUrl: string;
+}
+
+export interface ReleaseCommit {
+    /**
+     * The email address of the commit author.
+     */
+    authorEmail: string;
+    /**
+     * The name of the commit author.
+     */
+    authorName: string;
+    /**
+     * The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+     */
+    authoredDate: string;
+    /**
+     * The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+     */
+    committedDate: string;
+    /**
+     * The email address of the committer.
+     */
+    committerEmail: string;
+    /**
+     * The name of the committer.
+     */
+    committerName: string;
+    /**
+     * The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+     */
+    createdAt: string;
+    /**
+     * The git commit full SHA
+     */
+    id: string;
+    /**
+     * The commit message.
+     */
+    message: string;
+    /**
+     * The full SHA of any parent commits.
+     */
+    parentIds: string[];
+    /**
+     * The git commit short SHA.
+     */
+    shortId: string;
+    /**
+     * The title of the commit.
+     */
+    title: string;
+}
+
+export interface ReleaseLinks {
+    /**
+     * URL of the release's closed issues.
+     */
+    closedIssuesUrl: string;
+    /**
+     * URL of the release's closed merge requests.
+     */
+    closedMergeRequestsUrl: string;
+    /**
+     * URL of the release's edit page.
+     */
+    editUrl: string;
+    /**
+     * URL of the release's merged merge requests.
+     */
+    mergedMergeRequestsUrl: string;
+    /**
+     * URL of the release's open issues.
+     */
+    openedIssuesUrl: string;
+    /**
+     * URL of the release's open merge requests.
+     */
+    openedMergeRequestsUrl: string;
+    /**
+     * URL of the release.
+     */
+    self: string;
+}
+
 export interface TagProtectionAllowedToCreate {
     /**
      * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
@@ -3220,7 +3309,7 @@ export interface ValueStreamAnalyticsStage {
      */
     custom?: boolean;
     /**
-     * End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+     * End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
      */
     endEventIdentifier: string;
     /**
@@ -3240,7 +3329,7 @@ export interface ValueStreamAnalyticsStage {
      */
     name: string;
     /**
-     * Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+     * Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
      */
     startEventIdentifier: string;
     /**

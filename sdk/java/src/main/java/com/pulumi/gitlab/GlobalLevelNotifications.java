@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GlobalLevelNotifications` resource allows to manage global notifications.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
  * 
  * ## Import
  * 
@@ -305,7 +305,7 @@ public class GlobalLevelNotifications extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalLevelNotifications(java.lang.String name) {
+    public GlobalLevelNotifications(String name) {
         this(name, GlobalLevelNotificationsArgs.Empty);
     }
     /**
@@ -313,7 +313,7 @@ public class GlobalLevelNotifications extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalLevelNotifications(java.lang.String name, @Nullable GlobalLevelNotificationsArgs args) {
+    public GlobalLevelNotifications(String name, @Nullable GlobalLevelNotificationsArgs args) {
         this(name, args, null);
     }
     /**
@@ -322,22 +322,15 @@ public class GlobalLevelNotifications extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalLevelNotifications(java.lang.String name, @Nullable GlobalLevelNotificationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/globalLevelNotifications:GlobalLevelNotifications", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GlobalLevelNotifications(String name, @Nullable GlobalLevelNotificationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/globalLevelNotifications:GlobalLevelNotifications", name, args == null ? GlobalLevelNotificationsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GlobalLevelNotifications(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/globalLevelNotifications:GlobalLevelNotifications", name, state, makeResourceOptions(options, id), false);
+    private GlobalLevelNotifications(String name, Output<String> id, @Nullable GlobalLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/globalLevelNotifications:GlobalLevelNotifications", name, state, makeResourceOptions(options, id));
     }
 
-    private static GlobalLevelNotificationsArgs makeArgs(@Nullable GlobalLevelNotificationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GlobalLevelNotificationsArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -353,7 +346,7 @@ public class GlobalLevelNotifications extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalLevelNotifications get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalLevelNotifications get(String name, Output<String> id, @Nullable GlobalLevelNotificationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalLevelNotifications(name, id, state, options);
     }
 }

@@ -22,11 +22,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires an Ultimate license.
  * 
- * &gt; Most custom roles are considered billable users that use a seat. [Custom roles billing and seat usage](https://docs.gitlab.com/ee/user/custom_roles.html#billing-and-seat-usage)
+ * &gt; Most custom roles are considered billable users that use a seat. [Custom roles billing and seat usage](https://docs.gitlab.com/user/custom_roles/#billing-and-seat-usage)
  * 
  * &gt; There can be only 10 custom roles on your instance or namespace. See [issue 450929](https://gitlab.com/gitlab-org/gitlab/-/issues/450929) for more details.
  * 
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationmemberrolecreate)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
  * 
  * ## Import
  * 
@@ -110,14 +110,14 @@ public class MemberRole extends com.pulumi.resources.CustomResource {
         return this.editPath;
     }
     /**
-     * All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_CODE`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
+     * All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
      * 
      */
     @Export(name="enabledPermissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> enabledPermissions;
 
     /**
-     * @return All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_CODE`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
+     * @return All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
      * 
      */
     public Output<List<String>> enabledPermissions() {
@@ -170,7 +170,7 @@ public class MemberRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MemberRole(java.lang.String name) {
+    public MemberRole(String name) {
         this(name, MemberRoleArgs.Empty);
     }
     /**
@@ -178,7 +178,7 @@ public class MemberRole extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MemberRole(java.lang.String name, MemberRoleArgs args) {
+    public MemberRole(String name, MemberRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,22 +187,15 @@ public class MemberRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MemberRole(java.lang.String name, MemberRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/memberRole:MemberRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public MemberRole(String name, MemberRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/memberRole:MemberRole", name, args == null ? MemberRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private MemberRole(java.lang.String name, Output<java.lang.String> id, @Nullable MemberRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/memberRole:MemberRole", name, state, makeResourceOptions(options, id), false);
+    private MemberRole(String name, Output<String> id, @Nullable MemberRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/memberRole:MemberRole", name, state, makeResourceOptions(options, id));
     }
 
-    private static MemberRoleArgs makeArgs(MemberRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? MemberRoleArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -218,7 +211,7 @@ public class MemberRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MemberRole get(java.lang.String name, Output<java.lang.String> id, @Nullable MemberRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MemberRole get(String name, Output<String> id, @Nullable MemberRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MemberRole(name, id, state, options);
     }
 }

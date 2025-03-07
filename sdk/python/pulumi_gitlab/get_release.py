@@ -137,9 +137,9 @@ def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssets
                 tag_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReleaseResult:
     """
-    The `get_release` data source retrieves information about a gitlab release for a project.
+    The `Release` data source retrieves information about a gitlab release for a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
 
     ## Example Usage
 
@@ -178,9 +178,9 @@ def get_release_output(assets: Optional[pulumi.Input[Optional[Union['GetReleaseA
                        tag_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReleaseResult]:
     """
-    The `get_release` data source retrieves information about a gitlab release for a project.
+    The `Release` data source retrieves information about a gitlab release for a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
 
     ## Example Usage
 

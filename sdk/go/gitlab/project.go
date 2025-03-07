@@ -92,7 +92,7 @@ type Project struct {
 	CiForwardDeploymentEnabled pulumi.BoolOutput `pulumi:"ciForwardDeploymentEnabled"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringOutput `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringOutput `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches pulumi.BoolOutput `pulumi:"ciSeparatedCaches"`
@@ -148,7 +148,7 @@ type Project struct {
 	KeepLatestArtifact pulumi.BoolOutput `pulumi:"keepLatestArtifact"`
 	// Enable LFS for the project.
 	LfsEnabled pulumi.BoolOutput `pulumi:"lfsEnabled"`
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate pulumi.StringPtrOutput `pulumi:"mergeCommitTemplate"`
 	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod pulumi.StringOutput `pulumi:"mergeMethod"`
@@ -243,9 +243,9 @@ type Project struct {
 	SnippetsAccessLevel pulumi.StringOutput `pulumi:"snippetsAccessLevel"`
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolOutput `pulumi:"snippetsEnabled"`
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringPtrOutput `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption pulumi.StringOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
@@ -260,7 +260,7 @@ type Project struct {
 	// The list of topics for the project.
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate pulumi.BoolPtrOutput `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringOutput `pulumi:"visibilityLevel"`
@@ -357,7 +357,7 @@ type projectState struct {
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches *bool `pulumi:"ciSeparatedCaches"`
@@ -413,7 +413,7 @@ type projectState struct {
 	KeepLatestArtifact *bool `pulumi:"keepLatestArtifact"`
 	// Enable LFS for the project.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate *string `pulumi:"mergeCommitTemplate"`
 	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod *string `pulumi:"mergeMethod"`
@@ -508,9 +508,9 @@ type projectState struct {
 	SnippetsAccessLevel *string `pulumi:"snippetsAccessLevel"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
@@ -525,7 +525,7 @@ type projectState struct {
 	// The list of topics for the project.
 	Topics []string `pulumi:"topics"`
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
@@ -585,7 +585,7 @@ type ProjectState struct {
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
 	CiSeparatedCaches pulumi.BoolPtrInput
@@ -641,7 +641,7 @@ type ProjectState struct {
 	KeepLatestArtifact pulumi.BoolPtrInput
 	// Enable LFS for the project.
 	LfsEnabled pulumi.BoolPtrInput
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate pulumi.StringPtrInput
 	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod pulumi.StringPtrInput
@@ -736,9 +736,9 @@ type ProjectState struct {
 	SnippetsAccessLevel pulumi.StringPtrInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringPtrInput
@@ -753,7 +753,7 @@ type ProjectState struct {
 	// The list of topics for the project.
 	Topics pulumi.StringArrayInput
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringPtrInput
@@ -815,7 +815,7 @@ type projectArgs struct {
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
 	CiSeparatedCaches *bool `pulumi:"ciSeparatedCaches"`
@@ -867,7 +867,7 @@ type projectArgs struct {
 	KeepLatestArtifact *bool `pulumi:"keepLatestArtifact"`
 	// Enable LFS for the project.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate *string `pulumi:"mergeCommitTemplate"`
 	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod *string `pulumi:"mergeMethod"`
@@ -958,9 +958,9 @@ type projectArgs struct {
 	SnippetsAccessLevel *string `pulumi:"snippetsAccessLevel"`
 	// Enable snippets for the project.
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption *string `pulumi:"squashOption"`
 	// The commit message used to apply merge request suggestions.
 	SuggestionCommitMessage *string `pulumi:"suggestionCommitMessage"`
@@ -973,7 +973,7 @@ type projectArgs struct {
 	// The list of topics for the project.
 	Topics []string `pulumi:"topics"`
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate *bool `pulumi:"useCustomTemplate"`
 	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel *string `pulumi:"visibilityLevel"`
@@ -1030,7 +1030,7 @@ type ProjectArgs struct {
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
-	// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
 	CiSeparatedCaches pulumi.BoolPtrInput
@@ -1082,7 +1082,7 @@ type ProjectArgs struct {
 	KeepLatestArtifact pulumi.BoolPtrInput
 	// Enable LFS for the project.
 	LfsEnabled pulumi.BoolPtrInput
-	// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate pulumi.StringPtrInput
 	// Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
 	MergeMethod pulumi.StringPtrInput
@@ -1173,9 +1173,9 @@ type ProjectArgs struct {
 	SnippetsAccessLevel pulumi.StringPtrInput
 	// Enable snippets for the project.
 	SnippetsEnabled pulumi.BoolPtrInput
-	// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 	SquashOption pulumi.StringPtrInput
 	// The commit message used to apply merge request suggestions.
 	SuggestionCommitMessage pulumi.StringPtrInput
@@ -1188,7 +1188,7 @@ type ProjectArgs struct {
 	// The list of topics for the project.
 	Topics pulumi.StringArrayInput
 	// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+	// 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 	UseCustomTemplate pulumi.BoolPtrInput
 	// Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringPtrInput
@@ -1395,7 +1395,7 @@ func (o ProjectOutput) CiPipelineVariablesMinimumOverrideRole() pulumi.StringOut
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CiPipelineVariablesMinimumOverrideRole }).(pulumi.StringOutput)
 }
 
-// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 func (o ProjectOutput) CiRestrictPipelineCancellationRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CiRestrictPipelineCancellationRole }).(pulumi.StringOutput)
 }
@@ -1532,7 +1532,7 @@ func (o ProjectOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
-// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+// Template used to create merge commit message in merge requests.
 func (o ProjectOutput) MergeCommitTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MergeCommitTemplate }).(pulumi.StringPtrOutput)
 }
@@ -1759,12 +1759,12 @@ func (o ProjectOutput) SnippetsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SnippetsEnabled }).(pulumi.BoolOutput)
 }
 
-// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+// Template used to create squash commit message in merge requests.
 func (o ProjectOutput) SquashCommitTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SquashCommitTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
 func (o ProjectOutput) SquashOption() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SquashOption }).(pulumi.StringOutput)
 }
@@ -1801,7 +1801,7 @@ func (o ProjectOutput) Topics() pulumi.StringArrayOutput {
 
 // Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
 //
-//	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+//	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
 func (o ProjectOutput) UseCustomTemplate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.UseCustomTemplate }).(pulumi.BoolPtrOutput)
 }

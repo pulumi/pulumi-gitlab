@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  * 
  * ## Example Usage
  * 
@@ -278,7 +278,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectMilestone(java.lang.String name) {
+    public ProjectMilestone(String name) {
         this(name, ProjectMilestoneArgs.Empty);
     }
     /**
@@ -286,7 +286,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectMilestone(java.lang.String name, ProjectMilestoneArgs args) {
+    public ProjectMilestone(String name, ProjectMilestoneArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,22 +295,15 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectMilestone(java.lang.String name, ProjectMilestoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMilestone:ProjectMilestone", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectMilestone(String name, ProjectMilestoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMilestone:ProjectMilestone", name, args == null ? ProjectMilestoneArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectMilestone(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMilestoneState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMilestone:ProjectMilestone", name, state, makeResourceOptions(options, id), false);
+    private ProjectMilestone(String name, Output<String> id, @Nullable ProjectMilestoneState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMilestone:ProjectMilestone", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectMilestoneArgs makeArgs(ProjectMilestoneArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectMilestoneArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -326,7 +319,7 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectMilestone get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMilestoneState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectMilestone get(String name, Output<String> id, @Nullable ProjectMilestoneState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectMilestone(name, id, state, options);
     }
 }

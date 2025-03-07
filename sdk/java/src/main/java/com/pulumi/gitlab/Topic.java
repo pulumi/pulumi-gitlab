@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `soft_destroy = true` to empty out a topic instead of deleting it.
  * 
- * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/ee/api/topics.html)
+ * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
  * 
  * ## Import
  * 
@@ -162,7 +162,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Topic(java.lang.String name) {
+    public Topic(String name) {
         this(name, TopicArgs.Empty);
     }
     /**
@@ -170,7 +170,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Topic(java.lang.String name, @Nullable TopicArgs args) {
+    public Topic(String name, @Nullable TopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -179,22 +179,15 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Topic(java.lang.String name, @Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/topic:Topic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public Topic(String name, @Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/topic:Topic", name, args == null ? TopicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Topic(java.lang.String name, Output<java.lang.String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/topic:Topic", name, state, makeResourceOptions(options, id), false);
+    private Topic(String name, Output<String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/topic:Topic", name, state, makeResourceOptions(options, id));
     }
 
-    private static TopicArgs makeArgs(@Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? TopicArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -210,7 +203,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Topic get(java.lang.String name, Output<java.lang.String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Topic get(String name, Output<String> id, @Nullable TopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Topic(name, id, state, options);
     }
 }

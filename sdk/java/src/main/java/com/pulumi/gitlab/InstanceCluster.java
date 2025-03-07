@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This is deprecated GitLab feature since 14.5
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_clusters/)
  * 
  * ## Example Usage
  * 
@@ -307,7 +307,7 @@ public class InstanceCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceCluster(java.lang.String name) {
+    public InstanceCluster(String name) {
         this(name, InstanceClusterArgs.Empty);
     }
     /**
@@ -315,7 +315,7 @@ public class InstanceCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceCluster(java.lang.String name, InstanceClusterArgs args) {
+    public InstanceCluster(String name, InstanceClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -324,22 +324,15 @@ public class InstanceCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceCluster(java.lang.String name, InstanceClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/instanceCluster:InstanceCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public InstanceCluster(String name, InstanceClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/instanceCluster:InstanceCluster", name, args == null ? InstanceClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private InstanceCluster(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/instanceCluster:InstanceCluster", name, state, makeResourceOptions(options, id), false);
+    private InstanceCluster(String name, Output<String> id, @Nullable InstanceClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/instanceCluster:InstanceCluster", name, state, makeResourceOptions(options, id));
     }
 
-    private static InstanceClusterArgs makeArgs(InstanceClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? InstanceClusterArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -358,7 +351,7 @@ public class InstanceCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceCluster get(String name, Output<String> id, @Nullable InstanceClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceCluster(name, id, state, options);
     }
 }

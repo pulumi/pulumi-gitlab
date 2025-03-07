@@ -230,7 +230,7 @@ class ServiceGithub(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationGithub`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
 
         ## Example Usage
 
@@ -291,7 +291,7 @@ class ServiceGithub(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationGithub`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
 
         ## Example Usage
 

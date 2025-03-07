@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  *    In order to use a group_id in the `deploy_access_levels` configuration,
  *    the group_id must be a sub-group under the given group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_environments/)
  * 
  * ## Import
  * 
@@ -112,7 +112,7 @@ public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupProtectedEnvironment(java.lang.String name) {
+    public GroupProtectedEnvironment(String name) {
         this(name, GroupProtectedEnvironmentArgs.Empty);
     }
     /**
@@ -120,7 +120,7 @@ public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupProtectedEnvironment(java.lang.String name, GroupProtectedEnvironmentArgs args) {
+    public GroupProtectedEnvironment(String name, GroupProtectedEnvironmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -129,22 +129,15 @@ public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupProtectedEnvironment(java.lang.String name, GroupProtectedEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupProtectedEnvironment(String name, GroupProtectedEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment", name, args == null ? GroupProtectedEnvironmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupProtectedEnvironment(java.lang.String name, Output<java.lang.String> id, @Nullable GroupProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment", name, state, makeResourceOptions(options, id), false);
+    private GroupProtectedEnvironment(String name, Output<String> id, @Nullable GroupProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupProtectedEnvironmentArgs makeArgs(GroupProtectedEnvironmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupProtectedEnvironmentArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -160,7 +153,7 @@ public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupProtectedEnvironment get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupProtectedEnvironment get(String name, Output<String> id, @Nullable GroupProtectedEnvironmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupProtectedEnvironment(name, id, state, options);
     }
 }

@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; You must specify either password or reset_password.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/)
     /// 
     /// ## Example Usage
     /// 
@@ -118,7 +118,7 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user's namespace. Available since GitLab 14.10.
+        /// The ID of the user's namespace.
         /// </summary>
         [Output("namespaceId")]
         public Output<int> NamespaceId { get; private set; } = null!;
@@ -258,7 +258,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the user's namespace. Available since GitLab 14.10.
+        /// The ID of the user's namespace.
         /// </summary>
         [Input("namespaceId")]
         public Input<int>? NamespaceId { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the user's namespace. Available since GitLab 14.10.
+        /// The ID of the user's namespace.
         /// </summary>
         [Input("namespaceId")]
         public Input<int>? NamespaceId { get; set; }

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Multiple epic boards on one group requires a GitLab Premium or above License.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_boards.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
  * 
  * ## Example Usage
  * 
@@ -157,7 +157,7 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupEpicBoard(java.lang.String name) {
+    public GroupEpicBoard(String name) {
         this(name, GroupEpicBoardArgs.Empty);
     }
     /**
@@ -165,7 +165,7 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupEpicBoard(java.lang.String name, GroupEpicBoardArgs args) {
+    public GroupEpicBoard(String name, GroupEpicBoardArgs args) {
         this(name, args, null);
     }
     /**
@@ -174,22 +174,15 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupEpicBoard(java.lang.String name, GroupEpicBoardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupEpicBoard:GroupEpicBoard", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupEpicBoard(String name, GroupEpicBoardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupEpicBoard:GroupEpicBoard", name, args == null ? GroupEpicBoardArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupEpicBoard(java.lang.String name, Output<java.lang.String> id, @Nullable GroupEpicBoardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupEpicBoard:GroupEpicBoard", name, state, makeResourceOptions(options, id), false);
+    private GroupEpicBoard(String name, Output<String> id, @Nullable GroupEpicBoardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupEpicBoard:GroupEpicBoard", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupEpicBoardArgs makeArgs(GroupEpicBoardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupEpicBoardArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -205,7 +198,7 @@ public class GroupEpicBoard extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupEpicBoard get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupEpicBoardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupEpicBoard get(String name, Output<String> id, @Nullable GroupEpicBoardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupEpicBoard(name, id, state, options);
     }
 }

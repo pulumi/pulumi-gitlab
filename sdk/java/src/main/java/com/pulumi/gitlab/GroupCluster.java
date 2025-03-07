@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This is deprecated GitLab feature since 14.5
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_clusters.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_clusters/)
  * 
  * ## Example Usage
  * 
@@ -314,7 +314,7 @@ public class GroupCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupCluster(java.lang.String name) {
+    public GroupCluster(String name) {
         this(name, GroupClusterArgs.Empty);
     }
     /**
@@ -322,7 +322,7 @@ public class GroupCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupCluster(java.lang.String name, GroupClusterArgs args) {
+    public GroupCluster(String name, GroupClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -331,22 +331,15 @@ public class GroupCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupCluster(java.lang.String name, GroupClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupCluster:GroupCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupCluster(String name, GroupClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupCluster:GroupCluster", name, args == null ? GroupClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupCluster(java.lang.String name, Output<java.lang.String> id, @Nullable GroupClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupCluster:GroupCluster", name, state, makeResourceOptions(options, id), false);
+    private GroupCluster(String name, Output<String> id, @Nullable GroupClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupCluster:GroupCluster", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupClusterArgs makeArgs(GroupClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupClusterArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -365,7 +358,7 @@ public class GroupCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupCluster get(String name, Output<String> id, @Nullable GroupClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupCluster(name, id, state, options);
     }
 }

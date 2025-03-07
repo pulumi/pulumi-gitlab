@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * &gt; In order to use a user for a user to create an application, they must have admin privileges at the instance level.
  * To create an OIDC application, a scope of &#34;openid&#34;.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
  * 
  * ## Example Usage
  * 
@@ -179,7 +179,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Application(java.lang.String name) {
+    public Application(String name) {
         this(name, ApplicationArgs.Empty);
     }
     /**
@@ -187,7 +187,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Application(java.lang.String name, ApplicationArgs args) {
+    public Application(String name, ApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -196,22 +196,15 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Application(java.lang.String name, ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/application:Application", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public Application(String name, ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/application:Application", name, args == null ? ApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Application(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/application:Application", name, state, makeResourceOptions(options, id), false);
+    private Application(String name, Output<String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/application:Application", name, state, makeResourceOptions(options, id));
     }
 
-    private static ApplicationArgs makeArgs(ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ApplicationArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -230,7 +223,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Application get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Application get(String name, Output<String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Application(name, id, state, options);
     }
 }

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
  * 
  * ## Example Usage
  * 
@@ -126,14 +126,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="commentOnEventEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> commentOnEventEnabled;
+    private Output<Boolean> commentOnEventEnabled;
 
     /**
      * @return Enable comments inside Jira issues on each GitLab event (commit / merge request)
      * 
      */
-    public Output<Optional<Boolean>> commentOnEventEnabled() {
-        return Codegen.optional(this.commentOnEventEnabled);
+    public Output<Boolean> commentOnEventEnabled() {
+        return this.commentOnEventEnabled;
     }
     /**
      * Enable notifications for commit events
@@ -226,14 +226,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jiraIssueTransitionAutomatic);
     }
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
     @Export(name="jiraIssueTransitionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jiraIssueTransitionId;
 
     /**
-     * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+     * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
     public Output<Optional<String>> jiraIssueTransitionId() {
@@ -384,7 +384,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationJira(java.lang.String name) {
+    public IntegrationJira(String name) {
         this(name, IntegrationJiraArgs.Empty);
     }
     /**
@@ -392,7 +392,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationJira(java.lang.String name, IntegrationJiraArgs args) {
+    public IntegrationJira(String name, IntegrationJiraArgs args) {
         this(name, args, null);
     }
     /**
@@ -401,22 +401,15 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationJira(java.lang.String name, IntegrationJiraArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationJira:IntegrationJira", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public IntegrationJira(String name, IntegrationJiraArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationJira:IntegrationJira", name, args == null ? IntegrationJiraArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IntegrationJira(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationJiraState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationJira:IntegrationJira", name, state, makeResourceOptions(options, id), false);
+    private IntegrationJira(String name, Output<String> id, @Nullable IntegrationJiraState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationJira:IntegrationJira", name, state, makeResourceOptions(options, id));
     }
 
-    private static IntegrationJiraArgs makeArgs(IntegrationJiraArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? IntegrationJiraArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -435,7 +428,7 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationJira get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationJiraState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationJira get(String name, Output<String> id, @Nullable IntegrationJiraState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationJira(name, id, state, options);
     }
 }

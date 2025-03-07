@@ -115,9 +115,7 @@ def get_cluster_agent(agent_id: Optional[int] = None,
     """
     The `ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
 
-    > Requires at least GitLab 14.10
-
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 
     ## Example Usage
 
@@ -152,9 +150,7 @@ def get_cluster_agent_output(agent_id: Optional[pulumi.Input[int]] = None,
     """
     The `ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
 
-    > Requires at least GitLab 14.10
-
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 
     ## Example Usage
 

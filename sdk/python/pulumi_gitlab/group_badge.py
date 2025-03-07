@@ -25,7 +25,7 @@ class GroupBadgeArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupBadge resource.
-        :param pulumi.Input[str] group: The id of the group to add the badge to.
+        :param pulumi.Input[str] group: The ID or URL-encoded path of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
         :param pulumi.Input[str] name: The name of the badge.
@@ -40,7 +40,7 @@ class GroupBadgeArgs:
     @pulumi.getter
     def group(self) -> pulumi.Input[str]:
         """
-        The id of the group to add the badge to.
+        The ID or URL-encoded path of the group to add the badge to.
         """
         return pulumi.get(self, "group")
 
@@ -96,7 +96,7 @@ class _GroupBadgeState:
                  rendered_link_url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupBadge resources.
-        :param pulumi.Input[str] group: The id of the group to add the badge to.
+        :param pulumi.Input[str] group: The ID or URL-encoded path of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
         :param pulumi.Input[str] name: The name of the badge.
@@ -120,7 +120,7 @@ class _GroupBadgeState:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the group to add the badge to.
+        The ID or URL-encoded path of the group to add the badge to.
         """
         return pulumi.get(self, "group")
 
@@ -202,7 +202,7 @@ class GroupBadge(pulumi.CustomResource):
         """
         The `GroupBadge` resource allows to manage the lifecycle of group badges.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
 
         ## Example Usage
 
@@ -256,7 +256,7 @@ class GroupBadge(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: The id of the group to add the badge to.
+        :param pulumi.Input[str] group: The ID or URL-encoded path of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
         :param pulumi.Input[str] name: The name of the badge.
@@ -270,7 +270,7 @@ class GroupBadge(pulumi.CustomResource):
         """
         The `GroupBadge` resource allows to manage the lifecycle of group badges.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
 
         ## Example Usage
 
@@ -385,7 +385,7 @@ class GroupBadge(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: The id of the group to add the badge to.
+        :param pulumi.Input[str] group: The ID or URL-encoded path of the group to add the badge to.
         :param pulumi.Input[str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[str] link_url: The url linked with the badge.
         :param pulumi.Input[str] name: The name of the badge.
@@ -408,7 +408,7 @@ class GroupBadge(pulumi.CustomResource):
     @pulumi.getter
     def group(self) -> pulumi.Output[str]:
         """
-        The id of the group to add the badge to.
+        The ID or URL-encoded path of the group to add the badge to.
         """
         return pulumi.get(self, "group")
 

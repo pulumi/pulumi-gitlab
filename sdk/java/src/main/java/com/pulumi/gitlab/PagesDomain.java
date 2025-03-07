@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
  * 
  * ## Import
  * 
@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/pagesDomain:PagesDomain")
 public class PagesDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+     * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
     @Export(name="autoSslEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoSslEnabled;
 
     /**
-     * @return Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+     * @return Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
     public Output<Boolean> autoSslEnabled() {
@@ -117,14 +117,14 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.key);
     }
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
     public Output<String> project() {
@@ -177,7 +177,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PagesDomain(java.lang.String name) {
+    public PagesDomain(String name) {
         this(name, PagesDomainArgs.Empty);
     }
     /**
@@ -185,7 +185,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PagesDomain(java.lang.String name, PagesDomainArgs args) {
+    public PagesDomain(String name, PagesDomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -194,22 +194,15 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PagesDomain(java.lang.String name, PagesDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/pagesDomain:PagesDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public PagesDomain(String name, PagesDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/pagesDomain:PagesDomain", name, args == null ? PagesDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private PagesDomain(java.lang.String name, Output<java.lang.String> id, @Nullable PagesDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/pagesDomain:PagesDomain", name, state, makeResourceOptions(options, id), false);
+    private PagesDomain(String name, Output<String> id, @Nullable PagesDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/pagesDomain:PagesDomain", name, state, makeResourceOptions(options, id));
     }
 
-    private static PagesDomainArgs makeArgs(PagesDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? PagesDomainArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -228,7 +221,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PagesDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable PagesDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PagesDomain get(String name, Output<String> id, @Nullable PagesDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PagesDomain(name, id, state, options);
     }
 }

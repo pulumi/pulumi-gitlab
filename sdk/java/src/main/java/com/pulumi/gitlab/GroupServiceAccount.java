@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupServiceAccount` resource allows creating a GitLab group service account.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/)
  * 
  * ## Example Usage
  * 
@@ -173,7 +173,7 @@ public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupServiceAccount(java.lang.String name) {
+    public GroupServiceAccount(String name) {
         this(name, GroupServiceAccountArgs.Empty);
     }
     /**
@@ -181,7 +181,7 @@ public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupServiceAccount(java.lang.String name, GroupServiceAccountArgs args) {
+    public GroupServiceAccount(String name, GroupServiceAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -190,22 +190,15 @@ public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupServiceAccount(java.lang.String name, GroupServiceAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupServiceAccount:GroupServiceAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupServiceAccount(String name, GroupServiceAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupServiceAccount:GroupServiceAccount", name, args == null ? GroupServiceAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupServiceAccount(java.lang.String name, Output<java.lang.String> id, @Nullable GroupServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupServiceAccount:GroupServiceAccount", name, state, makeResourceOptions(options, id), false);
+    private GroupServiceAccount(String name, Output<String> id, @Nullable GroupServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupServiceAccount:GroupServiceAccount", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupServiceAccountArgs makeArgs(GroupServiceAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupServiceAccountArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -221,7 +214,7 @@ public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupServiceAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupServiceAccount get(String name, Output<String> id, @Nullable GroupServiceAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupServiceAccount(name, id, state, options);
     }
 }

@@ -22,19 +22,23 @@ class ProjectMembershipArgs:
                  access_level: pulumi.Input[str],
                  project: pulumi.Input[str],
                  user_id: pulumi.Input[int],
-                 expires_at: Optional[pulumi.Input[str]] = None):
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ProjectMembership resource.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "user_id", user_id)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -84,18 +88,32 @@ class ProjectMembershipArgs:
     def expires_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expires_at", value)
 
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_role_id", value)
+
 
 @pulumi.input_type
 class _ProjectMembershipState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ProjectMembership resources.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -103,6 +121,8 @@ class _ProjectMembershipState:
             pulumi.set(__self__, "access_level", access_level)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if user_id is not None:
@@ -131,6 +151,18 @@ class _ProjectMembershipState:
     @expires_at.setter
     def expires_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_role_id", value)
 
     @property
     @pulumi.getter
@@ -164,6 +196,7 @@ class ProjectMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -172,7 +205,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
 
         ## Example Usage
 
@@ -217,6 +250,7 @@ class ProjectMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -231,7 +265,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
 
         ## Example Usage
 
@@ -289,6 +323,7 @@ class ProjectMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -304,6 +339,7 @@ class ProjectMembership(pulumi.CustomResource):
                 raise TypeError("Missing required property 'access_level'")
             __props__.__dict__["access_level"] = access_level
             __props__.__dict__["expires_at"] = expires_at
+            __props__.__dict__["member_role_id"] = member_role_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -322,6 +358,7 @@ class ProjectMembership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
+            member_role_id: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[int]] = None) -> 'ProjectMembership':
         """
@@ -333,6 +370,7 @@ class ProjectMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[int] user_id: The id of the user.
         """
@@ -342,6 +380,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         __props__.__dict__["access_level"] = access_level
         __props__.__dict__["expires_at"] = expires_at
+        __props__.__dict__["member_role_id"] = member_role_id
         __props__.__dict__["project"] = project
         __props__.__dict__["user_id"] = user_id
         return ProjectMembership(resource_name, opts=opts, __props__=__props__)
@@ -361,6 +400,14 @@ class ProjectMembership(pulumi.CustomResource):
         Expiration date for the project membership. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
 
     @property
     @pulumi.getter

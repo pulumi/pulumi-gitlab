@@ -189,7 +189,7 @@ class GetProjectIssuesResult:
     @pulumi.getter(name="issueType")
     def issue_type(self) -> Optional[str]:
         """
-        Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        Filter to a given type of issue. Valid values are [issue incident test_case].
         """
         return pulumi.get(self, "issue_type")
 
@@ -333,7 +333,7 @@ class GetProjectIssuesResult:
     @pulumi.getter(name="withLabelsDetails")
     def with_labels_details(self) -> Optional[bool]:
         """
-        If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+        If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
         """
         return pulumi.get(self, "with_labels_details")
 
@@ -404,7 +404,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
     """
     The `get_project_issues` data source allows to retrieve details about issues in a project.
 
-    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
 
     ## Example Usage
 
@@ -426,7 +426,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
     :param str created_before: Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str due_date: Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
     :param Sequence[int] iids: Return only the issues having the given iid
-    :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+    :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case].
     :param Sequence[str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
     :param str milestone: The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
     :param str my_reaction_emoji: Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
@@ -443,7 +443,7 @@ def get_project_issues(assignee_id: Optional[int] = None,
     :param str updated_after: Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str updated_before: Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-    :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+    :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
     """
     __args__ = dict()
     __args__['assigneeId'] = assignee_id
@@ -534,7 +534,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     """
     The `get_project_issues` data source allows to retrieve details about issues in a project.
 
-    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
 
     ## Example Usage
 
@@ -556,7 +556,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     :param str created_before: Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str due_date: Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
     :param Sequence[int] iids: Return only the issues having the given iid
-    :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+    :param str issue_type: Filter to a given type of issue. Valid values are [issue incident test_case].
     :param Sequence[str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
     :param str milestone: The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
     :param str my_reaction_emoji: Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
@@ -573,7 +573,7 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[int]]]
     :param str updated_after: Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param str updated_before: Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
     :param int weight: Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
-    :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+    :param bool with_labels_details: If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
     """
     __args__ = dict()
     __args__['assigneeId'] = assignee_id

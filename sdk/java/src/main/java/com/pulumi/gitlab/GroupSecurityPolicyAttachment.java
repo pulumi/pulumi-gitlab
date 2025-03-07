@@ -187,7 +187,7 @@ public class GroupSecurityPolicyAttachment extends com.pulumi.resources.CustomRe
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupSecurityPolicyAttachment(java.lang.String name) {
+    public GroupSecurityPolicyAttachment(String name) {
         this(name, GroupSecurityPolicyAttachmentArgs.Empty);
     }
     /**
@@ -195,7 +195,7 @@ public class GroupSecurityPolicyAttachment extends com.pulumi.resources.CustomRe
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupSecurityPolicyAttachment(java.lang.String name, GroupSecurityPolicyAttachmentArgs args) {
+    public GroupSecurityPolicyAttachment(String name, GroupSecurityPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,22 +204,15 @@ public class GroupSecurityPolicyAttachment extends com.pulumi.resources.CustomRe
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupSecurityPolicyAttachment(java.lang.String name, GroupSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public GroupSecurityPolicyAttachment(String name, GroupSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", name, args == null ? GroupSecurityPolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private GroupSecurityPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable GroupSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", name, state, makeResourceOptions(options, id), false);
+    private GroupSecurityPolicyAttachment(String name, Output<String> id, @Nullable GroupSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", name, state, makeResourceOptions(options, id));
     }
 
-    private static GroupSecurityPolicyAttachmentArgs makeArgs(GroupSecurityPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? GroupSecurityPolicyAttachmentArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -235,7 +228,7 @@ public class GroupSecurityPolicyAttachment extends com.pulumi.resources.CustomRe
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupSecurityPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupSecurityPolicyAttachment get(String name, Output<String> id, @Nullable GroupSecurityPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupSecurityPolicyAttachment(name, id, state, options);
     }
 }

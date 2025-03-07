@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; If a project should grant membership to an entire group use the `gitlab.ProjectShareGroup` resource instead.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
     /// 
     /// ## Example Usage
     /// 
@@ -80,6 +80,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("expiresAt")]
         public Output<string?> ExpiresAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Output("memberRoleId")]
+        public Output<int?> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
         /// The ID or URL-encoded path of the project.
@@ -152,6 +158,12 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
+
+        /// <summary>
         /// The ID or URL-encoded path of the project.
         /// </summary>
         [Input("project", required: true)]
@@ -182,6 +194,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
 
         /// <summary>
         /// The ID or URL-encoded path of the project.

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_triggers.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_triggers/)
  * 
  * ## Example Usage
  * 
@@ -142,7 +142,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PipelineTrigger(java.lang.String name) {
+    public PipelineTrigger(String name) {
         this(name, PipelineTriggerArgs.Empty);
     }
     /**
@@ -150,7 +150,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PipelineTrigger(java.lang.String name, PipelineTriggerArgs args) {
+    public PipelineTrigger(String name, PipelineTriggerArgs args) {
         this(name, args, null);
     }
     /**
@@ -159,22 +159,15 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PipelineTrigger(java.lang.String name, PipelineTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/pipelineTrigger:PipelineTrigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public PipelineTrigger(String name, PipelineTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/pipelineTrigger:PipelineTrigger", name, args == null ? PipelineTriggerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private PipelineTrigger(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/pipelineTrigger:PipelineTrigger", name, state, makeResourceOptions(options, id), false);
+    private PipelineTrigger(String name, Output<String> id, @Nullable PipelineTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/pipelineTrigger:PipelineTrigger", name, state, makeResourceOptions(options, id));
     }
 
-    private static PipelineTriggerArgs makeArgs(PipelineTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? PipelineTriggerArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -193,7 +186,7 @@ public class PipelineTrigger extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PipelineTrigger get(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PipelineTrigger get(String name, Output<String> id, @Nullable PipelineTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PipelineTrigger(name, id, state, options);
     }
 }

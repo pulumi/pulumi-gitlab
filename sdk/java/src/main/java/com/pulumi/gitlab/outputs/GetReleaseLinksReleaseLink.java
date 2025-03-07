@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetReleaseLinksReleaseLink {
     /**
-     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     private String directAssetUrl;
@@ -23,7 +23,7 @@ public final class GetReleaseLinksReleaseLink {
      */
     private Boolean external;
     /**
-     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     private String filepath;
@@ -43,7 +43,7 @@ public final class GetReleaseLinksReleaseLink {
      */
     private String name;
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     private String project;
@@ -60,7 +60,7 @@ public final class GetReleaseLinksReleaseLink {
 
     private GetReleaseLinksReleaseLink() {}
     /**
-     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     public String directAssetUrl() {
@@ -74,7 +74,7 @@ public final class GetReleaseLinksReleaseLink {
         return this.external;
     }
     /**
-     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     public String filepath() {
@@ -102,7 +102,7 @@ public final class GetReleaseLinksReleaseLink {
         return this.name;
     }
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     public String project() {

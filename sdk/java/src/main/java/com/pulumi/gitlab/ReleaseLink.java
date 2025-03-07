@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ReleaseLink` resource allows to manage the lifecycle of a release link.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  * 
  * ## Example Usage
  * 
@@ -94,14 +94,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/releaseLink:ReleaseLink")
 public class ReleaseLink extends com.pulumi.resources.CustomResource {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     @Export(name="directAssetUrl", refs={String.class}, tree="[0]")
     private Output<String> directAssetUrl;
 
     /**
-     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     public Output<String> directAssetUrl() {
@@ -122,14 +122,14 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
         return this.external;
     }
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     @Export(name="filepath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filepath;
 
     /**
-     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      * 
      */
     public Output<Optional<String>> filepath() {
@@ -178,14 +178,14 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     public Output<String> project() {
@@ -224,7 +224,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReleaseLink(java.lang.String name) {
+    public ReleaseLink(String name) {
         this(name, ReleaseLinkArgs.Empty);
     }
     /**
@@ -232,7 +232,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReleaseLink(java.lang.String name, ReleaseLinkArgs args) {
+    public ReleaseLink(String name, ReleaseLinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -241,22 +241,15 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReleaseLink(java.lang.String name, ReleaseLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/releaseLink:ReleaseLink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ReleaseLink(String name, ReleaseLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/releaseLink:ReleaseLink", name, args == null ? ReleaseLinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ReleaseLink(java.lang.String name, Output<java.lang.String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/releaseLink:ReleaseLink", name, state, makeResourceOptions(options, id), false);
+    private ReleaseLink(String name, Output<String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/releaseLink:ReleaseLink", name, state, makeResourceOptions(options, id));
     }
 
-    private static ReleaseLinkArgs makeArgs(ReleaseLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ReleaseLinkArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -272,7 +265,7 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReleaseLink get(java.lang.String name, Output<java.lang.String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReleaseLink get(String name, Output<String> id, @Nullable ReleaseLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReleaseLink(name, id, state, options);
     }
 }

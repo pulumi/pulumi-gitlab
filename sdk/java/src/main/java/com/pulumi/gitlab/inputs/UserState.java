@@ -123,14 +123,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the user&#39;s namespace. Available since GitLab 14.10.
+     * The ID of the user&#39;s namespace.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<Integer> namespaceId;
 
     /**
-     * @return The ID of the user&#39;s namespace. Available since GitLab 14.10.
+     * @return The ID of the user&#39;s namespace.
      * 
      */
     public Optional<Output<Integer>> namespaceId() {
@@ -428,7 +428,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The ID of the user&#39;s namespace. Available since GitLab 14.10.
+         * @param namespaceId The ID of the user&#39;s namespace.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The ID of the user&#39;s namespace. Available since GitLab 14.10.
+         * @param namespaceId The ID of the user&#39;s namespace.
          * 
          * @return builder
          * 

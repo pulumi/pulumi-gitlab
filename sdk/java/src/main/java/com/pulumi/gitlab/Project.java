@@ -360,14 +360,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
     @Export(name="ciRestrictPipelineCancellationRole", refs={String.class}, tree="[0]")
     private Output<String> ciRestrictPipelineCancellationRole;
 
     /**
-     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
     public Output<String> ciRestrictPipelineCancellationRole() {
@@ -742,14 +742,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.lfsEnabled;
     }
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      * 
      */
     @Export(name="mergeCommitTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mergeCommitTemplate;
 
     /**
-     * @return Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * @return Template used to create merge commit message in merge requests.
      * 
      */
     public Output<Optional<String>> mergeCommitTemplate() {
@@ -1372,28 +1372,28 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.snippetsEnabled;
     }
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      * 
      */
     @Export(name="squashCommitTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> squashCommitTemplate;
 
     /**
-     * @return Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * @return Template used to create squash commit message in merge requests.
      * 
      */
     public Output<Optional<String>> squashCommitTemplate() {
         return Codegen.optional(this.squashCommitTemplate);
     }
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+     * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
      * 
      */
     @Export(name="squashOption", refs={String.class}, tree="[0]")
     private Output<String> squashOption;
 
     /**
-     * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+     * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
      * 
      */
     public Output<String> squashOption() {
@@ -1485,7 +1485,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     @Export(name="useCustomTemplate", refs={Boolean.class}, tree="[0]")
@@ -1493,7 +1493,7 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     public Output<Optional<Boolean>> useCustomTemplate() {
@@ -1560,7 +1560,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Project(java.lang.String name) {
+    public Project(String name) {
         this(name, ProjectArgs.Empty);
     }
     /**
@@ -1568,7 +1568,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Project(java.lang.String name, @Nullable ProjectArgs args) {
+    public Project(String name, @Nullable ProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -1577,22 +1577,15 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Project(java.lang.String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/project:Project", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public Project(String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/project:Project", name, args == null ? ProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Project(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/project:Project", name, state, makeResourceOptions(options, id), false);
+    private Project(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/project:Project", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectArgs makeArgs(@Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1612,7 +1605,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Project get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Project get(String name, Output<String> id, @Nullable ProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Project(name, id, state, options);
     }
 }

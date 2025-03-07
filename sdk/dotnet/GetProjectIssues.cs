@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
         /// 
-        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
         /// 
-        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
         /// 
-        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
         /// 
         /// ## Example Usage
         /// 
@@ -166,7 +166,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        /// Filter to a given type of issue. Valid values are [issue incident test_case].
         /// </summary>
         [Input("issueType")]
         public string? IssueType { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.GitLab
         public int? Weight { get; set; }
 
         /// <summary>
-        /// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+        /// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
         /// </summary>
         [Input("withLabelsDetails")]
         public bool? WithLabelsDetails { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        /// Filter to a given type of issue. Valid values are [issue incident test_case].
         /// </summary>
         [Input("issueType")]
         public Input<string>? IssueType { get; set; }
@@ -498,7 +498,7 @@ namespace Pulumi.GitLab
         public Input<int>? Weight { get; set; }
 
         /// <summary>
-        /// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+        /// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
         /// </summary>
         [Input("withLabelsDetails")]
         public Input<bool>? WithLabelsDetails { get; set; }
@@ -550,7 +550,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<int> Iids;
         /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+        /// Filter to a given type of issue. Valid values are [issue incident test_case].
         /// </summary>
         public readonly string? IssueType;
         /// <summary>
@@ -622,7 +622,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int? Weight;
         /// <summary>
-        /// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+        /// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
         /// </summary>
         public readonly bool? WithLabelsDetails;
 

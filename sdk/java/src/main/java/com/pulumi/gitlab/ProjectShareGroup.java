@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-project-with-group)
  * 
  * ## Example Usage
  * 
@@ -147,7 +147,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectShareGroup(java.lang.String name) {
+    public ProjectShareGroup(String name) {
         this(name, ProjectShareGroupArgs.Empty);
     }
     /**
@@ -155,7 +155,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectShareGroup(java.lang.String name, ProjectShareGroupArgs args) {
+    public ProjectShareGroup(String name, ProjectShareGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,22 +164,15 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectShareGroup(java.lang.String name, ProjectShareGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectShareGroup:ProjectShareGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ProjectShareGroup(String name, ProjectShareGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectShareGroup:ProjectShareGroup", name, args == null ? ProjectShareGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ProjectShareGroup(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectShareGroup:ProjectShareGroup", name, state, makeResourceOptions(options, id), false);
+    private ProjectShareGroup(String name, Output<String> id, @Nullable ProjectShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectShareGroup:ProjectShareGroup", name, state, makeResourceOptions(options, id));
     }
 
-    private static ProjectShareGroupArgs makeArgs(ProjectShareGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ProjectShareGroupArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -195,7 +188,7 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectShareGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectShareGroup get(String name, Output<String> id, @Nullable ProjectShareGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectShareGroup(name, id, state, options);
     }
 }

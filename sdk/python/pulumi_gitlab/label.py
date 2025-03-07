@@ -189,7 +189,7 @@ class Label(pulumi.CustomResource):
 
         > This resource is deprecated. use `ProjectLabel`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -209,7 +209,7 @@ class Label(pulumi.CustomResource):
 
         > This resource is deprecated. use `ProjectLabel`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
 
         :param str resource_name: The name of the resource.
         :param LabelArgs args: The arguments to use to populate this resource's properties.

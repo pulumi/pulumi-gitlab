@@ -293,14 +293,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.authorizedKeysEnabled;
     }
     /**
-     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      * 
      */
     @Export(name="autoBanUserOnExcessiveProjectsDownload", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoBanUserOnExcessiveProjectsDownload;
 
     /**
-     * @return When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Introduced in GitLab 15.4. Self-managed, Ultimate only.
+     * @return When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      * 
      */
     public Output<Boolean> autoBanUserOnExcessiveProjectsDownload() {
@@ -363,42 +363,42 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.bulkImportConcurrentPipelineBatchLimit;
     }
     /**
-     * Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * Enable migrating GitLab groups by direct transfer.
      * 
      */
     @Export(name="bulkImportEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> bulkImportEnabled;
 
     /**
-     * @return Enable migrating GitLab groups by direct transfer. Introduced in GitLab 15.8.
+     * @return Enable migrating GitLab groups by direct transfer.
      * 
      */
     public Output<Boolean> bulkImportEnabled() {
         return this.bulkImportEnabled;
     }
     /**
-     * Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * Maximum download file size when importing from source GitLab instances by direct transfer.
      * 
      */
     @Export(name="bulkImportMaxDownloadFileSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> bulkImportMaxDownloadFileSize;
 
     /**
-     * @return Maximum download file size when importing from source GitLab instances by direct transfer. Introduced in GitLab 16.3.
+     * @return Maximum download file size when importing from source GitLab instances by direct transfer.
      * 
      */
     public Output<Integer> bulkImportMaxDownloadFileSize() {
         return this.bulkImportMaxDownloadFileSize;
     }
     /**
-     * Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * Indicates whether users can create top-level groups.
      * 
      */
     @Export(name="canCreateGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canCreateGroup;
 
     /**
-     * @return Indicates whether users can create top-level groups. Introduced in GitLab 15.5.
+     * @return Indicates whether users can create top-level groups.
      * 
      */
     public Output<Boolean> canCreateGroup() {
@@ -461,42 +461,42 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.commitEmailHostname;
     }
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      * 
      */
     @Export(name="concurrentBitbucketImportJobsLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> concurrentBitbucketImportJobsLimit;
 
     /**
-     * @return Maximum number of simultaneous import jobs for the Bitbucket Cloud importer. Introduced in GitLab 16.11.
+     * @return Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      * 
      */
     public Output<Integer> concurrentBitbucketImportJobsLimit() {
         return this.concurrentBitbucketImportJobsLimit;
     }
     /**
-     * Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      * 
      */
     @Export(name="concurrentBitbucketServerImportJobsLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> concurrentBitbucketServerImportJobsLimit;
 
     /**
-     * @return Maximum number of simultaneous import jobs for the Bitbucket Server importer. Introduced in GitLab 16.11.
+     * @return Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      * 
      */
     public Output<Integer> concurrentBitbucketServerImportJobsLimit() {
         return this.concurrentBitbucketServerImportJobsLimit;
     }
     /**
-     * Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * Maximum number of simultaneous import jobs for the GitHub importer.
      * 
      */
     @Export(name="concurrentGithubImportJobsLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> concurrentGithubImportJobsLimit;
 
     /**
-     * @return Maximum number of simultaneous import jobs for the GitHub importer. Introduced in GitLab 16.11.
+     * @return Maximum number of simultaneous import jobs for the GitHub importer.
      * 
      */
     public Output<Integer> concurrentGithubImportJobsLimit() {
@@ -601,28 +601,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.deactivateDormantUsers;
     }
     /**
-     * Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * Length of time (in days) after which a user is considered dormant.
      * 
      */
     @Export(name="deactivateDormantUsersPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> deactivateDormantUsersPeriod;
 
     /**
-     * @return Length of time (in days) after which a user is considered dormant. Introduced in GitLab 15.3.
+     * @return Length of time (in days) after which a user is considered dormant.
      * 
      */
     public Output<Integer> deactivateDormantUsersPeriod() {
         return this.deactivateDormantUsersPeriod;
     }
     /**
-     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      * 
      */
     @Export(name="decompressArchiveFileTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> decompressArchiveFileTimeout;
 
     /**
-     * @return Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. Introduced in GitLab 16.4.
+     * @return Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      * 
      */
     public Output<Integer> decompressArchiveFileTimeout() {
@@ -643,14 +643,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.defaultArtifactsExpireIn;
     }
     /**
-     * Instance-level custom initial branch name (introduced in GitLab 13.2).
+     * Instance-level custom initial branch name
      * 
      */
     @Export(name="defaultBranchName", refs={String.class}, tree="[0]")
     private Output<String> defaultBranchName;
 
     /**
-     * @return Instance-level custom initial branch name (introduced in GitLab 13.2).
+     * @return Instance-level custom initial branch name
      * 
      */
     public Output<String> defaultBranchName() {
@@ -797,28 +797,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.defaultSyntaxHighlightingTheme;
     }
     /**
-     * Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+     * Enable inactive project deletion feature.
      * 
      */
     @Export(name="deleteInactiveProjects", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteInactiveProjects;
 
     /**
-     * @return Enable inactive project deletion feature. Introduced in GitLab 14.10. Became operational in GitLab 15.0 (with feature flag inactive*projects*deletion).
+     * @return Enable inactive project deletion feature.
      * 
      */
     public Output<Boolean> deleteInactiveProjects() {
         return this.deleteInactiveProjects;
     }
     /**
-     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      * 
      */
     @Export(name="deleteUnconfirmedUsers", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteUnconfirmedUsers;
 
     /**
-     * @return Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * @return Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      * 
      */
     public Output<Boolean> deleteUnconfirmedUsers() {
@@ -909,42 +909,42 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.diffMaxPatchBytes;
     }
     /**
-     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      * 
      */
     @Export(name="disableAdminOauthScopes", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAdminOauthScopes;
 
     /**
-     * @return Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes. Introduced in GitLab 15.6.
+     * @return Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      * 
      */
     public Output<Boolean> disableAdminOauthScopes() {
         return this.disableAdminOauthScopes;
     }
     /**
-     * Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+     * Disable display of RSS/Atom and calendar feed tokens.
      * 
      */
     @Export(name="disableFeedToken", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableFeedToken;
 
     /**
-     * @return Disable display of RSS/Atom and calendar feed tokens (introduced in GitLab 13.7).
+     * @return Disable display of RSS/Atom and calendar feed tokens.
      * 
      */
     public Output<Boolean> disableFeedToken() {
         return this.disableFeedToken;
     }
     /**
-     * Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      * 
      */
     @Export(name="disablePersonalAccessTokens", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disablePersonalAccessTokens;
 
     /**
-     * @return Disable personal access tokens. Introduced in GitLab 15.7. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
+     * @return Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      * 
      */
     public Output<Boolean> disablePersonalAccessTokens() {
@@ -1021,14 +1021,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.domainDenylists;
     }
     /**
-     * Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * Maximum downstream pipeline trigger rate.
      * 
      */
     @Export(name="downstreamPipelineTriggerLimitPerProjectUserSha", refs={Integer.class}, tree="[0]")
     private Output<Integer> downstreamPipelineTriggerLimitPerProjectUserSha;
 
     /**
-     * @return Maximum downstream pipeline trigger rate. Introduced in GitLab 16.10.
+     * @return Maximum downstream pipeline trigger rate.
      * 
      */
     public Output<Integer> downstreamPipelineTriggerLimitPerProjectUserSha() {
@@ -1049,14 +1049,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.dsaKeyRestriction;
     }
     /**
-     * Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      * 
      */
     @Export(name="duoFeaturesEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> duoFeaturesEnabled;
 
     /**
-     * @return Indicates whether GitLab Duo features are enabled for this instance. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * @return Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      * 
      */
     public Output<Boolean> duoFeaturesEnabled() {
@@ -1749,28 +1749,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.geoStatusTimeout;
     }
     /**
-     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      * 
      */
     @Export(name="gitRateLimitUsersAlertlists", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> gitRateLimitUsersAlertlists;
 
     /**
-     * @return List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Introduced in GitLab 15.9. Self-managed, Ultimate only.
+     * @return List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      * 
      */
     public Output<List<Integer>> gitRateLimitUsersAlertlists() {
         return this.gitRateLimitUsersAlertlists;
     }
     /**
-     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
+     * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      * 
      */
     @Export(name="gitRateLimitUsersAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> gitRateLimitUsersAllowlists;
 
     /**
-     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Introduced in GitLab 15.2. Self-managed, Ultimate only.
+     * @return List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      * 
      */
     public Output<List<String>> gitRateLimitUsersAllowlists() {
@@ -1861,14 +1861,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.gitlabEnvironmentToolkitInstance;
     }
     /**
-     * Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * Maximum number of Git operations per minute a user can perform.
      * 
      */
     @Export(name="gitlabShellOperationLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> gitlabShellOperationLimit;
 
     /**
-     * @return Maximum number of Git operations per minute a user can perform. Introduced in GitLab 16.2.
+     * @return Maximum number of Git operations per minute a user can perform.
      * 
      */
     public Output<Integer> gitlabShellOperationLimit() {
@@ -2199,56 +2199,56 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.inProductMarketingEmailsEnabled;
     }
     /**
-     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      * 
      */
     @Export(name="inactiveProjectsDeleteAfterMonths", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsDeleteAfterMonths;
 
     /**
-     * @return If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      * 
      */
     public Output<Integer> inactiveProjectsDeleteAfterMonths() {
         return this.inactiveProjectsDeleteAfterMonths;
     }
     /**
-     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      * 
      */
     @Export(name="inactiveProjectsMinSizeMb", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsMinSizeMb;
 
     /**
-     * @return If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      * 
      */
     public Output<Integer> inactiveProjectsMinSizeMb() {
         return this.inactiveProjectsMinSizeMb;
     }
     /**
-     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      * 
      */
     @Export(name="inactiveProjectsSendWarningEmailAfterMonths", refs={Integer.class}, tree="[0]")
     private Output<Integer> inactiveProjectsSendWarningEmailAfterMonths;
 
     /**
-     * @return If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive. Introduced in GitLab 14.10. Became operational in GitLab 15.0.
+     * @return If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      * 
      */
     public Output<Integer> inactiveProjectsSendWarningEmailAfterMonths() {
         return this.inactiveProjectsSendWarningEmailAfterMonths;
     }
     /**
-     * Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * Whether or not optional metrics are enabled in Service Ping.
      * 
      */
     @Export(name="includeOptionalMetricsInServicePing", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> includeOptionalMetricsInServicePing;
 
     /**
-     * @return Whether or not optional metrics are enabled in Service Ping. Introduced in GitLab 16.10.
+     * @return Whether or not optional metrics are enabled in Service Ping.
      * 
      */
     public Output<Boolean> includeOptionalMetricsInServicePing() {
@@ -2353,14 +2353,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.localMarkdownVersion;
     }
     /**
-     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      * 
      */
     @Export(name="lockDuoFeaturesEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> lockDuoFeaturesEnabled;
 
     /**
-     * @return Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Introduced in GitLab 16.10. Self-managed, Premium and Ultimate only.
+     * @return Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      * 
      */
     public Output<Boolean> lockDuoFeaturesEnabled() {
@@ -2493,14 +2493,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxExportSize;
     }
     /**
-     * Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * Maximum remote file size for imports from external object storages.
      * 
      */
     @Export(name="maxImportRemoteFileSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxImportRemoteFileSize;
 
     /**
-     * @return Maximum remote file size for imports from external object storages. Introduced in GitLab 16.3.
+     * @return Maximum remote file size for imports from external object storages.
      * 
      */
     public Output<Integer> maxImportRemoteFileSize() {
@@ -2535,28 +2535,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxLoginAttempts;
     }
     /**
-     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      * 
      */
     @Export(name="maxNumberOfRepositoryDownloads", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxNumberOfRepositoryDownloads;
 
     /**
-     * @return Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories. Introduced in GitLab 15.1.
+     * @return Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      * 
      */
     public Output<Integer> maxNumberOfRepositoryDownloads() {
         return this.maxNumberOfRepositoryDownloads;
     }
     /**
-     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      * 
      */
     @Export(name="maxNumberOfRepositoryDownloadsWithinTimePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxNumberOfRepositoryDownloadsWithinTimePeriod;
 
     /**
-     * @return Reporting time period (in seconds). Maximum: 864000 seconds (10 days). Introduced in GitLab 15.1.
+     * @return Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      * 
      */
     public Output<Integer> maxNumberOfRepositoryDownloadsWithinTimePeriod() {
@@ -2591,14 +2591,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxPersonalAccessTokenLifetime;
     }
     /**
-     * Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
+     * Maximum allowable lifetime for SSH keys in days.
      * 
      */
     @Export(name="maxSshKeyLifetime", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSshKeyLifetime;
 
     /**
-     * @return Maximum allowable lifetime for SSH keys in days. Introduced in GitLab 14.6.
+     * @return Maximum allowable lifetime for SSH keys in days.
      * 
      */
     public Output<Integer> maxSshKeyLifetime() {
@@ -2625,14 +2625,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.metricsMethodCallThreshold;
     }
     /**
-     * Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      * 
      */
     @Export(name="minimumPasswordLength", refs={Integer.class}, tree="[0]")
     private Output<Integer> minimumPasswordLength;
 
     /**
-     * @return Indicates whether passwords require a minimum length. Introduced in GitLab 15.1. Premium and Ultimate only.
+     * @return Indicates whether passwords require a minimum length. Premium and Ultimate only.
      * 
      */
     public Output<Integer> minimumPasswordLength() {
@@ -2821,56 +2821,56 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.passwordAuthenticationEnabledForWeb;
     }
     /**
-     * Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one lowercase letter.
      * 
      */
     @Export(name="passwordLowercaseRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordLowercaseRequired;
 
     /**
-     * @return Indicates whether passwords require at least one lowercase letter. Introduced in GitLab 15.1.
+     * @return Indicates whether passwords require at least one lowercase letter.
      * 
      */
     public Output<Boolean> passwordLowercaseRequired() {
         return this.passwordLowercaseRequired;
     }
     /**
-     * Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one number.
      * 
      */
     @Export(name="passwordNumberRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordNumberRequired;
 
     /**
-     * @return Indicates whether passwords require at least one number. Introduced in GitLab 15.1.
+     * @return Indicates whether passwords require at least one number.
      * 
      */
     public Output<Boolean> passwordNumberRequired() {
         return this.passwordNumberRequired;
     }
     /**
-     * Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one symbol character.
      * 
      */
     @Export(name="passwordSymbolRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordSymbolRequired;
 
     /**
-     * @return Indicates whether passwords require at least one symbol character. Introduced in GitLab 15.1.
+     * @return Indicates whether passwords require at least one symbol character.
      * 
      */
     public Output<Boolean> passwordSymbolRequired() {
         return this.passwordSymbolRequired;
     }
     /**
-     * Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
+     * Indicates whether passwords require at least one uppercase letter.
      * 
      */
     @Export(name="passwordUppercaseRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordUppercaseRequired;
 
     /**
-     * @return Indicates whether passwords require at least one uppercase letter. Introduced in GitLab 15.1.
+     * @return Indicates whether passwords require at least one uppercase letter.
      * 
      */
     public Output<Boolean> passwordUppercaseRequired() {
@@ -2975,28 +2975,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.projectExportEnabled;
     }
     /**
-     * Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * Maximum authenticated requests to /project/:id/jobs per minute.
      * 
      */
     @Export(name="projectJobsApiRateLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectJobsApiRateLimit;
 
     /**
-     * @return Maximum authenticated requests to /project/:id/jobs per minute. Introduced in GitLab 16.5.
+     * @return Maximum authenticated requests to /project/:id/jobs per minute.
      * 
      */
     public Output<Integer> projectJobsApiRateLimit() {
         return this.projectJobsApiRateLimit;
     }
     /**
-     * Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      * 
      */
     @Export(name="projectsApiRateLimitUnauthenticated", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectsApiRateLimitUnauthenticated;
 
     /**
-     * @return Introduced in GitLab 15.10. Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
+     * @return Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      * 
      */
     public Output<Integer> projectsApiRateLimitUnauthenticated() {
@@ -3171,14 +3171,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.receptiveClusterAgentsEnabled;
     }
     /**
-     * Enable Remember me setting. Introduced in GitLab 16.0.
+     * Enable Remember me setting.
      * 
      */
     @Export(name="rememberMeEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> rememberMeEnabled;
 
     /**
-     * @return Enable Remember me setting. Introduced in GitLab 16.0.
+     * @return Enable Remember me setting.
      * 
      */
     public Output<Boolean> rememberMeEnabled() {
@@ -3381,14 +3381,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.securityPolicyGlobalGroupApproversEnabled;
     }
     /**
-     * Public security contact information. Introduced in GitLab 16.7.
+     * Public security contact information.
      * 
      */
     @Export(name="securityTxtContent", refs={String.class}, tree="[0]")
     private Output<String> securityTxtContent;
 
     /**
-     * @return Public security contact information. Introduced in GitLab 16.7.
+     * @return Public security contact information.
      * 
      */
     public Output<String> securityTxtContent() {
@@ -4165,14 +4165,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.twoFactorGracePeriod;
     }
     /**
-     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      * 
      */
     @Export(name="unconfirmedUsersDeleteAfterDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> unconfirmedUsersDeleteAfterDays;
 
     /**
-     * @return Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Introduced in GitLab 16.1. Self-managed, Premium and Ultimate only.
+     * @return Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      * 
      */
     public Output<Integer> unconfirmedUsersDeleteAfterDays() {
@@ -4305,14 +4305,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.userDefaultInternalRegex;
     }
     /**
-     * Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * Newly created users have private profile by default.
      * 
      */
     @Export(name="userDefaultsToPrivateProfile", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> userDefaultsToPrivateProfile;
 
     /**
-     * @return Newly created users have private profile by default. Introduced in GitLab 15.8.
+     * @return Newly created users have private profile by default.
      * 
      */
     public Output<Boolean> userDefaultsToPrivateProfile() {
@@ -4421,7 +4421,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationSettings(java.lang.String name) {
+    public ApplicationSettings(String name) {
         this(name, ApplicationSettingsArgs.Empty);
     }
     /**
@@ -4429,7 +4429,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationSettings(java.lang.String name, @Nullable ApplicationSettingsArgs args) {
+    public ApplicationSettings(String name, @Nullable ApplicationSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -4438,22 +4438,15 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationSettings(java.lang.String name, @Nullable ApplicationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/applicationSettings:ApplicationSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ApplicationSettings(String name, @Nullable ApplicationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/applicationSettings:ApplicationSettings", name, args == null ? ApplicationSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ApplicationSettings(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/applicationSettings:ApplicationSettings", name, state, makeResourceOptions(options, id), false);
+    private ApplicationSettings(String name, Output<String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/applicationSettings:ApplicationSettings", name, state, makeResourceOptions(options, id));
     }
 
-    private static ApplicationSettingsArgs makeArgs(@Nullable ApplicationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? ApplicationSettingsArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -4488,7 +4481,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationSettings get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationSettings get(String name, Output<String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationSettings(name, id, state, options);
     }
 }

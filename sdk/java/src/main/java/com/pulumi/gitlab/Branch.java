@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.Branch` resource allows to manage the lifecycle of a repository branch.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
  * 
  * ## Example Usage
  * 
@@ -266,7 +266,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Branch(java.lang.String name) {
+    public Branch(String name) {
         this(name, BranchArgs.Empty);
     }
     /**
@@ -274,7 +274,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Branch(java.lang.String name, BranchArgs args) {
+    public Branch(String name, BranchArgs args) {
         this(name, args, null);
     }
     /**
@@ -283,22 +283,15 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Branch(java.lang.String name, BranchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/branch:Branch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public Branch(String name, BranchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/branch:Branch", name, args == null ? BranchArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Branch(java.lang.String name, Output<java.lang.String> id, @Nullable BranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/branch:Branch", name, state, makeResourceOptions(options, id), false);
+    private Branch(String name, Output<String> id, @Nullable BranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/branch:Branch", name, state, makeResourceOptions(options, id));
     }
 
-    private static BranchArgs makeArgs(BranchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? BranchArgs.Empty : args;
-    }
-
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -314,7 +307,7 @@ public class Branch extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Branch get(java.lang.String name, Output<java.lang.String> id, @Nullable BranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Branch get(String name, Output<String> id, @Nullable BranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Branch(name, id, state, options);
     }
 }
