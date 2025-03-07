@@ -1,0 +1,18 @@
+go 1.22.2
+
+toolchain go1.22.3
+
+use (
+	../pulumi-terraform-bridge
+	./examples
+	./provider
+	./sdk
+	./sdk/dotnet
+	./sdk/java
+	./sdk/nodejs
+	./sdk/python
+	./upstream
+	./upstream/tools
+)
+
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
