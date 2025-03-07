@@ -321,7 +321,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceMicrosoftTeams(String name) {
+    public ServiceMicrosoftTeams(java.lang.String name) {
         this(name, ServiceMicrosoftTeamsArgs.Empty);
     }
     /**
@@ -329,7 +329,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceMicrosoftTeams(String name, ServiceMicrosoftTeamsArgs args) {
+    public ServiceMicrosoftTeams(java.lang.String name, ServiceMicrosoftTeamsArgs args) {
         this(name, args, null);
     }
     /**
@@ -338,15 +338,22 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceMicrosoftTeams(String name, ServiceMicrosoftTeamsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams", name, args == null ? ServiceMicrosoftTeamsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceMicrosoftTeams(java.lang.String name, ServiceMicrosoftTeamsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceMicrosoftTeams(String name, Output<String> id, @Nullable ServiceMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams", name, state, makeResourceOptions(options, id));
+    private ServiceMicrosoftTeams(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceMicrosoftTeamsArgs makeArgs(ServiceMicrosoftTeamsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceMicrosoftTeamsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -362,7 +369,7 @@ public class ServiceMicrosoftTeams extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceMicrosoftTeams get(String name, Output<String> id, @Nullable ServiceMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceMicrosoftTeams get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceMicrosoftTeamsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceMicrosoftTeams(name, id, state, options);
     }
 }

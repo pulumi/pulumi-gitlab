@@ -45,23 +45,23 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var sample = new ComplianceFramework("sample", ComplianceFrameworkArgs.builder()
  *             .namespacePath("top-level-group")
  *             .name("HIPAA")
  *             .description("A HIPAA Compliance Framework")
  *             .color("#87BEEF")
  *             .default_(false)
- *             .pipelineConfigurationFullPath(".hipaa.yml{@literal @}top-level-group/compliance-frameworks")
+ *             .pipelineConfigurationFullPath(".hipaa.yml}{@literal @}{@code top-level-group/compliance-frameworks")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -194,7 +194,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ComplianceFramework(String name) {
+    public ComplianceFramework(java.lang.String name) {
         this(name, ComplianceFrameworkArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ComplianceFramework(String name, ComplianceFrameworkArgs args) {
+    public ComplianceFramework(java.lang.String name, ComplianceFrameworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,15 +211,22 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ComplianceFramework(String name, ComplianceFrameworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/complianceFramework:ComplianceFramework", name, args == null ? ComplianceFrameworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ComplianceFramework(java.lang.String name, ComplianceFrameworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/complianceFramework:ComplianceFramework", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ComplianceFramework(String name, Output<String> id, @Nullable ComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/complianceFramework:ComplianceFramework", name, state, makeResourceOptions(options, id));
+    private ComplianceFramework(java.lang.String name, Output<java.lang.String> id, @Nullable ComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/complianceFramework:ComplianceFramework", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ComplianceFrameworkArgs makeArgs(ComplianceFrameworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ComplianceFrameworkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -235,7 +242,7 @@ public class ComplianceFramework extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ComplianceFramework get(String name, Output<String> id, @Nullable ComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ComplianceFramework get(java.lang.String name, Output<java.lang.String> id, @Nullable ComplianceFrameworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ComplianceFramework(name, id, state, options);
     }
 }

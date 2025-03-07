@@ -143,7 +143,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectFreezePeriod(String name) {
+    public ProjectFreezePeriod(java.lang.String name) {
         this(name, ProjectFreezePeriodArgs.Empty);
     }
     /**
@@ -151,7 +151,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectFreezePeriod(String name, ProjectFreezePeriodArgs args) {
+    public ProjectFreezePeriod(java.lang.String name, ProjectFreezePeriodArgs args) {
         this(name, args, null);
     }
     /**
@@ -160,15 +160,22 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectFreezePeriod(String name, ProjectFreezePeriodArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectFreezePeriod:ProjectFreezePeriod", name, args == null ? ProjectFreezePeriodArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectFreezePeriod(java.lang.String name, ProjectFreezePeriodArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectFreezePeriod:ProjectFreezePeriod", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectFreezePeriod(String name, Output<String> id, @Nullable ProjectFreezePeriodState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectFreezePeriod:ProjectFreezePeriod", name, state, makeResourceOptions(options, id));
+    private ProjectFreezePeriod(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectFreezePeriodState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectFreezePeriod:ProjectFreezePeriod", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectFreezePeriodArgs makeArgs(ProjectFreezePeriodArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectFreezePeriodArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +191,7 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectFreezePeriod get(String name, Output<String> id, @Nullable ProjectFreezePeriodState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectFreezePeriod get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectFreezePeriodState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectFreezePeriod(name, id, state, options);
     }
 }

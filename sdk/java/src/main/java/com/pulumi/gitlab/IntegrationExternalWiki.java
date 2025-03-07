@@ -191,7 +191,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IntegrationExternalWiki(String name) {
+    public IntegrationExternalWiki(java.lang.String name) {
         this(name, IntegrationExternalWikiArgs.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IntegrationExternalWiki(String name, IntegrationExternalWikiArgs args) {
+    public IntegrationExternalWiki(java.lang.String name, IntegrationExternalWikiArgs args) {
         this(name, args, null);
     }
     /**
@@ -208,15 +208,22 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IntegrationExternalWiki(String name, IntegrationExternalWikiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationExternalWiki:IntegrationExternalWiki", name, args == null ? IntegrationExternalWikiArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IntegrationExternalWiki(java.lang.String name, IntegrationExternalWikiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationExternalWiki:IntegrationExternalWiki", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IntegrationExternalWiki(String name, Output<String> id, @Nullable IntegrationExternalWikiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/integrationExternalWiki:IntegrationExternalWiki", name, state, makeResourceOptions(options, id));
+    private IntegrationExternalWiki(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationExternalWikiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/integrationExternalWiki:IntegrationExternalWiki", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IntegrationExternalWikiArgs makeArgs(IntegrationExternalWikiArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IntegrationExternalWikiArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -232,7 +239,7 @@ public class IntegrationExternalWiki extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IntegrationExternalWiki get(String name, Output<String> id, @Nullable IntegrationExternalWikiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IntegrationExternalWiki get(java.lang.String name, Output<java.lang.String> id, @Nullable IntegrationExternalWikiState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IntegrationExternalWiki(name, id, state, options);
     }
 }

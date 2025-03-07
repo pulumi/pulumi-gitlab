@@ -207,7 +207,7 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupServiceAccountAccessToken(String name) {
+    public GroupServiceAccountAccessToken(java.lang.String name) {
         this(name, GroupServiceAccountAccessTokenArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupServiceAccountAccessToken(String name, GroupServiceAccountAccessTokenArgs args) {
+    public GroupServiceAccountAccessToken(java.lang.String name, GroupServiceAccountAccessTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,15 +224,22 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupServiceAccountAccessToken(String name, GroupServiceAccountAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken", name, args == null ? GroupServiceAccountAccessTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GroupServiceAccountAccessToken(java.lang.String name, GroupServiceAccountAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GroupServiceAccountAccessToken(String name, Output<String> id, @Nullable GroupServiceAccountAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken", name, state, makeResourceOptions(options, id));
+    private GroupServiceAccountAccessToken(java.lang.String name, Output<java.lang.String> id, @Nullable GroupServiceAccountAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GroupServiceAccountAccessTokenArgs makeArgs(GroupServiceAccountAccessTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupServiceAccountAccessTokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -251,7 +258,7 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupServiceAccountAccessToken get(String name, Output<String> id, @Nullable GroupServiceAccountAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupServiceAccountAccessToken get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupServiceAccountAccessTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupServiceAccountAccessToken(name, id, state, options);
     }
 }

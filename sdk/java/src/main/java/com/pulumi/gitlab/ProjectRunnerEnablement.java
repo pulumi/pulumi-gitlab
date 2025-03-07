@@ -113,7 +113,7 @@ public class ProjectRunnerEnablement extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectRunnerEnablement(String name) {
+    public ProjectRunnerEnablement(java.lang.String name) {
         this(name, ProjectRunnerEnablementArgs.Empty);
     }
     /**
@@ -121,7 +121,7 @@ public class ProjectRunnerEnablement extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectRunnerEnablement(String name, ProjectRunnerEnablementArgs args) {
+    public ProjectRunnerEnablement(java.lang.String name, ProjectRunnerEnablementArgs args) {
         this(name, args, null);
     }
     /**
@@ -130,15 +130,22 @@ public class ProjectRunnerEnablement extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectRunnerEnablement(String name, ProjectRunnerEnablementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement", name, args == null ? ProjectRunnerEnablementArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectRunnerEnablement(java.lang.String name, ProjectRunnerEnablementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectRunnerEnablement(String name, Output<String> id, @Nullable ProjectRunnerEnablementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement", name, state, makeResourceOptions(options, id));
+    private ProjectRunnerEnablement(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectRunnerEnablementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectRunnerEnablementArgs makeArgs(ProjectRunnerEnablementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectRunnerEnablementArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -154,7 +161,7 @@ public class ProjectRunnerEnablement extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectRunnerEnablement get(String name, Output<String> id, @Nullable ProjectRunnerEnablementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectRunnerEnablement get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectRunnerEnablementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectRunnerEnablement(name, id, state, options);
     }
 }

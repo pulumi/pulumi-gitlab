@@ -47,19 +47,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foo = new ProjectMirror("foo", ProjectMirrorArgs.builder()
  *             .project("1")
- *             .url("https://username:password{@literal @}github.com/org/repository.git")
+ *             .url("https://username:password}{@literal @}{@code github.com/org/repository.git")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -178,7 +178,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectMirror(String name) {
+    public ProjectMirror(java.lang.String name) {
         this(name, ProjectMirrorArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectMirror(String name, ProjectMirrorArgs args) {
+    public ProjectMirror(java.lang.String name, ProjectMirrorArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,15 +195,22 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectMirror(String name, ProjectMirrorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMirror:ProjectMirror", name, args == null ? ProjectMirrorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectMirror(java.lang.String name, ProjectMirrorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMirror:ProjectMirror", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectMirror(String name, Output<String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectMirror:ProjectMirror", name, state, makeResourceOptions(options, id));
+    private ProjectMirror(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectMirror:ProjectMirror", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectMirrorArgs makeArgs(ProjectMirrorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectMirrorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -222,7 +229,7 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectMirror get(String name, Output<String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectMirror get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMirrorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectMirror(name, id, state, options);
     }
 }

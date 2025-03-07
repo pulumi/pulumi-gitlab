@@ -660,7 +660,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectIssue(String name) {
+    public ProjectIssue(java.lang.String name) {
         this(name, ProjectIssueArgs.Empty);
     }
     /**
@@ -668,7 +668,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectIssue(String name, ProjectIssueArgs args) {
+    public ProjectIssue(java.lang.String name, ProjectIssueArgs args) {
         this(name, args, null);
     }
     /**
@@ -677,15 +677,22 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectIssue(String name, ProjectIssueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectIssue:ProjectIssue", name, args == null ? ProjectIssueArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectIssue(java.lang.String name, ProjectIssueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectIssue:ProjectIssue", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectIssue(String name, Output<String> id, @Nullable ProjectIssueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectIssue:ProjectIssue", name, state, makeResourceOptions(options, id));
+    private ProjectIssue(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectIssueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectIssue:ProjectIssue", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectIssueArgs makeArgs(ProjectIssueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectIssueArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -701,7 +708,7 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectIssue get(String name, Output<String> id, @Nullable ProjectIssueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectIssue get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectIssueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectIssue(name, id, state, options);
     }
 }

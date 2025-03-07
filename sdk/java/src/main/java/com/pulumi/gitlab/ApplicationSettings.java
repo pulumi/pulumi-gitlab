@@ -4421,7 +4421,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationSettings(String name) {
+    public ApplicationSettings(java.lang.String name) {
         this(name, ApplicationSettingsArgs.Empty);
     }
     /**
@@ -4429,7 +4429,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationSettings(String name, @Nullable ApplicationSettingsArgs args) {
+    public ApplicationSettings(java.lang.String name, @Nullable ApplicationSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -4438,15 +4438,22 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationSettings(String name, @Nullable ApplicationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/applicationSettings:ApplicationSettings", name, args == null ? ApplicationSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationSettings(java.lang.String name, @Nullable ApplicationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/applicationSettings:ApplicationSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationSettings(String name, Output<String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/applicationSettings:ApplicationSettings", name, state, makeResourceOptions(options, id));
+    private ApplicationSettings(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/applicationSettings:ApplicationSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationSettingsArgs makeArgs(@Nullable ApplicationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationSettingsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -4481,7 +4488,7 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationSettings get(String name, Output<String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationSettings get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationSettings(name, id, state, options);
     }
 }

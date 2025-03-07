@@ -137,7 +137,7 @@ public class ProjectWikiPage extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectWikiPage(String name) {
+    public ProjectWikiPage(java.lang.String name) {
         this(name, ProjectWikiPageArgs.Empty);
     }
     /**
@@ -145,7 +145,7 @@ public class ProjectWikiPage extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectWikiPage(String name, ProjectWikiPageArgs args) {
+    public ProjectWikiPage(java.lang.String name, ProjectWikiPageArgs args) {
         this(name, args, null);
     }
     /**
@@ -154,15 +154,22 @@ public class ProjectWikiPage extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectWikiPage(String name, ProjectWikiPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectWikiPage:ProjectWikiPage", name, args == null ? ProjectWikiPageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectWikiPage(java.lang.String name, ProjectWikiPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectWikiPage:ProjectWikiPage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectWikiPage(String name, Output<String> id, @Nullable ProjectWikiPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/projectWikiPage:ProjectWikiPage", name, state, makeResourceOptions(options, id));
+    private ProjectWikiPage(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectWikiPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/projectWikiPage:ProjectWikiPage", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectWikiPageArgs makeArgs(ProjectWikiPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectWikiPageArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -178,7 +185,7 @@ public class ProjectWikiPage extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectWikiPage get(String name, Output<String> id, @Nullable ProjectWikiPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectWikiPage get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectWikiPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectWikiPage(name, id, state, options);
     }
 }

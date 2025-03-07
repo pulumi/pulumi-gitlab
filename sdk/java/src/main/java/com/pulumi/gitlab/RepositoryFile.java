@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var this_ = new Group("this", GroupArgs.builder()
  *             .name("example")
  *             .path("example")
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("Meow goes the cat")
  *                 .build()).result())
- *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorEmail("terraform}{@literal @}{@code example.com")
  *             .authorName("Terraform")
  *             .commitMessage("feature: add meow file")
  *             .build());
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .filePath("readme.txt")
  *             .branch("main")
  *             .content("Meow goes the cat")
- *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorEmail("terraform}{@literal @}{@code example.com")
  *             .authorName("Terraform")
  *             .commitMessage("feature: add readme file")
  *             .build());
@@ -85,14 +85,14 @@ import javax.annotation.Nullable;
  *             .filePath("readme.txt")
  *             .branch("main")
  *             .content("Bark goes the dog")
- *             .authorEmail("terraform{@literal @}example.com")
+ *             .authorEmail("terraform}{@literal @}{@code example.com")
  *             .authorName("Terraform")
  *             .commitMessage("feature: update readme file")
  *             .overwriteOnCreate(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -421,7 +421,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepositoryFile(String name) {
+    public RepositoryFile(java.lang.String name) {
         this(name, RepositoryFileArgs.Empty);
     }
     /**
@@ -429,7 +429,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepositoryFile(String name, RepositoryFileArgs args) {
+    public RepositoryFile(java.lang.String name, RepositoryFileArgs args) {
         this(name, args, null);
     }
     /**
@@ -438,15 +438,22 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepositoryFile(String name, RepositoryFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/repositoryFile:RepositoryFile", name, args == null ? RepositoryFileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RepositoryFile(java.lang.String name, RepositoryFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/repositoryFile:RepositoryFile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepositoryFile(String name, Output<String> id, @Nullable RepositoryFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/repositoryFile:RepositoryFile", name, state, makeResourceOptions(options, id));
+    private RepositoryFile(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/repositoryFile:RepositoryFile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RepositoryFileArgs makeArgs(RepositoryFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RepositoryFileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -462,7 +469,7 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepositoryFile get(String name, Output<String> id, @Nullable RepositoryFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepositoryFile get(java.lang.String name, Output<java.lang.String> id, @Nullable RepositoryFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepositoryFile(name, id, state, options);
     }
 }

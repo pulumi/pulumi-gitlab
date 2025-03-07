@@ -269,7 +269,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterAgentToken(String name) {
+    public ClusterAgentToken(java.lang.String name) {
         this(name, ClusterAgentTokenArgs.Empty);
     }
     /**
@@ -277,7 +277,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterAgentToken(String name, ClusterAgentTokenArgs args) {
+    public ClusterAgentToken(java.lang.String name, ClusterAgentTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -286,15 +286,22 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterAgentToken(String name, ClusterAgentTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/clusterAgentToken:ClusterAgentToken", name, args == null ? ClusterAgentTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterAgentToken(java.lang.String name, ClusterAgentTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/clusterAgentToken:ClusterAgentToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClusterAgentToken(String name, Output<String> id, @Nullable ClusterAgentTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/clusterAgentToken:ClusterAgentToken", name, state, makeResourceOptions(options, id));
+    private ClusterAgentToken(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterAgentTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/clusterAgentToken:ClusterAgentToken", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClusterAgentTokenArgs makeArgs(ClusterAgentTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterAgentTokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -313,7 +320,7 @@ public class ClusterAgentToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterAgentToken get(String name, Output<String> id, @Nullable ClusterAgentTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClusterAgentToken get(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterAgentTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClusterAgentToken(name, id, state, options);
     }
 }

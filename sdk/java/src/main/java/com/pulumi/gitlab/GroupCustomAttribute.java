@@ -128,7 +128,7 @@ public class GroupCustomAttribute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupCustomAttribute(String name) {
+    public GroupCustomAttribute(java.lang.String name) {
         this(name, GroupCustomAttributeArgs.Empty);
     }
     /**
@@ -136,7 +136,7 @@ public class GroupCustomAttribute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupCustomAttribute(String name, GroupCustomAttributeArgs args) {
+    public GroupCustomAttribute(java.lang.String name, GroupCustomAttributeArgs args) {
         this(name, args, null);
     }
     /**
@@ -145,15 +145,22 @@ public class GroupCustomAttribute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupCustomAttribute(String name, GroupCustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupCustomAttribute:GroupCustomAttribute", name, args == null ? GroupCustomAttributeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GroupCustomAttribute(java.lang.String name, GroupCustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupCustomAttribute:GroupCustomAttribute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GroupCustomAttribute(String name, Output<String> id, @Nullable GroupCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gitlab:index/groupCustomAttribute:GroupCustomAttribute", name, state, makeResourceOptions(options, id));
+    private GroupCustomAttribute(java.lang.String name, Output<java.lang.String> id, @Nullable GroupCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gitlab:index/groupCustomAttribute:GroupCustomAttribute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GroupCustomAttributeArgs makeArgs(GroupCustomAttributeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupCustomAttributeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -169,7 +176,7 @@ public class GroupCustomAttribute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupCustomAttribute get(String name, Output<String> id, @Nullable GroupCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupCustomAttribute get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupCustomAttributeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupCustomAttribute(name, id, state, options);
     }
 }
