@@ -175,7 +175,7 @@ namespace Pulumi.GitLab
         public Output<string> CiPipelineVariablesMinimumOverrideRole { get; private set; } = null!;
 
         /// <summary>
-        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         [Output("ciRestrictPipelineCancellationRole")]
         public Output<string> CiRestrictPipelineCancellationRole { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.GitLab
         public Output<bool> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// Template used to create merge commit message in merge requests.
         /// </summary>
         [Output("mergeCommitTemplate")]
         public Output<string?> MergeCommitTemplate { get; private set; } = null!;
@@ -604,13 +604,13 @@ namespace Pulumi.GitLab
         public Output<bool> SnippetsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// Template used to create squash commit message in merge requests.
         /// </summary>
         [Output("squashCommitTemplate")]
         public Output<string?> SquashCommitTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         /// </summary>
         [Output("squashOption")]
         public Output<string> SquashOption { get; private set; } = null!;
@@ -653,7 +653,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Output("useCustomTemplate")]
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
@@ -857,7 +857,7 @@ namespace Pulumi.GitLab
         public Input<string>? CiPipelineVariablesMinimumOverrideRole { get; set; }
 
         /// <summary>
-        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         [Input("ciRestrictPipelineCancellationRole")]
         public Input<string>? CiRestrictPipelineCancellationRole { get; set; }
@@ -1017,7 +1017,7 @@ namespace Pulumi.GitLab
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
-        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// Template used to create merge commit message in merge requests.
         /// </summary>
         [Input("mergeCommitTemplate")]
         public Input<string>? MergeCommitTemplate { get; set; }
@@ -1272,13 +1272,13 @@ namespace Pulumi.GitLab
         public Input<bool>? SnippetsEnabled { get; set; }
 
         /// <summary>
-        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// Template used to create squash commit message in merge requests.
         /// </summary>
         [Input("squashCommitTemplate")]
         public Input<string>? SquashCommitTemplate { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -1327,7 +1327,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -1488,7 +1488,7 @@ namespace Pulumi.GitLab
         public Input<string>? CiPipelineVariablesMinimumOverrideRole { get; set; }
 
         /// <summary>
-        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         [Input("ciRestrictPipelineCancellationRole")]
         public Input<string>? CiRestrictPipelineCancellationRole { get; set; }
@@ -1660,7 +1660,7 @@ namespace Pulumi.GitLab
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
-        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// Template used to create merge commit message in merge requests.
         /// </summary>
         [Input("mergeCommitTemplate")]
         public Input<string>? MergeCommitTemplate { get; set; }
@@ -1937,13 +1937,13 @@ namespace Pulumi.GitLab
         public Input<bool>? SnippetsEnabled { get; set; }
 
         /// <summary>
-        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// Template used to create squash commit message in merge requests.
         /// </summary>
         [Input("squashCommitTemplate")]
         public Input<string>? SquashCommitTemplate { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -1998,7 +1998,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }

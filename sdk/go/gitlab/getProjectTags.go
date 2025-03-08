@@ -13,7 +13,7 @@ import (
 
 // The `getProjectTags` data source allows details of project tags to be retrieved by some search criteria.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/tags/#list-project-repository-tags)
 func GetProjectTags(ctx *pulumi.Context, args *GetProjectTagsArgs, opts ...pulumi.InvokeOption) (*GetProjectTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectTagsResult

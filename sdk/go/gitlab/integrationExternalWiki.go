@@ -14,7 +14,7 @@ import (
 
 // The `IntegrationExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#external-wiki)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#external-wiki)
 //
 // ## Example Usage
 //

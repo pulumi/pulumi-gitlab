@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
     /// 
     /// ## Example Usage
     /// 
@@ -200,6 +200,12 @@ namespace Pulumi.GitLab
         public Output<bool> ReleasesEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for project access token expiry events.
+        /// </summary>
+        [Output("resourceAccessTokenEvents")]
+        public Output<bool> ResourceAccessTokenEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         [Output("tagPushEvents")]
@@ -382,6 +388,12 @@ namespace Pulumi.GitLab
         public Input<bool>? ReleasesEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for project access token expiry events.
+        /// </summary>
+        [Input("resourceAccessTokenEvents")]
+        public Input<bool>? ResourceAccessTokenEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         [Input("tagPushEvents")]
@@ -542,6 +554,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("releasesEvents")]
         public Input<bool>? ReleasesEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for project access token expiry events.
+        /// </summary>
+        [Input("resourceAccessTokenEvents")]
+        public Input<bool>? ResourceAccessTokenEvents { get; set; }
 
         /// <summary>
         /// Invoke the hook for tag push events.

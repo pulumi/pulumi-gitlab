@@ -13,7 +13,7 @@ import (
 
 // The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 func LookupGroupMembership(ctx *pulumi.Context, args *LookupGroupMembershipArgs, opts ...pulumi.InvokeOption) (*LookupGroupMembershipResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupMembershipResult
@@ -44,7 +44,7 @@ type LookupGroupMembershipResult struct {
 	FullPath string `pulumi:"fullPath"`
 	// The ID of the group.
 	GroupId int `pulumi:"groupId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of the group membership. In the format of `<group-id:access-level>`.
 	Id string `pulumi:"id"`
 	// Return all project members including members through ancestor groups.
 	Inherited *bool `pulumi:"inherited"`
@@ -107,7 +107,7 @@ func (o LookupGroupMembershipResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of the group membership. In the format of `<group-id:access-level>`.
 func (o LookupGroupMembershipResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupMembershipResult) string { return v.Id }).(pulumi.StringOutput)
 }

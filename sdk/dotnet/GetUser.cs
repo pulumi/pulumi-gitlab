@@ -16,10 +16,9 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some attributes might not be returned depending on if you're an admin or not.
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
-        /// the most related match will prioritize an exact match if one is available.
+        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
@@ -29,10 +28,9 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some attributes might not be returned depending on if you're an admin or not.
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
-        /// the most related match will prioritize an exact match if one is available.
+        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some attributes might not be returned depending on if you're an admin or not.
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
-        /// the most related match will prioritize an exact match if one is available.
+        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -55,13 +52,13 @@ namespace Pulumi.GitLab
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        /// The public email address of the user.
         /// </summary>
         [Input("email")]
         public string? Email { get; set; }
 
         /// <summary>
-        /// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        /// The ID of the user's namespace. Requires admin token to access this field.
         /// </summary>
         [Input("namespaceId")]
         public int? NamespaceId { get; set; }
@@ -87,13 +84,13 @@ namespace Pulumi.GitLab
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        /// The public email address of the user.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        /// The ID of the user's namespace. Requires admin token to access this field.
         /// </summary>
         [Input("namespaceId")]
         public Input<int>? NamespaceId { get; set; }
@@ -149,7 +146,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string CurrentSignInAt;
         /// <summary>
-        /// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        /// The public email address of the user.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -189,7 +186,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        /// The ID of the user's namespace. Requires admin token to access this field.
         /// </summary>
         public readonly int NamespaceId;
         /// <summary>

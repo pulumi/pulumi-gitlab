@@ -15,10 +15,9 @@ import (
 //
 // > Some attributes might not be returned depending on if you're an admin or not.
 //
-// > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
-// the most related match will prioritize an exact match if one is available.
+// > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
@@ -31,9 +30,9 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	// The public email address of the user.
 	Email *string `pulumi:"email"`
-	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// The ID of the user.
 	UserId *int `pulumi:"userId"`
@@ -57,7 +56,7 @@ type LookupUserResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Current user's sign-in date.
 	CurrentSignInAt string `pulumi:"currentSignInAt"`
-	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	// The public email address of the user.
 	Email string `pulumi:"email"`
 	// The external UID of the user.
 	ExternUid string `pulumi:"externUid"`
@@ -77,7 +76,7 @@ type LookupUserResult struct {
 	Location string `pulumi:"location"`
 	// The name of the user.
 	Name string `pulumi:"name"`
-	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId int `pulumi:"namespaceId"`
 	// Admin notes for this user.
 	Note string `pulumi:"note"`
@@ -116,9 +115,9 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+	// The public email address of the user.
 	Email pulumi.StringPtrInput `pulumi:"email"`
-	// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId pulumi.IntPtrInput `pulumi:"namespaceId"`
 	// The ID of the user.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
@@ -180,7 +179,7 @@ func (o LookupUserResultOutput) CurrentSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
 }
 
-// The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+// The public email address of the user.
 func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -230,7 +229,7 @@ func (o LookupUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+// The ID of the user's namespace. Requires admin token to access this field.
 func (o LookupUserResultOutput) NamespaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.NamespaceId }).(pulumi.IntOutput)
 }

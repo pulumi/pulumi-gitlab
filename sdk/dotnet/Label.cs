@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource is deprecated. use `gitlab.ProjectLabel`instead!
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
     /// </summary>
     [GitLabResourceType("gitlab:index/label:Label")]
     public partial class Label : global::Pulumi.CustomResource
