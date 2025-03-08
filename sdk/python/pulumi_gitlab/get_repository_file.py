@@ -111,7 +111,7 @@ class GetRepositoryFileResult:
     @pulumi.getter(name="executeFilemode")
     def execute_filemode(self) -> bool:
         """
-        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        Enables or disables the execute flag on the file.
         """
         return pulumi.get(self, "execute_filemode")
 
@@ -200,7 +200,7 @@ def get_repository_file(file_path: Optional[str] = None,
     """
     The `RepositoryFile` data source allows details of a file in a repository to be retrieved.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
 
     ## Example Usage
 
@@ -246,7 +246,7 @@ def get_repository_file_output(file_path: Optional[pulumi.Input[str]] = None,
     """
     The `RepositoryFile` data source allows details of a file in a repository to be retrieved.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
 
     ## Example Usage
 

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `softDestroy = true` to empty out a topic instead of deleting it.
  *
- * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/ee/api/topics.html)
+ * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
  *
  * ## Import
  *

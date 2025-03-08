@@ -352,7 +352,7 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
 
         > This resource is deprecated. Please use `IntegrationEmailsOnPush` instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#emails-on-push)
 
         ## Example Usage
 
@@ -412,7 +412,7 @@ class ServiceEmailsOnPush(pulumi.CustomResource):
 
         > This resource is deprecated. Please use `IntegrationEmailsOnPush` instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#emails-on-push)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#emails-on-push)
 
         ## Example Usage
 

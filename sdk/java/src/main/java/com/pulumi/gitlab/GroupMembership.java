@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
  * 
  * ## Example Usage
  * 
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new GroupMembership("test", GroupMembershipArgs.builder()
- *             .groupId("12345")
+ *             .groupId(12345)
  *             .userId(1337)
  *             .accessLevel("guest")
  *             .expiresAt("2020-12-31")
@@ -115,17 +115,17 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiresAt);
     }
     /**
-     * The id of the group.
+     * The ID of the group.
      * 
      */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
-    private Output<String> groupId;
+    @Export(name="groupId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupId;
 
     /**
-     * @return The id of the group.
+     * @return The ID of the group.
      * 
      */
-    public Output<String> groupId() {
+    public Output<Integer> groupId() {
         return this.groupId;
     }
     /**
@@ -147,38 +147,38 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="skipSubresourcesOnDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> skipSubresourcesOnDestroy;
+    private Output<Boolean> skipSubresourcesOnDestroy;
 
     /**
      * @return Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      * 
      */
-    public Output<Optional<Boolean>> skipSubresourcesOnDestroy() {
-        return Codegen.optional(this.skipSubresourcesOnDestroy);
+    public Output<Boolean> skipSubresourcesOnDestroy() {
+        return this.skipSubresourcesOnDestroy;
     }
     /**
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      * 
      */
     @Export(name="unassignIssuablesOnDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> unassignIssuablesOnDestroy;
+    private Output<Boolean> unassignIssuablesOnDestroy;
 
     /**
      * @return Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      * 
      */
-    public Output<Optional<Boolean>> unassignIssuablesOnDestroy() {
-        return Codegen.optional(this.unassignIssuablesOnDestroy);
+    public Output<Boolean> unassignIssuablesOnDestroy() {
+        return this.unassignIssuablesOnDestroy;
     }
     /**
-     * The id of the user.
+     * The ID of the user.
      * 
      */
     @Export(name="userId", refs={Integer.class}, tree="[0]")
     private Output<Integer> userId;
 
     /**
-     * @return The id of the user.
+     * @return The ID of the user.
      * 
      */
     public Output<Integer> userId() {

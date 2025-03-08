@@ -292,7 +292,7 @@ class PipelineSchedule(pulumi.CustomResource):
         """
         The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 
         ## Example Usage
 
@@ -347,7 +347,7 @@ class PipelineSchedule(pulumi.CustomResource):
         """
         The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 
         ## Example Usage
 

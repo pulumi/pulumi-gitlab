@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#list-protected-tags)
  */
 export function getProjectProtectedTags(args: GetProjectProtectedTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,7 +48,7 @@ export interface GetProjectProtectedTagsResult {
 /**
  * The `gitlab.getProjectProtectedTags` data source allows details of the protected tags of a given project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_tags.html#list-protected-tags)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#list-protected-tags)
  */
 export function getProjectProtectedTagsOutput(args: GetProjectProtectedTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectProtectedTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -20,7 +20,7 @@ import (
 //	In order to use a groupId in the `deployAccessLevels` configuration,
 //	the groupId must be a sub-group under the given group.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_protected_environments.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_environments/)
 //
 // ## Import
 //

@@ -13,7 +13,7 @@ import (
 
 // The `getProjectIssues` data source allows to retrieve details about issues in a project.
 //
-// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
 //
 // ## Example Usage
 //
@@ -75,7 +75,7 @@ type GetProjectIssuesArgs struct {
 	DueDate *string `pulumi:"dueDate"`
 	// Return only the issues having the given iid
 	Iids []int `pulumi:"iids"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+	// Filter to a given type of issue. Valid values are [issue incident testCase].
 	IssueType *string `pulumi:"issueType"`
 	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
 	Labels []string `pulumi:"labels"`
@@ -109,7 +109,7 @@ type GetProjectIssuesArgs struct {
 	UpdatedBefore *string `pulumi:"updatedBefore"`
 	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
 	Weight *int `pulumi:"weight"`
-	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
 	WithLabelsDetails *bool `pulumi:"withLabelsDetails"`
 }
 
@@ -133,7 +133,7 @@ type GetProjectIssuesResult struct {
 	Id string `pulumi:"id"`
 	// Return only the issues having the given iid
 	Iids []int `pulumi:"iids"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+	// Filter to a given type of issue. Valid values are [issue incident testCase].
 	IssueType *string `pulumi:"issueType"`
 	// The list of issues returned by the search.
 	Issues []GetProjectIssuesIssue `pulumi:"issues"`
@@ -169,7 +169,7 @@ type GetProjectIssuesResult struct {
 	UpdatedBefore *string `pulumi:"updatedBefore"`
 	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
 	Weight *int `pulumi:"weight"`
-	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
 	WithLabelsDetails *bool `pulumi:"withLabelsDetails"`
 }
 
@@ -200,7 +200,7 @@ type GetProjectIssuesOutputArgs struct {
 	DueDate pulumi.StringPtrInput `pulumi:"dueDate"`
 	// Return only the issues having the given iid
 	Iids pulumi.IntArrayInput `pulumi:"iids"`
-	// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+	// Filter to a given type of issue. Valid values are [issue incident testCase].
 	IssueType pulumi.StringPtrInput `pulumi:"issueType"`
 	// Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
 	Labels pulumi.StringArrayInput `pulumi:"labels"`
@@ -234,7 +234,7 @@ type GetProjectIssuesOutputArgs struct {
 	UpdatedBefore pulumi.StringPtrInput `pulumi:"updatedBefore"`
 	// Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
-	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+	// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
 	WithLabelsDetails pulumi.BoolPtrInput `pulumi:"withLabelsDetails"`
 }
 
@@ -302,7 +302,7 @@ func (o GetProjectIssuesResultOutput) Iids() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetProjectIssuesResult) []int { return v.Iids }).(pulumi.IntArrayOutput)
 }
 
-// Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+// Filter to a given type of issue. Valid values are [issue incident testCase].
 func (o GetProjectIssuesResultOutput) IssueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectIssuesResult) *string { return v.IssueType }).(pulumi.StringPtrOutput)
 }
@@ -392,7 +392,7 @@ func (o GetProjectIssuesResultOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectIssuesResult) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
-// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+// If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
 func (o GetProjectIssuesResultOutput) WithLabelsDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectIssuesResult) *bool { return v.WithLabelsDetails }).(pulumi.BoolPtrOutput)
 }

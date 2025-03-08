@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
  *
  * ## Example Usage
  *
@@ -70,20 +70,17 @@ export interface GetGroupVariableResult {
      * The name or id of the group.
      */
     readonly group: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The name of the variable.
      */
     readonly key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
      */
     readonly masked: boolean;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
      */
     readonly protected: boolean;
     /**
@@ -95,14 +92,14 @@ export interface GetGroupVariableResult {
      */
     readonly value: string;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of a variable. Valid values are: `envVar`, `file`.
      */
     readonly variableType: string;
 }
 /**
  * The `gitlab.GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
  *
  * ## Example Usage
  *

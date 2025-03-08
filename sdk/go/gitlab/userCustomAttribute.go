@@ -14,7 +14,7 @@ import (
 
 // The `UserCustomAttribute` resource allows to manage custom attributes for a user.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 //
 // ## Example Usage
 //

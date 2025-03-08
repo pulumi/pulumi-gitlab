@@ -13,7 +13,7 @@ import (
 
 // The `getProjectBranches` data source allows details of the branches of a given project to be retrieved.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#list-repository-branches)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#list-repository-branches)
 func GetProjectBranches(ctx *pulumi.Context, args *GetProjectBranchesArgs, opts ...pulumi.InvokeOption) (*GetProjectBranchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectBranchesResult

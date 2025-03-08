@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
  * 
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationvaluestreamcreate)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
  * 
  * ## Example Usage
  * 
