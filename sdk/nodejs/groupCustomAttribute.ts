@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupCustomAttribute` resource allows to manage custom attributes for a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/custom_attributes.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
  *
  * ## Example Usage
  *

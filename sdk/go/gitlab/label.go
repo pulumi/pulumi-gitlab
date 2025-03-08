@@ -16,7 +16,7 @@ import (
 //
 // > This resource is deprecated. use `ProjectLabel`instead!
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
 type Label struct {
 	pulumi.CustomResourceState
 

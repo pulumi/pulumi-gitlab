@@ -184,7 +184,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         > Conflicts with the use of `ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 
         ## Example Usage
 
@@ -256,7 +256,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         > Conflicts with the use of `ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 
         ## Example Usage
 

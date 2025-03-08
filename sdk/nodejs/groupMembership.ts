@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
  *
  * ## Example Usage
  *
@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const test = new gitlab.GroupMembership("test", {
- *     groupId: "12345",
+ *     groupId: 12345,
  *     userId: 1337,
  *     accessLevel: "guest",
  *     expiresAt: "2020-12-31",
@@ -84,9 +84,9 @@ export class GroupMembership extends pulumi.CustomResource {
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
-     * The id of the group.
+     * The ID of the group.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<number>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances.
      */
@@ -94,13 +94,13 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
-    public readonly skipSubresourcesOnDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly skipSubresourcesOnDestroy!: pulumi.Output<boolean>;
     /**
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      */
-    public readonly unassignIssuablesOnDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly unassignIssuablesOnDestroy!: pulumi.Output<boolean>;
     /**
-     * The id of the user.
+     * The ID of the user.
      */
     public readonly userId!: pulumi.Output<number>;
 
@@ -161,9 +161,9 @@ export interface GroupMembershipState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The id of the group.
+     * The ID of the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<number>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances.
      */
@@ -177,7 +177,7 @@ export interface GroupMembershipState {
      */
     unassignIssuablesOnDestroy?: pulumi.Input<boolean>;
     /**
-     * The id of the user.
+     * The ID of the user.
      */
     userId?: pulumi.Input<number>;
 }
@@ -195,9 +195,9 @@ export interface GroupMembershipArgs {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The id of the group.
+     * The ID of the group.
      */
-    groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<number>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances.
      */
@@ -211,7 +211,7 @@ export interface GroupMembershipArgs {
      */
     unassignIssuablesOnDestroy?: pulumi.Input<boolean>;
     /**
-     * The id of the user.
+     * The ID of the user.
      */
     userId: pulumi.Input<number>;
 }

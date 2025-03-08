@@ -62,7 +62,7 @@ public final class GetProjectIssuesResult {
      */
     private @Nullable List<Integer> iids;
     /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+     * @return Filter to a given type of issue. Valid values are [issue incident test_case].
      * 
      */
     private @Nullable String issueType;
@@ -152,7 +152,7 @@ public final class GetProjectIssuesResult {
      */
     private @Nullable Integer weight;
     /**
-     * @return If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+     * @return If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      * 
      */
     private @Nullable Boolean withLabelsDetails;
@@ -222,7 +222,7 @@ public final class GetProjectIssuesResult {
         return this.iids == null ? List.of() : this.iids;
     }
     /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case]. (Introduced in GitLab 13.12)
+     * @return Filter to a given type of issue. Valid values are [issue incident test_case].
      * 
      */
     public Optional<String> issueType() {
@@ -348,7 +348,7 @@ public final class GetProjectIssuesResult {
         return Optional.ofNullable(this.weight);
     }
     /**
-     * @return If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. description_html was introduced in GitLab 12.7
+     * @return If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      * 
      */
     public Optional<Boolean> withLabelsDetails() {

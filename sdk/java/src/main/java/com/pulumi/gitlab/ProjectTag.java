@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectTag` resource allows to manage the lifecycle of a tag in a project.
  * 
- * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
  * 
  * ## Example Usage
  * 
