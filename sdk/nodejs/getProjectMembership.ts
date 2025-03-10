@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > **Note** exactly one of projectId or fullPath must be provided.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
  */
 export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     args = args || {};
@@ -89,7 +89,7 @@ export interface GetProjectMembershipResult {
  *
  * > **Note** exactly one of projectId or fullPath must be provided.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
  */
 export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMembershipResult> {
     args = args || {};

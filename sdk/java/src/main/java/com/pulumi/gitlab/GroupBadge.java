@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
  * 
  * ## Example Usage
  * 
@@ -108,14 +108,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupBadge:GroupBadge")
 public class GroupBadge extends com.pulumi.resources.CustomResource {
     /**
-     * The id of the group to add the badge to.
+     * The ID or URL-encoded path of the group to add the badge to.
      * 
      */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
-     * @return The id of the group to add the badge to.
+     * @return The ID or URL-encoded path of the group to add the badge to.
      * 
      */
     public Output<String> group() {

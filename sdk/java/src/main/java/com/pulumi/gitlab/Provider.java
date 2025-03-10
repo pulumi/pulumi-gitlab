@@ -90,8 +90,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
      * used in this provider for authentication (using Bearer authorization token). See
-     * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-     * variable.
+     * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
@@ -100,8 +99,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * @return The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
      * used in this provider for authentication (using Bearer authorization token). See
-     * https://docs.gitlab.com/ee/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment
-     * variable.
+     * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      * 
      */
     public Output<Optional<String>> token() {

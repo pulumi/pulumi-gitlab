@@ -58,7 +58,7 @@ class GetGroupServiceAccountResult:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         The name of the user. If not specified, the default Service account user name is used.
         """
@@ -74,7 +74,7 @@ class GetGroupServiceAccountResult:
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def username(self) -> str:
         """
         The username of the user. If not specified, it's automatically generated.
         """
@@ -95,26 +95,20 @@ class AwaitableGetGroupServiceAccountResult(GetGroupServiceAccountResult):
 
 
 def get_group_service_account(group: Optional[str] = None,
-                              name: Optional[str] = None,
                               service_account_id: Optional[str] = None,
-                              username: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupServiceAccountResult:
     """
     The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 
 
     :param str group: The ID or URL-encoded path of the target group. Must be a top-level group.
-    :param str name: The name of the user. If not specified, the default Service account user name is used.
     :param str service_account_id: The service account id.
-    :param str username: The username of the user. If not specified, it's automatically generated.
     """
     __args__ = dict()
     __args__['group'] = group
-    __args__['name'] = name
     __args__['serviceAccountId'] = service_account_id
-    __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult).value
 
@@ -125,26 +119,20 @@ def get_group_service_account(group: Optional[str] = None,
         service_account_id=pulumi.get(__ret__, 'service_account_id'),
         username=pulumi.get(__ret__, 'username'))
 def get_group_service_account_output(group: Optional[pulumi.Input[str]] = None,
-                                     name: Optional[pulumi.Input[Optional[str]]] = None,
                                      service_account_id: Optional[pulumi.Input[str]] = None,
-                                     username: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
     The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 
 
     :param str group: The ID or URL-encoded path of the target group. Must be a top-level group.
-    :param str name: The name of the user. If not specified, the default Service account user name is used.
     :param str service_account_id: The service account id.
-    :param str username: The username of the user. If not specified, it's automatically generated.
     """
     __args__ = dict()
     __args__['group'] = group
-    __args__['name'] = name
     __args__['serviceAccountId'] = service_account_id
-    __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult)
     return __ret__.apply(lambda __response__: GetGroupServiceAccountResult(

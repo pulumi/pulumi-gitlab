@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** If the board lists are changed all lists will be recreated.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/boards.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/boards/)
  *
  * ## Import
  *
