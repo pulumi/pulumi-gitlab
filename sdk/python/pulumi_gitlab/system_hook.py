@@ -287,9 +287,7 @@ class SystemHook(pulumi.CustomResource):
         """
         The `SystemHook` resource allows to manage the lifecycle of a system hook.
 
-        > This resource requires GitLab 14.9
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
 
         ## Example Usage
 
@@ -350,9 +348,7 @@ class SystemHook(pulumi.CustomResource):
         """
         The `SystemHook` resource allows to manage the lifecycle of a system hook.
 
-        > This resource requires GitLab 14.9
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/system_hooks.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
 
         ## Example Usage
 

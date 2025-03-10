@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
  * 
  * ## Example Usage
  * 
@@ -372,6 +372,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> releasesEvents() {
         return this.releasesEvents;
+    }
+    /**
+     * Invoke the hook for project access token expiry events.
+     * 
+     */
+    @Export(name="resourceAccessTokenEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> resourceAccessTokenEvents;
+
+    /**
+     * @return Invoke the hook for project access token expiry events.
+     * 
+     */
+    public Output<Boolean> resourceAccessTokenEvents() {
+        return this.resourceAccessTokenEvents;
     }
     /**
      * Invoke the hook for tag push events.

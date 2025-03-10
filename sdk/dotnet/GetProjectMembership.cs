@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; **Note** exactly one of project_id or full_path must be provided.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
         /// </summary>
         public static Task<GetProjectMembershipResult> InvokeAsync(GetProjectMembershipArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipArgs(), options.WithDefaults());
@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; **Note** exactly one of project_id or full_path must be provided.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
         /// </summary>
         public static Output<GetProjectMembershipResult> Invoke(GetProjectMembershipInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipInvokeArgs(), options.WithDefaults());
@@ -36,7 +36,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; **Note** exactly one of project_id or full_path must be provided.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
         /// </summary>
         public static Output<GetProjectMembershipResult> Invoke(GetProjectMembershipInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipInvokeArgs(), options.WithDefaults());

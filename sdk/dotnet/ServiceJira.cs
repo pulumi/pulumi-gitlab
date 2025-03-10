@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource is deprecated. use `gitlab.IntegrationJira`instead!
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
     /// 
     /// ## Example Usage
     /// 
@@ -85,7 +85,7 @@ namespace Pulumi.GitLab
         /// Enable comments inside Jira issues on each GitLab event (commit / merge request)
         /// </summary>
         [Output("commentOnEventEnabled")]
-        public Output<bool?> CommentOnEventEnabled { get; private set; } = null!;
+        public Output<bool> CommentOnEventEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for commit events
@@ -127,7 +127,7 @@ namespace Pulumi.GitLab
         public Output<bool?> JiraIssueTransitionAutomatic { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         /// </summary>
         [Output("jiraIssueTransitionId")]
         public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.GitLab
         public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.GitLab
         public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 
         /// <summary>
-        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         /// </summary>
         [Input("jiraIssueTransitionId")]
         public Input<string>? JiraIssueTransitionId { get; set; }

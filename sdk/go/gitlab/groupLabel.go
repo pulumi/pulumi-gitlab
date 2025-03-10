@@ -14,7 +14,7 @@ import (
 
 // The `GroupLabel` resource allows to manage the lifecycle of labels within a group.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
 //
 // ## Example Usage
 //
@@ -72,7 +72,7 @@ type GroupLabel struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
 	// The description of the label.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The name or id of the group to add the label to.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The id of the group label.
@@ -262,8 +262,8 @@ func (o GroupLabelOutput) Color() pulumi.StringOutput {
 }
 
 // The description of the label.
-func (o GroupLabelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupLabel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o GroupLabelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The name or id of the group to add the label to.

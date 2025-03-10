@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource is deprecated. use `gitlab.IntegrationPipelinesEmail`instead!
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#pipeline-emails)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#pipeline-emails)
  * 
  * ## Example Usage
  * 

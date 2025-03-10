@@ -107,7 +107,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance frameworks on a project.
 
-        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectupdatecomplianceframeworks)
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojectupdatecomplianceframeworks)
 
         ## Example Usage
 
@@ -173,7 +173,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance frameworks on a project.
 
-        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojectupdatecomplianceframeworks)
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojectupdatecomplianceframeworks)
 
         ## Example Usage
 

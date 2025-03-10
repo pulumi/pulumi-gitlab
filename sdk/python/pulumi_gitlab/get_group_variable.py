@@ -85,9 +85,6 @@ class GetGroupVariableResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -102,7 +99,7 @@ class GetGroupVariableResult:
     @pulumi.getter
     def masked(self) -> bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
         """
         return pulumi.get(self, "masked")
 
@@ -110,7 +107,7 @@ class GetGroupVariableResult:
     @pulumi.getter
     def protected(self) -> bool:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
         """
         return pulumi.get(self, "protected")
 
@@ -134,7 +131,7 @@ class GetGroupVariableResult:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -164,7 +161,7 @@ def get_group_variable(environment_scope: Optional[str] = None,
     """
     The `GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
     ## Example Usage
 
@@ -210,7 +207,7 @@ def get_group_variable_output(environment_scope: Optional[pulumi.Input[Optional[
     """
     The `GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
     ## Example Usage
 

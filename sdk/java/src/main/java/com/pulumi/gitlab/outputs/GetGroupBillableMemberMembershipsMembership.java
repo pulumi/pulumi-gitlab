@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupBillableMemberMembershipsMembership {
     /**
-     * @return Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+     * @return Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
      * 
      */
     private String accessLevel;
@@ -49,7 +49,7 @@ public final class GetGroupBillableMemberMembershipsMembership {
 
     private GetGroupBillableMemberMembershipsMembership() {}
     /**
-     * @return Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+     * @return Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
      * 
      */
     public String accessLevel() {

@@ -13,7 +13,7 @@ import (
 
 // The `ProjectMilestone` data source allows get details of a project milestone.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 func LookupProjectMilestone(ctx *pulumi.Context, args *LookupProjectMilestoneArgs, opts ...pulumi.InvokeOption) (*LookupProjectMilestoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectMilestoneResult

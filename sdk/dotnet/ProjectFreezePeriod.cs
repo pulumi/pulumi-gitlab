@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/freeze_periods.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/freeze_periods/)
     /// 
     /// ## Example Usage
     /// 

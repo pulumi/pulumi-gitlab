@@ -669,7 +669,7 @@ class ProjectLevelNotifications(pulumi.CustomResource):
 
         > While the API supports both groups and projects, this resource only supports projects currently.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -704,7 +704,7 @@ class ProjectLevelNotifications(pulumi.CustomResource):
 
         > While the API supports both groups and projects, this resource only supports projects currently.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/notification_settings.html#group--project-level-notification-settings)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
 
         :param str resource_name: The name of the resource.
         :param ProjectLevelNotificationsArgs args: The arguments to use to populate this resource's properties.

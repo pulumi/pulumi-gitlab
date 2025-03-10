@@ -580,6 +580,26 @@
                 "current": "gitlab:index/projectVariable:ProjectVariable",
                 "majorVersion": 8
             },
+            "gitlab_project_wiki_page": {
+                "current": "gitlab:index/projectWikiPage:ProjectWikiPage",
+                "majorVersion": 8
+            },
+            "gitlab_release": {
+                "current": "gitlab:index/release:Release",
+                "majorVersion": 8,
+                "fields": {
+                    "commit": {
+                        "fields": {
+                            "parent_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "milestones": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_release_link": {
                 "current": "gitlab:index/releaseLink:ReleaseLink",
                 "majorVersion": 8
@@ -848,6 +868,10 @@
                         }
                     }
                 }
+            },
+            "gitlab_instance_service_account": {
+                "current": "gitlab:index/getInstanceServiceAccount:getInstanceServiceAccount",
+                "majorVersion": 8
             },
             "gitlab_instance_variable": {
                 "current": "gitlab:index/getInstanceVariable:getInstanceVariable",
@@ -1304,15 +1328,15 @@
             "gitlab:index/globalLevelNotifications:GlobalLevelNotifications": 1,
             "gitlab:index/group:Group": 0,
             "gitlab:index/groupAccessToken:GroupAccessToken": 1,
-            "gitlab:index/groupBadge:GroupBadge": 0,
+            "gitlab:index/groupBadge:GroupBadge": 1,
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 1,
             "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,
-            "gitlab:index/groupLabel:GroupLabel": 0,
+            "gitlab:index/groupLabel:GroupLabel": 1,
             "gitlab:index/groupLdapLink:GroupLdapLink": 0,
-            "gitlab:index/groupMembership:GroupMembership": 0,
+            "gitlab:index/groupMembership:GroupMembership": 1,
             "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": 0,
             "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": 1,
             "gitlab:index/groupSamlLink:GroupSamlLink": 0,
@@ -1320,7 +1344,7 @@
             "gitlab:index/groupServiceAccount:GroupServiceAccount": 1,
             "gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken": 1,
             "gitlab:index/groupShareGroup:GroupShareGroup": 0,
-            "gitlab:index/groupVariable:GroupVariable": 0,
+            "gitlab:index/groupVariable:GroupVariable": 1,
             "gitlab:index/instanceCluster:InstanceCluster": 0,
             "gitlab:index/instanceServiceAccount:InstanceServiceAccount": 1,
             "gitlab:index/instanceVariable:InstanceVariable": 0,
@@ -1362,14 +1386,16 @@
             "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": 1,
             "gitlab:index/projectMembership:ProjectMembership": 0,
             "gitlab:index/projectMilestone:ProjectMilestone": 0,
-            "gitlab:index/projectMirror:ProjectMirror": 0,
+            "gitlab:index/projectMirror:ProjectMirror": 1,
             "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": 1,
             "gitlab:index/projectPushRules:ProjectPushRules": 1,
             "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": 0,
             "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": 1,
             "gitlab:index/projectShareGroup:ProjectShareGroup": 0,
             "gitlab:index/projectTag:ProjectTag": 0,
-            "gitlab:index/projectVariable:ProjectVariable": 0,
+            "gitlab:index/projectVariable:ProjectVariable": 1,
+            "gitlab:index/projectWikiPage:ProjectWikiPage": 1,
+            "gitlab:index/release:Release": 1,
             "gitlab:index/releaseLink:ReleaseLink": 0,
             "gitlab:index/repositoryFile:RepositoryFile": 0,
             "gitlab:index/runner:Runner": 0,
@@ -1404,14 +1430,15 @@
             "gitlab:index/getGroupHook:getGroupHook": 0,
             "gitlab:index/getGroupHooks:getGroupHooks": 0,
             "gitlab:index/getGroupIds:getGroupIds": 1,
-            "gitlab:index/getGroupMembership:getGroupMembership": 0,
+            "gitlab:index/getGroupMembership:getGroupMembership": 1,
             "gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers": 1,
             "gitlab:index/getGroupServiceAccount:getGroupServiceAccount": 1,
             "gitlab:index/getGroupSubgroups:getGroupSubgroups": 0,
-            "gitlab:index/getGroupVariable:getGroupVariable": 0,
-            "gitlab:index/getGroupVariables:getGroupVariables": 0,
+            "gitlab:index/getGroupVariable:getGroupVariable": 1,
+            "gitlab:index/getGroupVariables:getGroupVariables": 1,
             "gitlab:index/getGroups:getGroups": 0,
             "gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys": 0,
+            "gitlab:index/getInstanceServiceAccount:getInstanceServiceAccount": 1,
             "gitlab:index/getInstanceVariable:getInstanceVariable": 0,
             "gitlab:index/getInstanceVariables:getInstanceVariables": 0,
             "gitlab:index/getMetadata:getMetadata": 1,
