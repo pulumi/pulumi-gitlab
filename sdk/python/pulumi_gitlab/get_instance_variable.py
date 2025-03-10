@@ -80,7 +80,7 @@ class GetInstanceVariableResult:
     @pulumi.getter
     def masked(self) -> bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -138,7 +138,7 @@ def get_instance_variable(key: Optional[str] = None,
     """
     The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 
     ## Example Usage
 
@@ -171,7 +171,7 @@ def get_instance_variable_output(key: Optional[pulumi.Input[str]] = None,
     """
     The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 
     ## Example Usage
 

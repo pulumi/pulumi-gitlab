@@ -13,7 +13,7 @@ import (
 
 // The `GroupVariable` data source allows to retrieve details about a group-level CI/CD variable.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 //
 // ## Example Usage
 //
@@ -78,19 +78,18 @@ type LookupGroupVariableResult struct {
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id    string `pulumi:"id"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
 	Masked bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
 	Protected bool `pulumi:"protected"`
 	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
 	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -147,7 +146,6 @@ func (o LookupGroupVariableResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupGroupVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -157,12 +155,12 @@ func (o LookupGroupVariableResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
 func (o LookupGroupVariableResultOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
 func (o LookupGroupVariableResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
@@ -177,7 +175,7 @@ func (o LookupGroupVariableResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+// The type of a variable. Valid values are: `envVar`, `file`.
 func (o LookupGroupVariableResultOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.VariableType }).(pulumi.StringOutput)
 }

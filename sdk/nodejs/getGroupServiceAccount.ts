@@ -7,15 +7,13 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
  */
 export function getGroupServiceAccount(args: GetGroupServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", {
         "group": args.group,
-        "name": args.name,
         "serviceAccountId": args.serviceAccountId,
-        "username": args.username,
     }, opts);
 }
 
@@ -28,17 +26,9 @@ export interface GetGroupServiceAccountArgs {
      */
     group: string;
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
-     */
-    name?: string;
-    /**
      * The service account id.
      */
     serviceAccountId: string;
-    /**
-     * The username of the user. If not specified, it's automatically generated.
-     */
-    username?: string;
 }
 
 /**
@@ -53,7 +43,7 @@ export interface GetGroupServiceAccountResult {
     /**
      * The name of the user. If not specified, the default Service account user name is used.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * The service account id.
      */
@@ -61,20 +51,18 @@ export interface GetGroupServiceAccountResult {
     /**
      * The username of the user. If not specified, it's automatically generated.
      */
-    readonly username?: string;
+    readonly username: string;
 }
 /**
  * The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
  */
 export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", {
         "group": args.group,
-        "name": args.name,
         "serviceAccountId": args.serviceAccountId,
-        "username": args.username,
     }, opts);
 }
 
@@ -87,15 +75,7 @@ export interface GetGroupServiceAccountOutputArgs {
      */
     group: pulumi.Input<string>;
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * The service account id.
      */
     serviceAccountId: pulumi.Input<string>;
-    /**
-     * The username of the user. If not specified, it's automatically generated.
-     */
-    username?: pulumi.Input<string>;
 }

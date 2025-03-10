@@ -48,7 +48,7 @@ public final class GetUserResult {
      */
     private String currentSignInAt;
     /**
-     * @return The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * @return The public email address of the user.
      * 
      */
     private String email;
@@ -98,7 +98,7 @@ public final class GetUserResult {
      */
     private String name;
     /**
-     * @return The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * @return The ID of the user&#39;s namespace. Requires admin token to access this field.
      * 
      */
     private Integer namespaceId;
@@ -214,7 +214,7 @@ public final class GetUserResult {
         return this.currentSignInAt;
     }
     /**
-     * @return The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * @return The public email address of the user.
      * 
      */
     public String email() {
@@ -284,7 +284,7 @@ public final class GetUserResult {
         return this.name;
     }
     /**
-     * @return The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * @return The ID of the user&#39;s namespace. Requires admin token to access this field.
      * 
      */
     public Integer namespaceId() {

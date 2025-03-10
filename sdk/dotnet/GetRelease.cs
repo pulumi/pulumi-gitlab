@@ -12,9 +12,9 @@ namespace Pulumi.GitLab
     public static class GetRelease
     {
         /// <summary>
-        /// The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+        /// The `gitlab.Release` data source retrieves information about a gitlab release for a project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
         /// 
         /// ## Example Usage
         /// 
@@ -40,9 +40,9 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseResult>("gitlab:index/getRelease:getRelease", args ?? new GetReleaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+        /// The `gitlab.Release` data source retrieves information about a gitlab release for a project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
         /// 
         /// ## Example Usage
         /// 
@@ -68,9 +68,9 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("gitlab:index/getRelease:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+        /// The `gitlab.Release` data source retrieves information about a gitlab release for a project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
         /// 
         /// ## Example Usage
         /// 

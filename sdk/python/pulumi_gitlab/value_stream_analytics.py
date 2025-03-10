@@ -176,7 +176,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
 
-        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationvaluestreamcreate)
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
 
         ## Import
 
@@ -222,7 +222,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
 
-        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationvaluestreamcreate)
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
 
         ## Import
 

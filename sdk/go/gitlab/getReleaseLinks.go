@@ -13,7 +13,7 @@ import (
 
 // The `getReleaseLinks` data source allows get details of release links.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pulumi.InvokeOption) (*GetReleaseLinksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReleaseLinksResult

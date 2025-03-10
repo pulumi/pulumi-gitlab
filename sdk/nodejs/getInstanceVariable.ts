@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
  *
  * ## Example Usage
  *
@@ -54,7 +54,7 @@ export interface GetInstanceVariableResult {
      */
     readonly key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
      */
     readonly masked: boolean;
     /**
@@ -77,7 +77,7 @@ export interface GetInstanceVariableResult {
 /**
  * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_level_ci_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
  *
  * ## Example Usage
  *

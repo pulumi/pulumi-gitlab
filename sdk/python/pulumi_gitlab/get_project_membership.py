@@ -133,7 +133,7 @@ def get_project_membership(full_path: Optional[str] = None,
 
     > **Note** exactly one of project_id or full_path must be provided.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
     :param str full_path: The full path of the project.
@@ -170,7 +170,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[str]
 
     > **Note** exactly one of project_id or full_path must be provided.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
     :param str full_path: The full path of the project.

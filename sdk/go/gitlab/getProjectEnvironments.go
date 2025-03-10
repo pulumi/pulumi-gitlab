@@ -13,7 +13,7 @@ import (
 
 // The `getProjectEnvironments` data source retrieves information about all environments of the given project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/environments.html#list-environments)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/#list-environments)
 //
 // ## Example Usage
 //

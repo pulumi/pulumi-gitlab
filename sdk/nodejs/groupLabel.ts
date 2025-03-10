@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupLabel` resource allows to manage the lifecycle of labels within a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/labels.html#group-labels)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
  *
  * ## Example Usage
  *
@@ -80,7 +80,7 @@ export class GroupLabel extends pulumi.CustomResource {
     /**
      * The description of the label.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name or id of the group to add the label to.
      */

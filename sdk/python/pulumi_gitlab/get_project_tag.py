@@ -140,7 +140,7 @@ def get_project_tag(name: Optional[str] = None,
     """
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 
-    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
 
 
     :param str name: The name of a tag.
@@ -167,7 +167,7 @@ def get_project_tag_output(name: Optional[pulumi.Input[str]] = None,
     """
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.
 
-    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
 
 
     :param str name: The name of a tag.
