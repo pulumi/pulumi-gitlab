@@ -179,7 +179,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         """
         The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-project-with-group)
 
         ## Example Usage
 
@@ -231,7 +231,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         """
         The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#share-project-with-group)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-project-with-group)
 
         ## Example Usage
 

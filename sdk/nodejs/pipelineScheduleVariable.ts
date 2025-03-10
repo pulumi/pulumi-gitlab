@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pipeline_schedules.html#pipeline-schedule-variables)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/#pipeline-schedule-variables)
  *
  * ## Example Usage
  *

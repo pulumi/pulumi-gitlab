@@ -202,7 +202,7 @@ class ProjectBadge(pulumi.CustomResource):
         """
         The `ProjectBadge` resource allows to manage the lifecycle of project badges.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
 
         ## Example Usage
 
@@ -274,7 +274,7 @@ class ProjectBadge(pulumi.CustomResource):
         """
         The `ProjectBadge` resource allows to manage the lifecycle of project badges.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#project-badges)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
 
         ## Example Usage
 

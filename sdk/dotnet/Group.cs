@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
     /// 
     /// ## Example Usage
     /// 
@@ -179,7 +179,7 @@ namespace Pulumi.GitLab
         public Output<string?> DefaultBranch { get; private set; } = null!;
 
         /// <summary>
-        /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        /// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int> DefaultBranchProtection { get; private set; } = null!;
@@ -439,7 +439,7 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultBranch { get; set; }
 
         /// <summary>
-        /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        /// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -645,7 +645,7 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultBranch { get; set; }
 
         /// <summary>
-        /// See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+        /// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }

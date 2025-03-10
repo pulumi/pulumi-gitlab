@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupServiceAccount` resource allows creating a GitLab group service account.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/)
  *
  * ## Example Usage
  *

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  */
 export function getProjectMilestone(args: GetProjectMilestoneArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMilestoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -95,7 +95,7 @@ export interface GetProjectMilestoneResult {
 /**
  * The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  */
 export function getProjectMilestoneOutput(args: GetProjectMilestoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMilestoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

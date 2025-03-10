@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ReleaseLink` data source allows get details of a release link.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
         /// </summary>
         public static Task<GetReleaseLinkResult> InvokeAsync(GetReleaseLinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ReleaseLink` data source allows get details of a release link.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
         /// </summary>
         public static Output<GetReleaseLinkResult> Invoke(GetReleaseLinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ReleaseLink` data source allows get details of a release link.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
         /// </summary>
         public static Output<GetReleaseLinkResult> Invoke(GetReleaseLinkInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         public int LinkId { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
         public Input<int> LinkId { get; set; } = null!;
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GitLab
     public sealed class GetReleaseLinkResult
     {
         /// <summary>
-        /// Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         public readonly string DirectAssetUrl;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool External;
         /// <summary>
-        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        /// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         /// </summary>
         public readonly string Filepath;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         public readonly string Project;
         /// <summary>

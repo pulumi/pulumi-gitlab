@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
  * 
  * ## Example Usage
  * 
@@ -239,7 +239,7 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultBranch);
     }
     /**
-     * See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
      * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
@@ -250,7 +250,7 @@ public class Group extends com.pulumi.resources.CustomResource {
     private Output<Integer> defaultBranchProtection;
 
     /**
-     * @return See https://docs.gitlab.com/ee/api/groups.html#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
+     * @return See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      */
     public Output<Integer> defaultBranchProtection() {

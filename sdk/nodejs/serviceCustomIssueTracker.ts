@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource is deprecated. use `gitlab.IntegrationCustomIssueTracker`instead!
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#custom-issue-tracker)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#custom-issue-tracker)
  *
  * ## Example Usage
  *

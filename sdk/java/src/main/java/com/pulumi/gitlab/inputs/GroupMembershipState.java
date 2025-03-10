@@ -48,17 +48,17 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The id of the group.
+     * The ID of the group.
      * 
      */
     @Import(name="groupId")
-    private @Nullable Output<String> groupId;
+    private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The id of the group.
+     * @return The ID of the group.
      * 
      */
-    public Optional<Output<String>> groupId() {
+    public Optional<Output<Integer>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
 
@@ -108,14 +108,14 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The id of the user.
+     * The ID of the user.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The id of the user.
+     * @return The ID of the user.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -195,23 +195,23 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param groupId The id of the group.
+         * @param groupId The ID of the group.
          * 
          * @return builder
          * 
          */
-        public Builder groupId(@Nullable Output<String> groupId) {
+        public Builder groupId(@Nullable Output<Integer> groupId) {
             $.groupId = groupId;
             return this;
         }
 
         /**
-         * @param groupId The id of the group.
+         * @param groupId The ID of the group.
          * 
          * @return builder
          * 
          */
-        public Builder groupId(String groupId) {
+        public Builder groupId(Integer groupId) {
             return groupId(Output.of(groupId));
         }
 
@@ -279,7 +279,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userId The id of the user.
+         * @param userId The ID of the user.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userId The id of the user.
+         * @param userId The ID of the user.
          * 
          * @return builder
          * 

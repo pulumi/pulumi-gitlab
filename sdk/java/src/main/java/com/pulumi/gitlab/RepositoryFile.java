@@ -277,14 +277,14 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encoding);
     }
     /**
-     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * Enables or disables the execute flag on the file.
      * 
      */
     @Export(name="executeFilemode", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> executeFilemode;
 
     /**
-     * @return Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * @return Enables or disables the execute flag on the file.
      * 
      */
     public Output<Optional<Boolean>> executeFilemode() {

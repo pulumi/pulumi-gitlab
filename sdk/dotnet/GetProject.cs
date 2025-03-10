@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
@@ -158,7 +158,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string CiPipelineVariablesMinimumOverrideRole;
         /// <summary>
-        /// The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         public readonly string CiRestrictPipelineCancellationRole;
         /// <summary>
@@ -238,7 +238,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
-        /// Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        /// Template used to create merge commit message in merge requests.
         /// </summary>
         public readonly string MergeCommitTemplate;
         /// <summary>
@@ -358,7 +358,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool SnippetsEnabled;
         /// <summary>
-        /// Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        /// Template used to create squash commit message in merge requests.
         /// </summary>
         public readonly string SquashCommitTemplate;
         /// <summary>

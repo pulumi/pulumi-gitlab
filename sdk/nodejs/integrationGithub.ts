@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource requires a GitLab Enterprise instance.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#github)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
  *
  * ## Example Usage
  *

@@ -157,7 +157,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ciPipelineVariablesMinimumOverrideRole!: pulumi.Output<string>;
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     public readonly ciRestrictPipelineCancellationRole!: pulumi.Output<string>;
     /**
@@ -267,7 +267,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly lfsEnabled!: pulumi.Output<boolean>;
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      */
     public readonly mergeCommitTemplate!: pulumi.Output<string | undefined>;
     /**
@@ -450,11 +450,11 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly snippetsEnabled!: pulumi.Output<boolean>;
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      */
     public readonly squashCommitTemplate!: pulumi.Output<string | undefined>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
      */
     public readonly squashOption!: pulumi.Output<string>;
     /**
@@ -483,7 +483,7 @@ export class Project extends pulumi.CustomResource {
     public readonly topics!: pulumi.Output<string[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     public readonly useCustomTemplate!: pulumi.Output<boolean | undefined>;
     /**
@@ -830,7 +830,7 @@ export interface ProjectState {
      */
     ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     ciRestrictPipelineCancellationRole?: pulumi.Input<string>;
     /**
@@ -940,7 +940,7 @@ export interface ProjectState {
      */
     lfsEnabled?: pulumi.Input<boolean>;
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      */
     mergeCommitTemplate?: pulumi.Input<string>;
     /**
@@ -1123,11 +1123,11 @@ export interface ProjectState {
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      */
     squashCommitTemplate?: pulumi.Input<string>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
      */
     squashOption?: pulumi.Input<string>;
     /**
@@ -1156,7 +1156,7 @@ export interface ProjectState {
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**
@@ -1267,7 +1267,7 @@ export interface ProjectArgs {
      */
     ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     ciRestrictPipelineCancellationRole?: pulumi.Input<string>;
     /**
@@ -1369,7 +1369,7 @@ export interface ProjectArgs {
      */
     lfsEnabled?: pulumi.Input<boolean>;
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      */
     mergeCommitTemplate?: pulumi.Input<string>;
     /**
@@ -1544,11 +1544,11 @@ export interface ProjectArgs {
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      */
     squashCommitTemplate?: pulumi.Input<string>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`. [GitLab >= 14.1]
+     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
      */
     squashOption?: pulumi.Input<string>;
     /**
@@ -1573,7 +1573,7 @@ export interface ProjectArgs {
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**

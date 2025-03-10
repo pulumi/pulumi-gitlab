@@ -211,7 +211,7 @@ def get_project_milestone(milestone_id: Optional[int] = None,
     """
     The `ProjectMilestone` data source allows get details of a project milestone.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 
 
     :param int milestone_id: The instance-wide ID of the project’s milestone.
@@ -244,7 +244,7 @@ def get_project_milestone_output(milestone_id: Optional[pulumi.Input[int]] = Non
     """
     The `ProjectMilestone` data source allows get details of a project milestone.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 
 
     :param int milestone_id: The instance-wide ID of the project’s milestone.
