@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; This data source requires administration privileges.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
         /// </summary>
         public static Task<GetInstanceDeployKeysResult> InvokeAsync(GetInstanceDeployKeysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysArgs(), options.WithDefaults());
@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; This data source requires administration privileges.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
         /// </summary>
         public static Output<GetInstanceDeployKeysResult> Invoke(GetInstanceDeployKeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());
@@ -36,7 +36,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; This data source requires administration privileges.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
         /// </summary>
         public static Output<GetInstanceDeployKeysResult> Invoke(GetInstanceDeployKeysInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceDeployKeysResult>("gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys", args ?? new GetInstanceDeployKeysInvokeArgs(), options.WithDefaults());

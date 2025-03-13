@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > You must specify either password or reset_password.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/)
  *
  * ## Example Usage
  *
@@ -117,7 +117,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the user's namespace. Available since GitLab 14.10.
+     * The ID of the user's namespace.
      */
     public readonly namespaceId!: pulumi.Output<number>;
     /**
@@ -241,7 +241,7 @@ export interface UserState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the user's namespace. Available since GitLab 14.10.
+     * The ID of the user's namespace.
      */
     namespaceId?: pulumi.Input<number>;
     /**
@@ -307,7 +307,7 @@ export interface UserArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the user's namespace. Available since GitLab 14.10.
+     * The ID of the user's namespace.
      */
     namespaceId?: pulumi.Input<number>;
     /**

@@ -310,7 +310,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         > Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
 
-        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/group_service_accounts/#create-a-personal-access-token-for-a-service-account-user)
 
         ## Import
 
@@ -366,7 +366,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         > Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
 
-        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#create-a-personal-access-token-for-a-service-account-user)
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/group_service_accounts/#create-a-personal-access-token-for-a-service-account-user)
 
         ## Import
 

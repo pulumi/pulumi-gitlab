@@ -47,7 +47,7 @@ class IntegrationTelegramArgs:
         :param pulumi.Input[bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[str] token: The Telegram bot token.
         :param pulumi.Input[bool] wiki_page_events: Enable notifications for wiki page events.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
         """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
@@ -215,7 +215,7 @@ class IntegrationTelegramArgs:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -255,7 +255,7 @@ class _IntegrationTelegramState:
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering IntegrationTelegram resources.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -303,7 +303,7 @@ class _IntegrationTelegramState:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[str]]:
         """
-        Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -491,7 +491,7 @@ class IntegrationTelegram(pulumi.CustomResource):
         """
         The `IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
 
         ## Example Usage
 
@@ -543,7 +543,7 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -567,7 +567,7 @@ class IntegrationTelegram(pulumi.CustomResource):
         """
         The `IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
 
         ## Example Usage
 
@@ -726,7 +726,7 @@ class IntegrationTelegram(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        :param pulumi.Input[str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[bool] issues_events: Enable notifications for issues events.
@@ -765,7 +765,7 @@ class IntegrationTelegram(pulumi.CustomResource):
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[str]:
         """
-        Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 

@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetGroupServiceAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -31,21 +29,6 @@ public final class GetGroupServiceAccountPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable String name;
-
-    /**
-     * @return The name of the user. If not specified, the default Service account user name is used.
-     * 
-     */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
      * The service account id.
      * 
      */
@@ -60,28 +43,11 @@ public final class GetGroupServiceAccountPlainArgs extends com.pulumi.resources.
         return this.serviceAccountId;
     }
 
-    /**
-     * The username of the user. If not specified, it&#39;s automatically generated.
-     * 
-     */
-    @Import(name="username")
-    private @Nullable String username;
-
-    /**
-     * @return The username of the user. If not specified, it&#39;s automatically generated.
-     * 
-     */
-    public Optional<String> username() {
-        return Optional.ofNullable(this.username);
-    }
-
     private GetGroupServiceAccountPlainArgs() {}
 
     private GetGroupServiceAccountPlainArgs(GetGroupServiceAccountPlainArgs $) {
         this.group = $.group;
-        this.name = $.name;
         this.serviceAccountId = $.serviceAccountId;
-        this.username = $.username;
     }
 
     public static Builder builder() {
@@ -114,17 +80,6 @@ public final class GetGroupServiceAccountPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the user. If not specified, the default Service account user name is used.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable String name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
          * @param serviceAccountId The service account id.
          * 
          * @return builder
@@ -132,17 +87,6 @@ public final class GetGroupServiceAccountPlainArgs extends com.pulumi.resources.
          */
         public Builder serviceAccountId(String serviceAccountId) {
             $.serviceAccountId = serviceAccountId;
-            return this;
-        }
-
-        /**
-         * @param username The username of the user. If not specified, it&#39;s automatically generated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder username(@Nullable String username) {
-            $.username = username;
             return this;
         }
 

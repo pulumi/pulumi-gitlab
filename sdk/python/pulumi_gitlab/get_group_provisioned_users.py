@@ -147,7 +147,7 @@ def get_group_provisioned_users(active: Optional[bool] = None,
     """
     The `get_group_provisioned_users` data source allows details of the provisioned users of a given group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
 
 
     :param bool active: Return only active provisioned users.
@@ -192,7 +192,7 @@ def get_group_provisioned_users_output(active: Optional[pulumi.Input[Optional[bo
     """
     The `get_group_provisioned_users` data source allows details of the provisioned users of a given group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
 
 
     :param bool active: Return only active provisioned users.

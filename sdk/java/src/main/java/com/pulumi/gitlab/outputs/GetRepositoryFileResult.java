@@ -38,7 +38,7 @@ public final class GetRepositoryFileResult {
      */
     private String encoding;
     /**
-     * @return Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * @return Enables or disables the execute flag on the file.
      * 
      */
     private Boolean executeFilemode;
@@ -115,7 +115,7 @@ public final class GetRepositoryFileResult {
         return this.encoding;
     }
     /**
-     * @return Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * @return Enables or disables the execute flag on the file.
      * 
      */
     public Boolean executeFilemode() {

@@ -178,7 +178,7 @@ class GetUserResult:
     @pulumi.getter
     def email(self) -> str:
         """
-        The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        The public email address of the user.
         """
         return pulumi.get(self, "email")
 
@@ -258,7 +258,7 @@ class GetUserResult:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> int:
         """
-        The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        The ID of the user's namespace. Requires admin token to access this field.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -407,14 +407,13 @@ def get_user(email: Optional[str] = None,
 
     > Some attributes might not be returned depending on if you're an admin or not.
 
-    > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
-    the most related match will prioritize an exact match if one is available.
+    > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
 
 
-    :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-    :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+    :param str email: The public email address of the user.
+    :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
     :param int user_id: The ID of the user.
     :param str username: The username of the user.
     """
@@ -467,14 +466,13 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
 
     > Some attributes might not be returned depending on if you're an admin or not.
 
-    > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
-    the most related match will prioritize an exact match if one is available.
+    > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#single-user)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
 
 
-    :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
-    :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+    :param str email: The public email address of the user.
+    :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
     :param int user_id: The ID of the user.
     :param str username: The username of the user.
     """

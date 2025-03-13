@@ -14,7 +14,7 @@ import (
 
 // The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#enable-a-deploy-key)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#enable-a-deploy-key)
 //
 // ## Example Usage
 //

@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
     /// 
     /// ## Example Usage
     /// 
@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// {
     ///     var test = new GitLab.GroupMembership("test", new()
     ///     {
-    ///         GroupId = "12345",
+    ///         GroupId = 12345,
     ///         UserId = 1337,
     ///         AccessLevel = "guest",
     ///         ExpiresAt = "2020-12-31",
@@ -75,10 +75,10 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the group.
+        /// The ID of the group.
         /// </summary>
         [Output("groupId")]
-        public Output<string> GroupId { get; private set; } = null!;
+        public Output<int> GroupId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of a custom member role. Only available for Ultimate instances.
@@ -90,16 +90,16 @@ namespace Pulumi.GitLab
         /// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         /// </summary>
         [Output("skipSubresourcesOnDestroy")]
-        public Output<bool?> SkipSubresourcesOnDestroy { get; private set; } = null!;
+        public Output<bool> SkipSubresourcesOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         /// </summary>
         [Output("unassignIssuablesOnDestroy")]
-        public Output<bool?> UnassignIssuablesOnDestroy { get; private set; } = null!;
+        public Output<bool> UnassignIssuablesOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the user.
+        /// The ID of the user.
         /// </summary>
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
@@ -163,10 +163,10 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The id of the group.
+        /// The ID of the group.
         /// </summary>
         [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
+        public Input<int> GroupId { get; set; } = null!;
 
         /// <summary>
         /// The ID of a custom member role. Only available for Ultimate instances.
@@ -187,7 +187,7 @@ namespace Pulumi.GitLab
         public Input<bool>? UnassignIssuablesOnDestroy { get; set; }
 
         /// <summary>
-        /// The id of the user.
+        /// The ID of the user.
         /// </summary>
         [Input("userId", required: true)]
         public Input<int> UserId { get; set; } = null!;
@@ -213,10 +213,10 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The id of the group.
+        /// The ID of the group.
         /// </summary>
         [Input("groupId")]
-        public Input<string>? GroupId { get; set; }
+        public Input<int>? GroupId { get; set; }
 
         /// <summary>
         /// The ID of a custom member role. Only available for Ultimate instances.
@@ -237,7 +237,7 @@ namespace Pulumi.GitLab
         public Input<bool>? UnassignIssuablesOnDestroy { get; set; }
 
         /// <summary>
-        /// The id of the user.
+        /// The ID of the user.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

@@ -15,7 +15,7 @@ import (
 //
 // > This data source requires administration privileges.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
 func GetInstanceDeployKeys(ctx *pulumi.Context, args *GetInstanceDeployKeysArgs, opts ...pulumi.InvokeOption) (*GetInstanceDeployKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceDeployKeysResult

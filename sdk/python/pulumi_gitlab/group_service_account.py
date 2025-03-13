@@ -155,7 +155,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         """
         The `GroupServiceAccount` resource allows creating a GitLab group service account.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/)
 
         ## Example Usage
 
@@ -227,7 +227,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         """
         The `GroupServiceAccount` resource allows creating a GitLab group service account.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/)
 
         ## Example Usage
 

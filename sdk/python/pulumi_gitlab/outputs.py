@@ -42,6 +42,10 @@ __all__ = [
     'ProjectPushRules',
     'ProjectTagCommit',
     'ProjectTagRelease',
+    'ReleaseAssets',
+    'ReleaseAuthor',
+    'ReleaseCommit',
+    'ReleaseLinks',
     'TagProtectionAllowedToCreate',
     'ValueStreamAnalyticsStage',
     'GetBranchCommitResult',
@@ -1162,7 +1166,7 @@ class GroupPushRules(dict):
         """
         :param str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
-        :param bool commit_committer_check: Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param bool commit_committer_check: Only commits pushed using verified emails are allowed.
         :param bool commit_committer_name_check: Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         :param str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         :param str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
@@ -1172,7 +1176,7 @@ class GroupPushRules(dict):
         :param bool member_check: Allows only GitLab users to author commits.
         :param bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
         :param bool reject_non_dco_commits: Reject commit when it’s not DCO certified.
-        :param bool reject_unsigned_commits: Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        :param bool reject_unsigned_commits: Only commits signed through GPG are allowed.
         """
         if author_email_regex is not None:
             pulumi.set(__self__, "author_email_regex", author_email_regex)
@@ -1221,7 +1225,7 @@ class GroupPushRules(dict):
     @pulumi.getter(name="commitCommitterCheck")
     def commit_committer_check(self) -> Optional[bool]:
         """
-        Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        Only commits pushed using verified emails are allowed.
         """
         return pulumi.get(self, "commit_committer_check")
 
@@ -1301,7 +1305,7 @@ class GroupPushRules(dict):
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[bool]:
         """
-        Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+        Only commits signed through GPG are allowed.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
@@ -2411,6 +2415,425 @@ class ProjectTagRelease(dict):
 
 
 @pulumi.output_type
+class ReleaseAssets(dict):
+    def __init__(__self__, *,
+                 count: Optional[int] = None):
+        """
+        :param int count: The total count of assets in this release.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        The total count of assets in this release.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class ReleaseAuthor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avatarUrl":
+            suggest = "avatar_url"
+        elif key == "webUrl":
+            suggest = "web_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseAuthor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseAuthor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseAuthor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 avatar_url: Optional[str] = None,
+                 id: Optional[int] = None,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None,
+                 username: Optional[str] = None,
+                 web_url: Optional[str] = None):
+        """
+        :param str avatar_url: The url of the author's' user avatar.
+        :param int id: The ID of the author's user.
+        :param str name: The name of the author.
+        :param str state: The state of the author's user.
+        :param str username: The username of the author.
+        :param str web_url: The url to the author's user profile.
+        """
+        if avatar_url is not None:
+            pulumi.set(__self__, "avatar_url", avatar_url)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if web_url is not None:
+            pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> Optional[str]:
+        """
+        The url of the author's' user avatar.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[int]:
+        """
+        The ID of the author's user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the author.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        The state of the author's user.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username of the author.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> Optional[str]:
+        """
+        The url to the author's user profile.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class ReleaseCommit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorEmail":
+            suggest = "author_email"
+        elif key == "authorName":
+            suggest = "author_name"
+        elif key == "authoredDate":
+            suggest = "authored_date"
+        elif key == "committedDate":
+            suggest = "committed_date"
+        elif key == "committerEmail":
+            suggest = "committer_email"
+        elif key == "committerName":
+            suggest = "committer_name"
+        elif key == "createdAt":
+            suggest = "created_at"
+        elif key == "parentIds":
+            suggest = "parent_ids"
+        elif key == "shortId":
+            suggest = "short_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseCommit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseCommit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseCommit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author_email: Optional[str] = None,
+                 author_name: Optional[str] = None,
+                 authored_date: Optional[str] = None,
+                 committed_date: Optional[str] = None,
+                 committer_email: Optional[str] = None,
+                 committer_name: Optional[str] = None,
+                 created_at: Optional[str] = None,
+                 id: Optional[str] = None,
+                 message: Optional[str] = None,
+                 parent_ids: Optional[Sequence[str]] = None,
+                 short_id: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str author_email: The email address of the commit author.
+        :param str author_name: The name of the commit author.
+        :param str authored_date: The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+        :param str committed_date: The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+        :param str committer_email: The email address of the committer.
+        :param str committer_name: The name of the committer.
+        :param str created_at: The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+        :param str id: The git commit full SHA
+        :param str message: The commit message.
+        :param Sequence[str] parent_ids: The full SHA of any parent commits.
+        :param str short_id: The git commit short SHA.
+        :param str title: The title of the commit.
+        """
+        if author_email is not None:
+            pulumi.set(__self__, "author_email", author_email)
+        if author_name is not None:
+            pulumi.set(__self__, "author_name", author_name)
+        if authored_date is not None:
+            pulumi.set(__self__, "authored_date", authored_date)
+        if committed_date is not None:
+            pulumi.set(__self__, "committed_date", committed_date)
+        if committer_email is not None:
+            pulumi.set(__self__, "committer_email", committer_email)
+        if committer_name is not None:
+            pulumi.set(__self__, "committer_name", committer_name)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if parent_ids is not None:
+            pulumi.set(__self__, "parent_ids", parent_ids)
+        if short_id is not None:
+            pulumi.set(__self__, "short_id", short_id)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> Optional[str]:
+        """
+        The email address of the commit author.
+        """
+        return pulumi.get(self, "author_email")
+
+    @property
+    @pulumi.getter(name="authorName")
+    def author_name(self) -> Optional[str]:
+        """
+        The name of the commit author.
+        """
+        return pulumi.get(self, "author_name")
+
+    @property
+    @pulumi.getter(name="authoredDate")
+    def authored_date(self) -> Optional[str]:
+        """
+        The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        return pulumi.get(self, "authored_date")
+
+    @property
+    @pulumi.getter(name="committedDate")
+    def committed_date(self) -> Optional[str]:
+        """
+        The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        return pulumi.get(self, "committed_date")
+
+    @property
+    @pulumi.getter(name="committerEmail")
+    def committer_email(self) -> Optional[str]:
+        """
+        The email address of the committer.
+        """
+        return pulumi.get(self, "committer_email")
+
+    @property
+    @pulumi.getter(name="committerName")
+    def committer_name(self) -> Optional[str]:
+        """
+        The name of the committer.
+        """
+        return pulumi.get(self, "committer_name")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The git commit full SHA
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        The commit message.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="parentIds")
+    def parent_ids(self) -> Optional[Sequence[str]]:
+        """
+        The full SHA of any parent commits.
+        """
+        return pulumi.get(self, "parent_ids")
+
+    @property
+    @pulumi.getter(name="shortId")
+    def short_id(self) -> Optional[str]:
+        """
+        The git commit short SHA.
+        """
+        return pulumi.get(self, "short_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the commit.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class ReleaseLinks(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "closedIssuesUrl":
+            suggest = "closed_issues_url"
+        elif key == "closedMergeRequestsUrl":
+            suggest = "closed_merge_requests_url"
+        elif key == "editUrl":
+            suggest = "edit_url"
+        elif key == "mergedMergeRequestsUrl":
+            suggest = "merged_merge_requests_url"
+        elif key == "openedIssuesUrl":
+            suggest = "opened_issues_url"
+        elif key == "openedMergeRequestsUrl":
+            suggest = "opened_merge_requests_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseLinks. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseLinks.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseLinks.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 closed_issues_url: Optional[str] = None,
+                 closed_merge_requests_url: Optional[str] = None,
+                 edit_url: Optional[str] = None,
+                 merged_merge_requests_url: Optional[str] = None,
+                 opened_issues_url: Optional[str] = None,
+                 opened_merge_requests_url: Optional[str] = None,
+                 self: Optional[str] = None):
+        """
+        :param str closed_issues_url: URL of the release's closed issues.
+        :param str closed_merge_requests_url: URL of the release's closed merge requests.
+        :param str edit_url: URL of the release's edit page.
+        :param str merged_merge_requests_url: URL of the release's merged merge requests.
+        :param str opened_issues_url: URL of the release's open issues.
+        :param str opened_merge_requests_url: URL of the release's open merge requests.
+        :param str self: URL of the release.
+        """
+        if closed_issues_url is not None:
+            pulumi.set(__self__, "closed_issues_url", closed_issues_url)
+        if closed_merge_requests_url is not None:
+            pulumi.set(__self__, "closed_merge_requests_url", closed_merge_requests_url)
+        if edit_url is not None:
+            pulumi.set(__self__, "edit_url", edit_url)
+        if merged_merge_requests_url is not None:
+            pulumi.set(__self__, "merged_merge_requests_url", merged_merge_requests_url)
+        if opened_issues_url is not None:
+            pulumi.set(__self__, "opened_issues_url", opened_issues_url)
+        if opened_merge_requests_url is not None:
+            pulumi.set(__self__, "opened_merge_requests_url", opened_merge_requests_url)
+        if self is not None:
+            pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter(name="closedIssuesUrl")
+    def closed_issues_url(self) -> Optional[str]:
+        """
+        URL of the release's closed issues.
+        """
+        return pulumi.get(self, "closed_issues_url")
+
+    @property
+    @pulumi.getter(name="closedMergeRequestsUrl")
+    def closed_merge_requests_url(self) -> Optional[str]:
+        """
+        URL of the release's closed merge requests.
+        """
+        return pulumi.get(self, "closed_merge_requests_url")
+
+    @property
+    @pulumi.getter(name="editUrl")
+    def edit_url(self) -> Optional[str]:
+        """
+        URL of the release's edit page.
+        """
+        return pulumi.get(self, "edit_url")
+
+    @property
+    @pulumi.getter(name="mergedMergeRequestsUrl")
+    def merged_merge_requests_url(self) -> Optional[str]:
+        """
+        URL of the release's merged merge requests.
+        """
+        return pulumi.get(self, "merged_merge_requests_url")
+
+    @property
+    @pulumi.getter(name="openedIssuesUrl")
+    def opened_issues_url(self) -> Optional[str]:
+        """
+        URL of the release's open issues.
+        """
+        return pulumi.get(self, "opened_issues_url")
+
+    @property
+    @pulumi.getter(name="openedMergeRequestsUrl")
+    def opened_merge_requests_url(self) -> Optional[str]:
+        """
+        URL of the release's open merge requests.
+        """
+        return pulumi.get(self, "opened_merge_requests_url")
+
+    @property
+    @pulumi.getter
+    def self(self) -> Optional[str]:
+        """
+        URL of the release.
+        """
+        return pulumi.get(self, "self")
+
+
+@pulumi.output_type
 class TagProtectionAllowedToCreate(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2525,11 +2948,11 @@ class ValueStreamAnalyticsStage(dict):
         """
         :param str name: The name of the value stream stage.
         :param bool custom: Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
-        :param str end_event_identifier: End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        :param str end_event_identifier: End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         :param str end_event_label_id: Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
         :param bool hidden: Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
         :param str id: The ID of the value stream stage.
-        :param str start_event_identifier: Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        :param str start_event_identifier: Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         :param str start_event_label_id: Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
         """
         pulumi.set(__self__, "name", name)
@@ -2568,7 +2991,7 @@ class ValueStreamAnalyticsStage(dict):
     @pulumi.getter(name="endEventIdentifier")
     def end_event_identifier(self) -> Optional[str]:
         """
-        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         return pulumi.get(self, "end_event_identifier")
 
@@ -2600,7 +3023,7 @@ class ValueStreamAnalyticsStage(dict):
     @pulumi.getter(name="startEventIdentifier")
     def start_event_identifier(self) -> Optional[str]:
         """
-        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+        Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         return pulumi.get(self, "start_event_identifier")
 
@@ -2814,7 +3237,7 @@ class GetGroupBillableMemberMembershipsMembershipResult(dict):
                  source_id: int,
                  source_members_url: str):
         """
-        :param str access_level: Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+        :param str access_level: Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
         :param str created_at: Datetime when the membership was first added.
         :param str expires_at: Date when the membership will end.
         :param int id: The id of the membership.
@@ -2834,7 +3257,7 @@ class GetGroupBillableMemberMembershipsMembershipResult(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> str:
         """
-        Access-level of the member. For details see: https://docs.gitlab.com/ee/api/access_requests.html#valid-access-levels
+        Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
         """
         return pulumi.get(self, "access_level")
 
@@ -3777,17 +4200,6 @@ class GetGroupVariablesVariableResult(dict):
                  raw: bool,
                  value: str,
                  variable_type: str):
-        """
-        :param str description: The description of the variable.
-        :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-        :param str group: The name or id of the group.
-        :param str key: The name of the variable.
-        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-        :param str value: The value of the variable.
-        :param str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "environment_scope", environment_scope)
         pulumi.set(__self__, "group", group)
@@ -3801,73 +4213,46 @@ class GetGroupVariablesVariableResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the variable.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> str:
-        """
-        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-        """
         return pulumi.get(self, "environment_scope")
 
     @property
     @pulumi.getter
     def group(self) -> str:
-        """
-        The name or id of the group.
-        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        The name of the variable.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def masked(self) -> bool:
-        """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        """
         return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
-        """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def raw(self) -> bool:
-        """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-        """
         return pulumi.get(self, "raw")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The value of the variable.
-        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="variableType")
     def variable_type(self) -> str:
-        """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
-        """
         return pulumi.get(self, "variable_type")
 
 
@@ -4224,7 +4609,7 @@ class GetInstanceVariablesVariableResult(dict):
         """
         :param str description: The description of the variable. Maximum of 255 characters.
         :param str key: The name of the variable.
-        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
         :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param str value: The value of the variable.
@@ -4258,7 +4643,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def masked(self) -> bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -7426,7 +7811,7 @@ class GetProjectVariablesVariableResult(dict):
         :param str description: The description of the variable.
         :param str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param str key: The name of the variable.
-        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        :param bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
         :param str project: The name or id of the project.
         :param bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
@@ -7471,7 +7856,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def masked(self) -> bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -7640,7 +8025,7 @@ class GetProjectsProjectResult(dict):
         :param int ci_default_git_depth: Default number of revisions for shallow cloning.
         :param bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param str ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
-        :param str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        :param str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param str container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param bool container_registry_enabled: Whether the container registry is enabled for the project.
@@ -7670,7 +8055,7 @@ class GetProjectsProjectResult(dict):
         :param bool keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param str last_activity_at: Last activirty time for the project.
         :param bool lfs_enabled: Whether LFS (large file storage) is enabled for the project.
-        :param str merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        :param str merge_commit_template: Template used to create merge commit message in merge requests.
         :param str merge_method: Merge method for the project.
         :param bool merge_pipelines_enabled: Enable or disable merge pipelines.
         :param str merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -7710,7 +8095,7 @@ class GetProjectsProjectResult(dict):
         :param Sequence['GetProjectsProjectSharedWithGroupArgs'] shared_with_groups: Groups the the project is shared with.
         :param str snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param bool snippets_enabled: Whether snippets are enabled for the project.
-        :param str squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        :param str squash_commit_template: Template used to create squash commit message in merge requests.
         :param str ssh_url_to_repo: The SSH clone URL of the project.
         :param int star_count: The number of stars on the project.
         :param Mapping[str, int] statistics: Statistics for the project.
@@ -7980,7 +8365,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
     def ci_restrict_pipeline_cancellation_role(self) -> str:
         """
-        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
@@ -8220,7 +8605,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> str:
         """
-        Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
@@ -8545,7 +8930,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="squashCommitTemplate")
     def squash_commit_template(self) -> str:
         """
-        Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
@@ -9149,13 +9534,13 @@ class GetReleaseLinksReleaseLinkResult(dict):
                  tag_name: str,
                  url: str):
         """
-        :param str direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        :param str direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         :param bool external: External or internal link.
-        :param str filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        :param str filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         :param int link_id: The ID of the link.
         :param str link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         :param str name: The name of the link. Link names must be unique within the release.
-        :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        :param str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         :param str tag_name: The tag associated with the Release.
         :param str url: The URL of the link. Link URLs must be unique within the release.
         """
@@ -9173,7 +9558,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> str:
         """
-        Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
@@ -9189,7 +9574,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter
     def filepath(self) -> str:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -9221,7 +9606,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         """
         return pulumi.get(self, "project")
 
@@ -9500,7 +9885,7 @@ class GetUsersUserResult(dict):
         :param int color_scheme_id: User's color scheme ID.
         :param str created_at: Date the user was created at.
         :param str current_sign_in_at: Current user's sign-in date.
-        :param str email: The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        :param str email: The public email address of the user.
         :param str extern_uid: The external UID of the user.
         :param bool external: Whether the user is external.
         :param int id: The unique id assigned to the user by the gitlab server.
@@ -9510,7 +9895,7 @@ class GetUsersUserResult(dict):
         :param str linkedin: LinkedIn profile of the user.
         :param str location: The location of the user.
         :param str name: The name of the user.
-        :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        :param int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
         :param str organization: The organization of the user.
         :param int projects_limit: Number of projects the user can create.
         :param str provider: The UID provider of the user.
@@ -9611,7 +9996,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def email(self) -> str:
         """
-        The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+        The public email address of the user.
         """
         return pulumi.get(self, "email")
 
@@ -9691,7 +10076,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> int:
         """
-        The ID of the user's namespace. Requires admin token to access this field. Available since GitLab 14.10.
+        The ID of the user's namespace. Requires admin token to access this field.
         """
         return pulumi.get(self, "namespace_id")
 

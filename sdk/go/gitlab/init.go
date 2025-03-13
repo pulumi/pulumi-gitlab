@@ -179,6 +179,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectTag{}
 	case "gitlab:index/projectVariable:ProjectVariable":
 		r = &ProjectVariable{}
+	case "gitlab:index/projectWikiPage:ProjectWikiPage":
+		r = &ProjectWikiPage{}
+	case "gitlab:index/release:Release":
+		r = &Release{}
 	case "gitlab:index/releaseLink:ReleaseLink":
 		r = &ReleaseLink{}
 	case "gitlab:index/repositoryFile:RepositoryFile":
@@ -645,6 +649,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectVariable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectWikiPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/release",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

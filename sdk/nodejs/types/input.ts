@@ -789,7 +789,7 @@ export interface GroupPushRules {
      */
     branchNameRegex?: pulumi.Input<string>;
     /**
-     * Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+     * Only commits pushed using verified emails are allowed.
      */
     commitCommitterCheck?: pulumi.Input<boolean>;
     /**
@@ -829,7 +829,7 @@ export interface GroupPushRules {
      */
     rejectNonDcoCommits?: pulumi.Input<boolean>;
     /**
-     * Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions >= 16.4.
+     * Only commits signed through GPG are allowed.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
 }
@@ -1127,6 +1127,122 @@ export interface ProjectTagRelease {
     tagName?: pulumi.Input<string>;
 }
 
+export interface ReleaseAssets {
+    /**
+     * The total count of assets in this release.
+     */
+    count?: pulumi.Input<number>;
+}
+
+export interface ReleaseAuthor {
+    /**
+     * The url of the author's' user avatar.
+     */
+    avatarUrl?: pulumi.Input<string>;
+    /**
+     * The ID of the author's user.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The name of the author.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The state of the author's user.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The username of the author.
+     */
+    username?: pulumi.Input<string>;
+    /**
+     * The url to the author's user profile.
+     */
+    webUrl?: pulumi.Input<string>;
+}
+
+export interface ReleaseCommit {
+    /**
+     * The email address of the commit author.
+     */
+    authorEmail?: pulumi.Input<string>;
+    /**
+     * The name of the commit author.
+     */
+    authorName?: pulumi.Input<string>;
+    /**
+     * The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
+     */
+    authoredDate?: pulumi.Input<string>;
+    /**
+     * The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
+     */
+    committedDate?: pulumi.Input<string>;
+    /**
+     * The email address of the committer.
+     */
+    committerEmail?: pulumi.Input<string>;
+    /**
+     * The name of the committer.
+     */
+    committerName?: pulumi.Input<string>;
+    /**
+     * The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The git commit full SHA
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The commit message.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * The full SHA of any parent commits.
+     */
+    parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The git commit short SHA.
+     */
+    shortId?: pulumi.Input<string>;
+    /**
+     * The title of the commit.
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface ReleaseLinks {
+    /**
+     * URL of the release's closed issues.
+     */
+    closedIssuesUrl?: pulumi.Input<string>;
+    /**
+     * URL of the release's closed merge requests.
+     */
+    closedMergeRequestsUrl?: pulumi.Input<string>;
+    /**
+     * URL of the release's edit page.
+     */
+    editUrl?: pulumi.Input<string>;
+    /**
+     * URL of the release's merged merge requests.
+     */
+    mergedMergeRequestsUrl?: pulumi.Input<string>;
+    /**
+     * URL of the release's open issues.
+     */
+    openedIssuesUrl?: pulumi.Input<string>;
+    /**
+     * URL of the release's open merge requests.
+     */
+    openedMergeRequestsUrl?: pulumi.Input<string>;
+    /**
+     * URL of the release.
+     */
+    self?: pulumi.Input<string>;
+}
+
 export interface TagProtectionAllowedToCreate {
     /**
      * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
@@ -1152,7 +1268,7 @@ export interface ValueStreamAnalyticsStage {
      */
     custom?: pulumi.Input<boolean>;
     /**
-     * End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+     * End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
      */
     endEventIdentifier?: pulumi.Input<string>;
     /**
@@ -1172,7 +1288,7 @@ export interface ValueStreamAnalyticsStage {
      */
     name: pulumi.Input<string>;
     /**
-     * Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYTED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+     * Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
      */
     startEventIdentifier?: pulumi.Input<string>;
     /**

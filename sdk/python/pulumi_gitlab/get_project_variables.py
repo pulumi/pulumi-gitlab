@@ -92,7 +92,7 @@ def get_project_variables(environment_scope: Optional[str] = None,
     """
     The `get_project_variables` data source allows to retrieve all project-level CI/CD variables.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 
     ## Example Usage
 
@@ -127,7 +127,7 @@ def get_project_variables_output(environment_scope: Optional[pulumi.Input[Option
     """
     The `get_project_variables` data source allows to retrieve all project-level CI/CD variables.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 
     ## Example Usage
 

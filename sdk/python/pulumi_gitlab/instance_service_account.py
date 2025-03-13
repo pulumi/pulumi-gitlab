@@ -152,7 +152,33 @@ class InstanceServiceAccount(pulumi.CustomResource):
 
         > In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/user_service_accounts.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+
+        ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_service_account`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_instance_service_account.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
+        ```sh
+        $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount You can import a group service account using `<resource> <id>`. The
+        ```
+
+        `id` is the id of the service account
+
+        ```sh
+        $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,7 +196,33 @@ class InstanceServiceAccount(pulumi.CustomResource):
 
         > In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/user_service_accounts.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+
+        ## Import
+
+        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_service_account`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_instance_service_account.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Import using the CLI is supported using the following syntax:
+
+        ```sh
+        $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount You can import a group service account using `<resource> <id>`. The
+        ```
+
+        `id` is the id of the service account
+
+        ```sh
+        $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
+        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceServiceAccountArgs args: The arguments to use to populate this resource's properties.

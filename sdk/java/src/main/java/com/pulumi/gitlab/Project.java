@@ -360,14 +360,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
-     * The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
     @Export(name="ciRestrictPipelineCancellationRole", refs={String.class}, tree="[0]")
     private Output<String> ciRestrictPipelineCancellationRole;
 
     /**
-     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
     public Output<String> ciRestrictPipelineCancellationRole() {
@@ -742,14 +742,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.lfsEnabled;
     }
     /**
-     * Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * Template used to create merge commit message in merge requests.
      * 
      */
     @Export(name="mergeCommitTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mergeCommitTemplate;
 
     /**
-     * @return Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * @return Template used to create merge commit message in merge requests.
      * 
      */
     public Output<Optional<String>> mergeCommitTemplate() {
@@ -1372,28 +1372,28 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.snippetsEnabled;
     }
     /**
-     * Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * Template used to create squash commit message in merge requests.
      * 
      */
     @Export(name="squashCommitTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> squashCommitTemplate;
 
     /**
-     * @return Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * @return Template used to create squash commit message in merge requests.
      * 
      */
     public Output<Optional<String>> squashCommitTemplate() {
         return Codegen.optional(this.squashCommitTemplate);
     }
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+     * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
      * 
      */
     @Export(name="squashOption", refs={String.class}, tree="[0]")
     private Output<String> squashOption;
 
     /**
-     * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab &gt;= 14.1]
+     * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
      * 
      */
     public Output<String> squashOption() {
@@ -1485,7 +1485,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     @Export(name="useCustomTemplate", refs={Boolean.class}, tree="[0]")
@@ -1493,7 +1493,7 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     public Output<Optional<Boolean>> useCustomTemplate() {

@@ -144,7 +144,7 @@ class ProjectArgs:
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
-        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -169,7 +169,7 @@ class ProjectArgs:
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
-        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -214,15 +214,15 @@ class ProjectArgs:
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
@@ -684,7 +684,7 @@ class ProjectArgs:
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
     def ci_restrict_pipeline_cancellation_role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
@@ -985,7 +985,7 @@ class ProjectArgs:
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
@@ -1494,7 +1494,7 @@ class ProjectArgs:
     @pulumi.getter(name="squashCommitTemplate")
     def squash_commit_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
@@ -1506,7 +1506,7 @@ class ProjectArgs:
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> Optional[pulumi.Input[str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         """
         return pulumi.get(self, "squash_option")
 
@@ -1579,7 +1579,7 @@ class ProjectArgs:
     def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -1758,7 +1758,7 @@ class _ProjectState:
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
-        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -1785,7 +1785,7 @@ class _ProjectState:
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
-        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1832,8 +1832,8 @@ class _ProjectState:
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
@@ -1841,7 +1841,7 @@ class _ProjectState:
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
@@ -2330,7 +2330,7 @@ class _ProjectState:
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
     def ci_restrict_pipeline_cancellation_role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
@@ -2655,7 +2655,7 @@ class _ProjectState:
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
@@ -3188,7 +3188,7 @@ class _ProjectState:
     @pulumi.getter(name="squashCommitTemplate")
     def squash_commit_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
@@ -3200,7 +3200,7 @@ class _ProjectState:
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> Optional[pulumi.Input[str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         """
         return pulumi.get(self, "squash_option")
 
@@ -3285,7 +3285,7 @@ class _ProjectState:
     def use_custom_template(self) -> Optional[pulumi.Input[bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -3504,7 +3504,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
-        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -3529,7 +3529,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
-        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3574,15 +3574,15 @@ class Project(pulumi.CustomResource):
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] wiki_enabled: Enable wiki for the project.
@@ -4001,7 +4001,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param pulumi.Input[str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
-        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        :param pulumi.Input[str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
@@ -4028,7 +4028,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[bool] lfs_enabled: Enable LFS for the project.
-        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        :param pulumi.Input[str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4075,8 +4075,8 @@ class Project(pulumi.CustomResource):
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[bool] snippets_enabled: Enable snippets for the project.
-        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
-        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        :param pulumi.Input[str] squash_commit_template: Template used to create squash commit message in merge requests.
+        :param pulumi.Input[str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         :param pulumi.Input[str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
@@ -4084,7 +4084,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: The list of topics for the project.
         :param pulumi.Input[bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4377,7 +4377,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
     def ci_restrict_pipeline_cancellation_role(self) -> pulumi.Output[str]:
         """
-        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
@@ -4594,7 +4594,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> pulumi.Output[Optional[str]]:
         """
-        Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
@@ -4951,7 +4951,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="squashCommitTemplate")
     def squash_commit_template(self) -> pulumi.Output[Optional[str]]:
         """
-        Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
@@ -4959,7 +4959,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> pulumi.Output[str]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`. [GitLab >= 14.1]
+        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
         """
         return pulumi.get(self, "squash_option")
 
@@ -5016,7 +5016,7 @@ class Project(pulumi.CustomResource):
     def use_custom_template(self) -> pulumi.Output[Optional[bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting.html#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 

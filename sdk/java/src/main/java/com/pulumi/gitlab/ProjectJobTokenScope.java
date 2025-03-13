@@ -12,6 +12,7 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectJobTokenScopeState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -20,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Conflicts with the use of `gitlab.ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
  * 
  * ## Import
  * 
@@ -62,18 +63,32 @@ public class ProjectJobTokenScope extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    @Export(name="targetGroupId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> targetGroupId;
+
+    /**
+     * @return The ID of the group that is in the CI/CD job token inbound allowlist.
+     * 
+     */
+    public Output<Optional<Integer>> targetGroupId() {
+        return Codegen.optional(this.targetGroupId);
+    }
+    /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
     @Export(name="targetProjectId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> targetProjectId;
+    private Output</* @Nullable */ Integer> targetProjectId;
 
     /**
      * @return The ID of the project that is in the CI/CD job token inbound allowlist.
      * 
      */
-    public Output<Integer> targetProjectId() {
-        return this.targetProjectId;
+    public Output<Optional<Integer>> targetProjectId() {
+        return Codegen.optional(this.targetProjectId);
     }
 
     /**

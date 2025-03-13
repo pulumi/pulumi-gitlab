@@ -75,7 +75,7 @@ class GetGroupMembershipResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the group membership. In the format of `<group-id:access-level>`.
         """
         return pulumi.get(self, "id")
 
@@ -118,7 +118,7 @@ def get_group_membership(access_level: Optional[str] = None,
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
     :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -149,7 +149,7 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[str
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
     :param str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.

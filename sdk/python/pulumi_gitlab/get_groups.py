@@ -122,7 +122,7 @@ def get_groups(order_by: Optional[str] = None,
 
     > Some available options require administrator privileges.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-groups)
 
     ## Example Usage
 
@@ -168,7 +168,7 @@ def get_groups_output(order_by: Optional[pulumi.Input[Optional[str]]] = None,
 
     > Some available options require administrator privileges.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-groups)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-groups)
 
     ## Example Usage
 

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > This data source requires administration privileges.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
  */
 export function getInstanceDeployKeys(args?: GetInstanceDeployKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceDeployKeysResult> {
     args = args || {};
@@ -53,7 +53,7 @@ export interface GetInstanceDeployKeysResult {
  *
  * > This data source requires administration privileges.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_keys.html#list-all-deploy-keys)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_keys/#list-all-deploy-keys)
  */
 export function getInstanceDeployKeysOutput(args?: GetInstanceDeployKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceDeployKeysResult> {
     args = args || {};

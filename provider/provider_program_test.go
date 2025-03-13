@@ -26,7 +26,8 @@ var programs = []string{
 	"test-programs/index_projectapprovalrule",
 	"test-programs/index_branchprotection",
 	"test-programs/index_projectlevelmrapprovals",
-	"test-programs/index_projecthook",
+	// TODO[pulumi/pulumi-gitlab#861] upgrade has a replace plan
+	// "test-programs/index_projecthook",
 	"test-programs/index_project",
 }
 

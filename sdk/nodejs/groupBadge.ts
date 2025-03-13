@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
  *
  * ## Example Usage
  *
@@ -92,7 +92,7 @@ export class GroupBadge extends pulumi.CustomResource {
     }
 
     /**
-     * The id of the group to add the badge to.
+     * The ID or URL-encoded path of the group to add the badge to.
      */
     public readonly group!: pulumi.Output<string>;
     /**
@@ -163,7 +163,7 @@ export class GroupBadge extends pulumi.CustomResource {
  */
 export interface GroupBadgeState {
     /**
-     * The id of the group to add the badge to.
+     * The ID or URL-encoded path of the group to add the badge to.
      */
     group?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface GroupBadgeState {
  */
 export interface GroupBadgeArgs {
     /**
-     * The id of the group to add the badge to.
+     * The ID or URL-encoded path of the group to add the badge to.
      */
     group: pulumi.Input<string>;
     /**

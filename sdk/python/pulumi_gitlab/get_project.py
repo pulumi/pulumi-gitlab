@@ -350,7 +350,7 @@ class GetProjectResult:
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
     def ci_restrict_pipeline_cancellation_role(self) -> str:
         """
-        The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
@@ -510,7 +510,7 @@ class GetProjectResult:
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> str:
         """
-        Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+        Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
@@ -750,7 +750,7 @@ class GetProjectResult:
     @pulumi.getter(name="squashCommitTemplate")
     def squash_commit_template(self) -> str:
         """
-        Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+        Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
@@ -898,7 +898,7 @@ def get_project(ci_default_git_depth: Optional[int] = None,
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
 
 
     :param int ci_default_git_depth: Default number of revisions for shallow cloning.
@@ -994,7 +994,7 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[int]
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#get-single-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
 
 
     :param int ci_default_git_depth: Default number of revisions for shallow cloning.

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
  *
- * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
  *
  * ## Example Usage
  *
@@ -95,7 +95,7 @@ export interface GetProjectIssuesArgs {
      */
     iids?: number[];
     /**
-     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     * Filter to a given type of issue. Valid values are [issue incident testCase].
      */
     issueType?: string;
     /**
@@ -163,7 +163,7 @@ export interface GetProjectIssuesArgs {
      */
     weight?: number;
     /**
-     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      */
     withLabelsDetails?: boolean;
 }
@@ -209,7 +209,7 @@ export interface GetProjectIssuesResult {
      */
     readonly iids?: number[];
     /**
-     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     * Filter to a given type of issue. Valid values are [issue incident testCase].
      */
     readonly issueType?: string;
     /**
@@ -281,14 +281,14 @@ export interface GetProjectIssuesResult {
      */
     readonly weight?: number;
     /**
-     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      */
     readonly withLabelsDetails?: boolean;
 }
 /**
  * The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
  *
- * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
  *
  * ## Example Usage
  *
@@ -374,7 +374,7 @@ export interface GetProjectIssuesOutputArgs {
      */
     iids?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * Filter to a given type of issue. Valid values are [issue incident testCase]. (Introduced in GitLab 13.12)
+     * Filter to a given type of issue. Valid values are [issue incident testCase].
      */
     issueType?: pulumi.Input<string>;
     /**
@@ -442,7 +442,7 @@ export interface GetProjectIssuesOutputArgs {
      */
     weight?: pulumi.Input<number>;
     /**
-     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false. descriptionHtml was introduced in GitLab 12.7
+     * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      */
     withLabelsDetails?: pulumi.Input<boolean>;
 }

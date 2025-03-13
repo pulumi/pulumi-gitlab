@@ -118,7 +118,7 @@ def get_repository_tree(path: Optional[str] = None,
     """
     The `get_repository_tree` data source allows details of directories and files in a repository to be retrieved.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repositories/#list-repository-tree)
 
     ## Example Usage
 
@@ -161,7 +161,7 @@ def get_repository_tree_output(path: Optional[pulumi.Input[Optional[str]]] = Non
     """
     The `get_repository_tree` data source allows details of directories and files in a repository to be retrieved.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repositories.html#list-repository-tree)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repositories/#list-repository-tree)
 
     ## Example Usage
 

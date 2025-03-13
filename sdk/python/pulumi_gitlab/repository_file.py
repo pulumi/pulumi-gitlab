@@ -45,7 +45,7 @@ class RepositoryFileArgs:
         :param pulumi.Input[str] create_commit_message: Create commit message.
         :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] start_branch: Name of the branch to start the new commit from.
         :param pulumi.Input[str] update_commit_message: Update commit message.
@@ -199,7 +199,7 @@ class RepositoryFileArgs:
     @pulumi.getter(name="executeFilemode")
     def execute_filemode(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        Enables or disables the execute flag on the file.
         """
         return pulumi.get(self, "execute_filemode")
 
@@ -281,7 +281,7 @@ class _RepositoryFileState:
         :param pulumi.Input[str] create_commit_message: Create commit message.
         :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] last_commit_id: The last known commit id.
@@ -471,7 +471,7 @@ class _RepositoryFileState:
     @pulumi.getter(name="executeFilemode")
     def execute_filemode(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        Enables or disables the execute flag on the file.
         """
         return pulumi.get(self, "execute_filemode")
 
@@ -683,7 +683,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] create_commit_message: Create commit message.
         :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[str] project: The name or ID of the project.
@@ -877,7 +877,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[str] create_commit_message: Create commit message.
         :param pulumi.Input[str] delete_commit_message: Delete Commit message.
         :param pulumi.Input[str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        :param pulumi.Input[bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[str] file_name: The filename.
         :param pulumi.Input[str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[str] last_commit_id: The last known commit id.
@@ -1007,7 +1007,7 @@ class RepositoryFile(pulumi.CustomResource):
     @pulumi.getter(name="executeFilemode")
     def execute_filemode(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+        Enables or disables the execute flag on the file.
         """
         return pulumi.get(self, "execute_filemode")
 

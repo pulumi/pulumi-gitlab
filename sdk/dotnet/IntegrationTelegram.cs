@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
     /// 
     /// ## Example Usage
     /// 
@@ -77,7 +77,7 @@ namespace Pulumi.GitLab
     public partial class IntegrationTelegram : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string> BranchesToBeNotified { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationTelegramArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationTelegramState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }

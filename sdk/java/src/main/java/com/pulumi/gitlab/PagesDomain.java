@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
  * 
  * ## Import
  * 
@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/pagesDomain:PagesDomain")
 public class PagesDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+     * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
     @Export(name="autoSslEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoSslEnabled;
 
     /**
-     * @return Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+     * @return Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
     public Output<Boolean> autoSslEnabled() {
@@ -117,14 +117,14 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.key);
     }
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
     public Output<String> project() {

@@ -275,6 +275,21 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for project access token expiry events.
+     * 
+     */
+    @Import(name="resourceAccessTokenEvents")
+    private @Nullable Output<Boolean> resourceAccessTokenEvents;
+
+    /**
+     * @return Invoke the hook for project access token expiry events.
+     * 
+     */
+    public Optional<Output<Boolean>> resourceAccessTokenEvents() {
+        return Optional.ofNullable(this.resourceAccessTokenEvents);
+    }
+
+    /**
      * Invoke the hook for tag push events.
      * 
      */
@@ -354,6 +369,7 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
         this.pushEvents = $.pushEvents;
         this.pushEventsBranchFilter = $.pushEventsBranchFilter;
         this.releasesEvents = $.releasesEvents;
+        this.resourceAccessTokenEvents = $.resourceAccessTokenEvents;
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
         this.url = $.url;
@@ -743,6 +759,27 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder releasesEvents(Boolean releasesEvents) {
             return releasesEvents(Output.of(releasesEvents));
+        }
+
+        /**
+         * @param resourceAccessTokenEvents Invoke the hook for project access token expiry events.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAccessTokenEvents(@Nullable Output<Boolean> resourceAccessTokenEvents) {
+            $.resourceAccessTokenEvents = resourceAccessTokenEvents;
+            return this;
+        }
+
+        /**
+         * @param resourceAccessTokenEvents Invoke the hook for project access token expiry events.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAccessTokenEvents(Boolean resourceAccessTokenEvents) {
+            return resourceAccessTokenEvents(Output.of(resourceAccessTokenEvents));
         }
 
         /**

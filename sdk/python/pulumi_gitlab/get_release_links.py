@@ -92,7 +92,7 @@ def get_release_links(project: Optional[str] = None,
     """
     The `get_release_links` data source allows get details of release links.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
 
     :param str project: The ID or full path to the project.
@@ -115,7 +115,7 @@ def get_release_links_output(project: Optional[pulumi.Input[str]] = None,
     """
     The `get_release_links` data source allows get details of release links.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
 
     :param str project: The ID or full path to the project.

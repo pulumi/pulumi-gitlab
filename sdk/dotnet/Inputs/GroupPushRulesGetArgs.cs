@@ -25,7 +25,7 @@ namespace Pulumi.GitLab.Inputs
         public Input<string>? BranchNameRegex { get; set; }
 
         /// <summary>
-        /// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+        /// Only commits pushed using verified emails are allowed.
         /// </summary>
         [Input("commitCommitterCheck")]
         public Input<bool>? CommitCommitterCheck { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.GitLab.Inputs
         public Input<bool>? RejectNonDcoCommits { get; set; }
 
         /// <summary>
-        /// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+        /// Only commits signed through GPG are allowed.
         /// </summary>
         [Input("rejectUnsignedCommits")]
         public Input<bool>? RejectUnsignedCommits { get; set; }

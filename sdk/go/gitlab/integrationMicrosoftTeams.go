@@ -14,7 +14,7 @@ import (
 
 // The `IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#microsoft-teams)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#microsoft-teams)
 //
 // ## Example Usage
 //

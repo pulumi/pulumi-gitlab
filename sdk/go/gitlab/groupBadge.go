@@ -14,7 +14,7 @@ import (
 
 // The `GroupBadge` resource allows to manage the lifecycle of group badges.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/user/project/badges.html#group-badges)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
 //
 // ## Example Usage
 //
@@ -101,7 +101,7 @@ import (
 type GroupBadge struct {
 	pulumi.CustomResourceState
 
-	// The id of the group to add the badge to.
+	// The ID or URL-encoded path of the group to add the badge to.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The image url which will be presented on group overview.
 	ImageUrl pulumi.StringOutput `pulumi:"imageUrl"`
@@ -154,7 +154,7 @@ func GetGroupBadge(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupBadge resources.
 type groupBadgeState struct {
-	// The id of the group to add the badge to.
+	// The ID or URL-encoded path of the group to add the badge to.
 	Group *string `pulumi:"group"`
 	// The image url which will be presented on group overview.
 	ImageUrl *string `pulumi:"imageUrl"`
@@ -169,7 +169,7 @@ type groupBadgeState struct {
 }
 
 type GroupBadgeState struct {
-	// The id of the group to add the badge to.
+	// The ID or URL-encoded path of the group to add the badge to.
 	Group pulumi.StringPtrInput
 	// The image url which will be presented on group overview.
 	ImageUrl pulumi.StringPtrInput
@@ -188,7 +188,7 @@ func (GroupBadgeState) ElementType() reflect.Type {
 }
 
 type groupBadgeArgs struct {
-	// The id of the group to add the badge to.
+	// The ID or URL-encoded path of the group to add the badge to.
 	Group string `pulumi:"group"`
 	// The image url which will be presented on group overview.
 	ImageUrl string `pulumi:"imageUrl"`
@@ -200,7 +200,7 @@ type groupBadgeArgs struct {
 
 // The set of arguments for constructing a GroupBadge resource.
 type GroupBadgeArgs struct {
-	// The id of the group to add the badge to.
+	// The ID or URL-encoded path of the group to add the badge to.
 	Group pulumi.StringInput
 	// The image url which will be presented on group overview.
 	ImageUrl pulumi.StringInput
@@ -297,7 +297,7 @@ func (o GroupBadgeOutput) ToGroupBadgeOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
-// The id of the group to add the badge to.
+// The ID or URL-encoded path of the group to add the badge to.
 func (o GroupBadgeOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupBadge) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }

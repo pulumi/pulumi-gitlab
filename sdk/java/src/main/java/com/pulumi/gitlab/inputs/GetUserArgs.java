@@ -17,14 +17,14 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserArgs Empty = new GetUserArgs();
 
     /**
-     * The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * The public email address of the user.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+     * @return The public email address of the user.
      * 
      */
     public Optional<Output<String>> email() {
@@ -32,14 +32,14 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * The ID of the user&#39;s namespace. Requires admin token to access this field.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<Integer> namespaceId;
 
     /**
-     * @return The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+     * @return The ID of the user&#39;s namespace. Requires admin token to access this field.
      * 
      */
     public Optional<Output<Integer>> namespaceId() {
@@ -104,7 +104,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+         * @param email The public email address of the user.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email The public email address of the user. **Note**: before GitLab 14.8 the lookup was based on the users primary email address.
+         * @param email The public email address of the user.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param namespaceId The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+         * @param namespaceId The ID of the user&#39;s namespace. Requires admin token to access this field.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param namespaceId The ID of the user&#39;s namespace. Requires admin token to access this field. Available since GitLab 14.10.
+         * @param namespaceId The ID of the user&#39;s namespace. Requires admin token to access this field.
          * 
          * @return builder
          * 

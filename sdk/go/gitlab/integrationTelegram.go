@@ -14,7 +14,7 @@ import (
 
 // The `IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#telegram)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
 //
 // ## Example Usage
 //
@@ -86,7 +86,7 @@ import (
 type IntegrationTelegram struct {
 	pulumi.CustomResourceState
 
-	// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified pulumi.StringOutput `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
@@ -189,7 +189,7 @@ func GetIntegrationTelegram(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IntegrationTelegram resources.
 type integrationTelegramState struct {
-	// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
@@ -220,7 +220,7 @@ type integrationTelegramState struct {
 }
 
 type IntegrationTelegramState struct {
-	// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
@@ -255,7 +255,7 @@ func (IntegrationTelegramState) ElementType() reflect.Type {
 }
 
 type integrationTelegramArgs struct {
-	// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
@@ -287,7 +287,7 @@ type integrationTelegramArgs struct {
 
 // The set of arguments for constructing a IntegrationTelegram resource.
 type IntegrationTelegramArgs struct {
-	// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolInput
@@ -404,7 +404,7 @@ func (o IntegrationTelegramOutput) ToIntegrationTelegramOutputWithContext(ctx co
 	return o
 }
 
-// Branches to send notifications for (introduced in GitLab 16.5). Update of this attribute was not supported before Gitlab 16.11 due to API bug. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
+// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 func (o IntegrationTelegramOutput) BranchesToBeNotified() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationTelegram) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
 }

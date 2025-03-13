@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/pages_domains.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages_domains/)
     /// 
     /// ## Import
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     public partial class PagesDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        /// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         /// </summary>
         [Output("autoSslEnabled")]
         public Output<bool> AutoSslEnabled { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.GitLab
     public sealed class PagesDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        /// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         /// </summary>
         [Input("autoSslEnabled")]
         public Input<bool>? AutoSslEnabled { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.GitLab
     public sealed class PagesDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
+        /// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         /// </summary>
         [Input("autoSslEnabled")]
         public Input<bool>? AutoSslEnabled { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

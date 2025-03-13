@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
  *
  * ## Example Usage
  *
@@ -61,9 +61,6 @@ export interface GetGroupVariablesResult {
      * The name or id of the group.
      */
     readonly group: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The list of variables returned by the search
@@ -73,7 +70,7 @@ export interface GetGroupVariablesResult {
 /**
  * The `gitlab.getGroupVariables` data source allows to retrieve all group-level CI/CD variables.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
  *
  * ## Example Usage
  *

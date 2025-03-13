@@ -27,7 +27,7 @@ public final class GetProjectMilestonesResult {
      */
     private @Nullable List<Integer> iids;
     /**
-     * @return Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * @return Include group milestones from parent group and its ancestors.
      * 
      */
     private @Nullable Boolean includeParentMilestones;
@@ -73,7 +73,7 @@ public final class GetProjectMilestonesResult {
         return this.iids == null ? List.of() : this.iids;
     }
     /**
-     * @return Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * @return Include group milestones from parent group and its ancestors.
      * 
      */
     public Optional<Boolean> includeParentMilestones() {

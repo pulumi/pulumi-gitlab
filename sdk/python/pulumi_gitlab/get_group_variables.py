@@ -60,9 +60,6 @@ class GetGroupVariablesResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -92,7 +89,7 @@ def get_group_variables(environment_scope: Optional[str] = None,
     """
     The `get_group_variables` data source allows to retrieve all group-level CI/CD variables.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
     ## Example Usage
 
@@ -127,7 +124,7 @@ def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional
     """
     The `get_group_variables` data source allows to retrieve all group-level CI/CD variables.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
     ## Example Usage
 

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ReleaseLink` data source allows get details of a release link.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  */
 export function getReleaseLink(args: GetReleaseLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -27,7 +27,7 @@ export interface GetReleaseLinkArgs {
      */
     linkId: number;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     project: string;
     /**
@@ -41,7 +41,7 @@ export interface GetReleaseLinkArgs {
  */
 export interface GetReleaseLinkResult {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      */
     readonly directAssetUrl: string;
     /**
@@ -49,7 +49,7 @@ export interface GetReleaseLinkResult {
      */
     readonly external: boolean;
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/ee/user/project/releases/index.html#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      */
     readonly filepath: string;
     /**
@@ -69,7 +69,7 @@ export interface GetReleaseLinkResult {
      */
     readonly name: string;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     readonly project: string;
     /**
@@ -84,7 +84,7 @@ export interface GetReleaseLinkResult {
 /**
  * The `gitlab.ReleaseLink` data source allows get details of a release link.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/links.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  */
 export function getReleaseLinkOutput(args: GetReleaseLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReleaseLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -104,7 +104,7 @@ export interface GetReleaseLinkOutputArgs {
      */
     linkId: pulumi.Input<number>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     project: pulumi.Input<string>;
     /**

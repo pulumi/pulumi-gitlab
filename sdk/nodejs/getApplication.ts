@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.Application` data source retrieves information about a gitlab application.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,7 +48,7 @@ export interface GetApplicationResult {
 /**
  * The `gitlab.Application` data source retrieves information about a gitlab application.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
  */
 export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

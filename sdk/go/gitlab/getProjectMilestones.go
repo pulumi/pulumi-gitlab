@@ -13,7 +13,7 @@ import (
 
 // The `getProjectMilestones` data source allows get details of a project milestones.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 func GetProjectMilestones(ctx *pulumi.Context, args *GetProjectMilestonesArgs, opts ...pulumi.InvokeOption) (*GetProjectMilestonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectMilestonesResult
@@ -28,7 +28,7 @@ func GetProjectMilestones(ctx *pulumi.Context, args *GetProjectMilestonesArgs, o
 type GetProjectMilestonesArgs struct {
 	// Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
 	Iids []int `pulumi:"iids"`
-	// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+	// Include group milestones from parent group and its ancestors.
 	IncludeParentMilestones *bool `pulumi:"includeParentMilestones"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
@@ -46,7 +46,7 @@ type GetProjectMilestonesResult struct {
 	Id string `pulumi:"id"`
 	// Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
 	Iids []int `pulumi:"iids"`
-	// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+	// Include group milestones from parent group and its ancestors.
 	IncludeParentMilestones *bool `pulumi:"includeParentMilestones"`
 	// List of milestones from a project.
 	Milestones []GetProjectMilestonesMilestone `pulumi:"milestones"`
@@ -73,7 +73,7 @@ func GetProjectMilestonesOutput(ctx *pulumi.Context, args GetProjectMilestonesOu
 type GetProjectMilestonesOutputArgs struct {
 	// Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
 	Iids pulumi.IntArrayInput `pulumi:"iids"`
-	// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+	// Include group milestones from parent group and its ancestors.
 	IncludeParentMilestones pulumi.BoolPtrInput `pulumi:"includeParentMilestones"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -114,7 +114,7 @@ func (o GetProjectMilestonesResultOutput) Iids() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetProjectMilestonesResult) []int { return v.Iids }).(pulumi.IntArrayOutput)
 }
 
-// Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+// Include group milestones from parent group and its ancestors.
 func (o GetProjectMilestonesResultOutput) IncludeParentMilestones() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectMilestonesResult) *bool { return v.IncludeParentMilestones }).(pulumi.BoolPtrOutput)
 }

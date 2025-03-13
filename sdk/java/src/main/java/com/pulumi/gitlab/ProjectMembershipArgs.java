@@ -48,6 +48,21 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Import(name="memberRoleId")
+    private @Nullable Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Optional<Output<Integer>> memberRoleId() {
+        return Optional.ofNullable(this.memberRoleId);
+    }
+
+    /**
      * The ID or URL-encoded path of the project.
      * 
      */
@@ -82,6 +97,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
     private ProjectMembershipArgs(ProjectMembershipArgs $) {
         this.accessLevel = $.accessLevel;
         this.expiresAt = $.expiresAt;
+        this.memberRoleId = $.memberRoleId;
         this.project = $.project;
         this.userId = $.userId;
     }
@@ -144,6 +160,27 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder expiresAt(String expiresAt) {
             return expiresAt(Output.of(expiresAt));
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(@Nullable Output<Integer> memberRoleId) {
+            $.memberRoleId = memberRoleId;
+            return this;
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(Integer memberRoleId) {
+            return memberRoleId(Output.of(memberRoleId));
         }
 
         /**

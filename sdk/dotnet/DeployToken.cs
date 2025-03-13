@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/deploy_tokens.html)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
     /// 
     /// ## Import
     /// 

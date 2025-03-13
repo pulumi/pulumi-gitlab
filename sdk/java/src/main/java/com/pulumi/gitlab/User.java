@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; You must specify either password or reset_password.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/)
  * 
  * ## Example Usage
  * 
@@ -199,14 +199,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the user&#39;s namespace. Available since GitLab 14.10.
+     * The ID of the user&#39;s namespace.
      * 
      */
     @Export(name="namespaceId", refs={Integer.class}, tree="[0]")
     private Output<Integer> namespaceId;
 
     /**
-     * @return The ID of the user&#39;s namespace. Available since GitLab 14.10.
+     * @return The ID of the user&#39;s namespace.
      * 
      */
     public Output<Integer> namespaceId() {

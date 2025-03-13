@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetMetadataResult {
     /**
-     * @return If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+     * @return If the GitLab instance is an enterprise instance or not.
      * 
      */
     private Boolean enterprise;
@@ -40,7 +40,7 @@ public final class GetMetadataResult {
 
     private GetMetadataResult() {}
     /**
-     * @return If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+     * @return If the GitLab instance is an enterprise instance or not.
      * 
      */
     public Boolean enterprise() {

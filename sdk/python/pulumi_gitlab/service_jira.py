@@ -48,7 +48,7 @@ class ServiceJiraArgs:
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
@@ -220,7 +220,7 @@ class ServiceJiraArgs:
     @pulumi.getter(name="jiraIssueTransitionId")
     def jira_issue_transition_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 
@@ -324,7 +324,7 @@ class _ServiceJiraState:
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -500,7 +500,7 @@ class _ServiceJiraState:
     @pulumi.getter(name="jiraIssueTransitionId")
     def jira_issue_transition_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 
@@ -657,7 +657,7 @@ class ServiceJira(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationJira`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
 
         ## Example Usage
 
@@ -707,7 +707,7 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -728,7 +728,7 @@ class ServiceJira(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationJira`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#jira)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
 
         ## Example Usage
 
@@ -886,7 +886,7 @@ class ServiceJira(pulumi.CustomResource):
         :param pulumi.Input[int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[str] jira_issue_regex: Regular expression to match Jira issue keys.
-        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        :param pulumi.Input[str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[str] project: ID of the project you want to activate integration on.
@@ -943,7 +943,7 @@ class ServiceJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commentOnEventEnabled")
-    def comment_on_event_enabled(self) -> pulumi.Output[Optional[bool]]:
+    def comment_on_event_enabled(self) -> pulumi.Output[bool]:
         """
         Enable comments inside Jira issues on each GitLab event (commit / merge request)
         """
@@ -1006,7 +1006,7 @@ class ServiceJira(pulumi.CustomResource):
     @pulumi.getter(name="jiraIssueTransitionId")
     def jira_issue_transition_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+        The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 

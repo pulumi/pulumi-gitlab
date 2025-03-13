@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; If a project should grant membership to an entire group use the `gitlab.ProjectShareGroup` resource instead.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
  * 
  * ## Example Usage
  * 
@@ -118,6 +118,20 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> expiresAt() {
         return Codegen.optional(this.expiresAt);
+    }
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Output<Optional<Integer>> memberRoleId() {
+        return Codegen.optional(this.memberRoleId);
     }
     /**
      * The ID or URL-encoded path of the project.
