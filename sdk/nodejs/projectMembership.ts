@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > If a project should grant membership to an entire group use the `gitlab.ProjectShareGroup` resource instead.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
  *
  * ## Example Usage
  *
@@ -89,6 +89,10 @@ export class ProjectMembership extends pulumi.CustomResource {
      */
     public readonly expiresAt!: pulumi.Output<string | undefined>;
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    /**
      * The ID or URL-encoded path of the project.
      */
     public readonly project!: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class ProjectMembership extends pulumi.CustomResource {
             const state = argsOrState as ProjectMembershipState | undefined;
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
+            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
@@ -127,6 +132,7 @@ export class ProjectMembership extends pulumi.CustomResource {
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
+            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
         }
@@ -147,6 +153,10 @@ export interface ProjectMembershipState {
      * Expiration date for the project membership. Format: `YYYY-MM-DD`
      */
     expiresAt?: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
     /**
      * The ID or URL-encoded path of the project.
      */
@@ -169,6 +179,10 @@ export interface ProjectMembershipArgs {
      * Expiration date for the project membership. Format: `YYYY-MM-DD`
      */
     expiresAt?: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
     /**
      * The ID or URL-encoded path of the project.
      */

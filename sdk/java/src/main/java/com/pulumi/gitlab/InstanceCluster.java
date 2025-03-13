@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This is deprecated GitLab feature since 14.5
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/instance_clusters.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_clusters/)
  * 
  * ## Example Usage
  * 

@@ -21,9 +21,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Requires at least maintainer permissions on the project.
  * 
- * &gt; Requires at least GitLab 15.0
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/cluster_agents.html#create-an-agent-token)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/#create-an-agent-token)
  * 
  * ## Example Usage
  * 

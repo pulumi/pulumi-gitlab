@@ -30,14 +30,14 @@ public final class GetReleaseLinkPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     public String project() {
@@ -97,7 +97,7 @@ public final class GetReleaseLinkPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding).
+         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
          * 
          * @return builder
          * 

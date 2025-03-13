@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/labels.html#project-labels)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
     /// 
     /// ## Example Usage
     /// 

@@ -13,11 +13,11 @@ import (
 
 // The `getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
 //
-// > This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+// > This data source supports all available filters exposed by the [client-go](https://gitlab.com/gitlab-org/api/client-go) package, which might not expose all available filters exposed by the GitLab APIs.
 //
-// > The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+// > The owner sub-attributes are only populated if the GitLab token used has an administrator scope.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-all-projects)
 //
 // ## Example Usage
 //
@@ -84,9 +84,9 @@ type GetProjectsArgs struct {
 	MaxQueryablePages *int `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership *bool `pulumi:"membership"`
-	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
 	MinAccessLevel *int `pulumi:"minAccessLevel"`
-	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 	OrderBy *string `pulumi:"orderBy"`
 	// Limit by projects owned by the current user.
 	Owned *bool `pulumi:"owned"`
@@ -134,9 +134,9 @@ type GetProjectsResult struct {
 	MaxQueryablePages *int `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership *bool `pulumi:"membership"`
-	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
 	MinAccessLevel *int `pulumi:"minAccessLevel"`
-	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 	OrderBy *string `pulumi:"orderBy"`
 	// Limit by projects owned by the current user.
 	Owned *bool `pulumi:"owned"`
@@ -193,9 +193,9 @@ type GetProjectsOutputArgs struct {
 	MaxQueryablePages pulumi.IntPtrInput `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership pulumi.BoolPtrInput `pulumi:"membership"`
-	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
 	MinAccessLevel pulumi.IntPtrInput `pulumi:"minAccessLevel"`
-	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Limit by projects owned by the current user.
 	Owned pulumi.BoolPtrInput `pulumi:"owned"`
@@ -278,12 +278,12 @@ func (o GetProjectsResultOutput) Membership() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Membership }).(pulumi.BoolPtrOutput)
 }
 
-// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `groupId`.
+// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
 func (o GetProjectsResultOutput) MinAccessLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *int { return v.MinAccessLevel }).(pulumi.IntPtrOutput)
 }
 
-// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 func (o GetProjectsResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }

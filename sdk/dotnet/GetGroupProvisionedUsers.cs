@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
         /// </summary>
         public static Task<GetGroupProvisionedUsersResult> InvokeAsync(GetGroupProvisionedUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupProvisionedUsersResult>("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args ?? new GetGroupProvisionedUsersArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
         /// </summary>
         public static Output<GetGroupProvisionedUsersResult> Invoke(GetGroupProvisionedUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupProvisionedUsersResult>("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args ?? new GetGroupProvisionedUsersInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
         /// </summary>
         public static Output<GetGroupProvisionedUsersResult> Invoke(GetGroupProvisionedUsersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupProvisionedUsersResult>("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args ?? new GetGroupProvisionedUsersInvokeArgs(), options.WithDefaults());

@@ -149,7 +149,7 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public readonly encoding!: pulumi.Output<string | undefined>;
     /**
-     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * Enables or disables the execute flag on the file.
      */
     public readonly executeFilemode!: pulumi.Output<boolean | undefined>;
     /**
@@ -313,7 +313,7 @@ export interface RepositoryFileState {
      */
     encoding?: pulumi.Input<string>;
     /**
-     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * Enables or disables the execute flag on the file.
      */
     executeFilemode?: pulumi.Input<boolean>;
     /**
@@ -391,7 +391,7 @@ export interface RepositoryFileArgs {
      */
     encoding?: pulumi.Input<string>;
     /**
-     * Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+     * Enables or disables the execute flag on the file.
      */
     executeFilemode?: pulumi.Input<boolean>;
     /**

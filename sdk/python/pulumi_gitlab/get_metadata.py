@@ -48,7 +48,7 @@ class GetMetadataResult:
     @pulumi.getter
     def enterprise(self) -> bool:
         """
-        If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+        If the GitLab instance is an enterprise instance or not.
         """
         return pulumi.get(self, "enterprise")
 
@@ -102,7 +102,7 @@ def get_metadata(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMet
     """
     The `get_metadata` data source retrieves the metadata of the GitLab instance.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
 
     ## Example Usage
 
@@ -127,7 +127,7 @@ def get_metadata_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Invoke
     """
     The `get_metadata` data source retrieves the metadata of the GitLab instance.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
 
     ## Example Usage
 

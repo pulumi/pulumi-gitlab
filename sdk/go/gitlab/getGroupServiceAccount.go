@@ -13,7 +13,7 @@ import (
 
 // The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 func LookupGroupServiceAccount(ctx *pulumi.Context, args *LookupGroupServiceAccountArgs, opts ...pulumi.InvokeOption) (*LookupGroupServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupServiceAccountResult
@@ -28,12 +28,8 @@ func LookupGroupServiceAccount(ctx *pulumi.Context, args *LookupGroupServiceAcco
 type LookupGroupServiceAccountArgs struct {
 	// The ID or URL-encoded path of the target group. Must be a top-level group.
 	Group string `pulumi:"group"`
-	// The name of the user. If not specified, the default Service account user name is used.
-	Name *string `pulumi:"name"`
 	// The service account id.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
-	// The username of the user. If not specified, it's automatically generated.
-	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getGroupServiceAccount.
@@ -42,11 +38,11 @@ type LookupGroupServiceAccountResult struct {
 	Group string `pulumi:"group"`
 	Id    string `pulumi:"id"`
 	// The name of the user. If not specified, the default Service account user name is used.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The service account id.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
 	// The username of the user. If not specified, it's automatically generated.
-	Username *string `pulumi:"username"`
+	Username string `pulumi:"username"`
 }
 
 func LookupGroupServiceAccountOutput(ctx *pulumi.Context, args LookupGroupServiceAccountOutputArgs, opts ...pulumi.InvokeOption) LookupGroupServiceAccountResultOutput {
@@ -62,12 +58,8 @@ func LookupGroupServiceAccountOutput(ctx *pulumi.Context, args LookupGroupServic
 type LookupGroupServiceAccountOutputArgs struct {
 	// The ID or URL-encoded path of the target group. Must be a top-level group.
 	Group pulumi.StringInput `pulumi:"group"`
-	// The name of the user. If not specified, the default Service account user name is used.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The service account id.
 	ServiceAccountId pulumi.StringInput `pulumi:"serviceAccountId"`
-	// The username of the user. If not specified, it's automatically generated.
-	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (LookupGroupServiceAccountOutputArgs) ElementType() reflect.Type {
@@ -99,8 +91,8 @@ func (o LookupGroupServiceAccountResultOutput) Id() pulumi.StringOutput {
 }
 
 // The name of the user. If not specified, the default Service account user name is used.
-func (o LookupGroupServiceAccountResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGroupServiceAccountResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupGroupServiceAccountResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupServiceAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The service account id.
@@ -109,8 +101,8 @@ func (o LookupGroupServiceAccountResultOutput) ServiceAccountId() pulumi.StringO
 }
 
 // The username of the user. If not specified, it's automatically generated.
-func (o LookupGroupServiceAccountResultOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGroupServiceAccountResult) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o LookupGroupServiceAccountResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupServiceAccountResult) string { return v.Username }).(pulumi.StringOutput)
 }
 
 func init() {

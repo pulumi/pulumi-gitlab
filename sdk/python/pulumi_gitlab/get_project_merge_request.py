@@ -179,7 +179,7 @@ def get_project_merge_request(iid: Optional[int] = None,
     The `get_project_merge_request` data source retrieves
     information about a single merge request related to a specific project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_requests/#get-single-mr)
 
     ## Example Usage
 
@@ -222,7 +222,7 @@ def get_project_merge_request_output(iid: Optional[pulumi.Input[int]] = None,
     The `get_project_merge_request` data source retrieves
     information about a single merge request related to a specific project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_requests.html#get-single-mr)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_requests/#get-single-mr)
 
     ## Example Usage
 

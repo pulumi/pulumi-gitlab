@@ -138,7 +138,7 @@ type RepositoryFile struct {
 	DeleteCommitMessage pulumi.StringPtrOutput `pulumi:"deleteCommitMessage"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
-	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	// Enables or disables the execute flag on the file.
 	ExecuteFilemode pulumi.BoolPtrOutput `pulumi:"executeFilemode"`
 	// The filename.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
@@ -224,7 +224,7 @@ type repositoryFileState struct {
 	DeleteCommitMessage *string `pulumi:"deleteCommitMessage"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
-	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	// Enables or disables the execute flag on the file.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
 	// The filename.
 	FileName *string `pulumi:"fileName"`
@@ -269,7 +269,7 @@ type RepositoryFileState struct {
 	DeleteCommitMessage pulumi.StringPtrInput
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
-	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	// Enables or disables the execute flag on the file.
 	ExecuteFilemode pulumi.BoolPtrInput
 	// The filename.
 	FileName pulumi.StringPtrInput
@@ -312,7 +312,7 @@ type repositoryFileArgs struct {
 	DeleteCommitMessage *string `pulumi:"deleteCommitMessage"`
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
-	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	// Enables or disables the execute flag on the file.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath string `pulumi:"filePath"`
@@ -344,7 +344,7 @@ type RepositoryFileArgs struct {
 	DeleteCommitMessage pulumi.StringPtrInput
 	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
-	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	// Enables or disables the execute flag on the file.
 	ExecuteFilemode pulumi.BoolPtrInput
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath pulumi.StringInput
@@ -500,7 +500,7 @@ func (o RepositoryFileOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
-// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+// Enables or disables the execute flag on the file.
 func (o RepositoryFileOutput) ExecuteFilemode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.BoolPtrOutput { return v.ExecuteFilemode }).(pulumi.BoolPtrOutput)
 }

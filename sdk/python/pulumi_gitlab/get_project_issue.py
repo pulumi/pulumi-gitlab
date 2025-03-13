@@ -524,7 +524,7 @@ def get_project_issue(iid: Optional[int] = None,
     """
     The `ProjectIssue` data source allows to retrieve details about an issue in a project.
 
-    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
 
     ## Example Usage
 
@@ -595,7 +595,7 @@ def get_project_issue_output(iid: Optional[pulumi.Input[int]] = None,
     """
     The `ProjectIssue` data source allows to retrieve details about an issue in a project.
 
-    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/issues.html)
+    **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
 
     ## Example Usage
 

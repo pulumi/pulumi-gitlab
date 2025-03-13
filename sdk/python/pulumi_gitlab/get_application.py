@@ -99,7 +99,7 @@ def get_application(id: Optional[str] = None,
     """
     The `Application` data source retrieves information about a gitlab application.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
     """
     __args__ = dict()
     __args__['id'] = id
@@ -117,7 +117,7 @@ def get_application_output(id: Optional[pulumi.Input[str]] = None,
     """
     The `Application` data source retrieves information about a gitlab application.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
     """
     __args__ = dict()
     __args__['id'] = id

@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
         /// </summary>
         public static Task<GetProjectMilestoneResult> InvokeAsync(GetProjectMilestoneArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectMilestoneResult>("gitlab:index/getProjectMilestone:getProjectMilestone", args ?? new GetProjectMilestoneArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
         /// </summary>
         public static Output<GetProjectMilestoneResult> Invoke(GetProjectMilestoneInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestoneResult>("gitlab:index/getProjectMilestone:getProjectMilestone", args ?? new GetProjectMilestoneInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectMilestone` data source allows get details of a project milestone.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
         /// </summary>
         public static Output<GetProjectMilestoneResult> Invoke(GetProjectMilestoneInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMilestoneResult>("gitlab:index/getProjectMilestone:getProjectMilestone", args ?? new GetProjectMilestoneInvokeArgs(), options.WithDefaults());

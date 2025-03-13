@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource requires a GitLab Enterprise instance.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/merge_request_approvals.html#merge-request-level-mr-approvals)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#merge-request-level-mr-approvals)
  *
  * ## Example Usage
  *

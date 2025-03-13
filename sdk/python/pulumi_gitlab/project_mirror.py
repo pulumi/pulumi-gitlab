@@ -227,11 +227,7 @@ class ProjectMirror(pulumi.CustomResource):
            If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
            This action can result in unexpected branch deletions.
 
-        > **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
-           Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
-           For older versions, the mirror will be disabled and the resource will be destroyed.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
 
         ## Example Usage
 
@@ -290,11 +286,7 @@ class ProjectMirror(pulumi.CustomResource):
            If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
            This action can result in unexpected branch deletions.
 
-        > **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
-           Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
-           For older versions, the mirror will be disabled and the resource will be destroyed.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
 
         ## Example Usage
 
@@ -414,7 +406,7 @@ class ProjectMirror(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[bool]]:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Determines if the mirror is enabled.
         """
@@ -422,7 +414,7 @@ class ProjectMirror(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keepDivergentRefs")
-    def keep_divergent_refs(self) -> pulumi.Output[Optional[bool]]:
+    def keep_divergent_refs(self) -> pulumi.Output[bool]:
         """
         Determines if divergent refs are skipped.
         """
@@ -438,7 +430,7 @@ class ProjectMirror(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyProtectedBranches")
-    def only_protected_branches(self) -> pulumi.Output[Optional[bool]]:
+    def only_protected_branches(self) -> pulumi.Output[bool]:
         """
         Determines if only protected branches are mirrored.
         """

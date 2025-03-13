@@ -14,7 +14,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -27,11 +26,7 @@ import javax.annotation.Nullable;
  *    If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren&#39;t in the source.
  *    This action can result in unexpected branch deletions.
  * 
- * &gt; **Destroy Behavior** GitLab 14.10 introduced an API endpoint to delete a project mirror.
- *    Therefore, for GitLab 14.10 and newer the project mirror will be destroyed when the resource is destroyed.
- *    For older versions, the mirror will be disabled and the resource will be destroyed.
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/remote_mirrors.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
  * 
  * ## Example Usage
  * 
@@ -99,28 +94,28 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Determines if the mirror is enabled.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * Determines if divergent refs are skipped.
      * 
      */
     @Export(name="keepDivergentRefs", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> keepDivergentRefs;
+    private Output<Boolean> keepDivergentRefs;
 
     /**
      * @return Determines if divergent refs are skipped.
      * 
      */
-    public Output<Optional<Boolean>> keepDivergentRefs() {
-        return Codegen.optional(this.keepDivergentRefs);
+    public Output<Boolean> keepDivergentRefs() {
+        return this.keepDivergentRefs;
     }
     /**
      * Mirror ID.
@@ -141,14 +136,14 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="onlyProtectedBranches", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> onlyProtectedBranches;
+    private Output<Boolean> onlyProtectedBranches;
 
     /**
      * @return Determines if only protected branches are mirrored.
      * 
      */
-    public Output<Optional<Boolean>> onlyProtectedBranches() {
-        return Codegen.optional(this.onlyProtectedBranches);
+    public Output<Boolean> onlyProtectedBranches() {
+        return this.onlyProtectedBranches;
     }
     /**
      * The id of the project.

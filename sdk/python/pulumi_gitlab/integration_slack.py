@@ -855,7 +855,7 @@ class IntegrationSlack(pulumi.CustomResource):
         """
         The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#slack-notifications)
 
         ## Example Usage
 
@@ -933,7 +933,7 @@ class IntegrationSlack(pulumi.CustomResource):
         """
         The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/integrations.html#slack-notifications)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#slack-notifications)
 
         ## Example Usage
 

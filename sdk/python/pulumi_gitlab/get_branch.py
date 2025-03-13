@@ -176,7 +176,7 @@ def get_branch(name: Optional[str] = None,
     """
     The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)
 
 
     :param str name: The name of the branch.
@@ -206,7 +206,7 @@ def get_branch_output(name: Optional[pulumi.Input[str]] = None,
     """
     The `Branch` data source allows details of a repository branch to be retrieved by its name and project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)
 
 
     :param str name: The name of the branch.

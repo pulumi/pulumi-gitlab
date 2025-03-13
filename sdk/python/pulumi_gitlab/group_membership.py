@@ -20,7 +20,7 @@ __all__ = ['GroupMembershipArgs', 'GroupMembership']
 class GroupMembershipArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[str],
-                 group_id: pulumi.Input[str],
+                 group_id: pulumi.Input[int],
                  user_id: pulumi.Input[int],
                  expires_at: Optional[pulumi.Input[str]] = None,
                  member_role_id: Optional[pulumi.Input[int]] = None,
@@ -29,8 +29,8 @@ class GroupMembershipArgs:
         """
         The set of arguments for constructing a GroupMembership resource.
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
-        :param pulumi.Input[str] group_id: The id of the group.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[int] group_id: The ID of the group.
+        :param pulumi.Input[int] user_id: The ID of the user.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
@@ -62,21 +62,21 @@ class GroupMembershipArgs:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Input[str]:
+    def group_id(self) -> pulumi.Input[int]:
         """
-        The id of the group.
+        The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: pulumi.Input[str]):
+    def group_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "group_id", value)
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[int]:
         """
-        The id of the user.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -138,7 +138,7 @@ class _GroupMembershipState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
-                 group_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
                  member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -147,11 +147,11 @@ class _GroupMembershipState:
         Input properties used for looking up and filtering GroupMembership resources.
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] group_id: The ID of the group.
         :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The ID of the user.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -194,14 +194,14 @@ class _GroupMembershipState:
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[str]]:
+    def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The id of the group.
+        The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[str]]):
+    def group_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_id", value)
 
     @property
@@ -244,7 +244,7 @@ class _GroupMembershipState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The id of the user.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -260,7 +260,7 @@ class GroupMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
-                 group_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
                  member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -271,7 +271,7 @@ class GroupMembership(pulumi.CustomResource):
 
         > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
 
         ## Example Usage
 
@@ -280,7 +280,7 @@ class GroupMembership(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.GroupMembership("test",
-            group_id="12345",
+            group_id=12345,
             user_id=1337,
             access_level="guest",
             expires_at="2020-12-31")
@@ -312,11 +312,11 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] group_id: The ID of the group.
         :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The ID of the user.
         """
         ...
     @overload
@@ -329,7 +329,7 @@ class GroupMembership(pulumi.CustomResource):
 
         > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/members.html)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
 
         ## Example Usage
 
@@ -338,7 +338,7 @@ class GroupMembership(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         test = gitlab.GroupMembership("test",
-            group_id="12345",
+            group_id=12345,
             user_id=1337,
             access_level="guest",
             expires_at="2020-12-31")
@@ -383,7 +383,7 @@ class GroupMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
-                 group_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[int]] = None,
                  member_role_id: Optional[pulumi.Input[int]] = None,
                  skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
                  unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -422,7 +422,7 @@ class GroupMembership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
-            group_id: Optional[pulumi.Input[str]] = None,
+            group_id: Optional[pulumi.Input[int]] = None,
             member_role_id: Optional[pulumi.Input[int]] = None,
             skip_subresources_on_destroy: Optional[pulumi.Input[bool]] = None,
             unassign_issuables_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -436,11 +436,11 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
-        :param pulumi.Input[str] group_id: The id of the group.
+        :param pulumi.Input[int] group_id: The ID of the group.
         :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
-        :param pulumi.Input[int] user_id: The id of the user.
+        :param pulumi.Input[int] user_id: The ID of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -473,9 +473,9 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Output[str]:
+    def group_id(self) -> pulumi.Output[int]:
         """
-        The id of the group.
+        The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
@@ -489,7 +489,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipSubresourcesOnDestroy")
-    def skip_subresources_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+    def skip_subresources_on_destroy(self) -> pulumi.Output[bool]:
         """
         Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         """
@@ -497,7 +497,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unassignIssuablesOnDestroy")
-    def unassign_issuables_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+    def unassign_issuables_on_destroy(self) -> pulumi.Output[bool]:
         """
         Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         """
@@ -507,7 +507,7 @@ class GroupMembership(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[int]:
         """
-        The id of the user.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 

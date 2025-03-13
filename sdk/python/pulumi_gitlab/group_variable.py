@@ -24,6 +24,7 @@ class GroupVariableArgs:
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  raw: Optional[pulumi.Input[bool]] = None,
@@ -35,10 +36,11 @@ class GroupVariableArgs:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "key", key)
@@ -47,6 +49,8 @@ class GroupVariableArgs:
             pulumi.set(__self__, "description", description)
         if environment_scope is not None:
             pulumi.set(__self__, "environment_scope", environment_scope)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
         if masked is not None:
             pulumi.set(__self__, "masked", masked)
         if protected is not None:
@@ -118,9 +122,21 @@ class GroupVariableArgs:
 
     @property
     @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
+
+    @property
+    @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -132,7 +148,7 @@ class GroupVariableArgs:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -144,7 +160,7 @@ class GroupVariableArgs:
     @pulumi.getter
     def raw(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
@@ -156,7 +172,7 @@ class GroupVariableArgs:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -171,6 +187,7 @@ class _GroupVariableState:
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
@@ -182,12 +199,13 @@ class _GroupVariableState:
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] group: The name or id of the group.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -195,6 +213,8 @@ class _GroupVariableState:
             pulumi.set(__self__, "environment_scope", environment_scope)
         if group is not None:
             pulumi.set(__self__, "group", group)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if masked is not None:
@@ -246,6 +266,18 @@ class _GroupVariableState:
 
     @property
     @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the variable.
@@ -260,7 +292,7 @@ class _GroupVariableState:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -272,7 +304,7 @@ class _GroupVariableState:
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -284,7 +316,7 @@ class _GroupVariableState:
     @pulumi.getter
     def raw(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
@@ -308,7 +340,7 @@ class _GroupVariableState:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -325,6 +357,7 @@ class GroupVariable(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
@@ -333,24 +366,9 @@ class GroupVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+        The `GroupVariable` resource allows creating a GitLab group level variables.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.GroupVariable("example",
-            group="12345",
-            key="group_variable_key",
-            value="group_variable_value",
-            protected=False,
-            masked=False,
-            environment_scope="*")
-        ```
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
         ## Import
 
@@ -379,12 +397,13 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] group: The name or id of the group.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         ...
     @overload
@@ -393,24 +412,9 @@ class GroupVariable(pulumi.CustomResource):
                  args: GroupVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupVariable` resource allows to manage the lifecycle of a CI/CD variable for a group.
+        The `GroupVariable` resource allows creating a GitLab group level variables.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_level_variables.html)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        example = gitlab.GroupVariable("example",
-            group="12345",
-            key="group_variable_key",
-            value="group_variable_value",
-            protected=False,
-            masked=False,
-            environment_scope="*")
-        ```
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
         ## Import
 
@@ -452,6 +456,7 @@ class GroupVariable(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
@@ -472,6 +477,7 @@ class GroupVariable(pulumi.CustomResource):
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
+            __props__.__dict__["hidden"] = hidden
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -495,6 +501,7 @@ class GroupVariable(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             environment_scope: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
+            hidden: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
             masked: Optional[pulumi.Input[bool]] = None,
             protected: Optional[pulumi.Input[bool]] = None,
@@ -511,12 +518,13 @@ class GroupVariable(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[str] group: The name or id of the group.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[str] key: The name of the variable.
-        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
-        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[str] value: The value of the variable.
-        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param pulumi.Input[str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -525,6 +533,7 @@ class GroupVariable(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["environment_scope"] = environment_scope
         __props__.__dict__["group"] = group
+        __props__.__dict__["hidden"] = hidden
         __props__.__dict__["key"] = key
         __props__.__dict__["masked"] = masked
         __props__.__dict__["protected"] = protected
@@ -535,7 +544,7 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the variable.
         """
@@ -543,7 +552,7 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> pulumi.Output[Optional[str]]:
+    def environment_scope(self) -> pulumi.Output[str]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         """
@@ -559,6 +568,14 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def hidden(self) -> pulumi.Output[bool]:
+        """
+        If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        """
+        return pulumi.get(self, "hidden")
+
+    @property
+    @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
         The name of the variable.
@@ -567,25 +584,25 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def masked(self) -> pulumi.Output[Optional[bool]]:
+    def masked(self) -> pulumi.Output[bool]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
-    def protected(self) -> pulumi.Output[Optional[bool]]:
+    def protected(self) -> pulumi.Output[bool]:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
-    def raw(self) -> pulumi.Output[Optional[bool]]:
+    def raw(self) -> pulumi.Output[bool]:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
@@ -599,9 +616,9 @@ class GroupVariable(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> pulumi.Output[Optional[str]]:
+    def variable_type(self) -> pulumi.Output[str]:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 

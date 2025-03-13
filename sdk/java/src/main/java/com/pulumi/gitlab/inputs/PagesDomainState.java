@@ -17,14 +17,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     public static final PagesDomainState Empty = new PagesDomainState();
 
     /**
-     * Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+     * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
     @Import(name="autoSslEnabled")
     private @Nullable Output<Boolean> autoSslEnabled;
 
     /**
-     * @return Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+     * @return Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
      * 
      */
     public Optional<Output<Boolean>> autoSslEnabled() {
@@ -92,14 +92,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      * 
      */
     public Optional<Output<String>> project() {
@@ -184,7 +184,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoSslEnabled Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+         * @param autoSslEnabled Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoSslEnabled Enables [automatic generation](https://docs.gitlab.com/ee/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.html) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
+         * @param autoSslEnabled Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to &#34;true&#34;, certificate can&#39;t be provided.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/ee/api/index.html#namespaced-path-encoding) owned by the authenticated user.
+         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
          * 
          * @return builder
          * 

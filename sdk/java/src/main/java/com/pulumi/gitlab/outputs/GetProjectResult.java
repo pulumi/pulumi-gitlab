@@ -84,7 +84,7 @@ public final class GetProjectResult {
      */
     private String ciPipelineVariablesMinimumOverrideRole;
     /**
-     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
     private String ciRestrictPipelineCancellationRole;
@@ -184,7 +184,7 @@ public final class GetProjectResult {
      */
     private Boolean lfsEnabled;
     /**
-     * @return Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * @return Template used to create merge commit message in merge requests.
      * 
      */
     private String mergeCommitTemplate;
@@ -334,7 +334,7 @@ public final class GetProjectResult {
      */
     private Boolean snippetsEnabled;
     /**
-     * @return Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * @return Template used to create squash commit message in merge requests.
      * 
      */
     private String squashCommitTemplate;
@@ -467,7 +467,7 @@ public final class GetProjectResult {
         return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
-     * @return The role required to cancel a pipeline or job. Introduced in GitLab 16.8. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
     public String ciRestrictPipelineCancellationRole() {
@@ -607,7 +607,7 @@ public final class GetProjectResult {
         return this.lfsEnabled;
     }
     /**
-     * @return Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)
+     * @return Template used to create merge commit message in merge requests.
      * 
      */
     public String mergeCommitTemplate() {
@@ -817,7 +817,7 @@ public final class GetProjectResult {
         return this.snippetsEnabled;
     }
     /**
-     * @return Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)
+     * @return Template used to create squash commit message in merge requests.
      * 
      */
     public String squashCommitTemplate() {

@@ -13,7 +13,7 @@ import (
 
 // The `Application` data source retrieves information about a gitlab application.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/applications.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult

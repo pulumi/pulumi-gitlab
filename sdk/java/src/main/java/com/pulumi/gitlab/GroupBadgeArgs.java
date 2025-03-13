@@ -17,14 +17,14 @@ public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupBadgeArgs Empty = new GroupBadgeArgs();
 
     /**
-     * The id of the group to add the badge to.
+     * The ID or URL-encoded path of the group to add the badge to.
      * 
      */
     @Import(name="group", required=true)
     private Output<String> group;
 
     /**
-     * @return The id of the group to add the badge to.
+     * @return The ID or URL-encoded path of the group to add the badge to.
      * 
      */
     public Output<String> group() {
@@ -104,7 +104,7 @@ public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group The id of the group to add the badge to.
+         * @param group The ID or URL-encoded path of the group to add the badge to.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GroupBadgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param group The id of the group to add the badge to.
+         * @param group The ID or URL-encoded path of the group to add the badge to.
          * 
          * @return builder
          * 

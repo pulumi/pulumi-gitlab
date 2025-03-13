@@ -13,7 +13,7 @@ import (
 
 // The `getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/protected_branches.html#get-a-single-protected-branch-or-wildcard-protected-branch)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
 func GetProjectProtectedBranch(ctx *pulumi.Context, args *GetProjectProtectedBranchArgs, opts ...pulumi.InvokeOption) (*GetProjectProtectedBranchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectProtectedBranchResult

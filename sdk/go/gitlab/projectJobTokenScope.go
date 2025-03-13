@@ -17,7 +17,7 @@ import (
 //
 // > Conflicts with the use of `ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_job_token_scopes.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 //
 // ## Import
 //
@@ -45,8 +45,10 @@ type ProjectJobTokenScope struct {
 
 	// The ID or full path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The ID of the group that is in the CI/CD job token inbound allowlist.
+	TargetGroupId pulumi.IntPtrOutput `pulumi:"targetGroupId"`
 	// The ID of the project that is in the CI/CD job token inbound allowlist.
-	TargetProjectId pulumi.IntOutput `pulumi:"targetProjectId"`
+	TargetProjectId pulumi.IntPtrOutput `pulumi:"targetProjectId"`
 }
 
 // NewProjectJobTokenScope registers a new resource with the given unique name, arguments, and options.
@@ -58,9 +60,6 @@ func NewProjectJobTokenScope(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.TargetProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'TargetProjectId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectJobTokenScope
@@ -87,6 +86,8 @@ func GetProjectJobTokenScope(ctx *pulumi.Context,
 type projectJobTokenScopeState struct {
 	// The ID or full path of the project.
 	Project *string `pulumi:"project"`
+	// The ID of the group that is in the CI/CD job token inbound allowlist.
+	TargetGroupId *int `pulumi:"targetGroupId"`
 	// The ID of the project that is in the CI/CD job token inbound allowlist.
 	TargetProjectId *int `pulumi:"targetProjectId"`
 }
@@ -94,6 +95,8 @@ type projectJobTokenScopeState struct {
 type ProjectJobTokenScopeState struct {
 	// The ID or full path of the project.
 	Project pulumi.StringPtrInput
+	// The ID of the group that is in the CI/CD job token inbound allowlist.
+	TargetGroupId pulumi.IntPtrInput
 	// The ID of the project that is in the CI/CD job token inbound allowlist.
 	TargetProjectId pulumi.IntPtrInput
 }
@@ -105,16 +108,20 @@ func (ProjectJobTokenScopeState) ElementType() reflect.Type {
 type projectJobTokenScopeArgs struct {
 	// The ID or full path of the project.
 	Project string `pulumi:"project"`
+	// The ID of the group that is in the CI/CD job token inbound allowlist.
+	TargetGroupId *int `pulumi:"targetGroupId"`
 	// The ID of the project that is in the CI/CD job token inbound allowlist.
-	TargetProjectId int `pulumi:"targetProjectId"`
+	TargetProjectId *int `pulumi:"targetProjectId"`
 }
 
 // The set of arguments for constructing a ProjectJobTokenScope resource.
 type ProjectJobTokenScopeArgs struct {
 	// The ID or full path of the project.
 	Project pulumi.StringInput
+	// The ID of the group that is in the CI/CD job token inbound allowlist.
+	TargetGroupId pulumi.IntPtrInput
 	// The ID of the project that is in the CI/CD job token inbound allowlist.
-	TargetProjectId pulumi.IntInput
+	TargetProjectId pulumi.IntPtrInput
 }
 
 func (ProjectJobTokenScopeArgs) ElementType() reflect.Type {
@@ -209,9 +216,14 @@ func (o ProjectJobTokenScopeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectJobTokenScope) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The ID of the group that is in the CI/CD job token inbound allowlist.
+func (o ProjectJobTokenScopeOutput) TargetGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectJobTokenScope) pulumi.IntPtrOutput { return v.TargetGroupId }).(pulumi.IntPtrOutput)
+}
+
 // The ID of the project that is in the CI/CD job token inbound allowlist.
-func (o ProjectJobTokenScopeOutput) TargetProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ProjectJobTokenScope) pulumi.IntOutput { return v.TargetProjectId }).(pulumi.IntOutput)
+func (o ProjectJobTokenScopeOutput) TargetProjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectJobTokenScope) pulumi.IntPtrOutput { return v.TargetProjectId }).(pulumi.IntPtrOutput)
 }
 
 type ProjectJobTokenScopeArrayOutput struct{ *pulumi.OutputState }

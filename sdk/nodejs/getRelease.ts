@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+ * The `gitlab.Release` data source retrieves information about a gitlab release for a project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
  *
  * ## Example Usage
  *
@@ -86,9 +86,9 @@ export interface GetReleaseResult {
     readonly tagName: string;
 }
 /**
- * The `gitlab.getRelease` data source retrieves information about a gitlab release for a project.
+ * The `gitlab.Release` data source retrieves information about a gitlab release for a project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
  *
  * ## Example Usage
  *

@@ -13,7 +13,7 @@ import (
 
 // The `RepositoryFile` data source allows details of a file in a repository to be retrieved.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/repository_files.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
 //
 // ## Example Usage
 //
@@ -74,7 +74,7 @@ type LookupRepositoryFileResult struct {
 	ContentSha256 string `pulumi:"contentSha256"`
 	// The file content encoding.
 	Encoding string `pulumi:"encoding"`
-	// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+	// Enables or disables the execute flag on the file.
 	ExecuteFilemode bool `pulumi:"executeFilemode"`
 	// The filename.
 	FileName string `pulumi:"fileName"`
@@ -155,7 +155,7 @@ func (o LookupRepositoryFileResultOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Encoding }).(pulumi.StringOutput)
 }
 
-// Enables or disables the execute flag on the file. **Note**: requires GitLab 14.10 or newer.
+// Enables or disables the execute flag on the file.
 func (o LookupRepositoryFileResultOutput) ExecuteFilemode() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) bool { return v.ExecuteFilemode }).(pulumi.BoolOutput)
 }

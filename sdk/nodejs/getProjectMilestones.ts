@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  */
 export function getProjectMilestones(args: GetProjectMilestonesArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMilestonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,7 +32,7 @@ export interface GetProjectMilestonesArgs {
      */
     iids?: number[];
     /**
-     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * Include group milestones from parent group and its ancestors.
      */
     includeParentMilestones?: boolean;
     /**
@@ -66,7 +66,7 @@ export interface GetProjectMilestonesResult {
      */
     readonly iids?: number[];
     /**
-     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * Include group milestones from parent group and its ancestors.
      */
     readonly includeParentMilestones?: boolean;
     /**
@@ -93,7 +93,7 @@ export interface GetProjectMilestonesResult {
 /**
  * The `gitlab.getProjectMilestones` data source allows get details of a project milestones.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  */
 export function getProjectMilestonesOutput(args: GetProjectMilestonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMilestonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -116,7 +116,7 @@ export interface GetProjectMilestonesOutputArgs {
      */
     iids?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4.
+     * Include group milestones from parent group and its ancestors.
      */
     includeParentMilestones?: pulumi.Input<boolean>;
     /**

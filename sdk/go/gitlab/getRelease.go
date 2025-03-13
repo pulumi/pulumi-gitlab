@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getRelease` data source retrieves information about a gitlab release for a project.
+// The `Release` data source retrieves information about a gitlab release for a project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/releases/)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
 //
 // ## Example Usage
 //
@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// By project ID and tag_name
-//			_, err := gitlab.GetRelease(ctx, &gitlab.GetReleaseArgs{
+//			_, err := gitlab.LookupRelease(ctx, &gitlab.LookupReleaseArgs{
 //				ProjectId: "1234",
 //				TagName:   "v1.0",
 //			}, nil)
@@ -42,9 +42,9 @@ import (
 //	}
 //
 // ```
-func GetRelease(ctx *pulumi.Context, args *GetReleaseArgs, opts ...pulumi.InvokeOption) (*GetReleaseResult, error) {
+func LookupRelease(ctx *pulumi.Context, args *LookupReleaseArgs, opts ...pulumi.InvokeOption) (*LookupReleaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetReleaseResult
+	var rv LookupReleaseResult
 	err := ctx.Invoke("gitlab:index/getRelease:getRelease", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -53,7 +53,7 @@ func GetRelease(ctx *pulumi.Context, args *GetReleaseArgs, opts ...pulumi.Invoke
 }
 
 // A collection of arguments for invoking getRelease.
-type GetReleaseArgs struct {
+type LookupReleaseArgs struct {
 	// The assets for a release
 	Assets *GetReleaseAssets `pulumi:"assets"`
 	// The ID or URL-encoded path of the project.
@@ -63,7 +63,7 @@ type GetReleaseArgs struct {
 }
 
 // A collection of values returned by getRelease.
-type GetReleaseResult struct {
+type LookupReleaseResult struct {
 	// The assets for a release
 	Assets *GetReleaseAssets `pulumi:"assets"`
 	// The date the release was created.
@@ -81,17 +81,17 @@ type GetReleaseResult struct {
 	TagName string `pulumi:"tagName"`
 }
 
-func GetReleaseOutput(ctx *pulumi.Context, args GetReleaseOutputArgs, opts ...pulumi.InvokeOption) GetReleaseResultOutput {
+func LookupReleaseOutput(ctx *pulumi.Context, args LookupReleaseOutputArgs, opts ...pulumi.InvokeOption) LookupReleaseResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetReleaseResultOutput, error) {
-			args := v.(GetReleaseArgs)
+		ApplyT(func(v interface{}) (LookupReleaseResultOutput, error) {
+			args := v.(LookupReleaseArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getRelease:getRelease", args, GetReleaseResultOutput{}, options).(GetReleaseResultOutput), nil
-		}).(GetReleaseResultOutput)
+			return ctx.InvokeOutput("gitlab:index/getRelease:getRelease", args, LookupReleaseResultOutput{}, options).(LookupReleaseResultOutput), nil
+		}).(LookupReleaseResultOutput)
 }
 
 // A collection of arguments for invoking getRelease.
-type GetReleaseOutputArgs struct {
+type LookupReleaseOutputArgs struct {
 	// The assets for a release
 	Assets GetReleaseAssetsPtrInput `pulumi:"assets"`
 	// The ID or URL-encoded path of the project.
@@ -100,64 +100,64 @@ type GetReleaseOutputArgs struct {
 	TagName pulumi.StringInput `pulumi:"tagName"`
 }
 
-func (GetReleaseOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetReleaseArgs)(nil)).Elem()
+func (LookupReleaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReleaseArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getRelease.
-type GetReleaseResultOutput struct{ *pulumi.OutputState }
+type LookupReleaseResultOutput struct{ *pulumi.OutputState }
 
-func (GetReleaseResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetReleaseResult)(nil)).Elem()
+func (LookupReleaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReleaseResult)(nil)).Elem()
 }
 
-func (o GetReleaseResultOutput) ToGetReleaseResultOutput() GetReleaseResultOutput {
+func (o LookupReleaseResultOutput) ToLookupReleaseResultOutput() LookupReleaseResultOutput {
 	return o
 }
 
-func (o GetReleaseResultOutput) ToGetReleaseResultOutputWithContext(ctx context.Context) GetReleaseResultOutput {
+func (o LookupReleaseResultOutput) ToLookupReleaseResultOutputWithContext(ctx context.Context) LookupReleaseResultOutput {
 	return o
 }
 
 // The assets for a release
-func (o GetReleaseResultOutput) Assets() GetReleaseAssetsPtrOutput {
-	return o.ApplyT(func(v GetReleaseResult) *GetReleaseAssets { return v.Assets }).(GetReleaseAssetsPtrOutput)
+func (o LookupReleaseResultOutput) Assets() GetReleaseAssetsPtrOutput {
+	return o.ApplyT(func(v LookupReleaseResult) *GetReleaseAssets { return v.Assets }).(GetReleaseAssetsPtrOutput)
 }
 
 // The date the release was created.
-func (o GetReleaseResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // An HTML rendered description of the release.
-func (o GetReleaseResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetReleaseResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the release.
-func (o GetReleaseResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID or URL-encoded path of the project.
-func (o GetReleaseResultOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // The date the release was created.
-func (o GetReleaseResultOutput) ReleasedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.ReleasedAt }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) ReleasedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.ReleasedAt }).(pulumi.StringOutput)
 }
 
 // The Git tag the release is associated with.
-func (o GetReleaseResultOutput) TagName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseResult) string { return v.TagName }).(pulumi.StringOutput)
+func (o LookupReleaseResultOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReleaseResult) string { return v.TagName }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetReleaseResultOutput{})
+	pulumi.RegisterOutputType(LookupReleaseResultOutput{})
 }

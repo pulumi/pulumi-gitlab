@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
-        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
         /// </summary>
         public static Task<GetProjectTagResult> InvokeAsync(GetProjectTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
-        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
         /// </summary>
         public static Output<GetProjectTagResult> Invoke(GetProjectTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
         /// 
-        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/tags.html)
+        /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
         /// </summary>
         public static Output<GetProjectTagResult> Invoke(GetProjectTagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectTagResult>("gitlab:index/getProjectTag:getProjectTag", args ?? new GetProjectTagInvokeArgs(), options.WithDefaults());

@@ -27,7 +27,7 @@ public final class GetProjectVariablesVariable {
      */
     private String key;
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
      * 
      */
     private Boolean masked;
@@ -80,7 +80,7 @@ public final class GetProjectVariablesVariable {
         return this.key;
     }
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
      * 
      */
     public Boolean masked() {

@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string? BranchNameRegex;
         /// <summary>
-        /// Only commits pushed using verified emails are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+        /// Only commits pushed using verified emails are allowed.
         /// </summary>
         public readonly bool? CommitCommitterCheck;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool? RejectNonDcoCommits;
         /// <summary>
-        /// Only commits signed through GPG are allowed.  **Note** This attribute is only supported in GitLab versions &gt;= 16.4.
+        /// Only commits signed through GPG are allowed.
         /// </summary>
         public readonly bool? RejectUnsignedCommits;
 

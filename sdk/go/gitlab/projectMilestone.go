@@ -14,7 +14,7 @@ import (
 
 // The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/milestones.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 //
 // ## Example Usage
 //

@@ -161,14 +161,14 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+     * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
     @Import(name="jiraIssueTransitionId")
     private @Nullable Output<String> jiraIssueTransitionId;
 
     /**
-     * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+     * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
     public Optional<Output<String>> jiraIssueTransitionId() {
@@ -568,7 +568,7 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jiraIssueTransitionId The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+         * @param jiraIssueTransitionId The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class IntegrationJiraState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jiraIssueTransitionId The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2. *Note**: importing this field is only supported since GitLab 15.2.
+         * @param jiraIssueTransitionId The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
          * 
          * @return builder
          * 

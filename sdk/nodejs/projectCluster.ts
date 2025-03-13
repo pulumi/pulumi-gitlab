@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This is deprecated GitLab feature since 14.5
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_clusters.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_clusters/)
  *
  * ## Example Usage
  *

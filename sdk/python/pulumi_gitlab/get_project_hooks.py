@@ -79,7 +79,7 @@ def get_project_hooks(project: Optional[str] = None,
     """
     The `get_project_hooks` data source allows to retrieve details about hooks in a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
 
     ## Example Usage
 
@@ -108,7 +108,7 @@ def get_project_hooks_output(project: Optional[pulumi.Input[str]] = None,
     """
     The `get_project_hooks` data source allows to retrieve details about hooks in a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-project-hooks)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
 
     ## Example Usage
 

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
  */
 export function getUserSshkeys(args?: GetUserSshkeysArgs, opts?: pulumi.InvokeOptions): Promise<GetUserSshkeysResult> {
     args = args || {};
@@ -58,7 +58,7 @@ export interface GetUserSshkeysResult {
 /**
  * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/users.html#list-ssh-keys-for-user)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
  */
 export function getUserSshkeysOutput(args?: GetUserSshkeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserSshkeysResult> {
     args = args || {};

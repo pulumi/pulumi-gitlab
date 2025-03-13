@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
  */
 export function getGroupProvisionedUsers(args: GetGroupProvisionedUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupProvisionedUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -103,7 +103,7 @@ export interface GetGroupProvisionedUsersResult {
 /**
  * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#list-provisioned-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
  */
 export function getGroupProvisionedUsersOutput(args: GetGroupProvisionedUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupProvisionedUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

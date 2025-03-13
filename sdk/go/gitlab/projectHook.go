@@ -14,7 +14,7 @@ import (
 
 // The `ProjectHook` resource allows to manage the lifecycle of a project hook.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#hooks)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
 //
 // ## Example Usage
 //
@@ -130,6 +130,8 @@ type ProjectHook struct {
 	PushEventsBranchFilter pulumi.StringOutput `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for release events.
 	ReleasesEvents pulumi.BoolOutput `pulumi:"releasesEvents"`
+	// Invoke the hook for project access token expiry events.
+	ResourceAccessTokenEvents pulumi.BoolOutput `pulumi:"resourceAccessTokenEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
@@ -221,6 +223,8 @@ type projectHookState struct {
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for release events.
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
+	// Invoke the hook for project access token expiry events.
+	ResourceAccessTokenEvents *bool `pulumi:"resourceAccessTokenEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
@@ -270,6 +274,8 @@ type ProjectHookState struct {
 	PushEventsBranchFilter pulumi.StringPtrInput
 	// Invoke the hook for release events.
 	ReleasesEvents pulumi.BoolPtrInput
+	// Invoke the hook for project access token expiry events.
+	ResourceAccessTokenEvents pulumi.BoolPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
@@ -319,6 +325,8 @@ type projectHookArgs struct {
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for release events.
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
+	// Invoke the hook for project access token expiry events.
+	ResourceAccessTokenEvents *bool `pulumi:"resourceAccessTokenEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
@@ -365,6 +373,8 @@ type ProjectHookArgs struct {
 	PushEventsBranchFilter pulumi.StringPtrInput
 	// Invoke the hook for release events.
 	ReleasesEvents pulumi.BoolPtrInput
+	// Invoke the hook for project access token expiry events.
+	ResourceAccessTokenEvents pulumi.BoolPtrInput
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
@@ -555,6 +565,11 @@ func (o ProjectHookOutput) PushEventsBranchFilter() pulumi.StringOutput {
 // Invoke the hook for release events.
 func (o ProjectHookOutput) ReleasesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ReleasesEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for project access token expiry events.
+func (o ProjectHookOutput) ResourceAccessTokenEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ResourceAccessTokenEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for tag push events.

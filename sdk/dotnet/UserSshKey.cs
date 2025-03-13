@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.UserSshKey` resource allows to manage the lifecycle of an SSH key assigned to a user.
     /// 
-    /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/ee/api/users.html#single-ssh-key)
+    /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/users/#single-ssh-key)
     /// 
     /// ## Example Usage
     /// 

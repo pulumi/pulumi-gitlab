@@ -17,7 +17,7 @@ import (
 //
 // > Some available options require administrator privileges.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users.html#list-users)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
 //
 // ## Example Usage
 //

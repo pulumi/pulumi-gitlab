@@ -32,7 +32,7 @@ public final class GetGroupMembershipResult {
      */
     private Integer groupId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the group membership. In the format of `&lt;group-id:access-level&gt;`.
      * 
      */
     private String id;
@@ -70,7 +70,7 @@ public final class GetGroupMembershipResult {
         return this.groupId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the group membership. In the format of `&lt;group-id:access-level&gt;`.
      * 
      */
     public String id() {

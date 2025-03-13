@@ -13,7 +13,7 @@ import (
 
 // The `ProjectVariable` data source allows to retrieve details about a project-level CI/CD variable.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/project_level_variables.html)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 //
 // ## Example Usage
 //
@@ -80,7 +80,7 @@ type LookupProjectVariableResult struct {
 	Id string `pulumi:"id"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 	Masked bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
@@ -152,7 +152,7 @@ func (o LookupProjectVariableResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
 func (o LookupProjectVariableResultOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) bool { return v.Masked }).(pulumi.BoolOutput)
 }

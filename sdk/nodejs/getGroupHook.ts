@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#get-group-hook)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
  */
 export function getGroupHook(args: GetGroupHookArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupHookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -127,7 +127,7 @@ export interface GetGroupHookResult {
 /**
  * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/groups.html#get-group-hook)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
  */
 export function getGroupHookOutput(args: GetGroupHookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupHookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

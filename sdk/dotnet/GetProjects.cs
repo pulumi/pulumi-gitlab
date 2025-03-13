@@ -14,11 +14,11 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
         /// 
-        /// &gt; This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+        /// &gt; This data source supports all available filters exposed by the [client-go](https://gitlab.com/gitlab-org/api/client-go) package, which might not expose all available filters exposed by the GitLab APIs.
         /// 
-        /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// &gt; The owner sub-attributes are only populated if the GitLab token used has an administrator scope.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-all-projects)
         /// 
         /// ## Example Usage
         /// 
@@ -60,11 +60,11 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
         /// 
-        /// &gt; This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+        /// &gt; This data source supports all available filters exposed by the [client-go](https://gitlab.com/gitlab-org/api/client-go) package, which might not expose all available filters exposed by the GitLab APIs.
         /// 
-        /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// &gt; The owner sub-attributes are only populated if the GitLab token used has an administrator scope.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-all-projects)
         /// 
         /// ## Example Usage
         /// 
@@ -106,11 +106,11 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
         /// 
-        /// &gt; This data source supports all available filters exposed by the xanzy/go-gitlab package, which might not expose all available filters exposed by the Gitlab APIs.
+        /// &gt; This data source supports all available filters exposed by the [client-go](https://gitlab.com/gitlab-org/api/client-go) package, which might not expose all available filters exposed by the GitLab APIs.
         /// 
-        /// &gt; The owner sub-attributes are only populated if the Gitlab token used has an administrator scope.
+        /// &gt; The owner sub-attributes are only populated if the GitLab token used has an administrator scope.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-all-projects)
         /// 
         /// ## Example Usage
         /// 
@@ -184,13 +184,13 @@ namespace Pulumi.GitLab
         public bool? Membership { get; set; }
 
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
         /// </summary>
         [Input("minAccessLevel")]
         public int? MinAccessLevel { get; set; }
 
         /// <summary>
-        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -330,13 +330,13 @@ namespace Pulumi.GitLab
         public Input<bool>? Membership { get; set; }
 
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
         /// </summary>
         [Input("minAccessLevel")]
         public Input<int>? MinAccessLevel { get; set; }
 
         /// <summary>
-        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -472,11 +472,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Membership;
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/ee/api/members.html) for values. Cannot be used with `group_id`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
         /// </summary>
         public readonly int? MinAccessLevel;
         /// <summary>
-        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/ee/api/projects.html#list-all-projects) for details.
+        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

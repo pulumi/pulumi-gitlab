@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
  *
  * ## Example Usage
  *
@@ -31,7 +31,7 @@ export function getMetadata(opts?: pulumi.InvokeOptions): Promise<GetMetadataRes
  */
 export interface GetMetadataResult {
     /**
-     * If the GitLab instance is an enterprise instance or not. Supported for GitLab 15.6 onwards.
+     * If the GitLab instance is an enterprise instance or not.
      */
     readonly enterprise: boolean;
     /**
@@ -54,7 +54,7 @@ export interface GetMetadataResult {
 /**
  * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/metadata.html)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/metadata/)
  *
  * ## Example Usage
  *

@@ -24,10 +24,6 @@ public final class GetGroupVariablesResult {
      * 
      */
     private String group;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The list of variables returned by the search
@@ -50,10 +46,6 @@ public final class GetGroupVariablesResult {
     public String group() {
         return this.group;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

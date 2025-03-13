@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)
         /// </summary>
         public static Task<GetBranchResult> InvokeAsync(GetBranchArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)
         /// </summary>
         public static Output<GetBranchResult> Invoke(GetBranchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/branches.html#get-single-repository-branch)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)
         /// </summary>
         public static Output<GetBranchResult> Invoke(GetBranchInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBranchResult>("gitlab:index/getBranch:getBranch", args ?? new GetBranchInvokeArgs(), options.WithDefaults());

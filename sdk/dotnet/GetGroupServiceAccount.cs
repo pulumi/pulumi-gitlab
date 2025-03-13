@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
         /// </summary>
         public static Task<GetGroupServiceAccountResult> InvokeAsync(GetGroupServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/group_service_accounts.html#list-service-account-users)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
@@ -46,22 +46,10 @@ namespace Pulumi.GitLab
         public string Group { get; set; } = null!;
 
         /// <summary>
-        /// The name of the user. If not specified, the default Service account user name is used.
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
         /// The service account id.
         /// </summary>
         [Input("serviceAccountId", required: true)]
         public string ServiceAccountId { get; set; } = null!;
-
-        /// <summary>
-        /// The username of the user. If not specified, it's automatically generated.
-        /// </summary>
-        [Input("username")]
-        public string? Username { get; set; }
 
         public GetGroupServiceAccountArgs()
         {
@@ -78,22 +66,10 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// The name of the user. If not specified, the default Service account user name is used.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The service account id.
         /// </summary>
         [Input("serviceAccountId", required: true)]
         public Input<string> ServiceAccountId { get; set; } = null!;
-
-        /// <summary>
-        /// The username of the user. If not specified, it's automatically generated.
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
 
         public GetGroupServiceAccountInvokeArgs()
         {
@@ -113,7 +89,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The name of the user. If not specified, the default Service account user name is used.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The service account id.
         /// </summary>
@@ -121,7 +97,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The username of the user. If not specified, it's automatically generated.
         /// </summary>
-        public readonly string? Username;
+        public readonly string Username;
 
         [OutputConstructor]
         private GetGroupServiceAccountResult(
@@ -129,11 +105,11 @@ namespace Pulumi.GitLab
 
             string id,
 
-            string? name,
+            string name,
 
             string serviceAccountId,
 
-            string? username)
+            string username)
         {
             Group = group;
             Id = id;
