@@ -79,6 +79,14 @@ export class ProjectEnvironment extends pulumi.CustomResource {
     }
 
     /**
+     * The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+     */
+    public /*out*/ readonly autoStopAt!: pulumi.Output<string>;
+    /**
+     * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+     */
+    public readonly autoStopSetting!: pulumi.Output<string>;
+    /**
      * The cluster agent to associate with this environment.
      */
     public readonly clusterAgentId!: pulumi.Output<number | undefined>;
@@ -86,6 +94,10 @@ export class ProjectEnvironment extends pulumi.CustomResource {
      * The ISO8601 date/time that this environment was created at in UTC.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The description of the environment.
+     */
+    public readonly description!: pulumi.Output<string>;
     /**
      * Place to link to for this environment.
      */
@@ -115,7 +127,7 @@ export class ProjectEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
     public readonly stopBeforeDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -140,8 +152,11 @@ export class ProjectEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectEnvironmentState | undefined;
+            resourceInputs["autoStopAt"] = state ? state.autoStopAt : undefined;
+            resourceInputs["autoStopSetting"] = state ? state.autoStopSetting : undefined;
             resourceInputs["clusterAgentId"] = state ? state.clusterAgentId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["externalUrl"] = state ? state.externalUrl : undefined;
             resourceInputs["fluxResourcePath"] = state ? state.fluxResourcePath : undefined;
             resourceInputs["kubernetesNamespace"] = state ? state.kubernetesNamespace : undefined;
@@ -157,7 +172,9 @@ export class ProjectEnvironment extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["autoStopSetting"] = args ? args.autoStopSetting : undefined;
             resourceInputs["clusterAgentId"] = args ? args.clusterAgentId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["externalUrl"] = args ? args.externalUrl : undefined;
             resourceInputs["fluxResourcePath"] = args ? args.fluxResourcePath : undefined;
             resourceInputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
@@ -165,6 +182,7 @@ export class ProjectEnvironment extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["stopBeforeDestroy"] = args ? args.stopBeforeDestroy : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["autoStopAt"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -180,6 +198,14 @@ export class ProjectEnvironment extends pulumi.CustomResource {
  */
 export interface ProjectEnvironmentState {
     /**
+     * The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+     */
+    autoStopAt?: pulumi.Input<string>;
+    /**
+     * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+     */
+    autoStopSetting?: pulumi.Input<string>;
+    /**
      * The cluster agent to associate with this environment.
      */
     clusterAgentId?: pulumi.Input<number>;
@@ -187,6 +213,10 @@ export interface ProjectEnvironmentState {
      * The ISO8601 date/time that this environment was created at in UTC.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The description of the environment.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Place to link to for this environment.
      */
@@ -216,7 +246,7 @@ export interface ProjectEnvironmentState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
     stopBeforeDestroy?: pulumi.Input<boolean>;
     /**
@@ -234,9 +264,17 @@ export interface ProjectEnvironmentState {
  */
 export interface ProjectEnvironmentArgs {
     /**
+     * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+     */
+    autoStopSetting?: pulumi.Input<string>;
+    /**
      * The cluster agent to associate with this environment.
      */
     clusterAgentId?: pulumi.Input<number>;
+    /**
+     * The description of the environment.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Place to link to for this environment.
      */
@@ -258,7 +296,7 @@ export interface ProjectEnvironmentArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
     stopBeforeDestroy?: pulumi.Input<boolean>;
     /**

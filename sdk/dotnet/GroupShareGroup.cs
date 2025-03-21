@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+    /// The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
     /// 
@@ -77,6 +77,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Output("memberRoleId")]
+        public Output<int> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
         /// The id of the additional group with which the main group will be shared.
@@ -149,6 +155,12 @@ namespace Pulumi.GitLab
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
+
+        /// <summary>
         /// The id of the additional group with which the main group will be shared.
         /// </summary>
         [Input("shareGroupId", required: true)]
@@ -179,6 +191,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
 
         /// <summary>
         /// The id of the additional group with which the main group will be shared.

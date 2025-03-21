@@ -63,6 +63,21 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Import(name="memberRoleId")
+    private @Nullable Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Optional<Output<Integer>> memberRoleId() {
+        return Optional.ofNullable(this.memberRoleId);
+    }
+
+    /**
      * The id of the additional group with which the main group will be shared.
      * 
      */
@@ -83,6 +98,7 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
         this.expiresAt = $.expiresAt;
         this.groupAccess = $.groupAccess;
         this.groupId = $.groupId;
+        this.memberRoleId = $.memberRoleId;
         this.shareGroupId = $.shareGroupId;
     }
 
@@ -165,6 +181,27 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(@Nullable Output<Integer> memberRoleId) {
+            $.memberRoleId = memberRoleId;
+            return this;
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(Integer memberRoleId) {
+            return memberRoleId(Output.of(memberRoleId));
         }
 
         /**

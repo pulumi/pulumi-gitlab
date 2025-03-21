@@ -1014,6 +1014,12 @@ namespace Pulumi.GitLab
         public Output<bool> LockDuoFeaturesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        /// </summary>
+        [Output("lockMembershipsToLdap")]
+        public Output<bool> LockMembershipsToLdap { get; private set; } = null!;
+
+        /// <summary>
         /// Enable Mailgun event receiver.
         /// </summary>
         [Output("mailgunEventsEnabled")]
@@ -3093,6 +3099,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lockDuoFeaturesEnabled")]
         public Input<bool>? LockDuoFeaturesEnabled { get; set; }
+
+        /// <summary>
+        /// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        /// </summary>
+        [Input("lockMembershipsToLdap")]
+        public Input<bool>? LockMembershipsToLdap { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -5244,6 +5256,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lockDuoFeaturesEnabled")]
         public Input<bool>? LockDuoFeaturesEnabled { get; set; }
+
+        /// <summary>
+        /// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        /// </summary>
+        [Input("lockMembershipsToLdap")]
+        public Input<bool>? LockMembershipsToLdap { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.

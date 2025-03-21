@@ -100,6 +100,12 @@ namespace Pulumi.GitLab
         public Output<string?> ExternalProvider { get; private set; } = null!;
 
         /// <summary>
+        /// Set user password to a random value
+        /// </summary>
+        [Output("forceRandomPassword")]
+        public Output<bool?> ForceRandomPassword { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Output("isAdmin")]
@@ -240,6 +246,12 @@ namespace Pulumi.GitLab
         public Input<string>? ExternalProvider { get; set; }
 
         /// <summary>
+        /// Set user password to a random value
+        /// </summary>
+        [Input("forceRandomPassword")]
+        public Input<bool>? ForceRandomPassword { get; set; }
+
+        /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges
         /// </summary>
         [Input("isAdmin")]
@@ -346,6 +358,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("externalProvider")]
         public Input<string>? ExternalProvider { get; set; }
+
+        /// <summary>
+        /// Set user password to a random value
+        /// </summary>
+        [Input("forceRandomPassword")]
+        public Input<bool>? ForceRandomPassword { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false.  Whether to enable administrative privileges

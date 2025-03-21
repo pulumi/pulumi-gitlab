@@ -88,6 +88,7 @@ class ProjectArgs:
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 permanently_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
@@ -191,6 +192,7 @@ class ProjectArgs:
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
+        :param pulumi.Input[bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
         :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
@@ -367,6 +369,8 @@ class ProjectArgs:
             pulumi.set(__self__, "pages_access_level", pages_access_level)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if permanently_delete_on_destroy is not None:
+            pulumi.set(__self__, "permanently_delete_on_destroy", permanently_delete_on_destroy)
         if pipelines_enabled is not None:
             warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
             pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
@@ -1246,6 +1250,18 @@ class ProjectArgs:
         pulumi.set(self, "path", value)
 
     @property
+    @pulumi.getter(name="permanentlyDeleteOnDestroy")
+    def permanently_delete_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+        """
+        return pulumi.get(self, "permanently_delete_on_destroy")
+
+    @permanently_delete_on_destroy.setter
+    def permanently_delete_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "permanently_delete_on_destroy", value)
+
+    @property
     @pulumi.getter(name="pipelinesEnabled")
     @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
     def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
@@ -1698,6 +1714,7 @@ class _ProjectState:
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  path_with_namespace: Optional[pulumi.Input[str]] = None,
+                 permanently_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
@@ -1808,6 +1825,7 @@ class _ProjectState:
         :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
+        :param pulumi.Input[bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
         :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
@@ -1995,6 +2013,8 @@ class _ProjectState:
             pulumi.set(__self__, "path", path)
         if path_with_namespace is not None:
             pulumi.set(__self__, "path_with_namespace", path_with_namespace)
+        if permanently_delete_on_destroy is not None:
+            pulumi.set(__self__, "permanently_delete_on_destroy", permanently_delete_on_destroy)
         if pipelines_enabled is not None:
             warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
             pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
@@ -2928,6 +2948,18 @@ class _ProjectState:
         pulumi.set(self, "path_with_namespace", value)
 
     @property
+    @pulumi.getter(name="permanentlyDeleteOnDestroy")
+    def permanently_delete_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+        """
+        return pulumi.get(self, "permanently_delete_on_destroy")
+
+    @permanently_delete_on_destroy.setter
+    def permanently_delete_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "permanently_delete_on_destroy", value)
+
+    @property
     @pulumi.getter(name="pipelinesEnabled")
     @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
     def pipelines_enabled(self) -> Optional[pulumi.Input[bool]]:
@@ -3414,6 +3446,7 @@ class Project(pulumi.CustomResource):
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 permanently_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
@@ -3551,6 +3584,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
+        :param pulumi.Input[bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
         :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
@@ -3708,6 +3742,7 @@ class Project(pulumi.CustomResource):
                  packages_enabled: Optional[pulumi.Input[bool]] = None,
                  pages_access_level: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 permanently_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
                  pipelines_enabled: Optional[pulumi.Input[bool]] = None,
                  pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
@@ -3815,6 +3850,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["packages_enabled"] = packages_enabled
             __props__.__dict__["pages_access_level"] = pages_access_level
             __props__.__dict__["path"] = path
+            __props__.__dict__["permanently_delete_on_destroy"] = permanently_delete_on_destroy
             __props__.__dict__["pipelines_enabled"] = pipelines_enabled
             __props__.__dict__["pre_receive_secret_detection_enabled"] = pre_receive_secret_detection_enabled
             __props__.__dict__["prevent_merge_without_jira_issue"] = prevent_merge_without_jira_issue
@@ -3936,6 +3972,7 @@ class Project(pulumi.CustomResource):
             pages_access_level: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
             path_with_namespace: Optional[pulumi.Input[str]] = None,
+            permanently_delete_on_destroy: Optional[pulumi.Input[bool]] = None,
             pipelines_enabled: Optional[pulumi.Input[bool]] = None,
             pre_receive_secret_detection_enabled: Optional[pulumi.Input[bool]] = None,
             prevent_merge_without_jira_issue: Optional[pulumi.Input[bool]] = None,
@@ -4051,6 +4088,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[str] path: The path of the repository.
         :param pulumi.Input[str] path_with_namespace: The path of the repository with namespace.
+        :param pulumi.Input[bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         :param pulumi.Input[bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
         :param pulumi.Input[bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
@@ -4165,6 +4203,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["pages_access_level"] = pages_access_level
         __props__.__dict__["path"] = path
         __props__.__dict__["path_with_namespace"] = path_with_namespace
+        __props__.__dict__["permanently_delete_on_destroy"] = permanently_delete_on_destroy
         __props__.__dict__["pipelines_enabled"] = pipelines_enabled
         __props__.__dict__["pre_receive_secret_detection_enabled"] = pre_receive_secret_detection_enabled
         __props__.__dict__["prevent_merge_without_jira_issue"] = prevent_merge_without_jira_issue
@@ -4773,6 +4812,14 @@ class Project(pulumi.CustomResource):
         The path of the repository with namespace.
         """
         return pulumi.get(self, "path_with_namespace")
+
+    @property
+    @pulumi.getter(name="permanentlyDeleteOnDestroy")
+    def permanently_delete_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+        """
+        return pulumi.get(self, "permanently_delete_on_destroy")
 
     @property
     @pulumi.getter(name="pipelinesEnabled")

@@ -12,6 +12,16 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectEnvironmentsEnvironment {
     /**
+     * @return Timestamp of when the environment is scheduled to stop, RFC3339 format.
+     * 
+     */
+    private String autoStopAt;
+    /**
+     * @return The auto stop setting for the environment.
+     * 
+     */
+    private String autoStopSetting;
+    /**
      * @return The ID of the environments cluster agent or `null` if none is assigned.
      * 
      */
@@ -73,6 +83,20 @@ public final class GetProjectEnvironmentsEnvironment {
     private String updatedAt;
 
     private GetProjectEnvironmentsEnvironment() {}
+    /**
+     * @return Timestamp of when the environment is scheduled to stop, RFC3339 format.
+     * 
+     */
+    public String autoStopAt() {
+        return this.autoStopAt;
+    }
+    /**
+     * @return The auto stop setting for the environment.
+     * 
+     */
+    public String autoStopSetting() {
+        return this.autoStopSetting;
+    }
     /**
      * @return The ID of the environments cluster agent or `null` if none is assigned.
      * 
@@ -167,6 +191,8 @@ public final class GetProjectEnvironmentsEnvironment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String autoStopAt;
+        private String autoStopSetting;
         private Integer clusterAgentId;
         private String createdAt;
         private String description;
@@ -182,6 +208,8 @@ public final class GetProjectEnvironmentsEnvironment {
         public Builder() {}
         public Builder(GetProjectEnvironmentsEnvironment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoStopAt = defaults.autoStopAt;
+    	      this.autoStopSetting = defaults.autoStopSetting;
     	      this.clusterAgentId = defaults.clusterAgentId;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
@@ -196,6 +224,22 @@ public final class GetProjectEnvironmentsEnvironment {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
+        public Builder autoStopAt(String autoStopAt) {
+            if (autoStopAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectEnvironmentsEnvironment", "autoStopAt");
+            }
+            this.autoStopAt = autoStopAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoStopSetting(String autoStopSetting) {
+            if (autoStopSetting == null) {
+              throw new MissingRequiredPropertyException("GetProjectEnvironmentsEnvironment", "autoStopSetting");
+            }
+            this.autoStopSetting = autoStopSetting;
+            return this;
+        }
         @CustomType.Setter
         public Builder clusterAgentId(Integer clusterAgentId) {
             if (clusterAgentId == null) {
@@ -294,6 +338,8 @@ public final class GetProjectEnvironmentsEnvironment {
         }
         public GetProjectEnvironmentsEnvironment build() {
             final var _resultValue = new GetProjectEnvironmentsEnvironment();
+            _resultValue.autoStopAt = autoStopAt;
+            _resultValue.autoStopSetting = autoStopSetting;
             _resultValue.clusterAgentId = clusterAgentId;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;

@@ -19,6 +19,21 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
     public static final ProjectEnvironmentArgs Empty = new ProjectEnvironmentArgs();
 
     /**
+     * The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * 
+     */
+    @Import(name="autoStopSetting")
+    private @Nullable Output<String> autoStopSetting;
+
+    /**
+     * @return The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * 
+     */
+    public Optional<Output<String>> autoStopSetting() {
+        return Optional.ofNullable(this.autoStopSetting);
+    }
+
+    /**
      * The cluster agent to associate with this environment.
      * 
      */
@@ -31,6 +46,21 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<Integer>> clusterAgentId() {
         return Optional.ofNullable(this.clusterAgentId);
+    }
+
+    /**
+     * The description of the environment.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the environment.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -109,14 +139,14 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
     @Import(name="stopBeforeDestroy")
     private @Nullable Output<Boolean> stopBeforeDestroy;
 
     /**
-     * @return Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
     public Optional<Output<Boolean>> stopBeforeDestroy() {
@@ -141,7 +171,9 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
     private ProjectEnvironmentArgs() {}
 
     private ProjectEnvironmentArgs(ProjectEnvironmentArgs $) {
+        this.autoStopSetting = $.autoStopSetting;
         this.clusterAgentId = $.clusterAgentId;
+        this.description = $.description;
         this.externalUrl = $.externalUrl;
         this.fluxResourcePath = $.fluxResourcePath;
         this.kubernetesNamespace = $.kubernetesNamespace;
@@ -170,6 +202,27 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopSetting(@Nullable Output<String> autoStopSetting) {
+            $.autoStopSetting = autoStopSetting;
+            return this;
+        }
+
+        /**
+         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopSetting(String autoStopSetting) {
+            return autoStopSetting(Output.of(autoStopSetting));
+        }
+
+        /**
          * @param clusterAgentId The cluster agent to associate with this environment.
          * 
          * @return builder
@@ -188,6 +241,27 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
          */
         public Builder clusterAgentId(Integer clusterAgentId) {
             return clusterAgentId(Output.of(clusterAgentId));
+        }
+
+        /**
+         * @param description The description of the environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -296,7 +370,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted.
+         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
          * 
          * @return builder
          * 
@@ -307,7 +381,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted.
+         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
          * 
          * @return builder
          * 

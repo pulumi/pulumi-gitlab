@@ -18,6 +18,36 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
     public static final ProjectEnvironmentState Empty = new ProjectEnvironmentState();
 
     /**
+     * The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+     * 
+     */
+    @Import(name="autoStopAt")
+    private @Nullable Output<String> autoStopAt;
+
+    /**
+     * @return The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+     * 
+     */
+    public Optional<Output<String>> autoStopAt() {
+        return Optional.ofNullable(this.autoStopAt);
+    }
+
+    /**
+     * The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * 
+     */
+    @Import(name="autoStopSetting")
+    private @Nullable Output<String> autoStopSetting;
+
+    /**
+     * @return The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * 
+     */
+    public Optional<Output<String>> autoStopSetting() {
+        return Optional.ofNullable(this.autoStopSetting);
+    }
+
+    /**
      * The cluster agent to associate with this environment.
      * 
      */
@@ -45,6 +75,21 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The description of the environment.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the environment.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -153,14 +198,14 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
     @Import(name="stopBeforeDestroy")
     private @Nullable Output<Boolean> stopBeforeDestroy;
 
     /**
-     * @return Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
     public Optional<Output<Boolean>> stopBeforeDestroy() {
@@ -200,8 +245,11 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
     private ProjectEnvironmentState() {}
 
     private ProjectEnvironmentState(ProjectEnvironmentState $) {
+        this.autoStopAt = $.autoStopAt;
+        this.autoStopSetting = $.autoStopSetting;
         this.clusterAgentId = $.clusterAgentId;
         this.createdAt = $.createdAt;
+        this.description = $.description;
         this.externalUrl = $.externalUrl;
         this.fluxResourcePath = $.fluxResourcePath;
         this.kubernetesNamespace = $.kubernetesNamespace;
@@ -230,6 +278,48 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
 
         public Builder(ProjectEnvironmentState defaults) {
             $ = new ProjectEnvironmentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoStopAt The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopAt(@Nullable Output<String> autoStopAt) {
+            $.autoStopAt = autoStopAt;
+            return this;
+        }
+
+        /**
+         * @param autoStopAt The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopAt(String autoStopAt) {
+            return autoStopAt(Output.of(autoStopAt));
+        }
+
+        /**
+         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopSetting(@Nullable Output<String> autoStopSetting) {
+            $.autoStopSetting = autoStopSetting;
+            return this;
+        }
+
+        /**
+         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopSetting(String autoStopSetting) {
+            return autoStopSetting(Output.of(autoStopSetting));
         }
 
         /**
@@ -272,6 +362,27 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param description The description of the environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -422,7 +533,7 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted.
+         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
          * 
          * @return builder
          * 
@@ -433,7 +544,7 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted.
+         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
          * 
          * @return builder
          * 

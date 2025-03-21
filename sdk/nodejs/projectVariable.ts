@@ -82,6 +82,10 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     public readonly environmentScope!: pulumi.Output<string>;
     /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     */
+    public readonly hidden!: pulumi.Output<boolean>;
+    /**
      * The name of the variable.
      */
     public readonly key!: pulumi.Output<string>;
@@ -125,6 +129,7 @@ export class ProjectVariable extends pulumi.CustomResource {
             const state = argsOrState as ProjectVariableState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
+            resourceInputs["hidden"] = state ? state.hidden : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["masked"] = state ? state.masked : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -145,6 +150,7 @@ export class ProjectVariable extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
+            resourceInputs["hidden"] = args ? args.hidden : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["masked"] = args ? args.masked : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -170,6 +176,10 @@ export interface ProjectVariableState {
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
+    /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     */
+    hidden?: pulumi.Input<boolean>;
     /**
      * The name of the variable.
      */
@@ -212,6 +222,10 @@ export interface ProjectVariableArgs {
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
     environmentScope?: pulumi.Input<string>;
+    /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     */
+    hidden?: pulumi.Input<boolean>;
     /**
      * The name of the variable.
      */

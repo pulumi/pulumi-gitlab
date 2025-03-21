@@ -194,6 +194,8 @@ type Project struct {
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// The path of the repository with namespace.
 	PathWithNamespace pulumi.StringOutput `pulumi:"pathWithNamespace"`
+	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+	PermanentlyDeleteOnDestroy pulumi.BoolPtrOutput `pulumi:"permanentlyDeleteOnDestroy"`
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
@@ -459,6 +461,8 @@ type projectState struct {
 	Path *string `pulumi:"path"`
 	// The path of the repository with namespace.
 	PathWithNamespace *string `pulumi:"pathWithNamespace"`
+	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+	PermanentlyDeleteOnDestroy *bool `pulumi:"permanentlyDeleteOnDestroy"`
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
@@ -687,6 +691,8 @@ type ProjectState struct {
 	Path pulumi.StringPtrInput
 	// The path of the repository with namespace.
 	PathWithNamespace pulumi.StringPtrInput
+	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+	PermanentlyDeleteOnDestroy pulumi.BoolPtrInput
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
@@ -911,6 +917,8 @@ type projectArgs struct {
 	PagesAccessLevel *string `pulumi:"pagesAccessLevel"`
 	// The path of the repository.
 	Path *string `pulumi:"path"`
+	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+	PermanentlyDeleteOnDestroy *bool `pulumi:"permanentlyDeleteOnDestroy"`
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
@@ -1126,6 +1134,8 @@ type ProjectArgs struct {
 	PagesAccessLevel pulumi.StringPtrInput
 	// The path of the repository.
 	Path pulumi.StringPtrInput
+	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+	PermanentlyDeleteOnDestroy pulumi.BoolPtrInput
 	// Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
@@ -1645,6 +1655,11 @@ func (o ProjectOutput) Path() pulumi.StringPtrOutput {
 // The path of the repository with namespace.
 func (o ProjectOutput) PathWithNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PathWithNamespace }).(pulumi.StringOutput)
+}
+
+// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+func (o ProjectOutput) PermanentlyDeleteOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.PermanentlyDeleteOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.

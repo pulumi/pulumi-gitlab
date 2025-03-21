@@ -73,6 +73,12 @@ namespace Pulumi.GitLab
         public Output<string> EnvironmentScope { get; private set; } = null!;
 
         /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        /// </summary>
+        [Output("hidden")]
+        public Output<bool> Hidden { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the variable.
         /// </summary>
         [Output("key")]
@@ -173,6 +179,12 @@ namespace Pulumi.GitLab
         public Input<string>? EnvironmentScope { get; set; }
 
         /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
+
+        /// <summary>
         /// The name of the variable.
         /// </summary>
         [Input("key", required: true)]
@@ -233,6 +245,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
+
+        /// <summary>
+        /// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
 
         /// <summary>
         /// The name of the variable.

@@ -96,6 +96,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectEnvironment:ProjectEnvironment")
 public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
     /**
+     * The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+     * 
+     */
+    @Export(name="autoStopAt", refs={String.class}, tree="[0]")
+    private Output<String> autoStopAt;
+
+    /**
+     * @return The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+     * 
+     */
+    public Output<String> autoStopAt() {
+        return this.autoStopAt;
+    }
+    /**
+     * The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * 
+     */
+    @Export(name="autoStopSetting", refs={String.class}, tree="[0]")
+    private Output<String> autoStopSetting;
+
+    /**
+     * @return The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * 
+     */
+    public Output<String> autoStopSetting() {
+        return this.autoStopSetting;
+    }
+    /**
      * The cluster agent to associate with this environment.
      * 
      */
@@ -122,6 +150,20 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * The description of the environment.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return The description of the environment.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Place to link to for this environment.
@@ -222,14 +264,14 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
     @Export(name="stopBeforeDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> stopBeforeDestroy;
 
     /**
-     * @return Determines whether the environment is attempted to be stopped before the environment is deleted.
+     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
     public Output<Optional<Boolean>> stopBeforeDestroy() {

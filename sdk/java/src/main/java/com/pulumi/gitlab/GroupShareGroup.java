@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+ * The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
  * 
@@ -124,6 +124,20 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> groupId() {
         return this.groupId;
+    }
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * 
+     */
+    public Output<Integer> memberRoleId() {
+        return this.memberRoleId;
     }
     /**
      * The id of the additional group with which the main group will be shared.

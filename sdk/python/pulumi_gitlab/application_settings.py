@@ -185,6 +185,7 @@ class ApplicationSettingsArgs:
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
+                 lock_memberships_to_ldap: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
@@ -500,6 +501,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
+        :param pulumi.Input[bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -984,6 +986,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "local_markdown_version", local_markdown_version)
         if lock_duo_features_enabled is not None:
             pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
+        if lock_memberships_to_ldap is not None:
+            pulumi.set(__self__, "lock_memberships_to_ldap", lock_memberships_to_ldap)
         if mailgun_events_enabled is not None:
             pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
@@ -3253,6 +3257,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "lock_duo_features_enabled", value)
 
     @property
+    @pulumi.getter(name="lockMembershipsToLdap")
+    def lock_memberships_to_ldap(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_memberships_to_ldap")
+
+    @lock_memberships_to_ldap.setter
+    def lock_memberships_to_ldap(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lock_memberships_to_ldap", value)
+
+    @property
     @pulumi.getter(name="mailgunEventsEnabled")
     def mailgun_events_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -5183,6 +5199,7 @@ class _ApplicationSettingsState:
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
+                 lock_memberships_to_ldap: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
@@ -5500,6 +5517,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
+        :param pulumi.Input[bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -5988,6 +6006,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "local_markdown_version", local_markdown_version)
         if lock_duo_features_enabled is not None:
             pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
+        if lock_memberships_to_ldap is not None:
+            pulumi.set(__self__, "lock_memberships_to_ldap", lock_memberships_to_ldap)
         if mailgun_events_enabled is not None:
             pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
@@ -8281,6 +8301,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "lock_duo_features_enabled", value)
 
     @property
+    @pulumi.getter(name="lockMembershipsToLdap")
+    def lock_memberships_to_ldap(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_memberships_to_ldap")
+
+    @lock_memberships_to_ldap.setter
+    def lock_memberships_to_ldap(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lock_memberships_to_ldap", value)
+
+    @property
     @pulumi.getter(name="mailgunEventsEnabled")
     def mailgun_events_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -10211,6 +10243,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
+                 lock_memberships_to_ldap: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
@@ -10530,6 +10563,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
+        :param pulumi.Input[bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -10865,6 +10899,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
                  local_markdown_version: Optional[pulumi.Input[int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
+                 lock_memberships_to_ldap: Optional[pulumi.Input[bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[str]] = None,
                  maintenance_mode: Optional[pulumi.Input[bool]] = None,
@@ -11185,6 +11220,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
             __props__.__dict__["local_markdown_version"] = local_markdown_version
             __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
+            __props__.__dict__["lock_memberships_to_ldap"] = lock_memberships_to_ldap
             __props__.__dict__["mailgun_events_enabled"] = mailgun_events_enabled
             __props__.__dict__["mailgun_signing_key"] = None if mailgun_signing_key is None else pulumi.Output.secret(mailgun_signing_key)
             __props__.__dict__["maintenance_mode"] = maintenance_mode
@@ -11512,6 +11548,7 @@ class ApplicationSettings(pulumi.CustomResource):
             keep_latest_artifact: Optional[pulumi.Input[bool]] = None,
             local_markdown_version: Optional[pulumi.Input[int]] = None,
             lock_duo_features_enabled: Optional[pulumi.Input[bool]] = None,
+            lock_memberships_to_ldap: Optional[pulumi.Input[bool]] = None,
             mailgun_events_enabled: Optional[pulumi.Input[bool]] = None,
             mailgun_signing_key: Optional[pulumi.Input[str]] = None,
             maintenance_mode: Optional[pulumi.Input[bool]] = None,
@@ -11834,6 +11871,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
+        :param pulumi.Input[bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         :param pulumi.Input[bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -12151,6 +12189,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
         __props__.__dict__["local_markdown_version"] = local_markdown_version
         __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
+        __props__.__dict__["lock_memberships_to_ldap"] = lock_memberships_to_ldap
         __props__.__dict__["mailgun_events_enabled"] = mailgun_events_enabled
         __props__.__dict__["mailgun_signing_key"] = mailgun_signing_key
         __props__.__dict__["maintenance_mode"] = maintenance_mode
@@ -13632,6 +13671,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_duo_features_enabled")
+
+    @property
+    @pulumi.getter(name="lockMembershipsToLdap")
+    def lock_memberships_to_ldap(self) -> pulumi.Output[bool]:
+        """
+        Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_memberships_to_ldap")
 
     @property
     @pulumi.getter(name="mailgunEventsEnabled")

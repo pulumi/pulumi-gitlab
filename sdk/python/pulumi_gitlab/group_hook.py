@@ -23,15 +23,19 @@ class GroupHookArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[str],
                  url: pulumi.Input[str],
+                 branch_filter_strategy: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 feature_flag_events: Optional[pulumi.Input[bool]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
@@ -45,15 +49,19 @@ class GroupHookArgs:
         The set of arguments for constructing a GroupHook resource.
         :param pulumi.Input[str] group: The full path or id of the group to add the hook to.
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
         :param pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the group webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
+        :param pulumi.Input[bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the group webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
@@ -66,6 +74,8 @@ class GroupHookArgs:
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "url", url)
+        if branch_filter_strategy is not None:
+            pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
@@ -76,14 +86,20 @@ class GroupHookArgs:
             pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
             pulumi.set(__self__, "deployment_events", deployment_events)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        if feature_flag_events is not None:
+            pulumi.set(__self__, "feature_flag_events", feature_flag_events)
         if issues_events is not None:
             pulumi.set(__self__, "issues_events", issues_events)
         if job_events is not None:
             pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if note_events is not None:
             pulumi.set(__self__, "note_events", note_events)
         if pipeline_events is not None:
@@ -126,6 +142,18 @@ class GroupHookArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
+
+    @branch_filter_strategy.setter
+    def branch_filter_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch_filter_strategy", value)
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -188,6 +216,18 @@ class GroupHookArgs:
         pulumi.set(self, "deployment_events", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the group webhook.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -198,6 +238,18 @@ class GroupHookArgs:
     @enable_ssl_verification.setter
     def enable_ssl_verification(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
+
+    @property
+    @pulumi.getter(name="featureFlagEvents")
+    def feature_flag_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for feature flag events.
+        """
+        return pulumi.get(self, "feature_flag_events")
+
+    @feature_flag_events.setter
+    def feature_flag_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "feature_flag_events", value)
 
     @property
     @pulumi.getter(name="issuesEvents")
@@ -234,6 +286,18 @@ class GroupHookArgs:
     @merge_requests_events.setter
     def merge_requests_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "merge_requests_events", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the group webhook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="noteEvents")
@@ -347,18 +411,22 @@ class GroupHookArgs:
 @pulumi.input_type
 class _GroupHookState:
     def __init__(__self__, *,
+                 branch_filter_strategy: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 feature_flag_events: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[int]] = None,
                  hook_id: Optional[pulumi.Input[int]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
@@ -371,18 +439,22 @@ class _GroupHookState:
                  wiki_page_events: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering GroupHook resources.
+        :param pulumi.Input[str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
         :param pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the group webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
+        :param pulumi.Input[bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[str] group: The full path or id of the group to add the hook to.
         :param pulumi.Input[int] group_id: The id of the group for the hook.
         :param pulumi.Input[int] hook_id: The id of the group hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the group webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
@@ -394,6 +466,8 @@ class _GroupHookState:
         :param pulumi.Input[str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[bool] wiki_page_events: Invoke the hook for wiki page events.
         """
+        if branch_filter_strategy is not None:
+            pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
@@ -404,8 +478,12 @@ class _GroupHookState:
             pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events is not None:
             pulumi.set(__self__, "deployment_events", deployment_events)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        if feature_flag_events is not None:
+            pulumi.set(__self__, "feature_flag_events", feature_flag_events)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if group_id is not None:
@@ -418,6 +496,8 @@ class _GroupHookState:
             pulumi.set(__self__, "job_events", job_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if note_events is not None:
             pulumi.set(__self__, "note_events", note_events)
         if pipeline_events is not None:
@@ -438,6 +518,18 @@ class _GroupHookState:
             pulumi.set(__self__, "url", url)
         if wiki_page_events is not None:
             pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
+
+    @branch_filter_strategy.setter
+    def branch_filter_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch_filter_strategy", value)
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -500,6 +592,18 @@ class _GroupHookState:
         pulumi.set(self, "deployment_events", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the group webhook.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -510,6 +614,18 @@ class _GroupHookState:
     @enable_ssl_verification.setter
     def enable_ssl_verification(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
+
+    @property
+    @pulumi.getter(name="featureFlagEvents")
+    def feature_flag_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Invoke the hook for feature flag events.
+        """
+        return pulumi.get(self, "feature_flag_events")
+
+    @feature_flag_events.setter
+    def feature_flag_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "feature_flag_events", value)
 
     @property
     @pulumi.getter
@@ -582,6 +698,18 @@ class _GroupHookState:
     @merge_requests_events.setter
     def merge_requests_events(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "merge_requests_events", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the group webhook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="noteEvents")
@@ -709,16 +837,20 @@ class GroupHook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 branch_filter_strategy: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 feature_flag_events: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
@@ -733,7 +865,7 @@ class GroupHook(pulumi.CustomResource):
         """
         The `GroupHook` resource allows to manage the lifecycle of a group hook.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
 
         ## Import
 
@@ -761,16 +893,20 @@ class GroupHook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the group webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
+        :param pulumi.Input[bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[str] group: The full path or id of the group to add the hook to.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the group webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
@@ -791,7 +927,7 @@ class GroupHook(pulumi.CustomResource):
         """
         The `GroupHook` resource allows to manage the lifecycle of a group hook.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
 
         ## Import
 
@@ -832,16 +968,20 @@ class GroupHook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 branch_filter_strategy: Optional[pulumi.Input[str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[str]] = None,
                  deployment_events: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+                 feature_flag_events: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
                  issues_events: Optional[pulumi.Input[bool]] = None,
                  job_events: Optional[pulumi.Input[bool]] = None,
                  merge_requests_events: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_events: Optional[pulumi.Input[bool]] = None,
                  pipeline_events: Optional[pulumi.Input[bool]] = None,
                  push_events: Optional[pulumi.Input[bool]] = None,
@@ -861,18 +1001,22 @@ class GroupHook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupHookArgs.__new__(GroupHookArgs)
 
+            __props__.__dict__["branch_filter_strategy"] = branch_filter_strategy
             __props__.__dict__["confidential_issues_events"] = confidential_issues_events
             __props__.__dict__["confidential_note_events"] = confidential_note_events
             __props__.__dict__["custom_headers"] = custom_headers
             __props__.__dict__["custom_webhook_template"] = custom_webhook_template
             __props__.__dict__["deployment_events"] = deployment_events
+            __props__.__dict__["description"] = description
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
+            __props__.__dict__["feature_flag_events"] = feature_flag_events
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
             __props__.__dict__["issues_events"] = issues_events
             __props__.__dict__["job_events"] = job_events
             __props__.__dict__["merge_requests_events"] = merge_requests_events
+            __props__.__dict__["name"] = name
             __props__.__dict__["note_events"] = note_events
             __props__.__dict__["pipeline_events"] = pipeline_events
             __props__.__dict__["push_events"] = push_events
@@ -899,18 +1043,22 @@ class GroupHook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            branch_filter_strategy: Optional[pulumi.Input[str]] = None,
             confidential_issues_events: Optional[pulumi.Input[bool]] = None,
             confidential_note_events: Optional[pulumi.Input[bool]] = None,
             custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
             custom_webhook_template: Optional[pulumi.Input[str]] = None,
             deployment_events: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             enable_ssl_verification: Optional[pulumi.Input[bool]] = None,
+            feature_flag_events: Optional[pulumi.Input[bool]] = None,
             group: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[int]] = None,
             hook_id: Optional[pulumi.Input[int]] = None,
             issues_events: Optional[pulumi.Input[bool]] = None,
             job_events: Optional[pulumi.Input[bool]] = None,
             merge_requests_events: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
             note_events: Optional[pulumi.Input[bool]] = None,
             pipeline_events: Optional[pulumi.Input[bool]] = None,
             push_events: Optional[pulumi.Input[bool]] = None,
@@ -928,18 +1076,22 @@ class GroupHook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[bool] confidential_note_events: Invoke the hook for confidential note events.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
         :param pulumi.Input[str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[bool] deployment_events: Invoke the hook for deployment events.
+        :param pulumi.Input[str] description: Description of the group webhook.
         :param pulumi.Input[bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
+        :param pulumi.Input[bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[str] group: The full path or id of the group to add the hook to.
         :param pulumi.Input[int] group_id: The id of the group for the hook.
         :param pulumi.Input[int] hook_id: The id of the group hook.
         :param pulumi.Input[bool] issues_events: Invoke the hook for issues events.
         :param pulumi.Input[bool] job_events: Invoke the hook for job events.
         :param pulumi.Input[bool] merge_requests_events: Invoke the hook for merge requests events.
+        :param pulumi.Input[str] name: Name of the group webhook.
         :param pulumi.Input[bool] note_events: Invoke the hook for note events.
         :param pulumi.Input[bool] pipeline_events: Invoke the hook for pipeline events.
         :param pulumi.Input[bool] push_events: Invoke the hook for push events.
@@ -955,18 +1107,22 @@ class GroupHook(pulumi.CustomResource):
 
         __props__ = _GroupHookState.__new__(_GroupHookState)
 
+        __props__.__dict__["branch_filter_strategy"] = branch_filter_strategy
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
         __props__.__dict__["confidential_note_events"] = confidential_note_events
         __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
+        __props__.__dict__["description"] = description
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
+        __props__.__dict__["feature_flag_events"] = feature_flag_events
         __props__.__dict__["group"] = group
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["hook_id"] = hook_id
         __props__.__dict__["issues_events"] = issues_events
         __props__.__dict__["job_events"] = job_events
         __props__.__dict__["merge_requests_events"] = merge_requests_events
+        __props__.__dict__["name"] = name
         __props__.__dict__["note_events"] = note_events
         __props__.__dict__["pipeline_events"] = pipeline_events
         __props__.__dict__["push_events"] = push_events
@@ -978,6 +1134,14 @@ class GroupHook(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return GroupHook(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> pulumi.Output[str]:
+        """
+        Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
 
     @property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -1020,12 +1184,28 @@ class GroupHook(pulumi.CustomResource):
         return pulumi.get(self, "deployment_events")
 
     @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of the group webhook.
+        """
+        return pulumi.get(self, "description")
+
+    @property
     @pulumi.getter(name="enableSslVerification")
     def enable_ssl_verification(self) -> pulumi.Output[bool]:
         """
         Enable SSL verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
+
+    @property
+    @pulumi.getter(name="featureFlagEvents")
+    def feature_flag_events(self) -> pulumi.Output[bool]:
+        """
+        Invoke the hook for feature flag events.
+        """
+        return pulumi.get(self, "feature_flag_events")
 
     @property
     @pulumi.getter
@@ -1074,6 +1254,14 @@ class GroupHook(pulumi.CustomResource):
         Invoke the hook for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the group webhook.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="noteEvents")

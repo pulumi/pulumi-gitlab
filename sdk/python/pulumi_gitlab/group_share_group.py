@@ -22,19 +22,23 @@ class GroupShareGroupArgs:
                  group_access: pulumi.Input[str],
                  group_id: pulumi.Input[str],
                  share_group_id: pulumi.Input[int],
-                 expires_at: Optional[pulumi.Input[str]] = None):
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a GroupShareGroup resource.
         :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] group_id: The id of the main group to be shared.
         :param pulumi.Input[int] share_group_id: The id of the additional group with which the main group will be shared.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         """
         pulumi.set(__self__, "group_access", group_access)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "share_group_id", share_group_id)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
 
     @property
     @pulumi.getter(name="groupAccess")
@@ -84,6 +88,18 @@ class GroupShareGroupArgs:
     def expires_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expires_at", value)
 
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_role_id", value)
+
 
 @pulumi.input_type
 class _GroupShareGroupState:
@@ -91,12 +107,14 @@ class _GroupShareGroupState:
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  share_group_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering GroupShareGroup resources.
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] group_id: The id of the main group to be shared.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         if expires_at is not None:
@@ -105,6 +123,8 @@ class _GroupShareGroupState:
             pulumi.set(__self__, "group_access", group_access)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
         if share_group_id is not None:
             pulumi.set(__self__, "share_group_id", share_group_id)
 
@@ -145,6 +165,18 @@ class _GroupShareGroupState:
         pulumi.set(self, "group_id", value)
 
     @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_role_id", value)
+
+    @property
     @pulumi.getter(name="shareGroupId")
     def share_group_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -165,10 +197,11 @@ class GroupShareGroup(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  share_group_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+        The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
 
@@ -212,6 +245,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] group_id: The id of the main group to be shared.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         ...
@@ -221,7 +255,7 @@ class GroupShareGroup(pulumi.CustomResource):
                  args: GroupShareGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+        The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
 
@@ -278,6 +312,7 @@ class GroupShareGroup(pulumi.CustomResource):
                  expires_at: Optional[pulumi.Input[str]] = None,
                  group_access: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 member_role_id: Optional[pulumi.Input[int]] = None,
                  share_group_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -295,6 +330,7 @@ class GroupShareGroup(pulumi.CustomResource):
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["member_role_id"] = member_role_id
             if share_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'share_group_id'")
             __props__.__dict__["share_group_id"] = share_group_id
@@ -311,6 +347,7 @@ class GroupShareGroup(pulumi.CustomResource):
             expires_at: Optional[pulumi.Input[str]] = None,
             group_access: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
+            member_role_id: Optional[pulumi.Input[int]] = None,
             share_group_id: Optional[pulumi.Input[int]] = None) -> 'GroupShareGroup':
         """
         Get an existing GroupShareGroup resource's state with the given name, id, and optional extra
@@ -322,6 +359,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[str] group_id: The id of the main group to be shared.
+        :param pulumi.Input[int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -331,6 +369,7 @@ class GroupShareGroup(pulumi.CustomResource):
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["group_access"] = group_access
         __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["member_role_id"] = member_role_id
         __props__.__dict__["share_group_id"] = share_group_id
         return GroupShareGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -357,6 +396,14 @@ class GroupShareGroup(pulumi.CustomResource):
         The id of the main group to be shared.
         """
         return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> pulumi.Output[int]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances.
+        """
+        return pulumi.get(self, "member_role_id")
 
     @property
     @pulumi.getter(name="shareGroupId")

@@ -710,6 +710,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly lockDuoFeaturesEnabled!: pulumi.Output<boolean>;
     /**
+     * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     */
+    public readonly lockMembershipsToLdap!: pulumi.Output<boolean>;
+    /**
      * Enable Mailgun event receiver.
      */
     public readonly mailgunEventsEnabled!: pulumi.Output<boolean>;
@@ -1474,6 +1478,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["keepLatestArtifact"] = state ? state.keepLatestArtifact : undefined;
             resourceInputs["localMarkdownVersion"] = state ? state.localMarkdownVersion : undefined;
             resourceInputs["lockDuoFeaturesEnabled"] = state ? state.lockDuoFeaturesEnabled : undefined;
+            resourceInputs["lockMembershipsToLdap"] = state ? state.lockMembershipsToLdap : undefined;
             resourceInputs["mailgunEventsEnabled"] = state ? state.mailgunEventsEnabled : undefined;
             resourceInputs["mailgunSigningKey"] = state ? state.mailgunSigningKey : undefined;
             resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
@@ -1787,6 +1792,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["keepLatestArtifact"] = args ? args.keepLatestArtifact : undefined;
             resourceInputs["localMarkdownVersion"] = args ? args.localMarkdownVersion : undefined;
             resourceInputs["lockDuoFeaturesEnabled"] = args ? args.lockDuoFeaturesEnabled : undefined;
+            resourceInputs["lockMembershipsToLdap"] = args ? args.lockMembershipsToLdap : undefined;
             resourceInputs["mailgunEventsEnabled"] = args ? args.mailgunEventsEnabled : undefined;
             resourceInputs["mailgunSigningKey"] = args?.mailgunSigningKey ? pulumi.secret(args.mailgunSigningKey) : undefined;
             resourceInputs["maintenanceMode"] = args ? args.maintenanceMode : undefined;
@@ -2620,6 +2626,10 @@ export interface ApplicationSettingsState {
      * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
     lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     */
+    lockMembershipsToLdap?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -3875,6 +3885,10 @@ export interface ApplicationSettingsArgs {
      * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
     lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     */
+    lockMembershipsToLdap?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */

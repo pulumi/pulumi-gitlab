@@ -89,9 +89,15 @@ type User struct {
 	// The e-mail address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// String, a specific external authentication provider UID.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternUid pulumi.StringPtrOutput `pulumi:"externUid"`
 	// String, the external provider.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternalProvider pulumi.StringPtrOutput `pulumi:"externalProvider"`
+	// Set user password to a random value
+	ForceRandomPassword pulumi.BoolPtrOutput `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrOutput `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -164,9 +170,15 @@ type userState struct {
 	// The e-mail address of the user.
 	Email *string `pulumi:"email"`
 	// String, a specific external authentication provider UID.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternUid *string `pulumi:"externUid"`
 	// String, the external provider.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternalProvider *string `pulumi:"externalProvider"`
+	// Set user password to a random value
+	ForceRandomPassword *bool `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -197,9 +209,15 @@ type UserState struct {
 	// The e-mail address of the user.
 	Email pulumi.StringPtrInput
 	// String, a specific external authentication provider UID.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternUid pulumi.StringPtrInput
 	// String, the external provider.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternalProvider pulumi.StringPtrInput
+	// Set user password to a random value
+	ForceRandomPassword pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -234,9 +252,15 @@ type userArgs struct {
 	// The e-mail address of the user.
 	Email string `pulumi:"email"`
 	// String, a specific external authentication provider UID.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternUid *string `pulumi:"externUid"`
 	// String, the external provider.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternalProvider *string `pulumi:"externalProvider"`
+	// Set user password to a random value
+	ForceRandomPassword *bool `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -268,9 +292,15 @@ type UserArgs struct {
 	// The e-mail address of the user.
 	Email pulumi.StringInput
 	// String, a specific external authentication provider UID.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternUid pulumi.StringPtrInput
 	// String, the external provider.
+	//
+	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 	ExternalProvider pulumi.StringPtrInput
+	// Set user password to a random value
+	ForceRandomPassword pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -393,13 +423,22 @@ func (o UserOutput) Email() pulumi.StringOutput {
 }
 
 // String, a specific external authentication provider UID.
+//
+// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 func (o UserOutput) ExternUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternUid }).(pulumi.StringPtrOutput)
 }
 
 // String, the external provider.
+//
+// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
 func (o UserOutput) ExternalProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternalProvider }).(pulumi.StringPtrOutput)
+}
+
+// Set user password to a random value
+func (o UserOutput) ForceRandomPassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.ForceRandomPassword }).(pulumi.BoolPtrOutput)
 }
 
 // Boolean, defaults to false.  Whether to enable administrative privileges

@@ -95,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationExternalWiki{}
 	case "gitlab:index/integrationGithub:IntegrationGithub":
 		r = &IntegrationGithub{}
+	case "gitlab:index/integrationHarbor:IntegrationHarbor":
+		r = &IntegrationHarbor{}
 	case "gitlab:index/integrationJenkins:IntegrationJenkins":
 		r = &IntegrationJenkins{}
 	case "gitlab:index/integrationJira:IntegrationJira":
@@ -177,6 +179,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectTag:ProjectTag":
 		r = &ProjectTag{}
+	case "gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule":
+		r = &ProjectTargetBranchRule{}
 	case "gitlab:index/projectVariable:ProjectVariable":
 		r = &ProjectVariable{}
 	case "gitlab:index/projectWikiPage:ProjectWikiPage":
@@ -217,6 +221,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserCustomAttribute{}
 	case "gitlab:index/userGpgKey:UserGpgKey":
 		r = &UserGpgKey{}
+	case "gitlab:index/userIdentity:UserIdentity":
+		r = &UserIdentity{}
 	case "gitlab:index/userImpersonationToken:UserImpersonationToken":
 		r = &UserImpersonationToken{}
 	case "gitlab:index/userRunner:UserRunner":
@@ -443,6 +449,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/integrationHarbor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/integrationJenkins",
 		&module{version},
 	)
@@ -648,6 +659,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectTargetBranchRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectVariable",
 		&module{version},
 	)
@@ -744,6 +760,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userGpgKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userIdentity",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

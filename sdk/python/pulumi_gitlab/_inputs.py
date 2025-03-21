@@ -1619,17 +1619,25 @@ if not MYPY:
         """
         The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         """
+        expiration_days: NotRequired[pulumi.Input[int]]
+        """
+        The duration (in days) the new token should be valid for.
+        """
 elif False:
     GroupServiceAccountAccessTokenRotationConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupServiceAccountAccessTokenRotationConfigurationArgs:
     def __init__(__self__, *,
-                 rotate_before_days: pulumi.Input[int]):
+                 rotate_before_days: pulumi.Input[int],
+                 expiration_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        :param pulumi.Input[int] expiration_days: The duration (in days) the new token should be valid for.
         """
         pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+        if expiration_days is not None:
+            pulumi.set(__self__, "expiration_days", expiration_days)
 
     @property
     @pulumi.getter(name="rotateBeforeDays")
@@ -1642,6 +1650,18 @@ class GroupServiceAccountAccessTokenRotationConfigurationArgs:
     @rotate_before_days.setter
     def rotate_before_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "rotate_before_days", value)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_days", value)
 
 
 if not MYPY:

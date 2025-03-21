@@ -1108,6 +1108,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     * 
+     */
+    @Import(name="permanentlyDeleteOnDestroy")
+    private @Nullable Output<Boolean> permanentlyDeleteOnDestroy;
+
+    /**
+     * @return Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     * 
+     */
+    public Optional<Output<Boolean>> permanentlyDeleteOnDestroy() {
+        return Optional.ofNullable(this.permanentlyDeleteOnDestroy);
+    }
+
+    /**
      * Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
      * 
      * @deprecated
@@ -1715,6 +1730,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.pagesAccessLevel = $.pagesAccessLevel;
         this.path = $.path;
         this.pathWithNamespace = $.pathWithNamespace;
+        this.permanentlyDeleteOnDestroy = $.permanentlyDeleteOnDestroy;
         this.pipelinesEnabled = $.pipelinesEnabled;
         this.preReceiveSecretDetectionEnabled = $.preReceiveSecretDetectionEnabled;
         this.preventMergeWithoutJiraIssue = $.preventMergeWithoutJiraIssue;
@@ -3280,6 +3296,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pathWithNamespace(String pathWithNamespace) {
             return pathWithNamespace(Output.of(pathWithNamespace));
+        }
+
+        /**
+         * @param permanentlyDeleteOnDestroy Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permanentlyDeleteOnDestroy(@Nullable Output<Boolean> permanentlyDeleteOnDestroy) {
+            $.permanentlyDeleteOnDestroy = permanentlyDeleteOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param permanentlyDeleteOnDestroy Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permanentlyDeleteOnDestroy(Boolean permanentlyDeleteOnDestroy) {
+            return permanentlyDeleteOnDestroy(Output.of(permanentlyDeleteOnDestroy));
         }
 
         /**

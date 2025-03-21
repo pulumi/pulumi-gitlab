@@ -24,6 +24,7 @@ class UserArgs:
                  can_create_group: Optional[pulumi.Input[bool]] = None,
                  extern_uid: Optional[pulumi.Input[str]] = None,
                  external_provider: Optional[pulumi.Input[str]] = None,
+                 force_random_password: Optional[pulumi.Input[bool]] = None,
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class UserArgs:
         :param pulumi.Input[bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[str] extern_uid: String, a specific external authentication provider UID.
         :param pulumi.Input[str] external_provider: String, the external provider.
+        :param pulumi.Input[bool] force_random_password: Set user password to a random value
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -57,9 +59,17 @@ class UserArgs:
         if can_create_group is not None:
             pulumi.set(__self__, "can_create_group", can_create_group)
         if extern_uid is not None:
+            warnings.warn("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""", DeprecationWarning)
+            pulumi.log.warn("""extern_uid is deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
+        if extern_uid is not None:
             pulumi.set(__self__, "extern_uid", extern_uid)
         if external_provider is not None:
+            warnings.warn("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""", DeprecationWarning)
+            pulumi.log.warn("""external_provider is deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
+        if external_provider is not None:
             pulumi.set(__self__, "external_provider", external_provider)
+        if force_random_password is not None:
+            pulumi.set(__self__, "force_random_password", force_random_password)
         if is_admin is not None:
             pulumi.set(__self__, "is_admin", is_admin)
         if is_external is not None:
@@ -119,6 +129,7 @@ class UserArgs:
 
     @property
     @pulumi.getter(name="externUid")
+    @_utilities.deprecated("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
     def extern_uid(self) -> Optional[pulumi.Input[str]]:
         """
         String, a specific external authentication provider UID.
@@ -131,6 +142,7 @@ class UserArgs:
 
     @property
     @pulumi.getter(name="externalProvider")
+    @_utilities.deprecated("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
     def external_provider(self) -> Optional[pulumi.Input[str]]:
         """
         String, the external provider.
@@ -140,6 +152,18 @@ class UserArgs:
     @external_provider.setter
     def external_provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_provider", value)
+
+    @property
+    @pulumi.getter(name="forceRandomPassword")
+    def force_random_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set user password to a random value
+        """
+        return pulumi.get(self, "force_random_password")
+
+    @force_random_password.setter
+    def force_random_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_random_password", value)
 
     @property
     @pulumi.getter(name="isAdmin")
@@ -269,6 +293,7 @@ class _UserState:
                  email: Optional[pulumi.Input[str]] = None,
                  extern_uid: Optional[pulumi.Input[str]] = None,
                  external_provider: Optional[pulumi.Input[str]] = None,
+                 force_random_password: Optional[pulumi.Input[bool]] = None,
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -286,6 +311,7 @@ class _UserState:
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[str] extern_uid: String, a specific external authentication provider UID.
         :param pulumi.Input[str] external_provider: String, the external provider.
+        :param pulumi.Input[bool] force_random_password: Set user password to a random value
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -303,9 +329,17 @@ class _UserState:
         if email is not None:
             pulumi.set(__self__, "email", email)
         if extern_uid is not None:
+            warnings.warn("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""", DeprecationWarning)
+            pulumi.log.warn("""extern_uid is deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
+        if extern_uid is not None:
             pulumi.set(__self__, "extern_uid", extern_uid)
         if external_provider is not None:
+            warnings.warn("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""", DeprecationWarning)
+            pulumi.log.warn("""external_provider is deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
+        if external_provider is not None:
             pulumi.set(__self__, "external_provider", external_provider)
+        if force_random_password is not None:
+            pulumi.set(__self__, "force_random_password", force_random_password)
         if is_admin is not None:
             pulumi.set(__self__, "is_admin", is_admin)
         if is_external is not None:
@@ -355,6 +389,7 @@ class _UserState:
 
     @property
     @pulumi.getter(name="externUid")
+    @_utilities.deprecated("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
     def extern_uid(self) -> Optional[pulumi.Input[str]]:
         """
         String, a specific external authentication provider UID.
@@ -367,6 +402,7 @@ class _UserState:
 
     @property
     @pulumi.getter(name="externalProvider")
+    @_utilities.deprecated("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
     def external_provider(self) -> Optional[pulumi.Input[str]]:
         """
         String, the external provider.
@@ -376,6 +412,18 @@ class _UserState:
     @external_provider.setter
     def external_provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_provider", value)
+
+    @property
+    @pulumi.getter(name="forceRandomPassword")
+    def force_random_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set user password to a random value
+        """
+        return pulumi.get(self, "force_random_password")
+
+    @force_random_password.setter
+    def force_random_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_random_password", value)
 
     @property
     @pulumi.getter(name="isAdmin")
@@ -519,6 +567,7 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  extern_uid: Optional[pulumi.Input[str]] = None,
                  external_provider: Optional[pulumi.Input[str]] = None,
+                 force_random_password: Optional[pulumi.Input[bool]] = None,
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -592,6 +641,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[str] extern_uid: String, a specific external authentication provider UID.
         :param pulumi.Input[str] external_provider: String, the external provider.
+        :param pulumi.Input[bool] force_random_password: Set user password to a random value
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -684,6 +734,7 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  extern_uid: Optional[pulumi.Input[str]] = None,
                  external_provider: Optional[pulumi.Input[str]] = None,
+                 force_random_password: Optional[pulumi.Input[bool]] = None,
                  is_admin: Optional[pulumi.Input[bool]] = None,
                  is_external: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -710,6 +761,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["email"] = email
             __props__.__dict__["extern_uid"] = extern_uid
             __props__.__dict__["external_provider"] = external_provider
+            __props__.__dict__["force_random_password"] = force_random_password
             __props__.__dict__["is_admin"] = is_admin
             __props__.__dict__["is_external"] = is_external
             __props__.__dict__["name"] = name
@@ -739,6 +791,7 @@ class User(pulumi.CustomResource):
             email: Optional[pulumi.Input[str]] = None,
             extern_uid: Optional[pulumi.Input[str]] = None,
             external_provider: Optional[pulumi.Input[str]] = None,
+            force_random_password: Optional[pulumi.Input[bool]] = None,
             is_admin: Optional[pulumi.Input[bool]] = None,
             is_external: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -761,6 +814,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] email: The e-mail address of the user.
         :param pulumi.Input[str] extern_uid: String, a specific external authentication provider UID.
         :param pulumi.Input[str] external_provider: String, the external provider.
+        :param pulumi.Input[bool] force_random_password: Set user password to a random value
         :param pulumi.Input[bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
         :param pulumi.Input[bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[str] name: The name of the user.
@@ -781,6 +835,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["email"] = email
         __props__.__dict__["extern_uid"] = extern_uid
         __props__.__dict__["external_provider"] = external_provider
+        __props__.__dict__["force_random_password"] = force_random_password
         __props__.__dict__["is_admin"] = is_admin
         __props__.__dict__["is_external"] = is_external
         __props__.__dict__["name"] = name
@@ -812,6 +867,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externUid")
+    @_utilities.deprecated("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
     def extern_uid(self) -> pulumi.Output[Optional[str]]:
         """
         String, a specific external authentication provider UID.
@@ -820,11 +876,20 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalProvider")
+    @_utilities.deprecated("""To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295""")
     def external_provider(self) -> pulumi.Output[Optional[str]]:
         """
         String, the external provider.
         """
         return pulumi.get(self, "external_provider")
+
+    @property
+    @pulumi.getter(name="forceRandomPassword")
+    def force_random_password(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set user password to a random value
+        """
+        return pulumi.get(self, "force_random_password")
 
     @property
     @pulumi.getter(name="isAdmin")

@@ -50,6 +50,7 @@ __all__ = [
     'ValueStreamAnalyticsStage',
     'GetBranchCommitResult',
     'GetClusterAgentsClusterAgentResult',
+    'GetGroupAccessTokensAccessTokenResult',
     'GetGroupBillableMemberMembershipsMembershipResult',
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
@@ -1317,6 +1318,8 @@ class GroupServiceAccountAccessTokenRotationConfiguration(dict):
         suggest = None
         if key == "rotateBeforeDays":
             suggest = "rotate_before_days"
+        elif key == "expirationDays":
+            suggest = "expiration_days"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GroupServiceAccountAccessTokenRotationConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -1330,11 +1333,15 @@ class GroupServiceAccountAccessTokenRotationConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 rotate_before_days: int):
+                 rotate_before_days: int,
+                 expiration_days: Optional[int] = None):
         """
         :param int rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        :param int expiration_days: The duration (in days) the new token should be valid for.
         """
         pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+        if expiration_days is not None:
+            pulumi.set(__self__, "expiration_days", expiration_days)
 
     @property
     @pulumi.getter(name="rotateBeforeDays")
@@ -1343,6 +1350,14 @@ class GroupServiceAccountAccessTokenRotationConfiguration(dict):
         The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         """
         return pulumi.get(self, "rotate_before_days")
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> Optional[int]:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
 
 
 @pulumi.output_type
@@ -3224,6 +3239,81 @@ class GetClusterAgentsClusterAgentResult(dict):
         ID or full path of the project maintained by the authenticated user.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetGroupAccessTokensAccessTokenResult(dict):
+    def __init__(__self__, *,
+                 access_level: str,
+                 active: bool,
+                 created_at: str,
+                 expires_at: str,
+                 group: str,
+                 id: str,
+                 name: str,
+                 revoked: bool,
+                 scopes: Sequence[str],
+                 user_id: int):
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "revoked", revoked)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> str:
+        return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def revoked(self) -> bool:
+        return pulumi.get(self, "revoked")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> int:
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type
@@ -5418,6 +5508,8 @@ class GetProjectContainerExpirationPolicyResult(dict):
 @pulumi.output_type
 class GetProjectEnvironmentsEnvironmentResult(dict):
     def __init__(__self__, *,
+                 auto_stop_at: str,
+                 auto_stop_setting: str,
                  cluster_agent_id: int,
                  created_at: str,
                  description: str,
@@ -5431,6 +5523,8 @@ class GetProjectEnvironmentsEnvironmentResult(dict):
                  tier: str,
                  updated_at: str):
         """
+        :param str auto_stop_at: Timestamp of when the environment is scheduled to stop, RFC3339 format.
+        :param str auto_stop_setting: The auto stop setting for the environment.
         :param int cluster_agent_id: The ID of the environments cluster agent or `null` if none is assigned.
         :param str created_at: Timestamp of the environment creation, RFC3339 format.
         :param str description: The description of the environment.
@@ -5444,6 +5538,8 @@ class GetProjectEnvironmentsEnvironmentResult(dict):
         :param str tier: The tier of the environment. Value can be one of `production`, `staging`, `testing`, `development`, `other`. Returns all environments if not set.
         :param str updated_at: Timestamp of the last environment update, RFC3339 format.
         """
+        pulumi.set(__self__, "auto_stop_at", auto_stop_at)
+        pulumi.set(__self__, "auto_stop_setting", auto_stop_setting)
         pulumi.set(__self__, "cluster_agent_id", cluster_agent_id)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "description", description)
@@ -5456,6 +5552,22 @@ class GetProjectEnvironmentsEnvironmentResult(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="autoStopAt")
+    def auto_stop_at(self) -> str:
+        """
+        Timestamp of when the environment is scheduled to stop, RFC3339 format.
+        """
+        return pulumi.get(self, "auto_stop_at")
+
+    @property
+    @pulumi.getter(name="autoStopSetting")
+    def auto_stop_setting(self) -> str:
+        """
+        The auto stop setting for the environment.
+        """
+        return pulumi.get(self, "auto_stop_setting")
 
     @property
     @pulumi.getter(name="clusterAgentId")

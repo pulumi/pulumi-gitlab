@@ -72,16 +72,26 @@ type GetUsersArgs struct {
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Search for users created before a specific date. (Requires administrator privileges)
 	CreatedBefore *string `pulumi:"createdBefore"`
+	// Filters only non external users.
+	ExcludeExternal *bool `pulumi:"excludeExternal"`
+	// Filters only non internal users.
+	ExcludeInternal *bool `pulumi:"excludeInternal"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider *string `pulumi:"externProvider"`
 	// Lookup users by external UID. (Requires administrator privileges)
 	ExternUid *string `pulumi:"externUid"`
+	// Filters only external users.
+	External *bool `pulumi:"external"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
 	// Search users by username, name or email.
 	Search *string `pulumi:"search"`
 	// Sort users' list in asc or desc order. (Requires administrator privileges)
 	Sort *string `pulumi:"sort"`
+	// Get a single user with a specific username.
+	Username *string `pulumi:"username"`
+	// Filters user without project bots.
+	WithoutProjectBots *bool `pulumi:"withoutProjectBots"`
 }
 
 // A collection of values returned by getUsers.
@@ -94,10 +104,16 @@ type GetUsersResult struct {
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Search for users created before a specific date. (Requires administrator privileges)
 	CreatedBefore *string `pulumi:"createdBefore"`
+	// Filters only non external users.
+	ExcludeExternal *bool `pulumi:"excludeExternal"`
+	// Filters only non internal users.
+	ExcludeInternal *bool `pulumi:"excludeInternal"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider *string `pulumi:"externProvider"`
 	// Lookup users by external UID. (Requires administrator privileges)
 	ExternUid *string `pulumi:"externUid"`
+	// Filters only external users.
+	External *bool `pulumi:"external"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
@@ -106,8 +122,12 @@ type GetUsersResult struct {
 	Search *string `pulumi:"search"`
 	// Sort users' list in asc or desc order. (Requires administrator privileges)
 	Sort *string `pulumi:"sort"`
+	// Get a single user with a specific username.
+	Username *string `pulumi:"username"`
 	// The list of users.
 	Users []GetUsersUser `pulumi:"users"`
+	// Filters user without project bots.
+	WithoutProjectBots *bool `pulumi:"withoutProjectBots"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -129,16 +149,26 @@ type GetUsersOutputArgs struct {
 	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
 	// Search for users created before a specific date. (Requires administrator privileges)
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
+	// Filters only non external users.
+	ExcludeExternal pulumi.BoolPtrInput `pulumi:"excludeExternal"`
+	// Filters only non internal users.
+	ExcludeInternal pulumi.BoolPtrInput `pulumi:"excludeInternal"`
 	// Lookup users by external provider. (Requires administrator privileges)
 	ExternProvider pulumi.StringPtrInput `pulumi:"externProvider"`
 	// Lookup users by external UID. (Requires administrator privileges)
 	ExternUid pulumi.StringPtrInput `pulumi:"externUid"`
+	// Filters only external users.
+	External pulumi.BoolPtrInput `pulumi:"external"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Search users by username, name or email.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 	// Sort users' list in asc or desc order. (Requires administrator privileges)
 	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// Get a single user with a specific username.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Filters user without project bots.
+	WithoutProjectBots pulumi.BoolPtrInput `pulumi:"withoutProjectBots"`
 }
 
 func (GetUsersOutputArgs) ElementType() reflect.Type {
@@ -180,6 +210,16 @@ func (o GetUsersResultOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
+// Filters only non external users.
+func (o GetUsersResultOutput) ExcludeExternal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.ExcludeExternal }).(pulumi.BoolPtrOutput)
+}
+
+// Filters only non internal users.
+func (o GetUsersResultOutput) ExcludeInternal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.ExcludeInternal }).(pulumi.BoolPtrOutput)
+}
+
 // Lookup users by external provider. (Requires administrator privileges)
 func (o GetUsersResultOutput) ExternProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.ExternProvider }).(pulumi.StringPtrOutput)
@@ -188,6 +228,11 @@ func (o GetUsersResultOutput) ExternProvider() pulumi.StringPtrOutput {
 // Lookup users by external UID. (Requires administrator privileges)
 func (o GetUsersResultOutput) ExternUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.ExternUid }).(pulumi.StringPtrOutput)
+}
+
+// Filters only external users.
+func (o GetUsersResultOutput) External() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.External }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -210,9 +255,19 @@ func (o GetUsersResultOutput) Sort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
 }
 
+// Get a single user with a specific username.
+func (o GetUsersResultOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
 // The list of users.
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
+}
+
+// Filters user without project bots.
+func (o GetUsersResultOutput) WithoutProjectBots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.WithoutProjectBots }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

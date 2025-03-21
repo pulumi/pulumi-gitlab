@@ -202,6 +202,19 @@ export interface GetClusterAgentsClusterAgent {
     project: string;
 }
 
+export interface GetGroupAccessTokensAccessToken {
+    accessLevel: string;
+    active: boolean;
+    createdAt: string;
+    expiresAt: string;
+    group: string;
+    id: string;
+    name: string;
+    revoked: boolean;
+    scopes: string[];
+    userId: number;
+}
+
 export interface GetGroupBillableMemberMembershipsMembership {
     /**
      * Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
@@ -954,6 +967,14 @@ export interface GetProjectContainerExpirationPolicy {
 }
 
 export interface GetProjectEnvironmentsEnvironment {
+    /**
+     * Timestamp of when the environment is scheduled to stop, RFC3339 format.
+     */
+    autoStopAt: string;
+    /**
+     * The auto stop setting for the environment.
+     */
+    autoStopSetting: string;
     /**
      * The ID of the environments cluster agent or `null` if none is assigned.
      */
@@ -2876,6 +2897,10 @@ export interface GroupPushRules {
 }
 
 export interface GroupServiceAccountAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays?: number;
     /**
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */

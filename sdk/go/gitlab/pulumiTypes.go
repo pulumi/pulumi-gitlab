@@ -2120,6 +2120,8 @@ func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 }
 
 type GroupServiceAccountAccessTokenRotationConfiguration struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays *int `pulumi:"expirationDays"`
 	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
 	RotateBeforeDays int `pulumi:"rotateBeforeDays"`
 }
@@ -2136,6 +2138,8 @@ type GroupServiceAccountAccessTokenRotationConfigurationInput interface {
 }
 
 type GroupServiceAccountAccessTokenRotationConfigurationArgs struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays pulumi.IntPtrInput `pulumi:"expirationDays"`
 	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
 	RotateBeforeDays pulumi.IntInput `pulumi:"rotateBeforeDays"`
 }
@@ -2217,6 +2221,11 @@ func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) ToGroupServic
 	}).(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput)
 }
 
+// The duration (in days) the new token should be valid for.
+func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GroupServiceAccountAccessTokenRotationConfiguration) *int { return v.ExpirationDays }).(pulumi.IntPtrOutput)
+}
+
 // The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
 func (o GroupServiceAccountAccessTokenRotationConfigurationOutput) RotateBeforeDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GroupServiceAccountAccessTokenRotationConfiguration) int { return v.RotateBeforeDays }).(pulumi.IntOutput)
@@ -2244,6 +2253,16 @@ func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) Elem() Gro
 		var ret GroupServiceAccountAccessTokenRotationConfiguration
 		return ret
 	}).(GroupServiceAccountAccessTokenRotationConfigurationOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupServiceAccountAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationDays
+	}).(pulumi.IntPtrOutput)
 }
 
 // The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
@@ -5858,6 +5877,154 @@ func (o GetClusterAgentsClusterAgentArrayOutput) Index(i pulumi.IntInput) GetClu
 	}).(GetClusterAgentsClusterAgentOutput)
 }
 
+type GetGroupAccessTokensAccessToken struct {
+	AccessLevel string   `pulumi:"accessLevel"`
+	Active      bool     `pulumi:"active"`
+	CreatedAt   string   `pulumi:"createdAt"`
+	ExpiresAt   string   `pulumi:"expiresAt"`
+	Group       string   `pulumi:"group"`
+	Id          string   `pulumi:"id"`
+	Name        string   `pulumi:"name"`
+	Revoked     bool     `pulumi:"revoked"`
+	Scopes      []string `pulumi:"scopes"`
+	UserId      int      `pulumi:"userId"`
+}
+
+// GetGroupAccessTokensAccessTokenInput is an input type that accepts GetGroupAccessTokensAccessTokenArgs and GetGroupAccessTokensAccessTokenOutput values.
+// You can construct a concrete instance of `GetGroupAccessTokensAccessTokenInput` via:
+//
+//	GetGroupAccessTokensAccessTokenArgs{...}
+type GetGroupAccessTokensAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetGroupAccessTokensAccessTokenOutput() GetGroupAccessTokensAccessTokenOutput
+	ToGetGroupAccessTokensAccessTokenOutputWithContext(context.Context) GetGroupAccessTokensAccessTokenOutput
+}
+
+type GetGroupAccessTokensAccessTokenArgs struct {
+	AccessLevel pulumi.StringInput      `pulumi:"accessLevel"`
+	Active      pulumi.BoolInput        `pulumi:"active"`
+	CreatedAt   pulumi.StringInput      `pulumi:"createdAt"`
+	ExpiresAt   pulumi.StringInput      `pulumi:"expiresAt"`
+	Group       pulumi.StringInput      `pulumi:"group"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	Revoked     pulumi.BoolInput        `pulumi:"revoked"`
+	Scopes      pulumi.StringArrayInput `pulumi:"scopes"`
+	UserId      pulumi.IntInput         `pulumi:"userId"`
+}
+
+func (GetGroupAccessTokensAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (i GetGroupAccessTokensAccessTokenArgs) ToGetGroupAccessTokensAccessTokenOutput() GetGroupAccessTokensAccessTokenOutput {
+	return i.ToGetGroupAccessTokensAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetGroupAccessTokensAccessTokenArgs) ToGetGroupAccessTokensAccessTokenOutputWithContext(ctx context.Context) GetGroupAccessTokensAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupAccessTokensAccessTokenOutput)
+}
+
+// GetGroupAccessTokensAccessTokenArrayInput is an input type that accepts GetGroupAccessTokensAccessTokenArray and GetGroupAccessTokensAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetGroupAccessTokensAccessTokenArrayInput` via:
+//
+//	GetGroupAccessTokensAccessTokenArray{ GetGroupAccessTokensAccessTokenArgs{...} }
+type GetGroupAccessTokensAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupAccessTokensAccessTokenArrayOutput() GetGroupAccessTokensAccessTokenArrayOutput
+	ToGetGroupAccessTokensAccessTokenArrayOutputWithContext(context.Context) GetGroupAccessTokensAccessTokenArrayOutput
+}
+
+type GetGroupAccessTokensAccessTokenArray []GetGroupAccessTokensAccessTokenInput
+
+func (GetGroupAccessTokensAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (i GetGroupAccessTokensAccessTokenArray) ToGetGroupAccessTokensAccessTokenArrayOutput() GetGroupAccessTokensAccessTokenArrayOutput {
+	return i.ToGetGroupAccessTokensAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupAccessTokensAccessTokenArray) ToGetGroupAccessTokensAccessTokenArrayOutputWithContext(ctx context.Context) GetGroupAccessTokensAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupAccessTokensAccessTokenArrayOutput)
+}
+
+type GetGroupAccessTokensAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetGroupAccessTokensAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) ToGetGroupAccessTokensAccessTokenOutput() GetGroupAccessTokensAccessTokenOutput {
+	return o
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) ToGetGroupAccessTokensAccessTokenOutputWithContext(ctx context.Context) GetGroupAccessTokensAccessTokenOutput {
+	return o
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) bool { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGroupAccessTokensAccessTokenOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupAccessTokensAccessToken) int { return v.UserId }).(pulumi.IntOutput)
+}
+
+type GetGroupAccessTokensAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupAccessTokensAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (o GetGroupAccessTokensAccessTokenArrayOutput) ToGetGroupAccessTokensAccessTokenArrayOutput() GetGroupAccessTokensAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetGroupAccessTokensAccessTokenArrayOutput) ToGetGroupAccessTokensAccessTokenArrayOutputWithContext(ctx context.Context) GetGroupAccessTokensAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetGroupAccessTokensAccessTokenArrayOutput) Index(i pulumi.IntInput) GetGroupAccessTokensAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupAccessTokensAccessToken {
+		return vs[0].([]GetGroupAccessTokensAccessToken)[vs[1].(int)]
+	}).(GetGroupAccessTokensAccessTokenOutput)
+}
+
 type GetGroupBillableMemberMembershipsMembership struct {
 	// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
 	AccessLevel string `pulumi:"accessLevel"`
@@ -9136,6 +9303,10 @@ func (o GetProjectContainerExpirationPolicyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetProjectEnvironmentsEnvironment struct {
+	// Timestamp of when the environment is scheduled to stop, RFC3339 format.
+	AutoStopAt string `pulumi:"autoStopAt"`
+	// The auto stop setting for the environment.
+	AutoStopSetting string `pulumi:"autoStopSetting"`
 	// The ID of the environments cluster agent or `null` if none is assigned.
 	ClusterAgentId int `pulumi:"clusterAgentId"`
 	// Timestamp of the environment creation, RFC3339 format.
@@ -9174,6 +9345,10 @@ type GetProjectEnvironmentsEnvironmentInput interface {
 }
 
 type GetProjectEnvironmentsEnvironmentArgs struct {
+	// Timestamp of when the environment is scheduled to stop, RFC3339 format.
+	AutoStopAt pulumi.StringInput `pulumi:"autoStopAt"`
+	// The auto stop setting for the environment.
+	AutoStopSetting pulumi.StringInput `pulumi:"autoStopSetting"`
 	// The ID of the environments cluster agent or `null` if none is assigned.
 	ClusterAgentId pulumi.IntInput `pulumi:"clusterAgentId"`
 	// Timestamp of the environment creation, RFC3339 format.
@@ -9249,6 +9424,16 @@ func (o GetProjectEnvironmentsEnvironmentOutput) ToGetProjectEnvironmentsEnviron
 
 func (o GetProjectEnvironmentsEnvironmentOutput) ToGetProjectEnvironmentsEnvironmentOutputWithContext(ctx context.Context) GetProjectEnvironmentsEnvironmentOutput {
 	return o
+}
+
+// Timestamp of when the environment is scheduled to stop, RFC3339 format.
+func (o GetProjectEnvironmentsEnvironmentOutput) AutoStopAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectEnvironmentsEnvironment) string { return v.AutoStopAt }).(pulumi.StringOutput)
+}
+
+// The auto stop setting for the environment.
+func (o GetProjectEnvironmentsEnvironmentOutput) AutoStopSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectEnvironmentsEnvironment) string { return v.AutoStopSetting }).(pulumi.StringOutput)
 }
 
 // The ID of the environments cluster agent or `null` if none is assigned.
@@ -16435,6 +16620,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAgentsClusterAgentInput)(nil)).Elem(), GetClusterAgentsClusterAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAgentsClusterAgentArrayInput)(nil)).Elem(), GetClusterAgentsClusterAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupAccessTokensAccessTokenInput)(nil)).Elem(), GetGroupAccessTokensAccessTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupAccessTokensAccessTokenArrayInput)(nil)).Elem(), GetGroupAccessTokensAccessTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupBillableMemberMembershipsMembershipInput)(nil)).Elem(), GetGroupBillableMemberMembershipsMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupBillableMemberMembershipsMembershipArrayInput)(nil)).Elem(), GetGroupBillableMemberMembershipsMembershipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupHooksHookInput)(nil)).Elem(), GetGroupHooksHookArgs{})
@@ -16619,6 +16806,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAgentsClusterAgentOutput{})
 	pulumi.RegisterOutputType(GetClusterAgentsClusterAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupAccessTokensAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetGroupAccessTokensAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupBillableMemberMembershipsMembershipOutput{})
 	pulumi.RegisterOutputType(GetGroupBillableMemberMembershipsMembershipArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupHooksHookOutput{})

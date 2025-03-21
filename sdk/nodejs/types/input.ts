@@ -836,6 +836,10 @@ export interface GroupPushRules {
 
 export interface GroupServiceAccountAccessTokenRotationConfiguration {
     /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays?: pulumi.Input<number>;
+    /**
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
     rotateBeforeDays: pulumi.Input<number>;

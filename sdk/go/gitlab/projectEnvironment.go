@@ -80,10 +80,16 @@ import (
 type ProjectEnvironment struct {
 	pulumi.CustomResourceState
 
+	// The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+	AutoStopAt pulumi.StringOutput `pulumi:"autoStopAt"`
+	// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+	AutoStopSetting pulumi.StringOutput `pulumi:"autoStopSetting"`
 	// The cluster agent to associate with this environment.
 	ClusterAgentId pulumi.IntPtrOutput `pulumi:"clusterAgentId"`
 	// The ISO8601 date/time that this environment was created at in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the environment.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Place to link to for this environment.
 	ExternalUrl pulumi.StringPtrOutput `pulumi:"externalUrl"`
 	// The Flux resource path to associate with this environment.
@@ -98,7 +104,7 @@ type ProjectEnvironment struct {
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Determines whether the environment is attempted to be stopped before the environment is deleted.
+	// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
 	StopBeforeDestroy pulumi.BoolPtrOutput `pulumi:"stopBeforeDestroy"`
 	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
@@ -139,10 +145,16 @@ func GetProjectEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectEnvironment resources.
 type projectEnvironmentState struct {
+	// The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+	AutoStopAt *string `pulumi:"autoStopAt"`
+	// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+	AutoStopSetting *string `pulumi:"autoStopSetting"`
 	// The cluster agent to associate with this environment.
 	ClusterAgentId *int `pulumi:"clusterAgentId"`
 	// The ISO8601 date/time that this environment was created at in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the environment.
+	Description *string `pulumi:"description"`
 	// Place to link to for this environment.
 	ExternalUrl *string `pulumi:"externalUrl"`
 	// The Flux resource path to associate with this environment.
@@ -157,7 +169,7 @@ type projectEnvironmentState struct {
 	Slug *string `pulumi:"slug"`
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State *string `pulumi:"state"`
-	// Determines whether the environment is attempted to be stopped before the environment is deleted.
+	// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
 	StopBeforeDestroy *bool `pulumi:"stopBeforeDestroy"`
 	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Tier *string `pulumi:"tier"`
@@ -166,10 +178,16 @@ type projectEnvironmentState struct {
 }
 
 type ProjectEnvironmentState struct {
+	// The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+	AutoStopAt pulumi.StringPtrInput
+	// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+	AutoStopSetting pulumi.StringPtrInput
 	// The cluster agent to associate with this environment.
 	ClusterAgentId pulumi.IntPtrInput
 	// The ISO8601 date/time that this environment was created at in UTC.
 	CreatedAt pulumi.StringPtrInput
+	// The description of the environment.
+	Description pulumi.StringPtrInput
 	// Place to link to for this environment.
 	ExternalUrl pulumi.StringPtrInput
 	// The Flux resource path to associate with this environment.
@@ -184,7 +202,7 @@ type ProjectEnvironmentState struct {
 	Slug pulumi.StringPtrInput
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State pulumi.StringPtrInput
-	// Determines whether the environment is attempted to be stopped before the environment is deleted.
+	// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
 	StopBeforeDestroy pulumi.BoolPtrInput
 	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Tier pulumi.StringPtrInput
@@ -197,8 +215,12 @@ func (ProjectEnvironmentState) ElementType() reflect.Type {
 }
 
 type projectEnvironmentArgs struct {
+	// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+	AutoStopSetting *string `pulumi:"autoStopSetting"`
 	// The cluster agent to associate with this environment.
 	ClusterAgentId *int `pulumi:"clusterAgentId"`
+	// The description of the environment.
+	Description *string `pulumi:"description"`
 	// Place to link to for this environment.
 	ExternalUrl *string `pulumi:"externalUrl"`
 	// The Flux resource path to associate with this environment.
@@ -209,7 +231,7 @@ type projectEnvironmentArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
 	Project string `pulumi:"project"`
-	// Determines whether the environment is attempted to be stopped before the environment is deleted.
+	// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
 	StopBeforeDestroy *bool `pulumi:"stopBeforeDestroy"`
 	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Tier *string `pulumi:"tier"`
@@ -217,8 +239,12 @@ type projectEnvironmentArgs struct {
 
 // The set of arguments for constructing a ProjectEnvironment resource.
 type ProjectEnvironmentArgs struct {
+	// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+	AutoStopSetting pulumi.StringPtrInput
 	// The cluster agent to associate with this environment.
 	ClusterAgentId pulumi.IntPtrInput
+	// The description of the environment.
+	Description pulumi.StringPtrInput
 	// Place to link to for this environment.
 	ExternalUrl pulumi.StringPtrInput
 	// The Flux resource path to associate with this environment.
@@ -229,7 +255,7 @@ type ProjectEnvironmentArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID or full path of the project to environment is created for.
 	Project pulumi.StringInput
-	// Determines whether the environment is attempted to be stopped before the environment is deleted.
+	// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
 	StopBeforeDestroy pulumi.BoolPtrInput
 	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Tier pulumi.StringPtrInput
@@ -322,6 +348,16 @@ func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutputWithContext(ctx cont
 	return o
 }
 
+// The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+func (o ProjectEnvironmentOutput) AutoStopAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.AutoStopAt }).(pulumi.StringOutput)
+}
+
+// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
+func (o ProjectEnvironmentOutput) AutoStopSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.AutoStopSetting }).(pulumi.StringOutput)
+}
+
 // The cluster agent to associate with this environment.
 func (o ProjectEnvironmentOutput) ClusterAgentId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.IntPtrOutput { return v.ClusterAgentId }).(pulumi.IntPtrOutput)
@@ -330,6 +366,11 @@ func (o ProjectEnvironmentOutput) ClusterAgentId() pulumi.IntPtrOutput {
 // The ISO8601 date/time that this environment was created at in UTC.
 func (o ProjectEnvironmentOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the environment.
+func (o ProjectEnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Place to link to for this environment.
@@ -367,7 +408,7 @@ func (o ProjectEnvironmentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Determines whether the environment is attempted to be stopped before the environment is deleted.
+// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
 func (o ProjectEnvironmentOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectEnvironment) pulumi.BoolPtrOutput { return v.StopBeforeDestroy }).(pulumi.BoolPtrOutput)
 }

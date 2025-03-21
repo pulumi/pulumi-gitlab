@@ -48,6 +48,21 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    @Import(name="hidden")
+    private @Nullable Output<Boolean> hidden;
+
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    public Optional<Output<Boolean>> hidden() {
+        return Optional.ofNullable(this.hidden);
+    }
+
+    /**
      * The name of the variable.
      * 
      */
@@ -157,6 +172,7 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
     private ProjectVariableArgs(ProjectVariableArgs $) {
         this.description = $.description;
         this.environmentScope = $.environmentScope;
+        this.hidden = $.hidden;
         this.key = $.key;
         this.masked = $.masked;
         this.project = $.project;
@@ -224,6 +240,27 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder environmentScope(String environmentScope) {
             return environmentScope(Output.of(environmentScope));
+        }
+
+        /**
+         * @param hidden If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(@Nullable Output<Boolean> hidden) {
+            $.hidden = hidden;
+            return this;
+        }
+
+        /**
+         * @param hidden If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(Boolean hidden) {
+            return hidden(Output.of(hidden));
         }
 
         /**

@@ -111,6 +111,20 @@ public class ProjectVariable extends com.pulumi.resources.CustomResource {
         return this.environmentScope;
     }
     /**
+     * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    @Export(name="hidden", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hidden;
+
+    /**
+     * @return If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+     * 
+     */
+    public Output<Boolean> hidden() {
+        return this.hidden;
+    }
+    /**
      * The name of the variable.
      * 
      */

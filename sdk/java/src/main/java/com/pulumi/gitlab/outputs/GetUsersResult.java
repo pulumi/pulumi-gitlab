@@ -36,6 +36,16 @@ public final class GetUsersResult {
      */
     private @Nullable String createdBefore;
     /**
+     * @return Filters only non external users.
+     * 
+     */
+    private @Nullable Boolean excludeExternal;
+    /**
+     * @return Filters only non internal users.
+     * 
+     */
+    private @Nullable Boolean excludeInternal;
+    /**
      * @return Lookup users by external provider. (Requires administrator privileges)
      * 
      */
@@ -45,6 +55,11 @@ public final class GetUsersResult {
      * 
      */
     private @Nullable String externUid;
+    /**
+     * @return Filters only external users.
+     * 
+     */
+    private @Nullable Boolean external;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -66,10 +81,20 @@ public final class GetUsersResult {
      */
     private @Nullable String sort;
     /**
+     * @return Get a single user with a specific username.
+     * 
+     */
+    private @Nullable String username;
+    /**
      * @return The list of users.
      * 
      */
     private List<GetUsersUser> users;
+    /**
+     * @return Filters user without project bots.
+     * 
+     */
+    private @Nullable Boolean withoutProjectBots;
 
     private GetUsersResult() {}
     /**
@@ -101,6 +126,20 @@ public final class GetUsersResult {
         return Optional.ofNullable(this.createdBefore);
     }
     /**
+     * @return Filters only non external users.
+     * 
+     */
+    public Optional<Boolean> excludeExternal() {
+        return Optional.ofNullable(this.excludeExternal);
+    }
+    /**
+     * @return Filters only non internal users.
+     * 
+     */
+    public Optional<Boolean> excludeInternal() {
+        return Optional.ofNullable(this.excludeInternal);
+    }
+    /**
      * @return Lookup users by external provider. (Requires administrator privileges)
      * 
      */
@@ -113,6 +152,13 @@ public final class GetUsersResult {
      */
     public Optional<String> externUid() {
         return Optional.ofNullable(this.externUid);
+    }
+    /**
+     * @return Filters only external users.
+     * 
+     */
+    public Optional<Boolean> external() {
+        return Optional.ofNullable(this.external);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -143,11 +189,25 @@ public final class GetUsersResult {
         return Optional.ofNullable(this.sort);
     }
     /**
+     * @return Get a single user with a specific username.
+     * 
+     */
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
+    }
+    /**
      * @return The list of users.
      * 
      */
     public List<GetUsersUser> users() {
         return this.users;
+    }
+    /**
+     * @return Filters user without project bots.
+     * 
+     */
+    public Optional<Boolean> withoutProjectBots() {
+        return Optional.ofNullable(this.withoutProjectBots);
     }
 
     public static Builder builder() {
@@ -163,13 +223,18 @@ public final class GetUsersResult {
         private @Nullable Boolean blocked;
         private @Nullable String createdAfter;
         private @Nullable String createdBefore;
+        private @Nullable Boolean excludeExternal;
+        private @Nullable Boolean excludeInternal;
         private @Nullable String externProvider;
         private @Nullable String externUid;
+        private @Nullable Boolean external;
         private String id;
         private @Nullable String orderBy;
         private @Nullable String search;
         private @Nullable String sort;
+        private @Nullable String username;
         private List<GetUsersUser> users;
+        private @Nullable Boolean withoutProjectBots;
         public Builder() {}
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -177,13 +242,18 @@ public final class GetUsersResult {
     	      this.blocked = defaults.blocked;
     	      this.createdAfter = defaults.createdAfter;
     	      this.createdBefore = defaults.createdBefore;
+    	      this.excludeExternal = defaults.excludeExternal;
+    	      this.excludeInternal = defaults.excludeInternal;
     	      this.externProvider = defaults.externProvider;
     	      this.externUid = defaults.externUid;
+    	      this.external = defaults.external;
     	      this.id = defaults.id;
     	      this.orderBy = defaults.orderBy;
     	      this.search = defaults.search;
     	      this.sort = defaults.sort;
+    	      this.username = defaults.username;
     	      this.users = defaults.users;
+    	      this.withoutProjectBots = defaults.withoutProjectBots;
         }
 
         @CustomType.Setter
@@ -211,6 +281,18 @@ public final class GetUsersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder excludeExternal(@Nullable Boolean excludeExternal) {
+
+            this.excludeExternal = excludeExternal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder excludeInternal(@Nullable Boolean excludeInternal) {
+
+            this.excludeInternal = excludeInternal;
+            return this;
+        }
+        @CustomType.Setter
         public Builder externProvider(@Nullable String externProvider) {
 
             this.externProvider = externProvider;
@@ -220,6 +302,12 @@ public final class GetUsersResult {
         public Builder externUid(@Nullable String externUid) {
 
             this.externUid = externUid;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder external(@Nullable Boolean external) {
+
+            this.external = external;
             return this;
         }
         @CustomType.Setter
@@ -249,6 +337,12 @@ public final class GetUsersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder username(@Nullable String username) {
+
+            this.username = username;
+            return this;
+        }
+        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             if (users == null) {
               throw new MissingRequiredPropertyException("GetUsersResult", "users");
@@ -259,19 +353,30 @@ public final class GetUsersResult {
         public Builder users(GetUsersUser... users) {
             return users(List.of(users));
         }
+        @CustomType.Setter
+        public Builder withoutProjectBots(@Nullable Boolean withoutProjectBots) {
+
+            this.withoutProjectBots = withoutProjectBots;
+            return this;
+        }
         public GetUsersResult build() {
             final var _resultValue = new GetUsersResult();
             _resultValue.active = active;
             _resultValue.blocked = blocked;
             _resultValue.createdAfter = createdAfter;
             _resultValue.createdBefore = createdBefore;
+            _resultValue.excludeExternal = excludeExternal;
+            _resultValue.excludeInternal = excludeInternal;
             _resultValue.externProvider = externProvider;
             _resultValue.externUid = externUid;
+            _resultValue.external = external;
             _resultValue.id = id;
             _resultValue.orderBy = orderBy;
             _resultValue.search = search;
             _resultValue.sort = sort;
+            _resultValue.username = username;
             _resultValue.users = users;
+            _resultValue.withoutProjectBots = withoutProjectBots;
             return _resultValue;
         }
     }
