@@ -24,6 +24,7 @@ class ProjectVariableArgs:
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  raw: Optional[pulumi.Input[bool]] = None,
@@ -35,6 +36,7 @@ class ProjectVariableArgs:
         :param pulumi.Input[str] value: The value of the variable.
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
@@ -47,6 +49,8 @@ class ProjectVariableArgs:
             pulumi.set(__self__, "description", description)
         if environment_scope is not None:
             pulumi.set(__self__, "environment_scope", environment_scope)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
         if masked is not None:
             pulumi.set(__self__, "masked", masked)
         if protected is not None:
@@ -118,6 +122,18 @@ class ProjectVariableArgs:
 
     @property
     @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
+
+    @property
+    @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
@@ -170,6 +186,7 @@ class _ProjectVariableState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -181,6 +198,7 @@ class _ProjectVariableState:
         Input properties used for looking up and filtering ProjectVariable resources.
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[str] project: The name or id of the project.
@@ -193,6 +211,8 @@ class _ProjectVariableState:
             pulumi.set(__self__, "description", description)
         if environment_scope is not None:
             pulumi.set(__self__, "environment_scope", environment_scope)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if masked is not None:
@@ -231,6 +251,18 @@ class _ProjectVariableState:
     @environment_scope.setter
     def environment_scope(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment_scope", value)
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
 
     @property
     @pulumi.getter
@@ -324,6 +356,7 @@ class ProjectVariable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -376,6 +409,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[str] project: The name or id of the project.
@@ -447,6 +481,7 @@ class ProjectVariable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_scope: Optional[pulumi.Input[str]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  masked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -465,6 +500,7 @@ class ProjectVariable(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["environment_scope"] = environment_scope
+            __props__.__dict__["hidden"] = hidden
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -490,6 +526,7 @@ class ProjectVariable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment_scope: Optional[pulumi.Input[str]] = None,
+            hidden: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
             masked: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -506,6 +543,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the variable.
         :param pulumi.Input[str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param pulumi.Input[bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[str] key: The name of the variable.
         :param pulumi.Input[bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[str] project: The name or id of the project.
@@ -520,6 +558,7 @@ class ProjectVariable(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["environment_scope"] = environment_scope
+        __props__.__dict__["hidden"] = hidden
         __props__.__dict__["key"] = key
         __props__.__dict__["masked"] = masked
         __props__.__dict__["project"] = project
@@ -544,6 +583,14 @@ class ProjectVariable(pulumi.CustomResource):
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         """
         return pulumi.get(self, "environment_scope")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> pulumi.Output[bool]:
+        """
+        If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        """
+        return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter

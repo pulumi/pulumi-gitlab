@@ -90,6 +90,11 @@ export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
+export { GetGroupAccessTokensArgs, GetGroupAccessTokensResult, GetGroupAccessTokensOutputArgs } from "./getGroupAccessTokens";
+export const getGroupAccessTokens: typeof import("./getGroupAccessTokens").getGroupAccessTokens = null as any;
+export const getGroupAccessTokensOutput: typeof import("./getGroupAccessTokens").getGroupAccessTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupAccessTokens","getGroupAccessTokensOutput"], () => require("./getGroupAccessTokens"));
+
 export { GetGroupBillableMemberMembershipsArgs, GetGroupBillableMemberMembershipsResult, GetGroupBillableMemberMembershipsOutputArgs } from "./getGroupBillableMemberMemberships";
 export const getGroupBillableMemberMemberships: typeof import("./getGroupBillableMemberMemberships").getGroupBillableMemberMemberships = null as any;
 export const getGroupBillableMemberMembershipsOutput: typeof import("./getGroupBillableMemberMemberships").getGroupBillableMemberMembershipsOutput = null as any;
@@ -239,6 +244,11 @@ export { GetProjectMilestonesArgs, GetProjectMilestonesResult, GetProjectMilesto
 export const getProjectMilestones: typeof import("./getProjectMilestones").getProjectMilestones = null as any;
 export const getProjectMilestonesOutput: typeof import("./getProjectMilestones").getProjectMilestonesOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectMilestones","getProjectMilestonesOutput"], () => require("./getProjectMilestones"));
+
+export { GetProjectMirrorPublicKeyArgs, GetProjectMirrorPublicKeyResult, GetProjectMirrorPublicKeyOutputArgs } from "./getProjectMirrorPublicKey";
+export const getProjectMirrorPublicKey: typeof import("./getProjectMirrorPublicKey").getProjectMirrorPublicKey = null as any;
+export const getProjectMirrorPublicKeyOutput: typeof import("./getProjectMirrorPublicKey").getProjectMirrorPublicKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMirrorPublicKey","getProjectMirrorPublicKeyOutput"], () => require("./getProjectMirrorPublicKey"));
 
 export { GetProjectProtectedBranchArgs, GetProjectProtectedBranchResult, GetProjectProtectedBranchOutputArgs } from "./getProjectProtectedBranch";
 export const getProjectProtectedBranch: typeof import("./getProjectProtectedBranch").getProjectProtectedBranch = null as any;
@@ -465,6 +475,11 @@ export type IntegrationGithub = import("./integrationGithub").IntegrationGithub;
 export const IntegrationGithub: typeof import("./integrationGithub").IntegrationGithub = null as any;
 utilities.lazyLoad(exports, ["IntegrationGithub"], () => require("./integrationGithub"));
 
+export { IntegrationHarborArgs, IntegrationHarborState } from "./integrationHarbor";
+export type IntegrationHarbor = import("./integrationHarbor").IntegrationHarbor;
+export const IntegrationHarbor: typeof import("./integrationHarbor").IntegrationHarbor = null as any;
+utilities.lazyLoad(exports, ["IntegrationHarbor"], () => require("./integrationHarbor"));
+
 export { IntegrationJenkinsArgs, IntegrationJenkinsState } from "./integrationJenkins";
 export type IntegrationJenkins = import("./integrationJenkins").IntegrationJenkins;
 export const IntegrationJenkins: typeof import("./integrationJenkins").IntegrationJenkins = null as any;
@@ -670,6 +685,11 @@ export type ProjectTag = import("./projectTag").ProjectTag;
 export const ProjectTag: typeof import("./projectTag").ProjectTag = null as any;
 utilities.lazyLoad(exports, ["ProjectTag"], () => require("./projectTag"));
 
+export { ProjectTargetBranchRuleArgs, ProjectTargetBranchRuleState } from "./projectTargetBranchRule";
+export type ProjectTargetBranchRule = import("./projectTargetBranchRule").ProjectTargetBranchRule;
+export const ProjectTargetBranchRule: typeof import("./projectTargetBranchRule").ProjectTargetBranchRule = null as any;
+utilities.lazyLoad(exports, ["ProjectTargetBranchRule"], () => require("./projectTargetBranchRule"));
+
 export { ProjectVariableArgs, ProjectVariableState } from "./projectVariable";
 export type ProjectVariable = import("./projectVariable").ProjectVariable;
 export const ProjectVariable: typeof import("./projectVariable").ProjectVariable = null as any;
@@ -774,6 +794,11 @@ export { UserGpgKeyArgs, UserGpgKeyState } from "./userGpgKey";
 export type UserGpgKey = import("./userGpgKey").UserGpgKey;
 export const UserGpgKey: typeof import("./userGpgKey").UserGpgKey = null as any;
 utilities.lazyLoad(exports, ["UserGpgKey"], () => require("./userGpgKey"));
+
+export { UserIdentityArgs, UserIdentityState } from "./userIdentity";
+export type UserIdentity = import("./userIdentity").UserIdentity;
+export const UserIdentity: typeof import("./userIdentity").UserIdentity = null as any;
+utilities.lazyLoad(exports, ["UserIdentity"], () => require("./userIdentity"));
 
 export { UserImpersonationTokenArgs, UserImpersonationTokenState } from "./userImpersonationToken";
 export type UserImpersonationToken = import("./userImpersonationToken").UserImpersonationToken;
@@ -883,6 +908,8 @@ const _module = {
                 return new IntegrationExternalWiki(name, <any>undefined, { urn })
             case "gitlab:index/integrationGithub:IntegrationGithub":
                 return new IntegrationGithub(name, <any>undefined, { urn })
+            case "gitlab:index/integrationHarbor:IntegrationHarbor":
+                return new IntegrationHarbor(name, <any>undefined, { urn })
             case "gitlab:index/integrationJenkins:IntegrationJenkins":
                 return new IntegrationJenkins(name, <any>undefined, { urn })
             case "gitlab:index/integrationJira:IntegrationJira":
@@ -965,6 +992,8 @@ const _module = {
                 return new ProjectShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/projectTag:ProjectTag":
                 return new ProjectTag(name, <any>undefined, { urn })
+            case "gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule":
+                return new ProjectTargetBranchRule(name, <any>undefined, { urn })
             case "gitlab:index/projectVariable:ProjectVariable":
                 return new ProjectVariable(name, <any>undefined, { urn })
             case "gitlab:index/projectWikiPage:ProjectWikiPage":
@@ -1005,6 +1034,8 @@ const _module = {
                 return new UserCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/userGpgKey:UserGpgKey":
                 return new UserGpgKey(name, <any>undefined, { urn })
+            case "gitlab:index/userIdentity:UserIdentity":
+                return new UserIdentity(name, <any>undefined, { urn })
             case "gitlab:index/userImpersonationToken:UserImpersonationToken":
                 return new UserImpersonationToken(name, <any>undefined, { urn })
             case "gitlab:index/userRunner:UserRunner":
@@ -1055,6 +1086,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/integrationCustomIssueTra
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationEmailsOnPush", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationExternalWiki", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationGithub", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationHarbor", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationJenkins", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationJira", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMattermost", _module)
@@ -1096,6 +1128,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement",
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectTargetBranchRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectWikiPage", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/release", _module)
@@ -1116,6 +1149,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userIdentity", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userImpersonationToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userRunner", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)

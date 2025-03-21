@@ -21,23 +21,31 @@ class ProjectMirrorArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  url: pulumi.Input[str],
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+                 mirror_branch_regex: Optional[pulumi.Input[str]] = None,
                  only_protected_branches: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ProjectMirror resource.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
+        :param pulumi.Input[str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "url", url)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if keep_divergent_refs is not None:
             pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
+        if mirror_branch_regex is not None:
+            pulumi.set(__self__, "mirror_branch_regex", mirror_branch_regex)
         if only_protected_branches is not None:
             pulumi.set(__self__, "only_protected_branches", only_protected_branches)
 
@@ -66,6 +74,18 @@ class ProjectMirrorArgs:
         pulumi.set(self, "url", value)
 
     @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -88,6 +108,18 @@ class ProjectMirrorArgs:
     @keep_divergent_refs.setter
     def keep_divergent_refs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "keep_divergent_refs", value)
+
+    @property
+    @pulumi.getter(name="mirrorBranchRegex")
+    def mirror_branch_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "mirror_branch_regex")
+
+    @mirror_branch_regex.setter
+    def mirror_branch_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_branch_regex", value)
 
     @property
     @pulumi.getter(name="onlyProtectedBranches")
@@ -105,25 +137,33 @@ class ProjectMirrorArgs:
 @pulumi.input_type
 class _ProjectMirrorState:
     def __init__(__self__, *,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+                 mirror_branch_regex: Optional[pulumi.Input[str]] = None,
                  mirror_id: Optional[pulumi.Input[int]] = None,
                  only_protected_branches: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectMirror resources.
+        :param pulumi.Input[str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[int] mirror_id: Mirror ID.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
         """
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if keep_divergent_refs is not None:
             pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
+        if mirror_branch_regex is not None:
+            pulumi.set(__self__, "mirror_branch_regex", mirror_branch_regex)
         if mirror_id is not None:
             pulumi.set(__self__, "mirror_id", mirror_id)
         if only_protected_branches is not None:
@@ -132,6 +172,18 @@ class _ProjectMirrorState:
             pulumi.set(__self__, "project", project)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -156,6 +208,18 @@ class _ProjectMirrorState:
     @keep_divergent_refs.setter
     def keep_divergent_refs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "keep_divergent_refs", value)
+
+    @property
+    @pulumi.getter(name="mirrorBranchRegex")
+    def mirror_branch_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "mirror_branch_regex")
+
+    @mirror_branch_regex.setter
+    def mirror_branch_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_branch_regex", value)
 
     @property
     @pulumi.getter(name="mirrorId")
@@ -211,8 +275,10 @@ class ProjectMirror(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+                 mirror_branch_regex: Optional[pulumi.Input[str]] = None,
                  only_protected_branches: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -264,8 +330,10 @@ class ProjectMirror(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[str] project: The id of the project.
         :param pulumi.Input[str] url: The URL of the remote repository to be mirrored.
@@ -336,8 +404,10 @@ class ProjectMirror(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+                 mirror_branch_regex: Optional[pulumi.Input[str]] = None,
                  only_protected_branches: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -350,8 +420,10 @@ class ProjectMirror(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectMirrorArgs.__new__(ProjectMirrorArgs)
 
+            __props__.__dict__["auth_method"] = auth_method
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["keep_divergent_refs"] = keep_divergent_refs
+            __props__.__dict__["mirror_branch_regex"] = mirror_branch_regex
             __props__.__dict__["only_protected_branches"] = only_protected_branches
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -372,8 +444,10 @@ class ProjectMirror(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auth_method: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             keep_divergent_refs: Optional[pulumi.Input[bool]] = None,
+            mirror_branch_regex: Optional[pulumi.Input[str]] = None,
             mirror_id: Optional[pulumi.Input[int]] = None,
             only_protected_branches: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -385,8 +459,10 @@ class ProjectMirror(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[bool] keep_divergent_refs: Determines if divergent refs are skipped.
+        :param pulumi.Input[str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[int] mirror_id: Mirror ID.
         :param pulumi.Input[bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[str] project: The id of the project.
@@ -396,13 +472,23 @@ class ProjectMirror(pulumi.CustomResource):
 
         __props__ = _ProjectMirrorState.__new__(_ProjectMirrorState)
 
+        __props__.__dict__["auth_method"] = auth_method
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["keep_divergent_refs"] = keep_divergent_refs
+        __props__.__dict__["mirror_branch_regex"] = mirror_branch_regex
         __props__.__dict__["mirror_id"] = mirror_id
         __props__.__dict__["only_protected_branches"] = only_protected_branches
         __props__.__dict__["project"] = project
         __props__.__dict__["url"] = url
         return ProjectMirror(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Output[str]:
+        """
+        Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        """
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -419,6 +505,14 @@ class ProjectMirror(pulumi.CustomResource):
         Determines if divergent refs are skipped.
         """
         return pulumi.get(self, "keep_divergent_refs")
+
+    @property
+    @pulumi.getter(name="mirrorBranchRegex")
+    def mirror_branch_regex(self) -> pulumi.Output[str]:
+        """
+        Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "mirror_branch_regex")
 
     @property
     @pulumi.getter(name="mirrorId")

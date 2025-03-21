@@ -14,6 +14,14 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectEnvironmentsEnvironmentResult
     {
         /// <summary>
+        /// Timestamp of when the environment is scheduled to stop, RFC3339 format.
+        /// </summary>
+        public readonly string AutoStopAt;
+        /// <summary>
+        /// The auto stop setting for the environment.
+        /// </summary>
+        public readonly string AutoStopSetting;
+        /// <summary>
         /// The ID of the environments cluster agent or `null` if none is assigned.
         /// </summary>
         public readonly int ClusterAgentId;
@@ -64,6 +72,10 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetProjectEnvironmentsEnvironmentResult(
+            string autoStopAt,
+
+            string autoStopSetting,
+
             int clusterAgentId,
 
             string createdAt,
@@ -88,6 +100,8 @@ namespace Pulumi.GitLab.Outputs
 
             string updatedAt)
         {
+            AutoStopAt = autoStopAt;
+            AutoStopSetting = autoStopSetting;
             ClusterAgentId = clusterAgentId;
             CreatedAt = createdAt;
             Description = description;

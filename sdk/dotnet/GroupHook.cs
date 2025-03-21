@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
     /// 
     /// ## Import
     /// 
@@ -41,6 +41,12 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/groupHook:GroupHook")]
     public partial class GroupHook : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        /// </summary>
+        [Output("branchFilterStrategy")]
+        public Output<string> BranchFilterStrategy { get; private set; } = null!;
+
         /// <summary>
         /// Invoke the hook for confidential issues events.
         /// </summary>
@@ -72,10 +78,22 @@ namespace Pulumi.GitLab
         public Output<bool> DeploymentEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Description of the group webhook.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Output("enableSslVerification")]
         public Output<bool> EnableSslVerification { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for feature flag events.
+        /// </summary>
+        [Output("featureFlagEvents")]
+        public Output<bool> FeatureFlagEvents { get; private set; } = null!;
 
         /// <summary>
         /// The full path or id of the group to add the hook to.
@@ -112,6 +130,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("mergeRequestsEvents")]
         public Output<bool> MergeRequestsEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the group webhook.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for note events.
@@ -224,6 +248,12 @@ namespace Pulumi.GitLab
     public sealed class GroupHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        /// </summary>
+        [Input("branchFilterStrategy")]
+        public Input<string>? BranchFilterStrategy { get; set; }
+
+        /// <summary>
         /// Invoke the hook for confidential issues events.
         /// </summary>
         [Input("confidentialIssuesEvents")]
@@ -260,10 +290,22 @@ namespace Pulumi.GitLab
         public Input<bool>? DeploymentEvents { get; set; }
 
         /// <summary>
+        /// Description of the group webhook.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for feature flag events.
+        /// </summary>
+        [Input("featureFlagEvents")]
+        public Input<bool>? FeatureFlagEvents { get; set; }
 
         /// <summary>
         /// The full path or id of the group to add the hook to.
@@ -288,6 +330,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
+
+        /// <summary>
+        /// Name of the group webhook.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Invoke the hook for note events.
@@ -368,6 +416,12 @@ namespace Pulumi.GitLab
     public sealed class GroupHookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        /// </summary>
+        [Input("branchFilterStrategy")]
+        public Input<string>? BranchFilterStrategy { get; set; }
+
+        /// <summary>
         /// Invoke the hook for confidential issues events.
         /// </summary>
         [Input("confidentialIssuesEvents")]
@@ -404,10 +458,22 @@ namespace Pulumi.GitLab
         public Input<bool>? DeploymentEvents { get; set; }
 
         /// <summary>
+        /// Description of the group webhook.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for feature flag events.
+        /// </summary>
+        [Input("featureFlagEvents")]
+        public Input<bool>? FeatureFlagEvents { get; set; }
 
         /// <summary>
         /// The full path or id of the group to add the hook to.
@@ -444,6 +510,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
+
+        /// <summary>
+        /// Name of the group webhook.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Invoke the hook for note events.

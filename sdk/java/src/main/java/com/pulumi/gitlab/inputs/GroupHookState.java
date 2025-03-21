@@ -20,6 +20,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     public static final GroupHookState Empty = new GroupHookState();
 
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * 
+     */
+    @Import(name="branchFilterStrategy")
+    private @Nullable Output<String> branchFilterStrategy;
+
+    /**
+     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * 
+     */
+    public Optional<Output<String>> branchFilterStrategy() {
+        return Optional.ofNullable(this.branchFilterStrategy);
+    }
+
+    /**
      * Invoke the hook for confidential issues events.
      * 
      */
@@ -95,6 +110,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Description of the group webhook.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of the group webhook.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Enable SSL verification when invoking the hook.
      * 
      */
@@ -107,6 +137,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableSslVerification() {
         return Optional.ofNullable(this.enableSslVerification);
+    }
+
+    /**
+     * Invoke the hook for feature flag events.
+     * 
+     */
+    @Import(name="featureFlagEvents")
+    private @Nullable Output<Boolean> featureFlagEvents;
+
+    /**
+     * @return Invoke the hook for feature flag events.
+     * 
+     */
+    public Optional<Output<Boolean>> featureFlagEvents() {
+        return Optional.ofNullable(this.featureFlagEvents);
     }
 
     /**
@@ -197,6 +242,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> mergeRequestsEvents() {
         return Optional.ofNullable(this.mergeRequestsEvents);
+    }
+
+    /**
+     * Name of the group webhook.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of the group webhook.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -352,18 +412,22 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     private GroupHookState() {}
 
     private GroupHookState(GroupHookState $) {
+        this.branchFilterStrategy = $.branchFilterStrategy;
         this.confidentialIssuesEvents = $.confidentialIssuesEvents;
         this.confidentialNoteEvents = $.confidentialNoteEvents;
         this.customHeaders = $.customHeaders;
         this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
+        this.description = $.description;
         this.enableSslVerification = $.enableSslVerification;
+        this.featureFlagEvents = $.featureFlagEvents;
         this.group = $.group;
         this.groupId = $.groupId;
         this.hookId = $.hookId;
         this.issuesEvents = $.issuesEvents;
         this.jobEvents = $.jobEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
+        this.name = $.name;
         this.noteEvents = $.noteEvents;
         this.pipelineEvents = $.pipelineEvents;
         this.pushEvents = $.pushEvents;
@@ -392,6 +456,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupHookState defaults) {
             $ = new GroupHookState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branchFilterStrategy(@Nullable Output<String> branchFilterStrategy) {
+            $.branchFilterStrategy = branchFilterStrategy;
+            return this;
+        }
+
+        /**
+         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branchFilterStrategy(String branchFilterStrategy) {
+            return branchFilterStrategy(Output.of(branchFilterStrategy));
         }
 
         /**
@@ -510,6 +595,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param description Description of the group webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of the group webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param enableSslVerification Enable SSL verification when invoking the hook.
          * 
          * @return builder
@@ -528,6 +634,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableSslVerification(Boolean enableSslVerification) {
             return enableSslVerification(Output.of(enableSslVerification));
+        }
+
+        /**
+         * @param featureFlagEvents Invoke the hook for feature flag events.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureFlagEvents(@Nullable Output<Boolean> featureFlagEvents) {
+            $.featureFlagEvents = featureFlagEvents;
+            return this;
+        }
+
+        /**
+         * @param featureFlagEvents Invoke the hook for feature flag events.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureFlagEvents(Boolean featureFlagEvents) {
+            return featureFlagEvents(Output.of(featureFlagEvents));
         }
 
         /**
@@ -654,6 +781,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mergeRequestsEvents(Boolean mergeRequestsEvents) {
             return mergeRequestsEvents(Output.of(mergeRequestsEvents));
+        }
+
+        /**
+         * @param name Name of the group webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of the group webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

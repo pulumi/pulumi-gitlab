@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+// The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
 //
@@ -75,6 +75,8 @@ type GroupShareGroup struct {
 	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntOutput `pulumi:"memberRoleId"`
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntOutput `pulumi:"shareGroupId"`
 }
@@ -124,6 +126,8 @@ type groupShareGroupState struct {
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId *string `pulumi:"groupId"`
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId *int `pulumi:"shareGroupId"`
 }
@@ -135,6 +139,8 @@ type GroupShareGroupState struct {
 	GroupAccess pulumi.StringPtrInput
 	// The id of the main group to be shared.
 	GroupId pulumi.StringPtrInput
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntPtrInput
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntPtrInput
 }
@@ -150,6 +156,8 @@ type groupShareGroupArgs struct {
 	GroupAccess string `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId string `pulumi:"groupId"`
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId int `pulumi:"shareGroupId"`
 }
@@ -162,6 +170,8 @@ type GroupShareGroupArgs struct {
 	GroupAccess pulumi.StringInput
 	// The id of the main group to be shared.
 	GroupId pulumi.StringInput
+	// The ID of a custom member role. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntPtrInput
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntInput
 }
@@ -266,6 +276,11 @@ func (o GroupShareGroupOutput) GroupAccess() pulumi.StringOutput {
 // The id of the main group to be shared.
 func (o GroupShareGroupOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of a custom member role. Only available for Ultimate instances.
+func (o GroupShareGroupOutput) MemberRoleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupShareGroup) pulumi.IntOutput { return v.MemberRoleId }).(pulumi.IntOutput)
 }
 
 // The id of the additional group with which the main group will be shared.

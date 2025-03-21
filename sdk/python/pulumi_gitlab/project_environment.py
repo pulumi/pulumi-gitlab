@@ -20,7 +20,9 @@ __all__ = ['ProjectEnvironmentArgs', 'ProjectEnvironment']
 class ProjectEnvironmentArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
+                 auto_stop_setting: Optional[pulumi.Input[str]] = None,
                  cluster_agent_id: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
                  flux_resource_path: Optional[pulumi.Input[str]] = None,
                  kubernetes_namespace: Optional[pulumi.Input[str]] = None,
@@ -30,17 +32,23 @@ class ProjectEnvironmentArgs:
         """
         The set of arguments for constructing a ProjectEnvironment resource.
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
+        :param pulumi.Input[str] auto_stop_setting: The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
         :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
+        :param pulumi.Input[str] description: The description of the environment.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
         :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
         :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
         :param pulumi.Input[str] name: The name of the environment.
-        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         pulumi.set(__self__, "project", project)
+        if auto_stop_setting is not None:
+            pulumi.set(__self__, "auto_stop_setting", auto_stop_setting)
         if cluster_agent_id is not None:
             pulumi.set(__self__, "cluster_agent_id", cluster_agent_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if external_url is not None:
             pulumi.set(__self__, "external_url", external_url)
         if flux_resource_path is not None:
@@ -67,6 +75,18 @@ class ProjectEnvironmentArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="autoStopSetting")
+    def auto_stop_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        """
+        return pulumi.get(self, "auto_stop_setting")
+
+    @auto_stop_setting.setter
+    def auto_stop_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_stop_setting", value)
+
+    @property
     @pulumi.getter(name="clusterAgentId")
     def cluster_agent_id(self) -> Optional[pulumi.Input[int]]:
         """
@@ -77,6 +97,18 @@ class ProjectEnvironmentArgs:
     @cluster_agent_id.setter
     def cluster_agent_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cluster_agent_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the environment.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="externalUrl")
@@ -130,7 +162,7 @@ class ProjectEnvironmentArgs:
     @pulumi.getter(name="stopBeforeDestroy")
     def stop_before_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether the environment is attempted to be stopped before the environment is deleted.
+        Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         """
         return pulumi.get(self, "stop_before_destroy")
 
@@ -154,8 +186,11 @@ class ProjectEnvironmentArgs:
 @pulumi.input_type
 class _ProjectEnvironmentState:
     def __init__(__self__, *,
+                 auto_stop_at: Optional[pulumi.Input[str]] = None,
+                 auto_stop_setting: Optional[pulumi.Input[str]] = None,
                  cluster_agent_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
                  flux_resource_path: Optional[pulumi.Input[str]] = None,
                  kubernetes_namespace: Optional[pulumi.Input[str]] = None,
@@ -168,8 +203,11 @@ class _ProjectEnvironmentState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectEnvironment resources.
+        :param pulumi.Input[str] auto_stop_at: The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+        :param pulumi.Input[str] auto_stop_setting: The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
         :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
         :param pulumi.Input[str] created_at: The ISO8601 date/time that this environment was created at in UTC.
+        :param pulumi.Input[str] description: The description of the environment.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
         :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
         :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
@@ -177,14 +215,20 @@ class _ProjectEnvironmentState:
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
         :param pulumi.Input[str] slug: The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         :param pulumi.Input[str] state: State the environment is in. Valid values are `available`, `stopped`.
-        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this environment was last updated at in UTC.
         """
+        if auto_stop_at is not None:
+            pulumi.set(__self__, "auto_stop_at", auto_stop_at)
+        if auto_stop_setting is not None:
+            pulumi.set(__self__, "auto_stop_setting", auto_stop_setting)
         if cluster_agent_id is not None:
             pulumi.set(__self__, "cluster_agent_id", cluster_agent_id)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if external_url is not None:
             pulumi.set(__self__, "external_url", external_url)
         if flux_resource_path is not None:
@@ -205,6 +249,30 @@ class _ProjectEnvironmentState:
             pulumi.set(__self__, "tier", tier)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="autoStopAt")
+    def auto_stop_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+        """
+        return pulumi.get(self, "auto_stop_at")
+
+    @auto_stop_at.setter
+    def auto_stop_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_stop_at", value)
+
+    @property
+    @pulumi.getter(name="autoStopSetting")
+    def auto_stop_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        """
+        return pulumi.get(self, "auto_stop_setting")
+
+    @auto_stop_setting.setter
+    def auto_stop_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_stop_setting", value)
 
     @property
     @pulumi.getter(name="clusterAgentId")
@@ -229,6 +297,18 @@ class _ProjectEnvironmentState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the environment.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="externalUrl")
@@ -318,7 +398,7 @@ class _ProjectEnvironmentState:
     @pulumi.getter(name="stopBeforeDestroy")
     def stop_before_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether the environment is attempted to be stopped before the environment is deleted.
+        Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         """
         return pulumi.get(self, "stop_before_destroy")
 
@@ -356,7 +436,9 @@ class ProjectEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_stop_setting: Optional[pulumi.Input[str]] = None,
                  cluster_agent_id: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
                  flux_resource_path: Optional[pulumi.Input[str]] = None,
                  kubernetes_namespace: Optional[pulumi.Input[str]] = None,
@@ -410,13 +492,15 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_stop_setting: The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
         :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
+        :param pulumi.Input[str] description: The description of the environment.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
         :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
         :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
         :param pulumi.Input[str] name: The name of the environment.
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
-        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         ...
@@ -483,7 +567,9 @@ class ProjectEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_stop_setting: Optional[pulumi.Input[str]] = None,
                  cluster_agent_id: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  external_url: Optional[pulumi.Input[str]] = None,
                  flux_resource_path: Optional[pulumi.Input[str]] = None,
                  kubernetes_namespace: Optional[pulumi.Input[str]] = None,
@@ -500,7 +586,9 @@ class ProjectEnvironment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectEnvironmentArgs.__new__(ProjectEnvironmentArgs)
 
+            __props__.__dict__["auto_stop_setting"] = auto_stop_setting
             __props__.__dict__["cluster_agent_id"] = cluster_agent_id
+            __props__.__dict__["description"] = description
             __props__.__dict__["external_url"] = external_url
             __props__.__dict__["flux_resource_path"] = flux_resource_path
             __props__.__dict__["kubernetes_namespace"] = kubernetes_namespace
@@ -510,6 +598,7 @@ class ProjectEnvironment(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["stop_before_destroy"] = stop_before_destroy
             __props__.__dict__["tier"] = tier
+            __props__.__dict__["auto_stop_at"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["slug"] = None
             __props__.__dict__["state"] = None
@@ -524,8 +613,11 @@ class ProjectEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_stop_at: Optional[pulumi.Input[str]] = None,
+            auto_stop_setting: Optional[pulumi.Input[str]] = None,
             cluster_agent_id: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             external_url: Optional[pulumi.Input[str]] = None,
             flux_resource_path: Optional[pulumi.Input[str]] = None,
             kubernetes_namespace: Optional[pulumi.Input[str]] = None,
@@ -543,8 +635,11 @@ class ProjectEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_stop_at: The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+        :param pulumi.Input[str] auto_stop_setting: The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
         :param pulumi.Input[int] cluster_agent_id: The cluster agent to associate with this environment.
         :param pulumi.Input[str] created_at: The ISO8601 date/time that this environment was created at in UTC.
+        :param pulumi.Input[str] description: The description of the environment.
         :param pulumi.Input[str] external_url: Place to link to for this environment.
         :param pulumi.Input[str] flux_resource_path: The Flux resource path to associate with this environment.
         :param pulumi.Input[str] kubernetes_namespace: The Kubernetes namespace to associate with this environment.
@@ -552,7 +647,7 @@ class ProjectEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID or full path of the project to environment is created for.
         :param pulumi.Input[str] slug: The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         :param pulumi.Input[str] state: State the environment is in. Valid values are `available`, `stopped`.
-        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted.
+        :param pulumi.Input[bool] stop_before_destroy: Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         :param pulumi.Input[str] tier: The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[str] updated_at: The ISO8601 date/time that this environment was last updated at in UTC.
         """
@@ -560,8 +655,11 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         __props__ = _ProjectEnvironmentState.__new__(_ProjectEnvironmentState)
 
+        __props__.__dict__["auto_stop_at"] = auto_stop_at
+        __props__.__dict__["auto_stop_setting"] = auto_stop_setting
         __props__.__dict__["cluster_agent_id"] = cluster_agent_id
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
         __props__.__dict__["external_url"] = external_url
         __props__.__dict__["flux_resource_path"] = flux_resource_path
         __props__.__dict__["kubernetes_namespace"] = kubernetes_namespace
@@ -573,6 +671,22 @@ class ProjectEnvironment(pulumi.CustomResource):
         __props__.__dict__["tier"] = tier
         __props__.__dict__["updated_at"] = updated_at
         return ProjectEnvironment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoStopAt")
+    def auto_stop_at(self) -> pulumi.Output[str]:
+        """
+        The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+        """
+        return pulumi.get(self, "auto_stop_at")
+
+    @property
+    @pulumi.getter(name="autoStopSetting")
+    def auto_stop_setting(self) -> pulumi.Output[str]:
+        """
+        The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        """
+        return pulumi.get(self, "auto_stop_setting")
 
     @property
     @pulumi.getter(name="clusterAgentId")
@@ -589,6 +703,14 @@ class ProjectEnvironment(pulumi.CustomResource):
         The ISO8601 date/time that this environment was created at in UTC.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the environment.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="externalUrl")
@@ -650,7 +772,7 @@ class ProjectEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="stopBeforeDestroy")
     def stop_before_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether the environment is attempted to be stopped before the environment is deleted.
+        Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         """
         return pulumi.get(self, "stop_before_destroy")
 

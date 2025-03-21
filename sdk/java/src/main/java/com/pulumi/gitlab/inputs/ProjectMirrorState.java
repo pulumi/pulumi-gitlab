@@ -18,6 +18,21 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
     public static final ProjectMirrorState Empty = new ProjectMirrorState();
 
     /**
+     * Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * 
+     */
+    @Import(name="authMethod")
+    private @Nullable Output<String> authMethod;
+
+    /**
+     * @return Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * 
+     */
+    public Optional<Output<String>> authMethod() {
+        return Optional.ofNullable(this.authMethod);
+    }
+
+    /**
      * Determines if the mirror is enabled.
      * 
      */
@@ -45,6 +60,21 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Boolean>> keepDivergentRefs() {
         return Optional.ofNullable(this.keepDivergentRefs);
+    }
+
+    /**
+     * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="mirrorBranchRegex")
+    private @Nullable Output<String> mirrorBranchRegex;
+
+    /**
+     * @return Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<String>> mirrorBranchRegex() {
+        return Optional.ofNullable(this.mirrorBranchRegex);
     }
 
     /**
@@ -110,8 +140,10 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
     private ProjectMirrorState() {}
 
     private ProjectMirrorState(ProjectMirrorState $) {
+        this.authMethod = $.authMethod;
         this.enabled = $.enabled;
         this.keepDivergentRefs = $.keepDivergentRefs;
+        this.mirrorBranchRegex = $.mirrorBranchRegex;
         this.mirrorId = $.mirrorId;
         this.onlyProtectedBranches = $.onlyProtectedBranches;
         this.project = $.project;
@@ -134,6 +166,27 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(ProjectMirrorState defaults) {
             $ = new ProjectMirrorState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authMethod Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authMethod(@Nullable Output<String> authMethod) {
+            $.authMethod = authMethod;
+            return this;
+        }
+
+        /**
+         * @param authMethod Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authMethod(String authMethod) {
+            return authMethod(Output.of(authMethod));
         }
 
         /**
@@ -176,6 +229,27 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder keepDivergentRefs(Boolean keepDivergentRefs) {
             return keepDivergentRefs(Output.of(keepDivergentRefs));
+        }
+
+        /**
+         * @param mirrorBranchRegex Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrorBranchRegex(@Nullable Output<String> mirrorBranchRegex) {
+            $.mirrorBranchRegex = mirrorBranchRegex;
+            return this;
+        }
+
+        /**
+         * @param mirrorBranchRegex Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrorBranchRegex(String mirrorBranchRegex) {
+            return mirrorBranchRegex(Output.of(mirrorBranchRegex));
         }
 
         /**

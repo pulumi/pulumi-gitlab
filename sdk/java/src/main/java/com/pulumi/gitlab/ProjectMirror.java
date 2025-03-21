@@ -90,6 +90,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectMirror:ProjectMirror")
 public class ProjectMirror extends com.pulumi.resources.CustomResource {
     /**
+     * Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * 
+     */
+    @Export(name="authMethod", refs={String.class}, tree="[0]")
+    private Output<String> authMethod;
+
+    /**
+     * @return Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * 
+     */
+    public Output<String> authMethod() {
+        return this.authMethod;
+    }
+    /**
      * Determines if the mirror is enabled.
      * 
      */
@@ -116,6 +130,20 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> keepDivergentRefs() {
         return this.keepDivergentRefs;
+    }
+    /**
+     * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="mirrorBranchRegex", refs={String.class}, tree="[0]")
+    private Output<String> mirrorBranchRegex;
+
+    /**
+     * @return Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     * 
+     */
+    public Output<String> mirrorBranchRegex() {
+        return this.mirrorBranchRegex;
     }
     /**
      * Mirror ID.

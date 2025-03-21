@@ -359,6 +359,10 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly pathWithNamespace!: pulumi.Output<string>;
     /**
+     * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     */
+    public readonly permanentlyDeleteOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *
      * @deprecated Deprecated in favor of `buildsAccessLevel`
@@ -587,6 +591,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["pagesAccessLevel"] = state ? state.pagesAccessLevel : undefined;
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
+            resourceInputs["permanentlyDeleteOnDestroy"] = state ? state.permanentlyDeleteOnDestroy : undefined;
             resourceInputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
             resourceInputs["preReceiveSecretDetectionEnabled"] = state ? state.preReceiveSecretDetectionEnabled : undefined;
             resourceInputs["preventMergeWithoutJiraIssue"] = state ? state.preventMergeWithoutJiraIssue : undefined;
@@ -690,6 +695,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["packagesEnabled"] = args ? args.packagesEnabled : undefined;
             resourceInputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["permanentlyDeleteOnDestroy"] = args ? args.permanentlyDeleteOnDestroy : undefined;
             resourceInputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
             resourceInputs["preReceiveSecretDetectionEnabled"] = args ? args.preReceiveSecretDetectionEnabled : undefined;
             resourceInputs["preventMergeWithoutJiraIssue"] = args ? args.preventMergeWithoutJiraIssue : undefined;
@@ -1031,6 +1037,10 @@ export interface ProjectState {
      * The path of the repository with namespace.
      */
     pathWithNamespace?: pulumi.Input<string>;
+    /**
+     * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     */
+    permanentlyDeleteOnDestroy?: pulumi.Input<boolean>;
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *
@@ -1456,6 +1466,10 @@ export interface ProjectArgs {
      * The path of the repository.
      */
     path?: pulumi.Input<string>;
+    /**
+     * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     */
+    permanentlyDeleteOnDestroy?: pulumi.Input<boolean>;
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *

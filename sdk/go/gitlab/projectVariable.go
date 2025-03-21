@@ -73,6 +73,8 @@ type ProjectVariable struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringOutput `pulumi:"environmentScope"`
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden pulumi.BoolOutput `pulumi:"hidden"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
@@ -132,6 +134,8 @@ type projectVariableState struct {
 	Description *string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden *bool `pulumi:"hidden"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
 	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
@@ -153,6 +157,8 @@ type ProjectVariableState struct {
 	Description pulumi.StringPtrInput
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden pulumi.BoolPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
 	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
@@ -178,6 +184,8 @@ type projectVariableArgs struct {
 	Description *string `pulumi:"description"`
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope *string `pulumi:"environmentScope"`
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden *bool `pulumi:"hidden"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
 	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
@@ -200,6 +208,8 @@ type ProjectVariableArgs struct {
 	Description pulumi.StringPtrInput
 	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 	EnvironmentScope pulumi.StringPtrInput
+	// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+	Hidden pulumi.BoolPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
 	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
@@ -311,6 +321,11 @@ func (o ProjectVariableOutput) Description() pulumi.StringOutput {
 // The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
 func (o ProjectVariableOutput) EnvironmentScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.EnvironmentScope }).(pulumi.StringOutput)
+}
+
+// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+func (o ProjectVariableOutput) Hidden() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolOutput { return v.Hidden }).(pulumi.BoolOutput)
 }
 
 // The name of the variable.

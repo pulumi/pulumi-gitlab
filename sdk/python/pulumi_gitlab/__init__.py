@@ -22,6 +22,7 @@ from .get_cluster_agents import *
 from .get_compliance_framework import *
 from .get_current_user import *
 from .get_group import *
+from .get_group_access_tokens import *
 from .get_group_billable_member_memberships import *
 from .get_group_hook import *
 from .get_group_hooks import *
@@ -52,6 +53,7 @@ from .get_project_membership import *
 from .get_project_merge_request import *
 from .get_project_milestone import *
 from .get_project_milestones import *
+from .get_project_mirror_public_key import *
 from .get_project_protected_branch import *
 from .get_project_protected_branches import *
 from .get_project_protected_tag import *
@@ -97,6 +99,7 @@ from .integration_custom_issue_tracker import *
 from .integration_emails_on_push import *
 from .integration_external_wiki import *
 from .integration_github import *
+from .integration_harbor import *
 from .integration_jenkins import *
 from .integration_jira import *
 from .integration_mattermost import *
@@ -138,6 +141,7 @@ from .project_runner_enablement import *
 from .project_security_policy_attachment import *
 from .project_share_group import *
 from .project_tag import *
+from .project_target_branch_rule import *
 from .project_variable import *
 from .project_wiki_page import *
 from .provider import *
@@ -159,6 +163,7 @@ from .topic import *
 from .user import *
 from .user_custom_attribute import *
 from .user_gpg_key import *
+from .user_identity import *
 from .user_impersonation_token import *
 from .user_runner import *
 from .user_ssh_key import *
@@ -470,6 +475,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/integrationGithub:IntegrationGithub": "IntegrationGithub"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/integrationHarbor",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationHarbor:IntegrationHarbor": "IntegrationHarbor"
   }
  },
  {
@@ -802,6 +815,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectTargetBranchRule",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule": "ProjectTargetBranchRule"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectVariable",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -958,6 +979,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userGpgKey:UserGpgKey": "UserGpgKey"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userIdentity",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userIdentity:UserIdentity": "UserIdentity"
   }
  },
  {

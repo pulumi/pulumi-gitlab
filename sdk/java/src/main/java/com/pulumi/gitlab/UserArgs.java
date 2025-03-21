@@ -51,14 +51,22 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * String, a specific external authentication provider UID.
      * 
+     * @deprecated
+     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+     * 
      */
+    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
     @Import(name="externUid")
     private @Nullable Output<String> externUid;
 
     /**
      * @return String, a specific external authentication provider UID.
      * 
+     * @deprecated
+     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+     * 
      */
+    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
     public Optional<Output<String>> externUid() {
         return Optional.ofNullable(this.externUid);
     }
@@ -66,16 +74,39 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * String, the external provider.
      * 
+     * @deprecated
+     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+     * 
      */
+    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
     @Import(name="externalProvider")
     private @Nullable Output<String> externalProvider;
 
     /**
      * @return String, the external provider.
      * 
+     * @deprecated
+     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+     * 
      */
+    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
     public Optional<Output<String>> externalProvider() {
         return Optional.ofNullable(this.externalProvider);
+    }
+
+    /**
+     * Set user password to a random value
+     * 
+     */
+    @Import(name="forceRandomPassword")
+    private @Nullable Output<Boolean> forceRandomPassword;
+
+    /**
+     * @return Set user password to a random value
+     * 
+     */
+    public Optional<Output<Boolean>> forceRandomPassword() {
+        return Optional.ofNullable(this.forceRandomPassword);
     }
 
     /**
@@ -250,6 +281,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.email = $.email;
         this.externUid = $.externUid;
         this.externalProvider = $.externalProvider;
+        this.forceRandomPassword = $.forceRandomPassword;
         this.isAdmin = $.isAdmin;
         this.isExternal = $.isExternal;
         this.name = $.name;
@@ -328,7 +360,11 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+         * 
          */
+        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
         public Builder externUid(@Nullable Output<String> externUid) {
             $.externUid = externUid;
             return this;
@@ -339,7 +375,11 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+         * 
          */
+        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
         public Builder externUid(String externUid) {
             return externUid(Output.of(externUid));
         }
@@ -349,7 +389,11 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+         * 
          */
+        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
         public Builder externalProvider(@Nullable Output<String> externalProvider) {
             $.externalProvider = externalProvider;
             return this;
@@ -360,9 +404,34 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+         * 
          */
+        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
         public Builder externalProvider(String externalProvider) {
             return externalProvider(Output.of(externalProvider));
+        }
+
+        /**
+         * @param forceRandomPassword Set user password to a random value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceRandomPassword(@Nullable Output<Boolean> forceRandomPassword) {
+            $.forceRandomPassword = forceRandomPassword;
+            return this;
+        }
+
+        /**
+         * @param forceRandomPassword Set user password to a random value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceRandomPassword(Boolean forceRandomPassword) {
+            return forceRandomPassword(Output.of(forceRandomPassword));
         }
 
         /**

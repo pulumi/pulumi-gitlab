@@ -19,6 +19,8 @@ import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentsPlainArgs;
 import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
 import com.pulumi.gitlab.inputs.GetComplianceFrameworkPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
+import com.pulumi.gitlab.inputs.GetGroupAccessTokensPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupArgs;
 import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
 import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsPlainArgs;
@@ -76,6 +78,8 @@ import com.pulumi.gitlab.inputs.GetProjectMilestoneArgs;
 import com.pulumi.gitlab.inputs.GetProjectMilestonePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectMilestonesArgs;
 import com.pulumi.gitlab.inputs.GetProjectMilestonesPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectMirrorPublicKeyArgs;
+import com.pulumi.gitlab.inputs.GetProjectMirrorPublicKeyPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedBranchArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedBranchPlainArgs;
@@ -119,6 +123,7 @@ import com.pulumi.gitlab.outputs.GetClusterAgentResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentsResult;
 import com.pulumi.gitlab.outputs.GetComplianceFrameworkResult;
 import com.pulumi.gitlab.outputs.GetCurrentUserResult;
+import com.pulumi.gitlab.outputs.GetGroupAccessTokensResult;
 import com.pulumi.gitlab.outputs.GetGroupBillableMemberMembershipsResult;
 import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
@@ -149,6 +154,7 @@ import com.pulumi.gitlab.outputs.GetProjectMembershipResult;
 import com.pulumi.gitlab.outputs.GetProjectMergeRequestResult;
 import com.pulumi.gitlab.outputs.GetProjectMilestoneResult;
 import com.pulumi.gitlab.outputs.GetProjectMilestonesResult;
+import com.pulumi.gitlab.outputs.GetProjectMirrorPublicKeyResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedTagResult;
@@ -1456,6 +1462,226 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accessTokens = GitlabFunctions.getGroupAccessTokens(GetGroupAccessTokensArgs.builder()
+     *             .group("my/example/group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupAccessTokensResult> getGroupAccessTokens(GetGroupAccessTokensArgs args) {
+        return getGroupAccessTokens(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accessTokens = GitlabFunctions.getGroupAccessTokens(GetGroupAccessTokensArgs.builder()
+     *             .group("my/example/group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupAccessTokensResult> getGroupAccessTokensPlain(GetGroupAccessTokensPlainArgs args) {
+        return getGroupAccessTokensPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accessTokens = GitlabFunctions.getGroupAccessTokens(GetGroupAccessTokensArgs.builder()
+     *             .group("my/example/group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupAccessTokensResult> getGroupAccessTokens(GetGroupAccessTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", TypeShape.of(GetGroupAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accessTokens = GitlabFunctions.getGroupAccessTokens(GetGroupAccessTokensArgs.builder()
+     *             .group("my/example/group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupAccessTokensResult> getGroupAccessTokens(GetGroupAccessTokensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", TypeShape.of(GetGroupAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accessTokens = GitlabFunctions.getGroupAccessTokens(GetGroupAccessTokensArgs.builder()
+     *             .group("my/example/group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupAccessTokensResult> getGroupAccessTokensPlain(GetGroupAccessTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", TypeShape.of(GetGroupAccessTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getGroupBillableMemberMemberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.
@@ -7291,6 +7517,61 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectMilestonesResult> getProjectMilestonesPlain(GetProjectMilestonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMilestones:getProjectMilestones", TypeShape.of(GetProjectMilestonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectMirrorPublicKey` data source allows the public key of a project mirror to be retrieved by its mirror id and the project it belongs to.
+     * 
+     * **Note**: Supported on GitLab 17.9 or higher.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/#get-a-single-projects-remote-mirror-public-key)
+     * 
+     */
+    public static Output<GetProjectMirrorPublicKeyResult> getProjectMirrorPublicKey(GetProjectMirrorPublicKeyArgs args) {
+        return getProjectMirrorPublicKey(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectMirrorPublicKey` data source allows the public key of a project mirror to be retrieved by its mirror id and the project it belongs to.
+     * 
+     * **Note**: Supported on GitLab 17.9 or higher.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/#get-a-single-projects-remote-mirror-public-key)
+     * 
+     */
+    public static CompletableFuture<GetProjectMirrorPublicKeyResult> getProjectMirrorPublicKeyPlain(GetProjectMirrorPublicKeyPlainArgs args) {
+        return getProjectMirrorPublicKeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectMirrorPublicKey` data source allows the public key of a project mirror to be retrieved by its mirror id and the project it belongs to.
+     * 
+     * **Note**: Supported on GitLab 17.9 or higher.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/#get-a-single-projects-remote-mirror-public-key)
+     * 
+     */
+    public static Output<GetProjectMirrorPublicKeyResult> getProjectMirrorPublicKey(GetProjectMirrorPublicKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey", TypeShape.of(GetProjectMirrorPublicKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectMirrorPublicKey` data source allows the public key of a project mirror to be retrieved by its mirror id and the project it belongs to.
+     * 
+     * **Note**: Supported on GitLab 17.9 or higher.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/#get-a-single-projects-remote-mirror-public-key)
+     * 
+     */
+    public static Output<GetProjectMirrorPublicKeyResult> getProjectMirrorPublicKey(GetProjectMirrorPublicKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey", TypeShape.of(GetProjectMirrorPublicKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectMirrorPublicKey` data source allows the public key of a project mirror to be retrieved by its mirror id and the project it belongs to.
+     * 
+     * **Note**: Supported on GitLab 17.9 or higher.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/#get-a-single-projects-remote-mirror-public-key)
+     * 
+     */
+    public static CompletableFuture<GetProjectMirrorPublicKeyResult> getProjectMirrorPublicKeyPlain(GetProjectMirrorPublicKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey", TypeShape.of(GetProjectMirrorPublicKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.

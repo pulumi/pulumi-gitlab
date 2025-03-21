@@ -131,7 +131,11 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * String, a specific external authentication provider UID.
      * 
+     * @deprecated
+     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+     * 
      */
+    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
     @Export(name="externUid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externUid;
 
@@ -145,7 +149,11 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * String, the external provider.
      * 
+     * @deprecated
+     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
+     * 
      */
+    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
     @Export(name="externalProvider", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalProvider;
 
@@ -155,6 +163,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> externalProvider() {
         return Codegen.optional(this.externalProvider);
+    }
+    /**
+     * Set user password to a random value
+     * 
+     */
+    @Export(name="forceRandomPassword", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceRandomPassword;
+
+    /**
+     * @return Set user password to a random value
+     * 
+     */
+    public Output<Optional<Boolean>> forceRandomPassword() {
+        return Codegen.optional(this.forceRandomPassword);
     }
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges

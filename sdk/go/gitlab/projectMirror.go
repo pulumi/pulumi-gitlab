@@ -75,10 +75,14 @@ import (
 type ProjectMirror struct {
 	pulumi.CustomResourceState
 
+	// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
 	// Determines if the mirror is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs pulumi.BoolOutput `pulumi:"keepDivergentRefs"`
+	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+	MirrorBranchRegex pulumi.StringOutput `pulumi:"mirrorBranchRegex"`
 	// Mirror ID.
 	MirrorId pulumi.IntOutput `pulumi:"mirrorId"`
 	// Determines if only protected branches are mirrored.
@@ -132,10 +136,14 @@ func GetProjectMirror(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectMirror resources.
 type projectMirrorState struct {
+	// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+	AuthMethod *string `pulumi:"authMethod"`
 	// Determines if the mirror is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs *bool `pulumi:"keepDivergentRefs"`
+	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+	MirrorBranchRegex *string `pulumi:"mirrorBranchRegex"`
 	// Mirror ID.
 	MirrorId *int `pulumi:"mirrorId"`
 	// Determines if only protected branches are mirrored.
@@ -147,10 +155,14 @@ type projectMirrorState struct {
 }
 
 type ProjectMirrorState struct {
+	// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+	AuthMethod pulumi.StringPtrInput
 	// Determines if the mirror is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs pulumi.BoolPtrInput
+	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+	MirrorBranchRegex pulumi.StringPtrInput
 	// Mirror ID.
 	MirrorId pulumi.IntPtrInput
 	// Determines if only protected branches are mirrored.
@@ -166,10 +178,14 @@ func (ProjectMirrorState) ElementType() reflect.Type {
 }
 
 type projectMirrorArgs struct {
+	// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+	AuthMethod *string `pulumi:"authMethod"`
 	// Determines if the mirror is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs *bool `pulumi:"keepDivergentRefs"`
+	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+	MirrorBranchRegex *string `pulumi:"mirrorBranchRegex"`
 	// Determines if only protected branches are mirrored.
 	OnlyProtectedBranches *bool `pulumi:"onlyProtectedBranches"`
 	// The id of the project.
@@ -180,10 +196,14 @@ type projectMirrorArgs struct {
 
 // The set of arguments for constructing a ProjectMirror resource.
 type ProjectMirrorArgs struct {
+	// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+	AuthMethod pulumi.StringPtrInput
 	// Determines if the mirror is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs pulumi.BoolPtrInput
+	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+	MirrorBranchRegex pulumi.StringPtrInput
 	// Determines if only protected branches are mirrored.
 	OnlyProtectedBranches pulumi.BoolPtrInput
 	// The id of the project.
@@ -279,6 +299,11 @@ func (o ProjectMirrorOutput) ToProjectMirrorOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+func (o ProjectMirrorOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
 // Determines if the mirror is enabled.
 func (o ProjectMirrorOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
@@ -287,6 +312,11 @@ func (o ProjectMirrorOutput) Enabled() pulumi.BoolOutput {
 // Determines if divergent refs are skipped.
 func (o ProjectMirrorOutput) KeepDivergentRefs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectMirror) pulumi.BoolOutput { return v.KeepDivergentRefs }).(pulumi.BoolOutput)
+}
+
+// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+func (o ProjectMirrorOutput) MirrorBranchRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMirror) pulumi.StringOutput { return v.MirrorBranchRegex }).(pulumi.StringOutput)
 }
 
 // Mirror ID.

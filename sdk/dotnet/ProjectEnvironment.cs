@@ -70,6 +70,18 @@ namespace Pulumi.GitLab
     public partial class ProjectEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+        /// </summary>
+        [Output("autoStopAt")]
+        public Output<string> AutoStopAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        /// </summary>
+        [Output("autoStopSetting")]
+        public Output<string> AutoStopSetting { get; private set; } = null!;
+
+        /// <summary>
         /// The cluster agent to associate with this environment.
         /// </summary>
         [Output("clusterAgentId")]
@@ -80,6 +92,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the environment.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Place to link to for this environment.
@@ -124,7 +142,7 @@ namespace Pulumi.GitLab
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether the environment is attempted to be stopped before the environment is deleted.
+        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         /// </summary>
         [Output("stopBeforeDestroy")]
         public Output<bool?> StopBeforeDestroy { get; private set; } = null!;
@@ -188,10 +206,22 @@ namespace Pulumi.GitLab
     public sealed class ProjectEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        /// </summary>
+        [Input("autoStopSetting")]
+        public Input<string>? AutoStopSetting { get; set; }
+
+        /// <summary>
         /// The cluster agent to associate with this environment.
         /// </summary>
         [Input("clusterAgentId")]
         public Input<int>? ClusterAgentId { get; set; }
+
+        /// <summary>
+        /// The description of the environment.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Place to link to for this environment.
@@ -224,7 +254,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether the environment is attempted to be stopped before the environment is deleted.
+        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         /// </summary>
         [Input("stopBeforeDestroy")]
         public Input<bool>? StopBeforeDestroy { get; set; }
@@ -244,6 +274,18 @@ namespace Pulumi.GitLab
     public sealed class ProjectEnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ISO8601 date/time that this environment will be automatically stopped at in UTC.
+        /// </summary>
+        [Input("autoStopAt")]
+        public Input<string>? AutoStopAt { get; set; }
+
+        /// <summary>
+        /// The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        /// </summary>
+        [Input("autoStopSetting")]
+        public Input<string>? AutoStopSetting { get; set; }
+
+        /// <summary>
         /// The cluster agent to associate with this environment.
         /// </summary>
         [Input("clusterAgentId")]
@@ -254,6 +296,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The description of the environment.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Place to link to for this environment.
@@ -298,7 +346,7 @@ namespace Pulumi.GitLab
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Determines whether the environment is attempted to be stopped before the environment is deleted.
+        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         /// </summary>
         [Input("stopBeforeDestroy")]
         public Input<bool>? StopBeforeDestroy { get; set; }

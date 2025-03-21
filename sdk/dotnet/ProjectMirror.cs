@@ -66,6 +66,12 @@ namespace Pulumi.GitLab
     public partial class ProjectMirror : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        /// </summary>
+        [Output("authMethod")]
+        public Output<string> AuthMethod { get; private set; } = null!;
+
+        /// <summary>
         /// Determines if the mirror is enabled.
         /// </summary>
         [Output("enabled")]
@@ -76,6 +82,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("keepDivergentRefs")]
         public Output<bool> KeepDivergentRefs { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+        /// </summary>
+        [Output("mirrorBranchRegex")]
+        public Output<string> MirrorBranchRegex { get; private set; } = null!;
 
         /// <summary>
         /// Mirror ID.
@@ -152,6 +164,12 @@ namespace Pulumi.GitLab
     public sealed class ProjectMirrorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        /// </summary>
+        [Input("authMethod")]
+        public Input<string>? AuthMethod { get; set; }
+
+        /// <summary>
         /// Determines if the mirror is enabled.
         /// </summary>
         [Input("enabled")]
@@ -162,6 +180,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("keepDivergentRefs")]
         public Input<bool>? KeepDivergentRefs { get; set; }
+
+        /// <summary>
+        /// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+        /// </summary>
+        [Input("mirrorBranchRegex")]
+        public Input<string>? MirrorBranchRegex { get; set; }
 
         /// <summary>
         /// Determines if only protected branches are mirrored.
@@ -200,6 +224,12 @@ namespace Pulumi.GitLab
     public sealed class ProjectMirrorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        /// </summary>
+        [Input("authMethod")]
+        public Input<string>? AuthMethod { get; set; }
+
+        /// <summary>
         /// Determines if the mirror is enabled.
         /// </summary>
         [Input("enabled")]
@@ -210,6 +240,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("keepDivergentRefs")]
         public Input<bool>? KeepDivergentRefs { get; set; }
+
+        /// <summary>
+        /// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+        /// </summary>
+        [Input("mirrorBranchRegex")]
+        public Input<string>? MirrorBranchRegex { get; set; }
 
         /// <summary>
         /// Mirror ID.

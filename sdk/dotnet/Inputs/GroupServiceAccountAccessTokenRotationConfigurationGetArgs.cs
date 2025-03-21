@@ -13,6 +13,12 @@ namespace Pulumi.GitLab.Inputs
     public sealed class GroupServiceAccountAccessTokenRotationConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The duration (in days) the new token should be valid for.
+        /// </summary>
+        [Input("expirationDays")]
+        public Input<int>? ExpirationDays { get; set; }
+
+        /// <summary>
         /// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         /// </summary>
         [Input("rotateBeforeDays", required: true)]

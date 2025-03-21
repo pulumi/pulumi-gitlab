@@ -2510,6 +2510,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="lockMembershipsToLdap")
+    private @Nullable Output<Boolean> lockMembershipsToLdap;
+
+    /**
+     * @return Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> lockMembershipsToLdap() {
+        return Optional.ofNullable(this.lockMembershipsToLdap);
+    }
+
+    /**
      * Enable Mailgun event receiver.
      * 
      */
@@ -4873,6 +4888,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.keepLatestArtifact = $.keepLatestArtifact;
         this.localMarkdownVersion = $.localMarkdownVersion;
         this.lockDuoFeaturesEnabled = $.lockDuoFeaturesEnabled;
+        this.lockMembershipsToLdap = $.lockMembershipsToLdap;
         this.mailgunEventsEnabled = $.mailgunEventsEnabled;
         this.mailgunSigningKey = $.mailgunSigningKey;
         this.maintenanceMode = $.maintenanceMode;
@@ -8610,6 +8626,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder lockDuoFeaturesEnabled(Boolean lockDuoFeaturesEnabled) {
             return lockDuoFeaturesEnabled(Output.of(lockDuoFeaturesEnabled));
+        }
+
+        /**
+         * @param lockMembershipsToLdap Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMembershipsToLdap(@Nullable Output<Boolean> lockMembershipsToLdap) {
+            $.lockMembershipsToLdap = lockMembershipsToLdap;
+            return this;
+        }
+
+        /**
+         * @param lockMembershipsToLdap Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMembershipsToLdap(Boolean lockMembershipsToLdap) {
+            return lockMembershipsToLdap(Output.of(lockMembershipsToLdap));
         }
 
         /**

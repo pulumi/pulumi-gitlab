@@ -1064,6 +1064,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.pathWithNamespace;
     }
     /**
+     * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     * 
+     */
+    @Export(name="permanentlyDeleteOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> permanentlyDeleteOnDestroy;
+
+    /**
+     * @return Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+     * 
+     */
+    public Output<Optional<Boolean>> permanentlyDeleteOnDestroy() {
+        return Codegen.optional(this.permanentlyDeleteOnDestroy);
+    }
+    /**
      * Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
      * 
      * @deprecated

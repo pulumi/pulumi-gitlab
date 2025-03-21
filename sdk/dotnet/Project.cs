@@ -475,6 +475,12 @@ namespace Pulumi.GitLab
         public Output<string> PathWithNamespace { get; private set; } = null!;
 
         /// <summary>
+        /// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+        /// </summary>
+        [Output("permanentlyDeleteOnDestroy")]
+        public Output<bool?> PermanentlyDeleteOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         /// </summary>
         [Output("pipelinesEnabled")]
@@ -1149,6 +1155,12 @@ namespace Pulumi.GitLab
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+        /// </summary>
+        [Input("permanentlyDeleteOnDestroy")]
+        public Input<bool>? PermanentlyDeleteOnDestroy { get; set; }
+
+        /// <summary>
         /// Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
         /// </summary>
         [Input("pipelinesEnabled")]
@@ -1796,6 +1808,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pathWithNamespace")]
         public Input<string>? PathWithNamespace { get; set; }
+
+        /// <summary>
+        /// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
+        /// </summary>
+        [Input("permanentlyDeleteOnDestroy")]
+        public Input<bool>? PermanentlyDeleteOnDestroy { get; set; }
 
         /// <summary>
         /// Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.

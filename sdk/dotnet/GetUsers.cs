@@ -151,6 +151,18 @@ namespace Pulumi.GitLab
         public string? CreatedBefore { get; set; }
 
         /// <summary>
+        /// Filters only non external users.
+        /// </summary>
+        [Input("excludeExternal")]
+        public bool? ExcludeExternal { get; set; }
+
+        /// <summary>
+        /// Filters only non internal users.
+        /// </summary>
+        [Input("excludeInternal")]
+        public bool? ExcludeInternal { get; set; }
+
+        /// <summary>
         /// Lookup users by external provider. (Requires administrator privileges)
         /// </summary>
         [Input("externProvider")]
@@ -161,6 +173,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("externUid")]
         public string? ExternUid { get; set; }
+
+        /// <summary>
+        /// Filters only external users.
+        /// </summary>
+        [Input("external")]
+        public bool? External { get; set; }
 
         /// <summary>
         /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
@@ -179,6 +197,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
+
+        /// <summary>
+        /// Get a single user with a specific username.
+        /// </summary>
+        [Input("username")]
+        public string? Username { get; set; }
+
+        /// <summary>
+        /// Filters user without project bots.
+        /// </summary>
+        [Input("withoutProjectBots")]
+        public bool? WithoutProjectBots { get; set; }
 
         public GetUsersArgs()
         {
@@ -213,6 +243,18 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedBefore { get; set; }
 
         /// <summary>
+        /// Filters only non external users.
+        /// </summary>
+        [Input("excludeExternal")]
+        public Input<bool>? ExcludeExternal { get; set; }
+
+        /// <summary>
+        /// Filters only non internal users.
+        /// </summary>
+        [Input("excludeInternal")]
+        public Input<bool>? ExcludeInternal { get; set; }
+
+        /// <summary>
         /// Lookup users by external provider. (Requires administrator privileges)
         /// </summary>
         [Input("externProvider")]
@@ -223,6 +265,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("externUid")]
         public Input<string>? ExternUid { get; set; }
+
+        /// <summary>
+        /// Filters only external users.
+        /// </summary>
+        [Input("external")]
+        public Input<bool>? External { get; set; }
 
         /// <summary>
         /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
@@ -241,6 +289,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
+
+        /// <summary>
+        /// Get a single user with a specific username.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Filters user without project bots.
+        /// </summary>
+        [Input("withoutProjectBots")]
+        public Input<bool>? WithoutProjectBots { get; set; }
 
         public GetUsersInvokeArgs()
         {
@@ -269,6 +329,14 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? CreatedBefore;
         /// <summary>
+        /// Filters only non external users.
+        /// </summary>
+        public readonly bool? ExcludeExternal;
+        /// <summary>
+        /// Filters only non internal users.
+        /// </summary>
+        public readonly bool? ExcludeInternal;
+        /// <summary>
         /// Lookup users by external provider. (Requires administrator privileges)
         /// </summary>
         public readonly string? ExternProvider;
@@ -276,6 +344,10 @@ namespace Pulumi.GitLab
         /// Lookup users by external UID. (Requires administrator privileges)
         /// </summary>
         public readonly string? ExternUid;
+        /// <summary>
+        /// Filters only external users.
+        /// </summary>
+        public readonly bool? External;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -293,9 +365,17 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? Sort;
         /// <summary>
+        /// Get a single user with a specific username.
+        /// </summary>
+        public readonly string? Username;
+        /// <summary>
         /// The list of users.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
+        /// <summary>
+        /// Filters user without project bots.
+        /// </summary>
+        public readonly bool? WithoutProjectBots;
 
         [OutputConstructor]
         private GetUsersResult(
@@ -307,9 +387,15 @@ namespace Pulumi.GitLab
 
             string? createdBefore,
 
+            bool? excludeExternal,
+
+            bool? excludeInternal,
+
             string? externProvider,
 
             string? externUid,
+
+            bool? external,
 
             string id,
 
@@ -319,19 +405,28 @@ namespace Pulumi.GitLab
 
             string? sort,
 
-            ImmutableArray<Outputs.GetUsersUserResult> users)
+            string? username,
+
+            ImmutableArray<Outputs.GetUsersUserResult> users,
+
+            bool? withoutProjectBots)
         {
             Active = active;
             Blocked = blocked;
             CreatedAfter = createdAfter;
             CreatedBefore = createdBefore;
+            ExcludeExternal = excludeExternal;
+            ExcludeInternal = excludeInternal;
             ExternProvider = externProvider;
             ExternUid = externUid;
+            External = external;
             Id = id;
             OrderBy = orderBy;
             Search = search;
             Sort = sort;
+            Username = username;
             Users = users;
+            WithoutProjectBots = withoutProjectBots;
         }
     }
 }

@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GroupServiceAccountAccessTokenRotationConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupServiceAccountAccessTokenRotationConfigurationArgs Empty = new GroupServiceAccountAccessTokenRotationConfigurationArgs();
+
+    /**
+     * The duration (in days) the new token should be valid for.
+     * 
+     */
+    @Import(name="expirationDays")
+    private @Nullable Output<Integer> expirationDays;
+
+    /**
+     * @return The duration (in days) the new token should be valid for.
+     * 
+     */
+    public Optional<Output<Integer>> expirationDays() {
+        return Optional.ofNullable(this.expirationDays);
+    }
 
     /**
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
@@ -32,6 +49,7 @@ public final class GroupServiceAccountAccessTokenRotationConfigurationArgs exten
     private GroupServiceAccountAccessTokenRotationConfigurationArgs() {}
 
     private GroupServiceAccountAccessTokenRotationConfigurationArgs(GroupServiceAccountAccessTokenRotationConfigurationArgs $) {
+        this.expirationDays = $.expirationDays;
         this.rotateBeforeDays = $.rotateBeforeDays;
     }
 
@@ -51,6 +69,27 @@ public final class GroupServiceAccountAccessTokenRotationConfigurationArgs exten
 
         public Builder(GroupServiceAccountAccessTokenRotationConfigurationArgs defaults) {
             $ = new GroupServiceAccountAccessTokenRotationConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param expirationDays The duration (in days) the new token should be valid for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationDays(@Nullable Output<Integer> expirationDays) {
+            $.expirationDays = expirationDays;
+            return this;
+        }
+
+        /**
+         * @param expirationDays The duration (in days) the new token should be valid for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationDays(Integer expirationDays) {
+            return expirationDays(Output.of(expirationDays));
         }
 
         /**

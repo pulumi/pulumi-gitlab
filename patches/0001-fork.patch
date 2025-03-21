@@ -5,7 +5,7 @@ Subject: [PATCH] fork
 
 
 diff --git a/internal/provider/sdk/resource_gitlab_project.go b/internal/provider/sdk/resource_gitlab_project.go
-index bcb809d4..b6088c18 100644
+index f7b72932..dd9922f8 100644
 --- a/internal/provider/sdk/resource_gitlab_project.go
 +++ b/internal/provider/sdk/resource_gitlab_project.go
 @@ -410,33 +410,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{

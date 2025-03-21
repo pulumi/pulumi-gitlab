@@ -2367,6 +2367,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.lockDuoFeaturesEnabled;
     }
     /**
+     * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="lockMembershipsToLdap", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> lockMembershipsToLdap;
+
+    /**
+     * @return Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> lockMembershipsToLdap() {
+        return this.lockMembershipsToLdap;
+    }
+    /**
      * Enable Mailgun event receiver.
      * 
      */

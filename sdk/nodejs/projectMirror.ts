@@ -79,6 +79,10 @@ export class ProjectMirror extends pulumi.CustomResource {
     }
 
     /**
+     * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+     */
+    public readonly authMethod!: pulumi.Output<string>;
+    /**
      * Determines if the mirror is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -86,6 +90,10 @@ export class ProjectMirror extends pulumi.CustomResource {
      * Determines if divergent refs are skipped.
      */
     public readonly keepDivergentRefs!: pulumi.Output<boolean>;
+    /**
+     * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     */
+    public readonly mirrorBranchRegex!: pulumi.Output<string>;
     /**
      * Mirror ID.
      */
@@ -116,8 +124,10 @@ export class ProjectMirror extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMirrorState | undefined;
+            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["keepDivergentRefs"] = state ? state.keepDivergentRefs : undefined;
+            resourceInputs["mirrorBranchRegex"] = state ? state.mirrorBranchRegex : undefined;
             resourceInputs["mirrorId"] = state ? state.mirrorId : undefined;
             resourceInputs["onlyProtectedBranches"] = state ? state.onlyProtectedBranches : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -130,8 +140,10 @@ export class ProjectMirror extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["keepDivergentRefs"] = args ? args.keepDivergentRefs : undefined;
+            resourceInputs["mirrorBranchRegex"] = args ? args.mirrorBranchRegex : undefined;
             resourceInputs["onlyProtectedBranches"] = args ? args.onlyProtectedBranches : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["url"] = args?.url ? pulumi.secret(args.url) : undefined;
@@ -149,6 +161,10 @@ export class ProjectMirror extends pulumi.CustomResource {
  */
 export interface ProjectMirrorState {
     /**
+     * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+     */
+    authMethod?: pulumi.Input<string>;
+    /**
      * Determines if the mirror is enabled.
      */
     enabled?: pulumi.Input<boolean>;
@@ -156,6 +172,10 @@ export interface ProjectMirrorState {
      * Determines if divergent refs are skipped.
      */
     keepDivergentRefs?: pulumi.Input<boolean>;
+    /**
+     * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     */
+    mirrorBranchRegex?: pulumi.Input<string>;
     /**
      * Mirror ID.
      */
@@ -179,6 +199,10 @@ export interface ProjectMirrorState {
  */
 export interface ProjectMirrorArgs {
     /**
+     * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
+     */
+    authMethod?: pulumi.Input<string>;
+    /**
      * Determines if the mirror is enabled.
      */
     enabled?: pulumi.Input<boolean>;
@@ -186,6 +210,10 @@ export interface ProjectMirrorArgs {
      * Determines if divergent refs are skipped.
      */
     keepDivergentRefs?: pulumi.Input<boolean>;
+    /**
+     * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
+     */
+    mirrorBranchRegex?: pulumi.Input<string>;
     /**
      * Determines if only protected branches are mirrored.
      */

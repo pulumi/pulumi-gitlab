@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
  *
  * ## Import
  *
@@ -64,6 +64,10 @@ export class GroupHook extends pulumi.CustomResource {
     }
 
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     */
+    public readonly branchFilterStrategy!: pulumi.Output<string>;
+    /**
      * Invoke the hook for confidential issues events.
      */
     public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
@@ -84,9 +88,17 @@ export class GroupHook extends pulumi.CustomResource {
      */
     public readonly deploymentEvents!: pulumi.Output<boolean>;
     /**
+     * Description of the group webhook.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     public readonly enableSslVerification!: pulumi.Output<boolean>;
+    /**
+     * Invoke the hook for feature flag events.
+     */
+    public readonly featureFlagEvents!: pulumi.Output<boolean>;
     /**
      * The full path or id of the group to add the hook to.
      */
@@ -111,6 +123,10 @@ export class GroupHook extends pulumi.CustomResource {
      * Invoke the hook for merge requests events.
      */
     public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
+    /**
+     * Name of the group webhook.
+     */
+    public readonly name!: pulumi.Output<string>;
     /**
      * Invoke the hook for note events.
      */
@@ -165,18 +181,22 @@ export class GroupHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupHookState | undefined;
+            resourceInputs["branchFilterStrategy"] = state ? state.branchFilterStrategy : undefined;
             resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
             resourceInputs["customHeaders"] = state ? state.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
+            resourceInputs["featureFlagEvents"] = state ? state.featureFlagEvents : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["hookId"] = state ? state.hookId : undefined;
             resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
             resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
             resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
             resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
             resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
@@ -195,16 +215,20 @@ export class GroupHook extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["branchFilterStrategy"] = args ? args.branchFilterStrategy : undefined;
             resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
             resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
             resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
             resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
+            resourceInputs["featureFlagEvents"] = args ? args.featureFlagEvents : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
             resourceInputs["jobEvents"] = args ? args.jobEvents : undefined;
             resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
             resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
             resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
@@ -230,6 +254,10 @@ export class GroupHook extends pulumi.CustomResource {
  */
 export interface GroupHookState {
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     */
+    branchFilterStrategy?: pulumi.Input<string>;
+    /**
      * Invoke the hook for confidential issues events.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
@@ -250,9 +278,17 @@ export interface GroupHookState {
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
+     * Description of the group webhook.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     enableSslVerification?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for feature flag events.
+     */
+    featureFlagEvents?: pulumi.Input<boolean>;
     /**
      * The full path or id of the group to add the hook to.
      */
@@ -277,6 +313,10 @@ export interface GroupHookState {
      * Invoke the hook for merge requests events.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
+    /**
+     * Name of the group webhook.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Invoke the hook for note events.
      */
@@ -324,6 +364,10 @@ export interface GroupHookState {
  */
 export interface GroupHookArgs {
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     */
+    branchFilterStrategy?: pulumi.Input<string>;
+    /**
      * Invoke the hook for confidential issues events.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
@@ -344,9 +388,17 @@ export interface GroupHookArgs {
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
+     * Description of the group webhook.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     enableSslVerification?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for feature flag events.
+     */
+    featureFlagEvents?: pulumi.Input<boolean>;
     /**
      * The full path or id of the group to add the hook to.
      */
@@ -363,6 +415,10 @@ export interface GroupHookArgs {
      * Invoke the hook for merge requests events.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
+    /**
+     * Name of the group webhook.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Invoke the hook for note events.
      */

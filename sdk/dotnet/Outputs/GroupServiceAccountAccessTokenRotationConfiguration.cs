@@ -14,13 +14,21 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GroupServiceAccountAccessTokenRotationConfiguration
     {
         /// <summary>
+        /// The duration (in days) the new token should be valid for.
+        /// </summary>
+        public readonly int? ExpirationDays;
+        /// <summary>
         /// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         /// </summary>
         public readonly int RotateBeforeDays;
 
         [OutputConstructor]
-        private GroupServiceAccountAccessTokenRotationConfiguration(int rotateBeforeDays)
+        private GroupServiceAccountAccessTokenRotationConfiguration(
+            int? expirationDays,
+
+            int rotateBeforeDays)
         {
+            ExpirationDays = expirationDays;
             RotateBeforeDays = rotateBeforeDays;
         }
     }

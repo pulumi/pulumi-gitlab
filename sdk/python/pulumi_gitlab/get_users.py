@@ -27,7 +27,7 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, extern_provider=None, extern_uid=None, id=None, order_by=None, search=None, sort=None, users=None):
+    def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, exclude_external=None, exclude_internal=None, extern_provider=None, extern_uid=None, external=None, id=None, order_by=None, search=None, sort=None, username=None, users=None, without_project_bots=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         pulumi.set(__self__, "active", active)
@@ -40,12 +40,21 @@ class GetUsersResult:
         if created_before and not isinstance(created_before, str):
             raise TypeError("Expected argument 'created_before' to be a str")
         pulumi.set(__self__, "created_before", created_before)
+        if exclude_external and not isinstance(exclude_external, bool):
+            raise TypeError("Expected argument 'exclude_external' to be a bool")
+        pulumi.set(__self__, "exclude_external", exclude_external)
+        if exclude_internal and not isinstance(exclude_internal, bool):
+            raise TypeError("Expected argument 'exclude_internal' to be a bool")
+        pulumi.set(__self__, "exclude_internal", exclude_internal)
         if extern_provider and not isinstance(extern_provider, str):
             raise TypeError("Expected argument 'extern_provider' to be a str")
         pulumi.set(__self__, "extern_provider", extern_provider)
         if extern_uid and not isinstance(extern_uid, str):
             raise TypeError("Expected argument 'extern_uid' to be a str")
         pulumi.set(__self__, "extern_uid", extern_uid)
+        if external and not isinstance(external, bool):
+            raise TypeError("Expected argument 'external' to be a bool")
+        pulumi.set(__self__, "external", external)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -58,9 +67,15 @@ class GetUsersResult:
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
         pulumi.set(__self__, "sort", sort)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
+        if without_project_bots and not isinstance(without_project_bots, bool):
+            raise TypeError("Expected argument 'without_project_bots' to be a bool")
+        pulumi.set(__self__, "without_project_bots", without_project_bots)
 
     @property
     @pulumi.getter
@@ -95,6 +110,22 @@ class GetUsersResult:
         return pulumi.get(self, "created_before")
 
     @property
+    @pulumi.getter(name="excludeExternal")
+    def exclude_external(self) -> Optional[bool]:
+        """
+        Filters only non external users.
+        """
+        return pulumi.get(self, "exclude_external")
+
+    @property
+    @pulumi.getter(name="excludeInternal")
+    def exclude_internal(self) -> Optional[bool]:
+        """
+        Filters only non internal users.
+        """
+        return pulumi.get(self, "exclude_internal")
+
+    @property
     @pulumi.getter(name="externProvider")
     def extern_provider(self) -> Optional[str]:
         """
@@ -109,6 +140,14 @@ class GetUsersResult:
         Lookup users by external UID. (Requires administrator privileges)
         """
         return pulumi.get(self, "extern_uid")
+
+    @property
+    @pulumi.getter
+    def external(self) -> Optional[bool]:
+        """
+        Filters only external users.
+        """
+        return pulumi.get(self, "external")
 
     @property
     @pulumi.getter
@@ -144,11 +183,27 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Get a single user with a specific username.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
         The list of users.
         """
         return pulumi.get(self, "users")
+
+    @property
+    @pulumi.getter(name="withoutProjectBots")
+    def without_project_bots(self) -> Optional[bool]:
+        """
+        Filters user without project bots.
+        """
+        return pulumi.get(self, "without_project_bots")
 
 
 class AwaitableGetUsersResult(GetUsersResult):
@@ -161,24 +216,34 @@ class AwaitableGetUsersResult(GetUsersResult):
             blocked=self.blocked,
             created_after=self.created_after,
             created_before=self.created_before,
+            exclude_external=self.exclude_external,
+            exclude_internal=self.exclude_internal,
             extern_provider=self.extern_provider,
             extern_uid=self.extern_uid,
+            external=self.external,
             id=self.id,
             order_by=self.order_by,
             search=self.search,
             sort=self.sort,
-            users=self.users)
+            username=self.username,
+            users=self.users,
+            without_project_bots=self.without_project_bots)
 
 
 def get_users(active: Optional[bool] = None,
               blocked: Optional[bool] = None,
               created_after: Optional[str] = None,
               created_before: Optional[str] = None,
+              exclude_external: Optional[bool] = None,
+              exclude_internal: Optional[bool] = None,
               extern_provider: Optional[str] = None,
               extern_uid: Optional[str] = None,
+              external: Optional[bool] = None,
               order_by: Optional[str] = None,
               search: Optional[str] = None,
               sort: Optional[str] = None,
+              username: Optional[str] = None,
+              without_project_bots: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     The `get_users` data source allows details of multiple users to be retrieved given some optional filter criteria.
@@ -206,22 +271,32 @@ def get_users(active: Optional[bool] = None,
     :param bool blocked: Filter users that are blocked.
     :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
     :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
+    :param bool exclude_external: Filters only non external users.
+    :param bool exclude_internal: Filters only non internal users.
     :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
     :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
+    :param bool external: Filters only external users.
     :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param str search: Search users by username, name or email.
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
+    :param str username: Get a single user with a specific username.
+    :param bool without_project_bots: Filters user without project bots.
     """
     __args__ = dict()
     __args__['active'] = active
     __args__['blocked'] = blocked
     __args__['createdAfter'] = created_after
     __args__['createdBefore'] = created_before
+    __args__['excludeExternal'] = exclude_external
+    __args__['excludeInternal'] = exclude_internal
     __args__['externProvider'] = extern_provider
     __args__['externUid'] = extern_uid
+    __args__['external'] = external
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
+    __args__['username'] = username
+    __args__['withoutProjectBots'] = without_project_bots
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
@@ -230,22 +305,32 @@ def get_users(active: Optional[bool] = None,
         blocked=pulumi.get(__ret__, 'blocked'),
         created_after=pulumi.get(__ret__, 'created_after'),
         created_before=pulumi.get(__ret__, 'created_before'),
+        exclude_external=pulumi.get(__ret__, 'exclude_external'),
+        exclude_internal=pulumi.get(__ret__, 'exclude_internal'),
         extern_provider=pulumi.get(__ret__, 'extern_provider'),
         extern_uid=pulumi.get(__ret__, 'extern_uid'),
+        external=pulumi.get(__ret__, 'external'),
         id=pulumi.get(__ret__, 'id'),
         order_by=pulumi.get(__ret__, 'order_by'),
         search=pulumi.get(__ret__, 'search'),
         sort=pulumi.get(__ret__, 'sort'),
-        users=pulumi.get(__ret__, 'users'))
+        username=pulumi.get(__ret__, 'username'),
+        users=pulumi.get(__ret__, 'users'),
+        without_project_bots=pulumi.get(__ret__, 'without_project_bots'))
 def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
                      blocked: Optional[pulumi.Input[Optional[bool]]] = None,
                      created_after: Optional[pulumi.Input[Optional[str]]] = None,
                      created_before: Optional[pulumi.Input[Optional[str]]] = None,
+                     exclude_external: Optional[pulumi.Input[Optional[bool]]] = None,
+                     exclude_internal: Optional[pulumi.Input[Optional[bool]]] = None,
                      extern_provider: Optional[pulumi.Input[Optional[str]]] = None,
                      extern_uid: Optional[pulumi.Input[Optional[str]]] = None,
+                     external: Optional[pulumi.Input[Optional[bool]]] = None,
                      order_by: Optional[pulumi.Input[Optional[str]]] = None,
                      search: Optional[pulumi.Input[Optional[str]]] = None,
                      sort: Optional[pulumi.Input[Optional[str]]] = None,
+                     username: Optional[pulumi.Input[Optional[str]]] = None,
+                     without_project_bots: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     The `get_users` data source allows details of multiple users to be retrieved given some optional filter criteria.
@@ -273,22 +358,32 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
     :param bool blocked: Filter users that are blocked.
     :param str created_after: Search for users created after a specific date. (Requires administrator privileges)
     :param str created_before: Search for users created before a specific date. (Requires administrator privileges)
+    :param bool exclude_external: Filters only non external users.
+    :param bool exclude_internal: Filters only non internal users.
     :param str extern_provider: Lookup users by external provider. (Requires administrator privileges)
     :param str extern_uid: Lookup users by external UID. (Requires administrator privileges)
+    :param bool external: Filters only external users.
     :param str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param str search: Search users by username, name or email.
     :param str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
+    :param str username: Get a single user with a specific username.
+    :param bool without_project_bots: Filters user without project bots.
     """
     __args__ = dict()
     __args__['active'] = active
     __args__['blocked'] = blocked
     __args__['createdAfter'] = created_after
     __args__['createdBefore'] = created_before
+    __args__['excludeExternal'] = exclude_external
+    __args__['excludeInternal'] = exclude_internal
     __args__['externProvider'] = extern_provider
     __args__['externUid'] = extern_uid
+    __args__['external'] = external
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
+    __args__['username'] = username
+    __args__['withoutProjectBots'] = without_project_bots
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
@@ -296,10 +391,15 @@ def get_users_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
         blocked=pulumi.get(__response__, 'blocked'),
         created_after=pulumi.get(__response__, 'created_after'),
         created_before=pulumi.get(__response__, 'created_before'),
+        exclude_external=pulumi.get(__response__, 'exclude_external'),
+        exclude_internal=pulumi.get(__response__, 'exclude_internal'),
         extern_provider=pulumi.get(__response__, 'extern_provider'),
         extern_uid=pulumi.get(__response__, 'extern_uid'),
+        external=pulumi.get(__response__, 'external'),
         id=pulumi.get(__response__, 'id'),
         order_by=pulumi.get(__response__, 'order_by'),
         search=pulumi.get(__response__, 'search'),
         sort=pulumi.get(__response__, 'sort'),
-        users=pulumi.get(__response__, 'users')))
+        username=pulumi.get(__response__, 'username'),
+        users=pulumi.get(__response__, 'users'),
+        without_project_bots=pulumi.get(__response__, 'without_project_bots')))

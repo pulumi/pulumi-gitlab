@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#hooks)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
  * 
  * ## Import
  * 
@@ -50,6 +50,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/groupHook:GroupHook")
 public class GroupHook extends com.pulumi.resources.CustomResource {
+    /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * 
+     */
+    @Export(name="branchFilterStrategy", refs={String.class}, tree="[0]")
+    private Output<String> branchFilterStrategy;
+
+    /**
+     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * 
+     */
+    public Output<String> branchFilterStrategy() {
+        return this.branchFilterStrategy;
+    }
     /**
      * Invoke the hook for confidential issues events.
      * 
@@ -121,6 +135,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
         return this.deploymentEvents;
     }
     /**
+     * Description of the group webhook.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return Description of the group webhook.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
      * Enable SSL verification when invoking the hook.
      * 
      */
@@ -133,6 +161,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableSslVerification() {
         return this.enableSslVerification;
+    }
+    /**
+     * Invoke the hook for feature flag events.
+     * 
+     */
+    @Export(name="featureFlagEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> featureFlagEvents;
+
+    /**
+     * @return Invoke the hook for feature flag events.
+     * 
+     */
+    public Output<Boolean> featureFlagEvents() {
+        return this.featureFlagEvents;
     }
     /**
      * The full path or id of the group to add the hook to.
@@ -217,6 +259,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mergeRequestsEvents() {
         return this.mergeRequestsEvents;
+    }
+    /**
+     * Name of the group webhook.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return Name of the group webhook.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * Invoke the hook for note events.

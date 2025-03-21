@@ -355,6 +355,8 @@ type ApplicationSettings struct {
 	LocalMarkdownVersion pulumi.IntOutput `pulumi:"localMarkdownVersion"`
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled pulumi.BoolOutput `pulumi:"lockDuoFeaturesEnabled"`
+	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+	LockMembershipsToLdap pulumi.BoolOutput `pulumi:"lockMembershipsToLdap"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolOutput `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -1091,6 +1093,8 @@ type applicationSettingsState struct {
 	LocalMarkdownVersion *int `pulumi:"localMarkdownVersion"`
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
+	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+	LockMembershipsToLdap *bool `pulumi:"lockMembershipsToLdap"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled *bool `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -1727,6 +1731,8 @@ type ApplicationSettingsState struct {
 	LocalMarkdownVersion pulumi.IntPtrInput
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled pulumi.BoolPtrInput
+	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+	LockMembershipsToLdap pulumi.BoolPtrInput
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolPtrInput
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -2363,6 +2369,8 @@ type applicationSettingsArgs struct {
 	LocalMarkdownVersion *int `pulumi:"localMarkdownVersion"`
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
+	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+	LockMembershipsToLdap *bool `pulumi:"lockMembershipsToLdap"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled *bool `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -2996,6 +3004,8 @@ type ApplicationSettingsArgs struct {
 	LocalMarkdownVersion pulumi.IntPtrInput
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled pulumi.BoolPtrInput
+	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+	LockMembershipsToLdap pulumi.BoolPtrInput
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolPtrInput
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -4223,6 +4233,11 @@ func (o ApplicationSettingsOutput) LocalMarkdownVersion() pulumi.IntOutput {
 // Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 func (o ApplicationSettingsOutput) LockDuoFeaturesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.LockDuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
+// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+func (o ApplicationSettingsOutput) LockMembershipsToLdap() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.LockMembershipsToLdap }).(pulumi.BoolOutput)
 }
 
 // Enable Mailgun event receiver.

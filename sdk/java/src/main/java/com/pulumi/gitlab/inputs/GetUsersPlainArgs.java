@@ -76,6 +76,36 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Filters only non external users.
+     * 
+     */
+    @Import(name="excludeExternal")
+    private @Nullable Boolean excludeExternal;
+
+    /**
+     * @return Filters only non external users.
+     * 
+     */
+    public Optional<Boolean> excludeExternal() {
+        return Optional.ofNullable(this.excludeExternal);
+    }
+
+    /**
+     * Filters only non internal users.
+     * 
+     */
+    @Import(name="excludeInternal")
+    private @Nullable Boolean excludeInternal;
+
+    /**
+     * @return Filters only non internal users.
+     * 
+     */
+    public Optional<Boolean> excludeInternal() {
+        return Optional.ofNullable(this.excludeInternal);
+    }
+
+    /**
      * Lookup users by external provider. (Requires administrator privileges)
      * 
      */
@@ -103,6 +133,21 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<String> externUid() {
         return Optional.ofNullable(this.externUid);
+    }
+
+    /**
+     * Filters only external users.
+     * 
+     */
+    @Import(name="external")
+    private @Nullable Boolean external;
+
+    /**
+     * @return Filters only external users.
+     * 
+     */
+    public Optional<Boolean> external() {
+        return Optional.ofNullable(this.external);
     }
 
     /**
@@ -150,6 +195,36 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.sort);
     }
 
+    /**
+     * Get a single user with a specific username.
+     * 
+     */
+    @Import(name="username")
+    private @Nullable String username;
+
+    /**
+     * @return Get a single user with a specific username.
+     * 
+     */
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
+    }
+
+    /**
+     * Filters user without project bots.
+     * 
+     */
+    @Import(name="withoutProjectBots")
+    private @Nullable Boolean withoutProjectBots;
+
+    /**
+     * @return Filters user without project bots.
+     * 
+     */
+    public Optional<Boolean> withoutProjectBots() {
+        return Optional.ofNullable(this.withoutProjectBots);
+    }
+
     private GetUsersPlainArgs() {}
 
     private GetUsersPlainArgs(GetUsersPlainArgs $) {
@@ -157,11 +232,16 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.blocked = $.blocked;
         this.createdAfter = $.createdAfter;
         this.createdBefore = $.createdBefore;
+        this.excludeExternal = $.excludeExternal;
+        this.excludeInternal = $.excludeInternal;
         this.externProvider = $.externProvider;
         this.externUid = $.externUid;
+        this.external = $.external;
         this.orderBy = $.orderBy;
         this.search = $.search;
         this.sort = $.sort;
+        this.username = $.username;
+        this.withoutProjectBots = $.withoutProjectBots;
     }
 
     public static Builder builder() {
@@ -227,6 +307,28 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param excludeExternal Filters only non external users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeExternal(@Nullable Boolean excludeExternal) {
+            $.excludeExternal = excludeExternal;
+            return this;
+        }
+
+        /**
+         * @param excludeInternal Filters only non internal users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeInternal(@Nullable Boolean excludeInternal) {
+            $.excludeInternal = excludeInternal;
+            return this;
+        }
+
+        /**
          * @param externProvider Lookup users by external provider. (Requires administrator privileges)
          * 
          * @return builder
@@ -245,6 +347,17 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder externUid(@Nullable String externUid) {
             $.externUid = externUid;
+            return this;
+        }
+
+        /**
+         * @param external Filters only external users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder external(@Nullable Boolean external) {
+            $.external = external;
             return this;
         }
 
@@ -278,6 +391,28 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder sort(@Nullable String sort) {
             $.sort = sort;
+            return this;
+        }
+
+        /**
+         * @param username Get a single user with a specific username.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder username(@Nullable String username) {
+            $.username = username;
+            return this;
+        }
+
+        /**
+         * @param withoutProjectBots Filters user without project bots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withoutProjectBots(@Nullable Boolean withoutProjectBots) {
+            $.withoutProjectBots = withoutProjectBots;
             return this;
         }
 

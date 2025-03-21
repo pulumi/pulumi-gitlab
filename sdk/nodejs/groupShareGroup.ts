@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupShareGroup` resource allows to manage the lifecycle of group shared with another group.
+ * The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
  *
@@ -86,6 +86,10 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    public readonly memberRoleId!: pulumi.Output<number>;
+    /**
      * The id of the additional group with which the main group will be shared.
      */
     public readonly shareGroupId!: pulumi.Output<number>;
@@ -106,6 +110,7 @@ export class GroupShareGroup extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
             resourceInputs["shareGroupId"] = state ? state.shareGroupId : undefined;
         } else {
             const args = argsOrState as GroupShareGroupArgs | undefined;
@@ -121,6 +126,7 @@ export class GroupShareGroup extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
             resourceInputs["shareGroupId"] = args ? args.shareGroupId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +151,10 @@ export interface GroupShareGroupState {
      */
     groupId?: pulumi.Input<string>;
     /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
+    /**
      * The id of the additional group with which the main group will be shared.
      */
     shareGroupId?: pulumi.Input<number>;
@@ -166,6 +176,10 @@ export interface GroupShareGroupArgs {
      * The id of the main group to be shared.
      */
     groupId: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances.
+     */
+    memberRoleId?: pulumi.Input<number>;
     /**
      * The id of the additional group with which the main group will be shared.
      */

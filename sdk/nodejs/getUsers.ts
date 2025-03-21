@@ -39,11 +39,16 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "blocked": args.blocked,
         "createdAfter": args.createdAfter,
         "createdBefore": args.createdBefore,
+        "excludeExternal": args.excludeExternal,
+        "excludeInternal": args.excludeInternal,
         "externProvider": args.externProvider,
         "externUid": args.externUid,
+        "external": args.external,
         "orderBy": args.orderBy,
         "search": args.search,
         "sort": args.sort,
+        "username": args.username,
+        "withoutProjectBots": args.withoutProjectBots,
     }, opts);
 }
 
@@ -68,6 +73,14 @@ export interface GetUsersArgs {
      */
     createdBefore?: string;
     /**
+     * Filters only non external users.
+     */
+    excludeExternal?: boolean;
+    /**
+     * Filters only non internal users.
+     */
+    excludeInternal?: boolean;
+    /**
      * Lookup users by external provider. (Requires administrator privileges)
      */
     externProvider?: string;
@@ -75,6 +88,10 @@ export interface GetUsersArgs {
      * Lookup users by external UID. (Requires administrator privileges)
      */
     externUid?: string;
+    /**
+     * Filters only external users.
+     */
+    external?: boolean;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      */
@@ -87,6 +104,14 @@ export interface GetUsersArgs {
      * Sort users' list in asc or desc order. (Requires administrator privileges)
      */
     sort?: string;
+    /**
+     * Get a single user with a specific username.
+     */
+    username?: string;
+    /**
+     * Filters user without project bots.
+     */
+    withoutProjectBots?: boolean;
 }
 
 /**
@@ -110,6 +135,14 @@ export interface GetUsersResult {
      */
     readonly createdBefore?: string;
     /**
+     * Filters only non external users.
+     */
+    readonly excludeExternal?: boolean;
+    /**
+     * Filters only non internal users.
+     */
+    readonly excludeInternal?: boolean;
+    /**
      * Lookup users by external provider. (Requires administrator privileges)
      */
     readonly externProvider?: string;
@@ -117,6 +150,10 @@ export interface GetUsersResult {
      * Lookup users by external UID. (Requires administrator privileges)
      */
     readonly externUid?: string;
+    /**
+     * Filters only external users.
+     */
+    readonly external?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -134,9 +171,17 @@ export interface GetUsersResult {
      */
     readonly sort?: string;
     /**
+     * Get a single user with a specific username.
+     */
+    readonly username?: string;
+    /**
      * The list of users.
      */
     readonly users: outputs.GetUsersUser[];
+    /**
+     * Filters user without project bots.
+     */
+    readonly withoutProjectBots?: boolean;
 }
 /**
  * The `gitlab.getUsers` data source allows details of multiple users to be retrieved given some optional filter criteria.
@@ -171,11 +216,16 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
         "blocked": args.blocked,
         "createdAfter": args.createdAfter,
         "createdBefore": args.createdBefore,
+        "excludeExternal": args.excludeExternal,
+        "excludeInternal": args.excludeInternal,
         "externProvider": args.externProvider,
         "externUid": args.externUid,
+        "external": args.external,
         "orderBy": args.orderBy,
         "search": args.search,
         "sort": args.sort,
+        "username": args.username,
+        "withoutProjectBots": args.withoutProjectBots,
     }, opts);
 }
 
@@ -200,6 +250,14 @@ export interface GetUsersOutputArgs {
      */
     createdBefore?: pulumi.Input<string>;
     /**
+     * Filters only non external users.
+     */
+    excludeExternal?: pulumi.Input<boolean>;
+    /**
+     * Filters only non internal users.
+     */
+    excludeInternal?: pulumi.Input<boolean>;
+    /**
      * Lookup users by external provider. (Requires administrator privileges)
      */
     externProvider?: pulumi.Input<string>;
@@ -207,6 +265,10 @@ export interface GetUsersOutputArgs {
      * Lookup users by external UID. (Requires administrator privileges)
      */
     externUid?: pulumi.Input<string>;
+    /**
+     * Filters only external users.
+     */
+    external?: pulumi.Input<boolean>;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      */
@@ -219,4 +281,12 @@ export interface GetUsersOutputArgs {
      * Sort users' list in asc or desc order. (Requires administrator privileges)
      */
     sort?: pulumi.Input<string>;
+    /**
+     * Get a single user with a specific username.
+     */
+    username?: pulumi.Input<string>;
+    /**
+     * Filters user without project bots.
+     */
+    withoutProjectBots?: pulumi.Input<boolean>;
 }
