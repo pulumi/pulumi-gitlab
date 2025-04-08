@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .runnerType("instance_type")
  *             .build());
  * 
- *         final var configToml = groupRunner.token().applyValue(token -> """
+ *         final var configToml = groupRunner.token().applyValue(_token -> """
  * concurrent = 1
  * check_interval = 0
  * 
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     disable_cache = false
  *     volumes = ["/cache", "/certs/client"]
  *     shm_size = 0
- * ", token));
+ * ", _token));
  * 
  *     }
  * }

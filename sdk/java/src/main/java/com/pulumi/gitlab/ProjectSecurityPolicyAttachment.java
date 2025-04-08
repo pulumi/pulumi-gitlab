@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This resource can be used to attach a security policy to a pre-existing project
  *         var foo = new ProjectSecurityPolicyAttachment("foo", ProjectSecurityPolicyAttachmentArgs.builder()
- *             .project(1234)
- *             .policyProject(4567)
+ *             .project("1234")
+ *             .policyProject("4567")
  *             .build());
  * 
  *         // Or Terraform can create a new project, add a policy to that project,
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  *         // Multiple policies can be attached to a single project by repeating this resource or using a `for_each`
  *         var my_policy = new ProjectSecurityPolicyAttachment("my-policy", ProjectSecurityPolicyAttachmentArgs.builder()
- *             .project(1234)
+ *             .project("1234")
  *             .policyProject(my_policy_project.id())
  *             .build());
  * 

@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.ClusterAgent;
  * import com.pulumi.gitlab.ClusterAgentArgs;
  * import com.pulumi.helm.release;
- * import com.pulumi.helm.ReleaseArgs;
+ * import com.pulumi.helm.releaseArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -88,7 +88,10 @@ import javax.annotation.Nullable;
  *             .repository("https://charts.gitlab.io")
  *             .chart("gitlab-agent")
  *             .version("1.2.0")
- *             .set(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .set(List.of(Map.ofEntries(
+ *                 Map.entry("name", "config.token"),
+ *                 Map.entry("value", thisClusterAgentToken.token())
+ *             )))
  *             .build());
  * 
  *     }
