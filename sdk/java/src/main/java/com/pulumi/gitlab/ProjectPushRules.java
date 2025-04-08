@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sample = new ProjectPushRules("sample", ProjectPushRulesArgs.builder()
- *             .project(42)
+ *             .project("42")
  *             .authorEmailRegex("}{@literal @}{@code gitlab.com$")
  *             .branchNameRegex("(feat|fix)\\/*")
  *             .commitCommitterCheck(true)

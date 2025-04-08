@@ -186,36 +186,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
-     *             .applicationId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -230,36 +200,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
-     *             .applicationId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -274,36 +214,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
-     *             .applicationId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -318,36 +228,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
-     *             .applicationId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -362,36 +242,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
-     *             .applicationId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1142,7 +992,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1183,7 +1033,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1224,7 +1074,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1265,7 +1115,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1306,7 +1156,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1347,7 +1197,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1388,7 +1238,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getCurrentUser();
+     *         final var example = GitlabFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1720,7 +1570,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
      *             .userId(21)
-     *             .groupId(42)
+     *             .groupId("42")
      *             .build());
      * 
      *     }
@@ -1770,7 +1620,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
      *             .userId(21)
-     *             .groupId(42)
+     *             .groupId("42")
      *             .build());
      * 
      *     }
@@ -1820,7 +1670,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
      *             .userId(21)
-     *             .groupId(42)
+     *             .groupId("42")
      *             .build());
      * 
      *     }
@@ -1870,7 +1720,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
      *             .userId(21)
-     *             .groupId(42)
+     *             .groupId("42")
      *             .build());
      * 
      *     }
@@ -1920,7 +1770,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         final var testUserMembership = GitlabFunctions.getGroupBillableMemberMemberships(GetGroupBillableMemberMembershipsArgs.builder()
      *             .userId(21)
-     *             .groupId(42)
+     *             .groupId("42")
      *             .build());
      * 
      *     }
@@ -1941,42 +1791,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .hookId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1991,42 +1805,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .hookId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2041,42 +1819,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .hookId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2091,42 +1833,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .hookId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2141,42 +1847,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .hookId(1)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2191,41 +1861,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2240,41 +1875,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2289,41 +1889,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2338,41 +1903,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2387,41 +1917,6 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gitlab.GitlabFunctions;
-     * import com.pulumi.gitlab.inputs.GetGroupArgs;
-     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
-     *             .build());
-     * 
-     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
-     *             .group(example.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2467,7 +1962,7 @@ public final class GitlabFunctions {
      *             .group("gitlab_group.new_group.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *         ctx.export("graphQLId", foo.groupGraphqlId());
      *     }
      * }
      * }
@@ -2517,7 +2012,7 @@ public final class GitlabFunctions {
      *             .group("gitlab_group.new_group.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *         ctx.export("graphQLId", foo.groupGraphqlId());
      *     }
      * }
      * }
@@ -2567,7 +2062,7 @@ public final class GitlabFunctions {
      *             .group("gitlab_group.new_group.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *         ctx.export("graphQLId", foo.groupGraphqlId());
      *     }
      * }
      * }
@@ -2617,7 +2112,7 @@ public final class GitlabFunctions {
      *             .group("gitlab_group.new_group.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *         ctx.export("graphQLId", foo.groupGraphqlId());
      *     }
      * }
      * }
@@ -2667,7 +2162,7 @@ public final class GitlabFunctions {
      *             .group("gitlab_group.new_group.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getGroupIdsResult -> getGroupIdsResult.groupGraphqlId()));
+     *         ctx.export("graphQLId", foo.groupGraphqlId());
      *     }
      * }
      * }
@@ -2862,10 +2357,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId("123456")
+     *             .groupId(123456)
      *             .build());
      * 
-     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups);
      *     }
      * }
      * }
@@ -2907,10 +2402,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId("123456")
+     *             .groupId(123456)
      *             .build());
      * 
-     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups);
      *     }
      * }
      * }
@@ -2952,10 +2447,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId("123456")
+     *             .groupId(123456)
      *             .build());
      * 
-     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups);
      *     }
      * }
      * }
@@ -2997,10 +2492,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId("123456")
+     *             .groupId(123456)
      *             .build());
      * 
-     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups);
      *     }
      * }
      * }
@@ -3042,10 +2537,10 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subgroups = GitlabFunctions.getGroupSubgroups(GetGroupSubgroupsArgs.builder()
-     *             .groupId("123456")
+     *             .groupId(123456)
      *             .build());
      * 
-     *         ctx.export("subgroups", subgroups.applyValue(getGroupSubgroupsResult -> getGroupSubgroupsResult));
+     *         ctx.export("subgroups", subgroups);
      *     }
      * }
      * }
@@ -4493,7 +3988,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4534,7 +4029,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4575,7 +4070,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4616,7 +4111,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4657,7 +4152,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4698,7 +4193,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4739,7 +4234,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vars = GitlabFunctions.getInstanceVariables();
+     *         final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4780,7 +4275,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4821,7 +4316,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4862,7 +4357,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4903,7 +4398,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4944,7 +4439,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -4985,7 +4480,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -5026,7 +4521,7 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = GitlabFunctions.getMetadata();
+     *         final var this = GitlabFunctions.getMetadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -5882,7 +5377,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .hookId(1)
      *             .build());
      * 
@@ -5932,7 +5427,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .hookId(1)
      *             .build());
      * 
@@ -5982,7 +5477,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .hookId(1)
      *             .build());
      * 
@@ -6032,7 +5527,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .hookId(1)
      *             .build());
      * 
@@ -6082,7 +5577,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .hookId(1)
      *             .build());
      * 
@@ -6132,7 +5627,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .build());
      * 
      *     }
@@ -6181,7 +5676,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .build());
      * 
      *     }
@@ -6230,7 +5725,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .build());
      * 
      *     }
@@ -6279,7 +5774,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .build());
      * 
      *     }
@@ -6328,7 +5823,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
-     *             .project(example.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(example.id())
      *             .build());
      * 
      *     }
@@ -6380,7 +5875,7 @@ public final class GitlabFunctions {
      *             .project("gitlab_project.new_project.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *         ctx.export("graphQLId", foo.projectGraphqlId());
      *     }
      * }
      * }
@@ -6430,7 +5925,7 @@ public final class GitlabFunctions {
      *             .project("gitlab_project.new_project.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *         ctx.export("graphQLId", foo.projectGraphqlId());
      *     }
      * }
      * }
@@ -6480,7 +5975,7 @@ public final class GitlabFunctions {
      *             .project("gitlab_project.new_project.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *         ctx.export("graphQLId", foo.projectGraphqlId());
      *     }
      * }
      * }
@@ -6530,7 +6025,7 @@ public final class GitlabFunctions {
      *             .project("gitlab_project.new_project.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *         ctx.export("graphQLId", foo.projectGraphqlId());
      *     }
      * }
      * }
@@ -6580,7 +6075,7 @@ public final class GitlabFunctions {
      *             .project("gitlab_project.new_project.id")
      *             .build());
      * 
-     *         ctx.export("graphQLId", foo.applyValue(getProjectIdsResult -> getProjectIdsResult.projectGraphqlId()));
+     *         ctx.export("graphQLId", foo.projectGraphqlId());
      *     }
      * }
      * }
@@ -6627,7 +6122,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .iid(1)
      *             .build());
      * 
@@ -6678,7 +6173,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .iid(1)
      *             .build());
      * 
@@ -6729,7 +6224,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .iid(1)
      *             .build());
      * 
@@ -6780,7 +6275,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .iid(1)
      *             .build());
      * 
@@ -6831,7 +6326,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var welcomeIssue = GitlabFunctions.getProjectIssue(GetProjectIssueArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .iid(1)
      *             .build());
      * 
@@ -6882,7 +6377,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .search("foo")
      *             .build());
      * 
@@ -6932,7 +6427,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .search("foo")
      *             .build());
      * 
@@ -6982,7 +6477,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .search("foo")
      *             .build());
      * 
@@ -7032,7 +6527,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .search("foo")
      *             .build());
      * 
@@ -7082,7 +6577,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.applyValue(getProjectResult -> getProjectResult.id()))
+     *             .project(foo.id())
      *             .search("foo")
      *             .build());
      * 
@@ -8394,7 +7889,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8457,7 +7952,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8520,7 +8015,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8583,7 +8078,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8646,7 +8141,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8709,7 +8204,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8772,7 +8267,7 @@ public final class GitlabFunctions {
      *             .build());
      * 
      *         final var groupProjects = GitlabFunctions.getProjects(GetProjectsArgs.builder()
-     *             .groupId(mygroup.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(mygroup.id())
      *             .orderBy("name")
      *             .includeSubgroups(true)
      *             .withShared(false)
@@ -8826,7 +8321,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
-     *             .projectId(1234)
+     *             .projectId("1234")
      *             .tagName("v1.0")
      *             .build());
      * 
@@ -8872,7 +8367,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
-     *             .projectId(1234)
+     *             .projectId("1234")
      *             .tagName("v1.0")
      *             .build());
      * 
@@ -8918,7 +8413,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
-     *             .projectId(1234)
+     *             .projectId("1234")
      *             .tagName("v1.0")
      *             .build());
      * 
@@ -8964,7 +8459,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
-     *             .projectId(1234)
+     *             .projectId("1234")
      *             .tagName("v1.0")
      *             .build());
      * 
@@ -9010,7 +8505,7 @@ public final class GitlabFunctions {
      *     public static void stack(Context ctx) {
      *         // By project ID and tag_name
      *         final var example = GitlabFunctions.getRelease(GetReleaseArgs.builder()
-     *             .projectId(1234)
+     *             .projectId("1234")
      *             .tagName("v1.0")
      *             .build());
      * 

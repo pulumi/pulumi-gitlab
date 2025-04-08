@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *         // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
  *         var exampleUserGpgKey = new UserGpgKey("exampleUserGpgKey", UserGpgKeyArgs.builder()
- *             .userId(example.applyValue(getUserResult -> getUserResult.id()))
+ *             .userId(example.id())
  *             .key("""
  * -----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...

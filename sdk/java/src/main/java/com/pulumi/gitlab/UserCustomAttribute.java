@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var attr = new UserCustomAttribute("attr", UserCustomAttributeArgs.builder()
- *             .user("42")
+ *             .user(42)
  *             .key("location")
  *             .value("Greenland")
  *             .build());

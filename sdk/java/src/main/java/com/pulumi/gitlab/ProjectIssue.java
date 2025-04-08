@@ -56,10 +56,10 @@ import javax.annotation.Nullable;
  *         var welcomeIssue = new ProjectIssue("welcomeIssue", ProjectIssueArgs.builder()
  *             .project(foo.id())
  *             .title("Welcome!")
- *             .description(foo.name().applyValue(name -> """
+ *             .description(foo.name().applyValue(_name -> """
  *   Welcome to the %s project!
  * 
- * ", name)))
+ * ", _name)))
  *             .discussionLocked(true)
  *             .build());
  * 
