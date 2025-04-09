@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleUserSshKey = new UserSshKey("exampleUserSshKey", UserSshKeyArgs.builder()
- *             .userId(example.applyValue(getUserResult -> getUserResult.id()))
+ *             .userId(example.id())
  *             .title("example-key")
  *             .key("ssh-ed25519 AAAA...")
  *             .expiresAt("2016-01-21T00:00:00.000Z")

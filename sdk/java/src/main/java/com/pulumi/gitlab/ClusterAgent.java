@@ -40,6 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.ClusterAgentArgs;
  * import com.pulumi.gitlab.RepositoryFile;
  * import com.pulumi.gitlab.RepositoryFileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,7 +65,7 @@ import javax.annotation.Nullable;
  *         var exampleAgentConfig = new RepositoryFile("exampleAgentConfig", RepositoryFileArgs.builder()
  *             .project(example.project())
  *             .branch("main")
- *             .filePath(example.name().applyValue(name -> String.format(".gitlab/agents/%s/config.yaml", name)))
+ *             .filePath(example.name().applyValue(_name -> String.format(".gitlab/agents/%s/config.yaml", _name)))
  *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * # the GitLab Agent for Kubernetes configuration goes here ...
@@ -71,7 +73,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .authorEmail("terraform}{@literal @}{@code example.com")
  *             .authorName("Terraform")
- *             .commitMessage(example.name().applyValue(name -> String.format("feature: add agent config for %s [skip ci]", name)))
+ *             .commitMessage(example.name().applyValue(_name -> String.format("feature: add agent config for %s [skip ci]", _name)))
  *             .build());
  * 
  *     }}{@code

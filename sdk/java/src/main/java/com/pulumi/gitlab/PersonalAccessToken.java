@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new PersonalAccessToken("example", PersonalAccessTokenArgs.builder()
- *             .userId("25")
+ *             .userId(25)
  *             .name("Example personal access token")
  *             .expiresAt("2020-03-14")
  *             .scopes("api")
