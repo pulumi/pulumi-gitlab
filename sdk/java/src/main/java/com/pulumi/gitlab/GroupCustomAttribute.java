@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var attr = new GroupCustomAttribute("attr", GroupCustomAttributeArgs.builder()
- *             .group("42")
+ *             .group(42)
  *             .key("location")
  *             .value("Greenland")
  *             .build());

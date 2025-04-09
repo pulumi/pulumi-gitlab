@@ -64,8 +64,6 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;`.
     /// ```
     /// 
-    /// # 
-    /// 
     /// For example:
     /// 
     /// ```sh
