@@ -253,7 +253,7 @@ def get_users(active: Optional[builtins.bool] = None,
 
     > Some available options require administrator privileges.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
 
     ## Example Usage
 
@@ -340,7 +340,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[builtins.bool]]] = N
 
     > Some available options require administrator privileges.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
 
     ## Example Usage
 

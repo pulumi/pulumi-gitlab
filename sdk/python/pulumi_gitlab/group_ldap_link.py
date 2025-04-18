@@ -26,16 +26,18 @@ class GroupLdapLinkArgs:
                  cn: Optional[pulumi.Input[builtins.str]] = None,
                  filter: Optional[pulumi.Input[builtins.str]] = None,
                  force: Optional[pulumi.Input[builtins.bool]] = None,
-                 group_access: Optional[pulumi.Input[builtins.str]] = None):
+                 group_access: Optional[pulumi.Input[builtins.str]] = None,
+                 member_role_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a GroupLdapLink resource.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[builtins.str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
-        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[builtins.str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         :param pulumi.Input[builtins.bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
-        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "ldap_provider", ldap_provider)
@@ -52,6 +54,8 @@ class GroupLdapLinkArgs:
             pulumi.set(__self__, "force", force)
         if group_access is not None:
             pulumi.set(__self__, "group_access", group_access)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
 
     @property
     @pulumi.getter
@@ -82,7 +86,7 @@ class GroupLdapLinkArgs:
     @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 
@@ -130,13 +134,25 @@ class GroupLdapLinkArgs:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
     @group_access.setter
     def group_access(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "group_access", value)
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "member_role_id", value)
 
 
 @pulumi.input_type
@@ -148,16 +164,18 @@ class _GroupLdapLinkState:
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  group_access: Optional[pulumi.Input[builtins.str]] = None,
-                 ldap_provider: Optional[pulumi.Input[builtins.str]] = None):
+                 ldap_provider: Optional[pulumi.Input[builtins.str]] = None,
+                 member_role_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupLdapLink resources.
-        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[builtins.str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         :param pulumi.Input[builtins.bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group
-        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
         """
         if access_level is not None:
             warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
@@ -176,13 +194,15 @@ class _GroupLdapLinkState:
             pulumi.set(__self__, "group_access", group_access)
         if ldap_provider is not None:
             pulumi.set(__self__, "ldap_provider", ldap_provider)
+        if member_role_id is not None:
+            pulumi.set(__self__, "member_role_id", member_role_id)
 
     @property
     @pulumi.getter(name="accessLevel")
     @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 
@@ -242,7 +262,7 @@ class _GroupLdapLinkState:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
@@ -262,6 +282,18 @@ class _GroupLdapLinkState:
     def ldap_provider(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ldap_provider", value)
 
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @member_role_id.setter
+    def member_role_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "member_role_id", value)
+
 
 class GroupLdapLink(pulumi.CustomResource):
     @overload
@@ -275,6 +307,7 @@ class GroupLdapLink(pulumi.CustomResource):
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  group_access: Optional[pulumi.Input[builtins.str]] = None,
                  ldap_provider: Optional[pulumi.Input[builtins.str]] = None,
+                 member_role_id: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
         The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
@@ -313,13 +346,14 @@ class GroupLdapLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[builtins.str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         :param pulumi.Input[builtins.bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group
-        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
         """
         ...
     @overload
@@ -384,6 +418,7 @@ class GroupLdapLink(pulumi.CustomResource):
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  group_access: Optional[pulumi.Input[builtins.str]] = None,
                  ldap_provider: Optional[pulumi.Input[builtins.str]] = None,
+                 member_role_id: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,6 +439,7 @@ class GroupLdapLink(pulumi.CustomResource):
             if ldap_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'ldap_provider'")
             __props__.__dict__["ldap_provider"] = ldap_provider
+            __props__.__dict__["member_role_id"] = member_role_id
         super(GroupLdapLink, __self__).__init__(
             'gitlab:index/groupLdapLink:GroupLdapLink',
             resource_name,
@@ -420,7 +456,8 @@ class GroupLdapLink(pulumi.CustomResource):
             force: Optional[pulumi.Input[builtins.bool]] = None,
             group: Optional[pulumi.Input[builtins.str]] = None,
             group_access: Optional[pulumi.Input[builtins.str]] = None,
-            ldap_provider: Optional[pulumi.Input[builtins.str]] = None) -> 'GroupLdapLink':
+            ldap_provider: Optional[pulumi.Input[builtins.str]] = None,
+            member_role_id: Optional[pulumi.Input[builtins.int]] = None) -> 'GroupLdapLink':
         """
         Get an existing GroupLdapLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -428,13 +465,14 @@ class GroupLdapLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[builtins.str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         :param pulumi.Input[builtins.bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group
-        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -447,6 +485,7 @@ class GroupLdapLink(pulumi.CustomResource):
         __props__.__dict__["group"] = group
         __props__.__dict__["group_access"] = group_access
         __props__.__dict__["ldap_provider"] = ldap_provider
+        __props__.__dict__["member_role_id"] = member_role_id
         return GroupLdapLink(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -454,7 +493,7 @@ class GroupLdapLink(pulumi.CustomResource):
     @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
     def access_level(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 
@@ -494,7 +533,7 @@ class GroupLdapLink(pulumi.CustomResource):
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
@@ -505,4 +544,12 @@ class GroupLdapLink(pulumi.CustomResource):
         The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         return pulumi.get(self, "ldap_provider")
+
+    @property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> pulumi.Output[builtins.int]:
+        """
+        The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+        """
+        return pulumi.get(self, "member_role_id")
 

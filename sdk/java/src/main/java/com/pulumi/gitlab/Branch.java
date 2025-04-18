@@ -178,14 +178,14 @@ public class Branch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keepOnDestroy);
     }
     /**
-     * Bool, true if the branch has been merged into it&#39;s parent.
+     * Bool, true if the branch has been merged into its parent.
      * 
      */
     @Export(name="merged", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> merged;
 
     /**
-     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * @return Bool, true if the branch has been merged into its parent.
      * 
      */
     public Output<Boolean> merged() {

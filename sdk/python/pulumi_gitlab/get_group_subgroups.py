@@ -197,7 +197,7 @@ def get_group_subgroups(all_available: Optional[builtins.bool] = None,
     """
     The `get_group_subgroups` data source allows to get subgroups of a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
 
     ## Example Usage
 
@@ -262,7 +262,7 @@ def get_group_subgroups_output(all_available: Optional[pulumi.Input[Optional[bui
     """
     The `get_group_subgroups` data source allows to get subgroups of a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
 
     ## Example Usage
 

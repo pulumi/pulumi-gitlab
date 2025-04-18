@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ProjectJobTokenScopesState extends com.pulumi.resources.ResourceArgs {
 
     public static final ProjectJobTokenScopesState Empty = new ProjectJobTokenScopesState();
+
+    /**
+     * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
 
     /**
      * The ID or full path of the project.
@@ -88,6 +104,7 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
     private ProjectJobTokenScopesState() {}
 
     private ProjectJobTokenScopesState(ProjectJobTokenScopesState $) {
+        this.enabled = $.enabled;
         this.project = $.project;
         this.projectId = $.projectId;
         this.targetGroupIds = $.targetGroupIds;
@@ -110,6 +127,27 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
 
         public Builder(ProjectJobTokenScopesState defaults) {
             $ = new ProjectJobTokenScopesState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enabled Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

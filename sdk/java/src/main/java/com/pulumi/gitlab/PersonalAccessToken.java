@@ -135,6 +135,20 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * The description of the personal access token.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return The description of the personal access token.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */

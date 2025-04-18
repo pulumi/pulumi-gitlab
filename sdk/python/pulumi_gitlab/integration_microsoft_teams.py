@@ -517,7 +517,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         """
         The `IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#microsoft-teams)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
 
         ## Example Usage
 
@@ -582,7 +582,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         """
         The `IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#microsoft-teams)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
 
         ## Example Usage
 

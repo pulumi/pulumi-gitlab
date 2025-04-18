@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource is deprecated. use `gitlab.IntegrationJira`instead!
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
     /// 
     /// ## Example Usage
     /// 
@@ -151,7 +151,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        /// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         /// </summary>
         [Output("projectKey")]
         public Output<string?> ProjectKey { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        /// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        /// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

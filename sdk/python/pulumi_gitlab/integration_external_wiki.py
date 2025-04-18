@@ -186,7 +186,7 @@ class IntegrationExternalWiki(pulumi.CustomResource):
         """
         The `IntegrationExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#external-wiki)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#external-wiki)
 
         ## Example Usage
 
@@ -239,7 +239,7 @@ class IntegrationExternalWiki(pulumi.CustomResource):
         """
         The `IntegrationExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#external-wiki)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#external-wiki)
 
         ## Example Usage
 

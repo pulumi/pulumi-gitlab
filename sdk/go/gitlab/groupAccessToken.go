@@ -88,12 +88,14 @@ import (
 type GroupAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the group access token.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The ID or full path of the group.
@@ -152,12 +154,14 @@ func GetGroupAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupAccessToken resources.
 type groupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the group access token.
+	Description *string `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID or full path of the group.
@@ -177,12 +181,14 @@ type groupAccessTokenState struct {
 }
 
 type GroupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
+	// The description of the group access token.
+	Description pulumi.StringPtrInput
 	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt pulumi.StringPtrInput
 	// The ID or full path of the group.
@@ -206,8 +212,10 @@ func (GroupAccessTokenState) ElementType() reflect.Type {
 }
 
 type groupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// The description of the group access token.
+	Description *string `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID or full path of the group.
@@ -222,8 +230,10 @@ type groupAccessTokenArgs struct {
 
 // The set of arguments for constructing a GroupAccessToken resource.
 type GroupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
+	// The description of the group access token.
+	Description pulumi.StringPtrInput
 	// When the token will expire, YYYY-MM-DD format.
 	ExpiresAt pulumi.StringPtrInput
 	// The ID or full path of the group.
@@ -323,7 +333,7 @@ func (o GroupAccessTokenOutput) ToGroupAccessTokenOutputWithContext(ctx context.
 	return o
 }
 
-// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 func (o GroupAccessTokenOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -336,6 +346,11 @@ func (o GroupAccessTokenOutput) Active() pulumi.BoolOutput {
 // Time the token has been created, RFC3339 format.
 func (o GroupAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the group access token.
+func (o GroupAccessTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // When the token will expire, YYYY-MM-DD format.

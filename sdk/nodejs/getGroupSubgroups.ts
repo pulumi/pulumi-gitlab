@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
  *
  * ## Example Usage
  *
@@ -145,7 +145,7 @@ export interface GetGroupSubgroupsResult {
 /**
  * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
  *
  * ## Example Usage
  *

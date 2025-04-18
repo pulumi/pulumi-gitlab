@@ -373,14 +373,14 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="membershipLock", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> membershipLock;
+    private Output<Boolean> membershipLock;
 
     /**
      * @return Users cannot be added to projects in this group.
      * 
      */
-    public Output<Optional<Boolean>> membershipLock() {
-        return Codegen.optional(this.membershipLock);
+    public Output<Boolean> membershipLock() {
+        return this.membershipLock;
     }
     /**
      * Disable the capability of a group from getting mentioned.

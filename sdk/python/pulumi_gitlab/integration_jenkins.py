@@ -352,7 +352,7 @@ class IntegrationJenkins(pulumi.CustomResource):
         """
         The `IntegrationJenkins` resource allows to manage the lifecycle of a project integration with Jenkins.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jenkins)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jenkins)
 
         ## Example Usage
 
@@ -415,7 +415,7 @@ class IntegrationJenkins(pulumi.CustomResource):
         """
         The `IntegrationJenkins` resource allows to manage the lifecycle of a project integration with Jenkins.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jenkins)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jenkins)
 
         ## Example Usage
 

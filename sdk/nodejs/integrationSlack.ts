@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#slack-notifications)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
  *
  * ## Example Usage
  *

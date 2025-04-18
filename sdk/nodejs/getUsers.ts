@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * > Some available options require administrator privileges.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
  *
  * ## Example Usage
  *
@@ -190,7 +190,7 @@ export interface GetUsersResult {
  *
  * > Some available options require administrator privileges.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
  *
  * ## Example Usage
  *

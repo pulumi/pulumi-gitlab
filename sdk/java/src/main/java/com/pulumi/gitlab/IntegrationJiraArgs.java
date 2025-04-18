@@ -192,16 +192,24 @@ public final class IntegrationJiraArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+     * 
+     * @deprecated
+     * `project_key` is deprecated. Use `project_keys` instead.
      * 
      */
+    @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
     @Import(name="projectKey")
     private @Nullable Output<String> projectKey;
 
     /**
-     * @return The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+     * @return The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+     * 
+     * @deprecated
+     * `project_key` is deprecated. Use `project_keys` instead.
      * 
      */
+    @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
     public Optional<Output<String>> projectKey() {
         return Optional.ofNullable(this.projectKey);
     }
@@ -547,22 +555,30 @@ public final class IntegrationJiraArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectKey The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+         * @param projectKey The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `project_key` is deprecated. Use `project_keys` instead.
+         * 
          */
+        @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
         public Builder projectKey(@Nullable Output<String> projectKey) {
             $.projectKey = projectKey;
             return this;
         }
 
         /**
-         * @param projectKey The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+         * @param projectKey The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `project_key` is deprecated. Use `project_keys` instead.
+         * 
          */
+        @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
         public Builder projectKey(String projectKey) {
             return projectKey(Output.of(projectKey));
         }

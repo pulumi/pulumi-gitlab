@@ -105,7 +105,7 @@ export class Branch extends pulumi.CustomResource {
      */
     public readonly keepOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
-     * Bool, true if the branch has been merged into it's parent.
+     * Bool, true if the branch has been merged into its parent.
      */
     public /*out*/ readonly merged!: pulumi.Output<boolean>;
     /**
@@ -209,7 +209,7 @@ export interface BranchState {
      */
     keepOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Bool, true if the branch has been merged into it's parent.
+     * Bool, true if the branch has been merged into its parent.
      */
     merged?: pulumi.Input<boolean>;
     /**

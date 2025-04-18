@@ -410,7 +410,7 @@ def get_user(email: Optional[builtins.str] = None,
 
     > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
 
 
     :param builtins.str email: The public email address of the user.
@@ -469,7 +469,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[builtins.str]]] = None
 
     > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
 
 
     :param builtins.str email: The public email address of the user.

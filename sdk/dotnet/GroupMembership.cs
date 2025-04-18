@@ -63,7 +63,7 @@ namespace Pulumi.GitLab
     public partial class GroupMembership : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
         /// Expiration date for the group membership. Format: `YYYY-MM-DD`
         /// </summary>
         [Output("expiresAt")]
-        public Output<string?> ExpiresAt { get; private set; } = null!;
+        public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the group.
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         /// The ID of a custom member role. Only available for Ultimate instances.
         /// </summary>
         [Output("memberRoleId")]
-        public Output<int?> MemberRoleId { get; private set; } = null!;
+        public Output<int> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
@@ -151,7 +151,7 @@ namespace Pulumi.GitLab
     public sealed class GroupMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.GitLab
     public sealed class GroupMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

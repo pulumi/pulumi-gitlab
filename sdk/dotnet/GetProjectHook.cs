@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
         /// 
         /// ## Example Usage
         /// 

@@ -46,7 +46,7 @@ type LookupBranchResult struct {
 	DeveloperCanPush bool `pulumi:"developerCanPush"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Bool, true if the branch has been merged into it's parent.
+	// Bool, true if the branch has been merged into its parent.
 	Merged bool `pulumi:"merged"`
 	// The name of the branch.
 	Name string `pulumi:"name"`
@@ -124,7 +124,7 @@ func (o LookupBranchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBranchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Bool, true if the branch has been merged into it's parent.
+// Bool, true if the branch has been merged into its parent.
 func (o LookupBranchResultOutput) Merged() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.Merged }).(pulumi.BoolOutput)
 }

@@ -20,17 +20,21 @@ __all__ = ['ProjectJobTokenScopesArgs', 'ProjectJobTokenScopes']
 @pulumi.input_type
 class ProjectJobTokenScopesArgs:
     def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.int]] = None,
                  target_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  target_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None):
         """
         The set of arguments for constructing a ProjectJobTokenScopes resource.
+        :param pulumi.Input[builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[builtins.int] project_id: The ID of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] target_project_ids: A set of project IDs that are in the CI/CD job token inbound allowlist.
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if project_id is not None:
@@ -42,6 +46,18 @@ class ProjectJobTokenScopesArgs:
             pulumi.set(__self__, "target_group_ids", target_group_ids)
         if target_project_ids is not None:
             pulumi.set(__self__, "target_project_ids", target_project_ids)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
@@ -96,17 +112,21 @@ class ProjectJobTokenScopesArgs:
 @pulumi.input_type
 class _ProjectJobTokenScopesState:
     def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.int]] = None,
                  target_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  target_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering ProjectJobTokenScopes resources.
+        :param pulumi.Input[builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[builtins.int] project_id: The ID of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] target_project_ids: A set of project IDs that are in the CI/CD job token inbound allowlist.
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if project_id is not None:
@@ -118,6 +138,18 @@ class _ProjectJobTokenScopesState:
             pulumi.set(__self__, "target_group_ids", target_group_ids)
         if target_project_ids is not None:
             pulumi.set(__self__, "target_project_ids", target_project_ids)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
@@ -174,6 +206,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.int]] = None,
                  target_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
@@ -181,9 +214,12 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                  __props__=None):
         """
         The `ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
-        Any project not within the defined set in this attribute will be removed, which allows this resource to be used as an explicit deny.
+        Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
+        which allows this resource to be used as an explicit deny.
 
         > Conflicts with the use of `ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
+
+        > If the `enabled` property is false, any project or group will be allowed regardless of the given allowlist attributes.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 
@@ -214,6 +250,23 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         explicit_deny = gitlab.ProjectJobTokenScopes("explicit_deny",
             project="111",
             target_project_ids=[])
+        # This shows the explicit behavior of the enabled flag with a list of projects and groups.
+        allow_projects_and_groups = gitlab.ProjectJobTokenScopes("allow_projects_and_groups",
+            project="111",
+            enabled=True,
+            target_project_ids=[
+                123,
+                456,
+                789,
+            ],
+            target_group_ids=[
+                321,
+                654,
+            ])
+        # This allows all projects and groups (disabling the CI Job Token scope protection)
+        allow_all = gitlab.ProjectJobTokenScopes("allow_all",
+            project="111",
+            enabled=False)
         ```
 
         ## Import
@@ -240,6 +293,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[builtins.int] project_id: The ID of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
@@ -253,9 +307,12 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
-        Any project not within the defined set in this attribute will be removed, which allows this resource to be used as an explicit deny.
+        Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
+        which allows this resource to be used as an explicit deny.
 
         > Conflicts with the use of `ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
+
+        > If the `enabled` property is false, any project or group will be allowed regardless of the given allowlist attributes.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 
@@ -286,6 +343,23 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         explicit_deny = gitlab.ProjectJobTokenScopes("explicit_deny",
             project="111",
             target_project_ids=[])
+        # This shows the explicit behavior of the enabled flag with a list of projects and groups.
+        allow_projects_and_groups = gitlab.ProjectJobTokenScopes("allow_projects_and_groups",
+            project="111",
+            enabled=True,
+            target_project_ids=[
+                123,
+                456,
+                789,
+            ],
+            target_group_ids=[
+                321,
+                654,
+            ])
+        # This allows all projects and groups (disabling the CI Job Token scope protection)
+        allow_all = gitlab.ProjectJobTokenScopes("allow_all",
+            project="111",
+            enabled=False)
         ```
 
         ## Import
@@ -325,6 +399,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.int]] = None,
                  target_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
@@ -338,6 +413,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectJobTokenScopesArgs.__new__(ProjectJobTokenScopesArgs)
 
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["project"] = project
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["target_group_ids"] = target_group_ids
@@ -352,6 +428,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: Optional[pulumi.Input[builtins.bool]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             project_id: Optional[pulumi.Input[builtins.int]] = None,
             target_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
@@ -363,6 +440,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[builtins.int] project_id: The ID of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
@@ -372,11 +450,20 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         __props__ = _ProjectJobTokenScopesState.__new__(_ProjectJobTokenScopesState)
 
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["project"] = project
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["target_group_ids"] = target_group_ids
         __props__.__dict__["target_project_ids"] = target_project_ids
         return ProjectJobTokenScopes(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter

@@ -82,9 +82,17 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int CiDefaultGitDepth;
         /// <summary>
+        /// Pipelines older than the configured time are deleted.
+        /// </summary>
+        public readonly int CiDeletePipelinesInSeconds;
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         public readonly bool CiForwardDeploymentEnabled;
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        public readonly ImmutableArray<string> CiIdTokenSubClaimComponents;
         /// <summary>
         /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         /// </summary>
@@ -451,7 +459,11 @@ namespace Pulumi.GitLab.Outputs
 
             int ciDefaultGitDepth,
 
+            int ciDeletePipelinesInSeconds,
+
             bool ciForwardDeploymentEnabled,
+
+            ImmutableArray<string> ciIdTokenSubClaimComponents,
 
             string ciPipelineVariablesMinimumOverrideRole,
 
@@ -636,7 +648,9 @@ namespace Pulumi.GitLab.Outputs
             BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
+            CiDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
             CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            CiIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
             CiPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             ContainerExpirationPolicies = containerExpirationPolicies;

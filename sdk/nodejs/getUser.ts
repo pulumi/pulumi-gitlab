@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
@@ -178,7 +178,7 @@ export interface GetUserResult {
  *
  * > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     args = args || {};

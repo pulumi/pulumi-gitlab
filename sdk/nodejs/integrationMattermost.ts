@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#mattermost-notifications)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#mattermost-notifications)
  *
  * ## Example Usage
  *

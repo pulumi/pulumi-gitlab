@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool DevelopersCanPush;
         /// <summary>
-        /// Bool, true if the branch has been merged into it's parent.
+        /// Bool, true if the branch has been merged into its parent.
         /// </summary>
         public readonly bool Merged;
         /// <summary>

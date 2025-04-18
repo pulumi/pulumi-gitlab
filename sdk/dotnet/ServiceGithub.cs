@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource is deprecated. use `gitlab.IntegrationGithub`instead!
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
     /// 
     /// ## Example Usage
     /// 

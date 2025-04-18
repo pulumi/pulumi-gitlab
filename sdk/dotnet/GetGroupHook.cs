@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
         /// </summary>
         public static Task<GetGroupHookResult> InvokeAsync(GetGroupHookArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
         /// </summary>
         public static Output<GetGroupHookResult> Invoke(GetGroupHookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
         /// </summary>
         public static Output<GetGroupHookResult> Invoke(GetGroupHookInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookInvokeArgs(), options.WithDefaults());

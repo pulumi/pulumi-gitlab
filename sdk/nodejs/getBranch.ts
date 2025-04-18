@@ -62,7 +62,7 @@ export interface GetBranchResult {
      */
     readonly id: string;
     /**
-     * Bool, true if the branch has been merged into it's parent.
+     * Bool, true if the branch has been merged into its parent.
      */
     readonly merged: boolean;
     /**

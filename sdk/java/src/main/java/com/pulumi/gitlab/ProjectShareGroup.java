@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectShareGroup:ProjectShareGroup")
 public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -94,21 +94,21 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accessLevel;
 
     /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<Optional<String>> accessLevel() {
         return Codegen.optional(this.accessLevel);
     }
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Export(name="groupAccess", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupAccess;
 
     /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<Optional<String>> groupAccess() {

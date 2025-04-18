@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource is deprecated. Please use `gitlab.IntegrationEmailsOnPush` instead!
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#emails-on-push)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)
  *
  * ## Example Usage
  *

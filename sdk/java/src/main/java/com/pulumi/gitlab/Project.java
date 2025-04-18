@@ -332,6 +332,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciDefaultGitDepth;
     }
     /**
+     * Pipelines older than the configured time are deleted.
+     * 
+     */
+    @Export(name="ciDeletePipelinesInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> ciDeletePipelinesInSeconds;
+
+    /**
+     * @return Pipelines older than the configured time are deleted.
+     * 
+     */
+    public Output<Integer> ciDeletePipelinesInSeconds() {
+        return this.ciDeletePipelinesInSeconds;
+    }
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
@@ -344,6 +358,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="ciIdTokenSubClaimComponents", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ciIdTokenSubClaimComponents;
+
+    /**
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<List<String>> ciIdTokenSubClaimComponents() {
+        return this.ciIdTokenSubClaimComponents;
     }
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
@@ -1400,14 +1428,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.squashCommitTemplate);
     }
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
      * 
      */
     @Export(name="squashOption", refs={String.class}, tree="[0]")
     private Output<String> squashOption;
 
     /**
-     * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+     * @return Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
      * 
      */
     public Output<String> squashOption() {

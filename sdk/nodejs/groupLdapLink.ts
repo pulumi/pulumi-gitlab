@@ -68,7 +68,7 @@ export class GroupLdapLink extends pulumi.CustomResource {
     }
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      *
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
@@ -90,13 +90,17 @@ export class GroupLdapLink extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
     public readonly groupAccess!: pulumi.Output<string | undefined>;
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      */
     public readonly ldapProvider!: pulumi.Output<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+     */
+    public readonly memberRoleId!: pulumi.Output<number>;
 
     /**
      * Create a GroupLdapLink resource with the given unique name, arguments, and options.
@@ -118,6 +122,7 @@ export class GroupLdapLink extends pulumi.CustomResource {
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
             resourceInputs["ldapProvider"] = state ? state.ldapProvider : undefined;
+            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
         } else {
             const args = argsOrState as GroupLdapLinkArgs | undefined;
             if ((!args || args.group === undefined) && !opts.urn) {
@@ -133,6 +138,7 @@ export class GroupLdapLink extends pulumi.CustomResource {
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
             resourceInputs["ldapProvider"] = args ? args.ldapProvider : undefined;
+            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupLdapLink.__pulumiType, name, resourceInputs, opts);
@@ -144,7 +150,7 @@ export class GroupLdapLink extends pulumi.CustomResource {
  */
 export interface GroupLdapLinkState {
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      *
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
@@ -166,13 +172,17 @@ export interface GroupLdapLinkState {
      */
     group?: pulumi.Input<string>;
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
     groupAccess?: pulumi.Input<string>;
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      */
     ldapProvider?: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+     */
+    memberRoleId?: pulumi.Input<number>;
 }
 
 /**
@@ -180,7 +190,7 @@ export interface GroupLdapLinkState {
  */
 export interface GroupLdapLinkArgs {
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      *
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
@@ -202,11 +212,15 @@ export interface GroupLdapLinkArgs {
      */
     group: pulumi.Input<string>;
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
     groupAccess?: pulumi.Input<string>;
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      */
     ldapProvider: pulumi.Input<string>;
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+     */
+    memberRoleId?: pulumi.Input<number>;
 }

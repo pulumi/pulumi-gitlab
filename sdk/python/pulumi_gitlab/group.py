@@ -1690,7 +1690,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="membershipLock")
-    def membership_lock(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def membership_lock(self) -> pulumi.Output[builtins.bool]:
         """
         Users cannot be added to projects in this group.
         """

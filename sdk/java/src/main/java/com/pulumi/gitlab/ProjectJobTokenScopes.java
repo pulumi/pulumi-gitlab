@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.ProjectJobTokenScopesArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectJobTokenScopesState;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,9 +18,12 @@ import javax.annotation.Nullable;
 
 /**
  * The `gitlab.ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
- * Any project not within the defined set in this attribute will be removed, which allows this resource to be used as an explicit deny.
+ * Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
+ * which allows this resource to be used as an explicit deny.
  * 
  * &gt; Conflicts with the use of `gitlab.ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
+ * 
+ * &gt; If the `enabled` property is false, any project or group will be allowed regardless of the given allowlist attributes.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
  * 
@@ -75,6 +79,25 @@ import javax.annotation.Nullable;
  *             .targetProjectIds()
  *             .build());
  * 
+ *         // This shows the explicit behavior of the enabled flag with a list of projects and groups.
+ *         var allowProjectsAndGroups = new ProjectJobTokenScopes("allowProjectsAndGroups", ProjectJobTokenScopesArgs.builder()
+ *             .project("111")
+ *             .enabled(true)
+ *             .targetProjectIds(            
+ *                 123,
+ *                 456,
+ *                 789)
+ *             .targetGroupIds(            
+ *                 321,
+ *                 654)
+ *             .build());
+ * 
+ *         // This allows all projects and groups (disabling the CI Job Token scope protection)
+ *         var allowAll = new ProjectJobTokenScopes("allowAll", ProjectJobTokenScopesArgs.builder()
+ *             .project("111")
+ *             .enabled(false)
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -106,6 +129,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes")
 public class ProjectJobTokenScopes extends com.pulumi.resources.CustomResource {
+    /**
+     * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
     /**
      * The ID or full path of the project.
      * 

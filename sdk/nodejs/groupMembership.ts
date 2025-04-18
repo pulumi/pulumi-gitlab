@@ -76,13 +76,13 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    public readonly expiresAt!: pulumi.Output<string>;
     /**
      * The ID of the group.
      */
@@ -90,7 +90,7 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * The ID of a custom member role. Only available for Ultimate instances.
      */
-    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    public readonly memberRoleId!: pulumi.Output<number>;
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
@@ -153,7 +153,7 @@ export class GroupMembership extends pulumi.CustomResource {
  */
 export interface GroupMembershipState {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -187,7 +187,7 @@ export interface GroupMembershipState {
  */
 export interface GroupMembershipArgs {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel: pulumi.Input<string>;
     /**

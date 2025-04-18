@@ -112,7 +112,7 @@ class _BranchState:
         :param pulumi.Input[builtins.bool] developer_can_merge: Bool, true if developer level access allows to merge branch.
         :param pulumi.Input[builtins.bool] developer_can_push: Bool, true if developer level access allows git push.
         :param pulumi.Input[builtins.bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
-        :param pulumi.Input[builtins.bool] merged: Bool, true if the branch has been merged into it's parent.
+        :param pulumi.Input[builtins.bool] merged: Bool, true if the branch has been merged into its parent.
         :param pulumi.Input[builtins.str] name: The name for this branch.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project which the branch is created against.
         :param pulumi.Input[builtins.bool] protected: Bool, true if branch has branch protection.
@@ -220,7 +220,7 @@ class _BranchState:
     @pulumi.getter
     def merged(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Bool, true if the branch has been merged into it's parent.
+        Bool, true if the branch has been merged into its parent.
         """
         return pulumi.get(self, "merged")
 
@@ -479,7 +479,7 @@ class Branch(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] developer_can_merge: Bool, true if developer level access allows to merge branch.
         :param pulumi.Input[builtins.bool] developer_can_push: Bool, true if developer level access allows git push.
         :param pulumi.Input[builtins.bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
-        :param pulumi.Input[builtins.bool] merged: Bool, true if the branch has been merged into it's parent.
+        :param pulumi.Input[builtins.bool] merged: Bool, true if the branch has been merged into its parent.
         :param pulumi.Input[builtins.str] name: The name for this branch.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project which the branch is created against.
         :param pulumi.Input[builtins.bool] protected: Bool, true if branch has branch protection.
@@ -556,7 +556,7 @@ class Branch(pulumi.CustomResource):
     @pulumi.getter
     def merged(self) -> pulumi.Output[builtins.bool]:
         """
-        Bool, true if the branch has been merged into it's parent.
+        Bool, true if the branch has been merged into its parent.
         """
         return pulumi.get(self, "merged")
 

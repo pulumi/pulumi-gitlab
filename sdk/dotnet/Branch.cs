@@ -104,7 +104,7 @@ namespace Pulumi.GitLab
         public Output<bool?> KeepOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Bool, true if the branch has been merged into it's parent.
+        /// Bool, true if the branch has been merged into its parent.
         /// </summary>
         [Output("merged")]
         public Output<bool> Merged { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.GitLab
         public Input<bool>? KeepOnDestroy { get; set; }
 
         /// <summary>
-        /// Bool, true if the branch has been merged into it's parent.
+        /// Bool, true if the branch has been merged into its parent.
         /// </summary>
         [Input("merged")]
         public Input<bool>? Merged { get; set; }

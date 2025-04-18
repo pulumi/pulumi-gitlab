@@ -320,6 +320,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Pipelines older than the configured time are deleted.
+     * 
+     */
+    @Import(name="ciDeletePipelinesInSeconds")
+    private @Nullable Output<Integer> ciDeletePipelinesInSeconds;
+
+    /**
+     * @return Pipelines older than the configured time are deleted.
+     * 
+     */
+    public Optional<Output<Integer>> ciDeletePipelinesInSeconds() {
+        return Optional.ofNullable(this.ciDeletePipelinesInSeconds);
+    }
+
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
@@ -332,6 +347,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> ciForwardDeploymentEnabled() {
         return Optional.ofNullable(this.ciForwardDeploymentEnabled);
+    }
+
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    @Import(name="ciIdTokenSubClaimComponents")
+    private @Nullable Output<List<String>> ciIdTokenSubClaimComponents;
+
+    /**
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    public Optional<Output<List<String>>> ciIdTokenSubClaimComponents() {
+        return Optional.ofNullable(this.ciIdTokenSubClaimComponents);
     }
 
     /**
@@ -1475,14 +1505,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
      * 
      */
     @Import(name="squashOption")
     private @Nullable Output<String> squashOption;
 
     /**
-     * @return Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+     * @return Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
      * 
      */
     public Optional<Output<String>> squashOption() {
@@ -1678,7 +1708,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.buildsAccessLevel = $.buildsAccessLevel;
         this.ciConfigPath = $.ciConfigPath;
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
+        this.ciDeletePipelinesInSeconds = $.ciDeletePipelinesInSeconds;
         this.ciForwardDeploymentEnabled = $.ciForwardDeploymentEnabled;
+        this.ciIdTokenSubClaimComponents = $.ciIdTokenSubClaimComponents;
         this.ciPipelineVariablesMinimumOverrideRole = $.ciPipelineVariablesMinimumOverrideRole;
         this.ciRestrictPipelineCancellationRole = $.ciRestrictPipelineCancellationRole;
         this.ciSeparatedCaches = $.ciSeparatedCaches;
@@ -2199,6 +2231,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ciDeletePipelinesInSeconds Pipelines older than the configured time are deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciDeletePipelinesInSeconds(@Nullable Output<Integer> ciDeletePipelinesInSeconds) {
+            $.ciDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
+            return this;
+        }
+
+        /**
+         * @param ciDeletePipelinesInSeconds Pipelines older than the configured time are deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciDeletePipelinesInSeconds(Integer ciDeletePipelinesInSeconds) {
+            return ciDeletePipelinesInSeconds(Output.of(ciDeletePipelinesInSeconds));
+        }
+
+        /**
          * @param ciForwardDeploymentEnabled When a new deployment job starts, skip older deployment jobs that are still pending.
          * 
          * @return builder
@@ -2217,6 +2270,37 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ciForwardDeploymentEnabled(Boolean ciForwardDeploymentEnabled) {
             return ciForwardDeploymentEnabled(Output.of(ciForwardDeploymentEnabled));
+        }
+
+        /**
+         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciIdTokenSubClaimComponents(@Nullable Output<List<String>> ciIdTokenSubClaimComponents) {
+            $.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
+            return this;
+        }
+
+        /**
+         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciIdTokenSubClaimComponents(List<String> ciIdTokenSubClaimComponents) {
+            return ciIdTokenSubClaimComponents(Output.of(ciIdTokenSubClaimComponents));
+        }
+
+        /**
+         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciIdTokenSubClaimComponents(String... ciIdTokenSubClaimComponents) {
+            return ciIdTokenSubClaimComponents(List.of(ciIdTokenSubClaimComponents));
         }
 
         /**
@@ -3804,7 +3888,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param squashOption Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+         * @param squashOption Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
          * 
          * @return builder
          * 
@@ -3815,7 +3899,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param squashOption Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+         * @param squashOption Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
          * 
          * @return builder
          * 

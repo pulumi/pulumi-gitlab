@@ -88,8 +88,12 @@ type Project struct {
 	CiConfigPath pulumi.StringPtrOutput `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth pulumi.IntOutput `pulumi:"ciDefaultGitDepth"`
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds pulumi.IntOutput `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolOutput `pulumi:"ciForwardDeploymentEnabled"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents pulumi.StringArrayOutput `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringOutput `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -247,7 +251,7 @@ type Project struct {
 	SnippetsEnabled pulumi.BoolOutput `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringPtrOutput `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
 	SquashOption pulumi.StringOutput `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringOutput `pulumi:"sshUrlToRepo"`
@@ -355,8 +359,12 @@ type projectState struct {
 	CiConfigPath *string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds *int `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -514,7 +522,7 @@ type projectState struct {
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
 	SquashOption *string `pulumi:"squashOption"`
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo *string `pulumi:"sshUrlToRepo"`
@@ -585,8 +593,12 @@ type ProjectState struct {
 	CiConfigPath pulumi.StringPtrInput
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth pulumi.IntPtrInput
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents pulumi.StringArrayInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -744,7 +756,7 @@ type ProjectState struct {
 	SnippetsEnabled pulumi.BoolPtrInput
 	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
 	SquashOption pulumi.StringPtrInput
 	// URL that can be provided to `git clone` to clone the
 	SshUrlToRepo pulumi.StringPtrInput
@@ -817,8 +829,12 @@ type projectArgs struct {
 	CiConfigPath *string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds *int `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -968,7 +984,7 @@ type projectArgs struct {
 	SnippetsEnabled *bool `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate *string `pulumi:"squashCommitTemplate"`
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
 	SquashOption *string `pulumi:"squashOption"`
 	// The commit message used to apply merge request suggestions.
 	SuggestionCommitMessage *string `pulumi:"suggestionCommitMessage"`
@@ -1034,8 +1050,12 @@ type ProjectArgs struct {
 	CiConfigPath pulumi.StringPtrInput
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth pulumi.IntPtrInput
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents pulumi.StringArrayInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -1185,7 +1205,7 @@ type ProjectArgs struct {
 	SnippetsEnabled pulumi.BoolPtrInput
 	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate pulumi.StringPtrInput
-	// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+	// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
 	SquashOption pulumi.StringPtrInput
 	// The commit message used to apply merge request suggestions.
 	SuggestionCommitMessage pulumi.StringPtrInput
@@ -1395,9 +1415,19 @@ func (o ProjectOutput) CiDefaultGitDepth() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
 }
 
+// Pipelines older than the configured time are deleted.
+func (o ProjectOutput) CiDeletePipelinesInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.CiDeletePipelinesInSeconds }).(pulumi.IntOutput)
+}
+
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o ProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+func (o ProjectOutput) CiIdTokenSubClaimComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.CiIdTokenSubClaimComponents }).(pulumi.StringArrayOutput)
 }
 
 // The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -1779,7 +1809,7 @@ func (o ProjectOutput) SquashCommitTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.SquashCommitTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
 func (o ProjectOutput) SquashOption() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SquashOption }).(pulumi.StringOutput)
 }

@@ -309,7 +309,7 @@ def get_group(full_path: Optional[builtins.str] = None,
     """
     The `Group` data source allows details of a group to be retrieved by its id or full path.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
 
 
     :param builtins.str full_path: The full path of the group.
@@ -350,7 +350,7 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[builtins.str]]] =
     """
     The `Group` data source allows details of a group to be retrieved by its id or full path.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
 
 
     :param builtins.str full_path: The full path of the group.

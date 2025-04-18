@@ -25,6 +25,7 @@ class ProjectAccessTokenArgs:
                  project: pulumi.Input[builtins.str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  access_level: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  rotation_configuration: Optional[pulumi.Input['ProjectAccessTokenRotationConfigurationArgs']] = None):
@@ -32,7 +33,8 @@ class ProjectAccessTokenArgs:
         The set of arguments for constructing a ProjectAccessToken resource.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
-        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[builtins.str] description: The description of the project access token.
         :param pulumi.Input[builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[builtins.str] name: The name of the project access token.
         :param pulumi.Input['ProjectAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
@@ -41,6 +43,8 @@ class ProjectAccessTokenArgs:
         pulumi.set(__self__, "scopes", scopes)
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
@@ -76,13 +80,25 @@ class ProjectAccessTokenArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
     def access_level(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The description of the project access token.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -127,6 +143,7 @@ class _ProjectAccessTokenState:
                  access_level: Optional[pulumi.Input[builtins.str]] = None,
                  active: Optional[pulumi.Input[builtins.bool]] = None,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -137,9 +154,10 @@ class _ProjectAccessTokenState:
                  user_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectAccessToken resources.
-        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[builtins.bool] active: True if the token is active.
         :param pulumi.Input[builtins.str] created_at: Time the token has been created, RFC3339 format.
+        :param pulumi.Input[builtins.str] description: The description of the project access token.
         :param pulumi.Input[builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[builtins.str] name: The name of the project access token.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
@@ -155,6 +173,8 @@ class _ProjectAccessTokenState:
             pulumi.set(__self__, "active", active)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
@@ -176,7 +196,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -207,6 +227,18 @@ class _ProjectAccessTokenState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The description of the project access token.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -311,6 +343,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -372,7 +405,8 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[builtins.str] description: The description of the project access token.
         :param pulumi.Input[builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[builtins.str] name: The name of the project access token.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
@@ -454,6 +488,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -469,6 +504,7 @@ class ProjectAccessToken(pulumi.CustomResource):
             __props__ = ProjectAccessTokenArgs.__new__(ProjectAccessTokenArgs)
 
             __props__.__dict__["access_level"] = access_level
+            __props__.__dict__["description"] = description
             __props__.__dict__["expires_at"] = expires_at
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
@@ -498,6 +534,7 @@ class ProjectAccessToken(pulumi.CustomResource):
             access_level: Optional[pulumi.Input[builtins.str]] = None,
             active: Optional[pulumi.Input[builtins.bool]] = None,
             created_at: Optional[pulumi.Input[builtins.str]] = None,
+            description: Optional[pulumi.Input[builtins.str]] = None,
             expires_at: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
@@ -513,9 +550,10 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[builtins.bool] active: True if the token is active.
         :param pulumi.Input[builtins.str] created_at: Time the token has been created, RFC3339 format.
+        :param pulumi.Input[builtins.str] description: The description of the project access token.
         :param pulumi.Input[builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[builtins.str] name: The name of the project access token.
         :param pulumi.Input[builtins.str] project: The ID or full path of the project.
@@ -532,6 +570,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         __props__.__dict__["access_level"] = access_level
         __props__.__dict__["active"] = active
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -546,7 +585,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[builtins.str]:
         """
-        The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -565,6 +604,14 @@ class ProjectAccessToken(pulumi.CustomResource):
         Time the token has been created, RFC3339 format.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[builtins.str]:
+        """
+        The description of the project access token.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="expiresAt")

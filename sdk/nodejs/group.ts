@@ -199,7 +199,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Users cannot be added to projects in this group.
      */
-    public readonly membershipLock!: pulumi.Output<boolean | undefined>;
+    public readonly membershipLock!: pulumi.Output<boolean>;
     /**
      * Disable the capability of a group from getting mentioned.
      */

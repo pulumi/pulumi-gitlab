@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupCluster{}
 	case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
 		r = &GroupCustomAttribute{}
+	case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
+		r = &GroupDependencyProxy{}
 	case "gitlab:index/groupEpicBoard:GroupEpicBoard":
 		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
@@ -340,6 +342,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupCustomAttribute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupDependencyProxy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

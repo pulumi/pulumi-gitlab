@@ -90,7 +90,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -101,6 +101,10 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      * Time the token has been created, RFC3339 format.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The description of the project access token.
+     */
+    public readonly description!: pulumi.Output<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
@@ -150,6 +154,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -167,6 +172,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scopes'");
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -190,7 +196,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
  */
 export interface ProjectAccessTokenState {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -201,6 +207,10 @@ export interface ProjectAccessTokenState {
      * Time the token has been created, RFC3339 format.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The description of the project access token.
+     */
+    description?: pulumi.Input<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
@@ -240,9 +250,13 @@ export interface ProjectAccessTokenState {
  */
 export interface ProjectAccessTokenArgs {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * The description of the project access token.
+     */
+    description?: pulumi.Input<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */

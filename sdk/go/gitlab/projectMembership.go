@@ -79,7 +79,7 @@ import (
 type ProjectMembership struct {
 	pulumi.CustomResourceState
 
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
@@ -130,7 +130,7 @@ func GetProjectMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectMembership resources.
 type projectMembershipState struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -143,7 +143,7 @@ type projectMembershipState struct {
 }
 
 type ProjectMembershipState struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	AccessLevel pulumi.StringPtrInput
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
@@ -160,7 +160,7 @@ func (ProjectMembershipState) ElementType() reflect.Type {
 }
 
 type projectMembershipArgs struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	AccessLevel string `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -174,7 +174,7 @@ type projectMembershipArgs struct {
 
 // The set of arguments for constructing a ProjectMembership resource.
 type ProjectMembershipArgs struct {
-	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	AccessLevel pulumi.StringInput
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
@@ -273,7 +273,7 @@ func (o ProjectMembershipOutput) ToProjectMembershipOutputWithContext(ctx contex
 	return o
 }
 
-// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 func (o ProjectMembershipOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }

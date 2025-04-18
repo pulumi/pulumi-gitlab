@@ -115,7 +115,7 @@ class GetBranchResult:
     @pulumi.getter
     def merged(self) -> builtins.bool:
         """
-        Bool, true if the branch has been merged into it's parent.
+        Bool, true if the branch has been merged into its parent.
         """
         return pulumi.get(self, "merged")
 

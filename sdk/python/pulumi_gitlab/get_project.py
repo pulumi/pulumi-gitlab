@@ -28,7 +28,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_pipeline_variables_minimum_override_role=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, prevent_merge_without_jira_issue=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, autoclose_referenced_issues=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, ci_config_path=None, ci_default_git_depth=None, ci_delete_pipelines_in_seconds=None, ci_id_token_sub_claim_components=None, ci_pipeline_variables_minimum_override_role=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, container_expiration_policies=None, container_registry_access_level=None, default_branch=None, description=None, emails_enabled=None, empty_repo=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forking_access_level=None, http_url_to_repo=None, id=None, import_url=None, infrastructure_access_level=None, issues_access_level=None, issues_enabled=None, keep_latest_artifact=None, lfs_enabled=None, merge_commit_template=None, merge_pipelines_enabled=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_trains_enabled=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, name=None, namespace_id=None, path=None, path_with_namespace=None, pipelines_enabled=None, prevent_merge_without_jira_issue=None, printing_merge_request_link_enabled=None, public_builds=None, push_rules=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, resolve_outdated_diff_discussions=None, restrict_user_defined_variables=None, runners_token=None, security_and_compliance_access_level=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, ssh_url_to_repo=None, suggestion_commit_message=None, topics=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if allow_pipeline_trigger_approve_deployment and not isinstance(allow_pipeline_trigger_approve_deployment, bool):
             raise TypeError("Expected argument 'allow_pipeline_trigger_approve_deployment' to be a bool")
         pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
@@ -65,6 +65,12 @@ class GetProjectResult:
         if ci_default_git_depth and not isinstance(ci_default_git_depth, int):
             raise TypeError("Expected argument 'ci_default_git_depth' to be a int")
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
+        if ci_delete_pipelines_in_seconds and not isinstance(ci_delete_pipelines_in_seconds, int):
+            raise TypeError("Expected argument 'ci_delete_pipelines_in_seconds' to be a int")
+        pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
+        if ci_id_token_sub_claim_components and not isinstance(ci_id_token_sub_claim_components, list):
+            raise TypeError("Expected argument 'ci_id_token_sub_claim_components' to be a list")
+        pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role and not isinstance(ci_pipeline_variables_minimum_override_role, str):
             raise TypeError("Expected argument 'ci_pipeline_variables_minimum_override_role' to be a str")
         pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
@@ -338,6 +344,22 @@ class GetProjectResult:
         Default number of revisions for shallow cloning.
         """
         return pulumi.get(self, "ci_default_git_depth")
+
+    @property
+    @pulumi.getter(name="ciDeletePipelinesInSeconds")
+    def ci_delete_pipelines_in_seconds(self) -> builtins.int:
+        """
+        Pipelines older than the configured time are deleted.
+        """
+        return pulumi.get(self, "ci_delete_pipelines_in_seconds")
+
+    @property
+    @pulumi.getter(name="ciIdTokenSubClaimComponents")
+    def ci_id_token_sub_claim_components(self) -> Sequence[builtins.str]:
+        """
+        Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "ci_id_token_sub_claim_components")
 
     @property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
@@ -830,6 +852,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             builds_access_level=self.builds_access_level,
             ci_config_path=self.ci_config_path,
             ci_default_git_depth=self.ci_default_git_depth,
+            ci_delete_pipelines_in_seconds=self.ci_delete_pipelines_in_seconds,
+            ci_id_token_sub_claim_components=self.ci_id_token_sub_claim_components,
             ci_pipeline_variables_minimum_override_role=self.ci_pipeline_variables_minimum_override_role,
             ci_restrict_pipeline_cancellation_role=self.ci_restrict_pipeline_cancellation_role,
             ci_separated_caches=self.ci_separated_caches,
@@ -892,6 +916,7 @@ class AwaitableGetProjectResult(GetProjectResult):
 
 
 def get_project(ci_default_git_depth: Optional[builtins.int] = None,
+                ci_id_token_sub_claim_components: Optional[Sequence[builtins.str]] = None,
                 id: Optional[builtins.str] = None,
                 path_with_namespace: Optional[builtins.str] = None,
                 public_builds: Optional[builtins.bool] = None,
@@ -899,16 +924,18 @@ def get_project(ci_default_git_depth: Optional[builtins.int] = None,
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
 
 
     :param builtins.int ci_default_git_depth: Default number of revisions for shallow cloning.
+    :param Sequence[builtins.str] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
     :param builtins.str id: The integer that uniquely identifies the project within the gitlab install.
     :param builtins.str path_with_namespace: The path of the repository with namespace.
     :param builtins.bool public_builds: If true, jobs can be viewed by non-project members.
     """
     __args__ = dict()
     __args__['ciDefaultGitDepth'] = ci_default_git_depth
+    __args__['ciIdTokenSubClaimComponents'] = ci_id_token_sub_claim_components
     __args__['id'] = id
     __args__['pathWithNamespace'] = path_with_namespace
     __args__['publicBuilds'] = public_builds
@@ -928,6 +955,8 @@ def get_project(ci_default_git_depth: Optional[builtins.int] = None,
         builds_access_level=pulumi.get(__ret__, 'builds_access_level'),
         ci_config_path=pulumi.get(__ret__, 'ci_config_path'),
         ci_default_git_depth=pulumi.get(__ret__, 'ci_default_git_depth'),
+        ci_delete_pipelines_in_seconds=pulumi.get(__ret__, 'ci_delete_pipelines_in_seconds'),
+        ci_id_token_sub_claim_components=pulumi.get(__ret__, 'ci_id_token_sub_claim_components'),
         ci_pipeline_variables_minimum_override_role=pulumi.get(__ret__, 'ci_pipeline_variables_minimum_override_role'),
         ci_restrict_pipeline_cancellation_role=pulumi.get(__ret__, 'ci_restrict_pipeline_cancellation_role'),
         ci_separated_caches=pulumi.get(__ret__, 'ci_separated_caches'),
@@ -988,6 +1017,7 @@ def get_project(ci_default_git_depth: Optional[builtins.int] = None,
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'),
         wiki_enabled=pulumi.get(__ret__, 'wiki_enabled'))
 def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                       ci_id_token_sub_claim_components: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                        id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        path_with_namespace: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        public_builds: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
@@ -995,16 +1025,18 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[buil
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
 
 
     :param builtins.int ci_default_git_depth: Default number of revisions for shallow cloning.
+    :param Sequence[builtins.str] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
     :param builtins.str id: The integer that uniquely identifies the project within the gitlab install.
     :param builtins.str path_with_namespace: The path of the repository with namespace.
     :param builtins.bool public_builds: If true, jobs can be viewed by non-project members.
     """
     __args__ = dict()
     __args__['ciDefaultGitDepth'] = ci_default_git_depth
+    __args__['ciIdTokenSubClaimComponents'] = ci_id_token_sub_claim_components
     __args__['id'] = id
     __args__['pathWithNamespace'] = path_with_namespace
     __args__['publicBuilds'] = public_builds
@@ -1023,6 +1055,8 @@ def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[buil
         builds_access_level=pulumi.get(__response__, 'builds_access_level'),
         ci_config_path=pulumi.get(__response__, 'ci_config_path'),
         ci_default_git_depth=pulumi.get(__response__, 'ci_default_git_depth'),
+        ci_delete_pipelines_in_seconds=pulumi.get(__response__, 'ci_delete_pipelines_in_seconds'),
+        ci_id_token_sub_claim_components=pulumi.get(__response__, 'ci_id_token_sub_claim_components'),
         ci_pipeline_variables_minimum_override_role=pulumi.get(__response__, 'ci_pipeline_variables_minimum_override_role'),
         ci_restrict_pipeline_cancellation_role=pulumi.get(__response__, 'ci_restrict_pipeline_cancellation_role'),
         ci_separated_caches=pulumi.get(__response__, 'ci_separated_caches'),

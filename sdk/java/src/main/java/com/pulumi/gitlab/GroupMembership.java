@@ -13,7 +13,6 @@ import com.pulumi.gitlab.inputs.GroupMembershipState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -87,14 +86,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupMembership:GroupMembership")
 public class GroupMembership extends com.pulumi.resources.CustomResource {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * @return Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     public Output<String> accessLevel() {
@@ -105,14 +104,14 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expiresAt;
+    private Output<String> expiresAt;
 
     /**
      * @return Expiration date for the group membership. Format: `YYYY-MM-DD`
      * 
      */
-    public Output<Optional<String>> expiresAt() {
-        return Codegen.optional(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
     /**
      * The ID of the group.
@@ -133,14 +132,14 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> memberRoleId;
+    private Output<Integer> memberRoleId;
 
     /**
      * @return The ID of a custom member role. Only available for Ultimate instances.
      * 
      */
-    public Output<Optional<Integer>> memberRoleId() {
-        return Codegen.optional(this.memberRoleId);
+    public Output<Integer> memberRoleId() {
+        return this.memberRoleId;
     }
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.

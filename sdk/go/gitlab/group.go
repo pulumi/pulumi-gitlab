@@ -182,7 +182,7 @@ type Group struct {
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolOutput `pulumi:"lfsEnabled"`
 	// Users cannot be added to projects in this group.
-	MembershipLock pulumi.BoolPtrOutput `pulumi:"membershipLock"`
+	MembershipLock pulumi.BoolOutput `pulumi:"membershipLock"`
 	// Disable the capability of a group from getting mentioned.
 	MentionsDisabled pulumi.BoolOutput `pulumi:"mentionsDisabled"`
 	// The name of the group.
@@ -709,8 +709,8 @@ func (o GroupOutput) LfsEnabled() pulumi.BoolOutput {
 }
 
 // Users cannot be added to projects in this group.
-func (o GroupOutput) MembershipLock() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.MembershipLock }).(pulumi.BoolPtrOutput)
+func (o GroupOutput) MembershipLock() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.MembershipLock }).(pulumi.BoolOutput)
 }
 
 // Disable the capability of a group from getting mentioned.

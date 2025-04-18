@@ -79,6 +79,7 @@ from .group_access_token import *
 from .group_badge import *
 from .group_cluster import *
 from .group_custom_attribute import *
+from .group_dependency_proxy import *
 from .group_epic_board import *
 from .group_hook import *
 from .group_issue_board import *
@@ -308,6 +309,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupCustomAttribute:GroupCustomAttribute": "GroupCustomAttribute"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupDependencyProxy",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupDependencyProxy:GroupDependencyProxy": "GroupDependencyProxy"
   }
  },
  {

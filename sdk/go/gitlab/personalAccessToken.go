@@ -95,6 +95,8 @@ type PersonalAccessToken struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the personal access token.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the personal access token.
@@ -155,6 +157,8 @@ type personalAccessTokenState struct {
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the personal access token.
+	Description *string `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
@@ -176,6 +180,8 @@ type PersonalAccessTokenState struct {
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
+	// The description of the personal access token.
+	Description pulumi.StringPtrInput
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
@@ -197,6 +203,8 @@ func (PersonalAccessTokenState) ElementType() reflect.Type {
 }
 
 type personalAccessTokenArgs struct {
+	// The description of the personal access token.
+	Description *string `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the personal access token.
@@ -211,6 +219,8 @@ type personalAccessTokenArgs struct {
 
 // The set of arguments for constructing a PersonalAccessToken resource.
 type PersonalAccessTokenArgs struct {
+	// The description of the personal access token.
+	Description pulumi.StringPtrInput
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the personal access token.
@@ -318,6 +328,11 @@ func (o PersonalAccessTokenOutput) Active() pulumi.BoolOutput {
 // Time the token has been created, RFC3339 format.
 func (o PersonalAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the personal access token.
+func (o PersonalAccessTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.

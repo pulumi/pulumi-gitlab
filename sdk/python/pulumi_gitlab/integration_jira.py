@@ -51,7 +51,7 @@ class IntegrationJiraArgs:
         :param pulumi.Input[builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
         :param pulumi.Input[builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[builtins.bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
         :param pulumi.Input[builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
@@ -79,6 +79,9 @@ class IntegrationJiraArgs:
             pulumi.set(__self__, "jira_issue_transition_id", jira_issue_transition_id)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if project_key is not None:
+            warnings.warn("""`project_key` is deprecated. Use `project_keys` instead.""", DeprecationWarning)
+            pulumi.log.warn("""project_key is deprecated: `project_key` is deprecated. Use `project_keys` instead.""")
         if project_key is not None:
             pulumi.set(__self__, "project_key", project_key)
         if project_keys is not None:
@@ -243,9 +246,10 @@ class IntegrationJiraArgs:
 
     @property
     @pulumi.getter(name="projectKey")
+    @_utilities.deprecated("""`project_key` is deprecated. Use `project_keys` instead.""")
     def project_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         """
         return pulumi.get(self, "project_key")
 
@@ -329,7 +333,7 @@ class _IntegrationJiraState:
         :param pulumi.Input[builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[builtins.str] title: Title.
         :param pulumi.Input[builtins.str] updated_at: Update time.
@@ -365,6 +369,9 @@ class _IntegrationJiraState:
             pulumi.set(__self__, "password", password)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_key is not None:
+            warnings.warn("""`project_key` is deprecated. Use `project_keys` instead.""", DeprecationWarning)
+            pulumi.log.warn("""project_key is deprecated: `project_key` is deprecated. Use `project_keys` instead.""")
         if project_key is not None:
             pulumi.set(__self__, "project_key", project_key)
         if project_keys is not None:
@@ -547,9 +554,10 @@ class _IntegrationJiraState:
 
     @property
     @pulumi.getter(name="projectKey")
+    @_utilities.deprecated("""`project_key` is deprecated. Use `project_keys` instead.""")
     def project_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         """
         return pulumi.get(self, "project_key")
 
@@ -656,7 +664,7 @@ class IntegrationJira(pulumi.CustomResource):
         """
         The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
 
         ## Example Usage
 
@@ -710,7 +718,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[builtins.bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
@@ -725,7 +733,7 @@ class IntegrationJira(pulumi.CustomResource):
         """
         The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
 
         ## Example Usage
 
@@ -887,7 +895,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        :param pulumi.Input[builtins.str] project_key: The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[builtins.str] title: Title.
         :param pulumi.Input[builtins.str] updated_at: Update time.
@@ -1033,9 +1041,10 @@ class IntegrationJira(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectKey")
+    @_utilities.deprecated("""`project_key` is deprecated. Use `project_keys` instead.""")
     def project_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+        The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
         """
         return pulumi.get(self, "project_key")
 

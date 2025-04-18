@@ -106,10 +106,20 @@ public final class GetProjectsProject {
      */
     private Integer ciDefaultGitDepth;
     /**
+     * @return Pipelines older than the configured time are deleted.
+     * 
+     */
+    private Integer ciDeletePipelinesInSeconds;
+    /**
      * @return When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
     private Boolean ciForwardDeploymentEnabled;
+    /**
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to [&#34;project_path&#34;, &#34;ref_type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    private List<String> ciIdTokenSubClaimComponents;
     /**
      * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
      * 
@@ -643,11 +653,25 @@ public final class GetProjectsProject {
         return this.ciDefaultGitDepth;
     }
     /**
+     * @return Pipelines older than the configured time are deleted.
+     * 
+     */
+    public Integer ciDeletePipelinesInSeconds() {
+        return this.ciDeletePipelinesInSeconds;
+    }
+    /**
      * @return When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
     public Boolean ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to [&#34;project_path&#34;, &#34;ref_type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    public List<String> ciIdTokenSubClaimComponents() {
+        return this.ciIdTokenSubClaimComponents;
     }
     /**
      * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
@@ -1253,7 +1277,9 @@ public final class GetProjectsProject {
         private String buildsAccessLevel;
         private String ciConfigPath;
         private Integer ciDefaultGitDepth;
+        private Integer ciDeletePipelinesInSeconds;
         private Boolean ciForwardDeploymentEnabled;
+        private List<String> ciIdTokenSubClaimComponents;
         private String ciPipelineVariablesMinimumOverrideRole;
         private String ciRestrictPipelineCancellationRole;
         private List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies;
@@ -1357,7 +1383,9 @@ public final class GetProjectsProject {
     	      this.buildsAccessLevel = defaults.buildsAccessLevel;
     	      this.ciConfigPath = defaults.ciConfigPath;
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
+    	      this.ciDeletePipelinesInSeconds = defaults.ciDeletePipelinesInSeconds;
     	      this.ciForwardDeploymentEnabled = defaults.ciForwardDeploymentEnabled;
+    	      this.ciIdTokenSubClaimComponents = defaults.ciIdTokenSubClaimComponents;
     	      this.ciPipelineVariablesMinimumOverrideRole = defaults.ciPipelineVariablesMinimumOverrideRole;
     	      this.ciRestrictPipelineCancellationRole = defaults.ciRestrictPipelineCancellationRole;
     	      this.containerExpirationPolicies = defaults.containerExpirationPolicies;
@@ -1580,12 +1608,31 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder ciDeletePipelinesInSeconds(Integer ciDeletePipelinesInSeconds) {
+            if (ciDeletePipelinesInSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciDeletePipelinesInSeconds");
+            }
+            this.ciDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ciForwardDeploymentEnabled(Boolean ciForwardDeploymentEnabled) {
             if (ciForwardDeploymentEnabled == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "ciForwardDeploymentEnabled");
             }
             this.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ciIdTokenSubClaimComponents(List<String> ciIdTokenSubClaimComponents) {
+            if (ciIdTokenSubClaimComponents == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciIdTokenSubClaimComponents");
+            }
+            this.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
+            return this;
+        }
+        public Builder ciIdTokenSubClaimComponents(String... ciIdTokenSubClaimComponents) {
+            return ciIdTokenSubClaimComponents(List.of(ciIdTokenSubClaimComponents));
         }
         @CustomType.Setter
         public Builder ciPipelineVariablesMinimumOverrideRole(String ciPipelineVariablesMinimumOverrideRole) {
@@ -2294,7 +2341,9 @@ public final class GetProjectsProject {
             _resultValue.buildsAccessLevel = buildsAccessLevel;
             _resultValue.ciConfigPath = ciConfigPath;
             _resultValue.ciDefaultGitDepth = ciDefaultGitDepth;
+            _resultValue.ciDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
             _resultValue.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            _resultValue.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
             _resultValue.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             _resultValue.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             _resultValue.containerExpirationPolicies = containerExpirationPolicies;
