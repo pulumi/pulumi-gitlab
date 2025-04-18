@@ -89,7 +89,7 @@ type Branch struct {
 	DeveloperCanPush pulumi.BoolOutput `pulumi:"developerCanPush"`
 	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
 	KeepOnDestroy pulumi.BoolPtrOutput `pulumi:"keepOnDestroy"`
-	// Bool, true if the branch has been merged into it's parent.
+	// Bool, true if the branch has been merged into its parent.
 	Merged pulumi.BoolOutput `pulumi:"merged"`
 	// The name for this branch.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -151,7 +151,7 @@ type branchState struct {
 	DeveloperCanPush *bool `pulumi:"developerCanPush"`
 	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
 	KeepOnDestroy *bool `pulumi:"keepOnDestroy"`
-	// Bool, true if the branch has been merged into it's parent.
+	// Bool, true if the branch has been merged into its parent.
 	Merged *bool `pulumi:"merged"`
 	// The name for this branch.
 	Name *string `pulumi:"name"`
@@ -178,7 +178,7 @@ type BranchState struct {
 	DeveloperCanPush pulumi.BoolPtrInput
 	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
 	KeepOnDestroy pulumi.BoolPtrInput
-	// Bool, true if the branch has been merged into it's parent.
+	// Bool, true if the branch has been merged into its parent.
 	Merged pulumi.BoolPtrInput
 	// The name for this branch.
 	Name pulumi.StringPtrInput
@@ -336,7 +336,7 @@ func (o BranchOutput) KeepOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Branch) pulumi.BoolPtrOutput { return v.KeepOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// Bool, true if the branch has been merged into it's parent.
+// Bool, true if the branch has been merged into its parent.
 func (o BranchOutput) Merged() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Branch) pulumi.BoolOutput { return v.Merged }).(pulumi.BoolOutput)
 }

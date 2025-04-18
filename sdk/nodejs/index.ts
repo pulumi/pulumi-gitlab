@@ -370,6 +370,11 @@ export type GroupCustomAttribute = import("./groupCustomAttribute").GroupCustomA
 export const GroupCustomAttribute: typeof import("./groupCustomAttribute").GroupCustomAttribute = null as any;
 utilities.lazyLoad(exports, ["GroupCustomAttribute"], () => require("./groupCustomAttribute"));
 
+export { GroupDependencyProxyArgs, GroupDependencyProxyState } from "./groupDependencyProxy";
+export type GroupDependencyProxy = import("./groupDependencyProxy").GroupDependencyProxy;
+export const GroupDependencyProxy: typeof import("./groupDependencyProxy").GroupDependencyProxy = null as any;
+utilities.lazyLoad(exports, ["GroupDependencyProxy"], () => require("./groupDependencyProxy"));
+
 export { GroupEpicBoardArgs, GroupEpicBoardState } from "./groupEpicBoard";
 export type GroupEpicBoard = import("./groupEpicBoard").GroupEpicBoard;
 export const GroupEpicBoard: typeof import("./groupEpicBoard").GroupEpicBoard = null as any;
@@ -866,6 +871,8 @@ const _module = {
                 return new GroupCluster(name, <any>undefined, { urn })
             case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
                 return new GroupCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
+                return new GroupDependencyProxy(name, <any>undefined, { urn })
             case "gitlab:index/groupEpicBoard:GroupEpicBoard":
                 return new GroupEpicBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupHook:GroupHook":
@@ -1065,6 +1072,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _modul
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxy", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,21 @@ public final class GetProjectArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<Integer>> ciDefaultGitDepth() {
         return Optional.ofNullable(this.ciDefaultGitDepth);
+    }
+
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    @Import(name="ciIdTokenSubClaimComponents")
+    private @Nullable Output<List<String>> ciIdTokenSubClaimComponents;
+
+    /**
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * 
+     */
+    public Optional<Output<List<String>>> ciIdTokenSubClaimComponents() {
+        return Optional.ofNullable(this.ciIdTokenSubClaimComponents);
     }
 
     /**
@@ -81,6 +97,7 @@ public final class GetProjectArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetProjectArgs(GetProjectArgs $) {
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
+        this.ciIdTokenSubClaimComponents = $.ciIdTokenSubClaimComponents;
         this.id = $.id;
         this.pathWithNamespace = $.pathWithNamespace;
         this.publicBuilds = $.publicBuilds;
@@ -123,6 +140,37 @@ public final class GetProjectArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder ciDefaultGitDepth(Integer ciDefaultGitDepth) {
             return ciDefaultGitDepth(Output.of(ciDefaultGitDepth));
+        }
+
+        /**
+         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciIdTokenSubClaimComponents(@Nullable Output<List<String>> ciIdTokenSubClaimComponents) {
+            $.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
+            return this;
+        }
+
+        /**
+         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciIdTokenSubClaimComponents(List<String> ciIdTokenSubClaimComponents) {
+            return ciIdTokenSubClaimComponents(Output.of(ciIdTokenSubClaimComponents));
+        }
+
+        /**
+         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciIdTokenSubClaimComponents(String... ciIdTokenSubClaimComponents) {
+            return ciIdTokenSubClaimComponents(List.of(ciIdTokenSubClaimComponents));
         }
 
         /**

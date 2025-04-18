@@ -27,7 +27,7 @@ class ProjectMembershipArgs:
                  member_role_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectMembership resource.
-        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[builtins.int] user_id: The id of the user.
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
@@ -45,7 +45,7 @@ class ProjectMembershipArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[builtins.str]:
         """
-        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 
@@ -112,7 +112,7 @@ class _ProjectMembershipState:
                  user_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectMembership resources.
-        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[builtins.str] project: The ID or URL-encoded path of the project.
@@ -133,7 +133,7 @@ class _ProjectMembershipState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 
@@ -249,7 +249,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[builtins.str] project: The ID or URL-encoded path of the project.
@@ -369,7 +369,7 @@ class ProjectMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[builtins.str] project: The ID or URL-encoded path of the project.
@@ -390,7 +390,7 @@ class ProjectMembership(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[builtins.str]:
         """
-        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 

@@ -18,7 +18,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());

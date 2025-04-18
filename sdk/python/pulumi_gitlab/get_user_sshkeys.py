@@ -93,7 +93,7 @@ def get_user_sshkeys(user_id: Optional[builtins.int] = None,
     """
     The `get_user_sshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
 
 
     :param builtins.int user_id: ID of the user to get the SSH keys for.
@@ -116,7 +116,7 @@ def get_user_sshkeys_output(user_id: Optional[pulumi.Input[Optional[builtins.int
     """
     The `get_user_sshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
 
 
     :param builtins.int user_id: ID of the user to get the SSH keys for.

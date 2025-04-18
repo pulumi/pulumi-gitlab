@@ -101,6 +101,10 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * The description of the personal access token.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
     public readonly expiresAt!: pulumi.Output<string>;
@@ -144,6 +148,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
             const state = argsOrState as PersonalAccessTokenState | undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["revoked"] = state ? state.revoked : undefined;
@@ -159,6 +164,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rotationConfiguration"] = args ? args.rotationConfiguration : undefined;
@@ -188,6 +194,10 @@ export interface PersonalAccessTokenState {
      * Time the token has been created, RFC3339 format.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The description of the personal access token.
+     */
+    description?: pulumi.Input<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
@@ -222,6 +232,10 @@ export interface PersonalAccessTokenState {
  * The set of arguments for constructing a PersonalAccessToken resource.
  */
 export interface PersonalAccessTokenArgs {
+    /**
+     * The description of the personal access token.
+     */
+    description?: pulumi.Input<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */

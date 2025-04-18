@@ -1253,7 +1253,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static Output<GetGroupResult> getGroup() {
@@ -1262,7 +1262,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain() {
@@ -1271,7 +1271,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args) {
@@ -1280,7 +1280,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args) {
@@ -1289,7 +1289,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOptions options) {
@@ -1298,7 +1298,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOutputOptions options) {
@@ -1307,7 +1307,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
@@ -1786,7 +1786,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
      * 
@@ -1800,7 +1800,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
      * 
@@ -1814,7 +1814,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
      * 
@@ -1828,7 +1828,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
      * 
@@ -1842,7 +1842,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-group-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
      * 
@@ -1856,7 +1856,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
      * 
@@ -1870,7 +1870,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
      * 
@@ -1884,7 +1884,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
      * 
@@ -1898,7 +1898,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
      * 
@@ -1912,7 +1912,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
      * 
@@ -2329,7 +2329,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
      * 
      * ## Example Usage
      * 
@@ -2374,7 +2374,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
      * 
      * ## Example Usage
      * 
@@ -2419,7 +2419,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
      * 
      * ## Example Usage
      * 
@@ -2464,7 +2464,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
      * 
      * ## Example Usage
      * 
@@ -2509,7 +2509,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
      * 
      * ## Example Usage
      * 
@@ -4981,7 +4981,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static Output<GetProjectResult> getProject() {
@@ -4990,7 +4990,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain() {
@@ -4999,7 +4999,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -5008,7 +5008,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -5017,7 +5017,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -5026,7 +5026,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
@@ -5035,7 +5035,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -5344,7 +5344,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
      * 
      * ## Example Usage
      * 
@@ -5394,7 +5394,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
      * 
      * ## Example Usage
      * 
@@ -5444,7 +5444,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
      * 
      * ## Example Usage
      * 
@@ -5494,7 +5494,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
      * 
      * ## Example Usage
      * 
@@ -5544,7 +5544,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
      * 
      * ## Example Usage
      * 
@@ -5594,7 +5594,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#list-webhooks-for-a-project)
      * 
      * ## Example Usage
      * 
@@ -5643,7 +5643,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#list-webhooks-for-a-project)
      * 
      * ## Example Usage
      * 
@@ -5692,7 +5692,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#list-webhooks-for-a-project)
      * 
      * ## Example Usage
      * 
@@ -5741,7 +5741,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#list-webhooks-for-a-project)
      * 
      * ## Example Usage
      * 
@@ -5790,7 +5790,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectHooks` data source allows to retrieve details about hooks in a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#list-project-hooks)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#list-webhooks-for-a-project)
      * 
      * ## Example Usage
      * 
@@ -9487,7 +9487,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static Output<GetUserResult> getUser() {
@@ -9500,7 +9500,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -9513,7 +9513,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -9526,7 +9526,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -9539,7 +9539,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -9552,7 +9552,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
@@ -9565,7 +9565,7 @@ public final class GitlabFunctions {
      * 
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -9574,7 +9574,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static Output<GetUserSshkeysResult> getUserSshkeys() {
@@ -9583,7 +9583,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static CompletableFuture<GetUserSshkeysResult> getUserSshkeysPlain() {
@@ -9592,7 +9592,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static Output<GetUserSshkeysResult> getUserSshkeys(GetUserSshkeysArgs args) {
@@ -9601,7 +9601,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static CompletableFuture<GetUserSshkeysResult> getUserSshkeysPlain(GetUserSshkeysPlainArgs args) {
@@ -9610,7 +9610,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static Output<GetUserSshkeysResult> getUserSshkeys(GetUserSshkeysArgs args, InvokeOptions options) {
@@ -9619,7 +9619,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static Output<GetUserSshkeysResult> getUserSshkeys(GetUserSshkeysArgs args, InvokeOutputOptions options) {
@@ -9628,7 +9628,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-ssh-keys-for-user)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
      * 
      */
     public static CompletableFuture<GetUserSshkeysResult> getUserSshkeysPlain(GetUserSshkeysPlainArgs args, InvokeOptions options) {
@@ -9641,7 +9641,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 
@@ -9695,7 +9695,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 
@@ -9749,7 +9749,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 
@@ -9803,7 +9803,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 
@@ -9857,7 +9857,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 
@@ -9911,7 +9911,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 
@@ -9965,7 +9965,7 @@ public final class GitlabFunctions {
      * 
      * &gt; Some available options require administrator privileges.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ce/api/users/#list-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#list-users)
      * 
      * ## Example Usage
      * 

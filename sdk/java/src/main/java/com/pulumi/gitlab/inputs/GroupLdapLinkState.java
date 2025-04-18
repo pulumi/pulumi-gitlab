@@ -6,6 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     public static final GroupLdapLinkState Empty = new GroupLdapLinkState();
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -28,7 +29,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -100,14 +101,14 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="groupAccess")
     private @Nullable Output<String> groupAccess;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Optional<Output<String>> groupAccess() {
@@ -129,6 +130,21 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.ldapProvider);
     }
 
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * 
+     */
+    @Import(name="memberRoleId")
+    private @Nullable Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * 
+     */
+    public Optional<Output<Integer>> memberRoleId() {
+        return Optional.ofNullable(this.memberRoleId);
+    }
+
     private GroupLdapLinkState() {}
 
     private GroupLdapLinkState(GroupLdapLinkState $) {
@@ -139,6 +155,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         this.group = $.group;
         this.groupAccess = $.groupAccess;
         this.ldapProvider = $.ldapProvider;
+        this.memberRoleId = $.memberRoleId;
     }
 
     public static Builder builder() {
@@ -160,7 +177,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -175,7 +192,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -273,7 +290,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -284,7 +301,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -312,6 +329,27 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder ldapProvider(String ldapProvider) {
             return ldapProvider(Output.of(ldapProvider));
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(@Nullable Output<Integer> memberRoleId) {
+            $.memberRoleId = memberRoleId;
+            return this;
+        }
+
+        /**
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberRoleId(Integer memberRoleId) {
+            return memberRoleId(Output.of(memberRoleId));
         }
 
         public GroupLdapLinkState build() {

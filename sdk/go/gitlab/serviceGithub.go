@@ -18,7 +18,7 @@ import (
 //
 // > This resource is deprecated. use `IntegrationGithub`instead!
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
 //
 // ## Example Usage
 //

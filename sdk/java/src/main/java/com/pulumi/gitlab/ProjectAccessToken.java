@@ -104,14 +104,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectAccessToken:ProjectAccessToken")
 public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      * 
      */
     public Output<String> accessLevel() {
@@ -144,6 +144,20 @@ public class ProjectAccessToken extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * The description of the project access token.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return The description of the project access token.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.

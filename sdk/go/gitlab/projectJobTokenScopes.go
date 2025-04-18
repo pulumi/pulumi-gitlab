@@ -12,9 +12,12 @@ import (
 )
 
 // The `ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
-// Any project not within the defined set in this attribute will be removed, which allows this resource to be used as an explicit deny.
+// Any project or group not within the defined set of `targetProjectIds` or `targetGroupIds`, respectively, will be removed,
+// which allows this resource to be used as an explicit deny.
 //
 // > Conflicts with the use of `ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
+//
+// > If the `enabled` property is false, any project or group will be allowed regardless of the given allowlist attributes.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 //
@@ -71,6 +74,31 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This shows the explicit behavior of the enabled flag with a list of projects and groups.
+//			_, err = gitlab.NewProjectJobTokenScopes(ctx, "allow_projects_and_groups", &gitlab.ProjectJobTokenScopesArgs{
+//				Project: pulumi.String("111"),
+//				Enabled: pulumi.Bool(true),
+//				TargetProjectIds: pulumi.IntArray{
+//					pulumi.Int(123),
+//					pulumi.Int(456),
+//					pulumi.Int(789),
+//				},
+//				TargetGroupIds: pulumi.IntArray{
+//					pulumi.Int(321),
+//					pulumi.Int(654),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This allows all projects and groups (disabling the CI Job Token scope protection)
+//			_, err = gitlab.NewProjectJobTokenScopes(ctx, "allow_all", &gitlab.ProjectJobTokenScopesArgs{
+//				Project: pulumi.String("111"),
+//				Enabled: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -101,6 +129,8 @@ import (
 type ProjectJobTokenScopes struct {
 	pulumi.CustomResourceState
 
+	// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The ID or full path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The ID of the project.
@@ -143,6 +173,8 @@ func GetProjectJobTokenScopes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectJobTokenScopes resources.
 type projectJobTokenScopesState struct {
+	// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+	Enabled *bool `pulumi:"enabled"`
 	// The ID or full path of the project.
 	Project *string `pulumi:"project"`
 	// The ID of the project.
@@ -156,6 +188,8 @@ type projectJobTokenScopesState struct {
 }
 
 type ProjectJobTokenScopesState struct {
+	// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+	Enabled pulumi.BoolPtrInput
 	// The ID or full path of the project.
 	Project pulumi.StringPtrInput
 	// The ID of the project.
@@ -173,6 +207,8 @@ func (ProjectJobTokenScopesState) ElementType() reflect.Type {
 }
 
 type projectJobTokenScopesArgs struct {
+	// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+	Enabled *bool `pulumi:"enabled"`
 	// The ID or full path of the project.
 	Project *string `pulumi:"project"`
 	// The ID of the project.
@@ -187,6 +223,8 @@ type projectJobTokenScopesArgs struct {
 
 // The set of arguments for constructing a ProjectJobTokenScopes resource.
 type ProjectJobTokenScopesArgs struct {
+	// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+	Enabled pulumi.BoolPtrInput
 	// The ID or full path of the project.
 	Project pulumi.StringPtrInput
 	// The ID of the project.
@@ -284,6 +322,11 @@ func (o ProjectJobTokenScopesOutput) ToProjectJobTokenScopesOutput() ProjectJobT
 
 func (o ProjectJobTokenScopesOutput) ToProjectJobTokenScopesOutputWithContext(ctx context.Context) ProjectJobTokenScopesOutput {
 	return o
+}
+
+// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+func (o ProjectJobTokenScopesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The ID or full path of the project.

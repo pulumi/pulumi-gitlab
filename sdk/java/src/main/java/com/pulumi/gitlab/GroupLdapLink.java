@@ -11,6 +11,7 @@ import com.pulumi.gitlab.GroupLdapLinkArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupLdapLinkState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,7 +60,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupLdapLink:GroupLdapLink")
 public class GroupLdapLink extends com.pulumi.resources.CustomResource {
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
      * Use `group_access` instead of the `access_level` attribute.
@@ -70,7 +71,7 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accessLevel;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<Optional<String>> accessLevel() {
@@ -133,14 +134,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Export(name="groupAccess", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupAccess;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<Optional<String>> groupAccess() {
@@ -159,6 +160,20 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ldapProvider() {
         return this.ldapProvider;
+    }
+    /**
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * 
+     */
+    @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> memberRoleId;
+
+    /**
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * 
+     */
+    public Output<Integer> memberRoleId() {
+        return this.memberRoleId;
     }
 
     /**

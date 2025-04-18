@@ -40,7 +40,9 @@ class ProjectArgs:
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
                  ci_config_path: Optional[pulumi.Input[builtins.str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
@@ -144,7 +146,9 @@ class ProjectArgs:
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
+        :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
@@ -218,7 +222,7 @@ class ProjectArgs:
         :param pulumi.Input[builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
-        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[builtins.str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
@@ -269,8 +273,12 @@ class ProjectArgs:
             pulumi.set(__self__, "ci_config_path", ci_config_path)
         if ci_default_git_depth is not None:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
+        if ci_delete_pipelines_in_seconds is not None:
+            pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_id_token_sub_claim_components is not None:
+            pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role is not None:
             pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         if ci_restrict_pipeline_cancellation_role is not None:
@@ -662,6 +670,18 @@ class ProjectArgs:
         pulumi.set(self, "ci_default_git_depth", value)
 
     @property
+    @pulumi.getter(name="ciDeletePipelinesInSeconds")
+    def ci_delete_pipelines_in_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Pipelines older than the configured time are deleted.
+        """
+        return pulumi.get(self, "ci_delete_pipelines_in_seconds")
+
+    @ci_delete_pipelines_in_seconds.setter
+    def ci_delete_pipelines_in_seconds(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "ci_delete_pipelines_in_seconds", value)
+
+    @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -672,6 +692,18 @@ class ProjectArgs:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciIdTokenSubClaimComponents")
+    def ci_id_token_sub_claim_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "ci_id_token_sub_claim_components")
+
+    @ci_id_token_sub_claim_components.setter
+    def ci_id_token_sub_claim_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "ci_id_token_sub_claim_components", value)
 
     @property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
@@ -1523,7 +1555,7 @@ class ProjectArgs:
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         """
         return pulumi.get(self, "squash_option")
 
@@ -1663,7 +1695,9 @@ class _ProjectState:
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
                  ci_config_path: Optional[pulumi.Input[builtins.str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1774,7 +1808,9 @@ class _ProjectState:
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
+        :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
@@ -1852,7 +1888,7 @@ class _ProjectState:
         :param pulumi.Input[builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
-        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[builtins.str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
@@ -1907,8 +1943,12 @@ class _ProjectState:
             pulumi.set(__self__, "ci_config_path", ci_config_path)
         if ci_default_git_depth is not None:
             pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
+        if ci_delete_pipelines_in_seconds is not None:
+            pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_id_token_sub_claim_components is not None:
+            pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role is not None:
             pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         if ci_restrict_pipeline_cancellation_role is not None:
@@ -2324,6 +2364,18 @@ class _ProjectState:
         pulumi.set(self, "ci_default_git_depth", value)
 
     @property
+    @pulumi.getter(name="ciDeletePipelinesInSeconds")
+    def ci_delete_pipelines_in_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Pipelines older than the configured time are deleted.
+        """
+        return pulumi.get(self, "ci_delete_pipelines_in_seconds")
+
+    @ci_delete_pipelines_in_seconds.setter
+    def ci_delete_pipelines_in_seconds(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "ci_delete_pipelines_in_seconds", value)
+
+    @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -2334,6 +2386,18 @@ class _ProjectState:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciIdTokenSubClaimComponents")
+    def ci_id_token_sub_claim_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "ci_id_token_sub_claim_components")
+
+    @ci_id_token_sub_claim_components.setter
+    def ci_id_token_sub_claim_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "ci_id_token_sub_claim_components", value)
 
     @property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
@@ -3233,7 +3297,7 @@ class _ProjectState:
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         """
         return pulumi.get(self, "squash_option")
 
@@ -3398,7 +3462,9 @@ class Project(pulumi.CustomResource):
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
                  ci_config_path: Optional[pulumi.Input[builtins.str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3536,7 +3602,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
+        :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
@@ -3610,7 +3678,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
-        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
         :param pulumi.Input[builtins.str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
@@ -3694,7 +3762,9 @@ class Project(pulumi.CustomResource):
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
                  ci_config_path: Optional[pulumi.Input[builtins.str]] = None,
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3802,7 +3872,9 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["builds_access_level"] = builds_access_level
             __props__.__dict__["ci_config_path"] = ci_config_path
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
+            __props__.__dict__["ci_delete_pipelines_in_seconds"] = ci_delete_pipelines_in_seconds
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+            __props__.__dict__["ci_id_token_sub_claim_components"] = ci_id_token_sub_claim_components
             __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
             __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
             __props__.__dict__["ci_separated_caches"] = ci_separated_caches
@@ -3921,7 +3993,9 @@ class Project(pulumi.CustomResource):
             builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
             ci_config_path: Optional[pulumi.Input[builtins.str]] = None,
             ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
+            ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
             ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
             ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
             ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
@@ -4037,7 +4111,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.str] ci_config_path: Custom Path to CI config file.
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
+        :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
@@ -4115,7 +4191,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[builtins.bool] snippets_enabled: Enable snippets for the project.
         :param pulumi.Input[builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
-        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        :param pulumi.Input[builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[builtins.str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
@@ -4152,7 +4228,9 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["builds_access_level"] = builds_access_level
         __props__.__dict__["ci_config_path"] = ci_config_path
         __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
+        __props__.__dict__["ci_delete_pipelines_in_seconds"] = ci_delete_pipelines_in_seconds
         __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+        __props__.__dict__["ci_id_token_sub_claim_components"] = ci_id_token_sub_claim_components
         __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
         __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
         __props__.__dict__["ci_separated_caches"] = ci_separated_caches
@@ -4398,12 +4476,28 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "ci_default_git_depth")
 
     @property
+    @pulumi.getter(name="ciDeletePipelinesInSeconds")
+    def ci_delete_pipelines_in_seconds(self) -> pulumi.Output[builtins.int]:
+        """
+        Pipelines older than the configured time are deleted.
+        """
+        return pulumi.get(self, "ci_delete_pipelines_in_seconds")
+
+    @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> pulumi.Output[builtins.bool]:
         """
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciIdTokenSubClaimComponents")
+    def ci_id_token_sub_claim_components(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "ci_id_token_sub_claim_components")
 
     @property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
@@ -5007,7 +5101,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="squashOption")
     def squash_option(self) -> pulumi.Output[builtins.str]:
         """
-        Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         """
         return pulumi.get(self, "squash_option")
 

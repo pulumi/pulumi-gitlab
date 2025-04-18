@@ -20,14 +20,14 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
     public static final ProjectAccessTokenState Empty = new ProjectAccessTokenState();
 
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -62,6 +62,21 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The description of the project access token.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the project access token.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -190,6 +205,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         this.accessLevel = $.accessLevel;
         this.active = $.active;
         this.createdAt = $.createdAt;
+        this.description = $.description;
         this.expiresAt = $.expiresAt;
         this.name = $.name;
         this.project = $.project;
@@ -219,7 +235,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
          * 
          * @return builder
          * 
@@ -230,7 +246,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
          * 
          * @return builder
          * 
@@ -279,6 +295,27 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param description The description of the project access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the project access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

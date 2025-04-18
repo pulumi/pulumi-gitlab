@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource is deprecated. use `gitlab.IntegrationPipelinesEmail`instead!
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#pipeline-emails)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#pipeline-status-emails)
  *
  * ## Example Usage
  *

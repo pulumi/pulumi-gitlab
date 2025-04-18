@@ -39,7 +39,7 @@ public final class GetProjectBranchesBranch {
      */
     private Boolean developersCanPush;
     /**
-     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * @return Bool, true if the branch has been merged into its parent.
      * 
      */
     private Boolean merged;
@@ -96,7 +96,7 @@ public final class GetProjectBranchesBranch {
         return this.developersCanPush;
     }
     /**
-     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * @return Bool, true if the branch has been merged into its parent.
      * 
      */
     public Boolean merged() {

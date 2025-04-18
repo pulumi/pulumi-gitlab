@@ -20,6 +20,21 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
     public static final PersonalAccessTokenArgs Empty = new PersonalAccessTokenArgs();
 
     /**
+     * The description of the personal access token.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the personal access token.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
      * 
      */
@@ -97,6 +112,7 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
     private PersonalAccessTokenArgs() {}
 
     private PersonalAccessTokenArgs(PersonalAccessTokenArgs $) {
+        this.description = $.description;
         this.expiresAt = $.expiresAt;
         this.name = $.name;
         this.rotationConfiguration = $.rotationConfiguration;
@@ -120,6 +136,27 @@ public final class PersonalAccessTokenArgs extends com.pulumi.resources.Resource
 
         public Builder(PersonalAccessTokenArgs defaults) {
             $ = new PersonalAccessTokenArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the personal access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the personal access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

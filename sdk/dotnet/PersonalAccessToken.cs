@@ -95,6 +95,12 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// The description of the personal access token.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         /// </summary>
         [Output("expiresAt")]
@@ -187,6 +193,12 @@ namespace Pulumi.GitLab
     public sealed class PersonalAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the personal access token.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         /// </summary>
         [Input("expiresAt")]
@@ -241,6 +253,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The description of the personal access token.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.

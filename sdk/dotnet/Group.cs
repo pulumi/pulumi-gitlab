@@ -236,7 +236,7 @@ namespace Pulumi.GitLab
         /// Users cannot be added to projects in this group.
         /// </summary>
         [Output("membershipLock")]
-        public Output<bool?> MembershipLock { get; private set; } = null!;
+        public Output<bool> MembershipLock { get; private set; } = null!;
 
         /// <summary>
         /// Disable the capability of a group from getting mentioned.

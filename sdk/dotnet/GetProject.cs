@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gitlab:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
@@ -44,6 +44,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciDefaultGitDepth")]
         public int? CiDefaultGitDepth { get; set; }
+
+        [Input("ciIdTokenSubClaimComponents")]
+        private List<string>? _ciIdTokenSubClaimComponents;
+
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        public List<string> CiIdTokenSubClaimComponents
+        {
+            get => _ciIdTokenSubClaimComponents ?? (_ciIdTokenSubClaimComponents = new List<string>());
+            set => _ciIdTokenSubClaimComponents = value;
+        }
 
         /// <summary>
         /// The integer that uniquely identifies the project within the gitlab install.
@@ -76,6 +88,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciDefaultGitDepth")]
         public Input<int>? CiDefaultGitDepth { get; set; }
+
+        [Input("ciIdTokenSubClaimComponents")]
+        private InputList<string>? _ciIdTokenSubClaimComponents;
+
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        public InputList<string> CiIdTokenSubClaimComponents
+        {
+            get => _ciIdTokenSubClaimComponents ?? (_ciIdTokenSubClaimComponents = new InputList<string>());
+            set => _ciIdTokenSubClaimComponents = value;
+        }
 
         /// <summary>
         /// The integer that uniquely identifies the project within the gitlab install.
@@ -153,6 +177,14 @@ namespace Pulumi.GitLab
         /// Default number of revisions for shallow cloning.
         /// </summary>
         public readonly int CiDefaultGitDepth;
+        /// <summary>
+        /// Pipelines older than the configured time are deleted.
+        /// </summary>
+        public readonly int CiDeletePipelinesInSeconds;
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        public readonly ImmutableArray<string> CiIdTokenSubClaimComponents;
         /// <summary>
         /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         /// </summary>
@@ -416,6 +448,10 @@ namespace Pulumi.GitLab
 
             int ciDefaultGitDepth,
 
+            int ciDeletePipelinesInSeconds,
+
+            ImmutableArray<string> ciIdTokenSubClaimComponents,
+
             string ciPipelineVariablesMinimumOverrideRole,
 
             string ciRestrictPipelineCancellationRole,
@@ -546,6 +582,8 @@ namespace Pulumi.GitLab
             BuildsAccessLevel = buildsAccessLevel;
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
+            CiDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
+            CiIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
             CiPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             CiSeparatedCaches = ciSeparatedCaches;

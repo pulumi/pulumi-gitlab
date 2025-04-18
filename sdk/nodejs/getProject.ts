@@ -9,13 +9,14 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
         "ciDefaultGitDepth": args.ciDefaultGitDepth,
+        "ciIdTokenSubClaimComponents": args.ciIdTokenSubClaimComponents,
         "id": args.id,
         "pathWithNamespace": args.pathWithNamespace,
         "publicBuilds": args.publicBuilds,
@@ -30,6 +31,10 @@ export interface GetProjectArgs {
      * Default number of revisions for shallow cloning.
      */
     ciDefaultGitDepth?: number;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     */
+    ciIdTokenSubClaimComponents?: string[];
     /**
      * The integer that uniquely identifies the project within the gitlab install.
      */
@@ -96,6 +101,14 @@ export interface GetProjectResult {
      * Default number of revisions for shallow cloning.
      */
     readonly ciDefaultGitDepth: number;
+    /**
+     * Pipelines older than the configured time are deleted.
+     */
+    readonly ciDeletePipelinesInSeconds: number;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     */
+    readonly ciIdTokenSubClaimComponents: string[];
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
@@ -336,13 +349,14 @@ export interface GetProjectResult {
 /**
  * The `gitlab.Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProject:getProject", {
         "ciDefaultGitDepth": args.ciDefaultGitDepth,
+        "ciIdTokenSubClaimComponents": args.ciIdTokenSubClaimComponents,
         "id": args.id,
         "pathWithNamespace": args.pathWithNamespace,
         "publicBuilds": args.publicBuilds,
@@ -357,6 +371,10 @@ export interface GetProjectOutputArgs {
      * Default number of revisions for shallow cloning.
      */
     ciDefaultGitDepth?: pulumi.Input<number>;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     */
+    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The integer that uniquely identifies the project within the gitlab install.
      */

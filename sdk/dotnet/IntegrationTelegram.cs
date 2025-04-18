@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#telegram)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#telegram)
     /// 
     /// ## Example Usage
     /// 

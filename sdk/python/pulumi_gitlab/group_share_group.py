@@ -27,7 +27,7 @@ class GroupShareGroupArgs:
                  member_role_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a GroupShareGroup resource.
-        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
@@ -45,7 +45,7 @@ class GroupShareGroupArgs:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Input[builtins.str]:
         """
-        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
@@ -113,7 +113,7 @@ class _GroupShareGroupState:
         """
         Input properties used for looking up and filtering GroupShareGroup resources.
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
@@ -145,7 +145,7 @@ class _GroupShareGroupState:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
@@ -244,7 +244,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
@@ -358,7 +358,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
@@ -386,7 +386,7 @@ class GroupShareGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Output[builtins.str]:
         """
-        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 

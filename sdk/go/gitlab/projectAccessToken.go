@@ -88,12 +88,14 @@ import (
 type ProjectAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the project access token.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the project access token.
@@ -152,12 +154,14 @@ func GetProjectAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAccessToken resources.
 type projectAccessTokenState struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the project access token.
+	Description *string `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the project access token.
@@ -177,12 +181,14 @@ type projectAccessTokenState struct {
 }
 
 type ProjectAccessTokenState struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
+	// The description of the project access token.
+	Description pulumi.StringPtrInput
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the project access token.
@@ -206,8 +212,10 @@ func (ProjectAccessTokenState) ElementType() reflect.Type {
 }
 
 type projectAccessTokenArgs struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// The description of the project access token.
+	Description *string `pulumi:"description"`
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the project access token.
@@ -222,8 +230,10 @@ type projectAccessTokenArgs struct {
 
 // The set of arguments for constructing a ProjectAccessToken resource.
 type ProjectAccessTokenArgs struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
+	// The description of the project access token.
+	Description pulumi.StringPtrInput
 	// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the project access token.
@@ -323,7 +333,7 @@ func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutputWithContext(ctx cont
 	return o
 }
 
-// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 func (o ProjectAccessTokenOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -336,6 +346,11 @@ func (o ProjectAccessTokenOutput) Active() pulumi.BoolOutput {
 // Time the token has been created, RFC3339 format.
 func (o ProjectAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the project access token.
+func (o ProjectAccessTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.

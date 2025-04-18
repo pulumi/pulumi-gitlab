@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#emails-on-push)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)
  *
  * ## Example Usage
  *

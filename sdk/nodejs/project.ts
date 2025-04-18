@@ -149,9 +149,17 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ciDefaultGitDepth!: pulumi.Output<number>;
     /**
+     * Pipelines older than the configured time are deleted.
+     */
+    public readonly ciDeletePipelinesInSeconds!: pulumi.Output<number>;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean>;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     */
+    public readonly ciIdTokenSubClaimComponents!: pulumi.Output<string[]>;
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
@@ -458,7 +466,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly squashCommitTemplate!: pulumi.Output<string | undefined>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      */
     public readonly squashOption!: pulumi.Output<string>;
     /**
@@ -539,7 +547,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["buildsAccessLevel"] = state ? state.buildsAccessLevel : undefined;
             resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
+            resourceInputs["ciDeletePipelinesInSeconds"] = state ? state.ciDeletePipelinesInSeconds : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciIdTokenSubClaimComponents"] = state ? state.ciIdTokenSubClaimComponents : undefined;
             resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = state ? state.ciPipelineVariablesMinimumOverrideRole : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = state ? state.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = state ? state.ciSeparatedCaches : undefined;
@@ -646,7 +656,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["buildsAccessLevel"] = args ? args.buildsAccessLevel : undefined;
             resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
             resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
+            resourceInputs["ciDeletePipelinesInSeconds"] = args ? args.ciDeletePipelinesInSeconds : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciIdTokenSubClaimComponents"] = args ? args.ciIdTokenSubClaimComponents : undefined;
             resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = args ? args.ciPipelineVariablesMinimumOverrideRole : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = args ? args.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = args ? args.ciSeparatedCaches : undefined;
@@ -828,9 +840,17 @@ export interface ProjectState {
      */
     ciDefaultGitDepth?: pulumi.Input<number>;
     /**
+     * Pipelines older than the configured time are deleted.
+     */
+    ciDeletePipelinesInSeconds?: pulumi.Input<number>;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     */
+    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
@@ -1137,7 +1157,7 @@ export interface ProjectState {
      */
     squashCommitTemplate?: pulumi.Input<string>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      */
     squashOption?: pulumi.Input<string>;
     /**
@@ -1269,9 +1289,17 @@ export interface ProjectArgs {
      */
     ciDefaultGitDepth?: pulumi.Input<number>;
     /**
+     * Pipelines older than the configured time are deleted.
+     */
+    ciDeletePipelinesInSeconds?: pulumi.Input<number>;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     */
+    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
@@ -1562,7 +1590,7 @@ export interface ProjectArgs {
      */
     squashCommitTemplate?: pulumi.Input<string>;
     /**
-     * Squash commits when merge request. Valid values are `never`, `always`, `defaultOn`, or `defaultOff`. The default value is `defaultOff`.
+     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      */
     squashOption?: pulumi.Input<string>;
     /**

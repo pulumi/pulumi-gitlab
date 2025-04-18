@@ -19,18 +19,33 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
     public static final ProjectAccessTokenArgs Empty = new ProjectAccessTokenArgs();
 
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * @return The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
+    }
+
+    /**
+     * The description of the project access token.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the project access token.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -112,6 +127,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
 
     private ProjectAccessTokenArgs(ProjectAccessTokenArgs $) {
         this.accessLevel = $.accessLevel;
+        this.description = $.description;
         this.expiresAt = $.expiresAt;
         this.name = $.name;
         this.project = $.project;
@@ -138,7 +154,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
          * 
          * @return builder
          * 
@@ -149,13 +165,34 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+         * @param accessLevel The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
          * 
          * @return builder
          * 
          */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
+        }
+
+        /**
+         * @param description The description of the project access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the project access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

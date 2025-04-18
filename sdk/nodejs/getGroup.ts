@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
@@ -130,7 +130,7 @@ export interface GetGroupResult {
 /**
  * The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
  */
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupResult> {
     args = args || {};

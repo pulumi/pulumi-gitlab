@@ -44,7 +44,7 @@ public final class GetBranchResult {
      */
     private String id;
     /**
-     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * @return Bool, true if the branch has been merged into its parent.
      * 
      */
     private Boolean merged;
@@ -113,7 +113,7 @@ public final class GetBranchResult {
         return this.id;
     }
     /**
-     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * @return Bool, true if the branch has been merged into its parent.
      * 
      */
     public Boolean merged() {

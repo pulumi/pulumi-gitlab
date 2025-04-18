@@ -14,7 +14,7 @@ import (
 
 // The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
 //
 // ## Example Usage
 //
@@ -104,7 +104,9 @@ type IntegrationJira struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+	// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+	//
+	// Deprecated: `projectKey` is deprecated. Use `projectKeys` instead.
 	ProjectKey pulumi.StringPtrOutput `pulumi:"projectKey"`
 	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
 	ProjectKeys pulumi.StringArrayOutput `pulumi:"projectKeys"`
@@ -193,7 +195,9 @@ type integrationJiraState struct {
 	Password *string `pulumi:"password"`
 	// ID of the project you want to activate integration on.
 	Project *string `pulumi:"project"`
-	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+	// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+	//
+	// Deprecated: `projectKey` is deprecated. Use `projectKeys` instead.
 	ProjectKey *string `pulumi:"projectKey"`
 	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
 	ProjectKeys []string `pulumi:"projectKeys"`
@@ -237,7 +241,9 @@ type IntegrationJiraState struct {
 	Password pulumi.StringPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringPtrInput
-	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+	// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+	//
+	// Deprecated: `projectKey` is deprecated. Use `projectKeys` instead.
 	ProjectKey pulumi.StringPtrInput
 	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
 	ProjectKeys pulumi.StringArrayInput
@@ -281,7 +287,9 @@ type integrationJiraArgs struct {
 	Password string `pulumi:"password"`
 	// ID of the project you want to activate integration on.
 	Project string `pulumi:"project"`
-	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+	// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+	//
+	// Deprecated: `projectKey` is deprecated. Use `projectKeys` instead.
 	ProjectKey *string `pulumi:"projectKey"`
 	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
 	ProjectKeys []string `pulumi:"projectKeys"`
@@ -318,7 +326,9 @@ type IntegrationJiraArgs struct {
 	Password pulumi.StringInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringInput
-	// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+	// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+	//
+	// Deprecated: `projectKey` is deprecated. Use `projectKeys` instead.
 	ProjectKey pulumi.StringPtrInput
 	// Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
 	ProjectKeys pulumi.StringArrayInput
@@ -486,7 +496,9 @@ func (o IntegrationJiraOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationJira) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+//
+// Deprecated: `projectKey` is deprecated. Use `projectKeys` instead.
 func (o IntegrationJiraOutput) ProjectKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IntegrationJira) pulumi.StringPtrOutput { return v.ProjectKey }).(pulumi.StringPtrOutput)
 }

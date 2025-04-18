@@ -163,10 +163,22 @@ namespace Pulumi.GitLab
         public Output<int> CiDefaultGitDepth { get; private set; } = null!;
 
         /// <summary>
+        /// Pipelines older than the configured time are deleted.
+        /// </summary>
+        [Output("ciDeletePipelinesInSeconds")]
+        public Output<int> CiDeletePipelinesInSeconds { get; private set; } = null!;
+
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Output("ciForwardDeploymentEnabled")]
         public Output<bool> CiForwardDeploymentEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        [Output("ciIdTokenSubClaimComponents")]
+        public Output<ImmutableArray<string>> CiIdTokenSubClaimComponents { get; private set; } = null!;
 
         /// <summary>
         /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
@@ -616,7 +628,7 @@ namespace Pulumi.GitLab
         public Output<string?> SquashCommitTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         /// </summary>
         [Output("squashOption")]
         public Output<string> SquashOption { get; private set; } = null!;
@@ -851,10 +863,28 @@ namespace Pulumi.GitLab
         public Input<int>? CiDefaultGitDepth { get; set; }
 
         /// <summary>
+        /// Pipelines older than the configured time are deleted.
+        /// </summary>
+        [Input("ciDeletePipelinesInSeconds")]
+        public Input<int>? CiDeletePipelinesInSeconds { get; set; }
+
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        [Input("ciIdTokenSubClaimComponents")]
+        private InputList<string>? _ciIdTokenSubClaimComponents;
+
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        public InputList<string> CiIdTokenSubClaimComponents
+        {
+            get => _ciIdTokenSubClaimComponents ?? (_ciIdTokenSubClaimComponents = new InputList<string>());
+            set => _ciIdTokenSubClaimComponents = value;
+        }
 
         /// <summary>
         /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
@@ -1290,7 +1320,7 @@ namespace Pulumi.GitLab
         public Input<string>? SquashCommitTemplate { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }
@@ -1488,10 +1518,28 @@ namespace Pulumi.GitLab
         public Input<int>? CiDefaultGitDepth { get; set; }
 
         /// <summary>
+        /// Pipelines older than the configured time are deleted.
+        /// </summary>
+        [Input("ciDeletePipelinesInSeconds")]
+        public Input<int>? CiDeletePipelinesInSeconds { get; set; }
+
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        [Input("ciIdTokenSubClaimComponents")]
+        private InputList<string>? _ciIdTokenSubClaimComponents;
+
+        /// <summary>
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+        /// </summary>
+        public InputList<string> CiIdTokenSubClaimComponents
+        {
+            get => _ciIdTokenSubClaimComponents ?? (_ciIdTokenSubClaimComponents = new InputList<string>());
+            set => _ciIdTokenSubClaimComponents = value;
+        }
 
         /// <summary>
         /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
@@ -1961,7 +2009,7 @@ namespace Pulumi.GitLab
         public Input<string>? SquashCommitTemplate { get; set; }
 
         /// <summary>
-        /// Squash commits when merge request. Valid values are `never`, `always`, `default_on`, or `default_off`. The default value is `default_off`.
+        /// Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         /// </summary>
         [Input("squashOption")]
         public Input<string>? SquashOption { get; set; }

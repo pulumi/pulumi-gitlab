@@ -29,7 +29,7 @@ class GroupMembershipArgs:
                  unassign_issuables_on_destroy: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupMembership resource.
-        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[builtins.int] group_id: The ID of the group.
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
@@ -53,7 +53,7 @@ class GroupMembershipArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[builtins.str]:
         """
-        Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
@@ -146,7 +146,7 @@ class _GroupMembershipState:
                  user_id: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
-        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.int] group_id: The ID of the group.
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
@@ -173,7 +173,7 @@ class _GroupMembershipState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
@@ -311,7 +311,7 @@ class GroupMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.int] group_id: The ID of the group.
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
@@ -435,7 +435,7 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.int] group_id: The ID of the group.
         :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
@@ -460,13 +460,13 @@ class GroupMembership(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[builtins.str]:
         """
-        Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
     @property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> pulumi.Output[Optional[builtins.str]]:
+    def expires_at(self) -> pulumi.Output[builtins.str]:
         """
         Expiration date for the group membership. Format: `YYYY-MM-DD`
         """
@@ -482,7 +482,7 @@ class GroupMembership(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> pulumi.Output[Optional[builtins.int]]:
+    def member_role_id(self) -> pulumi.Output[builtins.int]:
         """
         The ID of a custom member role. Only available for Ultimate instances.
         """

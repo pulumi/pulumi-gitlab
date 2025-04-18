@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-a-groups-subgroups)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-subgroups)
         /// 
         /// ## Example Usage
         /// 

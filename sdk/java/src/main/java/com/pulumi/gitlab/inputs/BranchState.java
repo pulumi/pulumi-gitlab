@@ -109,14 +109,14 @@ public final class BranchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bool, true if the branch has been merged into it&#39;s parent.
+     * Bool, true if the branch has been merged into its parent.
      * 
      */
     @Import(name="merged")
     private @Nullable Output<Boolean> merged;
 
     /**
-     * @return Bool, true if the branch has been merged into it&#39;s parent.
+     * @return Bool, true if the branch has been merged into its parent.
      * 
      */
     public Optional<Output<Boolean>> merged() {
@@ -370,7 +370,7 @@ public final class BranchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param merged Bool, true if the branch has been merged into it&#39;s parent.
+         * @param merged Bool, true if the branch has been merged into its parent.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class BranchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param merged Bool, true if the branch has been merged into it&#39;s parent.
+         * @param merged Bool, true if the branch has been merged into its parent.
          * 
          * @return builder
          * 

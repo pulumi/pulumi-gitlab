@@ -865,7 +865,7 @@ export interface GetProjectBranchesBranch {
      */
     developersCanPush: boolean;
     /**
-     * Bool, true if the branch has been merged into it's parent.
+     * Bool, true if the branch has been merged into its parent.
      */
     merged: boolean;
     /**
@@ -1954,9 +1954,17 @@ export interface GetProjectsProject {
      */
     ciDefaultGitDepth: number;
     /**
+     * Pipelines older than the configured time are deleted.
+     */
+    ciDeletePipelinesInSeconds: number;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled: boolean;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
+     */
+    ciIdTokenSubClaimComponents: string[];
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */

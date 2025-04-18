@@ -90,7 +90,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -101,6 +101,10 @@ export class GroupAccessToken extends pulumi.CustomResource {
      * Time the token has been created, RFC3339 format.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The description of the group access token.
+     */
+    public readonly description!: pulumi.Output<string>;
     /**
      * When the token will expire, YYYY-MM-DD format.
      */
@@ -150,6 +154,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -167,6 +172,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scopes'");
             }
             resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -190,7 +196,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
  */
 export interface GroupAccessTokenState {
     /**
-     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -201,6 +207,10 @@ export interface GroupAccessTokenState {
      * Time the token has been created, RFC3339 format.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The description of the group access token.
+     */
+    description?: pulumi.Input<string>;
     /**
      * When the token will expire, YYYY-MM-DD format.
      */
@@ -240,9 +250,13 @@ export interface GroupAccessTokenState {
  */
 export interface GroupAccessTokenArgs {
     /**
-     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * The description of the group access token.
+     */
+    description?: pulumi.Input<string>;
     /**
      * When the token will expire, YYYY-MM-DD format.
      */

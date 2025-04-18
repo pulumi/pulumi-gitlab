@@ -204,7 +204,7 @@ class ServiceCustomIssueTracker(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationCustomIssueTracker`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#custom-issue-tracker)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#custom-issue-tracker)
 
         ## Example Usage
 
@@ -261,7 +261,7 @@ class ServiceCustomIssueTracker(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationCustomIssueTracker`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#custom-issue-tracker)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#custom-issue-tracker)
 
         ## Example Usage
 

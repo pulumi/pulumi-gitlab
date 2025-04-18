@@ -296,7 +296,7 @@ def get_project_hook(hook_id: Optional[builtins.int] = None,
     """
     The `ProjectHook` data source allows to retrieve details about a hook in a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
 
     ## Example Usage
 
@@ -347,7 +347,7 @@ def get_project_hook_output(hook_id: Optional[pulumi.Input[builtins.int]] = None
     """
     The `ProjectHook` data source allows to retrieve details about a hook in a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-project-hook)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
 
     ## Example Usage
 

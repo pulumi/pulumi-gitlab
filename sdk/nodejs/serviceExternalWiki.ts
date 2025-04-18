@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This resource is deprecated. use `gitlab.IntegrationExternalWiki`instead!
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#external-wiki)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#external-wiki)
  *
  * ## Example Usage
  *

@@ -5194,7 +5194,7 @@ class GetProjectBranchesBranchResult(dict):
         :param builtins.bool default: Bool, true if branch is the default branch for the project.
         :param builtins.bool developers_can_merge: Bool, true if developer level access allows to merge branch.
         :param builtins.bool developers_can_push: Bool, true if developer level access allows git push.
-        :param builtins.bool merged: Bool, true if the branch has been merged into it's parent.
+        :param builtins.bool merged: Bool, true if the branch has been merged into its parent.
         :param builtins.str name: The name of the branch.
         :param builtins.bool protected: Bool, true if branch has branch protection.
         :param builtins.str web_url: URL that can be used to find the branch in a browser.
@@ -5253,7 +5253,7 @@ class GetProjectBranchesBranchResult(dict):
     @pulumi.getter
     def merged(self) -> builtins.bool:
         """
-        Bool, true if the branch has been merged into it's parent.
+        Bool, true if the branch has been merged into its parent.
         """
         return pulumi.get(self, "merged")
 
@@ -8034,7 +8034,9 @@ class GetProjectsProjectResult(dict):
                  builds_access_level: builtins.str,
                  ci_config_path: builtins.str,
                  ci_default_git_depth: builtins.int,
+                 ci_delete_pipelines_in_seconds: builtins.int,
                  ci_forward_deployment_enabled: builtins.bool,
+                 ci_id_token_sub_claim_components: Sequence[builtins.str],
                  ci_pipeline_variables_minimum_override_role: builtins.str,
                  ci_restrict_pipeline_cancellation_role: builtins.str,
                  container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
@@ -8136,7 +8138,9 @@ class GetProjectsProjectResult(dict):
         :param builtins.str builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         :param builtins.str ci_config_path: CI config file path for the project.
         :param builtins.int ci_default_git_depth: Default number of revisions for shallow cloning.
+        :param builtins.int ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param builtins.bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param Sequence[builtins.str] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
         :param builtins.str ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param builtins.str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -8237,7 +8241,9 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "builds_access_level", builds_access_level)
         pulumi.set(__self__, "ci_config_path", ci_config_path)
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
+        pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
         pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
@@ -8459,12 +8465,28 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "ci_default_git_depth")
 
     @property
+    @pulumi.getter(name="ciDeletePipelinesInSeconds")
+    def ci_delete_pipelines_in_seconds(self) -> builtins.int:
+        """
+        Pipelines older than the configured time are deleted.
+        """
+        return pulumi.get(self, "ci_delete_pipelines_in_seconds")
+
+    @property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> builtins.bool:
         """
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciIdTokenSubClaimComponents")
+    def ci_id_token_sub_claim_components(self) -> Sequence[builtins.str]:
+        """
+        Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "ci_id_token_sub_claim_components")
 
     @property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")

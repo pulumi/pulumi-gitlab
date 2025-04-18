@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.Group` data source allows details of a group to be retrieved by its id or full path.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#details-of-a-group)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#get-a-single-group)
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("gitlab:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#jira)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
  *
  * ## Example Usage
  *
@@ -132,7 +132,9 @@ export class IntegrationJira extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+     *
+     * @deprecated `projectKey` is deprecated. Use `projectKeys` instead.
      */
     public readonly projectKey!: pulumi.Output<string | undefined>;
     /**
@@ -292,7 +294,9 @@ export interface IntegrationJiraState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+     *
+     * @deprecated `projectKey` is deprecated. Use `projectKeys` instead.
      */
     projectKey?: pulumi.Input<string>;
     /**
@@ -371,7 +375,9 @@ export interface IntegrationJiraArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The short identifier for your JIRA project, all uppercase, e.g., PROJ.
+     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
+     *
+     * @deprecated `projectKey` is deprecated. Use `projectKeys` instead.
      */
     projectKey?: pulumi.Input<string>;
     /**

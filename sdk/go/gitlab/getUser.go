@@ -17,7 +17,7 @@ import (
 //
 // > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#single-user)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult

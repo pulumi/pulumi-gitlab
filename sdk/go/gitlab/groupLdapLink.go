@@ -48,7 +48,7 @@ import (
 type GroupLdapLink struct {
 	pulumi.CustomResourceState
 
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
@@ -60,10 +60,12 @@ type GroupLdapLink struct {
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The ID or URL-encoded path of the group
 	Group pulumi.StringOutput `pulumi:"group"`
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess pulumi.StringPtrOutput `pulumi:"groupAccess"`
 	// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
 	LdapProvider pulumi.StringOutput `pulumi:"ldapProvider"`
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+	MemberRoleId pulumi.IntOutput `pulumi:"memberRoleId"`
 }
 
 // NewGroupLdapLink registers a new resource with the given unique name, arguments, and options.
@@ -102,7 +104,7 @@ func GetGroupLdapLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupLdapLink resources.
 type groupLdapLinkState struct {
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -114,14 +116,16 @@ type groupLdapLinkState struct {
 	Force *bool `pulumi:"force"`
 	// The ID or URL-encoded path of the group
 	Group *string `pulumi:"group"`
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
 	LdapProvider *string `pulumi:"ldapProvider"`
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+	MemberRoleId *int `pulumi:"memberRoleId"`
 }
 
 type GroupLdapLinkState struct {
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrInput
@@ -133,10 +137,12 @@ type GroupLdapLinkState struct {
 	Force pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the group
 	Group pulumi.StringPtrInput
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess pulumi.StringPtrInput
 	// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
 	LdapProvider pulumi.StringPtrInput
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+	MemberRoleId pulumi.IntPtrInput
 }
 
 func (GroupLdapLinkState) ElementType() reflect.Type {
@@ -144,7 +150,7 @@ func (GroupLdapLinkState) ElementType() reflect.Type {
 }
 
 type groupLdapLinkArgs struct {
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -156,15 +162,17 @@ type groupLdapLinkArgs struct {
 	Force *bool `pulumi:"force"`
 	// The ID or URL-encoded path of the group
 	Group string `pulumi:"group"`
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
 	LdapProvider string `pulumi:"ldapProvider"`
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+	MemberRoleId *int `pulumi:"memberRoleId"`
 }
 
 // The set of arguments for constructing a GroupLdapLink resource.
 type GroupLdapLinkArgs struct {
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrInput
@@ -176,10 +184,12 @@ type GroupLdapLinkArgs struct {
 	Force pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the group
 	Group pulumi.StringInput
-	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+	// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess pulumi.StringPtrInput
 	// The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
 	LdapProvider pulumi.StringInput
+	// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+	MemberRoleId pulumi.IntPtrInput
 }
 
 func (GroupLdapLinkArgs) ElementType() reflect.Type {
@@ -269,7 +279,7 @@ func (o GroupLdapLinkOutput) ToGroupLdapLinkOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 //
 // Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 func (o GroupLdapLinkOutput) AccessLevel() pulumi.StringPtrOutput {
@@ -296,7 +306,7 @@ func (o GroupLdapLinkOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
-// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 func (o GroupLdapLinkOutput) GroupAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringPtrOutput { return v.GroupAccess }).(pulumi.StringPtrOutput)
 }
@@ -304,6 +314,11 @@ func (o GroupLdapLinkOutput) GroupAccess() pulumi.StringPtrOutput {
 // The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
 func (o GroupLdapLinkOutput) LdapProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLdapLink) pulumi.StringOutput { return v.LdapProvider }).(pulumi.StringOutput)
+}
+
+// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role.
+func (o GroupLdapLinkOutput) MemberRoleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupLdapLink) pulumi.IntOutput { return v.MemberRoleId }).(pulumi.IntOutput)
 }
 
 type GroupLdapLinkArrayOutput struct{ *pulumi.OutputState }

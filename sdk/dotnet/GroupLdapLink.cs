@@ -48,7 +48,7 @@ namespace Pulumi.GitLab
     public partial class GroupLdapLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Output("groupAccess")]
         public Output<string?> GroupAccess { get; private set; } = null!;
@@ -88,6 +88,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("ldapProvider")]
         public Output<string> LdapProvider { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+        /// </summary>
+        [Output("memberRoleId")]
+        public Output<int> MemberRoleId { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,7 +142,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLdapLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -166,7 +172,7 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -177,6 +183,12 @@ namespace Pulumi.GitLab
         [Input("ldapProvider", required: true)]
         public Input<string> LdapProvider { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
+
         public GroupLdapLinkArgs()
         {
         }
@@ -186,7 +198,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLdapLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -216,7 +228,7 @@ namespace Pulumi.GitLab
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+        /// Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }
@@ -226,6 +238,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ldapProvider")]
         public Input<string>? LdapProvider { get; set; }
+
+        /// <summary>
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+        /// </summary>
+        [Input("memberRoleId")]
+        public Input<int>? MemberRoleId { get; set; }
 
         public GroupLdapLinkState()
         {

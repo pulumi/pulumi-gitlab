@@ -13,7 +13,7 @@ import (
 
 // The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-single-project)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#get-a-single-project)
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
@@ -28,6 +28,8 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 type LookupProjectArgs struct {
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth *int `pulumi:"ciDefaultGitDepth"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The integer that uniquely identifies the project within the gitlab install.
 	Id *string `pulumi:"id"`
 	// The path of the repository with namespace.
@@ -62,6 +64,10 @@ type LookupProjectResult struct {
 	CiConfigPath string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds int `pulumi:"ciDeletePipelinesInSeconds"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -195,6 +201,8 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 type LookupProjectOutputArgs struct {
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth pulumi.IntPtrInput `pulumi:"ciDefaultGitDepth"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents pulumi.StringArrayInput `pulumi:"ciIdTokenSubClaimComponents"`
 	// The integer that uniquely identifies the project within the gitlab install.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The path of the repository with namespace.
@@ -280,6 +288,16 @@ func (o LookupProjectResultOutput) CiConfigPath() pulumi.StringOutput {
 // Default number of revisions for shallow cloning.
 func (o LookupProjectResultOutput) CiDefaultGitDepth() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
+}
+
+// Pipelines older than the configured time are deleted.
+func (o LookupProjectResultOutput) CiDeletePipelinesInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectResult) int { return v.CiDeletePipelinesInSeconds }).(pulumi.IntOutput)
+}
+
+// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+func (o LookupProjectResultOutput) CiIdTokenSubClaimComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []string { return v.CiIdTokenSubClaimComponents }).(pulumi.StringArrayOutput)
 }
 
 // The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`

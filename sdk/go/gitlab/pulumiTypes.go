@@ -8791,7 +8791,7 @@ type GetProjectBranchesBranch struct {
 	DevelopersCanMerge bool `pulumi:"developersCanMerge"`
 	// Bool, true if developer level access allows git push.
 	DevelopersCanPush bool `pulumi:"developersCanPush"`
-	// Bool, true if the branch has been merged into it's parent.
+	// Bool, true if the branch has been merged into its parent.
 	Merged bool `pulumi:"merged"`
 	// The name of the branch.
 	Name string `pulumi:"name"`
@@ -8823,7 +8823,7 @@ type GetProjectBranchesBranchArgs struct {
 	DevelopersCanMerge pulumi.BoolInput `pulumi:"developersCanMerge"`
 	// Bool, true if developer level access allows git push.
 	DevelopersCanPush pulumi.BoolInput `pulumi:"developersCanPush"`
-	// Bool, true if the branch has been merged into it's parent.
+	// Bool, true if the branch has been merged into its parent.
 	Merged pulumi.BoolInput `pulumi:"merged"`
 	// The name of the branch.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -8909,7 +8909,7 @@ func (o GetProjectBranchesBranchOutput) DevelopersCanPush() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.DevelopersCanPush }).(pulumi.BoolOutput)
 }
 
-// Bool, true if the branch has been merged into it's parent.
+// Bool, true if the branch has been merged into its parent.
 func (o GetProjectBranchesBranchOutput) Merged() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.Merged }).(pulumi.BoolOutput)
 }
@@ -13437,8 +13437,12 @@ type GetProjectsProject struct {
 	CiConfigPath string `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth int `pulumi:"ciDefaultGitDepth"`
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds int `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled bool `pulumi:"ciForwardDeploymentEnabled"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -13652,8 +13656,12 @@ type GetProjectsProjectArgs struct {
 	CiConfigPath pulumi.StringInput `pulumi:"ciConfigPath"`
 	// Default number of revisions for shallow cloning.
 	CiDefaultGitDepth pulumi.IntInput `pulumi:"ciDefaultGitDepth"`
+	// Pipelines older than the configured time are deleted.
+	CiDeletePipelinesInSeconds pulumi.IntInput `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolInput `pulumi:"ciForwardDeploymentEnabled"`
+	// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
+	CiIdTokenSubClaimComponents pulumi.StringArrayInput `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringInput `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -13957,9 +13965,19 @@ func (o GetProjectsProjectOutput) CiDefaultGitDepth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.CiDefaultGitDepth }).(pulumi.IntOutput)
 }
 
+// Pipelines older than the configured time are deleted.
+func (o GetProjectsProjectOutput) CiDeletePipelinesInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectsProject) int { return v.CiDeletePipelinesInSeconds }).(pulumi.IntOutput)
+}
+
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o GetProjectsProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
+func (o GetProjectsProjectOutput) CiIdTokenSubClaimComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectsProject) []string { return v.CiIdTokenSubClaimComponents }).(pulumi.StringArrayOutput)
 }
 
 // The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`

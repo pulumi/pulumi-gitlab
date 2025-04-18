@@ -80,7 +80,7 @@ def get_group_hooks(group: Optional[builtins.str] = None,
     """
     The `get_group_hooks` data source allows to retrieve details about hooks in a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
 
 
     :param builtins.str group: The ID or full path of the group.
@@ -99,7 +99,7 @@ def get_group_hooks_output(group: Optional[pulumi.Input[builtins.str]] = None,
     """
     The `get_group_hooks` data source allows to retrieve details about hooks in a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-group-hooks)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
 
 
     :param builtins.str group: The ID or full path of the group.

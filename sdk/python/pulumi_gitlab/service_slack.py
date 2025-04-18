@@ -858,7 +858,7 @@ class ServiceSlack(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationSlack`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#slack-notifications)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
 
         ## Example Usage
 
@@ -938,7 +938,7 @@ class ServiceSlack(pulumi.CustomResource):
 
         > This resource is deprecated. use `IntegrationSlack`instead!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#slack-notifications)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
 
         ## Example Usage
 

@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Bool, true if the branch has been merged into it's parent.
+        /// Bool, true if the branch has been merged into its parent.
         /// </summary>
         public readonly bool Merged;
         /// <summary>

@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.IntegrationCustomIssueTracker` resource allows to manage the lifecycle of a project integration with Custom Issue Tracker.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#custom-issue-tracker)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#custom-issue-tracker)
     /// 
     /// ## Example Usage
     /// 

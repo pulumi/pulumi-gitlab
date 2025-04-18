@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
     public partial class ProjectAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -96,6 +96,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the project access token.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
@@ -196,10 +202,16 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
+
+        /// <summary>
+        /// The description of the project access token.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
@@ -246,7 +258,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -262,6 +274,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The description of the project access token.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.

@@ -229,7 +229,7 @@ class IntegrationGithub(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
 
         ## Example Usage
 
@@ -288,7 +288,7 @@ class IntegrationGithub(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/integrations/#github)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
 
         ## Example Usage
 

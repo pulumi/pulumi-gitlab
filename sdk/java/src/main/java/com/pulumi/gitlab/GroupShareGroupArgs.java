@@ -33,14 +33,14 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="groupAccess", required=true)
     private Output<String> groupAccess;
 
     /**
-     * @return The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<String> groupAccess() {
@@ -142,7 +142,7 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param groupAccess The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param groupAccess The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
