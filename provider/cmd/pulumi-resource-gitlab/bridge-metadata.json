@@ -187,6 +187,10 @@
                 "current": "gitlab:index/groupCustomAttribute:GroupCustomAttribute",
                 "majorVersion": 8
             },
+            "gitlab_group_dependency_proxy": {
+                "current": "gitlab:index/groupDependencyProxy:GroupDependencyProxy",
+                "majorVersion": 8
+            },
             "gitlab_group_epic_board": {
                 "current": "gitlab:index/groupEpicBoard:GroupEpicBoard",
                 "majorVersion": 8,
@@ -386,6 +390,9 @@
                 "current": "gitlab:index/project:Project",
                 "majorVersion": 8,
                 "fields": {
+                    "ci_id_token_sub_claim_components": {
+                        "maxItemsOne": false
+                    },
                     "container_expiration_policy": {
                         "maxItemsOne": true
                     },
@@ -940,6 +947,9 @@
                 "current": "gitlab:index/getProject:getProject",
                 "majorVersion": 8,
                 "fields": {
+                    "ci_id_token_sub_claim_components": {
+                        "maxItemsOne": false
+                    },
                     "container_expiration_policy": {
                         "maxItemsOne": false
                     },
@@ -1221,6 +1231,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "ci_id_token_sub_claim_components": {
+                                    "maxItemsOne": false
+                                },
                                 "container_expiration_policy": {
                                     "maxItemsOne": false
                                 },
@@ -1363,6 +1376,7 @@
             "gitlab:index/groupBadge:GroupBadge": 1,
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
+            "gitlab:index/groupDependencyProxy:GroupDependencyProxy": 1,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 1,
             "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,

@@ -5,10 +5,10 @@ Subject: [PATCH] fork
 
 
 diff --git a/internal/provider/sdk/resource_gitlab_project.go b/internal/provider/sdk/resource_gitlab_project.go
-index f7b72932..dd9922f8 100644
+index 5b4f4ffa..7f1e3d9a 100644
 --- a/internal/provider/sdk/resource_gitlab_project.go
 +++ b/internal/provider/sdk/resource_gitlab_project.go
-@@ -410,33 +410,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
+@@ -412,33 +412,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
  		ValidateFunc: validation.StringInSlice(validPagesAccessLevelValues, true),
  	},
  	// The GitLab API requires that import_url is also set when mirror options are used
