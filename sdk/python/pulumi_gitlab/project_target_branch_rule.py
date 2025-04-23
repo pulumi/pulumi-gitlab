@@ -127,6 +127,9 @@ class _ProjectTargetBranchRuleState:
 
 
 class ProjectTargetBranchRule(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

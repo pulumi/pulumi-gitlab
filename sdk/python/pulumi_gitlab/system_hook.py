@@ -273,6 +273,9 @@ class _SystemHookState:
 
 
 class SystemHook(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/systemHook:SystemHook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

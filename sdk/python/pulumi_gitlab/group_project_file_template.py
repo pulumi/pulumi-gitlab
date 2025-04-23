@@ -104,6 +104,9 @@ class _GroupProjectFileTemplateState:
 
 
 class GroupProjectFileTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

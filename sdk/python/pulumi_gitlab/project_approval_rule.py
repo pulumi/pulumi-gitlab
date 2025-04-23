@@ -352,6 +352,9 @@ class _ProjectApprovalRuleState:
 
 
 class ProjectApprovalRule(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectApprovalRule:ProjectApprovalRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

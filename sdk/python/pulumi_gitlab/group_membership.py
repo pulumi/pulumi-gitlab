@@ -255,6 +255,9 @@ class _GroupMembershipState:
 
 
 class GroupMembership(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupMembership:GroupMembership"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

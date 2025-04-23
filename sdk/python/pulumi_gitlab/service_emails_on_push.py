@@ -336,6 +336,9 @@ class _ServiceEmailsOnPushState:
 
 
 class ServiceEmailsOnPush(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

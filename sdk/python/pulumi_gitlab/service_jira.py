@@ -639,6 +639,9 @@ class _ServiceJiraState:
 
 
 class ServiceJira(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/serviceJira:ServiceJira"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

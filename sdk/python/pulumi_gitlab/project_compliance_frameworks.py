@@ -96,6 +96,9 @@ class _ProjectComplianceFrameworksState:
 
 
 class ProjectComplianceFrameworks(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

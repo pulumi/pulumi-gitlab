@@ -338,6 +338,9 @@ class _ProjectAccessTokenState:
 
 
 class ProjectAccessToken(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectAccessToken:ProjectAccessToken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

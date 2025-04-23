@@ -159,6 +159,9 @@ class _ProjectFreezePeriodState:
 
 
 class ProjectFreezePeriod(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectFreezePeriod:ProjectFreezePeriod"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

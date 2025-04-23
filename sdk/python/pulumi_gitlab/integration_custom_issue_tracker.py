@@ -191,6 +191,9 @@ class _IntegrationCustomIssueTrackerState:
 
 
 class IntegrationCustomIssueTracker(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

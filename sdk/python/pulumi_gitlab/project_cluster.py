@@ -479,6 +479,9 @@ class _ProjectClusterState:
 
 
 class ProjectCluster(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectCluster:ProjectCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

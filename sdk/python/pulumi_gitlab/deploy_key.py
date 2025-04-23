@@ -175,6 +175,9 @@ class _DeployKeyState:
 
 
 class DeployKey(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/deployKey:DeployKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

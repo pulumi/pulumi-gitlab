@@ -191,6 +191,9 @@ class _GroupShareGroupState:
 
 
 class GroupShareGroup(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupShareGroup:GroupShareGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

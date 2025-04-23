@@ -127,6 +127,9 @@ class _GroupCustomAttributeState:
 
 
 class GroupCustomAttribute(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupCustomAttribute:GroupCustomAttribute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

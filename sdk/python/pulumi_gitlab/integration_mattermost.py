@@ -768,6 +768,9 @@ class _IntegrationMattermostState:
 
 
 class IntegrationMattermost(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationMattermost:IntegrationMattermost"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

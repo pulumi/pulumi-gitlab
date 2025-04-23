@@ -351,6 +351,9 @@ class _ProjectVariableState:
 
 
 class ProjectVariable(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectVariable:ProjectVariable"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

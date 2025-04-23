@@ -824,6 +824,9 @@ class _ServiceSlackState:
 
 
 class ServiceSlack(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/serviceSlack:ServiceSlack"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
