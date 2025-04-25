@@ -770,6 +770,9 @@ class _ProjectHookState:
 
 
 class ProjectHook(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectHook:ProjectHook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

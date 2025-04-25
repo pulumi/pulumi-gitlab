@@ -470,6 +470,9 @@ class _IntegrationTelegramState:
 
 
 class IntegrationTelegram(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationTelegram:IntegrationTelegram"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

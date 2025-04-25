@@ -191,6 +191,9 @@ class _ProjectWikiPageState:
 
 
 class ProjectWikiPage(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectWikiPage:ProjectWikiPage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

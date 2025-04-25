@@ -163,6 +163,9 @@ class _ValueStreamAnalyticsState:
 
 
 class ValueStreamAnalytics(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

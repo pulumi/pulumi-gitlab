@@ -127,6 +127,9 @@ class _UserIdentityState:
 
 
 class UserIdentity(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/userIdentity:UserIdentity"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

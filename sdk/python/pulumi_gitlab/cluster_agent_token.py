@@ -256,6 +256,9 @@ class _ClusterAgentTokenState:
 
 
 class ClusterAgentToken(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/clusterAgentToken:ClusterAgentToken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

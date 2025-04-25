@@ -191,6 +191,9 @@ class _ProjectMembershipState:
 
 
 class ProjectMembership(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectMembership:ProjectMembership"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

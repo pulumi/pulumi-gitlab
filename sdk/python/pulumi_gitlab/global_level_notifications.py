@@ -610,6 +610,9 @@ class _GlobalLevelNotificationsState:
 
 
 class GlobalLevelNotifications(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/globalLevelNotifications:GlobalLevelNotifications"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

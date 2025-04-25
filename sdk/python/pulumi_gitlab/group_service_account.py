@@ -145,6 +145,9 @@ class _GroupServiceAccountState:
 
 
 class GroupServiceAccount(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupServiceAccount:GroupServiceAccount"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
