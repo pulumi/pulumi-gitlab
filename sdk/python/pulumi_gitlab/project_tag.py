@@ -226,6 +226,9 @@ class _ProjectTagState:
 
 
 class ProjectTag(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectTag:ProjectTag"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

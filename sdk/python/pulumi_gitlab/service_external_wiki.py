@@ -176,6 +176,9 @@ class _ServiceExternalWikiState:
 
 
 class ServiceExternalWiki(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/serviceExternalWiki:ServiceExternalWiki"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

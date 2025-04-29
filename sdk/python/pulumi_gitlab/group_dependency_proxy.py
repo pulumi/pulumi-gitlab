@@ -161,6 +161,9 @@ class _GroupDependencyProxyState:
 
 
 class GroupDependencyProxy(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupDependencyProxy:GroupDependencyProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

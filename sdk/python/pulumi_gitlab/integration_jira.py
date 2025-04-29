@@ -639,6 +639,9 @@ class _IntegrationJiraState:
 
 
 class IntegrationJira(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationJira:IntegrationJira"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

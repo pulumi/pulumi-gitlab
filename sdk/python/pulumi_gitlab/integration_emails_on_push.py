@@ -336,6 +336,9 @@ class _IntegrationEmailsOnPushState:
 
 
 class IntegrationEmailsOnPush(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

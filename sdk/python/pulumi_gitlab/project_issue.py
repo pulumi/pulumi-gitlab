@@ -978,6 +978,9 @@ class _ProjectIssueState:
 
 
 class ProjectIssue(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectIssue:ProjectIssue"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

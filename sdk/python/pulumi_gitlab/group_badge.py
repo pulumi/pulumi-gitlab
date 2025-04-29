@@ -191,6 +191,9 @@ class _GroupBadgeState:
 
 
 class GroupBadge(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupBadge:GroupBadge"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

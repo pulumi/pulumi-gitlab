@@ -215,6 +215,9 @@ class _ServiceGithubState:
 
 
 class ServiceGithub(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/serviceGithub:ServiceGithub"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

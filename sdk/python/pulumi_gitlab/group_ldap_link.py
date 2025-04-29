@@ -296,6 +296,9 @@ class _GroupLdapLinkState:
 
 
 class GroupLdapLink(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupLdapLink:GroupLdapLink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

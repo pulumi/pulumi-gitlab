@@ -272,6 +272,9 @@ class _ProjectMirrorState:
 
 
 class ProjectMirror(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectMirror:ProjectMirror"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

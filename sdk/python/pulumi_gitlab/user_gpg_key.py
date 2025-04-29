@@ -129,6 +129,9 @@ class _UserGpgKeyState:
 
 
 class UserGpgKey(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/userGpgKey:UserGpgKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
