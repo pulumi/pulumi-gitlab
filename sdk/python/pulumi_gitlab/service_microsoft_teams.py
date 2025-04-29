@@ -496,6 +496,9 @@ class _ServiceMicrosoftTeamsState:
 
 
 class ServiceMicrosoftTeams(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

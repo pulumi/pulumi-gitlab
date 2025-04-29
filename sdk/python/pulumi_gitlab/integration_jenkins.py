@@ -335,6 +335,9 @@ class _IntegrationJenkinsState:
 
 
 class IntegrationJenkins(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationJenkins:IntegrationJenkins"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

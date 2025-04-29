@@ -257,6 +257,9 @@ class _ProjectLevelMrApprovalsState:
 
 
 class ProjectLevelMrApprovals(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

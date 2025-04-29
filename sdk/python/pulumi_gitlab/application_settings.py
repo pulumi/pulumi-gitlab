@@ -10076,6 +10076,9 @@ class _ApplicationSettingsState:
 
 
 class ApplicationSettings(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/applicationSettings:ApplicationSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

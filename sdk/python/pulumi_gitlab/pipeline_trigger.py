@@ -128,6 +128,9 @@ class _PipelineTriggerState:
 
 
 class PipelineTrigger(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/pipelineTrigger:PipelineTrigger"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

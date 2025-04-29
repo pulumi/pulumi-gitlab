@@ -338,6 +338,9 @@ class _GroupAccessTokenState:
 
 
 class GroupAccessToken(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupAccessToken:GroupAccessToken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

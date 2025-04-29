@@ -131,6 +131,9 @@ class _GroupEpicBoardState:
 
 
 class GroupEpicBoard(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/groupEpicBoard:GroupEpicBoard"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

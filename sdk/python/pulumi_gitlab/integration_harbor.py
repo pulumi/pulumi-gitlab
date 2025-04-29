@@ -237,6 +237,9 @@ class _IntegrationHarborState:
 
 
 class IntegrationHarbor(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationHarbor:IntegrationHarbor"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

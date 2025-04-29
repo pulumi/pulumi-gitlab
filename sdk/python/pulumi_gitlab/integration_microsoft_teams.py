@@ -496,6 +496,9 @@ class _IntegrationMicrosoftTeamsState:
 
 
 class IntegrationMicrosoftTeams(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

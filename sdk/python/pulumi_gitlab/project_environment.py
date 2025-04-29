@@ -433,6 +433,9 @@ class _ProjectEnvironmentState:
 
 
 class ProjectEnvironment(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/projectEnvironment:ProjectEnvironment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

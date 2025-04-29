@@ -355,6 +355,9 @@ class _RunnerState:
 
 
 class Runner(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/runner:Runner"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

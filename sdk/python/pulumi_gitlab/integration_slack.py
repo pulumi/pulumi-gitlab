@@ -824,6 +824,9 @@ class _IntegrationSlackState:
 
 
 class IntegrationSlack(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/integrationSlack:IntegrationSlack"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

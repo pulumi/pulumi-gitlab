@@ -190,6 +190,9 @@ class _PipelineScheduleVariableState:
 
 
 class PipelineScheduleVariable(pulumi.CustomResource):
+
+    pulumi_type = "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
