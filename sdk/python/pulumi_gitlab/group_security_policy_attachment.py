@@ -127,10 +127,8 @@ class _GroupSecurityPolicyAttachmentState:
         pulumi.set(self, "policy_project_graphql_id", value)
 
 
+@pulumi.type_token("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment")
 class GroupSecurityPolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

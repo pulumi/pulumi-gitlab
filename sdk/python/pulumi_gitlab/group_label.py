@@ -175,10 +175,8 @@ class _GroupLabelState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gitlab:index/groupLabel:GroupLabel")
 class GroupLabel(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupLabel:GroupLabel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

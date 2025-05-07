@@ -295,10 +295,8 @@ class _GroupLdapLinkState:
         pulumi.set(self, "member_role_id", value)
 
 
+@pulumi.type_token("gitlab:index/groupLdapLink:GroupLdapLink")
 class GroupLdapLink(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupLdapLink:GroupLdapLink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

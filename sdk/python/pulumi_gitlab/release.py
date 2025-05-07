@@ -449,10 +449,8 @@ class _ReleaseState:
         pulumi.set(self, "upcoming_release", value)
 
 
+@pulumi.type_token("gitlab:index/release:Release")
 class Release(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/release:Release"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

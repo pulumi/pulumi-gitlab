@@ -158,10 +158,8 @@ class _GroupSamlLinkState:
         pulumi.set(self, "saml_group_name", value)
 
 
+@pulumi.type_token("gitlab:index/groupSamlLink:GroupSamlLink")
 class GroupSamlLink(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupSamlLink:GroupSamlLink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

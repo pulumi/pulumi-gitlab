@@ -175,10 +175,8 @@ class _LabelState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gitlab:index/label:Label")
 class Label(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/label:Label"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

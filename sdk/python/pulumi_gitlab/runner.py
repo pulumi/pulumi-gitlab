@@ -354,10 +354,8 @@ class _RunnerState:
         pulumi.set(self, "tag_lists", value)
 
 
+@pulumi.type_token("gitlab:index/runner:Runner")
 class Runner(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/runner:Runner"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

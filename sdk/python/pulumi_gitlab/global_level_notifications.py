@@ -609,10 +609,8 @@ class _GlobalLevelNotificationsState:
         pulumi.set(self, "success_pipeline", value)
 
 
+@pulumi.type_token("gitlab:index/globalLevelNotifications:GlobalLevelNotifications")
 class GlobalLevelNotifications(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/globalLevelNotifications:GlobalLevelNotifications"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

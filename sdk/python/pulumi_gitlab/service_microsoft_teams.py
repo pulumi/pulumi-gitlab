@@ -495,10 +495,8 @@ class _ServiceMicrosoftTeamsState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams")
 class ServiceMicrosoftTeams(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -469,10 +469,8 @@ class _IntegrationTelegramState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/integrationTelegram:IntegrationTelegram")
 class IntegrationTelegram(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationTelegram:IntegrationTelegram"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

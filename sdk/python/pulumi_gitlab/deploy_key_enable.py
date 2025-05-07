@@ -191,10 +191,8 @@ class _DeployKeyEnableState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gitlab:index/deployKeyEnable:DeployKeyEnable")
 class DeployKeyEnable(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/deployKeyEnable:DeployKeyEnable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

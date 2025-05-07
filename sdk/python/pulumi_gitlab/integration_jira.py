@@ -638,10 +638,8 @@ class _IntegrationJiraState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gitlab:index/integrationJira:IntegrationJira")
 class IntegrationJira(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationJira:IntegrationJira"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

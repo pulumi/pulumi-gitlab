@@ -258,10 +258,8 @@ class _ProjectIssueBoardState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("gitlab:index/projectIssueBoard:ProjectIssueBoard")
 class ProjectIssueBoard(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectIssueBoard:ProjectIssueBoard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

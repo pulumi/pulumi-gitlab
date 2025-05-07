@@ -238,10 +238,8 @@ class _ComplianceFrameworkState:
         pulumi.set(self, "pipeline_configuration_full_path", value)
 
 
+@pulumi.type_token("gitlab:index/complianceFramework:ComplianceFramework")
 class ComplianceFramework(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/complianceFramework:ComplianceFramework"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

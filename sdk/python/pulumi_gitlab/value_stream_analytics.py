@@ -162,10 +162,8 @@ class _ValueStreamAnalyticsState:
         pulumi.set(self, "stages", value)
 
 
+@pulumi.type_token("gitlab:index/valueStreamAnalytics:ValueStreamAnalytics")
 class ValueStreamAnalytics(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

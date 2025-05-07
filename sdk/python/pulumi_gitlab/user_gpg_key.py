@@ -128,10 +128,8 @@ class _UserGpgKeyState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("gitlab:index/userGpgKey:UserGpgKey")
 class UserGpgKey(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/userGpgKey:UserGpgKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

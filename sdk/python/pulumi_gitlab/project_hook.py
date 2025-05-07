@@ -769,10 +769,8 @@ class _ProjectHookState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/projectHook:ProjectHook")
 class ProjectHook(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectHook:ProjectHook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

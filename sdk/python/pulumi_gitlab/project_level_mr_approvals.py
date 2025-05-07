@@ -256,10 +256,8 @@ class _ProjectLevelMrApprovalsState:
         pulumi.set(self, "selective_code_owner_removals", value)
 
 
+@pulumi.type_token("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals")
 class ProjectLevelMrApprovals(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

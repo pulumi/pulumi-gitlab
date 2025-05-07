@@ -270,10 +270,8 @@ class _ReleaseLinkState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("gitlab:index/releaseLink:ReleaseLink")
 class ReleaseLink(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/releaseLink:ReleaseLink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

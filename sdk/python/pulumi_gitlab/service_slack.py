@@ -823,10 +823,8 @@ class _ServiceSlackState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/serviceSlack:ServiceSlack")
 class ServiceSlack(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/serviceSlack:ServiceSlack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -190,10 +190,8 @@ class _ServiceCustomIssueTrackerState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker")
 class ServiceCustomIssueTracker(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

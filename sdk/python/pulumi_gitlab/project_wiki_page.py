@@ -190,10 +190,8 @@ class _ProjectWikiPageState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gitlab:index/projectWikiPage:ProjectWikiPage")
 class ProjectWikiPage(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectWikiPage:ProjectWikiPage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -190,10 +190,8 @@ class _ProjectMembershipState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("gitlab:index/projectMembership:ProjectMembership")
 class ProjectMembership(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectMembership:ProjectMembership"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -95,10 +95,8 @@ class _ProjectRunnerEnablementState:
         pulumi.set(self, "runner_id", value)
 
 
+@pulumi.type_token("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement")
 class ProjectRunnerEnablement(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

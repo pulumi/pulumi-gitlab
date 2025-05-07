@@ -190,10 +190,8 @@ class _GroupShareGroupState:
         pulumi.set(self, "share_group_id", value)
 
 
+@pulumi.type_token("gitlab:index/groupShareGroup:GroupShareGroup")
 class GroupShareGroup(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupShareGroup:GroupShareGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

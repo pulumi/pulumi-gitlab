@@ -3439,10 +3439,8 @@ class _ProjectState:
         pulumi.set(self, "wiki_enabled", value)
 
 
+@pulumi.type_token("gitlab:index/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

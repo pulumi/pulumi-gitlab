@@ -271,10 +271,8 @@ class _PagesDomainState:
         pulumi.set(self, "verified", value)
 
 
+@pulumi.type_token("gitlab:index/pagesDomain:PagesDomain")
 class PagesDomain(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/pagesDomain:PagesDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

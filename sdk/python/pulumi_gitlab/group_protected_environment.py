@@ -160,10 +160,8 @@ class _GroupProtectedEnvironmentState:
         pulumi.set(self, "group", value)
 
 
+@pulumi.type_token("gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment")
 class GroupProtectedEnvironment(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

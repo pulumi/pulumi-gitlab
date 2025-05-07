@@ -194,10 +194,8 @@ class _GroupIssueBoardState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gitlab:index/groupIssueBoard:GroupIssueBoard")
 class GroupIssueBoard(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupIssueBoard:GroupIssueBoard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

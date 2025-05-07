@@ -400,10 +400,8 @@ class _UserRunnerState:
         pulumi.set(self, "untagged", value)
 
 
+@pulumi.type_token("gitlab:index/userRunner:UserRunner")
 class UserRunner(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/userRunner:UserRunner"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

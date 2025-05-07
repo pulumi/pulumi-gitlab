@@ -126,10 +126,8 @@ class _GroupCustomAttributeState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("gitlab:index/groupCustomAttribute:GroupCustomAttribute")
 class GroupCustomAttribute(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupCustomAttribute:GroupCustomAttribute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

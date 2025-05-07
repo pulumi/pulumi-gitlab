@@ -478,10 +478,8 @@ class _ProjectClusterState:
         pulumi.set(self, "provider_type", value)
 
 
+@pulumi.type_token("gitlab:index/projectCluster:ProjectCluster")
 class ProjectCluster(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectCluster:ProjectCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

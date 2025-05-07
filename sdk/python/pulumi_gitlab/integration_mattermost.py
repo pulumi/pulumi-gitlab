@@ -767,10 +767,8 @@ class _IntegrationMattermostState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/integrationMattermost:IntegrationMattermost")
 class IntegrationMattermost(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationMattermost:IntegrationMattermost"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

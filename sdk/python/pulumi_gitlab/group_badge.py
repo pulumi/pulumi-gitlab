@@ -190,10 +190,8 @@ class _GroupBadgeState:
         pulumi.set(self, "rendered_link_url", value)
 
 
+@pulumi.type_token("gitlab:index/groupBadge:GroupBadge")
 class GroupBadge(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupBadge:GroupBadge"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

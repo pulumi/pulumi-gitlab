@@ -175,10 +175,8 @@ class _IntegrationExternalWikiState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("gitlab:index/integrationExternalWiki:IntegrationExternalWiki")
 class IntegrationExternalWiki(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationExternalWiki:IntegrationExternalWiki"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1082,10 +1082,8 @@ class _GroupState:
         pulumi.set(self, "wiki_access_level", value)
 
 
+@pulumi.type_token("gitlab:index/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
