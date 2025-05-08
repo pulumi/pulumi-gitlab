@@ -5306,6 +5306,9 @@
                 "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is\nused in this provider for authentication (using Bearer authorization token). See\nhttps://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.\n",
                 "secret": true
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:gitlab/terraformConfig"
         }
     },
     "resources": {
@@ -30336,6 +30339,35 @@
                 "required": [
                     "users",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:gitlab/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:gitlab"
+                    }
+                },
+                "type": "pulumi:providers:gitlab/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
