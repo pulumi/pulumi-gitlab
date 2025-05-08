@@ -255,10 +255,8 @@ class _InstanceVariableState:
         pulumi.set(self, "variable_type", value)
 
 
+@pulumi.type_token("gitlab:index/instanceVariable:InstanceVariable")
 class InstanceVariable(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/instanceVariable:InstanceVariable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

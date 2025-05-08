@@ -190,10 +190,8 @@ class _IntegrationCustomIssueTrackerState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker")
 class IntegrationCustomIssueTracker(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

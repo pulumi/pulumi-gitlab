@@ -495,10 +495,8 @@ class _IntegrationMicrosoftTeamsState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams")
 class IntegrationMicrosoftTeams(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

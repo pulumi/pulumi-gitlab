@@ -10075,10 +10075,8 @@ class _ApplicationSettingsState:
         pulumi.set(self, "wiki_page_max_content_bytes", value)
 
 
+@pulumi.type_token("gitlab:index/applicationSettings:ApplicationSettings")
 class ApplicationSettings(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/applicationSettings:ApplicationSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

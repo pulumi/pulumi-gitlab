@@ -277,10 +277,8 @@ class _PipelineScheduleState:
         pulumi.set(self, "take_ownership", value)
 
 
+@pulumi.type_token("gitlab:index/pipelineSchedule:PipelineSchedule")
 class PipelineSchedule(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/pipelineSchedule:PipelineSchedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

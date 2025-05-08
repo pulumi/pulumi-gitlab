@@ -432,10 +432,8 @@ class _ProjectEnvironmentState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("gitlab:index/projectEnvironment:ProjectEnvironment")
 class ProjectEnvironment(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectEnvironment:ProjectEnvironment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

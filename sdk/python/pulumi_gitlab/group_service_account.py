@@ -144,10 +144,8 @@ class _GroupServiceAccountState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gitlab:index/groupServiceAccount:GroupServiceAccount")
 class GroupServiceAccount(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupServiceAccount:GroupServiceAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

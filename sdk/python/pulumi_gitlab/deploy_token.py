@@ -256,10 +256,8 @@ class _DeployTokenState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gitlab:index/deployToken:DeployToken")
 class DeployToken(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/deployToken:DeployToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

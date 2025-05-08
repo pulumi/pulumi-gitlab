@@ -201,10 +201,8 @@ class _ProjectJobTokenScopesState:
         pulumi.set(self, "target_project_ids", value)
 
 
+@pulumi.type_token("gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes")
 class ProjectJobTokenScopes(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

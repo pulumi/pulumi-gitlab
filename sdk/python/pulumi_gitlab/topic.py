@@ -249,10 +249,8 @@ class _TopicState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gitlab:index/topic:Topic")
 class Topic(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/topic:Topic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

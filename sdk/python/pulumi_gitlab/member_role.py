@@ -239,10 +239,8 @@ class _MemberRoleState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gitlab:index/memberRole:MemberRole")
 class MemberRole(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/memberRole:MemberRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -189,10 +189,8 @@ class _PipelineScheduleVariableState:
         pulumi.set(self, "variable_type", value)
 
 
+@pulumi.type_token("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable")
 class PipelineScheduleVariable(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

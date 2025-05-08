@@ -214,10 +214,8 @@ class _IntegrationGithubState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("gitlab:index/integrationGithub:IntegrationGithub")
 class IntegrationGithub(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationGithub:IntegrationGithub"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

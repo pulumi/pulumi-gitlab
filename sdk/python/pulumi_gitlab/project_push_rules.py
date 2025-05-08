@@ -480,10 +480,8 @@ class _ProjectPushRulesState:
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
+@pulumi.type_token("gitlab:index/projectPushRules:ProjectPushRules")
 class ProjectPushRules(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectPushRules:ProjectPushRules"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

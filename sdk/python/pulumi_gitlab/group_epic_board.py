@@ -130,10 +130,8 @@ class _GroupEpicBoardState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gitlab:index/groupEpicBoard:GroupEpicBoard")
 class GroupEpicBoard(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupEpicBoard:GroupEpicBoard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

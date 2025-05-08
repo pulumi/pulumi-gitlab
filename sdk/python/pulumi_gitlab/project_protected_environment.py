@@ -161,10 +161,8 @@ class _ProjectProtectedEnvironmentState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment")
 class ProjectProtectedEnvironment(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -161,10 +161,8 @@ class _TagProtectionState:
         pulumi.set(self, "tag", value)
 
 
+@pulumi.type_token("gitlab:index/tagProtection:TagProtection")
 class TagProtection(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/tagProtection:TagProtection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

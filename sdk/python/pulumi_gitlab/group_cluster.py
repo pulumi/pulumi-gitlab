@@ -446,10 +446,8 @@ class _GroupClusterState:
         pulumi.set(self, "provider_type", value)
 
 
+@pulumi.type_token("gitlab:index/groupCluster:GroupCluster")
 class GroupCluster(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupCluster:GroupCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

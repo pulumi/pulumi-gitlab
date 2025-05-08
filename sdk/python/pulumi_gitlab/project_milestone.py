@@ -335,10 +335,8 @@ class _ProjectMilestoneState:
         pulumi.set(self, "web_url", value)
 
 
+@pulumi.type_token("gitlab:index/projectMilestone:ProjectMilestone")
 class ProjectMilestone(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectMilestone:ProjectMilestone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

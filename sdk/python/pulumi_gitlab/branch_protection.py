@@ -369,10 +369,8 @@ class _BranchProtectionState:
         pulumi.set(self, "unprotect_access_level", value)
 
 
+@pulumi.type_token("gitlab:index/branchProtection:BranchProtection")
 class BranchProtection(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/branchProtection:BranchProtection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

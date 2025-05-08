@@ -167,10 +167,8 @@ class _ProjectShareGroupState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gitlab:index/projectShareGroup:ProjectShareGroup")
 class ProjectShareGroup(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectShareGroup:ProjectShareGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
