@@ -174,10 +174,8 @@ class _DeployKeyState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gitlab:index/deployKey:DeployKey")
 class DeployKey(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/deployKey:DeployKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

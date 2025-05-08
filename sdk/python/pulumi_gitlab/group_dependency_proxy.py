@@ -160,10 +160,8 @@ class _GroupDependencyProxyState:
         pulumi.set(self, "secret", value)
 
 
+@pulumi.type_token("gitlab:index/groupDependencyProxy:GroupDependencyProxy")
 class GroupDependencyProxy(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupDependencyProxy:GroupDependencyProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

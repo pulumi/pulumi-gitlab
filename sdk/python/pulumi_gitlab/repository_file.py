@@ -589,10 +589,8 @@ class _RepositoryFileState:
         pulumi.set(self, "update_commit_message", value)
 
 
+@pulumi.type_token("gitlab:index/repositoryFile:RepositoryFile")
 class RepositoryFile(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/repositoryFile:RepositoryFile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

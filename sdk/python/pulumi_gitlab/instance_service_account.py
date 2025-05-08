@@ -139,10 +139,8 @@ class _InstanceServiceAccountState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gitlab:index/instanceServiceAccount:InstanceServiceAccount")
 class InstanceServiceAccount(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/instanceServiceAccount:InstanceServiceAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

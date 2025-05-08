@@ -447,10 +447,8 @@ class _InstanceClusterState:
         pulumi.set(self, "provider_type", value)
 
 
+@pulumi.type_token("gitlab:index/instanceCluster:InstanceCluster")
 class InstanceCluster(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/instanceCluster:InstanceCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

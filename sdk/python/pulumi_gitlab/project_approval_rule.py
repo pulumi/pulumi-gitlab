@@ -351,10 +351,8 @@ class _ProjectApprovalRuleState:
         pulumi.set(self, "user_ids", value)
 
 
+@pulumi.type_token("gitlab:index/projectApprovalRule:ProjectApprovalRule")
 class ProjectApprovalRule(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectApprovalRule:ProjectApprovalRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

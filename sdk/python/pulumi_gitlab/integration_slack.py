@@ -823,10 +823,8 @@ class _IntegrationSlackState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/integrationSlack:IntegrationSlack")
 class IntegrationSlack(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationSlack:IntegrationSlack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -271,10 +271,8 @@ class _ProjectMirrorState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("gitlab:index/projectMirror:ProjectMirror")
 class ProjectMirror(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectMirror:ProjectMirror"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

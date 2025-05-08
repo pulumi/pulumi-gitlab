@@ -190,10 +190,8 @@ class _ProjectBadgeState:
         pulumi.set(self, "rendered_link_url", value)
 
 
+@pulumi.type_token("gitlab:index/projectBadge:ProjectBadge")
 class ProjectBadge(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectBadge:ProjectBadge"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

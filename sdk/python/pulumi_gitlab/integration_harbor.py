@@ -236,10 +236,8 @@ class _IntegrationHarborState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gitlab:index/integrationHarbor:IntegrationHarbor")
 class IntegrationHarbor(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationHarbor:IntegrationHarbor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

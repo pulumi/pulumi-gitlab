@@ -191,10 +191,8 @@ class _UserSshKeyState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("gitlab:index/userSshKey:UserSshKey")
 class UserSshKey(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/userSshKey:UserSshKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

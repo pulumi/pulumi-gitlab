@@ -640,10 +640,8 @@ class _ProjectLevelNotificationsState:
         pulumi.set(self, "success_pipeline", value)
 
 
+@pulumi.type_token("gitlab:index/projectLevelNotifications:ProjectLevelNotifications")
 class ProjectLevelNotifications(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectLevelNotifications:ProjectLevelNotifications"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

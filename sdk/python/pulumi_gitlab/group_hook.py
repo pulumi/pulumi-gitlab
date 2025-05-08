@@ -833,10 +833,8 @@ class _GroupHookState:
         pulumi.set(self, "wiki_page_events", value)
 
 
+@pulumi.type_token("gitlab:index/groupHook:GroupHook")
 class GroupHook(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupHook:GroupHook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -289,10 +289,8 @@ class _PersonalAccessTokenState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("gitlab:index/personalAccessToken:PersonalAccessToken")
 class PersonalAccessToken(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/personalAccessToken:PersonalAccessToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

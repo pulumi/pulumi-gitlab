@@ -977,10 +977,8 @@ class _ProjectIssueState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("gitlab:index/projectIssue:ProjectIssue")
 class ProjectIssue(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectIssue:ProjectIssue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

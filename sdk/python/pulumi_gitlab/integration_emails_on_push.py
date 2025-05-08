@@ -335,10 +335,8 @@ class _IntegrationEmailsOnPushState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush")
 class IntegrationEmailsOnPush(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

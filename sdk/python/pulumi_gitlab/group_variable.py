@@ -350,10 +350,8 @@ class _GroupVariableState:
         pulumi.set(self, "variable_type", value)
 
 
+@pulumi.type_token("gitlab:index/groupVariable:GroupVariable")
 class GroupVariable(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/groupVariable:GroupVariable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

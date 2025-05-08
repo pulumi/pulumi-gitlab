@@ -289,10 +289,8 @@ class _BranchState:
         pulumi.set(self, "web_url", value)
 
 
+@pulumi.type_token("gitlab:index/branch:Branch")
 class Branch(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/branch:Branch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

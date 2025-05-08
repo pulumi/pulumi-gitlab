@@ -158,10 +158,8 @@ class _ProjectFreezePeriodState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gitlab:index/projectFreezePeriod:ProjectFreezePeriod")
 class ProjectFreezePeriod(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectFreezePeriod:ProjectFreezePeriod"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

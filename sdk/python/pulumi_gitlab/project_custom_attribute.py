@@ -126,10 +126,8 @@ class _ProjectCustomAttributeState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("gitlab:index/projectCustomAttribute:ProjectCustomAttribute")
 class ProjectCustomAttribute(pulumi.CustomResource):
-
-    pulumi_type = "gitlab:index/projectCustomAttribute:ProjectCustomAttribute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
