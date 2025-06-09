@@ -23,7 +23,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
-	gitlab "github.com/pulumi/pulumi-gitlab/provider/v8"
+	gitlab "github.com/pulumi/pulumi-gitlab/provider/v9"
 )
 
 //go:embed schema-embed.json

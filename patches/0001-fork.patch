@@ -5,10 +5,10 @@ Subject: [PATCH] fork
 
 
 diff --git a/internal/provider/sdk/resource_gitlab_project.go b/internal/provider/sdk/resource_gitlab_project.go
-index 5b4f4ffa..7f1e3d9a 100644
+index 7b3888ae..b0723e17 100644
 --- a/internal/provider/sdk/resource_gitlab_project.go
 +++ b/internal/provider/sdk/resource_gitlab_project.go
-@@ -412,33 +412,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
+@@ -413,33 +413,34 @@ var resourceGitLabProjectSchema = map[string]*schema.Schema{
  		ValidateFunc: validation.StringInSlice(validPagesAccessLevelValues, true),
  	},
  	// The GitLab API requires that import_url is also set when mirror options are used
@@ -61,5 +61,5 @@ index 5b4f4ffa..7f1e3d9a 100644
 +		Computed:    true,
 +		// RequiredWith: []string{"import_url"},
  	},
- 	"build_coverage_regex": {
- 		Description: "Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.",
+ 	"issues_template": {
+ 		Description: "Sets the template for new issues in the project.",
