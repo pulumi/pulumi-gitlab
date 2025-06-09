@@ -1483,8 +1483,6 @@ class ProjectContainerExpirationPolicy(dict):
         suggest = None
         if key == "keepN":
             suggest = "keep_n"
-        elif key == "nameRegex":
-            suggest = "name_regex"
         elif key == "nameRegexDelete":
             suggest = "name_regex_delete"
         elif key == "nameRegexKeep":
@@ -1509,7 +1507,6 @@ class ProjectContainerExpirationPolicy(dict):
                  cadence: Optional[builtins.str] = None,
                  enabled: Optional[builtins.bool] = None,
                  keep_n: Optional[builtins.int] = None,
-                 name_regex: Optional[builtins.str] = None,
                  name_regex_delete: Optional[builtins.str] = None,
                  name_regex_keep: Optional[builtins.str] = None,
                  next_run_at: Optional[builtins.str] = None,
@@ -1518,7 +1515,6 @@ class ProjectContainerExpirationPolicy(dict):
         :param builtins.str cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param builtins.bool enabled: If true, the policy is enabled.
         :param builtins.int keep_n: The number of images to keep.
-        :param builtins.str name_regex: The regular expression to match image names to delete.
         :param builtins.str name_regex_delete: The regular expression to match image names to delete.
         :param builtins.str name_regex_keep: The regular expression to match image names to keep.
         :param builtins.str next_run_at: The next time the policy will run.
@@ -1530,8 +1526,6 @@ class ProjectContainerExpirationPolicy(dict):
             pulumi.set(__self__, "enabled", enabled)
         if keep_n is not None:
             pulumi.set(__self__, "keep_n", keep_n)
-        if name_regex is not None:
-            pulumi.set(__self__, "name_regex", name_regex)
         if name_regex_delete is not None:
             pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
@@ -1564,15 +1558,6 @@ class ProjectContainerExpirationPolicy(dict):
         The number of images to keep.
         """
         return pulumi.get(self, "keep_n")
-
-    @property
-    @pulumi.getter(name="nameRegex")
-    @_utilities.deprecated("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""")
-    def name_regex(self) -> Optional[builtins.str]:
-        """
-        The regular expression to match image names to delete.
-        """
-        return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter(name="nameRegexDelete")
@@ -5416,7 +5401,6 @@ class GetProjectContainerExpirationPolicyResult(dict):
                  cadence: builtins.str,
                  enabled: builtins.bool,
                  keep_n: builtins.int,
-                 name_regex: builtins.str,
                  name_regex_delete: builtins.str,
                  name_regex_keep: builtins.str,
                  next_run_at: builtins.str,
@@ -5425,7 +5409,6 @@ class GetProjectContainerExpirationPolicyResult(dict):
         :param builtins.str cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param builtins.bool enabled: If true, the policy is enabled.
         :param builtins.int keep_n: The number of images to keep.
-        :param builtins.str name_regex: The regular expression to match image names to delete.
         :param builtins.str name_regex_delete: The regular expression to match image names to delete.
         :param builtins.str name_regex_keep: The regular expression to match image names to keep.
         :param builtins.str next_run_at: The next time the policy will run.
@@ -5434,7 +5417,6 @@ class GetProjectContainerExpirationPolicyResult(dict):
         pulumi.set(__self__, "cadence", cadence)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "keep_n", keep_n)
-        pulumi.set(__self__, "name_regex", name_regex)
         pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         pulumi.set(__self__, "name_regex_keep", name_regex_keep)
         pulumi.set(__self__, "next_run_at", next_run_at)
@@ -5463,15 +5445,6 @@ class GetProjectContainerExpirationPolicyResult(dict):
         The number of images to keep.
         """
         return pulumi.get(self, "keep_n")
-
-    @property
-    @pulumi.getter(name="nameRegex")
-    @_utilities.deprecated("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""")
-    def name_regex(self) -> builtins.str:
-        """
-        The regular expression to match image names to delete.
-        """
-        return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter(name="nameRegexDelete")
@@ -9156,7 +9129,6 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
                  cadence: builtins.str,
                  enabled: builtins.bool,
                  keep_n: builtins.int,
-                 name_regex: builtins.str,
                  name_regex_delete: builtins.str,
                  name_regex_keep: builtins.str,
                  next_run_at: builtins.str,
@@ -9165,7 +9137,6 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
         :param builtins.str cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param builtins.bool enabled: If true, the policy is enabled.
         :param builtins.int keep_n: The number of images to keep.
-        :param builtins.str name_regex: The regular expression to match image names to delete.
         :param builtins.str name_regex_delete: The regular expression to match image names to delete.
         :param builtins.str name_regex_keep: The regular expression to match image names to keep.
         :param builtins.str next_run_at: The next time the policy will run.
@@ -9174,7 +9145,6 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
         pulumi.set(__self__, "cadence", cadence)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "keep_n", keep_n)
-        pulumi.set(__self__, "name_regex", name_regex)
         pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         pulumi.set(__self__, "name_regex_keep", name_regex_keep)
         pulumi.set(__self__, "next_run_at", next_run_at)
@@ -9203,15 +9173,6 @@ class GetProjectsProjectContainerExpirationPolicyResult(dict):
         The number of images to keep.
         """
         return pulumi.get(self, "keep_n")
-
-    @property
-    @pulumi.getter(name="nameRegex")
-    @_utilities.deprecated("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""")
-    def name_regex(self) -> builtins.str:
-        """
-        The regular expression to match image names to delete.
-        """
-        return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter(name="nameRegexDelete")

@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.TopicArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.TopicState;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,8 +18,6 @@ import javax.annotation.Nullable;
  * The `gitlab.Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
  * 
  * &gt; Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
- * 
- * &gt; Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `soft_destroy = true` to empty out a topic instead of deleting it.
  * 
  * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
  * 
@@ -126,36 +123,18 @@ public class Topic extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Empty the topics fields instead of deleting it.
-     * 
-     * @deprecated
-     * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-     * 
-     */
-    @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-    @Export(name="softDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> softDestroy;
-
-    /**
-     * @return Empty the topics fields instead of deleting it.
-     * 
-     */
-    public Output<Optional<Boolean>> softDestroy() {
-        return Codegen.optional(this.softDestroy);
-    }
-    /**
-     * The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+     * The topic&#39;s description.
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> title;
+    private Output<String> title;
 
     /**
-     * @return The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+     * @return The topic&#39;s description.
      * 
      */
-    public Output<Optional<String>> title() {
-        return Codegen.optional(this.title);
+    public Output<String> title() {
+        return this.title;
     }
 
     /**
@@ -170,7 +149,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Topic(java.lang.String name, @Nullable TopicArgs args) {
+    public Topic(java.lang.String name, TopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -179,7 +158,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Topic(java.lang.String name, @Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Topic(java.lang.String name, TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gitlab:index/topic:Topic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -187,7 +166,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
         super("gitlab:index/topic:Topic", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static TopicArgs makeArgs(@Nullable TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static TopicArgs makeArgs(TopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

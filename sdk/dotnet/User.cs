@@ -88,18 +88,6 @@ namespace Pulumi.GitLab
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// String, a specific external authentication provider UID.
-        /// </summary>
-        [Output("externUid")]
-        public Output<string?> ExternUid { get; private set; } = null!;
-
-        /// <summary>
-        /// String, the external provider.
-        /// </summary>
-        [Output("externalProvider")]
-        public Output<string?> ExternalProvider { get; private set; } = null!;
-
-        /// <summary>
         /// Set user password to a random value
         /// </summary>
         [Output("forceRandomPassword")]
@@ -234,18 +222,6 @@ namespace Pulumi.GitLab
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// String, a specific external authentication provider UID.
-        /// </summary>
-        [Input("externUid")]
-        public Input<string>? ExternUid { get; set; }
-
-        /// <summary>
-        /// String, the external provider.
-        /// </summary>
-        [Input("externalProvider")]
-        public Input<string>? ExternalProvider { get; set; }
-
-        /// <summary>
         /// Set user password to a random value
         /// </summary>
         [Input("forceRandomPassword")]
@@ -346,18 +322,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
-
-        /// <summary>
-        /// String, a specific external authentication provider UID.
-        /// </summary>
-        [Input("externUid")]
-        public Input<string>? ExternUid { get; set; }
-
-        /// <summary>
-        /// String, the external provider.
-        /// </summary>
-        [Input("externalProvider")]
-        public Input<string>? ExternalProvider { get; set; }
 
         /// <summary>
         /// Set user password to a random value

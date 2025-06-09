@@ -855,7 +855,7 @@ class IntegrationSlack(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+        The `IntegrationSlack` resource allows you to manage the lifecycle of a project integration with Slack.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
 
@@ -933,7 +933,7 @@ class IntegrationSlack(pulumi.CustomResource):
                  args: IntegrationSlackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+        The `IntegrationSlack` resource allows you to manage the lifecycle of a project integration with Slack.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
 

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,7 +50,7 @@ type MemberRole struct {
 
 	// The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
 	BaseAccessLevel pulumi.StringOutput `pulumi:"baseAccessLevel"`
-	// Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+	// Timestamp of when the member role was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Description for the member role.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -104,7 +104,7 @@ func GetMemberRole(ctx *pulumi.Context,
 type memberRoleState struct {
 	// The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
 	BaseAccessLevel *string `pulumi:"baseAccessLevel"`
-	// Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+	// Timestamp of when the member role was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Description for the member role.
 	Description *string `pulumi:"description"`
@@ -123,7 +123,7 @@ type memberRoleState struct {
 type MemberRoleState struct {
 	// The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
 	BaseAccessLevel pulumi.StringPtrInput
-	// Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+	// Timestamp of when the member role was created.
 	CreatedAt pulumi.StringPtrInput
 	// Description for the member role.
 	Description pulumi.StringPtrInput
@@ -262,7 +262,7 @@ func (o MemberRoleOutput) BaseAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *MemberRole) pulumi.StringOutput { return v.BaseAccessLevel }).(pulumi.StringOutput)
 }
 
-// Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+// Timestamp of when the member role was created.
 func (o MemberRoleOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *MemberRole) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }

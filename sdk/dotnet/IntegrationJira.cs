@@ -149,12 +149,6 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-        /// </summary>
-        [Output("projectKey")]
-        public Output<string?> ProjectKey { get; private set; } = null!;
-
-        /// <summary>
         /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
         [Output("projectKeys")]
@@ -319,12 +313,6 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-        /// </summary>
-        [Input("projectKey")]
-        public Input<string>? ProjectKey { get; set; }
-
         [Input("projectKeys")]
         private InputList<string>? _projectKeys;
 
@@ -453,12 +441,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-        /// </summary>
-        [Input("projectKey")]
-        public Input<string>? ProjectKey { get; set; }
 
         [Input("projectKeys")]
         private InputList<string>? _projectKeys;

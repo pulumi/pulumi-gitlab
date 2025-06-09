@@ -132,12 +132,6 @@ export class IntegrationJira extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     *
-     * @deprecated `projectKey` is deprecated. Use `projectKeys` instead.
-     */
-    public readonly projectKey!: pulumi.Output<string | undefined>;
-    /**
      * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      */
     public readonly projectKeys!: pulumi.Output<string[] | undefined>;
@@ -189,7 +183,6 @@ export class IntegrationJira extends pulumi.CustomResource {
             resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
             resourceInputs["projectKeys"] = state ? state.projectKeys : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -219,7 +212,6 @@ export class IntegrationJira extends pulumi.CustomResource {
             resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
             resourceInputs["projectKeys"] = args ? args.projectKeys : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["useInheritedSettings"] = args ? args.useInheritedSettings : undefined;
@@ -293,12 +285,6 @@ export interface IntegrationJiraState {
      * ID of the project you want to activate integration on.
      */
     project?: pulumi.Input<string>;
-    /**
-     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     *
-     * @deprecated `projectKey` is deprecated. Use `projectKeys` instead.
-     */
-    projectKey?: pulumi.Input<string>;
     /**
      * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      */
@@ -374,12 +360,6 @@ export interface IntegrationJiraArgs {
      * ID of the project you want to activate integration on.
      */
     project: pulumi.Input<string>;
-    /**
-     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     *
-     * @deprecated `projectKey` is deprecated. Use `projectKeys` instead.
-     */
-    projectKey?: pulumi.Input<string>;
     /**
      * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      */

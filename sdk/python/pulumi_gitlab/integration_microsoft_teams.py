@@ -516,7 +516,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The `IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
+        The `IntegrationMicrosoftTeams` resource allows you to manage the lifecycle of a project integration with Microsoft Teams.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
 
@@ -581,7 +581,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
                  args: IntegrationMicrosoftTeamsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
+        The `IntegrationMicrosoftTeams` resource allows you to manage the lifecycle of a project integration with Microsoft Teams.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
 

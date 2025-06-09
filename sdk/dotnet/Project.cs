@@ -127,12 +127,6 @@ namespace Pulumi.GitLab
         public Output<string> AvatarUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        /// </summary>
-        [Output("buildCoverageRegex")]
-        public Output<string?> BuildCoverageRegex { get; private set; } = null!;
-
-        /// <summary>
         /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         /// </summary>
         [Output("buildGitStrategy")]
@@ -499,7 +493,7 @@ namespace Pulumi.GitLab
         public Output<bool> PipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         /// </summary>
         [Output("preReceiveSecretDetectionEnabled")]
         public Output<bool> PreReceiveSecretDetectionEnabled { get; private set; } = null!;
@@ -825,12 +819,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("avatarHash")]
         public Input<string>? AvatarHash { get; set; }
-
-        /// <summary>
-        /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        /// </summary>
-        [Input("buildCoverageRegex")]
-        public Input<string>? BuildCoverageRegex { get; set; }
 
         /// <summary>
         /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -1197,7 +1185,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
-        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         /// </summary>
         [Input("preReceiveSecretDetectionEnabled")]
         public Input<bool>? PreReceiveSecretDetectionEnabled { get; set; }
@@ -1480,12 +1468,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("avatarUrl")]
         public Input<string>? AvatarUrl { get; set; }
-
-        /// <summary>
-        /// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        /// </summary>
-        [Input("buildCoverageRegex")]
-        public Input<string>? BuildCoverageRegex { get; set; }
 
         /// <summary>
         /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -1870,7 +1852,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PipelinesEnabled { get; set; }
 
         /// <summary>
-        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         /// </summary>
         [Input("preReceiveSecretDetectionEnabled")]
         public Input<bool>? PreReceiveSecretDetectionEnabled { get; set; }

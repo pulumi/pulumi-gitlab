@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -106,7 +106,7 @@ type ProjectAccessToken struct {
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration ProjectAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
-	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the project access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -172,7 +172,7 @@ type projectAccessTokenState struct {
 	Revoked *bool `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *ProjectAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
 	// The token of the project access token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -199,7 +199,7 @@ type ProjectAccessTokenState struct {
 	Revoked pulumi.BoolPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration ProjectAccessTokenRotationConfigurationPtrInput
-	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
 	// The token of the project access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -224,7 +224,7 @@ type projectAccessTokenArgs struct {
 	Project string `pulumi:"project"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *ProjectAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -242,7 +242,7 @@ type ProjectAccessTokenArgs struct {
 	Project pulumi.StringInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration ProjectAccessTokenRotationConfigurationPtrInput
-	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
 }
 
@@ -380,7 +380,7 @@ func (o ProjectAccessTokenOutput) RotationConfiguration() ProjectAccessTokenRota
 	}).(ProjectAccessTokenRotationConfigurationPtrOutput)
 }
 
-// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 func (o ProjectAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

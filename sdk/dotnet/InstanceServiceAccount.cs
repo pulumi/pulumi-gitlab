@@ -16,6 +16,42 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // create a service account
+    ///     var exampleSa = new GitLab.InstanceServiceAccount("example_sa", new()
+    ///     {
+    ///         Name = "example-name",
+    ///         Username = "example-username",
+    ///         Email = "custom_email@gitlab.example.com",
+    ///         Timeouts = new GitLab.Inputs.InstanceServiceAccountTimeoutsArgs
+    ///         {
+    ///             Delete = "3m",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleToken = new GitLab.PersonalAccessToken("example_token", new()
+    ///     {
+    ///         UserId = exampleSa.ServiceAccountId,
+    ///         Name = "Example personal access token for a service account",
+    ///         ExpiresAt = "2026-01-01",
+    ///         Scopes = new[]
+    ///         {
+    ///             "api",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_service_account`. For example:
@@ -46,7 +82,13 @@ namespace Pulumi.GitLab
     public partial class InstanceServiceAccount : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the user. If not specified, the default Service account user name is used.
+        /// The email of the user account. If not set, generates a no-reply email address.
+        /// </summary>
+        [Output("email")]
+        public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the user. If not set, uses Service account user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -61,7 +103,7 @@ namespace Pulumi.GitLab
         public Output<Outputs.InstanceServiceAccountTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The username of the user. If not specified, it’s automatically generated.
+        /// The username of the user account. If not set, generates a name prepended with service*account*.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -113,7 +155,13 @@ namespace Pulumi.GitLab
     public sealed class InstanceServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the user. If not specified, the default Service account user name is used.
+        /// The email of the user account. If not set, generates a no-reply email address.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// The name of the user. If not set, uses Service account user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -122,7 +170,7 @@ namespace Pulumi.GitLab
         public Input<Inputs.InstanceServiceAccountTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The username of the user. If not specified, it’s automatically generated.
+        /// The username of the user account. If not set, generates a name prepended with service*account*.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -136,7 +184,13 @@ namespace Pulumi.GitLab
     public sealed class InstanceServiceAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the user. If not specified, the default Service account user name is used.
+        /// The email of the user account. If not set, generates a no-reply email address.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// The name of the user. If not set, uses Service account user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -151,7 +205,7 @@ namespace Pulumi.GitLab
         public Input<Inputs.InstanceServiceAccountTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The username of the user. If not specified, it’s automatically generated.
+        /// The username of the user account. If not set, generates a name prepended with service*account*.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

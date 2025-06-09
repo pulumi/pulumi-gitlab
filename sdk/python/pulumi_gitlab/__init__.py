@@ -107,6 +107,7 @@ from .integration_jira import *
 from .integration_mattermost import *
 from .integration_microsoft_teams import *
 from .integration_pipelines_email import *
+from .integration_redmine import *
 from .integration_slack import *
 from .integration_telegram import *
 from .label import *
@@ -121,7 +122,6 @@ from .project_access_token import *
 from .project_approval_rule import *
 from .project_badge import *
 from .project_cluster import *
-from .project_compliance_framework import *
 from .project_compliance_frameworks import *
 from .project_custom_attribute import *
 from .project_environment import *
@@ -151,14 +151,6 @@ from .release import *
 from .release_link import *
 from .repository_file import *
 from .runner import *
-from .service_custom_issue_tracker import *
-from .service_emails_on_push import *
-from .service_external_wiki import *
-from .service_github import *
-from .service_jira import *
-from .service_microsoft_teams import *
-from .service_pipelines_email import *
-from .service_slack import *
 from .system_hook import *
 from .tag_protection import *
 from .topic import *
@@ -537,6 +529,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/integrationRedmine",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/integrationRedmine:IntegrationRedmine": "IntegrationRedmine"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/integrationSlack",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -645,14 +645,6 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectCluster:ProjectCluster": "ProjectCluster"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/projectComplianceFramework",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/projectComplianceFramework:ProjectComplianceFramework": "ProjectComplianceFramework"
   }
  },
  {
@@ -877,70 +869,6 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/runner:Runner": "Runner"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceCustomIssueTracker",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker": "ServiceCustomIssueTracker"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceEmailsOnPush",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush": "ServiceEmailsOnPush"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceExternalWiki",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceExternalWiki:ServiceExternalWiki": "ServiceExternalWiki"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceGithub",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceGithub:ServiceGithub": "ServiceGithub"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceJira",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceJira:ServiceJira": "ServiceJira"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceMicrosoftTeams",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams": "ServiceMicrosoftTeams"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/servicePipelinesEmail",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail": "ServicePipelinesEmail"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/serviceSlack",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/serviceSlack:ServiceSlack": "ServiceSlack"
   }
  },
  {

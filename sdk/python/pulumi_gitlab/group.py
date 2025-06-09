@@ -97,8 +97,8 @@ class GroupArgs:
         if default_branch is not None:
             pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection is not None:
-            warnings.warn("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""", DeprecationWarning)
-            pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+            warnings.warn("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_branch_protection_defaults is not None:
@@ -222,7 +222,7 @@ class GroupArgs:
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+    @_utilities.deprecated("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -599,8 +599,8 @@ class _GroupState:
         if default_branch is not None:
             pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection is not None:
-            warnings.warn("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""", DeprecationWarning)
-            pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+            warnings.warn("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_branch_protection is deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_branch_protection_defaults is not None:
@@ -734,7 +734,7 @@ class _GroupState:
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+    @_utilities.deprecated("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -1120,12 +1120,6 @@ class Group(pulumi.CustomResource):
                  wiki_access_level: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `Group` resource allows to manage the lifecycle of a group.
-
-        > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
-
         ## Example Usage
 
         ```python
@@ -1253,12 +1247,6 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Group` resource allows to manage the lifecycle of a group.
-
-        > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
-
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
-
         ## Example Usage
 
         ```python
@@ -1618,7 +1606,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.""")
+    @_utilities.deprecated("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
     def default_branch_protection(self) -> pulumi.Output[builtins.int]:
         """
         See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.

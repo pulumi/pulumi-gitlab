@@ -18,7 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance with a Premium license.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#update-group)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#update-group-attributes)
     /// 
     /// ## Example Usage
     /// 

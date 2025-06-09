@@ -1973,20 +1973,6 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.groupOwnersCanManageDefaultBranchProtection;
     }
     /**
-     * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     * 
-     */
-    @Export(name="hashedStorageEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> hashedStorageEnabled;
-
-    /**
-     * @return Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     * 
-     */
-    public Output<Boolean> hashedStorageEnabled() {
-        return this.hashedStorageEnabled;
-    }
-    /**
      * Hide marketing-related entries from help.
      * 
      */
@@ -2071,86 +2057,28 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.homePageUrl;
     }
     /**
-     * Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      * 
      */
     @Export(name="housekeepingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> housekeepingEnabled;
 
     /**
-     * @return Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * @return Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      * 
      */
     public Output<Boolean> housekeepingEnabled() {
         return this.housekeepingEnabled;
     }
     /**
-     * Number of Git pushes after which an incremental git repack is run.
-     * 
-     * @deprecated
-     * housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    @Export(name="housekeepingFullRepackPeriod", refs={Integer.class}, tree="[0]")
-    private Output<Integer> housekeepingFullRepackPeriod;
-
-    /**
-     * @return Number of Git pushes after which an incremental git repack is run.
-     * 
-     */
-    public Output<Integer> housekeepingFullRepackPeriod() {
-        return this.housekeepingFullRepackPeriod;
-    }
-    /**
-     * Number of Git pushes after which git gc is run.
-     * 
-     * @deprecated
-     * housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    @Export(name="housekeepingGcPeriod", refs={Integer.class}, tree="[0]")
-    private Output<Integer> housekeepingGcPeriod;
-
-    /**
-     * @return Number of Git pushes after which git gc is run.
-     * 
-     */
-    public Output<Integer> housekeepingGcPeriod() {
-        return this.housekeepingGcPeriod;
-    }
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
-     * 
-     * @deprecated
-     * housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    @Export(name="housekeepingIncrementalRepackPeriod", refs={Integer.class}, tree="[0]")
-    private Output<Integer> housekeepingIncrementalRepackPeriod;
-
-    /**
-     * @return Number of Git pushes after which an incremental git repack is run.
-     * 
-     */
-    public Output<Integer> housekeepingIncrementalRepackPeriod() {
-        return this.housekeepingIncrementalRepackPeriod;
-    }
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
+     * Number of Git pushes after which an incremental git-repack is run.
      * 
      */
     @Export(name="housekeepingOptimizeRepositoryPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> housekeepingOptimizeRepositoryPeriod;
 
     /**
-     * @return Number of Git pushes after which an incremental git repack is run.
+     * @return Number of Git pushes after which an incremental git-repack is run.
      * 
      */
     public Output<Integer> housekeepingOptimizeRepositoryPeriod() {
@@ -2723,14 +2651,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.npmPackageRequestsForwarding;
     }
     /**
-     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * Indicates whether to skip metadata URL validation for the NuGet package.
      * 
      */
     @Export(name="nugetSkipMetadataUrlValidation", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> nugetSkipMetadataUrlValidation;
 
     /**
-     * @return Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * @return Indicates whether to skip metadata URL validation for the NuGet package.
      * 
      */
     public Output<Boolean> nugetSkipMetadataUrlValidation() {
@@ -3227,28 +3155,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.repositorySizeLimit;
     }
     /**
-     * (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     * 
-     */
-    @Export(name="repositoryStorages", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> repositoryStorages;
-
-    /**
-     * @return (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     * 
-     */
-    public Output<List<String>> repositoryStorages() {
-        return this.repositoryStorages;
-    }
-    /**
-     * (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      * 
      */
     @Export(name="repositoryStoragesWeighted", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> repositoryStoragesWeighted;
 
     /**
-     * @return (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * @return Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      * 
      */
     public Output<Map<String,Integer>> repositoryStoragesWeighted() {

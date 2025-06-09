@@ -2077,21 +2077,6 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     * 
-     */
-    @Import(name="hashedStorageEnabled")
-    private @Nullable Output<Boolean> hashedStorageEnabled;
-
-    /**
-     * @return Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     * 
-     */
-    public Optional<Output<Boolean>> hashedStorageEnabled() {
-        return Optional.ofNullable(this.hashedStorageEnabled);
-    }
-
-    /**
      * Hide marketing-related entries from help.
      * 
      */
@@ -2182,18 +2167,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      * 
      */
     @Import(name="housekeepingEnabled")
     private @Nullable Output<Boolean> housekeepingEnabled;
 
     /**
-     * @return Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * @return Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      * 
      */
     public Optional<Output<Boolean>> housekeepingEnabled() {
@@ -2201,83 +2182,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Number of Git pushes after which an incremental git repack is run.
-     * 
-     * @deprecated
-     * housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    @Import(name="housekeepingFullRepackPeriod")
-    private @Nullable Output<Integer> housekeepingFullRepackPeriod;
-
-    /**
-     * @return Number of Git pushes after which an incremental git repack is run.
-     * 
-     * @deprecated
-     * housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    public Optional<Output<Integer>> housekeepingFullRepackPeriod() {
-        return Optional.ofNullable(this.housekeepingFullRepackPeriod);
-    }
-
-    /**
-     * Number of Git pushes after which git gc is run.
-     * 
-     * @deprecated
-     * housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    @Import(name="housekeepingGcPeriod")
-    private @Nullable Output<Integer> housekeepingGcPeriod;
-
-    /**
-     * @return Number of Git pushes after which git gc is run.
-     * 
-     * @deprecated
-     * housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    public Optional<Output<Integer>> housekeepingGcPeriod() {
-        return Optional.ofNullable(this.housekeepingGcPeriod);
-    }
-
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
-     * 
-     * @deprecated
-     * housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    @Import(name="housekeepingIncrementalRepackPeriod")
-    private @Nullable Output<Integer> housekeepingIncrementalRepackPeriod;
-
-    /**
-     * @return Number of Git pushes after which an incremental git repack is run.
-     * 
-     * @deprecated
-     * housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-     * 
-     */
-    @Deprecated /* housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-    public Optional<Output<Integer>> housekeepingIncrementalRepackPeriod() {
-        return Optional.ofNullable(this.housekeepingIncrementalRepackPeriod);
-    }
-
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
+     * Number of Git pushes after which an incremental git-repack is run.
      * 
      */
     @Import(name="housekeepingOptimizeRepositoryPeriod")
     private @Nullable Output<Integer> housekeepingOptimizeRepositoryPeriod;
 
     /**
-     * @return Number of Git pushes after which an incremental git repack is run.
+     * @return Number of Git pushes after which an incremental git-repack is run.
      * 
      */
     public Optional<Output<Integer>> housekeepingOptimizeRepositoryPeriod() {
@@ -2892,14 +2804,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * Indicates whether to skip metadata URL validation for the NuGet package.
      * 
      */
     @Import(name="nugetSkipMetadataUrlValidation")
     private @Nullable Output<Boolean> nugetSkipMetadataUrlValidation;
 
     /**
-     * @return Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * @return Indicates whether to skip metadata URL validation for the NuGet package.
      * 
      */
     public Optional<Output<Boolean>> nugetSkipMetadataUrlValidation() {
@@ -3432,29 +3344,14 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     * 
-     */
-    @Import(name="repositoryStorages")
-    private @Nullable Output<List<String>> repositoryStorages;
-
-    /**
-     * @return (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     * 
-     */
-    public Optional<Output<List<String>>> repositoryStorages() {
-        return Optional.ofNullable(this.repositoryStorages);
-    }
-
-    /**
-     * (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      * 
      */
     @Import(name="repositoryStoragesWeighted")
     private @Nullable Output<Map<String,Integer>> repositoryStoragesWeighted;
 
     /**
-     * @return (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * @return Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      * 
      */
     public Optional<Output<Map<String,Integer>>> repositoryStoragesWeighted() {
@@ -4861,7 +4758,6 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.grafanaUrl = $.grafanaUrl;
         this.gravatarEnabled = $.gravatarEnabled;
         this.groupOwnersCanManageDefaultBranchProtection = $.groupOwnersCanManageDefaultBranchProtection;
-        this.hashedStorageEnabled = $.hashedStorageEnabled;
         this.helpPageHideCommercialContent = $.helpPageHideCommercialContent;
         this.helpPageSupportUrl = $.helpPageSupportUrl;
         this.helpPageText = $.helpPageText;
@@ -4869,9 +4765,6 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.hideThirdPartyOffers = $.hideThirdPartyOffers;
         this.homePageUrl = $.homePageUrl;
         this.housekeepingEnabled = $.housekeepingEnabled;
-        this.housekeepingFullRepackPeriod = $.housekeepingFullRepackPeriod;
-        this.housekeepingGcPeriod = $.housekeepingGcPeriod;
-        this.housekeepingIncrementalRepackPeriod = $.housekeepingIncrementalRepackPeriod;
         this.housekeepingOptimizeRepositoryPeriod = $.housekeepingOptimizeRepositoryPeriod;
         this.htmlEmailsEnabled = $.htmlEmailsEnabled;
         this.importSources = $.importSources;
@@ -4950,7 +4843,6 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.rememberMeEnabled = $.rememberMeEnabled;
         this.repositoryChecksEnabled = $.repositoryChecksEnabled;
         this.repositorySizeLimit = $.repositorySizeLimit;
-        this.repositoryStorages = $.repositoryStorages;
         this.repositoryStoragesWeighted = $.repositoryStoragesWeighted;
         this.requireAdminApprovalAfterUserSignup = $.requireAdminApprovalAfterUserSignup;
         this.requireAdminTwoFactorAuthentication = $.requireAdminTwoFactorAuthentication;
@@ -8024,27 +7916,6 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hashedStorageEnabled Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hashedStorageEnabled(@Nullable Output<Boolean> hashedStorageEnabled) {
-            $.hashedStorageEnabled = hashedStorageEnabled;
-            return this;
-        }
-
-        /**
-         * @param hashedStorageEnabled Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hashedStorageEnabled(Boolean hashedStorageEnabled) {
-            return hashedStorageEnabled(Output.of(hashedStorageEnabled));
-        }
-
-        /**
          * @param helpPageHideCommercialContent Hide marketing-related entries from help.
          * 
          * @return builder
@@ -8171,9 +8042,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param housekeepingEnabled Enable or disable Git housekeeping.
-         * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-         * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+         * @param housekeepingEnabled Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
          * 
          * @return builder
          * 
@@ -8184,9 +8053,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param housekeepingEnabled Enable or disable Git housekeeping.
-         * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-         * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+         * @param housekeepingEnabled Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
          * 
          * @return builder
          * 
@@ -8196,94 +8063,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param housekeepingFullRepackPeriod Number of Git pushes after which an incremental git repack is run.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-         * 
-         */
-        @Deprecated /* housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-        public Builder housekeepingFullRepackPeriod(@Nullable Output<Integer> housekeepingFullRepackPeriod) {
-            $.housekeepingFullRepackPeriod = housekeepingFullRepackPeriod;
-            return this;
-        }
-
-        /**
-         * @param housekeepingFullRepackPeriod Number of Git pushes after which an incremental git repack is run.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-         * 
-         */
-        @Deprecated /* housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-        public Builder housekeepingFullRepackPeriod(Integer housekeepingFullRepackPeriod) {
-            return housekeepingFullRepackPeriod(Output.of(housekeepingFullRepackPeriod));
-        }
-
-        /**
-         * @param housekeepingGcPeriod Number of Git pushes after which git gc is run.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
-         * 
-         */
-        @Deprecated /* housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-        public Builder housekeepingGcPeriod(@Nullable Output<Integer> housekeepingGcPeriod) {
-            $.housekeepingGcPeriod = housekeepingGcPeriod;
-            return this;
-        }
-
-        /**
-         * @param housekeepingGcPeriod Number of Git pushes after which git gc is run.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.
-         * 
-         */
-        @Deprecated /* housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-        public Builder housekeepingGcPeriod(Integer housekeepingGcPeriod) {
-            return housekeepingGcPeriod(Output.of(housekeepingGcPeriod));
-        }
-
-        /**
-         * @param housekeepingIncrementalRepackPeriod Number of Git pushes after which an incremental git repack is run.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-         * 
-         */
-        @Deprecated /* housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-        public Builder housekeepingIncrementalRepackPeriod(@Nullable Output<Integer> housekeepingIncrementalRepackPeriod) {
-            $.housekeepingIncrementalRepackPeriod = housekeepingIncrementalRepackPeriod;
-            return this;
-        }
-
-        /**
-         * @param housekeepingIncrementalRepackPeriod Number of Git pushes after which an incremental git repack is run.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.
-         * 
-         */
-        @Deprecated /* housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead. */
-        public Builder housekeepingIncrementalRepackPeriod(Integer housekeepingIncrementalRepackPeriod) {
-            return housekeepingIncrementalRepackPeriod(Output.of(housekeepingIncrementalRepackPeriod));
-        }
-
-        /**
-         * @param housekeepingOptimizeRepositoryPeriod Number of Git pushes after which an incremental git repack is run.
+         * @param housekeepingOptimizeRepositoryPeriod Number of Git pushes after which an incremental git-repack is run.
          * 
          * @return builder
          * 
@@ -8294,7 +8074,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param housekeepingOptimizeRepositoryPeriod Number of Git pushes after which an incremental git repack is run.
+         * @param housekeepingOptimizeRepositoryPeriod Number of Git pushes after which an incremental git-repack is run.
          * 
          * @return builder
          * 
@@ -9163,7 +8943,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nugetSkipMetadataUrlValidation Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+         * @param nugetSkipMetadataUrlValidation Indicates whether to skip metadata URL validation for the NuGet package.
          * 
          * @return builder
          * 
@@ -9174,7 +8954,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nugetSkipMetadataUrlValidation Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+         * @param nugetSkipMetadataUrlValidation Indicates whether to skip metadata URL validation for the NuGet package.
          * 
          * @return builder
          * 
@@ -9939,38 +9719,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param repositoryStorages (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder repositoryStorages(@Nullable Output<List<String>> repositoryStorages) {
-            $.repositoryStorages = repositoryStorages;
-            return this;
-        }
-
-        /**
-         * @param repositoryStorages (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder repositoryStorages(List<String> repositoryStorages) {
-            return repositoryStorages(Output.of(repositoryStorages));
-        }
-
-        /**
-         * @param repositoryStorages (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder repositoryStorages(String... repositoryStorages) {
-            return repositoryStorages(List.of(repositoryStorages));
-        }
-
-        /**
-         * @param repositoryStoragesWeighted (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+         * @param repositoryStoragesWeighted Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
          * 
          * @return builder
          * 
@@ -9981,7 +9730,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param repositoryStoragesWeighted (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+         * @param repositoryStoragesWeighted Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
          * 
          * @return builder
          * 

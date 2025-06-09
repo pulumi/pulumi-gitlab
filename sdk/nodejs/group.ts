@@ -7,12 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Group` resource allows to manage the lifecycle of a group.
- *
- * > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
- *
  * ## Example Usage
  *
  * ```typescript
@@ -161,7 +155,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
-     * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+     * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      */
     public readonly defaultBranchProtection!: pulumi.Output<number>;
     /**
@@ -404,7 +398,7 @@ export interface GroupState {
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
-     * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+     * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
@@ -548,7 +542,7 @@ export interface GroupArgs {
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
-     * @deprecated Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+     * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**

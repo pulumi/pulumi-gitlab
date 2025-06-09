@@ -145,9 +145,9 @@ export class RepositoryFile extends pulumi.CustomResource {
      */
     public readonly deleteCommitMessage!: pulumi.Output<string | undefined>;
     /**
-     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * The file content encoding. Valid values are: `base64`, `text`.
      */
-    public readonly encoding!: pulumi.Output<string | undefined>;
+    public readonly encoding!: pulumi.Output<string>;
     /**
      * Enables or disables the execute flag on the file.
      */
@@ -231,6 +231,9 @@ export class RepositoryFile extends pulumi.CustomResource {
             if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
+            if ((!args || args.encoding === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'encoding'");
+            }
             if ((!args || args.filePath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filePath'");
             }
@@ -309,7 +312,7 @@ export interface RepositoryFileState {
      */
     deleteCommitMessage?: pulumi.Input<string>;
     /**
-     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * The file content encoding. Valid values are: `base64`, `text`.
      */
     encoding?: pulumi.Input<string>;
     /**
@@ -387,9 +390,9 @@ export interface RepositoryFileArgs {
      */
     deleteCommitMessage?: pulumi.Input<string>;
     /**
-     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * The file content encoding. Valid values are: `base64`, `text`.
      */
-    encoding?: pulumi.Input<string>;
+    encoding: pulumi.Input<string>;
     /**
      * Enables or disables the execute flag on the file.
      */

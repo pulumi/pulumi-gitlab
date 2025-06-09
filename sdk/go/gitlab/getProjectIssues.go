@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -84,15 +84,15 @@ type GetProjectIssuesArgs struct {
 	// Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
 	MyReactionEmoji *string `pulumi:"myReactionEmoji"`
 	// Return issues that do not match the assignee id.
-	NotAssigneeIds []int `pulumi:"notAssigneeIds"`
+	NotAssigneeId *int `pulumi:"notAssigneeId"`
 	// Return issues that do not match the author id.
-	NotAuthorIds []int `pulumi:"notAuthorIds"`
+	NotAuthorId *int `pulumi:"notAuthorId"`
 	// Return issues that do not match the labels.
 	NotLabels []string `pulumi:"notLabels"`
 	// Return issues that do not match the milestone.
 	NotMilestone *string `pulumi:"notMilestone"`
 	// Return issues not reacted by the authenticated user by the given emoji.
-	NotMyReactionEmojis []string `pulumi:"notMyReactionEmojis"`
+	NotMyReactionEmoji *string `pulumi:"notMyReactionEmoji"`
 	// Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
 	OrderBy *string `pulumi:"orderBy"`
 	// The name or id of the project.
@@ -144,15 +144,15 @@ type GetProjectIssuesResult struct {
 	// Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
 	MyReactionEmoji *string `pulumi:"myReactionEmoji"`
 	// Return issues that do not match the assignee id.
-	NotAssigneeIds []int `pulumi:"notAssigneeIds"`
+	NotAssigneeId *int `pulumi:"notAssigneeId"`
 	// Return issues that do not match the author id.
-	NotAuthorIds []int `pulumi:"notAuthorIds"`
+	NotAuthorId *int `pulumi:"notAuthorId"`
 	// Return issues that do not match the labels.
 	NotLabels []string `pulumi:"notLabels"`
 	// Return issues that do not match the milestone.
 	NotMilestone *string `pulumi:"notMilestone"`
 	// Return issues not reacted by the authenticated user by the given emoji.
-	NotMyReactionEmojis []string `pulumi:"notMyReactionEmojis"`
+	NotMyReactionEmoji *string `pulumi:"notMyReactionEmoji"`
 	// Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
 	OrderBy *string `pulumi:"orderBy"`
 	// The name or id of the project.
@@ -209,15 +209,15 @@ type GetProjectIssuesOutputArgs struct {
 	// Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
 	MyReactionEmoji pulumi.StringPtrInput `pulumi:"myReactionEmoji"`
 	// Return issues that do not match the assignee id.
-	NotAssigneeIds pulumi.IntArrayInput `pulumi:"notAssigneeIds"`
+	NotAssigneeId pulumi.IntPtrInput `pulumi:"notAssigneeId"`
 	// Return issues that do not match the author id.
-	NotAuthorIds pulumi.IntArrayInput `pulumi:"notAuthorIds"`
+	NotAuthorId pulumi.IntPtrInput `pulumi:"notAuthorId"`
 	// Return issues that do not match the labels.
 	NotLabels pulumi.StringArrayInput `pulumi:"notLabels"`
 	// Return issues that do not match the milestone.
 	NotMilestone pulumi.StringPtrInput `pulumi:"notMilestone"`
 	// Return issues not reacted by the authenticated user by the given emoji.
-	NotMyReactionEmojis pulumi.StringArrayInput `pulumi:"notMyReactionEmojis"`
+	NotMyReactionEmoji pulumi.StringPtrInput `pulumi:"notMyReactionEmoji"`
 	// Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// The name or id of the project.
@@ -328,13 +328,13 @@ func (o GetProjectIssuesResultOutput) MyReactionEmoji() pulumi.StringPtrOutput {
 }
 
 // Return issues that do not match the assignee id.
-func (o GetProjectIssuesResultOutput) NotAssigneeIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetProjectIssuesResult) []int { return v.NotAssigneeIds }).(pulumi.IntArrayOutput)
+func (o GetProjectIssuesResultOutput) NotAssigneeId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectIssuesResult) *int { return v.NotAssigneeId }).(pulumi.IntPtrOutput)
 }
 
 // Return issues that do not match the author id.
-func (o GetProjectIssuesResultOutput) NotAuthorIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetProjectIssuesResult) []int { return v.NotAuthorIds }).(pulumi.IntArrayOutput)
+func (o GetProjectIssuesResultOutput) NotAuthorId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProjectIssuesResult) *int { return v.NotAuthorId }).(pulumi.IntPtrOutput)
 }
 
 // Return issues that do not match the labels.
@@ -348,8 +348,8 @@ func (o GetProjectIssuesResultOutput) NotMilestone() pulumi.StringPtrOutput {
 }
 
 // Return issues not reacted by the authenticated user by the given emoji.
-func (o GetProjectIssuesResultOutput) NotMyReactionEmojis() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetProjectIssuesResult) []string { return v.NotMyReactionEmojis }).(pulumi.StringArrayOutput)
+func (o GetProjectIssuesResultOutput) NotMyReactionEmoji() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectIssuesResult) *string { return v.NotMyReactionEmoji }).(pulumi.StringPtrOutput)
 }
 
 // Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at

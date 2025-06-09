@@ -123,12 +123,6 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
     /**
-     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     *
-     * @deprecated build_coverage_regex is removed in GitLab 15.0.
-     */
-    public readonly buildCoverageRegex!: pulumi.Output<string | undefined>;
-    /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
     public readonly buildGitStrategy!: pulumi.Output<string>;
@@ -377,7 +371,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly pipelinesEnabled!: pulumi.Output<boolean>;
     /**
-     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
     public readonly preReceiveSecretDetectionEnabled!: pulumi.Output<boolean>;
     /**
@@ -541,7 +535,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["avatar"] = state ? state.avatar : undefined;
             resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
             resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
-            resourceInputs["buildCoverageRegex"] = state ? state.buildCoverageRegex : undefined;
             resourceInputs["buildGitStrategy"] = state ? state.buildGitStrategy : undefined;
             resourceInputs["buildTimeout"] = state ? state.buildTimeout : undefined;
             resourceInputs["buildsAccessLevel"] = state ? state.buildsAccessLevel : undefined;
@@ -650,7 +643,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autocloseReferencedIssues"] = args ? args.autocloseReferencedIssues : undefined;
             resourceInputs["avatar"] = args ? args.avatar : undefined;
             resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
-            resourceInputs["buildCoverageRegex"] = args ? args.buildCoverageRegex : undefined;
             resourceInputs["buildGitStrategy"] = args ? args.buildGitStrategy : undefined;
             resourceInputs["buildTimeout"] = args ? args.buildTimeout : undefined;
             resourceInputs["buildsAccessLevel"] = args ? args.buildsAccessLevel : undefined;
@@ -813,12 +805,6 @@ export interface ProjectState {
      * The URL of the avatar image.
      */
     avatarUrl?: pulumi.Input<string>;
-    /**
-     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     *
-     * @deprecated build_coverage_regex is removed in GitLab 15.0.
-     */
-    buildCoverageRegex?: pulumi.Input<string>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
@@ -1068,7 +1054,7 @@ export interface ProjectState {
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
     /**
@@ -1262,12 +1248,6 @@ export interface ProjectArgs {
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     avatarHash?: pulumi.Input<string>;
-    /**
-     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     *
-     * @deprecated build_coverage_regex is removed in GitLab 15.0.
-     */
-    buildCoverageRegex?: pulumi.Input<string>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
@@ -1505,7 +1485,7 @@ export interface ProjectArgs {
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
     /**

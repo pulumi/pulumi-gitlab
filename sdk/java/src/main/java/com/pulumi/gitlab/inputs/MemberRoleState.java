@@ -33,14 +33,14 @@ public final class MemberRoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+     * Timestamp of when the member role was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+     * @return Timestamp of when the member role was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -190,7 +190,7 @@ public final class MemberRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+         * @param createdAt Timestamp of when the member role was created.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class MemberRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+         * @param createdAt Timestamp of when the member role was created.
          * 
          * @return builder
          * 

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationMicrosoftTeams{}
 	case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
 		r = &IntegrationPipelinesEmail{}
+	case "gitlab:index/integrationRedmine:IntegrationRedmine":
+		r = &IntegrationRedmine{}
 	case "gitlab:index/integrationSlack:IntegrationSlack":
 		r = &IntegrationSlack{}
 	case "gitlab:index/integrationTelegram:IntegrationTelegram":
@@ -137,8 +139,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectBadge{}
 	case "gitlab:index/projectCluster:ProjectCluster":
 		r = &ProjectCluster{}
-	case "gitlab:index/projectComplianceFramework:ProjectComplianceFramework":
-		r = &ProjectComplianceFramework{}
 	case "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks":
 		r = &ProjectComplianceFrameworks{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
@@ -195,22 +195,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RepositoryFile{}
 	case "gitlab:index/runner:Runner":
 		r = &Runner{}
-	case "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker":
-		r = &ServiceCustomIssueTracker{}
-	case "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush":
-		r = &ServiceEmailsOnPush{}
-	case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
-		r = &ServiceExternalWiki{}
-	case "gitlab:index/serviceGithub:ServiceGithub":
-		r = &ServiceGithub{}
-	case "gitlab:index/serviceJira:ServiceJira":
-		r = &ServiceJira{}
-	case "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams":
-		r = &ServiceMicrosoftTeams{}
-	case "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail":
-		r = &ServicePipelinesEmail{}
-	case "gitlab:index/serviceSlack:ServiceSlack":
-		r = &ServiceSlack{}
 	case "gitlab:index/systemHook:SystemHook":
 		r = &SystemHook{}
 	case "gitlab:index/tagProtection:TagProtection":
@@ -486,6 +470,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/integrationRedmine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/integrationSlack",
 		&module{version},
 	)
@@ -552,11 +541,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectCluster",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/projectComplianceFramework",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -697,46 +681,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/runner",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceCustomIssueTracker",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceEmailsOnPush",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceExternalWiki",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceGithub",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceJira",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceMicrosoftTeams",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/servicePipelinesEmail",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/serviceSlack",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -34,7 +34,6 @@ class ProjectArgs:
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
-                 build_coverage_regex: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -140,7 +139,6 @@ class ProjectArgs:
         :param pulumi.Input[builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
-        :param pulumi.Input[builtins.str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -199,7 +197,7 @@ class ProjectArgs:
         :param pulumi.Input[builtins.str] path: The path of the repository.
         :param pulumi.Input[builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
-        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
@@ -258,11 +256,6 @@ class ProjectArgs:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
-        if build_coverage_regex is not None:
-            warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
-            pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
-        if build_coverage_regex is not None:
-            pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if build_git_strategy is not None:
             pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         if build_timeout is not None:
@@ -595,19 +588,6 @@ class ProjectArgs:
     @avatar_hash.setter
     def avatar_hash(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
-
-    @property
-    @pulumi.getter(name="buildCoverageRegex")
-    @_utilities.deprecated("""build_coverage_regex is removed in GitLab 15.0.""")
-    def build_coverage_regex(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        """
-        return pulumi.get(self, "build_coverage_regex")
-
-    @build_coverage_regex.setter
-    def build_coverage_regex(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "build_coverage_regex", value)
 
     @property
     @pulumi.getter(name="buildGitStrategy")
@@ -1311,7 +1291,7 @@ class ProjectArgs:
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
     def pre_receive_secret_detection_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         """
         return pulumi.get(self, "pre_receive_secret_detection_enabled")
 
@@ -1689,7 +1669,6 @@ class _ProjectState:
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_url: Optional[pulumi.Input[builtins.str]] = None,
-                 build_coverage_regex: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -1802,7 +1781,6 @@ class _ProjectState:
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[builtins.str] avatar_url: The URL of the avatar image.
-        :param pulumi.Input[builtins.str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1864,7 +1842,7 @@ class _ProjectState:
         :param pulumi.Input[builtins.str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
-        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
@@ -1928,11 +1906,6 @@ class _ProjectState:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
         if avatar_url is not None:
             pulumi.set(__self__, "avatar_url", avatar_url)
-        if build_coverage_regex is not None:
-            warnings.warn("""build_coverage_regex is removed in GitLab 15.0.""", DeprecationWarning)
-            pulumi.log.warn("""build_coverage_regex is deprecated: build_coverage_regex is removed in GitLab 15.0.""")
-        if build_coverage_regex is not None:
-            pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         if build_git_strategy is not None:
             pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         if build_timeout is not None:
@@ -2289,19 +2262,6 @@ class _ProjectState:
     @avatar_url.setter
     def avatar_url(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "avatar_url", value)
-
-    @property
-    @pulumi.getter(name="buildCoverageRegex")
-    @_utilities.deprecated("""build_coverage_regex is removed in GitLab 15.0.""")
-    def build_coverage_regex(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        """
-        return pulumi.get(self, "build_coverage_regex")
-
-    @build_coverage_regex.setter
-    def build_coverage_regex(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "build_coverage_regex", value)
 
     @property
     @pulumi.getter(name="buildGitStrategy")
@@ -3041,7 +3001,7 @@ class _ProjectState:
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
     def pre_receive_secret_detection_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         """
         return pulumi.get(self, "pre_receive_secret_detection_enabled")
 
@@ -3457,7 +3417,6 @@ class Project(pulumi.CustomResource):
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
-                 build_coverage_regex: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -3597,7 +3556,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
-        :param pulumi.Input[builtins.str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3656,7 +3614,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] path: The path of the repository.
         :param pulumi.Input[builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
-        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
@@ -3757,7 +3715,6 @@ class Project(pulumi.CustomResource):
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
-                 build_coverage_regex: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -3867,7 +3824,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
-            __props__.__dict__["build_coverage_regex"] = build_coverage_regex
             __props__.__dict__["build_git_strategy"] = build_git_strategy
             __props__.__dict__["build_timeout"] = build_timeout
             __props__.__dict__["builds_access_level"] = builds_access_level
@@ -3988,7 +3944,6 @@ class Project(pulumi.CustomResource):
             avatar: Optional[pulumi.Input[builtins.str]] = None,
             avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
             avatar_url: Optional[pulumi.Input[builtins.str]] = None,
-            build_coverage_regex: Optional[pulumi.Input[builtins.str]] = None,
             build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
             build_timeout: Optional[pulumi.Input[builtins.int]] = None,
             builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -4106,7 +4061,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[builtins.str] avatar_url: The URL of the avatar image.
-        :param pulumi.Input[builtins.str] build_coverage_regex: Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4168,7 +4122,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         :param pulumi.Input[builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
-        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        :param pulumi.Input[builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
         :param pulumi.Input[builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
@@ -4223,7 +4177,6 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
         __props__.__dict__["avatar_url"] = avatar_url
-        __props__.__dict__["build_coverage_regex"] = build_coverage_regex
         __props__.__dict__["build_git_strategy"] = build_git_strategy
         __props__.__dict__["build_timeout"] = build_timeout
         __props__.__dict__["builds_access_level"] = builds_access_level
@@ -4426,15 +4379,6 @@ class Project(pulumi.CustomResource):
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
-
-    @property
-    @pulumi.getter(name="buildCoverageRegex")
-    @_utilities.deprecated("""build_coverage_regex is removed in GitLab 15.0.""")
-    def build_coverage_regex(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-        """
-        return pulumi.get(self, "build_coverage_regex")
 
     @property
     @pulumi.getter(name="buildGitStrategy")
@@ -4930,7 +4874,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
     def pre_receive_secret_detection_enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+        Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         """
         return pulumi.get(self, "pre_receive_secret_detection_enabled")
 

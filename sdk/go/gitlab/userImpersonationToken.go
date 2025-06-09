@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,7 +86,7 @@ type UserImpersonationToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
-	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the user impersonation token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -151,7 +151,7 @@ type userImpersonationTokenState struct {
 	Name *string `pulumi:"name"`
 	// True if the token is revoked.
 	Revoked *bool `pulumi:"revoked"`
-	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes []string `pulumi:"scopes"`
 	// The token of the user impersonation token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -174,7 +174,7 @@ type UserImpersonationTokenState struct {
 	Name pulumi.StringPtrInput
 	// True if the token is revoked.
 	Revoked pulumi.BoolPtrInput
-	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes pulumi.StringArrayInput
 	// The token of the user impersonation token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -193,7 +193,7 @@ type userImpersonationTokenArgs struct {
 	ExpiresAt string `pulumi:"expiresAt"`
 	// The name of the impersonation token.
 	Name *string `pulumi:"name"`
-	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes []string `pulumi:"scopes"`
 	// The ID of the user.
 	UserId int `pulumi:"userId"`
@@ -205,7 +205,7 @@ type UserImpersonationTokenArgs struct {
 	ExpiresAt pulumi.StringInput
 	// The name of the impersonation token.
 	Name pulumi.StringPtrInput
-	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes pulumi.StringArrayInput
 	// The ID of the user.
 	UserId pulumi.IntInput
@@ -328,7 +328,7 @@ func (o UserImpersonationTokenOutput) Revoked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *UserImpersonationToken) pulumi.BoolOutput { return v.Revoked }).(pulumi.BoolOutput)
 }
 
-// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+// Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 func (o UserImpersonationTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *UserImpersonationToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

@@ -28,7 +28,7 @@ class GetProjectIssuesResult:
     """
     A collection of values returned by getProjectIssues.
     """
-    def __init__(__self__, assignee_id=None, assignee_username=None, author_id=None, confidential=None, created_after=None, created_before=None, due_date=None, id=None, iids=None, issue_type=None, issues=None, labels=None, milestone=None, my_reaction_emoji=None, not_assignee_ids=None, not_author_ids=None, not_labels=None, not_milestone=None, not_my_reaction_emojis=None, order_by=None, project=None, scope=None, search=None, sort=None, updated_after=None, updated_before=None, weight=None, with_labels_details=None):
+    def __init__(__self__, assignee_id=None, assignee_username=None, author_id=None, confidential=None, created_after=None, created_before=None, due_date=None, id=None, iids=None, issue_type=None, issues=None, labels=None, milestone=None, my_reaction_emoji=None, not_assignee_id=None, not_author_id=None, not_labels=None, not_milestone=None, not_my_reaction_emoji=None, order_by=None, project=None, scope=None, search=None, sort=None, updated_after=None, updated_before=None, weight=None, with_labels_details=None):
         if assignee_id and not isinstance(assignee_id, int):
             raise TypeError("Expected argument 'assignee_id' to be a int")
         pulumi.set(__self__, "assignee_id", assignee_id)
@@ -71,21 +71,21 @@ class GetProjectIssuesResult:
         if my_reaction_emoji and not isinstance(my_reaction_emoji, str):
             raise TypeError("Expected argument 'my_reaction_emoji' to be a str")
         pulumi.set(__self__, "my_reaction_emoji", my_reaction_emoji)
-        if not_assignee_ids and not isinstance(not_assignee_ids, list):
-            raise TypeError("Expected argument 'not_assignee_ids' to be a list")
-        pulumi.set(__self__, "not_assignee_ids", not_assignee_ids)
-        if not_author_ids and not isinstance(not_author_ids, list):
-            raise TypeError("Expected argument 'not_author_ids' to be a list")
-        pulumi.set(__self__, "not_author_ids", not_author_ids)
+        if not_assignee_id and not isinstance(not_assignee_id, int):
+            raise TypeError("Expected argument 'not_assignee_id' to be a int")
+        pulumi.set(__self__, "not_assignee_id", not_assignee_id)
+        if not_author_id and not isinstance(not_author_id, int):
+            raise TypeError("Expected argument 'not_author_id' to be a int")
+        pulumi.set(__self__, "not_author_id", not_author_id)
         if not_labels and not isinstance(not_labels, list):
             raise TypeError("Expected argument 'not_labels' to be a list")
         pulumi.set(__self__, "not_labels", not_labels)
         if not_milestone and not isinstance(not_milestone, str):
             raise TypeError("Expected argument 'not_milestone' to be a str")
         pulumi.set(__self__, "not_milestone", not_milestone)
-        if not_my_reaction_emojis and not isinstance(not_my_reaction_emojis, list):
-            raise TypeError("Expected argument 'not_my_reaction_emojis' to be a list")
-        pulumi.set(__self__, "not_my_reaction_emojis", not_my_reaction_emojis)
+        if not_my_reaction_emoji and not isinstance(not_my_reaction_emoji, str):
+            raise TypeError("Expected argument 'not_my_reaction_emoji' to be a str")
+        pulumi.set(__self__, "not_my_reaction_emoji", not_my_reaction_emoji)
         if order_by and not isinstance(order_by, str):
             raise TypeError("Expected argument 'order_by' to be a str")
         pulumi.set(__self__, "order_by", order_by)
@@ -227,20 +227,20 @@ class GetProjectIssuesResult:
         return pulumi.get(self, "my_reaction_emoji")
 
     @property
-    @pulumi.getter(name="notAssigneeIds")
-    def not_assignee_ids(self) -> Optional[Sequence[builtins.int]]:
+    @pulumi.getter(name="notAssigneeId")
+    def not_assignee_id(self) -> Optional[builtins.int]:
         """
         Return issues that do not match the assignee id.
         """
-        return pulumi.get(self, "not_assignee_ids")
+        return pulumi.get(self, "not_assignee_id")
 
     @property
-    @pulumi.getter(name="notAuthorIds")
-    def not_author_ids(self) -> Optional[Sequence[builtins.int]]:
+    @pulumi.getter(name="notAuthorId")
+    def not_author_id(self) -> Optional[builtins.int]:
         """
         Return issues that do not match the author id.
         """
-        return pulumi.get(self, "not_author_ids")
+        return pulumi.get(self, "not_author_id")
 
     @property
     @pulumi.getter(name="notLabels")
@@ -259,12 +259,12 @@ class GetProjectIssuesResult:
         return pulumi.get(self, "not_milestone")
 
     @property
-    @pulumi.getter(name="notMyReactionEmojis")
-    def not_my_reaction_emojis(self) -> Optional[Sequence[builtins.str]]:
+    @pulumi.getter(name="notMyReactionEmoji")
+    def not_my_reaction_emoji(self) -> Optional[builtins.str]:
         """
         Return issues not reacted by the authenticated user by the given emoji.
         """
-        return pulumi.get(self, "not_my_reaction_emojis")
+        return pulumi.get(self, "not_my_reaction_emoji")
 
     @property
     @pulumi.getter(name="orderBy")
@@ -359,11 +359,11 @@ class AwaitableGetProjectIssuesResult(GetProjectIssuesResult):
             labels=self.labels,
             milestone=self.milestone,
             my_reaction_emoji=self.my_reaction_emoji,
-            not_assignee_ids=self.not_assignee_ids,
-            not_author_ids=self.not_author_ids,
+            not_assignee_id=self.not_assignee_id,
+            not_author_id=self.not_author_id,
             not_labels=self.not_labels,
             not_milestone=self.not_milestone,
-            not_my_reaction_emojis=self.not_my_reaction_emojis,
+            not_my_reaction_emoji=self.not_my_reaction_emoji,
             order_by=self.order_by,
             project=self.project,
             scope=self.scope,
@@ -387,11 +387,11 @@ def get_project_issues(assignee_id: Optional[builtins.int] = None,
                        labels: Optional[Sequence[builtins.str]] = None,
                        milestone: Optional[builtins.str] = None,
                        my_reaction_emoji: Optional[builtins.str] = None,
-                       not_assignee_ids: Optional[Sequence[builtins.int]] = None,
-                       not_author_ids: Optional[Sequence[builtins.int]] = None,
+                       not_assignee_id: Optional[builtins.int] = None,
+                       not_author_id: Optional[builtins.int] = None,
                        not_labels: Optional[Sequence[builtins.str]] = None,
                        not_milestone: Optional[builtins.str] = None,
-                       not_my_reaction_emojis: Optional[Sequence[builtins.str]] = None,
+                       not_my_reaction_emoji: Optional[builtins.str] = None,
                        order_by: Optional[builtins.str] = None,
                        project: Optional[builtins.str] = None,
                        scope: Optional[builtins.str] = None,
@@ -431,11 +431,11 @@ def get_project_issues(assignee_id: Optional[builtins.int] = None,
     :param Sequence[builtins.str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
     :param builtins.str milestone: The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
     :param builtins.str my_reaction_emoji: Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
-    :param Sequence[builtins.int] not_assignee_ids: Return issues that do not match the assignee id.
-    :param Sequence[builtins.int] not_author_ids: Return issues that do not match the author id.
+    :param builtins.int not_assignee_id: Return issues that do not match the assignee id.
+    :param builtins.int not_author_id: Return issues that do not match the author id.
     :param Sequence[builtins.str] not_labels: Return issues that do not match the labels.
     :param builtins.str not_milestone: Return issues that do not match the milestone.
-    :param Sequence[builtins.str] not_my_reaction_emojis: Return issues not reacted by the authenticated user by the given emoji.
+    :param builtins.str not_my_reaction_emoji: Return issues not reacted by the authenticated user by the given emoji.
     :param builtins.str order_by: Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
     :param builtins.str project: The name or id of the project.
     :param builtins.str scope: Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
@@ -459,11 +459,11 @@ def get_project_issues(assignee_id: Optional[builtins.int] = None,
     __args__['labels'] = labels
     __args__['milestone'] = milestone
     __args__['myReactionEmoji'] = my_reaction_emoji
-    __args__['notAssigneeIds'] = not_assignee_ids
-    __args__['notAuthorIds'] = not_author_ids
+    __args__['notAssigneeId'] = not_assignee_id
+    __args__['notAuthorId'] = not_author_id
     __args__['notLabels'] = not_labels
     __args__['notMilestone'] = not_milestone
-    __args__['notMyReactionEmojis'] = not_my_reaction_emojis
+    __args__['notMyReactionEmoji'] = not_my_reaction_emoji
     __args__['orderBy'] = order_by
     __args__['project'] = project
     __args__['scope'] = scope
@@ -491,11 +491,11 @@ def get_project_issues(assignee_id: Optional[builtins.int] = None,
         labels=pulumi.get(__ret__, 'labels'),
         milestone=pulumi.get(__ret__, 'milestone'),
         my_reaction_emoji=pulumi.get(__ret__, 'my_reaction_emoji'),
-        not_assignee_ids=pulumi.get(__ret__, 'not_assignee_ids'),
-        not_author_ids=pulumi.get(__ret__, 'not_author_ids'),
+        not_assignee_id=pulumi.get(__ret__, 'not_assignee_id'),
+        not_author_id=pulumi.get(__ret__, 'not_author_id'),
         not_labels=pulumi.get(__ret__, 'not_labels'),
         not_milestone=pulumi.get(__ret__, 'not_milestone'),
-        not_my_reaction_emojis=pulumi.get(__ret__, 'not_my_reaction_emojis'),
+        not_my_reaction_emoji=pulumi.get(__ret__, 'not_my_reaction_emoji'),
         order_by=pulumi.get(__ret__, 'order_by'),
         project=pulumi.get(__ret__, 'project'),
         scope=pulumi.get(__ret__, 'scope'),
@@ -517,11 +517,11 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[builti
                               labels: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                               milestone: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                               my_reaction_emoji: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                              not_assignee_ids: Optional[pulumi.Input[Optional[Sequence[builtins.int]]]] = None,
-                              not_author_ids: Optional[pulumi.Input[Optional[Sequence[builtins.int]]]] = None,
+                              not_assignee_id: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                              not_author_id: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                               not_labels: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                               not_milestone: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                              not_my_reaction_emojis: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
+                              not_my_reaction_emoji: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                               order_by: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                               project: Optional[pulumi.Input[builtins.str]] = None,
                               scope: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -561,11 +561,11 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[builti
     :param Sequence[builtins.str] labels: Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
     :param builtins.str milestone: The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
     :param builtins.str my_reaction_emoji: Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
-    :param Sequence[builtins.int] not_assignee_ids: Return issues that do not match the assignee id.
-    :param Sequence[builtins.int] not_author_ids: Return issues that do not match the author id.
+    :param builtins.int not_assignee_id: Return issues that do not match the assignee id.
+    :param builtins.int not_author_id: Return issues that do not match the author id.
     :param Sequence[builtins.str] not_labels: Return issues that do not match the labels.
     :param builtins.str not_milestone: Return issues that do not match the milestone.
-    :param Sequence[builtins.str] not_my_reaction_emojis: Return issues not reacted by the authenticated user by the given emoji.
+    :param builtins.str not_my_reaction_emoji: Return issues not reacted by the authenticated user by the given emoji.
     :param builtins.str order_by: Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
     :param builtins.str project: The name or id of the project.
     :param builtins.str scope: Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
@@ -589,11 +589,11 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[builti
     __args__['labels'] = labels
     __args__['milestone'] = milestone
     __args__['myReactionEmoji'] = my_reaction_emoji
-    __args__['notAssigneeIds'] = not_assignee_ids
-    __args__['notAuthorIds'] = not_author_ids
+    __args__['notAssigneeId'] = not_assignee_id
+    __args__['notAuthorId'] = not_author_id
     __args__['notLabels'] = not_labels
     __args__['notMilestone'] = not_milestone
-    __args__['notMyReactionEmojis'] = not_my_reaction_emojis
+    __args__['notMyReactionEmoji'] = not_my_reaction_emoji
     __args__['orderBy'] = order_by
     __args__['project'] = project
     __args__['scope'] = scope
@@ -620,11 +620,11 @@ def get_project_issues_output(assignee_id: Optional[pulumi.Input[Optional[builti
         labels=pulumi.get(__response__, 'labels'),
         milestone=pulumi.get(__response__, 'milestone'),
         my_reaction_emoji=pulumi.get(__response__, 'my_reaction_emoji'),
-        not_assignee_ids=pulumi.get(__response__, 'not_assignee_ids'),
-        not_author_ids=pulumi.get(__response__, 'not_author_ids'),
+        not_assignee_id=pulumi.get(__response__, 'not_assignee_id'),
+        not_author_id=pulumi.get(__response__, 'not_author_id'),
         not_labels=pulumi.get(__response__, 'not_labels'),
         not_milestone=pulumi.get(__response__, 'not_milestone'),
-        not_my_reaction_emojis=pulumi.get(__response__, 'not_my_reaction_emojis'),
+        not_my_reaction_emoji=pulumi.get(__response__, 'not_my_reaction_emoji'),
         order_by=pulumi.get(__response__, 'order_by'),
         project=pulumi.get(__response__, 'project'),
         scope=pulumi.get(__response__, 'scope'),

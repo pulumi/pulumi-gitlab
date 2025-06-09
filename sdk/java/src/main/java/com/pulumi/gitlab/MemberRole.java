@@ -68,14 +68,14 @@ public class MemberRole extends com.pulumi.resources.CustomResource {
         return this.baseAccessLevel;
     }
     /**
-     * Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+     * Timestamp of when the member role was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+     * @return Timestamp of when the member role was created.
      * 
      */
     public Output<String> createdAt() {

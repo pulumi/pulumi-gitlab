@@ -100,10 +100,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
-     * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+     * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
+    @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead. */
     @Import(name="defaultBranchProtection")
     private @Nullable Output<Integer> defaultBranchProtection;
 
@@ -111,10 +111,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      * @return See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
-     * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+     * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
+    @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead. */
     public Optional<Output<Integer>> defaultBranchProtection() {
         return Optional.ofNullable(this.defaultBranchProtection);
     }
@@ -653,10 +653,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+         * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.
          * 
          */
-        @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
+        @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead. */
         public Builder defaultBranchProtection(@Nullable Output<Integer> defaultBranchProtection) {
             $.defaultBranchProtection = defaultBranchProtection;
             return this;
@@ -668,10 +668,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+         * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.
          * 
          */
-        @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
+        @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead. */
         public Builder defaultBranchProtection(Integer defaultBranchProtection) {
             return defaultBranchProtection(Output.of(defaultBranchProtection));
         }

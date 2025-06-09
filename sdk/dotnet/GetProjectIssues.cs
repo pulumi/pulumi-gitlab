@@ -195,29 +195,17 @@ namespace Pulumi.GitLab
         [Input("myReactionEmoji")]
         public string? MyReactionEmoji { get; set; }
 
-        [Input("notAssigneeIds")]
-        private List<int>? _notAssigneeIds;
-
         /// <summary>
         /// Return issues that do not match the assignee id.
         /// </summary>
-        public List<int> NotAssigneeIds
-        {
-            get => _notAssigneeIds ?? (_notAssigneeIds = new List<int>());
-            set => _notAssigneeIds = value;
-        }
-
-        [Input("notAuthorIds")]
-        private List<int>? _notAuthorIds;
+        [Input("notAssigneeId")]
+        public int? NotAssigneeId { get; set; }
 
         /// <summary>
         /// Return issues that do not match the author id.
         /// </summary>
-        public List<int> NotAuthorIds
-        {
-            get => _notAuthorIds ?? (_notAuthorIds = new List<int>());
-            set => _notAuthorIds = value;
-        }
+        [Input("notAuthorId")]
+        public int? NotAuthorId { get; set; }
 
         [Input("notLabels")]
         private List<string>? _notLabels;
@@ -237,17 +225,11 @@ namespace Pulumi.GitLab
         [Input("notMilestone")]
         public string? NotMilestone { get; set; }
 
-        [Input("notMyReactionEmojis")]
-        private List<string>? _notMyReactionEmojis;
-
         /// <summary>
         /// Return issues not reacted by the authenticated user by the given emoji.
         /// </summary>
-        public List<string> NotMyReactionEmojis
-        {
-            get => _notMyReactionEmojis ?? (_notMyReactionEmojis = new List<string>());
-            set => _notMyReactionEmojis = value;
-        }
+        [Input("notMyReactionEmoji")]
+        public string? NotMyReactionEmoji { get; set; }
 
         /// <summary>
         /// Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
@@ -395,29 +377,17 @@ namespace Pulumi.GitLab
         [Input("myReactionEmoji")]
         public Input<string>? MyReactionEmoji { get; set; }
 
-        [Input("notAssigneeIds")]
-        private InputList<int>? _notAssigneeIds;
-
         /// <summary>
         /// Return issues that do not match the assignee id.
         /// </summary>
-        public InputList<int> NotAssigneeIds
-        {
-            get => _notAssigneeIds ?? (_notAssigneeIds = new InputList<int>());
-            set => _notAssigneeIds = value;
-        }
-
-        [Input("notAuthorIds")]
-        private InputList<int>? _notAuthorIds;
+        [Input("notAssigneeId")]
+        public Input<int>? NotAssigneeId { get; set; }
 
         /// <summary>
         /// Return issues that do not match the author id.
         /// </summary>
-        public InputList<int> NotAuthorIds
-        {
-            get => _notAuthorIds ?? (_notAuthorIds = new InputList<int>());
-            set => _notAuthorIds = value;
-        }
+        [Input("notAuthorId")]
+        public Input<int>? NotAuthorId { get; set; }
 
         [Input("notLabels")]
         private InputList<string>? _notLabels;
@@ -437,17 +407,11 @@ namespace Pulumi.GitLab
         [Input("notMilestone")]
         public Input<string>? NotMilestone { get; set; }
 
-        [Input("notMyReactionEmojis")]
-        private InputList<string>? _notMyReactionEmojis;
-
         /// <summary>
         /// Return issues not reacted by the authenticated user by the given emoji.
         /// </summary>
-        public InputList<string> NotMyReactionEmojis
-        {
-            get => _notMyReactionEmojis ?? (_notMyReactionEmojis = new InputList<string>());
-            set => _notMyReactionEmojis = value;
-        }
+        [Input("notMyReactionEmoji")]
+        public Input<string>? NotMyReactionEmoji { get; set; }
 
         /// <summary>
         /// Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
@@ -572,11 +536,11 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Return issues that do not match the assignee id.
         /// </summary>
-        public readonly ImmutableArray<int> NotAssigneeIds;
+        public readonly int? NotAssigneeId;
         /// <summary>
         /// Return issues that do not match the author id.
         /// </summary>
-        public readonly ImmutableArray<int> NotAuthorIds;
+        public readonly int? NotAuthorId;
         /// <summary>
         /// Return issues that do not match the labels.
         /// </summary>
@@ -588,7 +552,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// Return issues not reacted by the authenticated user by the given emoji.
         /// </summary>
-        public readonly ImmutableArray<string> NotMyReactionEmojis;
+        public readonly string? NotMyReactionEmoji;
         /// <summary>
         /// Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
         /// </summary>
@@ -656,15 +620,15 @@ namespace Pulumi.GitLab
 
             string? myReactionEmoji,
 
-            ImmutableArray<int> notAssigneeIds,
+            int? notAssigneeId,
 
-            ImmutableArray<int> notAuthorIds,
+            int? notAuthorId,
 
             ImmutableArray<string> notLabels,
 
             string? notMilestone,
 
-            ImmutableArray<string> notMyReactionEmojis,
+            string? notMyReactionEmoji,
 
             string? orderBy,
 
@@ -698,11 +662,11 @@ namespace Pulumi.GitLab
             Labels = labels;
             Milestone = milestone;
             MyReactionEmoji = myReactionEmoji;
-            NotAssigneeIds = notAssigneeIds;
-            NotAuthorIds = notAuthorIds;
+            NotAssigneeId = notAssigneeId;
+            NotAuthorId = notAuthorId;
             NotLabels = notLabels;
             NotMilestone = notMilestone;
-            NotMyReactionEmojis = notMyReactionEmojis;
+            NotMyReactionEmoji = notMyReactionEmoji;
             OrderBy = orderBy;
             Project = project;
             Scope = scope;

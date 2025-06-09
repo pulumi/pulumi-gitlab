@@ -222,29 +222,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     * 
-     * @deprecated
-     * build_coverage_regex is removed in GitLab 15.0.
-     * 
-     */
-    @Deprecated /* build_coverage_regex is removed in GitLab 15.0. */
-    @Import(name="buildCoverageRegex")
-    private @Nullable Output<String> buildCoverageRegex;
-
-    /**
-     * @return Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     * 
-     * @deprecated
-     * build_coverage_regex is removed in GitLab 15.0.
-     * 
-     */
-    @Deprecated /* build_coverage_regex is removed in GitLab 15.0. */
-    public Optional<Output<String>> buildCoverageRegex() {
-        return Optional.ofNullable(this.buildCoverageRegex);
-    }
-
-    /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      * 
      */
@@ -1176,14 +1153,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
      */
     @Import(name="preReceiveSecretDetectionEnabled")
     private @Nullable Output<Boolean> preReceiveSecretDetectionEnabled;
 
     /**
-     * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
      */
     public Optional<Output<Boolean>> preReceiveSecretDetectionEnabled() {
@@ -1702,7 +1679,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
         this.avatarUrl = $.avatarUrl;
-        this.buildCoverageRegex = $.buildCoverageRegex;
         this.buildGitStrategy = $.buildGitStrategy;
         this.buildTimeout = $.buildTimeout;
         this.buildsAccessLevel = $.buildsAccessLevel;
@@ -2094,35 +2070,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder avatarUrl(String avatarUrl) {
             return avatarUrl(Output.of(avatarUrl));
-        }
-
-        /**
-         * @param buildCoverageRegex Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * build_coverage_regex is removed in GitLab 15.0.
-         * 
-         */
-        @Deprecated /* build_coverage_regex is removed in GitLab 15.0. */
-        public Builder buildCoverageRegex(@Nullable Output<String> buildCoverageRegex) {
-            $.buildCoverageRegex = buildCoverageRegex;
-            return this;
-        }
-
-        /**
-         * @param buildCoverageRegex Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * build_coverage_regex is removed in GitLab 15.0.
-         * 
-         */
-        @Deprecated /* build_coverage_regex is removed in GitLab 15.0. */
-        public Builder buildCoverageRegex(String buildCoverageRegex) {
-            return buildCoverageRegex(Output.of(buildCoverageRegex));
         }
 
         /**
@@ -3433,7 +3380,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+         * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
          * 
          * @return builder
          * 
@@ -3444,7 +3391,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+         * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
          * 
          * @return builder
          * 

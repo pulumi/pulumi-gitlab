@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -106,7 +106,7 @@ type GroupAccessToken struct {
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -172,7 +172,7 @@ type groupAccessTokenState struct {
 	Revoked *bool `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
 	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -199,7 +199,7 @@ type GroupAccessTokenState struct {
 	Revoked pulumi.BoolPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
 	// The token of the group access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -224,7 +224,7 @@ type groupAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -242,7 +242,7 @@ type GroupAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
-	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
 }
 
@@ -380,7 +380,7 @@ func (o GroupAccessTokenOutput) RotationConfiguration() GroupAccessTokenRotation
 	}).(GroupAccessTokenRotationConfigurationPtrOutput)
 }
 
-// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 func (o GroupAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

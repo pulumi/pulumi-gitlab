@@ -22,6 +22,57 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.InstanceServiceAccount;
+ * import com.pulumi.gitlab.InstanceServiceAccountArgs;
+ * import com.pulumi.gitlab.inputs.InstanceServiceAccountTimeoutsArgs;
+ * import com.pulumi.gitlab.PersonalAccessToken;
+ * import com.pulumi.gitlab.PersonalAccessTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // create a service account
+ *         var exampleSa = new InstanceServiceAccount("exampleSa", InstanceServiceAccountArgs.builder()
+ *             .name("example-name")
+ *             .username("example-username")
+ *             .email("custom_email}{@literal @}{@code gitlab.example.com")
+ *             .timeouts(InstanceServiceAccountTimeoutsArgs.builder()
+ *                 .delete("3m")
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleToken = new PersonalAccessToken("exampleToken", PersonalAccessTokenArgs.builder()
+ *             .userId(exampleSa.serviceAccountId())
+ *             .name("Example personal access token for a service account")
+ *             .expiresAt("2026-01-01")
+ *             .scopes("api")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_service_account`. For example:
@@ -52,14 +103,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/instanceServiceAccount:InstanceServiceAccount")
 public class InstanceServiceAccount extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
+     * The email of the user account. If not set, generates a no-reply email address.
+     * 
+     */
+    @Export(name="email", refs={String.class}, tree="[0]")
+    private Output<String> email;
+
+    /**
+     * @return The email of the user account. If not set, generates a no-reply email address.
+     * 
+     */
+    public Output<String> email() {
+        return this.email;
+    }
+    /**
+     * The name of the user. If not set, uses Service account user.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the user. If not specified, the default Service account user name is used.
+     * @return The name of the user. If not set, uses Service account user.
      * 
      */
     public Output<String> name() {
@@ -86,14 +151,14 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.timeouts);
     }
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user account. If not set, generates a name prepended with service*account*.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return The username of the user. If not specified, it’s automatically generated.
+     * @return The username of the user account. If not set, generates a name prepended with service*account*.
      * 
      */
     public Output<Optional<String>> username() {

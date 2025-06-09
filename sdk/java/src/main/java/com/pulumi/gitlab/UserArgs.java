@@ -49,52 +49,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String, a specific external authentication provider UID.
-     * 
-     * @deprecated
-     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     * 
-     */
-    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-    @Import(name="externUid")
-    private @Nullable Output<String> externUid;
-
-    /**
-     * @return String, a specific external authentication provider UID.
-     * 
-     * @deprecated
-     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     * 
-     */
-    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-    public Optional<Output<String>> externUid() {
-        return Optional.ofNullable(this.externUid);
-    }
-
-    /**
-     * String, the external provider.
-     * 
-     * @deprecated
-     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     * 
-     */
-    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-    @Import(name="externalProvider")
-    private @Nullable Output<String> externalProvider;
-
-    /**
-     * @return String, the external provider.
-     * 
-     * @deprecated
-     * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     * 
-     */
-    @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-    public Optional<Output<String>> externalProvider() {
-        return Optional.ofNullable(this.externalProvider);
-    }
-
-    /**
      * Set user password to a random value
      * 
      */
@@ -279,8 +233,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     private UserArgs(UserArgs $) {
         this.canCreateGroup = $.canCreateGroup;
         this.email = $.email;
-        this.externUid = $.externUid;
-        this.externalProvider = $.externalProvider;
         this.forceRandomPassword = $.forceRandomPassword;
         this.isAdmin = $.isAdmin;
         this.isExternal = $.isExternal;
@@ -353,64 +305,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder email(String email) {
             return email(Output.of(email));
-        }
-
-        /**
-         * @param externUid String, a specific external authentication provider UID.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-         * 
-         */
-        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-        public Builder externUid(@Nullable Output<String> externUid) {
-            $.externUid = externUid;
-            return this;
-        }
-
-        /**
-         * @param externUid String, a specific external authentication provider UID.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-         * 
-         */
-        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-        public Builder externUid(String externUid) {
-            return externUid(Output.of(externUid));
-        }
-
-        /**
-         * @param externalProvider String, the external provider.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-         * 
-         */
-        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-        public Builder externalProvider(@Nullable Output<String> externalProvider) {
-            $.externalProvider = externalProvider;
-            return this;
-        }
-
-        /**
-         * @param externalProvider String, the external provider.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-         * 
-         */
-        @Deprecated /* To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295 */
-        public Builder externalProvider(String externalProvider) {
-            return externalProvider(Output.of(externalProvider));
         }
 
         /**

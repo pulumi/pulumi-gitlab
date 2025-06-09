@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
  *
  * > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
  *
- * > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `softDestroy = true` to empty out a topic instead of deleting it.
- *
  * **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
  *
  * ## Import
@@ -90,15 +88,9 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Empty the topics fields instead of deleting it.
-     *
-     * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+     * The topic's description.
      */
-    public readonly softDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-     */
-    public readonly title!: pulumi.Output<string | undefined>;
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -107,7 +99,7 @@ export class Topic extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: TopicArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -118,15 +110,16 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["softDestroy"] = state ? state.softDestroy : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
+            if ((!args || args.title === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'title'");
+            }
             resourceInputs["avatar"] = args ? args.avatar : undefined;
             resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["softDestroy"] = args ? args.softDestroy : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["avatarUrl"] = undefined /*out*/;
         }
@@ -160,13 +153,7 @@ export interface TopicState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Empty the topics fields instead of deleting it.
-     *
-     * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-     */
-    softDestroy?: pulumi.Input<boolean>;
-    /**
-     * The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+     * The topic's description.
      */
     title?: pulumi.Input<string>;
 }
@@ -192,13 +179,7 @@ export interface TopicArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Empty the topics fields instead of deleting it.
-     *
-     * @deprecated GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+     * The topic's description.
      */
-    softDestroy?: pulumi.Input<boolean>;
-    /**
-     * The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-     */
-    title?: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

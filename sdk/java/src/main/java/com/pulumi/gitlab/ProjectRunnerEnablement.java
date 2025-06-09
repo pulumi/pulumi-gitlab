@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectRunnerEnablement` resource allows to enable a runner in a project.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#enable-a-runner-in-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#assign-a-runner-to-project)
  * 
  * ## Example Usage
  * 

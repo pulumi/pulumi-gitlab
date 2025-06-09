@@ -5,7 +5,6 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,37 +91,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Empty the topics fields instead of deleting it.
-     * 
-     * @deprecated
-     * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-     * 
-     */
-    @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-    @Import(name="softDestroy")
-    private @Nullable Output<Boolean> softDestroy;
-
-    /**
-     * @return Empty the topics fields instead of deleting it.
-     * 
-     * @deprecated
-     * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-     * 
-     */
-    @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-    public Optional<Output<Boolean>> softDestroy() {
-        return Optional.ofNullable(this.softDestroy);
-    }
-
-    /**
-     * The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+     * The topic&#39;s description.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+     * @return The topic&#39;s description.
      * 
      */
     public Optional<Output<String>> title() {
@@ -137,7 +113,6 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         this.avatarUrl = $.avatarUrl;
         this.description = $.description;
         this.name = $.name;
-        this.softDestroy = $.softDestroy;
         this.title = $.title;
     }
 
@@ -265,36 +240,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param softDestroy Empty the topics fields instead of deleting it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-         * 
-         */
-        @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-        public Builder softDestroy(@Nullable Output<Boolean> softDestroy) {
-            $.softDestroy = softDestroy;
-            return this;
-        }
-
-        /**
-         * @param softDestroy Empty the topics fields instead of deleting it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-         * 
-         */
-        @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-        public Builder softDestroy(Boolean softDestroy) {
-            return softDestroy(Output.of(softDestroy));
-        }
-
-        /**
-         * @param title The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+         * @param title The topic&#39;s description.
          * 
          * @return builder
          * 
@@ -305,7 +251,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param title The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+         * @param title The topic&#39;s description.
          * 
          * @return builder
          * 

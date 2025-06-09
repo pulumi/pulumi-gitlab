@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource is deprecated. use `gitlab.ProjectLabel`instead!
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
  * 
  */
 @ResourceType(type="gitlab:index/label:Label")

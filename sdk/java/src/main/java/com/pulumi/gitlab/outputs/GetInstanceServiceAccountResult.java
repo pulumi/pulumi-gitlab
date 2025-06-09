@@ -10,6 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceServiceAccountResult {
+    /**
+     * @return The email of the user.
+     * 
+     */
+    private String email;
     private String id;
     /**
      * @return The name of the user.
@@ -28,6 +33,13 @@ public final class GetInstanceServiceAccountResult {
     private String username;
 
     private GetInstanceServiceAccountResult() {}
+    /**
+     * @return The email of the user.
+     * 
+     */
+    public String email() {
+        return this.email;
+    }
     public String id() {
         return this.id;
     }
@@ -62,6 +74,7 @@ public final class GetInstanceServiceAccountResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String email;
         private String id;
         private String name;
         private String serviceAccountId;
@@ -69,12 +82,21 @@ public final class GetInstanceServiceAccountResult {
         public Builder() {}
         public Builder(GetInstanceServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.email = defaults.email;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.serviceAccountId = defaults.serviceAccountId;
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetInstanceServiceAccountResult", "email");
+            }
+            this.email = email;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -109,6 +131,7 @@ public final class GetInstanceServiceAccountResult {
         }
         public GetInstanceServiceAccountResult build() {
             final var _resultValue = new GetInstanceServiceAccountResult();
+            _resultValue.email = email;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.serviceAccountId = serviceAccountId;

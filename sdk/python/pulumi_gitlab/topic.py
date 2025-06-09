@@ -20,21 +20,20 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
+                 title: pulumi.Input[builtins.str],
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None,
-                 soft_destroy: Optional[pulumi.Input[builtins.bool]] = None,
-                 title: Optional[pulumi.Input[builtins.str]] = None):
+                 name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[builtins.str] title: The topic's description.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[builtins.str] description: A text describing the topic.
         :param pulumi.Input[builtins.str] name: The topic's name.
-        :param pulumi.Input[builtins.bool] soft_destroy: Empty the topics fields instead of deleting it.
-        :param pulumi.Input[builtins.str] title: The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
         """
+        pulumi.set(__self__, "title", title)
         if avatar is not None:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
@@ -43,13 +42,18 @@ class TopicArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if soft_destroy is not None:
-            warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
-            pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-        if soft_destroy is not None:
-            pulumi.set(__self__, "soft_destroy", soft_destroy)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        The topic's description.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
 
     @property
     @pulumi.getter
@@ -99,31 +103,6 @@ class TopicArgs:
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter(name="softDestroy")
-    @_utilities.deprecated("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-    def soft_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Empty the topics fields instead of deleting it.
-        """
-        return pulumi.get(self, "soft_destroy")
-
-    @soft_destroy.setter
-    def soft_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "soft_destroy", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "title", value)
-
 
 @pulumi.input_type
 class _TopicState:
@@ -133,7 +112,6 @@ class _TopicState:
                  avatar_url: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 soft_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
@@ -142,8 +120,7 @@ class _TopicState:
         :param pulumi.Input[builtins.str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[builtins.str] description: A text describing the topic.
         :param pulumi.Input[builtins.str] name: The topic's name.
-        :param pulumi.Input[builtins.bool] soft_destroy: Empty the topics fields instead of deleting it.
-        :param pulumi.Input[builtins.str] title: The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        :param pulumi.Input[builtins.str] title: The topic's description.
         """
         if avatar is not None:
             pulumi.set(__self__, "avatar", avatar)
@@ -155,11 +132,6 @@ class _TopicState:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if soft_destroy is not None:
-            warnings.warn("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""", DeprecationWarning)
-            pulumi.log.warn("""soft_destroy is deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-        if soft_destroy is not None:
-            pulumi.set(__self__, "soft_destroy", soft_destroy)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -224,23 +196,10 @@ class _TopicState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="softDestroy")
-    @_utilities.deprecated("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-    def soft_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Empty the topics fields instead of deleting it.
-        """
-        return pulumi.get(self, "soft_destroy")
-
-    @soft_destroy.setter
-    def soft_destroy(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "soft_destroy", value)
-
-    @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        The topic's description.
         """
         return pulumi.get(self, "title")
 
@@ -259,15 +218,12 @@ class Topic(pulumi.CustomResource):
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 soft_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         The `Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
 
         > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
-
-        > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `soft_destroy = true` to empty out a topic instead of deleting it.
 
         **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
 
@@ -305,21 +261,18 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[builtins.str] description: A text describing the topic.
         :param pulumi.Input[builtins.str] name: The topic's name.
-        :param pulumi.Input[builtins.bool] soft_destroy: Empty the topics fields instead of deleting it.
-        :param pulumi.Input[builtins.str] title: The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        :param pulumi.Input[builtins.str] title: The topic's description.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[TopicArgs] = None,
+                 args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
 
         > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
-
-        > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `soft_destroy = true` to empty out a topic instead of deleting it.
 
         **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
 
@@ -370,7 +323,6 @@ class Topic(pulumi.CustomResource):
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 soft_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -385,7 +337,8 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["avatar_hash"] = avatar_hash
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            __props__.__dict__["soft_destroy"] = soft_destroy
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
             __props__.__dict__["avatar_url"] = None
         super(Topic, __self__).__init__(
@@ -403,7 +356,6 @@ class Topic(pulumi.CustomResource):
             avatar_url: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            soft_destroy: Optional[pulumi.Input[builtins.bool]] = None,
             title: Optional[pulumi.Input[builtins.str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
@@ -417,8 +369,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] avatar_url: The URL of the avatar image.
         :param pulumi.Input[builtins.str] description: A text describing the topic.
         :param pulumi.Input[builtins.str] name: The topic's name.
-        :param pulumi.Input[builtins.bool] soft_destroy: Empty the topics fields instead of deleting it.
-        :param pulumi.Input[builtins.str] title: The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        :param pulumi.Input[builtins.str] title: The topic's description.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -429,7 +380,6 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["avatar_url"] = avatar_url
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
-        __props__.__dict__["soft_destroy"] = soft_destroy
         __props__.__dict__["title"] = title
         return Topic(resource_name, opts=opts, __props__=__props__)
 
@@ -474,19 +424,10 @@ class Topic(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="softDestroy")
-    @_utilities.deprecated("""GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.""")
-    def soft_destroy(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Empty the topics fields instead of deleting it.
-        """
-        return pulumi.get(self, "soft_destroy")
-
-    @property
     @pulumi.getter
-    def title(self) -> pulumi.Output[Optional[builtins.str]]:
+    def title(self) -> pulumi.Output[builtins.str]:
         """
-        The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        The topic's description.
         """
         return pulumi.get(self, "title")
 

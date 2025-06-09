@@ -244,24 +244,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.avatarUrl;
     }
     /**
-     * Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     * 
-     * @deprecated
-     * build_coverage_regex is removed in GitLab 15.0.
-     * 
-     */
-    @Deprecated /* build_coverage_regex is removed in GitLab 15.0. */
-    @Export(name="buildCoverageRegex", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> buildCoverageRegex;
-
-    /**
-     * @return Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-     * 
-     */
-    public Output<Optional<String>> buildCoverageRegex() {
-        return Codegen.optional(this.buildCoverageRegex);
-    }
-    /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      * 
      */
@@ -1124,14 +1106,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.pipelinesEnabled;
     }
     /**
-     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
      */
     @Export(name="preReceiveSecretDetectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preReceiveSecretDetectionEnabled;
 
     /**
-     * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+     * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
      */
     public Output<Boolean> preReceiveSecretDetectionEnabled() {

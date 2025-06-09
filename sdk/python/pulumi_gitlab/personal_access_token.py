@@ -30,7 +30,7 @@ class PersonalAccessTokenArgs:
                  rotation_configuration: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']] = None):
         """
         The set of arguments for constructing a PersonalAccessToken resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         :param pulumi.Input[builtins.str] description: The description of the personal access token.
         :param pulumi.Input[builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
@@ -52,7 +52,7 @@ class PersonalAccessTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -143,7 +143,7 @@ class _PersonalAccessTokenState:
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
         :param pulumi.Input[builtins.bool] revoked: True if the token is revoked.
         :param pulumi.Input['PersonalAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         """
@@ -256,7 +256,7 @@ class _PersonalAccessTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -364,7 +364,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
         :param pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         """
         ...
@@ -509,7 +509,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
         :param pulumi.Input[builtins.bool] revoked: True if the token is revoked.
         :param pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         """
@@ -589,7 +589,7 @@ class PersonalAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 

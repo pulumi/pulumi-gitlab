@@ -17,14 +17,29 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
     public static final InstanceServiceAccountState Empty = new InstanceServiceAccountState();
 
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
+     * The email of the user account. If not set, generates a no-reply email address.
+     * 
+     */
+    @Import(name="email")
+    private @Nullable Output<String> email;
+
+    /**
+     * @return The email of the user account. If not set, generates a no-reply email address.
+     * 
+     */
+    public Optional<Output<String>> email() {
+        return Optional.ofNullable(this.email);
+    }
+
+    /**
+     * The name of the user. If not set, uses Service account user.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the user. If not specified, the default Service account user name is used.
+     * @return The name of the user. If not set, uses Service account user.
      * 
      */
     public Optional<Output<String>> name() {
@@ -54,14 +69,14 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user account. If not set, generates a name prepended with service*account*.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username of the user. If not specified, it’s automatically generated.
+     * @return The username of the user account. If not set, generates a name prepended with service*account*.
      * 
      */
     public Optional<Output<String>> username() {
@@ -71,6 +86,7 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
     private InstanceServiceAccountState() {}
 
     private InstanceServiceAccountState(InstanceServiceAccountState $) {
+        this.email = $.email;
         this.name = $.name;
         this.serviceAccountId = $.serviceAccountId;
         this.timeouts = $.timeouts;
@@ -96,7 +112,28 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the user. If not specified, the default Service account user name is used.
+         * @param email The email of the user account. If not set, generates a no-reply email address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(@Nullable Output<String> email) {
+            $.email = email;
+            return this;
+        }
+
+        /**
+         * @param email The email of the user account. If not set, generates a no-reply email address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(String email) {
+            return email(Output.of(email));
+        }
+
+        /**
+         * @param name The name of the user. If not set, uses Service account user.
          * 
          * @return builder
          * 
@@ -107,7 +144,7 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the user. If not specified, the default Service account user name is used.
+         * @param name The name of the user. If not set, uses Service account user.
          * 
          * @return builder
          * 
@@ -147,7 +184,7 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param username The username of the user. If not specified, it’s automatically generated.
+         * @param username The username of the user account. If not set, generates a name prepended with service*account*.
          * 
          * @return builder
          * 
@@ -158,7 +195,7 @@ public final class InstanceServiceAccountState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param username The username of the user. If not specified, it’s automatically generated.
+         * @param username The username of the user account. If not set, generates a name prepended with service*account*.
          * 
          * @return builder
          * 

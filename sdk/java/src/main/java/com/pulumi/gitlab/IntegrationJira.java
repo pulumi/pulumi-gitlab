@@ -282,24 +282,6 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     * 
-     * @deprecated
-     * `project_key` is deprecated. Use `project_keys` instead.
-     * 
-     */
-    @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
-    @Export(name="projectKey", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> projectKey;
-
-    /**
-     * @return The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     * 
-     */
-    public Output<Optional<String>> projectKey() {
-        return Codegen.optional(this.projectKey);
-    }
-    /**
      * Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */

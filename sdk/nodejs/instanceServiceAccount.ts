@@ -13,6 +13,29 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // create a service account
+ * const exampleSa = new gitlab.InstanceServiceAccount("example_sa", {
+ *     name: "example-name",
+ *     username: "example-username",
+ *     email: "custom_email@gitlab.example.com",
+ *     timeouts: {
+ *         "delete": "3m",
+ *     },
+ * });
+ * const exampleToken = new gitlab.PersonalAccessToken("example_token", {
+ *     userId: exampleSa.serviceAccountId,
+ *     name: "Example personal access token for a service account",
+ *     expiresAt: "2026-01-01",
+ *     scopes: ["api"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_service_account`. For example:
@@ -68,7 +91,11 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
+     * The email of the user account. If not set, generates a no-reply email address.
+     */
+    public readonly email!: pulumi.Output<string>;
+    /**
+     * The name of the user. If not set, uses Service account user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -77,7 +104,7 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
     public /*out*/ readonly serviceAccountId!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.InstanceServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user account. If not set, generates a name prepended with service*account*.
      */
     public readonly username!: pulumi.Output<string | undefined>;
 
@@ -94,12 +121,14 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceServiceAccountState | undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as InstanceServiceAccountArgs | undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -115,7 +144,11 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
  */
 export interface InstanceServiceAccountState {
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
+     * The email of the user account. If not set, generates a no-reply email address.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * The name of the user. If not set, uses Service account user.
      */
     name?: pulumi.Input<string>;
     /**
@@ -124,7 +157,7 @@ export interface InstanceServiceAccountState {
     serviceAccountId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.InstanceServiceAccountTimeouts>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user account. If not set, generates a name prepended with service*account*.
      */
     username?: pulumi.Input<string>;
 }
@@ -134,12 +167,16 @@ export interface InstanceServiceAccountState {
  */
 export interface InstanceServiceAccountArgs {
     /**
-     * The name of the user. If not specified, the default Service account user name is used.
+     * The email of the user account. If not set, generates a no-reply email address.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * The name of the user. If not set, uses Service account user.
      */
     name?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.InstanceServiceAccountTimeouts>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user account. If not set, generates a name prepended with service*account*.
      */
     username?: pulumi.Input<string>;
 }

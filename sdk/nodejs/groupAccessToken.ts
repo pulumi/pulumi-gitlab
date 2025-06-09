@@ -126,7 +126,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
      */
     public readonly rotationConfiguration!: pulumi.Output<outputs.GroupAccessTokenRotationConfiguration | undefined>;
     /**
-     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -232,7 +232,7 @@ export interface GroupAccessTokenState {
      */
     rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -274,7 +274,7 @@ export interface GroupAccessTokenArgs {
      */
     rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

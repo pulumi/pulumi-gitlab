@@ -90,12 +90,12 @@ public final class GetProjectIssuesResult {
      * @return Return issues that do not match the assignee id.
      * 
      */
-    private @Nullable List<Integer> notAssigneeIds;
+    private @Nullable Integer notAssigneeId;
     /**
      * @return Return issues that do not match the author id.
      * 
      */
-    private @Nullable List<Integer> notAuthorIds;
+    private @Nullable Integer notAuthorId;
     /**
      * @return Return issues that do not match the labels.
      * 
@@ -110,7 +110,7 @@ public final class GetProjectIssuesResult {
      * @return Return issues not reacted by the authenticated user by the given emoji.
      * 
      */
-    private @Nullable List<String> notMyReactionEmojis;
+    private @Nullable String notMyReactionEmoji;
     /**
      * @return Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
      * 
@@ -260,15 +260,15 @@ public final class GetProjectIssuesResult {
      * @return Return issues that do not match the assignee id.
      * 
      */
-    public List<Integer> notAssigneeIds() {
-        return this.notAssigneeIds == null ? List.of() : this.notAssigneeIds;
+    public Optional<Integer> notAssigneeId() {
+        return Optional.ofNullable(this.notAssigneeId);
     }
     /**
      * @return Return issues that do not match the author id.
      * 
      */
-    public List<Integer> notAuthorIds() {
-        return this.notAuthorIds == null ? List.of() : this.notAuthorIds;
+    public Optional<Integer> notAuthorId() {
+        return Optional.ofNullable(this.notAuthorId);
     }
     /**
      * @return Return issues that do not match the labels.
@@ -288,8 +288,8 @@ public final class GetProjectIssuesResult {
      * @return Return issues not reacted by the authenticated user by the given emoji.
      * 
      */
-    public List<String> notMyReactionEmojis() {
-        return this.notMyReactionEmojis == null ? List.of() : this.notMyReactionEmojis;
+    public Optional<String> notMyReactionEmoji() {
+        return Optional.ofNullable(this.notMyReactionEmoji);
     }
     /**
      * @return Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
@@ -378,11 +378,11 @@ public final class GetProjectIssuesResult {
         private @Nullable List<String> labels;
         private @Nullable String milestone;
         private @Nullable String myReactionEmoji;
-        private @Nullable List<Integer> notAssigneeIds;
-        private @Nullable List<Integer> notAuthorIds;
+        private @Nullable Integer notAssigneeId;
+        private @Nullable Integer notAuthorId;
         private @Nullable List<String> notLabels;
         private @Nullable String notMilestone;
-        private @Nullable List<String> notMyReactionEmojis;
+        private @Nullable String notMyReactionEmoji;
         private @Nullable String orderBy;
         private String project;
         private @Nullable String scope;
@@ -409,11 +409,11 @@ public final class GetProjectIssuesResult {
     	      this.labels = defaults.labels;
     	      this.milestone = defaults.milestone;
     	      this.myReactionEmoji = defaults.myReactionEmoji;
-    	      this.notAssigneeIds = defaults.notAssigneeIds;
-    	      this.notAuthorIds = defaults.notAuthorIds;
+    	      this.notAssigneeId = defaults.notAssigneeId;
+    	      this.notAuthorId = defaults.notAuthorId;
     	      this.notLabels = defaults.notLabels;
     	      this.notMilestone = defaults.notMilestone;
-    	      this.notMyReactionEmojis = defaults.notMyReactionEmojis;
+    	      this.notMyReactionEmoji = defaults.notMyReactionEmoji;
     	      this.orderBy = defaults.orderBy;
     	      this.project = defaults.project;
     	      this.scope = defaults.scope;
@@ -523,22 +523,16 @@ public final class GetProjectIssuesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder notAssigneeIds(@Nullable List<Integer> notAssigneeIds) {
+        public Builder notAssigneeId(@Nullable Integer notAssigneeId) {
 
-            this.notAssigneeIds = notAssigneeIds;
+            this.notAssigneeId = notAssigneeId;
             return this;
-        }
-        public Builder notAssigneeIds(Integer... notAssigneeIds) {
-            return notAssigneeIds(List.of(notAssigneeIds));
         }
         @CustomType.Setter
-        public Builder notAuthorIds(@Nullable List<Integer> notAuthorIds) {
+        public Builder notAuthorId(@Nullable Integer notAuthorId) {
 
-            this.notAuthorIds = notAuthorIds;
+            this.notAuthorId = notAuthorId;
             return this;
-        }
-        public Builder notAuthorIds(Integer... notAuthorIds) {
-            return notAuthorIds(List.of(notAuthorIds));
         }
         @CustomType.Setter
         public Builder notLabels(@Nullable List<String> notLabels) {
@@ -556,13 +550,10 @@ public final class GetProjectIssuesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder notMyReactionEmojis(@Nullable List<String> notMyReactionEmojis) {
+        public Builder notMyReactionEmoji(@Nullable String notMyReactionEmoji) {
 
-            this.notMyReactionEmojis = notMyReactionEmojis;
+            this.notMyReactionEmoji = notMyReactionEmoji;
             return this;
-        }
-        public Builder notMyReactionEmojis(String... notMyReactionEmojis) {
-            return notMyReactionEmojis(List.of(notMyReactionEmojis));
         }
         @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
@@ -636,11 +627,11 @@ public final class GetProjectIssuesResult {
             _resultValue.labels = labels;
             _resultValue.milestone = milestone;
             _resultValue.myReactionEmoji = myReactionEmoji;
-            _resultValue.notAssigneeIds = notAssigneeIds;
-            _resultValue.notAuthorIds = notAuthorIds;
+            _resultValue.notAssigneeId = notAssigneeId;
+            _resultValue.notAuthorId = notAuthorId;
             _resultValue.notLabels = notLabels;
             _resultValue.notMilestone = notMilestone;
-            _resultValue.notMyReactionEmojis = notMyReactionEmojis;
+            _resultValue.notMyReactionEmoji = notMyReactionEmoji;
             _resultValue.orderBy = orderBy;
             _resultValue.project = project;
             _resultValue.scope = scope;

@@ -14,8 +14,6 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
     /// 
-    /// &gt; Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `soft_destroy = true` to empty out a topic instead of deleting it.
-    /// 
     /// **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
     /// 
     /// ## Import
@@ -80,16 +78,10 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Empty the topics fields instead of deleting it.
-        /// </summary>
-        [Output("softDestroy")]
-        public Output<bool?> SoftDestroy { get; private set; } = null!;
-
-        /// <summary>
-        /// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        /// The topic's description.
         /// </summary>
         [Output("title")]
-        public Output<string?> Title { get; private set; } = null!;
+        public Output<string> Title { get; private set; } = null!;
 
 
         /// <summary>
@@ -99,7 +91,7 @@ namespace Pulumi.GitLab
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Topic(string name, TopicArgs? args = null, CustomResourceOptions? options = null)
+        public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
             : base("gitlab:index/topic:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -162,16 +154,10 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Empty the topics fields instead of deleting it.
+        /// The topic's description.
         /// </summary>
-        [Input("softDestroy")]
-        public Input<bool>? SoftDestroy { get; set; }
-
-        /// <summary>
-        /// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-        /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public TopicArgs()
         {
@@ -212,13 +198,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Empty the topics fields instead of deleting it.
-        /// </summary>
-        [Input("softDestroy")]
-        public Input<bool>? SoftDestroy { get; set; }
-
-        /// <summary>
-        /// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+        /// The topic's description.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

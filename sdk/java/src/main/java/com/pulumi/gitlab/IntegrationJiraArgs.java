@@ -192,29 +192,6 @@ public final class IntegrationJiraArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     * 
-     * @deprecated
-     * `project_key` is deprecated. Use `project_keys` instead.
-     * 
-     */
-    @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
-    @Import(name="projectKey")
-    private @Nullable Output<String> projectKey;
-
-    /**
-     * @return The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-     * 
-     * @deprecated
-     * `project_key` is deprecated. Use `project_keys` instead.
-     * 
-     */
-    @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
-    public Optional<Output<String>> projectKey() {
-        return Optional.ofNullable(this.projectKey);
-    }
-
-    /**
      * Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
@@ -289,7 +266,6 @@ public final class IntegrationJiraArgs extends com.pulumi.resources.ResourceArgs
         this.mergeRequestsEvents = $.mergeRequestsEvents;
         this.password = $.password;
         this.project = $.project;
-        this.projectKey = $.projectKey;
         this.projectKeys = $.projectKeys;
         this.url = $.url;
         this.useInheritedSettings = $.useInheritedSettings;
@@ -552,35 +528,6 @@ public final class IntegrationJiraArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param projectKey The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `project_key` is deprecated. Use `project_keys` instead.
-         * 
-         */
-        @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
-        public Builder projectKey(@Nullable Output<String> projectKey) {
-            $.projectKey = projectKey;
-            return this;
-        }
-
-        /**
-         * @param projectKey The short identifier for your JIRA project. Must be all uppercase. For example, `PROJ`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `project_key` is deprecated. Use `project_keys` instead.
-         * 
-         */
-        @Deprecated /* `project_key` is deprecated. Use `project_keys` instead. */
-        public Builder projectKey(String projectKey) {
-            return projectKey(Output.of(projectKey));
         }
 
         /**

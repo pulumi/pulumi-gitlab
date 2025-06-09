@@ -86,9 +86,9 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
-    public readonly memberRoleId!: pulumi.Output<number>;
+    public readonly memberRoleId!: pulumi.Output<number | undefined>;
     /**
      * The id of the additional group with which the main group will be shared.
      */
@@ -151,7 +151,7 @@ export interface GroupShareGroupState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
     memberRoleId?: pulumi.Input<number>;
     /**
@@ -177,7 +177,7 @@ export interface GroupShareGroupArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
     memberRoleId?: pulumi.Input<number>;
     /**

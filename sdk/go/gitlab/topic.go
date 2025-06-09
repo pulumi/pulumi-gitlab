@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"errors"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
 //
 // > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
-//
-// > Deleting a topic was implemented in GitLab 14.9. For older versions of GitLab set `softDestroy = true` to empty out a topic instead of deleting it.
 //
 // **Upstream API**: [GitLab REST API docs for topics](https://docs.gitlab.com/api/topics/)
 //
@@ -59,21 +58,20 @@ type Topic struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The topic's name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Empty the topics fields instead of deleting it.
-	//
-	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-	SoftDestroy pulumi.BoolPtrOutput `pulumi:"softDestroy"`
-	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-	Title pulumi.StringPtrOutput `pulumi:"title"`
+	// The topic's description.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
 func NewTopic(ctx *pulumi.Context,
 	name string, args *TopicArgs, opts ...pulumi.ResourceOption) (*Topic, error) {
 	if args == nil {
-		args = &TopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Topic
 	err := ctx.RegisterResource("gitlab:index/topic:Topic", name, args, &resource, opts...)
@@ -107,11 +105,7 @@ type topicState struct {
 	Description *string `pulumi:"description"`
 	// The topic's name.
 	Name *string `pulumi:"name"`
-	// Empty the topics fields instead of deleting it.
-	//
-	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-	SoftDestroy *bool `pulumi:"softDestroy"`
-	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	// The topic's description.
 	Title *string `pulumi:"title"`
 }
 
@@ -126,11 +120,7 @@ type TopicState struct {
 	Description pulumi.StringPtrInput
 	// The topic's name.
 	Name pulumi.StringPtrInput
-	// Empty the topics fields instead of deleting it.
-	//
-	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-	SoftDestroy pulumi.BoolPtrInput
-	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
+	// The topic's description.
 	Title pulumi.StringPtrInput
 }
 
@@ -147,12 +137,8 @@ type topicArgs struct {
 	Description *string `pulumi:"description"`
 	// The topic's name.
 	Name *string `pulumi:"name"`
-	// Empty the topics fields instead of deleting it.
-	//
-	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-	SoftDestroy *bool `pulumi:"softDestroy"`
-	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-	Title *string `pulumi:"title"`
+	// The topic's description.
+	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -165,12 +151,8 @@ type TopicArgs struct {
 	Description pulumi.StringPtrInput
 	// The topic's name.
 	Name pulumi.StringPtrInput
-	// Empty the topics fields instead of deleting it.
-	//
-	// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-	SoftDestroy pulumi.BoolPtrInput
-	// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-	Title pulumi.StringPtrInput
+	// The topic's description.
+	Title pulumi.StringInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {
@@ -285,16 +267,9 @@ func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Empty the topics fields instead of deleting it.
-//
-// Deprecated: GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-func (o TopicOutput) SoftDestroy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.SoftDestroy }).(pulumi.BoolPtrOutput)
-}
-
-// The topic's description. Requires at least GitLab 15.0 for which it's a required argument.
-func (o TopicOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
+// The topic's description.
+func (o TopicOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }

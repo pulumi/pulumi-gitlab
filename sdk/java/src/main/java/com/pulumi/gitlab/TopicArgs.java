@@ -5,7 +5,7 @@ package com.pulumi.gitlab;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -77,41 +77,18 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Empty the topics fields instead of deleting it.
-     * 
-     * @deprecated
-     * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+     * The topic&#39;s description.
      * 
      */
-    @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-    @Import(name="softDestroy")
-    private @Nullable Output<Boolean> softDestroy;
+    @Import(name="title", required=true)
+    private Output<String> title;
 
     /**
-     * @return Empty the topics fields instead of deleting it.
-     * 
-     * @deprecated
-     * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
+     * @return The topic&#39;s description.
      * 
      */
-    @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-    public Optional<Output<Boolean>> softDestroy() {
-        return Optional.ofNullable(this.softDestroy);
-    }
-
-    /**
-     * The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
-     * 
-     */
-    @Import(name="title")
-    private @Nullable Output<String> title;
-
-    /**
-     * @return The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
-     * 
-     */
-    public Optional<Output<String>> title() {
-        return Optional.ofNullable(this.title);
+    public Output<String> title() {
+        return this.title;
     }
 
     private TopicArgs() {}
@@ -121,7 +98,6 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         this.avatarHash = $.avatarHash;
         this.description = $.description;
         this.name = $.name;
-        this.softDestroy = $.softDestroy;
         this.title = $.title;
     }
 
@@ -228,47 +204,18 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param softDestroy Empty the topics fields instead of deleting it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-         * 
-         */
-        @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-        public Builder softDestroy(@Nullable Output<Boolean> softDestroy) {
-            $.softDestroy = softDestroy;
-            return this;
-        }
-
-        /**
-         * @param softDestroy Empty the topics fields instead of deleting it.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed.
-         * 
-         */
-        @Deprecated /* GitLab 14.9 introduced the proper deletion of topics. This field is no longer needed. */
-        public Builder softDestroy(Boolean softDestroy) {
-            return softDestroy(Output.of(softDestroy));
-        }
-
-        /**
-         * @param title The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+         * @param title The topic&#39;s description.
          * 
          * @return builder
          * 
          */
-        public Builder title(@Nullable Output<String> title) {
+        public Builder title(Output<String> title) {
             $.title = title;
             return this;
         }
 
         /**
-         * @param title The topic&#39;s description. Requires at least GitLab 15.0 for which it&#39;s a required argument.
+         * @param title The topic&#39;s description.
          * 
          * @return builder
          * 
@@ -278,6 +225,9 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TopicArgs build() {
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "title");
+            }
             return $;
         }
     }

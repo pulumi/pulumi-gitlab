@@ -79,10 +79,10 @@ namespace Pulumi.GitLab
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         /// </summary>
         [Output("memberRoleId")]
-        public Output<int> MemberRoleId { get; private set; } = null!;
+        public Output<int?> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
         /// The id of the additional group with which the main group will be shared.
@@ -155,7 +155,7 @@ namespace Pulumi.GitLab
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.GitLab
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }

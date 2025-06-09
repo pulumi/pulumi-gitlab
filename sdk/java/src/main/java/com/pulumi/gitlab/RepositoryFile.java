@@ -265,18 +265,18 @@ public class RepositoryFile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deleteCommitMessage);
     }
     /**
-     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * The file content encoding. Valid values are: `base64`, `text`.
      * 
      */
     @Export(name="encoding", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> encoding;
+    private Output<String> encoding;
 
     /**
-     * @return The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * @return The file content encoding. Valid values are: `base64`, `text`.
      * 
      */
-    public Output<Optional<String>> encoding() {
-        return Codegen.optional(this.encoding);
+    public Output<String> encoding() {
+        return this.encoding;
     }
     /**
      * Enables or disables the execute flag on the file.

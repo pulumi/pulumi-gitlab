@@ -126,7 +126,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     public readonly rotationConfiguration!: pulumi.Output<outputs.ProjectAccessTokenRotationConfiguration | undefined>;
     /**
-     * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -232,7 +232,7 @@ export interface ProjectAccessTokenState {
      */
     rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -274,7 +274,7 @@ export interface ProjectAccessTokenArgs {
      */
     rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

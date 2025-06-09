@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-project-with-group)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-a-project-with-a-group)
     /// 
     /// ## Example Usage
     /// 

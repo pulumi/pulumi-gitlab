@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
  * 
- * &gt; This is deprecated GitLab feature since 14.5
+ * &gt; This is deprecated, due for removal in GitLab 19.0.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_clusters/)
  * 
