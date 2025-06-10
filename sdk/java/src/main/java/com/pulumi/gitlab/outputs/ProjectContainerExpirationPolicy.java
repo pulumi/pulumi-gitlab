@@ -31,15 +31,6 @@ public final class ProjectContainerExpirationPolicy {
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
-     * 
-     */
-    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
-    private @Nullable String nameRegex;
-    /**
-     * @return The regular expression to match image names to delete.
-     * 
      */
     private @Nullable String nameRegexDelete;
     /**
@@ -83,17 +74,6 @@ public final class ProjectContainerExpirationPolicy {
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
-     * 
-     */
-    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
-    public Optional<String> nameRegex() {
-        return Optional.ofNullable(this.nameRegex);
-    }
-    /**
-     * @return The regular expression to match image names to delete.
-     * 
      */
     public Optional<String> nameRegexDelete() {
         return Optional.ofNullable(this.nameRegexDelete);
@@ -132,7 +112,6 @@ public final class ProjectContainerExpirationPolicy {
         private @Nullable String cadence;
         private @Nullable Boolean enabled;
         private @Nullable Integer keepN;
-        private @Nullable String nameRegex;
         private @Nullable String nameRegexDelete;
         private @Nullable String nameRegexKeep;
         private @Nullable String nextRunAt;
@@ -143,7 +122,6 @@ public final class ProjectContainerExpirationPolicy {
     	      this.cadence = defaults.cadence;
     	      this.enabled = defaults.enabled;
     	      this.keepN = defaults.keepN;
-    	      this.nameRegex = defaults.nameRegex;
     	      this.nameRegexDelete = defaults.nameRegexDelete;
     	      this.nameRegexKeep = defaults.nameRegexKeep;
     	      this.nextRunAt = defaults.nextRunAt;
@@ -166,12 +144,6 @@ public final class ProjectContainerExpirationPolicy {
         public Builder keepN(@Nullable Integer keepN) {
 
             this.keepN = keepN;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder nameRegex(@Nullable String nameRegex) {
-
-            this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
@@ -203,7 +175,6 @@ public final class ProjectContainerExpirationPolicy {
             _resultValue.cadence = cadence;
             _resultValue.enabled = enabled;
             _resultValue.keepN = keepN;
-            _resultValue.nameRegex = nameRegex;
             _resultValue.nameRegexDelete = nameRegexDelete;
             _resultValue.nameRegexKeep = nameRegexKeep;
             _resultValue.nextRunAt = nextRunAt;

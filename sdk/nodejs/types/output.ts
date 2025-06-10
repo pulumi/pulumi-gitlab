@@ -944,12 +944,6 @@ export interface GetProjectContainerExpirationPolicy {
     keepN: number;
     /**
      * The regular expression to match image names to delete.
-     *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-     */
-    nameRegex: string;
-    /**
-     * The regular expression to match image names to delete.
      */
     nameRegexDelete: string;
     /**
@@ -2311,12 +2305,6 @@ export interface GetProjectsProjectContainerExpirationPolicy {
     keepN: number;
     /**
      * The regular expression to match image names to delete.
-     *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-     */
-    nameRegex: string;
-    /**
-     * The regular expression to match image names to delete.
      */
     nameRegexDelete: string;
     /**
@@ -2957,12 +2945,6 @@ export interface ProjectContainerExpirationPolicy {
      * The number of images to keep.
      */
     keepN: number;
-    /**
-     * The regular expression to match image names to delete.
-     *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-     */
-    nameRegex: string;
     /**
      * The regular expression to match image names to delete.
      */

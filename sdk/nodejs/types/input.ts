@@ -889,12 +889,6 @@ export interface ProjectContainerExpirationPolicy {
     keepN?: pulumi.Input<number>;
     /**
      * The regular expression to match image names to delete.
-     *
-     * @deprecated `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-     */
-    nameRegex?: pulumi.Input<string>;
-    /**
-     * The regular expression to match image names to delete.
      */
     nameRegexDelete?: pulumi.Input<string>;
     /**

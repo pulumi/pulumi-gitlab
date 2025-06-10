@@ -27,7 +27,7 @@ class UserImpersonationTokenArgs:
         """
         The set of arguments for constructing a UserImpersonationToken resource.
         :param pulumi.Input[builtins.str] expires_at: Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         :param pulumi.Input[builtins.str] name: The name of the impersonation token.
         """
@@ -53,7 +53,7 @@ class UserImpersonationTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -107,7 +107,7 @@ class _UserImpersonationTokenState:
         :param pulumi.Input[builtins.bool] impersonation: True as the token is always an impersonation token.
         :param pulumi.Input[builtins.str] name: The name of the impersonation token.
         :param pulumi.Input[builtins.bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.str] token: The token of the user impersonation token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[builtins.int] token_id: ID of the impersonation token.
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
@@ -209,7 +209,7 @@ class _UserImpersonationTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -312,7 +312,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] expires_at: Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
         :param pulumi.Input[builtins.str] name: The name of the impersonation token.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
         """
         ...
@@ -443,7 +443,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] impersonation: True as the token is always an impersonation token.
         :param pulumi.Input[builtins.str] name: The name of the impersonation token.
         :param pulumi.Input[builtins.bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.str] token: The token of the user impersonation token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[builtins.int] token_id: ID of the impersonation token.
         :param pulumi.Input[builtins.int] user_id: The ID of the user.
@@ -516,7 +516,7 @@ class UserImpersonationToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 

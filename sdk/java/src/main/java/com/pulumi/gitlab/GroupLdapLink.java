@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#ldap-group-links)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
  * 
  * ## Example Usage
  * 
@@ -59,24 +59,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/groupLdapLink:GroupLdapLink")
 public class GroupLdapLink extends com.pulumi.resources.CustomResource {
-    /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `group_access` instead of the `access_level` attribute.
-     * 
-     */
-    @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-    @Export(name="accessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessLevel;
-
-    /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     */
-    public Output<Optional<String>> accessLevel() {
-        return Codegen.optional(this.accessLevel);
-    }
     /**
      * The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
@@ -138,14 +120,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="groupAccess", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> groupAccess;
+    private Output<String> groupAccess;
 
     /**
      * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
-    public Output<Optional<String>> groupAccess() {
-        return Codegen.optional(this.groupAccess);
+    public Output<String> groupAccess() {
+        return this.groupAccess;
     }
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -162,14 +144,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return this.ldapProvider;
     }
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
     private Output<Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      * 
      */
     public Output<Integer> memberRoleId() {

@@ -31,7 +31,7 @@ class GroupShareGroupArgs:
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         pulumi.set(__self__, "group_access", group_access)
         pulumi.set(__self__, "group_id", group_id)
@@ -93,7 +93,7 @@ class GroupShareGroupArgs:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -115,7 +115,7 @@ class _GroupShareGroupState:
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
-        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         if expires_at is not None:
@@ -169,7 +169,7 @@ class _GroupShareGroupState:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -247,7 +247,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
-        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         ...
@@ -361,7 +361,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[builtins.str] group_id: The id of the main group to be shared.
-        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         :param pulumi.Input[builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -401,9 +401,9 @@ class GroupShareGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> pulumi.Output[builtins.int]:
+    def member_role_id(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 

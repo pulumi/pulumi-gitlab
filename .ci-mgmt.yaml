@@ -1,5 +1,5 @@
 provider: gitlab
-major-version: 8
+major-version: 9
 upstreamProviderOrg: gitlabhq
 env:
   PULUMI_GITLAB_TOKEN: ${{ secrets.PULUMI_GITLAB_TOKEN }}

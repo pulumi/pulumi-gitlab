@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
 //
-// > This is deprecated GitLab feature since 14.5
+// > This is deprecated, due for removal in GitLab 19.0.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_clusters/)
 //
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

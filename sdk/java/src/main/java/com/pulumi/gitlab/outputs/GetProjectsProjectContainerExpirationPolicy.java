@@ -30,15 +30,6 @@ public final class GetProjectsProjectContainerExpirationPolicy {
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
-     * 
-     */
-    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
-    private String nameRegex;
-    /**
-     * @return The regular expression to match image names to delete.
-     * 
      */
     private String nameRegexDelete;
     /**
@@ -82,17 +73,6 @@ public final class GetProjectsProjectContainerExpirationPolicy {
     /**
      * @return The regular expression to match image names to delete.
      * 
-     * @deprecated
-     * `name_regex` has been deprecated. Use `name_regex_delete` instead.
-     * 
-     */
-    @Deprecated /* `name_regex` has been deprecated. Use `name_regex_delete` instead. */
-    public String nameRegex() {
-        return this.nameRegex;
-    }
-    /**
-     * @return The regular expression to match image names to delete.
-     * 
      */
     public String nameRegexDelete() {
         return this.nameRegexDelete;
@@ -131,7 +111,6 @@ public final class GetProjectsProjectContainerExpirationPolicy {
         private String cadence;
         private Boolean enabled;
         private Integer keepN;
-        private String nameRegex;
         private String nameRegexDelete;
         private String nameRegexKeep;
         private String nextRunAt;
@@ -142,7 +121,6 @@ public final class GetProjectsProjectContainerExpirationPolicy {
     	      this.cadence = defaults.cadence;
     	      this.enabled = defaults.enabled;
     	      this.keepN = defaults.keepN;
-    	      this.nameRegex = defaults.nameRegex;
     	      this.nameRegexDelete = defaults.nameRegexDelete;
     	      this.nameRegexKeep = defaults.nameRegexKeep;
     	      this.nextRunAt = defaults.nextRunAt;
@@ -171,14 +149,6 @@ public final class GetProjectsProjectContainerExpirationPolicy {
               throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "keepN");
             }
             this.keepN = keepN;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder nameRegex(String nameRegex) {
-            if (nameRegex == null) {
-              throw new MissingRequiredPropertyException("GetProjectsProjectContainerExpirationPolicy", "nameRegex");
-            }
-            this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
@@ -218,7 +188,6 @@ public final class GetProjectsProjectContainerExpirationPolicy {
             _resultValue.cadence = cadence;
             _resultValue.enabled = enabled;
             _resultValue.keepN = keepN;
-            _resultValue.nameRegex = nameRegex;
             _resultValue.nameRegexDelete = nameRegexDelete;
             _resultValue.nameRegexKeep = nameRegexKeep;
             _resultValue.nextRunAt = nextRunAt;

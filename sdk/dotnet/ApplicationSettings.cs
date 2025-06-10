@@ -850,12 +850,6 @@ namespace Pulumi.GitLab
         public Output<bool> GroupOwnersCanManageDefaultBranchProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-        /// </summary>
-        [Output("hashedStorageEnabled")]
-        public Output<bool> HashedStorageEnabled { get; private set; } = null!;
-
-        /// <summary>
         /// Hide marketing-related entries from help.
         /// </summary>
         [Output("helpPageHideCommercialContent")]
@@ -892,33 +886,13 @@ namespace Pulumi.GitLab
         public Output<string> HomePageUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable Git housekeeping.
-        /// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        /// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        /// Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         /// </summary>
         [Output("housekeepingEnabled")]
         public Output<bool> HousekeepingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
-        /// </summary>
-        [Output("housekeepingFullRepackPeriod")]
-        public Output<int> HousekeepingFullRepackPeriod { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of Git pushes after which git gc is run.
-        /// </summary>
-        [Output("housekeepingGcPeriod")]
-        public Output<int> HousekeepingGcPeriod { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
-        /// </summary>
-        [Output("housekeepingIncrementalRepackPeriod")]
-        public Output<int> HousekeepingIncrementalRepackPeriod { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
+        /// Number of Git pushes after which an incremental git-repack is run.
         /// </summary>
         [Output("housekeepingOptimizeRepositoryPeriod")]
         public Output<int> HousekeepingOptimizeRepositoryPeriod { get; private set; } = null!;
@@ -1167,7 +1141,7 @@ namespace Pulumi.GitLab
         public Output<bool> NpmPackageRequestsForwarding { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        /// Indicates whether to skip metadata URL validation for the NuGet package.
         /// </summary>
         [Output("nugetSkipMetadataUrlValidation")]
         public Output<bool> NugetSkipMetadataUrlValidation { get; private set; } = null!;
@@ -1383,13 +1357,7 @@ namespace Pulumi.GitLab
         public Output<int> RepositorySizeLimit { get; private set; } = null!;
 
         /// <summary>
-        /// (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        /// </summary>
-        [Output("repositoryStorages")]
-        public Output<ImmutableArray<string>> RepositoryStorages { get; private set; } = null!;
-
-        /// <summary>
-        /// (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        /// Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         /// </summary>
         [Output("repositoryStoragesWeighted")]
         public Output<ImmutableDictionary<string, int>> RepositoryStoragesWeighted { get; private set; } = null!;
@@ -2931,12 +2899,6 @@ namespace Pulumi.GitLab
         public Input<bool>? GroupOwnersCanManageDefaultBranchProtection { get; set; }
 
         /// <summary>
-        /// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-        /// </summary>
-        [Input("hashedStorageEnabled")]
-        public Input<bool>? HashedStorageEnabled { get; set; }
-
-        /// <summary>
         /// Hide marketing-related entries from help.
         /// </summary>
         [Input("helpPageHideCommercialContent")]
@@ -2973,33 +2935,13 @@ namespace Pulumi.GitLab
         public Input<string>? HomePageUrl { get; set; }
 
         /// <summary>
-        /// Enable or disable Git housekeeping.
-        /// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        /// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        /// Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         /// </summary>
         [Input("housekeepingEnabled")]
         public Input<bool>? HousekeepingEnabled { get; set; }
 
         /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
-        /// </summary>
-        [Input("housekeepingFullRepackPeriod")]
-        public Input<int>? HousekeepingFullRepackPeriod { get; set; }
-
-        /// <summary>
-        /// Number of Git pushes after which git gc is run.
-        /// </summary>
-        [Input("housekeepingGcPeriod")]
-        public Input<int>? HousekeepingGcPeriod { get; set; }
-
-        /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
-        /// </summary>
-        [Input("housekeepingIncrementalRepackPeriod")]
-        public Input<int>? HousekeepingIncrementalRepackPeriod { get; set; }
-
-        /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
+        /// Number of Git pushes after which an incremental git-repack is run.
         /// </summary>
         [Input("housekeepingOptimizeRepositoryPeriod")]
         public Input<int>? HousekeepingOptimizeRepositoryPeriod { get; set; }
@@ -3264,7 +3206,7 @@ namespace Pulumi.GitLab
         public Input<bool>? NpmPackageRequestsForwarding { get; set; }
 
         /// <summary>
-        /// Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        /// Indicates whether to skip metadata URL validation for the NuGet package.
         /// </summary>
         [Input("nugetSkipMetadataUrlValidation")]
         public Input<bool>? NugetSkipMetadataUrlValidation { get; set; }
@@ -3511,23 +3453,11 @@ namespace Pulumi.GitLab
         [Input("repositorySizeLimit")]
         public Input<int>? RepositorySizeLimit { get; set; }
 
-        [Input("repositoryStorages")]
-        private InputList<string>? _repositoryStorages;
-
-        /// <summary>
-        /// (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        /// </summary>
-        public InputList<string> RepositoryStorages
-        {
-            get => _repositoryStorages ?? (_repositoryStorages = new InputList<string>());
-            set => _repositoryStorages = value;
-        }
-
         [Input("repositoryStoragesWeighted")]
         private InputMap<int>? _repositoryStoragesWeighted;
 
         /// <summary>
-        /// (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        /// Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         /// </summary>
         public InputMap<int> RepositoryStoragesWeighted
         {
@@ -5088,12 +5018,6 @@ namespace Pulumi.GitLab
         public Input<bool>? GroupOwnersCanManageDefaultBranchProtection { get; set; }
 
         /// <summary>
-        /// Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-        /// </summary>
-        [Input("hashedStorageEnabled")]
-        public Input<bool>? HashedStorageEnabled { get; set; }
-
-        /// <summary>
         /// Hide marketing-related entries from help.
         /// </summary>
         [Input("helpPageHideCommercialContent")]
@@ -5130,33 +5054,13 @@ namespace Pulumi.GitLab
         public Input<string>? HomePageUrl { get; set; }
 
         /// <summary>
-        /// Enable or disable Git housekeeping.
-        /// 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        /// 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        /// Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         /// </summary>
         [Input("housekeepingEnabled")]
         public Input<bool>? HousekeepingEnabled { get; set; }
 
         /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
-        /// </summary>
-        [Input("housekeepingFullRepackPeriod")]
-        public Input<int>? HousekeepingFullRepackPeriod { get; set; }
-
-        /// <summary>
-        /// Number of Git pushes after which git gc is run.
-        /// </summary>
-        [Input("housekeepingGcPeriod")]
-        public Input<int>? HousekeepingGcPeriod { get; set; }
-
-        /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
-        /// </summary>
-        [Input("housekeepingIncrementalRepackPeriod")]
-        public Input<int>? HousekeepingIncrementalRepackPeriod { get; set; }
-
-        /// <summary>
-        /// Number of Git pushes after which an incremental git repack is run.
+        /// Number of Git pushes after which an incremental git-repack is run.
         /// </summary>
         [Input("housekeepingOptimizeRepositoryPeriod")]
         public Input<int>? HousekeepingOptimizeRepositoryPeriod { get; set; }
@@ -5421,7 +5325,7 @@ namespace Pulumi.GitLab
         public Input<bool>? NpmPackageRequestsForwarding { get; set; }
 
         /// <summary>
-        /// Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        /// Indicates whether to skip metadata URL validation for the NuGet package.
         /// </summary>
         [Input("nugetSkipMetadataUrlValidation")]
         public Input<bool>? NugetSkipMetadataUrlValidation { get; set; }
@@ -5668,23 +5572,11 @@ namespace Pulumi.GitLab
         [Input("repositorySizeLimit")]
         public Input<int>? RepositorySizeLimit { get; set; }
 
-        [Input("repositoryStorages")]
-        private InputList<string>? _repositoryStorages;
-
-        /// <summary>
-        /// (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        /// </summary>
-        public InputList<string> RepositoryStorages
-        {
-            get => _repositoryStorages ?? (_repositoryStorages = new InputList<string>());
-            set => _repositoryStorages = value;
-        }
-
         [Input("repositoryStoragesWeighted")]
         private InputMap<int>? _repositoryStoragesWeighted;
 
         /// <summary>
-        /// (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        /// Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         /// </summary>
         public InputMap<int> RepositoryStoragesWeighted
         {

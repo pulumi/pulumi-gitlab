@@ -8,16 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Group` resource allows to manage the lifecycle of a group.
-//
-// > On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
-//
 // ## Example Usage
 //
 // ```go
@@ -25,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -163,7 +157,7 @@ type Group struct {
 	DefaultBranch pulumi.StringPtrOutput `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
-	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+	// Deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
 	// The default branch protection defaults
 	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsOutput `pulumi:"defaultBranchProtectionDefaults"`
@@ -274,7 +268,7 @@ type groupState struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
-	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+	// Deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The default branch protection defaults
 	DefaultBranchProtectionDefaults *GroupDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
@@ -349,7 +343,7 @@ type GroupState struct {
 	DefaultBranch pulumi.StringPtrInput
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
-	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+	// Deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The default branch protection defaults
 	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsPtrInput
@@ -426,7 +420,7 @@ type groupArgs struct {
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
-	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+	// Deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The default branch protection defaults
 	DefaultBranchProtectionDefaults *GroupDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
@@ -492,7 +486,7 @@ type GroupArgs struct {
 	DefaultBranch pulumi.StringPtrInput
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 	//
-	// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+	// Deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The default branch protection defaults
 	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsPtrInput
@@ -663,7 +657,7 @@ func (o GroupOutput) DefaultBranch() pulumi.StringPtrOutput {
 
 // See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
 //
-// Deprecated: Deprecated in GitLab 17.0. Use defaultBranchProtectionDefaults instead.
+// Deprecated: Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
 func (o GroupOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }

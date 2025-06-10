@@ -28,10 +28,6 @@ namespace Pulumi.GitLab.Outputs
         /// <summary>
         /// The regular expression to match image names to delete.
         /// </summary>
-        public readonly string NameRegex;
-        /// <summary>
-        /// The regular expression to match image names to delete.
-        /// </summary>
         public readonly string NameRegexDelete;
         /// <summary>
         /// The regular expression to match image names to keep.
@@ -54,8 +50,6 @@ namespace Pulumi.GitLab.Outputs
 
             int keepN,
 
-            string nameRegex,
-
             string nameRegexDelete,
 
             string nameRegexKeep,
@@ -67,7 +61,6 @@ namespace Pulumi.GitLab.Outputs
             Cadence = cadence;
             Enabled = enabled;
             KeepN = keepN;
-            NameRegex = nameRegex;
             NameRegexDelete = nameRegexDelete;
             NameRegexKeep = nameRegexKeep;
             NextRunAt = nextRunAt;

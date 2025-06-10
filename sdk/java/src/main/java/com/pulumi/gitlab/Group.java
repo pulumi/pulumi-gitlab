@@ -20,12 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.Group` resource allows to manage the lifecycle of a group.
- * 
- * &gt; On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -242,10 +236,10 @@ public class Group extends com.pulumi.resources.CustomResource {
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
-     * Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead.
+     * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.0. Use default_branch_protection_defaults instead. */
+    @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead. */
     @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 

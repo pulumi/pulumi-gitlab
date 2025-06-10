@@ -97,18 +97,6 @@ export class User extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * String, a specific external authentication provider UID.
-     *
-     * @deprecated To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     */
-    public readonly externUid!: pulumi.Output<string | undefined>;
-    /**
-     * String, the external provider.
-     *
-     * @deprecated To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     */
-    public readonly externalProvider!: pulumi.Output<string | undefined>;
-    /**
      * Set user password to a random value
      */
     public readonly forceRandomPassword!: pulumi.Output<boolean | undefined>;
@@ -172,8 +160,6 @@ export class User extends pulumi.CustomResource {
             const state = argsOrState as UserState | undefined;
             resourceInputs["canCreateGroup"] = state ? state.canCreateGroup : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["externUid"] = state ? state.externUid : undefined;
-            resourceInputs["externalProvider"] = state ? state.externalProvider : undefined;
             resourceInputs["forceRandomPassword"] = state ? state.forceRandomPassword : undefined;
             resourceInputs["isAdmin"] = state ? state.isAdmin : undefined;
             resourceInputs["isExternal"] = state ? state.isExternal : undefined;
@@ -196,8 +182,6 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["canCreateGroup"] = args ? args.canCreateGroup : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["externUid"] = args ? args.externUid : undefined;
-            resourceInputs["externalProvider"] = args ? args.externalProvider : undefined;
             resourceInputs["forceRandomPassword"] = args ? args.forceRandomPassword : undefined;
             resourceInputs["isAdmin"] = args ? args.isAdmin : undefined;
             resourceInputs["isExternal"] = args ? args.isExternal : undefined;
@@ -230,18 +214,6 @@ export interface UserState {
      * The e-mail address of the user.
      */
     email?: pulumi.Input<string>;
-    /**
-     * String, a specific external authentication provider UID.
-     *
-     * @deprecated To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     */
-    externUid?: pulumi.Input<string>;
-    /**
-     * String, the external provider.
-     *
-     * @deprecated To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     */
-    externalProvider?: pulumi.Input<string>;
     /**
      * Set user password to a random value
      */
@@ -304,18 +276,6 @@ export interface UserArgs {
      * The e-mail address of the user.
      */
     email: pulumi.Input<string>;
-    /**
-     * String, a specific external authentication provider UID.
-     *
-     * @deprecated To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     */
-    externUid?: pulumi.Input<string>;
-    /**
-     * String, the external provider.
-     *
-     * @deprecated To be removed in 18.0. Use gitlab.UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-     */
-    externalProvider?: pulumi.Input<string>;
     /**
      * Set user password to a random value
      */

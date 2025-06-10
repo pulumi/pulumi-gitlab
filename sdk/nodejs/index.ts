@@ -510,6 +510,11 @@ export type IntegrationPipelinesEmail = import("./integrationPipelinesEmail").In
 export const IntegrationPipelinesEmail: typeof import("./integrationPipelinesEmail").IntegrationPipelinesEmail = null as any;
 utilities.lazyLoad(exports, ["IntegrationPipelinesEmail"], () => require("./integrationPipelinesEmail"));
 
+export { IntegrationRedmineArgs, IntegrationRedmineState } from "./integrationRedmine";
+export type IntegrationRedmine = import("./integrationRedmine").IntegrationRedmine;
+export const IntegrationRedmine: typeof import("./integrationRedmine").IntegrationRedmine = null as any;
+utilities.lazyLoad(exports, ["IntegrationRedmine"], () => require("./integrationRedmine"));
+
 export { IntegrationSlackArgs, IntegrationSlackState } from "./integrationSlack";
 export type IntegrationSlack = import("./integrationSlack").IntegrationSlack;
 export const IntegrationSlack: typeof import("./integrationSlack").IntegrationSlack = null as any;
@@ -579,11 +584,6 @@ export { ProjectClusterArgs, ProjectClusterState } from "./projectCluster";
 export type ProjectCluster = import("./projectCluster").ProjectCluster;
 export const ProjectCluster: typeof import("./projectCluster").ProjectCluster = null as any;
 utilities.lazyLoad(exports, ["ProjectCluster"], () => require("./projectCluster"));
-
-export { ProjectComplianceFrameworkArgs, ProjectComplianceFrameworkState } from "./projectComplianceFramework";
-export type ProjectComplianceFramework = import("./projectComplianceFramework").ProjectComplianceFramework;
-export const ProjectComplianceFramework: typeof import("./projectComplianceFramework").ProjectComplianceFramework = null as any;
-utilities.lazyLoad(exports, ["ProjectComplianceFramework"], () => require("./projectComplianceFramework"));
 
 export { ProjectComplianceFrameworksArgs, ProjectComplianceFrameworksState } from "./projectComplianceFrameworks";
 export type ProjectComplianceFrameworks = import("./projectComplianceFrameworks").ProjectComplianceFrameworks;
@@ -727,46 +727,6 @@ export { RunnerArgs, RunnerState } from "./runner";
 export type Runner = import("./runner").Runner;
 export const Runner: typeof import("./runner").Runner = null as any;
 utilities.lazyLoad(exports, ["Runner"], () => require("./runner"));
-
-export { ServiceCustomIssueTrackerArgs, ServiceCustomIssueTrackerState } from "./serviceCustomIssueTracker";
-export type ServiceCustomIssueTracker = import("./serviceCustomIssueTracker").ServiceCustomIssueTracker;
-export const ServiceCustomIssueTracker: typeof import("./serviceCustomIssueTracker").ServiceCustomIssueTracker = null as any;
-utilities.lazyLoad(exports, ["ServiceCustomIssueTracker"], () => require("./serviceCustomIssueTracker"));
-
-export { ServiceEmailsOnPushArgs, ServiceEmailsOnPushState } from "./serviceEmailsOnPush";
-export type ServiceEmailsOnPush = import("./serviceEmailsOnPush").ServiceEmailsOnPush;
-export const ServiceEmailsOnPush: typeof import("./serviceEmailsOnPush").ServiceEmailsOnPush = null as any;
-utilities.lazyLoad(exports, ["ServiceEmailsOnPush"], () => require("./serviceEmailsOnPush"));
-
-export { ServiceExternalWikiArgs, ServiceExternalWikiState } from "./serviceExternalWiki";
-export type ServiceExternalWiki = import("./serviceExternalWiki").ServiceExternalWiki;
-export const ServiceExternalWiki: typeof import("./serviceExternalWiki").ServiceExternalWiki = null as any;
-utilities.lazyLoad(exports, ["ServiceExternalWiki"], () => require("./serviceExternalWiki"));
-
-export { ServiceGithubArgs, ServiceGithubState } from "./serviceGithub";
-export type ServiceGithub = import("./serviceGithub").ServiceGithub;
-export const ServiceGithub: typeof import("./serviceGithub").ServiceGithub = null as any;
-utilities.lazyLoad(exports, ["ServiceGithub"], () => require("./serviceGithub"));
-
-export { ServiceJiraArgs, ServiceJiraState } from "./serviceJira";
-export type ServiceJira = import("./serviceJira").ServiceJira;
-export const ServiceJira: typeof import("./serviceJira").ServiceJira = null as any;
-utilities.lazyLoad(exports, ["ServiceJira"], () => require("./serviceJira"));
-
-export { ServiceMicrosoftTeamsArgs, ServiceMicrosoftTeamsState } from "./serviceMicrosoftTeams";
-export type ServiceMicrosoftTeams = import("./serviceMicrosoftTeams").ServiceMicrosoftTeams;
-export const ServiceMicrosoftTeams: typeof import("./serviceMicrosoftTeams").ServiceMicrosoftTeams = null as any;
-utilities.lazyLoad(exports, ["ServiceMicrosoftTeams"], () => require("./serviceMicrosoftTeams"));
-
-export { ServicePipelinesEmailArgs, ServicePipelinesEmailState } from "./servicePipelinesEmail";
-export type ServicePipelinesEmail = import("./servicePipelinesEmail").ServicePipelinesEmail;
-export const ServicePipelinesEmail: typeof import("./servicePipelinesEmail").ServicePipelinesEmail = null as any;
-utilities.lazyLoad(exports, ["ServicePipelinesEmail"], () => require("./servicePipelinesEmail"));
-
-export { ServiceSlackArgs, ServiceSlackState } from "./serviceSlack";
-export type ServiceSlack = import("./serviceSlack").ServiceSlack;
-export const ServiceSlack: typeof import("./serviceSlack").ServiceSlack = null as any;
-utilities.lazyLoad(exports, ["ServiceSlack"], () => require("./serviceSlack"));
 
 export { SystemHookArgs, SystemHookState } from "./systemHook";
 export type SystemHook = import("./systemHook").SystemHook;
@@ -925,6 +885,8 @@ const _module = {
                 return new IntegrationMicrosoftTeams(name, <any>undefined, { urn })
             case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
                 return new IntegrationPipelinesEmail(name, <any>undefined, { urn })
+            case "gitlab:index/integrationRedmine:IntegrationRedmine":
+                return new IntegrationRedmine(name, <any>undefined, { urn })
             case "gitlab:index/integrationSlack:IntegrationSlack":
                 return new IntegrationSlack(name, <any>undefined, { urn })
             case "gitlab:index/integrationTelegram:IntegrationTelegram":
@@ -953,8 +915,6 @@ const _module = {
                 return new ProjectBadge(name, <any>undefined, { urn })
             case "gitlab:index/projectCluster:ProjectCluster":
                 return new ProjectCluster(name, <any>undefined, { urn })
-            case "gitlab:index/projectComplianceFramework:ProjectComplianceFramework":
-                return new ProjectComplianceFramework(name, <any>undefined, { urn })
             case "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks":
                 return new ProjectComplianceFrameworks(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
@@ -1011,22 +971,6 @@ const _module = {
                 return new RepositoryFile(name, <any>undefined, { urn })
             case "gitlab:index/runner:Runner":
                 return new Runner(name, <any>undefined, { urn })
-            case "gitlab:index/serviceCustomIssueTracker:ServiceCustomIssueTracker":
-                return new ServiceCustomIssueTracker(name, <any>undefined, { urn })
-            case "gitlab:index/serviceEmailsOnPush:ServiceEmailsOnPush":
-                return new ServiceEmailsOnPush(name, <any>undefined, { urn })
-            case "gitlab:index/serviceExternalWiki:ServiceExternalWiki":
-                return new ServiceExternalWiki(name, <any>undefined, { urn })
-            case "gitlab:index/serviceGithub:ServiceGithub":
-                return new ServiceGithub(name, <any>undefined, { urn })
-            case "gitlab:index/serviceJira:ServiceJira":
-                return new ServiceJira(name, <any>undefined, { urn })
-            case "gitlab:index/serviceMicrosoftTeams:ServiceMicrosoftTeams":
-                return new ServiceMicrosoftTeams(name, <any>undefined, { urn })
-            case "gitlab:index/servicePipelinesEmail:ServicePipelinesEmail":
-                return new ServicePipelinesEmail(name, <any>undefined, { urn })
-            case "gitlab:index/serviceSlack:ServiceSlack":
-                return new ServiceSlack(name, <any>undefined, { urn })
             case "gitlab:index/systemHook:SystemHook":
                 return new SystemHook(name, <any>undefined, { urn })
             case "gitlab:index/tagProtection:TagProtection":
@@ -1098,6 +1042,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/integrationJira", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationPipelinesEmail", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/integrationRedmine", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationSlack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationTelegram", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
@@ -1112,7 +1057,6 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectAccessToken", _mod
 pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFramework", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFrameworks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
@@ -1141,14 +1085,6 @@ pulumi.runtime.registerResourceModule("gitlab", "index/release", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runner", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceCustomIssueTracker", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceEmailsOnPush", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceExternalWiki", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceGithub", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceJira", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceMicrosoftTeams", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/servicePipelinesEmail", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/serviceSlack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/systemHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)

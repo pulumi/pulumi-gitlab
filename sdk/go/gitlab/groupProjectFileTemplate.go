@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // > This resource requires a GitLab Enterprise instance with a Premium license.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#update-group)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#update-group-attributes)
 //
 // ## Example Usage
 //
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

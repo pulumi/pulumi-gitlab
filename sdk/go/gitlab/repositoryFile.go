@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -136,8 +136,8 @@ type RepositoryFile struct {
 	CreateCommitMessage pulumi.StringPtrOutput `pulumi:"createCommitMessage"`
 	// Delete Commit message.
 	DeleteCommitMessage pulumi.StringPtrOutput `pulumi:"deleteCommitMessage"`
-	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
+	// The file content encoding. Valid values are: `base64`, `text`.
+	Encoding pulumi.StringOutput `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file.
 	ExecuteFilemode pulumi.BoolPtrOutput `pulumi:"executeFilemode"`
 	// The filename.
@@ -172,6 +172,9 @@ func NewRepositoryFile(ctx *pulumi.Context,
 	}
 	if args.Content == nil {
 		return nil, errors.New("invalid value for required argument 'Content'")
+	}
+	if args.Encoding == nil {
+		return nil, errors.New("invalid value for required argument 'Encoding'")
 	}
 	if args.FilePath == nil {
 		return nil, errors.New("invalid value for required argument 'FilePath'")
@@ -222,7 +225,7 @@ type repositoryFileState struct {
 	CreateCommitMessage *string `pulumi:"createCommitMessage"`
 	// Delete Commit message.
 	DeleteCommitMessage *string `pulumi:"deleteCommitMessage"`
-	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+	// The file content encoding. Valid values are: `base64`, `text`.
 	Encoding *string `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
@@ -267,7 +270,7 @@ type RepositoryFileState struct {
 	CreateCommitMessage pulumi.StringPtrInput
 	// Delete Commit message.
 	DeleteCommitMessage pulumi.StringPtrInput
-	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+	// The file content encoding. Valid values are: `base64`, `text`.
 	Encoding pulumi.StringPtrInput
 	// Enables or disables the execute flag on the file.
 	ExecuteFilemode pulumi.BoolPtrInput
@@ -310,8 +313,8 @@ type repositoryFileArgs struct {
 	CreateCommitMessage *string `pulumi:"createCommitMessage"`
 	// Delete Commit message.
 	DeleteCommitMessage *string `pulumi:"deleteCommitMessage"`
-	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-	Encoding *string `pulumi:"encoding"`
+	// The file content encoding. Valid values are: `base64`, `text`.
+	Encoding string `pulumi:"encoding"`
 	// Enables or disables the execute flag on the file.
 	ExecuteFilemode *bool `pulumi:"executeFilemode"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -342,8 +345,8 @@ type RepositoryFileArgs struct {
 	CreateCommitMessage pulumi.StringPtrInput
 	// Delete Commit message.
 	DeleteCommitMessage pulumi.StringPtrInput
-	// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-	Encoding pulumi.StringPtrInput
+	// The file content encoding. Valid values are: `base64`, `text`.
+	Encoding pulumi.StringInput
 	// Enables or disables the execute flag on the file.
 	ExecuteFilemode pulumi.BoolPtrInput
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -495,9 +498,9 @@ func (o RepositoryFileOutput) DeleteCommitMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.DeleteCommitMessage }).(pulumi.StringPtrOutput)
 }
 
-// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-func (o RepositoryFileOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepositoryFile) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
+// The file content encoding. Valid values are: `base64`, `text`.
+func (o RepositoryFileOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryFile) pulumi.StringOutput { return v.Encoding }).(pulumi.StringOutput)
 }
 
 // Enables or disables the execute flag on the file.

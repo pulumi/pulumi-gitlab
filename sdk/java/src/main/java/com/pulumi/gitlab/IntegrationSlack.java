@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+ * The `gitlab.IntegrationSlack` resource allows you to manage the lifecycle of a project integration with Slack.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
  * 

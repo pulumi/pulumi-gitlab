@@ -22,6 +22,7 @@ class RepositoryFileArgs:
     def __init__(__self__, *,
                  branch: pulumi.Input[builtins.str],
                  content: pulumi.Input[builtins.str],
+                 encoding: pulumi.Input[builtins.str],
                  file_path: pulumi.Input[builtins.str],
                  project: pulumi.Input[builtins.str],
                  author_email: Optional[pulumi.Input[builtins.str]] = None,
@@ -29,7 +30,6 @@ class RepositoryFileArgs:
                  commit_message: Optional[pulumi.Input[builtins.str]] = None,
                  create_commit_message: Optional[pulumi.Input[builtins.str]] = None,
                  delete_commit_message: Optional[pulumi.Input[builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[builtins.str]] = None,
                  execute_filemode: Optional[pulumi.Input[builtins.bool]] = None,
                  overwrite_on_create: Optional[pulumi.Input[builtins.bool]] = None,
                  start_branch: Optional[pulumi.Input[builtins.str]] = None,
@@ -38,6 +38,7 @@ class RepositoryFileArgs:
         The set of arguments for constructing a RepositoryFile resource.
         :param pulumi.Input[builtins.str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[builtins.str] content: File content.
+        :param pulumi.Input[builtins.str] encoding: The file content encoding. Valid values are: `base64`, `text`.
         :param pulumi.Input[builtins.str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[builtins.str] project: The name or ID of the project.
         :param pulumi.Input[builtins.str] author_email: Email of the commit author.
@@ -45,7 +46,6 @@ class RepositoryFileArgs:
         :param pulumi.Input[builtins.str] commit_message: Commit message.
         :param pulumi.Input[builtins.str] create_commit_message: Create commit message.
         :param pulumi.Input[builtins.str] delete_commit_message: Delete Commit message.
-        :param pulumi.Input[builtins.str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
         :param pulumi.Input[builtins.bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[builtins.bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         :param pulumi.Input[builtins.str] start_branch: Name of the branch to start the new commit from.
@@ -53,6 +53,7 @@ class RepositoryFileArgs:
         """
         pulumi.set(__self__, "branch", branch)
         pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "encoding", encoding)
         pulumi.set(__self__, "file_path", file_path)
         pulumi.set(__self__, "project", project)
         if author_email is not None:
@@ -65,8 +66,6 @@ class RepositoryFileArgs:
             pulumi.set(__self__, "create_commit_message", create_commit_message)
         if delete_commit_message is not None:
             pulumi.set(__self__, "delete_commit_message", delete_commit_message)
-        if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
         if execute_filemode is not None:
             pulumi.set(__self__, "execute_filemode", execute_filemode)
         if overwrite_on_create is not None:
@@ -99,6 +98,18 @@ class RepositoryFileArgs:
     @content.setter
     def content(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> pulumi.Input[builtins.str]:
+        """
+        The file content encoding. Valid values are: `base64`, `text`.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "encoding", value)
 
     @property
     @pulumi.getter(name="filePath")
@@ -185,18 +196,6 @@ class RepositoryFileArgs:
         pulumi.set(self, "delete_commit_message", value)
 
     @property
-    @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
-        """
-        return pulumi.get(self, "encoding")
-
-    @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "encoding", value)
-
-    @property
     @pulumi.getter(name="executeFilemode")
     def execute_filemode(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -281,7 +280,7 @@ class _RepositoryFileState:
         :param pulumi.Input[builtins.str] content_sha256: File content sha256 digest.
         :param pulumi.Input[builtins.str] create_commit_message: Create commit message.
         :param pulumi.Input[builtins.str] delete_commit_message: Delete Commit message.
-        :param pulumi.Input[builtins.str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        :param pulumi.Input[builtins.str] encoding: The file content encoding. Valid values are: `base64`, `text`.
         :param pulumi.Input[builtins.bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[builtins.str] file_name: The filename.
         :param pulumi.Input[builtins.str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -460,7 +459,7 @@ class _RepositoryFileState:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        The file content encoding. Valid values are: `base64`, `text`.
         """
         return pulumi.get(self, "encoding")
 
@@ -684,7 +683,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] content: File content.
         :param pulumi.Input[builtins.str] create_commit_message: Create commit message.
         :param pulumi.Input[builtins.str] delete_commit_message: Delete Commit message.
-        :param pulumi.Input[builtins.str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        :param pulumi.Input[builtins.str] encoding: The file content encoding. Valid values are: `base64`, `text`.
         :param pulumi.Input[builtins.bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[builtins.str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         :param pulumi.Input[builtins.bool] overwrite_on_create: Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
@@ -812,6 +811,8 @@ class RepositoryFile(pulumi.CustomResource):
             __props__.__dict__["content"] = content
             __props__.__dict__["create_commit_message"] = create_commit_message
             __props__.__dict__["delete_commit_message"] = delete_commit_message
+            if encoding is None and not opts.urn:
+                raise TypeError("Missing required property 'encoding'")
             __props__.__dict__["encoding"] = encoding
             __props__.__dict__["execute_filemode"] = execute_filemode
             if file_path is None and not opts.urn:
@@ -878,7 +879,7 @@ class RepositoryFile(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] content_sha256: File content sha256 digest.
         :param pulumi.Input[builtins.str] create_commit_message: Create commit message.
         :param pulumi.Input[builtins.str] delete_commit_message: Delete Commit message.
-        :param pulumi.Input[builtins.str] encoding: The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        :param pulumi.Input[builtins.str] encoding: The file content encoding. Valid values are: `base64`, `text`.
         :param pulumi.Input[builtins.bool] execute_filemode: Enables or disables the execute flag on the file.
         :param pulumi.Input[builtins.str] file_name: The filename.
         :param pulumi.Input[builtins.str] file_path: The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
@@ -999,9 +1000,9 @@ class RepositoryFile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encoding(self) -> pulumi.Output[Optional[builtins.str]]:
+    def encoding(self) -> pulumi.Output[builtins.str]:
         """
-        The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        The file content encoding. Valid values are: `base64`, `text`.
         """
         return pulumi.get(self, "encoding")
 

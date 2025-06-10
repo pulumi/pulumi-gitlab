@@ -104,7 +104,7 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
      */
     public readonly rotationConfiguration!: pulumi.Output<outputs.GroupServiceAccountAccessTokenRotationConfiguration | undefined>;
     /**
-     * The scopes of the group service account access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -201,7 +201,7 @@ export interface GroupServiceAccountAccessTokenState {
      */
     rotationConfiguration?: pulumi.Input<inputs.GroupServiceAccountAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the group service account access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -235,7 +235,7 @@ export interface GroupServiceAccountAccessTokenArgs {
      */
     rotationConfiguration?: pulumi.Input<inputs.GroupServiceAccountAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the group service account access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`
+     * The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -54,7 +54,7 @@ namespace Pulumi.GitLab
         public Output<string> BaseAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+        /// Timestamp of when the member role was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         public Input<string>? BaseAccessLevel { get; set; }
 
         /// <summary>
-        /// Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+        /// Timestamp of when the member role was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }

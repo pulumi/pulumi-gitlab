@@ -159,7 +159,6 @@ class ApplicationSettingsArgs:
                  grafana_url: Optional[pulumi.Input[builtins.str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 hashed_storage_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[builtins.str]] = None,
                  help_page_text: Optional[pulumi.Input[builtins.str]] = None,
@@ -167,9 +166,6 @@ class ApplicationSettingsArgs:
                  hide_third_party_offers: Optional[pulumi.Input[builtins.bool]] = None,
                  home_page_url: Optional[pulumi.Input[builtins.str]] = None,
                  housekeeping_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 housekeeping_full_repack_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_gc_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_incremental_repack_period: Optional[pulumi.Input[builtins.int]] = None,
                  housekeeping_optimize_repository_period: Optional[pulumi.Input[builtins.int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -248,7 +244,6 @@ class ApplicationSettingsArgs:
                  remember_me_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[builtins.int]] = None,
-                 repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[builtins.bool]] = None,
                  require_admin_two_factor_authentication: Optional[pulumi.Input[builtins.bool]] = None,
@@ -473,20 +468,14 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[builtins.bool] gravatar_enabled: Enable Gravatar.
         :param pulumi.Input[builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
-        :param pulumi.Input[builtins.bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[builtins.str] help_page_text: Custom text displayed on the help page.
         :param pulumi.Input[builtins.str] help_text: GitLab server administrator information.
         :param pulumi.Input[builtins.bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[builtins.str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
-        :param pulumi.Input[builtins.int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
-        :param pulumi.Input[builtins.int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
+        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[builtins.bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -527,7 +516,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
-        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
         :param pulumi.Input[builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
@@ -563,8 +552,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[builtins.bool] remember_me_enabled: Enable Remember me setting.
         :param pulumi.Input[builtins.bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[builtins.int] repository_size_limit: Size limit per repository (MB).
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[builtins.bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[builtins.bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
         :param pulumi.Input[builtins.bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
@@ -924,8 +912,6 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
         if group_owners_can_manage_default_branch_protection is not None:
             pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
-        if hashed_storage_enabled is not None:
-            pulumi.set(__self__, "hashed_storage_enabled", hashed_storage_enabled)
         if help_page_hide_commercial_content is not None:
             pulumi.set(__self__, "help_page_hide_commercial_content", help_page_hide_commercial_content)
         if help_page_support_url is not None:
@@ -940,21 +926,6 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "home_page_url", home_page_url)
         if housekeeping_enabled is not None:
             pulumi.set(__self__, "housekeeping_enabled", housekeeping_enabled)
-        if housekeeping_full_repack_period is not None:
-            warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-            pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-        if housekeeping_full_repack_period is not None:
-            pulumi.set(__self__, "housekeeping_full_repack_period", housekeeping_full_repack_period)
-        if housekeeping_gc_period is not None:
-            warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-            pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-        if housekeeping_gc_period is not None:
-            pulumi.set(__self__, "housekeeping_gc_period", housekeeping_gc_period)
-        if housekeeping_incremental_repack_period is not None:
-            warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-            pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-        if housekeeping_incremental_repack_period is not None:
-            pulumi.set(__self__, "housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
         if housekeeping_optimize_repository_period is not None:
             pulumi.set(__self__, "housekeeping_optimize_repository_period", housekeeping_optimize_repository_period)
         if html_emails_enabled is not None:
@@ -1111,8 +1082,6 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "repository_checks_enabled", repository_checks_enabled)
         if repository_size_limit is not None:
             pulumi.set(__self__, "repository_size_limit", repository_size_limit)
-        if repository_storages is not None:
-            pulumi.set(__self__, "repository_storages", repository_storages)
         if repository_storages_weighted is not None:
             pulumi.set(__self__, "repository_storages_weighted", repository_storages_weighted)
         if require_admin_approval_after_user_signup is not None:
@@ -2929,18 +2898,6 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
 
     @property
-    @pulumi.getter(name="hashedStorageEnabled")
-    def hashed_storage_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-        """
-        return pulumi.get(self, "hashed_storage_enabled")
-
-    @hashed_storage_enabled.setter
-    def hashed_storage_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "hashed_storage_enabled", value)
-
-    @property
     @pulumi.getter(name="helpPageHideCommercialContent")
     def help_page_hide_commercial_content(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -3016,9 +2973,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="housekeepingEnabled")
     def housekeeping_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Enable or disable Git housekeeping.
-        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -3027,49 +2982,10 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "housekeeping_enabled", value)
 
     @property
-    @pulumi.getter(name="housekeepingFullRepackPeriod")
-    @_utilities.deprecated("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_full_repack_period(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of Git pushes after which an incremental git repack is run.
-        """
-        return pulumi.get(self, "housekeeping_full_repack_period")
-
-    @housekeeping_full_repack_period.setter
-    def housekeeping_full_repack_period(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "housekeeping_full_repack_period", value)
-
-    @property
-    @pulumi.getter(name="housekeepingGcPeriod")
-    @_utilities.deprecated("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_gc_period(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of Git pushes after which git gc is run.
-        """
-        return pulumi.get(self, "housekeeping_gc_period")
-
-    @housekeeping_gc_period.setter
-    def housekeeping_gc_period(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "housekeeping_gc_period", value)
-
-    @property
-    @pulumi.getter(name="housekeepingIncrementalRepackPeriod")
-    @_utilities.deprecated("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_incremental_repack_period(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of Git pushes after which an incremental git repack is run.
-        """
-        return pulumi.get(self, "housekeeping_incremental_repack_period")
-
-    @housekeeping_incremental_repack_period.setter
-    def housekeeping_incremental_repack_period(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "housekeeping_incremental_repack_period", value)
-
-    @property
     @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
     def housekeeping_optimize_repository_period(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Number of Git pushes after which an incremental git repack is run.
+        Number of Git pushes after which an incremental git-repack is run.
         """
         return pulumi.get(self, "housekeeping_optimize_repository_period")
 
@@ -3570,7 +3486,7 @@ class ApplicationSettingsArgs:
     @pulumi.getter(name="nugetSkipMetadataUrlValidation")
     def nuget_skip_metadata_url_validation(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        Indicates whether to skip metadata URL validation for the NuGet package.
         """
         return pulumi.get(self, "nuget_skip_metadata_url_validation")
 
@@ -3999,22 +3915,10 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "repository_size_limit", value)
 
     @property
-    @pulumi.getter(name="repositoryStorages")
-    def repository_storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        """
-        return pulumi.get(self, "repository_storages")
-
-    @repository_storages.setter
-    def repository_storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "repository_storages", value)
-
-    @property
     @pulumi.getter(name="repositoryStoragesWeighted")
     def repository_storages_weighted(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]]:
         """
-        (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         """
         return pulumi.get(self, "repository_storages_weighted")
 
@@ -5173,7 +5077,6 @@ class _ApplicationSettingsState:
                  grafana_url: Optional[pulumi.Input[builtins.str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 hashed_storage_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[builtins.str]] = None,
                  help_page_text: Optional[pulumi.Input[builtins.str]] = None,
@@ -5181,9 +5084,6 @@ class _ApplicationSettingsState:
                  hide_third_party_offers: Optional[pulumi.Input[builtins.bool]] = None,
                  home_page_url: Optional[pulumi.Input[builtins.str]] = None,
                  housekeeping_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 housekeeping_full_repack_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_gc_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_incremental_repack_period: Optional[pulumi.Input[builtins.int]] = None,
                  housekeeping_optimize_repository_period: Optional[pulumi.Input[builtins.int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -5262,7 +5162,6 @@ class _ApplicationSettingsState:
                  remember_me_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[builtins.int]] = None,
-                 repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[builtins.bool]] = None,
                  require_admin_two_factor_authentication: Optional[pulumi.Input[builtins.bool]] = None,
@@ -5489,20 +5388,14 @@ class _ApplicationSettingsState:
         :param pulumi.Input[builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[builtins.bool] gravatar_enabled: Enable Gravatar.
         :param pulumi.Input[builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
-        :param pulumi.Input[builtins.bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[builtins.str] help_page_text: Custom text displayed on the help page.
         :param pulumi.Input[builtins.str] help_text: GitLab server administrator information.
         :param pulumi.Input[builtins.bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[builtins.str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
-        :param pulumi.Input[builtins.int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
-        :param pulumi.Input[builtins.int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
+        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[builtins.bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -5543,7 +5436,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
-        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
         :param pulumi.Input[builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
@@ -5579,8 +5472,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[builtins.bool] remember_me_enabled: Enable Remember me setting.
         :param pulumi.Input[builtins.bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[builtins.int] repository_size_limit: Size limit per repository (MB).
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[builtins.bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[builtins.bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
         :param pulumi.Input[builtins.bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
@@ -5944,8 +5836,6 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
         if group_owners_can_manage_default_branch_protection is not None:
             pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
-        if hashed_storage_enabled is not None:
-            pulumi.set(__self__, "hashed_storage_enabled", hashed_storage_enabled)
         if help_page_hide_commercial_content is not None:
             pulumi.set(__self__, "help_page_hide_commercial_content", help_page_hide_commercial_content)
         if help_page_support_url is not None:
@@ -5960,21 +5850,6 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "home_page_url", home_page_url)
         if housekeeping_enabled is not None:
             pulumi.set(__self__, "housekeeping_enabled", housekeeping_enabled)
-        if housekeeping_full_repack_period is not None:
-            warnings.warn("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-            pulumi.log.warn("""housekeeping_full_repack_period is deprecated: housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-        if housekeeping_full_repack_period is not None:
-            pulumi.set(__self__, "housekeeping_full_repack_period", housekeeping_full_repack_period)
-        if housekeeping_gc_period is not None:
-            warnings.warn("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-            pulumi.log.warn("""housekeeping_gc_period is deprecated: housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-        if housekeeping_gc_period is not None:
-            pulumi.set(__self__, "housekeeping_gc_period", housekeeping_gc_period)
-        if housekeeping_incremental_repack_period is not None:
-            warnings.warn("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""", DeprecationWarning)
-            pulumi.log.warn("""housekeeping_incremental_repack_period is deprecated: housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-        if housekeeping_incremental_repack_period is not None:
-            pulumi.set(__self__, "housekeeping_incremental_repack_period", housekeeping_incremental_repack_period)
         if housekeeping_optimize_repository_period is not None:
             pulumi.set(__self__, "housekeeping_optimize_repository_period", housekeeping_optimize_repository_period)
         if html_emails_enabled is not None:
@@ -6131,8 +6006,6 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "repository_checks_enabled", repository_checks_enabled)
         if repository_size_limit is not None:
             pulumi.set(__self__, "repository_size_limit", repository_size_limit)
-        if repository_storages is not None:
-            pulumi.set(__self__, "repository_storages", repository_storages)
         if repository_storages_weighted is not None:
             pulumi.set(__self__, "repository_storages_weighted", repository_storages_weighted)
         if require_admin_approval_after_user_signup is not None:
@@ -7973,18 +7846,6 @@ class _ApplicationSettingsState:
         pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
 
     @property
-    @pulumi.getter(name="hashedStorageEnabled")
-    def hashed_storage_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-        """
-        return pulumi.get(self, "hashed_storage_enabled")
-
-    @hashed_storage_enabled.setter
-    def hashed_storage_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "hashed_storage_enabled", value)
-
-    @property
     @pulumi.getter(name="helpPageHideCommercialContent")
     def help_page_hide_commercial_content(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -8060,9 +7921,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="housekeepingEnabled")
     def housekeeping_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Enable or disable Git housekeeping.
-        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
@@ -8071,49 +7930,10 @@ class _ApplicationSettingsState:
         pulumi.set(self, "housekeeping_enabled", value)
 
     @property
-    @pulumi.getter(name="housekeepingFullRepackPeriod")
-    @_utilities.deprecated("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_full_repack_period(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of Git pushes after which an incremental git repack is run.
-        """
-        return pulumi.get(self, "housekeeping_full_repack_period")
-
-    @housekeeping_full_repack_period.setter
-    def housekeeping_full_repack_period(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "housekeeping_full_repack_period", value)
-
-    @property
-    @pulumi.getter(name="housekeepingGcPeriod")
-    @_utilities.deprecated("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_gc_period(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of Git pushes after which git gc is run.
-        """
-        return pulumi.get(self, "housekeeping_gc_period")
-
-    @housekeeping_gc_period.setter
-    def housekeeping_gc_period(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "housekeeping_gc_period", value)
-
-    @property
-    @pulumi.getter(name="housekeepingIncrementalRepackPeriod")
-    @_utilities.deprecated("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_incremental_repack_period(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of Git pushes after which an incremental git repack is run.
-        """
-        return pulumi.get(self, "housekeeping_incremental_repack_period")
-
-    @housekeeping_incremental_repack_period.setter
-    def housekeeping_incremental_repack_period(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "housekeeping_incremental_repack_period", value)
-
-    @property
     @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
     def housekeeping_optimize_repository_period(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Number of Git pushes after which an incremental git repack is run.
+        Number of Git pushes after which an incremental git-repack is run.
         """
         return pulumi.get(self, "housekeeping_optimize_repository_period")
 
@@ -8614,7 +8434,7 @@ class _ApplicationSettingsState:
     @pulumi.getter(name="nugetSkipMetadataUrlValidation")
     def nuget_skip_metadata_url_validation(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        Indicates whether to skip metadata URL validation for the NuGet package.
         """
         return pulumi.get(self, "nuget_skip_metadata_url_validation")
 
@@ -9043,22 +8863,10 @@ class _ApplicationSettingsState:
         pulumi.set(self, "repository_size_limit", value)
 
     @property
-    @pulumi.getter(name="repositoryStorages")
-    def repository_storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        """
-        return pulumi.get(self, "repository_storages")
-
-    @repository_storages.setter
-    def repository_storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "repository_storages", value)
-
-    @property
     @pulumi.getter(name="repositoryStoragesWeighted")
     def repository_storages_weighted(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]]:
         """
-        (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         """
         return pulumi.get(self, "repository_storages_weighted")
 
@@ -10218,7 +10026,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  grafana_url: Optional[pulumi.Input[builtins.str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 hashed_storage_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[builtins.str]] = None,
                  help_page_text: Optional[pulumi.Input[builtins.str]] = None,
@@ -10226,9 +10033,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  hide_third_party_offers: Optional[pulumi.Input[builtins.bool]] = None,
                  home_page_url: Optional[pulumi.Input[builtins.str]] = None,
                  housekeeping_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 housekeeping_full_repack_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_gc_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_incremental_repack_period: Optional[pulumi.Input[builtins.int]] = None,
                  housekeeping_optimize_repository_period: Optional[pulumi.Input[builtins.int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -10307,7 +10111,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  remember_me_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[builtins.int]] = None,
-                 repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[builtins.bool]] = None,
                  require_admin_two_factor_authentication: Optional[pulumi.Input[builtins.bool]] = None,
@@ -10536,20 +10339,14 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[builtins.bool] gravatar_enabled: Enable Gravatar.
         :param pulumi.Input[builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
-        :param pulumi.Input[builtins.bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[builtins.str] help_page_text: Custom text displayed on the help page.
         :param pulumi.Input[builtins.str] help_text: GitLab server administrator information.
         :param pulumi.Input[builtins.bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[builtins.str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
-        :param pulumi.Input[builtins.int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
-        :param pulumi.Input[builtins.int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
+        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[builtins.bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -10590,7 +10387,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
-        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
         :param pulumi.Input[builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
@@ -10626,8 +10423,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] remember_me_enabled: Enable Remember me setting.
         :param pulumi.Input[builtins.bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[builtins.int] repository_size_limit: Size limit per repository (MB).
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[builtins.bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[builtins.bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
         :param pulumi.Input[builtins.bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
@@ -10874,7 +10670,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  grafana_url: Optional[pulumi.Input[builtins.str]] = None,
                  gravatar_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[builtins.bool]] = None,
-                 hashed_storage_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_hide_commercial_content: Optional[pulumi.Input[builtins.bool]] = None,
                  help_page_support_url: Optional[pulumi.Input[builtins.str]] = None,
                  help_page_text: Optional[pulumi.Input[builtins.str]] = None,
@@ -10882,9 +10677,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  hide_third_party_offers: Optional[pulumi.Input[builtins.bool]] = None,
                  home_page_url: Optional[pulumi.Input[builtins.str]] = None,
                  housekeeping_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 housekeeping_full_repack_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_gc_period: Optional[pulumi.Input[builtins.int]] = None,
-                 housekeeping_incremental_repack_period: Optional[pulumi.Input[builtins.int]] = None,
                  housekeeping_optimize_repository_period: Optional[pulumi.Input[builtins.int]] = None,
                  html_emails_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -10963,7 +10755,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  remember_me_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_checks_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  repository_size_limit: Optional[pulumi.Input[builtins.int]] = None,
-                 repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
                  require_admin_approval_after_user_signup: Optional[pulumi.Input[builtins.bool]] = None,
                  require_admin_two_factor_authentication: Optional[pulumi.Input[builtins.bool]] = None,
@@ -11195,7 +10986,6 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["grafana_url"] = grafana_url
             __props__.__dict__["gravatar_enabled"] = gravatar_enabled
             __props__.__dict__["group_owners_can_manage_default_branch_protection"] = group_owners_can_manage_default_branch_protection
-            __props__.__dict__["hashed_storage_enabled"] = hashed_storage_enabled
             __props__.__dict__["help_page_hide_commercial_content"] = help_page_hide_commercial_content
             __props__.__dict__["help_page_support_url"] = help_page_support_url
             __props__.__dict__["help_page_text"] = help_page_text
@@ -11203,9 +10993,6 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["hide_third_party_offers"] = hide_third_party_offers
             __props__.__dict__["home_page_url"] = home_page_url
             __props__.__dict__["housekeeping_enabled"] = housekeeping_enabled
-            __props__.__dict__["housekeeping_full_repack_period"] = housekeeping_full_repack_period
-            __props__.__dict__["housekeeping_gc_period"] = housekeeping_gc_period
-            __props__.__dict__["housekeeping_incremental_repack_period"] = housekeeping_incremental_repack_period
             __props__.__dict__["housekeeping_optimize_repository_period"] = housekeeping_optimize_repository_period
             __props__.__dict__["html_emails_enabled"] = html_emails_enabled
             __props__.__dict__["import_sources"] = import_sources
@@ -11284,7 +11071,6 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["remember_me_enabled"] = remember_me_enabled
             __props__.__dict__["repository_checks_enabled"] = repository_checks_enabled
             __props__.__dict__["repository_size_limit"] = repository_size_limit
-            __props__.__dict__["repository_storages"] = repository_storages
             __props__.__dict__["repository_storages_weighted"] = repository_storages_weighted
             __props__.__dict__["require_admin_approval_after_user_signup"] = require_admin_approval_after_user_signup
             __props__.__dict__["require_admin_two_factor_authentication"] = require_admin_two_factor_authentication
@@ -11523,7 +11309,6 @@ class ApplicationSettings(pulumi.CustomResource):
             grafana_url: Optional[pulumi.Input[builtins.str]] = None,
             gravatar_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[builtins.bool]] = None,
-            hashed_storage_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             help_page_hide_commercial_content: Optional[pulumi.Input[builtins.bool]] = None,
             help_page_support_url: Optional[pulumi.Input[builtins.str]] = None,
             help_page_text: Optional[pulumi.Input[builtins.str]] = None,
@@ -11531,9 +11316,6 @@ class ApplicationSettings(pulumi.CustomResource):
             hide_third_party_offers: Optional[pulumi.Input[builtins.bool]] = None,
             home_page_url: Optional[pulumi.Input[builtins.str]] = None,
             housekeeping_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            housekeeping_full_repack_period: Optional[pulumi.Input[builtins.int]] = None,
-            housekeeping_gc_period: Optional[pulumi.Input[builtins.int]] = None,
-            housekeeping_incremental_repack_period: Optional[pulumi.Input[builtins.int]] = None,
             housekeeping_optimize_repository_period: Optional[pulumi.Input[builtins.int]] = None,
             html_emails_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -11612,7 +11394,6 @@ class ApplicationSettings(pulumi.CustomResource):
             remember_me_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             repository_checks_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             repository_size_limit: Optional[pulumi.Input[builtins.int]] = None,
-            repository_storages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
             require_admin_approval_after_user_signup: Optional[pulumi.Input[builtins.bool]] = None,
             require_admin_two_factor_authentication: Optional[pulumi.Input[builtins.bool]] = None,
@@ -11844,20 +11625,14 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[builtins.bool] gravatar_enabled: Enable Gravatar.
         :param pulumi.Input[builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
-        :param pulumi.Input[builtins.bool] hashed_storage_enabled: Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
         :param pulumi.Input[builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[builtins.str] help_page_text: Custom text displayed on the help page.
         :param pulumi.Input[builtins.str] help_text: GitLab server administrator information.
         :param pulumi.Input[builtins.bool] hide_third_party_offers: Do not display offers from third parties in GitLab.
         :param pulumi.Input[builtins.str] home_page_url: Redirect to this URL when not logged in.
-        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping.
-               			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-               			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
-        :param pulumi.Input[builtins.int] housekeeping_full_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_gc_period: Number of Git pushes after which git gc is run.
-        :param pulumi.Input[builtins.int] housekeeping_incremental_repack_period: Number of Git pushes after which an incremental git repack is run.
-        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git repack is run.
+        :param pulumi.Input[builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
+        :param pulumi.Input[builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[builtins.bool] html_emails_enabled: Enable HTML emails.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
@@ -11898,7 +11673,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         :param pulumi.Input[builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
-        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        :param pulumi.Input[builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] package_metadata_purl_types: List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
         :param pulumi.Input[builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
@@ -11934,8 +11709,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] remember_me_enabled: Enable Remember me setting.
         :param pulumi.Input[builtins.bool] repository_checks_enabled: GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         :param pulumi.Input[builtins.int] repository_size_limit: Size limit per repository (MB).
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] repository_storages: (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] repository_storages_weighted: Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         :param pulumi.Input[builtins.bool] require_admin_approval_after_user_signup: When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         :param pulumi.Input[builtins.bool] require_admin_two_factor_authentication: Allow administrators to require 2FA for all administrators on the instance.
         :param pulumi.Input[builtins.bool] require_personal_access_token_expiry: When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
@@ -12164,7 +11938,6 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["grafana_url"] = grafana_url
         __props__.__dict__["gravatar_enabled"] = gravatar_enabled
         __props__.__dict__["group_owners_can_manage_default_branch_protection"] = group_owners_can_manage_default_branch_protection
-        __props__.__dict__["hashed_storage_enabled"] = hashed_storage_enabled
         __props__.__dict__["help_page_hide_commercial_content"] = help_page_hide_commercial_content
         __props__.__dict__["help_page_support_url"] = help_page_support_url
         __props__.__dict__["help_page_text"] = help_page_text
@@ -12172,9 +11945,6 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["hide_third_party_offers"] = hide_third_party_offers
         __props__.__dict__["home_page_url"] = home_page_url
         __props__.__dict__["housekeeping_enabled"] = housekeeping_enabled
-        __props__.__dict__["housekeeping_full_repack_period"] = housekeeping_full_repack_period
-        __props__.__dict__["housekeeping_gc_period"] = housekeeping_gc_period
-        __props__.__dict__["housekeeping_incremental_repack_period"] = housekeeping_incremental_repack_period
         __props__.__dict__["housekeeping_optimize_repository_period"] = housekeeping_optimize_repository_period
         __props__.__dict__["html_emails_enabled"] = html_emails_enabled
         __props__.__dict__["import_sources"] = import_sources
@@ -12253,7 +12023,6 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["remember_me_enabled"] = remember_me_enabled
         __props__.__dict__["repository_checks_enabled"] = repository_checks_enabled
         __props__.__dict__["repository_size_limit"] = repository_size_limit
-        __props__.__dict__["repository_storages"] = repository_storages
         __props__.__dict__["repository_storages_weighted"] = repository_storages_weighted
         __props__.__dict__["require_admin_approval_after_user_signup"] = require_admin_approval_after_user_signup
         __props__.__dict__["require_admin_two_factor_authentication"] = require_admin_two_factor_authentication
@@ -13454,14 +13223,6 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
 
     @property
-    @pulumi.getter(name="hashedStorageEnabled")
-    def hashed_storage_enabled(self) -> pulumi.Output[builtins.bool]:
-        """
-        Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-        """
-        return pulumi.get(self, "hashed_storage_enabled")
-
-    @property
     @pulumi.getter(name="helpPageHideCommercialContent")
     def help_page_hide_commercial_content(self) -> pulumi.Output[builtins.bool]:
         """
@@ -13513,44 +13274,15 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="housekeepingEnabled")
     def housekeeping_enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        Enable or disable Git housekeeping.
-        			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-        			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+        Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         """
         return pulumi.get(self, "housekeeping_enabled")
-
-    @property
-    @pulumi.getter(name="housekeepingFullRepackPeriod")
-    @_utilities.deprecated("""housekeeping_full_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_full_repack_period(self) -> pulumi.Output[builtins.int]:
-        """
-        Number of Git pushes after which an incremental git repack is run.
-        """
-        return pulumi.get(self, "housekeeping_full_repack_period")
-
-    @property
-    @pulumi.getter(name="housekeepingGcPeriod")
-    @_utilities.deprecated("""housekeeping_gc_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_gc_period(self) -> pulumi.Output[builtins.int]:
-        """
-        Number of Git pushes after which git gc is run.
-        """
-        return pulumi.get(self, "housekeeping_gc_period")
-
-    @property
-    @pulumi.getter(name="housekeepingIncrementalRepackPeriod")
-    @_utilities.deprecated("""housekeeping_incremental_repack_period is deprecated. Use housekeeping_optimize_repository_period instead.""")
-    def housekeeping_incremental_repack_period(self) -> pulumi.Output[builtins.int]:
-        """
-        Number of Git pushes after which an incremental git repack is run.
-        """
-        return pulumi.get(self, "housekeeping_incremental_repack_period")
 
     @property
     @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
     def housekeeping_optimize_repository_period(self) -> pulumi.Output[builtins.int]:
         """
-        Number of Git pushes after which an incremental git repack is run.
+        Number of Git pushes after which an incremental git-repack is run.
         """
         return pulumi.get(self, "housekeeping_optimize_repository_period")
 
@@ -13883,7 +13615,7 @@ class ApplicationSettings(pulumi.CustomResource):
     @pulumi.getter(name="nugetSkipMetadataUrlValidation")
     def nuget_skip_metadata_url_validation(self) -> pulumi.Output[builtins.bool]:
         """
-        Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+        Indicates whether to skip metadata URL validation for the NuGet package.
         """
         return pulumi.get(self, "nuget_skip_metadata_url_validation")
 
@@ -14168,18 +13900,10 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "repository_size_limit")
 
     @property
-    @pulumi.getter(name="repositoryStorages")
-    def repository_storages(self) -> pulumi.Output[Sequence[builtins.str]]:
-        """
-        (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-        """
-        return pulumi.get(self, "repository_storages")
-
-    @property
     @pulumi.getter(name="repositoryStoragesWeighted")
     def repository_storages_weighted(self) -> pulumi.Output[Mapping[str, builtins.int]]:
         """
-        (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+        Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         """
         return pulumi.get(self, "repository_storages_weighted")
 

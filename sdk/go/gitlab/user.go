@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -88,14 +88,6 @@ type User struct {
 	CanCreateGroup pulumi.BoolPtrOutput `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// String, a specific external authentication provider UID.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternUid pulumi.StringPtrOutput `pulumi:"externUid"`
-	// String, the external provider.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternalProvider pulumi.StringPtrOutput `pulumi:"externalProvider"`
 	// Set user password to a random value
 	ForceRandomPassword pulumi.BoolPtrOutput `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
@@ -169,14 +161,6 @@ type userState struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email *string `pulumi:"email"`
-	// String, a specific external authentication provider UID.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternUid *string `pulumi:"externUid"`
-	// String, the external provider.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternalProvider *string `pulumi:"externalProvider"`
 	// Set user password to a random value
 	ForceRandomPassword *bool `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
@@ -208,14 +192,6 @@ type UserState struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringPtrInput
-	// String, a specific external authentication provider UID.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternUid pulumi.StringPtrInput
-	// String, the external provider.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternalProvider pulumi.StringPtrInput
 	// Set user password to a random value
 	ForceRandomPassword pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
@@ -251,14 +227,6 @@ type userArgs struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// The e-mail address of the user.
 	Email string `pulumi:"email"`
-	// String, a specific external authentication provider UID.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternUid *string `pulumi:"externUid"`
-	// String, the external provider.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternalProvider *string `pulumi:"externalProvider"`
 	// Set user password to a random value
 	ForceRandomPassword *bool `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
@@ -291,14 +259,6 @@ type UserArgs struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// The e-mail address of the user.
 	Email pulumi.StringInput
-	// String, a specific external authentication provider UID.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternUid pulumi.StringPtrInput
-	// String, the external provider.
-	//
-	// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-	ExternalProvider pulumi.StringPtrInput
 	// Set user password to a random value
 	ForceRandomPassword pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
@@ -420,20 +380,6 @@ func (o UserOutput) CanCreateGroup() pulumi.BoolPtrOutput {
 // The e-mail address of the user.
 func (o UserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
-}
-
-// String, a specific external authentication provider UID.
-//
-// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-func (o UserOutput) ExternUid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternUid }).(pulumi.StringPtrOutput)
-}
-
-// String, the external provider.
-//
-// Deprecated: To be removed in 18.0. Use UserIdentity resource instead. See https://gitlab.com/gitlab-org/terraform-provider-gitlab/-/issues/1295
-func (o UserOutput) ExternalProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ExternalProvider }).(pulumi.StringPtrOutput)
 }
 
 // Set user password to a random value

@@ -31,7 +31,7 @@ class GroupServiceAccountAccessTokenArgs:
         """
         The set of arguments for constructing a GroupServiceAccountAccessToken resource.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.int] user_id: The ID of a service account user.
         :param pulumi.Input[builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
@@ -63,7 +63,7 @@ class GroupServiceAccountAccessTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -142,7 +142,7 @@ class _GroupServiceAccountAccessTokenState:
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
         :param pulumi.Input[builtins.bool] revoked: True if the token is revoked.
         :param pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.str] token: The token of the group service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[builtins.int] user_id: The ID of a service account user.
         """
@@ -255,7 +255,7 @@ class _GroupServiceAccountAccessTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 
@@ -348,7 +348,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
         :param pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.int] user_id: The ID of a service account user.
         """
         ...
@@ -480,7 +480,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the personal access token.
         :param pulumi.Input[builtins.bool] revoked: True if the token is revoked.
         :param pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[builtins.str] token: The token of the group service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[builtins.int] user_id: The ID of a service account user.
         """
@@ -560,7 +560,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        The scopes of the group service account access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         """
         return pulumi.get(self, "scopes")
 

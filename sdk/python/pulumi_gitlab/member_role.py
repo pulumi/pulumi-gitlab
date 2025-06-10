@@ -117,7 +117,7 @@ class _MemberRoleState:
         """
         Input properties used for looking up and filtering MemberRole resources.
         :param pulumi.Input[builtins.str] base_access_level: The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
-        :param pulumi.Input[builtins.str] created_at: Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+        :param pulumi.Input[builtins.str] created_at: Timestamp of when the member role was created.
         :param pulumi.Input[builtins.str] description: Description for the member role.
         :param pulumi.Input[builtins.str] edit_path: The Web UI path to edit the member role
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] enabled_permissions: All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
@@ -158,7 +158,7 @@ class _MemberRoleState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+        Timestamp of when the member role was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -402,7 +402,7 @@ class MemberRole(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] base_access_level: The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
-        :param pulumi.Input[builtins.str] created_at: Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+        :param pulumi.Input[builtins.str] created_at: Timestamp of when the member role was created.
         :param pulumi.Input[builtins.str] description: Description for the member role.
         :param pulumi.Input[builtins.str] edit_path: The Web UI path to edit the member role
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] enabled_permissions: All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
@@ -436,7 +436,7 @@ class MemberRole(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[builtins.str]:
         """
-        Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+        Timestamp of when the member role was created.
         """
         return pulumi.get(self, "created_at")
 

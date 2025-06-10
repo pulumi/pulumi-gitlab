@@ -41,11 +41,11 @@ export function getProjectIssues(args: GetProjectIssuesArgs, opts?: pulumi.Invok
         "labels": args.labels,
         "milestone": args.milestone,
         "myReactionEmoji": args.myReactionEmoji,
-        "notAssigneeIds": args.notAssigneeIds,
-        "notAuthorIds": args.notAuthorIds,
+        "notAssigneeId": args.notAssigneeId,
+        "notAuthorId": args.notAuthorId,
         "notLabels": args.notLabels,
         "notMilestone": args.notMilestone,
-        "notMyReactionEmojis": args.notMyReactionEmojis,
+        "notMyReactionEmoji": args.notMyReactionEmoji,
         "orderBy": args.orderBy,
         "project": args.project,
         "scope": args.scope,
@@ -113,11 +113,11 @@ export interface GetProjectIssuesArgs {
     /**
      * Return issues that do not match the assignee id.
      */
-    notAssigneeIds?: number[];
+    notAssigneeId?: number;
     /**
      * Return issues that do not match the author id.
      */
-    notAuthorIds?: number[];
+    notAuthorId?: number;
     /**
      * Return issues that do not match the labels.
      */
@@ -129,7 +129,7 @@ export interface GetProjectIssuesArgs {
     /**
      * Return issues not reacted by the authenticated user by the given emoji.
      */
-    notMyReactionEmojis?: string[];
+    notMyReactionEmoji?: string;
     /**
      * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      */
@@ -231,11 +231,11 @@ export interface GetProjectIssuesResult {
     /**
      * Return issues that do not match the assignee id.
      */
-    readonly notAssigneeIds?: number[];
+    readonly notAssigneeId?: number;
     /**
      * Return issues that do not match the author id.
      */
-    readonly notAuthorIds?: number[];
+    readonly notAuthorId?: number;
     /**
      * Return issues that do not match the labels.
      */
@@ -247,7 +247,7 @@ export interface GetProjectIssuesResult {
     /**
      * Return issues not reacted by the authenticated user by the given emoji.
      */
-    readonly notMyReactionEmojis?: string[];
+    readonly notMyReactionEmoji?: string;
     /**
      * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      */
@@ -320,11 +320,11 @@ export function getProjectIssuesOutput(args: GetProjectIssuesOutputArgs, opts?: 
         "labels": args.labels,
         "milestone": args.milestone,
         "myReactionEmoji": args.myReactionEmoji,
-        "notAssigneeIds": args.notAssigneeIds,
-        "notAuthorIds": args.notAuthorIds,
+        "notAssigneeId": args.notAssigneeId,
+        "notAuthorId": args.notAuthorId,
         "notLabels": args.notLabels,
         "notMilestone": args.notMilestone,
-        "notMyReactionEmojis": args.notMyReactionEmojis,
+        "notMyReactionEmoji": args.notMyReactionEmoji,
         "orderBy": args.orderBy,
         "project": args.project,
         "scope": args.scope,
@@ -392,11 +392,11 @@ export interface GetProjectIssuesOutputArgs {
     /**
      * Return issues that do not match the assignee id.
      */
-    notAssigneeIds?: pulumi.Input<pulumi.Input<number>[]>;
+    notAssigneeId?: pulumi.Input<number>;
     /**
      * Return issues that do not match the author id.
      */
-    notAuthorIds?: pulumi.Input<pulumi.Input<number>[]>;
+    notAuthorId?: pulumi.Input<number>;
     /**
      * Return issues that do not match the labels.
      */
@@ -408,7 +408,7 @@ export interface GetProjectIssuesOutputArgs {
     /**
      * Return issues not reacted by the authenticated user by the given emoji.
      */
-    notMyReactionEmojis?: pulumi.Input<pulumi.Input<string>[]>;
+    notMyReactionEmoji?: pulumi.Input<string>;
     /**
      * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      */

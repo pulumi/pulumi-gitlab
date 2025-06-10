@@ -1811,10 +1811,6 @@ if not MYPY:
         """
         The number of images to keep.
         """
-        name_regex: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The regular expression to match image names to delete.
-        """
         name_regex_delete: NotRequired[pulumi.Input[builtins.str]]
         """
         The regular expression to match image names to delete.
@@ -1840,7 +1836,6 @@ class ProjectContainerExpirationPolicyArgs:
                  cadence: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  keep_n: Optional[pulumi.Input[builtins.int]] = None,
-                 name_regex: Optional[pulumi.Input[builtins.str]] = None,
                  name_regex_delete: Optional[pulumi.Input[builtins.str]] = None,
                  name_regex_keep: Optional[pulumi.Input[builtins.str]] = None,
                  next_run_at: Optional[pulumi.Input[builtins.str]] = None,
@@ -1849,7 +1844,6 @@ class ProjectContainerExpirationPolicyArgs:
         :param pulumi.Input[builtins.str] cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param pulumi.Input[builtins.bool] enabled: If true, the policy is enabled.
         :param pulumi.Input[builtins.int] keep_n: The number of images to keep.
-        :param pulumi.Input[builtins.str] name_regex: The regular expression to match image names to delete.
         :param pulumi.Input[builtins.str] name_regex_delete: The regular expression to match image names to delete.
         :param pulumi.Input[builtins.str] name_regex_keep: The regular expression to match image names to keep.
         :param pulumi.Input[builtins.str] next_run_at: The next time the policy will run.
@@ -1861,11 +1855,6 @@ class ProjectContainerExpirationPolicyArgs:
             pulumi.set(__self__, "enabled", enabled)
         if keep_n is not None:
             pulumi.set(__self__, "keep_n", keep_n)
-        if name_regex is not None:
-            warnings.warn("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""", DeprecationWarning)
-            pulumi.log.warn("""name_regex is deprecated: `name_regex` has been deprecated. Use `name_regex_delete` instead.""")
-        if name_regex is not None:
-            pulumi.set(__self__, "name_regex", name_regex)
         if name_regex_delete is not None:
             pulumi.set(__self__, "name_regex_delete", name_regex_delete)
         if name_regex_keep is not None:
@@ -1910,19 +1899,6 @@ class ProjectContainerExpirationPolicyArgs:
     @keep_n.setter
     def keep_n(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "keep_n", value)
-
-    @property
-    @pulumi.getter(name="nameRegex")
-    @_utilities.deprecated("""`name_regex` has been deprecated. Use `name_regex_delete` instead.""")
-    def name_regex(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The regular expression to match image names to delete.
-        """
-        return pulumi.get(self, "name_regex")
-
-    @name_regex.setter
-    def name_regex(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "name_regex", value)
 
     @property
     @pulumi.getter(name="nameRegexDelete")

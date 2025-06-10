@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,7 +60,9 @@ type LookupInstanceServiceAccountArgs struct {
 
 // A collection of values returned by getInstanceServiceAccount.
 type LookupInstanceServiceAccountResult struct {
-	Id string `pulumi:"id"`
+	// The email of the user.
+	Email string `pulumi:"email"`
+	Id    string `pulumi:"id"`
 	// The name of the user.
 	Name string `pulumi:"name"`
 	// The service account id.
@@ -101,6 +103,11 @@ func (o LookupInstanceServiceAccountResultOutput) ToLookupInstanceServiceAccount
 
 func (o LookupInstanceServiceAccountResultOutput) ToLookupInstanceServiceAccountResultOutputWithContext(ctx context.Context) LookupInstanceServiceAccountResultOutput {
 	return o
+}
+
+// The email of the user.
+func (o LookupInstanceServiceAccountResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceServiceAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceServiceAccountResultOutput) Id() pulumi.StringOutput {

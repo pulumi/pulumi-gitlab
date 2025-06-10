@@ -18,29 +18,6 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     public static final GroupLdapLinkState Empty = new GroupLdapLinkState();
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `group_access` instead of the `access_level` attribute.
-     * 
-     */
-    @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-    @Import(name="accessLevel")
-    private @Nullable Output<String> accessLevel;
-
-    /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `group_access` instead of the `access_level` attribute.
-     * 
-     */
-    @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-    public Optional<Output<String>> accessLevel() {
-        return Optional.ofNullable(this.accessLevel);
-    }
-
-    /**
      * The CN of the LDAP group to link with. Required if `filter` is not provided.
      * 
      */
@@ -131,14 +108,14 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      * 
      */
     @Import(name="memberRoleId")
     private @Nullable Output<Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      * 
      */
     public Optional<Output<Integer>> memberRoleId() {
@@ -148,7 +125,6 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
     private GroupLdapLinkState() {}
 
     private GroupLdapLinkState(GroupLdapLinkState $) {
-        this.accessLevel = $.accessLevel;
         this.cn = $.cn;
         this.filter = $.filter;
         this.force = $.force;
@@ -174,35 +150,6 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(GroupLdapLinkState defaults) {
             $ = new GroupLdapLinkState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `group_access` instead of the `access_level` attribute.
-         * 
-         */
-        @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-        public Builder accessLevel(@Nullable Output<String> accessLevel) {
-            $.accessLevel = accessLevel;
-            return this;
-        }
-
-        /**
-         * @param accessLevel Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `group_access` instead of the `access_level` attribute.
-         * 
-         */
-        @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
-        public Builder accessLevel(String accessLevel) {
-            return accessLevel(Output.of(accessLevel));
         }
 
         /**
@@ -332,7 +279,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
          * 
          * @return builder
          * 
@@ -343,7 +290,7 @@ public final class GroupLdapLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role.
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
          * 
          * @return builder
          * 

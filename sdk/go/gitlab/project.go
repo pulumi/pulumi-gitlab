@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,10 +74,6 @@ type Project struct {
 	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
-	// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-	//
-	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
-	BuildCoverageRegex pulumi.StringPtrOutput `pulumi:"buildCoverageRegex"`
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringOutput `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
@@ -204,7 +200,7 @@ type Project struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolOutput `pulumi:"pipelinesEnabled"`
-	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
 	PreReceiveSecretDetectionEnabled pulumi.BoolOutput `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue pulumi.BoolOutput `pulumi:"preventMergeWithoutJiraIssue"`
@@ -345,10 +341,6 @@ type projectState struct {
 	AvatarHash *string `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
-	// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-	//
-	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
-	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy *string `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
@@ -475,7 +467,7 @@ type projectState struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
-	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
 	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue *bool `pulumi:"preventMergeWithoutJiraIssue"`
@@ -579,10 +571,6 @@ type ProjectState struct {
 	AvatarHash pulumi.StringPtrInput
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
-	// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-	//
-	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
-	BuildCoverageRegex pulumi.StringPtrInput
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringPtrInput
 	// The maximum amount of time, in seconds, that a job can run.
@@ -709,7 +697,7 @@ type ProjectState struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolPtrInput
-	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
 	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue pulumi.BoolPtrInput
@@ -815,10 +803,6 @@ type projectArgs struct {
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
-	// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-	//
-	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
-	BuildCoverageRegex *string `pulumi:"buildCoverageRegex"`
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy *string `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
@@ -939,7 +923,7 @@ type projectArgs struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled *bool `pulumi:"pipelinesEnabled"`
-	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
 	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue *bool `pulumi:"preventMergeWithoutJiraIssue"`
@@ -1036,10 +1020,6 @@ type ProjectArgs struct {
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
-	// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-	//
-	// Deprecated: build_coverage_regex is removed in GitLab 15.0.
-	BuildCoverageRegex pulumi.StringPtrInput
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringPtrInput
 	// The maximum amount of time, in seconds, that a job can run.
@@ -1160,7 +1140,7 @@ type ProjectArgs struct {
 	//
 	// Deprecated: Deprecated in favor of `buildsAccessLevel`
 	PipelinesEnabled pulumi.BoolPtrInput
-	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
 	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue pulumi.BoolPtrInput
@@ -1381,13 +1361,6 @@ func (o ProjectOutput) AvatarHash() pulumi.StringOutput {
 // The URL of the avatar image.
 func (o ProjectOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
-}
-
-// Test coverage parsing for the project. This is deprecated feature in GitLab 15.0.
-//
-// Deprecated: build_coverage_regex is removed in GitLab 15.0.
-func (o ProjectOutput) BuildCoverageRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BuildCoverageRegex }).(pulumi.StringPtrOutput)
 }
 
 // The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -1699,7 +1672,7 @@ func (o ProjectOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PipelinesEnabled }).(pulumi.BoolOutput)
 }
 
-// Whether Secret Push Detection is enabled. Requires GitLab Ultimate and at least GitLab 17.3.
+// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
 func (o ProjectOutput) PreReceiveSecretDetectionEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PreReceiveSecretDetectionEnabled }).(pulumi.BoolOutput)
 }

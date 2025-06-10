@@ -161,10 +161,10 @@ namespace Pulumi.GitLab
         public Output<string?> DeleteCommitMessage { get; private set; } = null!;
 
         /// <summary>
-        /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        /// The file content encoding. Valid values are: `base64`, `text`.
         /// </summary>
         [Output("encoding")]
-        public Output<string?> Encoding { get; private set; } = null!;
+        public Output<string> Encoding { get; private set; } = null!;
 
         /// <summary>
         /// Enables or disables the execute flag on the file.
@@ -315,10 +315,10 @@ namespace Pulumi.GitLab
         public Input<string>? DeleteCommitMessage { get; set; }
 
         /// <summary>
-        /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        /// The file content encoding. Valid values are: `base64`, `text`.
         /// </summary>
-        [Input("encoding")]
-        public Input<string>? Encoding { get; set; }
+        [Input("encoding", required: true)]
+        public Input<string> Encoding { get; set; } = null!;
 
         /// <summary>
         /// Enables or disables the execute flag on the file.
@@ -425,7 +425,7 @@ namespace Pulumi.GitLab
         public Input<string>? DeleteCommitMessage { get; set; }
 
         /// <summary>
-        /// The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+        /// The file content encoding. Valid values are: `base64`, `text`.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }

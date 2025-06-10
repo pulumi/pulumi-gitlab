@@ -43,6 +43,10 @@ export interface GetInstanceServiceAccountArgs {
  * A collection of values returned by getInstanceServiceAccount.
  */
 export interface GetInstanceServiceAccountResult {
+    /**
+     * The email of the user.
+     */
+    readonly email: string;
     readonly id: string;
     /**
      * The name of the user.

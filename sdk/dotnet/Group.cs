@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.Group` resource allows to manage the lifecycle of a group.
-    /// 
-    /// &gt; On GitLab SaaS, you must use the GitLab UI to create groups without a parent group. You cannot use this provider nor the API to do this.
-    /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

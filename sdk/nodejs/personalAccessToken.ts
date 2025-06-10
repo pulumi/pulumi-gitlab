@@ -121,7 +121,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      */
     public readonly rotationConfiguration!: pulumi.Output<outputs.PersonalAccessTokenRotationConfiguration | undefined>;
     /**
-     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -215,7 +215,7 @@ export interface PersonalAccessTokenState {
      */
     rotationConfiguration?: pulumi.Input<inputs.PersonalAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -249,7 +249,7 @@ export interface PersonalAccessTokenArgs {
      */
     rotationConfiguration?: pulumi.Input<inputs.PersonalAccessTokenRotationConfiguration>;
     /**
-     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

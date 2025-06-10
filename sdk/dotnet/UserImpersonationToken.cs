@@ -103,7 +103,7 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        /// Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        /// Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -254,7 +254,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_service_ping`
+        /// Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         /// </summary>
         public InputList<string> Scopes
         {

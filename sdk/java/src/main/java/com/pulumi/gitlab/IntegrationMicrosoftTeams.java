@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationMicrosoftTeams` resource allows to manage the lifecycle of a project integration with Microsoft Teams.
+ * The `gitlab.IntegrationMicrosoftTeams` resource allows you to manage the lifecycle of a project integration with Microsoft Teams.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
  * 

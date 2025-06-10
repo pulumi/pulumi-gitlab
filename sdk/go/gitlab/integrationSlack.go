@@ -8,11 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `IntegrationSlack` resource allows to manage the lifecycle of a project integration with Slack.
+// The `IntegrationSlack` resource allows you to manage the lifecycle of a project integration with Slack.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#slack-notifications)
 //
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

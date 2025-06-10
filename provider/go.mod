@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gitlab/provider/v8
+module github.com/pulumi/pulumi-gitlab/provider/v9
 
 go 1.24
 
@@ -183,7 +183,7 @@ require (
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
 	github.com/zclconf/go-cty v1.16.2 // indirect
-	gitlab.com/gitlab-org/api/client-go v0.127.0 // indirect
+	gitlab.com/gitlab-org/api/client-go v0.128.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect

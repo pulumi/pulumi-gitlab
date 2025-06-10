@@ -72,7 +72,7 @@ export class MemberRole extends pulumi.CustomResource {
      */
     public readonly baseAccessLevel!: pulumi.Output<string>;
     /**
-     * Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+     * Timestamp of when the member role was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export interface MemberRoleState {
      */
     baseAccessLevel?: pulumi.Input<string>;
     /**
-     * Timestamp of when the member role was created. Only available with GitLab version 17.3 or higher.
+     * Timestamp of when the member role was created.
      */
     createdAt?: pulumi.Input<string>;
     /**

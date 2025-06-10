@@ -123,18 +123,18 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * The file content encoding. Valid values are: `base64`, `text`.
      * 
      */
-    @Import(name="encoding")
-    private @Nullable Output<String> encoding;
+    @Import(name="encoding", required=true)
+    private Output<String> encoding;
 
     /**
-     * @return The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+     * @return The file content encoding. Valid values are: `base64`, `text`.
      * 
      */
-    public Optional<Output<String>> encoding() {
-        return Optional.ofNullable(this.encoding);
+    public Output<String> encoding() {
+        return this.encoding;
     }
 
     /**
@@ -412,18 +412,18 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param encoding The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+         * @param encoding The file content encoding. Valid values are: `base64`, `text`.
          * 
          * @return builder
          * 
          */
-        public Builder encoding(@Nullable Output<String> encoding) {
+        public Builder encoding(Output<String> encoding) {
             $.encoding = encoding;
             return this;
         }
 
         /**
-         * @param encoding The file content encoding. Default value is `base64`. Valid values are: `base64`, `text`.
+         * @param encoding The file content encoding. Valid values are: `base64`, `text`.
          * 
          * @return builder
          * 
@@ -564,6 +564,9 @@ public final class RepositoryFileArgs extends com.pulumi.resources.ResourceArgs 
             }
             if ($.content == null) {
                 throw new MissingRequiredPropertyException("RepositoryFileArgs", "content");
+            }
+            if ($.encoding == null) {
+                throw new MissingRequiredPropertyException("RepositoryFileArgs", "encoding");
             }
             if ($.filePath == null) {
                 throw new MissingRequiredPropertyException("RepositoryFileArgs", "filePath");

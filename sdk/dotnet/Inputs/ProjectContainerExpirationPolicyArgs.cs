@@ -33,12 +33,6 @@ namespace Pulumi.GitLab.Inputs
         /// <summary>
         /// The regular expression to match image names to delete.
         /// </summary>
-        [Input("nameRegex")]
-        public Input<string>? NameRegex { get; set; }
-
-        /// <summary>
-        /// The regular expression to match image names to delete.
-        /// </summary>
         [Input("nameRegexDelete")]
         public Input<string>? NameRegexDelete { get; set; }
 

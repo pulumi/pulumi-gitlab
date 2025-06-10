@@ -129,6 +129,10 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetInstanceServiceAccountResult
     {
+        /// <summary>
+        /// The email of the user.
+        /// </summary>
+        public readonly string Email;
         public readonly string Id;
         /// <summary>
         /// The name of the user.
@@ -145,6 +149,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetInstanceServiceAccountResult(
+            string email,
+
             string id,
 
             string name,
@@ -153,6 +159,7 @@ namespace Pulumi.GitLab
 
             string username)
         {
+            Email = email;
             Id = id;
             Name = name;
             ServiceAccountId = serviceAccountId;

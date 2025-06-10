@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2732,10 +2732,6 @@ type ProjectContainerExpirationPolicy struct {
 	// The number of images to keep.
 	KeepN *int `pulumi:"keepN"`
 	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-	NameRegex *string `pulumi:"nameRegex"`
-	// The regular expression to match image names to delete.
 	NameRegexDelete *string `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
 	NameRegexKeep *string `pulumi:"nameRegexKeep"`
@@ -2763,10 +2759,6 @@ type ProjectContainerExpirationPolicyArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The number of images to keep.
 	KeepN pulumi.IntPtrInput `pulumi:"keepN"`
-	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The regular expression to match image names to delete.
 	NameRegexDelete pulumi.StringPtrInput `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
@@ -2870,13 +2862,6 @@ func (o ProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntPtrOutput {
 }
 
 // The regular expression to match image names to delete.
-//
-// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-func (o ProjectContainerExpirationPolicyOutput) NameRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
-}
-
-// The regular expression to match image names to delete.
 func (o ProjectContainerExpirationPolicyOutput) NameRegexDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectContainerExpirationPolicy) *string { return v.NameRegexDelete }).(pulumi.StringPtrOutput)
 }
@@ -2948,18 +2933,6 @@ func (o ProjectContainerExpirationPolicyPtrOutput) KeepN() pulumi.IntPtrOutput {
 		}
 		return v.KeepN
 	}).(pulumi.IntPtrOutput)
-}
-
-// The regular expression to match image names to delete.
-//
-// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-func (o ProjectContainerExpirationPolicyPtrOutput) NameRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectContainerExpirationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NameRegex
-	}).(pulumi.StringPtrOutput)
 }
 
 // The regular expression to match image names to delete.
@@ -9144,10 +9117,6 @@ type GetProjectContainerExpirationPolicy struct {
 	// The number of images to keep.
 	KeepN int `pulumi:"keepN"`
 	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-	NameRegex string `pulumi:"nameRegex"`
-	// The regular expression to match image names to delete.
 	NameRegexDelete string `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
 	NameRegexKeep string `pulumi:"nameRegexKeep"`
@@ -9175,10 +9144,6 @@ type GetProjectContainerExpirationPolicyArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The number of images to keep.
 	KeepN pulumi.IntInput `pulumi:"keepN"`
-	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-	NameRegex pulumi.StringInput `pulumi:"nameRegex"`
 	// The regular expression to match image names to delete.
 	NameRegexDelete pulumi.StringInput `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
@@ -9253,13 +9218,6 @@ func (o GetProjectContainerExpirationPolicyOutput) Enabled() pulumi.BoolOutput {
 // The number of images to keep.
 func (o GetProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) int { return v.KeepN }).(pulumi.IntOutput)
-}
-
-// The regular expression to match image names to delete.
-//
-// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-func (o GetProjectContainerExpirationPolicyOutput) NameRegex() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectContainerExpirationPolicy) string { return v.NameRegex }).(pulumi.StringOutput)
 }
 
 // The regular expression to match image names to delete.
@@ -14424,10 +14382,6 @@ type GetProjectsProjectContainerExpirationPolicy struct {
 	// The number of images to keep.
 	KeepN int `pulumi:"keepN"`
 	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-	NameRegex string `pulumi:"nameRegex"`
-	// The regular expression to match image names to delete.
 	NameRegexDelete string `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
 	NameRegexKeep string `pulumi:"nameRegexKeep"`
@@ -14455,10 +14409,6 @@ type GetProjectsProjectContainerExpirationPolicyArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The number of images to keep.
 	KeepN pulumi.IntInput `pulumi:"keepN"`
-	// The regular expression to match image names to delete.
-	//
-	// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-	NameRegex pulumi.StringInput `pulumi:"nameRegex"`
 	// The regular expression to match image names to delete.
 	NameRegexDelete pulumi.StringInput `pulumi:"nameRegexDelete"`
 	// The regular expression to match image names to keep.
@@ -14533,13 +14483,6 @@ func (o GetProjectsProjectContainerExpirationPolicyOutput) Enabled() pulumi.Bool
 // The number of images to keep.
 func (o GetProjectsProjectContainerExpirationPolicyOutput) KeepN() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) int { return v.KeepN }).(pulumi.IntOutput)
-}
-
-// The regular expression to match image names to delete.
-//
-// Deprecated: `nameRegex` has been deprecated. Use `nameRegexDelete` instead.
-func (o GetProjectsProjectContainerExpirationPolicyOutput) NameRegex() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProjectContainerExpirationPolicy) string { return v.NameRegex }).(pulumi.StringOutput)
 }
 
 // The regular expression to match image names to delete.

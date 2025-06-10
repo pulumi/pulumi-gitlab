@@ -101,7 +101,7 @@ export class UserImpersonationToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly revoked!: pulumi.Output<boolean>;
     /**
-     * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+     * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -198,7 +198,7 @@ export interface UserImpersonationTokenState {
      */
     revoked?: pulumi.Input<boolean>;
     /**
-     * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+     * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -228,7 +228,7 @@ export interface UserImpersonationTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+     * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

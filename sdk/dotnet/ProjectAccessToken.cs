@@ -134,7 +134,7 @@ namespace Pulumi.GitLab
         public Output<Outputs.ProjectAccessTokenRotationConfiguration?> RotationConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -315,7 +315,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`
+        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         /// </summary>
         public InputList<string> Scopes
         {

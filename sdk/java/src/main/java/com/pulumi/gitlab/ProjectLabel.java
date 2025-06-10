@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#project-labels)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
  * 
  * ## Example Usage
  * 

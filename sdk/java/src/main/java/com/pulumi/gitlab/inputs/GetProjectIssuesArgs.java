@@ -203,30 +203,30 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
      * Return issues that do not match the assignee id.
      * 
      */
-    @Import(name="notAssigneeIds")
-    private @Nullable Output<List<Integer>> notAssigneeIds;
+    @Import(name="notAssigneeId")
+    private @Nullable Output<Integer> notAssigneeId;
 
     /**
      * @return Return issues that do not match the assignee id.
      * 
      */
-    public Optional<Output<List<Integer>>> notAssigneeIds() {
-        return Optional.ofNullable(this.notAssigneeIds);
+    public Optional<Output<Integer>> notAssigneeId() {
+        return Optional.ofNullable(this.notAssigneeId);
     }
 
     /**
      * Return issues that do not match the author id.
      * 
      */
-    @Import(name="notAuthorIds")
-    private @Nullable Output<List<Integer>> notAuthorIds;
+    @Import(name="notAuthorId")
+    private @Nullable Output<Integer> notAuthorId;
 
     /**
      * @return Return issues that do not match the author id.
      * 
      */
-    public Optional<Output<List<Integer>>> notAuthorIds() {
-        return Optional.ofNullable(this.notAuthorIds);
+    public Optional<Output<Integer>> notAuthorId() {
+        return Optional.ofNullable(this.notAuthorId);
     }
 
     /**
@@ -263,15 +263,15 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
      * Return issues not reacted by the authenticated user by the given emoji.
      * 
      */
-    @Import(name="notMyReactionEmojis")
-    private @Nullable Output<List<String>> notMyReactionEmojis;
+    @Import(name="notMyReactionEmoji")
+    private @Nullable Output<String> notMyReactionEmoji;
 
     /**
      * @return Return issues not reacted by the authenticated user by the given emoji.
      * 
      */
-    public Optional<Output<List<String>>> notMyReactionEmojis() {
-        return Optional.ofNullable(this.notMyReactionEmojis);
+    public Optional<Output<String>> notMyReactionEmoji() {
+        return Optional.ofNullable(this.notMyReactionEmoji);
     }
 
     /**
@@ -424,11 +424,11 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         this.labels = $.labels;
         this.milestone = $.milestone;
         this.myReactionEmoji = $.myReactionEmoji;
-        this.notAssigneeIds = $.notAssigneeIds;
-        this.notAuthorIds = $.notAuthorIds;
+        this.notAssigneeId = $.notAssigneeId;
+        this.notAuthorId = $.notAuthorId;
         this.notLabels = $.notLabels;
         this.notMilestone = $.notMilestone;
-        this.notMyReactionEmojis = $.notMyReactionEmojis;
+        this.notMyReactionEmoji = $.notMyReactionEmoji;
         this.orderBy = $.orderBy;
         this.project = $.project;
         this.scope = $.scope;
@@ -731,65 +731,45 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param notAssigneeIds Return issues that do not match the assignee id.
+         * @param notAssigneeId Return issues that do not match the assignee id.
          * 
          * @return builder
          * 
          */
-        public Builder notAssigneeIds(@Nullable Output<List<Integer>> notAssigneeIds) {
-            $.notAssigneeIds = notAssigneeIds;
+        public Builder notAssigneeId(@Nullable Output<Integer> notAssigneeId) {
+            $.notAssigneeId = notAssigneeId;
             return this;
         }
 
         /**
-         * @param notAssigneeIds Return issues that do not match the assignee id.
+         * @param notAssigneeId Return issues that do not match the assignee id.
          * 
          * @return builder
          * 
          */
-        public Builder notAssigneeIds(List<Integer> notAssigneeIds) {
-            return notAssigneeIds(Output.of(notAssigneeIds));
+        public Builder notAssigneeId(Integer notAssigneeId) {
+            return notAssigneeId(Output.of(notAssigneeId));
         }
 
         /**
-         * @param notAssigneeIds Return issues that do not match the assignee id.
+         * @param notAuthorId Return issues that do not match the author id.
          * 
          * @return builder
          * 
          */
-        public Builder notAssigneeIds(Integer... notAssigneeIds) {
-            return notAssigneeIds(List.of(notAssigneeIds));
-        }
-
-        /**
-         * @param notAuthorIds Return issues that do not match the author id.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notAuthorIds(@Nullable Output<List<Integer>> notAuthorIds) {
-            $.notAuthorIds = notAuthorIds;
+        public Builder notAuthorId(@Nullable Output<Integer> notAuthorId) {
+            $.notAuthorId = notAuthorId;
             return this;
         }
 
         /**
-         * @param notAuthorIds Return issues that do not match the author id.
+         * @param notAuthorId Return issues that do not match the author id.
          * 
          * @return builder
          * 
          */
-        public Builder notAuthorIds(List<Integer> notAuthorIds) {
-            return notAuthorIds(Output.of(notAuthorIds));
-        }
-
-        /**
-         * @param notAuthorIds Return issues that do not match the author id.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notAuthorIds(Integer... notAuthorIds) {
-            return notAuthorIds(List.of(notAuthorIds));
+        public Builder notAuthorId(Integer notAuthorId) {
+            return notAuthorId(Output.of(notAuthorId));
         }
 
         /**
@@ -845,34 +825,24 @@ public final class GetProjectIssuesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param notMyReactionEmojis Return issues not reacted by the authenticated user by the given emoji.
+         * @param notMyReactionEmoji Return issues not reacted by the authenticated user by the given emoji.
          * 
          * @return builder
          * 
          */
-        public Builder notMyReactionEmojis(@Nullable Output<List<String>> notMyReactionEmojis) {
-            $.notMyReactionEmojis = notMyReactionEmojis;
+        public Builder notMyReactionEmoji(@Nullable Output<String> notMyReactionEmoji) {
+            $.notMyReactionEmoji = notMyReactionEmoji;
             return this;
         }
 
         /**
-         * @param notMyReactionEmojis Return issues not reacted by the authenticated user by the given emoji.
+         * @param notMyReactionEmoji Return issues not reacted by the authenticated user by the given emoji.
          * 
          * @return builder
          * 
          */
-        public Builder notMyReactionEmojis(List<String> notMyReactionEmojis) {
-            return notMyReactionEmojis(Output.of(notMyReactionEmojis));
-        }
-
-        /**
-         * @param notMyReactionEmojis Return issues not reacted by the authenticated user by the given emoji.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notMyReactionEmojis(String... notMyReactionEmojis) {
-            return notMyReactionEmojis(List.of(notMyReactionEmojis));
+        public Builder notMyReactionEmoji(String notMyReactionEmoji) {
+            return notMyReactionEmoji(Output.of(notMyReactionEmoji));
         }
 
         /**

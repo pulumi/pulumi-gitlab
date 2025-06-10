@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +16,49 @@ import (
 // > In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// create a service account
+//			exampleSa, err := gitlab.NewInstanceServiceAccount(ctx, "example_sa", &gitlab.InstanceServiceAccountArgs{
+//				Name:     pulumi.String("example-name"),
+//				Username: pulumi.String("example-username"),
+//				Email:    pulumi.String("custom_email@gitlab.example.com"),
+//				Timeouts: &gitlab.InstanceServiceAccountTimeoutsArgs{
+//					Delete: pulumi.String("3m"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewPersonalAccessToken(ctx, "example_token", &gitlab.PersonalAccessTokenArgs{
+//				UserId:    exampleSa.ServiceAccountId,
+//				Name:      pulumi.String("Example personal access token for a service account"),
+//				ExpiresAt: pulumi.String("2026-01-01"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -45,12 +88,14 @@ import (
 type InstanceServiceAccount struct {
 	pulumi.CustomResourceState
 
-	// The name of the user. If not specified, the default Service account user name is used.
+	// The email of the user account. If not set, generates a no-reply email address.
+	Email pulumi.StringOutput `pulumi:"email"`
+	// The name of the user. If not set, uses Service account user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service account id.
 	ServiceAccountId pulumi.StringOutput                     `pulumi:"serviceAccountId"`
 	Timeouts         InstanceServiceAccountTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user account. If not set, generates a name prepended with service*account*.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -84,22 +129,26 @@ func GetInstanceServiceAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceServiceAccount resources.
 type instanceServiceAccountState struct {
-	// The name of the user. If not specified, the default Service account user name is used.
+	// The email of the user account. If not set, generates a no-reply email address.
+	Email *string `pulumi:"email"`
+	// The name of the user. If not set, uses Service account user.
 	Name *string `pulumi:"name"`
 	// The service account id.
 	ServiceAccountId *string                         `pulumi:"serviceAccountId"`
 	Timeouts         *InstanceServiceAccountTimeouts `pulumi:"timeouts"`
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user account. If not set, generates a name prepended with service*account*.
 	Username *string `pulumi:"username"`
 }
 
 type InstanceServiceAccountState struct {
-	// The name of the user. If not specified, the default Service account user name is used.
+	// The email of the user account. If not set, generates a no-reply email address.
+	Email pulumi.StringPtrInput
+	// The name of the user. If not set, uses Service account user.
 	Name pulumi.StringPtrInput
 	// The service account id.
 	ServiceAccountId pulumi.StringPtrInput
 	Timeouts         InstanceServiceAccountTimeoutsPtrInput
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user account. If not set, generates a name prepended with service*account*.
 	Username pulumi.StringPtrInput
 }
 
@@ -108,19 +157,23 @@ func (InstanceServiceAccountState) ElementType() reflect.Type {
 }
 
 type instanceServiceAccountArgs struct {
-	// The name of the user. If not specified, the default Service account user name is used.
+	// The email of the user account. If not set, generates a no-reply email address.
+	Email *string `pulumi:"email"`
+	// The name of the user. If not set, uses Service account user.
 	Name     *string                         `pulumi:"name"`
 	Timeouts *InstanceServiceAccountTimeouts `pulumi:"timeouts"`
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user account. If not set, generates a name prepended with service*account*.
 	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a InstanceServiceAccount resource.
 type InstanceServiceAccountArgs struct {
-	// The name of the user. If not specified, the default Service account user name is used.
+	// The email of the user account. If not set, generates a no-reply email address.
+	Email pulumi.StringPtrInput
+	// The name of the user. If not set, uses Service account user.
 	Name     pulumi.StringPtrInput
 	Timeouts InstanceServiceAccountTimeoutsPtrInput
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user account. If not set, generates a name prepended with service*account*.
 	Username pulumi.StringPtrInput
 }
 
@@ -211,7 +264,12 @@ func (o InstanceServiceAccountOutput) ToInstanceServiceAccountOutputWithContext(
 	return o
 }
 
-// The name of the user. If not specified, the default Service account user name is used.
+// The email of the user account. If not set, generates a no-reply email address.
+func (o InstanceServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The name of the user. If not set, uses Service account user.
 func (o InstanceServiceAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -225,7 +283,7 @@ func (o InstanceServiceAccountOutput) Timeouts() InstanceServiceAccountTimeoutsP
 	return o.ApplyT(func(v *InstanceServiceAccount) InstanceServiceAccountTimeoutsPtrOutput { return v.Timeouts }).(InstanceServiceAccountTimeoutsPtrOutput)
 }
 
-// The username of the user. If not specified, it’s automatically generated.
+// The username of the user account. If not set, generates a name prepended with service*account*.
 func (o InstanceServiceAccountOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }

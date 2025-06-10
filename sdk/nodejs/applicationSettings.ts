@@ -594,10 +594,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly groupOwnersCanManageDefaultBranchProtection!: pulumi.Output<boolean>;
     /**
-     * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     */
-    public readonly hashedStorageEnabled!: pulumi.Output<boolean>;
-    /**
      * Hide marketing-related entries from help.
      */
     public readonly helpPageHideCommercialContent!: pulumi.Output<boolean>;
@@ -622,31 +618,11 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly homePageUrl!: pulumi.Output<string>;
     /**
-     * Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      */
     public readonly housekeepingEnabled!: pulumi.Output<boolean>;
     /**
-     * Number of Git pushes after which an incremental git repack is run.
-     *
-     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    public readonly housekeepingFullRepackPeriod!: pulumi.Output<number>;
-    /**
-     * Number of Git pushes after which git gc is run.
-     *
-     * @deprecated housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    public readonly housekeepingGcPeriod!: pulumi.Output<number>;
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
-     *
-     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    public readonly housekeepingIncrementalRepackPeriod!: pulumi.Output<number>;
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
+     * Number of Git pushes after which an incremental git-repack is run.
      */
     public readonly housekeepingOptimizeRepositoryPeriod!: pulumi.Output<number>;
     /**
@@ -811,7 +787,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly npmPackageRequestsForwarding!: pulumi.Output<boolean>;
     /**
-     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * Indicates whether to skip metadata URL validation for the NuGet package.
      */
     public readonly nugetSkipMetadataUrlValidation!: pulumi.Output<boolean>;
     /**
@@ -955,11 +931,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     public readonly repositorySizeLimit!: pulumi.Output<number>;
     /**
-     * (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     */
-    public readonly repositoryStorages!: pulumi.Output<string[]>;
-    /**
-     * (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      */
     public readonly repositoryStoragesWeighted!: pulumi.Output<{[key: string]: number}>;
     /**
@@ -1451,7 +1423,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["grafanaUrl"] = state ? state.grafanaUrl : undefined;
             resourceInputs["gravatarEnabled"] = state ? state.gravatarEnabled : undefined;
             resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = state ? state.groupOwnersCanManageDefaultBranchProtection : undefined;
-            resourceInputs["hashedStorageEnabled"] = state ? state.hashedStorageEnabled : undefined;
             resourceInputs["helpPageHideCommercialContent"] = state ? state.helpPageHideCommercialContent : undefined;
             resourceInputs["helpPageSupportUrl"] = state ? state.helpPageSupportUrl : undefined;
             resourceInputs["helpPageText"] = state ? state.helpPageText : undefined;
@@ -1459,9 +1430,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["hideThirdPartyOffers"] = state ? state.hideThirdPartyOffers : undefined;
             resourceInputs["homePageUrl"] = state ? state.homePageUrl : undefined;
             resourceInputs["housekeepingEnabled"] = state ? state.housekeepingEnabled : undefined;
-            resourceInputs["housekeepingFullRepackPeriod"] = state ? state.housekeepingFullRepackPeriod : undefined;
-            resourceInputs["housekeepingGcPeriod"] = state ? state.housekeepingGcPeriod : undefined;
-            resourceInputs["housekeepingIncrementalRepackPeriod"] = state ? state.housekeepingIncrementalRepackPeriod : undefined;
             resourceInputs["housekeepingOptimizeRepositoryPeriod"] = state ? state.housekeepingOptimizeRepositoryPeriod : undefined;
             resourceInputs["htmlEmailsEnabled"] = state ? state.htmlEmailsEnabled : undefined;
             resourceInputs["importSources"] = state ? state.importSources : undefined;
@@ -1540,7 +1508,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["rememberMeEnabled"] = state ? state.rememberMeEnabled : undefined;
             resourceInputs["repositoryChecksEnabled"] = state ? state.repositoryChecksEnabled : undefined;
             resourceInputs["repositorySizeLimit"] = state ? state.repositorySizeLimit : undefined;
-            resourceInputs["repositoryStorages"] = state ? state.repositoryStorages : undefined;
             resourceInputs["repositoryStoragesWeighted"] = state ? state.repositoryStoragesWeighted : undefined;
             resourceInputs["requireAdminApprovalAfterUserSignup"] = state ? state.requireAdminApprovalAfterUserSignup : undefined;
             resourceInputs["requireAdminTwoFactorAuthentication"] = state ? state.requireAdminTwoFactorAuthentication : undefined;
@@ -1765,7 +1732,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["grafanaUrl"] = args ? args.grafanaUrl : undefined;
             resourceInputs["gravatarEnabled"] = args ? args.gravatarEnabled : undefined;
             resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = args ? args.groupOwnersCanManageDefaultBranchProtection : undefined;
-            resourceInputs["hashedStorageEnabled"] = args ? args.hashedStorageEnabled : undefined;
             resourceInputs["helpPageHideCommercialContent"] = args ? args.helpPageHideCommercialContent : undefined;
             resourceInputs["helpPageSupportUrl"] = args ? args.helpPageSupportUrl : undefined;
             resourceInputs["helpPageText"] = args ? args.helpPageText : undefined;
@@ -1773,9 +1739,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["hideThirdPartyOffers"] = args ? args.hideThirdPartyOffers : undefined;
             resourceInputs["homePageUrl"] = args ? args.homePageUrl : undefined;
             resourceInputs["housekeepingEnabled"] = args ? args.housekeepingEnabled : undefined;
-            resourceInputs["housekeepingFullRepackPeriod"] = args ? args.housekeepingFullRepackPeriod : undefined;
-            resourceInputs["housekeepingGcPeriod"] = args ? args.housekeepingGcPeriod : undefined;
-            resourceInputs["housekeepingIncrementalRepackPeriod"] = args ? args.housekeepingIncrementalRepackPeriod : undefined;
             resourceInputs["housekeepingOptimizeRepositoryPeriod"] = args ? args.housekeepingOptimizeRepositoryPeriod : undefined;
             resourceInputs["htmlEmailsEnabled"] = args ? args.htmlEmailsEnabled : undefined;
             resourceInputs["importSources"] = args ? args.importSources : undefined;
@@ -1854,7 +1817,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["rememberMeEnabled"] = args ? args.rememberMeEnabled : undefined;
             resourceInputs["repositoryChecksEnabled"] = args ? args.repositoryChecksEnabled : undefined;
             resourceInputs["repositorySizeLimit"] = args ? args.repositorySizeLimit : undefined;
-            resourceInputs["repositoryStorages"] = args ? args.repositoryStorages : undefined;
             resourceInputs["repositoryStoragesWeighted"] = args ? args.repositoryStoragesWeighted : undefined;
             resourceInputs["requireAdminApprovalAfterUserSignup"] = args ? args.requireAdminApprovalAfterUserSignup : undefined;
             resourceInputs["requireAdminTwoFactorAuthentication"] = args ? args.requireAdminTwoFactorAuthentication : undefined;
@@ -2511,10 +2473,6 @@ export interface ApplicationSettingsState {
      */
     groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean>;
     /**
-     * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     */
-    hashedStorageEnabled?: pulumi.Input<boolean>;
-    /**
      * Hide marketing-related entries from help.
      */
     helpPageHideCommercialContent?: pulumi.Input<boolean>;
@@ -2539,31 +2497,11 @@ export interface ApplicationSettingsState {
      */
     homePageUrl?: pulumi.Input<string>;
     /**
-     * Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      */
     housekeepingEnabled?: pulumi.Input<boolean>;
     /**
-     * Number of Git pushes after which an incremental git repack is run.
-     *
-     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    housekeepingFullRepackPeriod?: pulumi.Input<number>;
-    /**
-     * Number of Git pushes after which git gc is run.
-     *
-     * @deprecated housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    housekeepingGcPeriod?: pulumi.Input<number>;
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
-     *
-     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    housekeepingIncrementalRepackPeriod?: pulumi.Input<number>;
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
+     * Number of Git pushes after which an incremental git-repack is run.
      */
     housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number>;
     /**
@@ -2728,7 +2666,7 @@ export interface ApplicationSettingsState {
      */
     npmPackageRequestsForwarding?: pulumi.Input<boolean>;
     /**
-     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * Indicates whether to skip metadata URL validation for the NuGet package.
      */
     nugetSkipMetadataUrlValidation?: pulumi.Input<boolean>;
     /**
@@ -2872,11 +2810,7 @@ export interface ApplicationSettingsState {
      */
     repositorySizeLimit?: pulumi.Input<number>;
     /**
-     * (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     */
-    repositoryStorages?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      */
     repositoryStoragesWeighted?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     /**
@@ -3770,10 +3704,6 @@ export interface ApplicationSettingsArgs {
      */
     groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean>;
     /**
-     * Create new projects using hashed storage paths: Enable immutable, hash-based paths and repository names to store repositories on disk. This prevents repositories from having to be moved or renamed when the Project URL changes and may improve disk I/O performance. (Always enabled in GitLab versions 13.0 and later, configuration is scheduled for removal in 14.0).
-     */
-    hashedStorageEnabled?: pulumi.Input<boolean>;
-    /**
      * Hide marketing-related entries from help.
      */
     helpPageHideCommercialContent?: pulumi.Input<boolean>;
@@ -3798,31 +3728,11 @@ export interface ApplicationSettingsArgs {
      */
     homePageUrl?: pulumi.Input<string>;
     /**
-     * Enable or disable Git housekeeping.
-     * 			If enabled, requires either housekeeping*optimize*repository*period OR housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period.
-     * 			Options housekeeping*bitmaps*enabled, housekeeping*full*repack*period, housekeeping*gc*period, and housekeeping*incremental*repack*period are deprecated. Use housekeeping*optimize*repository*period instead.
+     * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      */
     housekeepingEnabled?: pulumi.Input<boolean>;
     /**
-     * Number of Git pushes after which an incremental git repack is run.
-     *
-     * @deprecated housekeeping_full_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    housekeepingFullRepackPeriod?: pulumi.Input<number>;
-    /**
-     * Number of Git pushes after which git gc is run.
-     *
-     * @deprecated housekeeping_gc_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    housekeepingGcPeriod?: pulumi.Input<number>;
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
-     *
-     * @deprecated housekeeping_incremental_repack_period is deprecated. Use housekeepingOptimizeRepositoryPeriod instead.
-     */
-    housekeepingIncrementalRepackPeriod?: pulumi.Input<number>;
-    /**
-     * Number of Git pushes after which an incremental git repack is run.
+     * Number of Git pushes after which an incremental git-repack is run.
      */
     housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number>;
     /**
@@ -3987,7 +3897,7 @@ export interface ApplicationSettingsArgs {
      */
     npmPackageRequestsForwarding?: pulumi.Input<boolean>;
     /**
-     * Indicates whether to skip metadata URL validation for the NuGet package. Introduced in GitLab 17.0.
+     * Indicates whether to skip metadata URL validation for the NuGet package.
      */
     nugetSkipMetadataUrlValidation?: pulumi.Input<boolean>;
     /**
@@ -4131,11 +4041,7 @@ export interface ApplicationSettingsArgs {
      */
     repositorySizeLimit?: pulumi.Input<number>;
     /**
-     * (GitLab 13.0 and earlier) List of names of enabled storage paths, taken from gitlab.yml. New projects are created in one of these stores, chosen at random.
-     */
-    repositoryStorages?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (GitLab 13.1 and later) Hash of names of taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
+     * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      */
     repositoryStoragesWeighted?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     /**

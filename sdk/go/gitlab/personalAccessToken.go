@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v8/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -105,7 +105,7 @@ type PersonalAccessToken struct {
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration PersonalAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
-	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the personal access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -167,7 +167,7 @@ type personalAccessTokenState struct {
 	Revoked *bool `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *PersonalAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes []string `pulumi:"scopes"`
 	// The token of the personal access token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -190,7 +190,7 @@ type PersonalAccessTokenState struct {
 	Revoked pulumi.BoolPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration PersonalAccessTokenRotationConfigurationPtrInput
-	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes pulumi.StringArrayInput
 	// The token of the personal access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -211,7 +211,7 @@ type personalAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *PersonalAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes []string `pulumi:"scopes"`
 	// The ID of the user.
 	UserId int `pulumi:"userId"`
@@ -227,7 +227,7 @@ type PersonalAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration PersonalAccessTokenRotationConfigurationPtrInput
-	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+	// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 	Scopes pulumi.StringArrayInput
 	// The ID of the user.
 	UserId pulumi.IntInput
@@ -357,7 +357,7 @@ func (o PersonalAccessTokenOutput) RotationConfiguration() PersonalAccessTokenRo
 	}).(PersonalAccessTokenRotationConfigurationPtrOutput)
 }
 
-// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readServicePing`
+// The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
 func (o PersonalAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
