@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.IntegrationJenkins` resource allows to manage the lifecycle of a project integration with Jenkins.
+ * The `gitlab.IntegrationJenkins` resource manages the lifecycle of a project integration with Jenkins.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jenkins)
  *
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_jenkins`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jenkins`. For example:
  *
  * terraform
  *
@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * ```sh
  * $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins You can import a gitlab_integration_jenkins state using `<resource> <project_id>`:

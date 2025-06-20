@@ -12,9 +12,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectTargetBranchRule` resource allows to configure default target branch rules when creating a merge request.
+// The `ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
 //
 // **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("example project"),
+//				Description:     pulumi.String("Lorem Ipsum"),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Basic example
+//			_, err = gitlab.NewProjectTargetBranchRule(ctx, "rule", &gitlab.ProjectTargetBranchRuleArgs{
+//				Project:             example.ID(),
+//				SourceBranchPattern: pulumi.String("develop"),
+//				TargetBranchName:    pulumi.String("release"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_target_branch_rule`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_project_target_branch_rule.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Importing using the CLI is supported with the following syntax:
+//
+// A GitLab Project targer branch rule can be imported using a key composed of `<project-id>:<target-branch-rule-id>`, for example:
+//
+// ```sh
+// $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"
+// ```
 type ProjectTargetBranchRule struct {
 	pulumi.CustomResourceState
 

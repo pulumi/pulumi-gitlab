@@ -296,7 +296,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
 
         terraform
 
@@ -308,7 +308,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
@@ -362,7 +362,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
 
         terraform
 
@@ -374,7 +374,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.

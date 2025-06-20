@@ -24,7 +24,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_protected_environment`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_protected_environment`. For example:
 //
 // terraform
 //
@@ -36,7 +36,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // GitLab group protected environments can be imported using an id made up of `groupId:environmentName`, e.g.
 //

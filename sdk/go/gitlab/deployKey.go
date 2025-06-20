@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `DeployKey` resource allows to manage the lifecycle of a deploy key.
+// The `DeployKey` resource manages the lifecycle of a project deploy key.
 //
 // > To enable an already existing deploy key for another project use the `DeployKeyEnable` resource.
 //
@@ -32,10 +32,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// No expiry
 //			_, err := gitlab.NewDeployKey(ctx, "example", &gitlab.DeployKeyArgs{
 //				Project: pulumi.String("example/deploying"),
 //				Title:   pulumi.String("Example deploy key"),
 //				Key:     pulumi.String("ssh-ed25519 AAAA..."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// With expiry
+//			_, err = gitlab.NewDeployKey(ctx, "example_expires", &gitlab.DeployKeyArgs{
+//				Project:   pulumi.String("example/deploying"),
+//				Title:     pulumi.String("Example deploy key"),
+//				Key:       pulumi.String("ssh-ed25519 AAAA..."),
+//				ExpiresAt: pulumi.String("2025-01-21T00:00:00Z"),
 //			})
 //			if err != nil {
 //				return err
@@ -48,7 +59,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key`. For example:
 //
 // terraform
 //
@@ -60,7 +71,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 //
@@ -82,6 +93,8 @@ type DeployKey struct {
 	CanPush pulumi.BoolPtrOutput `pulumi:"canPush"`
 	// The id of the project deploy key.
 	DeployKeyId pulumi.IntOutput `pulumi:"deployKeyId"`
+	// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The public ssh key body.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The name or id of the project to add the deploy key to.
@@ -133,6 +146,8 @@ type deployKeyState struct {
 	CanPush *bool `pulumi:"canPush"`
 	// The id of the project deploy key.
 	DeployKeyId *int `pulumi:"deployKeyId"`
+	// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The public ssh key body.
 	Key *string `pulumi:"key"`
 	// The name or id of the project to add the deploy key to.
@@ -146,6 +161,8 @@ type DeployKeyState struct {
 	CanPush pulumi.BoolPtrInput
 	// The id of the project deploy key.
 	DeployKeyId pulumi.IntPtrInput
+	// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+	ExpiresAt pulumi.StringPtrInput
 	// The public ssh key body.
 	Key pulumi.StringPtrInput
 	// The name or id of the project to add the deploy key to.
@@ -161,6 +178,8 @@ func (DeployKeyState) ElementType() reflect.Type {
 type deployKeyArgs struct {
 	// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 	CanPush *bool `pulumi:"canPush"`
+	// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The public ssh key body.
 	Key string `pulumi:"key"`
 	// The name or id of the project to add the deploy key to.
@@ -173,6 +192,8 @@ type deployKeyArgs struct {
 type DeployKeyArgs struct {
 	// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 	CanPush pulumi.BoolPtrInput
+	// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+	ExpiresAt pulumi.StringPtrInput
 	// The public ssh key body.
 	Key pulumi.StringInput
 	// The name or id of the project to add the deploy key to.
@@ -276,6 +297,11 @@ func (o DeployKeyOutput) CanPush() pulumi.BoolPtrOutput {
 // The id of the project deploy key.
 func (o DeployKeyOutput) DeployKeyId() pulumi.IntOutput {
 	return o.ApplyT(func(v *DeployKey) pulumi.IntOutput { return v.DeployKeyId }).(pulumi.IntOutput)
+}
+
+// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+func (o DeployKeyOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployKey) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 // The public ssh key body.

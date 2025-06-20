@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_system_hook`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_system_hook`. For example:
  *
  * terraform
  *
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * You can import a system hook using the hook id `{hook-id}`, e.g.
  *

@@ -27,7 +27,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, extern_uid=None, external=None, id=None, is_admin=None, is_bot=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
+    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, email_exact_match=None, extern_uid=None, external=None, id=None, is_admin=None, is_bot=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
         if avatar_url and not isinstance(avatar_url, str):
             raise TypeError("Expected argument 'avatar_url' to be a str")
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -52,6 +52,9 @@ class GetUserResult:
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
+        if email_exact_match and not isinstance(email_exact_match, bool):
+            raise TypeError("Expected argument 'email_exact_match' to be a bool")
+        pulumi.set(__self__, "email_exact_match", email_exact_match)
         if extern_uid and not isinstance(extern_uid, str):
             raise TypeError("Expected argument 'extern_uid' to be a str")
         pulumi.set(__self__, "extern_uid", extern_uid)
@@ -182,6 +185,14 @@ class GetUserResult:
         The public email address of the user.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="emailExactMatch")
+    def email_exact_match(self) -> Optional[builtins.bool]:
+        """
+        (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+        """
+        return pulumi.get(self, "email_exact_match")
 
     @property
     @pulumi.getter(name="externUid")
@@ -374,6 +385,7 @@ class AwaitableGetUserResult(GetUserResult):
             created_at=self.created_at,
             current_sign_in_at=self.current_sign_in_at,
             email=self.email,
+            email_exact_match=self.email_exact_match,
             extern_uid=self.extern_uid,
             external=self.external,
             id=self.id,
@@ -399,6 +411,7 @@ class AwaitableGetUserResult(GetUserResult):
 
 
 def get_user(email: Optional[builtins.str] = None,
+             email_exact_match: Optional[builtins.bool] = None,
              namespace_id: Optional[builtins.int] = None,
              user_id: Optional[builtins.int] = None,
              username: Optional[builtins.str] = None,
@@ -414,12 +427,14 @@ def get_user(email: Optional[builtins.str] = None,
 
 
     :param builtins.str email: The public email address of the user.
+    :param builtins.bool email_exact_match: (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
     :param builtins.int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
     :param builtins.int user_id: The ID of the user.
     :param builtins.str username: The username of the user.
     """
     __args__ = dict()
     __args__['email'] = email
+    __args__['emailExactMatch'] = email_exact_match
     __args__['namespaceId'] = namespace_id
     __args__['userId'] = user_id
     __args__['username'] = username
@@ -435,6 +450,7 @@ def get_user(email: Optional[builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         current_sign_in_at=pulumi.get(__ret__, 'current_sign_in_at'),
         email=pulumi.get(__ret__, 'email'),
+        email_exact_match=pulumi.get(__ret__, 'email_exact_match'),
         extern_uid=pulumi.get(__ret__, 'extern_uid'),
         external=pulumi.get(__ret__, 'external'),
         id=pulumi.get(__ret__, 'id'),
@@ -458,6 +474,7 @@ def get_user(email: Optional[builtins.str] = None,
         username=pulumi.get(__ret__, 'username'),
         website_url=pulumi.get(__ret__, 'website_url'))
 def get_user_output(email: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                    email_exact_match: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                     namespace_id: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                     user_id: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                     username: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -473,12 +490,14 @@ def get_user_output(email: Optional[pulumi.Input[Optional[builtins.str]]] = None
 
 
     :param builtins.str email: The public email address of the user.
+    :param builtins.bool email_exact_match: (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
     :param builtins.int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
     :param builtins.int user_id: The ID of the user.
     :param builtins.str username: The username of the user.
     """
     __args__ = dict()
     __args__['email'] = email
+    __args__['emailExactMatch'] = email_exact_match
     __args__['namespaceId'] = namespace_id
     __args__['userId'] = user_id
     __args__['username'] = username
@@ -493,6 +512,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[builtins.str]]] = None
         created_at=pulumi.get(__response__, 'created_at'),
         current_sign_in_at=pulumi.get(__response__, 'current_sign_in_at'),
         email=pulumi.get(__response__, 'email'),
+        email_exact_match=pulumi.get(__response__, 'email_exact_match'),
         extern_uid=pulumi.get(__response__, 'extern_uid'),
         external=pulumi.get(__response__, 'external'),
         id=pulumi.get(__response__, 'id'),

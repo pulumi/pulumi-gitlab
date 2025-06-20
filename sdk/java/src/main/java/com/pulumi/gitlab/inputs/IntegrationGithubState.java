@@ -32,14 +32,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Create time.
+     * Creation time.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Create time.
+     * @return Creation time.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -47,14 +47,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return ID of the project you want to activate integration on.
+     * @return ID of the project you want to activate the integration on.
      * 
      */
     public Optional<Output<String>> project() {
@@ -69,14 +69,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
     @Import(name="staticContext")
     private @Nullable Output<Boolean> staticContext;
 
     /**
-     * @return Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * @return Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
     public Optional<Output<Boolean>> staticContext() {
@@ -84,14 +84,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Title.
+     * The title of this resource.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return Title.
+     * @return The title of this resource.
      * 
      */
     public Optional<Output<String>> title() {
@@ -99,14 +99,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A GitHub personal access token with at least `repo:status` scope.
+     * A GitHub personal access token with at least the `repo:status` scope.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return A GitHub personal access token with at least `repo:status` scope.
+     * @return A GitHub personal access token with at least the `repo:status` scope.
      * 
      */
     public Optional<Output<String>> token() {
@@ -181,7 +181,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt Create time.
+         * @param createdAt Creation time.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt Create time.
+         * @param createdAt Creation time.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project ID of the project you want to activate integration on.
+         * @param project ID of the project you want to activate the integration on.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project ID of the project you want to activate integration on.
+         * @param project ID of the project you want to activate the integration on.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param staticContext Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+         * @param staticContext Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param staticContext Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+         * @param staticContext Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param title Title.
+         * @param title The title of this resource.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param title Title.
+         * @param title The title of this resource.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param token A GitHub personal access token with at least `repo:status` scope.
+         * @param token A GitHub personal access token with at least the `repo:status` scope.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param token A GitHub personal access token with at least `repo:status` scope.
+         * @param token A GitHub personal access token with at least the `repo:status` scope.
          * 
          * @return builder
          * 

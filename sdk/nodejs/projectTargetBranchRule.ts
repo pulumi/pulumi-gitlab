@@ -5,9 +5,50 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectTargetBranchRule` resource allows to configure default target branch rules when creating a merge request.
+ * The `gitlab.ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
  *
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {
+ *     name: "example project",
+ *     description: "Lorem Ipsum",
+ *     visibilityLevel: "public",
+ * });
+ * // Basic example
+ * const rule = new gitlab.ProjectTargetBranchRule("rule", {
+ *     project: example.id,
+ *     sourceBranchPattern: "develop",
+ *     targetBranchName: "release",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_target_branch_rule`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_project_target_branch_rule.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Importing using the CLI is supported with the following syntax:
+ *
+ * A GitLab Project targer branch rule can be imported using a key composed of `<project-id>:<target-branch-rule-id>`, for example:
+ *
+ * ```sh
+ * $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"
+ * ```
  */
 export class ProjectTargetBranchRule extends pulumi.CustomResource {
     /**

@@ -231,7 +231,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key_enable`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key_enable`. For example:
 
         terraform
 
@@ -243,7 +243,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 
@@ -301,7 +301,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key_enable`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key_enable`. For example:
 
         terraform
 
@@ -313,7 +313,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectLabel` resource allows to manage the lifecycle of a project label.
+// The `ProjectLabel` resource manages the lifecycle of a project label.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
 //
@@ -30,8 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewProjectLabel(ctx, "fixme", &gitlab.ProjectLabelArgs{
-//				Project:     pulumi.String("example"),
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name: pulumi.String("project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectLabel(ctx, "fixme", &gitlab.ProjectLabelArgs{
+//				Project:     example.ID(),
 //				Name:        pulumi.String("fixme"),
 //				Description: pulumi.String("issue with failing tests"),
 //				Color:       pulumi.String("#ffcc00"),
@@ -41,7 +47,7 @@ import (
 //			}
 //			// Scoped label
 //			_, err = gitlab.NewProjectLabel(ctx, "devops_create", &gitlab.ProjectLabelArgs{
-//				Project:     pulumi.Any(example.Id),
+//				Project:     example.ID(),
 //				Name:        pulumi.String("devops::create"),
 //				Description: pulumi.String("issue for creating infrastructure resources"),
 //				Color:       pulumi.String("#ffa500"),
@@ -57,7 +63,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_label`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_label`. For example:
 //
 // terraform
 //
@@ -69,9 +75,9 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
-// Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+// Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
 //
 // ```sh
 // $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
@@ -81,6 +87,8 @@ type ProjectLabel struct {
 
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
+	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+	ColorHex pulumi.StringOutput `pulumi:"colorHex"`
 	// The description of the label.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The id of the project label.
@@ -129,6 +137,8 @@ func GetProjectLabel(ctx *pulumi.Context,
 type projectLabelState struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color *string `pulumi:"color"`
+	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+	ColorHex *string `pulumi:"colorHex"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
 	// The id of the project label.
@@ -142,6 +152,8 @@ type projectLabelState struct {
 type ProjectLabelState struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringPtrInput
+	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+	ColorHex pulumi.StringPtrInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
 	// The id of the project label.
@@ -269,6 +281,11 @@ func (o ProjectLabelOutput) ToProjectLabelOutputWithContext(ctx context.Context)
 // The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 func (o ProjectLabelOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectLabel) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
+}
+
+// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+func (o ProjectLabelOutput) ColorHex() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectLabel) pulumi.StringOutput { return v.ColorHex }).(pulumi.StringOutput)
 }
 
 // The description of the label.

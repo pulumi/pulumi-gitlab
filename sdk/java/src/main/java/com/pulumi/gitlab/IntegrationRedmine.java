@@ -15,11 +15,81 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationRedmine` resource allows to manage the lifecycle of a project integration with Redmine.
+ * The `gitlab.IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
  * 
  * &gt; Using Redmine requires that GitLab internal issue tracking is disabled for the project.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.IntegrationRedmine;
+ * import com.pulumi.gitlab.IntegrationRedmineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
+ *             .name("awesome_project")
+ *             .description("My awesome project.")
+ *             .visibilityLevel("public")
+ *             .build());
+ * 
+ *         var redmine = new IntegrationRedmine("redmine", IntegrationRedmineArgs.builder()
+ *             .project(awesomeProject.id())
+ *             .newIssueUrl("https://redmine.example.com/issue")
+ *             .projectUrl("https://redmine.example.com/project")
+ *             .issuesUrl("https://redmine.example.com/issue/:id")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_integration_redmine.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Importing using the CLI is supported with the following syntax:
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `&lt;resource&gt; &lt;project_id&gt;`:
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
+ * ```
  * 
  */
 @ResourceType(type="gitlab:index/integrationRedmine:IntegrationRedmine")

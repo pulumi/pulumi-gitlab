@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.IntegrationMicrosoftTeams` resource allows you to manage the lifecycle of a project integration with Microsoft Teams.
+ * The `gitlab.IntegrationMicrosoftTeams` resource manages the lifecycle of a project integration with Microsoft Teams.
+ *
+ * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationMicrosoftTeams`instead!
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
  *
@@ -29,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_microsoft_teams`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_microsoft_teams`. For example:
  *
  * terraform
  *
@@ -41,7 +43,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * You can import a gitlab_integration_microsoft_teams state using the project ID, e.g.
  *

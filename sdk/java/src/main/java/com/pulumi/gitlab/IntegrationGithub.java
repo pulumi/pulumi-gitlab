@@ -17,9 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationGithub` resource allows to manage the lifecycle of a project integration with GitHub.
+ * The `gitlab.IntegrationGithub` resource manages the lifecycle of a project integration with GitHub.
  * 
  * &gt; This resource requires a GitLab Enterprise instance.
+ * 
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationGithub` instead.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
  * 
@@ -70,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_github`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
  * 
  * terraform
  * 
@@ -82,7 +84,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `&lt;resource&gt; &lt;project_id&gt;`:
@@ -110,28 +112,28 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
         return this.active;
     }
     /**
-     * Create time.
+     * Creation time.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Create time.
+     * @return Creation time.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return ID of the project you want to activate integration on.
+     * @return ID of the project you want to activate the integration on.
      * 
      */
     public Output<String> project() {
@@ -144,42 +146,42 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
         return this.repositoryUrl;
     }
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
     @Export(name="staticContext", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> staticContext;
 
     /**
-     * @return Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * @return Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
     public Output<Optional<Boolean>> staticContext() {
         return Codegen.optional(this.staticContext);
     }
     /**
-     * Title.
+     * The title of this resource.
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
-     * @return Title.
+     * @return The title of this resource.
      * 
      */
     public Output<String> title() {
         return this.title;
     }
     /**
-     * A GitHub personal access token with at least `repo:status` scope.
+     * A GitHub personal access token with at least the `repo:status` scope.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
-     * @return A GitHub personal access token with at least `repo:status` scope.
+     * @return A GitHub personal access token with at least the `repo:status` scope.
      * 
      */
     public Output<String> token() {

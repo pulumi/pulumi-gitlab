@@ -18,11 +18,33 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupIssueBoard` resource allows to manage the lifecycle of a issue board in a group.
+ * The `gitlab.GroupIssueBoard` resource manages the lifecycle of an issue board in a group.
  * 
  * &gt; Multiple issue boards on one group requires a GitLab Premium or above License.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
+ * 
+ * ## Import
+ * 
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_issue_board`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_group_issue_board.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Importing using the CLI is supported with the following syntax:
+ * 
+ * Gitlab group issue boards can be imported with a key composed of `&lt;group-id&gt;:&lt;issue-board-id&gt;`, for example:
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/groupIssueBoard:GroupIssueBoard example &#34;12345:1&#34;
+ * ```
  * 
  */
 @ResourceType(type="gitlab:index/groupIssueBoard:GroupIssueBoard")

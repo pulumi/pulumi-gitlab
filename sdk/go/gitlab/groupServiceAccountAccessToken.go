@@ -26,7 +26,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account_access_token`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
 //
 // terraform
 //
@@ -38,7 +38,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // ```sh
 // $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `<resource> <id>`. The
@@ -68,7 +68,7 @@ type GroupServiceAccountAccessToken struct {
 	Revoked pulumi.BoolOutput `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupServiceAccountAccessTokenRotationConfigurationPtrOutput `pulumi:"rotationConfiguration"`
-	// The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
+	// The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The token of the group service account access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -133,7 +133,7 @@ type groupServiceAccountAccessTokenState struct {
 	Revoked *bool `pulumi:"revoked"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *GroupServiceAccountAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
+	// The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
 	Scopes []string `pulumi:"scopes"`
 	// The token of the group service account access token. **Note**: the token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -156,7 +156,7 @@ type GroupServiceAccountAccessTokenState struct {
 	Revoked pulumi.BoolPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupServiceAccountAccessTokenRotationConfigurationPtrInput
-	// The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
+	// The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
 	Scopes pulumi.StringArrayInput
 	// The token of the group service account access token. **Note**: the token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -177,7 +177,7 @@ type groupServiceAccountAccessTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration *GroupServiceAccountAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
-	// The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
+	// The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
 	Scopes []string `pulumi:"scopes"`
 	// The ID of a service account user.
 	UserId int `pulumi:"userId"`
@@ -193,7 +193,7 @@ type GroupServiceAccountAccessTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
 	RotationConfiguration GroupServiceAccountAccessTokenRotationConfigurationPtrInput
-	// The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
+	// The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
 	Scopes pulumi.StringArrayInput
 	// The ID of a service account user.
 	UserId pulumi.IntInput
@@ -323,7 +323,7 @@ func (o GroupServiceAccountAccessTokenOutput) RotationConfiguration() GroupServi
 	}).(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput)
 }
 
-// The scopes of the group service account access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
+// The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
 func (o GroupServiceAccountAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupServiceAccountAccessToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
