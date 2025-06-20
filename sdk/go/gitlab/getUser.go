@@ -32,6 +32,8 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 type LookupUserArgs struct {
 	// The public email address of the user.
 	Email *string `pulumi:"email"`
+	// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+	EmailExactMatch *bool `pulumi:"emailExactMatch"`
 	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId *int `pulumi:"namespaceId"`
 	// The ID of the user.
@@ -58,6 +60,8 @@ type LookupUserResult struct {
 	CurrentSignInAt string `pulumi:"currentSignInAt"`
 	// The public email address of the user.
 	Email string `pulumi:"email"`
+	// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+	EmailExactMatch *bool `pulumi:"emailExactMatch"`
 	// The external UID of the user.
 	ExternUid string `pulumi:"externUid"`
 	// Whether the user is external.
@@ -117,6 +121,8 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 type LookupUserOutputArgs struct {
 	// The public email address of the user.
 	Email pulumi.StringPtrInput `pulumi:"email"`
+	// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+	EmailExactMatch pulumi.BoolPtrInput `pulumi:"emailExactMatch"`
 	// The ID of the user's namespace. Requires admin token to access this field.
 	NamespaceId pulumi.IntPtrInput `pulumi:"namespaceId"`
 	// The ID of the user.
@@ -182,6 +188,11 @@ func (o LookupUserResultOutput) CurrentSignInAt() pulumi.StringOutput {
 // The public email address of the user.
 func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+func (o LookupUserResultOutput) EmailExactMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *bool { return v.EmailExactMatch }).(pulumi.BoolPtrOutput)
 }
 
 // The external UID of the user.

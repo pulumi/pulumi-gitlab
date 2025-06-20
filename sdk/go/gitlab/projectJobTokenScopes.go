@@ -107,7 +107,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_job_token_scopes`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scopes`. For example:
 //
 // terraform
 //
@@ -119,7 +119,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // GitLab project job token scopes can be imported using an id made up of just the `project_id`
 //
@@ -135,7 +135,7 @@ type ProjectJobTokenScopes struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The ID of the project.
 	//
-	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds pulumi.IntArrayOutput `pulumi:"targetGroupIds"`
@@ -179,7 +179,7 @@ type projectJobTokenScopesState struct {
 	Project *string `pulumi:"project"`
 	// The ID of the project.
 	//
-	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
 	ProjectId *int `pulumi:"projectId"`
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds []int `pulumi:"targetGroupIds"`
@@ -194,7 +194,7 @@ type ProjectJobTokenScopesState struct {
 	Project pulumi.StringPtrInput
 	// The ID of the project.
 	//
-	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
 	ProjectId pulumi.IntPtrInput
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds pulumi.IntArrayInput
@@ -213,7 +213,7 @@ type projectJobTokenScopesArgs struct {
 	Project *string `pulumi:"project"`
 	// The ID of the project.
 	//
-	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
 	ProjectId *int `pulumi:"projectId"`
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds []int `pulumi:"targetGroupIds"`
@@ -229,7 +229,7 @@ type ProjectJobTokenScopesArgs struct {
 	Project pulumi.StringPtrInput
 	// The ID of the project.
 	//
-	// Deprecated: `projectId` has been deprecated. Use `project` instead.
+	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
 	ProjectId pulumi.IntPtrInput
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds pulumi.IntArrayInput
@@ -336,7 +336,7 @@ func (o ProjectJobTokenScopesOutput) Project() pulumi.StringOutput {
 
 // The ID of the project.
 //
-// Deprecated: `projectId` has been deprecated. Use `project` instead.
+// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
 func (o ProjectJobTokenScopesOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
  *
  * terraform
  *
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * ```sh
  * $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
@@ -107,6 +107,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly autoDevopsEnabled!: pulumi.Output<boolean>;
     /**
+     * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     */
+    public readonly autoDuoCodeReviewEnabled!: pulumi.Output<boolean>;
+    /**
      * Set whether auto-closing referenced issues on default branch.
      */
     public readonly autocloseReferencedIssues!: pulumi.Output<boolean>;
@@ -122,6 +126,10 @@ export class Project extends pulumi.CustomResource {
      * The URL of the avatar image.
      */
     public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    /**
+     * Branches to fork (empty for all branches).
+     */
+    public readonly branches!: pulumi.Output<string | undefined>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
@@ -150,6 +158,10 @@ export class Project extends pulumi.CustomResource {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean>;
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     */
+    public readonly ciForwardDeploymentRollbackAllowed!: pulumi.Output<boolean>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */
@@ -531,10 +543,12 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autoCancelPendingPipelines"] = state ? state.autoCancelPendingPipelines : undefined;
             resourceInputs["autoDevopsDeployStrategy"] = state ? state.autoDevopsDeployStrategy : undefined;
             resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
+            resourceInputs["autoDuoCodeReviewEnabled"] = state ? state.autoDuoCodeReviewEnabled : undefined;
             resourceInputs["autocloseReferencedIssues"] = state ? state.autocloseReferencedIssues : undefined;
             resourceInputs["avatar"] = state ? state.avatar : undefined;
             resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
             resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
+            resourceInputs["branches"] = state ? state.branches : undefined;
             resourceInputs["buildGitStrategy"] = state ? state.buildGitStrategy : undefined;
             resourceInputs["buildTimeout"] = state ? state.buildTimeout : undefined;
             resourceInputs["buildsAccessLevel"] = state ? state.buildsAccessLevel : undefined;
@@ -542,6 +556,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
             resourceInputs["ciDeletePipelinesInSeconds"] = state ? state.ciDeletePipelinesInSeconds : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciForwardDeploymentRollbackAllowed"] = state ? state.ciForwardDeploymentRollbackAllowed : undefined;
             resourceInputs["ciIdTokenSubClaimComponents"] = state ? state.ciIdTokenSubClaimComponents : undefined;
             resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = state ? state.ciPipelineVariablesMinimumOverrideRole : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = state ? state.ciRestrictPipelineCancellationRole : undefined;
@@ -640,9 +655,11 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autoCancelPendingPipelines"] = args ? args.autoCancelPendingPipelines : undefined;
             resourceInputs["autoDevopsDeployStrategy"] = args ? args.autoDevopsDeployStrategy : undefined;
             resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
+            resourceInputs["autoDuoCodeReviewEnabled"] = args ? args.autoDuoCodeReviewEnabled : undefined;
             resourceInputs["autocloseReferencedIssues"] = args ? args.autocloseReferencedIssues : undefined;
             resourceInputs["avatar"] = args ? args.avatar : undefined;
             resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
+            resourceInputs["branches"] = args ? args.branches : undefined;
             resourceInputs["buildGitStrategy"] = args ? args.buildGitStrategy : undefined;
             resourceInputs["buildTimeout"] = args ? args.buildTimeout : undefined;
             resourceInputs["buildsAccessLevel"] = args ? args.buildsAccessLevel : undefined;
@@ -650,6 +667,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
             resourceInputs["ciDeletePipelinesInSeconds"] = args ? args.ciDeletePipelinesInSeconds : undefined;
             resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
+            resourceInputs["ciForwardDeploymentRollbackAllowed"] = args ? args.ciForwardDeploymentRollbackAllowed : undefined;
             resourceInputs["ciIdTokenSubClaimComponents"] = args ? args.ciIdTokenSubClaimComponents : undefined;
             resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = args ? args.ciPipelineVariablesMinimumOverrideRole : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = args ? args.ciRestrictPipelineCancellationRole : undefined;
@@ -790,6 +808,10 @@ export interface ProjectState {
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
+     * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     */
+    autoDuoCodeReviewEnabled?: pulumi.Input<boolean>;
+    /**
      * Set whether auto-closing referenced issues on default branch.
      */
     autocloseReferencedIssues?: pulumi.Input<boolean>;
@@ -805,6 +827,10 @@ export interface ProjectState {
      * The URL of the avatar image.
      */
     avatarUrl?: pulumi.Input<string>;
+    /**
+     * Branches to fork (empty for all branches).
+     */
+    branches?: pulumi.Input<string>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
@@ -833,6 +859,10 @@ export interface ProjectState {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     */
+    ciForwardDeploymentRollbackAllowed?: pulumi.Input<boolean>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */
@@ -1237,6 +1267,10 @@ export interface ProjectArgs {
      */
     autoDevopsEnabled?: pulumi.Input<boolean>;
     /**
+     * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     */
+    autoDuoCodeReviewEnabled?: pulumi.Input<boolean>;
+    /**
      * Set whether auto-closing referenced issues on default branch.
      */
     autocloseReferencedIssues?: pulumi.Input<boolean>;
@@ -1248,6 +1282,10 @@ export interface ProjectArgs {
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     avatarHash?: pulumi.Input<string>;
+    /**
+     * Branches to fork (empty for all branches).
+     */
+    branches?: pulumi.Input<string>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
@@ -1276,6 +1314,10 @@ export interface ProjectArgs {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     */
+    ciForwardDeploymentRollbackAllowed?: pulumi.Input<boolean>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */

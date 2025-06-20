@@ -182,7 +182,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_value_stream_analytics`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
 
         terraform
 
@@ -194,7 +194,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         Gitlab value stream analytics can be imported with a key composed of `<full_path_type>:<full_path>:<value_stream_id>`, e.g.
 
@@ -228,7 +228,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_value_stream_analytics`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
 
         terraform
 
@@ -240,7 +240,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         Gitlab value stream analytics can be imported with a key composed of `<full_path_type>:<full_path>:<value_stream_id>`, e.g.
 

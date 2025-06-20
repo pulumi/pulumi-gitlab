@@ -55,7 +55,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_tag`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_tag`. For example:
 //
 // terraform
 //
@@ -67,7 +67,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
 //

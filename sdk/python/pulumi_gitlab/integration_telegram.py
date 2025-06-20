@@ -491,7 +491,7 @@ class IntegrationTelegram(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The `IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
+        The `IntegrationTelegram` resource manages the lifecycle of a project integration with Telegram.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#telegram)
 
@@ -523,7 +523,7 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_telegram`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
 
         terraform
 
@@ -535,7 +535,7 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_telegram state using the project ID, e.g.
 
@@ -567,7 +567,7 @@ class IntegrationTelegram(pulumi.CustomResource):
                  args: IntegrationTelegramArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
+        The `IntegrationTelegram` resource manages the lifecycle of a project integration with Telegram.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#telegram)
 
@@ -599,7 +599,7 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_telegram`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
 
         terraform
 
@@ -611,7 +611,7 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_telegram state using the project ID, e.g.
 

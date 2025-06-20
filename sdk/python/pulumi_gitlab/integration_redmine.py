@@ -202,11 +202,52 @@ class IntegrationRedmine(pulumi.CustomResource):
                  use_inherited_settings: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The `IntegrationRedmine` resource allows to manage the lifecycle of a project integration with Redmine.
+        The `IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
 
         > Using Redmine requires that GitLab internal issue tracking is disabled for the project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesome_project",
+            name="awesome_project",
+            description="My awesome project.",
+            visibility_level="public")
+        redmine = gitlab.IntegrationRedmine("redmine",
+            project=awesome_project.id,
+            new_issue_url="https://redmine.example.com/issue",
+            project_url="https://redmine.example.com/project",
+            issues_url="https://redmine.example.com/issue/:id")
+        ```
+
+        ## Import
+
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_integration_redmine.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Importing using the CLI is supported with the following syntax:
+
+        ```sh
+        $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `<resource> <project_id>`:
+        ```
+
+        ```sh
+        $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,11 +264,52 @@ class IntegrationRedmine(pulumi.CustomResource):
                  args: IntegrationRedmineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationRedmine` resource allows to manage the lifecycle of a project integration with Redmine.
+        The `IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
 
         > Using Redmine requires that GitLab internal issue tracking is disabled for the project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        awesome_project = gitlab.Project("awesome_project",
+            name="awesome_project",
+            description="My awesome project.",
+            visibility_level="public")
+        redmine = gitlab.IntegrationRedmine("redmine",
+            project=awesome_project.id,
+            new_issue_url="https://redmine.example.com/issue",
+            project_url="https://redmine.example.com/project",
+            issues_url="https://redmine.example.com/issue/:id")
+        ```
+
+        ## Import
+
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_integration_redmine.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Importing using the CLI is supported with the following syntax:
+
+        ```sh
+        $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `<resource> <project_id>`:
+        ```
+
+        ```sh
+        $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationRedmineArgs args: The arguments to use to populate this resource's properties.

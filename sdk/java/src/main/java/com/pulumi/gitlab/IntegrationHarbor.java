@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationHarbor` resource allows to manage the lifecycle of a project integration with Harbor.
+ * The `gitlab.IntegrationHarbor` resource manages the lifecycle of a project integration with Harbor.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#harbor)
  * 
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_harbor`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_harbor`. For example:
  * 
  * terraform
  * 
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor You can import a gitlab_integration_harbor state using `&lt;resource&gt; &lt;project_id&gt;`:

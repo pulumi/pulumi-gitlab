@@ -10,11 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupIssueBoard` resource allows to manage the lifecycle of a issue board in a group.
+    /// The `gitlab.GroupIssueBoard` resource manages the lifecycle of an issue board in a group.
     /// 
     /// &gt; Multiple issue boards on one group requires a GitLab Premium or above License.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
+    /// 
+    /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_issue_board`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_group_issue_board.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Importing using the CLI is supported with the following syntax:
+    /// 
+    /// Gitlab group issue boards can be imported with a key composed of `&lt;group-id&gt;:&lt;issue-board-id&gt;`, for example:
+    /// 
+    /// ```sh
+    /// $ pulumi import gitlab:index/groupIssueBoard:GroupIssueBoard example "12345:1"
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/groupIssueBoard:GroupIssueBoard")]
     public partial class GroupIssueBoard : global::Pulumi.CustomResource

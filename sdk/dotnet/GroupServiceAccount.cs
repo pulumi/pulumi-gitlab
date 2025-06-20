@@ -62,7 +62,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account`. For example:
     /// 
     /// terraform
     /// 
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `&lt;resource&gt; &lt;id&gt;`. The

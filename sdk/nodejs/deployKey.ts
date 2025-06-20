@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.
+ * The `gitlab.DeployKey` resource manages the lifecycle of a project deploy key.
  *
  * > To enable an already existing deploy key for another project use the `gitlab.DeployKeyEnable` resource.
  *
@@ -17,16 +17,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
+ * // No expiry
  * const example = new gitlab.DeployKey("example", {
  *     project: "example/deploying",
  *     title: "Example deploy key",
  *     key: "ssh-ed25519 AAAA...",
  * });
+ * // With expiry
+ * const exampleExpires = new gitlab.DeployKey("example_expires", {
+ *     project: "example/deploying",
+ *     title: "Example deploy key",
+ *     key: "ssh-ed25519 AAAA...",
+ *     expiresAt: "2025-01-21T00:00:00Z",
+ * });
  * ```
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key`. For example:
  *
  * terraform
  *
@@ -38,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
  *
@@ -91,6 +99,10 @@ export class DeployKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly deployKeyId!: pulumi.Output<number>;
     /**
+     * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     */
+    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    /**
      * The public ssh key body.
      */
     public readonly key!: pulumi.Output<string>;
@@ -118,6 +130,7 @@ export class DeployKey extends pulumi.CustomResource {
             const state = argsOrState as DeployKeyState | undefined;
             resourceInputs["canPush"] = state ? state.canPush : undefined;
             resourceInputs["deployKeyId"] = state ? state.deployKeyId : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -133,6 +146,7 @@ export class DeployKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["canPush"] = args ? args.canPush : undefined;
+            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
@@ -156,6 +170,10 @@ export interface DeployKeyState {
      */
     deployKeyId?: pulumi.Input<number>;
     /**
+     * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     */
+    expiresAt?: pulumi.Input<string>;
+    /**
      * The public ssh key body.
      */
     key?: pulumi.Input<string>;
@@ -177,6 +195,10 @@ export interface DeployKeyArgs {
      * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
     canPush?: pulumi.Input<boolean>;
+    /**
+     * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     */
+    expiresAt?: pulumi.Input<string>;
     /**
      * The public ssh key body.
      */

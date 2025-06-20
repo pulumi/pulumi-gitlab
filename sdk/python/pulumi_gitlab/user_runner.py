@@ -476,7 +476,7 @@ class UserRunner(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_runner`. For example:
 
         terraform
 
@@ -488,7 +488,7 @@ class UserRunner(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab runner using its ID
 
@@ -576,7 +576,7 @@ class UserRunner(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_user_runner`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_runner`. For example:
 
         terraform
 
@@ -588,7 +588,7 @@ class UserRunner(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab runner using its ID
 

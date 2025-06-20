@@ -18,14 +18,14 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupSamlLinkArgs Empty = new GroupSamlLinkArgs();
 
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     @Import(name="accessLevel", required=true)
     private Output<String> accessLevel;
 
     /**
-     * @return Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * @return Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      * 
      */
     public Output<String> accessLevel() {
@@ -105,7 +105,7 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+         * @param accessLevel Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GroupSamlLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+         * @param accessLevel Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
          * 
          * @return builder
          * 

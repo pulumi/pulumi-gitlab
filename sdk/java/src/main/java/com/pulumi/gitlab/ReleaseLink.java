@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_release_link`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_release_link`. For example:
  * 
  * terraform
  * 
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, e.g.
  * 

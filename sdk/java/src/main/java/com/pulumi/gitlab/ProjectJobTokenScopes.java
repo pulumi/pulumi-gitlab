@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_job_token_scopes`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scopes`. For example:
  * 
  * terraform
  * 
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * GitLab project job token scopes can be imported using an id made up of just the `project_id`
  * 
@@ -161,10 +161,10 @@ public class ProjectJobTokenScopes extends com.pulumi.resources.CustomResource {
      * The ID of the project.
      * 
      * @deprecated
-     * `project_id` has been deprecated. Use `project` instead.
+     * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
      * 
      */
-    @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+    @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
     @Export(name="projectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectId;
 

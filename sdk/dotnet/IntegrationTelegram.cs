@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
+    /// The `gitlab.IntegrationTelegram` resource manages the lifecycle of a project integration with Telegram.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#telegram)
     /// 
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_telegram`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
     /// 
     /// terraform
     /// 
@@ -65,7 +65,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// You can import a gitlab_integration_telegram state using the project ID, e.g.
     /// 

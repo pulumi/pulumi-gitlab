@@ -10,11 +10,63 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.IntegrationRedmine` resource allows to manage the lifecycle of a project integration with Redmine.
+    /// The `gitlab.IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
     /// 
     /// &gt; Using Redmine requires that GitLab internal issue tracking is disabled for the project.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     {
+    ///         Name = "awesome_project",
+    ///         Description = "My awesome project.",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     var redmine = new GitLab.IntegrationRedmine("redmine", new()
+    ///     {
+    ///         Project = awesomeProject.Id,
+    ///         NewIssueUrl = "https://redmine.example.com/issue",
+    ///         ProjectUrl = "https://redmine.example.com/project",
+    ///         IssuesUrl = "https://redmine.example.com/issue/:id",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_integration_redmine.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Importing using the CLI is supported with the following syntax:
+    /// 
+    /// ```sh
+    /// $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `&lt;resource&gt; &lt;project_id&gt;`:
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/integrationRedmine:IntegrationRedmine")]
     public partial class IntegrationRedmine : global::Pulumi.CustomResource

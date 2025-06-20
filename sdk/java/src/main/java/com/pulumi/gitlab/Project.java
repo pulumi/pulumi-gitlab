@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
  * 
  * terraform
  * 
@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * ```sh
  * $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
@@ -188,6 +188,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.autoDevopsEnabled;
     }
     /**
+     * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     * 
+     */
+    @Export(name="autoDuoCodeReviewEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> autoDuoCodeReviewEnabled;
+
+    /**
+     * @return Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     * 
+     */
+    public Output<Boolean> autoDuoCodeReviewEnabled() {
+        return this.autoDuoCodeReviewEnabled;
+    }
+    /**
      * Set whether auto-closing referenced issues on default branch.
      * 
      */
@@ -242,6 +256,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> avatarUrl() {
         return this.avatarUrl;
+    }
+    /**
+     * Branches to fork (empty for all branches).
+     * 
+     */
+    @Export(name="branches", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> branches;
+
+    /**
+     * @return Branches to fork (empty for all branches).
+     * 
+     */
+    public Output<Optional<String>> branches() {
+        return Codegen.optional(this.branches);
     }
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -340,6 +368,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     * 
+     */
+    @Export(name="ciForwardDeploymentRollbackAllowed", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ciForwardDeploymentRollbackAllowed;
+
+    /**
+     * @return Allow job retries even if the deployment job is outdated.
+     * 
+     */
+    public Output<Boolean> ciForwardDeploymentRollbackAllowed() {
+        return this.ciForwardDeploymentRollbackAllowed;
     }
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.

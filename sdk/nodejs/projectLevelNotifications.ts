@@ -5,11 +5,57 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectLevelNotifications` resource allows to manage notifications for a project.
+ * The `gitlab.ProjectLevelNotifications` resource manages notifications for a project.
  *
  * > While the API supports both groups and projects, this resource only supports projects currently.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {
+ *     name: "example project",
+ *     description: "Lorem Ipsum",
+ *     visibilityLevel: "public",
+ * });
+ * // Basic example
+ * const notifications = new gitlab.ProjectLevelNotifications("notifications", {
+ *     project: example.id,
+ *     level: "global",
+ * });
+ * // Custom notification example
+ * const custom = new gitlab.ProjectLevelNotifications("custom", {
+ *     project: example.id,
+ *     level: "custom",
+ *     newMergeRequest: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_project_level_notifications.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Importing using the CLI is supported with the following syntax:
+ *
+ * A GitLab Project level notification can be imported using a key composed of `<project-id>`, for example:
+ *
+ * ```sh
+ * $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
+ * ```
  */
 export class ProjectLevelNotifications extends pulumi.CustomResource {
     /**

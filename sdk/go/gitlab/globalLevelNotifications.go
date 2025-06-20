@@ -17,7 +17,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_global_level_notifications`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_global_level_notifications`. For example:
 //
 // terraform
 //
@@ -29,7 +29,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // Note: You can import a global notification state using "gitlab" as the ID.
 //

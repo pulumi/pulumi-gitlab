@@ -954,6 +954,25 @@ export interface ProjectIssueTaskCompletionStatus {
     count?: pulumi.Input<number>;
 }
 
+export interface ProjectPagesSettingsDeployment {
+    /**
+     * Date the deployment was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The path prefix of the deployment when using parallel deployments.
+     */
+    pathPrefix?: pulumi.Input<string>;
+    /**
+     * The root directory of the deployment.
+     */
+    rootDirectory?: pulumi.Input<string>;
+    /**
+     * The URL of the deployment.
+     */
+    url?: pulumi.Input<string>;
+}
+
 export interface ProjectProtectedEnvironmentApprovalRule {
     /**
      * Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.

@@ -15,7 +15,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
 //
 // terraform
 //
@@ -27,7 +27,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // ```sh
 // $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
@@ -66,6 +66,8 @@ type Project struct {
 	AutoDevopsDeployStrategy pulumi.StringOutput `pulumi:"autoDevopsDeployStrategy"`
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
+	// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+	AutoDuoCodeReviewEnabled pulumi.BoolOutput `pulumi:"autoDuoCodeReviewEnabled"`
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues pulumi.BoolOutput `pulumi:"autocloseReferencedIssues"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -74,6 +76,8 @@ type Project struct {
 	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
+	// Branches to fork (empty for all branches).
+	Branches pulumi.StringPtrOutput `pulumi:"branches"`
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringOutput `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
@@ -88,6 +92,8 @@ type Project struct {
 	CiDeletePipelinesInSeconds pulumi.IntOutput `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolOutput `pulumi:"ciForwardDeploymentEnabled"`
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed pulumi.BoolOutput `pulumi:"ciForwardDeploymentRollbackAllowed"`
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents pulumi.StringArrayOutput `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -333,6 +339,8 @@ type projectState struct {
 	AutoDevopsDeployStrategy *string `pulumi:"autoDevopsDeployStrategy"`
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+	AutoDuoCodeReviewEnabled *bool `pulumi:"autoDuoCodeReviewEnabled"`
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues *bool `pulumi:"autocloseReferencedIssues"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -341,6 +349,8 @@ type projectState struct {
 	AvatarHash *string `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
+	// Branches to fork (empty for all branches).
+	Branches *string `pulumi:"branches"`
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy *string `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
@@ -355,6 +365,8 @@ type projectState struct {
 	CiDeletePipelinesInSeconds *int `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed *bool `pulumi:"ciForwardDeploymentRollbackAllowed"`
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -563,6 +575,8 @@ type ProjectState struct {
 	AutoDevopsDeployStrategy pulumi.StringPtrInput
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+	AutoDuoCodeReviewEnabled pulumi.BoolPtrInput
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -571,6 +585,8 @@ type ProjectState struct {
 	AvatarHash pulumi.StringPtrInput
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
+	// Branches to fork (empty for all branches).
+	Branches pulumi.StringPtrInput
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringPtrInput
 	// The maximum amount of time, in seconds, that a job can run.
@@ -585,6 +601,8 @@ type ProjectState struct {
 	CiDeletePipelinesInSeconds pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed pulumi.BoolPtrInput
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents pulumi.StringArrayInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -797,12 +815,16 @@ type projectArgs struct {
 	AutoDevopsDeployStrategy *string `pulumi:"autoDevopsDeployStrategy"`
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+	AutoDuoCodeReviewEnabled *bool `pulumi:"autoDuoCodeReviewEnabled"`
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues *bool `pulumi:"autocloseReferencedIssues"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
+	// Branches to fork (empty for all branches).
+	Branches *string `pulumi:"branches"`
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy *string `pulumi:"buildGitStrategy"`
 	// The maximum amount of time, in seconds, that a job can run.
@@ -817,6 +839,8 @@ type projectArgs struct {
 	CiDeletePipelinesInSeconds *int `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled *bool `pulumi:"ciForwardDeploymentEnabled"`
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed *bool `pulumi:"ciForwardDeploymentRollbackAllowed"`
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -1014,12 +1038,16 @@ type ProjectArgs struct {
 	AutoDevopsDeployStrategy pulumi.StringPtrInput
 	// Enable Auto DevOps for this project.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+	AutoDuoCodeReviewEnabled pulumi.BoolPtrInput
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
+	// Branches to fork (empty for all branches).
+	Branches pulumi.StringPtrInput
 	// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
 	BuildGitStrategy pulumi.StringPtrInput
 	// The maximum amount of time, in seconds, that a job can run.
@@ -1034,6 +1062,8 @@ type ProjectArgs struct {
 	CiDeletePipelinesInSeconds pulumi.IntPtrInput
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolPtrInput
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed pulumi.BoolPtrInput
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents pulumi.StringArrayInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -1343,6 +1373,11 @@ func (o ProjectOutput) AutoDevopsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
 }
 
+// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+func (o ProjectOutput) AutoDuoCodeReviewEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutoDuoCodeReviewEnabled }).(pulumi.BoolOutput)
+}
+
 // Set whether auto-closing referenced issues on default branch.
 func (o ProjectOutput) AutocloseReferencedIssues() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutocloseReferencedIssues }).(pulumi.BoolOutput)
@@ -1361,6 +1396,11 @@ func (o ProjectOutput) AvatarHash() pulumi.StringOutput {
 // The URL of the avatar image.
 func (o ProjectOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// Branches to fork (empty for all branches).
+func (o ProjectOutput) Branches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Branches }).(pulumi.StringPtrOutput)
 }
 
 // The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -1396,6 +1436,11 @@ func (o ProjectOutput) CiDeletePipelinesInSeconds() pulumi.IntOutput {
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o ProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// Allow job retries even if the deployment job is outdated.
+func (o ProjectOutput) CiForwardDeploymentRollbackAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.CiForwardDeploymentRollbackAllowed }).(pulumi.BoolOutput)
 }
 
 // Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
