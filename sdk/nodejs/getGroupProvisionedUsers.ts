@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+ * The `gitlab.getGroupProvisionedUsers` data source retrieves details of the provisioned users in a given group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
  */
@@ -101,7 +101,7 @@ export interface GetGroupProvisionedUsersResult {
     readonly username?: string;
 }
 /**
- * The `gitlab.getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+ * The `gitlab.getGroupProvisionedUsers` data source retrieves details of the provisioned users in a given group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
  */

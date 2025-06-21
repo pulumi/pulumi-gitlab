@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gitlab:index/application:Application":
 		r = &Application{}
+	case "gitlab:index/applicationAppearance:ApplicationAppearance":
+		r = &ApplicationAppearance{}
 	case "gitlab:index/applicationSettings:ApplicationSettings":
 		r = &ApplicationSettings{}
 	case "gitlab:index/branch:Branch":
@@ -149,6 +151,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
 		r = &ProjectHook{}
+	case "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker":
+		r = &ProjectIntegrationCustomIssueTracker{}
+	case "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush":
+		r = &ProjectIntegrationEmailsOnPush{}
+	case "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki":
+		r = &ProjectIntegrationExternalWiki{}
+	case "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub":
+		r = &ProjectIntegrationGithub{}
+	case "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor":
+		r = &ProjectIntegrationHarbor{}
+	case "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins":
+		r = &ProjectIntegrationJenkins{}
+	case "gitlab:index/projectIntegrationJira:ProjectIntegrationJira":
+		r = &ProjectIntegrationJira{}
+	case "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost":
+		r = &ProjectIntegrationMattermost{}
+	case "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams":
+		r = &ProjectIntegrationMicrosoftTeams{}
+	case "gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail":
+		r = &ProjectIntegrationPipelinesEmail{}
+	case "gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine":
+		r = &ProjectIntegrationRedmine{}
+	case "gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram":
+		r = &ProjectIntegrationTelegram{}
+	case "gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack":
+		r = &ProjectIntegrationYoutrack{}
 	case "gitlab:index/projectIssue:ProjectIssue":
 		r = &ProjectIssue{}
 	case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
@@ -165,10 +193,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectLevelNotifications{}
 	case "gitlab:index/projectMembership:ProjectMembership":
 		r = &ProjectMembership{}
+	case "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote":
+		r = &ProjectMergeRequestNote{}
 	case "gitlab:index/projectMilestone:ProjectMilestone":
 		r = &ProjectMilestone{}
 	case "gitlab:index/projectMirror:ProjectMirror":
 		r = &ProjectMirror{}
+	case "gitlab:index/projectPagesSettings:ProjectPagesSettings":
+		r = &ProjectPagesSettings{}
 	case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
 		r = &ProjectProtectedEnvironment{}
 	case "gitlab:index/projectPushRules:ProjectPushRules":
@@ -251,6 +283,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/application",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/applicationAppearance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -570,6 +607,71 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectIntegrationCustomIssueTracker",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationEmailsOnPush",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationExternalWiki",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationGithub",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationHarbor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationJenkins",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationJira",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationMattermost",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationMicrosoftTeams",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationPipelinesEmail",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationRedmine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationTelegram",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationYoutrack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectIssue",
 		&module{version},
 	)
@@ -610,12 +712,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectMergeRequestNote",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectMilestone",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectMirror",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectPagesSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

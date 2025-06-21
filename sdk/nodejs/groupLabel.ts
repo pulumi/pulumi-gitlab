@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_label`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_label`. For example:
  *
  * terraform
  *
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
  *
@@ -78,6 +78,10 @@ export class GroupLabel extends pulumi.CustomResource {
      */
     public readonly color!: pulumi.Output<string>;
     /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     */
+    public /*out*/ readonly colorHex!: pulumi.Output<string>;
+    /**
      * The description of the label.
      */
     public readonly description!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class GroupLabel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupLabelState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
+            resourceInputs["colorHex"] = state ? state.colorHex : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["labelId"] = state ? state.labelId : undefined;
@@ -124,6 +129,7 @@ export class GroupLabel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["colorHex"] = undefined /*out*/;
             resourceInputs["labelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -139,6 +145,10 @@ export interface GroupLabelState {
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     color?: pulumi.Input<string>;
+    /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     */
+    colorHex?: pulumi.Input<string>;
     /**
      * The description of the label.
      */

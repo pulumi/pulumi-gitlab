@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `IntegrationGithub` resource allows to manage the lifecycle of a project integration with GitHub.
+// The `IntegrationGithub` resource manages the lifecycle of a project integration with GitHub.
 //
 // > This resource requires a GitLab Enterprise instance.
+//
+// > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationGithub` instead.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
 //
@@ -56,7 +58,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_github`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
 //
 // terraform
 //
@@ -68,7 +70,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // ```sh
 // $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `<resource> <project_id>`:
@@ -82,16 +84,16 @@ type IntegrationGithub struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// Create time.
+	// Creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project       pulumi.StringOutput `pulumi:"project"`
 	RepositoryUrl pulumi.StringOutput `pulumi:"repositoryUrl"`
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrOutput `pulumi:"staticContext"`
-	// Title.
+	// The title of this resource.
 	Title pulumi.StringOutput `pulumi:"title"`
-	// A GitHub personal access token with at least `repo:status` scope.
+	// A GitHub personal access token with at least the `repo:status` scope.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// Update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -145,16 +147,16 @@ func GetIntegrationGithub(ctx *pulumi.Context,
 type integrationGithubState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// Create time.
+	// Creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project       *string `pulumi:"project"`
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
-	// Title.
+	// The title of this resource.
 	Title *string `pulumi:"title"`
-	// A GitHub personal access token with at least `repo:status` scope.
+	// A GitHub personal access token with at least the `repo:status` scope.
 	Token *string `pulumi:"token"`
 	// Update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -163,16 +165,16 @@ type integrationGithubState struct {
 type IntegrationGithubState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// Create time.
+	// Creation time.
 	CreatedAt pulumi.StringPtrInput
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project       pulumi.StringPtrInput
 	RepositoryUrl pulumi.StringPtrInput
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
-	// Title.
+	// The title of this resource.
 	Title pulumi.StringPtrInput
-	// A GitHub personal access token with at least `repo:status` scope.
+	// A GitHub personal access token with at least the `repo:status` scope.
 	Token pulumi.StringPtrInput
 	// Update time.
 	UpdatedAt pulumi.StringPtrInput
@@ -183,23 +185,23 @@ func (IntegrationGithubState) ElementType() reflect.Type {
 }
 
 type integrationGithubArgs struct {
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project       string `pulumi:"project"`
 	RepositoryUrl string `pulumi:"repositoryUrl"`
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
-	// A GitHub personal access token with at least `repo:status` scope.
+	// A GitHub personal access token with at least the `repo:status` scope.
 	Token string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a IntegrationGithub resource.
 type IntegrationGithubArgs struct {
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project       pulumi.StringInput
 	RepositoryUrl pulumi.StringInput
-	// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
-	// A GitHub personal access token with at least `repo:status` scope.
+	// A GitHub personal access token with at least the `repo:status` scope.
 	Token pulumi.StringInput
 }
 
@@ -295,12 +297,12 @@ func (o IntegrationGithubOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// Create time.
+// Creation time.
 func (o IntegrationGithubOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// ID of the project you want to activate integration on.
+// ID of the project you want to activate the integration on.
 func (o IntegrationGithubOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -309,17 +311,17 @@ func (o IntegrationGithubOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.RepositoryUrl }).(pulumi.StringOutput)
 }
 
-// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 func (o IntegrationGithubOutput) StaticContext() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.BoolPtrOutput { return v.StaticContext }).(pulumi.BoolPtrOutput)
 }
 
-// Title.
+// The title of this resource.
 func (o IntegrationGithubOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// A GitHub personal access token with at least `repo:status` scope.
+// A GitHub personal access token with at least the `repo:status` scope.
 func (o IntegrationGithubOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }

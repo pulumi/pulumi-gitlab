@@ -336,7 +336,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_personal_access_token`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_personal_access_token`. For example:
 
         terraform
 
@@ -348,7 +348,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
 
@@ -407,7 +407,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_personal_access_token`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_personal_access_token`. For example:
 
         terraform
 
@@ -419,7 +419,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
 

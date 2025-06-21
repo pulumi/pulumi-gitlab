@@ -12,10 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Branch` resource allows to manage the lifecycle of a repository branch.
-//
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
-//
 // ## Example Usage
 //
 // ```go
@@ -55,7 +51,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_branch`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch`. For example:
 //
 // terraform
 //
@@ -67,7 +63,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
 //

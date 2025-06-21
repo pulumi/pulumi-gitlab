@@ -382,7 +382,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_access_token`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_access_token`. For example:
 
         terraform
 
@@ -394,7 +394,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
 
@@ -451,7 +451,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_access_token`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_access_token`. For example:
 
         terraform
 
@@ -463,7 +463,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         A GitLab Project Access Token can be imported using a key composed of `<project-id>:<token-id>`, e.g.
 

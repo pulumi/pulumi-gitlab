@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+ * The `gitlab.getUserSshkeys` data source retrieves a list of SSH keys for a user.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
  */
@@ -56,7 +56,7 @@ export interface GetUserSshkeysResult {
     readonly username: string;
 }
 /**
- * The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+ * The `gitlab.getUserSshkeys` data source retrieves a list of SSH keys for a user.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
  */

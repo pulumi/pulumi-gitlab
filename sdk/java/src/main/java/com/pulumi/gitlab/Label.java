@@ -16,9 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.Label` resource allows to manage the lifecycle of a project label.
- * 
- * &gt; This resource is deprecated. use `gitlab.ProjectLabel`instead!
+ * The `gitlab.Label` resource manages the lifecycle of a project label.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
  * 
@@ -38,6 +36,20 @@ public class Label extends com.pulumi.resources.CustomResource {
      */
     public Output<String> color() {
         return this.color;
+    }
+    /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    @Export(name="colorHex", refs={String.class}, tree="[0]")
+    private Output<String> colorHex;
+
+    /**
+     * @return Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    public Output<String> colorHex() {
+        return this.colorHex;
     }
     /**
      * The description of the label.

@@ -77,7 +77,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_repository_file`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_repository_file`. For example:
     /// 
     /// terraform
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.
     /// 

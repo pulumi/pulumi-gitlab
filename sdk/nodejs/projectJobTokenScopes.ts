@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_job_token_scopes`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scopes`. For example:
  *
  * terraform
  *
@@ -81,7 +81,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * GitLab project job token scopes can be imported using an id made up of just the `project_id`
  *
@@ -128,7 +128,7 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
     /**
      * The ID of the project.
      *
-     * @deprecated `projectId` has been deprecated. Use `project` instead.
+     * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      */
     public readonly projectId!: pulumi.Output<number>;
     /**
@@ -186,7 +186,7 @@ export interface ProjectJobTokenScopesState {
     /**
      * The ID of the project.
      *
-     * @deprecated `projectId` has been deprecated. Use `project` instead.
+     * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      */
     projectId?: pulumi.Input<number>;
     /**
@@ -214,7 +214,7 @@ export interface ProjectJobTokenScopesArgs {
     /**
      * The ID of the project.
      *
-     * @deprecated `projectId` has been deprecated. Use `project` instead.
+     * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      */
     projectId?: pulumi.Input<number>;
     /**

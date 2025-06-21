@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
+    /// The `gitlab.ProjectLabel` resource manages the lifecycle of a project label.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
     /// 
@@ -24,9 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var example = new GitLab.Project("example", new()
+    ///     {
+    ///         Name = "project",
+    ///     });
+    /// 
     ///     var fixme = new GitLab.ProjectLabel("fixme", new()
     ///     {
-    ///         Project = "example",
+    ///         Project = example.Id,
     ///         Name = "fixme",
     ///         Description = "issue with failing tests",
     ///         Color = "#ffcc00",
@@ -46,7 +51,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_label`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_label`. For example:
     /// 
     /// terraform
     /// 
@@ -58,9 +63,9 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+    /// Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
@@ -74,6 +79,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
+
+        /// <summary>
+        /// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        /// </summary>
+        [Output("colorHex")]
+        public Output<string> ColorHex { get; private set; } = null!;
 
         /// <summary>
         /// The description of the label.
@@ -182,6 +193,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
+
+        /// <summary>
+        /// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        /// </summary>
+        [Input("colorHex")]
+        public Input<string>? ColorHex { get; set; }
 
         /// <summary>
         /// The description of the label.

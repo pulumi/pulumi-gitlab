@@ -667,11 +667,54 @@ class ProjectLevelNotifications(pulumi.CustomResource):
                  success_pipeline: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The `ProjectLevelNotifications` resource allows to manage notifications for a project.
+        The `ProjectLevelNotifications` resource manages notifications for a project.
 
         > While the API supports both groups and projects, this resource only supports projects currently.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            name="example project",
+            description="Lorem Ipsum",
+            visibility_level="public")
+        # Basic example
+        notifications = gitlab.ProjectLevelNotifications("notifications",
+            project=example.id,
+            level="global")
+        # Custom notification example
+        custom = gitlab.ProjectLevelNotifications("custom",
+            project=example.id,
+            level="custom",
+            new_merge_request=True)
+        ```
+
+        ## Import
+
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_level_notifications.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Importing using the CLI is supported with the following syntax:
+
+        A GitLab Project level notification can be imported using a key composed of `<project-id>`, for example:
+
+        ```sh
+        $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -702,11 +745,54 @@ class ProjectLevelNotifications(pulumi.CustomResource):
                  args: ProjectLevelNotificationsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectLevelNotifications` resource allows to manage notifications for a project.
+        The `ProjectLevelNotifications` resource manages notifications for a project.
 
         > While the API supports both groups and projects, this resource only supports projects currently.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            name="example project",
+            description="Lorem Ipsum",
+            visibility_level="public")
+        # Basic example
+        notifications = gitlab.ProjectLevelNotifications("notifications",
+            project=example.id,
+            level="global")
+        # Custom notification example
+        custom = gitlab.ProjectLevelNotifications("custom",
+            project=example.id,
+            level="custom",
+            new_merge_request=True)
+        ```
+
+        ## Import
+
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_project_level_notifications.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Importing using the CLI is supported with the following syntax:
+
+        A GitLab Project level notification can be imported using a key composed of `<project-id>`, for example:
+
+        ```sh
+        $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectLevelNotificationsArgs args: The arguments to use to populate this resource's properties.

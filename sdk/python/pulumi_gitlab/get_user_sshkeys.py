@@ -91,7 +91,7 @@ def get_user_sshkeys(user_id: Optional[builtins.int] = None,
                      username: Optional[builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserSshkeysResult:
     """
-    The `get_user_sshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+    The `get_user_sshkeys` data source retrieves a list of SSH keys for a user.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
 
@@ -114,7 +114,7 @@ def get_user_sshkeys_output(user_id: Optional[pulumi.Input[Optional[builtins.int
                             username: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserSshkeysResult]:
     """
-    The `get_user_sshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+    The `get_user_sshkeys` data source retrieves a list of SSH keys for a user.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
 

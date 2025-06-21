@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_wiki_page`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
     /// 
     /// terraform
     /// 
@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// You can import gitlab_project_wiki_page state using the project ID, e.g.
     /// 

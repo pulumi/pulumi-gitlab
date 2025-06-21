@@ -48,6 +48,21 @@ public final class DeployKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     * 
+     */
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
+
+    /**
+     * @return Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     * 
+     */
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
+    }
+
+    /**
      * The public ssh key body.
      * 
      */
@@ -97,6 +112,7 @@ public final class DeployKeyState extends com.pulumi.resources.ResourceArgs {
     private DeployKeyState(DeployKeyState $) {
         this.canPush = $.canPush;
         this.deployKeyId = $.deployKeyId;
+        this.expiresAt = $.expiresAt;
         this.key = $.key;
         this.project = $.project;
         this.title = $.title;
@@ -160,6 +176,27 @@ public final class DeployKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deployKeyId(Integer deployKeyId) {
             return deployKeyId(Output.of(deployKeyId));
+        }
+
+        /**
+         * @param expiresAt Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+            $.expiresAt = expiresAt;
+            return this;
+        }
+
+        /**
+         * @param expiresAt Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(String expiresAt) {
+            return expiresAt(Output.of(expiresAt));
         }
 
         /**

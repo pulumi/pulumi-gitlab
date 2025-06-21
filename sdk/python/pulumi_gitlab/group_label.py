@@ -91,6 +91,7 @@ class GroupLabelArgs:
 class _GroupLabelState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[builtins.str]] = None,
+                 color_hex: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  label_id: Optional[pulumi.Input[builtins.int]] = None,
@@ -98,6 +99,7 @@ class _GroupLabelState:
         """
         Input properties used for looking up and filtering GroupLabel resources.
         :param pulumi.Input[builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[builtins.str] description: The description of the label.
         :param pulumi.Input[builtins.str] group: The name or id of the group to add the label to.
         :param pulumi.Input[builtins.int] label_id: The id of the group label.
@@ -105,6 +107,8 @@ class _GroupLabelState:
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
+        if color_hex is not None:
+            pulumi.set(__self__, "color_hex", color_hex)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if group is not None:
@@ -125,6 +129,18 @@ class _GroupLabelState:
     @color.setter
     def color(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter(name="colorHex")
+    def color_hex(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        """
+        return pulumi.get(self, "color_hex")
+
+    @color_hex.setter
+    def color_hex(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "color_hex", value)
 
     @property
     @pulumi.getter
@@ -206,7 +222,7 @@ class GroupLabel(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_label`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_label`. For example:
 
         terraform
 
@@ -218,7 +234,7 @@ class GroupLabel(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 
@@ -259,7 +275,7 @@ class GroupLabel(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_label`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_label`. For example:
 
         terraform
 
@@ -271,7 +287,7 @@ class GroupLabel(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 
@@ -315,6 +331,7 @@ class GroupLabel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
             __props__.__dict__["name"] = name
+            __props__.__dict__["color_hex"] = None
             __props__.__dict__["label_id"] = None
         super(GroupLabel, __self__).__init__(
             'gitlab:index/groupLabel:GroupLabel',
@@ -327,6 +344,7 @@ class GroupLabel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[builtins.str]] = None,
+            color_hex: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             group: Optional[pulumi.Input[builtins.str]] = None,
             label_id: Optional[pulumi.Input[builtins.int]] = None,
@@ -339,6 +357,7 @@ class GroupLabel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[builtins.str] description: The description of the label.
         :param pulumi.Input[builtins.str] group: The name or id of the group to add the label to.
         :param pulumi.Input[builtins.int] label_id: The id of the group label.
@@ -349,6 +368,7 @@ class GroupLabel(pulumi.CustomResource):
         __props__ = _GroupLabelState.__new__(_GroupLabelState)
 
         __props__.__dict__["color"] = color
+        __props__.__dict__["color_hex"] = color_hex
         __props__.__dict__["description"] = description
         __props__.__dict__["group"] = group
         __props__.__dict__["label_id"] = label_id
@@ -362,6 +382,14 @@ class GroupLabel(pulumi.CustomResource):
         The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
         return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="colorHex")
+    def color_hex(self) -> pulumi.Output[builtins.str]:
+        """
+        Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        """
+        return pulumi.get(self, "color_hex")
 
     @property
     @pulumi.getter

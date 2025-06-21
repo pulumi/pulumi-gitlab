@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectLabel` resource allows to manage the lifecycle of a project label.
+ * The `gitlab.ProjectLabel` resource manages the lifecycle of a project label.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
  * 
@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
  * import com.pulumi.gitlab.ProjectLabel;
  * import com.pulumi.gitlab.ProjectLabelArgs;
  * import java.util.List;
@@ -45,8 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var example = new Project("example", ProjectArgs.builder()
+ *             .name("project")
+ *             .build());
+ * 
  *         var fixme = new ProjectLabel("fixme", ProjectLabelArgs.builder()
- *             .project("example")
+ *             .project(example.id())
  *             .name("fixme")
  *             .description("issue with failing tests")
  *             .color("#ffcc00")
@@ -68,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_label`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_label`. For example:
  * 
  * terraform
  * 
@@ -80,9 +86,9 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
- * Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+ * Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
@@ -104,6 +110,20 @@ public class ProjectLabel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> color() {
         return this.color;
+    }
+    /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    @Export(name="colorHex", refs={String.class}, tree="[0]")
+    private Output<String> colorHex;
+
+    /**
+     * @return Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    public Output<String> colorHex() {
+        return this.colorHex;
     }
     /**
      * The description of the label.

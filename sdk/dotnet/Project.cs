@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
     /// 
     /// terraform
     /// 
@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
@@ -103,6 +103,12 @@ namespace Pulumi.GitLab
         public Output<bool> AutoDevopsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+        /// </summary>
+        [Output("autoDuoCodeReviewEnabled")]
+        public Output<bool> AutoDuoCodeReviewEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Set whether auto-closing referenced issues on default branch.
         /// </summary>
         [Output("autocloseReferencedIssues")]
@@ -125,6 +131,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("avatarUrl")]
         public Output<string> AvatarUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Branches to fork (empty for all branches).
+        /// </summary>
+        [Output("branches")]
+        public Output<string?> Branches { get; private set; } = null!;
 
         /// <summary>
         /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -167,6 +179,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("ciForwardDeploymentEnabled")]
         public Output<bool> CiForwardDeploymentEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow job retries even if the deployment job is outdated.
+        /// </summary>
+        [Output("ciForwardDeploymentRollbackAllowed")]
+        public Output<bool> CiForwardDeploymentRollbackAllowed { get; private set; } = null!;
 
         /// <summary>
         /// Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
@@ -803,6 +821,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
+        /// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+        /// </summary>
+        [Input("autoDuoCodeReviewEnabled")]
+        public Input<bool>? AutoDuoCodeReviewEnabled { get; set; }
+
+        /// <summary>
         /// Set whether auto-closing referenced issues on default branch.
         /// </summary>
         [Input("autocloseReferencedIssues")]
@@ -819,6 +843,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("avatarHash")]
         public Input<string>? AvatarHash { get; set; }
+
+        /// <summary>
+        /// Branches to fork (empty for all branches).
+        /// </summary>
+        [Input("branches")]
+        public Input<string>? Branches { get; set; }
 
         /// <summary>
         /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -861,6 +891,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
+        /// Allow job retries even if the deployment job is outdated.
+        /// </summary>
+        [Input("ciForwardDeploymentRollbackAllowed")]
+        public Input<bool>? CiForwardDeploymentRollbackAllowed { get; set; }
 
         [Input("ciIdTokenSubClaimComponents")]
         private InputList<string>? _ciIdTokenSubClaimComponents;
@@ -1446,6 +1482,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AutoDevopsEnabled { get; set; }
 
         /// <summary>
+        /// Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+        /// </summary>
+        [Input("autoDuoCodeReviewEnabled")]
+        public Input<bool>? AutoDuoCodeReviewEnabled { get; set; }
+
+        /// <summary>
         /// Set whether auto-closing referenced issues on default branch.
         /// </summary>
         [Input("autocloseReferencedIssues")]
@@ -1468,6 +1510,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("avatarUrl")]
         public Input<string>? AvatarUrl { get; set; }
+
+        /// <summary>
+        /// Branches to fork (empty for all branches).
+        /// </summary>
+        [Input("branches")]
+        public Input<string>? Branches { get; set; }
 
         /// <summary>
         /// The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
@@ -1510,6 +1558,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
         public Input<bool>? CiForwardDeploymentEnabled { get; set; }
+
+        /// <summary>
+        /// Allow job retries even if the deployment job is outdated.
+        /// </summary>
+        [Input("ciForwardDeploymentRollbackAllowed")]
+        public Input<bool>? CiForwardDeploymentRollbackAllowed { get; set; }
 
         [Input("ciIdTokenSubClaimComponents")]
         private InputList<string>? _ciIdTokenSubClaimComponents;

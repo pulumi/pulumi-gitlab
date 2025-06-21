@@ -81,7 +81,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_cluster_agent_token`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
     /// 
     /// terraform
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// A token for a GitLab Agent for Kubernetes can be imported with the following command and the id pattern `&lt;project&gt;:&lt;agent-id&gt;:&lt;token-id&gt;`:
     /// 

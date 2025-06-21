@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_variable`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_variable`. For example:
  * 
  * terraform
  * 
@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
  * 

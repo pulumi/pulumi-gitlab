@@ -18,10 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.Branch` resource allows to manage the lifecycle of a repository branch.
- * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -70,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_branch`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch`. For example:
  * 
  * terraform
  * 
@@ -82,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * Gitlab branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch_name&gt;`, e.g.
  * 
