@@ -155,7 +155,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_custom_attribute`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_custom_attribute`. For example:
 
         terraform
 
@@ -167,7 +167,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
 
@@ -206,7 +206,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_custom_attribute`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_custom_attribute`. For example:
 
         terraform
 
@@ -218,7 +218,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
 

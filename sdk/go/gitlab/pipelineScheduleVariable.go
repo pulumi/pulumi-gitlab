@@ -56,7 +56,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_pipeline_schedule_variable`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule_variable`. For example:
 //
 // terraform
 //
@@ -68,7 +68,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
 //

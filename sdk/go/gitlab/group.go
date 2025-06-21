@@ -115,7 +115,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group`. For example:
 //
 // terraform
 //
@@ -127,7 +127,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // ```sh
 // $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The

@@ -52,10 +52,10 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
      * The ID of the project.
      * 
      * @deprecated
-     * `project_id` has been deprecated. Use `project` instead.
+     * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
      * 
      */
-    @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+    @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
     @Import(name="projectId")
     private @Nullable Output<Integer> projectId;
 
@@ -63,10 +63,10 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
      * @return The ID of the project.
      * 
      * @deprecated
-     * `project_id` has been deprecated. Use `project` instead.
+     * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
      * 
      */
-    @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+    @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
     public Optional<Output<Integer>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -177,10 +177,10 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          * @deprecated
-         * `project_id` has been deprecated. Use `project` instead.
+         * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
          * 
          */
-        @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+        @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
         public Builder projectId(@Nullable Output<Integer> projectId) {
             $.projectId = projectId;
             return this;
@@ -192,10 +192,10 @@ public final class ProjectJobTokenScopesArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          * @deprecated
-         * `project_id` has been deprecated. Use `project` instead.
+         * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
          * 
          */
-        @Deprecated /* `project_id` has been deprecated. Use `project` instead. */
+        @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
         public Builder projectId(Integer projectId) {
             return projectId(Output.of(projectId));
         }

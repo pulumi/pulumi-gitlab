@@ -90,6 +90,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool CiForwardDeploymentEnabled;
         /// <summary>
+        /// Allow job retries even if the deployment job is outdated.
+        /// </summary>
+        public readonly bool CiForwardDeploymentRollbackAllowed;
+        /// <summary>
         /// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
         /// </summary>
         public readonly ImmutableArray<string> CiIdTokenSubClaimComponents;
@@ -463,6 +467,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool ciForwardDeploymentEnabled,
 
+            bool ciForwardDeploymentRollbackAllowed,
+
             ImmutableArray<string> ciIdTokenSubClaimComponents,
 
             string ciPipelineVariablesMinimumOverrideRole,
@@ -650,6 +656,7 @@ namespace Pulumi.GitLab.Outputs
             CiDefaultGitDepth = ciDefaultGitDepth;
             CiDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
             CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            CiForwardDeploymentRollbackAllowed = ciForwardDeploymentRollbackAllowed;
             CiIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
             CiPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;

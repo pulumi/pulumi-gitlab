@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .application import *
+from .application_appearance import *
 from .application_settings import *
 from .branch import *
 from .branch_protection import *
@@ -52,6 +53,7 @@ from .get_project_issue import *
 from .get_project_issues import *
 from .get_project_membership import *
 from .get_project_merge_request import *
+from .get_project_merge_requests import *
 from .get_project_milestone import *
 from .get_project_milestones import *
 from .get_project_mirror_public_key import *
@@ -127,6 +129,19 @@ from .project_custom_attribute import *
 from .project_environment import *
 from .project_freeze_period import *
 from .project_hook import *
+from .project_integration_custom_issue_tracker import *
+from .project_integration_emails_on_push import *
+from .project_integration_external_wiki import *
+from .project_integration_github import *
+from .project_integration_harbor import *
+from .project_integration_jenkins import *
+from .project_integration_jira import *
+from .project_integration_mattermost import *
+from .project_integration_microsoft_teams import *
+from .project_integration_pipelines_email import *
+from .project_integration_redmine import *
+from .project_integration_telegram import *
+from .project_integration_youtrack import *
 from .project_issue import *
 from .project_issue_board import *
 from .project_job_token_scope import *
@@ -135,8 +150,10 @@ from .project_label import *
 from .project_level_mr_approvals import *
 from .project_level_notifications import *
 from .project_membership import *
+from .project_merge_request_note import *
 from .project_milestone import *
 from .project_mirror import *
+from .project_pages_settings import *
 from .project_protected_environment import *
 from .project_push_rules import *
 from .project_runner_enablement import *
@@ -181,6 +198,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/applicationAppearance",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/applicationAppearance:ApplicationAppearance": "ApplicationAppearance"
   }
  },
  {
@@ -689,6 +714,110 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectIntegrationCustomIssueTracker",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker": "ProjectIntegrationCustomIssueTracker"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationEmailsOnPush",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush": "ProjectIntegrationEmailsOnPush"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationExternalWiki",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki": "ProjectIntegrationExternalWiki"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationGithub",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub": "ProjectIntegrationGithub"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationHarbor",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor": "ProjectIntegrationHarbor"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationJenkins",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins": "ProjectIntegrationJenkins"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationJira",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationJira:ProjectIntegrationJira": "ProjectIntegrationJira"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationMattermost",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost": "ProjectIntegrationMattermost"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationMicrosoftTeams",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams": "ProjectIntegrationMicrosoftTeams"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationPipelinesEmail",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail": "ProjectIntegrationPipelinesEmail"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationRedmine",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine": "ProjectIntegrationRedmine"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationTelegram",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram": "ProjectIntegrationTelegram"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationYoutrack",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack": "ProjectIntegrationYoutrack"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectIssue",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -753,6 +882,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectMergeRequestNote",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote": "ProjectMergeRequestNote"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectMilestone",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -765,6 +902,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectMirror:ProjectMirror": "ProjectMirror"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectPagesSettings",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectPagesSettings:ProjectPagesSettings": "ProjectPagesSettings"
   }
  },
  {

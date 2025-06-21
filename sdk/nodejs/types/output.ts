@@ -1399,6 +1399,127 @@ export interface GetProjectMergeRequestClosedBy {
     webUrl: string;
 }
 
+export interface GetProjectMergeRequestsMergeRequest {
+    /**
+     * First assignee of the merge request.
+     */
+    assignee: outputs.GetProjectMergeRequestsMergeRequestAssignee;
+    /**
+     * Assignees of the merge request.
+     */
+    assignees: outputs.GetProjectMergeRequestsMergeRequestAssignee[];
+    /**
+     * User who created this merge request.
+     */
+    author: outputs.GetProjectMergeRequestsMergeRequestAuthor;
+    /**
+     * Indicates if all discussions are resolved only if all are
+     * required before merge request can be merged.
+     */
+    blockingDiscussionsResolved: boolean;
+    /**
+     * Timestamp of when the merge request was closed.
+     */
+    closedAt: string;
+    /**
+     * User who closed this merge request.
+     */
+    closedBy: outputs.GetProjectMergeRequestsMergeRequestClosedBy;
+    /**
+     * Timestamp of when the merge request was created.
+     */
+    createdAt: string;
+    /**
+     * The unique instance level ID of the merge request.
+     */
+    id: number;
+    /**
+     * The unique project level ID of the merge request.
+     */
+    iid: number;
+}
+
+export interface GetProjectMergeRequestsMergeRequestAssignee {
+    /**
+     * A link to the user's avatar image.
+     */
+    avatarUrl: string;
+    /**
+     * The internal ID number of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user account.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * A link to the user's profile page.
+     */
+    webUrl: string;
+}
+
+export interface GetProjectMergeRequestsMergeRequestAuthor {
+    /**
+     * A link to the user's avatar image.
+     */
+    avatarUrl: string;
+    /**
+     * The internal ID number of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user account.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * A link to the user's profile page.
+     */
+    webUrl: string;
+}
+
+export interface GetProjectMergeRequestsMergeRequestClosedBy {
+    /**
+     * A link to the user's avatar image.
+     */
+    avatarUrl: string;
+    /**
+     * The internal ID number of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user account.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * A link to the user's profile page.
+     */
+    webUrl: string;
+}
+
 export interface GetProjectMilestonesMilestone {
     /**
      * The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -1955,6 +2076,10 @@ export interface GetProjectsProject {
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled: boolean;
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     */
+    ciForwardDeploymentRollbackAllowed: boolean;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
      */
@@ -3010,6 +3135,25 @@ export interface ProjectIssueTaskCompletionStatus {
      * The number of tasks.
      */
     count: number;
+}
+
+export interface ProjectPagesSettingsDeployment {
+    /**
+     * Date the deployment was created.
+     */
+    createdAt: string;
+    /**
+     * The path prefix of the deployment when using parallel deployments.
+     */
+    pathPrefix: string;
+    /**
+     * The root directory of the deployment.
+     */
+    rootDirectory: string;
+    /**
+     * The URL of the deployment.
+     */
+    url: string;
 }
 
 export interface ProjectProtectedEnvironmentApprovalRule {

@@ -55,7 +55,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_instance_cluster`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_cluster`. For example:
 //
 // terraform
 //
@@ -67,7 +67,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // GitLab instance clusters can be imported using a `clusterid`, e.g.
 //

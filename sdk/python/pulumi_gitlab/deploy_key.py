@@ -23,19 +23,23 @@ class DeployKeyArgs:
                  key: pulumi.Input[builtins.str],
                  project: pulumi.Input[builtins.str],
                  title: pulumi.Input[builtins.str],
-                 can_push: Optional[pulumi.Input[builtins.bool]] = None):
+                 can_push: Optional[pulumi.Input[builtins.bool]] = None,
+                 expires_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a DeployKey resource.
         :param pulumi.Input[builtins.str] key: The public ssh key body.
         :param pulumi.Input[builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[builtins.str] title: A title to describe the deploy key with.
         :param pulumi.Input[builtins.bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        :param pulumi.Input[builtins.str] expires_at: Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "title", title)
         if can_push is not None:
             pulumi.set(__self__, "can_push", can_push)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
 
     @property
     @pulumi.getter
@@ -85,12 +89,25 @@ class DeployKeyArgs:
     def can_push(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "can_push", value)
 
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expires_at", value)
+
 
 @pulumi.input_type
 class _DeployKeyState:
     def __init__(__self__, *,
                  can_push: Optional[pulumi.Input[builtins.bool]] = None,
                  deploy_key_id: Optional[pulumi.Input[builtins.int]] = None,
+                 expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  key: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None):
@@ -98,6 +115,7 @@ class _DeployKeyState:
         Input properties used for looking up and filtering DeployKey resources.
         :param pulumi.Input[builtins.bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         :param pulumi.Input[builtins.int] deploy_key_id: The id of the project deploy key.
+        :param pulumi.Input[builtins.str] expires_at: Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
         :param pulumi.Input[builtins.str] key: The public ssh key body.
         :param pulumi.Input[builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[builtins.str] title: A title to describe the deploy key with.
@@ -106,6 +124,8 @@ class _DeployKeyState:
             pulumi.set(__self__, "can_push", can_push)
         if deploy_key_id is not None:
             pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if project is not None:
@@ -136,6 +156,18 @@ class _DeployKeyState:
     @deploy_key_id.setter
     def deploy_key_id(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "deploy_key_id", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter
@@ -181,12 +213,13 @@ class DeployKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_push: Optional[pulumi.Input[builtins.bool]] = None,
+                 expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  key: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `DeployKey` resource allows to manage the lifecycle of a deploy key.
+        The `DeployKey` resource manages the lifecycle of a project deploy key.
 
         > To enable an already existing deploy key for another project use the `DeployKeyEnable` resource.
 
@@ -198,15 +231,22 @@ class DeployKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        # No expiry
         example = gitlab.DeployKey("example",
             project="example/deploying",
             title="Example deploy key",
             key="ssh-ed25519 AAAA...")
+        # With expiry
+        example_expires = gitlab.DeployKey("example_expires",
+            project="example/deploying",
+            title="Example deploy key",
+            key="ssh-ed25519 AAAA...",
+            expires_at="2025-01-21T00:00:00Z")
         ```
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key`. For example:
 
         terraform
 
@@ -218,7 +258,7 @@ class DeployKey(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 
@@ -237,6 +277,7 @@ class DeployKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        :param pulumi.Input[builtins.str] expires_at: Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
         :param pulumi.Input[builtins.str] key: The public ssh key body.
         :param pulumi.Input[builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[builtins.str] title: A title to describe the deploy key with.
@@ -248,7 +289,7 @@ class DeployKey(pulumi.CustomResource):
                  args: DeployKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `DeployKey` resource allows to manage the lifecycle of a deploy key.
+        The `DeployKey` resource manages the lifecycle of a project deploy key.
 
         > To enable an already existing deploy key for another project use the `DeployKeyEnable` resource.
 
@@ -260,15 +301,22 @@ class DeployKey(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        # No expiry
         example = gitlab.DeployKey("example",
             project="example/deploying",
             title="Example deploy key",
             key="ssh-ed25519 AAAA...")
+        # With expiry
+        example_expires = gitlab.DeployKey("example_expires",
+            project="example/deploying",
+            title="Example deploy key",
+            key="ssh-ed25519 AAAA...",
+            expires_at="2025-01-21T00:00:00Z")
         ```
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key`. For example:
 
         terraform
 
@@ -280,7 +328,7 @@ class DeployKey(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
 
@@ -312,6 +360,7 @@ class DeployKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_push: Optional[pulumi.Input[builtins.bool]] = None,
+                 expires_at: Optional[pulumi.Input[builtins.str]] = None,
                  key: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None,
@@ -325,6 +374,7 @@ class DeployKey(pulumi.CustomResource):
             __props__ = DeployKeyArgs.__new__(DeployKeyArgs)
 
             __props__.__dict__["can_push"] = can_push
+            __props__.__dict__["expires_at"] = expires_at
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -347,6 +397,7 @@ class DeployKey(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             can_push: Optional[pulumi.Input[builtins.bool]] = None,
             deploy_key_id: Optional[pulumi.Input[builtins.int]] = None,
+            expires_at: Optional[pulumi.Input[builtins.str]] = None,
             key: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             title: Optional[pulumi.Input[builtins.str]] = None) -> 'DeployKey':
@@ -359,6 +410,7 @@ class DeployKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         :param pulumi.Input[builtins.int] deploy_key_id: The id of the project deploy key.
+        :param pulumi.Input[builtins.str] expires_at: Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
         :param pulumi.Input[builtins.str] key: The public ssh key body.
         :param pulumi.Input[builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[builtins.str] title: A title to describe the deploy key with.
@@ -369,6 +421,7 @@ class DeployKey(pulumi.CustomResource):
 
         __props__.__dict__["can_push"] = can_push
         __props__.__dict__["deploy_key_id"] = deploy_key_id
+        __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["key"] = key
         __props__.__dict__["project"] = project
         __props__.__dict__["title"] = title
@@ -389,6 +442,14 @@ class DeployKey(pulumi.CustomResource):
         The id of the project deploy key.
         """
         return pulumi.get(self, "deploy_key_id")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+        """
+        return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter

@@ -4,6 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -28,6 +29,21 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
+    }
+
+    /**
+     * (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     * 
+     */
+    @Import(name="emailExactMatch")
+    private @Nullable Boolean emailExactMatch;
+
+    /**
+     * @return (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     * 
+     */
+    public Optional<Boolean> emailExactMatch() {
+        return Optional.ofNullable(this.emailExactMatch);
     }
 
     /**
@@ -79,6 +95,7 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetUserPlainArgs(GetUserPlainArgs $) {
         this.email = $.email;
+        this.emailExactMatch = $.emailExactMatch;
         this.namespaceId = $.namespaceId;
         this.userId = $.userId;
         this.username = $.username;
@@ -110,6 +127,17 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder email(@Nullable String email) {
             $.email = email;
+            return this;
+        }
+
+        /**
+         * @param emailExactMatch (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailExactMatch(@Nullable Boolean emailExactMatch) {
+            $.emailExactMatch = emailExactMatch;
             return this;
         }
 

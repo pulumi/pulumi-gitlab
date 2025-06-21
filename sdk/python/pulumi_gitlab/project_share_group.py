@@ -197,7 +197,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_share_group`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_share_group`. For example:
 
         terraform
 
@@ -209,7 +209,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 
@@ -249,7 +249,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_share_group`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_share_group`. For example:
 
         terraform
 
@@ -261,7 +261,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
 

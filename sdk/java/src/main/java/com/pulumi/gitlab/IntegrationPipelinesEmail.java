@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationPipelinesEmail` resource allows to manage the lifecycle of a project integration with Pipeline Emails Service.
+ * The `gitlab.IntegrationPipelinesEmail` resource manages the lifecycle of a project integration with the Pipeline Emails Service.
+ * 
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationPipelinesEmail`instead!
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#pipeline-status-emails)
  * 
@@ -69,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_pipelines_email`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_pipelines_email`. For example:
  * 
  * terraform
  * 
@@ -81,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * You can import a gitlab_integration_pipelines_email state using the project ID, e.g.
  * 

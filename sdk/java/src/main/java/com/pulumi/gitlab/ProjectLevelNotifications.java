@@ -15,11 +15,85 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectLevelNotifications` resource allows to manage notifications for a project.
+ * The `gitlab.ProjectLevelNotifications` resource manages notifications for a project.
  * 
  * &gt; While the API supports both groups and projects, this resource only supports projects currently.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.ProjectLevelNotifications;
+ * import com.pulumi.gitlab.ProjectLevelNotificationsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Project("example", ProjectArgs.builder()
+ *             .name("example project")
+ *             .description("Lorem Ipsum")
+ *             .visibilityLevel("public")
+ *             .build());
+ * 
+ *         // Basic example
+ *         var notifications = new ProjectLevelNotifications("notifications", ProjectLevelNotificationsArgs.builder()
+ *             .project(example.id())
+ *             .level("global")
+ *             .build());
+ * 
+ *         // Custom notification example
+ *         var custom = new ProjectLevelNotifications("custom", ProjectLevelNotificationsArgs.builder()
+ *             .project(example.id())
+ *             .level("custom")
+ *             .newMergeRequest(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = gitlab_project_level_notifications.example
+ * 
+ *   id = &#34;see CLI command below for ID&#34;
+ * 
+ * }
+ * 
+ * Importing using the CLI is supported with the following syntax:
+ * 
+ * A GitLab Project level notification can be imported using a key composed of `&lt;project-id&gt;`, for example:
+ * 
+ * ```sh
+ * $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example &#34;12345&#34;
+ * ```
  * 
  */
 @ResourceType(type="gitlab:index/projectLevelNotifications:ProjectLevelNotifications")

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getGroupProvisionedUsers` data source allows details of the provisioned users of a given group.
+// The `getGroupProvisionedUsers` data source retrieves details of the provisioned users in a given group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
 func GetGroupProvisionedUsers(ctx *pulumi.Context, args *GetGroupProvisionedUsersArgs, opts ...pulumi.InvokeOption) (*GetGroupProvisionedUsersResult, error) {

@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
+// The `IntegrationMattermost` resource manages the lifecycle of a project integration with Mattermost.
+//
+// > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationMattermost`instead!
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#mattermost-notifications)
 //
@@ -56,7 +58,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_mattermost`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_mattermost`. For example:
 //
 // terraform
 //
@@ -68,7 +70,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 //
