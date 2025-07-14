@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_hook`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_hook`. For example:
  * 
  * terraform
  * 
@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, e.g.
  * 

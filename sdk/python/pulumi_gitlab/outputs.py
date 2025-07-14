@@ -38,6 +38,7 @@ __all__ = [
     'ProjectHookCustomHeader',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
+    'ProjectPagesSettingsDeployment',
     'ProjectProtectedEnvironmentApprovalRule',
     'ProjectProtectedEnvironmentDeployAccessLevel',
     'ProjectPushRules',
@@ -81,6 +82,10 @@ __all__ = [
     'GetProjectMergeRequestAssigneeResult',
     'GetProjectMergeRequestAuthorResult',
     'GetProjectMergeRequestClosedByResult',
+    'GetProjectMergeRequestsMergeRequestResult',
+    'GetProjectMergeRequestsMergeRequestAssigneeResult',
+    'GetProjectMergeRequestsMergeRequestAuthorResult',
+    'GetProjectMergeRequestsMergeRequestClosedByResult',
     'GetProjectMilestonesMilestoneResult',
     'GetProjectProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchPushAccessLevelResult',
@@ -1769,6 +1774,82 @@ class ProjectIssueTaskCompletionStatus(dict):
         The number of tasks.
         """
         return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class ProjectPagesSettingsDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "pathPrefix":
+            suggest = "path_prefix"
+        elif key == "rootDirectory":
+            suggest = "root_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectPagesSettingsDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectPagesSettingsDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectPagesSettingsDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_at: Optional[builtins.str] = None,
+                 path_prefix: Optional[builtins.str] = None,
+                 root_directory: Optional[builtins.str] = None,
+                 url: Optional[builtins.str] = None):
+        """
+        :param builtins.str created_at: Date the deployment was created.
+        :param builtins.str path_prefix: The path prefix of the deployment when using parallel deployments.
+        :param builtins.str root_directory: The root directory of the deployment.
+        :param builtins.str url: The URL of the deployment.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if path_prefix is not None:
+            pulumi.set(__self__, "path_prefix", path_prefix)
+        if root_directory is not None:
+            pulumi.set(__self__, "root_directory", root_directory)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[builtins.str]:
+        """
+        Date the deployment was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> Optional[builtins.str]:
+        """
+        The path prefix of the deployment when using parallel deployments.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> Optional[builtins.str]:
+        """
+        The root directory of the deployment.
+        """
+        return pulumi.get(self, "root_directory")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[builtins.str]:
+        """
+        The URL of the deployment.
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -6676,6 +6757,333 @@ class GetProjectMergeRequestClosedByResult(dict):
 
 
 @pulumi.output_type
+class GetProjectMergeRequestsMergeRequestResult(dict):
+    def __init__(__self__, *,
+                 assignee: 'outputs.GetProjectMergeRequestsMergeRequestAssigneeResult',
+                 assignees: Sequence['outputs.GetProjectMergeRequestsMergeRequestAssigneeResult'],
+                 author: 'outputs.GetProjectMergeRequestsMergeRequestAuthorResult',
+                 blocking_discussions_resolved: builtins.bool,
+                 closed_at: builtins.str,
+                 closed_by: 'outputs.GetProjectMergeRequestsMergeRequestClosedByResult',
+                 created_at: builtins.str,
+                 id: builtins.int,
+                 iid: builtins.int):
+        """
+        :param 'GetProjectMergeRequestsMergeRequestAssigneeArgs' assignee: First assignee of the merge request.
+        :param Sequence['GetProjectMergeRequestsMergeRequestAssigneeArgs'] assignees: Assignees of the merge request.
+        :param 'GetProjectMergeRequestsMergeRequestAuthorArgs' author: User who created this merge request.
+        :param builtins.bool blocking_discussions_resolved: Indicates if all discussions are resolved only if all are
+               required before merge request can be merged.
+        :param builtins.str closed_at: Timestamp of when the merge request was closed.
+        :param 'GetProjectMergeRequestsMergeRequestClosedByArgs' closed_by: User who closed this merge request.
+        :param builtins.str created_at: Timestamp of when the merge request was created.
+        :param builtins.int id: The unique instance level ID of the merge request.
+        :param builtins.int iid: The unique project level ID of the merge request.
+        """
+        pulumi.set(__self__, "assignee", assignee)
+        pulumi.set(__self__, "assignees", assignees)
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "blocking_discussions_resolved", blocking_discussions_resolved)
+        pulumi.set(__self__, "closed_at", closed_at)
+        pulumi.set(__self__, "closed_by", closed_by)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "iid", iid)
+
+    @property
+    @pulumi.getter
+    def assignee(self) -> 'outputs.GetProjectMergeRequestsMergeRequestAssigneeResult':
+        """
+        First assignee of the merge request.
+        """
+        return pulumi.get(self, "assignee")
+
+    @property
+    @pulumi.getter
+    def assignees(self) -> Sequence['outputs.GetProjectMergeRequestsMergeRequestAssigneeResult']:
+        """
+        Assignees of the merge request.
+        """
+        return pulumi.get(self, "assignees")
+
+    @property
+    @pulumi.getter
+    def author(self) -> 'outputs.GetProjectMergeRequestsMergeRequestAuthorResult':
+        """
+        User who created this merge request.
+        """
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter(name="blockingDiscussionsResolved")
+    def blocking_discussions_resolved(self) -> builtins.bool:
+        """
+        Indicates if all discussions are resolved only if all are
+        required before merge request can be merged.
+        """
+        return pulumi.get(self, "blocking_discussions_resolved")
+
+    @property
+    @pulumi.getter(name="closedAt")
+    def closed_at(self) -> builtins.str:
+        """
+        Timestamp of when the merge request was closed.
+        """
+        return pulumi.get(self, "closed_at")
+
+    @property
+    @pulumi.getter(name="closedBy")
+    def closed_by(self) -> 'outputs.GetProjectMergeRequestsMergeRequestClosedByResult':
+        """
+        User who closed this merge request.
+        """
+        return pulumi.get(self, "closed_by")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> builtins.str:
+        """
+        Timestamp of when the merge request was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.int:
+        """
+        The unique instance level ID of the merge request.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def iid(self) -> builtins.int:
+        """
+        The unique project level ID of the merge request.
+        """
+        return pulumi.get(self, "iid")
+
+
+@pulumi.output_type
+class GetProjectMergeRequestsMergeRequestAssigneeResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: builtins.str,
+                 id: builtins.int,
+                 name: builtins.str,
+                 state: builtins.str,
+                 username: builtins.str,
+                 web_url: builtins.str):
+        """
+        :param builtins.str avatar_url: A link to the user's avatar image.
+        :param builtins.int id: The internal ID number of the user.
+        :param builtins.str name: The name of the user.
+        :param builtins.str state: The state of the user account.
+        :param builtins.str username: The username of the user.
+        :param builtins.str web_url: A link to the user's profile page.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> builtins.str:
+        """
+        A link to the user's avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.int:
+        """
+        The internal ID number of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        The state of the user account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> builtins.str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> builtins.str:
+        """
+        A link to the user's profile page.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectMergeRequestsMergeRequestAuthorResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: builtins.str,
+                 id: builtins.int,
+                 name: builtins.str,
+                 state: builtins.str,
+                 username: builtins.str,
+                 web_url: builtins.str):
+        """
+        :param builtins.str avatar_url: A link to the user's avatar image.
+        :param builtins.int id: The internal ID number of the user.
+        :param builtins.str name: The name of the user.
+        :param builtins.str state: The state of the user account.
+        :param builtins.str username: The username of the user.
+        :param builtins.str web_url: A link to the user's profile page.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> builtins.str:
+        """
+        A link to the user's avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.int:
+        """
+        The internal ID number of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        The state of the user account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> builtins.str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> builtins.str:
+        """
+        A link to the user's profile page.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectMergeRequestsMergeRequestClosedByResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: builtins.str,
+                 id: builtins.int,
+                 name: builtins.str,
+                 state: builtins.str,
+                 username: builtins.str,
+                 web_url: builtins.str):
+        """
+        :param builtins.str avatar_url: A link to the user's avatar image.
+        :param builtins.int id: The internal ID number of the user.
+        :param builtins.str name: The name of the user.
+        :param builtins.str state: The state of the user account.
+        :param builtins.str username: The username of the user.
+        :param builtins.str web_url: A link to the user's profile page.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> builtins.str:
+        """
+        A link to the user's avatar image.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.int:
+        """
+        The internal ID number of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        The state of the user account.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def username(self) -> builtins.str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> builtins.str:
+        """
+        A link to the user's profile page.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
 class GetProjectMilestonesMilestoneResult(dict):
     def __init__(__self__, *,
                  created_at: builtins.str,
@@ -8009,6 +8417,7 @@ class GetProjectsProjectResult(dict):
                  ci_default_git_depth: builtins.int,
                  ci_delete_pipelines_in_seconds: builtins.int,
                  ci_forward_deployment_enabled: builtins.bool,
+                 ci_forward_deployment_rollback_allowed: builtins.bool,
                  ci_id_token_sub_claim_components: Sequence[builtins.str],
                  ci_pipeline_variables_minimum_override_role: builtins.str,
                  ci_restrict_pipeline_cancellation_role: builtins.str,
@@ -8113,6 +8522,7 @@ class GetProjectsProjectResult(dict):
         :param builtins.int ci_default_git_depth: Default number of revisions for shallow cloning.
         :param builtins.int ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param builtins.bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param builtins.bool ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param Sequence[builtins.str] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
         :param builtins.str ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param builtins.str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -8216,6 +8626,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
         pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        pulumi.set(__self__, "ci_forward_deployment_rollback_allowed", ci_forward_deployment_rollback_allowed)
         pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
         pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
@@ -8452,6 +8863,14 @@ class GetProjectsProjectResult(dict):
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentRollbackAllowed")
+    def ci_forward_deployment_rollback_allowed(self) -> builtins.bool:
+        """
+        Allow job retries even if the deployment job is outdated.
+        """
+        return pulumi.get(self, "ci_forward_deployment_rollback_allowed")
 
     @property
     @pulumi.getter(name="ciIdTokenSubClaimComponents")

@@ -68,7 +68,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_hook`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_hook`. For example:
 //
 // terraform
 //
@@ -80,7 +80,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // A GitLab Project Hook can be imported using a key composed of `<project-id>:<hook-id>`, e.g.
 //

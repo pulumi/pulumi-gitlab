@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserResult {
@@ -52,6 +54,11 @@ public final class GetUserResult {
      * 
      */
     private String email;
+    /**
+     * @return (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     * 
+     */
+    private @Nullable Boolean emailExactMatch;
     /**
      * @return The external UID of the user.
      * 
@@ -219,6 +226,13 @@ public final class GetUserResult {
      */
     public String email() {
         return this.email;
+    }
+    /**
+     * @return (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     * 
+     */
+    public Optional<Boolean> emailExactMatch() {
+        return Optional.ofNullable(this.emailExactMatch);
     }
     /**
      * @return The external UID of the user.
@@ -392,6 +406,7 @@ public final class GetUserResult {
         private String createdAt;
         private String currentSignInAt;
         private String email;
+        private @Nullable Boolean emailExactMatch;
         private String externUid;
         private Boolean external;
         private String id;
@@ -425,6 +440,7 @@ public final class GetUserResult {
     	      this.createdAt = defaults.createdAt;
     	      this.currentSignInAt = defaults.currentSignInAt;
     	      this.email = defaults.email;
+    	      this.emailExactMatch = defaults.emailExactMatch;
     	      this.externUid = defaults.externUid;
     	      this.external = defaults.external;
     	      this.id = defaults.id;
@@ -511,6 +527,12 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "email");
             }
             this.email = email;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emailExactMatch(@Nullable Boolean emailExactMatch) {
+
+            this.emailExactMatch = emailExactMatch;
             return this;
         }
         @CustomType.Setter
@@ -699,6 +721,7 @@ public final class GetUserResult {
             _resultValue.createdAt = createdAt;
             _resultValue.currentSignInAt = currentSignInAt;
             _resultValue.email = email;
+            _resultValue.emailExactMatch = emailExactMatch;
             _resultValue.externUid = externUid;
             _resultValue.external = external;
             _resultValue.id = id;

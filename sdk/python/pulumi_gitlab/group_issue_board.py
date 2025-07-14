@@ -207,11 +207,33 @@ class GroupIssueBoard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupIssueBoard` resource allows to manage the lifecycle of a issue board in a group.
+        The `GroupIssueBoard` resource manages the lifecycle of an issue board in a group.
 
         > Multiple issue boards on one group requires a GitLab Premium or above License.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
+
+        ## Import
+
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_issue_board`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_issue_board.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Importing using the CLI is supported with the following syntax:
+
+        Gitlab group issue boards can be imported with a key composed of `<group-id>:<issue-board-id>`, for example:
+
+        ```sh
+        $ pulumi import gitlab:index/groupIssueBoard:GroupIssueBoard example "12345:1"
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,11 +250,33 @@ class GroupIssueBoard(pulumi.CustomResource):
                  args: GroupIssueBoardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupIssueBoard` resource allows to manage the lifecycle of a issue board in a group.
+        The `GroupIssueBoard` resource manages the lifecycle of an issue board in a group.
 
         > Multiple issue boards on one group requires a GitLab Premium or above License.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_boards/)
+
+        ## Import
+
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_issue_board`. For example:
+
+        terraform
+
+        import {
+
+          to = gitlab_group_issue_board.example
+
+          id = "see CLI command below for ID"
+
+        }
+
+        Importing using the CLI is supported with the following syntax:
+
+        Gitlab group issue boards can be imported with a key composed of `<group-id>:<issue-board-id>`, for example:
+
+        ```sh
+        $ pulumi import gitlab:index/groupIssueBoard:GroupIssueBoard example "12345:1"
+        ```
 
         :param str resource_name: The name of the resource.
         :param GroupIssueBoardArgs args: The arguments to use to populate this resource's properties.

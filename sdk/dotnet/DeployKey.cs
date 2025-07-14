@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.
+    /// The `gitlab.DeployKey` resource manages the lifecycle of a project deploy key.
     /// 
     /// &gt; To enable an already existing deploy key for another project use the `gitlab.DeployKeyEnable` resource.
     /// 
@@ -26,6 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // No expiry
     ///     var example = new GitLab.DeployKey("example", new()
     ///     {
     ///         Project = "example/deploying",
@@ -33,12 +34,21 @@ namespace Pulumi.GitLab
     ///         Key = "ssh-ed25519 AAAA...",
     ///     });
     /// 
+    ///     // With expiry
+    ///     var exampleExpires = new GitLab.DeployKey("example_expires", new()
+    ///     {
+    ///         Project = "example/deploying",
+    ///         Title = "Example deploy key",
+    ///         Key = "ssh-ed25519 AAAA...",
+    ///         ExpiresAt = "2025-01-21T00:00:00Z",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key`. For example:
     /// 
     /// terraform
     /// 
@@ -50,7 +60,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
     /// 
@@ -80,6 +90,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("deployKeyId")]
         public Output<int> DeployKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The public ssh key body.
@@ -152,6 +168,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CanPush { get; set; }
 
         /// <summary>
+        /// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
+
+        /// <summary>
         /// The public ssh key body.
         /// </summary>
         [Input("key", required: true)]
@@ -188,6 +210,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("deployKeyId")]
         public Input<int>? DeployKeyId { get; set; }
+
+        /// <summary>
+        /// Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// The public ssh key body.

@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.DeployKey` resource allows to manage the lifecycle of a deploy key.
+ * The `gitlab.DeployKey` resource manages the lifecycle of a project deploy key.
  * 
  * &gt; To enable an already existing deploy key for another project use the `gitlab.DeployKeyEnable` resource.
  * 
@@ -48,10 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // No expiry
  *         var example = new DeployKey("example", DeployKeyArgs.builder()
  *             .project("example/deploying")
  *             .title("Example deploy key")
  *             .key("ssh-ed25519 AAAA...")
+ *             .build());
+ * 
+ *         // With expiry
+ *         var exampleExpires = new DeployKey("exampleExpires", DeployKeyArgs.builder()
+ *             .project("example/deploying")
+ *             .title("Example deploy key")
+ *             .key("ssh-ed25519 AAAA...")
+ *             .expiresAt("2025-01-21T00:00:00Z")
  *             .build());
  * 
  *     }
@@ -62,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_deploy_key`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key`. For example:
  * 
  * terraform
  * 
@@ -74,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
  * 
@@ -120,6 +129,20 @@ public class DeployKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> deployKeyId() {
         return this.deployKeyId;
+    }
+    /**
+     * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     * 
+     */
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expiresAt;
+
+    /**
+     * @return Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
+     * 
+     */
+    public Output<Optional<String>> expiresAt() {
+        return Codegen.optional(this.expiresAt);
     }
     /**
      * The public ssh key body.

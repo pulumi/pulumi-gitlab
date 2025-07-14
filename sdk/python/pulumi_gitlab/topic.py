@@ -229,7 +229,7 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_topic`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_topic`. For example:
 
         terraform
 
@@ -241,7 +241,7 @@ class Topic(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.
@@ -278,7 +278,7 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_topic`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_topic`. For example:
 
         terraform
 
@@ -290,7 +290,7 @@ class Topic(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.

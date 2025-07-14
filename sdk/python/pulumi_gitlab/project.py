@@ -31,9 +31,11 @@ class ProjectArgs:
                  auto_cancel_pending_pipelines: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_deploy_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 auto_duo_code_review_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
+                 branches: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -41,6 +43,7 @@ class ProjectArgs:
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
                  ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
@@ -136,9 +139,11 @@ class ProjectArgs:
         :param pulumi.Input[builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
         :param pulumi.Input[builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
+        :param pulumi.Input[builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[builtins.str] branches: Branches to fork (empty for all branches).
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -146,6 +151,7 @@ class ProjectArgs:
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -250,12 +256,16 @@ class ProjectArgs:
             pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if auto_duo_code_review_enabled is not None:
+            pulumi.set(__self__, "auto_duo_code_review_enabled", auto_duo_code_review_enabled)
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         if avatar is not None:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
+        if branches is not None:
+            pulumi.set(__self__, "branches", branches)
         if build_git_strategy is not None:
             pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         if build_timeout is not None:
@@ -270,6 +280,8 @@ class ProjectArgs:
             pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_forward_deployment_rollback_allowed is not None:
+            pulumi.set(__self__, "ci_forward_deployment_rollback_allowed", ci_forward_deployment_rollback_allowed)
         if ci_id_token_sub_claim_components is not None:
             pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role is not None:
@@ -554,6 +566,18 @@ class ProjectArgs:
         pulumi.set(self, "auto_devops_enabled", value)
 
     @property
+    @pulumi.getter(name="autoDuoCodeReviewEnabled")
+    def auto_duo_code_review_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+        """
+        return pulumi.get(self, "auto_duo_code_review_enabled")
+
+    @auto_duo_code_review_enabled.setter
+    def auto_duo_code_review_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "auto_duo_code_review_enabled", value)
+
+    @property
     @pulumi.getter(name="autocloseReferencedIssues")
     def autoclose_referenced_issues(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -588,6 +612,18 @@ class ProjectArgs:
     @avatar_hash.setter
     def avatar_hash(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
+
+    @property
+    @pulumi.getter
+    def branches(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Branches to fork (empty for all branches).
+        """
+        return pulumi.get(self, "branches")
+
+    @branches.setter
+    def branches(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "branches", value)
 
     @property
     @pulumi.getter(name="buildGitStrategy")
@@ -672,6 +708,18 @@ class ProjectArgs:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentRollbackAllowed")
+    def ci_forward_deployment_rollback_allowed(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Allow job retries even if the deployment job is outdated.
+        """
+        return pulumi.get(self, "ci_forward_deployment_rollback_allowed")
+
+    @ci_forward_deployment_rollback_allowed.setter
+    def ci_forward_deployment_rollback_allowed(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "ci_forward_deployment_rollback_allowed", value)
 
     @property
     @pulumi.getter(name="ciIdTokenSubClaimComponents")
@@ -1665,10 +1713,12 @@ class _ProjectState:
                  auto_cancel_pending_pipelines: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_deploy_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 auto_duo_code_review_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_url: Optional[pulumi.Input[builtins.str]] = None,
+                 branches: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -1676,6 +1726,7 @@ class _ProjectState:
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
                  ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
@@ -1777,10 +1828,12 @@ class _ProjectState:
         :param pulumi.Input[builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
         :param pulumi.Input[builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
+        :param pulumi.Input[builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[builtins.str] avatar_url: The URL of the avatar image.
+        :param pulumi.Input[builtins.str] branches: Branches to fork (empty for all branches).
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1788,6 +1841,7 @@ class _ProjectState:
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -1898,6 +1952,8 @@ class _ProjectState:
             pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if auto_duo_code_review_enabled is not None:
+            pulumi.set(__self__, "auto_duo_code_review_enabled", auto_duo_code_review_enabled)
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         if avatar is not None:
@@ -1906,6 +1962,8 @@ class _ProjectState:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
         if avatar_url is not None:
             pulumi.set(__self__, "avatar_url", avatar_url)
+        if branches is not None:
+            pulumi.set(__self__, "branches", branches)
         if build_git_strategy is not None:
             pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         if build_timeout is not None:
@@ -1920,6 +1978,8 @@ class _ProjectState:
             pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
         if ci_forward_deployment_enabled is not None:
             pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
+        if ci_forward_deployment_rollback_allowed is not None:
+            pulumi.set(__self__, "ci_forward_deployment_rollback_allowed", ci_forward_deployment_rollback_allowed)
         if ci_id_token_sub_claim_components is not None:
             pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role is not None:
@@ -2216,6 +2276,18 @@ class _ProjectState:
         pulumi.set(self, "auto_devops_enabled", value)
 
     @property
+    @pulumi.getter(name="autoDuoCodeReviewEnabled")
+    def auto_duo_code_review_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+        """
+        return pulumi.get(self, "auto_duo_code_review_enabled")
+
+    @auto_duo_code_review_enabled.setter
+    def auto_duo_code_review_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "auto_duo_code_review_enabled", value)
+
+    @property
     @pulumi.getter(name="autocloseReferencedIssues")
     def autoclose_referenced_issues(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -2262,6 +2334,18 @@ class _ProjectState:
     @avatar_url.setter
     def avatar_url(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "avatar_url", value)
+
+    @property
+    @pulumi.getter
+    def branches(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Branches to fork (empty for all branches).
+        """
+        return pulumi.get(self, "branches")
+
+    @branches.setter
+    def branches(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "branches", value)
 
     @property
     @pulumi.getter(name="buildGitStrategy")
@@ -2346,6 +2430,18 @@ class _ProjectState:
     @ci_forward_deployment_enabled.setter
     def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentRollbackAllowed")
+    def ci_forward_deployment_rollback_allowed(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Allow job retries even if the deployment job is outdated.
+        """
+        return pulumi.get(self, "ci_forward_deployment_rollback_allowed")
+
+    @ci_forward_deployment_rollback_allowed.setter
+    def ci_forward_deployment_rollback_allowed(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "ci_forward_deployment_rollback_allowed", value)
 
     @property
     @pulumi.getter(name="ciIdTokenSubClaimComponents")
@@ -3414,9 +3510,11 @@ class Project(pulumi.CustomResource):
                  auto_cancel_pending_pipelines: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_deploy_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 auto_duo_code_review_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
+                 branches: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -3424,6 +3522,7 @@ class Project(pulumi.CustomResource):
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
                  ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
@@ -3511,7 +3610,7 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
 
         terraform
 
@@ -3523,7 +3622,7 @@ class Project(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
@@ -3553,9 +3652,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
         :param pulumi.Input[builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
+        :param pulumi.Input[builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[builtins.str] branches: Branches to fork (empty for all branches).
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3563,6 +3664,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -3660,7 +3762,7 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
 
         terraform
 
@@ -3672,7 +3774,7 @@ class Project(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         ```sh
         $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
@@ -3712,9 +3814,11 @@ class Project(pulumi.CustomResource):
                  auto_cancel_pending_pipelines: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_deploy_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 auto_duo_code_review_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[builtins.str]] = None,
                  avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
+                 branches: Optional[pulumi.Input[builtins.str]] = None,
                  build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  build_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -3722,6 +3826,7 @@ class Project(pulumi.CustomResource):
                  ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
                  ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
@@ -3821,9 +3926,11 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["auto_cancel_pending_pipelines"] = auto_cancel_pending_pipelines
             __props__.__dict__["auto_devops_deploy_strategy"] = auto_devops_deploy_strategy
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+            __props__.__dict__["auto_duo_code_review_enabled"] = auto_duo_code_review_enabled
             __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
+            __props__.__dict__["branches"] = branches
             __props__.__dict__["build_git_strategy"] = build_git_strategy
             __props__.__dict__["build_timeout"] = build_timeout
             __props__.__dict__["builds_access_level"] = builds_access_level
@@ -3831,6 +3938,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
             __props__.__dict__["ci_delete_pipelines_in_seconds"] = ci_delete_pipelines_in_seconds
             __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+            __props__.__dict__["ci_forward_deployment_rollback_allowed"] = ci_forward_deployment_rollback_allowed
             __props__.__dict__["ci_id_token_sub_claim_components"] = ci_id_token_sub_claim_components
             __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
             __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
@@ -3940,10 +4048,12 @@ class Project(pulumi.CustomResource):
             auto_cancel_pending_pipelines: Optional[pulumi.Input[builtins.str]] = None,
             auto_devops_deploy_strategy: Optional[pulumi.Input[builtins.str]] = None,
             auto_devops_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            auto_duo_code_review_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             autoclose_referenced_issues: Optional[pulumi.Input[builtins.bool]] = None,
             avatar: Optional[pulumi.Input[builtins.str]] = None,
             avatar_hash: Optional[pulumi.Input[builtins.str]] = None,
             avatar_url: Optional[pulumi.Input[builtins.str]] = None,
+            branches: Optional[pulumi.Input[builtins.str]] = None,
             build_git_strategy: Optional[pulumi.Input[builtins.str]] = None,
             build_timeout: Optional[pulumi.Input[builtins.int]] = None,
             builds_access_level: Optional[pulumi.Input[builtins.str]] = None,
@@ -3951,6 +4061,7 @@ class Project(pulumi.CustomResource):
             ci_default_git_depth: Optional[pulumi.Input[builtins.int]] = None,
             ci_delete_pipelines_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
             ci_forward_deployment_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
             ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
             ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
@@ -4057,10 +4168,12 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
         :param pulumi.Input[builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
+        :param pulumi.Input[builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
         :param pulumi.Input[builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[builtins.str] avatar_url: The URL of the avatar image.
+        :param pulumi.Input[builtins.str] branches: Branches to fork (empty for all branches).
         :param pulumi.Input[builtins.str] build_git_strategy: The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         :param pulumi.Input[builtins.int] build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param pulumi.Input[builtins.str] builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4068,6 +4181,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] ci_default_git_depth: Default number of revisions for shallow cloning.
         :param pulumi.Input[builtins.int] ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
         :param pulumi.Input[builtins.bool] ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
+        :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
@@ -4173,10 +4287,12 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["auto_cancel_pending_pipelines"] = auto_cancel_pending_pipelines
         __props__.__dict__["auto_devops_deploy_strategy"] = auto_devops_deploy_strategy
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+        __props__.__dict__["auto_duo_code_review_enabled"] = auto_duo_code_review_enabled
         __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
         __props__.__dict__["avatar_url"] = avatar_url
+        __props__.__dict__["branches"] = branches
         __props__.__dict__["build_git_strategy"] = build_git_strategy
         __props__.__dict__["build_timeout"] = build_timeout
         __props__.__dict__["builds_access_level"] = builds_access_level
@@ -4184,6 +4300,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["ci_default_git_depth"] = ci_default_git_depth
         __props__.__dict__["ci_delete_pipelines_in_seconds"] = ci_delete_pipelines_in_seconds
         __props__.__dict__["ci_forward_deployment_enabled"] = ci_forward_deployment_enabled
+        __props__.__dict__["ci_forward_deployment_rollback_allowed"] = ci_forward_deployment_rollback_allowed
         __props__.__dict__["ci_id_token_sub_claim_components"] = ci_id_token_sub_claim_components
         __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
         __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
@@ -4349,6 +4466,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "auto_devops_enabled")
 
     @property
+    @pulumi.getter(name="autoDuoCodeReviewEnabled")
+    def auto_duo_code_review_enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+        """
+        return pulumi.get(self, "auto_duo_code_review_enabled")
+
+    @property
     @pulumi.getter(name="autocloseReferencedIssues")
     def autoclose_referenced_issues(self) -> pulumi.Output[builtins.bool]:
         """
@@ -4379,6 +4504,14 @@ class Project(pulumi.CustomResource):
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
+
+    @property
+    @pulumi.getter
+    def branches(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Branches to fork (empty for all branches).
+        """
+        return pulumi.get(self, "branches")
 
     @property
     @pulumi.getter(name="buildGitStrategy")
@@ -4435,6 +4568,14 @@ class Project(pulumi.CustomResource):
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="ciForwardDeploymentRollbackAllowed")
+    def ci_forward_deployment_rollback_allowed(self) -> pulumi.Output[builtins.bool]:
+        """
+        Allow job retries even if the deployment job is outdated.
+        """
+        return pulumi.get(self, "ci_forward_deployment_rollback_allowed")
 
     @property
     @pulumi.getter(name="ciIdTokenSubClaimComponents")

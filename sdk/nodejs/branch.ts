@@ -7,10 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Branch` resource allows to manage the lifecycle of a repository branch.
- *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
- *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_branch`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch`. For example:
  *
  * terraform
  *
@@ -44,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
  *

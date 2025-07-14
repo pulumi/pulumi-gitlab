@@ -32,6 +32,21 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    @Import(name="colorHex")
+    private @Nullable Output<String> colorHex;
+
+    /**
+     * @return Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    public Optional<Output<String>> colorHex() {
+        return Optional.ofNullable(this.colorHex);
+    }
+
+    /**
      * The description of the label.
      * 
      */
@@ -95,6 +110,7 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
 
     private LabelState(LabelState $) {
         this.color = $.color;
+        this.colorHex = $.colorHex;
         this.description = $.description;
         this.labelId = $.labelId;
         this.name = $.name;
@@ -138,6 +154,27 @@ public final class LabelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder color(String color) {
             return color(Output.of(color));
+        }
+
+        /**
+         * @param colorHex Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder colorHex(@Nullable Output<String> colorHex) {
+            $.colorHex = colorHex;
+            return this;
+        }
+
+        /**
+         * @param colorHex Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder colorHex(String colorHex) {
+            return colorHex(Output.of(colorHex));
         }
 
         /**

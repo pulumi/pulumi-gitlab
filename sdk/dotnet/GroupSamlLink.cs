@@ -48,7 +48,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_saml_link`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_saml_link`. For example:
     /// 
     /// terraform
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
     /// 
@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
     public partial class GroupSamlLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.GitLab
     public sealed class GroupSamlLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
     public sealed class GroupSamlLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

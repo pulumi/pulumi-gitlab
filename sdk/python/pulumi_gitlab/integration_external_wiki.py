@@ -185,7 +185,9 @@ class IntegrationExternalWiki(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `IntegrationExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
+        The `IntegrationExternalWiki` resource manages the lifecycle of a project integration with the External Wiki Service.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationExternalWiki`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#external-wiki)
 
@@ -206,7 +208,7 @@ class IntegrationExternalWiki(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_external_wiki`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_external_wiki`. For example:
 
         terraform
 
@@ -218,7 +220,7 @@ class IntegrationExternalWiki(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_external_wiki state using the project ID, e.g.
 
@@ -238,7 +240,9 @@ class IntegrationExternalWiki(pulumi.CustomResource):
                  args: IntegrationExternalWikiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationExternalWiki` resource allows to manage the lifecycle of a project integration with External Wiki Service.
+        The `IntegrationExternalWiki` resource manages the lifecycle of a project integration with the External Wiki Service.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationExternalWiki`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#external-wiki)
 
@@ -259,7 +263,7 @@ class IntegrationExternalWiki(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_external_wiki`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_external_wiki`. For example:
 
         terraform
 
@@ -271,7 +275,7 @@ class IntegrationExternalWiki(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_external_wiki state using the project ID, e.g.
 

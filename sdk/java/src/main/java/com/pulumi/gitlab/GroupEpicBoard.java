@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_epic_board`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_epic_board`. For example:
  * 
  * terraform
  * 
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
  * 

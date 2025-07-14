@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetGroupServiceAccount
     {
         /// <summary>
-        /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+        /// The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+        /// The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+        /// The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
         /// </summary>

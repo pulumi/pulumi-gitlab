@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.IntegrationTelegram` resource allows to manage the lifecycle of a project integration with Telegram.
+ * The `gitlab.IntegrationTelegram` resource manages the lifecycle of a project integration with Telegram.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#telegram)
  * 
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_telegram`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
  * 
  * terraform
  * 
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * You can import a gitlab_integration_telegram state using the project ID, e.g.
  * 

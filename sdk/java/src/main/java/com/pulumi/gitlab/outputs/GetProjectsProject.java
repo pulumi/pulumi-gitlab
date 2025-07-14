@@ -116,6 +116,11 @@ public final class GetProjectsProject {
      */
     private Boolean ciForwardDeploymentEnabled;
     /**
+     * @return Allow job retries even if the deployment job is outdated.
+     * 
+     */
+    private Boolean ciForwardDeploymentRollbackAllowed;
+    /**
      * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to [&#34;project_path&#34;, &#34;ref_type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
      * 
      */
@@ -665,6 +670,13 @@ public final class GetProjectsProject {
      */
     public Boolean ciForwardDeploymentEnabled() {
         return this.ciForwardDeploymentEnabled;
+    }
+    /**
+     * @return Allow job retries even if the deployment job is outdated.
+     * 
+     */
+    public Boolean ciForwardDeploymentRollbackAllowed() {
+        return this.ciForwardDeploymentRollbackAllowed;
     }
     /**
      * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to [&#34;project_path&#34;, &#34;ref_type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
@@ -1279,6 +1291,7 @@ public final class GetProjectsProject {
         private Integer ciDefaultGitDepth;
         private Integer ciDeletePipelinesInSeconds;
         private Boolean ciForwardDeploymentEnabled;
+        private Boolean ciForwardDeploymentRollbackAllowed;
         private List<String> ciIdTokenSubClaimComponents;
         private String ciPipelineVariablesMinimumOverrideRole;
         private String ciRestrictPipelineCancellationRole;
@@ -1385,6 +1398,7 @@ public final class GetProjectsProject {
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
     	      this.ciDeletePipelinesInSeconds = defaults.ciDeletePipelinesInSeconds;
     	      this.ciForwardDeploymentEnabled = defaults.ciForwardDeploymentEnabled;
+    	      this.ciForwardDeploymentRollbackAllowed = defaults.ciForwardDeploymentRollbackAllowed;
     	      this.ciIdTokenSubClaimComponents = defaults.ciIdTokenSubClaimComponents;
     	      this.ciPipelineVariablesMinimumOverrideRole = defaults.ciPipelineVariablesMinimumOverrideRole;
     	      this.ciRestrictPipelineCancellationRole = defaults.ciRestrictPipelineCancellationRole;
@@ -1621,6 +1635,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "ciForwardDeploymentEnabled");
             }
             this.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciForwardDeploymentRollbackAllowed(Boolean ciForwardDeploymentRollbackAllowed) {
+            if (ciForwardDeploymentRollbackAllowed == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciForwardDeploymentRollbackAllowed");
+            }
+            this.ciForwardDeploymentRollbackAllowed = ciForwardDeploymentRollbackAllowed;
             return this;
         }
         @CustomType.Setter
@@ -2343,6 +2365,7 @@ public final class GetProjectsProject {
             _resultValue.ciDefaultGitDepth = ciDefaultGitDepth;
             _resultValue.ciDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
             _resultValue.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
+            _resultValue.ciForwardDeploymentRollbackAllowed = ciForwardDeploymentRollbackAllowed;
             _resultValue.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
             _resultValue.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
             _resultValue.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;

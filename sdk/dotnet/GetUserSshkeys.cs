@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetUserSshkeys
     {
         /// <summary>
-        /// The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+        /// The `gitlab.getUserSshkeys` data source retrieves a list of SSH keys for a user.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserSshkeysResult>("gitlab:index/getUserSshkeys:getUserSshkeys", args ?? new GetUserSshkeysArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+        /// The `gitlab.getUserSshkeys` data source retrieves a list of SSH keys for a user.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetUserSshkeysResult>("gitlab:index/getUserSshkeys:getUserSshkeys", args ?? new GetUserSshkeysInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+        /// The `gitlab.getUserSshkeys` data source retrieves a list of SSH keys for a user.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
         /// </summary>

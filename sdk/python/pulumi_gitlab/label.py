@@ -91,6 +91,7 @@ class LabelArgs:
 class _LabelState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[builtins.str]] = None,
+                 color_hex: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  label_id: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -98,6 +99,7 @@ class _LabelState:
         """
         Input properties used for looking up and filtering Label resources.
         :param pulumi.Input[builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[builtins.str] description: The description of the label.
         :param pulumi.Input[builtins.int] label_id: The id of the project label.
         :param pulumi.Input[builtins.str] name: The name of the label.
@@ -105,6 +107,8 @@ class _LabelState:
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
+        if color_hex is not None:
+            pulumi.set(__self__, "color_hex", color_hex)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if label_id is not None:
@@ -125,6 +129,18 @@ class _LabelState:
     @color.setter
     def color(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter(name="colorHex")
+    def color_hex(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        """
+        return pulumi.get(self, "color_hex")
+
+    @color_hex.setter
+    def color_hex(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "color_hex", value)
 
     @property
     @pulumi.getter
@@ -187,9 +203,7 @@ class Label(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `Label` resource allows to manage the lifecycle of a project label.
-
-        > This resource is deprecated. use `ProjectLabel`instead!
+        The `Label` resource manages the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
 
@@ -207,9 +221,7 @@ class Label(pulumi.CustomResource):
                  args: LabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Label` resource allows to manage the lifecycle of a project label.
-
-        > This resource is deprecated. use `ProjectLabel`instead!
+        The `Label` resource manages the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
 
@@ -249,6 +261,7 @@ class Label(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["color_hex"] = None
             __props__.__dict__["label_id"] = None
         super(Label, __self__).__init__(
             'gitlab:index/label:Label',
@@ -261,6 +274,7 @@ class Label(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[builtins.str]] = None,
+            color_hex: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             label_id: Optional[pulumi.Input[builtins.int]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -273,6 +287,7 @@ class Label(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[builtins.str] description: The description of the label.
         :param pulumi.Input[builtins.int] label_id: The id of the project label.
         :param pulumi.Input[builtins.str] name: The name of the label.
@@ -283,6 +298,7 @@ class Label(pulumi.CustomResource):
         __props__ = _LabelState.__new__(_LabelState)
 
         __props__.__dict__["color"] = color
+        __props__.__dict__["color_hex"] = color_hex
         __props__.__dict__["description"] = description
         __props__.__dict__["label_id"] = label_id
         __props__.__dict__["name"] = name
@@ -296,6 +312,14 @@ class Label(pulumi.CustomResource):
         The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
         return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="colorHex")
+    def color_hex(self) -> pulumi.Output[builtins.str]:
+        """
+        Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        """
+        return pulumi.get(self, "color_hex")
 
     @property
     @pulumi.getter

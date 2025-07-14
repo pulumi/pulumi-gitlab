@@ -91,6 +91,7 @@ class ProjectLabelArgs:
 class _ProjectLabelState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[builtins.str]] = None,
+                 color_hex: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  label_id: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -98,6 +99,7 @@ class _ProjectLabelState:
         """
         Input properties used for looking up and filtering ProjectLabel resources.
         :param pulumi.Input[builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[builtins.str] description: The description of the label.
         :param pulumi.Input[builtins.int] label_id: The id of the project label.
         :param pulumi.Input[builtins.str] name: The name of the label.
@@ -105,6 +107,8 @@ class _ProjectLabelState:
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
+        if color_hex is not None:
+            pulumi.set(__self__, "color_hex", color_hex)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if label_id is not None:
@@ -125,6 +129,18 @@ class _ProjectLabelState:
     @color.setter
     def color(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter(name="colorHex")
+    def color_hex(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        """
+        return pulumi.get(self, "color_hex")
+
+    @color_hex.setter
+    def color_hex(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "color_hex", value)
 
     @property
     @pulumi.getter
@@ -187,7 +203,7 @@ class ProjectLabel(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectLabel` resource allows to manage the lifecycle of a project label.
+        The `ProjectLabel` resource manages the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
 
@@ -197,14 +213,15 @@ class ProjectLabel(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        example = gitlab.Project("example", name="project")
         fixme = gitlab.ProjectLabel("fixme",
-            project="example",
+            project=example.id,
             name="fixme",
             description="issue with failing tests",
             color="#ffcc00")
         # Scoped label
         devops_create = gitlab.ProjectLabel("devops_create",
-            project=example["id"],
+            project=example.id,
             name="devops::create",
             description="issue for creating infrastructure resources",
             color="#ffa500")
@@ -212,7 +229,7 @@ class ProjectLabel(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_label`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_label`. For example:
 
         terraform
 
@@ -224,9 +241,9 @@ class ProjectLabel(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
-        Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+        Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
@@ -246,7 +263,7 @@ class ProjectLabel(pulumi.CustomResource):
                  args: ProjectLabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectLabel` resource allows to manage the lifecycle of a project label.
+        The `ProjectLabel` resource manages the lifecycle of a project label.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
 
@@ -256,14 +273,15 @@ class ProjectLabel(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        example = gitlab.Project("example", name="project")
         fixme = gitlab.ProjectLabel("fixme",
-            project="example",
+            project=example.id,
             name="fixme",
             description="issue with failing tests",
             color="#ffcc00")
         # Scoped label
         devops_create = gitlab.ProjectLabel("devops_create",
-            project=example["id"],
+            project=example.id,
             name="devops::create",
             description="issue for creating infrastructure resources",
             color="#ffa500")
@@ -271,7 +289,7 @@ class ProjectLabel(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_label`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_label`. For example:
 
         terraform
 
@@ -283,9 +301,9 @@ class ProjectLabel(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
-        Gitlab Project labels can be imported using an id made up of `{project_id}:{group_label_id}`, e.g.
+        Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
@@ -327,6 +345,7 @@ class ProjectLabel(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["color_hex"] = None
             __props__.__dict__["label_id"] = None
         super(ProjectLabel, __self__).__init__(
             'gitlab:index/projectLabel:ProjectLabel',
@@ -339,6 +358,7 @@ class ProjectLabel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[builtins.str]] = None,
+            color_hex: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             label_id: Optional[pulumi.Input[builtins.int]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -351,6 +371,7 @@ class ProjectLabel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        :param pulumi.Input[builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[builtins.str] description: The description of the label.
         :param pulumi.Input[builtins.int] label_id: The id of the project label.
         :param pulumi.Input[builtins.str] name: The name of the label.
@@ -361,6 +382,7 @@ class ProjectLabel(pulumi.CustomResource):
         __props__ = _ProjectLabelState.__new__(_ProjectLabelState)
 
         __props__.__dict__["color"] = color
+        __props__.__dict__["color_hex"] = color_hex
         __props__.__dict__["description"] = description
         __props__.__dict__["label_id"] = label_id
         __props__.__dict__["name"] = name
@@ -374,6 +396,14 @@ class ProjectLabel(pulumi.CustomResource):
         The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         """
         return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="colorHex")
+    def color_hex(self) -> pulumi.Output[builtins.str]:
+        """
+        Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        """
+        return pulumi.get(self, "color_hex")
 
     @property
     @pulumi.getter

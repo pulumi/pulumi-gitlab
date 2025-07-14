@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `IntegrationCustomIssueTracker` resource allows to manage the lifecycle of a project integration with Custom Issue Tracker.
+// The `IntegrationCustomIssueTracker` resource manages the lifecycle of a project integration with a Custom Issue Tracker.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#custom-issue-tracker)
 //
@@ -54,7 +54,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_custom_issue_tracker`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_custom_issue_tracker`. For example:
 //
 // terraform
 //
@@ -66,7 +66,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // You can import a gitlab_integration_custom_issue_tracker state using the project ID, e.g.
 //
