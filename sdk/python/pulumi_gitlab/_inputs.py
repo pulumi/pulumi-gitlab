@@ -58,6 +58,8 @@ __all__ = [
     'ProjectIssueBoardListArgsDict',
     'ProjectIssueTaskCompletionStatusArgs',
     'ProjectIssueTaskCompletionStatusArgsDict',
+    'ProjectPagesSettingsDeploymentArgs',
+    'ProjectPagesSettingsDeploymentArgsDict',
     'ProjectProtectedEnvironmentApprovalRuleArgs',
     'ProjectProtectedEnvironmentApprovalRuleArgsDict',
     'ProjectProtectedEnvironmentDeployAccessLevelArgs',
@@ -2181,6 +2183,98 @@ class ProjectIssueTaskCompletionStatusArgs:
     @count.setter
     def count(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "count", value)
+
+
+if not MYPY:
+    class ProjectPagesSettingsDeploymentArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Date the deployment was created.
+        """
+        path_prefix: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The path prefix of the deployment when using parallel deployments.
+        """
+        root_directory: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The root directory of the deployment.
+        """
+        url: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The URL of the deployment.
+        """
+elif False:
+    ProjectPagesSettingsDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectPagesSettingsDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 path_prefix: Optional[pulumi.Input[builtins.str]] = None,
+                 root_directory: Optional[pulumi.Input[builtins.str]] = None,
+                 url: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] created_at: Date the deployment was created.
+        :param pulumi.Input[builtins.str] path_prefix: The path prefix of the deployment when using parallel deployments.
+        :param pulumi.Input[builtins.str] root_directory: The root directory of the deployment.
+        :param pulumi.Input[builtins.str] url: The URL of the deployment.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if path_prefix is not None:
+            pulumi.set(__self__, "path_prefix", path_prefix)
+        if root_directory is not None:
+            pulumi.set(__self__, "root_directory", root_directory)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Date the deployment was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The path prefix of the deployment when using parallel deployments.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @path_prefix.setter
+    def path_prefix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "path_prefix", value)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The root directory of the deployment.
+        """
+        return pulumi.get(self, "root_directory")
+
+    @root_directory.setter
+    def root_directory(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "root_directory", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The URL of the deployment.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:

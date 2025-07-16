@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.IntegrationEmailsOnPush` resource allows to manage the lifecycle of a project integration with Emails on Push Service.
+    /// The `gitlab.IntegrationEmailsOnPush` resource manages the lifecycle of a project integration with the Emails on Push Service.
+    /// 
+    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationEmailsOnPush`instead!
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)
     /// 
@@ -42,7 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_emails_on_push`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_emails_on_push`. For example:
     /// 
     /// terraform
     /// 
@@ -54,7 +56,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// You can import a gitlab_integration_emails_on_push state using the project ID, e.g.
     /// 

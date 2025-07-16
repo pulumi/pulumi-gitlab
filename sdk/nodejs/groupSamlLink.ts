@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_saml_link`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_saml_link`. For example:
  *
  * terraform
  *
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * GitLab group saml links can be imported using an id made up of `group_id:saml_group_name`, e.g.
  *
@@ -83,7 +83,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
     }
 
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -142,7 +142,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
  */
 export interface GroupSamlLinkState {
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -164,7 +164,7 @@ export interface GroupSamlLinkState {
  */
 export interface GroupSamlLinkArgs {
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
     accessLevel: pulumi.Input<string>;
     /**

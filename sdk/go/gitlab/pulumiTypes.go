@@ -3329,6 +3329,130 @@ func (o ProjectIssueTaskCompletionStatusArrayOutput) Index(i pulumi.IntInput) Pr
 	}).(ProjectIssueTaskCompletionStatusOutput)
 }
 
+type ProjectPagesSettingsDeployment struct {
+	// Date the deployment was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The path prefix of the deployment when using parallel deployments.
+	PathPrefix *string `pulumi:"pathPrefix"`
+	// The root directory of the deployment.
+	RootDirectory *string `pulumi:"rootDirectory"`
+	// The URL of the deployment.
+	Url *string `pulumi:"url"`
+}
+
+// ProjectPagesSettingsDeploymentInput is an input type that accepts ProjectPagesSettingsDeploymentArgs and ProjectPagesSettingsDeploymentOutput values.
+// You can construct a concrete instance of `ProjectPagesSettingsDeploymentInput` via:
+//
+//	ProjectPagesSettingsDeploymentArgs{...}
+type ProjectPagesSettingsDeploymentInput interface {
+	pulumi.Input
+
+	ToProjectPagesSettingsDeploymentOutput() ProjectPagesSettingsDeploymentOutput
+	ToProjectPagesSettingsDeploymentOutputWithContext(context.Context) ProjectPagesSettingsDeploymentOutput
+}
+
+type ProjectPagesSettingsDeploymentArgs struct {
+	// Date the deployment was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The path prefix of the deployment when using parallel deployments.
+	PathPrefix pulumi.StringPtrInput `pulumi:"pathPrefix"`
+	// The root directory of the deployment.
+	RootDirectory pulumi.StringPtrInput `pulumi:"rootDirectory"`
+	// The URL of the deployment.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ProjectPagesSettingsDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPagesSettingsDeployment)(nil)).Elem()
+}
+
+func (i ProjectPagesSettingsDeploymentArgs) ToProjectPagesSettingsDeploymentOutput() ProjectPagesSettingsDeploymentOutput {
+	return i.ToProjectPagesSettingsDeploymentOutputWithContext(context.Background())
+}
+
+func (i ProjectPagesSettingsDeploymentArgs) ToProjectPagesSettingsDeploymentOutputWithContext(ctx context.Context) ProjectPagesSettingsDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPagesSettingsDeploymentOutput)
+}
+
+// ProjectPagesSettingsDeploymentArrayInput is an input type that accepts ProjectPagesSettingsDeploymentArray and ProjectPagesSettingsDeploymentArrayOutput values.
+// You can construct a concrete instance of `ProjectPagesSettingsDeploymentArrayInput` via:
+//
+//	ProjectPagesSettingsDeploymentArray{ ProjectPagesSettingsDeploymentArgs{...} }
+type ProjectPagesSettingsDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToProjectPagesSettingsDeploymentArrayOutput() ProjectPagesSettingsDeploymentArrayOutput
+	ToProjectPagesSettingsDeploymentArrayOutputWithContext(context.Context) ProjectPagesSettingsDeploymentArrayOutput
+}
+
+type ProjectPagesSettingsDeploymentArray []ProjectPagesSettingsDeploymentInput
+
+func (ProjectPagesSettingsDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectPagesSettingsDeployment)(nil)).Elem()
+}
+
+func (i ProjectPagesSettingsDeploymentArray) ToProjectPagesSettingsDeploymentArrayOutput() ProjectPagesSettingsDeploymentArrayOutput {
+	return i.ToProjectPagesSettingsDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectPagesSettingsDeploymentArray) ToProjectPagesSettingsDeploymentArrayOutputWithContext(ctx context.Context) ProjectPagesSettingsDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPagesSettingsDeploymentArrayOutput)
+}
+
+type ProjectPagesSettingsDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ProjectPagesSettingsDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectPagesSettingsDeployment)(nil)).Elem()
+}
+
+func (o ProjectPagesSettingsDeploymentOutput) ToProjectPagesSettingsDeploymentOutput() ProjectPagesSettingsDeploymentOutput {
+	return o
+}
+
+func (o ProjectPagesSettingsDeploymentOutput) ToProjectPagesSettingsDeploymentOutputWithContext(ctx context.Context) ProjectPagesSettingsDeploymentOutput {
+	return o
+}
+
+// Date the deployment was created.
+func (o ProjectPagesSettingsDeploymentOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPagesSettingsDeployment) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The path prefix of the deployment when using parallel deployments.
+func (o ProjectPagesSettingsDeploymentOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPagesSettingsDeployment) *string { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The root directory of the deployment.
+func (o ProjectPagesSettingsDeploymentOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPagesSettingsDeployment) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the deployment.
+func (o ProjectPagesSettingsDeploymentOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectPagesSettingsDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ProjectPagesSettingsDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectPagesSettingsDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectPagesSettingsDeployment)(nil)).Elem()
+}
+
+func (o ProjectPagesSettingsDeploymentArrayOutput) ToProjectPagesSettingsDeploymentArrayOutput() ProjectPagesSettingsDeploymentArrayOutput {
+	return o
+}
+
+func (o ProjectPagesSettingsDeploymentArrayOutput) ToProjectPagesSettingsDeploymentArrayOutputWithContext(ctx context.Context) ProjectPagesSettingsDeploymentArrayOutput {
+	return o
+}
+
+func (o ProjectPagesSettingsDeploymentArrayOutput) Index(i pulumi.IntInput) ProjectPagesSettingsDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectPagesSettingsDeployment {
+		return vs[0].([]ProjectPagesSettingsDeployment)[vs[1].(int)]
+	}).(ProjectPagesSettingsDeploymentOutput)
+}
+
 type ProjectProtectedEnvironmentApprovalRule struct {
 	// Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -10891,6 +11015,520 @@ func (o GetProjectMergeRequestClosedByOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectMergeRequestClosedBy) string { return v.WebUrl }).(pulumi.StringOutput)
 }
 
+type GetProjectMergeRequestsMergeRequest struct {
+	// First assignee of the merge request.
+	Assignee GetProjectMergeRequestsMergeRequestAssignee `pulumi:"assignee"`
+	// Assignees of the merge request.
+	Assignees []GetProjectMergeRequestsMergeRequestAssignee `pulumi:"assignees"`
+	// User who created this merge request.
+	Author GetProjectMergeRequestsMergeRequestAuthor `pulumi:"author"`
+	// Indicates if all discussions are resolved only if all are
+	// required before merge request can be merged.
+	BlockingDiscussionsResolved bool `pulumi:"blockingDiscussionsResolved"`
+	// Timestamp of when the merge request was closed.
+	ClosedAt string `pulumi:"closedAt"`
+	// User who closed this merge request.
+	ClosedBy GetProjectMergeRequestsMergeRequestClosedBy `pulumi:"closedBy"`
+	// Timestamp of when the merge request was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The unique instance level ID of the merge request.
+	Id int `pulumi:"id"`
+	// The unique project level ID of the merge request.
+	Iid int `pulumi:"iid"`
+}
+
+// GetProjectMergeRequestsMergeRequestInput is an input type that accepts GetProjectMergeRequestsMergeRequestArgs and GetProjectMergeRequestsMergeRequestOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestsMergeRequestInput` via:
+//
+//	GetProjectMergeRequestsMergeRequestArgs{...}
+type GetProjectMergeRequestsMergeRequestInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestsMergeRequestOutput() GetProjectMergeRequestsMergeRequestOutput
+	ToGetProjectMergeRequestsMergeRequestOutputWithContext(context.Context) GetProjectMergeRequestsMergeRequestOutput
+}
+
+type GetProjectMergeRequestsMergeRequestArgs struct {
+	// First assignee of the merge request.
+	Assignee GetProjectMergeRequestsMergeRequestAssigneeInput `pulumi:"assignee"`
+	// Assignees of the merge request.
+	Assignees GetProjectMergeRequestsMergeRequestAssigneeArrayInput `pulumi:"assignees"`
+	// User who created this merge request.
+	Author GetProjectMergeRequestsMergeRequestAuthorInput `pulumi:"author"`
+	// Indicates if all discussions are resolved only if all are
+	// required before merge request can be merged.
+	BlockingDiscussionsResolved pulumi.BoolInput `pulumi:"blockingDiscussionsResolved"`
+	// Timestamp of when the merge request was closed.
+	ClosedAt pulumi.StringInput `pulumi:"closedAt"`
+	// User who closed this merge request.
+	ClosedBy GetProjectMergeRequestsMergeRequestClosedByInput `pulumi:"closedBy"`
+	// Timestamp of when the merge request was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The unique instance level ID of the merge request.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The unique project level ID of the merge request.
+	Iid pulumi.IntInput `pulumi:"iid"`
+}
+
+func (GetProjectMergeRequestsMergeRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequest)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestsMergeRequestArgs) ToGetProjectMergeRequestsMergeRequestOutput() GetProjectMergeRequestsMergeRequestOutput {
+	return i.ToGetProjectMergeRequestsMergeRequestOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestsMergeRequestArgs) ToGetProjectMergeRequestsMergeRequestOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestsMergeRequestOutput)
+}
+
+// GetProjectMergeRequestsMergeRequestArrayInput is an input type that accepts GetProjectMergeRequestsMergeRequestArray and GetProjectMergeRequestsMergeRequestArrayOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestsMergeRequestArrayInput` via:
+//
+//	GetProjectMergeRequestsMergeRequestArray{ GetProjectMergeRequestsMergeRequestArgs{...} }
+type GetProjectMergeRequestsMergeRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestsMergeRequestArrayOutput() GetProjectMergeRequestsMergeRequestArrayOutput
+	ToGetProjectMergeRequestsMergeRequestArrayOutputWithContext(context.Context) GetProjectMergeRequestsMergeRequestArrayOutput
+}
+
+type GetProjectMergeRequestsMergeRequestArray []GetProjectMergeRequestsMergeRequestInput
+
+func (GetProjectMergeRequestsMergeRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMergeRequestsMergeRequest)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestsMergeRequestArray) ToGetProjectMergeRequestsMergeRequestArrayOutput() GetProjectMergeRequestsMergeRequestArrayOutput {
+	return i.ToGetProjectMergeRequestsMergeRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestsMergeRequestArray) ToGetProjectMergeRequestsMergeRequestArrayOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestsMergeRequestArrayOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestsMergeRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequest)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestsMergeRequestOutput) ToGetProjectMergeRequestsMergeRequestOutput() GetProjectMergeRequestsMergeRequestOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestOutput) ToGetProjectMergeRequestsMergeRequestOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestOutput {
+	return o
+}
+
+// First assignee of the merge request.
+func (o GetProjectMergeRequestsMergeRequestOutput) Assignee() GetProjectMergeRequestsMergeRequestAssigneeOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) GetProjectMergeRequestsMergeRequestAssignee {
+		return v.Assignee
+	}).(GetProjectMergeRequestsMergeRequestAssigneeOutput)
+}
+
+// Assignees of the merge request.
+func (o GetProjectMergeRequestsMergeRequestOutput) Assignees() GetProjectMergeRequestsMergeRequestAssigneeArrayOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) []GetProjectMergeRequestsMergeRequestAssignee {
+		return v.Assignees
+	}).(GetProjectMergeRequestsMergeRequestAssigneeArrayOutput)
+}
+
+// User who created this merge request.
+func (o GetProjectMergeRequestsMergeRequestOutput) Author() GetProjectMergeRequestsMergeRequestAuthorOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) GetProjectMergeRequestsMergeRequestAuthor { return v.Author }).(GetProjectMergeRequestsMergeRequestAuthorOutput)
+}
+
+// Indicates if all discussions are resolved only if all are
+// required before merge request can be merged.
+func (o GetProjectMergeRequestsMergeRequestOutput) BlockingDiscussionsResolved() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) bool { return v.BlockingDiscussionsResolved }).(pulumi.BoolOutput)
+}
+
+// Timestamp of when the merge request was closed.
+func (o GetProjectMergeRequestsMergeRequestOutput) ClosedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) string { return v.ClosedAt }).(pulumi.StringOutput)
+}
+
+// User who closed this merge request.
+func (o GetProjectMergeRequestsMergeRequestOutput) ClosedBy() GetProjectMergeRequestsMergeRequestClosedByOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) GetProjectMergeRequestsMergeRequestClosedBy {
+		return v.ClosedBy
+	}).(GetProjectMergeRequestsMergeRequestClosedByOutput)
+}
+
+// Timestamp of when the merge request was created.
+func (o GetProjectMergeRequestsMergeRequestOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The unique instance level ID of the merge request.
+func (o GetProjectMergeRequestsMergeRequestOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The unique project level ID of the merge request.
+func (o GetProjectMergeRequestsMergeRequestOutput) Iid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequest) int { return v.Iid }).(pulumi.IntOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestsMergeRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMergeRequestsMergeRequest)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestsMergeRequestArrayOutput) ToGetProjectMergeRequestsMergeRequestArrayOutput() GetProjectMergeRequestsMergeRequestArrayOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestArrayOutput) ToGetProjectMergeRequestsMergeRequestArrayOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestArrayOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestArrayOutput) Index(i pulumi.IntInput) GetProjectMergeRequestsMergeRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectMergeRequestsMergeRequest {
+		return vs[0].([]GetProjectMergeRequestsMergeRequest)[vs[1].(int)]
+	}).(GetProjectMergeRequestsMergeRequestOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestAssignee struct {
+	// A link to the user's avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id int `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user account.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectMergeRequestsMergeRequestAssigneeInput is an input type that accepts GetProjectMergeRequestsMergeRequestAssigneeArgs and GetProjectMergeRequestsMergeRequestAssigneeOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestsMergeRequestAssigneeInput` via:
+//
+//	GetProjectMergeRequestsMergeRequestAssigneeArgs{...}
+type GetProjectMergeRequestsMergeRequestAssigneeInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestsMergeRequestAssigneeOutput() GetProjectMergeRequestsMergeRequestAssigneeOutput
+	ToGetProjectMergeRequestsMergeRequestAssigneeOutputWithContext(context.Context) GetProjectMergeRequestsMergeRequestAssigneeOutput
+}
+
+type GetProjectMergeRequestsMergeRequestAssigneeArgs struct {
+	// A link to the user's avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectMergeRequestsMergeRequestAssigneeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAssignee)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestsMergeRequestAssigneeArgs) ToGetProjectMergeRequestsMergeRequestAssigneeOutput() GetProjectMergeRequestsMergeRequestAssigneeOutput {
+	return i.ToGetProjectMergeRequestsMergeRequestAssigneeOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestsMergeRequestAssigneeArgs) ToGetProjectMergeRequestsMergeRequestAssigneeOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestAssigneeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestsMergeRequestAssigneeOutput)
+}
+
+// GetProjectMergeRequestsMergeRequestAssigneeArrayInput is an input type that accepts GetProjectMergeRequestsMergeRequestAssigneeArray and GetProjectMergeRequestsMergeRequestAssigneeArrayOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestsMergeRequestAssigneeArrayInput` via:
+//
+//	GetProjectMergeRequestsMergeRequestAssigneeArray{ GetProjectMergeRequestsMergeRequestAssigneeArgs{...} }
+type GetProjectMergeRequestsMergeRequestAssigneeArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutput() GetProjectMergeRequestsMergeRequestAssigneeArrayOutput
+	ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutputWithContext(context.Context) GetProjectMergeRequestsMergeRequestAssigneeArrayOutput
+}
+
+type GetProjectMergeRequestsMergeRequestAssigneeArray []GetProjectMergeRequestsMergeRequestAssigneeInput
+
+func (GetProjectMergeRequestsMergeRequestAssigneeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMergeRequestsMergeRequestAssignee)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestsMergeRequestAssigneeArray) ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutput() GetProjectMergeRequestsMergeRequestAssigneeArrayOutput {
+	return i.ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestsMergeRequestAssigneeArray) ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestAssigneeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestsMergeRequestAssigneeArrayOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestAssigneeOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestsMergeRequestAssigneeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAssignee)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) ToGetProjectMergeRequestsMergeRequestAssigneeOutput() GetProjectMergeRequestsMergeRequestAssigneeOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) ToGetProjectMergeRequestsMergeRequestAssigneeOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestAssigneeOutput {
+	return o
+}
+
+// A link to the user's avatar image.
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAssignee) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The internal ID number of the user.
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAssignee) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the user.
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAssignee) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user account.
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAssignee) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAssignee) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// A link to the user's profile page.
+func (o GetProjectMergeRequestsMergeRequestAssigneeOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAssignee) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestAssigneeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestsMergeRequestAssigneeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMergeRequestsMergeRequestAssignee)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestsMergeRequestAssigneeArrayOutput) ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutput() GetProjectMergeRequestsMergeRequestAssigneeArrayOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestAssigneeArrayOutput) ToGetProjectMergeRequestsMergeRequestAssigneeArrayOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestAssigneeArrayOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestAssigneeArrayOutput) Index(i pulumi.IntInput) GetProjectMergeRequestsMergeRequestAssigneeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectMergeRequestsMergeRequestAssignee {
+		return vs[0].([]GetProjectMergeRequestsMergeRequestAssignee)[vs[1].(int)]
+	}).(GetProjectMergeRequestsMergeRequestAssigneeOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestAuthor struct {
+	// A link to the user's avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id int `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user account.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectMergeRequestsMergeRequestAuthorInput is an input type that accepts GetProjectMergeRequestsMergeRequestAuthorArgs and GetProjectMergeRequestsMergeRequestAuthorOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestsMergeRequestAuthorInput` via:
+//
+//	GetProjectMergeRequestsMergeRequestAuthorArgs{...}
+type GetProjectMergeRequestsMergeRequestAuthorInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestsMergeRequestAuthorOutput() GetProjectMergeRequestsMergeRequestAuthorOutput
+	ToGetProjectMergeRequestsMergeRequestAuthorOutputWithContext(context.Context) GetProjectMergeRequestsMergeRequestAuthorOutput
+}
+
+type GetProjectMergeRequestsMergeRequestAuthorArgs struct {
+	// A link to the user's avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectMergeRequestsMergeRequestAuthorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAuthor)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestsMergeRequestAuthorArgs) ToGetProjectMergeRequestsMergeRequestAuthorOutput() GetProjectMergeRequestsMergeRequestAuthorOutput {
+	return i.ToGetProjectMergeRequestsMergeRequestAuthorOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestsMergeRequestAuthorArgs) ToGetProjectMergeRequestsMergeRequestAuthorOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestAuthorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestsMergeRequestAuthorOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestAuthorOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestsMergeRequestAuthorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAuthor)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) ToGetProjectMergeRequestsMergeRequestAuthorOutput() GetProjectMergeRequestsMergeRequestAuthorOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) ToGetProjectMergeRequestsMergeRequestAuthorOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestAuthorOutput {
+	return o
+}
+
+// A link to the user's avatar image.
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAuthor) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The internal ID number of the user.
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAuthor) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the user.
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAuthor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user account.
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAuthor) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAuthor) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// A link to the user's profile page.
+func (o GetProjectMergeRequestsMergeRequestAuthorOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestAuthor) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestClosedBy struct {
+	// A link to the user's avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id int `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user account.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectMergeRequestsMergeRequestClosedByInput is an input type that accepts GetProjectMergeRequestsMergeRequestClosedByArgs and GetProjectMergeRequestsMergeRequestClosedByOutput values.
+// You can construct a concrete instance of `GetProjectMergeRequestsMergeRequestClosedByInput` via:
+//
+//	GetProjectMergeRequestsMergeRequestClosedByArgs{...}
+type GetProjectMergeRequestsMergeRequestClosedByInput interface {
+	pulumi.Input
+
+	ToGetProjectMergeRequestsMergeRequestClosedByOutput() GetProjectMergeRequestsMergeRequestClosedByOutput
+	ToGetProjectMergeRequestsMergeRequestClosedByOutputWithContext(context.Context) GetProjectMergeRequestsMergeRequestClosedByOutput
+}
+
+type GetProjectMergeRequestsMergeRequestClosedByArgs struct {
+	// A link to the user's avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The internal ID number of the user.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user account.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// A link to the user's profile page.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectMergeRequestsMergeRequestClosedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequestClosedBy)(nil)).Elem()
+}
+
+func (i GetProjectMergeRequestsMergeRequestClosedByArgs) ToGetProjectMergeRequestsMergeRequestClosedByOutput() GetProjectMergeRequestsMergeRequestClosedByOutput {
+	return i.ToGetProjectMergeRequestsMergeRequestClosedByOutputWithContext(context.Background())
+}
+
+func (i GetProjectMergeRequestsMergeRequestClosedByArgs) ToGetProjectMergeRequestsMergeRequestClosedByOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestClosedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMergeRequestsMergeRequestClosedByOutput)
+}
+
+type GetProjectMergeRequestsMergeRequestClosedByOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMergeRequestsMergeRequestClosedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMergeRequestsMergeRequestClosedBy)(nil)).Elem()
+}
+
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) ToGetProjectMergeRequestsMergeRequestClosedByOutput() GetProjectMergeRequestsMergeRequestClosedByOutput {
+	return o
+}
+
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) ToGetProjectMergeRequestsMergeRequestClosedByOutputWithContext(ctx context.Context) GetProjectMergeRequestsMergeRequestClosedByOutput {
+	return o
+}
+
+// A link to the user's avatar image.
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestClosedBy) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The internal ID number of the user.
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestClosedBy) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the user.
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestClosedBy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user account.
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestClosedBy) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestClosedBy) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// A link to the user's profile page.
+func (o GetProjectMergeRequestsMergeRequestClosedByOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMergeRequestsMergeRequestClosedBy) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
 type GetProjectMilestonesMilestone struct {
 	// The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	CreatedAt string `pulumi:"createdAt"`
@@ -13399,6 +14037,8 @@ type GetProjectsProject struct {
 	CiDeletePipelinesInSeconds int `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled bool `pulumi:"ciForwardDeploymentEnabled"`
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed bool `pulumi:"ciForwardDeploymentRollbackAllowed"`
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -13618,6 +14258,8 @@ type GetProjectsProjectArgs struct {
 	CiDeletePipelinesInSeconds pulumi.IntInput `pulumi:"ciDeletePipelinesInSeconds"`
 	// When a new deployment job starts, skip older deployment jobs that are still pending.
 	CiForwardDeploymentEnabled pulumi.BoolInput `pulumi:"ciForwardDeploymentEnabled"`
+	// Allow job retries even if the deployment job is outdated.
+	CiForwardDeploymentRollbackAllowed pulumi.BoolInput `pulumi:"ciForwardDeploymentRollbackAllowed"`
 	// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
 	CiIdTokenSubClaimComponents pulumi.StringArrayInput `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
@@ -13931,6 +14573,11 @@ func (o GetProjectsProjectOutput) CiDeletePipelinesInSeconds() pulumi.IntOutput 
 // When a new deployment job starts, skip older deployment jobs that are still pending.
 func (o GetProjectsProjectOutput) CiForwardDeploymentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.CiForwardDeploymentEnabled }).(pulumi.BoolOutput)
+}
+
+// Allow job retries even if the deployment job is outdated.
+func (o GetProjectsProjectOutput) CiForwardDeploymentRollbackAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.CiForwardDeploymentRollbackAllowed }).(pulumi.BoolOutput)
 }
 
 // Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
@@ -16555,6 +17202,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListArrayInput)(nil)).Elem(), ProjectIssueBoardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueTaskCompletionStatusArrayInput)(nil)).Elem(), ProjectIssueTaskCompletionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPagesSettingsDeploymentInput)(nil)).Elem(), ProjectPagesSettingsDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPagesSettingsDeploymentArrayInput)(nil)).Elem(), ProjectPagesSettingsDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRuleInput)(nil)).Elem(), ProjectProtectedEnvironmentApprovalRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRuleArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArgs{})
@@ -16635,6 +17284,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestAssigneeArrayInput)(nil)).Elem(), GetProjectMergeRequestAssigneeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestAuthorInput)(nil)).Elem(), GetProjectMergeRequestAuthorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestClosedByInput)(nil)).Elem(), GetProjectMergeRequestClosedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestsMergeRequestInput)(nil)).Elem(), GetProjectMergeRequestsMergeRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestsMergeRequestArrayInput)(nil)).Elem(), GetProjectMergeRequestsMergeRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAssigneeInput)(nil)).Elem(), GetProjectMergeRequestsMergeRequestAssigneeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAssigneeArrayInput)(nil)).Elem(), GetProjectMergeRequestsMergeRequestAssigneeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestsMergeRequestAuthorInput)(nil)).Elem(), GetProjectMergeRequestsMergeRequestAuthorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestsMergeRequestClosedByInput)(nil)).Elem(), GetProjectMergeRequestsMergeRequestClosedByArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMilestonesMilestoneInput)(nil)).Elem(), GetProjectMilestonesMilestoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMilestonesMilestoneArrayInput)(nil)).Elem(), GetProjectMilestonesMilestoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedBranchMergeAccessLevelInput)(nil)).Elem(), GetProjectProtectedBranchMergeAccessLevelArgs{})
@@ -16741,6 +17396,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectIssueBoardListArrayOutput{})
 	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusOutput{})
 	pulumi.RegisterOutputType(ProjectIssueTaskCompletionStatusArrayOutput{})
+	pulumi.RegisterOutputType(ProjectPagesSettingsDeploymentOutput{})
+	pulumi.RegisterOutputType(ProjectPagesSettingsDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentApprovalRuleOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelOutput{})
@@ -16821,6 +17478,12 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectMergeRequestAssigneeArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectMergeRequestAuthorOutput{})
 	pulumi.RegisterOutputType(GetProjectMergeRequestClosedByOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestsMergeRequestOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestsMergeRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestsMergeRequestAssigneeOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestsMergeRequestAssigneeArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestsMergeRequestAuthorOutput{})
+	pulumi.RegisterOutputType(GetProjectMergeRequestsMergeRequestClosedByOutput{})
 	pulumi.RegisterOutputType(GetProjectMilestonesMilestoneOutput{})
 	pulumi.RegisterOutputType(GetProjectMilestonesMilestoneArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectProtectedBranchMergeAccessLevelOutput{})

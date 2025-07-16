@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_compliance_framework`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_compliance_framework`. For example:
  * 
  * terraform
  * 
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * Gitlab compliance frameworks can be imported with a key composed of `&lt;namespace_path&gt;:&lt;framework_id&gt;`, e.g.
  * 

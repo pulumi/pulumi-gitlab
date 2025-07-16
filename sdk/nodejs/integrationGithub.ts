@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.IntegrationGithub` resource allows to manage the lifecycle of a project integration with GitHub.
+ * The `gitlab.IntegrationGithub` resource manages the lifecycle of a project integration with GitHub.
  *
  * > This resource requires a GitLab Enterprise instance.
+ *
+ * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationGithub` instead.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
  *
@@ -31,7 +33,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_github`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
  *
  * terraform
  *
@@ -43,7 +45,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * ```sh
  * $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `<resource> <project_id>`:
@@ -86,24 +88,24 @@ export class IntegrationGithub extends pulumi.CustomResource {
      */
     public /*out*/ readonly active!: pulumi.Output<boolean>;
     /**
-     * Create time.
+     * Creation time.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      */
     public readonly project!: pulumi.Output<string>;
     public readonly repositoryUrl!: pulumi.Output<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
     public readonly staticContext!: pulumi.Output<boolean | undefined>;
     /**
-     * Title.
+     * The title of this resource.
      */
     public /*out*/ readonly title!: pulumi.Output<string>;
     /**
-     * A GitHub personal access token with at least `repo:status` scope.
+     * A GitHub personal access token with at least the `repo:status` scope.
      */
     public readonly token!: pulumi.Output<string>;
     /**
@@ -168,24 +170,24 @@ export interface IntegrationGithubState {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * Create time.
+     * Creation time.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      */
     project?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
     staticContext?: pulumi.Input<boolean>;
     /**
-     * Title.
+     * The title of this resource.
      */
     title?: pulumi.Input<string>;
     /**
-     * A GitHub personal access token with at least `repo:status` scope.
+     * A GitHub personal access token with at least the `repo:status` scope.
      */
     token?: pulumi.Input<string>;
     /**
@@ -199,16 +201,16 @@ export interface IntegrationGithubState {
  */
 export interface IntegrationGithubArgs {
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      */
     project: pulumi.Input<string>;
     repositoryUrl: pulumi.Input<string>;
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
     staticContext?: pulumi.Input<boolean>;
     /**
-     * A GitHub personal access token with at least `repo:status` scope.
+     * A GitHub personal access token with at least the `repo:status` scope.
      */
     token: pulumi.Input<string>;
 }

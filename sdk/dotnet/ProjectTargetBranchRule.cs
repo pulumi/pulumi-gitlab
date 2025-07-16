@@ -10,9 +10,59 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectTargetBranchRule` resource allows to configure default target branch rules when creating a merge request.
+    /// The `gitlab.ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
     /// 
     /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.Project("example", new()
+    ///     {
+    ///         Name = "example project",
+    ///         Description = "Lorem Ipsum",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     // Basic example
+    ///     var rule = new GitLab.ProjectTargetBranchRule("rule", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         SourceBranchPattern = "develop",
+    ///         TargetBranchName = "release",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_target_branch_rule`. For example:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = gitlab_project_target_branch_rule.example
+    /// 
+    ///   id = "see CLI command below for ID"
+    /// 
+    /// }
+    /// 
+    /// Importing using the CLI is supported with the following syntax:
+    /// 
+    /// A GitLab Project targer branch rule can be imported using a key composed of `&lt;project-id&gt;:&lt;target-branch-rule-id&gt;`, for example:
+    /// 
+    /// ```sh
+    /// $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule")]
     public partial class ProjectTargetBranchRule : global::Pulumi.CustomResource

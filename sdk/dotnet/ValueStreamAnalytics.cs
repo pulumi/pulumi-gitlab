@@ -18,7 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_value_stream_analytics`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
     /// 
     /// terraform
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// Gitlab value stream analytics can be imported with a key composed of `&lt;full_path_type&gt;:&lt;full_path&gt;:&lt;value_stream_id&gt;`, e.g.
     /// 

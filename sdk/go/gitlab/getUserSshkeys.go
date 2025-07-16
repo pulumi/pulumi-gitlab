@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getUserSshkeys` data source allows a list of SSH keys to be retrieved by either the user ID or username.
+// The `getUserSshkeys` data source retrieves a list of SSH keys for a user.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_keys/#list-all-ssh-keys-for-a-user)
 func GetUserSshkeys(ctx *pulumi.Context, args *GetUserSshkeysArgs, opts ...pulumi.InvokeOption) (*GetUserSshkeysResult, error) {

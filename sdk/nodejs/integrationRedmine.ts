@@ -5,11 +5,54 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.IntegrationRedmine` resource allows to manage the lifecycle of a project integration with Redmine.
+ * The `gitlab.IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
  *
  * > Using Redmine requires that GitLab internal issue tracking is disabled for the project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const awesomeProject = new gitlab.Project("awesome_project", {
+ *     name: "awesome_project",
+ *     description: "My awesome project.",
+ *     visibilityLevel: "public",
+ * });
+ * const redmine = new gitlab.IntegrationRedmine("redmine", {
+ *     project: awesomeProject.id,
+ *     newIssueUrl: "https://redmine.example.com/issue",
+ *     projectUrl: "https://redmine.example.com/project",
+ *     issuesUrl: "https://redmine.example.com/issue/:id",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = gitlab_integration_redmine.example
+ *
+ *   id = "see CLI command below for ID"
+ *
+ * }
+ *
+ * Importing using the CLI is supported with the following syntax:
+ *
+ * ```sh
+ * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `<resource> <project_id>`:
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
+ * ```
  */
 export class IntegrationRedmine extends pulumi.CustomResource {
     /**

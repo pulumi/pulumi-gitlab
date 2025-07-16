@@ -47,7 +47,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_label`. For example:
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_label`. For example:
 //
 // terraform
 //
@@ -59,7 +59,7 @@ import (
 //
 // }
 //
-// Import using the CLI is supported using the following syntax:
+// Importing using the CLI is supported with the following syntax:
 //
 // Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
 //
@@ -71,6 +71,8 @@ type GroupLabel struct {
 
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
+	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+	ColorHex pulumi.StringOutput `pulumi:"colorHex"`
 	// The description of the label.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The name or id of the group to add the label to.
@@ -119,6 +121,8 @@ func GetGroupLabel(ctx *pulumi.Context,
 type groupLabelState struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color *string `pulumi:"color"`
+	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+	ColorHex *string `pulumi:"colorHex"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
 	// The name or id of the group to add the label to.
@@ -132,6 +136,8 @@ type groupLabelState struct {
 type GroupLabelState struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 	Color pulumi.StringPtrInput
+	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+	ColorHex pulumi.StringPtrInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
 	// The name or id of the group to add the label to.
@@ -259,6 +265,11 @@ func (o GroupLabelOutput) ToGroupLabelOutputWithContext(ctx context.Context) Gro
 // The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
 func (o GroupLabelOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
+}
+
+// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+func (o GroupLabelOutput) ColorHex() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupLabel) pulumi.StringOutput { return v.ColorHex }).(pulumi.StringOutput)
 }
 
 // The description of the label.

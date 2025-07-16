@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+// The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 func LookupGroupServiceAccount(ctx *pulumi.Context, args *LookupGroupServiceAccountArgs, opts ...pulumi.InvokeOption) (*LookupGroupServiceAccountResult, error) {

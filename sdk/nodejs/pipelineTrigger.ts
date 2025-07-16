@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_pipeline_trigger`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_trigger`. For example:
  *
  * terraform
  *
@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  *
  * GitLab pipeline triggers can be imported using an id made up of `{project_id}:{pipeline_trigger_id}`, e.g.
  *

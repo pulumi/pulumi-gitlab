@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_label`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_label`. For example:
  * 
  * terraform
  * 
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
  * 
@@ -95,6 +95,20 @@ public class GroupLabel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> color() {
         return this.color;
+    }
+    /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    @Export(name="colorHex", refs={String.class}, tree="[0]")
+    private Output<String> colorHex;
+
+    /**
+     * @return Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     * 
+     */
+    public Output<String> colorHex() {
+        return this.colorHex;
     }
     /**
      * The description of the label.

@@ -10,6 +10,11 @@ export type Application = import("./application").Application;
 export const Application: typeof import("./application").Application = null as any;
 utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
+export { ApplicationAppearanceArgs, ApplicationAppearanceState } from "./applicationAppearance";
+export type ApplicationAppearance = import("./applicationAppearance").ApplicationAppearance;
+export const ApplicationAppearance: typeof import("./applicationAppearance").ApplicationAppearance = null as any;
+utilities.lazyLoad(exports, ["ApplicationAppearance"], () => require("./applicationAppearance"));
+
 export { ApplicationSettingsArgs, ApplicationSettingsState } from "./applicationSettings";
 export type ApplicationSettings = import("./applicationSettings").ApplicationSettings;
 export const ApplicationSettings: typeof import("./applicationSettings").ApplicationSettings = null as any;
@@ -234,6 +239,11 @@ export { GetProjectMergeRequestArgs, GetProjectMergeRequestResult, GetProjectMer
 export const getProjectMergeRequest: typeof import("./getProjectMergeRequest").getProjectMergeRequest = null as any;
 export const getProjectMergeRequestOutput: typeof import("./getProjectMergeRequest").getProjectMergeRequestOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectMergeRequest","getProjectMergeRequestOutput"], () => require("./getProjectMergeRequest"));
+
+export { GetProjectMergeRequestsArgs, GetProjectMergeRequestsResult, GetProjectMergeRequestsOutputArgs } from "./getProjectMergeRequests";
+export const getProjectMergeRequests: typeof import("./getProjectMergeRequests").getProjectMergeRequests = null as any;
+export const getProjectMergeRequestsOutput: typeof import("./getProjectMergeRequests").getProjectMergeRequestsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMergeRequests","getProjectMergeRequestsOutput"], () => require("./getProjectMergeRequests"));
 
 export { GetProjectMilestoneArgs, GetProjectMilestoneResult, GetProjectMilestoneOutputArgs } from "./getProjectMilestone";
 export const getProjectMilestone: typeof import("./getProjectMilestone").getProjectMilestone = null as any;
@@ -610,6 +620,71 @@ export type ProjectHook = import("./projectHook").ProjectHook;
 export const ProjectHook: typeof import("./projectHook").ProjectHook = null as any;
 utilities.lazyLoad(exports, ["ProjectHook"], () => require("./projectHook"));
 
+export { ProjectIntegrationCustomIssueTrackerArgs, ProjectIntegrationCustomIssueTrackerState } from "./projectIntegrationCustomIssueTracker";
+export type ProjectIntegrationCustomIssueTracker = import("./projectIntegrationCustomIssueTracker").ProjectIntegrationCustomIssueTracker;
+export const ProjectIntegrationCustomIssueTracker: typeof import("./projectIntegrationCustomIssueTracker").ProjectIntegrationCustomIssueTracker = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationCustomIssueTracker"], () => require("./projectIntegrationCustomIssueTracker"));
+
+export { ProjectIntegrationEmailsOnPushArgs, ProjectIntegrationEmailsOnPushState } from "./projectIntegrationEmailsOnPush";
+export type ProjectIntegrationEmailsOnPush = import("./projectIntegrationEmailsOnPush").ProjectIntegrationEmailsOnPush;
+export const ProjectIntegrationEmailsOnPush: typeof import("./projectIntegrationEmailsOnPush").ProjectIntegrationEmailsOnPush = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationEmailsOnPush"], () => require("./projectIntegrationEmailsOnPush"));
+
+export { ProjectIntegrationExternalWikiArgs, ProjectIntegrationExternalWikiState } from "./projectIntegrationExternalWiki";
+export type ProjectIntegrationExternalWiki = import("./projectIntegrationExternalWiki").ProjectIntegrationExternalWiki;
+export const ProjectIntegrationExternalWiki: typeof import("./projectIntegrationExternalWiki").ProjectIntegrationExternalWiki = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationExternalWiki"], () => require("./projectIntegrationExternalWiki"));
+
+export { ProjectIntegrationGithubArgs, ProjectIntegrationGithubState } from "./projectIntegrationGithub";
+export type ProjectIntegrationGithub = import("./projectIntegrationGithub").ProjectIntegrationGithub;
+export const ProjectIntegrationGithub: typeof import("./projectIntegrationGithub").ProjectIntegrationGithub = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationGithub"], () => require("./projectIntegrationGithub"));
+
+export { ProjectIntegrationHarborArgs, ProjectIntegrationHarborState } from "./projectIntegrationHarbor";
+export type ProjectIntegrationHarbor = import("./projectIntegrationHarbor").ProjectIntegrationHarbor;
+export const ProjectIntegrationHarbor: typeof import("./projectIntegrationHarbor").ProjectIntegrationHarbor = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationHarbor"], () => require("./projectIntegrationHarbor"));
+
+export { ProjectIntegrationJenkinsArgs, ProjectIntegrationJenkinsState } from "./projectIntegrationJenkins";
+export type ProjectIntegrationJenkins = import("./projectIntegrationJenkins").ProjectIntegrationJenkins;
+export const ProjectIntegrationJenkins: typeof import("./projectIntegrationJenkins").ProjectIntegrationJenkins = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationJenkins"], () => require("./projectIntegrationJenkins"));
+
+export { ProjectIntegrationJiraArgs, ProjectIntegrationJiraState } from "./projectIntegrationJira";
+export type ProjectIntegrationJira = import("./projectIntegrationJira").ProjectIntegrationJira;
+export const ProjectIntegrationJira: typeof import("./projectIntegrationJira").ProjectIntegrationJira = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationJira"], () => require("./projectIntegrationJira"));
+
+export { ProjectIntegrationMattermostArgs, ProjectIntegrationMattermostState } from "./projectIntegrationMattermost";
+export type ProjectIntegrationMattermost = import("./projectIntegrationMattermost").ProjectIntegrationMattermost;
+export const ProjectIntegrationMattermost: typeof import("./projectIntegrationMattermost").ProjectIntegrationMattermost = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationMattermost"], () => require("./projectIntegrationMattermost"));
+
+export { ProjectIntegrationMicrosoftTeamsArgs, ProjectIntegrationMicrosoftTeamsState } from "./projectIntegrationMicrosoftTeams";
+export type ProjectIntegrationMicrosoftTeams = import("./projectIntegrationMicrosoftTeams").ProjectIntegrationMicrosoftTeams;
+export const ProjectIntegrationMicrosoftTeams: typeof import("./projectIntegrationMicrosoftTeams").ProjectIntegrationMicrosoftTeams = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationMicrosoftTeams"], () => require("./projectIntegrationMicrosoftTeams"));
+
+export { ProjectIntegrationPipelinesEmailArgs, ProjectIntegrationPipelinesEmailState } from "./projectIntegrationPipelinesEmail";
+export type ProjectIntegrationPipelinesEmail = import("./projectIntegrationPipelinesEmail").ProjectIntegrationPipelinesEmail;
+export const ProjectIntegrationPipelinesEmail: typeof import("./projectIntegrationPipelinesEmail").ProjectIntegrationPipelinesEmail = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationPipelinesEmail"], () => require("./projectIntegrationPipelinesEmail"));
+
+export { ProjectIntegrationRedmineArgs, ProjectIntegrationRedmineState } from "./projectIntegrationRedmine";
+export type ProjectIntegrationRedmine = import("./projectIntegrationRedmine").ProjectIntegrationRedmine;
+export const ProjectIntegrationRedmine: typeof import("./projectIntegrationRedmine").ProjectIntegrationRedmine = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationRedmine"], () => require("./projectIntegrationRedmine"));
+
+export { ProjectIntegrationTelegramArgs, ProjectIntegrationTelegramState } from "./projectIntegrationTelegram";
+export type ProjectIntegrationTelegram = import("./projectIntegrationTelegram").ProjectIntegrationTelegram;
+export const ProjectIntegrationTelegram: typeof import("./projectIntegrationTelegram").ProjectIntegrationTelegram = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationTelegram"], () => require("./projectIntegrationTelegram"));
+
+export { ProjectIntegrationYoutrackArgs, ProjectIntegrationYoutrackState } from "./projectIntegrationYoutrack";
+export type ProjectIntegrationYoutrack = import("./projectIntegrationYoutrack").ProjectIntegrationYoutrack;
+export const ProjectIntegrationYoutrack: typeof import("./projectIntegrationYoutrack").ProjectIntegrationYoutrack = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationYoutrack"], () => require("./projectIntegrationYoutrack"));
+
 export { ProjectIssueArgs, ProjectIssueState } from "./projectIssue";
 export type ProjectIssue = import("./projectIssue").ProjectIssue;
 export const ProjectIssue: typeof import("./projectIssue").ProjectIssue = null as any;
@@ -650,6 +725,11 @@ export type ProjectMembership = import("./projectMembership").ProjectMembership;
 export const ProjectMembership: typeof import("./projectMembership").ProjectMembership = null as any;
 utilities.lazyLoad(exports, ["ProjectMembership"], () => require("./projectMembership"));
 
+export { ProjectMergeRequestNoteArgs, ProjectMergeRequestNoteState } from "./projectMergeRequestNote";
+export type ProjectMergeRequestNote = import("./projectMergeRequestNote").ProjectMergeRequestNote;
+export const ProjectMergeRequestNote: typeof import("./projectMergeRequestNote").ProjectMergeRequestNote = null as any;
+utilities.lazyLoad(exports, ["ProjectMergeRequestNote"], () => require("./projectMergeRequestNote"));
+
 export { ProjectMilestoneArgs, ProjectMilestoneState } from "./projectMilestone";
 export type ProjectMilestone = import("./projectMilestone").ProjectMilestone;
 export const ProjectMilestone: typeof import("./projectMilestone").ProjectMilestone = null as any;
@@ -659,6 +739,11 @@ export { ProjectMirrorArgs, ProjectMirrorState } from "./projectMirror";
 export type ProjectMirror = import("./projectMirror").ProjectMirror;
 export const ProjectMirror: typeof import("./projectMirror").ProjectMirror = null as any;
 utilities.lazyLoad(exports, ["ProjectMirror"], () => require("./projectMirror"));
+
+export { ProjectPagesSettingsArgs, ProjectPagesSettingsState } from "./projectPagesSettings";
+export type ProjectPagesSettings = import("./projectPagesSettings").ProjectPagesSettings;
+export const ProjectPagesSettings: typeof import("./projectPagesSettings").ProjectPagesSettings = null as any;
+utilities.lazyLoad(exports, ["ProjectPagesSettings"], () => require("./projectPagesSettings"));
 
 export { ProjectProtectedEnvironmentArgs, ProjectProtectedEnvironmentState } from "./projectProtectedEnvironment";
 export type ProjectProtectedEnvironment = import("./projectProtectedEnvironment").ProjectProtectedEnvironment;
@@ -799,6 +884,8 @@ const _module = {
         switch (type) {
             case "gitlab:index/application:Application":
                 return new Application(name, <any>undefined, { urn })
+            case "gitlab:index/applicationAppearance:ApplicationAppearance":
+                return new ApplicationAppearance(name, <any>undefined, { urn })
             case "gitlab:index/applicationSettings:ApplicationSettings":
                 return new ApplicationSettings(name, <any>undefined, { urn })
             case "gitlab:index/branch:Branch":
@@ -925,6 +1012,32 @@ const _module = {
                 return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
                 return new ProjectHook(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker":
+                return new ProjectIntegrationCustomIssueTracker(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush":
+                return new ProjectIntegrationEmailsOnPush(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki":
+                return new ProjectIntegrationExternalWiki(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub":
+                return new ProjectIntegrationGithub(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor":
+                return new ProjectIntegrationHarbor(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins":
+                return new ProjectIntegrationJenkins(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationJira:ProjectIntegrationJira":
+                return new ProjectIntegrationJira(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost":
+                return new ProjectIntegrationMattermost(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams":
+                return new ProjectIntegrationMicrosoftTeams(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail":
+                return new ProjectIntegrationPipelinesEmail(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine":
+                return new ProjectIntegrationRedmine(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram":
+                return new ProjectIntegrationTelegram(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack":
+                return new ProjectIntegrationYoutrack(name, <any>undefined, { urn })
             case "gitlab:index/projectIssue:ProjectIssue":
                 return new ProjectIssue(name, <any>undefined, { urn })
             case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
@@ -941,10 +1054,14 @@ const _module = {
                 return new ProjectLevelNotifications(name, <any>undefined, { urn })
             case "gitlab:index/projectMembership:ProjectMembership":
                 return new ProjectMembership(name, <any>undefined, { urn })
+            case "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote":
+                return new ProjectMergeRequestNote(name, <any>undefined, { urn })
             case "gitlab:index/projectMilestone:ProjectMilestone":
                 return new ProjectMilestone(name, <any>undefined, { urn })
             case "gitlab:index/projectMirror:ProjectMirror":
                 return new ProjectMirror(name, <any>undefined, { urn })
+            case "gitlab:index/projectPagesSettings:ProjectPagesSettings":
+                return new ProjectPagesSettings(name, <any>undefined, { urn })
             case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
                 return new ProjectProtectedEnvironment(name, <any>undefined, { urn })
             case "gitlab:index/projectPushRules:ProjectPushRules":
@@ -999,6 +1116,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gitlab", "index/application", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/applicationAppearance", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/applicationSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branch", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _module)
@@ -1062,6 +1180,19 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", 
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationCustomIssueTracker", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationEmailsOnPush", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationExternalWiki", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationGithub", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationHarbor", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationJenkins", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationJira", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationMattermost", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationMicrosoftTeams", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationPipelinesEmail", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationRedmine", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationTelegram", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationYoutrack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScope", _module)
@@ -1070,8 +1201,10 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelNotifications", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectMergeRequestNote", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectPagesSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPushRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement", _module)

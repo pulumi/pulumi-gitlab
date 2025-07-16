@@ -622,7 +622,9 @@ class IntegrationJira(pulumi.CustomResource):
                  username: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
+        The `IntegrationJira` resource manages the lifecycle of a project integration with Jira.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationJira`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
 
@@ -645,7 +647,7 @@ class IntegrationJira(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_jira`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
 
         terraform
 
@@ -657,7 +659,7 @@ class IntegrationJira(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_jira state using the project ID, e.g.
 
@@ -690,7 +692,9 @@ class IntegrationJira(pulumi.CustomResource):
                  args: IntegrationJiraArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationJira` resource allows to manage the lifecycle of a project integration with Jira.
+        The `IntegrationJira` resource manages the lifecycle of a project integration with Jira.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationJira`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
 
@@ -713,7 +717,7 @@ class IntegrationJira(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_jira`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
 
         terraform
 
@@ -725,7 +729,7 @@ class IntegrationJira(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_jira state using the project ID, e.g.
 
