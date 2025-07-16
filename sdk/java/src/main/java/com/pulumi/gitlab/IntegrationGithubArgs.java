@@ -18,14 +18,14 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
     public static final IntegrationGithubArgs Empty = new IntegrationGithubArgs();
 
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return ID of the project you want to activate integration on.
+     * @return ID of the project you want to activate the integration on.
      * 
      */
     public Output<String> project() {
@@ -40,14 +40,14 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
     @Import(name="staticContext")
     private @Nullable Output<Boolean> staticContext;
 
     /**
-     * @return Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+     * @return Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
     public Optional<Output<Boolean>> staticContext() {
@@ -55,14 +55,14 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A GitHub personal access token with at least `repo:status` scope.
+     * A GitHub personal access token with at least the `repo:status` scope.
      * 
      */
     @Import(name="token", required=true)
     private Output<String> token;
 
     /**
-     * @return A GitHub personal access token with at least `repo:status` scope.
+     * @return A GitHub personal access token with at least the `repo:status` scope.
      * 
      */
     public Output<String> token() {
@@ -97,7 +97,7 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project ID of the project you want to activate integration on.
+         * @param project ID of the project you want to activate the integration on.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project ID of the project you want to activate integration on.
+         * @param project ID of the project you want to activate the integration on.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param staticContext Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+         * @param staticContext Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param staticContext Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+         * @param staticContext Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param token A GitHub personal access token with at least `repo:status` scope.
+         * @param token A GitHub personal access token with at least the `repo:status` scope.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class IntegrationGithubArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param token A GitHub personal access token with at least `repo:status` scope.
+         * @param token A GitHub personal access token with at least the `repo:status` scope.
          * 
          * @return builder
          * 

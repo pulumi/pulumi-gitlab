@@ -146,7 +146,7 @@ def get_group_provisioned_users(active: Optional[builtins.bool] = None,
                                 username: Optional[builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupProvisionedUsersResult:
     """
-    The `get_group_provisioned_users` data source allows details of the provisioned users of a given group.
+    The `get_group_provisioned_users` data source retrieves details of the provisioned users in a given group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
 
@@ -191,7 +191,7 @@ def get_group_provisioned_users_output(active: Optional[pulumi.Input[Optional[bu
                                        username: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupProvisionedUsersResult]:
     """
-    The `get_group_provisioned_users` data source allows details of the provisioned users of a given group.
+    The `get_group_provisioned_users` data source retrieves details of the provisioned users in a given group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#list-provisioned-users)
 

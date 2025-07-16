@@ -290,7 +290,7 @@ class GroupMembership(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_membership`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_membership`. For example:
 
         terraform
 
@@ -302,7 +302,7 @@ class GroupMembership(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 
@@ -348,7 +348,7 @@ class GroupMembership(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_membership`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_membership`. For example:
 
         terraform
 
@@ -360,7 +360,7 @@ class GroupMembership(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
 

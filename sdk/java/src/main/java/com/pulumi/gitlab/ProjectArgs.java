@@ -162,6 +162,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     * 
+     */
+    @Import(name="autoDuoCodeReviewEnabled")
+    private @Nullable Output<Boolean> autoDuoCodeReviewEnabled;
+
+    /**
+     * @return Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+     * 
+     */
+    public Optional<Output<Boolean>> autoDuoCodeReviewEnabled() {
+        return Optional.ofNullable(this.autoDuoCodeReviewEnabled);
+    }
+
+    /**
      * Set whether auto-closing referenced issues on default branch.
      * 
      */
@@ -204,6 +219,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> avatarHash() {
         return Optional.ofNullable(this.avatarHash);
+    }
+
+    /**
+     * Branches to fork (empty for all branches).
+     * 
+     */
+    @Import(name="branches")
+    private @Nullable Output<String> branches;
+
+    /**
+     * @return Branches to fork (empty for all branches).
+     * 
+     */
+    public Optional<Output<String>> branches() {
+        return Optional.ofNullable(this.branches);
     }
 
     /**
@@ -309,6 +339,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> ciForwardDeploymentEnabled() {
         return Optional.ofNullable(this.ciForwardDeploymentEnabled);
+    }
+
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     * 
+     */
+    @Import(name="ciForwardDeploymentRollbackAllowed")
+    private @Nullable Output<Boolean> ciForwardDeploymentRollbackAllowed;
+
+    /**
+     * @return Allow job retries even if the deployment job is outdated.
+     * 
+     */
+    public Optional<Output<Boolean>> ciForwardDeploymentRollbackAllowed() {
+        return Optional.ofNullable(this.ciForwardDeploymentRollbackAllowed);
     }
 
     /**
@@ -1570,9 +1615,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.autoCancelPendingPipelines = $.autoCancelPendingPipelines;
         this.autoDevopsDeployStrategy = $.autoDevopsDeployStrategy;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
+        this.autoDuoCodeReviewEnabled = $.autoDuoCodeReviewEnabled;
         this.autocloseReferencedIssues = $.autocloseReferencedIssues;
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
+        this.branches = $.branches;
         this.buildGitStrategy = $.buildGitStrategy;
         this.buildTimeout = $.buildTimeout;
         this.buildsAccessLevel = $.buildsAccessLevel;
@@ -1580,6 +1627,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
         this.ciDeletePipelinesInSeconds = $.ciDeletePipelinesInSeconds;
         this.ciForwardDeploymentEnabled = $.ciForwardDeploymentEnabled;
+        this.ciForwardDeploymentRollbackAllowed = $.ciForwardDeploymentRollbackAllowed;
         this.ciIdTokenSubClaimComponents = $.ciIdTokenSubClaimComponents;
         this.ciPipelineVariablesMinimumOverrideRole = $.ciPipelineVariablesMinimumOverrideRole;
         this.ciRestrictPipelineCancellationRole = $.ciRestrictPipelineCancellationRole;
@@ -1877,6 +1925,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param autoDuoCodeReviewEnabled Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDuoCodeReviewEnabled(@Nullable Output<Boolean> autoDuoCodeReviewEnabled) {
+            $.autoDuoCodeReviewEnabled = autoDuoCodeReviewEnabled;
+            return this;
+        }
+
+        /**
+         * @param autoDuoCodeReviewEnabled Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDuoCodeReviewEnabled(Boolean autoDuoCodeReviewEnabled) {
+            return autoDuoCodeReviewEnabled(Output.of(autoDuoCodeReviewEnabled));
+        }
+
+        /**
          * @param autocloseReferencedIssues Set whether auto-closing referenced issues on default branch.
          * 
          * @return builder
@@ -1937,6 +2006,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder avatarHash(String avatarHash) {
             return avatarHash(Output.of(avatarHash));
+        }
+
+        /**
+         * @param branches Branches to fork (empty for all branches).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branches(@Nullable Output<String> branches) {
+            $.branches = branches;
+            return this;
+        }
+
+        /**
+         * @param branches Branches to fork (empty for all branches).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branches(String branches) {
+            return branches(Output.of(branches));
         }
 
         /**
@@ -2084,6 +2174,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ciForwardDeploymentEnabled(Boolean ciForwardDeploymentEnabled) {
             return ciForwardDeploymentEnabled(Output.of(ciForwardDeploymentEnabled));
+        }
+
+        /**
+         * @param ciForwardDeploymentRollbackAllowed Allow job retries even if the deployment job is outdated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciForwardDeploymentRollbackAllowed(@Nullable Output<Boolean> ciForwardDeploymentRollbackAllowed) {
+            $.ciForwardDeploymentRollbackAllowed = ciForwardDeploymentRollbackAllowed;
+            return this;
+        }
+
+        /**
+         * @param ciForwardDeploymentRollbackAllowed Allow job retries even if the deployment job is outdated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciForwardDeploymentRollbackAllowed(Boolean ciForwardDeploymentRollbackAllowed) {
+            return ciForwardDeploymentRollbackAllowed(Output.of(ciForwardDeploymentRollbackAllowed));
         }
 
         /**

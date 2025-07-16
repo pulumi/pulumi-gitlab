@@ -12,11 +12,78 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectLevelNotifications` resource allows to manage notifications for a project.
+// The `ProjectLevelNotifications` resource manages notifications for a project.
 //
 // > While the API supports both groups and projects, this resource only supports projects currently.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("example project"),
+//				Description:     pulumi.String("Lorem Ipsum"),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Basic example
+//			_, err = gitlab.NewProjectLevelNotifications(ctx, "notifications", &gitlab.ProjectLevelNotificationsArgs{
+//				Project: example.ID(),
+//				Level:   pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Custom notification example
+//			_, err = gitlab.NewProjectLevelNotifications(ctx, "custom", &gitlab.ProjectLevelNotificationsArgs{
+//				Project:         example.ID(),
+//				Level:           pulumi.String("custom"),
+//				NewMergeRequest: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
+//
+// terraform
+//
+// import {
+//
+//	to = gitlab_project_level_notifications.example
+//
+//	id = "see CLI command below for ID"
+//
+// }
+//
+// Importing using the CLI is supported with the following syntax:
+//
+// A GitLab Project level notification can be imported using a key composed of `<project-id>`, for example:
+//
+// ```sh
+// $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
+// ```
 type ProjectLevelNotifications struct {
 	pulumi.CustomResourceState
 

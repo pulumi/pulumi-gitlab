@@ -10,6 +10,10 @@
                     }
                 }
             },
+            "gitlab_application_appearance": {
+                "current": "gitlab:index/applicationAppearance:ApplicationAppearance",
+                "majorVersion": 9
+            },
             "gitlab_application_settings": {
                 "current": "gitlab:index/applicationSettings:ApplicationSettings",
                 "majorVersion": 9,
@@ -470,6 +474,68 @@
                     }
                 }
             },
+            "gitlab_project_integration_custom_issue_tracker": {
+                "current": "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_emails_on_push": {
+                "current": "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_external_wiki": {
+                "current": "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_github": {
+                "current": "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_harbor": {
+                "current": "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_jenkins": {
+                "current": "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_jira": {
+                "current": "gitlab:index/projectIntegrationJira:ProjectIntegrationJira",
+                "majorVersion": 9,
+                "fields": {
+                    "project_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_project_integration_mattermost": {
+                "current": "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_microsoft_teams": {
+                "current": "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_pipelines_email": {
+                "current": "gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail",
+                "majorVersion": 9,
+                "fields": {
+                    "recipients": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_project_integration_redmine": {
+                "current": "gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_telegram": {
+                "current": "gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram",
+                "majorVersion": 9
+            },
+            "gitlab_project_integration_youtrack": {
+                "current": "gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack",
+                "majorVersion": 9
+            },
             "gitlab_project_issue": {
                 "current": "gitlab:index/projectIssue:ProjectIssue",
                 "majorVersion": 9,
@@ -529,6 +595,10 @@
                 "current": "gitlab:index/projectMembership:ProjectMembership",
                 "majorVersion": 9
             },
+            "gitlab_project_merge_request_note": {
+                "current": "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote",
+                "majorVersion": 9
+            },
             "gitlab_project_milestone": {
                 "current": "gitlab:index/projectMilestone:ProjectMilestone",
                 "majorVersion": 9
@@ -536,6 +606,15 @@
             "gitlab_project_mirror": {
                 "current": "gitlab:index/projectMirror:ProjectMirror",
                 "majorVersion": 9
+            },
+            "gitlab_project_pages_settings": {
+                "current": "gitlab:index/projectPagesSettings:ProjectPagesSettings",
+                "majorVersion": 9,
+                "fields": {
+                    "deployments": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_protected_environment": {
                 "current": "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment",
@@ -1035,6 +1114,25 @@
                     }
                 }
             },
+            "gitlab_project_merge_requests": {
+                "current": "gitlab:index/getProjectMergeRequests:getProjectMergeRequests",
+                "majorVersion": 9,
+                "fields": {
+                    "iids": {
+                        "maxItemsOne": false
+                    },
+                    "merge_requests": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "assignees": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "gitlab_project_milestone": {
                 "current": "gitlab:index/getProjectMilestone:getProjectMilestone",
                 "majorVersion": 9
@@ -1297,6 +1395,7 @@
     "mux": {
         "resources": {
             "gitlab:index/application:Application": 1,
+            "gitlab:index/applicationAppearance:ApplicationAppearance": 1,
             "gitlab:index/applicationSettings:ApplicationSettings": 0,
             "gitlab:index/branch:Branch": 0,
             "gitlab:index/branchProtection:BranchProtection": 1,
@@ -1343,7 +1442,7 @@
             "gitlab:index/integrationRedmine:IntegrationRedmine": 1,
             "gitlab:index/integrationSlack:IntegrationSlack": 0,
             "gitlab:index/integrationTelegram:IntegrationTelegram": 1,
-            "gitlab:index/label:Label": 0,
+            "gitlab:index/label:Label": 1,
             "gitlab:index/memberRole:MemberRole": 1,
             "gitlab:index/pagesDomain:PagesDomain": 1,
             "gitlab:index/personalAccessToken:PersonalAccessToken": 1,
@@ -1360,16 +1459,31 @@
             "gitlab:index/projectEnvironment:ProjectEnvironment": 0,
             "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 0,
             "gitlab:index/projectHook:ProjectHook": 1,
+            "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker": 1,
+            "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush": 0,
+            "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki": 0,
+            "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub": 0,
+            "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor": 1,
+            "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins": 1,
+            "gitlab:index/projectIntegrationJira:ProjectIntegrationJira": 0,
+            "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost": 0,
+            "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams": 0,
+            "gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail": 0,
+            "gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine": 1,
+            "gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram": 1,
+            "gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack": 1,
             "gitlab:index/projectIssue:ProjectIssue": 0,
             "gitlab:index/projectIssueBoard:ProjectIssueBoard": 0,
             "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": 1,
             "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes": 1,
-            "gitlab:index/projectLabel:ProjectLabel": 0,
+            "gitlab:index/projectLabel:ProjectLabel": 1,
             "gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals": 1,
             "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": 1,
             "gitlab:index/projectMembership:ProjectMembership": 0,
+            "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote": 1,
             "gitlab:index/projectMilestone:ProjectMilestone": 0,
             "gitlab:index/projectMirror:ProjectMirror": 1,
+            "gitlab:index/projectPagesSettings:ProjectPagesSettings": 1,
             "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": 1,
             "gitlab:index/projectPushRules:ProjectPushRules": 1,
             "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": 0,
@@ -1432,6 +1546,7 @@
             "gitlab:index/getProjectIssues:getProjectIssues": 0,
             "gitlab:index/getProjectMembership:getProjectMembership": 0,
             "gitlab:index/getProjectMergeRequest:getProjectMergeRequest": 1,
+            "gitlab:index/getProjectMergeRequests:getProjectMergeRequests": 1,
             "gitlab:index/getProjectMilestone:getProjectMilestone": 0,
             "gitlab:index/getProjectMilestones:getProjectMilestones": 0,
             "gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey": 1,

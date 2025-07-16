@@ -58,6 +58,12 @@ namespace Pulumi.GitLab
         public string? Email { get; set; }
 
         /// <summary>
+        /// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+        /// </summary>
+        [Input("emailExactMatch")]
+        public bool? EmailExactMatch { get; set; }
+
+        /// <summary>
         /// The ID of the user's namespace. Requires admin token to access this field.
         /// </summary>
         [Input("namespaceId")]
@@ -88,6 +94,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+        /// </summary>
+        [Input("emailExactMatch")]
+        public Input<bool>? EmailExactMatch { get; set; }
 
         /// <summary>
         /// The ID of the user's namespace. Requires admin token to access this field.
@@ -149,6 +161,10 @@ namespace Pulumi.GitLab
         /// The public email address of the user.
         /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+        /// </summary>
+        public readonly bool? EmailExactMatch;
         /// <summary>
         /// The external UID of the user.
         /// </summary>
@@ -256,6 +272,8 @@ namespace Pulumi.GitLab
 
             string email,
 
+            bool? emailExactMatch,
+
             string externUid,
 
             bool external,
@@ -308,6 +326,7 @@ namespace Pulumi.GitLab
             CreatedAt = createdAt;
             CurrentSignInAt = currentSignInAt;
             Email = email;
+            EmailExactMatch = emailExactMatch;
             ExternUid = externUid;
             External = external;
             Id = id;

@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_security_policy_attachment`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_security_policy_attachment`. For example:
  * 
  * terraform
  * 
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * GitLab project security policy attachments can be imported using an id made up of `project:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
  * 

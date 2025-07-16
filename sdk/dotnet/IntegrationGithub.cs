@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.IntegrationGithub` resource allows to manage the lifecycle of a project integration with GitHub.
+    /// The `gitlab.IntegrationGithub` resource manages the lifecycle of a project integration with GitHub.
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance.
+    /// 
+    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationGithub` instead.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#github)
     /// 
@@ -45,7 +47,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_github`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
     /// 
     /// terraform
     /// 
@@ -57,7 +59,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `&lt;resource&gt; &lt;project_id&gt;`:
@@ -77,13 +79,13 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Create time.
+        /// Creation time.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the project you want to activate integration on.
+        /// ID of the project you want to activate the integration on.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -92,19 +94,19 @@ namespace Pulumi.GitLab
         public Output<string> RepositoryUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Output("staticContext")]
         public Output<bool?> StaticContext { get; private set; } = null!;
 
         /// <summary>
-        /// Title.
+        /// The title of this resource.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// A GitHub personal access token with at least `repo:status` scope.
+        /// A GitHub personal access token with at least the `repo:status` scope.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -166,7 +168,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationGithubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the project you want to activate integration on.
+        /// ID of the project you want to activate the integration on.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -175,7 +177,7 @@ namespace Pulumi.GitLab
         public Input<string> RepositoryUrl { get; set; } = null!;
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
@@ -184,7 +186,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// A GitHub personal access token with at least `repo:status` scope.
+        /// A GitHub personal access token with at least the `repo:status` scope.
         /// </summary>
         public Input<string>? Token
         {
@@ -211,13 +213,13 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Create time.
+        /// Creation time.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// ID of the project you want to activate integration on.
+        /// ID of the project you want to activate the integration on.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -226,13 +228,13 @@ namespace Pulumi.GitLab
         public Input<string>? RepositoryUrl { get; set; }
 
         /// <summary>
-        /// Append instance name instead of branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
+        /// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Input("staticContext")]
         public Input<bool>? StaticContext { get; set; }
 
         /// <summary>
-        /// Title.
+        /// The title of this resource.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
@@ -241,7 +243,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// A GitHub personal access token with at least `repo:status` scope.
+        /// A GitHub personal access token with at least the `repo:status` scope.
         /// </summary>
         public Input<string>? Token
         {

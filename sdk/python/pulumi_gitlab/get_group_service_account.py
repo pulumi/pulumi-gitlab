@@ -99,7 +99,7 @@ def get_group_service_account(group: Optional[builtins.str] = None,
                               service_account_id: Optional[builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupServiceAccountResult:
     """
-    The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+    The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 
@@ -123,7 +123,7 @@ def get_group_service_account_output(group: Optional[pulumi.Input[builtins.str]]
                                      service_account_id: Optional[pulumi.Input[builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
-    The `GroupServiceAccount` data source retrieves information about a gitlab service account for a group.
+    The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 

@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_badge`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_badge`. For example:
  * 
  * terraform
  * 
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
  * 

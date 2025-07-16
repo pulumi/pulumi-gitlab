@@ -18,6 +18,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getUser:getUser", {
         "email": args.email,
+        "emailExactMatch": args.emailExactMatch,
         "namespaceId": args.namespaceId,
         "userId": args.userId,
         "username": args.username,
@@ -32,6 +33,10 @@ export interface GetUserArgs {
      * The public email address of the user.
      */
     email?: string;
+    /**
+     * (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     */
+    emailExactMatch?: boolean;
     /**
      * The ID of the user's namespace. Requires admin token to access this field.
      */
@@ -82,6 +87,10 @@ export interface GetUserResult {
      * The public email address of the user.
      */
     readonly email: string;
+    /**
+     * (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     */
+    readonly emailExactMatch?: boolean;
     /**
      * The external UID of the user.
      */
@@ -185,6 +194,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getUser:getUser", {
         "email": args.email,
+        "emailExactMatch": args.emailExactMatch,
         "namespaceId": args.namespaceId,
         "userId": args.userId,
         "username": args.username,
@@ -199,6 +209,10 @@ export interface GetUserOutputArgs {
      * The public email address of the user.
      */
     email?: pulumi.Input<string>;
+    /**
+     * (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
+     */
+    emailExactMatch?: pulumi.Input<boolean>;
     /**
      * The ID of the user's namespace. Requires admin token to access this field.
      */

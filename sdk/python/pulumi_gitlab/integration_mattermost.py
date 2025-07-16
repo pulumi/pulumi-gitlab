@@ -798,7 +798,9 @@ class IntegrationMattermost(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
+        The `IntegrationMattermost` resource manages the lifecycle of a project integration with Mattermost.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationMattermost`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#mattermost-notifications)
 
@@ -822,7 +824,7 @@ class IntegrationMattermost(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_mattermost`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_mattermost`. For example:
 
         terraform
 
@@ -834,7 +836,7 @@ class IntegrationMattermost(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 
@@ -875,7 +877,9 @@ class IntegrationMattermost(pulumi.CustomResource):
                  args: IntegrationMattermostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `IntegrationMattermost` resource allows to manage the lifecycle of a project integration with Mattermost.
+        The `IntegrationMattermost` resource manages the lifecycle of a project integration with Mattermost.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationMattermost`instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#mattermost-notifications)
 
@@ -899,7 +903,7 @@ class IntegrationMattermost(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0 you can use an import block to import `gitlab_integration_mattermost`. For example:
+        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_mattermost`. For example:
 
         terraform
 
@@ -911,7 +915,7 @@ class IntegrationMattermost(pulumi.CustomResource):
 
         }
 
-        Import using the CLI is supported using the following syntax:
+        Importing using the CLI is supported with the following syntax:
 
         You can import a gitlab_integration_mattermost.mattermost state using the project ID, e.g.
 

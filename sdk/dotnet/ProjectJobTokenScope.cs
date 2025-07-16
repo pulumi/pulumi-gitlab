@@ -19,7 +19,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0 you can use an import block to import `gitlab_project_job_token_scope`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scope`. For example:
     /// 
     /// terraform
     /// 
@@ -31,7 +31,7 @@ namespace Pulumi.GitLab
     /// 
     /// }
     /// 
-    /// Import using the CLI is supported using the following syntax:
+    /// Importing using the CLI is supported with the following syntax:
     /// 
     /// GitLab project job token scopes can be imported using an id made up of `projectId:targetProjectId`, e.g.
     /// 

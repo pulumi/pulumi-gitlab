@@ -31,9 +31,14 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/group_service_accounts/#create-a-personal-access-token-for-a-service-account-user)
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0 you can use an import block to import `gitlab_group_service_account_access_token`. For example:
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
  * 
  * terraform
  * 
@@ -45,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * Import using the CLI is supported using the following syntax:
+ * Importing using the CLI is supported with the following syntax:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `&lt;resource&gt; &lt;id&gt;`. The
@@ -161,14 +166,14 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
         return Codegen.optional(this.rotationConfiguration);
     }
     /**
-     * The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+     * The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The scopes of the group service account access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+     * @return The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
      * 
      */
     public Output<List<String>> scopes() {

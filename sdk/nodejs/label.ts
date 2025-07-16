@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Label` resource allows to manage the lifecycle of a project label.
- *
- * > This resource is deprecated. use `gitlab.ProjectLabel`instead!
+ * The `gitlab.Label` resource manages the lifecycle of a project label.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
  */
@@ -44,6 +42,10 @@ export class Label extends pulumi.CustomResource {
      */
     public readonly color!: pulumi.Output<string>;
     /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     */
+    public /*out*/ readonly colorHex!: pulumi.Output<string>;
+    /**
      * The description of the label.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -74,6 +76,7 @@ export class Label extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LabelState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
+            resourceInputs["colorHex"] = state ? state.colorHex : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["labelId"] = state ? state.labelId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -90,6 +93,7 @@ export class Label extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["colorHex"] = undefined /*out*/;
             resourceInputs["labelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -105,6 +109,10 @@ export interface LabelState {
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
     color?: pulumi.Input<string>;
+    /**
+     * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+     */
+    colorHex?: pulumi.Input<string>;
     /**
      * The description of the label.
      */
