@@ -395,7 +395,7 @@ func (o BranchCommitArrayOutput) Index(i pulumi.IntInput) BranchCommitOutput {
 }
 
 type BranchProtectionAllowedToMerge struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
@@ -417,7 +417,7 @@ type BranchProtectionAllowedToMergeInput interface {
 }
 
 type BranchProtectionAllowedToMergeArgs struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
@@ -478,7 +478,7 @@ func (o BranchProtectionAllowedToMergeOutput) ToBranchProtectionAllowedToMergeOu
 	return o
 }
 
-// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o BranchProtectionAllowedToMergeOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToMerge) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -519,7 +519,7 @@ func (o BranchProtectionAllowedToMergeArrayOutput) Index(i pulumi.IntInput) Bran
 }
 
 type BranchProtectionAllowedToPush struct {
-	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
@@ -543,7 +543,7 @@ type BranchProtectionAllowedToPushInput interface {
 }
 
 type BranchProtectionAllowedToPushArgs struct {
-	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
@@ -606,7 +606,7 @@ func (o BranchProtectionAllowedToPushOutput) ToBranchProtectionAllowedToPushOutp
 	return o
 }
 
-// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o BranchProtectionAllowedToPushOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BranchProtectionAllowedToPush) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -3746,6 +3746,150 @@ func (o ProjectProtectedEnvironmentDeployAccessLevelArrayOutput) Index(i pulumi.
 	}).(ProjectProtectedEnvironmentDeployAccessLevelOutput)
 }
 
+type ProjectProtectedEnvironmentDeployAccessLevelsAttribute struct {
+	// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
+	GroupId *int `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType *int `pulumi:"groupInheritanceType"`
+	// The unique ID of the Deploy Access Level object.
+	Id *int `pulumi:"id"`
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
+	UserId *int `pulumi:"userId"`
+}
+
+// ProjectProtectedEnvironmentDeployAccessLevelsAttributeInput is an input type that accepts ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs and ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput values.
+// You can construct a concrete instance of `ProjectProtectedEnvironmentDeployAccessLevelsAttributeInput` via:
+//
+//	ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{...}
+type ProjectProtectedEnvironmentDeployAccessLevelsAttributeInput interface {
+	pulumi.Input
+
+	ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput() ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput
+	ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutputWithContext(context.Context) ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs struct {
+	// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// Readable description of level of access.
+	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
+	// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+	GroupInheritanceType pulumi.IntPtrInput `pulumi:"groupInheritanceType"`
+	// The unique ID of the Deploy Access Level object.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsAttribute)(nil)).Elem()
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput() ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput {
+	return i.ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutputWithContext(context.Background())
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput)
+}
+
+// ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayInput is an input type that accepts ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray and ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput values.
+// You can construct a concrete instance of `ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayInput` via:
+//
+//	ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{ ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{...} }
+type ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayInput interface {
+	pulumi.Input
+
+	ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput() ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput
+	ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutputWithContext(context.Context) ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray []ProjectProtectedEnvironmentDeployAccessLevelsAttributeInput
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectProtectedEnvironmentDeployAccessLevelsAttribute)(nil)).Elem()
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput() ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput {
+	return i.ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput)
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput struct{ *pulumi.OutputState }
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsAttribute)(nil)).Elem()
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput() ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput {
+	return o
+}
+
+// Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevelsAttribute) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Readable description of level of access.
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) AccessLevelDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevelsAttribute) *string {
+		return v.AccessLevelDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevelsAttribute) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) GroupInheritanceType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevelsAttribute) *int { return v.GroupInheritanceType }).(pulumi.IntPtrOutput)
+}
+
+// The unique ID of the Deploy Access Level object.
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevelsAttribute) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectProtectedEnvironmentDeployAccessLevelsAttribute) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectProtectedEnvironmentDeployAccessLevelsAttribute)(nil)).Elem()
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput() ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput) ToProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutputWithContext(ctx context.Context) ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput {
+	return o
+}
+
+func (o ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput) Index(i pulumi.IntInput) ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectProtectedEnvironmentDeployAccessLevelsAttribute {
+		return vs[0].([]ProjectProtectedEnvironmentDeployAccessLevelsAttribute)[vs[1].(int)]
+	}).(ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput)
+}
+
 type ProjectPushRulesType struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`
@@ -5371,7 +5515,7 @@ func (o ReleaseLinksPtrOutput) Self() pulumi.StringPtrOutput {
 }
 
 type TagProtectionAllowedToCreate struct {
-	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
@@ -5393,7 +5537,7 @@ type TagProtectionAllowedToCreateInput interface {
 }
 
 type TagProtectionAllowedToCreateArgs struct {
-	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
@@ -5454,7 +5598,7 @@ func (o TagProtectionAllowedToCreateOutput) ToTagProtectionAllowedToCreateOutput
 	return o
 }
 
-// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o TagProtectionAllowedToCreateOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagProtectionAllowedToCreate) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -6282,6 +6426,8 @@ type GetGroupHooksHook struct {
 	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
+	// Invoke the hook for emoji events.
+	EmojiEvents bool `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification bool `pulumi:"enableSslVerification"`
 	// The ID or full path of the group.
@@ -6338,6 +6484,8 @@ type GetGroupHooksHookArgs struct {
 	CustomWebhookTemplate pulumi.StringInput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolInput `pulumi:"deploymentEvents"`
+	// Invoke the hook for emoji events.
+	EmojiEvents pulumi.BoolInput `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolInput `pulumi:"enableSslVerification"`
 	// The ID or full path of the group.
@@ -6443,6 +6591,11 @@ func (o GetGroupHooksHookOutput) CustomWebhookTemplate() pulumi.StringOutput {
 // Invoke the hook for deployment events.
 func (o GetGroupHooksHookOutput) DeploymentEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupHooksHook) bool { return v.DeploymentEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for emoji events.
+func (o GetGroupHooksHookOutput) EmojiEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupHooksHook) bool { return v.EmojiEvents }).(pulumi.BoolOutput)
 }
 
 // Enable ssl verification when invoking the hook.
@@ -8875,6 +9028,166 @@ func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) Username() pulumi.Strin
 // URL to the user's profile.
 func (o GetPipelineSchedulesPipelineScheduleOwnerOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineSchedulesPipelineScheduleOwner) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
+type GetProjectAccessTokensAccessToken struct {
+	AccessLevel string   `pulumi:"accessLevel"`
+	Active      bool     `pulumi:"active"`
+	CreatedAt   string   `pulumi:"createdAt"`
+	Description string   `pulumi:"description"`
+	ExpiresAt   string   `pulumi:"expiresAt"`
+	Id          string   `pulumi:"id"`
+	LastUsedAt  string   `pulumi:"lastUsedAt"`
+	Name        string   `pulumi:"name"`
+	Project     string   `pulumi:"project"`
+	Revoked     bool     `pulumi:"revoked"`
+	Scopes      []string `pulumi:"scopes"`
+	UserId      int      `pulumi:"userId"`
+}
+
+// GetProjectAccessTokensAccessTokenInput is an input type that accepts GetProjectAccessTokensAccessTokenArgs and GetProjectAccessTokensAccessTokenOutput values.
+// You can construct a concrete instance of `GetProjectAccessTokensAccessTokenInput` via:
+//
+//	GetProjectAccessTokensAccessTokenArgs{...}
+type GetProjectAccessTokensAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetProjectAccessTokensAccessTokenOutput() GetProjectAccessTokensAccessTokenOutput
+	ToGetProjectAccessTokensAccessTokenOutputWithContext(context.Context) GetProjectAccessTokensAccessTokenOutput
+}
+
+type GetProjectAccessTokensAccessTokenArgs struct {
+	AccessLevel pulumi.StringInput      `pulumi:"accessLevel"`
+	Active      pulumi.BoolInput        `pulumi:"active"`
+	CreatedAt   pulumi.StringInput      `pulumi:"createdAt"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	ExpiresAt   pulumi.StringInput      `pulumi:"expiresAt"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	LastUsedAt  pulumi.StringInput      `pulumi:"lastUsedAt"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	Project     pulumi.StringInput      `pulumi:"project"`
+	Revoked     pulumi.BoolInput        `pulumi:"revoked"`
+	Scopes      pulumi.StringArrayInput `pulumi:"scopes"`
+	UserId      pulumi.IntInput         `pulumi:"userId"`
+}
+
+func (GetProjectAccessTokensAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (i GetProjectAccessTokensAccessTokenArgs) ToGetProjectAccessTokensAccessTokenOutput() GetProjectAccessTokensAccessTokenOutput {
+	return i.ToGetProjectAccessTokensAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetProjectAccessTokensAccessTokenArgs) ToGetProjectAccessTokensAccessTokenOutputWithContext(ctx context.Context) GetProjectAccessTokensAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAccessTokensAccessTokenOutput)
+}
+
+// GetProjectAccessTokensAccessTokenArrayInput is an input type that accepts GetProjectAccessTokensAccessTokenArray and GetProjectAccessTokensAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetProjectAccessTokensAccessTokenArrayInput` via:
+//
+//	GetProjectAccessTokensAccessTokenArray{ GetProjectAccessTokensAccessTokenArgs{...} }
+type GetProjectAccessTokensAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectAccessTokensAccessTokenArrayOutput() GetProjectAccessTokensAccessTokenArrayOutput
+	ToGetProjectAccessTokensAccessTokenArrayOutputWithContext(context.Context) GetProjectAccessTokensAccessTokenArrayOutput
+}
+
+type GetProjectAccessTokensAccessTokenArray []GetProjectAccessTokensAccessTokenInput
+
+func (GetProjectAccessTokensAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (i GetProjectAccessTokensAccessTokenArray) ToGetProjectAccessTokensAccessTokenArrayOutput() GetProjectAccessTokensAccessTokenArrayOutput {
+	return i.ToGetProjectAccessTokensAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectAccessTokensAccessTokenArray) ToGetProjectAccessTokensAccessTokenArrayOutputWithContext(ctx context.Context) GetProjectAccessTokensAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAccessTokensAccessTokenArrayOutput)
+}
+
+type GetProjectAccessTokensAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetProjectAccessTokensAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) ToGetProjectAccessTokensAccessTokenOutput() GetProjectAccessTokensAccessTokenOutput {
+	return o
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) ToGetProjectAccessTokensAccessTokenOutputWithContext(ctx context.Context) GetProjectAccessTokensAccessTokenOutput {
+	return o
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) LastUsedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.LastUsedAt }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) bool { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProjectAccessTokensAccessTokenOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectAccessTokensAccessToken) int { return v.UserId }).(pulumi.IntOutput)
+}
+
+type GetProjectAccessTokensAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectAccessTokensAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (o GetProjectAccessTokensAccessTokenArrayOutput) ToGetProjectAccessTokensAccessTokenArrayOutput() GetProjectAccessTokensAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetProjectAccessTokensAccessTokenArrayOutput) ToGetProjectAccessTokensAccessTokenArrayOutputWithContext(ctx context.Context) GetProjectAccessTokensAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetProjectAccessTokensAccessTokenArrayOutput) Index(i pulumi.IntInput) GetProjectAccessTokensAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectAccessTokensAccessToken {
+		return vs[0].([]GetProjectAccessTokensAccessToken)[vs[1].(int)]
+	}).(GetProjectAccessTokensAccessTokenOutput)
 }
 
 type GetProjectBranchesBranch struct {
@@ -11735,7 +12048,7 @@ func (o GetProjectMilestonesMilestoneArrayOutput) Index(i pulumi.IntInput) GetPr
 }
 
 type GetProjectProtectedBranchMergeAccessLevel struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
@@ -11757,7 +12070,7 @@ type GetProjectProtectedBranchMergeAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchMergeAccessLevelArgs struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
@@ -11818,7 +12131,7 @@ func (o GetProjectProtectedBranchMergeAccessLevelOutput) ToGetProjectProtectedBr
 	return o
 }
 
-// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o GetProjectProtectedBranchMergeAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchMergeAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -11859,7 +12172,7 @@ func (o GetProjectProtectedBranchMergeAccessLevelArrayOutput) Index(i pulumi.Int
 }
 
 type GetProjectProtectedBranchPushAccessLevel struct {
-	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
@@ -11883,7 +12196,7 @@ type GetProjectProtectedBranchPushAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchPushAccessLevelArgs struct {
-	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
@@ -11946,7 +12259,7 @@ func (o GetProjectProtectedBranchPushAccessLevelOutput) ToGetProjectProtectedBra
 	return o
 }
 
-// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o GetProjectProtectedBranchPushAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchPushAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -12138,7 +12451,7 @@ func (o GetProjectProtectedBranchesProtectedBranchArrayOutput) Index(i pulumi.In
 }
 
 type GetProjectProtectedBranchesProtectedBranchMergeAccessLevel struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
@@ -12160,7 +12473,7 @@ type GetProjectProtectedBranchesProtectedBranchMergeAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs struct {
-	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
@@ -12221,7 +12534,7 @@ func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) ToGetP
 	return o
 }
 
-// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchMergeAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -12264,7 +12577,7 @@ func (o GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArrayOutput) I
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevel struct {
-	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription string `pulumi:"accessLevelDescription"`
@@ -12288,7 +12601,7 @@ type GetProjectProtectedBranchesProtectedBranchPushAccessLevelInput interface {
 }
 
 type GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs struct {
-	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringInput `pulumi:"accessLevelDescription"`
@@ -12351,7 +12664,7 @@ func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) ToGetPr
 	return o
 }
 
-// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o GetProjectProtectedBranchesProtectedBranchPushAccessLevelOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchesProtectedBranchPushAccessLevel) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -17208,6 +17521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentApprovalRuleArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsAttributeInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesTypeInput)(nil)).Elem(), ProjectPushRulesTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesTypePtrInput)(nil)).Elem(), ProjectPushRulesTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitInput)(nil)).Elem(), ProjectTagCommitArgs{})
@@ -17262,6 +17577,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleArrayInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleOwnerInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectAccessTokensAccessTokenInput)(nil)).Elem(), GetProjectAccessTokensAccessTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectAccessTokensAccessTokenArrayInput)(nil)).Elem(), GetProjectAccessTokensAccessTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchInput)(nil)).Elem(), GetProjectBranchesBranchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchArrayInput)(nil)).Elem(), GetProjectBranchesBranchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchCommitInput)(nil)).Elem(), GetProjectBranchesBranchCommitArgs{})
@@ -17402,6 +17719,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelOutput{})
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelArrayOutput{})
+	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelsAttributeOutput{})
+	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesTypeOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesTypePtrOutput{})
 	pulumi.RegisterOutputType(ProjectTagCommitOutput{})
@@ -17456,6 +17775,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleOutput{})
 	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleOwnerOutput{})
+	pulumi.RegisterOutputType(GetProjectAccessTokensAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetProjectAccessTokensAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchCommitOutput{})

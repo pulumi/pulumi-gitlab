@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectJobTokenScopes(ctx, "allowed_multiple_groups", &gitlab.ProjectJobTokenScopesArgs{
-//				ProjectId:        pulumi.Int(111),
+//				Project:          pulumi.String("111"),
 //				TargetProjectIds: pulumi.IntArray{},
 //				TargetGroupIds: pulumi.IntArray{
 //					pulumi.Int(321),

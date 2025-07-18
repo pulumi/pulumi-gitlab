@@ -199,6 +199,12 @@ namespace Pulumi.GitLab
         public Output<string> CiPipelineVariablesMinimumOverrideRole { get; private set; } = null!;
 
         /// <summary>
+        /// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+        /// </summary>
+        [Output("ciPushRepositoryForJobTokenAllowed")]
+        public Output<bool> CiPushRepositoryForJobTokenAllowed { get; private set; } = null!;
+
+        /// <summary>
         /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         [Output("ciRestrictPipelineCancellationRole")]
@@ -917,6 +923,12 @@ namespace Pulumi.GitLab
         public Input<string>? CiPipelineVariablesMinimumOverrideRole { get; set; }
 
         /// <summary>
+        /// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+        /// </summary>
+        [Input("ciPushRepositoryForJobTokenAllowed")]
+        public Input<bool>? CiPushRepositoryForJobTokenAllowed { get; set; }
+
+        /// <summary>
         /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         /// </summary>
         [Input("ciRestrictPipelineCancellationRole")]
@@ -1582,6 +1594,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("ciPipelineVariablesMinimumOverrideRole")]
         public Input<string>? CiPipelineVariablesMinimumOverrideRole { get; set; }
+
+        /// <summary>
+        /// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+        /// </summary>
+        [Input("ciPushRepositoryForJobTokenAllowed")]
+        public Input<bool>? CiPushRepositoryForJobTokenAllowed { get; set; }
 
         /// <summary>
         /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`

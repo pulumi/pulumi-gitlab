@@ -113,6 +113,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupServiceAccount:GroupServiceAccount")
 public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
     /**
+     * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     * 
+     */
+    @Export(name="email", refs={String.class}, tree="[0]")
+    private Output<String> email;
+
+    /**
+     * @return User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     * 
+     */
+    public Output<String> email() {
+        return this.email;
+    }
+    /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      * 
      */

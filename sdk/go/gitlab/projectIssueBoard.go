@@ -18,6 +18,92 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/boards/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("example project"),
+//				Description:     pulumi.String("Lorem Ipsum"),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleUser, err := gitlab.NewUser(ctx, "example", &gitlab.UserArgs{
+//				Name:     pulumi.String("example"),
+//				Username: pulumi.String("example"),
+//				Email:    pulumi.String("example@example.com"),
+//				Password: pulumi.String("example1$$$"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleProjectMembership, err := gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
+//				Project:     example.ID(),
+//				UserId:      exampleUser.ID(),
+//				AccessLevel: pulumi.String("developer"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleProjectMilestone, err := gitlab.NewProjectMilestone(ctx, "example", &gitlab.ProjectMilestoneArgs{
+//				Project: example.ID(),
+//				Title:   pulumi.String("m1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectIssueBoard(ctx, "this", &gitlab.ProjectIssueBoardArgs{
+//				Project: example.ID(),
+//				Name:    pulumi.String("Test Issue Board"),
+//				Lists: gitlab.ProjectIssueBoardListArray{
+//					&gitlab.ProjectIssueBoardListArgs{
+//						AssigneeId: exampleUser.ID(),
+//					},
+//					&gitlab.ProjectIssueBoardListArgs{
+//						MilestoneId: exampleProjectMilestone.MilestoneId,
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exampleProjectMembership,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProjectIssueBoard(ctx, "list_syntax", &gitlab.ProjectIssueBoardArgs{
+//				Project: example.ID(),
+//				Name:    pulumi.String("Test Issue Board with list syntax"),
+//				Lists: gitlab.ProjectIssueBoardListArray{
+//					&gitlab.ProjectIssueBoardListArgs{
+//						AssigneeId: exampleUser.ID(),
+//					},
+//					&gitlab.ProjectIssueBoardListArgs{
+//						MilestoneId: exampleProjectMilestone.MilestoneId,
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exampleProjectMembership,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue_board`. For example:

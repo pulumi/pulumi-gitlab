@@ -21,15 +21,19 @@ __all__ = ['GroupServiceAccountArgs', 'GroupServiceAccount']
 class GroupServiceAccountArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[builtins.str],
+                 email: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  username: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a GroupServiceAccount resource.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
+        :param pulumi.Input[builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[builtins.str] username: The username of the user. If not specified, it’s automatically generated.
         """
         pulumi.set(__self__, "group", group)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if username is not None:
@@ -46,6 +50,18 @@ class GroupServiceAccountArgs:
     @group.setter
     def group(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter
@@ -75,17 +91,21 @@ class GroupServiceAccountArgs:
 @pulumi.input_type
 class _GroupServiceAccountState:
     def __init__(__self__, *,
+                 email: Optional[pulumi.Input[builtins.str]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  service_account_id: Optional[pulumi.Input[builtins.str]] = None,
                  username: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupServiceAccount resources.
+        :param pulumi.Input[builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[builtins.str] service_account_id: The service account id.
         :param pulumi.Input[builtins.str] username: The username of the user. If not specified, it’s automatically generated.
         """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if name is not None:
@@ -94,6 +114,18 @@ class _GroupServiceAccountState:
             pulumi.set(__self__, "service_account_id", service_account_id)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter
@@ -150,6 +182,7 @@ class GroupServiceAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 email: Optional[pulumi.Input[builtins.str]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  username: Optional[pulumi.Input[builtins.str]] = None,
@@ -216,6 +249,7 @@ class GroupServiceAccount(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[builtins.str] username: The username of the user. If not specified, it’s automatically generated.
@@ -301,6 +335,7 @@ class GroupServiceAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 email: Optional[pulumi.Input[builtins.str]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  username: Optional[pulumi.Input[builtins.str]] = None,
@@ -313,6 +348,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupServiceAccountArgs.__new__(GroupServiceAccountArgs)
 
+            __props__.__dict__["email"] = email
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
@@ -329,6 +365,7 @@ class GroupServiceAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            email: Optional[pulumi.Input[builtins.str]] = None,
             group: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             service_account_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -340,6 +377,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[builtins.str] service_account_id: The service account id.
@@ -349,11 +387,20 @@ class GroupServiceAccount(pulumi.CustomResource):
 
         __props__ = _GroupServiceAccountState.__new__(_GroupServiceAccountState)
 
+        __props__.__dict__["email"] = email
         __props__.__dict__["group"] = group
         __props__.__dict__["name"] = name
         __props__.__dict__["service_account_id"] = service_account_id
         __props__.__dict__["username"] = username
         return GroupServiceAccount(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Output[builtins.str]:
+        """
+        User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+        """
+        return pulumi.get(self, "email")
 
     @property
     @pulumi.getter

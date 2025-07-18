@@ -62,6 +62,7 @@ import (
 //				FilePath: example.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf(".gitlab/agents/%v/config.yaml", name), nil
 //				}).(pulumi.StringOutput),
+//				Encoding:    pulumi.String("base64"),
 //				Content:     pulumi.String(invokeBase64encode.Result),
 //				AuthorEmail: pulumi.String("terraform@example.com"),
 //				AuthorName:  pulumi.String("Terraform"),

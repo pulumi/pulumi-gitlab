@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .project(example.project())
  *             .branch("main")
  *             .filePath(example.name().applyValue(_name -> String.format(".gitlab/agents/%s/config.yaml", _name)))
+ *             .encoding("base64")
  *             .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * # the GitLab Agent for Kubernetes configuration goes here ...

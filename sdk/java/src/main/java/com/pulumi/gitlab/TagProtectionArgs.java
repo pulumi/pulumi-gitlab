@@ -34,14 +34,14 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="createAccessLevel")
     private @Nullable Output<String> createAccessLevel;
 
     /**
-     * @return Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> createAccessLevel() {
@@ -137,7 +137,7 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createAccessLevel Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param createAccessLevel Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class TagProtectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createAccessLevel Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param createAccessLevel Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 

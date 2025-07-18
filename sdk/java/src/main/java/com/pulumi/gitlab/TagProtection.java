@@ -102,14 +102,14 @@ public class TagProtection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedToCreates);
     }
     /**
-     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Export(name="createAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> createAccessLevel;
 
     /**
-     * @return Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Output<String> createAccessLevel() {

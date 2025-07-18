@@ -108,7 +108,10 @@ def get_group_ids(group: Optional[builtins.str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    new_group = gitlab.Group("new_group")
+    new_group = gitlab.Group("new_group",
+        name="example-group",
+        path="example-path",
+        description="This is an example group")
     # use group IDs to get additional information, such as the GraphQL ID
     # for other resources
     foo = gitlab.get_group_ids(group="gitlab_group.new_group.id")
@@ -142,7 +145,10 @@ def get_group_ids_output(group: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    new_group = gitlab.Group("new_group")
+    new_group = gitlab.Group("new_group",
+        name="example-group",
+        path="example-path",
+        description="This is an example group")
     # use group IDs to get additional information, such as the GraphQL ID
     # for other resources
     foo = gitlab.get_group_ids(group="gitlab_group.new_group.id")

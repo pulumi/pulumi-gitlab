@@ -84,6 +84,12 @@ namespace Pulumi.GitLab
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for emoji events.
+        /// </summary>
+        [Output("emojiEvents")]
+        public Output<bool> EmojiEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Output("enableSslVerification")]
@@ -296,6 +302,12 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Invoke the hook for emoji events.
+        /// </summary>
+        [Input("emojiEvents")]
+        public Input<bool>? EmojiEvents { get; set; }
+
+        /// <summary>
         /// Enable SSL verification when invoking the hook.
         /// </summary>
         [Input("enableSslVerification")]
@@ -462,6 +474,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for emoji events.
+        /// </summary>
+        [Input("emojiEvents")]
+        public Input<bool>? EmojiEvents { get; set; }
 
         /// <summary>
         /// Enable SSL verification when invoking the hook.

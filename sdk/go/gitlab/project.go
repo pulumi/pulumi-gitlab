@@ -98,6 +98,8 @@ type Project struct {
 	CiIdTokenSubClaimComponents pulumi.StringArrayOutput `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringOutput `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
+	// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+	CiPushRepositoryForJobTokenAllowed pulumi.BoolOutput `pulumi:"ciPushRepositoryForJobTokenAllowed"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringOutput `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -371,6 +373,8 @@ type projectState struct {
 	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
+	// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+	CiPushRepositoryForJobTokenAllowed *bool `pulumi:"ciPushRepositoryForJobTokenAllowed"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -607,6 +611,8 @@ type ProjectState struct {
 	CiIdTokenSubClaimComponents pulumi.StringArrayInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
+	// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+	CiPushRepositoryForJobTokenAllowed pulumi.BoolPtrInput
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
@@ -845,6 +851,8 @@ type projectArgs struct {
 	CiIdTokenSubClaimComponents []string `pulumi:"ciIdTokenSubClaimComponents"`
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole *string `pulumi:"ciPipelineVariablesMinimumOverrideRole"`
+	// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+	CiPushRepositoryForJobTokenAllowed *bool `pulumi:"ciPushRepositoryForJobTokenAllowed"`
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole *string `pulumi:"ciRestrictPipelineCancellationRole"`
 	// Use separate caches for protected branches.
@@ -1068,6 +1076,8 @@ type ProjectArgs struct {
 	CiIdTokenSubClaimComponents pulumi.StringArrayInput
 	// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 	CiPipelineVariablesMinimumOverrideRole pulumi.StringPtrInput
+	// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+	CiPushRepositoryForJobTokenAllowed pulumi.BoolPtrInput
 	// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
 	CiRestrictPipelineCancellationRole pulumi.StringPtrInput
 	// Use separate caches for protected branches.
@@ -1451,6 +1461,11 @@ func (o ProjectOutput) CiIdTokenSubClaimComponents() pulumi.StringArrayOutput {
 // The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
 func (o ProjectOutput) CiPipelineVariablesMinimumOverrideRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CiPipelineVariablesMinimumOverrideRole }).(pulumi.StringOutput)
+}
+
+// Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+func (o ProjectOutput) CiPushRepositoryForJobTokenAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.CiPushRepositoryForJobTokenAllowed }).(pulumi.BoolOutput)
 }
 
 // The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`

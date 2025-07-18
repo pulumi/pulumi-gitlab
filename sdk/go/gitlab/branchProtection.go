@@ -52,11 +52,11 @@ type BranchProtection struct {
 	BranchProtectionId pulumi.IntOutput `pulumi:"branchProtectionId"`
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolOutput `pulumi:"codeOwnerApprovalRequired"`
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	MergeAccessLevel pulumi.StringOutput `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	PushAccessLevel pulumi.StringOutput `pulumi:"pushAccessLevel"`
 	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
 	UnprotectAccessLevel pulumi.StringOutput `pulumi:"unprotectAccessLevel"`
@@ -112,11 +112,11 @@ type branchProtectionState struct {
 	BranchProtectionId *int `pulumi:"branchProtectionId"`
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project *string `pulumi:"project"`
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
 	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
 	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
@@ -137,11 +137,11 @@ type BranchProtectionState struct {
 	BranchProtectionId pulumi.IntPtrInput
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	MergeAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringPtrInput
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	PushAccessLevel pulumi.StringPtrInput
 	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
 	UnprotectAccessLevel pulumi.StringPtrInput
@@ -164,11 +164,11 @@ type branchProtectionArgs struct {
 	Branch string `pulumi:"branch"`
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project string `pulumi:"project"`
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
 	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
 	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
@@ -188,11 +188,11 @@ type BranchProtectionArgs struct {
 	Branch pulumi.StringInput
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	MergeAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringInput
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	PushAccessLevel pulumi.StringPtrInput
 	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
 	UnprotectAccessLevel pulumi.StringPtrInput
@@ -320,7 +320,7 @@ func (o BranchProtectionOutput) CodeOwnerApprovalRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.BoolOutput { return v.CodeOwnerApprovalRequired }).(pulumi.BoolOutput)
 }
 
-// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o BranchProtectionOutput) MergeAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.MergeAccessLevel }).(pulumi.StringOutput)
 }
@@ -330,7 +330,7 @@ func (o BranchProtectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 func (o BranchProtectionOutput) PushAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.PushAccessLevel }).(pulumi.StringOutput)
 }

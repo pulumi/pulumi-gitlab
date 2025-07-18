@@ -273,6 +273,19 @@ class GroupLdapLink(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupLdapLink("test",
+            group="12345",
+            cn="testuser",
+            group_access="developer",
+            ldap_provider="ldapmain")
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_ldap_link`. For example:
@@ -323,6 +336,19 @@ class GroupLdapLink(pulumi.CustomResource):
         The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        test = gitlab.GroupLdapLink("test",
+            group="12345",
+            cn="testuser",
+            group_access="developer",
+            ldap_provider="ldapmain")
+        ```
 
         ## Import
 

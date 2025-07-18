@@ -279,6 +279,54 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/boards/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            name="example project",
+            description="Lorem Ipsum",
+            visibility_level="public")
+        example_user = gitlab.User("example",
+            name="example",
+            username="example",
+            email="example@example.com",
+            password="example1$$$")
+        example_project_membership = gitlab.ProjectMembership("example",
+            project=example.id,
+            user_id=example_user.id,
+            access_level="developer")
+        example_project_milestone = gitlab.ProjectMilestone("example",
+            project=example.id,
+            title="m1")
+        this = gitlab.ProjectIssueBoard("this",
+            project=example.id,
+            name="Test Issue Board",
+            lists=[
+                {
+                    "assignee_id": example_user.id,
+                },
+                {
+                    "milestone_id": example_project_milestone.milestone_id,
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
+        list_syntax = gitlab.ProjectIssueBoard("list_syntax",
+            project=example.id,
+            name="Test Issue Board with list syntax",
+            lists=[
+                {
+                    "assignee_id": example_user.id,
+                },
+                {
+                    "milestone_id": example_project_milestone.milestone_id,
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue_board`. For example:
@@ -323,6 +371,54 @@ class ProjectIssueBoard(pulumi.CustomResource):
         > **NOTE:** If the board lists are changed all lists will be recreated.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/boards/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            name="example project",
+            description="Lorem Ipsum",
+            visibility_level="public")
+        example_user = gitlab.User("example",
+            name="example",
+            username="example",
+            email="example@example.com",
+            password="example1$$$")
+        example_project_membership = gitlab.ProjectMembership("example",
+            project=example.id,
+            user_id=example_user.id,
+            access_level="developer")
+        example_project_milestone = gitlab.ProjectMilestone("example",
+            project=example.id,
+            title="m1")
+        this = gitlab.ProjectIssueBoard("this",
+            project=example.id,
+            name="Test Issue Board",
+            lists=[
+                {
+                    "assignee_id": example_user.id,
+                },
+                {
+                    "milestone_id": example_project_milestone.milestone_id,
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
+        list_syntax = gitlab.ProjectIssueBoard("list_syntax",
+            project=example.id,
+            name="Test Issue Board with list syntax",
+            lists=[
+                {
+                    "assignee_id": example_user.id,
+                },
+                {
+                    "milestone_id": example_project_milestone.milestone_id,
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
+        ```
 
         ## Import
 

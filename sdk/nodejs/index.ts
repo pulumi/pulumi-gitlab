@@ -195,6 +195,11 @@ export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
+export { GetProjectAccessTokensArgs, GetProjectAccessTokensResult, GetProjectAccessTokensOutputArgs } from "./getProjectAccessTokens";
+export const getProjectAccessTokens: typeof import("./getProjectAccessTokens").getProjectAccessTokens = null as any;
+export const getProjectAccessTokensOutput: typeof import("./getProjectAccessTokens").getProjectAccessTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectAccessTokens","getProjectAccessTokensOutput"], () => require("./getProjectAccessTokens"));
+
 export { GetProjectBranchesArgs, GetProjectBranchesResult, GetProjectBranchesOutputArgs } from "./getProjectBranches";
 export const getProjectBranches: typeof import("./getProjectBranches").getProjectBranches = null as any;
 export const getProjectBranchesOutput: typeof import("./getProjectBranches").getProjectBranchesOutput = null as any;
@@ -600,6 +605,11 @@ export type ProjectComplianceFrameworks = import("./projectComplianceFrameworks"
 export const ProjectComplianceFrameworks: typeof import("./projectComplianceFrameworks").ProjectComplianceFrameworks = null as any;
 utilities.lazyLoad(exports, ["ProjectComplianceFrameworks"], () => require("./projectComplianceFrameworks"));
 
+export { ProjectContainerRepositoryProtectionArgs, ProjectContainerRepositoryProtectionState } from "./projectContainerRepositoryProtection";
+export type ProjectContainerRepositoryProtection = import("./projectContainerRepositoryProtection").ProjectContainerRepositoryProtection;
+export const ProjectContainerRepositoryProtection: typeof import("./projectContainerRepositoryProtection").ProjectContainerRepositoryProtection = null as any;
+utilities.lazyLoad(exports, ["ProjectContainerRepositoryProtection"], () => require("./projectContainerRepositoryProtection"));
+
 export { ProjectCustomAttributeArgs, ProjectCustomAttributeState } from "./projectCustomAttribute";
 export type ProjectCustomAttribute = import("./projectCustomAttribute").ProjectCustomAttribute;
 export const ProjectCustomAttribute: typeof import("./projectCustomAttribute").ProjectCustomAttribute = null as any;
@@ -1004,6 +1014,8 @@ const _module = {
                 return new ProjectCluster(name, <any>undefined, { urn })
             case "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks":
                 return new ProjectComplianceFrameworks(name, <any>undefined, { urn })
+            case "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection":
+                return new ProjectContainerRepositoryProtection(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
                 return new ProjectCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/projectEnvironment:ProjectEnvironment":
@@ -1176,6 +1188,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _mo
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFrameworks", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerRepositoryProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)

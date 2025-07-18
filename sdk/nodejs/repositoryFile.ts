@@ -26,6 +26,7 @@ import * as utilities from "./utilities";
  *     project: thisProject.id,
  *     filePath: "meow.txt",
  *     branch: "main",
+ *     encoding: "base64",
  *     content: std.base64encode({
  *         input: "Meow goes the cat",
  *     }).then(invoke => invoke.result),
@@ -37,6 +38,7 @@ import * as utilities from "./utilities";
  *     project: thisProject.id,
  *     filePath: "readme.txt",
  *     branch: "main",
+ *     encoding: "text",
  *     content: "Meow goes the cat",
  *     authorEmail: "terraform@example.com",
  *     authorName: "Terraform",
@@ -46,6 +48,7 @@ import * as utilities from "./utilities";
  *     project: thisProject.id,
  *     filePath: "readme.txt",
  *     branch: "main",
+ *     encoding: "text",
  *     content: "Bark goes the dog",
  *     authorEmail: "terraform@example.com",
  *     authorName: "Terraform",

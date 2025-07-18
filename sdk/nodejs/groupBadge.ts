@@ -15,7 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = new gitlab.Group("foo", {name: "foo-group"});
+ * const foo = new gitlab.Group("foo", {
+ *     name: "foo-group",
+ *     path: "foo-path",
+ * });
  * const example = new gitlab.GroupBadge("example", {
  *     group: foo.id,
  *     linkUrl: "https://example.com/badge-123",

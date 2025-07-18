@@ -26,7 +26,10 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newProject = new GitLab.Project("new_project");
+        ///     var newProject = new GitLab.Project("new_project", new()
+        ///     {
+        ///         Name = "project",
+        ///     });
         /// 
         ///     // use project IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
@@ -60,7 +63,10 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newProject = new GitLab.Project("new_project");
+        ///     var newProject = new GitLab.Project("new_project", new()
+        ///     {
+        ///         Name = "project",
+        ///     });
         /// 
         ///     // use project IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
@@ -94,7 +100,10 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newProject = new GitLab.Project("new_project");
+        ///     var newProject = new GitLab.Project("new_project", new()
+        ///     {
+        ///         Name = "project",
+        ///     });
         /// 
         ///     // use project IDs to get additional information, such as the GraphQL ID
         ///     // for other resources

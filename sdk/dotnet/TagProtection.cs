@@ -73,7 +73,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.TagProtectionAllowedToCreate>> AllowedToCreates { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         /// </summary>
         [Output("createAccessLevel")]
         public Output<string> CreateAccessLevel { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         /// </summary>
         [Input("createAccessLevel")]
         public Input<string>? CreateAccessLevel { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         /// </summary>
         [Input("createAccessLevel")]
         public Input<string>? CreateAccessLevel { get; set; }

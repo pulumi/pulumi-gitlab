@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new IntegrationTelegram("default", IntegrationTelegramArgs.builder()
+ *             .project(awesomeProject.id())
  *             .token("123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")
  *             .room("-1000000000000000")
  *             .notifyOnlyBrokenPipelines(false)

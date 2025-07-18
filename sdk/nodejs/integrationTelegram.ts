@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     visibilityLevel: "public",
  * });
  * const _default = new gitlab.IntegrationTelegram("default", {
+ *     project: awesomeProject.id,
  *     token: "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
  *     room: "-1000000000000000",
  *     notifyOnlyBrokenPipelines: false,

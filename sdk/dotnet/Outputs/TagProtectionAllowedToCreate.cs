@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class TagProtectionAllowedToCreate
     {
         /// <summary>
-        /// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        /// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>

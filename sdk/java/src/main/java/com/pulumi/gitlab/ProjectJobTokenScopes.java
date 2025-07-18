@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var allowedMultipleGroups = new ProjectJobTokenScopes("allowedMultipleGroups", ProjectJobTokenScopesArgs.builder()
- *             .projectId(111)
+ *             .project("111")
  *             .targetProjectIds()
  *             .targetGroupIds(            
  *                 321,

@@ -149,6 +149,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * Invoke the hook for emoji events.
+     * 
+     */
+    @Export(name="emojiEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> emojiEvents;
+
+    /**
+     * @return Invoke the hook for emoji events.
+     * 
+     */
+    public Output<Boolean> emojiEvents() {
+        return this.emojiEvents;
+    }
+    /**
      * Enable SSL verification when invoking the hook.
      * 
      */

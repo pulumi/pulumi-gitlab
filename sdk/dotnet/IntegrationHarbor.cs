@@ -31,11 +31,16 @@ namespace Pulumi.GitLab
     ///         VisibilityLevel = "public",
     ///     });
     /// 
+    ///     var config = new Config();
+    ///     // Harbor password
+    ///     var password = config.Require("password");
     ///     var harbor = new GitLab.IntegrationHarbor("harbor", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Url = "http://harbor.example.com",
     ///         ProjectName = "my_project_name",
+    ///         Username = "username",
+    ///         Password = password,
     ///     });
     /// 
     /// });

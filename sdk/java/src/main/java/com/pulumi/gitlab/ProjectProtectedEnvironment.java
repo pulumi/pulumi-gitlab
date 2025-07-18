@@ -12,6 +12,7 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentState;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentApprovalRule;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentDeployAccessLevel;
+import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -70,7 +71,11 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
     /**
      * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
      * 
+     * @deprecated
+     * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
     @Export(name="deployAccessLevels", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
@@ -80,6 +85,20 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
      */
     public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevel>>> deployAccessLevels() {
         return Codegen.optional(this.deployAccessLevels);
+    }
+    /**
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * 
+     */
+    @Export(name="deployAccessLevelsAttributes", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevelsAttribute.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevelsAttribute>> deployAccessLevelsAttributes;
+
+    /**
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * 
+     */
+    public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevelsAttribute>>> deployAccessLevelsAttributes() {
+        return Codegen.optional(this.deployAccessLevelsAttributes);
     }
     /**
      * The name of the environment.

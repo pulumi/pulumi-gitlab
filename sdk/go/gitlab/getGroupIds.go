@@ -29,7 +29,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewGroup(ctx, "new_group", nil)
+//			_, err := gitlab.NewGroup(ctx, "new_group", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example-group"),
+//				Path:        pulumi.String("example-path"),
+//				Description: pulumi.String("This is an example group"),
+//			})
 //			if err != nil {
 //				return err
 //			}

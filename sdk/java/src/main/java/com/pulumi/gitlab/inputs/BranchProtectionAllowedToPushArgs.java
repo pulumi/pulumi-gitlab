@@ -17,14 +17,14 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
     public static final BranchProtectionAllowedToPushArgs Empty = new BranchProtectionAllowedToPushArgs();
 
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -120,7 +120,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 

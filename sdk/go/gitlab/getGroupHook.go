@@ -42,6 +42,8 @@ type LookupGroupHookResult struct {
 	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
+	// Invoke the hook for emoji events.
+	EmojiEvents bool `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification bool `pulumi:"enableSslVerification"`
 	// The ID or full path of the group.
@@ -134,6 +136,11 @@ func (o LookupGroupHookResultOutput) CustomWebhookTemplate() pulumi.StringOutput
 // Invoke the hook for deployment events.
 func (o LookupGroupHookResultOutput) DeploymentEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.DeploymentEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for emoji events.
+func (o LookupGroupHookResultOutput) EmojiEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.EmojiEvents }).(pulumi.BoolOutput)
 }
 
 // Enable ssl verification when invoking the hook.

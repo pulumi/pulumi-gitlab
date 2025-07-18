@@ -31,6 +31,7 @@ class GroupHookArgs:
                  custom_webhook_template: Optional[pulumi.Input[builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[builtins.bool]] = None,
                  feature_flag_events: Optional[pulumi.Input[builtins.bool]] = None,
                  issues_events: Optional[pulumi.Input[builtins.bool]] = None,
@@ -57,6 +58,7 @@ class GroupHookArgs:
         :param pulumi.Input[builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[builtins.str] description: Description of the group webhook.
+        :param pulumi.Input[builtins.bool] emoji_events: Invoke the hook for emoji events.
         :param pulumi.Input[builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[builtins.bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[builtins.bool] issues_events: Invoke the hook for issues events.
@@ -89,6 +91,8 @@ class GroupHookArgs:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if emoji_events is not None:
+            pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if feature_flag_events is not None:
@@ -227,6 +231,18 @@ class GroupHookArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Invoke the hook for emoji events.
+        """
+        return pulumi.get(self, "emoji_events")
+
+    @emoji_events.setter
+    def emoji_events(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "emoji_events", value)
 
     @property
     @pulumi.getter(name="enableSslVerification")
@@ -419,6 +435,7 @@ class _GroupHookState:
                  custom_webhook_template: Optional[pulumi.Input[builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[builtins.bool]] = None,
                  feature_flag_events: Optional[pulumi.Input[builtins.bool]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
@@ -447,6 +464,7 @@ class _GroupHookState:
         :param pulumi.Input[builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[builtins.str] description: Description of the group webhook.
+        :param pulumi.Input[builtins.bool] emoji_events: Invoke the hook for emoji events.
         :param pulumi.Input[builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[builtins.bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[builtins.str] group: The full path or id of the group to add the hook to.
@@ -481,6 +499,8 @@ class _GroupHookState:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if emoji_events is not None:
+            pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if feature_flag_events is not None:
@@ -603,6 +623,18 @@ class _GroupHookState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Invoke the hook for emoji events.
+        """
+        return pulumi.get(self, "emoji_events")
+
+    @emoji_events.setter
+    def emoji_events(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "emoji_events", value)
 
     @property
     @pulumi.getter(name="enableSslVerification")
@@ -846,6 +878,7 @@ class GroupHook(pulumi.CustomResource):
                  custom_webhook_template: Optional[pulumi.Input[builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[builtins.bool]] = None,
                  feature_flag_events: Optional[pulumi.Input[builtins.bool]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
@@ -902,6 +935,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[builtins.str] description: Description of the group webhook.
+        :param pulumi.Input[builtins.bool] emoji_events: Invoke the hook for emoji events.
         :param pulumi.Input[builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[builtins.bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[builtins.str] group: The full path or id of the group to add the hook to.
@@ -977,6 +1011,7 @@ class GroupHook(pulumi.CustomResource):
                  custom_webhook_template: Optional[pulumi.Input[builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[builtins.bool]] = None,
                  feature_flag_events: Optional[pulumi.Input[builtins.bool]] = None,
                  group: Optional[pulumi.Input[builtins.str]] = None,
@@ -1010,6 +1045,7 @@ class GroupHook(pulumi.CustomResource):
             __props__.__dict__["custom_webhook_template"] = custom_webhook_template
             __props__.__dict__["deployment_events"] = deployment_events
             __props__.__dict__["description"] = description
+            __props__.__dict__["emoji_events"] = emoji_events
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
             __props__.__dict__["feature_flag_events"] = feature_flag_events
             if group is None and not opts.urn:
@@ -1052,6 +1088,7 @@ class GroupHook(pulumi.CustomResource):
             custom_webhook_template: Optional[pulumi.Input[builtins.str]] = None,
             deployment_events: Optional[pulumi.Input[builtins.bool]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            emoji_events: Optional[pulumi.Input[builtins.bool]] = None,
             enable_ssl_verification: Optional[pulumi.Input[builtins.bool]] = None,
             feature_flag_events: Optional[pulumi.Input[builtins.bool]] = None,
             group: Optional[pulumi.Input[builtins.str]] = None,
@@ -1085,6 +1122,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[builtins.str] description: Description of the group webhook.
+        :param pulumi.Input[builtins.bool] emoji_events: Invoke the hook for emoji events.
         :param pulumi.Input[builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook.
         :param pulumi.Input[builtins.bool] feature_flag_events: Invoke the hook for feature flag events.
         :param pulumi.Input[builtins.str] group: The full path or id of the group to add the hook to.
@@ -1116,6 +1154,7 @@ class GroupHook(pulumi.CustomResource):
         __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
         __props__.__dict__["description"] = description
+        __props__.__dict__["emoji_events"] = emoji_events
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
         __props__.__dict__["feature_flag_events"] = feature_flag_events
         __props__.__dict__["group"] = group
@@ -1192,6 +1231,14 @@ class GroupHook(pulumi.CustomResource):
         Description of the group webhook.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> pulumi.Output[builtins.bool]:
+        """
+        Invoke the hook for emoji events.
+        """
+        return pulumi.get(self, "emoji_events")
 
     @property
     @pulumi.getter(name="enableSslVerification")

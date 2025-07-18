@@ -33,6 +33,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var @default = new GitLab.IntegrationTelegram("default", new()
     ///     {
+    ///         Project = awesomeProject.Id,
     ///         Token = "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
     ///         Room = "-1000000000000000",
     ///         NotifyOnlyBrokenPipelines = false,

@@ -46,6 +46,7 @@ class ProjectArgs:
                  ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
@@ -154,6 +155,7 @@ class ProjectArgs:
         :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        :param pulumi.Input[builtins.bool] ci_push_repository_for_job_token_allowed: Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -286,6 +288,8 @@ class ProjectArgs:
             pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role is not None:
             pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
+        if ci_push_repository_for_job_token_allowed is not None:
+            pulumi.set(__self__, "ci_push_repository_for_job_token_allowed", ci_push_repository_for_job_token_allowed)
         if ci_restrict_pipeline_cancellation_role is not None:
             pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         if ci_separated_caches is not None:
@@ -744,6 +748,18 @@ class ProjectArgs:
     @ci_pipeline_variables_minimum_override_role.setter
     def ci_pipeline_variables_minimum_override_role(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ci_pipeline_variables_minimum_override_role", value)
+
+    @property
+    @pulumi.getter(name="ciPushRepositoryForJobTokenAllowed")
+    def ci_push_repository_for_job_token_allowed(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+        """
+        return pulumi.get(self, "ci_push_repository_for_job_token_allowed")
+
+    @ci_push_repository_for_job_token_allowed.setter
+    def ci_push_repository_for_job_token_allowed(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "ci_push_repository_for_job_token_allowed", value)
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
@@ -1729,6 +1745,7 @@ class _ProjectState:
                  ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
@@ -1844,6 +1861,7 @@ class _ProjectState:
         :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        :param pulumi.Input[builtins.bool] ci_push_repository_for_job_token_allowed: Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -1984,6 +2002,8 @@ class _ProjectState:
             pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
         if ci_pipeline_variables_minimum_override_role is not None:
             pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
+        if ci_push_repository_for_job_token_allowed is not None:
+            pulumi.set(__self__, "ci_push_repository_for_job_token_allowed", ci_push_repository_for_job_token_allowed)
         if ci_restrict_pipeline_cancellation_role is not None:
             pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
         if ci_separated_caches is not None:
@@ -2466,6 +2486,18 @@ class _ProjectState:
     @ci_pipeline_variables_minimum_override_role.setter
     def ci_pipeline_variables_minimum_override_role(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ci_pipeline_variables_minimum_override_role", value)
+
+    @property
+    @pulumi.getter(name="ciPushRepositoryForJobTokenAllowed")
+    def ci_push_repository_for_job_token_allowed(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+        """
+        return pulumi.get(self, "ci_push_repository_for_job_token_allowed")
+
+    @ci_push_repository_for_job_token_allowed.setter
+    def ci_push_repository_for_job_token_allowed(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "ci_push_repository_for_job_token_allowed", value)
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
@@ -3525,6 +3557,7 @@ class Project(pulumi.CustomResource):
                  ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
@@ -3667,6 +3700,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        :param pulumi.Input[builtins.bool] ci_push_repository_for_job_token_allowed: Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -3829,6 +3863,7 @@ class Project(pulumi.CustomResource):
                  ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[builtins.bool]] = None,
                  ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
                  ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
                  container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
@@ -3941,6 +3976,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["ci_forward_deployment_rollback_allowed"] = ci_forward_deployment_rollback_allowed
             __props__.__dict__["ci_id_token_sub_claim_components"] = ci_id_token_sub_claim_components
             __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
+            __props__.__dict__["ci_push_repository_for_job_token_allowed"] = ci_push_repository_for_job_token_allowed
             __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
             __props__.__dict__["ci_separated_caches"] = ci_separated_caches
             __props__.__dict__["container_expiration_policy"] = container_expiration_policy
@@ -4064,6 +4100,7 @@ class Project(pulumi.CustomResource):
             ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[builtins.bool]] = None,
             ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[builtins.str]] = None,
+            ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[builtins.bool]] = None,
             ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[builtins.str]] = None,
             ci_separated_caches: Optional[pulumi.Input[builtins.bool]] = None,
             container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
@@ -4184,6 +4221,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         :param pulumi.Input[builtins.str] ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        :param pulumi.Input[builtins.bool] ci_push_repository_for_job_token_allowed: Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         :param pulumi.Input[builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         :param pulumi.Input[builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
@@ -4303,6 +4341,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["ci_forward_deployment_rollback_allowed"] = ci_forward_deployment_rollback_allowed
         __props__.__dict__["ci_id_token_sub_claim_components"] = ci_id_token_sub_claim_components
         __props__.__dict__["ci_pipeline_variables_minimum_override_role"] = ci_pipeline_variables_minimum_override_role
+        __props__.__dict__["ci_push_repository_for_job_token_allowed"] = ci_push_repository_for_job_token_allowed
         __props__.__dict__["ci_restrict_pipeline_cancellation_role"] = ci_restrict_pipeline_cancellation_role
         __props__.__dict__["ci_separated_caches"] = ci_separated_caches
         __props__.__dict__["container_expiration_policy"] = container_expiration_policy
@@ -4592,6 +4631,14 @@ class Project(pulumi.CustomResource):
         The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         """
         return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
+
+    @property
+    @pulumi.getter(name="ciPushRepositoryForJobTokenAllowed")
+    def ci_push_repository_for_job_token_allowed(self) -> pulumi.Output[builtins.bool]:
+        """
+        Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+        """
+        return pulumi.get(self, "ci_push_repository_for_job_token_allowed")
 
     @property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")

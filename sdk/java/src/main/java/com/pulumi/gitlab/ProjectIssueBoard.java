@@ -27,6 +27,94 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.User;
+ * import com.pulumi.gitlab.UserArgs;
+ * import com.pulumi.gitlab.ProjectMembership;
+ * import com.pulumi.gitlab.ProjectMembershipArgs;
+ * import com.pulumi.gitlab.ProjectMilestone;
+ * import com.pulumi.gitlab.ProjectMilestoneArgs;
+ * import com.pulumi.gitlab.ProjectIssueBoard;
+ * import com.pulumi.gitlab.ProjectIssueBoardArgs;
+ * import com.pulumi.gitlab.inputs.ProjectIssueBoardListArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new Project("example", ProjectArgs.builder()
+ *             .name("example project")
+ *             .description("Lorem Ipsum")
+ *             .visibilityLevel("public")
+ *             .build());
+ * 
+ *         var exampleUser = new User("exampleUser", UserArgs.builder()
+ *             .name("example")
+ *             .username("example")
+ *             .email("example}{@literal @}{@code example.com")
+ *             .password("example1$$$")
+ *             .build());
+ * 
+ *         var exampleProjectMembership = new ProjectMembership("exampleProjectMembership", ProjectMembershipArgs.builder()
+ *             .project(example.id())
+ *             .userId(exampleUser.id())
+ *             .accessLevel("developer")
+ *             .build());
+ * 
+ *         var exampleProjectMilestone = new ProjectMilestone("exampleProjectMilestone", ProjectMilestoneArgs.builder()
+ *             .project(example.id())
+ *             .title("m1")
+ *             .build());
+ * 
+ *         var this_ = new ProjectIssueBoard("this", ProjectIssueBoardArgs.builder()
+ *             .project(example.id())
+ *             .name("Test Issue Board")
+ *             .lists(            
+ *                 ProjectIssueBoardListArgs.builder()
+ *                     .assigneeId(exampleUser.id())
+ *                     .build(),
+ *                 ProjectIssueBoardListArgs.builder()
+ *                     .milestoneId(exampleProjectMilestone.milestoneId())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exampleProjectMembership)
+ *                 .build());
+ * 
+ *         var listSyntax = new ProjectIssueBoard("listSyntax", ProjectIssueBoardArgs.builder()
+ *             .project(example.id())
+ *             .name("Test Issue Board with list syntax")
+ *             .lists(            
+ *                 ProjectIssueBoardListArgs.builder()
+ *                     .assigneeId(exampleUser.id())
+ *                     .build(),
+ *                 ProjectIssueBoardListArgs.builder()
+ *                     .milestoneId(exampleProjectMilestone.milestoneId())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exampleProjectMembership)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

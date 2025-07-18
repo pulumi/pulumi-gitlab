@@ -61,6 +61,14 @@ import * as utilities from "./utilities";
  *     mergeAccessLevel: "maintainer",
  *     unprotectAccessLevel: "maintainer",
  * });
+ * // Example with admin push access level
+ * const adminPush = new gitlab.BranchProtection("admin_push", {
+ *     project: "12345",
+ *     branch: "admin-protected",
+ *     pushAccessLevel: "admin",
+ *     mergeAccessLevel: "maintainer",
+ *     unprotectAccessLevel: "maintainer",
+ * });
  * ```
  *
  * ## Import
@@ -142,7 +150,7 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public readonly codeOwnerApprovalRequired!: pulumi.Output<boolean>;
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     public readonly mergeAccessLevel!: pulumi.Output<string>;
     /**
@@ -150,7 +158,7 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     public readonly pushAccessLevel!: pulumi.Output<string>;
     /**
@@ -240,7 +248,7 @@ export interface BranchProtectionState {
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     mergeAccessLevel?: pulumi.Input<string>;
     /**
@@ -248,7 +256,7 @@ export interface BranchProtectionState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     pushAccessLevel?: pulumi.Input<string>;
     /**
@@ -286,7 +294,7 @@ export interface BranchProtectionArgs {
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean>;
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     mergeAccessLevel?: pulumi.Input<string>;
     /**
@@ -294,7 +302,7 @@ export interface BranchProtectionArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     pushAccessLevel?: pulumi.Input<string>;
     /**

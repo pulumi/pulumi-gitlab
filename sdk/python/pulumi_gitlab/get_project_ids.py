@@ -108,7 +108,7 @@ def get_project_ids(project: Optional[builtins.str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    new_project = gitlab.Project("new_project")
+    new_project = gitlab.Project("new_project", name="project")
     # use project IDs to get additional information, such as the GraphQL ID
     # for other resources
     foo = gitlab.get_project_ids(project="gitlab_project.new_project.id")
@@ -142,7 +142,7 @@ def get_project_ids_output(project: Optional[pulumi.Input[builtins.str]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    new_project = gitlab.Project("new_project")
+    new_project = gitlab.Project("new_project", name="project")
     # use project IDs to get additional information, such as the GraphQL ID
     # for other resources
     foo = gitlab.get_project_ids(project="gitlab_project.new_project.id")

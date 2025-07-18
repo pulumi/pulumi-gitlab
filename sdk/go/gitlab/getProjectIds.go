@@ -29,7 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewProject(ctx, "new_project", nil)
+//			_, err := gitlab.NewProject(ctx, "new_project", &gitlab.ProjectArgs{
+//				Name: pulumi.String("project"),
+//			})
 //			if err != nil {
 //				return err
 //			}

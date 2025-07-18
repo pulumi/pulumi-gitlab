@@ -15,7 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const newGroup = new gitlab.Group("new_group", {});
+ * const newGroup = new gitlab.Group("new_group", {
+ *     name: "example-group",
+ *     path: "example-path",
+ *     description: "This is an example group",
+ * });
  * // use group IDs to get additional information, such as the GraphQL ID
  * // for other resources
  * const foo = gitlab.getGroupIds({
@@ -74,7 +78,11 @@ export interface GetGroupIdsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const newGroup = new gitlab.Group("new_group", {});
+ * const newGroup = new gitlab.Group("new_group", {
+ *     name: "example-group",
+ *     path: "example-path",
+ *     description: "This is an example group",
+ * });
  * // use group IDs to get additional information, such as the GraphQL ID
  * // for other resources
  * const foo = gitlab.getGroupIds({

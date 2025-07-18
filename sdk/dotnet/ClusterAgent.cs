@@ -45,6 +45,7 @@ namespace Pulumi.GitLab
     ///         Project = example.Project,
     ///         Branch = "main",
     ///         FilePath = example.Name.Apply(name =&gt; $".gitlab/agents/{name}/config.yaml"),
+    ///         Encoding = "base64",
     ///         Content = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"# the GitLab Agent for Kubernetes configuration goes here ...

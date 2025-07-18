@@ -125,6 +125,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for emoji events.
+     * 
+     */
+    @Import(name="emojiEvents")
+    private @Nullable Output<Boolean> emojiEvents;
+
+    /**
+     * @return Invoke the hook for emoji events.
+     * 
+     */
+    public Optional<Output<Boolean>> emojiEvents() {
+        return Optional.ofNullable(this.emojiEvents);
+    }
+
+    /**
      * Enable SSL verification when invoking the hook.
      * 
      */
@@ -419,6 +434,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
         this.description = $.description;
+        this.emojiEvents = $.emojiEvents;
         this.enableSslVerification = $.enableSslVerification;
         this.featureFlagEvents = $.featureFlagEvents;
         this.group = $.group;
@@ -613,6 +629,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param emojiEvents Invoke the hook for emoji events.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emojiEvents(@Nullable Output<Boolean> emojiEvents) {
+            $.emojiEvents = emojiEvents;
+            return this;
+        }
+
+        /**
+         * @param emojiEvents Invoke the hook for emoji events.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emojiEvents(Boolean emojiEvents) {
+            return emojiEvents(Output.of(emojiEvents));
         }
 
         /**

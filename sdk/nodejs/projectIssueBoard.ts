@@ -13,6 +13,62 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/boards/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {
+ *     name: "example project",
+ *     description: "Lorem Ipsum",
+ *     visibilityLevel: "public",
+ * });
+ * const exampleUser = new gitlab.User("example", {
+ *     name: "example",
+ *     username: "example",
+ *     email: "example@example.com",
+ *     password: "example1$$$",
+ * });
+ * const exampleProjectMembership = new gitlab.ProjectMembership("example", {
+ *     project: example.id,
+ *     userId: exampleUser.id,
+ *     accessLevel: "developer",
+ * });
+ * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {
+ *     project: example.id,
+ *     title: "m1",
+ * });
+ * const _this = new gitlab.ProjectIssueBoard("this", {
+ *     project: example.id,
+ *     name: "Test Issue Board",
+ *     lists: [
+ *         {
+ *             assigneeId: exampleUser.id,
+ *         },
+ *         {
+ *             milestoneId: exampleProjectMilestone.milestoneId,
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [exampleProjectMembership],
+ * });
+ * const listSyntax = new gitlab.ProjectIssueBoard("list_syntax", {
+ *     project: example.id,
+ *     name: "Test Issue Board with list syntax",
+ *     lists: [
+ *         {
+ *             assigneeId: exampleUser.id,
+ *         },
+ *         {
+ *             milestoneId: exampleProjectMilestone.milestoneId,
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [exampleProjectMembership],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue_board`. For example:

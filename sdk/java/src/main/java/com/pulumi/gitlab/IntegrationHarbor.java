@@ -47,16 +47,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
  *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
  *             .visibilityLevel("public")
  *             .build());
  * 
+ *         final var password = config.get("password");
  *         var harbor = new IntegrationHarbor("harbor", IntegrationHarborArgs.builder()
  *             .project(awesomeProject.id())
  *             .url("http://harbor.example.com")
  *             .projectName("my_project_name")
+ *             .username("username")
+ *             .password(password)
  *             .build());
  * 
  *     }

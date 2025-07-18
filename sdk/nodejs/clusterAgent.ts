@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  *     project: example.project,
  *     branch: "main",
  *     filePath: pulumi.interpolate`.gitlab/agents/${example.name}/config.yaml`,
+ *     encoding: "base64",
  *     content: std.base64encode({
  *         input: "# the GitLab Agent for Kubernetes configuration goes here ...\n",
  *     }).then(invoke => invoke.result),

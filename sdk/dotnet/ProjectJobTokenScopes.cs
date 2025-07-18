@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var allowedMultipleGroups = new GitLab.ProjectJobTokenScopes("allowed_multiple_groups", new()
     ///     {
-    ///         ProjectId = 111,
+    ///         Project = "111",
     ///         TargetProjectIds = new[] {},
     ///         TargetGroupIds = new[]
     ///         {

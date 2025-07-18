@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.NewProject(ctx, "awesome_project", &gitlab.ProjectArgs{
+//			awesomeProject, err := gitlab.NewProject(ctx, "awesome_project", &gitlab.ProjectArgs{
 //				Name:            pulumi.String("awesome_project"),
 //				Description:     pulumi.String("My awesome project."),
 //				VisibilityLevel: pulumi.String("public"),
@@ -39,6 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewIntegrationTelegram(ctx, "default", &gitlab.IntegrationTelegramArgs{
+//				Project:                   awesomeProject.ID(),
 //				Token:                     pulumi.String("123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"),
 //				Room:                      pulumi.String("-1000000000000000"),
 //				NotifyOnlyBrokenPipelines: pulumi.Bool(false),

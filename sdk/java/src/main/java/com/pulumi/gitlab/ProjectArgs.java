@@ -387,6 +387,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     * 
+     */
+    @Import(name="ciPushRepositoryForJobTokenAllowed")
+    private @Nullable Output<Boolean> ciPushRepositoryForJobTokenAllowed;
+
+    /**
+     * @return Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     * 
+     */
+    public Optional<Output<Boolean>> ciPushRepositoryForJobTokenAllowed() {
+        return Optional.ofNullable(this.ciPushRepositoryForJobTokenAllowed);
+    }
+
+    /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */
@@ -1630,6 +1645,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.ciForwardDeploymentRollbackAllowed = $.ciForwardDeploymentRollbackAllowed;
         this.ciIdTokenSubClaimComponents = $.ciIdTokenSubClaimComponents;
         this.ciPipelineVariablesMinimumOverrideRole = $.ciPipelineVariablesMinimumOverrideRole;
+        this.ciPushRepositoryForJobTokenAllowed = $.ciPushRepositoryForJobTokenAllowed;
         this.ciRestrictPipelineCancellationRole = $.ciRestrictPipelineCancellationRole;
         this.ciSeparatedCaches = $.ciSeparatedCaches;
         this.containerExpirationPolicy = $.containerExpirationPolicy;
@@ -2247,6 +2263,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ciPipelineVariablesMinimumOverrideRole(String ciPipelineVariablesMinimumOverrideRole) {
             return ciPipelineVariablesMinimumOverrideRole(Output.of(ciPipelineVariablesMinimumOverrideRole));
+        }
+
+        /**
+         * @param ciPushRepositoryForJobTokenAllowed Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciPushRepositoryForJobTokenAllowed(@Nullable Output<Boolean> ciPushRepositoryForJobTokenAllowed) {
+            $.ciPushRepositoryForJobTokenAllowed = ciPushRepositoryForJobTokenAllowed;
+            return this;
+        }
+
+        /**
+         * @param ciPushRepositoryForJobTokenAllowed Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciPushRepositoryForJobTokenAllowed(Boolean ciPushRepositoryForJobTokenAllowed) {
+            return ciPushRepositoryForJobTokenAllowed(Output.of(ciPushRepositoryForJobTokenAllowed));
         }
 
         /**

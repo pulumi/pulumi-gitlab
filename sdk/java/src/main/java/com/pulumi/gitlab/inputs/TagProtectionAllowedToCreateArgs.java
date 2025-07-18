@@ -17,14 +17,14 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
     public static final TagProtectionAllowedToCreateArgs Empty = new TagProtectionAllowedToCreateArgs();
 
     /**
-     * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -104,7 +104,7 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accessLevel Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accessLevel Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 

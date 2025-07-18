@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BranchProtectionAllowedToPush {
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     private @Nullable String accessLevel;
@@ -40,7 +40,7 @@ public final class BranchProtectionAllowedToPush {
 
     private BranchProtectionAllowedToPush() {}
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<String> accessLevel() {

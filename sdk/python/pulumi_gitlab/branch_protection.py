@@ -41,8 +41,8 @@ class BranchProtectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]] allowed_to_unprotects: Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         :param pulumi.Input[builtins.bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
-        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
         pulumi.set(__self__, "branch", branch)
@@ -152,7 +152,7 @@ class BranchProtectionArgs:
     @pulumi.getter(name="mergeAccessLevel")
     def merge_access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "merge_access_level")
 
@@ -164,7 +164,7 @@ class BranchProtectionArgs:
     @pulumi.getter(name="pushAccessLevel")
     def push_access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "push_access_level")
 
@@ -208,9 +208,9 @@ class _BranchProtectionState:
         :param pulumi.Input[builtins.str] branch: Name of the branch.
         :param pulumi.Input[builtins.int] branch_protection_id: The ID of the branch protection (not the branch name).
         :param pulumi.Input[builtins.bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] project: The id of the project.
-        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
         if allow_force_push is not None:
@@ -324,7 +324,7 @@ class _BranchProtectionState:
     @pulumi.getter(name="mergeAccessLevel")
     def merge_access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "merge_access_level")
 
@@ -348,7 +348,7 @@ class _BranchProtectionState:
     @pulumi.getter(name="pushAccessLevel")
     def push_access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "push_access_level")
 
@@ -439,6 +439,13 @@ class BranchProtection(pulumi.CustomResource):
             push_access_level="maintainer",
             merge_access_level="maintainer",
             unprotect_access_level="maintainer")
+        # Example with admin push access level
+        admin_push = gitlab.BranchProtection("admin_push",
+            project="12345",
+            branch="admin-protected",
+            push_access_level="admin",
+            merge_access_level="maintainer",
+            unprotect_access_level="maintainer")
         ```
 
         ## Import
@@ -471,9 +478,9 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]] allowed_to_unprotects: Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         :param pulumi.Input[builtins.str] branch: Name of the branch.
         :param pulumi.Input[builtins.bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] project: The id of the project.
-        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
         ...
@@ -533,6 +540,13 @@ class BranchProtection(pulumi.CustomResource):
             project="12345",
             branch="main",
             push_access_level="maintainer",
+            merge_access_level="maintainer",
+            unprotect_access_level="maintainer")
+        # Example with admin push access level
+        admin_push = gitlab.BranchProtection("admin_push",
+            project="12345",
+            branch="admin-protected",
+            push_access_level="admin",
             merge_access_level="maintainer",
             unprotect_access_level="maintainer")
         ```
@@ -643,9 +657,9 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] branch: Name of the branch.
         :param pulumi.Input[builtins.int] branch_protection_id: The ID of the branch protection (not the branch name).
         :param pulumi.Input[builtins.bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] project: The id of the project.
-        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] push_access_level: Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] unprotect_access_level: Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -725,7 +739,7 @@ class BranchProtection(pulumi.CustomResource):
     @pulumi.getter(name="mergeAccessLevel")
     def merge_access_level(self) -> pulumi.Output[builtins.str]:
         """
-        Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "merge_access_level")
 
@@ -741,7 +755,7 @@ class BranchProtection(pulumi.CustomResource):
     @pulumi.getter(name="pushAccessLevel")
     def push_access_level(self) -> pulumi.Output[builtins.str]:
         """
-        Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "push_access_level")
 

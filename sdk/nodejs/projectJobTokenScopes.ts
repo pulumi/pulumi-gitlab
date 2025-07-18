@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const allowedMultipleGroups = new gitlab.ProjectJobTokenScopes("allowed_multiple_groups", {
- *     projectId: 111,
+ *     project: "111",
  *     targetProjectIds: [],
  *     targetGroupIds: [
  *         321,

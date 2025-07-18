@@ -90,7 +90,7 @@ type ProjectLabel struct {
 	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
 	ColorHex pulumi.StringOutput `pulumi:"colorHex"`
 	// The description of the label.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The id of the project label.
 	LabelId pulumi.IntOutput `pulumi:"labelId"`
 	// The name of the label.
@@ -289,8 +289,8 @@ func (o ProjectLabelOutput) ColorHex() pulumi.StringOutput {
 }
 
 // The description of the label.
-func (o ProjectLabelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectLabel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ProjectLabelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectLabel) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The id of the project label.

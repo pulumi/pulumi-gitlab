@@ -14,6 +14,32 @@ import (
 // The `Application` data source retrieves information about a gitlab application.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.LookupApplication(ctx, &gitlab.LookupApplicationArgs{
+//				Id: "1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult

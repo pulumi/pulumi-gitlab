@@ -407,7 +407,7 @@ class ProjectLabel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+    def description(self) -> pulumi.Output[builtins.str]:
         """
         The description of the label.
         """
