@@ -83,7 +83,7 @@ export class TagProtection extends pulumi.CustomResource {
      */
     public readonly allowedToCreates!: pulumi.Output<outputs.TagProtectionAllowedToCreate[] | undefined>;
     /**
-     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     public readonly createAccessLevel!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface TagProtectionState {
      */
     allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
     /**
-     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     createAccessLevel?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface TagProtectionArgs {
      */
     allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
     /**
-     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     createAccessLevel?: pulumi.Input<string>;
     /**

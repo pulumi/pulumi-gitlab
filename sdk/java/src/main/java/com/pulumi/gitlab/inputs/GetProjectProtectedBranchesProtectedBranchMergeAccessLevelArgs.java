@@ -18,14 +18,14 @@ public final class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArg
     public static final GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs Empty = new GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs();
 
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="accessLevel", required=true)
     private Output<String> accessLevel;
 
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Output<String> accessLevel() {
@@ -105,7 +105,7 @@ public final class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArg
         }
 
         /**
-         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArg
         }
 
         /**
-         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 

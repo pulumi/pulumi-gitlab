@@ -20,10 +20,15 @@ import * as utilities from "./utilities";
  *     description: "My awesome project.",
  *     visibilityLevel: "public",
  * });
+ * const config = new pulumi.Config();
+ * // Harbor password
+ * const password = config.require("password");
  * const harbor = new gitlab.IntegrationHarbor("harbor", {
  *     project: awesomeProject.id,
  *     url: "http://harbor.example.com",
  *     projectName: "my_project_name",
+ *     username: "username",
+ *     password: password,
  * });
  * ```
  *

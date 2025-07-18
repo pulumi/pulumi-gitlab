@@ -17,6 +17,21 @@ public final class GroupServiceAccountArgs extends com.pulumi.resources.Resource
     public static final GroupServiceAccountArgs Empty = new GroupServiceAccountArgs();
 
     /**
+     * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     * 
+     */
+    @Import(name="email")
+    private @Nullable Output<String> email;
+
+    /**
+     * @return User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     * 
+     */
+    public Optional<Output<String>> email() {
+        return Optional.ofNullable(this.email);
+    }
+
+    /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      * 
      */
@@ -64,6 +79,7 @@ public final class GroupServiceAccountArgs extends com.pulumi.resources.Resource
     private GroupServiceAccountArgs() {}
 
     private GroupServiceAccountArgs(GroupServiceAccountArgs $) {
+        this.email = $.email;
         this.group = $.group;
         this.name = $.name;
         this.username = $.username;
@@ -85,6 +101,27 @@ public final class GroupServiceAccountArgs extends com.pulumi.resources.Resource
 
         public Builder(GroupServiceAccountArgs defaults) {
             $ = new GroupServiceAccountArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param email User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(@Nullable Output<String> email) {
+            $.email = email;
+            return this;
+        }
+
+        /**
+         * @param email User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(String email) {
+            return email(Output.of(email));
         }
 
         /**

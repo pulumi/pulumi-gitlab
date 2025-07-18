@@ -56,6 +56,8 @@ type GroupHook struct {
 	DeploymentEvents pulumi.BoolOutput `pulumi:"deploymentEvents"`
 	// Description of the group webhook.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Invoke the hook for emoji events.
+	EmojiEvents pulumi.BoolOutput `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolOutput `pulumi:"enableSslVerification"`
 	// Invoke the hook for feature flag events.
@@ -153,6 +155,8 @@ type groupHookState struct {
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Description of the group webhook.
 	Description *string `pulumi:"description"`
+	// Invoke the hook for emoji events.
+	EmojiEvents *bool `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Invoke the hook for feature flag events.
@@ -208,6 +212,8 @@ type GroupHookState struct {
 	DeploymentEvents pulumi.BoolPtrInput
 	// Description of the group webhook.
 	Description pulumi.StringPtrInput
+	// Invoke the hook for emoji events.
+	EmojiEvents pulumi.BoolPtrInput
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Invoke the hook for feature flag events.
@@ -267,6 +273,8 @@ type groupHookArgs struct {
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Description of the group webhook.
 	Description *string `pulumi:"description"`
+	// Invoke the hook for emoji events.
+	EmojiEvents *bool `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Invoke the hook for feature flag events.
@@ -319,6 +327,8 @@ type GroupHookArgs struct {
 	DeploymentEvents pulumi.BoolPtrInput
 	// Description of the group webhook.
 	Description pulumi.StringPtrInput
+	// Invoke the hook for emoji events.
+	EmojiEvents pulumi.BoolPtrInput
 	// Enable SSL verification when invoking the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Invoke the hook for feature flag events.
@@ -475,6 +485,11 @@ func (o GroupHookOutput) DeploymentEvents() pulumi.BoolOutput {
 // Description of the group webhook.
 func (o GroupHookOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Invoke the hook for emoji events.
+func (o GroupHookOutput) EmojiEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.EmojiEvents }).(pulumi.BoolOutput)
 }
 
 // Enable SSL verification when invoking the hook.

@@ -150,14 +150,14 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.codeOwnerApprovalRequired;
     }
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Export(name="mergeAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> mergeAccessLevel;
 
     /**
-     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Output<String> mergeAccessLevel() {
@@ -178,14 +178,14 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Export(name="pushAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> pushAccessLevel;
 
     /**
-     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Output<String> pushAccessLevel() {

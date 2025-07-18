@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const newProject = new gitlab.Project("new_project", {});
+ * const newProject = new gitlab.Project("new_project", {name: "project"});
  * // use project IDs to get additional information, such as the GraphQL ID
  * // for other resources
  * const foo = gitlab.getProjectIds({
@@ -74,7 +74,7 @@ export interface GetProjectIdsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const newProject = new gitlab.Project("new_project", {});
+ * const newProject = new gitlab.Project("new_project", {name: "project"});
  * // use project IDs to get additional information, such as the GraphQL ID
  * // for other resources
  * const foo = gitlab.getProjectIds({

@@ -44,6 +44,7 @@ from .get_metadata import *
 from .get_pipeline_schedule import *
 from .get_pipeline_schedules import *
 from .get_project import *
+from .get_project_access_tokens import *
 from .get_project_branches import *
 from .get_project_environments import *
 from .get_project_hook import *
@@ -125,6 +126,7 @@ from .project_approval_rule import *
 from .project_badge import *
 from .project_cluster import *
 from .project_compliance_frameworks import *
+from .project_container_repository_protection import *
 from .project_custom_attribute import *
 from .project_environment import *
 from .project_freeze_period import *
@@ -678,6 +680,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": "ProjectComplianceFrameworks"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectContainerRepositoryProtection",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection": "ProjectContainerRepositoryProtection"
   }
  },
  {

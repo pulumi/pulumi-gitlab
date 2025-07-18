@@ -33,7 +33,7 @@ namespace Pulumi.GitLab
         /// The description of the label.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The id of the project label.

@@ -64,6 +64,8 @@ __all__ = [
     'ProjectProtectedEnvironmentApprovalRuleArgsDict',
     'ProjectProtectedEnvironmentDeployAccessLevelArgs',
     'ProjectProtectedEnvironmentDeployAccessLevelArgsDict',
+    'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs',
+    'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict',
     'ProjectPushRulesArgs',
     'ProjectPushRulesArgsDict',
     'ProjectTagCommitArgs',
@@ -432,7 +434,7 @@ if not MYPY:
     class BranchProtectionAllowedToMergeArgsDict(TypedDict):
         access_level: NotRequired[pulumi.Input[builtins.str]]
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -457,7 +459,7 @@ class BranchProtectionAllowedToMergeArgs:
                  group_id: Optional[pulumi.Input[builtins.int]] = None,
                  user_id: Optional[pulumi.Input[builtins.int]] = None):
         """
-        :param pulumi.Input[builtins.str] access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] access_level_description: Readable description of access level.
         :param pulumi.Input[builtins.int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[builtins.int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
@@ -475,7 +477,7 @@ class BranchProtectionAllowedToMergeArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -524,7 +526,7 @@ if not MYPY:
     class BranchProtectionAllowedToPushArgsDict(TypedDict):
         access_level: NotRequired[pulumi.Input[builtins.str]]
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -554,7 +556,7 @@ class BranchProtectionAllowedToPushArgs:
                  group_id: Optional[pulumi.Input[builtins.int]] = None,
                  user_id: Optional[pulumi.Input[builtins.int]] = None):
         """
-        :param pulumi.Input[builtins.str] access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] access_level_description: Readable description of access level.
         :param pulumi.Input[builtins.int] deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
         :param pulumi.Input[builtins.int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
@@ -575,7 +577,7 @@ class BranchProtectionAllowedToPushArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -2562,6 +2564,138 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
 
 
 if not MYPY:
+    class ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        """
+        access_level_description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Readable description of level of access.
+        """
+        group_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+        """
+        group_inheritance_type: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        user_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+        """
+elif False:
+    ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[builtins.str]] = None,
+                 access_level_description: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.int]] = None,
+                 group_inheritance_type: Optional[pulumi.Input[builtins.int]] = None,
+                 id: Optional[pulumi.Input[builtins.int]] = None,
+                 user_id: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] access_level_description: Readable description of level of access.
+        :param pulumi.Input[builtins.int] group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+        :param pulumi.Input[builtins.int] group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        :param pulumi.Input[builtins.int] id: The unique ID of the Deploy Access Level object.
+        :param pulumi.Input[builtins.int] user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if group_inheritance_type is not None:
+            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Readable description of level of access.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @access_level_description.setter
+    def access_level_description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "access_level_description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="groupInheritanceType")
+    def group_inheritance_type(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+        """
+        return pulumi.get(self, "group_inheritance_type")
+
+    @group_inheritance_type.setter
+    def group_inheritance_type(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "group_inheritance_type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The unique ID of the Deploy Access Level object.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "user_id", value)
+
+
+if not MYPY:
     class ProjectPushRulesArgsDict(TypedDict):
         author_email_regex: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -3689,7 +3823,7 @@ if not MYPY:
     class TagProtectionAllowedToCreateArgsDict(TypedDict):
         access_level: NotRequired[pulumi.Input[builtins.str]]
         """
-        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -3714,7 +3848,7 @@ class TagProtectionAllowedToCreateArgs:
                  group_id: Optional[pulumi.Input[builtins.int]] = None,
                  user_id: Optional[pulumi.Input[builtins.int]] = None):
         """
-        :param pulumi.Input[builtins.str] access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        :param pulumi.Input[builtins.str] access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[builtins.str] access_level_description: Readable description of access level.
         :param pulumi.Input[builtins.int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param pulumi.Input[builtins.int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
@@ -3732,7 +3866,7 @@ class TagProtectionAllowedToCreateArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -4439,7 +4573,7 @@ if not MYPY:
     class GetProjectProtectedBranchMergeAccessLevelArgsDict(TypedDict):
         access_level: builtins.str
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: builtins.str
         """
@@ -4464,7 +4598,7 @@ class GetProjectProtectedBranchMergeAccessLevelArgs:
                  group_id: Optional[builtins.int] = None,
                  user_id: Optional[builtins.int] = None):
         """
-        :param builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param builtins.str access_level_description: Readable description of access level.
         :param builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
@@ -4480,7 +4614,7 @@ class GetProjectProtectedBranchMergeAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> builtins.str:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -4529,7 +4663,7 @@ if not MYPY:
     class GetProjectProtectedBranchPushAccessLevelArgsDict(TypedDict):
         access_level: builtins.str
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: builtins.str
         """
@@ -4559,7 +4693,7 @@ class GetProjectProtectedBranchPushAccessLevelArgs:
                  group_id: Optional[builtins.int] = None,
                  user_id: Optional[builtins.int] = None):
         """
-        :param builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param builtins.str access_level_description: Readable description of access level.
         :param builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
         :param builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
@@ -4578,7 +4712,7 @@ class GetProjectProtectedBranchPushAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> builtins.str:
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -4767,7 +4901,7 @@ if not MYPY:
     class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgsDict(TypedDict):
         access_level: builtins.str
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: builtins.str
         """
@@ -4792,7 +4926,7 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs:
                  group_id: Optional[builtins.int] = None,
                  user_id: Optional[builtins.int] = None):
         """
-        :param builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param builtins.str access_level_description: Readable description of access level.
         :param builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         :param builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
@@ -4808,7 +4942,7 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> builtins.str:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -4857,7 +4991,7 @@ if not MYPY:
     class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgsDict(TypedDict):
         access_level: builtins.str
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         access_level_description: builtins.str
         """
@@ -4887,7 +5021,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
                  group_id: Optional[builtins.int] = None,
                  user_id: Optional[builtins.int] = None):
         """
-        :param builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        :param builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param builtins.str access_level_description: Readable description of access level.
         :param builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
         :param builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
@@ -4906,7 +5040,7 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> builtins.str:
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 

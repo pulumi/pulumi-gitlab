@@ -40,6 +40,7 @@ namespace Pulumi.GitLab
     ///         Project = thisProject.Id,
     ///         FilePath = "meow.txt",
     ///         Branch = "main",
+    ///         Encoding = "base64",
     ///         Content = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = "Meow goes the cat",
@@ -54,6 +55,7 @@ namespace Pulumi.GitLab
     ///         Project = thisProject.Id,
     ///         FilePath = "readme.txt",
     ///         Branch = "main",
+    ///         Encoding = "text",
     ///         Content = "Meow goes the cat",
     ///         AuthorEmail = "terraform@example.com",
     ///         AuthorName = "Terraform",
@@ -65,6 +67,7 @@ namespace Pulumi.GitLab
     ///         Project = thisProject.Id,
     ///         FilePath = "readme.txt",
     ///         Branch = "main",
+    ///         Encoding = "text",
     ///         Content = "Bark goes the dog",
     ///         AuthorEmail = "terraform@example.com",
     ///         AuthorName = "Terraform",

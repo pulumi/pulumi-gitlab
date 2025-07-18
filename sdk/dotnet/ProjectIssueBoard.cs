@@ -16,6 +16,93 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/boards/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.Project("example", new()
+    ///     {
+    ///         Name = "example project",
+    ///         Description = "Lorem Ipsum",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     var exampleUser = new GitLab.User("example", new()
+    ///     {
+    ///         Name = "example",
+    ///         Username = "example",
+    ///         Email = "example@example.com",
+    ///         Password = "example1$$$",
+    ///     });
+    /// 
+    ///     var exampleProjectMembership = new GitLab.ProjectMembership("example", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         UserId = exampleUser.Id,
+    ///         AccessLevel = "developer",
+    ///     });
+    /// 
+    ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("example", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         Title = "m1",
+    ///     });
+    /// 
+    ///     var @this = new GitLab.ProjectIssueBoard("this", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         Name = "Test Issue Board",
+    ///         Lists = new[]
+    ///         {
+    ///             new GitLab.Inputs.ProjectIssueBoardListArgs
+    ///             {
+    ///                 AssigneeId = exampleUser.Id,
+    ///             },
+    ///             new GitLab.Inputs.ProjectIssueBoardListArgs
+    ///             {
+    ///                 MilestoneId = exampleProjectMilestone.MilestoneId,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exampleProjectMembership,
+    ///         },
+    ///     });
+    /// 
+    ///     var listSyntax = new GitLab.ProjectIssueBoard("list_syntax", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         Name = "Test Issue Board with list syntax",
+    ///         Lists = new[]
+    ///         {
+    ///             new GitLab.Inputs.ProjectIssueBoardListArgs
+    ///             {
+    ///                 AssigneeId = exampleUser.Id,
+    ///             },
+    ///             new GitLab.Inputs.ProjectIssueBoardListArgs
+    ///             {
+    ///                 MilestoneId = exampleProjectMilestone.MilestoneId,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exampleProjectMembership,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue_board`. For example:

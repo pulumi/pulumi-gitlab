@@ -73,7 +73,7 @@ export interface BranchCommit {
 
 export interface BranchProtectionAllowedToMerge {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -92,7 +92,7 @@ export interface BranchProtectionAllowedToMerge {
 
 export interface BranchProtectionAllowedToPush {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -340,7 +340,7 @@ export interface GetGroupProvisionedUsersProvisionedUserArgs {
 
 export interface GetProjectProtectedBranchMergeAccessLevel {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: string;
     /**
@@ -359,7 +359,7 @@ export interface GetProjectProtectedBranchMergeAccessLevel {
 
 export interface GetProjectProtectedBranchMergeAccessLevelArgs {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -378,7 +378,7 @@ export interface GetProjectProtectedBranchMergeAccessLevelArgs {
 
 export interface GetProjectProtectedBranchPushAccessLevel {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: string;
     /**
@@ -401,7 +401,7 @@ export interface GetProjectProtectedBranchPushAccessLevel {
 
 export interface GetProjectProtectedBranchPushAccessLevelArgs {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -478,7 +478,7 @@ export interface GetProjectProtectedBranchesProtectedBranchArgs {
 
 export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: string;
     /**
@@ -497,7 +497,7 @@ export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
 
 export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -516,7 +516,7 @@ export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs 
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: string;
     /**
@@ -539,7 +539,7 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -1031,6 +1031,33 @@ export interface ProjectProtectedEnvironmentDeployAccessLevel {
     userId?: pulumi.Input<number>;
 }
 
+export interface ProjectProtectedEnvironmentDeployAccessLevelsAttribute {
+    /**
+     * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Readable description of level of access.
+     */
+    accessLevelDescription?: pulumi.Input<string>;
+    /**
+     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
+     */
+    groupInheritanceType?: pulumi.Input<number>;
+    /**
+     * The unique ID of the Deploy Access Level object.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
+     */
+    userId?: pulumi.Input<number>;
+}
+
 export interface ProjectPushRules {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -1262,7 +1289,7 @@ export interface ReleaseLinks {
 
 export interface TagProtectionAllowedToCreate {
     /**
-     * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string>;
     /**

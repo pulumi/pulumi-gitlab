@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const test = new gitlab.GroupLdapLink("test", {
+ *     group: "12345",
+ *     cn: "testuser",
+ *     groupAccess: "developer",
+ *     ldapProvider: "ldapmain",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_ldap_link`. For example:

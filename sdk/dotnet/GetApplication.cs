@@ -15,6 +15,24 @@ namespace Pulumi.GitLab
         /// The `gitlab.Application` data source retrieves information about a gitlab application.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = GitLab.GetApplication.Invoke(new()
+        ///     {
+        ///         Id = "1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("gitlab:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
@@ -23,6 +41,24 @@ namespace Pulumi.GitLab
         /// The `gitlab.Application` data source retrieves information about a gitlab application.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = GitLab.GetApplication.Invoke(new()
+        ///     {
+        ///         Id = "1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("gitlab:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
@@ -31,6 +67,24 @@ namespace Pulumi.GitLab
         /// The `gitlab.Application` data source retrieves information about a gitlab application.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = GitLab.GetApplication.Invoke(new()
+        ///     {
+        ///         Id = "1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("gitlab:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());

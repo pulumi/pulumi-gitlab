@@ -92,7 +92,7 @@ export class ProjectLabel extends pulumi.CustomResource {
     /**
      * The description of the label.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The id of the project label.
      */

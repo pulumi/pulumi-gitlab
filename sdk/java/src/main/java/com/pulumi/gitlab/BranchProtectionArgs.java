@@ -112,14 +112,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="mergeAccessLevel")
     private @Nullable Output<String> mergeAccessLevel;
 
     /**
-     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> mergeAccessLevel() {
@@ -142,14 +142,14 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="pushAccessLevel")
     private @Nullable Output<String> pushAccessLevel;
 
     /**
-     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> pushAccessLevel() {
@@ -361,7 +361,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class BranchProtectionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 

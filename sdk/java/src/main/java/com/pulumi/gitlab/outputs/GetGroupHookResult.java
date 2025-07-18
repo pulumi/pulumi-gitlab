@@ -33,6 +33,11 @@ public final class GetGroupHookResult {
      */
     private Boolean deploymentEvents;
     /**
+     * @return Invoke the hook for emoji events.
+     * 
+     */
+    private Boolean emojiEvents;
+    /**
      * @return Enable ssl verification when invoking the hook.
      * 
      */
@@ -151,6 +156,13 @@ public final class GetGroupHookResult {
      */
     public Boolean deploymentEvents() {
         return this.deploymentEvents;
+    }
+    /**
+     * @return Invoke the hook for emoji events.
+     * 
+     */
+    public Boolean emojiEvents() {
+        return this.emojiEvents;
     }
     /**
      * @return Enable ssl verification when invoking the hook.
@@ -292,6 +304,7 @@ public final class GetGroupHookResult {
         private Boolean confidentialNoteEvents;
         private String customWebhookTemplate;
         private Boolean deploymentEvents;
+        private Boolean emojiEvents;
         private Boolean enableSslVerification;
         private String group;
         private Integer groupId;
@@ -317,6 +330,7 @@ public final class GetGroupHookResult {
     	      this.confidentialNoteEvents = defaults.confidentialNoteEvents;
     	      this.customWebhookTemplate = defaults.customWebhookTemplate;
     	      this.deploymentEvents = defaults.deploymentEvents;
+    	      this.emojiEvents = defaults.emojiEvents;
     	      this.enableSslVerification = defaults.enableSslVerification;
     	      this.group = defaults.group;
     	      this.groupId = defaults.groupId;
@@ -367,6 +381,14 @@ public final class GetGroupHookResult {
               throw new MissingRequiredPropertyException("GetGroupHookResult", "deploymentEvents");
             }
             this.deploymentEvents = deploymentEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emojiEvents(Boolean emojiEvents) {
+            if (emojiEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHookResult", "emojiEvents");
+            }
+            this.emojiEvents = emojiEvents;
             return this;
         }
         @CustomType.Setter
@@ -519,6 +541,7 @@ public final class GetGroupHookResult {
             _resultValue.confidentialNoteEvents = confidentialNoteEvents;
             _resultValue.customWebhookTemplate = customWebhookTemplate;
             _resultValue.deploymentEvents = deploymentEvents;
+            _resultValue.emojiEvents = emojiEvents;
             _resultValue.enableSslVerification = enableSslVerification;
             _resultValue.group = group;
             _resultValue.groupId = groupId;

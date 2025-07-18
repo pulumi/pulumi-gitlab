@@ -101,6 +101,8 @@ import (
 type GroupServiceAccount struct {
 	pulumi.CustomResourceState
 
+	// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+	Email pulumi.StringOutput `pulumi:"email"`
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The name of the user. If not specified, the default Service account user name is used.
@@ -144,6 +146,8 @@ func GetGroupServiceAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupServiceAccount resources.
 type groupServiceAccountState struct {
+	// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+	Email *string `pulumi:"email"`
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group *string `pulumi:"group"`
 	// The name of the user. If not specified, the default Service account user name is used.
@@ -155,6 +159,8 @@ type groupServiceAccountState struct {
 }
 
 type GroupServiceAccountState struct {
+	// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+	Email pulumi.StringPtrInput
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group pulumi.StringPtrInput
 	// The name of the user. If not specified, the default Service account user name is used.
@@ -170,6 +176,8 @@ func (GroupServiceAccountState) ElementType() reflect.Type {
 }
 
 type groupServiceAccountArgs struct {
+	// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+	Email *string `pulumi:"email"`
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group string `pulumi:"group"`
 	// The name of the user. If not specified, the default Service account user name is used.
@@ -180,6 +188,8 @@ type groupServiceAccountArgs struct {
 
 // The set of arguments for constructing a GroupServiceAccount resource.
 type GroupServiceAccountArgs struct {
+	// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+	Email pulumi.StringPtrInput
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group pulumi.StringInput
 	// The name of the user. If not specified, the default Service account user name is used.
@@ -273,6 +283,11 @@ func (o GroupServiceAccountOutput) ToGroupServiceAccountOutput() GroupServiceAcc
 
 func (o GroupServiceAccountOutput) ToGroupServiceAccountOutputWithContext(ctx context.Context) GroupServiceAccountOutput {
 	return o
+}
+
+// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+func (o GroupServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupServiceAccount) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
 // The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.

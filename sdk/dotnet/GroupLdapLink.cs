@@ -14,6 +14,27 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new GitLab.GroupLdapLink("test", new()
+    ///     {
+    ///         Group = "12345",
+    ///         Cn = "testuser",
+    ///         GroupAccess = "developer",
+    ///         LdapProvider = "ldapmain",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_ldap_link`. For example:

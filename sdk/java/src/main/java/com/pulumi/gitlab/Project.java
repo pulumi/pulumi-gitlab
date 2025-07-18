@@ -412,6 +412,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
+     * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     * 
+     */
+    @Export(name="ciPushRepositoryForJobTokenAllowed", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ciPushRepositoryForJobTokenAllowed;
+
+    /**
+     * @return Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     * 
+     */
+    public Output<Boolean> ciPushRepositoryForJobTokenAllowed() {
+        return this.ciPushRepositoryForJobTokenAllowed;
+    }
+    /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      * 
      */

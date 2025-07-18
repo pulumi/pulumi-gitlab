@@ -27,7 +27,7 @@ class GetGroupHookResult:
     """
     A collection of values returned by getGroupHook.
     """
-    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, enable_ssl_verification=None, group=None, group_id=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, push_events=None, push_events_branch_filter=None, releases_events=None, subgroup_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
+    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, emoji_events=None, enable_ssl_verification=None, group=None, group_id=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, push_events=None, push_events_branch_filter=None, releases_events=None, subgroup_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
         if confidential_issues_events and not isinstance(confidential_issues_events, bool):
             raise TypeError("Expected argument 'confidential_issues_events' to be a bool")
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
@@ -40,6 +40,9 @@ class GetGroupHookResult:
         if deployment_events and not isinstance(deployment_events, bool):
             raise TypeError("Expected argument 'deployment_events' to be a bool")
         pulumi.set(__self__, "deployment_events", deployment_events)
+        if emoji_events and not isinstance(emoji_events, bool):
+            raise TypeError("Expected argument 'emoji_events' to be a bool")
+        pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification and not isinstance(enable_ssl_verification, bool):
             raise TypeError("Expected argument 'enable_ssl_verification' to be a bool")
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
@@ -126,6 +129,14 @@ class GetGroupHookResult:
         Invoke the hook for deployment events.
         """
         return pulumi.get(self, "deployment_events")
+
+    @property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> builtins.bool:
+        """
+        Invoke the hook for emoji events.
+        """
+        return pulumi.get(self, "emoji_events")
 
     @property
     @pulumi.getter(name="enableSslVerification")
@@ -282,6 +293,7 @@ class AwaitableGetGroupHookResult(GetGroupHookResult):
             confidential_note_events=self.confidential_note_events,
             custom_webhook_template=self.custom_webhook_template,
             deployment_events=self.deployment_events,
+            emoji_events=self.emoji_events,
             enable_ssl_verification=self.enable_ssl_verification,
             group=self.group,
             group_id=self.group_id,
@@ -325,6 +337,7 @@ def get_group_hook(group: Optional[builtins.str] = None,
         confidential_note_events=pulumi.get(__ret__, 'confidential_note_events'),
         custom_webhook_template=pulumi.get(__ret__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__ret__, 'deployment_events'),
+        emoji_events=pulumi.get(__ret__, 'emoji_events'),
         enable_ssl_verification=pulumi.get(__ret__, 'enable_ssl_verification'),
         group=pulumi.get(__ret__, 'group'),
         group_id=pulumi.get(__ret__, 'group_id'),
@@ -365,6 +378,7 @@ def get_group_hook_output(group: Optional[pulumi.Input[builtins.str]] = None,
         confidential_note_events=pulumi.get(__response__, 'confidential_note_events'),
         custom_webhook_template=pulumi.get(__response__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__response__, 'deployment_events'),
+        emoji_events=pulumi.get(__response__, 'emoji_events'),
         enable_ssl_verification=pulumi.get(__response__, 'enable_ssl_verification'),
         group=pulumi.get(__response__, 'group'),
         group_id=pulumi.get(__response__, 'group_id'),

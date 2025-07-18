@@ -52,6 +52,10 @@ export interface GetGroupHookResult {
      */
     readonly deploymentEvents: boolean;
     /**
+     * Invoke the hook for emoji events.
+     */
+    readonly emojiEvents: boolean;
+    /**
      * Enable ssl verification when invoking the hook.
      */
     readonly enableSslVerification: boolean;

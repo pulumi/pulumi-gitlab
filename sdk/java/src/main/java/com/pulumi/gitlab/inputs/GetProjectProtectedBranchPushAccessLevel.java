@@ -17,14 +17,14 @@ public final class GetProjectProtectedBranchPushAccessLevel extends com.pulumi.r
     public static final GetProjectProtectedBranchPushAccessLevel Empty = new GetProjectProtectedBranchPushAccessLevel();
 
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="accessLevel", required=true)
     private String accessLevel;
 
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public String accessLevel() {
@@ -120,7 +120,7 @@ public final class GetProjectProtectedBranchPushAccessLevel extends com.pulumi.r
         }
 
         /**
-         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`.
+         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 

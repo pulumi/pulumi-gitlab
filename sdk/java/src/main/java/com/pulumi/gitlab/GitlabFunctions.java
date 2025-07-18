@@ -55,6 +55,8 @@ import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
 import com.pulumi.gitlab.inputs.GetPipelineSchedulePlainArgs;
 import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
 import com.pulumi.gitlab.inputs.GetPipelineSchedulesPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectAccessTokensArgs;
+import com.pulumi.gitlab.inputs.GetProjectAccessTokensPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesPlainArgs;
@@ -145,6 +147,7 @@ import com.pulumi.gitlab.outputs.GetInstanceVariablesResult;
 import com.pulumi.gitlab.outputs.GetMetadataResult;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleResult;
 import com.pulumi.gitlab.outputs.GetPipelineSchedulesResult;
+import com.pulumi.gitlab.outputs.GetProjectAccessTokensResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectEnvironmentsResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
@@ -189,6 +192,36 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .id("1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -203,6 +236,36 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .id("1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -217,6 +280,36 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .id("1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -231,6 +324,36 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .id("1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,6 +368,36 @@ public final class GitlabFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = GitlabFunctions.getApplication(GetApplicationArgs.builder()
+     *             .id("1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1942,6 +2095,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
      * import java.util.List;
@@ -1957,7 +2111,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newGroup = new Group("newGroup");
+     *         var newGroup = new Group("newGroup", GroupArgs.builder()
+     *             .name("example-group")
+     *             .path("example-path")
+     *             .description("This is an example group")
+     *             .build());
      * 
      *         // use group IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -1992,6 +2150,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
      * import java.util.List;
@@ -2007,7 +2166,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newGroup = new Group("newGroup");
+     *         var newGroup = new Group("newGroup", GroupArgs.builder()
+     *             .name("example-group")
+     *             .path("example-path")
+     *             .description("This is an example group")
+     *             .build());
      * 
      *         // use group IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -2042,6 +2205,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
      * import java.util.List;
@@ -2057,7 +2221,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newGroup = new Group("newGroup");
+     *         var newGroup = new Group("newGroup", GroupArgs.builder()
+     *             .name("example-group")
+     *             .path("example-path")
+     *             .description("This is an example group")
+     *             .build());
      * 
      *         // use group IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -2092,6 +2260,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
      * import java.util.List;
@@ -2107,7 +2276,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newGroup = new Group("newGroup");
+     *         var newGroup = new Group("newGroup", GroupArgs.builder()
+     *             .name("example-group")
+     *             .path("example-path")
+     *             .description("This is an example group")
+     *             .build());
      * 
      *         // use group IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -2142,6 +2315,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Group;
+     * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
      * import java.util.List;
@@ -2157,7 +2331,11 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newGroup = new Group("newGroup");
+     *         var newGroup = new Group("newGroup", GroupArgs.builder()
+     *             .name("example-group")
+     *             .path("example-path")
+     *             .description("This is an example group")
+     *             .build());
      * 
      *         // use group IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -5070,6 +5248,51 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.getProjectAccessTokens` data source allows to retrieve all project access tokens for a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_access_tokens/)
+     * 
+     */
+    public static Output<GetProjectAccessTokensResult> getProjectAccessTokens(GetProjectAccessTokensArgs args) {
+        return getProjectAccessTokens(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectAccessTokens` data source allows to retrieve all project access tokens for a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_access_tokens/)
+     * 
+     */
+    public static CompletableFuture<GetProjectAccessTokensResult> getProjectAccessTokensPlain(GetProjectAccessTokensPlainArgs args) {
+        return getProjectAccessTokensPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectAccessTokens` data source allows to retrieve all project access tokens for a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_access_tokens/)
+     * 
+     */
+    public static Output<GetProjectAccessTokensResult> getProjectAccessTokens(GetProjectAccessTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", TypeShape.of(GetProjectAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectAccessTokens` data source allows to retrieve all project access tokens for a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_access_tokens/)
+     * 
+     */
+    public static Output<GetProjectAccessTokensResult> getProjectAccessTokens(GetProjectAccessTokensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", TypeShape.of(GetProjectAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectAccessTokens` data source allows to retrieve all project access tokens for a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_access_tokens/)
+     * 
+     */
+    public static CompletableFuture<GetProjectAccessTokensResult> getProjectAccessTokensPlain(GetProjectAccessTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", TypeShape.of(GetProjectAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#list-repository-branches)
@@ -5880,6 +6103,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
      * import java.util.List;
@@ -5895,7 +6119,9 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newProject = new Project("newProject");
+     *         var newProject = new Project("newProject", ProjectArgs.builder()
+     *             .name("project")
+     *             .build());
      * 
      *         // use project IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -5930,6 +6156,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
      * import java.util.List;
@@ -5945,7 +6172,9 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newProject = new Project("newProject");
+     *         var newProject = new Project("newProject", ProjectArgs.builder()
+     *             .name("project")
+     *             .build());
      * 
      *         // use project IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -5980,6 +6209,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
      * import java.util.List;
@@ -5995,7 +6225,9 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newProject = new Project("newProject");
+     *         var newProject = new Project("newProject", ProjectArgs.builder()
+     *             .name("project")
+     *             .build());
      * 
      *         // use project IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -6030,6 +6262,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
      * import java.util.List;
@@ -6045,7 +6278,9 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newProject = new Project("newProject");
+     *         var newProject = new Project("newProject", ProjectArgs.builder()
+     *             .name("project")
+     *             .build());
      * 
      *         // use project IDs to get additional information, such as the GraphQL ID
      *         // for other resources
@@ -6080,6 +6315,7 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.Project;
+     * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
      * import java.util.List;
@@ -6095,7 +6331,9 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var newProject = new Project("newProject");
+     *         var newProject = new Project("newProject", ProjectArgs.builder()
+     *             .name("project")
+     *             .build());
      * 
      *         // use project IDs to get additional information, such as the GraphQL ID
      *         // for other resources

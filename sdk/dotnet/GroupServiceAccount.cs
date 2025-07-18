@@ -90,6 +90,12 @@ namespace Pulumi.GitLab
     public partial class GroupServiceAccount : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+        /// </summary>
+        [Output("email")]
+        public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
         /// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         /// </summary>
         [Output("group")]
@@ -160,6 +166,12 @@ namespace Pulumi.GitLab
     public sealed class GroupServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
         /// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         /// </summary>
         [Input("group", required: true)]
@@ -185,6 +197,12 @@ namespace Pulumi.GitLab
 
     public sealed class GroupServiceAccountState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
         /// <summary>
         /// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         /// </summary>

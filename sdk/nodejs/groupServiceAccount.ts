@@ -97,6 +97,10 @@ export class GroupServiceAccount extends pulumi.CustomResource {
     }
 
     /**
+     * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     */
+    public readonly email!: pulumi.Output<string>;
+    /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      */
     public readonly group!: pulumi.Output<string>;
@@ -126,6 +130,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupServiceAccountState | undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
@@ -135,6 +140,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
             if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
+            resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -149,6 +155,10 @@ export class GroupServiceAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupServiceAccount resources.
  */
 export interface GroupServiceAccountState {
+    /**
+     * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     */
+    email?: pulumi.Input<string>;
     /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      */
@@ -171,6 +181,10 @@ export interface GroupServiceAccountState {
  * The set of arguments for constructing a GroupServiceAccount resource.
  */
 export interface GroupServiceAccountArgs {
+    /**
+     * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
+     */
+    email?: pulumi.Input<string>;
     /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      */

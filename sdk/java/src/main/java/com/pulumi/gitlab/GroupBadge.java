@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var foo = new Group("foo", GroupArgs.builder()
  *             .name("foo-group")
+ *             .path("foo-path")
  *             .build());
  * 
  *         var example = new GroupBadge("example", GroupBadgeArgs.builder()

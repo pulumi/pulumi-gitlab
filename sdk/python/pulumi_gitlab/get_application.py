@@ -101,6 +101,15 @@ def get_application(id: Optional[builtins.str] = None,
     The `Application` data source retrieves information about a gitlab application.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    oidc = gitlab.get_application(id="1")
+    ```
     """
     __args__ = dict()
     __args__['id'] = id
@@ -119,6 +128,15 @@ def get_application_output(id: Optional[pulumi.Input[builtins.str]] = None,
     The `Application` data source retrieves information about a gitlab application.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/applications/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    oidc = gitlab.get_application(id="1")
+    ```
     """
     __args__ = dict()
     __args__['id'] = id

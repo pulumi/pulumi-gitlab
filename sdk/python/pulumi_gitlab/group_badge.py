@@ -212,7 +212,9 @@ class GroupBadge(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Group("foo", name="foo-group")
+        foo = gitlab.Group("foo",
+            name="foo-group",
+            path="foo-path")
         example = gitlab.GroupBadge("example",
             group=foo.id,
             link_url="https://example.com/badge-123",
@@ -280,7 +282,9 @@ class GroupBadge(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        foo = gitlab.Group("foo", name="foo-group")
+        foo = gitlab.Group("foo",
+            name="foo-group",
+            path="foo-path")
         example = gitlab.GroupBadge("example",
             group=foo.id,
             link_url="https://example.com/badge-123",

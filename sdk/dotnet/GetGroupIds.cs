@@ -26,7 +26,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newGroup = new GitLab.Group("new_group");
+        ///     var newGroup = new GitLab.Group("new_group", new()
+        ///     {
+        ///         Name = "example-group",
+        ///         Path = "example-path",
+        ///         Description = "This is an example group",
+        ///     });
         /// 
         ///     // use group IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
@@ -60,7 +65,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newGroup = new GitLab.Group("new_group");
+        ///     var newGroup = new GitLab.Group("new_group", new()
+        ///     {
+        ///         Name = "example-group",
+        ///         Path = "example-path",
+        ///         Description = "This is an example group",
+        ///     });
         /// 
         ///     // use group IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
@@ -94,7 +104,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newGroup = new GitLab.Group("new_group");
+        ///     var newGroup = new GitLab.Group("new_group", new()
+        ///     {
+        ///         Name = "example-group",
+        ///         Path = "example-path",
+        ///         Description = "This is an example group",
+        ///     });
         /// 
         ///     // use group IDs to get additional information, such as the GraphQL ID
         ///     // for other resources

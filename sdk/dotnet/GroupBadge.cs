@@ -27,6 +27,7 @@ namespace Pulumi.GitLab
     ///     var foo = new GitLab.Group("foo", new()
     ///     {
     ///         Name = "foo-group",
+    ///         Path = "foo-path",
     ///     });
     /// 
     ///     var example = new GitLab.GroupBadge("example", new()

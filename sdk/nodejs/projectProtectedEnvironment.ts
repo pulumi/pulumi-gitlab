@@ -73,8 +73,14 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
     public readonly approvalRules!: pulumi.Output<outputs.ProjectProtectedEnvironmentApprovalRule[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     *
+     * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      */
     public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
+    /**
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     */
+    public readonly deployAccessLevelsAttributes!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute[] | undefined>;
     /**
      * The name of the environment.
      */
@@ -99,6 +105,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             const state = argsOrState as ProjectProtectedEnvironmentState | undefined;
             resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
             resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
+            resourceInputs["deployAccessLevelsAttributes"] = state ? state.deployAccessLevelsAttributes : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
@@ -111,6 +118,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
             }
             resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
             resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
+            resourceInputs["deployAccessLevelsAttributes"] = args ? args.deployAccessLevelsAttributes : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         }
@@ -129,8 +137,14 @@ export interface ProjectProtectedEnvironmentState {
     approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     *
+     * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      */
     deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
+    /**
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     */
+    deployAccessLevelsAttributes?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute>[]>;
     /**
      * The name of the environment.
      */
@@ -151,8 +165,14 @@ export interface ProjectProtectedEnvironmentArgs {
     approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     *
+     * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      */
     deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
+    /**
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     */
+    deployAccessLevelsAttributes?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute>[]>;
     /**
      * The name of the environment.
      */

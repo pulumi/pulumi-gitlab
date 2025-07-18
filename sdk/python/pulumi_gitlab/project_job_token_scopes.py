@@ -241,7 +241,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                 789,
             ])
         allowed_multiple_groups = gitlab.ProjectJobTokenScopes("allowed_multiple_groups",
-            project_id=111,
+            project="111",
             target_project_ids=[],
             target_group_ids=[
                 321,
@@ -334,7 +334,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                 789,
             ])
         allowed_multiple_groups = gitlab.ProjectJobTokenScopes("allowed_multiple_groups",
-            project_id=111,
+            project="111",
             target_project_ids=[],
             target_group_ids=[
                 321,

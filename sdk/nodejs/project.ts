@@ -171,6 +171,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ciPipelineVariablesMinimumOverrideRole!: pulumi.Output<string>;
     /**
+     * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     */
+    public readonly ciPushRepositoryForJobTokenAllowed!: pulumi.Output<boolean>;
+    /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
     public readonly ciRestrictPipelineCancellationRole!: pulumi.Output<string>;
@@ -559,6 +563,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciForwardDeploymentRollbackAllowed"] = state ? state.ciForwardDeploymentRollbackAllowed : undefined;
             resourceInputs["ciIdTokenSubClaimComponents"] = state ? state.ciIdTokenSubClaimComponents : undefined;
             resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = state ? state.ciPipelineVariablesMinimumOverrideRole : undefined;
+            resourceInputs["ciPushRepositoryForJobTokenAllowed"] = state ? state.ciPushRepositoryForJobTokenAllowed : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = state ? state.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = state ? state.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = state ? state.containerExpirationPolicy : undefined;
@@ -670,6 +675,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciForwardDeploymentRollbackAllowed"] = args ? args.ciForwardDeploymentRollbackAllowed : undefined;
             resourceInputs["ciIdTokenSubClaimComponents"] = args ? args.ciIdTokenSubClaimComponents : undefined;
             resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = args ? args.ciPipelineVariablesMinimumOverrideRole : undefined;
+            resourceInputs["ciPushRepositoryForJobTokenAllowed"] = args ? args.ciPushRepositoryForJobTokenAllowed : undefined;
             resourceInputs["ciRestrictPipelineCancellationRole"] = args ? args.ciRestrictPipelineCancellationRole : undefined;
             resourceInputs["ciSeparatedCaches"] = args ? args.ciSeparatedCaches : undefined;
             resourceInputs["containerExpirationPolicy"] = args ? args.containerExpirationPolicy : undefined;
@@ -871,6 +877,10 @@ export interface ProjectState {
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
     ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
+    /**
+     * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     */
+    ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean>;
     /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
@@ -1326,6 +1336,10 @@ export interface ProjectArgs {
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
     ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
+    /**
+     * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
+     */
+    ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean>;
     /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */

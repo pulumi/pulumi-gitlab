@@ -264,10 +264,15 @@ class IntegrationHarbor(pulumi.CustomResource):
             name="awesome_project",
             description="My awesome project.",
             visibility_level="public")
+        config = pulumi.Config()
+        # Harbor password
+        password = config.require("password")
         harbor = gitlab.IntegrationHarbor("harbor",
             project=awesome_project.id,
             url="http://harbor.example.com",
-            project_name="my_project_name")
+            project_name="my_project_name",
+            username="username",
+            password=password)
         ```
 
         ## Import
@@ -324,10 +329,15 @@ class IntegrationHarbor(pulumi.CustomResource):
             name="awesome_project",
             description="My awesome project.",
             visibility_level="public")
+        config = pulumi.Config()
+        # Harbor password
+        password = config.require("password")
         harbor = gitlab.IntegrationHarbor("harbor",
             project=awesome_project.id,
             url="http://harbor.example.com",
-            project_name="my_project_name")
+            project_name="my_project_name",
+            username="username",
+            password=password)
         ```
 
         ## Import

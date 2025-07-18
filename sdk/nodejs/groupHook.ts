@@ -92,6 +92,10 @@ export class GroupHook extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Invoke the hook for emoji events.
+     */
+    public readonly emojiEvents!: pulumi.Output<boolean>;
+    /**
      * Enable SSL verification when invoking the hook.
      */
     public readonly enableSslVerification!: pulumi.Output<boolean>;
@@ -188,6 +192,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["emojiEvents"] = state ? state.emojiEvents : undefined;
             resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
             resourceInputs["featureFlagEvents"] = state ? state.featureFlagEvents : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
@@ -222,6 +227,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
             resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["emojiEvents"] = args ? args.emojiEvents : undefined;
             resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
             resourceInputs["featureFlagEvents"] = args ? args.featureFlagEvents : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
@@ -281,6 +287,10 @@ export interface GroupHookState {
      * Description of the group webhook.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Invoke the hook for emoji events.
+     */
+    emojiEvents?: pulumi.Input<boolean>;
     /**
      * Enable SSL verification when invoking the hook.
      */
@@ -391,6 +401,10 @@ export interface GroupHookArgs {
      * Description of the group webhook.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Invoke the hook for emoji events.
+     */
+    emojiEvents?: pulumi.Input<boolean>;
     /**
      * Enable SSL verification when invoking the hook.
      */

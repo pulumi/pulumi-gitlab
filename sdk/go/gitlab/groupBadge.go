@@ -32,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
 //				Name: pulumi.String("foo-group"),
+//				Path: pulumi.String("foo-path"),
 //			})
 //			if err != nil {
 //				return err

@@ -25,6 +25,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
@@ -38,10 +39,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			cfg := config.New(ctx, "")
+//			// Harbor password
+//			password := cfg.Require("password")
 //			_, err = gitlab.NewIntegrationHarbor(ctx, "harbor", &gitlab.IntegrationHarborArgs{
 //				Project:     awesomeProject.ID(),
 //				Url:         pulumi.String("http://harbor.example.com"),
 //				ProjectName: pulumi.String("my_project_name"),
+//				Username:    pulumi.String("username"),
+//				Password:    pulumi.String(password),
 //			})
 //			if err != nil {
 //				return err

@@ -98,6 +98,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool DeploymentEvents;
         /// <summary>
+        /// Invoke the hook for emoji events.
+        /// </summary>
+        public readonly bool EmojiEvents;
+        /// <summary>
         /// Enable ssl verification when invoking the hook.
         /// </summary>
         public readonly bool EnableSslVerification;
@@ -180,6 +184,8 @@ namespace Pulumi.GitLab
 
             bool deploymentEvents,
 
+            bool emojiEvents,
+
             bool enableSslVerification,
 
             string group,
@@ -220,6 +226,7 @@ namespace Pulumi.GitLab
             ConfidentialNoteEvents = confidentialNoteEvents;
             CustomWebhookTemplate = customWebhookTemplate;
             DeploymentEvents = deploymentEvents;
+            EmojiEvents = emojiEvents;
             EnableSslVerification = enableSslVerification;
             Group = group;
             GroupId = groupId;
