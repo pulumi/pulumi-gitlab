@@ -453,6 +453,10 @@
                     }
                 }
             },
+            "gitlab_project_container_repository_protection": {
+                "current": "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection",
+                "majorVersion": 9
+            },
             "gitlab_project_custom_attribute": {
                 "current": "gitlab:index/projectCustomAttribute:ProjectCustomAttribute",
                 "majorVersion": 9
@@ -624,6 +628,9 @@
                         "maxItemsOne": false
                     },
                     "deploy_access_levels": {
+                        "maxItemsOne": false
+                    },
+                    "deploy_access_levels_attribute": {
                         "maxItemsOne": false
                     }
                 }
@@ -995,6 +1002,22 @@
                     },
                     "topics": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_project_access_tokens": {
+                "current": "gitlab:index/getProjectAccessTokens:getProjectAccessTokens",
+                "majorVersion": 9,
+                "fields": {
+                    "access_tokens": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1455,6 +1478,7 @@
             "gitlab:index/projectBadge:ProjectBadge": 0,
             "gitlab:index/projectCluster:ProjectCluster": 0,
             "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": 1,
+            "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection": 1,
             "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": 0,
             "gitlab:index/projectEnvironment:ProjectEnvironment": 0,
             "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 0,
@@ -1537,6 +1561,7 @@
             "gitlab:index/getPipelineSchedule:getPipelineSchedule": 1,
             "gitlab:index/getPipelineSchedules:getPipelineSchedules": 1,
             "gitlab:index/getProject:getProject": 0,
+            "gitlab:index/getProjectAccessTokens:getProjectAccessTokens": 1,
             "gitlab:index/getProjectBranches:getProjectBranches": 0,
             "gitlab:index/getProjectEnvironments:getProjectEnvironments": 1,
             "gitlab:index/getProjectHook:getProjectHook": 0,
