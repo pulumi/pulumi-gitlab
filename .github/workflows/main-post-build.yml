@@ -10,7 +10,6 @@ on:
         required: true
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GITLAB_TOKEN: ${{ secrets.PULUMI_GITLAB_TOKEN }}
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
