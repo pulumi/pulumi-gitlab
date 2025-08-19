@@ -31999,7 +31999,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:gitlab"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:gitlab/terraformConfig",
