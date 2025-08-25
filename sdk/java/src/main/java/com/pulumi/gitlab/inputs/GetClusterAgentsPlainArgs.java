@@ -14,14 +14,14 @@ public final class GetClusterAgentsPlainArgs extends com.pulumi.resources.Invoke
     public static final GetClusterAgentsPlainArgs Empty = new GetClusterAgentsPlainArgs();
 
     /**
-     * The ID or full path of the project owned by the authenticated user.
+     * ID or full path of the project maintained by the authenticated user.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The ID or full path of the project owned by the authenticated user.
+     * @return ID or full path of the project maintained by the authenticated user.
      * 
      */
     public String project() {
@@ -53,7 +53,7 @@ public final class GetClusterAgentsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param project The ID or full path of the project owned by the authenticated user.
+         * @param project ID or full path of the project maintained by the authenticated user.
          * 
          * @return builder
          * 

@@ -46,6 +46,15 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientKey!: pulumi.Output<string | undefined>;
     /**
+     * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+     */
+    public readonly configFile!: pulumi.Output<string | undefined>;
+    /**
+     * The context to use for authentication and configuration. The context must exist in the configuration file. It may be
+     * sourced from the `GITLAB_CONTEXT` environment variable.
+     */
+    public readonly context!: pulumi.Output<string | undefined>;
+    /**
      * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
      * used in this provider for authentication (using Bearer authorization token). See
      * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
@@ -67,7 +76,10 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cacertFile"] = args ? args.cacertFile : undefined;
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
+            resourceInputs["configFile"] = args ? args.configFile : undefined;
+            resourceInputs["context"] = args ? args.context : undefined;
             resourceInputs["earlyAuthCheck"] = pulumi.output(args ? args.earlyAuthCheck : undefined).apply(JSON.stringify);
+            resourceInputs["enableAutoCiSupport"] = pulumi.output(args ? args.enableAutoCiSupport : undefined).apply(JSON.stringify);
             resourceInputs["headers"] = pulumi.output(args ? args.headers : undefined).apply(JSON.stringify);
             resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
@@ -113,7 +125,20 @@ export interface ProviderArgs {
      * `clientCert` is set.
      */
     clientKey?: pulumi.Input<string>;
+    /**
+     * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+     */
+    configFile?: pulumi.Input<string>;
+    /**
+     * The context to use for authentication and configuration. The context must exist in the configuration file. It may be
+     * sourced from the `GITLAB_CONTEXT` environment variable.
+     */
+    context?: pulumi.Input<string>;
     earlyAuthCheck?: pulumi.Input<boolean>;
+    /**
+     * If automatic CI support should be enabled or not. This only works when not providing a token.
+     */
+    enableAutoCiSupport?: pulumi.Input<boolean>;
     /**
      * A map of headers to append to all API request to the GitLab instance.
      */

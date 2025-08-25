@@ -7176,6 +7176,121 @@ func (o GetGroupProvisionedUsersProvisionedUserArrayOutput) Index(i pulumi.IntIn
 	}).(GetGroupProvisionedUsersProvisionedUserOutput)
 }
 
+type GetGroupSamlLinksSamlLink struct {
+	// The base access level for members of the SAML group.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Member Role ID (custom role for members of the SAML group.
+	MemberRoleId int `pulumi:"memberRoleId"`
+	// Name of the SAML group.
+	Name string `pulumi:"name"`
+}
+
+// GetGroupSamlLinksSamlLinkInput is an input type that accepts GetGroupSamlLinksSamlLinkArgs and GetGroupSamlLinksSamlLinkOutput values.
+// You can construct a concrete instance of `GetGroupSamlLinksSamlLinkInput` via:
+//
+//	GetGroupSamlLinksSamlLinkArgs{...}
+type GetGroupSamlLinksSamlLinkInput interface {
+	pulumi.Input
+
+	ToGetGroupSamlLinksSamlLinkOutput() GetGroupSamlLinksSamlLinkOutput
+	ToGetGroupSamlLinksSamlLinkOutputWithContext(context.Context) GetGroupSamlLinksSamlLinkOutput
+}
+
+type GetGroupSamlLinksSamlLinkArgs struct {
+	// The base access level for members of the SAML group.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Member Role ID (custom role for members of the SAML group.
+	MemberRoleId pulumi.IntInput `pulumi:"memberRoleId"`
+	// Name of the SAML group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGroupSamlLinksSamlLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (i GetGroupSamlLinksSamlLinkArgs) ToGetGroupSamlLinksSamlLinkOutput() GetGroupSamlLinksSamlLinkOutput {
+	return i.ToGetGroupSamlLinksSamlLinkOutputWithContext(context.Background())
+}
+
+func (i GetGroupSamlLinksSamlLinkArgs) ToGetGroupSamlLinksSamlLinkOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSamlLinksSamlLinkOutput)
+}
+
+// GetGroupSamlLinksSamlLinkArrayInput is an input type that accepts GetGroupSamlLinksSamlLinkArray and GetGroupSamlLinksSamlLinkArrayOutput values.
+// You can construct a concrete instance of `GetGroupSamlLinksSamlLinkArrayInput` via:
+//
+//	GetGroupSamlLinksSamlLinkArray{ GetGroupSamlLinksSamlLinkArgs{...} }
+type GetGroupSamlLinksSamlLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupSamlLinksSamlLinkArrayOutput() GetGroupSamlLinksSamlLinkArrayOutput
+	ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(context.Context) GetGroupSamlLinksSamlLinkArrayOutput
+}
+
+type GetGroupSamlLinksSamlLinkArray []GetGroupSamlLinksSamlLinkInput
+
+func (GetGroupSamlLinksSamlLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (i GetGroupSamlLinksSamlLinkArray) ToGetGroupSamlLinksSamlLinkArrayOutput() GetGroupSamlLinksSamlLinkArrayOutput {
+	return i.ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupSamlLinksSamlLinkArray) ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSamlLinksSamlLinkArrayOutput)
+}
+
+type GetGroupSamlLinksSamlLinkOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSamlLinksSamlLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (o GetGroupSamlLinksSamlLinkOutput) ToGetGroupSamlLinksSamlLinkOutput() GetGroupSamlLinksSamlLinkOutput {
+	return o
+}
+
+func (o GetGroupSamlLinksSamlLinkOutput) ToGetGroupSamlLinksSamlLinkOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkOutput {
+	return o
+}
+
+// The base access level for members of the SAML group.
+func (o GetGroupSamlLinksSamlLinkOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSamlLinksSamlLink) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Member Role ID (custom role for members of the SAML group.
+func (o GetGroupSamlLinksSamlLinkOutput) MemberRoleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSamlLinksSamlLink) int { return v.MemberRoleId }).(pulumi.IntOutput)
+}
+
+// Name of the SAML group.
+func (o GetGroupSamlLinksSamlLinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSamlLinksSamlLink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGroupSamlLinksSamlLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSamlLinksSamlLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (o GetGroupSamlLinksSamlLinkArrayOutput) ToGetGroupSamlLinksSamlLinkArrayOutput() GetGroupSamlLinksSamlLinkArrayOutput {
+	return o
+}
+
+func (o GetGroupSamlLinksSamlLinkArrayOutput) ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkArrayOutput {
+	return o
+}
+
+func (o GetGroupSamlLinksSamlLinkArrayOutput) Index(i pulumi.IntInput) GetGroupSamlLinksSamlLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupSamlLinksSamlLink {
+		return vs[0].([]GetGroupSamlLinksSamlLink)[vs[1].(int)]
+	}).(GetGroupSamlLinksSamlLinkOutput)
+}
+
 type GetGroupSharedWithGroup struct {
 	// Share with group expiration date.
 	ExpiresAt string `pulumi:"expiresAt"`
@@ -8239,15 +8354,15 @@ type GetInstanceVariablesVariable struct {
 	Description string `pulumi:"description"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -8267,15 +8382,15 @@ type GetInstanceVariablesVariableArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked pulumi.BoolInput `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolInput `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw pulumi.BoolInput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType pulumi.StringInput `pulumi:"variableType"`
 }
 
@@ -8340,17 +8455,17 @@ func (o GetInstanceVariablesVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs.
 func (o GetInstanceVariablesVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 func (o GetInstanceVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+// If set to `true`, the variable will be treated as a raw string.
 func (o GetInstanceVariablesVariableOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
@@ -8360,7 +8475,7 @@ func (o GetInstanceVariablesVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+// The type of the variable, either `envVar` or `file`.
 func (o GetInstanceVariablesVariableOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.VariableType }).(pulumi.StringOutput)
 }
@@ -17555,6 +17670,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserArrayInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkArrayInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupInput)(nil)).Elem(), GetGroupSharedWithGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupArrayInput)(nil)).Elem(), GetGroupSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArgs{})
@@ -17753,6 +17870,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserOutput{})
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkOutput{})
+	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupOutput{})

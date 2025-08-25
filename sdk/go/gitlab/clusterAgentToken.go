@@ -124,7 +124,7 @@ type ClusterAgentToken struct {
 	// The ID of the user who created the agent.
 	CreatedByUserId pulumi.IntOutput `pulumi:"createdByUserId"`
 	// The Description for the agent.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The ISO8601 datetime when the token was last used.
 	LastUsedAt pulumi.StringOutput `pulumi:"lastUsedAt"`
 	// The Name of the agent.
@@ -354,8 +354,8 @@ func (o ClusterAgentTokenOutput) CreatedByUserId() pulumi.IntOutput {
 }
 
 // The Description for the agent.
-func (o ClusterAgentTokenOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterAgentToken) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ClusterAgentTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterAgentToken) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The ISO8601 datetime when the token was last used.
