@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceVariablesResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the hardcoded format `instance_variables`.
      * 
      */
     private String id;
     /**
-     * @return The list of variables returned by the search
+     * @return The list of variables returned by the search.
      * 
      */
     private List<GetInstanceVariablesVariable> variables;
 
     private GetInstanceVariablesResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the hardcoded format `instance_variables`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The list of variables returned by the search
+     * @return The list of variables returned by the search.
      * 
      */
     public List<GetInstanceVariablesVariable> variables() {

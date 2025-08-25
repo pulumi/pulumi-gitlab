@@ -76,17 +76,17 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
     /**
      * The timezone.
      */
-    public readonly cronTimezone!: pulumi.Output<string | undefined>;
+    public readonly cronTimezone!: pulumi.Output<string>;
     /**
-     * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      */
     public readonly freezeEnd!: pulumi.Output<string>;
     /**
-     * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      */
     public readonly freezeStart!: pulumi.Output<string>;
     /**
-     * The ID or URL-encoded path of the project to add the schedule to.
+     * The ID or path of the project to add the freeze period to.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -137,15 +137,15 @@ export interface ProjectFreezePeriodState {
      */
     cronTimezone?: pulumi.Input<string>;
     /**
-     * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      */
     freezeEnd?: pulumi.Input<string>;
     /**
-     * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      */
     freezeStart?: pulumi.Input<string>;
     /**
-     * The ID or URL-encoded path of the project to add the schedule to.
+     * The ID or path of the project to add the freeze period to.
      */
     project?: pulumi.Input<string>;
 }
@@ -159,15 +159,15 @@ export interface ProjectFreezePeriodArgs {
      */
     cronTimezone?: pulumi.Input<string>;
     /**
-     * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      */
     freezeEnd: pulumi.Input<string>;
     /**
-     * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      */
     freezeStart: pulumi.Input<string>;
     /**
-     * The ID or URL-encoded path of the project to add the schedule to.
+     * The ID or path of the project to add the freeze period to.
      */
     project: pulumi.Input<string>;
 }

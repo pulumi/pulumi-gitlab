@@ -64,7 +64,7 @@ class GetInstanceVariableResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<key>`.
         """
         return pulumi.get(self, "id")
 
@@ -80,7 +80,7 @@ class GetInstanceVariableResult:
     @pulumi.getter
     def masked(self) -> _builtins.bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs.
         """
         return pulumi.get(self, "masked")
 
@@ -88,7 +88,7 @@ class GetInstanceVariableResult:
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -96,7 +96,7 @@ class GetInstanceVariableResult:
     @pulumi.getter
     def raw(self) -> _builtins.bool:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        If set to `true`, the variable will be treated as a raw string.
         """
         return pulumi.get(self, "raw")
 
@@ -112,7 +112,7 @@ class GetInstanceVariableResult:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> _builtins.str:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of the variable, either `env_var` or `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -136,7 +136,7 @@ class AwaitableGetInstanceVariableResult(GetInstanceVariableResult):
 def get_instance_variable(key: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceVariableResult:
     """
-    The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+    The `InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 
@@ -169,7 +169,7 @@ def get_instance_variable(key: Optional[_builtins.str] = None,
 def get_instance_variable_output(key: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceVariableResult]:
     """
-    The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+    The `InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 
