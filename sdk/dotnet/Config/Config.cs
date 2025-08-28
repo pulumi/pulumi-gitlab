@@ -34,9 +34,7 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _baseUrl = new __Value<string?>(() => __config.Get("baseUrl"));
         /// <summary>
-        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-        /// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-        /// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         /// </summary>
         public static string? BaseUrl
         {
@@ -46,8 +44,7 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _cacertFile = new __Value<string?>(() => __config.Get("cacertFile"));
         /// <summary>
-        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-        /// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         /// </summary>
         public static string? CacertFile
         {
@@ -67,8 +64,7 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _clientKey = new __Value<string?>(() => __config.Get("clientKey"));
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-        /// `client_cert` is set.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         /// </summary>
         public static string? ClientKey
         {
@@ -115,9 +111,7 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
-        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-        /// used in this provider for authentication (using Bearer authorization token). See
-        /// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         /// </summary>
         public static string? Token
         {

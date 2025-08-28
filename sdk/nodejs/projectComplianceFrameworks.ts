@@ -93,11 +93,11 @@ export class ProjectComplianceFrameworks extends pulumi.CustomResource {
     /**
      * Globally unique IDs of the compliance frameworks to assign to the project.
      */
-    public readonly complianceFrameworkIds!: pulumi.Output<string[]>;
+    declare public readonly complianceFrameworkIds: pulumi.Output<string[]>;
     /**
      * The ID or full path of the project to change the compliance frameworks of.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectComplianceFrameworks resource with the given unique name, arguments, and options.
@@ -112,18 +112,18 @@ export class ProjectComplianceFrameworks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectComplianceFrameworksState | undefined;
-            resourceInputs["complianceFrameworkIds"] = state ? state.complianceFrameworkIds : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["complianceFrameworkIds"] = state?.complianceFrameworkIds;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectComplianceFrameworksArgs | undefined;
-            if ((!args || args.complianceFrameworkIds === undefined) && !opts.urn) {
+            if (args?.complianceFrameworkIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'complianceFrameworkIds'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["complianceFrameworkIds"] = args ? args.complianceFrameworkIds : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["complianceFrameworkIds"] = args?.complianceFrameworkIds;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectComplianceFrameworks.__pulumiType, name, resourceInputs, opts);

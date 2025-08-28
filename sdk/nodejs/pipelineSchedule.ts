@@ -76,36 +76,36 @@ export class PipelineSchedule extends pulumi.CustomResource {
     /**
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * The cron (e.g. `0 1 * * *`).
      */
-    public readonly cron!: pulumi.Output<string>;
+    declare public readonly cron: pulumi.Output<string>;
     /**
      * The timezone.
      */
-    public readonly cronTimezone!: pulumi.Output<string>;
+    declare public readonly cronTimezone: pulumi.Output<string>;
     /**
      * The description of the pipeline schedule.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The ID of the user that owns the pipeline schedule.
      */
-    public /*out*/ readonly owner!: pulumi.Output<number>;
+    declare public /*out*/ readonly owner: pulumi.Output<number>;
     /**
      * The pipeline schedule id.
      */
-    public /*out*/ readonly pipelineScheduleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pipelineScheduleId: pulumi.Output<number>;
     /**
      * The name or id of the project to add the schedule to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
-    public readonly ref!: pulumi.Output<string>;
-    public readonly takeOwnership!: pulumi.Output<boolean>;
+    declare public readonly ref: pulumi.Output<string>;
+    declare public readonly takeOwnership: pulumi.Output<boolean>;
 
     /**
      * Create a PipelineSchedule resource with the given unique name, arguments, and options.
@@ -120,36 +120,36 @@ export class PipelineSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineScheduleState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["cron"] = state ? state.cron : undefined;
-            resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["takeOwnership"] = state ? state.takeOwnership : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["cron"] = state?.cron;
+            resourceInputs["cronTimezone"] = state?.cronTimezone;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["pipelineScheduleId"] = state?.pipelineScheduleId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["takeOwnership"] = state?.takeOwnership;
         } else {
             const args = argsOrState as PipelineScheduleArgs | undefined;
-            if ((!args || args.cron === undefined) && !opts.urn) {
+            if (args?.cron === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cron'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.ref === undefined) && !opts.urn) {
+            if (args?.ref === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ref'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["cron"] = args ? args.cron : undefined;
-            resourceInputs["cronTimezone"] = args ? args.cronTimezone : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ref"] = args ? args.ref : undefined;
-            resourceInputs["takeOwnership"] = args ? args.takeOwnership : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["cron"] = args?.cron;
+            resourceInputs["cronTimezone"] = args?.cronTimezone;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ref"] = args?.ref;
+            resourceInputs["takeOwnership"] = args?.takeOwnership;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["pipelineScheduleId"] = undefined /*out*/;
         }

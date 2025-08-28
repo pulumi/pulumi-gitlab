@@ -66,111 +66,111 @@ export class GroupHook extends pulumi.CustomResource {
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
-    public readonly branchFilterStrategy!: pulumi.Output<string>;
+    declare public readonly branchFilterStrategy: pulumi.Output<string>;
     /**
      * Invoke the hook for confidential issues events.
      */
-    public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
+    declare public readonly confidentialIssuesEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for confidential note events.
      */
-    public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
+    declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
      * Custom headers for the project webhook.
      */
-    public readonly customHeaders!: pulumi.Output<outputs.GroupHookCustomHeader[] | undefined>;
+    declare public readonly customHeaders: pulumi.Output<outputs.GroupHookCustomHeader[] | undefined>;
     /**
      * Custom webhook template.
      */
-    public readonly customWebhookTemplate!: pulumi.Output<string>;
+    declare public readonly customWebhookTemplate: pulumi.Output<string>;
     /**
      * Invoke the hook for deployment events.
      */
-    public readonly deploymentEvents!: pulumi.Output<boolean>;
+    declare public readonly deploymentEvents: pulumi.Output<boolean>;
     /**
      * Description of the group webhook.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Invoke the hook for emoji events.
      */
-    public readonly emojiEvents!: pulumi.Output<boolean>;
+    declare public readonly emojiEvents: pulumi.Output<boolean>;
     /**
      * Enable SSL verification when invoking the hook.
      */
-    public readonly enableSslVerification!: pulumi.Output<boolean>;
+    declare public readonly enableSslVerification: pulumi.Output<boolean>;
     /**
      * Invoke the hook for feature flag events.
      */
-    public readonly featureFlagEvents!: pulumi.Output<boolean>;
+    declare public readonly featureFlagEvents: pulumi.Output<boolean>;
     /**
      * The full path or id of the group to add the hook to.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The id of the group for the hook.
      */
-    public /*out*/ readonly groupId!: pulumi.Output<number>;
+    declare public /*out*/ readonly groupId: pulumi.Output<number>;
     /**
      * The id of the group hook.
      */
-    public /*out*/ readonly hookId!: pulumi.Output<number>;
+    declare public /*out*/ readonly hookId: pulumi.Output<number>;
     /**
      * Invoke the hook for issues events.
      */
-    public readonly issuesEvents!: pulumi.Output<boolean>;
+    declare public readonly issuesEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for job events.
      */
-    public readonly jobEvents!: pulumi.Output<boolean>;
+    declare public readonly jobEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for merge requests events.
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
      * Name of the group webhook.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Invoke the hook for note events.
      */
-    public readonly noteEvents!: pulumi.Output<boolean>;
+    declare public readonly noteEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for pipeline events.
      */
-    public readonly pipelineEvents!: pulumi.Output<boolean>;
+    declare public readonly pipelineEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean>;
+    declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for push events on matching branches only.
      */
-    public readonly pushEventsBranchFilter!: pulumi.Output<string>;
+    declare public readonly pushEventsBranchFilter: pulumi.Output<string>;
     /**
      * Invoke the hook for release events.
      */
-    public readonly releasesEvents!: pulumi.Output<boolean>;
+    declare public readonly releasesEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for subgroup events.
      */
-    public readonly subgroupEvents!: pulumi.Output<boolean>;
+    declare public readonly subgroupEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for tag push events.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
      * A token to present when invoking the hook. The token is not available for imported resources.
      */
-    public readonly token!: pulumi.Output<string>;
+    declare public readonly token: pulumi.Output<string>;
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Invoke the hook for wiki page events.
      */
-    public readonly wikiPageEvents!: pulumi.Output<boolean>;
+    declare public readonly wikiPageEvents: pulumi.Output<boolean>;
 
     /**
      * Create a GroupHook resource with the given unique name, arguments, and options.
@@ -185,66 +185,66 @@ export class GroupHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupHookState | undefined;
-            resourceInputs["branchFilterStrategy"] = state ? state.branchFilterStrategy : undefined;
-            resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
-            resourceInputs["customHeaders"] = state ? state.customHeaders : undefined;
-            resourceInputs["customWebhookTemplate"] = state ? state.customWebhookTemplate : undefined;
-            resourceInputs["deploymentEvents"] = state ? state.deploymentEvents : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emojiEvents"] = state ? state.emojiEvents : undefined;
-            resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
-            resourceInputs["featureFlagEvents"] = state ? state.featureFlagEvents : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["hookId"] = state ? state.hookId : undefined;
-            resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            resourceInputs["jobEvents"] = state ? state.jobEvents : undefined;
-            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
-            resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["pushEventsBranchFilter"] = state ? state.pushEventsBranchFilter : undefined;
-            resourceInputs["releasesEvents"] = state ? state.releasesEvents : undefined;
-            resourceInputs["subgroupEvents"] = state ? state.subgroupEvents : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
+            resourceInputs["branchFilterStrategy"] = state?.branchFilterStrategy;
+            resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
+            resourceInputs["customHeaders"] = state?.customHeaders;
+            resourceInputs["customWebhookTemplate"] = state?.customWebhookTemplate;
+            resourceInputs["deploymentEvents"] = state?.deploymentEvents;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["emojiEvents"] = state?.emojiEvents;
+            resourceInputs["enableSslVerification"] = state?.enableSslVerification;
+            resourceInputs["featureFlagEvents"] = state?.featureFlagEvents;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["hookId"] = state?.hookId;
+            resourceInputs["issuesEvents"] = state?.issuesEvents;
+            resourceInputs["jobEvents"] = state?.jobEvents;
+            resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["noteEvents"] = state?.noteEvents;
+            resourceInputs["pipelineEvents"] = state?.pipelineEvents;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["pushEventsBranchFilter"] = state?.pushEventsBranchFilter;
+            resourceInputs["releasesEvents"] = state?.releasesEvents;
+            resourceInputs["subgroupEvents"] = state?.subgroupEvents;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
             const args = argsOrState as GroupHookArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["branchFilterStrategy"] = args ? args.branchFilterStrategy : undefined;
-            resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
-            resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
-            resourceInputs["customWebhookTemplate"] = args ? args.customWebhookTemplate : undefined;
-            resourceInputs["deploymentEvents"] = args ? args.deploymentEvents : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emojiEvents"] = args ? args.emojiEvents : undefined;
-            resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
-            resourceInputs["featureFlagEvents"] = args ? args.featureFlagEvents : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
-            resourceInputs["jobEvents"] = args ? args.jobEvents : undefined;
-            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
-            resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["pushEventsBranchFilter"] = args ? args.pushEventsBranchFilter : undefined;
-            resourceInputs["releasesEvents"] = args ? args.releasesEvents : undefined;
-            resourceInputs["subgroupEvents"] = args ? args.subgroupEvents : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
+            resourceInputs["branchFilterStrategy"] = args?.branchFilterStrategy;
+            resourceInputs["confidentialIssuesEvents"] = args?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteEvents"] = args?.confidentialNoteEvents;
+            resourceInputs["customHeaders"] = args?.customHeaders;
+            resourceInputs["customWebhookTemplate"] = args?.customWebhookTemplate;
+            resourceInputs["deploymentEvents"] = args?.deploymentEvents;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["emojiEvents"] = args?.emojiEvents;
+            resourceInputs["enableSslVerification"] = args?.enableSslVerification;
+            resourceInputs["featureFlagEvents"] = args?.featureFlagEvents;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["issuesEvents"] = args?.issuesEvents;
+            resourceInputs["jobEvents"] = args?.jobEvents;
+            resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["noteEvents"] = args?.noteEvents;
+            resourceInputs["pipelineEvents"] = args?.pipelineEvents;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["pushEventsBranchFilter"] = args?.pushEventsBranchFilter;
+            resourceInputs["releasesEvents"] = args?.releasesEvents;
+            resourceInputs["subgroupEvents"] = args?.subgroupEvents;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
             resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["hookId"] = undefined /*out*/;
         }

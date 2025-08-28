@@ -81,19 +81,19 @@ export class TagProtection extends pulumi.CustomResource {
     /**
      * Array of access levels/user(s)/group(s) allowed to create protected tags.
      */
-    public readonly allowedToCreates!: pulumi.Output<outputs.TagProtectionAllowedToCreate[] | undefined>;
+    declare public readonly allowedToCreates: pulumi.Output<outputs.TagProtectionAllowedToCreate[] | undefined>;
     /**
      * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    public readonly createAccessLevel!: pulumi.Output<string>;
+    declare public readonly createAccessLevel: pulumi.Output<string>;
     /**
      * The id of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Name of the tag or wildcard.
      */
-    public readonly tag!: pulumi.Output<string>;
+    declare public readonly tag: pulumi.Output<string>;
 
     /**
      * Create a TagProtection resource with the given unique name, arguments, and options.
@@ -108,22 +108,22 @@ export class TagProtection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagProtectionState | undefined;
-            resourceInputs["allowedToCreates"] = state ? state.allowedToCreates : undefined;
-            resourceInputs["createAccessLevel"] = state ? state.createAccessLevel : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
+            resourceInputs["allowedToCreates"] = state?.allowedToCreates;
+            resourceInputs["createAccessLevel"] = state?.createAccessLevel;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tag"] = state?.tag;
         } else {
             const args = argsOrState as TagProtectionArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tag === undefined) && !opts.urn) {
+            if (args?.tag === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tag'");
             }
-            resourceInputs["allowedToCreates"] = args ? args.allowedToCreates : undefined;
-            resourceInputs["createAccessLevel"] = args ? args.createAccessLevel : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
+            resourceInputs["allowedToCreates"] = args?.allowedToCreates;
+            resourceInputs["createAccessLevel"] = args?.createAccessLevel;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tag"] = args?.tag;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagProtection.__pulumiType, name, resourceInputs, opts);

@@ -81,63 +81,63 @@ export class ProjectEnvironment extends pulumi.CustomResource {
     /**
      * The ISO8601 date/time that this environment will be automatically stopped at in UTC.
      */
-    public /*out*/ readonly autoStopAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly autoStopAt: pulumi.Output<string>;
     /**
      * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      */
-    public readonly autoStopSetting!: pulumi.Output<string>;
+    declare public readonly autoStopSetting: pulumi.Output<string>;
     /**
      * The cluster agent to associate with this environment.
      */
-    public readonly clusterAgentId!: pulumi.Output<number | undefined>;
+    declare public readonly clusterAgentId: pulumi.Output<number | undefined>;
     /**
      * The ISO8601 date/time that this environment was created at in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the environment.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Place to link to for this environment.
      */
-    public readonly externalUrl!: pulumi.Output<string | undefined>;
+    declare public readonly externalUrl: pulumi.Output<string | undefined>;
     /**
      * The Flux resource path to associate with this environment.
      */
-    public readonly fluxResourcePath!: pulumi.Output<string | undefined>;
+    declare public readonly fluxResourcePath: pulumi.Output<string | undefined>;
     /**
      * The Kubernetes namespace to associate with this environment.
      */
-    public readonly kubernetesNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesNamespace: pulumi.Output<string | undefined>;
     /**
      * The name of the environment.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or full path of the project to environment is created for.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * State the environment is in. Valid values are `available`, `stopped`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
-    public readonly stopBeforeDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly stopBeforeDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
      */
-    public readonly tier!: pulumi.Output<string>;
+    declare public readonly tier: pulumi.Output<string>;
     /**
      * The ISO8601 date/time that this environment was last updated at in UTC.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ProjectEnvironment resource with the given unique name, arguments, and options.
@@ -152,36 +152,36 @@ export class ProjectEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectEnvironmentState | undefined;
-            resourceInputs["autoStopAt"] = state ? state.autoStopAt : undefined;
-            resourceInputs["autoStopSetting"] = state ? state.autoStopSetting : undefined;
-            resourceInputs["clusterAgentId"] = state ? state.clusterAgentId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externalUrl"] = state ? state.externalUrl : undefined;
-            resourceInputs["fluxResourcePath"] = state ? state.fluxResourcePath : undefined;
-            resourceInputs["kubernetesNamespace"] = state ? state.kubernetesNamespace : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stopBeforeDestroy"] = state ? state.stopBeforeDestroy : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["autoStopAt"] = state?.autoStopAt;
+            resourceInputs["autoStopSetting"] = state?.autoStopSetting;
+            resourceInputs["clusterAgentId"] = state?.clusterAgentId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["externalUrl"] = state?.externalUrl;
+            resourceInputs["fluxResourcePath"] = state?.fluxResourcePath;
+            resourceInputs["kubernetesNamespace"] = state?.kubernetesNamespace;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stopBeforeDestroy"] = state?.stopBeforeDestroy;
+            resourceInputs["tier"] = state?.tier;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ProjectEnvironmentArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["autoStopSetting"] = args ? args.autoStopSetting : undefined;
-            resourceInputs["clusterAgentId"] = args ? args.clusterAgentId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalUrl"] = args ? args.externalUrl : undefined;
-            resourceInputs["fluxResourcePath"] = args ? args.fluxResourcePath : undefined;
-            resourceInputs["kubernetesNamespace"] = args ? args.kubernetesNamespace : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["stopBeforeDestroy"] = args ? args.stopBeforeDestroy : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["autoStopSetting"] = args?.autoStopSetting;
+            resourceInputs["clusterAgentId"] = args?.clusterAgentId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externalUrl"] = args?.externalUrl;
+            resourceInputs["fluxResourcePath"] = args?.fluxResourcePath;
+            resourceInputs["kubernetesNamespace"] = args?.kubernetesNamespace;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["stopBeforeDestroy"] = args?.stopBeforeDestroy;
+            resourceInputs["tier"] = args?.tier;
             resourceInputs["autoStopAt"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;

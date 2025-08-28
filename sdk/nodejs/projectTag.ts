@@ -85,35 +85,35 @@ export class ProjectTag extends pulumi.CustomResource {
     /**
      * The commit associated with the tag.
      */
-    public /*out*/ readonly commits!: pulumi.Output<outputs.ProjectTagCommit[]>;
+    declare public /*out*/ readonly commits: pulumi.Output<outputs.ProjectTagCommit[]>;
     /**
      * The message of the annotated tag.
      */
-    public readonly message!: pulumi.Output<string | undefined>;
+    declare public readonly message: pulumi.Output<string | undefined>;
     /**
      * The name of a tag.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Bool, true if tag has tag protection.
      */
-    public /*out*/ readonly protected!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly protected: pulumi.Output<boolean>;
     /**
      * Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
      */
-    public readonly ref!: pulumi.Output<string>;
+    declare public readonly ref: pulumi.Output<string>;
     /**
      * The release associated with the tag.
      */
-    public /*out*/ readonly releases!: pulumi.Output<outputs.ProjectTagRelease[]>;
+    declare public /*out*/ readonly releases: pulumi.Output<outputs.ProjectTagRelease[]>;
     /**
      * The unique id assigned to the commit by Gitlab.
      */
-    public /*out*/ readonly target!: pulumi.Output<string>;
+    declare public /*out*/ readonly target: pulumi.Output<string>;
 
     /**
      * Create a ProjectTag resource with the given unique name, arguments, and options.
@@ -128,26 +128,26 @@ export class ProjectTag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectTagState | undefined;
-            resourceInputs["commits"] = state ? state.commits : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protected"] = state ? state.protected : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["releases"] = state ? state.releases : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["commits"] = state?.commits;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protected"] = state?.protected;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["releases"] = state?.releases;
+            resourceInputs["target"] = state?.target;
         } else {
             const args = argsOrState as ProjectTagArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.ref === undefined) && !opts.urn) {
+            if (args?.ref === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ref'");
             }
-            resourceInputs["message"] = args ? args.message : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ref"] = args ? args.ref : undefined;
+            resourceInputs["message"] = args?.message;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ref"] = args?.ref;
             resourceInputs["commits"] = undefined /*out*/;
             resourceInputs["protected"] = undefined /*out*/;
             resourceInputs["releases"] = undefined /*out*/;

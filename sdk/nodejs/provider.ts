@@ -26,31 +26,25 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-     * Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-     * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+     * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
      */
-    public readonly baseUrl!: pulumi.Output<string | undefined>;
+    declare public readonly baseUrl: pulumi.Output<string | undefined>;
     /**
-     * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-     * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+     * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
      */
-    public readonly cacertFile!: pulumi.Output<string | undefined>;
+    declare public readonly cacertFile: pulumi.Output<string | undefined>;
     /**
      * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
      */
-    public readonly clientCert!: pulumi.Output<string | undefined>;
+    declare public readonly clientCert: pulumi.Output<string | undefined>;
     /**
-     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-     * `clientCert` is set.
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      */
-    public readonly clientKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
-     * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-     * used in this provider for authentication (using Bearer authorization token). See
-     * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+     * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -63,14 +57,14 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
-            resourceInputs["cacertFile"] = args ? args.cacertFile : undefined;
-            resourceInputs["clientCert"] = args ? args.clientCert : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
-            resourceInputs["earlyAuthCheck"] = pulumi.output(args ? args.earlyAuthCheck : undefined).apply(JSON.stringify);
-            resourceInputs["headers"] = pulumi.output(args ? args.headers : undefined).apply(JSON.stringify);
-            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
+            resourceInputs["baseUrl"] = args?.baseUrl;
+            resourceInputs["cacertFile"] = args?.cacertFile;
+            resourceInputs["clientCert"] = args?.clientCert;
+            resourceInputs["clientKey"] = args?.clientKey;
+            resourceInputs["earlyAuthCheck"] = pulumi.output(args?.earlyAuthCheck).apply(JSON.stringify);
+            resourceInputs["headers"] = pulumi.output(args?.headers).apply(JSON.stringify);
+            resourceInputs["insecure"] = pulumi.output(args?.insecure).apply(JSON.stringify);
+            resourceInputs["retries"] = pulumi.output(args?.retries).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -94,14 +88,11 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-     * Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-     * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+     * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
      */
     baseUrl?: pulumi.Input<string>;
     /**
-     * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-     * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+     * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
      */
     cacertFile?: pulumi.Input<string>;
     /**
@@ -109,8 +100,7 @@ export interface ProviderArgs {
      */
     clientCert?: pulumi.Input<string>;
     /**
-     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-     * `clientCert` is set.
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      */
     clientKey?: pulumi.Input<string>;
     earlyAuthCheck?: pulumi.Input<boolean>;
@@ -127,9 +117,7 @@ export interface ProviderArgs {
      */
     retries?: pulumi.Input<number>;
     /**
-     * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-     * used in this provider for authentication (using Bearer authorization token). See
-     * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+     * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      */
     token?: pulumi.Input<string>;
 }

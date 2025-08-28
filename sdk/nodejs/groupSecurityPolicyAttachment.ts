@@ -111,19 +111,19 @@ export class GroupSecurityPolicyAttachment extends pulumi.CustomResource {
     /**
      * The ID or Full Path of the group which will have the security policy project assigned to it.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The GraphQL ID of the group to which the security policty project will be attached.
      */
-    public /*out*/ readonly groupGraphqlId!: pulumi.Output<string>;
+    declare public /*out*/ readonly groupGraphqlId: pulumi.Output<string>;
     /**
      * The ID or Full Path of the security policy project.
      */
-    public readonly policyProject!: pulumi.Output<string>;
+    declare public readonly policyProject: pulumi.Output<string>;
     /**
      * The GraphQL ID of the security policy project.
      */
-    public /*out*/ readonly policyProjectGraphqlId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyProjectGraphqlId: pulumi.Output<string>;
 
     /**
      * Create a GroupSecurityPolicyAttachment resource with the given unique name, arguments, and options.
@@ -138,20 +138,20 @@ export class GroupSecurityPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupSecurityPolicyAttachmentState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["groupGraphqlId"] = state ? state.groupGraphqlId : undefined;
-            resourceInputs["policyProject"] = state ? state.policyProject : undefined;
-            resourceInputs["policyProjectGraphqlId"] = state ? state.policyProjectGraphqlId : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["groupGraphqlId"] = state?.groupGraphqlId;
+            resourceInputs["policyProject"] = state?.policyProject;
+            resourceInputs["policyProjectGraphqlId"] = state?.policyProjectGraphqlId;
         } else {
             const args = argsOrState as GroupSecurityPolicyAttachmentArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.policyProject === undefined) && !opts.urn) {
+            if (args?.policyProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyProject'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["policyProject"] = args ? args.policyProject : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["policyProject"] = args?.policyProject;
             resourceInputs["groupGraphqlId"] = undefined /*out*/;
             resourceInputs["policyProjectGraphqlId"] = undefined /*out*/;
         }

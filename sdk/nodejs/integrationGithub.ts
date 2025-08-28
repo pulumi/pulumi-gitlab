@@ -86,32 +86,32 @@ export class IntegrationGithub extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * ID of the project you want to activate the integration on.
      */
-    public readonly project!: pulumi.Output<string>;
-    public readonly repositoryUrl!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public readonly repositoryUrl: pulumi.Output<string>;
     /**
      * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
-    public readonly staticContext!: pulumi.Output<boolean | undefined>;
+    declare public readonly staticContext: pulumi.Output<boolean | undefined>;
     /**
      * The title of this resource.
      */
-    public /*out*/ readonly title!: pulumi.Output<string>;
+    declare public /*out*/ readonly title: pulumi.Output<string>;
     /**
      * A GitHub personal access token with at least the `repo:status` scope.
      */
-    public readonly token!: pulumi.Output<string>;
+    declare public readonly token: pulumi.Output<string>;
     /**
      * Update time.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a IntegrationGithub resource with the given unique name, arguments, and options.
@@ -126,28 +126,28 @@ export class IntegrationGithub extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationGithubState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["repositoryUrl"] = state ? state.repositoryUrl : undefined;
-            resourceInputs["staticContext"] = state ? state.staticContext : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["repositoryUrl"] = state?.repositoryUrl;
+            resourceInputs["staticContext"] = state?.staticContext;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as IntegrationGithubArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.repositoryUrl === undefined) && !opts.urn) {
+            if (args?.repositoryUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryUrl'");
             }
-            if ((!args || args.token === undefined) && !opts.urn) {
+            if (args?.token === undefined && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["repositoryUrl"] = args ? args.repositoryUrl : undefined;
-            resourceInputs["staticContext"] = args ? args.staticContext : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["repositoryUrl"] = args?.repositoryUrl;
+            resourceInputs["staticContext"] = args?.staticContext;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

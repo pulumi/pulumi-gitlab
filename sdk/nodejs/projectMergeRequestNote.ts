@@ -80,43 +80,43 @@ export class ProjectMergeRequestNote extends pulumi.CustomResource {
     /**
      * The body of the merge request note.
      */
-    public readonly body!: pulumi.Output<string>;
+    declare public readonly body: pulumi.Output<string>;
     /**
      * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
      */
-    public readonly createdAt!: pulumi.Output<string>;
+    declare public readonly createdAt: pulumi.Output<string>;
     /**
      * Indicates if the merge request note is internal.
      */
-    public readonly internal!: pulumi.Output<boolean>;
+    declare public readonly internal: pulumi.Output<boolean>;
     /**
      * The diff head SHA of the merge request when the note was created.
      */
-    public readonly mergeRequestDiffHeadSha!: pulumi.Output<string | undefined>;
+    declare public readonly mergeRequestDiffHeadSha: pulumi.Output<string | undefined>;
     /**
      * The IID of the merge request to add the note to.
      */
-    public readonly mergeRequestIid!: pulumi.Output<number>;
+    declare public readonly mergeRequestIid: pulumi.Output<number>;
     /**
      * The ID of the merge request note.
      */
-    public /*out*/ readonly noteId!: pulumi.Output<number>;
+    declare public /*out*/ readonly noteId: pulumi.Output<number>;
     /**
      * The ID or path of the project to add the note to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Indicates if the merge request note is resolvable.
      */
-    public /*out*/ readonly resolvable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly resolvable: pulumi.Output<boolean>;
     /**
      * Indicates if the merge request note is a system note.
      */
-    public /*out*/ readonly system!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly system: pulumi.Output<boolean>;
     /**
      * The last updated date of the merge request note.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ProjectMergeRequestNote resource with the given unique name, arguments, and options.
@@ -131,33 +131,33 @@ export class ProjectMergeRequestNote extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMergeRequestNoteState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["internal"] = state ? state.internal : undefined;
-            resourceInputs["mergeRequestDiffHeadSha"] = state ? state.mergeRequestDiffHeadSha : undefined;
-            resourceInputs["mergeRequestIid"] = state ? state.mergeRequestIid : undefined;
-            resourceInputs["noteId"] = state ? state.noteId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resolvable"] = state ? state.resolvable : undefined;
-            resourceInputs["system"] = state ? state.system : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["internal"] = state?.internal;
+            resourceInputs["mergeRequestDiffHeadSha"] = state?.mergeRequestDiffHeadSha;
+            resourceInputs["mergeRequestIid"] = state?.mergeRequestIid;
+            resourceInputs["noteId"] = state?.noteId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resolvable"] = state?.resolvable;
+            resourceInputs["system"] = state?.system;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ProjectMergeRequestNoteArgs | undefined;
-            if ((!args || args.body === undefined) && !opts.urn) {
+            if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            if ((!args || args.mergeRequestIid === undefined) && !opts.urn) {
+            if (args?.mergeRequestIid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mergeRequestIid'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["internal"] = args ? args.internal : undefined;
-            resourceInputs["mergeRequestDiffHeadSha"] = args ? args.mergeRequestDiffHeadSha : undefined;
-            resourceInputs["mergeRequestIid"] = args ? args.mergeRequestIid : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["internal"] = args?.internal;
+            resourceInputs["mergeRequestDiffHeadSha"] = args?.mergeRequestDiffHeadSha;
+            resourceInputs["mergeRequestIid"] = args?.mergeRequestIid;
+            resourceInputs["project"] = args?.project;
             resourceInputs["noteId"] = undefined /*out*/;
             resourceInputs["resolvable"] = undefined /*out*/;
             resourceInputs["system"] = undefined /*out*/;

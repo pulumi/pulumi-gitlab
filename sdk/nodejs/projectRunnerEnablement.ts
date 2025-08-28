@@ -74,11 +74,11 @@ export class ProjectRunnerEnablement extends pulumi.CustomResource {
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID of a runner to enable for the project.
      */
-    public readonly runnerId!: pulumi.Output<number>;
+    declare public readonly runnerId: pulumi.Output<number>;
 
     /**
      * Create a ProjectRunnerEnablement resource with the given unique name, arguments, and options.
@@ -93,18 +93,18 @@ export class ProjectRunnerEnablement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectRunnerEnablementState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["runnerId"] = state ? state.runnerId : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["runnerId"] = state?.runnerId;
         } else {
             const args = argsOrState as ProjectRunnerEnablementArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.runnerId === undefined) && !opts.urn) {
+            if (args?.runnerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runnerId'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runnerId"] = args ? args.runnerId : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runnerId"] = args?.runnerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectRunnerEnablement.__pulumiType, name, resourceInputs, opts);

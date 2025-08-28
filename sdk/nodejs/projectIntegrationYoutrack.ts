@@ -80,15 +80,15 @@ export class ProjectIntegrationYoutrack extends pulumi.CustomResource {
     /**
      * URL to view an issue in the external issue tracker. Must contain :id.
      */
-    public readonly issuesUrl!: pulumi.Output<string>;
+    declare public readonly issuesUrl: pulumi.Output<string>;
     /**
      * ID or namespace of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * URL of the project in the external issue tracker.
      */
-    public readonly projectUrl!: pulumi.Output<string>;
+    declare public readonly projectUrl: pulumi.Output<string>;
 
     /**
      * Create a ProjectIntegrationYoutrack resource with the given unique name, arguments, and options.
@@ -103,23 +103,23 @@ export class ProjectIntegrationYoutrack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIntegrationYoutrackState | undefined;
-            resourceInputs["issuesUrl"] = state ? state.issuesUrl : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectUrl"] = state ? state.projectUrl : undefined;
+            resourceInputs["issuesUrl"] = state?.issuesUrl;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectUrl"] = state?.projectUrl;
         } else {
             const args = argsOrState as ProjectIntegrationYoutrackArgs | undefined;
-            if ((!args || args.issuesUrl === undefined) && !opts.urn) {
+            if (args?.issuesUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuesUrl'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectUrl === undefined) && !opts.urn) {
+            if (args?.projectUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectUrl'");
             }
-            resourceInputs["issuesUrl"] = args ? args.issuesUrl : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectUrl"] = args ? args.projectUrl : undefined;
+            resourceInputs["issuesUrl"] = args?.issuesUrl;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectUrl"] = args?.projectUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectIntegrationYoutrack.__pulumiType, name, resourceInputs, opts);

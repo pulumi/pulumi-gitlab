@@ -80,55 +80,55 @@ export class ProjectMilestone extends pulumi.CustomResource {
     /**
      * The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the milestone.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    public readonly dueDate!: pulumi.Output<string | undefined>;
+    declare public readonly dueDate: pulumi.Output<string | undefined>;
     /**
      * Bool, true if milestone expired.
      */
-    public /*out*/ readonly expired!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly expired: pulumi.Output<boolean>;
     /**
      * The ID of the project's milestone.
      */
-    public /*out*/ readonly iid!: pulumi.Output<number>;
+    declare public /*out*/ readonly iid: pulumi.Output<number>;
     /**
      * The instance-wide ID of the project’s milestone.
      */
-    public /*out*/ readonly milestoneId!: pulumi.Output<number>;
+    declare public /*out*/ readonly milestoneId: pulumi.Output<number>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The project ID of milestone.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<number>;
+    declare public /*out*/ readonly projectId: pulumi.Output<number>;
     /**
      * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    public readonly startDate!: pulumi.Output<string | undefined>;
+    declare public readonly startDate: pulumi.Output<string | undefined>;
     /**
      * The state of the milestone. Valid values are: `active`, `closed`.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * The title of a milestone.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The web URL of the milestone.
      */
-    public /*out*/ readonly webUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webUrl: pulumi.Output<string>;
 
     /**
      * Create a ProjectMilestone resource with the given unique name, arguments, and options.
@@ -143,33 +143,33 @@ export class ProjectMilestone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMilestoneState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dueDate"] = state ? state.dueDate : undefined;
-            resourceInputs["expired"] = state ? state.expired : undefined;
-            resourceInputs["iid"] = state ? state.iid : undefined;
-            resourceInputs["milestoneId"] = state ? state.milestoneId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["webUrl"] = state ? state.webUrl : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dueDate"] = state?.dueDate;
+            resourceInputs["expired"] = state?.expired;
+            resourceInputs["iid"] = state?.iid;
+            resourceInputs["milestoneId"] = state?.milestoneId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["webUrl"] = state?.webUrl;
         } else {
             const args = argsOrState as ProjectMilestoneArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dueDate"] = args ? args.dueDate : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["startDate"] = args ? args.startDate : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dueDate"] = args?.dueDate;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["startDate"] = args?.startDate;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["title"] = args?.title;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expired"] = undefined /*out*/;
             resourceInputs["iid"] = undefined /*out*/;

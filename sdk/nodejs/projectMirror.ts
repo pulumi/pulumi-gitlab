@@ -81,35 +81,35 @@ export class ProjectMirror extends pulumi.CustomResource {
     /**
      * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      */
-    public readonly authMethod!: pulumi.Output<string>;
+    declare public readonly authMethod: pulumi.Output<string>;
     /**
      * Determines if the mirror is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Determines if divergent refs are skipped.
      */
-    public readonly keepDivergentRefs!: pulumi.Output<boolean>;
+    declare public readonly keepDivergentRefs: pulumi.Output<boolean>;
     /**
      * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
      */
-    public readonly mirrorBranchRegex!: pulumi.Output<string>;
+    declare public readonly mirrorBranchRegex: pulumi.Output<string>;
     /**
      * Mirror ID.
      */
-    public /*out*/ readonly mirrorId!: pulumi.Output<number>;
+    declare public /*out*/ readonly mirrorId: pulumi.Output<number>;
     /**
      * Determines if only protected branches are mirrored.
      */
-    public readonly onlyProtectedBranches!: pulumi.Output<boolean>;
+    declare public readonly onlyProtectedBranches: pulumi.Output<boolean>;
     /**
      * The id of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL of the remote repository to be mirrored.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a ProjectMirror resource with the given unique name, arguments, and options.
@@ -124,28 +124,28 @@ export class ProjectMirror extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMirrorState | undefined;
-            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["keepDivergentRefs"] = state ? state.keepDivergentRefs : undefined;
-            resourceInputs["mirrorBranchRegex"] = state ? state.mirrorBranchRegex : undefined;
-            resourceInputs["mirrorId"] = state ? state.mirrorId : undefined;
-            resourceInputs["onlyProtectedBranches"] = state ? state.onlyProtectedBranches : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["keepDivergentRefs"] = state?.keepDivergentRefs;
+            resourceInputs["mirrorBranchRegex"] = state?.mirrorBranchRegex;
+            resourceInputs["mirrorId"] = state?.mirrorId;
+            resourceInputs["onlyProtectedBranches"] = state?.onlyProtectedBranches;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ProjectMirrorArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["keepDivergentRefs"] = args ? args.keepDivergentRefs : undefined;
-            resourceInputs["mirrorBranchRegex"] = args ? args.mirrorBranchRegex : undefined;
-            resourceInputs["onlyProtectedBranches"] = args ? args.onlyProtectedBranches : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["authMethod"] = args?.authMethod;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["keepDivergentRefs"] = args?.keepDivergentRefs;
+            resourceInputs["mirrorBranchRegex"] = args?.mirrorBranchRegex;
+            resourceInputs["onlyProtectedBranches"] = args?.onlyProtectedBranches;
+            resourceInputs["project"] = args?.project;
             resourceInputs["url"] = args?.url ? pulumi.secret(args.url) : undefined;
             resourceInputs["mirrorId"] = undefined /*out*/;
         }

@@ -30,20 +30,14 @@ class ProviderArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-               Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-               the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
-        :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-               CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        :param pulumi.Input[_builtins.str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         :param pulumi.Input[_builtins.str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
-        :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-               `client_cert` is set.
+        :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[_builtins.int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
-        :param pulumi.Input[_builtins.str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-               used in this provider for authentication (using Bearer authorization token). See
-               https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        :param pulumi.Input[_builtins.str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
@@ -68,9 +62,7 @@ class ProviderArgs:
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-        Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-        the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         """
         return pulumi.get(self, "base_url")
 
@@ -82,8 +74,7 @@ class ProviderArgs:
     @pulumi.getter(name="cacertFile")
     def cacert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-        CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         """
         return pulumi.get(self, "cacert_file")
 
@@ -107,8 +98,7 @@ class ProviderArgs:
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-        `client_cert` is set.
+        File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         """
         return pulumi.get(self, "client_key")
 
@@ -165,9 +155,7 @@ class ProviderArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-        used in this provider for authentication (using Bearer authorization token). See
-        https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         return pulumi.get(self, "token")
 
@@ -200,20 +188,14 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-               Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-               the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
-        :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-               CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        :param pulumi.Input[_builtins.str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         :param pulumi.Input[_builtins.str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
-        :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-               `client_cert` is set.
+        :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[_builtins.int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
-        :param pulumi.Input[_builtins.str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-               used in this provider for authentication (using Bearer authorization token). See
-               https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        :param pulumi.Input[_builtins.str] token: The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         ...
     @overload
@@ -281,9 +263,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-        Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-        the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         """
         return pulumi.get(self, "base_url")
 
@@ -291,8 +271,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cacertFile")
     def cacert_file(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-        CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         """
         return pulumi.get(self, "cacert_file")
 
@@ -308,8 +287,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-        `client_cert` is set.
+        File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         """
         return pulumi.get(self, "client_key")
 
@@ -317,9 +295,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-        used in this provider for authentication (using Bearer authorization token). See
-        https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         return pulumi.get(self, "token")
 

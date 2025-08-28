@@ -76,27 +76,27 @@ export class GroupLabel extends pulumi.CustomResource {
     /**
      * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
      */
-    public readonly color!: pulumi.Output<string>;
+    declare public readonly color: pulumi.Output<string>;
     /**
      * Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
      */
-    public /*out*/ readonly colorHex!: pulumi.Output<string>;
+    declare public /*out*/ readonly colorHex: pulumi.Output<string>;
     /**
      * The description of the label.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name or id of the group to add the label to.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The id of the group label.
      */
-    public /*out*/ readonly labelId!: pulumi.Output<number>;
+    declare public /*out*/ readonly labelId: pulumi.Output<number>;
     /**
      * The name of the label.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a GroupLabel resource with the given unique name, arguments, and options.
@@ -111,24 +111,24 @@ export class GroupLabel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupLabelState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["colorHex"] = state ? state.colorHex : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["labelId"] = state ? state.labelId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["colorHex"] = state?.colorHex;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["labelId"] = state?.labelId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as GroupLabelArgs | undefined;
-            if ((!args || args.color === undefined) && !opts.urn) {
+            if (args?.color === undefined && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["name"] = args?.name;
             resourceInputs["colorHex"] = undefined /*out*/;
             resourceInputs["labelId"] = undefined /*out*/;
         }

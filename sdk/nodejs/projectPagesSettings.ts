@@ -62,24 +62,24 @@ export class ProjectPagesSettings extends pulumi.CustomResource {
     /**
      * List of current active deployments.
      */
-    public /*out*/ readonly deployments!: pulumi.Output<outputs.ProjectPagesSettingsDeployment[]>;
+    declare public /*out*/ readonly deployments: pulumi.Output<outputs.ProjectPagesSettingsDeployment[]>;
     /**
      * Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      */
-    public readonly forceHttps!: pulumi.Output<boolean>;
+    declare public readonly forceHttps: pulumi.Output<boolean>;
     /**
      * Boolean indicating if a unique domain is enabled.
      */
-    public readonly isUniqueDomainEnabled!: pulumi.Output<boolean>;
-    public readonly keepSettingsOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly isUniqueDomainEnabled: pulumi.Output<boolean>;
+    declare public readonly keepSettingsOnDestroy: pulumi.Output<boolean>;
     /**
      * The project ID or path.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL to access the project pages.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a ProjectPagesSettings resource with the given unique name, arguments, and options.
@@ -94,21 +94,21 @@ export class ProjectPagesSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectPagesSettingsState | undefined;
-            resourceInputs["deployments"] = state ? state.deployments : undefined;
-            resourceInputs["forceHttps"] = state ? state.forceHttps : undefined;
-            resourceInputs["isUniqueDomainEnabled"] = state ? state.isUniqueDomainEnabled : undefined;
-            resourceInputs["keepSettingsOnDestroy"] = state ? state.keepSettingsOnDestroy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["deployments"] = state?.deployments;
+            resourceInputs["forceHttps"] = state?.forceHttps;
+            resourceInputs["isUniqueDomainEnabled"] = state?.isUniqueDomainEnabled;
+            resourceInputs["keepSettingsOnDestroy"] = state?.keepSettingsOnDestroy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ProjectPagesSettingsArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["forceHttps"] = args ? args.forceHttps : undefined;
-            resourceInputs["isUniqueDomainEnabled"] = args ? args.isUniqueDomainEnabled : undefined;
-            resourceInputs["keepSettingsOnDestroy"] = args ? args.keepSettingsOnDestroy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["forceHttps"] = args?.forceHttps;
+            resourceInputs["isUniqueDomainEnabled"] = args?.isUniqueDomainEnabled;
+            resourceInputs["keepSettingsOnDestroy"] = args?.keepSettingsOnDestroy;
+            resourceInputs["project"] = args?.project;
             resourceInputs["deployments"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }

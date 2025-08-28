@@ -82,163 +82,163 @@ export class ProjectIssue extends pulumi.CustomResource {
     /**
      * The IDs of the users to assign the issue to.
      */
-    public readonly assigneeIds!: pulumi.Output<number[] | undefined>;
+    declare public readonly assigneeIds: pulumi.Output<number[] | undefined>;
     /**
      * The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
      */
-    public /*out*/ readonly authorId!: pulumi.Output<number>;
+    declare public /*out*/ readonly authorId: pulumi.Output<number>;
     /**
      * When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    public /*out*/ readonly closedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly closedAt: pulumi.Output<string>;
     /**
      * The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
      */
-    public /*out*/ readonly closedByUserId!: pulumi.Output<number>;
+    declare public /*out*/ readonly closedByUserId: pulumi.Output<number>;
     /**
      * Set an issue to be confidential.
      */
-    public readonly confidential!: pulumi.Output<boolean | undefined>;
+    declare public readonly confidential: pulumi.Output<boolean | undefined>;
     /**
      * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
      */
-    public readonly createdAt!: pulumi.Output<string>;
+    declare public readonly createdAt: pulumi.Output<string>;
     /**
      * Whether the issue is deleted instead of closed during destroy.
      */
-    public readonly deleteOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The description of an issue. Limited to 1,048,576 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the issue is locked for discussions or not.
      */
-    public readonly discussionLocked!: pulumi.Output<boolean | undefined>;
+    declare public readonly discussionLocked: pulumi.Output<boolean | undefined>;
     /**
      * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
      */
-    public readonly discussionToResolve!: pulumi.Output<string | undefined>;
+    declare public readonly discussionToResolve: pulumi.Output<string | undefined>;
     /**
      * The number of downvotes the issue has received.
      */
-    public /*out*/ readonly downvotes!: pulumi.Output<number>;
+    declare public /*out*/ readonly downvotes: pulumi.Output<number>;
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    public readonly dueDate!: pulumi.Output<string | undefined>;
+    declare public readonly dueDate: pulumi.Output<string | undefined>;
     /**
      * ID of the epic to add the issue to. Valid values are greater than or equal to 0.
      */
-    public /*out*/ readonly epicId!: pulumi.Output<number>;
+    declare public /*out*/ readonly epicId: pulumi.Output<number>;
     /**
      * The ID of the epic issue.
      */
-    public readonly epicIssueId!: pulumi.Output<number>;
+    declare public readonly epicIssueId: pulumi.Output<number>;
     /**
      * The external ID of the issue.
      */
-    public /*out*/ readonly externalId!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalId: pulumi.Output<string>;
     /**
      * The human-readable time estimate of the issue.
      */
-    public /*out*/ readonly humanTimeEstimate!: pulumi.Output<string>;
+    declare public /*out*/ readonly humanTimeEstimate: pulumi.Output<string>;
     /**
      * The human-readable total time spent of the issue.
      */
-    public /*out*/ readonly humanTotalTimeSpent!: pulumi.Output<string>;
+    declare public /*out*/ readonly humanTotalTimeSpent: pulumi.Output<string>;
     /**
      * The internal ID of the project's issue.
      */
-    public readonly iid!: pulumi.Output<number>;
+    declare public readonly iid: pulumi.Output<number>;
     /**
      * The instance-wide ID of the issue.
      */
-    public /*out*/ readonly issueId!: pulumi.Output<number>;
+    declare public /*out*/ readonly issueId: pulumi.Output<number>;
     /**
      * The ID of the issue link.
      */
-    public /*out*/ readonly issueLinkId!: pulumi.Output<number>;
+    declare public /*out*/ readonly issueLinkId: pulumi.Output<number>;
     /**
      * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      */
-    public readonly issueType!: pulumi.Output<string | undefined>;
+    declare public readonly issueType: pulumi.Output<string | undefined>;
     /**
      * The labels of an issue.
      */
-    public readonly labels!: pulumi.Output<string[] | undefined>;
+    declare public readonly labels: pulumi.Output<string[] | undefined>;
     /**
      * The links of the issue.
      */
-    public /*out*/ readonly links!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly links: pulumi.Output<{[key: string]: string}>;
     /**
      * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      */
-    public readonly mergeRequestToResolveDiscussionsOf!: pulumi.Output<number | undefined>;
+    declare public readonly mergeRequestToResolveDiscussionsOf: pulumi.Output<number | undefined>;
     /**
      * The number of merge requests associated with the issue.
      */
-    public /*out*/ readonly mergeRequestsCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly mergeRequestsCount: pulumi.Output<number>;
     /**
      * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
      */
-    public readonly milestoneId!: pulumi.Output<number | undefined>;
+    declare public readonly milestoneId: pulumi.Output<number | undefined>;
     /**
      * The ID of the issue that was moved to.
      */
-    public /*out*/ readonly movedToId!: pulumi.Output<number>;
+    declare public /*out*/ readonly movedToId: pulumi.Output<number>;
     /**
      * The name or ID of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The references of the issue.
      */
-    public /*out*/ readonly references!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly references: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of the issue. Valid values are: `opened`, `closed`.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * Whether the authenticated user is subscribed to the issue or not.
      */
-    public /*out*/ readonly subscribed!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly subscribed: pulumi.Output<boolean>;
     /**
      * The task completion status. It's always a one element list.
      */
-    public /*out*/ readonly taskCompletionStatuses!: pulumi.Output<outputs.ProjectIssueTaskCompletionStatus[]>;
+    declare public /*out*/ readonly taskCompletionStatuses: pulumi.Output<outputs.ProjectIssueTaskCompletionStatus[]>;
     /**
      * The time estimate of the issue.
      */
-    public /*out*/ readonly timeEstimate!: pulumi.Output<number>;
+    declare public /*out*/ readonly timeEstimate: pulumi.Output<number>;
     /**
      * The title of the issue.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * The total time spent of the issue.
      */
-    public /*out*/ readonly totalTimeSpent!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalTimeSpent: pulumi.Output<number>;
     /**
      * When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    public readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly updatedAt: pulumi.Output<string>;
     /**
      * The number of upvotes the issue has received.
      */
-    public /*out*/ readonly upvotes!: pulumi.Output<number>;
+    declare public /*out*/ readonly upvotes: pulumi.Output<number>;
     /**
      * The number of user notes on the issue.
      */
-    public /*out*/ readonly userNotesCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly userNotesCount: pulumi.Output<number>;
     /**
      * The web URL of the issue.
      */
-    public /*out*/ readonly webUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webUrl: pulumi.Output<string>;
     /**
      * The weight of the issue. Valid values are greater than or equal to 0.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a ProjectIssue resource with the given unique name, arguments, and options.
@@ -253,73 +253,73 @@ export class ProjectIssue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIssueState | undefined;
-            resourceInputs["assigneeIds"] = state ? state.assigneeIds : undefined;
-            resourceInputs["authorId"] = state ? state.authorId : undefined;
-            resourceInputs["closedAt"] = state ? state.closedAt : undefined;
-            resourceInputs["closedByUserId"] = state ? state.closedByUserId : undefined;
-            resourceInputs["confidential"] = state ? state.confidential : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deleteOnDestroy"] = state ? state.deleteOnDestroy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discussionLocked"] = state ? state.discussionLocked : undefined;
-            resourceInputs["discussionToResolve"] = state ? state.discussionToResolve : undefined;
-            resourceInputs["downvotes"] = state ? state.downvotes : undefined;
-            resourceInputs["dueDate"] = state ? state.dueDate : undefined;
-            resourceInputs["epicId"] = state ? state.epicId : undefined;
-            resourceInputs["epicIssueId"] = state ? state.epicIssueId : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["humanTimeEstimate"] = state ? state.humanTimeEstimate : undefined;
-            resourceInputs["humanTotalTimeSpent"] = state ? state.humanTotalTimeSpent : undefined;
-            resourceInputs["iid"] = state ? state.iid : undefined;
-            resourceInputs["issueId"] = state ? state.issueId : undefined;
-            resourceInputs["issueLinkId"] = state ? state.issueLinkId : undefined;
-            resourceInputs["issueType"] = state ? state.issueType : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["links"] = state ? state.links : undefined;
-            resourceInputs["mergeRequestToResolveDiscussionsOf"] = state ? state.mergeRequestToResolveDiscussionsOf : undefined;
-            resourceInputs["mergeRequestsCount"] = state ? state.mergeRequestsCount : undefined;
-            resourceInputs["milestoneId"] = state ? state.milestoneId : undefined;
-            resourceInputs["movedToId"] = state ? state.movedToId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["references"] = state ? state.references : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subscribed"] = state ? state.subscribed : undefined;
-            resourceInputs["taskCompletionStatuses"] = state ? state.taskCompletionStatuses : undefined;
-            resourceInputs["timeEstimate"] = state ? state.timeEstimate : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["totalTimeSpent"] = state ? state.totalTimeSpent : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["upvotes"] = state ? state.upvotes : undefined;
-            resourceInputs["userNotesCount"] = state ? state.userNotesCount : undefined;
-            resourceInputs["webUrl"] = state ? state.webUrl : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["assigneeIds"] = state?.assigneeIds;
+            resourceInputs["authorId"] = state?.authorId;
+            resourceInputs["closedAt"] = state?.closedAt;
+            resourceInputs["closedByUserId"] = state?.closedByUserId;
+            resourceInputs["confidential"] = state?.confidential;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deleteOnDestroy"] = state?.deleteOnDestroy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discussionLocked"] = state?.discussionLocked;
+            resourceInputs["discussionToResolve"] = state?.discussionToResolve;
+            resourceInputs["downvotes"] = state?.downvotes;
+            resourceInputs["dueDate"] = state?.dueDate;
+            resourceInputs["epicId"] = state?.epicId;
+            resourceInputs["epicIssueId"] = state?.epicIssueId;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["humanTimeEstimate"] = state?.humanTimeEstimate;
+            resourceInputs["humanTotalTimeSpent"] = state?.humanTotalTimeSpent;
+            resourceInputs["iid"] = state?.iid;
+            resourceInputs["issueId"] = state?.issueId;
+            resourceInputs["issueLinkId"] = state?.issueLinkId;
+            resourceInputs["issueType"] = state?.issueType;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["links"] = state?.links;
+            resourceInputs["mergeRequestToResolveDiscussionsOf"] = state?.mergeRequestToResolveDiscussionsOf;
+            resourceInputs["mergeRequestsCount"] = state?.mergeRequestsCount;
+            resourceInputs["milestoneId"] = state?.milestoneId;
+            resourceInputs["movedToId"] = state?.movedToId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["references"] = state?.references;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subscribed"] = state?.subscribed;
+            resourceInputs["taskCompletionStatuses"] = state?.taskCompletionStatuses;
+            resourceInputs["timeEstimate"] = state?.timeEstimate;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["totalTimeSpent"] = state?.totalTimeSpent;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["upvotes"] = state?.upvotes;
+            resourceInputs["userNotesCount"] = state?.userNotesCount;
+            resourceInputs["webUrl"] = state?.webUrl;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as ProjectIssueArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["assigneeIds"] = args ? args.assigneeIds : undefined;
-            resourceInputs["confidential"] = args ? args.confidential : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["deleteOnDestroy"] = args ? args.deleteOnDestroy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discussionLocked"] = args ? args.discussionLocked : undefined;
-            resourceInputs["discussionToResolve"] = args ? args.discussionToResolve : undefined;
-            resourceInputs["dueDate"] = args ? args.dueDate : undefined;
-            resourceInputs["epicIssueId"] = args ? args.epicIssueId : undefined;
-            resourceInputs["iid"] = args ? args.iid : undefined;
-            resourceInputs["issueType"] = args ? args.issueType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["mergeRequestToResolveDiscussionsOf"] = args ? args.mergeRequestToResolveDiscussionsOf : undefined;
-            resourceInputs["milestoneId"] = args ? args.milestoneId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["assigneeIds"] = args?.assigneeIds;
+            resourceInputs["confidential"] = args?.confidential;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["deleteOnDestroy"] = args?.deleteOnDestroy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discussionLocked"] = args?.discussionLocked;
+            resourceInputs["discussionToResolve"] = args?.discussionToResolve;
+            resourceInputs["dueDate"] = args?.dueDate;
+            resourceInputs["epicIssueId"] = args?.epicIssueId;
+            resourceInputs["iid"] = args?.iid;
+            resourceInputs["issueType"] = args?.issueType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["mergeRequestToResolveDiscussionsOf"] = args?.mergeRequestToResolveDiscussionsOf;
+            resourceInputs["milestoneId"] = args?.milestoneId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["updatedAt"] = args?.updatedAt;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["authorId"] = undefined /*out*/;
             resourceInputs["closedAt"] = undefined /*out*/;
             resourceInputs["closedByUserId"] = undefined /*out*/;

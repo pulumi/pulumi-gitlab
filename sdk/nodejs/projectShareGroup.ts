@@ -77,19 +77,19 @@ export class ProjectShareGroup extends pulumi.CustomResource {
      *
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
-    public readonly accessLevel!: pulumi.Output<string | undefined>;
+    declare public readonly accessLevel: pulumi.Output<string | undefined>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    public readonly groupAccess!: pulumi.Output<string | undefined>;
+    declare public readonly groupAccess: pulumi.Output<string | undefined>;
     /**
      * The id of the group.
      */
-    public readonly groupId!: pulumi.Output<number>;
+    declare public readonly groupId: pulumi.Output<number>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectShareGroup resource with the given unique name, arguments, and options.
@@ -104,22 +104,22 @@ export class ProjectShareGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectShareGroupState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["groupAccess"] = state?.groupAccess;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectShareGroupArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["groupAccess"] = args?.groupAccess;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectShareGroup.__pulumiType, name, resourceInputs, opts);

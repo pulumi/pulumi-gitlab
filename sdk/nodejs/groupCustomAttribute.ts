@@ -75,15 +75,15 @@ export class GroupCustomAttribute extends pulumi.CustomResource {
     /**
      * The id of the group.
      */
-    public readonly group!: pulumi.Output<number>;
+    declare public readonly group: pulumi.Output<number>;
     /**
      * Key for the Custom Attribute.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * Value for the Custom Attribute.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a GroupCustomAttribute resource with the given unique name, arguments, and options.
@@ -98,23 +98,23 @@ export class GroupCustomAttribute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupCustomAttributeState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as GroupCustomAttributeArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupCustomAttribute.__pulumiType, name, resourceInputs, opts);

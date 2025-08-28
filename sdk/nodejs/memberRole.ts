@@ -70,35 +70,35 @@ export class MemberRole extends pulumi.CustomResource {
     /**
      * The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
      */
-    public readonly baseAccessLevel!: pulumi.Output<string>;
+    declare public readonly baseAccessLevel: pulumi.Output<string>;
     /**
      * Timestamp of when the member role was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Description for the member role.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The Web UI path to edit the member role
      */
-    public /*out*/ readonly editPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly editPath: pulumi.Output<string>;
     /**
      * All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
      */
-    public readonly enabledPermissions!: pulumi.Output<string[]>;
+    declare public readonly enabledPermissions: pulumi.Output<string[]>;
     /**
      * Full path of the namespace to create the member role in. **Required for SAAS** **Not allowed for self-managed**
      */
-    public readonly groupPath!: pulumi.Output<string>;
+    declare public readonly groupPath: pulumi.Output<string>;
     /**
      * The id integer value extracted from the `id` attribute
      */
-    public /*out*/ readonly iid!: pulumi.Output<number>;
+    declare public /*out*/ readonly iid: pulumi.Output<number>;
     /**
      * Name for the member role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a MemberRole resource with the given unique name, arguments, and options.
@@ -113,27 +113,27 @@ export class MemberRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MemberRoleState | undefined;
-            resourceInputs["baseAccessLevel"] = state ? state.baseAccessLevel : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["editPath"] = state ? state.editPath : undefined;
-            resourceInputs["enabledPermissions"] = state ? state.enabledPermissions : undefined;
-            resourceInputs["groupPath"] = state ? state.groupPath : undefined;
-            resourceInputs["iid"] = state ? state.iid : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["baseAccessLevel"] = state?.baseAccessLevel;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["editPath"] = state?.editPath;
+            resourceInputs["enabledPermissions"] = state?.enabledPermissions;
+            resourceInputs["groupPath"] = state?.groupPath;
+            resourceInputs["iid"] = state?.iid;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as MemberRoleArgs | undefined;
-            if ((!args || args.baseAccessLevel === undefined) && !opts.urn) {
+            if (args?.baseAccessLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'baseAccessLevel'");
             }
-            if ((!args || args.enabledPermissions === undefined) && !opts.urn) {
+            if (args?.enabledPermissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabledPermissions'");
             }
-            resourceInputs["baseAccessLevel"] = args ? args.baseAccessLevel : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabledPermissions"] = args ? args.enabledPermissions : undefined;
-            resourceInputs["groupPath"] = args ? args.groupPath : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["baseAccessLevel"] = args?.baseAccessLevel;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabledPermissions"] = args?.enabledPermissions;
+            resourceInputs["groupPath"] = args?.groupPath;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["editPath"] = undefined /*out*/;
             resourceInputs["iid"] = undefined /*out*/;

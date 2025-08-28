@@ -79,43 +79,43 @@ export class UserImpersonationToken extends pulumi.CustomResource {
     /**
      * True if the token is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
      */
-    public readonly expiresAt!: pulumi.Output<string>;
+    declare public readonly expiresAt: pulumi.Output<string>;
     /**
      * True as the token is always an impersonation token.
      */
-    public /*out*/ readonly impersonation!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly impersonation: pulumi.Output<boolean>;
     /**
      * The name of the impersonation token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * True if the token is revoked.
      */
-    public /*out*/ readonly revoked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly revoked: pulumi.Output<boolean>;
     /**
      * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * The token of the user impersonation token. **Note**: the token is not available for imported resources.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * ID of the impersonation token.
      */
-    public /*out*/ readonly tokenId!: pulumi.Output<number>;
+    declare public /*out*/ readonly tokenId: pulumi.Output<number>;
     /**
      * The ID of the user.
      */
-    public readonly userId!: pulumi.Output<number>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a UserImpersonationToken resource with the given unique name, arguments, and options.
@@ -130,31 +130,31 @@ export class UserImpersonationToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserImpersonationTokenState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["impersonation"] = state ? state.impersonation : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["revoked"] = state ? state.revoked : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["impersonation"] = state?.impersonation;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["revoked"] = state?.revoked;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["tokenId"] = state?.tokenId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserImpersonationTokenArgs | undefined;
-            if ((!args || args.expiresAt === undefined) && !opts.urn) {
+            if (args?.expiresAt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expiresAt'");
             }
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["impersonation"] = undefined /*out*/;

@@ -75,15 +75,15 @@ export class ProjectCustomAttribute extends pulumi.CustomResource {
     /**
      * Key for the Custom Attribute.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The id of the project.
      */
-    public readonly project!: pulumi.Output<number>;
+    declare public readonly project: pulumi.Output<number>;
     /**
      * Value for the Custom Attribute.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a ProjectCustomAttribute resource with the given unique name, arguments, and options.
@@ -98,23 +98,23 @@ export class ProjectCustomAttribute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectCustomAttributeState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ProjectCustomAttributeArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectCustomAttribute.__pulumiType, name, resourceInputs, opts);

@@ -110,87 +110,87 @@ export class RepositoryFile extends pulumi.CustomResource {
     /**
      * Email of the commit author.
      */
-    public readonly authorEmail!: pulumi.Output<string | undefined>;
+    declare public readonly authorEmail: pulumi.Output<string | undefined>;
     /**
      * Name of the commit author.
      */
-    public readonly authorName!: pulumi.Output<string | undefined>;
+    declare public readonly authorName: pulumi.Output<string | undefined>;
     /**
      * The blob id.
      */
-    public /*out*/ readonly blobId!: pulumi.Output<string>;
+    declare public /*out*/ readonly blobId: pulumi.Output<string>;
     /**
      * Name of the branch to which to commit to.
      */
-    public readonly branch!: pulumi.Output<string>;
+    declare public readonly branch: pulumi.Output<string>;
     /**
      * The commit id.
      */
-    public /*out*/ readonly commitId!: pulumi.Output<string>;
+    declare public /*out*/ readonly commitId: pulumi.Output<string>;
     /**
      * Commit message.
      */
-    public readonly commitMessage!: pulumi.Output<string | undefined>;
+    declare public readonly commitMessage: pulumi.Output<string | undefined>;
     /**
      * File content.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * File content sha256 digest.
      */
-    public /*out*/ readonly contentSha256!: pulumi.Output<string>;
+    declare public /*out*/ readonly contentSha256: pulumi.Output<string>;
     /**
      * Create commit message.
      */
-    public readonly createCommitMessage!: pulumi.Output<string | undefined>;
+    declare public readonly createCommitMessage: pulumi.Output<string | undefined>;
     /**
      * Delete Commit message.
      */
-    public readonly deleteCommitMessage!: pulumi.Output<string | undefined>;
+    declare public readonly deleteCommitMessage: pulumi.Output<string | undefined>;
     /**
      * The file content encoding. Valid values are: `base64`, `text`.
      */
-    public readonly encoding!: pulumi.Output<string>;
+    declare public readonly encoding: pulumi.Output<string>;
     /**
      * Enables or disables the execute flag on the file.
      */
-    public readonly executeFilemode!: pulumi.Output<boolean | undefined>;
+    declare public readonly executeFilemode: pulumi.Output<boolean | undefined>;
     /**
      * The filename.
      */
-    public /*out*/ readonly fileName!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileName: pulumi.Output<string>;
     /**
      * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
-    public readonly filePath!: pulumi.Output<string>;
+    declare public readonly filePath: pulumi.Output<string>;
     /**
      * The last known commit id.
      */
-    public /*out*/ readonly lastCommitId!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastCommitId: pulumi.Output<string>;
     /**
      * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
      */
-    public readonly overwriteOnCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly overwriteOnCreate: pulumi.Output<boolean | undefined>;
     /**
      * The name or ID of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of branch, tag or commit.
      */
-    public /*out*/ readonly ref!: pulumi.Output<string>;
+    declare public /*out*/ readonly ref: pulumi.Output<string>;
     /**
      * The file size.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Name of the branch to start the new commit from.
      */
-    public readonly startBranch!: pulumi.Output<string | undefined>;
+    declare public readonly startBranch: pulumi.Output<string | undefined>;
     /**
      * Update commit message.
      */
-    public readonly updateCommitMessage!: pulumi.Output<string | undefined>;
+    declare public readonly updateCommitMessage: pulumi.Output<string | undefined>;
 
     /**
      * Create a RepositoryFile resource with the given unique name, arguments, and options.
@@ -205,58 +205,58 @@ export class RepositoryFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryFileState | undefined;
-            resourceInputs["authorEmail"] = state ? state.authorEmail : undefined;
-            resourceInputs["authorName"] = state ? state.authorName : undefined;
-            resourceInputs["blobId"] = state ? state.blobId : undefined;
-            resourceInputs["branch"] = state ? state.branch : undefined;
-            resourceInputs["commitId"] = state ? state.commitId : undefined;
-            resourceInputs["commitMessage"] = state ? state.commitMessage : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentSha256"] = state ? state.contentSha256 : undefined;
-            resourceInputs["createCommitMessage"] = state ? state.createCommitMessage : undefined;
-            resourceInputs["deleteCommitMessage"] = state ? state.deleteCommitMessage : undefined;
-            resourceInputs["encoding"] = state ? state.encoding : undefined;
-            resourceInputs["executeFilemode"] = state ? state.executeFilemode : undefined;
-            resourceInputs["fileName"] = state ? state.fileName : undefined;
-            resourceInputs["filePath"] = state ? state.filePath : undefined;
-            resourceInputs["lastCommitId"] = state ? state.lastCommitId : undefined;
-            resourceInputs["overwriteOnCreate"] = state ? state.overwriteOnCreate : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["startBranch"] = state ? state.startBranch : undefined;
-            resourceInputs["updateCommitMessage"] = state ? state.updateCommitMessage : undefined;
+            resourceInputs["authorEmail"] = state?.authorEmail;
+            resourceInputs["authorName"] = state?.authorName;
+            resourceInputs["blobId"] = state?.blobId;
+            resourceInputs["branch"] = state?.branch;
+            resourceInputs["commitId"] = state?.commitId;
+            resourceInputs["commitMessage"] = state?.commitMessage;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentSha256"] = state?.contentSha256;
+            resourceInputs["createCommitMessage"] = state?.createCommitMessage;
+            resourceInputs["deleteCommitMessage"] = state?.deleteCommitMessage;
+            resourceInputs["encoding"] = state?.encoding;
+            resourceInputs["executeFilemode"] = state?.executeFilemode;
+            resourceInputs["fileName"] = state?.fileName;
+            resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["lastCommitId"] = state?.lastCommitId;
+            resourceInputs["overwriteOnCreate"] = state?.overwriteOnCreate;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["startBranch"] = state?.startBranch;
+            resourceInputs["updateCommitMessage"] = state?.updateCommitMessage;
         } else {
             const args = argsOrState as RepositoryFileArgs | undefined;
-            if ((!args || args.branch === undefined) && !opts.urn) {
+            if (args?.branch === undefined && !opts.urn) {
                 throw new Error("Missing required property 'branch'");
             }
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.encoding === undefined) && !opts.urn) {
+            if (args?.encoding === undefined && !opts.urn) {
                 throw new Error("Missing required property 'encoding'");
             }
-            if ((!args || args.filePath === undefined) && !opts.urn) {
+            if (args?.filePath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filePath'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["authorEmail"] = args ? args.authorEmail : undefined;
-            resourceInputs["authorName"] = args ? args.authorName : undefined;
-            resourceInputs["branch"] = args ? args.branch : undefined;
-            resourceInputs["commitMessage"] = args ? args.commitMessage : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["createCommitMessage"] = args ? args.createCommitMessage : undefined;
-            resourceInputs["deleteCommitMessage"] = args ? args.deleteCommitMessage : undefined;
-            resourceInputs["encoding"] = args ? args.encoding : undefined;
-            resourceInputs["executeFilemode"] = args ? args.executeFilemode : undefined;
-            resourceInputs["filePath"] = args ? args.filePath : undefined;
-            resourceInputs["overwriteOnCreate"] = args ? args.overwriteOnCreate : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["startBranch"] = args ? args.startBranch : undefined;
-            resourceInputs["updateCommitMessage"] = args ? args.updateCommitMessage : undefined;
+            resourceInputs["authorEmail"] = args?.authorEmail;
+            resourceInputs["authorName"] = args?.authorName;
+            resourceInputs["branch"] = args?.branch;
+            resourceInputs["commitMessage"] = args?.commitMessage;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["createCommitMessage"] = args?.createCommitMessage;
+            resourceInputs["deleteCommitMessage"] = args?.deleteCommitMessage;
+            resourceInputs["encoding"] = args?.encoding;
+            resourceInputs["executeFilemode"] = args?.executeFilemode;
+            resourceInputs["filePath"] = args?.filePath;
+            resourceInputs["overwriteOnCreate"] = args?.overwriteOnCreate;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["startBranch"] = args?.startBranch;
+            resourceInputs["updateCommitMessage"] = args?.updateCommitMessage;
             resourceInputs["blobId"] = undefined /*out*/;
             resourceInputs["commitId"] = undefined /*out*/;
             resourceInputs["contentSha256"] = undefined /*out*/;

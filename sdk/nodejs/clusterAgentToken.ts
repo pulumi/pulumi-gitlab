@@ -110,43 +110,43 @@ export class ClusterAgentToken extends pulumi.CustomResource {
     /**
      * The ID of the agent.
      */
-    public readonly agentId!: pulumi.Output<number>;
+    declare public readonly agentId: pulumi.Output<number>;
     /**
      * The ISO8601 datetime when the agent was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The ID of the user who created the agent.
      */
-    public /*out*/ readonly createdByUserId!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdByUserId: pulumi.Output<number>;
     /**
      * The Description for the agent.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ISO8601 datetime when the token was last used.
      */
-    public /*out*/ readonly lastUsedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUsedAt: pulumi.Output<string>;
     /**
      * The Name of the agent.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ID or full path of the project maintained by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The status of the token. Valid values are `active`, `revoked`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The secret token for the agent. The `token` is not available in imported resources.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * The ID of the token.
      */
-    public /*out*/ readonly tokenId!: pulumi.Output<number>;
+    declare public /*out*/ readonly tokenId: pulumi.Output<number>;
 
     /**
      * Create a ClusterAgentToken resource with the given unique name, arguments, and options.
@@ -161,28 +161,28 @@ export class ClusterAgentToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterAgentTokenState | undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdByUserId"] = state ? state.createdByUserId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lastUsedAt"] = state ? state.lastUsedAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdByUserId"] = state?.createdByUserId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lastUsedAt"] = state?.lastUsedAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["tokenId"] = state?.tokenId;
         } else {
             const args = argsOrState as ClusterAgentTokenArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdByUserId"] = undefined /*out*/;
             resourceInputs["lastUsedAt"] = undefined /*out*/;

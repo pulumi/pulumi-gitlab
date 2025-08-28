@@ -74,19 +74,19 @@ export class PipelineTrigger extends pulumi.CustomResource {
     /**
      * The description of the pipeline trigger.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The pipeline trigger id.
      */
-    public /*out*/ readonly pipelineTriggerId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pipelineTriggerId: pulumi.Output<number>;
     /**
      * The name or id of the project to add the trigger to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The pipeline trigger token. This value is not available during import.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a PipelineTrigger resource with the given unique name, arguments, and options.
@@ -101,20 +101,20 @@ export class PipelineTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineTriggerState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["pipelineTriggerId"] = state ? state.pipelineTriggerId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["pipelineTriggerId"] = state?.pipelineTriggerId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as PipelineTriggerArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["project"] = args?.project;
             resourceInputs["pipelineTriggerId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }
