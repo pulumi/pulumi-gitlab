@@ -52,19 +52,19 @@
         "variables": {
             "baseUrl": {
                 "type": "string",
-                "description": "This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab\nEnterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from\nthe `GITLAB_BASE_URL` environment variable. The value must end with a slash.\n"
+                "description": "This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash."
             },
             "cacertFile": {
                 "type": "string",
-                "description": "This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab\nCE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.\n"
+                "description": "This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain."
             },
             "clientCert": {
                 "type": "string",
-                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
+                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data."
             },
             "clientKey": {
                 "type": "string",
-                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when\n`client_cert` is set.\n"
+                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set."
             },
             "earlyAuthCheck": {
                 "type": "boolean"
@@ -74,19 +74,19 @@
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of headers to append to all API request to the GitLab instance.\n"
+                "description": "A map of headers to append to all API request to the GitLab instance."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
+                "description": "When set to true this disables SSL verification of the connection to the GitLab instance."
             },
             "retries": {
                 "type": "integer",
-                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.\n"
+                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off."
             },
             "token": {
                 "type": "string",
-                "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is\nused in this provider for authentication (using Bearer authorization token). See\nhttps://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.\n",
+                "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.",
                 "secret": true
             }
         }
@@ -5538,19 +5538,19 @@
         "properties": {
             "baseUrl": {
                 "type": "string",
-                "description": "This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab\nEnterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from\nthe `GITLAB_BASE_URL` environment variable. The value must end with a slash.\n"
+                "description": "This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash."
             },
             "cacertFile": {
                 "type": "string",
-                "description": "This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab\nCE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.\n"
+                "description": "This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain."
             },
             "clientCert": {
                 "type": "string",
-                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
+                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data."
             },
             "clientKey": {
                 "type": "string",
-                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when\n`client_cert` is set.\n"
+                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set."
             },
             "earlyAuthCheck": {
                 "type": "boolean"
@@ -5560,38 +5560,38 @@
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of headers to append to all API request to the GitLab instance.\n"
+                "description": "A map of headers to append to all API request to the GitLab instance."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
+                "description": "When set to true this disables SSL verification of the connection to the GitLab instance."
             },
             "retries": {
                 "type": "integer",
-                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.\n"
+                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off."
             },
             "token": {
                 "type": "string",
-                "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is\nused in this provider for authentication (using Bearer authorization token). See\nhttps://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.\n",
+                "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.",
                 "secret": true
             }
         },
         "inputProperties": {
             "baseUrl": {
                 "type": "string",
-                "description": "This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab\nEnterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from\nthe `GITLAB_BASE_URL` environment variable. The value must end with a slash.\n"
+                "description": "This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash."
             },
             "cacertFile": {
                 "type": "string",
-                "description": "This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab\nCE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.\n"
+                "description": "This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain."
             },
             "clientCert": {
                 "type": "string",
-                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.\n"
+                "description": "File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data."
             },
             "clientKey": {
                 "type": "string",
-                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when\n`client_cert` is set.\n"
+                "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set."
             },
             "earlyAuthCheck": {
                 "type": "boolean"
@@ -5601,19 +5601,19 @@
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of headers to append to all API request to the GitLab instance.\n"
+                "description": "A map of headers to append to all API request to the GitLab instance."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "When set to true this disables SSL verification of the connection to the GitLab instance.\n"
+                "description": "When set to true this disables SSL verification of the connection to the GitLab instance."
             },
             "retries": {
                 "type": "integer",
-                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.\n"
+                "description": "The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off."
             },
             "token": {
                 "type": "string",
-                "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is\nused in this provider for authentication (using Bearer authorization token). See\nhttps://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.\n",
+                "description": "The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.",
                 "secret": true
             }
         },
@@ -26943,7 +26943,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "merged": {
@@ -27019,7 +27019,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -27068,7 +27068,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -27256,7 +27256,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "lfsEnabled": {
@@ -27500,7 +27500,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "issuesEvents": {
@@ -27614,7 +27614,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     }
                 },
@@ -27949,7 +27949,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "minAccessLevel": {
@@ -28178,7 +28178,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "orderBy": {
@@ -28228,7 +28228,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "public": {
@@ -28314,7 +28314,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "key": {
@@ -28361,7 +28361,7 @@
                 "description": "A collection of values returned by getInstanceVariables.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "variables": {
@@ -29056,7 +29056,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -29185,7 +29185,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "issuesEvents": {
@@ -29297,7 +29297,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -29452,7 +29452,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "iid": {
@@ -29761,7 +29761,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "iids": {
@@ -29904,7 +29904,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "inherited": {
@@ -30140,7 +30140,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "iids": {
@@ -30262,7 +30262,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "iid": {
@@ -30364,7 +30364,7 @@
                 "description": "A collection of values returned by getProjectMilestones.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "iids": {
@@ -30713,7 +30713,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "message": {
@@ -30788,7 +30788,7 @@
                 "description": "A collection of values returned by getProjectTags.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "orderBy": {
@@ -30859,7 +30859,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "key": {
@@ -30934,7 +30934,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -31068,7 +31068,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "includeSubgroups": {
@@ -31281,7 +31281,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "linkId": {
@@ -31350,7 +31350,7 @@
                 "description": "A collection of values returned by getReleaseLinks.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "project": {
@@ -31439,7 +31439,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "lastCommitId": {
@@ -31509,7 +31509,7 @@
                 "description": "A collection of values returned by getRepositoryTree.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "path": {
@@ -31688,7 +31688,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isAdmin": {
@@ -31823,7 +31823,7 @@
                 "description": "A collection of values returned by getUserSshkeys.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "keys": {
@@ -31955,7 +31955,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "orderBy": {
