@@ -117,51 +117,51 @@ export class UserRunner extends pulumi.CustomResource {
     /**
      * The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * Description of the runner.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The ID of the group that the runner is created in. Required if runner*type is group*type.
      */
-    public readonly groupId!: pulumi.Output<number | undefined>;
+    declare public readonly groupId: pulumi.Output<number | undefined>;
     /**
      * Specifies if the runner should be locked for the current project.
      */
-    public readonly locked!: pulumi.Output<boolean>;
+    declare public readonly locked: pulumi.Output<boolean>;
     /**
      * Free-form maintenance notes for the runner (1024 characters)
      */
-    public readonly maintenanceNote!: pulumi.Output<string>;
+    declare public readonly maintenanceNote: pulumi.Output<string>;
     /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      */
-    public readonly maximumTimeout!: pulumi.Output<number>;
+    declare public readonly maximumTimeout: pulumi.Output<number>;
     /**
      * Specifies if the runner should ignore new jobs.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * The ID of the project that the runner is created in. Required if runner*type is project*type.
      */
-    public readonly projectId!: pulumi.Output<number | undefined>;
+    declare public readonly projectId: pulumi.Output<number | undefined>;
     /**
      * The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      */
-    public readonly runnerType!: pulumi.Output<string>;
+    declare public readonly runnerType: pulumi.Output<string>;
     /**
      * A list of runner tags.
      */
-    public readonly tagLists!: pulumi.Output<string[]>;
+    declare public readonly tagLists: pulumi.Output<string[]>;
     /**
      * The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * Specifies if the runner should handle untagged jobs.
      */
-    public readonly untagged!: pulumi.Output<boolean>;
+    declare public readonly untagged: pulumi.Output<boolean>;
 
     /**
      * Create a UserRunner resource with the given unique name, arguments, and options.
@@ -176,34 +176,34 @@ export class UserRunner extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserRunnerState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["maintenanceNote"] = state ? state.maintenanceNote : undefined;
-            resourceInputs["maximumTimeout"] = state ? state.maximumTimeout : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["runnerType"] = state ? state.runnerType : undefined;
-            resourceInputs["tagLists"] = state ? state.tagLists : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["untagged"] = state ? state.untagged : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["maintenanceNote"] = state?.maintenanceNote;
+            resourceInputs["maximumTimeout"] = state?.maximumTimeout;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["runnerType"] = state?.runnerType;
+            resourceInputs["tagLists"] = state?.tagLists;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["untagged"] = state?.untagged;
         } else {
             const args = argsOrState as UserRunnerArgs | undefined;
-            if ((!args || args.runnerType === undefined) && !opts.urn) {
+            if (args?.runnerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runnerType'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["maintenanceNote"] = args ? args.maintenanceNote : undefined;
-            resourceInputs["maximumTimeout"] = args ? args.maximumTimeout : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["runnerType"] = args ? args.runnerType : undefined;
-            resourceInputs["tagLists"] = args ? args.tagLists : undefined;
-            resourceInputs["untagged"] = args ? args.untagged : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["maintenanceNote"] = args?.maintenanceNote;
+            resourceInputs["maximumTimeout"] = args?.maximumTimeout;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["runnerType"] = args?.runnerType;
+            resourceInputs["tagLists"] = args?.tagLists;
+            resourceInputs["untagged"] = args?.untagged;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -70,460 +70,460 @@ export class Project extends pulumi.CustomResource {
     /**
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      */
-    public readonly allowMergeOnSkippedPipeline!: pulumi.Output<boolean>;
+    declare public readonly allowMergeOnSkippedPipeline: pulumi.Output<boolean>;
     /**
      * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
      */
-    public readonly allowPipelineTriggerApproveDeployment!: pulumi.Output<boolean>;
+    declare public readonly allowPipelineTriggerApproveDeployment: pulumi.Output<boolean>;
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly analyticsAccessLevel!: pulumi.Output<string>;
+    declare public readonly analyticsAccessLevel: pulumi.Output<string>;
     /**
      * Number of merge request approvals required for merging. Default is 0.
      * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
      * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
      * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
      */
-    public readonly approvalsBeforeMerge!: pulumi.Output<number | undefined>;
+    declare public readonly approvalsBeforeMerge: pulumi.Output<number | undefined>;
     /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      */
-    public readonly archiveOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly archiveOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
      */
-    public readonly archived!: pulumi.Output<boolean | undefined>;
+    declare public readonly archived: pulumi.Output<boolean | undefined>;
     /**
      * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
      */
-    public readonly autoCancelPendingPipelines!: pulumi.Output<string>;
+    declare public readonly autoCancelPendingPipelines: pulumi.Output<string>;
     /**
      * Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      */
-    public readonly autoDevopsDeployStrategy!: pulumi.Output<string>;
+    declare public readonly autoDevopsDeployStrategy: pulumi.Output<string>;
     /**
      * Enable Auto DevOps for this project.
      */
-    public readonly autoDevopsEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoDevopsEnabled: pulumi.Output<boolean>;
     /**
      * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
      */
-    public readonly autoDuoCodeReviewEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoDuoCodeReviewEnabled: pulumi.Output<boolean>;
     /**
      * Set whether auto-closing referenced issues on default branch.
      */
-    public readonly autocloseReferencedIssues!: pulumi.Output<boolean>;
+    declare public readonly autocloseReferencedIssues: pulumi.Output<boolean>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    public readonly avatar!: pulumi.Output<string | undefined>;
+    declare public readonly avatar: pulumi.Output<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    public readonly avatarHash!: pulumi.Output<string>;
+    declare public readonly avatarHash: pulumi.Output<string>;
     /**
      * The URL of the avatar image.
      */
-    public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly avatarUrl: pulumi.Output<string>;
     /**
      * Branches to fork (empty for all branches).
      */
-    public readonly branches!: pulumi.Output<string | undefined>;
+    declare public readonly branches: pulumi.Output<string | undefined>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
-    public readonly buildGitStrategy!: pulumi.Output<string>;
+    declare public readonly buildGitStrategy: pulumi.Output<string>;
     /**
      * The maximum amount of time, in seconds, that a job can run.
      */
-    public readonly buildTimeout!: pulumi.Output<number>;
+    declare public readonly buildTimeout: pulumi.Output<number>;
     /**
      * Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly buildsAccessLevel!: pulumi.Output<string>;
+    declare public readonly buildsAccessLevel: pulumi.Output<string>;
     /**
      * Custom Path to CI config file.
      */
-    public readonly ciConfigPath!: pulumi.Output<string | undefined>;
+    declare public readonly ciConfigPath: pulumi.Output<string | undefined>;
     /**
      * Default number of revisions for shallow cloning.
      */
-    public readonly ciDefaultGitDepth!: pulumi.Output<number>;
+    declare public readonly ciDefaultGitDepth: pulumi.Output<number>;
     /**
      * Pipelines older than the configured time are deleted.
      */
-    public readonly ciDeletePipelinesInSeconds!: pulumi.Output<number>;
+    declare public readonly ciDeletePipelinesInSeconds: pulumi.Output<number>;
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
-    public readonly ciForwardDeploymentEnabled!: pulumi.Output<boolean>;
+    declare public readonly ciForwardDeploymentEnabled: pulumi.Output<boolean>;
     /**
      * Allow job retries even if the deployment job is outdated.
      */
-    public readonly ciForwardDeploymentRollbackAllowed!: pulumi.Output<boolean>;
+    declare public readonly ciForwardDeploymentRollbackAllowed: pulumi.Output<boolean>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */
-    public readonly ciIdTokenSubClaimComponents!: pulumi.Output<string[]>;
+    declare public readonly ciIdTokenSubClaimComponents: pulumi.Output<string[]>;
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
-    public readonly ciPipelineVariablesMinimumOverrideRole!: pulumi.Output<string>;
+    declare public readonly ciPipelineVariablesMinimumOverrideRole: pulumi.Output<string>;
     /**
      * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
      */
-    public readonly ciPushRepositoryForJobTokenAllowed!: pulumi.Output<boolean>;
+    declare public readonly ciPushRepositoryForJobTokenAllowed: pulumi.Output<boolean>;
     /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
-    public readonly ciRestrictPipelineCancellationRole!: pulumi.Output<string>;
+    declare public readonly ciRestrictPipelineCancellationRole: pulumi.Output<string>;
     /**
      * Use separate caches for protected branches.
      */
-    public readonly ciSeparatedCaches!: pulumi.Output<boolean>;
+    declare public readonly ciSeparatedCaches: pulumi.Output<boolean>;
     /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
-    public readonly containerExpirationPolicy!: pulumi.Output<outputs.ProjectContainerExpirationPolicy>;
+    declare public readonly containerExpirationPolicy: pulumi.Output<outputs.ProjectContainerExpirationPolicy>;
     /**
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly containerRegistryAccessLevel!: pulumi.Output<string>;
+    declare public readonly containerRegistryAccessLevel: pulumi.Output<string>;
     /**
      * Enable container registry for the project.
      *
      * @deprecated Use `containerRegistryAccessLevel` instead.
      */
-    public readonly containerRegistryEnabled!: pulumi.Output<boolean>;
+    declare public readonly containerRegistryEnabled: pulumi.Output<boolean>;
     /**
      * The default branch for the project.
      */
-    public readonly defaultBranch!: pulumi.Output<string>;
+    declare public readonly defaultBranch: pulumi.Output<string>;
     /**
      * A description of the project.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable email notifications.
      */
-    public readonly emailsEnabled!: pulumi.Output<boolean>;
+    declare public readonly emailsEnabled: pulumi.Output<boolean>;
     /**
      * Whether the project is empty.
      */
-    public /*out*/ readonly emptyRepo!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly emptyRepo: pulumi.Output<boolean>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly environmentsAccessLevel!: pulumi.Output<string>;
+    declare public readonly environmentsAccessLevel: pulumi.Output<string>;
     /**
      * The classification label for the project.
      */
-    public readonly externalAuthorizationClassificationLabel!: pulumi.Output<string | undefined>;
+    declare public readonly externalAuthorizationClassificationLabel: pulumi.Output<string | undefined>;
     /**
      * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly featureFlagsAccessLevel!: pulumi.Output<string>;
+    declare public readonly featureFlagsAccessLevel: pulumi.Output<string>;
     /**
      * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
      */
-    public readonly forkedFromProjectId!: pulumi.Output<number | undefined>;
+    declare public readonly forkedFromProjectId: pulumi.Output<number | undefined>;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly forkingAccessLevel!: pulumi.Output<string>;
+    declare public readonly forkingAccessLevel: pulumi.Output<string>;
     /**
      * Enable group runners for this project.
      */
-    public readonly groupRunnersEnabled!: pulumi.Output<boolean>;
+    declare public readonly groupRunnersEnabled: pulumi.Output<boolean>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      */
-    public readonly groupWithProjectTemplatesId!: pulumi.Output<number | undefined>;
+    declare public readonly groupWithProjectTemplatesId: pulumi.Output<number | undefined>;
     /**
      * URL that can be provided to `git clone` to clone the
      */
-    public /*out*/ readonly httpUrlToRepo!: pulumi.Output<string>;
+    declare public /*out*/ readonly httpUrlToRepo: pulumi.Output<string>;
     /**
      * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    public readonly importUrl!: pulumi.Output<string | undefined>;
+    declare public readonly importUrl: pulumi.Output<string | undefined>;
     /**
      * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    public readonly importUrlPassword!: pulumi.Output<string | undefined>;
+    declare public readonly importUrlPassword: pulumi.Output<string | undefined>;
     /**
      * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      */
-    public readonly importUrlUsername!: pulumi.Output<string | undefined>;
+    declare public readonly importUrlUsername: pulumi.Output<string | undefined>;
     /**
      * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly infrastructureAccessLevel!: pulumi.Output<string>;
+    declare public readonly infrastructureAccessLevel: pulumi.Output<string>;
     /**
      * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
-    public readonly initializeWithReadme!: pulumi.Output<boolean | undefined>;
+    declare public readonly initializeWithReadme: pulumi.Output<boolean | undefined>;
     /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly issuesAccessLevel!: pulumi.Output<string>;
+    declare public readonly issuesAccessLevel: pulumi.Output<string>;
     /**
      * Enable issue tracking for the project.
      */
-    public readonly issuesEnabled!: pulumi.Output<boolean>;
+    declare public readonly issuesEnabled: pulumi.Output<boolean>;
     /**
      * Sets the template for new issues in the project.
      */
-    public readonly issuesTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly issuesTemplate: pulumi.Output<string | undefined>;
     /**
      * Disable or enable the ability to keep the latest artifact for this project.
      */
-    public readonly keepLatestArtifact!: pulumi.Output<boolean>;
+    declare public readonly keepLatestArtifact: pulumi.Output<boolean>;
     /**
      * Enable LFS for the project.
      */
-    public readonly lfsEnabled!: pulumi.Output<boolean>;
+    declare public readonly lfsEnabled: pulumi.Output<boolean>;
     /**
      * Template used to create merge commit message in merge requests.
      */
-    public readonly mergeCommitTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly mergeCommitTemplate: pulumi.Output<string | undefined>;
     /**
      * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
-    public readonly mergeMethod!: pulumi.Output<string>;
+    declare public readonly mergeMethod: pulumi.Output<string>;
     /**
      * Enable or disable merge pipelines.
      */
-    public readonly mergePipelinesEnabled!: pulumi.Output<boolean>;
+    declare public readonly mergePipelinesEnabled: pulumi.Output<boolean>;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly mergeRequestsAccessLevel!: pulumi.Output<string>;
+    declare public readonly mergeRequestsAccessLevel: pulumi.Output<string>;
     /**
      * Enable merge requests for the project.
      */
-    public readonly mergeRequestsEnabled!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsEnabled: pulumi.Output<boolean>;
     /**
      * Sets the template for new merge requests in the project.
      */
-    public readonly mergeRequestsTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly mergeRequestsTemplate: pulumi.Output<string | undefined>;
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
-    public readonly mergeTrainsEnabled!: pulumi.Output<boolean>;
+    declare public readonly mergeTrainsEnabled: pulumi.Output<boolean>;
     /**
      * Enable project pull mirror.
      */
-    public readonly mirror!: pulumi.Output<boolean | undefined>;
+    declare public readonly mirror: pulumi.Output<boolean | undefined>;
     /**
      * Enable overwrite diverged branches for a mirrored project.
      */
-    public readonly mirrorOverwritesDivergedBranches!: pulumi.Output<boolean>;
+    declare public readonly mirrorOverwritesDivergedBranches: pulumi.Output<boolean>;
     /**
      * Enable trigger builds on pushes for a mirrored project.
      */
-    public readonly mirrorTriggerBuilds!: pulumi.Output<boolean>;
+    declare public readonly mirrorTriggerBuilds: pulumi.Output<boolean>;
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly modelExperimentsAccessLevel!: pulumi.Output<string>;
+    declare public readonly modelExperimentsAccessLevel: pulumi.Output<string>;
     /**
      * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly modelRegistryAccessLevel!: pulumi.Output<string>;
+    declare public readonly modelRegistryAccessLevel: pulumi.Output<string>;
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly monitorAccessLevel!: pulumi.Output<string>;
+    declare public readonly monitorAccessLevel: pulumi.Output<string>;
     /**
      * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
      */
-    public readonly mrDefaultTargetSelf!: pulumi.Output<boolean | undefined>;
+    declare public readonly mrDefaultTargetSelf: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
      */
-    public readonly namespaceId!: pulumi.Output<number>;
+    declare public readonly namespaceId: pulumi.Output<number>;
     /**
      * Set to true if you want allow merges only if all discussions are resolved.
      */
-    public readonly onlyAllowMergeIfAllDiscussionsAreResolved!: pulumi.Output<boolean>;
+    declare public readonly onlyAllowMergeIfAllDiscussionsAreResolved: pulumi.Output<boolean>;
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
-    public readonly onlyAllowMergeIfPipelineSucceeds!: pulumi.Output<boolean>;
+    declare public readonly onlyAllowMergeIfPipelineSucceeds: pulumi.Output<boolean>;
     /**
      * Enable only mirror protected branches for a mirrored project.
      */
-    public readonly onlyMirrorProtectedBranches!: pulumi.Output<boolean>;
+    declare public readonly onlyMirrorProtectedBranches: pulumi.Output<boolean>;
     /**
      * Enable packages repository for the project.
      */
-    public readonly packagesEnabled!: pulumi.Output<boolean>;
+    declare public readonly packagesEnabled: pulumi.Output<boolean>;
     /**
      * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      */
-    public readonly pagesAccessLevel!: pulumi.Output<string>;
+    declare public readonly pagesAccessLevel: pulumi.Output<string>;
     /**
      * The path of the repository.
      */
-    public readonly path!: pulumi.Output<string | undefined>;
+    declare public readonly path: pulumi.Output<string | undefined>;
     /**
      * The path of the repository with namespace.
      */
-    public /*out*/ readonly pathWithNamespace!: pulumi.Output<string>;
+    declare public /*out*/ readonly pathWithNamespace: pulumi.Output<string>;
     /**
      * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
      */
-    public readonly permanentlyDeleteOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly permanentlyDeleteOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      *
      * @deprecated Deprecated in favor of `buildsAccessLevel`
      */
-    public readonly pipelinesEnabled!: pulumi.Output<boolean>;
+    declare public readonly pipelinesEnabled: pulumi.Output<boolean>;
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
-    public readonly preReceiveSecretDetectionEnabled!: pulumi.Output<boolean>;
+    declare public readonly preReceiveSecretDetectionEnabled: pulumi.Output<boolean>;
     /**
      * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      */
-    public readonly preventMergeWithoutJiraIssue!: pulumi.Output<boolean>;
+    declare public readonly preventMergeWithoutJiraIssue: pulumi.Output<boolean>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */
-    public readonly printingMergeRequestLinkEnabled!: pulumi.Output<boolean>;
+    declare public readonly printingMergeRequestLinkEnabled: pulumi.Output<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
      *
      * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      */
-    public readonly publicBuilds!: pulumi.Output<boolean>;
+    declare public readonly publicBuilds: pulumi.Output<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
      */
-    public readonly publicJobs!: pulumi.Output<boolean>;
+    declare public readonly publicJobs: pulumi.Output<boolean>;
     /**
      * Push rules for the project.
      */
-    public readonly pushRules!: pulumi.Output<outputs.ProjectPushRules>;
+    declare public readonly pushRules: pulumi.Output<outputs.ProjectPushRules>;
     /**
      * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly releasesAccessLevel!: pulumi.Output<string>;
+    declare public readonly releasesAccessLevel: pulumi.Output<string>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
-    public readonly removeSourceBranchAfterMerge!: pulumi.Output<boolean>;
+    declare public readonly removeSourceBranchAfterMerge: pulumi.Output<boolean>;
     /**
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly repositoryAccessLevel!: pulumi.Output<string>;
+    declare public readonly repositoryAccessLevel: pulumi.Output<string>;
     /**
      * Which storage shard the repository is on. (administrator only)
      */
-    public readonly repositoryStorage!: pulumi.Output<string>;
+    declare public readonly repositoryStorage: pulumi.Output<string>;
     /**
      * Allow users to request member access.
      */
-    public readonly requestAccessEnabled!: pulumi.Output<boolean>;
+    declare public readonly requestAccessEnabled: pulumi.Output<boolean>;
     /**
      * Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly requirementsAccessLevel!: pulumi.Output<string>;
+    declare public readonly requirementsAccessLevel: pulumi.Output<string>;
     /**
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
-    public readonly resolveOutdatedDiffDiscussions!: pulumi.Output<boolean | undefined>;
+    declare public readonly resolveOutdatedDiffDiscussions: pulumi.Output<boolean | undefined>;
     /**
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      */
-    public readonly restrictUserDefinedVariables!: pulumi.Output<boolean>;
+    declare public readonly restrictUserDefinedVariables: pulumi.Output<boolean>;
     /**
      * Registration token to use during runner setup.
      */
-    public /*out*/ readonly runnersToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly runnersToken: pulumi.Output<string>;
     /**
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly securityAndComplianceAccessLevel!: pulumi.Output<string>;
+    declare public readonly securityAndComplianceAccessLevel: pulumi.Output<string>;
     /**
      * Enable shared runners for this project.
      */
-    public readonly sharedRunnersEnabled!: pulumi.Output<boolean>;
+    declare public readonly sharedRunnersEnabled: pulumi.Output<boolean>;
     /**
      * If `true`, the default behavior to wait for the default branch protection to be created is skipped.
      * This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
      * There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
      * This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
      */
-    public readonly skipWaitForDefaultBranchProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipWaitForDefaultBranchProtection: pulumi.Output<boolean | undefined>;
     /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly snippetsAccessLevel!: pulumi.Output<string>;
+    declare public readonly snippetsAccessLevel: pulumi.Output<string>;
     /**
      * Enable snippets for the project.
      */
-    public readonly snippetsEnabled!: pulumi.Output<boolean>;
+    declare public readonly snippetsEnabled: pulumi.Output<boolean>;
     /**
      * Template used to create squash commit message in merge requests.
      */
-    public readonly squashCommitTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly squashCommitTemplate: pulumi.Output<string | undefined>;
     /**
      * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      */
-    public readonly squashOption!: pulumi.Output<string>;
+    declare public readonly squashOption: pulumi.Output<string>;
     /**
      * URL that can be provided to `git clone` to clone the
      */
-    public /*out*/ readonly sshUrlToRepo!: pulumi.Output<string>;
+    declare public /*out*/ readonly sshUrlToRepo: pulumi.Output<string>;
     /**
      * The commit message used to apply merge request suggestions.
      */
-    public readonly suggestionCommitMessage!: pulumi.Output<string | undefined>;
+    declare public readonly suggestionCommitMessage: pulumi.Output<string | undefined>;
     /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
-    public readonly templateName!: pulumi.Output<string | undefined>;
+    declare public readonly templateName: pulumi.Output<string | undefined>;
     /**
      * When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
      */
-    public readonly templateProjectId!: pulumi.Output<number | undefined>;
+    declare public readonly templateProjectId: pulumi.Output<number | undefined>;
     /**
      * The list of topics for the project.
      */
-    public readonly topics!: pulumi.Output<string[]>;
+    declare public readonly topics: pulumi.Output<string[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
      * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
-    public readonly useCustomTemplate!: pulumi.Output<boolean | undefined>;
+    declare public readonly useCustomTemplate: pulumi.Output<boolean | undefined>;
     /**
      * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      */
-    public readonly visibilityLevel!: pulumi.Output<string>;
+    declare public readonly visibilityLevel: pulumi.Output<string>;
     /**
      * URL that can be used to find the project in a browser.
      */
-    public /*out*/ readonly webUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webUrl: pulumi.Output<string>;
     /**
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly wikiAccessLevel!: pulumi.Output<string>;
+    declare public readonly wikiAccessLevel: pulumi.Output<string>;
     /**
      * Enable wiki for the project.
      */
-    public readonly wikiEnabled!: pulumi.Output<boolean>;
+    declare public readonly wikiEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -538,223 +538,223 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["allowMergeOnSkippedPipeline"] = state ? state.allowMergeOnSkippedPipeline : undefined;
-            resourceInputs["allowPipelineTriggerApproveDeployment"] = state ? state.allowPipelineTriggerApproveDeployment : undefined;
-            resourceInputs["analyticsAccessLevel"] = state ? state.analyticsAccessLevel : undefined;
-            resourceInputs["approvalsBeforeMerge"] = state ? state.approvalsBeforeMerge : undefined;
-            resourceInputs["archiveOnDestroy"] = state ? state.archiveOnDestroy : undefined;
-            resourceInputs["archived"] = state ? state.archived : undefined;
-            resourceInputs["autoCancelPendingPipelines"] = state ? state.autoCancelPendingPipelines : undefined;
-            resourceInputs["autoDevopsDeployStrategy"] = state ? state.autoDevopsDeployStrategy : undefined;
-            resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
-            resourceInputs["autoDuoCodeReviewEnabled"] = state ? state.autoDuoCodeReviewEnabled : undefined;
-            resourceInputs["autocloseReferencedIssues"] = state ? state.autocloseReferencedIssues : undefined;
-            resourceInputs["avatar"] = state ? state.avatar : undefined;
-            resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
-            resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
-            resourceInputs["branches"] = state ? state.branches : undefined;
-            resourceInputs["buildGitStrategy"] = state ? state.buildGitStrategy : undefined;
-            resourceInputs["buildTimeout"] = state ? state.buildTimeout : undefined;
-            resourceInputs["buildsAccessLevel"] = state ? state.buildsAccessLevel : undefined;
-            resourceInputs["ciConfigPath"] = state ? state.ciConfigPath : undefined;
-            resourceInputs["ciDefaultGitDepth"] = state ? state.ciDefaultGitDepth : undefined;
-            resourceInputs["ciDeletePipelinesInSeconds"] = state ? state.ciDeletePipelinesInSeconds : undefined;
-            resourceInputs["ciForwardDeploymentEnabled"] = state ? state.ciForwardDeploymentEnabled : undefined;
-            resourceInputs["ciForwardDeploymentRollbackAllowed"] = state ? state.ciForwardDeploymentRollbackAllowed : undefined;
-            resourceInputs["ciIdTokenSubClaimComponents"] = state ? state.ciIdTokenSubClaimComponents : undefined;
-            resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = state ? state.ciPipelineVariablesMinimumOverrideRole : undefined;
-            resourceInputs["ciPushRepositoryForJobTokenAllowed"] = state ? state.ciPushRepositoryForJobTokenAllowed : undefined;
-            resourceInputs["ciRestrictPipelineCancellationRole"] = state ? state.ciRestrictPipelineCancellationRole : undefined;
-            resourceInputs["ciSeparatedCaches"] = state ? state.ciSeparatedCaches : undefined;
-            resourceInputs["containerExpirationPolicy"] = state ? state.containerExpirationPolicy : undefined;
-            resourceInputs["containerRegistryAccessLevel"] = state ? state.containerRegistryAccessLevel : undefined;
-            resourceInputs["containerRegistryEnabled"] = state ? state.containerRegistryEnabled : undefined;
-            resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailsEnabled"] = state ? state.emailsEnabled : undefined;
-            resourceInputs["emptyRepo"] = state ? state.emptyRepo : undefined;
-            resourceInputs["environmentsAccessLevel"] = state ? state.environmentsAccessLevel : undefined;
-            resourceInputs["externalAuthorizationClassificationLabel"] = state ? state.externalAuthorizationClassificationLabel : undefined;
-            resourceInputs["featureFlagsAccessLevel"] = state ? state.featureFlagsAccessLevel : undefined;
-            resourceInputs["forkedFromProjectId"] = state ? state.forkedFromProjectId : undefined;
-            resourceInputs["forkingAccessLevel"] = state ? state.forkingAccessLevel : undefined;
-            resourceInputs["groupRunnersEnabled"] = state ? state.groupRunnersEnabled : undefined;
-            resourceInputs["groupWithProjectTemplatesId"] = state ? state.groupWithProjectTemplatesId : undefined;
-            resourceInputs["httpUrlToRepo"] = state ? state.httpUrlToRepo : undefined;
-            resourceInputs["importUrl"] = state ? state.importUrl : undefined;
-            resourceInputs["importUrlPassword"] = state ? state.importUrlPassword : undefined;
-            resourceInputs["importUrlUsername"] = state ? state.importUrlUsername : undefined;
-            resourceInputs["infrastructureAccessLevel"] = state ? state.infrastructureAccessLevel : undefined;
-            resourceInputs["initializeWithReadme"] = state ? state.initializeWithReadme : undefined;
-            resourceInputs["issuesAccessLevel"] = state ? state.issuesAccessLevel : undefined;
-            resourceInputs["issuesEnabled"] = state ? state.issuesEnabled : undefined;
-            resourceInputs["issuesTemplate"] = state ? state.issuesTemplate : undefined;
-            resourceInputs["keepLatestArtifact"] = state ? state.keepLatestArtifact : undefined;
-            resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
-            resourceInputs["mergeCommitTemplate"] = state ? state.mergeCommitTemplate : undefined;
-            resourceInputs["mergeMethod"] = state ? state.mergeMethod : undefined;
-            resourceInputs["mergePipelinesEnabled"] = state ? state.mergePipelinesEnabled : undefined;
-            resourceInputs["mergeRequestsAccessLevel"] = state ? state.mergeRequestsAccessLevel : undefined;
-            resourceInputs["mergeRequestsEnabled"] = state ? state.mergeRequestsEnabled : undefined;
-            resourceInputs["mergeRequestsTemplate"] = state ? state.mergeRequestsTemplate : undefined;
-            resourceInputs["mergeTrainsEnabled"] = state ? state.mergeTrainsEnabled : undefined;
-            resourceInputs["mirror"] = state ? state.mirror : undefined;
-            resourceInputs["mirrorOverwritesDivergedBranches"] = state ? state.mirrorOverwritesDivergedBranches : undefined;
-            resourceInputs["mirrorTriggerBuilds"] = state ? state.mirrorTriggerBuilds : undefined;
-            resourceInputs["modelExperimentsAccessLevel"] = state ? state.modelExperimentsAccessLevel : undefined;
-            resourceInputs["modelRegistryAccessLevel"] = state ? state.modelRegistryAccessLevel : undefined;
-            resourceInputs["monitorAccessLevel"] = state ? state.monitorAccessLevel : undefined;
-            resourceInputs["mrDefaultTargetSelf"] = state ? state.mrDefaultTargetSelf : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state ? state.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
-            resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = state ? state.onlyAllowMergeIfPipelineSucceeds : undefined;
-            resourceInputs["onlyMirrorProtectedBranches"] = state ? state.onlyMirrorProtectedBranches : undefined;
-            resourceInputs["packagesEnabled"] = state ? state.packagesEnabled : undefined;
-            resourceInputs["pagesAccessLevel"] = state ? state.pagesAccessLevel : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["pathWithNamespace"] = state ? state.pathWithNamespace : undefined;
-            resourceInputs["permanentlyDeleteOnDestroy"] = state ? state.permanentlyDeleteOnDestroy : undefined;
-            resourceInputs["pipelinesEnabled"] = state ? state.pipelinesEnabled : undefined;
-            resourceInputs["preReceiveSecretDetectionEnabled"] = state ? state.preReceiveSecretDetectionEnabled : undefined;
-            resourceInputs["preventMergeWithoutJiraIssue"] = state ? state.preventMergeWithoutJiraIssue : undefined;
-            resourceInputs["printingMergeRequestLinkEnabled"] = state ? state.printingMergeRequestLinkEnabled : undefined;
-            resourceInputs["publicBuilds"] = state ? state.publicBuilds : undefined;
-            resourceInputs["publicJobs"] = state ? state.publicJobs : undefined;
-            resourceInputs["pushRules"] = state ? state.pushRules : undefined;
-            resourceInputs["releasesAccessLevel"] = state ? state.releasesAccessLevel : undefined;
-            resourceInputs["removeSourceBranchAfterMerge"] = state ? state.removeSourceBranchAfterMerge : undefined;
-            resourceInputs["repositoryAccessLevel"] = state ? state.repositoryAccessLevel : undefined;
-            resourceInputs["repositoryStorage"] = state ? state.repositoryStorage : undefined;
-            resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
-            resourceInputs["requirementsAccessLevel"] = state ? state.requirementsAccessLevel : undefined;
-            resourceInputs["resolveOutdatedDiffDiscussions"] = state ? state.resolveOutdatedDiffDiscussions : undefined;
-            resourceInputs["restrictUserDefinedVariables"] = state ? state.restrictUserDefinedVariables : undefined;
-            resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
-            resourceInputs["securityAndComplianceAccessLevel"] = state ? state.securityAndComplianceAccessLevel : undefined;
-            resourceInputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
-            resourceInputs["skipWaitForDefaultBranchProtection"] = state ? state.skipWaitForDefaultBranchProtection : undefined;
-            resourceInputs["snippetsAccessLevel"] = state ? state.snippetsAccessLevel : undefined;
-            resourceInputs["snippetsEnabled"] = state ? state.snippetsEnabled : undefined;
-            resourceInputs["squashCommitTemplate"] = state ? state.squashCommitTemplate : undefined;
-            resourceInputs["squashOption"] = state ? state.squashOption : undefined;
-            resourceInputs["sshUrlToRepo"] = state ? state.sshUrlToRepo : undefined;
-            resourceInputs["suggestionCommitMessage"] = state ? state.suggestionCommitMessage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["templateProjectId"] = state ? state.templateProjectId : undefined;
-            resourceInputs["topics"] = state ? state.topics : undefined;
-            resourceInputs["useCustomTemplate"] = state ? state.useCustomTemplate : undefined;
-            resourceInputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
-            resourceInputs["webUrl"] = state ? state.webUrl : undefined;
-            resourceInputs["wikiAccessLevel"] = state ? state.wikiAccessLevel : undefined;
-            resourceInputs["wikiEnabled"] = state ? state.wikiEnabled : undefined;
+            resourceInputs["allowMergeOnSkippedPipeline"] = state?.allowMergeOnSkippedPipeline;
+            resourceInputs["allowPipelineTriggerApproveDeployment"] = state?.allowPipelineTriggerApproveDeployment;
+            resourceInputs["analyticsAccessLevel"] = state?.analyticsAccessLevel;
+            resourceInputs["approvalsBeforeMerge"] = state?.approvalsBeforeMerge;
+            resourceInputs["archiveOnDestroy"] = state?.archiveOnDestroy;
+            resourceInputs["archived"] = state?.archived;
+            resourceInputs["autoCancelPendingPipelines"] = state?.autoCancelPendingPipelines;
+            resourceInputs["autoDevopsDeployStrategy"] = state?.autoDevopsDeployStrategy;
+            resourceInputs["autoDevopsEnabled"] = state?.autoDevopsEnabled;
+            resourceInputs["autoDuoCodeReviewEnabled"] = state?.autoDuoCodeReviewEnabled;
+            resourceInputs["autocloseReferencedIssues"] = state?.autocloseReferencedIssues;
+            resourceInputs["avatar"] = state?.avatar;
+            resourceInputs["avatarHash"] = state?.avatarHash;
+            resourceInputs["avatarUrl"] = state?.avatarUrl;
+            resourceInputs["branches"] = state?.branches;
+            resourceInputs["buildGitStrategy"] = state?.buildGitStrategy;
+            resourceInputs["buildTimeout"] = state?.buildTimeout;
+            resourceInputs["buildsAccessLevel"] = state?.buildsAccessLevel;
+            resourceInputs["ciConfigPath"] = state?.ciConfigPath;
+            resourceInputs["ciDefaultGitDepth"] = state?.ciDefaultGitDepth;
+            resourceInputs["ciDeletePipelinesInSeconds"] = state?.ciDeletePipelinesInSeconds;
+            resourceInputs["ciForwardDeploymentEnabled"] = state?.ciForwardDeploymentEnabled;
+            resourceInputs["ciForwardDeploymentRollbackAllowed"] = state?.ciForwardDeploymentRollbackAllowed;
+            resourceInputs["ciIdTokenSubClaimComponents"] = state?.ciIdTokenSubClaimComponents;
+            resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = state?.ciPipelineVariablesMinimumOverrideRole;
+            resourceInputs["ciPushRepositoryForJobTokenAllowed"] = state?.ciPushRepositoryForJobTokenAllowed;
+            resourceInputs["ciRestrictPipelineCancellationRole"] = state?.ciRestrictPipelineCancellationRole;
+            resourceInputs["ciSeparatedCaches"] = state?.ciSeparatedCaches;
+            resourceInputs["containerExpirationPolicy"] = state?.containerExpirationPolicy;
+            resourceInputs["containerRegistryAccessLevel"] = state?.containerRegistryAccessLevel;
+            resourceInputs["containerRegistryEnabled"] = state?.containerRegistryEnabled;
+            resourceInputs["defaultBranch"] = state?.defaultBranch;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["emailsEnabled"] = state?.emailsEnabled;
+            resourceInputs["emptyRepo"] = state?.emptyRepo;
+            resourceInputs["environmentsAccessLevel"] = state?.environmentsAccessLevel;
+            resourceInputs["externalAuthorizationClassificationLabel"] = state?.externalAuthorizationClassificationLabel;
+            resourceInputs["featureFlagsAccessLevel"] = state?.featureFlagsAccessLevel;
+            resourceInputs["forkedFromProjectId"] = state?.forkedFromProjectId;
+            resourceInputs["forkingAccessLevel"] = state?.forkingAccessLevel;
+            resourceInputs["groupRunnersEnabled"] = state?.groupRunnersEnabled;
+            resourceInputs["groupWithProjectTemplatesId"] = state?.groupWithProjectTemplatesId;
+            resourceInputs["httpUrlToRepo"] = state?.httpUrlToRepo;
+            resourceInputs["importUrl"] = state?.importUrl;
+            resourceInputs["importUrlPassword"] = state?.importUrlPassword;
+            resourceInputs["importUrlUsername"] = state?.importUrlUsername;
+            resourceInputs["infrastructureAccessLevel"] = state?.infrastructureAccessLevel;
+            resourceInputs["initializeWithReadme"] = state?.initializeWithReadme;
+            resourceInputs["issuesAccessLevel"] = state?.issuesAccessLevel;
+            resourceInputs["issuesEnabled"] = state?.issuesEnabled;
+            resourceInputs["issuesTemplate"] = state?.issuesTemplate;
+            resourceInputs["keepLatestArtifact"] = state?.keepLatestArtifact;
+            resourceInputs["lfsEnabled"] = state?.lfsEnabled;
+            resourceInputs["mergeCommitTemplate"] = state?.mergeCommitTemplate;
+            resourceInputs["mergeMethod"] = state?.mergeMethod;
+            resourceInputs["mergePipelinesEnabled"] = state?.mergePipelinesEnabled;
+            resourceInputs["mergeRequestsAccessLevel"] = state?.mergeRequestsAccessLevel;
+            resourceInputs["mergeRequestsEnabled"] = state?.mergeRequestsEnabled;
+            resourceInputs["mergeRequestsTemplate"] = state?.mergeRequestsTemplate;
+            resourceInputs["mergeTrainsEnabled"] = state?.mergeTrainsEnabled;
+            resourceInputs["mirror"] = state?.mirror;
+            resourceInputs["mirrorOverwritesDivergedBranches"] = state?.mirrorOverwritesDivergedBranches;
+            resourceInputs["mirrorTriggerBuilds"] = state?.mirrorTriggerBuilds;
+            resourceInputs["modelExperimentsAccessLevel"] = state?.modelExperimentsAccessLevel;
+            resourceInputs["modelRegistryAccessLevel"] = state?.modelRegistryAccessLevel;
+            resourceInputs["monitorAccessLevel"] = state?.monitorAccessLevel;
+            resourceInputs["mrDefaultTargetSelf"] = state?.mrDefaultTargetSelf;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state?.onlyAllowMergeIfAllDiscussionsAreResolved;
+            resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = state?.onlyAllowMergeIfPipelineSucceeds;
+            resourceInputs["onlyMirrorProtectedBranches"] = state?.onlyMirrorProtectedBranches;
+            resourceInputs["packagesEnabled"] = state?.packagesEnabled;
+            resourceInputs["pagesAccessLevel"] = state?.pagesAccessLevel;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["pathWithNamespace"] = state?.pathWithNamespace;
+            resourceInputs["permanentlyDeleteOnDestroy"] = state?.permanentlyDeleteOnDestroy;
+            resourceInputs["pipelinesEnabled"] = state?.pipelinesEnabled;
+            resourceInputs["preReceiveSecretDetectionEnabled"] = state?.preReceiveSecretDetectionEnabled;
+            resourceInputs["preventMergeWithoutJiraIssue"] = state?.preventMergeWithoutJiraIssue;
+            resourceInputs["printingMergeRequestLinkEnabled"] = state?.printingMergeRequestLinkEnabled;
+            resourceInputs["publicBuilds"] = state?.publicBuilds;
+            resourceInputs["publicJobs"] = state?.publicJobs;
+            resourceInputs["pushRules"] = state?.pushRules;
+            resourceInputs["releasesAccessLevel"] = state?.releasesAccessLevel;
+            resourceInputs["removeSourceBranchAfterMerge"] = state?.removeSourceBranchAfterMerge;
+            resourceInputs["repositoryAccessLevel"] = state?.repositoryAccessLevel;
+            resourceInputs["repositoryStorage"] = state?.repositoryStorage;
+            resourceInputs["requestAccessEnabled"] = state?.requestAccessEnabled;
+            resourceInputs["requirementsAccessLevel"] = state?.requirementsAccessLevel;
+            resourceInputs["resolveOutdatedDiffDiscussions"] = state?.resolveOutdatedDiffDiscussions;
+            resourceInputs["restrictUserDefinedVariables"] = state?.restrictUserDefinedVariables;
+            resourceInputs["runnersToken"] = state?.runnersToken;
+            resourceInputs["securityAndComplianceAccessLevel"] = state?.securityAndComplianceAccessLevel;
+            resourceInputs["sharedRunnersEnabled"] = state?.sharedRunnersEnabled;
+            resourceInputs["skipWaitForDefaultBranchProtection"] = state?.skipWaitForDefaultBranchProtection;
+            resourceInputs["snippetsAccessLevel"] = state?.snippetsAccessLevel;
+            resourceInputs["snippetsEnabled"] = state?.snippetsEnabled;
+            resourceInputs["squashCommitTemplate"] = state?.squashCommitTemplate;
+            resourceInputs["squashOption"] = state?.squashOption;
+            resourceInputs["sshUrlToRepo"] = state?.sshUrlToRepo;
+            resourceInputs["suggestionCommitMessage"] = state?.suggestionCommitMessage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["templateProjectId"] = state?.templateProjectId;
+            resourceInputs["topics"] = state?.topics;
+            resourceInputs["useCustomTemplate"] = state?.useCustomTemplate;
+            resourceInputs["visibilityLevel"] = state?.visibilityLevel;
+            resourceInputs["webUrl"] = state?.webUrl;
+            resourceInputs["wikiAccessLevel"] = state?.wikiAccessLevel;
+            resourceInputs["wikiEnabled"] = state?.wikiEnabled;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["allowMergeOnSkippedPipeline"] = args ? args.allowMergeOnSkippedPipeline : undefined;
-            resourceInputs["allowPipelineTriggerApproveDeployment"] = args ? args.allowPipelineTriggerApproveDeployment : undefined;
-            resourceInputs["analyticsAccessLevel"] = args ? args.analyticsAccessLevel : undefined;
-            resourceInputs["approvalsBeforeMerge"] = args ? args.approvalsBeforeMerge : undefined;
-            resourceInputs["archiveOnDestroy"] = args ? args.archiveOnDestroy : undefined;
-            resourceInputs["archived"] = args ? args.archived : undefined;
-            resourceInputs["autoCancelPendingPipelines"] = args ? args.autoCancelPendingPipelines : undefined;
-            resourceInputs["autoDevopsDeployStrategy"] = args ? args.autoDevopsDeployStrategy : undefined;
-            resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
-            resourceInputs["autoDuoCodeReviewEnabled"] = args ? args.autoDuoCodeReviewEnabled : undefined;
-            resourceInputs["autocloseReferencedIssues"] = args ? args.autocloseReferencedIssues : undefined;
-            resourceInputs["avatar"] = args ? args.avatar : undefined;
-            resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
-            resourceInputs["branches"] = args ? args.branches : undefined;
-            resourceInputs["buildGitStrategy"] = args ? args.buildGitStrategy : undefined;
-            resourceInputs["buildTimeout"] = args ? args.buildTimeout : undefined;
-            resourceInputs["buildsAccessLevel"] = args ? args.buildsAccessLevel : undefined;
-            resourceInputs["ciConfigPath"] = args ? args.ciConfigPath : undefined;
-            resourceInputs["ciDefaultGitDepth"] = args ? args.ciDefaultGitDepth : undefined;
-            resourceInputs["ciDeletePipelinesInSeconds"] = args ? args.ciDeletePipelinesInSeconds : undefined;
-            resourceInputs["ciForwardDeploymentEnabled"] = args ? args.ciForwardDeploymentEnabled : undefined;
-            resourceInputs["ciForwardDeploymentRollbackAllowed"] = args ? args.ciForwardDeploymentRollbackAllowed : undefined;
-            resourceInputs["ciIdTokenSubClaimComponents"] = args ? args.ciIdTokenSubClaimComponents : undefined;
-            resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = args ? args.ciPipelineVariablesMinimumOverrideRole : undefined;
-            resourceInputs["ciPushRepositoryForJobTokenAllowed"] = args ? args.ciPushRepositoryForJobTokenAllowed : undefined;
-            resourceInputs["ciRestrictPipelineCancellationRole"] = args ? args.ciRestrictPipelineCancellationRole : undefined;
-            resourceInputs["ciSeparatedCaches"] = args ? args.ciSeparatedCaches : undefined;
-            resourceInputs["containerExpirationPolicy"] = args ? args.containerExpirationPolicy : undefined;
-            resourceInputs["containerRegistryAccessLevel"] = args ? args.containerRegistryAccessLevel : undefined;
-            resourceInputs["containerRegistryEnabled"] = args ? args.containerRegistryEnabled : undefined;
-            resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emailsEnabled"] = args ? args.emailsEnabled : undefined;
-            resourceInputs["environmentsAccessLevel"] = args ? args.environmentsAccessLevel : undefined;
-            resourceInputs["externalAuthorizationClassificationLabel"] = args ? args.externalAuthorizationClassificationLabel : undefined;
-            resourceInputs["featureFlagsAccessLevel"] = args ? args.featureFlagsAccessLevel : undefined;
-            resourceInputs["forkedFromProjectId"] = args ? args.forkedFromProjectId : undefined;
-            resourceInputs["forkingAccessLevel"] = args ? args.forkingAccessLevel : undefined;
-            resourceInputs["groupRunnersEnabled"] = args ? args.groupRunnersEnabled : undefined;
-            resourceInputs["groupWithProjectTemplatesId"] = args ? args.groupWithProjectTemplatesId : undefined;
-            resourceInputs["importUrl"] = args ? args.importUrl : undefined;
+            resourceInputs["allowMergeOnSkippedPipeline"] = args?.allowMergeOnSkippedPipeline;
+            resourceInputs["allowPipelineTriggerApproveDeployment"] = args?.allowPipelineTriggerApproveDeployment;
+            resourceInputs["analyticsAccessLevel"] = args?.analyticsAccessLevel;
+            resourceInputs["approvalsBeforeMerge"] = args?.approvalsBeforeMerge;
+            resourceInputs["archiveOnDestroy"] = args?.archiveOnDestroy;
+            resourceInputs["archived"] = args?.archived;
+            resourceInputs["autoCancelPendingPipelines"] = args?.autoCancelPendingPipelines;
+            resourceInputs["autoDevopsDeployStrategy"] = args?.autoDevopsDeployStrategy;
+            resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
+            resourceInputs["autoDuoCodeReviewEnabled"] = args?.autoDuoCodeReviewEnabled;
+            resourceInputs["autocloseReferencedIssues"] = args?.autocloseReferencedIssues;
+            resourceInputs["avatar"] = args?.avatar;
+            resourceInputs["avatarHash"] = args?.avatarHash;
+            resourceInputs["branches"] = args?.branches;
+            resourceInputs["buildGitStrategy"] = args?.buildGitStrategy;
+            resourceInputs["buildTimeout"] = args?.buildTimeout;
+            resourceInputs["buildsAccessLevel"] = args?.buildsAccessLevel;
+            resourceInputs["ciConfigPath"] = args?.ciConfigPath;
+            resourceInputs["ciDefaultGitDepth"] = args?.ciDefaultGitDepth;
+            resourceInputs["ciDeletePipelinesInSeconds"] = args?.ciDeletePipelinesInSeconds;
+            resourceInputs["ciForwardDeploymentEnabled"] = args?.ciForwardDeploymentEnabled;
+            resourceInputs["ciForwardDeploymentRollbackAllowed"] = args?.ciForwardDeploymentRollbackAllowed;
+            resourceInputs["ciIdTokenSubClaimComponents"] = args?.ciIdTokenSubClaimComponents;
+            resourceInputs["ciPipelineVariablesMinimumOverrideRole"] = args?.ciPipelineVariablesMinimumOverrideRole;
+            resourceInputs["ciPushRepositoryForJobTokenAllowed"] = args?.ciPushRepositoryForJobTokenAllowed;
+            resourceInputs["ciRestrictPipelineCancellationRole"] = args?.ciRestrictPipelineCancellationRole;
+            resourceInputs["ciSeparatedCaches"] = args?.ciSeparatedCaches;
+            resourceInputs["containerExpirationPolicy"] = args?.containerExpirationPolicy;
+            resourceInputs["containerRegistryAccessLevel"] = args?.containerRegistryAccessLevel;
+            resourceInputs["containerRegistryEnabled"] = args?.containerRegistryEnabled;
+            resourceInputs["defaultBranch"] = args?.defaultBranch;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["emailsEnabled"] = args?.emailsEnabled;
+            resourceInputs["environmentsAccessLevel"] = args?.environmentsAccessLevel;
+            resourceInputs["externalAuthorizationClassificationLabel"] = args?.externalAuthorizationClassificationLabel;
+            resourceInputs["featureFlagsAccessLevel"] = args?.featureFlagsAccessLevel;
+            resourceInputs["forkedFromProjectId"] = args?.forkedFromProjectId;
+            resourceInputs["forkingAccessLevel"] = args?.forkingAccessLevel;
+            resourceInputs["groupRunnersEnabled"] = args?.groupRunnersEnabled;
+            resourceInputs["groupWithProjectTemplatesId"] = args?.groupWithProjectTemplatesId;
+            resourceInputs["importUrl"] = args?.importUrl;
             resourceInputs["importUrlPassword"] = args?.importUrlPassword ? pulumi.secret(args.importUrlPassword) : undefined;
-            resourceInputs["importUrlUsername"] = args ? args.importUrlUsername : undefined;
-            resourceInputs["infrastructureAccessLevel"] = args ? args.infrastructureAccessLevel : undefined;
-            resourceInputs["initializeWithReadme"] = args ? args.initializeWithReadme : undefined;
-            resourceInputs["issuesAccessLevel"] = args ? args.issuesAccessLevel : undefined;
-            resourceInputs["issuesEnabled"] = args ? args.issuesEnabled : undefined;
-            resourceInputs["issuesTemplate"] = args ? args.issuesTemplate : undefined;
-            resourceInputs["keepLatestArtifact"] = args ? args.keepLatestArtifact : undefined;
-            resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
-            resourceInputs["mergeCommitTemplate"] = args ? args.mergeCommitTemplate : undefined;
-            resourceInputs["mergeMethod"] = args ? args.mergeMethod : undefined;
-            resourceInputs["mergePipelinesEnabled"] = args ? args.mergePipelinesEnabled : undefined;
-            resourceInputs["mergeRequestsAccessLevel"] = args ? args.mergeRequestsAccessLevel : undefined;
-            resourceInputs["mergeRequestsEnabled"] = args ? args.mergeRequestsEnabled : undefined;
-            resourceInputs["mergeRequestsTemplate"] = args ? args.mergeRequestsTemplate : undefined;
-            resourceInputs["mergeTrainsEnabled"] = args ? args.mergeTrainsEnabled : undefined;
-            resourceInputs["mirror"] = args ? args.mirror : undefined;
-            resourceInputs["mirrorOverwritesDivergedBranches"] = args ? args.mirrorOverwritesDivergedBranches : undefined;
-            resourceInputs["mirrorTriggerBuilds"] = args ? args.mirrorTriggerBuilds : undefined;
-            resourceInputs["modelExperimentsAccessLevel"] = args ? args.modelExperimentsAccessLevel : undefined;
-            resourceInputs["modelRegistryAccessLevel"] = args ? args.modelRegistryAccessLevel : undefined;
-            resourceInputs["monitorAccessLevel"] = args ? args.monitorAccessLevel : undefined;
-            resourceInputs["mrDefaultTargetSelf"] = args ? args.mrDefaultTargetSelf : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args ? args.onlyAllowMergeIfAllDiscussionsAreResolved : undefined;
-            resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = args ? args.onlyAllowMergeIfPipelineSucceeds : undefined;
-            resourceInputs["onlyMirrorProtectedBranches"] = args ? args.onlyMirrorProtectedBranches : undefined;
-            resourceInputs["packagesEnabled"] = args ? args.packagesEnabled : undefined;
-            resourceInputs["pagesAccessLevel"] = args ? args.pagesAccessLevel : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["permanentlyDeleteOnDestroy"] = args ? args.permanentlyDeleteOnDestroy : undefined;
-            resourceInputs["pipelinesEnabled"] = args ? args.pipelinesEnabled : undefined;
-            resourceInputs["preReceiveSecretDetectionEnabled"] = args ? args.preReceiveSecretDetectionEnabled : undefined;
-            resourceInputs["preventMergeWithoutJiraIssue"] = args ? args.preventMergeWithoutJiraIssue : undefined;
-            resourceInputs["printingMergeRequestLinkEnabled"] = args ? args.printingMergeRequestLinkEnabled : undefined;
-            resourceInputs["publicBuilds"] = args ? args.publicBuilds : undefined;
-            resourceInputs["publicJobs"] = args ? args.publicJobs : undefined;
-            resourceInputs["pushRules"] = args ? args.pushRules : undefined;
-            resourceInputs["releasesAccessLevel"] = args ? args.releasesAccessLevel : undefined;
-            resourceInputs["removeSourceBranchAfterMerge"] = args ? args.removeSourceBranchAfterMerge : undefined;
-            resourceInputs["repositoryAccessLevel"] = args ? args.repositoryAccessLevel : undefined;
-            resourceInputs["repositoryStorage"] = args ? args.repositoryStorage : undefined;
-            resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
-            resourceInputs["requirementsAccessLevel"] = args ? args.requirementsAccessLevel : undefined;
-            resourceInputs["resolveOutdatedDiffDiscussions"] = args ? args.resolveOutdatedDiffDiscussions : undefined;
-            resourceInputs["restrictUserDefinedVariables"] = args ? args.restrictUserDefinedVariables : undefined;
-            resourceInputs["securityAndComplianceAccessLevel"] = args ? args.securityAndComplianceAccessLevel : undefined;
-            resourceInputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
-            resourceInputs["skipWaitForDefaultBranchProtection"] = args ? args.skipWaitForDefaultBranchProtection : undefined;
-            resourceInputs["snippetsAccessLevel"] = args ? args.snippetsAccessLevel : undefined;
-            resourceInputs["snippetsEnabled"] = args ? args.snippetsEnabled : undefined;
-            resourceInputs["squashCommitTemplate"] = args ? args.squashCommitTemplate : undefined;
-            resourceInputs["squashOption"] = args ? args.squashOption : undefined;
-            resourceInputs["suggestionCommitMessage"] = args ? args.suggestionCommitMessage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["templateProjectId"] = args ? args.templateProjectId : undefined;
-            resourceInputs["topics"] = args ? args.topics : undefined;
-            resourceInputs["useCustomTemplate"] = args ? args.useCustomTemplate : undefined;
-            resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
-            resourceInputs["wikiAccessLevel"] = args ? args.wikiAccessLevel : undefined;
-            resourceInputs["wikiEnabled"] = args ? args.wikiEnabled : undefined;
+            resourceInputs["importUrlUsername"] = args?.importUrlUsername;
+            resourceInputs["infrastructureAccessLevel"] = args?.infrastructureAccessLevel;
+            resourceInputs["initializeWithReadme"] = args?.initializeWithReadme;
+            resourceInputs["issuesAccessLevel"] = args?.issuesAccessLevel;
+            resourceInputs["issuesEnabled"] = args?.issuesEnabled;
+            resourceInputs["issuesTemplate"] = args?.issuesTemplate;
+            resourceInputs["keepLatestArtifact"] = args?.keepLatestArtifact;
+            resourceInputs["lfsEnabled"] = args?.lfsEnabled;
+            resourceInputs["mergeCommitTemplate"] = args?.mergeCommitTemplate;
+            resourceInputs["mergeMethod"] = args?.mergeMethod;
+            resourceInputs["mergePipelinesEnabled"] = args?.mergePipelinesEnabled;
+            resourceInputs["mergeRequestsAccessLevel"] = args?.mergeRequestsAccessLevel;
+            resourceInputs["mergeRequestsEnabled"] = args?.mergeRequestsEnabled;
+            resourceInputs["mergeRequestsTemplate"] = args?.mergeRequestsTemplate;
+            resourceInputs["mergeTrainsEnabled"] = args?.mergeTrainsEnabled;
+            resourceInputs["mirror"] = args?.mirror;
+            resourceInputs["mirrorOverwritesDivergedBranches"] = args?.mirrorOverwritesDivergedBranches;
+            resourceInputs["mirrorTriggerBuilds"] = args?.mirrorTriggerBuilds;
+            resourceInputs["modelExperimentsAccessLevel"] = args?.modelExperimentsAccessLevel;
+            resourceInputs["modelRegistryAccessLevel"] = args?.modelRegistryAccessLevel;
+            resourceInputs["monitorAccessLevel"] = args?.monitorAccessLevel;
+            resourceInputs["mrDefaultTargetSelf"] = args?.mrDefaultTargetSelf;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args?.onlyAllowMergeIfAllDiscussionsAreResolved;
+            resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = args?.onlyAllowMergeIfPipelineSucceeds;
+            resourceInputs["onlyMirrorProtectedBranches"] = args?.onlyMirrorProtectedBranches;
+            resourceInputs["packagesEnabled"] = args?.packagesEnabled;
+            resourceInputs["pagesAccessLevel"] = args?.pagesAccessLevel;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["permanentlyDeleteOnDestroy"] = args?.permanentlyDeleteOnDestroy;
+            resourceInputs["pipelinesEnabled"] = args?.pipelinesEnabled;
+            resourceInputs["preReceiveSecretDetectionEnabled"] = args?.preReceiveSecretDetectionEnabled;
+            resourceInputs["preventMergeWithoutJiraIssue"] = args?.preventMergeWithoutJiraIssue;
+            resourceInputs["printingMergeRequestLinkEnabled"] = args?.printingMergeRequestLinkEnabled;
+            resourceInputs["publicBuilds"] = args?.publicBuilds;
+            resourceInputs["publicJobs"] = args?.publicJobs;
+            resourceInputs["pushRules"] = args?.pushRules;
+            resourceInputs["releasesAccessLevel"] = args?.releasesAccessLevel;
+            resourceInputs["removeSourceBranchAfterMerge"] = args?.removeSourceBranchAfterMerge;
+            resourceInputs["repositoryAccessLevel"] = args?.repositoryAccessLevel;
+            resourceInputs["repositoryStorage"] = args?.repositoryStorage;
+            resourceInputs["requestAccessEnabled"] = args?.requestAccessEnabled;
+            resourceInputs["requirementsAccessLevel"] = args?.requirementsAccessLevel;
+            resourceInputs["resolveOutdatedDiffDiscussions"] = args?.resolveOutdatedDiffDiscussions;
+            resourceInputs["restrictUserDefinedVariables"] = args?.restrictUserDefinedVariables;
+            resourceInputs["securityAndComplianceAccessLevel"] = args?.securityAndComplianceAccessLevel;
+            resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
+            resourceInputs["skipWaitForDefaultBranchProtection"] = args?.skipWaitForDefaultBranchProtection;
+            resourceInputs["snippetsAccessLevel"] = args?.snippetsAccessLevel;
+            resourceInputs["snippetsEnabled"] = args?.snippetsEnabled;
+            resourceInputs["squashCommitTemplate"] = args?.squashCommitTemplate;
+            resourceInputs["squashOption"] = args?.squashOption;
+            resourceInputs["suggestionCommitMessage"] = args?.suggestionCommitMessage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["templateProjectId"] = args?.templateProjectId;
+            resourceInputs["topics"] = args?.topics;
+            resourceInputs["useCustomTemplate"] = args?.useCustomTemplate;
+            resourceInputs["visibilityLevel"] = args?.visibilityLevel;
+            resourceInputs["wikiAccessLevel"] = args?.wikiAccessLevel;
+            resourceInputs["wikiEnabled"] = args?.wikiEnabled;
             resourceInputs["avatarUrl"] = undefined /*out*/;
             resourceInputs["emptyRepo"] = undefined /*out*/;
             resourceInputs["httpUrlToRepo"] = undefined /*out*/;

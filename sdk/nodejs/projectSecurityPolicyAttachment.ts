@@ -107,19 +107,19 @@ export class ProjectSecurityPolicyAttachment extends pulumi.CustomResource {
     /**
      * The ID or Full Path of the security policy project.
      */
-    public readonly policyProject!: pulumi.Output<string>;
+    declare public readonly policyProject: pulumi.Output<string>;
     /**
      * The GraphQL ID of the security policy project.
      */
-    public /*out*/ readonly policyProjectGraphqlId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyProjectGraphqlId: pulumi.Output<string>;
     /**
      * The ID or Full Path of the project which will have the security policy project assigned to it.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The GraphQL ID of the project to which the security policty project will be attached.
      */
-    public /*out*/ readonly projectGraphqlId!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectGraphqlId: pulumi.Output<string>;
 
     /**
      * Create a ProjectSecurityPolicyAttachment resource with the given unique name, arguments, and options.
@@ -134,20 +134,20 @@ export class ProjectSecurityPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectSecurityPolicyAttachmentState | undefined;
-            resourceInputs["policyProject"] = state ? state.policyProject : undefined;
-            resourceInputs["policyProjectGraphqlId"] = state ? state.policyProjectGraphqlId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectGraphqlId"] = state ? state.projectGraphqlId : undefined;
+            resourceInputs["policyProject"] = state?.policyProject;
+            resourceInputs["policyProjectGraphqlId"] = state?.policyProjectGraphqlId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectGraphqlId"] = state?.projectGraphqlId;
         } else {
             const args = argsOrState as ProjectSecurityPolicyAttachmentArgs | undefined;
-            if ((!args || args.policyProject === undefined) && !opts.urn) {
+            if (args?.policyProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyProject'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["policyProject"] = args ? args.policyProject : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["policyProject"] = args?.policyProject;
+            resourceInputs["project"] = args?.project;
             resourceInputs["policyProjectGraphqlId"] = undefined /*out*/;
             resourceInputs["projectGraphqlId"] = undefined /*out*/;
         }

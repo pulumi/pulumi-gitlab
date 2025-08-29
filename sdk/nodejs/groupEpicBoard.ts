@@ -96,15 +96,15 @@ export class GroupEpicBoard extends pulumi.CustomResource {
     /**
      * The ID or URL-encoded path of the group owned by the authenticated user.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The list of epic board lists.
      */
-    public readonly lists!: pulumi.Output<outputs.GroupEpicBoardList[] | undefined>;
+    declare public readonly lists: pulumi.Output<outputs.GroupEpicBoardList[] | undefined>;
     /**
      * The name of the board.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a GroupEpicBoard resource with the given unique name, arguments, and options.
@@ -119,17 +119,17 @@ export class GroupEpicBoard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupEpicBoardState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["lists"] = state ? state.lists : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["lists"] = state?.lists;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as GroupEpicBoardArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["lists"] = args ? args.lists : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["lists"] = args?.lists;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupEpicBoard.__pulumiType, name, resourceInputs, opts);

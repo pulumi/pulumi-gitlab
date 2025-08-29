@@ -83,23 +83,23 @@ export class ProjectMembership extends pulumi.CustomResource {
     /**
      * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * Expiration date for the project membership. Format: `YYYY-MM-DD`
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances.
      */
-    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    declare public readonly memberRoleId: pulumi.Output<number | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The id of the user.
      */
-    public readonly userId!: pulumi.Output<number>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a ProjectMembership resource with the given unique name, arguments, and options.
@@ -114,27 +114,27 @@ export class ProjectMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMembershipState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["memberRoleId"] = state?.memberRoleId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as ProjectMembershipArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !opts.urn) {
+            if (args?.accessLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["memberRoleId"] = args?.memberRoleId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectMembership.__pulumiType, name, resourceInputs, opts);

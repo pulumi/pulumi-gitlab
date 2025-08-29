@@ -82,39 +82,39 @@ export class ReleaseLink extends pulumi.CustomResource {
     /**
      * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      */
-    public /*out*/ readonly directAssetUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly directAssetUrl: pulumi.Output<string>;
     /**
      * External or internal link.
      */
-    public /*out*/ readonly external!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly external: pulumi.Output<boolean>;
     /**
      * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
      */
-    public readonly filepath!: pulumi.Output<string | undefined>;
+    declare public readonly filepath: pulumi.Output<string | undefined>;
     /**
      * The ID of the link.
      */
-    public /*out*/ readonly linkId!: pulumi.Output<number>;
+    declare public /*out*/ readonly linkId: pulumi.Output<number>;
     /**
      * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
      */
-    public readonly linkType!: pulumi.Output<string | undefined>;
+    declare public readonly linkType: pulumi.Output<string | undefined>;
     /**
      * The name of the link. Link names must be unique within the release.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The tag associated with the Release.
      */
-    public readonly tagName!: pulumi.Output<string>;
+    declare public readonly tagName: pulumi.Output<string>;
     /**
      * The URL of the link. Link URLs must be unique within the release.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a ReleaseLink resource with the given unique name, arguments, and options.
@@ -129,32 +129,32 @@ export class ReleaseLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReleaseLinkState | undefined;
-            resourceInputs["directAssetUrl"] = state ? state.directAssetUrl : undefined;
-            resourceInputs["external"] = state ? state.external : undefined;
-            resourceInputs["filepath"] = state ? state.filepath : undefined;
-            resourceInputs["linkId"] = state ? state.linkId : undefined;
-            resourceInputs["linkType"] = state ? state.linkType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tagName"] = state ? state.tagName : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["directAssetUrl"] = state?.directAssetUrl;
+            resourceInputs["external"] = state?.external;
+            resourceInputs["filepath"] = state?.filepath;
+            resourceInputs["linkId"] = state?.linkId;
+            resourceInputs["linkType"] = state?.linkType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tagName"] = state?.tagName;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ReleaseLinkArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tagName === undefined) && !opts.urn) {
+            if (args?.tagName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagName'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["filepath"] = args ? args.filepath : undefined;
-            resourceInputs["linkType"] = args ? args.linkType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tagName"] = args ? args.tagName : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["filepath"] = args?.filepath;
+            resourceInputs["linkType"] = args?.linkType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tagName"] = args?.tagName;
+            resourceInputs["url"] = args?.url;
             resourceInputs["directAssetUrl"] = undefined /*out*/;
             resourceInputs["external"] = undefined /*out*/;
             resourceInputs["linkId"] = undefined /*out*/;

@@ -93,23 +93,23 @@ export class DeployKeyEnable extends pulumi.CustomResource {
     /**
      * Can deploy key push to the project's repository.
      */
-    public readonly canPush!: pulumi.Output<boolean | undefined>;
+    declare public readonly canPush: pulumi.Output<boolean | undefined>;
     /**
      * Deploy key.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Deploy key's title.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a DeployKeyEnable resource with the given unique name, arguments, and options.
@@ -124,24 +124,24 @@ export class DeployKeyEnable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeployKeyEnableState | undefined;
-            resourceInputs["canPush"] = state ? state.canPush : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["canPush"] = state?.canPush;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as DeployKeyEnableArgs | undefined;
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["canPush"] = args ? args.canPush : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["canPush"] = args?.canPush;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["keyId"] = args?.keyId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["title"] = args?.title;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeployKeyEnable.__pulumiType, name, resourceInputs, opts);

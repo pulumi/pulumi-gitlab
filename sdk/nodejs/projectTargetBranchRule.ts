@@ -81,15 +81,15 @@ export class ProjectTargetBranchRule extends pulumi.CustomResource {
     /**
      * The ID or URL-encoded path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A pattern matching the branch name for which the merge request should have a default target branch configured.
      */
-    public readonly sourceBranchPattern!: pulumi.Output<string>;
+    declare public readonly sourceBranchPattern: pulumi.Output<string>;
     /**
      * The name of the branch to which the merge request should be addressed.
      */
-    public readonly targetBranchName!: pulumi.Output<string>;
+    declare public readonly targetBranchName: pulumi.Output<string>;
 
     /**
      * Create a ProjectTargetBranchRule resource with the given unique name, arguments, and options.
@@ -104,23 +104,23 @@ export class ProjectTargetBranchRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectTargetBranchRuleState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sourceBranchPattern"] = state ? state.sourceBranchPattern : undefined;
-            resourceInputs["targetBranchName"] = state ? state.targetBranchName : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sourceBranchPattern"] = state?.sourceBranchPattern;
+            resourceInputs["targetBranchName"] = state?.targetBranchName;
         } else {
             const args = argsOrState as ProjectTargetBranchRuleArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sourceBranchPattern === undefined) && !opts.urn) {
+            if (args?.sourceBranchPattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceBranchPattern'");
             }
-            if ((!args || args.targetBranchName === undefined) && !opts.urn) {
+            if (args?.targetBranchName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetBranchName'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceBranchPattern"] = args ? args.sourceBranchPattern : undefined;
-            resourceInputs["targetBranchName"] = args ? args.targetBranchName : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceBranchPattern"] = args?.sourceBranchPattern;
+            resourceInputs["targetBranchName"] = args?.targetBranchName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectTargetBranchRule.__pulumiType, name, resourceInputs, opts);

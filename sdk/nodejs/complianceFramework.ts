@@ -84,31 +84,31 @@ export class ComplianceFramework extends pulumi.CustomResource {
     /**
      * New color representation of the compliance framework in hex format. e.g. #FCA121.
      */
-    public readonly color!: pulumi.Output<string>;
+    declare public readonly color: pulumi.Output<string>;
     /**
      * Set this compliance framework as the default framework for the group. Default: `false`
      */
-    public readonly default!: pulumi.Output<boolean>;
+    declare public readonly default: pulumi.Output<boolean>;
     /**
      * Description for the compliance framework.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Globally unique ID of the compliance framework.
      */
-    public /*out*/ readonly frameworkId!: pulumi.Output<string>;
+    declare public /*out*/ readonly frameworkId: pulumi.Output<string>;
     /**
      * Name for the compliance framework.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Full path of the namespace to add the compliance framework to.
      */
-    public readonly namespacePath!: pulumi.Output<string>;
+    declare public readonly namespacePath: pulumi.Output<string>;
     /**
      * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
      */
-    public readonly pipelineConfigurationFullPath!: pulumi.Output<string | undefined>;
+    declare public readonly pipelineConfigurationFullPath: pulumi.Output<string | undefined>;
 
     /**
      * Create a ComplianceFramework resource with the given unique name, arguments, and options.
@@ -123,30 +123,30 @@ export class ComplianceFramework extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComplianceFrameworkState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["frameworkId"] = state ? state.frameworkId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespacePath"] = state ? state.namespacePath : undefined;
-            resourceInputs["pipelineConfigurationFullPath"] = state ? state.pipelineConfigurationFullPath : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["frameworkId"] = state?.frameworkId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespacePath"] = state?.namespacePath;
+            resourceInputs["pipelineConfigurationFullPath"] = state?.pipelineConfigurationFullPath;
         } else {
             const args = argsOrState as ComplianceFrameworkArgs | undefined;
-            if ((!args || args.color === undefined) && !opts.urn) {
+            if (args?.color === undefined && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.namespacePath === undefined) && !opts.urn) {
+            if (args?.namespacePath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespacePath'");
             }
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespacePath"] = args ? args.namespacePath : undefined;
-            resourceInputs["pipelineConfigurationFullPath"] = args ? args.pipelineConfigurationFullPath : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespacePath"] = args?.namespacePath;
+            resourceInputs["pipelineConfigurationFullPath"] = args?.pipelineConfigurationFullPath;
             resourceInputs["frameworkId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

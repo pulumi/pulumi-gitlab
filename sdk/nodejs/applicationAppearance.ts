@@ -60,56 +60,56 @@ export class ApplicationAppearance extends pulumi.CustomResource {
     /**
      * Markdown text shown on the sign-in and sign-up page.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Add header and footer to all outgoing emails if enabled.
      */
-    public readonly emailHeaderAndFooterEnabled!: pulumi.Output<boolean>;
+    declare public readonly emailHeaderAndFooterEnabled: pulumi.Output<boolean>;
     /**
      * Message in the system footer bar.
      */
-    public readonly footerMessage!: pulumi.Output<string>;
+    declare public readonly footerMessage: pulumi.Output<string>;
     /**
      * Message in the system header bar.
      */
-    public readonly headerMessage!: pulumi.Output<string>;
-    public readonly keepSettingsOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly headerMessage: pulumi.Output<string>;
+    declare public readonly keepSettingsOnDestroy: pulumi.Output<boolean>;
     /**
      * Markdown text shown on the group or project member page for users with permission to change members.
      */
-    public readonly memberGuidelines!: pulumi.Output<string>;
+    declare public readonly memberGuidelines: pulumi.Output<string>;
     /**
      * Background color for the system header or footer bar, in CSS hex notation.
      */
-    public readonly messageBackgroundColor!: pulumi.Output<string>;
+    declare public readonly messageBackgroundColor: pulumi.Output<string>;
     /**
      * Font color for the system header or footer bar, in CSS hex notation.
      */
-    public readonly messageFontColor!: pulumi.Output<string>;
+    declare public readonly messageFontColor: pulumi.Output<string>;
     /**
      * Markdown text shown on the new project page.
      */
-    public readonly newProjectGuidelines!: pulumi.Output<string>;
+    declare public readonly newProjectGuidelines: pulumi.Output<string>;
     /**
      * Markdown text shown on the profile page below the Public Avatar.
      */
-    public readonly profileImageGuidelines!: pulumi.Output<string>;
+    declare public readonly profileImageGuidelines: pulumi.Output<string>;
     /**
      * An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
      */
-    public readonly pwaDescription!: pulumi.Output<string>;
+    declare public readonly pwaDescription: pulumi.Output<string>;
     /**
      * Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
      */
-    public readonly pwaName!: pulumi.Output<string>;
+    declare public readonly pwaName: pulumi.Output<string>;
     /**
      * Short name for Progressive Web App.
      */
-    public readonly pwaShortName!: pulumi.Output<string>;
+    declare public readonly pwaShortName: pulumi.Output<string>;
     /**
      * Application title on the sign-in and sign-up page.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a ApplicationAppearance resource with the given unique name, arguments, and options.
@@ -124,36 +124,36 @@ export class ApplicationAppearance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationAppearanceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailHeaderAndFooterEnabled"] = state ? state.emailHeaderAndFooterEnabled : undefined;
-            resourceInputs["footerMessage"] = state ? state.footerMessage : undefined;
-            resourceInputs["headerMessage"] = state ? state.headerMessage : undefined;
-            resourceInputs["keepSettingsOnDestroy"] = state ? state.keepSettingsOnDestroy : undefined;
-            resourceInputs["memberGuidelines"] = state ? state.memberGuidelines : undefined;
-            resourceInputs["messageBackgroundColor"] = state ? state.messageBackgroundColor : undefined;
-            resourceInputs["messageFontColor"] = state ? state.messageFontColor : undefined;
-            resourceInputs["newProjectGuidelines"] = state ? state.newProjectGuidelines : undefined;
-            resourceInputs["profileImageGuidelines"] = state ? state.profileImageGuidelines : undefined;
-            resourceInputs["pwaDescription"] = state ? state.pwaDescription : undefined;
-            resourceInputs["pwaName"] = state ? state.pwaName : undefined;
-            resourceInputs["pwaShortName"] = state ? state.pwaShortName : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["emailHeaderAndFooterEnabled"] = state?.emailHeaderAndFooterEnabled;
+            resourceInputs["footerMessage"] = state?.footerMessage;
+            resourceInputs["headerMessage"] = state?.headerMessage;
+            resourceInputs["keepSettingsOnDestroy"] = state?.keepSettingsOnDestroy;
+            resourceInputs["memberGuidelines"] = state?.memberGuidelines;
+            resourceInputs["messageBackgroundColor"] = state?.messageBackgroundColor;
+            resourceInputs["messageFontColor"] = state?.messageFontColor;
+            resourceInputs["newProjectGuidelines"] = state?.newProjectGuidelines;
+            resourceInputs["profileImageGuidelines"] = state?.profileImageGuidelines;
+            resourceInputs["pwaDescription"] = state?.pwaDescription;
+            resourceInputs["pwaName"] = state?.pwaName;
+            resourceInputs["pwaShortName"] = state?.pwaShortName;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as ApplicationAppearanceArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emailHeaderAndFooterEnabled"] = args ? args.emailHeaderAndFooterEnabled : undefined;
-            resourceInputs["footerMessage"] = args ? args.footerMessage : undefined;
-            resourceInputs["headerMessage"] = args ? args.headerMessage : undefined;
-            resourceInputs["keepSettingsOnDestroy"] = args ? args.keepSettingsOnDestroy : undefined;
-            resourceInputs["memberGuidelines"] = args ? args.memberGuidelines : undefined;
-            resourceInputs["messageBackgroundColor"] = args ? args.messageBackgroundColor : undefined;
-            resourceInputs["messageFontColor"] = args ? args.messageFontColor : undefined;
-            resourceInputs["newProjectGuidelines"] = args ? args.newProjectGuidelines : undefined;
-            resourceInputs["profileImageGuidelines"] = args ? args.profileImageGuidelines : undefined;
-            resourceInputs["pwaDescription"] = args ? args.pwaDescription : undefined;
-            resourceInputs["pwaName"] = args ? args.pwaName : undefined;
-            resourceInputs["pwaShortName"] = args ? args.pwaShortName : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["emailHeaderAndFooterEnabled"] = args?.emailHeaderAndFooterEnabled;
+            resourceInputs["footerMessage"] = args?.footerMessage;
+            resourceInputs["headerMessage"] = args?.headerMessage;
+            resourceInputs["keepSettingsOnDestroy"] = args?.keepSettingsOnDestroy;
+            resourceInputs["memberGuidelines"] = args?.memberGuidelines;
+            resourceInputs["messageBackgroundColor"] = args?.messageBackgroundColor;
+            resourceInputs["messageFontColor"] = args?.messageFontColor;
+            resourceInputs["newProjectGuidelines"] = args?.newProjectGuidelines;
+            resourceInputs["profileImageGuidelines"] = args?.profileImageGuidelines;
+            resourceInputs["pwaDescription"] = args?.pwaDescription;
+            resourceInputs["pwaName"] = args?.pwaName;
+            resourceInputs["pwaShortName"] = args?.pwaShortName;
+            resourceInputs["title"] = args?.title;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationAppearance.__pulumiType, name, resourceInputs, opts);

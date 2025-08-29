@@ -68,35 +68,35 @@ export class DeployToken extends pulumi.CustomResource {
     /**
      * The id of the deploy token.
      */
-    public /*out*/ readonly deployTokenId!: pulumi.Output<number>;
+    declare public /*out*/ readonly deployTokenId: pulumi.Output<number>;
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
      * The name or id of the group to add the deploy token to.
      */
-    public readonly group!: pulumi.Output<string | undefined>;
+    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * A name to describe the deploy token with.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name or id of the project to add the deploy token to.
      */
-    public readonly project!: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string | undefined>;
     /**
      * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a DeployToken resource with the given unique name, arguments, and options.
@@ -111,25 +111,25 @@ export class DeployToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeployTokenState | undefined;
-            resourceInputs["deployTokenId"] = state ? state.deployTokenId : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["deployTokenId"] = state?.deployTokenId;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as DeployTokenArgs | undefined;
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["username"] = args?.username;
             resourceInputs["deployTokenId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }

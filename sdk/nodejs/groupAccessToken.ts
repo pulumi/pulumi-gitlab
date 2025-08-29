@@ -92,51 +92,51 @@ export class GroupAccessToken extends pulumi.CustomResource {
     /**
      * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * True if the token is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the group access token.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * When the token will expire, YYYY-MM-DD format.
      */
-    public readonly expiresAt!: pulumi.Output<string>;
+    declare public readonly expiresAt: pulumi.Output<string>;
     /**
      * The ID or full path of the group.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The name of the group access token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * True if the token is revoked.
      */
-    public /*out*/ readonly revoked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly revoked: pulumi.Output<boolean>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    public readonly rotationConfiguration!: pulumi.Output<outputs.GroupAccessTokenRotationConfiguration | undefined>;
+    declare public readonly rotationConfiguration: pulumi.Output<outputs.GroupAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * The token of the group access token. **Note**: the token is not available for imported resources.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * The userId associated to the token.
      */
-    public /*out*/ readonly userId!: pulumi.Output<number>;
+    declare public /*out*/ readonly userId: pulumi.Output<number>;
 
     /**
      * Create a GroupAccessToken resource with the given unique name, arguments, and options.
@@ -151,33 +151,33 @@ export class GroupAccessToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupAccessTokenState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["revoked"] = state ? state.revoked : undefined;
-            resourceInputs["rotationConfiguration"] = state ? state.rotationConfiguration : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["revoked"] = state?.revoked;
+            resourceInputs["rotationConfiguration"] = state?.rotationConfiguration;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as GroupAccessTokenArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rotationConfiguration"] = args ? args.rotationConfiguration : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rotationConfiguration"] = args?.rotationConfiguration;
+            resourceInputs["scopes"] = args?.scopes;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;

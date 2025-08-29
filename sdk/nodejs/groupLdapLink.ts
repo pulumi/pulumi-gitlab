@@ -84,31 +84,31 @@ export class GroupLdapLink extends pulumi.CustomResource {
     /**
      * The CN of the LDAP group to link with. Required if `filter` is not provided.
      */
-    public readonly cn!: pulumi.Output<string>;
+    declare public readonly cn: pulumi.Output<string>;
     /**
      * The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
      */
-    public readonly filter!: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<string>;
     /**
      * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the group
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    public readonly groupAccess!: pulumi.Output<string>;
+    declare public readonly groupAccess: pulumi.Output<string>;
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      */
-    public readonly ldapProvider!: pulumi.Output<string>;
+    declare public readonly ldapProvider: pulumi.Output<string>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      */
-    public readonly memberRoleId!: pulumi.Output<number>;
+    declare public readonly memberRoleId: pulumi.Output<number>;
 
     /**
      * Create a GroupLdapLink resource with the given unique name, arguments, and options.
@@ -123,31 +123,31 @@ export class GroupLdapLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupLdapLinkState | undefined;
-            resourceInputs["cn"] = state ? state.cn : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
-            resourceInputs["ldapProvider"] = state ? state.ldapProvider : undefined;
-            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
+            resourceInputs["cn"] = state?.cn;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["groupAccess"] = state?.groupAccess;
+            resourceInputs["ldapProvider"] = state?.ldapProvider;
+            resourceInputs["memberRoleId"] = state?.memberRoleId;
         } else {
             const args = argsOrState as GroupLdapLinkArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.groupAccess === undefined) && !opts.urn) {
+            if (args?.groupAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupAccess'");
             }
-            if ((!args || args.ldapProvider === undefined) && !opts.urn) {
+            if (args?.ldapProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ldapProvider'");
             }
-            resourceInputs["cn"] = args ? args.cn : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
-            resourceInputs["ldapProvider"] = args ? args.ldapProvider : undefined;
-            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
+            resourceInputs["cn"] = args?.cn;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["groupAccess"] = args?.groupAccess;
+            resourceInputs["ldapProvider"] = args?.ldapProvider;
+            resourceInputs["memberRoleId"] = args?.memberRoleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupLdapLink.__pulumiType, name, resourceInputs, opts);

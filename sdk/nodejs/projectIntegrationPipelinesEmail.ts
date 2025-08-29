@@ -81,19 +81,19 @@ export class ProjectIntegrationPipelinesEmail extends pulumi.CustomResource {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      */
-    public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string | undefined>;
     /**
      * Notify only broken pipelines. Default is true.
      */
-    public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean | undefined>;
+    declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * ) email addresses where notifications are sent.
      */
-    public readonly recipients!: pulumi.Output<string[]>;
+    declare public readonly recipients: pulumi.Output<string[]>;
 
     /**
      * Create a ProjectIntegrationPipelinesEmail resource with the given unique name, arguments, and options.
@@ -108,22 +108,22 @@ export class ProjectIntegrationPipelinesEmail extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIntegrationPipelinesEmailState | undefined;
-            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["recipients"] = state ? state.recipients : undefined;
+            resourceInputs["branchesToBeNotified"] = state?.branchesToBeNotified;
+            resourceInputs["notifyOnlyBrokenPipelines"] = state?.notifyOnlyBrokenPipelines;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["recipients"] = state?.recipients;
         } else {
             const args = argsOrState as ProjectIntegrationPipelinesEmailArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.recipients === undefined) && !opts.urn) {
+            if (args?.recipients === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recipients'");
             }
-            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["recipients"] = args ? args.recipients : undefined;
+            resourceInputs["branchesToBeNotified"] = args?.branchesToBeNotified;
+            resourceInputs["notifyOnlyBrokenPipelines"] = args?.notifyOnlyBrokenPipelines;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["recipients"] = args?.recipients;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectIntegrationPipelinesEmail.__pulumiType, name, resourceInputs, opts);

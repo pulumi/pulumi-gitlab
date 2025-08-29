@@ -81,28 +81,28 @@ export class Application extends pulumi.CustomResource {
     /**
      * Internal name of the application.
      */
-    public /*out*/ readonly applicationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationId: pulumi.Output<string>;
     /**
      * The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied
      */
-    public readonly confidential!: pulumi.Output<boolean>;
+    declare public readonly confidential: pulumi.Output<boolean>;
     /**
      * Name of the application.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL gitlab should send the user to after authentication.
      */
-    public readonly redirectUrl!: pulumi.Output<string>;
+    declare public readonly redirectUrl: pulumi.Output<string>;
     /**
      * Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `api`, `readApi`, `readUser`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `openid`, `profile`, `email`.
      * This is only populated when creating a new application. This attribute is not available for imported resources
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * Application secret. Sensitive and must be kept secret. This is only populated when creating a new application. This attribute is not available for imported resources.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -117,24 +117,24 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["confidential"] = state ? state.confidential : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["redirectUrl"] = state ? state.redirectUrl : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["confidential"] = state?.confidential;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["redirectUrl"] = state?.redirectUrl;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.redirectUrl === undefined) && !opts.urn) {
+            if (args?.redirectUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'redirectUrl'");
             }
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["confidential"] = args ? args.confidential : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["redirectUrl"] = args ? args.redirectUrl : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["confidential"] = args?.confidential;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["redirectUrl"] = args?.redirectUrl;
+            resourceInputs["scopes"] = args?.scopes;
             resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         }

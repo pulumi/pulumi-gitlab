@@ -75,15 +75,15 @@ export class UserCustomAttribute extends pulumi.CustomResource {
     /**
      * Key for the Custom Attribute.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The id of the user.
      */
-    public readonly user!: pulumi.Output<number>;
+    declare public readonly user: pulumi.Output<number>;
     /**
      * Value for the Custom Attribute.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a UserCustomAttribute resource with the given unique name, arguments, and options.
@@ -98,23 +98,23 @@ export class UserCustomAttribute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserCustomAttributeState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["user"] = state?.user;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as UserCustomAttributeArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.user === undefined) && !opts.urn) {
+            if (args?.user === undefined && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["user"] = args?.user;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserCustomAttribute.__pulumiType, name, resourceInputs, opts);

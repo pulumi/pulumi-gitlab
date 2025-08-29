@@ -97,27 +97,27 @@ export class GroupBadge extends pulumi.CustomResource {
     /**
      * The ID or URL-encoded path of the group to add the badge to.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The image url which will be presented on group overview.
      */
-    public readonly imageUrl!: pulumi.Output<string>;
+    declare public readonly imageUrl: pulumi.Output<string>;
     /**
      * The url linked with the badge.
      */
-    public readonly linkUrl!: pulumi.Output<string>;
+    declare public readonly linkUrl: pulumi.Output<string>;
     /**
      * The name of the badge.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The imageUrl argument rendered (in case of use of placeholders).
      */
-    public /*out*/ readonly renderedImageUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly renderedImageUrl: pulumi.Output<string>;
     /**
      * The linkUrl argument rendered (in case of use of placeholders).
      */
-    public /*out*/ readonly renderedLinkUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly renderedLinkUrl: pulumi.Output<string>;
 
     /**
      * Create a GroupBadge resource with the given unique name, arguments, and options.
@@ -132,27 +132,27 @@ export class GroupBadge extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupBadgeState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
-            resourceInputs["linkUrl"] = state ? state.linkUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["renderedImageUrl"] = state ? state.renderedImageUrl : undefined;
-            resourceInputs["renderedLinkUrl"] = state ? state.renderedLinkUrl : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["imageUrl"] = state?.imageUrl;
+            resourceInputs["linkUrl"] = state?.linkUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["renderedImageUrl"] = state?.renderedImageUrl;
+            resourceInputs["renderedLinkUrl"] = state?.renderedLinkUrl;
         } else {
             const args = argsOrState as GroupBadgeArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.imageUrl === undefined) && !opts.urn) {
+            if (args?.imageUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageUrl'");
             }
-            if ((!args || args.linkUrl === undefined) && !opts.urn) {
+            if (args?.linkUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linkUrl'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
-            resourceInputs["linkUrl"] = args ? args.linkUrl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["imageUrl"] = args?.imageUrl;
+            resourceInputs["linkUrl"] = args?.linkUrl;
+            resourceInputs["name"] = args?.name;
             resourceInputs["renderedImageUrl"] = undefined /*out*/;
             resourceInputs["renderedLinkUrl"] = undefined /*out*/;
         }

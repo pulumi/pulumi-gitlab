@@ -99,23 +99,23 @@ export class GroupServiceAccount extends pulumi.CustomResource {
     /**
      * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The name of the user. If not specified, the default Service account user name is used.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The service account id.
      */
-    public /*out*/ readonly serviceAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccountId: pulumi.Output<string>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a GroupServiceAccount resource with the given unique name, arguments, and options.
@@ -130,20 +130,20 @@ export class GroupServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupServiceAccountState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["serviceAccountId"] = state?.serviceAccountId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as GroupServiceAccountArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["username"] = args?.username;
             resourceInputs["serviceAccountId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

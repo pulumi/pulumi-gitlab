@@ -92,51 +92,51 @@ export class ProjectAccessToken extends pulumi.CustomResource {
     /**
      * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * True if the token is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the project access token.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
-    public readonly expiresAt!: pulumi.Output<string>;
+    declare public readonly expiresAt: pulumi.Output<string>;
     /**
      * The name of the project access token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or full path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * True if the token is revoked.
      */
-    public /*out*/ readonly revoked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly revoked: pulumi.Output<boolean>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    public readonly rotationConfiguration!: pulumi.Output<outputs.ProjectAccessTokenRotationConfiguration | undefined>;
+    declare public readonly rotationConfiguration: pulumi.Output<outputs.ProjectAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * The token of the project access token. **Note**: the token is not available for imported resources.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * The userId associated to the token.
      */
-    public /*out*/ readonly userId!: pulumi.Output<number>;
+    declare public /*out*/ readonly userId: pulumi.Output<number>;
 
     /**
      * Create a ProjectAccessToken resource with the given unique name, arguments, and options.
@@ -151,33 +151,33 @@ export class ProjectAccessToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectAccessTokenState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["revoked"] = state ? state.revoked : undefined;
-            resourceInputs["rotationConfiguration"] = state ? state.rotationConfiguration : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["revoked"] = state?.revoked;
+            resourceInputs["rotationConfiguration"] = state?.rotationConfiguration;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as ProjectAccessTokenArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rotationConfiguration"] = args ? args.rotationConfiguration : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rotationConfiguration"] = args?.rotationConfiguration;
+            resourceInputs["scopes"] = args?.scopes;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;

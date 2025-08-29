@@ -70,12 +70,12 @@ export class GroupProjectFileTemplate extends pulumi.CustomResource {
      * The ID of the project that will be used for file templates. This project must be the direct
      * 			child of the project defined by the group_id
      */
-    public readonly fileTemplateProjectId!: pulumi.Output<number>;
+    declare public readonly fileTemplateProjectId: pulumi.Output<number>;
     /**
      * The ID of the group that will use the file template project. This group must be the direct
      *             parent of the project defined by project_id
      */
-    public readonly groupId!: pulumi.Output<number>;
+    declare public readonly groupId: pulumi.Output<number>;
 
     /**
      * Create a GroupProjectFileTemplate resource with the given unique name, arguments, and options.
@@ -90,18 +90,18 @@ export class GroupProjectFileTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupProjectFileTemplateState | undefined;
-            resourceInputs["fileTemplateProjectId"] = state ? state.fileTemplateProjectId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["fileTemplateProjectId"] = state?.fileTemplateProjectId;
+            resourceInputs["groupId"] = state?.groupId;
         } else {
             const args = argsOrState as GroupProjectFileTemplateArgs | undefined;
-            if ((!args || args.fileTemplateProjectId === undefined) && !opts.urn) {
+            if (args?.fileTemplateProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileTemplateProjectId'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            resourceInputs["fileTemplateProjectId"] = args ? args.fileTemplateProjectId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["fileTemplateProjectId"] = args?.fileTemplateProjectId;
+            resourceInputs["groupId"] = args?.groupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupProjectFileTemplate.__pulumiType, name, resourceInputs, opts);

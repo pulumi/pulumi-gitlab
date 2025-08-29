@@ -82,19 +82,19 @@ export class GroupDependencyProxy extends pulumi.CustomResource {
     /**
      * Indicates whether the proxy is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The ID or URL-encoded path of the group.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)).
      */
-    public readonly identity!: pulumi.Output<string>;
+    declare public readonly identity: pulumi.Output<string>;
     /**
      * Secret credential used to authenticate with Docker Hub when pulling images. Can be a password, personal access token (PAT), or organization access token (OAT). Cannot be imported.
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
 
     /**
      * Create a GroupDependencyProxy resource with the given unique name, arguments, and options.
@@ -109,18 +109,18 @@ export class GroupDependencyProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupDependencyProxyState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["identity"] = state ? state.identity : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["identity"] = state?.identity;
+            resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as GroupDependencyProxyArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["identity"] = args?.identity;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

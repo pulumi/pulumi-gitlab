@@ -66,75 +66,75 @@ export class GlobalLevelNotifications extends pulumi.CustomResource {
     /**
      * Enable notifications for closed issues. Can only be used when `level` is `custom`.
      */
-    public readonly closeIssue!: pulumi.Output<boolean>;
+    declare public readonly closeIssue: pulumi.Output<boolean>;
     /**
      * Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
      */
-    public readonly closeMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly closeMergeRequest: pulumi.Output<boolean>;
     /**
      * Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
      */
-    public readonly failedPipeline!: pulumi.Output<boolean>;
+    declare public readonly failedPipeline: pulumi.Output<boolean>;
     /**
      * Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
      */
-    public readonly fixedPipeline!: pulumi.Output<boolean>;
+    declare public readonly fixedPipeline: pulumi.Output<boolean>;
     /**
      * Enable notifications for due issues. Can only be used when `level` is `custom`.
      */
-    public readonly issueDue!: pulumi.Output<boolean>;
+    declare public readonly issueDue: pulumi.Output<boolean>;
     /**
      * The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
      */
-    public readonly level!: pulumi.Output<string>;
+    declare public readonly level: pulumi.Output<string>;
     /**
      * Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
      */
-    public readonly mergeMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly mergeMergeRequest: pulumi.Output<boolean>;
     /**
      * Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
      */
-    public readonly mergeWhenPipelineSucceeds!: pulumi.Output<boolean>;
+    declare public readonly mergeWhenPipelineSucceeds: pulumi.Output<boolean>;
     /**
      * Enable notifications for moved projects. Can only be used when `level` is `custom`.
      */
-    public readonly movedProject!: pulumi.Output<boolean>;
+    declare public readonly movedProject: pulumi.Output<boolean>;
     /**
      * Enable notifications for new issues. Can only be used when `level` is `custom`.
      */
-    public readonly newIssue!: pulumi.Output<boolean>;
+    declare public readonly newIssue: pulumi.Output<boolean>;
     /**
      * Enable notifications for new merge requests. Can only be used when `level` is `custom`.
      */
-    public readonly newMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly newMergeRequest: pulumi.Output<boolean>;
     /**
      * Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
      */
-    public readonly newNote!: pulumi.Output<boolean>;
+    declare public readonly newNote: pulumi.Output<boolean>;
     /**
      * Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
      */
-    public readonly pushToMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly pushToMergeRequest: pulumi.Output<boolean>;
     /**
      * Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
      */
-    public readonly reassignIssue!: pulumi.Output<boolean>;
+    declare public readonly reassignIssue: pulumi.Output<boolean>;
     /**
      * Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
      */
-    public readonly reassignMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly reassignMergeRequest: pulumi.Output<boolean>;
     /**
      * Enable notifications for reopened issues. Can only be used when `level` is `custom`.
      */
-    public readonly reopenIssue!: pulumi.Output<boolean>;
+    declare public readonly reopenIssue: pulumi.Output<boolean>;
     /**
      * Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
      */
-    public readonly reopenMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly reopenMergeRequest: pulumi.Output<boolean>;
     /**
      * Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
      */
-    public readonly successPipeline!: pulumi.Output<boolean>;
+    declare public readonly successPipeline: pulumi.Output<boolean>;
 
     /**
      * Create a GlobalLevelNotifications resource with the given unique name, arguments, and options.
@@ -149,44 +149,44 @@ export class GlobalLevelNotifications extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalLevelNotificationsState | undefined;
-            resourceInputs["closeIssue"] = state ? state.closeIssue : undefined;
-            resourceInputs["closeMergeRequest"] = state ? state.closeMergeRequest : undefined;
-            resourceInputs["failedPipeline"] = state ? state.failedPipeline : undefined;
-            resourceInputs["fixedPipeline"] = state ? state.fixedPipeline : undefined;
-            resourceInputs["issueDue"] = state ? state.issueDue : undefined;
-            resourceInputs["level"] = state ? state.level : undefined;
-            resourceInputs["mergeMergeRequest"] = state ? state.mergeMergeRequest : undefined;
-            resourceInputs["mergeWhenPipelineSucceeds"] = state ? state.mergeWhenPipelineSucceeds : undefined;
-            resourceInputs["movedProject"] = state ? state.movedProject : undefined;
-            resourceInputs["newIssue"] = state ? state.newIssue : undefined;
-            resourceInputs["newMergeRequest"] = state ? state.newMergeRequest : undefined;
-            resourceInputs["newNote"] = state ? state.newNote : undefined;
-            resourceInputs["pushToMergeRequest"] = state ? state.pushToMergeRequest : undefined;
-            resourceInputs["reassignIssue"] = state ? state.reassignIssue : undefined;
-            resourceInputs["reassignMergeRequest"] = state ? state.reassignMergeRequest : undefined;
-            resourceInputs["reopenIssue"] = state ? state.reopenIssue : undefined;
-            resourceInputs["reopenMergeRequest"] = state ? state.reopenMergeRequest : undefined;
-            resourceInputs["successPipeline"] = state ? state.successPipeline : undefined;
+            resourceInputs["closeIssue"] = state?.closeIssue;
+            resourceInputs["closeMergeRequest"] = state?.closeMergeRequest;
+            resourceInputs["failedPipeline"] = state?.failedPipeline;
+            resourceInputs["fixedPipeline"] = state?.fixedPipeline;
+            resourceInputs["issueDue"] = state?.issueDue;
+            resourceInputs["level"] = state?.level;
+            resourceInputs["mergeMergeRequest"] = state?.mergeMergeRequest;
+            resourceInputs["mergeWhenPipelineSucceeds"] = state?.mergeWhenPipelineSucceeds;
+            resourceInputs["movedProject"] = state?.movedProject;
+            resourceInputs["newIssue"] = state?.newIssue;
+            resourceInputs["newMergeRequest"] = state?.newMergeRequest;
+            resourceInputs["newNote"] = state?.newNote;
+            resourceInputs["pushToMergeRequest"] = state?.pushToMergeRequest;
+            resourceInputs["reassignIssue"] = state?.reassignIssue;
+            resourceInputs["reassignMergeRequest"] = state?.reassignMergeRequest;
+            resourceInputs["reopenIssue"] = state?.reopenIssue;
+            resourceInputs["reopenMergeRequest"] = state?.reopenMergeRequest;
+            resourceInputs["successPipeline"] = state?.successPipeline;
         } else {
             const args = argsOrState as GlobalLevelNotificationsArgs | undefined;
-            resourceInputs["closeIssue"] = args ? args.closeIssue : undefined;
-            resourceInputs["closeMergeRequest"] = args ? args.closeMergeRequest : undefined;
-            resourceInputs["failedPipeline"] = args ? args.failedPipeline : undefined;
-            resourceInputs["fixedPipeline"] = args ? args.fixedPipeline : undefined;
-            resourceInputs["issueDue"] = args ? args.issueDue : undefined;
-            resourceInputs["level"] = args ? args.level : undefined;
-            resourceInputs["mergeMergeRequest"] = args ? args.mergeMergeRequest : undefined;
-            resourceInputs["mergeWhenPipelineSucceeds"] = args ? args.mergeWhenPipelineSucceeds : undefined;
-            resourceInputs["movedProject"] = args ? args.movedProject : undefined;
-            resourceInputs["newIssue"] = args ? args.newIssue : undefined;
-            resourceInputs["newMergeRequest"] = args ? args.newMergeRequest : undefined;
-            resourceInputs["newNote"] = args ? args.newNote : undefined;
-            resourceInputs["pushToMergeRequest"] = args ? args.pushToMergeRequest : undefined;
-            resourceInputs["reassignIssue"] = args ? args.reassignIssue : undefined;
-            resourceInputs["reassignMergeRequest"] = args ? args.reassignMergeRequest : undefined;
-            resourceInputs["reopenIssue"] = args ? args.reopenIssue : undefined;
-            resourceInputs["reopenMergeRequest"] = args ? args.reopenMergeRequest : undefined;
-            resourceInputs["successPipeline"] = args ? args.successPipeline : undefined;
+            resourceInputs["closeIssue"] = args?.closeIssue;
+            resourceInputs["closeMergeRequest"] = args?.closeMergeRequest;
+            resourceInputs["failedPipeline"] = args?.failedPipeline;
+            resourceInputs["fixedPipeline"] = args?.fixedPipeline;
+            resourceInputs["issueDue"] = args?.issueDue;
+            resourceInputs["level"] = args?.level;
+            resourceInputs["mergeMergeRequest"] = args?.mergeMergeRequest;
+            resourceInputs["mergeWhenPipelineSucceeds"] = args?.mergeWhenPipelineSucceeds;
+            resourceInputs["movedProject"] = args?.movedProject;
+            resourceInputs["newIssue"] = args?.newIssue;
+            resourceInputs["newMergeRequest"] = args?.newMergeRequest;
+            resourceInputs["newNote"] = args?.newNote;
+            resourceInputs["pushToMergeRequest"] = args?.pushToMergeRequest;
+            resourceInputs["reassignIssue"] = args?.reassignIssue;
+            resourceInputs["reassignMergeRequest"] = args?.reassignMergeRequest;
+            resourceInputs["reopenIssue"] = args?.reopenIssue;
+            resourceInputs["reopenMergeRequest"] = args?.reopenMergeRequest;
+            resourceInputs["successPipeline"] = args?.successPipeline;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalLevelNotifications.__pulumiType, name, resourceInputs, opts);

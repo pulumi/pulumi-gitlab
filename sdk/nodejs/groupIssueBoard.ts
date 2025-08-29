@@ -66,23 +66,23 @@ export class GroupIssueBoard extends pulumi.CustomResource {
     /**
      * The ID or URL-encoded path of the group owned by the authenticated user.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The list of label names which the board should be scoped to.
      */
-    public readonly labels!: pulumi.Output<string[] | undefined>;
+    declare public readonly labels: pulumi.Output<string[] | undefined>;
     /**
      * The list of issue board lists.
      */
-    public readonly lists!: pulumi.Output<outputs.GroupIssueBoardList[] | undefined>;
+    declare public readonly lists: pulumi.Output<outputs.GroupIssueBoardList[] | undefined>;
     /**
      * The milestone the board should be scoped to.
      */
-    public readonly milestoneId!: pulumi.Output<number | undefined>;
+    declare public readonly milestoneId: pulumi.Output<number | undefined>;
     /**
      * The name of the board.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a GroupIssueBoard resource with the given unique name, arguments, and options.
@@ -97,21 +97,21 @@ export class GroupIssueBoard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupIssueBoardState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lists"] = state ? state.lists : undefined;
-            resourceInputs["milestoneId"] = state ? state.milestoneId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lists"] = state?.lists;
+            resourceInputs["milestoneId"] = state?.milestoneId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as GroupIssueBoardArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lists"] = args ? args.lists : undefined;
-            resourceInputs["milestoneId"] = args ? args.milestoneId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lists"] = args?.lists;
+            resourceInputs["milestoneId"] = args?.milestoneId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupIssueBoard.__pulumiType, name, resourceInputs, opts);

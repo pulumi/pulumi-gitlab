@@ -70,25 +70,25 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
     /**
      * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    public readonly approvalRules!: pulumi.Output<outputs.ProjectProtectedEnvironmentApprovalRule[]>;
+    declare public readonly approvalRules: pulumi.Output<outputs.ProjectProtectedEnvironmentApprovalRule[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      *
      * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      */
-    public readonly deployAccessLevels!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
+    declare public readonly deployAccessLevels: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    public readonly deployAccessLevelsAttributes!: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute[] | undefined>;
+    declare public readonly deployAccessLevelsAttributes: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute[] | undefined>;
     /**
      * The name of the environment.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID or full path of the project which the protected environment is created against.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -103,24 +103,24 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectProtectedEnvironmentState | undefined;
-            resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
-            resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
-            resourceInputs["deployAccessLevelsAttributes"] = state ? state.deployAccessLevelsAttributes : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["approvalRules"] = state?.approvalRules;
+            resourceInputs["deployAccessLevels"] = state?.deployAccessLevels;
+            resourceInputs["deployAccessLevelsAttributes"] = state?.deployAccessLevelsAttributes;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectProtectedEnvironmentArgs | undefined;
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
-            resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
-            resourceInputs["deployAccessLevelsAttributes"] = args ? args.deployAccessLevelsAttributes : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["approvalRules"] = args?.approvalRules;
+            resourceInputs["deployAccessLevels"] = args?.deployAccessLevels;
+            resourceInputs["deployAccessLevelsAttributes"] = args?.deployAccessLevelsAttributes;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectProtectedEnvironment.__pulumiType, name, resourceInputs, opts);

@@ -62,27 +62,27 @@ export class ProjectWikiPage extends pulumi.CustomResource {
     /**
      * Content of the wiki page. Must be at least 1 character long.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The encoding used for the wiki page content.
      */
-    public /*out*/ readonly encoding!: pulumi.Output<string>;
+    declare public /*out*/ readonly encoding: pulumi.Output<string>;
     /**
      * Format of the wiki page (auto-generated if not provided). Valid values are: `markdown`, `rdoc`, `asciidoc`, `org`.
      */
-    public readonly format!: pulumi.Output<string>;
+    declare public readonly format: pulumi.Output<string>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Slug of the wiki page.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * Title of the wiki page.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a ProjectWikiPage resource with the given unique name, arguments, and options.
@@ -97,27 +97,27 @@ export class ProjectWikiPage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectWikiPageState | undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["encoding"] = state ? state.encoding : undefined;
-            resourceInputs["format"] = state ? state.format : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["encoding"] = state?.encoding;
+            resourceInputs["format"] = state?.format;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as ProjectWikiPageArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["title"] = args?.title;
             resourceInputs["encoding"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;
         }

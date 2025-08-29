@@ -76,43 +76,43 @@ export class ProjectVariable extends pulumi.CustomResource {
     /**
      * The description of the variable.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
-    public readonly environmentScope!: pulumi.Output<string>;
+    declare public readonly environmentScope: pulumi.Output<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
      */
-    public readonly hidden!: pulumi.Output<boolean>;
+    declare public readonly hidden: pulumi.Output<boolean>;
     /**
      * The name of the variable.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
      */
-    public readonly masked!: pulumi.Output<boolean>;
+    declare public readonly masked: pulumi.Output<boolean>;
     /**
      * The name or id of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
-    public readonly protected!: pulumi.Output<boolean>;
+    declare public readonly protected: pulumi.Output<boolean>;
     /**
      * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      */
-    public readonly raw!: pulumi.Output<boolean>;
+    declare public readonly raw: pulumi.Output<boolean>;
     /**
      * The value of the variable.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
      */
-    public readonly variableType!: pulumi.Output<string>;
+    declare public readonly variableType: pulumi.Output<string>;
 
     /**
      * Create a ProjectVariable resource with the given unique name, arguments, and options.
@@ -127,37 +127,37 @@ export class ProjectVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectVariableState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
-            resourceInputs["hidden"] = state ? state.hidden : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["masked"] = state ? state.masked : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protected"] = state ? state.protected : undefined;
-            resourceInputs["raw"] = state ? state.raw : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["variableType"] = state ? state.variableType : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environmentScope"] = state?.environmentScope;
+            resourceInputs["hidden"] = state?.hidden;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["masked"] = state?.masked;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protected"] = state?.protected;
+            resourceInputs["raw"] = state?.raw;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["variableType"] = state?.variableType;
         } else {
             const args = argsOrState as ProjectVariableArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
-            resourceInputs["hidden"] = args ? args.hidden : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["masked"] = args ? args.masked : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protected"] = args ? args.protected : undefined;
-            resourceInputs["raw"] = args ? args.raw : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["variableType"] = args ? args.variableType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environmentScope"] = args?.environmentScope;
+            resourceInputs["hidden"] = args?.hidden;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["masked"] = args?.masked;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protected"] = args?.protected;
+            resourceInputs["raw"] = args?.raw;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["variableType"] = args?.variableType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectVariable.__pulumiType, name, resourceInputs, opts);

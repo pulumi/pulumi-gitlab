@@ -95,43 +95,43 @@ export class PersonalAccessToken extends pulumi.CustomResource {
     /**
      * True if the token is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the personal access token.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
-    public readonly expiresAt!: pulumi.Output<string>;
+    declare public readonly expiresAt: pulumi.Output<string>;
     /**
      * The name of the personal access token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * True if the token is revoked.
      */
-    public /*out*/ readonly revoked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly revoked: pulumi.Output<boolean>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    public readonly rotationConfiguration!: pulumi.Output<outputs.PersonalAccessTokenRotationConfiguration | undefined>;
+    declare public readonly rotationConfiguration: pulumi.Output<outputs.PersonalAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * The token of the personal access token. **Note**: the token is not available for imported resources.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * The ID of the user.
      */
-    public readonly userId!: pulumi.Output<number>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a PersonalAccessToken resource with the given unique name, arguments, and options.
@@ -146,30 +146,30 @@ export class PersonalAccessToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PersonalAccessTokenState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["revoked"] = state ? state.revoked : undefined;
-            resourceInputs["rotationConfiguration"] = state ? state.rotationConfiguration : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["revoked"] = state?.revoked;
+            resourceInputs["rotationConfiguration"] = state?.rotationConfiguration;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as PersonalAccessTokenArgs | undefined;
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rotationConfiguration"] = args ? args.rotationConfiguration : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rotationConfiguration"] = args?.rotationConfiguration;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;

@@ -76,31 +76,31 @@ export class InstanceVariable extends pulumi.CustomResource {
     /**
      * The description of the variable. Maximum of 255 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the variable.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
      */
-    public readonly masked!: pulumi.Output<boolean | undefined>;
+    declare public readonly masked: pulumi.Output<boolean | undefined>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    public readonly protected!: pulumi.Output<boolean | undefined>;
+    declare public readonly protected: pulumi.Output<boolean | undefined>;
     /**
      * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
      */
-    public readonly raw!: pulumi.Output<boolean | undefined>;
+    declare public readonly raw: pulumi.Output<boolean | undefined>;
     /**
      * The value of the variable.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
-    public readonly variableType!: pulumi.Output<string | undefined>;
+    declare public readonly variableType: pulumi.Output<string | undefined>;
 
     /**
      * Create a InstanceVariable resource with the given unique name, arguments, and options.
@@ -115,28 +115,28 @@ export class InstanceVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceVariableState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["masked"] = state ? state.masked : undefined;
-            resourceInputs["protected"] = state ? state.protected : undefined;
-            resourceInputs["raw"] = state ? state.raw : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["variableType"] = state ? state.variableType : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["masked"] = state?.masked;
+            resourceInputs["protected"] = state?.protected;
+            resourceInputs["raw"] = state?.raw;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["variableType"] = state?.variableType;
         } else {
             const args = argsOrState as InstanceVariableArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["masked"] = args ? args.masked : undefined;
-            resourceInputs["protected"] = args ? args.protected : undefined;
-            resourceInputs["raw"] = args ? args.raw : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["variableType"] = args ? args.variableType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["masked"] = args?.masked;
+            resourceInputs["protected"] = args?.protected;
+            resourceInputs["raw"] = args?.raw;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["variableType"] = args?.variableType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceVariable.__pulumiType, name, resourceInputs, opts);

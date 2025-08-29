@@ -91,59 +91,59 @@ export class User extends pulumi.CustomResource {
     /**
      * Boolean, defaults to false. Whether to allow the user to create groups.
      */
-    public readonly canCreateGroup!: pulumi.Output<boolean | undefined>;
+    declare public readonly canCreateGroup: pulumi.Output<boolean | undefined>;
     /**
      * The e-mail address of the user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * Set user password to a random value
      */
-    public readonly forceRandomPassword!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceRandomPassword: pulumi.Output<boolean | undefined>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
-    public readonly isAdmin!: pulumi.Output<boolean | undefined>;
+    declare public readonly isAdmin: pulumi.Output<boolean | undefined>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
-    public readonly isExternal!: pulumi.Output<boolean | undefined>;
+    declare public readonly isExternal: pulumi.Output<boolean | undefined>;
     /**
      * The name of the user.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the user's namespace.
      */
-    public readonly namespaceId!: pulumi.Output<number>;
+    declare public readonly namespaceId: pulumi.Output<number>;
     /**
      * The note associated to the user.
      */
-    public readonly note!: pulumi.Output<string | undefined>;
+    declare public readonly note: pulumi.Output<string | undefined>;
     /**
      * The password of the user.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */
-    public readonly projectsLimit!: pulumi.Output<number | undefined>;
+    declare public readonly projectsLimit: pulumi.Output<number | undefined>;
     /**
      * Boolean, defaults to false. Send user password reset link.
      */
-    public readonly resetPassword!: pulumi.Output<boolean | undefined>;
+    declare public readonly resetPassword: pulumi.Output<boolean | undefined>;
     /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
-    public readonly skipConfirmation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipConfirmation: pulumi.Output<boolean | undefined>;
     /**
      * String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * The username of the user.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -158,42 +158,42 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["canCreateGroup"] = state ? state.canCreateGroup : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["forceRandomPassword"] = state ? state.forceRandomPassword : undefined;
-            resourceInputs["isAdmin"] = state ? state.isAdmin : undefined;
-            resourceInputs["isExternal"] = state ? state.isExternal : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["note"] = state ? state.note : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["projectsLimit"] = state ? state.projectsLimit : undefined;
-            resourceInputs["resetPassword"] = state ? state.resetPassword : undefined;
-            resourceInputs["skipConfirmation"] = state ? state.skipConfirmation : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["canCreateGroup"] = state?.canCreateGroup;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["forceRandomPassword"] = state?.forceRandomPassword;
+            resourceInputs["isAdmin"] = state?.isAdmin;
+            resourceInputs["isExternal"] = state?.isExternal;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["note"] = state?.note;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["projectsLimit"] = state?.projectsLimit;
+            resourceInputs["resetPassword"] = state?.resetPassword;
+            resourceInputs["skipConfirmation"] = state?.skipConfirmation;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["canCreateGroup"] = args ? args.canCreateGroup : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["forceRandomPassword"] = args ? args.forceRandomPassword : undefined;
-            resourceInputs["isAdmin"] = args ? args.isAdmin : undefined;
-            resourceInputs["isExternal"] = args ? args.isExternal : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["note"] = args ? args.note : undefined;
+            resourceInputs["canCreateGroup"] = args?.canCreateGroup;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["forceRandomPassword"] = args?.forceRandomPassword;
+            resourceInputs["isAdmin"] = args?.isAdmin;
+            resourceInputs["isExternal"] = args?.isExternal;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["note"] = args?.note;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["projectsLimit"] = args ? args.projectsLimit : undefined;
-            resourceInputs["resetPassword"] = args ? args.resetPassword : undefined;
-            resourceInputs["skipConfirmation"] = args ? args.skipConfirmation : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["projectsLimit"] = args?.projectsLimit;
+            resourceInputs["resetPassword"] = args?.resetPassword;
+            resourceInputs["skipConfirmation"] = args?.skipConfirmation;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

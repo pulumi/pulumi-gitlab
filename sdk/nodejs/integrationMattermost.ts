@@ -84,95 +84,95 @@ export class IntegrationMattermost extends pulumi.CustomResource {
     /**
      * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
      */
-    public readonly branchesToBeNotified!: pulumi.Output<string>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    public readonly confidentialIssueChannel!: pulumi.Output<string | undefined>;
+    declare public readonly confidentialIssueChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for confidential issues events.
      */
-    public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
+    declare public readonly confidentialIssuesEvents: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive confidential note events notifications.
      */
-    public readonly confidentialNoteChannel!: pulumi.Output<string | undefined>;
+    declare public readonly confidentialNoteChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
+    declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive issue events notifications.
      */
-    public readonly issueChannel!: pulumi.Output<string | undefined>;
+    declare public readonly issueChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for issues events.
      */
-    public readonly issuesEvents!: pulumi.Output<boolean>;
+    declare public readonly issuesEvents: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    public readonly mergeRequestChannel!: pulumi.Output<string | undefined>;
+    declare public readonly mergeRequestChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for merge requests events.
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    public readonly noteChannel!: pulumi.Output<string | undefined>;
+    declare public readonly noteChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for note events.
      */
-    public readonly noteEvents!: pulumi.Output<boolean>;
+    declare public readonly noteEvents: pulumi.Output<boolean>;
     /**
      * Send notifications for broken pipelines.
      */
-    public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean>;
+    declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    public readonly pipelineChannel!: pulumi.Output<string | undefined>;
+    declare public readonly pipelineChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    public readonly pipelineEvents!: pulumi.Output<boolean>;
+    declare public readonly pipelineEvents: pulumi.Output<boolean>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the channel to receive push events notifications.
      */
-    public readonly pushChannel!: pulumi.Output<string | undefined>;
+    declare public readonly pushChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean>;
+    declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    public readonly tagPushChannel!: pulumi.Output<string | undefined>;
+    declare public readonly tagPushChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
      * Username to use.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
-    public readonly webhook!: pulumi.Output<string>;
+    declare public readonly webhook: pulumi.Output<string>;
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    public readonly wikiPageChannel!: pulumi.Output<string | undefined>;
+    declare public readonly wikiPageChannel: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    public readonly wikiPageEvents!: pulumi.Output<boolean>;
+    declare public readonly wikiPageEvents: pulumi.Output<boolean>;
 
     /**
      * Create a IntegrationMattermost resource with the given unique name, arguments, and options.
@@ -187,60 +187,60 @@ export class IntegrationMattermost extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationMattermostState | undefined;
-            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            resourceInputs["confidentialIssueChannel"] = state ? state.confidentialIssueChannel : undefined;
-            resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteChannel"] = state ? state.confidentialNoteChannel : undefined;
-            resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
-            resourceInputs["issueChannel"] = state ? state.issueChannel : undefined;
-            resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            resourceInputs["mergeRequestChannel"] = state ? state.mergeRequestChannel : undefined;
-            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            resourceInputs["noteChannel"] = state ? state.noteChannel : undefined;
-            resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["pipelineChannel"] = state ? state.pipelineChannel : undefined;
-            resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pushChannel"] = state ? state.pushChannel : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["tagPushChannel"] = state ? state.tagPushChannel : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["webhook"] = state ? state.webhook : undefined;
-            resourceInputs["wikiPageChannel"] = state ? state.wikiPageChannel : undefined;
-            resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = state?.branchesToBeNotified;
+            resourceInputs["confidentialIssueChannel"] = state?.confidentialIssueChannel;
+            resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteChannel"] = state?.confidentialNoteChannel;
+            resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
+            resourceInputs["issueChannel"] = state?.issueChannel;
+            resourceInputs["issuesEvents"] = state?.issuesEvents;
+            resourceInputs["mergeRequestChannel"] = state?.mergeRequestChannel;
+            resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["noteChannel"] = state?.noteChannel;
+            resourceInputs["noteEvents"] = state?.noteEvents;
+            resourceInputs["notifyOnlyBrokenPipelines"] = state?.notifyOnlyBrokenPipelines;
+            resourceInputs["pipelineChannel"] = state?.pipelineChannel;
+            resourceInputs["pipelineEvents"] = state?.pipelineEvents;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pushChannel"] = state?.pushChannel;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["tagPushChannel"] = state?.tagPushChannel;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["webhook"] = state?.webhook;
+            resourceInputs["wikiPageChannel"] = state?.wikiPageChannel;
+            resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
             const args = argsOrState as IntegrationMattermostArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.webhook === undefined) && !opts.urn) {
+            if (args?.webhook === undefined && !opts.urn) {
                 throw new Error("Missing required property 'webhook'");
             }
-            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            resourceInputs["confidentialIssueChannel"] = args ? args.confidentialIssueChannel : undefined;
-            resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteChannel"] = args ? args.confidentialNoteChannel : undefined;
-            resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
-            resourceInputs["issueChannel"] = args ? args.issueChannel : undefined;
-            resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
-            resourceInputs["mergeRequestChannel"] = args ? args.mergeRequestChannel : undefined;
-            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            resourceInputs["noteChannel"] = args ? args.noteChannel : undefined;
-            resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["pipelineChannel"] = args ? args.pipelineChannel : undefined;
-            resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pushChannel"] = args ? args.pushChannel : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["tagPushChannel"] = args ? args.tagPushChannel : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["webhook"] = args ? args.webhook : undefined;
-            resourceInputs["wikiPageChannel"] = args ? args.wikiPageChannel : undefined;
-            resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = args?.branchesToBeNotified;
+            resourceInputs["confidentialIssueChannel"] = args?.confidentialIssueChannel;
+            resourceInputs["confidentialIssuesEvents"] = args?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteChannel"] = args?.confidentialNoteChannel;
+            resourceInputs["confidentialNoteEvents"] = args?.confidentialNoteEvents;
+            resourceInputs["issueChannel"] = args?.issueChannel;
+            resourceInputs["issuesEvents"] = args?.issuesEvents;
+            resourceInputs["mergeRequestChannel"] = args?.mergeRequestChannel;
+            resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["noteChannel"] = args?.noteChannel;
+            resourceInputs["noteEvents"] = args?.noteEvents;
+            resourceInputs["notifyOnlyBrokenPipelines"] = args?.notifyOnlyBrokenPipelines;
+            resourceInputs["pipelineChannel"] = args?.pipelineChannel;
+            resourceInputs["pipelineEvents"] = args?.pipelineEvents;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pushChannel"] = args?.pushChannel;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["tagPushChannel"] = args?.tagPushChannel;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["webhook"] = args?.webhook;
+            resourceInputs["wikiPageChannel"] = args?.wikiPageChannel;
+            resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IntegrationMattermost.__pulumiType, name, resourceInputs, opts);

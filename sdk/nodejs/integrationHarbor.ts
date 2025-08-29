@@ -87,31 +87,31 @@ export class IntegrationHarbor extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Password for authentication with the Harbor server, if authentication is required by the server.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * ID of the GitLab project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Harbor URL. Example: `http://harbor.example.com`
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    public readonly useInheritedSettings!: pulumi.Output<boolean>;
+    declare public readonly useInheritedSettings: pulumi.Output<boolean>;
     /**
      * Username for authentication with the Harbor server, if authentication is required by the server.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a IntegrationHarbor resource with the given unique name, arguments, and options.
@@ -126,36 +126,36 @@ export class IntegrationHarbor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationHarborState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["useInheritedSettings"] = state ? state.useInheritedSettings : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["useInheritedSettings"] = state?.useInheritedSettings;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as IntegrationHarborArgs | undefined;
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["useInheritedSettings"] = args ? args.useInheritedSettings : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["useInheritedSettings"] = args?.useInheritedSettings;
+            resourceInputs["username"] = args?.username;
             resourceInputs["active"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

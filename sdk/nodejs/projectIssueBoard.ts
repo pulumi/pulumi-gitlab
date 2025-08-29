@@ -122,31 +122,31 @@ export class ProjectIssueBoard extends pulumi.CustomResource {
     /**
      * The assignee the board should be scoped to. Requires a GitLab EE license.
      */
-    public readonly assigneeId!: pulumi.Output<number | undefined>;
+    declare public readonly assigneeId: pulumi.Output<number | undefined>;
     /**
      * The list of label names which the board should be scoped to. Requires a GitLab EE license.
      */
-    public readonly labels!: pulumi.Output<string[] | undefined>;
+    declare public readonly labels: pulumi.Output<string[] | undefined>;
     /**
      * The list of issue board lists
      */
-    public readonly lists!: pulumi.Output<outputs.ProjectIssueBoardList[] | undefined>;
+    declare public readonly lists: pulumi.Output<outputs.ProjectIssueBoardList[] | undefined>;
     /**
      * The milestone the board should be scoped to. Requires a GitLab EE license.
      */
-    public readonly milestoneId!: pulumi.Output<number | undefined>;
+    declare public readonly milestoneId: pulumi.Output<number | undefined>;
     /**
      * The name of the board.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or full path of the project maintained by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
      */
-    public readonly weight!: pulumi.Output<number | undefined>;
+    declare public readonly weight: pulumi.Output<number | undefined>;
 
     /**
      * Create a ProjectIssueBoard resource with the given unique name, arguments, and options.
@@ -161,25 +161,25 @@ export class ProjectIssueBoard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIssueBoardState | undefined;
-            resourceInputs["assigneeId"] = state ? state.assigneeId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lists"] = state ? state.lists : undefined;
-            resourceInputs["milestoneId"] = state ? state.milestoneId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["assigneeId"] = state?.assigneeId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lists"] = state?.lists;
+            resourceInputs["milestoneId"] = state?.milestoneId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as ProjectIssueBoardArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["assigneeId"] = args ? args.assigneeId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lists"] = args ? args.lists : undefined;
-            resourceInputs["milestoneId"] = args ? args.milestoneId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["assigneeId"] = args?.assigneeId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lists"] = args?.lists;
+            resourceInputs["milestoneId"] = args?.milestoneId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectIssueBoard.__pulumiType, name, resourceInputs, opts);

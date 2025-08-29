@@ -70,27 +70,27 @@ export class Topic extends pulumi.CustomResource {
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    public readonly avatar!: pulumi.Output<string | undefined>;
+    declare public readonly avatar: pulumi.Output<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    public readonly avatarHash!: pulumi.Output<string>;
+    declare public readonly avatarHash: pulumi.Output<string>;
     /**
      * The URL of the avatar image.
      */
-    public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly avatarUrl: pulumi.Output<string>;
     /**
      * A text describing the topic.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The topic's name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The topic's description.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -105,22 +105,22 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["avatar"] = state ? state.avatar : undefined;
-            resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
-            resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["avatar"] = state?.avatar;
+            resourceInputs["avatarHash"] = state?.avatarHash;
+            resourceInputs["avatarUrl"] = state?.avatarUrl;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["avatar"] = args ? args.avatar : undefined;
-            resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["avatar"] = args?.avatar;
+            resourceInputs["avatarHash"] = args?.avatarHash;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["title"] = args?.title;
             resourceInputs["avatarUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

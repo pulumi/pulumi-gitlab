@@ -82,43 +82,43 @@ export class ProjectIntegrationJenkins extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Enable SSL verification. Defaults to `true` (enabled).
      */
-    public readonly enableSslVerification!: pulumi.Output<boolean>;
+    declare public readonly enableSslVerification: pulumi.Output<boolean>;
     /**
      * Jenkins URL like `http://jenkins.example.com`
      */
-    public readonly jenkinsUrl!: pulumi.Output<string>;
+    declare public readonly jenkinsUrl: pulumi.Output<string>;
     /**
      * Enable notifications for merge request events.
      */
-    public readonly mergeRequestEvents!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestEvents: pulumi.Output<boolean>;
     /**
      * Password for authentication with the Jenkins server, if authentication is required by the server.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL-friendly project name. Example: `myProjectName`.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Enable notifications for push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean>;
+    declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
      * Enable notifications for tag push events.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
      * Username for authentication with the Jenkins server, if authentication is required by the server.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a ProjectIntegrationJenkins resource with the given unique name, arguments, and options.
@@ -133,36 +133,36 @@ export class ProjectIntegrationJenkins extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIntegrationJenkinsState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
-            resourceInputs["jenkinsUrl"] = state ? state.jenkinsUrl : undefined;
-            resourceInputs["mergeRequestEvents"] = state ? state.mergeRequestEvents : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["enableSslVerification"] = state?.enableSslVerification;
+            resourceInputs["jenkinsUrl"] = state?.jenkinsUrl;
+            resourceInputs["mergeRequestEvents"] = state?.mergeRequestEvents;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ProjectIntegrationJenkinsArgs | undefined;
-            if ((!args || args.jenkinsUrl === undefined) && !opts.urn) {
+            if (args?.jenkinsUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jenkinsUrl'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
-            resourceInputs["jenkinsUrl"] = args ? args.jenkinsUrl : undefined;
-            resourceInputs["mergeRequestEvents"] = args ? args.mergeRequestEvents : undefined;
+            resourceInputs["enableSslVerification"] = args?.enableSslVerification;
+            resourceInputs["jenkinsUrl"] = args?.jenkinsUrl;
+            resourceInputs["mergeRequestEvents"] = args?.mergeRequestEvents;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
+            resourceInputs["username"] = args?.username;
             resourceInputs["active"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

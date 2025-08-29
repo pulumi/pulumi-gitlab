@@ -78,31 +78,31 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      */
-    public readonly expiresAt!: pulumi.Output<string>;
+    declare public readonly expiresAt: pulumi.Output<string>;
     /**
      * The ID of the group.
      */
-    public readonly groupId!: pulumi.Output<number>;
+    declare public readonly groupId: pulumi.Output<number>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances.
      */
-    public readonly memberRoleId!: pulumi.Output<number>;
+    declare public readonly memberRoleId: pulumi.Output<number>;
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
-    public readonly skipSubresourcesOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly skipSubresourcesOnDestroy: pulumi.Output<boolean>;
     /**
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      */
-    public readonly unassignIssuablesOnDestroy!: pulumi.Output<boolean>;
+    declare public readonly unassignIssuablesOnDestroy: pulumi.Output<boolean>;
     /**
      * The ID of the user.
      */
-    public readonly userId!: pulumi.Output<number>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a GroupMembership resource with the given unique name, arguments, and options.
@@ -117,31 +117,31 @@ export class GroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
-            resourceInputs["skipSubresourcesOnDestroy"] = state ? state.skipSubresourcesOnDestroy : undefined;
-            resourceInputs["unassignIssuablesOnDestroy"] = state ? state.unassignIssuablesOnDestroy : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["memberRoleId"] = state?.memberRoleId;
+            resourceInputs["skipSubresourcesOnDestroy"] = state?.skipSubresourcesOnDestroy;
+            resourceInputs["unassignIssuablesOnDestroy"] = state?.unassignIssuablesOnDestroy;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !opts.urn) {
+            if (args?.accessLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
-            resourceInputs["skipSubresourcesOnDestroy"] = args ? args.skipSubresourcesOnDestroy : undefined;
-            resourceInputs["unassignIssuablesOnDestroy"] = args ? args.unassignIssuablesOnDestroy : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["memberRoleId"] = args?.memberRoleId;
+            resourceInputs["skipSubresourcesOnDestroy"] = args?.skipSubresourcesOnDestroy;
+            resourceInputs["unassignIssuablesOnDestroy"] = args?.unassignIssuablesOnDestroy;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupMembership.__pulumiType, name, resourceInputs, opts);

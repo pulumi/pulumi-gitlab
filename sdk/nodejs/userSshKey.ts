@@ -79,27 +79,27 @@ export class UserSshKey extends pulumi.CustomResource {
     /**
      * The time when this key was created in GitLab.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
      * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The ID of the ssh key.
      */
-    public /*out*/ readonly keyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly keyId: pulumi.Output<number>;
     /**
      * The title of the ssh key.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      */
-    public readonly userId!: pulumi.Output<number>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a UserSshKey resource with the given unique name, arguments, and options.
@@ -114,24 +114,24 @@ export class UserSshKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserSshKeyState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserSshKeyArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["keyId"] = undefined /*out*/;
         }

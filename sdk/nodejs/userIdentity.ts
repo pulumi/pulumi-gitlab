@@ -92,15 +92,15 @@ export class UserIdentity extends pulumi.CustomResource {
     /**
      * The external provider name.
      */
-    public readonly externalProvider!: pulumi.Output<string>;
+    declare public readonly externalProvider: pulumi.Output<string>;
     /**
      * A specific external authentication provider UID.
      */
-    public readonly externalUid!: pulumi.Output<string>;
+    declare public readonly externalUid: pulumi.Output<string>;
     /**
      * The GitLab ID of the user.
      */
-    public readonly userId!: pulumi.Output<number>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a UserIdentity resource with the given unique name, arguments, and options.
@@ -115,23 +115,23 @@ export class UserIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserIdentityState | undefined;
-            resourceInputs["externalProvider"] = state ? state.externalProvider : undefined;
-            resourceInputs["externalUid"] = state ? state.externalUid : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["externalProvider"] = state?.externalProvider;
+            resourceInputs["externalUid"] = state?.externalUid;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserIdentityArgs | undefined;
-            if ((!args || args.externalProvider === undefined) && !opts.urn) {
+            if (args?.externalProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalProvider'");
             }
-            if ((!args || args.externalUid === undefined) && !opts.urn) {
+            if (args?.externalUid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalUid'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["externalProvider"] = args ? args.externalProvider : undefined;
-            resourceInputs["externalUid"] = args ? args.externalUid : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["externalProvider"] = args?.externalProvider;
+            resourceInputs["externalUid"] = args?.externalUid;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserIdentity.__pulumiType, name, resourceInputs, opts);
