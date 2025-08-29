@@ -81,51 +81,51 @@ export class IntegrationEmailsOnPush extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      */
-    public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string | undefined>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Disable code diffs.
      */
-    public readonly disableDiffs!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableDiffs: pulumi.Output<boolean | undefined>;
     /**
      * ID or full-path of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Enable notifications for push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly pushEvents: pulumi.Output<boolean | undefined>;
     /**
      * Emails separated by whitespace.
      */
-    public readonly recipients!: pulumi.Output<string>;
+    declare public readonly recipients: pulumi.Output<string>;
     /**
      * Send from committer.
      */
-    public readonly sendFromCommitterEmail!: pulumi.Output<boolean | undefined>;
+    declare public readonly sendFromCommitterEmail: pulumi.Output<boolean | undefined>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * Enable notifications for tag push events.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean | undefined>;
     /**
      * Title of the integration.
      */
-    public /*out*/ readonly title!: pulumi.Output<string>;
+    declare public /*out*/ readonly title: pulumi.Output<string>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a IntegrationEmailsOnPush resource with the given unique name, arguments, and options.
@@ -140,33 +140,33 @@ export class IntegrationEmailsOnPush extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationEmailsOnPushState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["disableDiffs"] = state ? state.disableDiffs : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["recipients"] = state ? state.recipients : undefined;
-            resourceInputs["sendFromCommitterEmail"] = state ? state.sendFromCommitterEmail : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["branchesToBeNotified"] = state?.branchesToBeNotified;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["disableDiffs"] = state?.disableDiffs;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["recipients"] = state?.recipients;
+            resourceInputs["sendFromCommitterEmail"] = state?.sendFromCommitterEmail;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as IntegrationEmailsOnPushArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.recipients === undefined) && !opts.urn) {
+            if (args?.recipients === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recipients'");
             }
-            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            resourceInputs["disableDiffs"] = args ? args.disableDiffs : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["recipients"] = args ? args.recipients : undefined;
-            resourceInputs["sendFromCommitterEmail"] = args ? args.sendFromCommitterEmail : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = args?.branchesToBeNotified;
+            resourceInputs["disableDiffs"] = args?.disableDiffs;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["recipients"] = args?.recipients;
+            resourceInputs["sendFromCommitterEmail"] = args?.sendFromCommitterEmail;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;

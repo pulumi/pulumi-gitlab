@@ -81,35 +81,35 @@ export class SystemHook extends pulumi.CustomResource {
     /**
      * The date and time the hook was created in ISO8601 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Do SSL verification when triggering the hook.
      */
-    public readonly enableSslVerification!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSslVerification: pulumi.Output<boolean | undefined>;
     /**
      * Trigger hook on merge requests events.
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean | undefined>;
     /**
      * When true, the hook fires on push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly pushEvents: pulumi.Output<boolean | undefined>;
     /**
      * Trigger hook on repository update events.
      */
-    public readonly repositoryUpdateEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly repositoryUpdateEvents: pulumi.Output<boolean | undefined>;
     /**
      * When true, the hook fires on new tags being pushed.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean | undefined>;
     /**
      * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * The hook URL.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a SystemHook resource with the given unique name, arguments, and options.
@@ -124,26 +124,26 @@ export class SystemHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SystemHookState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["enableSslVerification"] = state ? state.enableSslVerification : undefined;
-            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["repositoryUpdateEvents"] = state ? state.repositoryUpdateEvents : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["enableSslVerification"] = state?.enableSslVerification;
+            resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["repositoryUpdateEvents"] = state?.repositoryUpdateEvents;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as SystemHookArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["enableSslVerification"] = args ? args.enableSslVerification : undefined;
-            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["repositoryUpdateEvents"] = args ? args.repositoryUpdateEvents : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
+            resourceInputs["enableSslVerification"] = args?.enableSslVerification;
+            resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["repositoryUpdateEvents"] = args?.repositoryUpdateEvents;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["url"] = args?.url;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

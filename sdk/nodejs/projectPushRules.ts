@@ -81,59 +81,59 @@ export class ProjectPushRules extends pulumi.CustomResource {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    public readonly authorEmailRegex!: pulumi.Output<string>;
+    declare public readonly authorEmailRegex: pulumi.Output<string>;
     /**
      * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    public readonly branchNameRegex!: pulumi.Output<string>;
+    declare public readonly branchNameRegex: pulumi.Output<string>;
     /**
      * Users can only push commits to this repository that were committed with one of their own verified emails.
      */
-    public readonly commitCommitterCheck!: pulumi.Output<boolean>;
+    declare public readonly commitCommitterCheck: pulumi.Output<boolean>;
     /**
      * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
      */
-    public readonly commitCommitterNameCheck!: pulumi.Output<boolean>;
+    declare public readonly commitCommitterNameCheck: pulumi.Output<boolean>;
     /**
      * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      */
-    public readonly commitMessageNegativeRegex!: pulumi.Output<string>;
+    declare public readonly commitMessageNegativeRegex: pulumi.Output<string>;
     /**
      * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
      */
-    public readonly commitMessageRegex!: pulumi.Output<string>;
+    declare public readonly commitMessageRegex: pulumi.Output<string>;
     /**
      * Deny deleting a tag.
      */
-    public readonly denyDeleteTag!: pulumi.Output<boolean>;
+    declare public readonly denyDeleteTag: pulumi.Output<boolean>;
     /**
      * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      */
-    public readonly fileNameRegex!: pulumi.Output<string>;
+    declare public readonly fileNameRegex: pulumi.Output<string>;
     /**
      * Maximum file size (MB).
      */
-    public readonly maxFileSize!: pulumi.Output<number>;
+    declare public readonly maxFileSize: pulumi.Output<number>;
     /**
      * Restrict commits by author (email) to existing GitLab users.
      */
-    public readonly memberCheck!: pulumi.Output<boolean>;
+    declare public readonly memberCheck: pulumi.Output<boolean>;
     /**
      * GitLab will reject any files that are likely to contain secrets.
      */
-    public readonly preventSecrets!: pulumi.Output<boolean>;
+    declare public readonly preventSecrets: pulumi.Output<boolean>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Reject commit when it’s not DCO certified.
      */
-    public readonly rejectNonDcoCommits!: pulumi.Output<boolean>;
+    declare public readonly rejectNonDcoCommits: pulumi.Output<boolean>;
     /**
      * Reject commit when it’s not signed.
      */
-    public readonly rejectUnsignedCommits!: pulumi.Output<boolean>;
+    declare public readonly rejectUnsignedCommits: pulumi.Output<boolean>;
 
     /**
      * Create a ProjectPushRules resource with the given unique name, arguments, and options.
@@ -148,39 +148,39 @@ export class ProjectPushRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectPushRulesState | undefined;
-            resourceInputs["authorEmailRegex"] = state ? state.authorEmailRegex : undefined;
-            resourceInputs["branchNameRegex"] = state ? state.branchNameRegex : undefined;
-            resourceInputs["commitCommitterCheck"] = state ? state.commitCommitterCheck : undefined;
-            resourceInputs["commitCommitterNameCheck"] = state ? state.commitCommitterNameCheck : undefined;
-            resourceInputs["commitMessageNegativeRegex"] = state ? state.commitMessageNegativeRegex : undefined;
-            resourceInputs["commitMessageRegex"] = state ? state.commitMessageRegex : undefined;
-            resourceInputs["denyDeleteTag"] = state ? state.denyDeleteTag : undefined;
-            resourceInputs["fileNameRegex"] = state ? state.fileNameRegex : undefined;
-            resourceInputs["maxFileSize"] = state ? state.maxFileSize : undefined;
-            resourceInputs["memberCheck"] = state ? state.memberCheck : undefined;
-            resourceInputs["preventSecrets"] = state ? state.preventSecrets : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rejectNonDcoCommits"] = state ? state.rejectNonDcoCommits : undefined;
-            resourceInputs["rejectUnsignedCommits"] = state ? state.rejectUnsignedCommits : undefined;
+            resourceInputs["authorEmailRegex"] = state?.authorEmailRegex;
+            resourceInputs["branchNameRegex"] = state?.branchNameRegex;
+            resourceInputs["commitCommitterCheck"] = state?.commitCommitterCheck;
+            resourceInputs["commitCommitterNameCheck"] = state?.commitCommitterNameCheck;
+            resourceInputs["commitMessageNegativeRegex"] = state?.commitMessageNegativeRegex;
+            resourceInputs["commitMessageRegex"] = state?.commitMessageRegex;
+            resourceInputs["denyDeleteTag"] = state?.denyDeleteTag;
+            resourceInputs["fileNameRegex"] = state?.fileNameRegex;
+            resourceInputs["maxFileSize"] = state?.maxFileSize;
+            resourceInputs["memberCheck"] = state?.memberCheck;
+            resourceInputs["preventSecrets"] = state?.preventSecrets;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rejectNonDcoCommits"] = state?.rejectNonDcoCommits;
+            resourceInputs["rejectUnsignedCommits"] = state?.rejectUnsignedCommits;
         } else {
             const args = argsOrState as ProjectPushRulesArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["authorEmailRegex"] = args ? args.authorEmailRegex : undefined;
-            resourceInputs["branchNameRegex"] = args ? args.branchNameRegex : undefined;
-            resourceInputs["commitCommitterCheck"] = args ? args.commitCommitterCheck : undefined;
-            resourceInputs["commitCommitterNameCheck"] = args ? args.commitCommitterNameCheck : undefined;
-            resourceInputs["commitMessageNegativeRegex"] = args ? args.commitMessageNegativeRegex : undefined;
-            resourceInputs["commitMessageRegex"] = args ? args.commitMessageRegex : undefined;
-            resourceInputs["denyDeleteTag"] = args ? args.denyDeleteTag : undefined;
-            resourceInputs["fileNameRegex"] = args ? args.fileNameRegex : undefined;
-            resourceInputs["maxFileSize"] = args ? args.maxFileSize : undefined;
-            resourceInputs["memberCheck"] = args ? args.memberCheck : undefined;
-            resourceInputs["preventSecrets"] = args ? args.preventSecrets : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rejectNonDcoCommits"] = args ? args.rejectNonDcoCommits : undefined;
-            resourceInputs["rejectUnsignedCommits"] = args ? args.rejectUnsignedCommits : undefined;
+            resourceInputs["authorEmailRegex"] = args?.authorEmailRegex;
+            resourceInputs["branchNameRegex"] = args?.branchNameRegex;
+            resourceInputs["commitCommitterCheck"] = args?.commitCommitterCheck;
+            resourceInputs["commitCommitterNameCheck"] = args?.commitCommitterNameCheck;
+            resourceInputs["commitMessageNegativeRegex"] = args?.commitMessageNegativeRegex;
+            resourceInputs["commitMessageRegex"] = args?.commitMessageRegex;
+            resourceInputs["denyDeleteTag"] = args?.denyDeleteTag;
+            resourceInputs["fileNameRegex"] = args?.fileNameRegex;
+            resourceInputs["maxFileSize"] = args?.maxFileSize;
+            resourceInputs["memberCheck"] = args?.memberCheck;
+            resourceInputs["preventSecrets"] = args?.preventSecrets;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rejectNonDcoCommits"] = args?.rejectNonDcoCommits;
+            resourceInputs["rejectUnsignedCommits"] = args?.rejectUnsignedCommits;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectPushRules.__pulumiType, name, resourceInputs, opts);

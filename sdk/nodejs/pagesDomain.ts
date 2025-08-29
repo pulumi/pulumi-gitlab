@@ -62,39 +62,39 @@ export class PagesDomain extends pulumi.CustomResource {
     /**
      * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
      */
-    public readonly autoSslEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoSslEnabled: pulumi.Output<boolean>;
     /**
      * The certificate in PEM format with intermediates following in most specific to least specific order.
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * The custom domain indicated by the user.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Whether the certificate is expired.
      */
-    public readonly expired!: pulumi.Output<boolean>;
+    declare public readonly expired: pulumi.Output<boolean>;
     /**
      * The certificate key in PEM format.
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL for the given domain.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * The verification code for the domain.
      */
-    public /*out*/ readonly verificationCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly verificationCode: pulumi.Output<string>;
     /**
      * The certificate data.
      */
-    public /*out*/ readonly verified!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly verified: pulumi.Output<boolean>;
 
     /**
      * Create a PagesDomain resource with the given unique name, arguments, and options.
@@ -109,29 +109,29 @@ export class PagesDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PagesDomainState | undefined;
-            resourceInputs["autoSslEnabled"] = state ? state.autoSslEnabled : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["expired"] = state ? state.expired : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["verificationCode"] = state ? state.verificationCode : undefined;
-            resourceInputs["verified"] = state ? state.verified : undefined;
+            resourceInputs["autoSslEnabled"] = state?.autoSslEnabled;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["expired"] = state?.expired;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["verificationCode"] = state?.verificationCode;
+            resourceInputs["verified"] = state?.verified;
         } else {
             const args = argsOrState as PagesDomainArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["autoSslEnabled"] = args ? args.autoSslEnabled : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["expired"] = args ? args.expired : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["autoSslEnabled"] = args?.autoSslEnabled;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["expired"] = args?.expired;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["project"] = args?.project;
             resourceInputs["url"] = undefined /*out*/;
             resourceInputs["verificationCode"] = undefined /*out*/;
             resourceInputs["verified"] = undefined /*out*/;

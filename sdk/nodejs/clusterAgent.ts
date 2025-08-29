@@ -96,23 +96,23 @@ export class ClusterAgent extends pulumi.CustomResource {
     /**
      * The ID of the agent.
      */
-    public /*out*/ readonly agentId!: pulumi.Output<number>;
+    declare public /*out*/ readonly agentId: pulumi.Output<number>;
     /**
      * The ISO8601 datetime when the agent was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The ID of the user who created the agent.
      */
-    public /*out*/ readonly createdByUserId!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdByUserId: pulumi.Output<number>;
     /**
      * The Name of the agent.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ID or full path of the project maintained by the authenticated user.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ClusterAgent resource with the given unique name, arguments, and options.
@@ -127,18 +127,18 @@ export class ClusterAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterAgentState | undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdByUserId"] = state ? state.createdByUserId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdByUserId"] = state?.createdByUserId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ClusterAgentArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdByUserId"] = undefined /*out*/;

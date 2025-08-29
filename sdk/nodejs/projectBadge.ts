@@ -98,27 +98,27 @@ export class ProjectBadge extends pulumi.CustomResource {
     /**
      * The image url which will be presented on project overview.
      */
-    public readonly imageUrl!: pulumi.Output<string>;
+    declare public readonly imageUrl: pulumi.Output<string>;
     /**
      * The url linked with the badge.
      */
-    public readonly linkUrl!: pulumi.Output<string>;
+    declare public readonly linkUrl: pulumi.Output<string>;
     /**
      * The name of the badge.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The id of the project to add the badge to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The imageUrl argument rendered (in case of use of placeholders).
      */
-    public /*out*/ readonly renderedImageUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly renderedImageUrl: pulumi.Output<string>;
     /**
      * The linkUrl argument rendered (in case of use of placeholders).
      */
-    public /*out*/ readonly renderedLinkUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly renderedLinkUrl: pulumi.Output<string>;
 
     /**
      * Create a ProjectBadge resource with the given unique name, arguments, and options.
@@ -133,27 +133,27 @@ export class ProjectBadge extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectBadgeState | undefined;
-            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
-            resourceInputs["linkUrl"] = state ? state.linkUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["renderedImageUrl"] = state ? state.renderedImageUrl : undefined;
-            resourceInputs["renderedLinkUrl"] = state ? state.renderedLinkUrl : undefined;
+            resourceInputs["imageUrl"] = state?.imageUrl;
+            resourceInputs["linkUrl"] = state?.linkUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["renderedImageUrl"] = state?.renderedImageUrl;
+            resourceInputs["renderedLinkUrl"] = state?.renderedLinkUrl;
         } else {
             const args = argsOrState as ProjectBadgeArgs | undefined;
-            if ((!args || args.imageUrl === undefined) && !opts.urn) {
+            if (args?.imageUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageUrl'");
             }
-            if ((!args || args.linkUrl === undefined) && !opts.urn) {
+            if (args?.linkUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linkUrl'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
-            resourceInputs["linkUrl"] = args ? args.linkUrl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["imageUrl"] = args?.imageUrl;
+            resourceInputs["linkUrl"] = args?.linkUrl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["renderedImageUrl"] = undefined /*out*/;
             resourceInputs["renderedLinkUrl"] = undefined /*out*/;
         }

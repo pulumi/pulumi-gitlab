@@ -79,51 +79,51 @@ export class Branch extends pulumi.CustomResource {
     /**
      * Bool, true if you can push to the branch.
      */
-    public /*out*/ readonly canPush!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly canPush: pulumi.Output<boolean>;
     /**
      * The commit associated with the branch ref.
      */
-    public /*out*/ readonly commits!: pulumi.Output<outputs.BranchCommit[]>;
+    declare public /*out*/ readonly commits: pulumi.Output<outputs.BranchCommit[]>;
     /**
      * Bool, true if branch is the default branch for the project.
      */
-    public /*out*/ readonly default!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly default: pulumi.Output<boolean>;
     /**
      * Bool, true if developer level access allows to merge branch.
      */
-    public /*out*/ readonly developerCanMerge!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly developerCanMerge: pulumi.Output<boolean>;
     /**
      * Bool, true if developer level access allows git push.
      */
-    public /*out*/ readonly developerCanPush!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly developerCanPush: pulumi.Output<boolean>;
     /**
      * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
      */
-    public readonly keepOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly keepOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Bool, true if the branch has been merged into its parent.
      */
-    public /*out*/ readonly merged!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly merged: pulumi.Output<boolean>;
     /**
      * The name for this branch.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or full path of the project which the branch is created against.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Bool, true if branch has branch protection.
      */
-    public /*out*/ readonly protected!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly protected: pulumi.Output<boolean>;
     /**
      * The ref which the branch is created from.
      */
-    public readonly ref!: pulumi.Output<string>;
+    declare public readonly ref: pulumi.Output<string>;
     /**
      * The url of the created branch (https).
      */
-    public /*out*/ readonly webUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webUrl: pulumi.Output<string>;
 
     /**
      * Create a Branch resource with the given unique name, arguments, and options.
@@ -138,30 +138,30 @@ export class Branch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BranchState | undefined;
-            resourceInputs["canPush"] = state ? state.canPush : undefined;
-            resourceInputs["commits"] = state ? state.commits : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["developerCanMerge"] = state ? state.developerCanMerge : undefined;
-            resourceInputs["developerCanPush"] = state ? state.developerCanPush : undefined;
-            resourceInputs["keepOnDestroy"] = state ? state.keepOnDestroy : undefined;
-            resourceInputs["merged"] = state ? state.merged : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protected"] = state ? state.protected : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["webUrl"] = state ? state.webUrl : undefined;
+            resourceInputs["canPush"] = state?.canPush;
+            resourceInputs["commits"] = state?.commits;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["developerCanMerge"] = state?.developerCanMerge;
+            resourceInputs["developerCanPush"] = state?.developerCanPush;
+            resourceInputs["keepOnDestroy"] = state?.keepOnDestroy;
+            resourceInputs["merged"] = state?.merged;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protected"] = state?.protected;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["webUrl"] = state?.webUrl;
         } else {
             const args = argsOrState as BranchArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.ref === undefined) && !opts.urn) {
+            if (args?.ref === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ref'");
             }
-            resourceInputs["keepOnDestroy"] = args ? args.keepOnDestroy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ref"] = args ? args.ref : undefined;
+            resourceInputs["keepOnDestroy"] = args?.keepOnDestroy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ref"] = args?.ref;
             resourceInputs["canPush"] = undefined /*out*/;
             resourceInputs["commits"] = undefined /*out*/;
             resourceInputs["default"] = undefined /*out*/;

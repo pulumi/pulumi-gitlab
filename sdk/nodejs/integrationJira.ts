@@ -83,80 +83,80 @@ export class IntegrationJira extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
      */
-    public readonly apiUrl!: pulumi.Output<string>;
+    declare public readonly apiUrl: pulumi.Output<string>;
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
-    public readonly commentOnEventEnabled!: pulumi.Output<boolean>;
+    declare public readonly commentOnEventEnabled: pulumi.Output<boolean>;
     /**
      * Enable notifications for commit events
      */
-    public readonly commitEvents!: pulumi.Output<boolean>;
+    declare public readonly commitEvents: pulumi.Output<boolean>;
     /**
      * Create time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Enable viewing Jira issues in GitLab.
      */
-    public readonly issuesEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly issuesEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
      */
-    public readonly jiraAuthType!: pulumi.Output<number | undefined>;
+    declare public readonly jiraAuthType: pulumi.Output<number | undefined>;
     /**
      * Prefix to match Jira issue keys.
      */
-    public readonly jiraIssuePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly jiraIssuePrefix: pulumi.Output<string | undefined>;
     /**
      * Regular expression to match Jira issue keys.
      */
-    public readonly jiraIssueRegex!: pulumi.Output<string | undefined>;
-    public readonly jiraIssueTransitionAutomatic!: pulumi.Output<boolean | undefined>;
+    declare public readonly jiraIssueRegex: pulumi.Output<string | undefined>;
+    declare public readonly jiraIssueTransitionAutomatic: pulumi.Output<boolean | undefined>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
-    public readonly jiraIssueTransitionId!: pulumi.Output<string | undefined>;
+    declare public readonly jiraIssueTransitionId: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for merge request events
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
      * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      */
-    public readonly projectKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly projectKeys: pulumi.Output<string[] | undefined>;
     /**
      * Title.
      */
-    public /*out*/ readonly title!: pulumi.Output<string>;
+    declare public /*out*/ readonly title: pulumi.Output<string>;
     /**
      * Update time.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    public readonly useInheritedSettings!: pulumi.Output<boolean | undefined>;
+    declare public readonly useInheritedSettings: pulumi.Output<boolean | undefined>;
     /**
      * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a IntegrationJira resource with the given unique name, arguments, and options.
@@ -171,53 +171,53 @@ export class IntegrationJira extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationJiraState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["apiUrl"] = state ? state.apiUrl : undefined;
-            resourceInputs["commentOnEventEnabled"] = state ? state.commentOnEventEnabled : undefined;
-            resourceInputs["commitEvents"] = state ? state.commitEvents : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["issuesEnabled"] = state ? state.issuesEnabled : undefined;
-            resourceInputs["jiraAuthType"] = state ? state.jiraAuthType : undefined;
-            resourceInputs["jiraIssuePrefix"] = state ? state.jiraIssuePrefix : undefined;
-            resourceInputs["jiraIssueRegex"] = state ? state.jiraIssueRegex : undefined;
-            resourceInputs["jiraIssueTransitionAutomatic"] = state ? state.jiraIssueTransitionAutomatic : undefined;
-            resourceInputs["jiraIssueTransitionId"] = state ? state.jiraIssueTransitionId : undefined;
-            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectKeys"] = state ? state.projectKeys : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["useInheritedSettings"] = state ? state.useInheritedSettings : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["apiUrl"] = state?.apiUrl;
+            resourceInputs["commentOnEventEnabled"] = state?.commentOnEventEnabled;
+            resourceInputs["commitEvents"] = state?.commitEvents;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["issuesEnabled"] = state?.issuesEnabled;
+            resourceInputs["jiraAuthType"] = state?.jiraAuthType;
+            resourceInputs["jiraIssuePrefix"] = state?.jiraIssuePrefix;
+            resourceInputs["jiraIssueRegex"] = state?.jiraIssueRegex;
+            resourceInputs["jiraIssueTransitionAutomatic"] = state?.jiraIssueTransitionAutomatic;
+            resourceInputs["jiraIssueTransitionId"] = state?.jiraIssueTransitionId;
+            resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectKeys"] = state?.projectKeys;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["useInheritedSettings"] = state?.useInheritedSettings;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as IntegrationJiraArgs | undefined;
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
-            resourceInputs["commentOnEventEnabled"] = args ? args.commentOnEventEnabled : undefined;
-            resourceInputs["commitEvents"] = args ? args.commitEvents : undefined;
-            resourceInputs["issuesEnabled"] = args ? args.issuesEnabled : undefined;
-            resourceInputs["jiraAuthType"] = args ? args.jiraAuthType : undefined;
-            resourceInputs["jiraIssuePrefix"] = args ? args.jiraIssuePrefix : undefined;
-            resourceInputs["jiraIssueRegex"] = args ? args.jiraIssueRegex : undefined;
-            resourceInputs["jiraIssueTransitionAutomatic"] = args ? args.jiraIssueTransitionAutomatic : undefined;
-            resourceInputs["jiraIssueTransitionId"] = args ? args.jiraIssueTransitionId : undefined;
-            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
+            resourceInputs["apiUrl"] = args?.apiUrl;
+            resourceInputs["commentOnEventEnabled"] = args?.commentOnEventEnabled;
+            resourceInputs["commitEvents"] = args?.commitEvents;
+            resourceInputs["issuesEnabled"] = args?.issuesEnabled;
+            resourceInputs["jiraAuthType"] = args?.jiraAuthType;
+            resourceInputs["jiraIssuePrefix"] = args?.jiraIssuePrefix;
+            resourceInputs["jiraIssueRegex"] = args?.jiraIssueRegex;
+            resourceInputs["jiraIssueTransitionAutomatic"] = args?.jiraIssueTransitionAutomatic;
+            resourceInputs["jiraIssueTransitionId"] = args?.jiraIssueTransitionId;
+            resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectKeys"] = args ? args.projectKeys : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["useInheritedSettings"] = args ? args.useInheritedSettings : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectKeys"] = args?.projectKeys;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["useInheritedSettings"] = args?.useInheritedSettings;
+            resourceInputs["username"] = args?.username;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;

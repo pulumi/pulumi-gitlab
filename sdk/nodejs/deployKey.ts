@@ -93,27 +93,27 @@ export class DeployKey extends pulumi.CustomResource {
     /**
      * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
-    public readonly canPush!: pulumi.Output<boolean | undefined>;
+    declare public readonly canPush: pulumi.Output<boolean | undefined>;
     /**
      * The id of the project deploy key.
      */
-    public /*out*/ readonly deployKeyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly deployKeyId: pulumi.Output<number>;
     /**
      * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
      * The public ssh key body.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A title to describe the deploy key with.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a DeployKey resource with the given unique name, arguments, and options.
@@ -128,28 +128,28 @@ export class DeployKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeployKeyState | undefined;
-            resourceInputs["canPush"] = state ? state.canPush : undefined;
-            resourceInputs["deployKeyId"] = state ? state.deployKeyId : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["canPush"] = state?.canPush;
+            resourceInputs["deployKeyId"] = state?.deployKeyId;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as DeployKeyArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["canPush"] = args ? args.canPush : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["canPush"] = args?.canPush;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["title"] = args?.title;
             resourceInputs["deployKeyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -91,59 +91,59 @@ export class IntegrationTelegram extends pulumi.CustomResource {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      */
-    public readonly branchesToBeNotified!: pulumi.Output<string>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string>;
     /**
      * Enable notifications for confidential issues events.
      */
-    public readonly confidentialIssuesEvents!: pulumi.Output<boolean>;
+    declare public readonly confidentialIssuesEvents: pulumi.Output<boolean>;
     /**
      * Enable notifications for confidential note events.
      */
-    public readonly confidentialNoteEvents!: pulumi.Output<boolean>;
+    declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
      * Enable notifications for issues events.
      */
-    public readonly issuesEvents!: pulumi.Output<boolean>;
+    declare public readonly issuesEvents: pulumi.Output<boolean>;
     /**
      * Enable notifications for merge requests events.
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
      * Enable notifications for note events.
      */
-    public readonly noteEvents!: pulumi.Output<boolean>;
+    declare public readonly noteEvents: pulumi.Output<boolean>;
     /**
      * Send notifications for broken pipelines.
      */
-    public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean>;
+    declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean>;
     /**
      * Enable notifications for pipeline events.
      */
-    public readonly pipelineEvents!: pulumi.Output<boolean>;
+    declare public readonly pipelineEvents: pulumi.Output<boolean>;
     /**
      * The ID or full path of the project to integrate with Telegram.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Enable notifications for push events.
      */
-    public readonly pushEvents!: pulumi.Output<boolean>;
+    declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
      * Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`)
      */
-    public readonly room!: pulumi.Output<string>;
+    declare public readonly room: pulumi.Output<string>;
     /**
      * Enable notifications for tag push events.
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
      * The Telegram bot token.
      */
-    public readonly token!: pulumi.Output<string>;
+    declare public readonly token: pulumi.Output<string>;
     /**
      * Enable notifications for wiki page events.
      */
-    public readonly wikiPageEvents!: pulumi.Output<boolean>;
+    declare public readonly wikiPageEvents: pulumi.Output<boolean>;
 
     /**
      * Create a IntegrationTelegram resource with the given unique name, arguments, and options.
@@ -158,72 +158,72 @@ export class IntegrationTelegram extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationTelegramState | undefined;
-            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
-            resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["room"] = state ? state.room : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = state?.branchesToBeNotified;
+            resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
+            resourceInputs["issuesEvents"] = state?.issuesEvents;
+            resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["noteEvents"] = state?.noteEvents;
+            resourceInputs["notifyOnlyBrokenPipelines"] = state?.notifyOnlyBrokenPipelines;
+            resourceInputs["pipelineEvents"] = state?.pipelineEvents;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["room"] = state?.room;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
             const args = argsOrState as IntegrationTelegramArgs | undefined;
-            if ((!args || args.confidentialIssuesEvents === undefined) && !opts.urn) {
+            if (args?.confidentialIssuesEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'confidentialIssuesEvents'");
             }
-            if ((!args || args.confidentialNoteEvents === undefined) && !opts.urn) {
+            if (args?.confidentialNoteEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'confidentialNoteEvents'");
             }
-            if ((!args || args.issuesEvents === undefined) && !opts.urn) {
+            if (args?.issuesEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuesEvents'");
             }
-            if ((!args || args.mergeRequestsEvents === undefined) && !opts.urn) {
+            if (args?.mergeRequestsEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mergeRequestsEvents'");
             }
-            if ((!args || args.noteEvents === undefined) && !opts.urn) {
+            if (args?.noteEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'noteEvents'");
             }
-            if ((!args || args.pipelineEvents === undefined) && !opts.urn) {
+            if (args?.pipelineEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pipelineEvents'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.pushEvents === undefined) && !opts.urn) {
+            if (args?.pushEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pushEvents'");
             }
-            if ((!args || args.room === undefined) && !opts.urn) {
+            if (args?.room === undefined && !opts.urn) {
                 throw new Error("Missing required property 'room'");
             }
-            if ((!args || args.tagPushEvents === undefined) && !opts.urn) {
+            if (args?.tagPushEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagPushEvents'");
             }
-            if ((!args || args.token === undefined) && !opts.urn) {
+            if (args?.token === undefined && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            if ((!args || args.wikiPageEvents === undefined) && !opts.urn) {
+            if (args?.wikiPageEvents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'wikiPageEvents'");
             }
-            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
-            resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
-            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["room"] = args ? args.room : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = args?.branchesToBeNotified;
+            resourceInputs["confidentialIssuesEvents"] = args?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteEvents"] = args?.confidentialNoteEvents;
+            resourceInputs["issuesEvents"] = args?.issuesEvents;
+            resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["noteEvents"] = args?.noteEvents;
+            resourceInputs["notifyOnlyBrokenPipelines"] = args?.notifyOnlyBrokenPipelines;
+            resourceInputs["pipelineEvents"] = args?.pipelineEvents;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["room"] = args?.room;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["token"] };

@@ -92,19 +92,19 @@ export class UserGpgKey extends pulumi.CustomResource {
     /**
      * The time when this key was created in GitLab.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The armored GPG public key.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The ID of the GPG key.
      */
-    public /*out*/ readonly keyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly keyId: pulumi.Output<number>;
     /**
      * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      */
-    public readonly userId!: pulumi.Output<number | undefined>;
+    declare public readonly userId: pulumi.Output<number | undefined>;
 
     /**
      * Create a UserGpgKey resource with the given unique name, arguments, and options.
@@ -119,17 +119,17 @@ export class UserGpgKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGpgKeyState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserGpgKeyArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["keyId"] = undefined /*out*/;
         }

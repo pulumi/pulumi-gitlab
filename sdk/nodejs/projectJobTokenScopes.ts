@@ -120,25 +120,25 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
     /**
      * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The ID or full path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID of the project.
      *
      * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      */
-    public readonly projectId!: pulumi.Output<number>;
+    declare public readonly projectId: pulumi.Output<number>;
     /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      */
-    public readonly targetGroupIds!: pulumi.Output<number[]>;
+    declare public readonly targetGroupIds: pulumi.Output<number[]>;
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      */
-    public readonly targetProjectIds!: pulumi.Output<number[]>;
+    declare public readonly targetProjectIds: pulumi.Output<number[]>;
 
     /**
      * Create a ProjectJobTokenScopes resource with the given unique name, arguments, and options.
@@ -153,18 +153,18 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectJobTokenScopesState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["targetGroupIds"] = state ? state.targetGroupIds : undefined;
-            resourceInputs["targetProjectIds"] = state ? state.targetProjectIds : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["targetGroupIds"] = state?.targetGroupIds;
+            resourceInputs["targetProjectIds"] = state?.targetProjectIds;
         } else {
             const args = argsOrState as ProjectJobTokenScopesArgs | undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["targetGroupIds"] = args ? args.targetGroupIds : undefined;
-            resourceInputs["targetProjectIds"] = args ? args.targetProjectIds : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["targetGroupIds"] = args?.targetGroupIds;
+            resourceInputs["targetProjectIds"] = args?.targetProjectIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectJobTokenScopes.__pulumiType, name, resourceInputs, opts);

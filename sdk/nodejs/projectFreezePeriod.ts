@@ -76,19 +76,19 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
     /**
      * The timezone.
      */
-    public readonly cronTimezone!: pulumi.Output<string | undefined>;
+    declare public readonly cronTimezone: pulumi.Output<string | undefined>;
     /**
      * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
      */
-    public readonly freezeEnd!: pulumi.Output<string>;
+    declare public readonly freezeEnd: pulumi.Output<string>;
     /**
      * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
      */
-    public readonly freezeStart!: pulumi.Output<string>;
+    declare public readonly freezeStart: pulumi.Output<string>;
     /**
      * The ID or URL-encoded path of the project to add the schedule to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectFreezePeriod resource with the given unique name, arguments, and options.
@@ -103,25 +103,25 @@ export class ProjectFreezePeriod extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectFreezePeriodState | undefined;
-            resourceInputs["cronTimezone"] = state ? state.cronTimezone : undefined;
-            resourceInputs["freezeEnd"] = state ? state.freezeEnd : undefined;
-            resourceInputs["freezeStart"] = state ? state.freezeStart : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["cronTimezone"] = state?.cronTimezone;
+            resourceInputs["freezeEnd"] = state?.freezeEnd;
+            resourceInputs["freezeStart"] = state?.freezeStart;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectFreezePeriodArgs | undefined;
-            if ((!args || args.freezeEnd === undefined) && !opts.urn) {
+            if (args?.freezeEnd === undefined && !opts.urn) {
                 throw new Error("Missing required property 'freezeEnd'");
             }
-            if ((!args || args.freezeStart === undefined) && !opts.urn) {
+            if (args?.freezeStart === undefined && !opts.urn) {
                 throw new Error("Missing required property 'freezeStart'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["cronTimezone"] = args ? args.cronTimezone : undefined;
-            resourceInputs["freezeEnd"] = args ? args.freezeEnd : undefined;
-            resourceInputs["freezeStart"] = args ? args.freezeStart : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cronTimezone"] = args?.cronTimezone;
+            resourceInputs["freezeEnd"] = args?.freezeEnd;
+            resourceInputs["freezeStart"] = args?.freezeStart;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectFreezePeriod.__pulumiType, name, resourceInputs, opts);

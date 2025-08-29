@@ -79,23 +79,23 @@ export class ProjectContainerRepositoryProtection extends pulumi.CustomResource 
     /**
      * Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
      */
-    public readonly minimumAccessLevelForDelete!: pulumi.Output<string | undefined>;
+    declare public readonly minimumAccessLevelForDelete: pulumi.Output<string | undefined>;
     /**
      * Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
      */
-    public readonly minimumAccessLevelForPush!: pulumi.Output<string | undefined>;
+    declare public readonly minimumAccessLevelForPush: pulumi.Output<string | undefined>;
     /**
      * ID or URL-encoded path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Unique ID of the protection rule.
      */
-    public /*out*/ readonly protectionRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly protectionRuleId: pulumi.Output<number>;
     /**
      * Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
      */
-    public readonly repositoryPathPattern!: pulumi.Output<string>;
+    declare public readonly repositoryPathPattern: pulumi.Output<string>;
 
     /**
      * Create a ProjectContainerRepositoryProtection resource with the given unique name, arguments, and options.
@@ -110,23 +110,23 @@ export class ProjectContainerRepositoryProtection extends pulumi.CustomResource 
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectContainerRepositoryProtectionState | undefined;
-            resourceInputs["minimumAccessLevelForDelete"] = state ? state.minimumAccessLevelForDelete : undefined;
-            resourceInputs["minimumAccessLevelForPush"] = state ? state.minimumAccessLevelForPush : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protectionRuleId"] = state ? state.protectionRuleId : undefined;
-            resourceInputs["repositoryPathPattern"] = state ? state.repositoryPathPattern : undefined;
+            resourceInputs["minimumAccessLevelForDelete"] = state?.minimumAccessLevelForDelete;
+            resourceInputs["minimumAccessLevelForPush"] = state?.minimumAccessLevelForPush;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protectionRuleId"] = state?.protectionRuleId;
+            resourceInputs["repositoryPathPattern"] = state?.repositoryPathPattern;
         } else {
             const args = argsOrState as ProjectContainerRepositoryProtectionArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.repositoryPathPattern === undefined) && !opts.urn) {
+            if (args?.repositoryPathPattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryPathPattern'");
             }
-            resourceInputs["minimumAccessLevelForDelete"] = args ? args.minimumAccessLevelForDelete : undefined;
-            resourceInputs["minimumAccessLevelForPush"] = args ? args.minimumAccessLevelForPush : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["repositoryPathPattern"] = args ? args.repositoryPathPattern : undefined;
+            resourceInputs["minimumAccessLevelForDelete"] = args?.minimumAccessLevelForDelete;
+            resourceInputs["minimumAccessLevelForPush"] = args?.minimumAccessLevelForPush;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["repositoryPathPattern"] = args?.repositoryPathPattern;
             resourceInputs["protectionRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

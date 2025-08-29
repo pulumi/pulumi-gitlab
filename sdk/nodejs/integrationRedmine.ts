@@ -85,23 +85,23 @@ export class IntegrationRedmine extends pulumi.CustomResource {
     /**
      * The URL to the Redmine project issue to link to this GitLab project.
      */
-    public readonly issuesUrl!: pulumi.Output<string>;
+    declare public readonly issuesUrl: pulumi.Output<string>;
     /**
      * The URL to use to create a new issue in the Redmine project linked to this GitLab project.
      */
-    public readonly newIssueUrl!: pulumi.Output<string>;
+    declare public readonly newIssueUrl: pulumi.Output<string>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL to the Redmine project to link to this GitLab project.
      */
-    public readonly projectUrl!: pulumi.Output<string>;
+    declare public readonly projectUrl: pulumi.Output<string>;
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    public readonly useInheritedSettings!: pulumi.Output<boolean>;
+    declare public readonly useInheritedSettings: pulumi.Output<boolean>;
 
     /**
      * Create a IntegrationRedmine resource with the given unique name, arguments, and options.
@@ -116,30 +116,30 @@ export class IntegrationRedmine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationRedmineState | undefined;
-            resourceInputs["issuesUrl"] = state ? state.issuesUrl : undefined;
-            resourceInputs["newIssueUrl"] = state ? state.newIssueUrl : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectUrl"] = state ? state.projectUrl : undefined;
-            resourceInputs["useInheritedSettings"] = state ? state.useInheritedSettings : undefined;
+            resourceInputs["issuesUrl"] = state?.issuesUrl;
+            resourceInputs["newIssueUrl"] = state?.newIssueUrl;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectUrl"] = state?.projectUrl;
+            resourceInputs["useInheritedSettings"] = state?.useInheritedSettings;
         } else {
             const args = argsOrState as IntegrationRedmineArgs | undefined;
-            if ((!args || args.issuesUrl === undefined) && !opts.urn) {
+            if (args?.issuesUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuesUrl'");
             }
-            if ((!args || args.newIssueUrl === undefined) && !opts.urn) {
+            if (args?.newIssueUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'newIssueUrl'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectUrl === undefined) && !opts.urn) {
+            if (args?.projectUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectUrl'");
             }
-            resourceInputs["issuesUrl"] = args ? args.issuesUrl : undefined;
-            resourceInputs["newIssueUrl"] = args ? args.newIssueUrl : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectUrl"] = args ? args.projectUrl : undefined;
-            resourceInputs["useInheritedSettings"] = args ? args.useInheritedSettings : undefined;
+            resourceInputs["issuesUrl"] = args?.issuesUrl;
+            resourceInputs["newIssueUrl"] = args?.newIssueUrl;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectUrl"] = args?.projectUrl;
+            resourceInputs["useInheritedSettings"] = args?.useInheritedSettings;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IntegrationRedmine.__pulumiType, name, resourceInputs, opts);

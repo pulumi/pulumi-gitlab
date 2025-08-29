@@ -24,34 +24,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:gitlab")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-     * Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-     * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+     * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
      * 
      */
     @Export(name="baseUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> baseUrl;
 
     /**
-     * @return This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-     * Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-     * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+     * @return This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
      * 
      */
     public Output<Optional<String>> baseUrl() {
         return Codegen.optional(this.baseUrl);
     }
     /**
-     * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-     * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+     * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
      * 
      */
     @Export(name="cacertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacertFile;
 
     /**
-     * @return This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-     * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+     * @return This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
      * 
      */
     public Output<Optional<String>> cacertFile() {
@@ -72,34 +66,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientCert);
     }
     /**
-     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-     * `client_cert` is set.
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
      * 
      */
     @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
-     * @return File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-     * `client_cert` is set.
+     * @return File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
      * 
      */
     public Output<Optional<String>> clientKey() {
         return Codegen.optional(this.clientKey);
     }
     /**
-     * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-     * used in this provider for authentication (using Bearer authorization token). See
-     * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+     * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
-     * @return The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-     * used in this provider for authentication (using Bearer authorization token). See
-     * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+     * @return The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      * 
      */
     public Output<Optional<String>> token() {

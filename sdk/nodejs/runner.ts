@@ -68,48 +68,48 @@ export class Runner extends pulumi.CustomResource {
     /**
      * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * The authentication token used for building a config.toml file. This value is not present when imported.
      */
-    public /*out*/ readonly authenticationToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly authenticationToken: pulumi.Output<string>;
     /**
      * The runner's description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the runner should be locked for current project.
      */
-    public readonly locked!: pulumi.Output<boolean>;
+    declare public readonly locked: pulumi.Output<boolean>;
     /**
      * Free-form maintenance notes for the runner (1024 characters).
      */
-    public readonly maintenanceNote!: pulumi.Output<string | undefined>;
+    declare public readonly maintenanceNote: pulumi.Output<string | undefined>;
     /**
      * Maximum timeout set when this runner handles the job.
      */
-    public readonly maximumTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly maximumTimeout: pulumi.Output<number | undefined>;
     /**
      * Whether the runner should ignore new jobs.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * The registration token used to register the runner.
      */
-    public readonly registrationToken!: pulumi.Output<string>;
+    declare public readonly registrationToken: pulumi.Output<string>;
     /**
      * Whether the runner should handle untagged jobs.
      */
-    public readonly runUntagged!: pulumi.Output<boolean>;
+    declare public readonly runUntagged: pulumi.Output<boolean>;
     /**
      * The status of runners to show, one of: online and offline. active and paused are also possible values
      * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * List of runner’s tags.
      */
-    public readonly tagLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly tagLists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Runner resource with the given unique name, arguments, and options.
@@ -124,31 +124,31 @@ export class Runner extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RunnerState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["authenticationToken"] = state ? state.authenticationToken : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["maintenanceNote"] = state ? state.maintenanceNote : undefined;
-            resourceInputs["maximumTimeout"] = state ? state.maximumTimeout : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["registrationToken"] = state ? state.registrationToken : undefined;
-            resourceInputs["runUntagged"] = state ? state.runUntagged : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tagLists"] = state ? state.tagLists : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["authenticationToken"] = state?.authenticationToken;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["maintenanceNote"] = state?.maintenanceNote;
+            resourceInputs["maximumTimeout"] = state?.maximumTimeout;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["registrationToken"] = state?.registrationToken;
+            resourceInputs["runUntagged"] = state?.runUntagged;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tagLists"] = state?.tagLists;
         } else {
             const args = argsOrState as RunnerArgs | undefined;
-            if ((!args || args.registrationToken === undefined) && !opts.urn) {
+            if (args?.registrationToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registrationToken'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["maintenanceNote"] = args ? args.maintenanceNote : undefined;
-            resourceInputs["maximumTimeout"] = args ? args.maximumTimeout : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["maintenanceNote"] = args?.maintenanceNote;
+            resourceInputs["maximumTimeout"] = args?.maximumTimeout;
+            resourceInputs["paused"] = args?.paused;
             resourceInputs["registrationToken"] = args?.registrationToken ? pulumi.secret(args.registrationToken) : undefined;
-            resourceInputs["runUntagged"] = args ? args.runUntagged : undefined;
-            resourceInputs["tagLists"] = args ? args.tagLists : undefined;
+            resourceInputs["runUntagged"] = args?.runUntagged;
+            resourceInputs["tagLists"] = args?.tagLists;
             resourceInputs["authenticationToken"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

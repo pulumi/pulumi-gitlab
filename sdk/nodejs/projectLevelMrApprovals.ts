@@ -87,31 +87,31 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
     /**
      * Set to `true` to disable overriding approvers per merge request.
      */
-    public readonly disableOverridingApproversPerMergeRequest!: pulumi.Output<boolean>;
+    declare public readonly disableOverridingApproversPerMergeRequest: pulumi.Output<boolean>;
     /**
      * Set to `true` to allow merge requests authors to approve their own merge requests.
      */
-    public readonly mergeRequestsAuthorApproval!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsAuthorApproval: pulumi.Output<boolean>;
     /**
      * Set to `true` to disable merge request committers from approving their own merge requests.
      */
-    public readonly mergeRequestsDisableCommittersApproval!: pulumi.Output<boolean>;
+    declare public readonly mergeRequestsDisableCommittersApproval: pulumi.Output<boolean>;
     /**
      * The ID or URL-encoded path of a project to change MR approval configuration.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Set to `true` to require authentication to approve merge requests.
      */
-    public readonly requirePasswordToApprove!: pulumi.Output<boolean>;
+    declare public readonly requirePasswordToApprove: pulumi.Output<boolean>;
     /**
      * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
-    public readonly resetApprovalsOnPush!: pulumi.Output<boolean>;
+    declare public readonly resetApprovalsOnPush: pulumi.Output<boolean>;
     /**
      * Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
      */
-    public readonly selectiveCodeOwnerRemovals!: pulumi.Output<boolean>;
+    declare public readonly selectiveCodeOwnerRemovals: pulumi.Output<boolean>;
 
     /**
      * Create a ProjectLevelMrApprovals resource with the given unique name, arguments, and options.
@@ -126,25 +126,25 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectLevelMrApprovalsState | undefined;
-            resourceInputs["disableOverridingApproversPerMergeRequest"] = state ? state.disableOverridingApproversPerMergeRequest : undefined;
-            resourceInputs["mergeRequestsAuthorApproval"] = state ? state.mergeRequestsAuthorApproval : undefined;
-            resourceInputs["mergeRequestsDisableCommittersApproval"] = state ? state.mergeRequestsDisableCommittersApproval : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["requirePasswordToApprove"] = state ? state.requirePasswordToApprove : undefined;
-            resourceInputs["resetApprovalsOnPush"] = state ? state.resetApprovalsOnPush : undefined;
-            resourceInputs["selectiveCodeOwnerRemovals"] = state ? state.selectiveCodeOwnerRemovals : undefined;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = state?.disableOverridingApproversPerMergeRequest;
+            resourceInputs["mergeRequestsAuthorApproval"] = state?.mergeRequestsAuthorApproval;
+            resourceInputs["mergeRequestsDisableCommittersApproval"] = state?.mergeRequestsDisableCommittersApproval;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["requirePasswordToApprove"] = state?.requirePasswordToApprove;
+            resourceInputs["resetApprovalsOnPush"] = state?.resetApprovalsOnPush;
+            resourceInputs["selectiveCodeOwnerRemovals"] = state?.selectiveCodeOwnerRemovals;
         } else {
             const args = argsOrState as ProjectLevelMrApprovalsArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["disableOverridingApproversPerMergeRequest"] = args ? args.disableOverridingApproversPerMergeRequest : undefined;
-            resourceInputs["mergeRequestsAuthorApproval"] = args ? args.mergeRequestsAuthorApproval : undefined;
-            resourceInputs["mergeRequestsDisableCommittersApproval"] = args ? args.mergeRequestsDisableCommittersApproval : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requirePasswordToApprove"] = args ? args.requirePasswordToApprove : undefined;
-            resourceInputs["resetApprovalsOnPush"] = args ? args.resetApprovalsOnPush : undefined;
-            resourceInputs["selectiveCodeOwnerRemovals"] = args ? args.selectiveCodeOwnerRemovals : undefined;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = args?.disableOverridingApproversPerMergeRequest;
+            resourceInputs["mergeRequestsAuthorApproval"] = args?.mergeRequestsAuthorApproval;
+            resourceInputs["mergeRequestsDisableCommittersApproval"] = args?.mergeRequestsDisableCommittersApproval;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requirePasswordToApprove"] = args?.requirePasswordToApprove;
+            resourceInputs["resetApprovalsOnPush"] = args?.resetApprovalsOnPush;
+            resourceInputs["selectiveCodeOwnerRemovals"] = args?.selectiveCodeOwnerRemovals;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectLevelMrApprovals.__pulumiType, name, resourceInputs, opts);

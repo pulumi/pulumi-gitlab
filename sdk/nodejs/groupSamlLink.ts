@@ -85,19 +85,19 @@ export class GroupSamlLink extends pulumi.CustomResource {
     /**
      * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * The ID or path of the group to add the SAML Group Link to.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      */
-    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    declare public readonly memberRoleId: pulumi.Output<number | undefined>;
     /**
      * The name of the SAML group.
      */
-    public readonly samlGroupName!: pulumi.Output<string>;
+    declare public readonly samlGroupName: pulumi.Output<string>;
 
     /**
      * Create a GroupSamlLink resource with the given unique name, arguments, and options.
@@ -112,25 +112,25 @@ export class GroupSamlLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupSamlLinkState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
-            resourceInputs["samlGroupName"] = state ? state.samlGroupName : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["memberRoleId"] = state?.memberRoleId;
+            resourceInputs["samlGroupName"] = state?.samlGroupName;
         } else {
             const args = argsOrState as GroupSamlLinkArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !opts.urn) {
+            if (args?.accessLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.samlGroupName === undefined) && !opts.urn) {
+            if (args?.samlGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'samlGroupName'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
-            resourceInputs["samlGroupName"] = args ? args.samlGroupName : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["memberRoleId"] = args?.memberRoleId;
+            resourceInputs["samlGroupName"] = args?.samlGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupSamlLink.__pulumiType, name, resourceInputs, opts);

@@ -76,23 +76,23 @@ export class GroupShareGroup extends pulumi.CustomResource {
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    public readonly expiresAt!: pulumi.Output<string | undefined>;
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
      * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    public readonly groupAccess!: pulumi.Output<string>;
+    declare public readonly groupAccess: pulumi.Output<string>;
     /**
      * The id of the main group to be shared.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
-    public readonly memberRoleId!: pulumi.Output<number | undefined>;
+    declare public readonly memberRoleId: pulumi.Output<number | undefined>;
     /**
      * The id of the additional group with which the main group will be shared.
      */
-    public readonly shareGroupId!: pulumi.Output<number>;
+    declare public readonly shareGroupId: pulumi.Output<number>;
 
     /**
      * Create a GroupShareGroup resource with the given unique name, arguments, and options.
@@ -107,27 +107,27 @@ export class GroupShareGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupShareGroupState | undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["groupAccess"] = state ? state.groupAccess : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["memberRoleId"] = state ? state.memberRoleId : undefined;
-            resourceInputs["shareGroupId"] = state ? state.shareGroupId : undefined;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["groupAccess"] = state?.groupAccess;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["memberRoleId"] = state?.memberRoleId;
+            resourceInputs["shareGroupId"] = state?.shareGroupId;
         } else {
             const args = argsOrState as GroupShareGroupArgs | undefined;
-            if ((!args || args.groupAccess === undefined) && !opts.urn) {
+            if (args?.groupAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupAccess'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.shareGroupId === undefined) && !opts.urn) {
+            if (args?.shareGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareGroupId'");
             }
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
-            resourceInputs["groupAccess"] = args ? args.groupAccess : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["memberRoleId"] = args ? args.memberRoleId : undefined;
-            resourceInputs["shareGroupId"] = args ? args.shareGroupId : undefined;
+            resourceInputs["expiresAt"] = args?.expiresAt;
+            resourceInputs["groupAccess"] = args?.groupAccess;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["memberRoleId"] = args?.memberRoleId;
+            resourceInputs["shareGroupId"] = args?.shareGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupShareGroup.__pulumiType, name, resourceInputs, opts);

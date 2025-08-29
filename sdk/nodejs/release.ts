@@ -85,71 +85,71 @@ export class Release extends pulumi.CustomResource {
     /**
      * The release assets.
      */
-    public readonly assets!: pulumi.Output<outputs.ReleaseAssets>;
+    declare public readonly assets: pulumi.Output<outputs.ReleaseAssets>;
     /**
      * The author of the release.
      */
-    public /*out*/ readonly author!: pulumi.Output<outputs.ReleaseAuthor>;
+    declare public /*out*/ readonly author: pulumi.Output<outputs.ReleaseAuthor>;
     /**
      * The release commit.
      */
-    public /*out*/ readonly commit!: pulumi.Output<outputs.ReleaseCommit>;
+    declare public /*out*/ readonly commit: pulumi.Output<outputs.ReleaseCommit>;
     /**
      * The path to the commit
      */
-    public /*out*/ readonly commitPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly commitPath: pulumi.Output<string>;
     /**
      * Date and time the release was created. In ISO 8601 format (2019-03-15T08:00:00Z).
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the release. You can use Markdown.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * HTML rendered Markdown of the release description.
      */
-    public /*out*/ readonly descriptionHtml!: pulumi.Output<string>;
+    declare public /*out*/ readonly descriptionHtml: pulumi.Output<string>;
     /**
      * Links of the release
      */
-    public /*out*/ readonly links!: pulumi.Output<outputs.ReleaseLinks>;
+    declare public /*out*/ readonly links: pulumi.Output<outputs.ReleaseLinks>;
     /**
      * The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
      */
-    public readonly milestones!: pulumi.Output<string[] | undefined>;
+    declare public readonly milestones: pulumi.Output<string[] | undefined>;
     /**
      * The name of the release.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID or full path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * If a tag specified in tag*name doesn't exist, the release is created from ref and tagged with tag*name. It can be a commit SHA, another tag name, or a branch name.
      */
-    public readonly ref!: pulumi.Output<string>;
+    declare public readonly ref: pulumi.Output<string>;
     /**
      * Date and time for the release. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z). Only provide this field if creating an upcoming or historical release.
      */
-    public readonly releasedAt!: pulumi.Output<string>;
+    declare public readonly releasedAt: pulumi.Output<string>;
     /**
      * Message to use if creating a new annotated tag.
      */
-    public readonly tagMessage!: pulumi.Output<string | undefined>;
+    declare public readonly tagMessage: pulumi.Output<string | undefined>;
     /**
      * The tag where the release is created from.
      */
-    public readonly tagName!: pulumi.Output<string>;
+    declare public readonly tagName: pulumi.Output<string>;
     /**
      * The path to the tag.
      */
-    public /*out*/ readonly tagPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly tagPath: pulumi.Output<string>;
     /**
      * Whether the releaseAt attribute is set to a future date.
      */
-    public /*out*/ readonly upcomingRelease!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly upcomingRelease: pulumi.Output<boolean>;
 
     /**
      * Create a Release resource with the given unique name, arguments, and options.
@@ -164,40 +164,40 @@ export class Release extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReleaseState | undefined;
-            resourceInputs["assets"] = state ? state.assets : undefined;
-            resourceInputs["author"] = state ? state.author : undefined;
-            resourceInputs["commit"] = state ? state.commit : undefined;
-            resourceInputs["commitPath"] = state ? state.commitPath : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["descriptionHtml"] = state ? state.descriptionHtml : undefined;
-            resourceInputs["links"] = state ? state.links : undefined;
-            resourceInputs["milestones"] = state ? state.milestones : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["releasedAt"] = state ? state.releasedAt : undefined;
-            resourceInputs["tagMessage"] = state ? state.tagMessage : undefined;
-            resourceInputs["tagName"] = state ? state.tagName : undefined;
-            resourceInputs["tagPath"] = state ? state.tagPath : undefined;
-            resourceInputs["upcomingRelease"] = state ? state.upcomingRelease : undefined;
+            resourceInputs["assets"] = state?.assets;
+            resourceInputs["author"] = state?.author;
+            resourceInputs["commit"] = state?.commit;
+            resourceInputs["commitPath"] = state?.commitPath;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["descriptionHtml"] = state?.descriptionHtml;
+            resourceInputs["links"] = state?.links;
+            resourceInputs["milestones"] = state?.milestones;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["releasedAt"] = state?.releasedAt;
+            resourceInputs["tagMessage"] = state?.tagMessage;
+            resourceInputs["tagName"] = state?.tagName;
+            resourceInputs["tagPath"] = state?.tagPath;
+            resourceInputs["upcomingRelease"] = state?.upcomingRelease;
         } else {
             const args = argsOrState as ReleaseArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tagName === undefined) && !opts.urn) {
+            if (args?.tagName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagName'");
             }
-            resourceInputs["assets"] = args ? args.assets : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["milestones"] = args ? args.milestones : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ref"] = args ? args.ref : undefined;
-            resourceInputs["releasedAt"] = args ? args.releasedAt : undefined;
-            resourceInputs["tagMessage"] = args ? args.tagMessage : undefined;
-            resourceInputs["tagName"] = args ? args.tagName : undefined;
+            resourceInputs["assets"] = args?.assets;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["milestones"] = args?.milestones;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ref"] = args?.ref;
+            resourceInputs["releasedAt"] = args?.releasedAt;
+            resourceInputs["tagMessage"] = args?.tagMessage;
+            resourceInputs["tagName"] = args?.tagName;
             resourceInputs["author"] = undefined /*out*/;
             resourceInputs["commit"] = undefined /*out*/;
             resourceInputs["commitPath"] = undefined /*out*/;

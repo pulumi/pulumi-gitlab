@@ -80,31 +80,31 @@ export class ProjectIntegrationCustomIssueTracker extends pulumi.CustomResource 
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The URL to view an issue in the external issue tracker. Must contain :id.
      */
-    public readonly issuesUrl!: pulumi.Output<string>;
+    declare public readonly issuesUrl: pulumi.Output<string>;
     /**
      * The ID or full path of the project for the custom issue tracker.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URL to the project in the external issue tracker.
      */
-    public readonly projectUrl!: pulumi.Output<string>;
+    declare public readonly projectUrl: pulumi.Output<string>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ProjectIntegrationCustomIssueTracker resource with the given unique name, arguments, and options.
@@ -119,27 +119,27 @@ export class ProjectIntegrationCustomIssueTracker extends pulumi.CustomResource 
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIntegrationCustomIssueTrackerState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["issuesUrl"] = state ? state.issuesUrl : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectUrl"] = state ? state.projectUrl : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["issuesUrl"] = state?.issuesUrl;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectUrl"] = state?.projectUrl;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ProjectIntegrationCustomIssueTrackerArgs | undefined;
-            if ((!args || args.issuesUrl === undefined) && !opts.urn) {
+            if (args?.issuesUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuesUrl'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectUrl === undefined) && !opts.urn) {
+            if (args?.projectUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectUrl'");
             }
-            resourceInputs["issuesUrl"] = args ? args.issuesUrl : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectUrl"] = args ? args.projectUrl : undefined;
+            resourceInputs["issuesUrl"] = args?.issuesUrl;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectUrl"] = args?.projectUrl;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;

@@ -70,19 +70,19 @@ export class ValueStreamAnalytics extends pulumi.CustomResource {
     /**
      * Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      */
-    public readonly groupFullPath!: pulumi.Output<string | undefined>;
+    declare public readonly groupFullPath: pulumi.Output<string | undefined>;
     /**
      * The name of the value stream
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      */
-    public readonly projectFullPath!: pulumi.Output<string | undefined>;
+    declare public readonly projectFullPath: pulumi.Output<string | undefined>;
     /**
      * Stages of the value stream
      */
-    public readonly stages!: pulumi.Output<outputs.ValueStreamAnalyticsStage[]>;
+    declare public readonly stages: pulumi.Output<outputs.ValueStreamAnalyticsStage[]>;
 
     /**
      * Create a ValueStreamAnalytics resource with the given unique name, arguments, and options.
@@ -97,19 +97,19 @@ export class ValueStreamAnalytics extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ValueStreamAnalyticsState | undefined;
-            resourceInputs["groupFullPath"] = state ? state.groupFullPath : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectFullPath"] = state ? state.projectFullPath : undefined;
-            resourceInputs["stages"] = state ? state.stages : undefined;
+            resourceInputs["groupFullPath"] = state?.groupFullPath;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectFullPath"] = state?.projectFullPath;
+            resourceInputs["stages"] = state?.stages;
         } else {
             const args = argsOrState as ValueStreamAnalyticsArgs | undefined;
-            if ((!args || args.stages === undefined) && !opts.urn) {
+            if (args?.stages === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stages'");
             }
-            resourceInputs["groupFullPath"] = args ? args.groupFullPath : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectFullPath"] = args ? args.projectFullPath : undefined;
-            resourceInputs["stages"] = args ? args.stages : undefined;
+            resourceInputs["groupFullPath"] = args?.groupFullPath;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectFullPath"] = args?.projectFullPath;
+            resourceInputs["stages"] = args?.stages;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ValueStreamAnalytics.__pulumiType, name, resourceInputs, opts);

@@ -19,16 +19,13 @@ namespace Pulumi.GitLab
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-        /// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-        /// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         /// </summary>
         [Output("baseUrl")]
         public Output<string?> BaseUrl { get; private set; } = null!;
 
         /// <summary>
-        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-        /// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         /// </summary>
         [Output("cacertFile")]
         public Output<string?> CacertFile { get; private set; } = null!;
@@ -40,16 +37,13 @@ namespace Pulumi.GitLab
         public Output<string?> ClientCert { get; private set; } = null!;
 
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-        /// `client_cert` is set.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         /// </summary>
         [Output("clientKey")]
         public Output<string?> ClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-        /// used in this provider for authentication (using Bearer authorization token). See
-        /// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -93,16 +87,13 @@ namespace Pulumi.GitLab
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
-        /// Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
-        /// the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+        /// This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         /// </summary>
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
         /// <summary>
-        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
-        /// CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+        /// This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         /// </summary>
         [Input("cacertFile")]
         public Input<string>? CacertFile { get; set; }
@@ -114,8 +105,7 @@ namespace Pulumi.GitLab
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
-        /// `client_cert` is set.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
@@ -151,9 +141,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
-        /// used in this provider for authentication (using Bearer authorization token). See
-        /// https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+        /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         /// </summary>
         public Input<string>? Token
         {

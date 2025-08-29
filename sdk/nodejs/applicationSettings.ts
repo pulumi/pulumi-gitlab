@@ -40,1236 +40,1236 @@ export class ApplicationSettings extends pulumi.CustomResource {
     /**
      * If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
      */
-    public readonly abuseNotificationEmail!: pulumi.Output<string>;
+    declare public readonly abuseNotificationEmail: pulumi.Output<string>;
     /**
      * Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
      */
-    public readonly adminMode!: pulumi.Output<boolean>;
+    declare public readonly adminMode: pulumi.Output<boolean>;
     /**
      * Where to redirect users after logout.
      */
-    public readonly afterSignOutPath!: pulumi.Output<string>;
+    declare public readonly afterSignOutPath: pulumi.Output<string>;
     /**
      * Text shown to the user after signing up.
      */
-    public readonly afterSignUpText!: pulumi.Output<string>;
+    declare public readonly afterSignUpText: pulumi.Output<string>;
     /**
      * API key for Akismet spam protection.
      */
-    public readonly akismetApiKey!: pulumi.Output<string>;
+    declare public readonly akismetApiKey: pulumi.Output<string>;
     /**
      * (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
      */
-    public readonly akismetEnabled!: pulumi.Output<boolean>;
+    declare public readonly akismetEnabled: pulumi.Output<boolean>;
     /**
      * Set to true to allow users to delete their accounts. Premium and Ultimate only.
      */
-    public readonly allowAccountDeletion!: pulumi.Output<boolean>;
+    declare public readonly allowAccountDeletion: pulumi.Output<boolean>;
     /**
      * Set to true to allow group owners to manage LDAP.
      */
-    public readonly allowGroupOwnersToManageLdap!: pulumi.Output<boolean>;
+    declare public readonly allowGroupOwnersToManageLdap: pulumi.Output<boolean>;
     /**
      * Allow requests to the local network from system hooks.
      */
-    public readonly allowLocalRequestsFromSystemHooks!: pulumi.Output<boolean>;
+    declare public readonly allowLocalRequestsFromSystemHooks: pulumi.Output<boolean>;
     /**
      * Allow requests to the local network from web hooks and services.
      */
-    public readonly allowLocalRequestsFromWebHooksAndServices!: pulumi.Output<boolean>;
+    declare public readonly allowLocalRequestsFromWebHooksAndServices: pulumi.Output<boolean>;
     /**
      * Indicates whether users assigned up to the Guest role can create groups and personal projects.
      */
-    public readonly allowProjectCreationForGuestAndBelow!: pulumi.Output<boolean>;
+    declare public readonly allowProjectCreationForGuestAndBelow: pulumi.Output<boolean>;
     /**
      * Allow using a registration token to create a runner.
      */
-    public readonly allowRunnerRegistrationToken!: pulumi.Output<boolean>;
+    declare public readonly allowRunnerRegistrationToken: pulumi.Output<boolean>;
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      */
-    public readonly archiveBuildsInHumanReadable!: pulumi.Output<string>;
+    declare public readonly archiveBuildsInHumanReadable: pulumi.Output<string>;
     /**
      * Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
      */
-    public readonly asciidocMaxIncludes!: pulumi.Output<number>;
+    declare public readonly asciidocMaxIncludes: pulumi.Output<number>;
     /**
      * Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
      */
-    public readonly assetProxyAllowlists!: pulumi.Output<string[]>;
+    declare public readonly assetProxyAllowlists: pulumi.Output<string[]>;
     /**
      * (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
      */
-    public readonly assetProxyEnabled!: pulumi.Output<boolean>;
+    declare public readonly assetProxyEnabled: pulumi.Output<boolean>;
     /**
      * Shared secret with the asset proxy server. GitLab restart is required to apply changes.
      */
-    public readonly assetProxySecretKey!: pulumi.Output<string>;
+    declare public readonly assetProxySecretKey: pulumi.Output<string>;
     /**
      * URL of the asset proxy server. GitLab restart is required to apply changes.
      */
-    public readonly assetProxyUrl!: pulumi.Output<string>;
+    declare public readonly assetProxyUrl: pulumi.Output<string>;
     /**
      * By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
      */
-    public readonly authorizedKeysEnabled!: pulumi.Output<boolean>;
+    declare public readonly authorizedKeysEnabled: pulumi.Output<boolean>;
     /**
      * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      */
-    public readonly autoBanUserOnExcessiveProjectsDownload!: pulumi.Output<boolean>;
+    declare public readonly autoBanUserOnExcessiveProjectsDownload: pulumi.Output<boolean>;
     /**
      * Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
      */
-    public readonly autoDevopsDomain!: pulumi.Output<string>;
+    declare public readonly autoDevopsDomain: pulumi.Output<string>;
     /**
      * Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
      */
-    public readonly autoDevopsEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoDevopsEnabled: pulumi.Output<boolean>;
     /**
      * Enabling this permits automatic allocation of purchased storage in a namespace.
      */
-    public readonly automaticPurchasedStorageAllocation!: pulumi.Output<boolean>;
+    declare public readonly automaticPurchasedStorageAllocation: pulumi.Output<boolean>;
     /**
      * Maximum simultaneous Direct Transfer batches to process.
      */
-    public readonly bulkImportConcurrentPipelineBatchLimit!: pulumi.Output<number>;
+    declare public readonly bulkImportConcurrentPipelineBatchLimit: pulumi.Output<number>;
     /**
      * Enable migrating GitLab groups by direct transfer.
      */
-    public readonly bulkImportEnabled!: pulumi.Output<boolean>;
+    declare public readonly bulkImportEnabled: pulumi.Output<boolean>;
     /**
      * Maximum download file size when importing from source GitLab instances by direct transfer.
      */
-    public readonly bulkImportMaxDownloadFileSize!: pulumi.Output<number>;
+    declare public readonly bulkImportMaxDownloadFileSize: pulumi.Output<number>;
     /**
      * Indicates whether users can create top-level groups.
      */
-    public readonly canCreateGroup!: pulumi.Output<boolean>;
+    declare public readonly canCreateGroup: pulumi.Output<boolean>;
     /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
-    public readonly checkNamespacePlan!: pulumi.Output<boolean>;
+    declare public readonly checkNamespacePlan: pulumi.Output<boolean>;
     /**
      * The maximum number of includes per pipeline.
      */
-    public readonly ciMaxIncludes!: pulumi.Output<number>;
+    declare public readonly ciMaxIncludes: pulumi.Output<number>;
     /**
      * The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
      */
-    public readonly ciMaxTotalYamlSizeBytes!: pulumi.Output<number>;
+    declare public readonly ciMaxTotalYamlSizeBytes: pulumi.Output<number>;
     /**
      * Custom hostname (for private commit emails).
      */
-    public readonly commitEmailHostname!: pulumi.Output<string>;
+    declare public readonly commitEmailHostname: pulumi.Output<string>;
     /**
      * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      */
-    public readonly concurrentBitbucketImportJobsLimit!: pulumi.Output<number>;
+    declare public readonly concurrentBitbucketImportJobsLimit: pulumi.Output<number>;
     /**
      * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      */
-    public readonly concurrentBitbucketServerImportJobsLimit!: pulumi.Output<number>;
+    declare public readonly concurrentBitbucketServerImportJobsLimit: pulumi.Output<number>;
     /**
      * Maximum number of simultaneous import jobs for the GitHub importer.
      */
-    public readonly concurrentGithubImportJobsLimit!: pulumi.Output<number>;
+    declare public readonly concurrentGithubImportJobsLimit: pulumi.Output<number>;
     /**
      * Enable cleanup policies for all projects.
      */
-    public readonly containerExpirationPoliciesEnableHistoricEntries!: pulumi.Output<boolean>;
+    declare public readonly containerExpirationPoliciesEnableHistoricEntries: pulumi.Output<boolean>;
     /**
      * The maximum number of tags that can be deleted in a single execution of cleanup policies.
      */
-    public readonly containerRegistryCleanupTagsServiceMaxListSize!: pulumi.Output<number>;
+    declare public readonly containerRegistryCleanupTagsServiceMaxListSize: pulumi.Output<number>;
     /**
      * The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
      */
-    public readonly containerRegistryDeleteTagsServiceTimeout!: pulumi.Output<number>;
+    declare public readonly containerRegistryDeleteTagsServiceTimeout: pulumi.Output<number>;
     /**
      * Caching during the execution of cleanup policies.
      */
-    public readonly containerRegistryExpirationPoliciesCaching!: pulumi.Output<boolean>;
+    declare public readonly containerRegistryExpirationPoliciesCaching: pulumi.Output<boolean>;
     /**
      * Number of workers for cleanup policies.
      */
-    public readonly containerRegistryExpirationPoliciesWorkerCapacity!: pulumi.Output<number>;
+    declare public readonly containerRegistryExpirationPoliciesWorkerCapacity: pulumi.Output<number>;
     /**
      * Container Registry token duration in minutes.
      */
-    public readonly containerRegistryTokenExpireDelay!: pulumi.Output<number>;
+    declare public readonly containerRegistryTokenExpireDelay: pulumi.Output<number>;
     /**
      * Enable automatic deactivation of dormant users.
      */
-    public readonly deactivateDormantUsers!: pulumi.Output<boolean>;
+    declare public readonly deactivateDormantUsers: pulumi.Output<boolean>;
     /**
      * Length of time (in days) after which a user is considered dormant.
      */
-    public readonly deactivateDormantUsersPeriod!: pulumi.Output<number>;
+    declare public readonly deactivateDormantUsersPeriod: pulumi.Output<number>;
     /**
      * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      */
-    public readonly decompressArchiveFileTimeout!: pulumi.Output<number>;
+    declare public readonly decompressArchiveFileTimeout: pulumi.Output<number>;
     /**
      * Set the default expiration time for each job’s artifacts.
      */
-    public readonly defaultArtifactsExpireIn!: pulumi.Output<string>;
+    declare public readonly defaultArtifactsExpireIn: pulumi.Output<string>;
     /**
      * Instance-level custom initial branch name
      */
-    public readonly defaultBranchName!: pulumi.Output<string>;
+    declare public readonly defaultBranchName: pulumi.Output<string>;
     /**
      * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
      */
-    public readonly defaultBranchProtection!: pulumi.Output<number>;
+    declare public readonly defaultBranchProtection: pulumi.Output<number>;
     /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      */
-    public readonly defaultBranchProtectionDefaults!: pulumi.Output<outputs.ApplicationSettingsDefaultBranchProtectionDefaults>;
+    declare public readonly defaultBranchProtectionDefaults: pulumi.Output<outputs.ApplicationSettingsDefaultBranchProtectionDefaults>;
     /**
      * Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
      */
-    public readonly defaultCiConfigPath!: pulumi.Output<string>;
+    declare public readonly defaultCiConfigPath: pulumi.Output<string>;
     /**
      * What visibility level new groups receive. Can take private, internal and public as a parameter.
      */
-    public readonly defaultGroupVisibility!: pulumi.Output<string>;
+    declare public readonly defaultGroupVisibility: pulumi.Output<string>;
     /**
      * Default preferred language for users who are not logged in.
      */
-    public readonly defaultPreferredLanguage!: pulumi.Output<string>;
+    declare public readonly defaultPreferredLanguage: pulumi.Output<string>;
     /**
      * Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
      */
-    public readonly defaultProjectCreation!: pulumi.Output<number>;
+    declare public readonly defaultProjectCreation: pulumi.Output<number>;
     /**
      * What visibility level new projects receive. Can take private, internal and public as a parameter.
      */
-    public readonly defaultProjectVisibility!: pulumi.Output<string>;
+    declare public readonly defaultProjectVisibility: pulumi.Output<string>;
     /**
      * Project limit per user.
      */
-    public readonly defaultProjectsLimit!: pulumi.Output<number>;
+    declare public readonly defaultProjectsLimit: pulumi.Output<number>;
     /**
      * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      */
-    public readonly defaultSnippetVisibility!: pulumi.Output<string>;
+    declare public readonly defaultSnippetVisibility: pulumi.Output<string>;
     /**
      * Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
      */
-    public readonly defaultSyntaxHighlightingTheme!: pulumi.Output<number>;
+    declare public readonly defaultSyntaxHighlightingTheme: pulumi.Output<number>;
     /**
      * Enable inactive project deletion feature.
      */
-    public readonly deleteInactiveProjects!: pulumi.Output<boolean>;
+    declare public readonly deleteInactiveProjects: pulumi.Output<boolean>;
     /**
      * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      */
-    public readonly deleteUnconfirmedUsers!: pulumi.Output<boolean>;
+    declare public readonly deleteUnconfirmedUsers: pulumi.Output<boolean>;
     /**
      * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      */
-    public readonly deletionAdjournedPeriod!: pulumi.Output<number>;
+    declare public readonly deletionAdjournedPeriod: pulumi.Output<number>;
     /**
      * (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
      */
-    public readonly diagramsnetEnabled!: pulumi.Output<boolean>;
+    declare public readonly diagramsnetEnabled: pulumi.Output<boolean>;
     /**
      * The Diagrams.net instance URL for integration.
      */
-    public readonly diagramsnetUrl!: pulumi.Output<string>;
+    declare public readonly diagramsnetUrl: pulumi.Output<string>;
     /**
      * Maximum files in a diff.
      */
-    public readonly diffMaxFiles!: pulumi.Output<number>;
+    declare public readonly diffMaxFiles: pulumi.Output<number>;
     /**
      * Maximum lines in a diff.
      */
-    public readonly diffMaxLines!: pulumi.Output<number>;
+    declare public readonly diffMaxLines: pulumi.Output<number>;
     /**
      * Maximum diff patch size, in bytes.
      */
-    public readonly diffMaxPatchBytes!: pulumi.Output<number>;
+    declare public readonly diffMaxPatchBytes: pulumi.Output<number>;
     /**
      * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      */
-    public readonly disableAdminOauthScopes!: pulumi.Output<boolean>;
+    declare public readonly disableAdminOauthScopes: pulumi.Output<boolean>;
     /**
      * Disable display of RSS/Atom and calendar feed tokens.
      */
-    public readonly disableFeedToken!: pulumi.Output<boolean>;
+    declare public readonly disableFeedToken: pulumi.Output<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
-    public readonly disablePersonalAccessTokens!: pulumi.Output<boolean>;
+    declare public readonly disablePersonalAccessTokens: pulumi.Output<boolean>;
     /**
      * Disabled OAuth sign-in sources.
      */
-    public readonly disabledOauthSignInSources!: pulumi.Output<string[]>;
+    declare public readonly disabledOauthSignInSources: pulumi.Output<string[]>;
     /**
      * Enforce DNS rebinding attack protection.
      */
-    public readonly dnsRebindingProtectionEnabled!: pulumi.Output<boolean>;
+    declare public readonly dnsRebindingProtectionEnabled: pulumi.Output<boolean>;
     /**
      * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      */
-    public readonly domainAllowlists!: pulumi.Output<string[]>;
+    declare public readonly domainAllowlists: pulumi.Output<string[]>;
     /**
      * (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
      */
-    public readonly domainDenylistEnabled!: pulumi.Output<boolean>;
+    declare public readonly domainDenylistEnabled: pulumi.Output<boolean>;
     /**
      * Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
      */
-    public readonly domainDenylists!: pulumi.Output<string[]>;
+    declare public readonly domainDenylists: pulumi.Output<string[]>;
     /**
      * Maximum downstream pipeline trigger rate.
      */
-    public readonly downstreamPipelineTriggerLimitPerProjectUserSha!: pulumi.Output<number>;
+    declare public readonly downstreamPipelineTriggerLimitPerProjectUserSha: pulumi.Output<number>;
     /**
      * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      */
-    public readonly dsaKeyRestriction!: pulumi.Output<number>;
+    declare public readonly dsaKeyRestriction: pulumi.Output<number>;
     /**
      * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      */
-    public readonly duoFeaturesEnabled!: pulumi.Output<boolean>;
+    declare public readonly duoFeaturesEnabled: pulumi.Output<boolean>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      */
-    public readonly ecdsaKeyRestriction!: pulumi.Output<number>;
+    declare public readonly ecdsaKeyRestriction: pulumi.Output<number>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      */
-    public readonly ecdsaSkKeyRestriction!: pulumi.Output<number>;
+    declare public readonly ecdsaSkKeyRestriction: pulumi.Output<number>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      */
-    public readonly ed25519KeyRestriction!: pulumi.Output<number>;
+    declare public readonly ed25519KeyRestriction: pulumi.Output<number>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      */
-    public readonly ed25519SkKeyRestriction!: pulumi.Output<number>;
+    declare public readonly ed25519SkKeyRestriction: pulumi.Output<number>;
     /**
      * AWS IAM access key ID.
      */
-    public readonly eksAccessKeyId!: pulumi.Output<string>;
+    declare public readonly eksAccessKeyId: pulumi.Output<string>;
     /**
      * Amazon account ID.
      */
-    public readonly eksAccountId!: pulumi.Output<string>;
+    declare public readonly eksAccountId: pulumi.Output<string>;
     /**
      * Enable integration with Amazon EKS.
      */
-    public readonly eksIntegrationEnabled!: pulumi.Output<boolean>;
+    declare public readonly eksIntegrationEnabled: pulumi.Output<boolean>;
     /**
      * AWS IAM secret access key.
      */
-    public readonly eksSecretAccessKey!: pulumi.Output<string>;
+    declare public readonly eksSecretAccessKey: pulumi.Output<string>;
     /**
      * Enable the use of AWS hosted Elasticsearch.
      */
-    public readonly elasticsearchAws!: pulumi.Output<boolean>;
+    declare public readonly elasticsearchAws: pulumi.Output<boolean>;
     /**
      * AWS IAM access key.
      */
-    public readonly elasticsearchAwsAccessKey!: pulumi.Output<string>;
+    declare public readonly elasticsearchAwsAccessKey: pulumi.Output<string>;
     /**
      * The AWS region the Elasticsearch domain is configured.
      */
-    public readonly elasticsearchAwsRegion!: pulumi.Output<string>;
+    declare public readonly elasticsearchAwsRegion: pulumi.Output<string>;
     /**
      * AWS IAM secret access key.
      */
-    public readonly elasticsearchAwsSecretAccessKey!: pulumi.Output<string>;
+    declare public readonly elasticsearchAwsSecretAccessKey: pulumi.Output<string>;
     /**
      * Maximum size of text fields to index by Elasticsearch. 0 value means no limit. This does not apply to repository and wiki indexing.
      */
-    public readonly elasticsearchIndexedFieldLengthLimit!: pulumi.Output<number>;
+    declare public readonly elasticsearchIndexedFieldLengthLimit: pulumi.Output<number>;
     /**
      * Maximum size of repository and wiki files that are indexed by Elasticsearch.
      */
-    public readonly elasticsearchIndexedFileSizeLimitKb!: pulumi.Output<number>;
+    declare public readonly elasticsearchIndexedFileSizeLimitKb: pulumi.Output<number>;
     /**
      * Enable Elasticsearch indexing.
      */
-    public readonly elasticsearchIndexing!: pulumi.Output<boolean>;
+    declare public readonly elasticsearchIndexing: pulumi.Output<boolean>;
     /**
      * Limit Elasticsearch to index certain namespaces and projects.
      */
-    public readonly elasticsearchLimitIndexing!: pulumi.Output<boolean>;
+    declare public readonly elasticsearchLimitIndexing: pulumi.Output<boolean>;
     /**
      * Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
      */
-    public readonly elasticsearchMaxBulkConcurrency!: pulumi.Output<number>;
+    declare public readonly elasticsearchMaxBulkConcurrency: pulumi.Output<number>;
     /**
      * Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
      */
-    public readonly elasticsearchMaxBulkSizeMb!: pulumi.Output<number>;
+    declare public readonly elasticsearchMaxBulkSizeMb: pulumi.Output<number>;
     /**
      * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
      */
-    public readonly elasticsearchMaxCodeIndexingConcurrency!: pulumi.Output<number>;
+    declare public readonly elasticsearchMaxCodeIndexingConcurrency: pulumi.Output<number>;
     /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    public readonly elasticsearchNamespaceIds!: pulumi.Output<number[]>;
+    declare public readonly elasticsearchNamespaceIds: pulumi.Output<number[]>;
     /**
      * The password of your Elasticsearch instance.
      */
-    public readonly elasticsearchPassword!: pulumi.Output<string>;
+    declare public readonly elasticsearchPassword: pulumi.Output<string>;
     /**
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    public readonly elasticsearchProjectIds!: pulumi.Output<number[]>;
+    declare public readonly elasticsearchProjectIds: pulumi.Output<number[]>;
     /**
      * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
      */
-    public readonly elasticsearchRequeueWorkers!: pulumi.Output<boolean>;
+    declare public readonly elasticsearchRequeueWorkers: pulumi.Output<boolean>;
     /**
      * Enable Elasticsearch search.
      */
-    public readonly elasticsearchSearch!: pulumi.Output<boolean>;
+    declare public readonly elasticsearchSearch: pulumi.Output<boolean>;
     /**
      * The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
      */
-    public readonly elasticsearchUrls!: pulumi.Output<string[]>;
+    declare public readonly elasticsearchUrls: pulumi.Output<string[]>;
     /**
      * The username of your Elasticsearch instance.
      */
-    public readonly elasticsearchUsername!: pulumi.Output<string>;
+    declare public readonly elasticsearchUsername: pulumi.Output<string>;
     /**
      * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
      */
-    public readonly elasticsearchWorkerNumberOfShards!: pulumi.Output<number>;
+    declare public readonly elasticsearchWorkerNumberOfShards: pulumi.Output<number>;
     /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      */
-    public readonly emailAdditionalText!: pulumi.Output<string>;
+    declare public readonly emailAdditionalText: pulumi.Output<string>;
     /**
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      */
-    public readonly emailAuthorInBody!: pulumi.Output<boolean>;
+    declare public readonly emailAuthorInBody: pulumi.Output<boolean>;
     /**
      * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
      */
-    public readonly emailConfirmationSetting!: pulumi.Output<string>;
+    declare public readonly emailConfirmationSetting: pulumi.Output<string>;
     /**
      * Show the external redirect page that warns you about user-generated content in GitLab Pages.
      */
-    public readonly enableArtifactExternalRedirectWarningPage!: pulumi.Output<boolean>;
+    declare public readonly enableArtifactExternalRedirectWarningPage: pulumi.Output<boolean>;
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      */
-    public readonly enabledGitAccessProtocol!: pulumi.Output<string>;
+    declare public readonly enabledGitAccessProtocol: pulumi.Output<string>;
     /**
      * Enabling this permits enforcement of namespace storage limits.
      */
-    public readonly enforceNamespaceStorageLimit!: pulumi.Output<boolean>;
+    declare public readonly enforceNamespaceStorageLimit: pulumi.Output<boolean>;
     /**
      * (If enabled, requires: terms) Enforce application ToS to all users.
      */
-    public readonly enforceTerms!: pulumi.Output<boolean>;
+    declare public readonly enforceTerms: pulumi.Output<boolean>;
     /**
      * (If enabled, requires: external*auth*client_key) The certificate to use to authenticate with the external authorization service.
      */
-    public readonly externalAuthClientCert!: pulumi.Output<string>;
+    declare public readonly externalAuthClientCert: pulumi.Output<string>;
     /**
      * Private key for the certificate when authentication is required for the external authorization service, this is encrypted when stored.
      */
-    public readonly externalAuthClientKey!: pulumi.Output<string>;
+    declare public readonly externalAuthClientKey: pulumi.Output<string>;
     /**
      * Passphrase to use for the private key when authenticating with the external service this is encrypted when stored.
      */
-    public readonly externalAuthClientKeyPass!: pulumi.Output<string>;
+    declare public readonly externalAuthClientKeyPass: pulumi.Output<string>;
     /**
      * The default classification label to use when requesting authorization and no classification label has been specified on the project.
      */
-    public readonly externalAuthorizationServiceDefaultLabel!: pulumi.Output<string>;
+    declare public readonly externalAuthorizationServiceDefaultLabel: pulumi.Output<string>;
     /**
      * (If enabled, requires: external*authorization*service*default*label, external*authorization*service*timeout and external*authorization*service*url) Enable using an external authorization service for accessing projects.
      */
-    public readonly externalAuthorizationServiceEnabled!: pulumi.Output<boolean>;
+    declare public readonly externalAuthorizationServiceEnabled: pulumi.Output<boolean>;
     /**
      * The timeout after which an authorization request is aborted, in seconds. When a request times out, access is denied to the user. (min: 0.001, max: 10, step: 0.001).
      */
-    public readonly externalAuthorizationServiceTimeout!: pulumi.Output<number>;
+    declare public readonly externalAuthorizationServiceTimeout: pulumi.Output<number>;
     /**
      * URL to which authorization requests are directed.
      */
-    public readonly externalAuthorizationServiceUrl!: pulumi.Output<string>;
+    declare public readonly externalAuthorizationServiceUrl: pulumi.Output<string>;
     /**
      * How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
      */
-    public readonly externalPipelineValidationServiceTimeout!: pulumi.Output<number>;
+    declare public readonly externalPipelineValidationServiceTimeout: pulumi.Output<number>;
     /**
      * Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
      */
-    public readonly externalPipelineValidationServiceToken!: pulumi.Output<string>;
+    declare public readonly externalPipelineValidationServiceToken: pulumi.Output<string>;
     /**
      * URL to use for pipeline validation requests.
      */
-    public readonly externalPipelineValidationServiceUrl!: pulumi.Output<string>;
+    declare public readonly externalPipelineValidationServiceUrl: pulumi.Output<string>;
     /**
      * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
      */
-    public readonly failedLoginAttemptsUnlockPeriodInMinutes!: pulumi.Output<number>;
+    declare public readonly failedLoginAttemptsUnlockPeriodInMinutes: pulumi.Output<number>;
     /**
      * The ID of a project to load custom file templates from.
      */
-    public readonly fileTemplateProjectId!: pulumi.Output<number>;
+    declare public readonly fileTemplateProjectId: pulumi.Output<number>;
     /**
      * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      */
-    public readonly firstDayOfWeek!: pulumi.Output<number>;
+    declare public readonly firstDayOfWeek: pulumi.Output<number>;
     /**
      * Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
      */
-    public readonly geoNodeAllowedIps!: pulumi.Output<string>;
+    declare public readonly geoNodeAllowedIps: pulumi.Output<string>;
     /**
      * The amount of seconds after which a request to get a secondary node status times out.
      */
-    public readonly geoStatusTimeout!: pulumi.Output<number>;
+    declare public readonly geoStatusTimeout: pulumi.Output<number>;
     /**
      * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      */
-    public readonly gitRateLimitUsersAlertlists!: pulumi.Output<number[]>;
+    declare public readonly gitRateLimitUsersAlertlists: pulumi.Output<number[]>;
     /**
      * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      */
-    public readonly gitRateLimitUsersAllowlists!: pulumi.Output<string[]>;
+    declare public readonly gitRateLimitUsersAllowlists: pulumi.Output<string[]>;
     /**
      * Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
      */
-    public readonly gitTwoFactorSessionExpiry!: pulumi.Output<number>;
+    declare public readonly gitTwoFactorSessionExpiry: pulumi.Output<number>;
     /**
      * Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
      */
-    public readonly gitalyTimeoutDefault!: pulumi.Output<number>;
+    declare public readonly gitalyTimeoutDefault: pulumi.Output<number>;
     /**
      * Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
      */
-    public readonly gitalyTimeoutFast!: pulumi.Output<number>;
+    declare public readonly gitalyTimeoutFast: pulumi.Output<number>;
     /**
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      */
-    public readonly gitalyTimeoutMedium!: pulumi.Output<number>;
+    declare public readonly gitalyTimeoutMedium: pulumi.Output<number>;
     /**
      * Indicates whether the instance was provisioned for GitLab Dedicated.
      */
-    public /*out*/ readonly gitlabDedicatedInstance!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly gitlabDedicatedInstance: pulumi.Output<boolean>;
     /**
      * Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
      */
-    public /*out*/ readonly gitlabEnvironmentToolkitInstance!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly gitlabEnvironmentToolkitInstance: pulumi.Output<boolean>;
     /**
      * Maximum number of Git operations per minute a user can perform.
      */
-    public readonly gitlabShellOperationLimit!: pulumi.Output<number>;
+    declare public readonly gitlabShellOperationLimit: pulumi.Output<number>;
     /**
      * Enable Gitpod integration.
      */
-    public readonly gitpodEnabled!: pulumi.Output<boolean>;
+    declare public readonly gitpodEnabled: pulumi.Output<boolean>;
     /**
      * The Gitpod instance URL for integration.
      */
-    public readonly gitpodUrl!: pulumi.Output<string>;
+    declare public readonly gitpodUrl: pulumi.Output<string>;
     /**
      * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
      */
-    public readonly globallyAllowedIps!: pulumi.Output<string>;
+    declare public readonly globallyAllowedIps: pulumi.Output<string>;
     /**
      * Enable Grafana.
      */
-    public readonly grafanaEnabled!: pulumi.Output<boolean>;
+    declare public readonly grafanaEnabled: pulumi.Output<boolean>;
     /**
      * Grafana URL.
      */
-    public readonly grafanaUrl!: pulumi.Output<string>;
+    declare public readonly grafanaUrl: pulumi.Output<string>;
     /**
      * Enable Gravatar.
      */
-    public readonly gravatarEnabled!: pulumi.Output<boolean>;
+    declare public readonly gravatarEnabled: pulumi.Output<boolean>;
     /**
      * Prevent overrides of default branch protection.
      */
-    public readonly groupOwnersCanManageDefaultBranchProtection!: pulumi.Output<boolean>;
+    declare public readonly groupOwnersCanManageDefaultBranchProtection: pulumi.Output<boolean>;
     /**
      * Hide marketing-related entries from help.
      */
-    public readonly helpPageHideCommercialContent!: pulumi.Output<boolean>;
+    declare public readonly helpPageHideCommercialContent: pulumi.Output<boolean>;
     /**
      * Alternate support URL for help page and help dropdown.
      */
-    public readonly helpPageSupportUrl!: pulumi.Output<string>;
+    declare public readonly helpPageSupportUrl: pulumi.Output<string>;
     /**
      * Custom text displayed on the help page.
      */
-    public readonly helpPageText!: pulumi.Output<string>;
+    declare public readonly helpPageText: pulumi.Output<string>;
     /**
      * GitLab server administrator information.
      */
-    public readonly helpText!: pulumi.Output<string>;
+    declare public readonly helpText: pulumi.Output<string>;
     /**
      * Do not display offers from third parties in GitLab.
      */
-    public readonly hideThirdPartyOffers!: pulumi.Output<boolean>;
+    declare public readonly hideThirdPartyOffers: pulumi.Output<boolean>;
     /**
      * Redirect to this URL when not logged in.
      */
-    public readonly homePageUrl!: pulumi.Output<string>;
+    declare public readonly homePageUrl: pulumi.Output<string>;
     /**
      * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      */
-    public readonly housekeepingEnabled!: pulumi.Output<boolean>;
+    declare public readonly housekeepingEnabled: pulumi.Output<boolean>;
     /**
      * Number of Git pushes after which an incremental git-repack is run.
      */
-    public readonly housekeepingOptimizeRepositoryPeriod!: pulumi.Output<number>;
+    declare public readonly housekeepingOptimizeRepositoryPeriod: pulumi.Output<number>;
     /**
      * Enable HTML emails.
      */
-    public readonly htmlEmailsEnabled!: pulumi.Output<boolean>;
+    declare public readonly htmlEmailsEnabled: pulumi.Output<boolean>;
     /**
      * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      */
-    public readonly importSources!: pulumi.Output<string[]>;
+    declare public readonly importSources: pulumi.Output<string[]>;
     /**
      * Enable in-product marketing emails.
      */
-    public readonly inProductMarketingEmailsEnabled!: pulumi.Output<boolean>;
+    declare public readonly inProductMarketingEmailsEnabled: pulumi.Output<boolean>;
     /**
      * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      */
-    public readonly inactiveProjectsDeleteAfterMonths!: pulumi.Output<number>;
+    declare public readonly inactiveProjectsDeleteAfterMonths: pulumi.Output<number>;
     /**
      * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      */
-    public readonly inactiveProjectsMinSizeMb!: pulumi.Output<number>;
+    declare public readonly inactiveProjectsMinSizeMb: pulumi.Output<number>;
     /**
      * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      */
-    public readonly inactiveProjectsSendWarningEmailAfterMonths!: pulumi.Output<number>;
+    declare public readonly inactiveProjectsSendWarningEmailAfterMonths: pulumi.Output<number>;
     /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
-    public readonly includeOptionalMetricsInServicePing!: pulumi.Output<boolean>;
+    declare public readonly includeOptionalMetricsInServicePing: pulumi.Output<boolean>;
     /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      */
-    public readonly invisibleCaptchaEnabled!: pulumi.Output<boolean>;
+    declare public readonly invisibleCaptchaEnabled: pulumi.Output<boolean>;
     /**
      * Max number of issue creation requests per minute per user.
      */
-    public readonly issuesCreateLimit!: pulumi.Output<number>;
+    declare public readonly issuesCreateLimit: pulumi.Output<number>;
     /**
      * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
      */
-    public readonly jiraConnectApplicationKey!: pulumi.Output<string>;
+    declare public readonly jiraConnectApplicationKey: pulumi.Output<string>;
     /**
      * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
      */
-    public readonly jiraConnectProxyUrl!: pulumi.Output<string>;
+    declare public readonly jiraConnectProxyUrl: pulumi.Output<string>;
     /**
      * Enable public key storage for the GitLab for Jira Cloud app.
      */
-    public readonly jiraConnectPublicKeyStorageEnabled!: pulumi.Output<boolean>;
+    declare public readonly jiraConnectPublicKeyStorageEnabled: pulumi.Output<boolean>;
     /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
-    public readonly keepLatestArtifact!: pulumi.Output<boolean>;
+    declare public readonly keepLatestArtifact: pulumi.Output<boolean>;
     /**
      * Increase this value when any cached Markdown should be invalidated.
      */
-    public readonly localMarkdownVersion!: pulumi.Output<number>;
+    declare public readonly localMarkdownVersion: pulumi.Output<number>;
     /**
      * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
-    public readonly lockDuoFeaturesEnabled!: pulumi.Output<boolean>;
+    declare public readonly lockDuoFeaturesEnabled: pulumi.Output<boolean>;
     /**
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
-    public readonly lockMembershipsToLdap!: pulumi.Output<boolean>;
+    declare public readonly lockMembershipsToLdap: pulumi.Output<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
-    public readonly mailgunEventsEnabled!: pulumi.Output<boolean>;
+    declare public readonly mailgunEventsEnabled: pulumi.Output<boolean>;
     /**
      * The Mailgun HTTP webhook signing key for receiving events from webhook.
      */
-    public readonly mailgunSigningKey!: pulumi.Output<string>;
+    declare public readonly mailgunSigningKey: pulumi.Output<string>;
     /**
      * When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
      */
-    public readonly maintenanceMode!: pulumi.Output<boolean>;
+    declare public readonly maintenanceMode: pulumi.Output<boolean>;
     /**
      * Message displayed when instance is in maintenance mode.
      */
-    public readonly maintenanceModeMessage!: pulumi.Output<string>;
+    declare public readonly maintenanceModeMessage: pulumi.Output<string>;
     /**
      * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
      */
-    public readonly mavenPackageRequestsForwarding!: pulumi.Output<boolean>;
+    declare public readonly mavenPackageRequestsForwarding: pulumi.Output<boolean>;
     /**
      * Maximum artifacts size in MB.
      */
-    public readonly maxArtifactsSize!: pulumi.Output<number>;
+    declare public readonly maxArtifactsSize: pulumi.Output<number>;
     /**
      * Limit attachment size in MB.
      */
-    public readonly maxAttachmentSize!: pulumi.Output<number>;
+    declare public readonly maxAttachmentSize: pulumi.Output<number>;
     /**
      * Maximum decompressed archive size in bytes.
      */
-    public readonly maxDecompressedArchiveSize!: pulumi.Output<number>;
+    declare public readonly maxDecompressedArchiveSize: pulumi.Output<number>;
     /**
      * Maximum export size in MB. 0 for unlimited.
      */
-    public readonly maxExportSize!: pulumi.Output<number>;
+    declare public readonly maxExportSize: pulumi.Output<number>;
     /**
      * Maximum remote file size for imports from external object storages.
      */
-    public readonly maxImportRemoteFileSize!: pulumi.Output<number>;
+    declare public readonly maxImportRemoteFileSize: pulumi.Output<number>;
     /**
      * Maximum import size in MB. 0 for unlimited.
      */
-    public readonly maxImportSize!: pulumi.Output<number>;
+    declare public readonly maxImportSize: pulumi.Output<number>;
     /**
      * Maximum number of sign-in attempts before locking out the user.
      */
-    public readonly maxLoginAttempts!: pulumi.Output<number>;
+    declare public readonly maxLoginAttempts: pulumi.Output<number>;
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      */
-    public readonly maxNumberOfRepositoryDownloads!: pulumi.Output<number>;
+    declare public readonly maxNumberOfRepositoryDownloads: pulumi.Output<number>;
     /**
      * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      */
-    public readonly maxNumberOfRepositoryDownloadsWithinTimePeriod!: pulumi.Output<number>;
+    declare public readonly maxNumberOfRepositoryDownloadsWithinTimePeriod: pulumi.Output<number>;
     /**
      * Maximum size of pages repositories in MB.
      */
-    public readonly maxPagesSize!: pulumi.Output<number>;
+    declare public readonly maxPagesSize: pulumi.Output<number>;
     /**
      * Maximum allowable lifetime for access tokens in days.
      */
-    public readonly maxPersonalAccessTokenLifetime!: pulumi.Output<number>;
+    declare public readonly maxPersonalAccessTokenLifetime: pulumi.Output<number>;
     /**
      * Maximum allowable lifetime for SSH keys in days.
      */
-    public readonly maxSshKeyLifetime!: pulumi.Output<number>;
-    public readonly maxTerraformStateSizeBytes!: pulumi.Output<number>;
+    declare public readonly maxSshKeyLifetime: pulumi.Output<number>;
+    declare public readonly maxTerraformStateSizeBytes: pulumi.Output<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
-    public readonly metricsMethodCallThreshold!: pulumi.Output<number>;
+    declare public readonly metricsMethodCallThreshold: pulumi.Output<number>;
     /**
      * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      */
-    public readonly minimumPasswordLength!: pulumi.Output<number>;
+    declare public readonly minimumPasswordLength: pulumi.Output<number>;
     /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      */
-    public readonly mirrorAvailable!: pulumi.Output<boolean>;
+    declare public readonly mirrorAvailable: pulumi.Output<boolean>;
     /**
      * Minimum capacity to be available before scheduling more mirrors preemptively.
      */
-    public readonly mirrorCapacityThreshold!: pulumi.Output<number>;
+    declare public readonly mirrorCapacityThreshold: pulumi.Output<number>;
     /**
      * Maximum number of mirrors that can be synchronizing at the same time.
      */
-    public readonly mirrorMaxCapacity!: pulumi.Output<number>;
+    declare public readonly mirrorMaxCapacity: pulumi.Output<number>;
     /**
      * Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
      */
-    public readonly mirrorMaxDelay!: pulumi.Output<number>;
+    declare public readonly mirrorMaxDelay: pulumi.Output<number>;
     /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      */
-    public readonly npmPackageRequestsForwarding!: pulumi.Output<boolean>;
+    declare public readonly npmPackageRequestsForwarding: pulumi.Output<boolean>;
     /**
      * Indicates whether to skip metadata URL validation for the NuGet package.
      */
-    public readonly nugetSkipMetadataUrlValidation!: pulumi.Output<boolean>;
+    declare public readonly nugetSkipMetadataUrlValidation: pulumi.Output<boolean>;
     /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      */
-    public readonly outboundLocalRequestsWhitelists!: pulumi.Output<string[]>;
+    declare public readonly outboundLocalRequestsWhitelists: pulumi.Output<string[]>;
     /**
      * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
      */
-    public readonly packageMetadataPurlTypes!: pulumi.Output<number[]>;
+    declare public readonly packageMetadataPurlTypes: pulumi.Output<number[]>;
     /**
      * Enable to allow anyone to pull from Package Registry visible and changeable.
      */
-    public readonly packageRegistryAllowAnyoneToPullOption!: pulumi.Output<boolean>;
+    declare public readonly packageRegistryAllowAnyoneToPullOption: pulumi.Output<boolean>;
     /**
      * Number of workers assigned to the packages cleanup policies.
      */
-    public readonly packageRegistryCleanupPoliciesWorkerCapacity!: pulumi.Output<number>;
+    declare public readonly packageRegistryCleanupPoliciesWorkerCapacity: pulumi.Output<number>;
     /**
      * Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
      */
-    public readonly pagesDomainVerificationEnabled!: pulumi.Output<boolean>;
+    declare public readonly pagesDomainVerificationEnabled: pulumi.Output<boolean>;
     /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
-    public readonly passwordAuthenticationEnabledForGit!: pulumi.Output<boolean>;
+    declare public readonly passwordAuthenticationEnabledForGit: pulumi.Output<boolean>;
     /**
      * Enable authentication for the web interface via a GitLab account password.
      */
-    public readonly passwordAuthenticationEnabledForWeb!: pulumi.Output<boolean>;
+    declare public readonly passwordAuthenticationEnabledForWeb: pulumi.Output<boolean>;
     /**
      * Indicates whether passwords require at least one lowercase letter.
      */
-    public readonly passwordLowercaseRequired!: pulumi.Output<boolean>;
+    declare public readonly passwordLowercaseRequired: pulumi.Output<boolean>;
     /**
      * Indicates whether passwords require at least one number.
      */
-    public readonly passwordNumberRequired!: pulumi.Output<boolean>;
+    declare public readonly passwordNumberRequired: pulumi.Output<boolean>;
     /**
      * Indicates whether passwords require at least one symbol character.
      */
-    public readonly passwordSymbolRequired!: pulumi.Output<boolean>;
+    declare public readonly passwordSymbolRequired: pulumi.Output<boolean>;
     /**
      * Indicates whether passwords require at least one uppercase letter.
      */
-    public readonly passwordUppercaseRequired!: pulumi.Output<boolean>;
+    declare public readonly passwordUppercaseRequired: pulumi.Output<boolean>;
     /**
      * Path of the group that is allowed to toggle the performance bar.
      */
-    public readonly performanceBarAllowedGroupPath!: pulumi.Output<string>;
+    declare public readonly performanceBarAllowedGroupPath: pulumi.Output<string>;
     /**
      * Prefix for all generated personal access tokens.
      */
-    public readonly personalAccessTokenPrefix!: pulumi.Output<string>;
+    declare public readonly personalAccessTokenPrefix: pulumi.Output<string>;
     /**
      * Maximum number of pipeline creation requests per minute per user and commit.
      */
-    public readonly pipelineLimitPerProjectUserSha!: pulumi.Output<number>;
+    declare public readonly pipelineLimitPerProjectUserSha: pulumi.Output<number>;
     /**
      * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      */
-    public readonly plantumlEnabled!: pulumi.Output<boolean>;
+    declare public readonly plantumlEnabled: pulumi.Output<boolean>;
     /**
      * The PlantUML instance URL for integration.
      */
-    public readonly plantumlUrl!: pulumi.Output<string>;
+    declare public readonly plantumlUrl: pulumi.Output<string>;
     /**
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
-    public readonly pollingIntervalMultiplier!: pulumi.Output<number>;
+    declare public readonly pollingIntervalMultiplier: pulumi.Output<number>;
     /**
      * Enable project export.
      */
-    public readonly projectExportEnabled!: pulumi.Output<boolean>;
+    declare public readonly projectExportEnabled: pulumi.Output<boolean>;
     /**
      * Maximum authenticated requests to /project/:id/jobs per minute.
      */
-    public readonly projectJobsApiRateLimit!: pulumi.Output<number>;
+    declare public readonly projectJobsApiRateLimit: pulumi.Output<number>;
     /**
      * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      */
-    public readonly projectsApiRateLimitUnauthenticated!: pulumi.Output<number>;
+    declare public readonly projectsApiRateLimitUnauthenticated: pulumi.Output<number>;
     /**
      * Enable Prometheus metrics.
      */
-    public readonly prometheusMetricsEnabled!: pulumi.Output<boolean>;
+    declare public readonly prometheusMetricsEnabled: pulumi.Output<boolean>;
     /**
      * CI/CD variables are protected by default.
      */
-    public readonly protectedCiVariables!: pulumi.Output<boolean>;
+    declare public readonly protectedCiVariables: pulumi.Output<boolean>;
     /**
      * Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
      */
-    public readonly pushEventActivitiesLimit!: pulumi.Output<number>;
+    declare public readonly pushEventActivitiesLimit: pulumi.Output<number>;
     /**
      * Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
      */
-    public readonly pushEventHooksLimit!: pulumi.Output<number>;
+    declare public readonly pushEventHooksLimit: pulumi.Output<number>;
     /**
      * Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
      */
-    public readonly pypiPackageRequestsForwarding!: pulumi.Output<boolean>;
+    declare public readonly pypiPackageRequestsForwarding: pulumi.Output<boolean>;
     /**
      * When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
      */
-    public readonly rateLimitingResponseText!: pulumi.Output<string>;
+    declare public readonly rateLimitingResponseText: pulumi.Output<string>;
     /**
      * Max number of requests per minute for each raw path. To disable throttling set to 0.
      */
-    public readonly rawBlobRequestLimit!: pulumi.Output<number>;
+    declare public readonly rawBlobRequestLimit: pulumi.Output<number>;
     /**
      * (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
      */
-    public readonly recaptchaEnabled!: pulumi.Output<boolean>;
+    declare public readonly recaptchaEnabled: pulumi.Output<boolean>;
     /**
      * Private key for reCAPTCHA.
      */
-    public readonly recaptchaPrivateKey!: pulumi.Output<string>;
+    declare public readonly recaptchaPrivateKey: pulumi.Output<string>;
     /**
      * Site key for reCAPTCHA.
      */
-    public readonly recaptchaSiteKey!: pulumi.Output<string>;
+    declare public readonly recaptchaSiteKey: pulumi.Output<string>;
     /**
      * Maximum push size (MB).
      */
-    public readonly receiveMaxInputSize!: pulumi.Output<number>;
+    declare public readonly receiveMaxInputSize: pulumi.Output<number>;
     /**
      * Enable receptive mode for GitLab Agents for Kubernetes.
      */
-    public readonly receptiveClusterAgentsEnabled!: pulumi.Output<boolean>;
+    declare public readonly receptiveClusterAgentsEnabled: pulumi.Output<boolean>;
     /**
      * Enable Remember me setting.
      */
-    public readonly rememberMeEnabled!: pulumi.Output<boolean>;
+    declare public readonly rememberMeEnabled: pulumi.Output<boolean>;
     /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      */
-    public readonly repositoryChecksEnabled!: pulumi.Output<boolean>;
+    declare public readonly repositoryChecksEnabled: pulumi.Output<boolean>;
     /**
      * Size limit per repository (MB).
      */
-    public readonly repositorySizeLimit!: pulumi.Output<number>;
+    declare public readonly repositorySizeLimit: pulumi.Output<number>;
     /**
      * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      */
-    public readonly repositoryStoragesWeighted!: pulumi.Output<{[key: string]: number}>;
+    declare public readonly repositoryStoragesWeighted: pulumi.Output<{[key: string]: number}>;
     /**
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      */
-    public readonly requireAdminApprovalAfterUserSignup!: pulumi.Output<boolean>;
+    declare public readonly requireAdminApprovalAfterUserSignup: pulumi.Output<boolean>;
     /**
      * Allow administrators to require 2FA for all administrators on the instance.
      */
-    public readonly requireAdminTwoFactorAuthentication!: pulumi.Output<boolean>;
+    declare public readonly requireAdminTwoFactorAuthentication: pulumi.Output<boolean>;
     /**
      * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
      */
-    public readonly requirePersonalAccessTokenExpiry!: pulumi.Output<boolean>;
+    declare public readonly requirePersonalAccessTokenExpiry: pulumi.Output<boolean>;
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      */
-    public readonly requireTwoFactorAuthentication!: pulumi.Output<boolean>;
+    declare public readonly requireTwoFactorAuthentication: pulumi.Output<boolean>;
     /**
      * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      */
-    public readonly restrictedVisibilityLevels!: pulumi.Output<string[]>;
+    declare public readonly restrictedVisibilityLevels: pulumi.Output<string[]>;
     /**
      * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      */
-    public readonly rsaKeyRestriction!: pulumi.Output<number>;
+    declare public readonly rsaKeyRestriction: pulumi.Output<number>;
     /**
      * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      */
-    public readonly searchRateLimit!: pulumi.Output<number>;
+    declare public readonly searchRateLimit: pulumi.Output<number>;
     /**
      * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      */
-    public readonly searchRateLimitUnauthenticated!: pulumi.Output<number>;
+    declare public readonly searchRateLimitUnauthenticated: pulumi.Output<number>;
     /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      */
-    public readonly securityApprovalPoliciesLimit!: pulumi.Output<number>;
+    declare public readonly securityApprovalPoliciesLimit: pulumi.Output<number>;
     /**
      * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
      */
-    public readonly securityPolicyGlobalGroupApproversEnabled!: pulumi.Output<boolean>;
+    declare public readonly securityPolicyGlobalGroupApproversEnabled: pulumi.Output<boolean>;
     /**
      * Public security contact information.
      */
-    public readonly securityTxtContent!: pulumi.Output<string>;
+    declare public readonly securityTxtContent: pulumi.Output<string>;
     /**
      * Send confirmation email on sign-up.
      */
-    public readonly sendUserConfirmationEmail!: pulumi.Output<boolean>;
+    declare public readonly sendUserConfirmationEmail: pulumi.Output<boolean>;
     /**
      * Flag to indicate if token expiry date can be optional for service account users
      */
-    public readonly serviceAccessTokensExpirationEnforced!: pulumi.Output<boolean>;
+    declare public readonly serviceAccessTokensExpirationEnforced: pulumi.Output<boolean>;
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
-    public readonly sessionExpireDelay!: pulumi.Output<number>;
+    declare public readonly sessionExpireDelay: pulumi.Output<number>;
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      */
-    public readonly sharedRunnersEnabled!: pulumi.Output<boolean>;
+    declare public readonly sharedRunnersEnabled: pulumi.Output<boolean>;
     /**
      * Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
      */
-    public readonly sharedRunnersMinutes!: pulumi.Output<number>;
+    declare public readonly sharedRunnersMinutes: pulumi.Output<number>;
     /**
      * Shared runners text.
      */
-    public readonly sharedRunnersText!: pulumi.Output<string>;
+    declare public readonly sharedRunnersText: pulumi.Output<string>;
     /**
      * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      */
-    public readonly sidekiqJobLimiterCompressionThresholdBytes!: pulumi.Output<number>;
+    declare public readonly sidekiqJobLimiterCompressionThresholdBytes: pulumi.Output<number>;
     /**
      * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      */
-    public readonly sidekiqJobLimiterLimitBytes!: pulumi.Output<number>;
+    declare public readonly sidekiqJobLimiterLimitBytes: pulumi.Output<number>;
     /**
      * track or compress. Sets the behavior for Sidekiq job size limits.
      */
-    public readonly sidekiqJobLimiterMode!: pulumi.Output<string>;
+    declare public readonly sidekiqJobLimiterMode: pulumi.Output<string>;
     /**
      * Text on the login page.
      */
-    public readonly signInText!: pulumi.Output<string>;
+    declare public readonly signInText: pulumi.Output<string>;
     /**
      * Enable registration.
      */
-    public readonly signupEnabled!: pulumi.Output<boolean>;
+    declare public readonly signupEnabled: pulumi.Output<boolean>;
     /**
      * Enable Silent admin exports.
      */
-    public readonly silentAdminExportsEnabled!: pulumi.Output<boolean>;
+    declare public readonly silentAdminExportsEnabled: pulumi.Output<boolean>;
     /**
      * Enable Silent mode.
      */
-    public readonly silentModeEnabled!: pulumi.Output<boolean>;
+    declare public readonly silentModeEnabled: pulumi.Output<boolean>;
     /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      */
-    public readonly slackAppEnabled!: pulumi.Output<boolean>;
+    declare public readonly slackAppEnabled: pulumi.Output<boolean>;
     /**
      * The app ID of the Slack-app.
      */
-    public readonly slackAppId!: pulumi.Output<string>;
+    declare public readonly slackAppId: pulumi.Output<string>;
     /**
      * The app secret of the Slack-app.
      */
-    public readonly slackAppSecret!: pulumi.Output<string>;
+    declare public readonly slackAppSecret: pulumi.Output<string>;
     /**
      * The signing secret of the Slack-app.
      */
-    public readonly slackAppSigningSecret!: pulumi.Output<string>;
+    declare public readonly slackAppSigningSecret: pulumi.Output<string>;
     /**
      * The verification token of the Slack-app.
      */
-    public readonly slackAppVerificationToken!: pulumi.Output<string>;
+    declare public readonly slackAppVerificationToken: pulumi.Output<string>;
     /**
      * Max snippet content size in bytes.
      */
-    public readonly snippetSizeLimit!: pulumi.Output<number>;
+    declare public readonly snippetSizeLimit: pulumi.Output<number>;
     /**
      * The Snowplow site name / application ID. (for example, gitlab)
      */
-    public readonly snowplowAppId!: pulumi.Output<string>;
+    declare public readonly snowplowAppId: pulumi.Output<string>;
     /**
      * The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
      */
-    public readonly snowplowCollectorHostname!: pulumi.Output<string>;
+    declare public readonly snowplowCollectorHostname: pulumi.Output<string>;
     /**
      * The Snowplow cookie domain. (for example, .gitlab.com)
      */
-    public readonly snowplowCookieDomain!: pulumi.Output<string>;
+    declare public readonly snowplowCookieDomain: pulumi.Output<string>;
     /**
      * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
      */
-    public readonly snowplowDatabaseCollectorHostname!: pulumi.Output<string>;
+    declare public readonly snowplowDatabaseCollectorHostname: pulumi.Output<string>;
     /**
      * Enable snowplow tracking.
      */
-    public readonly snowplowEnabled!: pulumi.Output<boolean>;
+    declare public readonly snowplowEnabled: pulumi.Output<boolean>;
     /**
      * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      */
-    public readonly sourcegraphEnabled!: pulumi.Output<boolean>;
+    declare public readonly sourcegraphEnabled: pulumi.Output<boolean>;
     /**
      * Blocks Sourcegraph from being loaded on private and internal projects.
      */
-    public readonly sourcegraphPublicOnly!: pulumi.Output<boolean>;
+    declare public readonly sourcegraphPublicOnly: pulumi.Output<boolean>;
     /**
      * The Sourcegraph instance URL for integration.
      */
-    public readonly sourcegraphUrl!: pulumi.Output<string>;
+    declare public readonly sourcegraphUrl: pulumi.Output<string>;
     /**
      * API key used by GitLab for accessing the Spam Check service endpoint.
      */
-    public readonly spamCheckApiKey!: pulumi.Output<string>;
+    declare public readonly spamCheckApiKey: pulumi.Output<string>;
     /**
      * Enables spam checking using external Spam Check API endpoint.
      */
-    public readonly spamCheckEndpointEnabled!: pulumi.Output<boolean>;
+    declare public readonly spamCheckEndpointEnabled: pulumi.Output<boolean>;
     /**
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      */
-    public readonly spamCheckEndpointUrl!: pulumi.Output<string>;
+    declare public readonly spamCheckEndpointUrl: pulumi.Output<string>;
     /**
      * Authentication token for the external storage linked in static*objects*external*storage*url.
      */
-    public readonly staticObjectsExternalStorageAuthToken!: pulumi.Output<string | undefined>;
+    declare public readonly staticObjectsExternalStorageAuthToken: pulumi.Output<string | undefined>;
     /**
      * URL to an external storage for repository static objects.
      */
-    public readonly staticObjectsExternalStorageUrl!: pulumi.Output<string | undefined>;
+    declare public readonly staticObjectsExternalStorageUrl: pulumi.Output<string | undefined>;
     /**
      * Enable pipeline suggestion banner.
      */
-    public readonly suggestPipelineEnabled!: pulumi.Output<boolean>;
+    declare public readonly suggestPipelineEnabled: pulumi.Output<boolean>;
     /**
      * Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
      */
-    public readonly terminalMaxSessionTime!: pulumi.Output<number>;
+    declare public readonly terminalMaxSessionTime: pulumi.Output<number>;
     /**
      * (Required by: enforce_terms) Markdown content for the ToS.
      */
-    public readonly terms!: pulumi.Output<string>;
+    declare public readonly terms: pulumi.Output<string>;
     /**
      * (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    public readonly throttleAuthenticatedApiEnabled!: pulumi.Output<boolean>;
+    declare public readonly throttleAuthenticatedApiEnabled: pulumi.Output<boolean>;
     /**
      * Rate limit period (in seconds).
      */
-    public readonly throttleAuthenticatedApiPeriodInSeconds!: pulumi.Output<number>;
+    declare public readonly throttleAuthenticatedApiPeriodInSeconds: pulumi.Output<number>;
     /**
      * Maximum requests per period per user.
      */
-    public readonly throttleAuthenticatedApiRequestsPerPeriod!: pulumi.Output<number>;
+    declare public readonly throttleAuthenticatedApiRequestsPerPeriod: pulumi.Output<number>;
     /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
-    public readonly throttleAuthenticatedPackagesApiEnabled!: pulumi.Output<boolean>;
+    declare public readonly throttleAuthenticatedPackagesApiEnabled: pulumi.Output<boolean>;
     /**
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      */
-    public readonly throttleAuthenticatedPackagesApiPeriodInSeconds!: pulumi.Output<number>;
+    declare public readonly throttleAuthenticatedPackagesApiPeriodInSeconds: pulumi.Output<number>;
     /**
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      */
-    public readonly throttleAuthenticatedPackagesApiRequestsPerPeriod!: pulumi.Output<number>;
+    declare public readonly throttleAuthenticatedPackagesApiRequestsPerPeriod: pulumi.Output<number>;
     /**
      * (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    public readonly throttleAuthenticatedWebEnabled!: pulumi.Output<boolean>;
+    declare public readonly throttleAuthenticatedWebEnabled: pulumi.Output<boolean>;
     /**
      * Rate limit period (in seconds).
      */
-    public readonly throttleAuthenticatedWebPeriodInSeconds!: pulumi.Output<number>;
+    declare public readonly throttleAuthenticatedWebPeriodInSeconds: pulumi.Output<number>;
     /**
      * Maximum requests per period per user.
      */
-    public readonly throttleAuthenticatedWebRequestsPerPeriod!: pulumi.Output<number>;
+    declare public readonly throttleAuthenticatedWebRequestsPerPeriod: pulumi.Output<number>;
     /**
      * (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    public readonly throttleUnauthenticatedApiEnabled!: pulumi.Output<boolean>;
+    declare public readonly throttleUnauthenticatedApiEnabled: pulumi.Output<boolean>;
     /**
      * Rate limit period in seconds.
      */
-    public readonly throttleUnauthenticatedApiPeriodInSeconds!: pulumi.Output<number>;
+    declare public readonly throttleUnauthenticatedApiPeriodInSeconds: pulumi.Output<number>;
     /**
      * Max requests per period per IP.
      */
-    public readonly throttleUnauthenticatedApiRequestsPerPeriod!: pulumi.Output<number>;
+    declare public readonly throttleUnauthenticatedApiRequestsPerPeriod: pulumi.Output<number>;
     /**
      * (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
-    public readonly throttleUnauthenticatedPackagesApiEnabled!: pulumi.Output<boolean>;
+    declare public readonly throttleUnauthenticatedPackagesApiEnabled: pulumi.Output<boolean>;
     /**
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      */
-    public readonly throttleUnauthenticatedPackagesApiPeriodInSeconds!: pulumi.Output<number>;
+    declare public readonly throttleUnauthenticatedPackagesApiPeriodInSeconds: pulumi.Output<number>;
     /**
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      */
-    public readonly throttleUnauthenticatedPackagesApiRequestsPerPeriod!: pulumi.Output<number>;
+    declare public readonly throttleUnauthenticatedPackagesApiRequestsPerPeriod: pulumi.Output<number>;
     /**
      * (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    public readonly throttleUnauthenticatedWebEnabled!: pulumi.Output<boolean>;
+    declare public readonly throttleUnauthenticatedWebEnabled: pulumi.Output<boolean>;
     /**
      * Rate limit period in seconds.
      */
-    public readonly throttleUnauthenticatedWebPeriodInSeconds!: pulumi.Output<number>;
+    declare public readonly throttleUnauthenticatedWebPeriodInSeconds: pulumi.Output<number>;
     /**
      * Max requests per period per IP.
      */
-    public readonly throttleUnauthenticatedWebRequestsPerPeriod!: pulumi.Output<number>;
+    declare public readonly throttleUnauthenticatedWebRequestsPerPeriod: pulumi.Output<number>;
     /**
      * Limit display of time tracking units to hours.
      */
-    public readonly timeTrackingLimitToHours!: pulumi.Output<boolean>;
+    declare public readonly timeTrackingLimitToHours: pulumi.Output<boolean>;
     /**
      * Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
      */
-    public readonly twoFactorGracePeriod!: pulumi.Output<number>;
+    declare public readonly twoFactorGracePeriod: pulumi.Output<number>;
     /**
      * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      */
-    public readonly unconfirmedUsersDeleteAfterDays!: pulumi.Output<number>;
+    declare public readonly unconfirmedUsersDeleteAfterDays: pulumi.Output<number>;
     /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      */
-    public readonly uniqueIpsLimitEnabled!: pulumi.Output<boolean>;
+    declare public readonly uniqueIpsLimitEnabled: pulumi.Output<boolean>;
     /**
      * Maximum number of IPs per user.
      */
-    public readonly uniqueIpsLimitPerUser!: pulumi.Output<number>;
+    declare public readonly uniqueIpsLimitPerUser: pulumi.Output<number>;
     /**
      * How many seconds an IP is counted towards the limit.
      */
-    public readonly uniqueIpsLimitTimeWindow!: pulumi.Output<number>;
+    declare public readonly uniqueIpsLimitTimeWindow: pulumi.Output<number>;
     /**
      * Fetch GitLab Runner release version data from GitLab.com.
      */
-    public readonly updateRunnerVersionsEnabled!: pulumi.Output<boolean>;
+    declare public readonly updateRunnerVersionsEnabled: pulumi.Output<boolean>;
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
-    public readonly usagePingEnabled!: pulumi.Output<boolean>;
+    declare public readonly usagePingEnabled: pulumi.Output<boolean>;
     /**
      * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
      */
-    public readonly useClickhouseForAnalytics!: pulumi.Output<boolean>;
+    declare public readonly useClickhouseForAnalytics: pulumi.Output<boolean>;
     /**
      * Send an email to users upon account deactivation.
      */
-    public readonly userDeactivationEmailsEnabled!: pulumi.Output<boolean>;
+    declare public readonly userDeactivationEmailsEnabled: pulumi.Output<boolean>;
     /**
      * Newly registered users are external by default.
      */
-    public readonly userDefaultExternal!: pulumi.Output<boolean>;
+    declare public readonly userDefaultExternal: pulumi.Output<boolean>;
     /**
      * Specify an email address regex pattern to identify default internal users.
      */
-    public readonly userDefaultInternalRegex!: pulumi.Output<string>;
+    declare public readonly userDefaultInternalRegex: pulumi.Output<string>;
     /**
      * Newly created users have private profile by default.
      */
-    public readonly userDefaultsToPrivateProfile!: pulumi.Output<boolean>;
+    declare public readonly userDefaultsToPrivateProfile: pulumi.Output<boolean>;
     /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      */
-    public readonly userOauthApplications!: pulumi.Output<boolean>;
+    declare public readonly userOauthApplications: pulumi.Output<boolean>;
     /**
      * When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      */
-    public readonly userShowAddSshKeyMessage!: pulumi.Output<boolean>;
+    declare public readonly userShowAddSshKeyMessage: pulumi.Output<boolean>;
     /**
      * List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
      */
-    public readonly validRunnerRegistrars!: pulumi.Output<string[]>;
+    declare public readonly validRunnerRegistrars: pulumi.Output<string[]>;
     /**
      * Let GitLab inform you when an update is available.
      */
-    public readonly versionCheckEnabled!: pulumi.Output<boolean>;
+    declare public readonly versionCheckEnabled: pulumi.Output<boolean>;
     /**
      * Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
      */
-    public readonly webIdeClientsidePreviewEnabled!: pulumi.Output<boolean>;
+    declare public readonly webIdeClientsidePreviewEnabled: pulumi.Output<boolean>;
     /**
      * What's new variant, possible values: all*tiers, current*tier, and disabled.
      */
-    public readonly whatsNewVariant!: pulumi.Output<string>;
+    declare public readonly whatsNewVariant: pulumi.Output<string>;
     /**
      * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      */
-    public readonly wikiPageMaxContentBytes!: pulumi.Output<number>;
+    declare public readonly wikiPageMaxContentBytes: pulumi.Output<number>;
 
     /**
      * Create a ApplicationSettings resource with the given unique name, arguments, and options.
@@ -1284,624 +1284,624 @@ export class ApplicationSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationSettingsState | undefined;
-            resourceInputs["abuseNotificationEmail"] = state ? state.abuseNotificationEmail : undefined;
-            resourceInputs["adminMode"] = state ? state.adminMode : undefined;
-            resourceInputs["afterSignOutPath"] = state ? state.afterSignOutPath : undefined;
-            resourceInputs["afterSignUpText"] = state ? state.afterSignUpText : undefined;
-            resourceInputs["akismetApiKey"] = state ? state.akismetApiKey : undefined;
-            resourceInputs["akismetEnabled"] = state ? state.akismetEnabled : undefined;
-            resourceInputs["allowAccountDeletion"] = state ? state.allowAccountDeletion : undefined;
-            resourceInputs["allowGroupOwnersToManageLdap"] = state ? state.allowGroupOwnersToManageLdap : undefined;
-            resourceInputs["allowLocalRequestsFromSystemHooks"] = state ? state.allowLocalRequestsFromSystemHooks : undefined;
-            resourceInputs["allowLocalRequestsFromWebHooksAndServices"] = state ? state.allowLocalRequestsFromWebHooksAndServices : undefined;
-            resourceInputs["allowProjectCreationForGuestAndBelow"] = state ? state.allowProjectCreationForGuestAndBelow : undefined;
-            resourceInputs["allowRunnerRegistrationToken"] = state ? state.allowRunnerRegistrationToken : undefined;
-            resourceInputs["archiveBuildsInHumanReadable"] = state ? state.archiveBuildsInHumanReadable : undefined;
-            resourceInputs["asciidocMaxIncludes"] = state ? state.asciidocMaxIncludes : undefined;
-            resourceInputs["assetProxyAllowlists"] = state ? state.assetProxyAllowlists : undefined;
-            resourceInputs["assetProxyEnabled"] = state ? state.assetProxyEnabled : undefined;
-            resourceInputs["assetProxySecretKey"] = state ? state.assetProxySecretKey : undefined;
-            resourceInputs["assetProxyUrl"] = state ? state.assetProxyUrl : undefined;
-            resourceInputs["authorizedKeysEnabled"] = state ? state.authorizedKeysEnabled : undefined;
-            resourceInputs["autoBanUserOnExcessiveProjectsDownload"] = state ? state.autoBanUserOnExcessiveProjectsDownload : undefined;
-            resourceInputs["autoDevopsDomain"] = state ? state.autoDevopsDomain : undefined;
-            resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
-            resourceInputs["automaticPurchasedStorageAllocation"] = state ? state.automaticPurchasedStorageAllocation : undefined;
-            resourceInputs["bulkImportConcurrentPipelineBatchLimit"] = state ? state.bulkImportConcurrentPipelineBatchLimit : undefined;
-            resourceInputs["bulkImportEnabled"] = state ? state.bulkImportEnabled : undefined;
-            resourceInputs["bulkImportMaxDownloadFileSize"] = state ? state.bulkImportMaxDownloadFileSize : undefined;
-            resourceInputs["canCreateGroup"] = state ? state.canCreateGroup : undefined;
-            resourceInputs["checkNamespacePlan"] = state ? state.checkNamespacePlan : undefined;
-            resourceInputs["ciMaxIncludes"] = state ? state.ciMaxIncludes : undefined;
-            resourceInputs["ciMaxTotalYamlSizeBytes"] = state ? state.ciMaxTotalYamlSizeBytes : undefined;
-            resourceInputs["commitEmailHostname"] = state ? state.commitEmailHostname : undefined;
-            resourceInputs["concurrentBitbucketImportJobsLimit"] = state ? state.concurrentBitbucketImportJobsLimit : undefined;
-            resourceInputs["concurrentBitbucketServerImportJobsLimit"] = state ? state.concurrentBitbucketServerImportJobsLimit : undefined;
-            resourceInputs["concurrentGithubImportJobsLimit"] = state ? state.concurrentGithubImportJobsLimit : undefined;
-            resourceInputs["containerExpirationPoliciesEnableHistoricEntries"] = state ? state.containerExpirationPoliciesEnableHistoricEntries : undefined;
-            resourceInputs["containerRegistryCleanupTagsServiceMaxListSize"] = state ? state.containerRegistryCleanupTagsServiceMaxListSize : undefined;
-            resourceInputs["containerRegistryDeleteTagsServiceTimeout"] = state ? state.containerRegistryDeleteTagsServiceTimeout : undefined;
-            resourceInputs["containerRegistryExpirationPoliciesCaching"] = state ? state.containerRegistryExpirationPoliciesCaching : undefined;
-            resourceInputs["containerRegistryExpirationPoliciesWorkerCapacity"] = state ? state.containerRegistryExpirationPoliciesWorkerCapacity : undefined;
-            resourceInputs["containerRegistryTokenExpireDelay"] = state ? state.containerRegistryTokenExpireDelay : undefined;
-            resourceInputs["deactivateDormantUsers"] = state ? state.deactivateDormantUsers : undefined;
-            resourceInputs["deactivateDormantUsersPeriod"] = state ? state.deactivateDormantUsersPeriod : undefined;
-            resourceInputs["decompressArchiveFileTimeout"] = state ? state.decompressArchiveFileTimeout : undefined;
-            resourceInputs["defaultArtifactsExpireIn"] = state ? state.defaultArtifactsExpireIn : undefined;
-            resourceInputs["defaultBranchName"] = state ? state.defaultBranchName : undefined;
-            resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
-            resourceInputs["defaultBranchProtectionDefaults"] = state ? state.defaultBranchProtectionDefaults : undefined;
-            resourceInputs["defaultCiConfigPath"] = state ? state.defaultCiConfigPath : undefined;
-            resourceInputs["defaultGroupVisibility"] = state ? state.defaultGroupVisibility : undefined;
-            resourceInputs["defaultPreferredLanguage"] = state ? state.defaultPreferredLanguage : undefined;
-            resourceInputs["defaultProjectCreation"] = state ? state.defaultProjectCreation : undefined;
-            resourceInputs["defaultProjectVisibility"] = state ? state.defaultProjectVisibility : undefined;
-            resourceInputs["defaultProjectsLimit"] = state ? state.defaultProjectsLimit : undefined;
-            resourceInputs["defaultSnippetVisibility"] = state ? state.defaultSnippetVisibility : undefined;
-            resourceInputs["defaultSyntaxHighlightingTheme"] = state ? state.defaultSyntaxHighlightingTheme : undefined;
-            resourceInputs["deleteInactiveProjects"] = state ? state.deleteInactiveProjects : undefined;
-            resourceInputs["deleteUnconfirmedUsers"] = state ? state.deleteUnconfirmedUsers : undefined;
-            resourceInputs["deletionAdjournedPeriod"] = state ? state.deletionAdjournedPeriod : undefined;
-            resourceInputs["diagramsnetEnabled"] = state ? state.diagramsnetEnabled : undefined;
-            resourceInputs["diagramsnetUrl"] = state ? state.diagramsnetUrl : undefined;
-            resourceInputs["diffMaxFiles"] = state ? state.diffMaxFiles : undefined;
-            resourceInputs["diffMaxLines"] = state ? state.diffMaxLines : undefined;
-            resourceInputs["diffMaxPatchBytes"] = state ? state.diffMaxPatchBytes : undefined;
-            resourceInputs["disableAdminOauthScopes"] = state ? state.disableAdminOauthScopes : undefined;
-            resourceInputs["disableFeedToken"] = state ? state.disableFeedToken : undefined;
-            resourceInputs["disablePersonalAccessTokens"] = state ? state.disablePersonalAccessTokens : undefined;
-            resourceInputs["disabledOauthSignInSources"] = state ? state.disabledOauthSignInSources : undefined;
-            resourceInputs["dnsRebindingProtectionEnabled"] = state ? state.dnsRebindingProtectionEnabled : undefined;
-            resourceInputs["domainAllowlists"] = state ? state.domainAllowlists : undefined;
-            resourceInputs["domainDenylistEnabled"] = state ? state.domainDenylistEnabled : undefined;
-            resourceInputs["domainDenylists"] = state ? state.domainDenylists : undefined;
-            resourceInputs["downstreamPipelineTriggerLimitPerProjectUserSha"] = state ? state.downstreamPipelineTriggerLimitPerProjectUserSha : undefined;
-            resourceInputs["dsaKeyRestriction"] = state ? state.dsaKeyRestriction : undefined;
-            resourceInputs["duoFeaturesEnabled"] = state ? state.duoFeaturesEnabled : undefined;
-            resourceInputs["ecdsaKeyRestriction"] = state ? state.ecdsaKeyRestriction : undefined;
-            resourceInputs["ecdsaSkKeyRestriction"] = state ? state.ecdsaSkKeyRestriction : undefined;
-            resourceInputs["ed25519KeyRestriction"] = state ? state.ed25519KeyRestriction : undefined;
-            resourceInputs["ed25519SkKeyRestriction"] = state ? state.ed25519SkKeyRestriction : undefined;
-            resourceInputs["eksAccessKeyId"] = state ? state.eksAccessKeyId : undefined;
-            resourceInputs["eksAccountId"] = state ? state.eksAccountId : undefined;
-            resourceInputs["eksIntegrationEnabled"] = state ? state.eksIntegrationEnabled : undefined;
-            resourceInputs["eksSecretAccessKey"] = state ? state.eksSecretAccessKey : undefined;
-            resourceInputs["elasticsearchAws"] = state ? state.elasticsearchAws : undefined;
-            resourceInputs["elasticsearchAwsAccessKey"] = state ? state.elasticsearchAwsAccessKey : undefined;
-            resourceInputs["elasticsearchAwsRegion"] = state ? state.elasticsearchAwsRegion : undefined;
-            resourceInputs["elasticsearchAwsSecretAccessKey"] = state ? state.elasticsearchAwsSecretAccessKey : undefined;
-            resourceInputs["elasticsearchIndexedFieldLengthLimit"] = state ? state.elasticsearchIndexedFieldLengthLimit : undefined;
-            resourceInputs["elasticsearchIndexedFileSizeLimitKb"] = state ? state.elasticsearchIndexedFileSizeLimitKb : undefined;
-            resourceInputs["elasticsearchIndexing"] = state ? state.elasticsearchIndexing : undefined;
-            resourceInputs["elasticsearchLimitIndexing"] = state ? state.elasticsearchLimitIndexing : undefined;
-            resourceInputs["elasticsearchMaxBulkConcurrency"] = state ? state.elasticsearchMaxBulkConcurrency : undefined;
-            resourceInputs["elasticsearchMaxBulkSizeMb"] = state ? state.elasticsearchMaxBulkSizeMb : undefined;
-            resourceInputs["elasticsearchMaxCodeIndexingConcurrency"] = state ? state.elasticsearchMaxCodeIndexingConcurrency : undefined;
-            resourceInputs["elasticsearchNamespaceIds"] = state ? state.elasticsearchNamespaceIds : undefined;
-            resourceInputs["elasticsearchPassword"] = state ? state.elasticsearchPassword : undefined;
-            resourceInputs["elasticsearchProjectIds"] = state ? state.elasticsearchProjectIds : undefined;
-            resourceInputs["elasticsearchRequeueWorkers"] = state ? state.elasticsearchRequeueWorkers : undefined;
-            resourceInputs["elasticsearchSearch"] = state ? state.elasticsearchSearch : undefined;
-            resourceInputs["elasticsearchUrls"] = state ? state.elasticsearchUrls : undefined;
-            resourceInputs["elasticsearchUsername"] = state ? state.elasticsearchUsername : undefined;
-            resourceInputs["elasticsearchWorkerNumberOfShards"] = state ? state.elasticsearchWorkerNumberOfShards : undefined;
-            resourceInputs["emailAdditionalText"] = state ? state.emailAdditionalText : undefined;
-            resourceInputs["emailAuthorInBody"] = state ? state.emailAuthorInBody : undefined;
-            resourceInputs["emailConfirmationSetting"] = state ? state.emailConfirmationSetting : undefined;
-            resourceInputs["enableArtifactExternalRedirectWarningPage"] = state ? state.enableArtifactExternalRedirectWarningPage : undefined;
-            resourceInputs["enabledGitAccessProtocol"] = state ? state.enabledGitAccessProtocol : undefined;
-            resourceInputs["enforceNamespaceStorageLimit"] = state ? state.enforceNamespaceStorageLimit : undefined;
-            resourceInputs["enforceTerms"] = state ? state.enforceTerms : undefined;
-            resourceInputs["externalAuthClientCert"] = state ? state.externalAuthClientCert : undefined;
-            resourceInputs["externalAuthClientKey"] = state ? state.externalAuthClientKey : undefined;
-            resourceInputs["externalAuthClientKeyPass"] = state ? state.externalAuthClientKeyPass : undefined;
-            resourceInputs["externalAuthorizationServiceDefaultLabel"] = state ? state.externalAuthorizationServiceDefaultLabel : undefined;
-            resourceInputs["externalAuthorizationServiceEnabled"] = state ? state.externalAuthorizationServiceEnabled : undefined;
-            resourceInputs["externalAuthorizationServiceTimeout"] = state ? state.externalAuthorizationServiceTimeout : undefined;
-            resourceInputs["externalAuthorizationServiceUrl"] = state ? state.externalAuthorizationServiceUrl : undefined;
-            resourceInputs["externalPipelineValidationServiceTimeout"] = state ? state.externalPipelineValidationServiceTimeout : undefined;
-            resourceInputs["externalPipelineValidationServiceToken"] = state ? state.externalPipelineValidationServiceToken : undefined;
-            resourceInputs["externalPipelineValidationServiceUrl"] = state ? state.externalPipelineValidationServiceUrl : undefined;
-            resourceInputs["failedLoginAttemptsUnlockPeriodInMinutes"] = state ? state.failedLoginAttemptsUnlockPeriodInMinutes : undefined;
-            resourceInputs["fileTemplateProjectId"] = state ? state.fileTemplateProjectId : undefined;
-            resourceInputs["firstDayOfWeek"] = state ? state.firstDayOfWeek : undefined;
-            resourceInputs["geoNodeAllowedIps"] = state ? state.geoNodeAllowedIps : undefined;
-            resourceInputs["geoStatusTimeout"] = state ? state.geoStatusTimeout : undefined;
-            resourceInputs["gitRateLimitUsersAlertlists"] = state ? state.gitRateLimitUsersAlertlists : undefined;
-            resourceInputs["gitRateLimitUsersAllowlists"] = state ? state.gitRateLimitUsersAllowlists : undefined;
-            resourceInputs["gitTwoFactorSessionExpiry"] = state ? state.gitTwoFactorSessionExpiry : undefined;
-            resourceInputs["gitalyTimeoutDefault"] = state ? state.gitalyTimeoutDefault : undefined;
-            resourceInputs["gitalyTimeoutFast"] = state ? state.gitalyTimeoutFast : undefined;
-            resourceInputs["gitalyTimeoutMedium"] = state ? state.gitalyTimeoutMedium : undefined;
-            resourceInputs["gitlabDedicatedInstance"] = state ? state.gitlabDedicatedInstance : undefined;
-            resourceInputs["gitlabEnvironmentToolkitInstance"] = state ? state.gitlabEnvironmentToolkitInstance : undefined;
-            resourceInputs["gitlabShellOperationLimit"] = state ? state.gitlabShellOperationLimit : undefined;
-            resourceInputs["gitpodEnabled"] = state ? state.gitpodEnabled : undefined;
-            resourceInputs["gitpodUrl"] = state ? state.gitpodUrl : undefined;
-            resourceInputs["globallyAllowedIps"] = state ? state.globallyAllowedIps : undefined;
-            resourceInputs["grafanaEnabled"] = state ? state.grafanaEnabled : undefined;
-            resourceInputs["grafanaUrl"] = state ? state.grafanaUrl : undefined;
-            resourceInputs["gravatarEnabled"] = state ? state.gravatarEnabled : undefined;
-            resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = state ? state.groupOwnersCanManageDefaultBranchProtection : undefined;
-            resourceInputs["helpPageHideCommercialContent"] = state ? state.helpPageHideCommercialContent : undefined;
-            resourceInputs["helpPageSupportUrl"] = state ? state.helpPageSupportUrl : undefined;
-            resourceInputs["helpPageText"] = state ? state.helpPageText : undefined;
-            resourceInputs["helpText"] = state ? state.helpText : undefined;
-            resourceInputs["hideThirdPartyOffers"] = state ? state.hideThirdPartyOffers : undefined;
-            resourceInputs["homePageUrl"] = state ? state.homePageUrl : undefined;
-            resourceInputs["housekeepingEnabled"] = state ? state.housekeepingEnabled : undefined;
-            resourceInputs["housekeepingOptimizeRepositoryPeriod"] = state ? state.housekeepingOptimizeRepositoryPeriod : undefined;
-            resourceInputs["htmlEmailsEnabled"] = state ? state.htmlEmailsEnabled : undefined;
-            resourceInputs["importSources"] = state ? state.importSources : undefined;
-            resourceInputs["inProductMarketingEmailsEnabled"] = state ? state.inProductMarketingEmailsEnabled : undefined;
-            resourceInputs["inactiveProjectsDeleteAfterMonths"] = state ? state.inactiveProjectsDeleteAfterMonths : undefined;
-            resourceInputs["inactiveProjectsMinSizeMb"] = state ? state.inactiveProjectsMinSizeMb : undefined;
-            resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = state ? state.inactiveProjectsSendWarningEmailAfterMonths : undefined;
-            resourceInputs["includeOptionalMetricsInServicePing"] = state ? state.includeOptionalMetricsInServicePing : undefined;
-            resourceInputs["invisibleCaptchaEnabled"] = state ? state.invisibleCaptchaEnabled : undefined;
-            resourceInputs["issuesCreateLimit"] = state ? state.issuesCreateLimit : undefined;
-            resourceInputs["jiraConnectApplicationKey"] = state ? state.jiraConnectApplicationKey : undefined;
-            resourceInputs["jiraConnectProxyUrl"] = state ? state.jiraConnectProxyUrl : undefined;
-            resourceInputs["jiraConnectPublicKeyStorageEnabled"] = state ? state.jiraConnectPublicKeyStorageEnabled : undefined;
-            resourceInputs["keepLatestArtifact"] = state ? state.keepLatestArtifact : undefined;
-            resourceInputs["localMarkdownVersion"] = state ? state.localMarkdownVersion : undefined;
-            resourceInputs["lockDuoFeaturesEnabled"] = state ? state.lockDuoFeaturesEnabled : undefined;
-            resourceInputs["lockMembershipsToLdap"] = state ? state.lockMembershipsToLdap : undefined;
-            resourceInputs["mailgunEventsEnabled"] = state ? state.mailgunEventsEnabled : undefined;
-            resourceInputs["mailgunSigningKey"] = state ? state.mailgunSigningKey : undefined;
-            resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
-            resourceInputs["maintenanceModeMessage"] = state ? state.maintenanceModeMessage : undefined;
-            resourceInputs["mavenPackageRequestsForwarding"] = state ? state.mavenPackageRequestsForwarding : undefined;
-            resourceInputs["maxArtifactsSize"] = state ? state.maxArtifactsSize : undefined;
-            resourceInputs["maxAttachmentSize"] = state ? state.maxAttachmentSize : undefined;
-            resourceInputs["maxDecompressedArchiveSize"] = state ? state.maxDecompressedArchiveSize : undefined;
-            resourceInputs["maxExportSize"] = state ? state.maxExportSize : undefined;
-            resourceInputs["maxImportRemoteFileSize"] = state ? state.maxImportRemoteFileSize : undefined;
-            resourceInputs["maxImportSize"] = state ? state.maxImportSize : undefined;
-            resourceInputs["maxLoginAttempts"] = state ? state.maxLoginAttempts : undefined;
-            resourceInputs["maxNumberOfRepositoryDownloads"] = state ? state.maxNumberOfRepositoryDownloads : undefined;
-            resourceInputs["maxNumberOfRepositoryDownloadsWithinTimePeriod"] = state ? state.maxNumberOfRepositoryDownloadsWithinTimePeriod : undefined;
-            resourceInputs["maxPagesSize"] = state ? state.maxPagesSize : undefined;
-            resourceInputs["maxPersonalAccessTokenLifetime"] = state ? state.maxPersonalAccessTokenLifetime : undefined;
-            resourceInputs["maxSshKeyLifetime"] = state ? state.maxSshKeyLifetime : undefined;
-            resourceInputs["maxTerraformStateSizeBytes"] = state ? state.maxTerraformStateSizeBytes : undefined;
-            resourceInputs["metricsMethodCallThreshold"] = state ? state.metricsMethodCallThreshold : undefined;
-            resourceInputs["minimumPasswordLength"] = state ? state.minimumPasswordLength : undefined;
-            resourceInputs["mirrorAvailable"] = state ? state.mirrorAvailable : undefined;
-            resourceInputs["mirrorCapacityThreshold"] = state ? state.mirrorCapacityThreshold : undefined;
-            resourceInputs["mirrorMaxCapacity"] = state ? state.mirrorMaxCapacity : undefined;
-            resourceInputs["mirrorMaxDelay"] = state ? state.mirrorMaxDelay : undefined;
-            resourceInputs["npmPackageRequestsForwarding"] = state ? state.npmPackageRequestsForwarding : undefined;
-            resourceInputs["nugetSkipMetadataUrlValidation"] = state ? state.nugetSkipMetadataUrlValidation : undefined;
-            resourceInputs["outboundLocalRequestsWhitelists"] = state ? state.outboundLocalRequestsWhitelists : undefined;
-            resourceInputs["packageMetadataPurlTypes"] = state ? state.packageMetadataPurlTypes : undefined;
-            resourceInputs["packageRegistryAllowAnyoneToPullOption"] = state ? state.packageRegistryAllowAnyoneToPullOption : undefined;
-            resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = state ? state.packageRegistryCleanupPoliciesWorkerCapacity : undefined;
-            resourceInputs["pagesDomainVerificationEnabled"] = state ? state.pagesDomainVerificationEnabled : undefined;
-            resourceInputs["passwordAuthenticationEnabledForGit"] = state ? state.passwordAuthenticationEnabledForGit : undefined;
-            resourceInputs["passwordAuthenticationEnabledForWeb"] = state ? state.passwordAuthenticationEnabledForWeb : undefined;
-            resourceInputs["passwordLowercaseRequired"] = state ? state.passwordLowercaseRequired : undefined;
-            resourceInputs["passwordNumberRequired"] = state ? state.passwordNumberRequired : undefined;
-            resourceInputs["passwordSymbolRequired"] = state ? state.passwordSymbolRequired : undefined;
-            resourceInputs["passwordUppercaseRequired"] = state ? state.passwordUppercaseRequired : undefined;
-            resourceInputs["performanceBarAllowedGroupPath"] = state ? state.performanceBarAllowedGroupPath : undefined;
-            resourceInputs["personalAccessTokenPrefix"] = state ? state.personalAccessTokenPrefix : undefined;
-            resourceInputs["pipelineLimitPerProjectUserSha"] = state ? state.pipelineLimitPerProjectUserSha : undefined;
-            resourceInputs["plantumlEnabled"] = state ? state.plantumlEnabled : undefined;
-            resourceInputs["plantumlUrl"] = state ? state.plantumlUrl : undefined;
-            resourceInputs["pollingIntervalMultiplier"] = state ? state.pollingIntervalMultiplier : undefined;
-            resourceInputs["projectExportEnabled"] = state ? state.projectExportEnabled : undefined;
-            resourceInputs["projectJobsApiRateLimit"] = state ? state.projectJobsApiRateLimit : undefined;
-            resourceInputs["projectsApiRateLimitUnauthenticated"] = state ? state.projectsApiRateLimitUnauthenticated : undefined;
-            resourceInputs["prometheusMetricsEnabled"] = state ? state.prometheusMetricsEnabled : undefined;
-            resourceInputs["protectedCiVariables"] = state ? state.protectedCiVariables : undefined;
-            resourceInputs["pushEventActivitiesLimit"] = state ? state.pushEventActivitiesLimit : undefined;
-            resourceInputs["pushEventHooksLimit"] = state ? state.pushEventHooksLimit : undefined;
-            resourceInputs["pypiPackageRequestsForwarding"] = state ? state.pypiPackageRequestsForwarding : undefined;
-            resourceInputs["rateLimitingResponseText"] = state ? state.rateLimitingResponseText : undefined;
-            resourceInputs["rawBlobRequestLimit"] = state ? state.rawBlobRequestLimit : undefined;
-            resourceInputs["recaptchaEnabled"] = state ? state.recaptchaEnabled : undefined;
-            resourceInputs["recaptchaPrivateKey"] = state ? state.recaptchaPrivateKey : undefined;
-            resourceInputs["recaptchaSiteKey"] = state ? state.recaptchaSiteKey : undefined;
-            resourceInputs["receiveMaxInputSize"] = state ? state.receiveMaxInputSize : undefined;
-            resourceInputs["receptiveClusterAgentsEnabled"] = state ? state.receptiveClusterAgentsEnabled : undefined;
-            resourceInputs["rememberMeEnabled"] = state ? state.rememberMeEnabled : undefined;
-            resourceInputs["repositoryChecksEnabled"] = state ? state.repositoryChecksEnabled : undefined;
-            resourceInputs["repositorySizeLimit"] = state ? state.repositorySizeLimit : undefined;
-            resourceInputs["repositoryStoragesWeighted"] = state ? state.repositoryStoragesWeighted : undefined;
-            resourceInputs["requireAdminApprovalAfterUserSignup"] = state ? state.requireAdminApprovalAfterUserSignup : undefined;
-            resourceInputs["requireAdminTwoFactorAuthentication"] = state ? state.requireAdminTwoFactorAuthentication : undefined;
-            resourceInputs["requirePersonalAccessTokenExpiry"] = state ? state.requirePersonalAccessTokenExpiry : undefined;
-            resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
-            resourceInputs["restrictedVisibilityLevels"] = state ? state.restrictedVisibilityLevels : undefined;
-            resourceInputs["rsaKeyRestriction"] = state ? state.rsaKeyRestriction : undefined;
-            resourceInputs["searchRateLimit"] = state ? state.searchRateLimit : undefined;
-            resourceInputs["searchRateLimitUnauthenticated"] = state ? state.searchRateLimitUnauthenticated : undefined;
-            resourceInputs["securityApprovalPoliciesLimit"] = state ? state.securityApprovalPoliciesLimit : undefined;
-            resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = state ? state.securityPolicyGlobalGroupApproversEnabled : undefined;
-            resourceInputs["securityTxtContent"] = state ? state.securityTxtContent : undefined;
-            resourceInputs["sendUserConfirmationEmail"] = state ? state.sendUserConfirmationEmail : undefined;
-            resourceInputs["serviceAccessTokensExpirationEnforced"] = state ? state.serviceAccessTokensExpirationEnforced : undefined;
-            resourceInputs["sessionExpireDelay"] = state ? state.sessionExpireDelay : undefined;
-            resourceInputs["sharedRunnersEnabled"] = state ? state.sharedRunnersEnabled : undefined;
-            resourceInputs["sharedRunnersMinutes"] = state ? state.sharedRunnersMinutes : undefined;
-            resourceInputs["sharedRunnersText"] = state ? state.sharedRunnersText : undefined;
-            resourceInputs["sidekiqJobLimiterCompressionThresholdBytes"] = state ? state.sidekiqJobLimiterCompressionThresholdBytes : undefined;
-            resourceInputs["sidekiqJobLimiterLimitBytes"] = state ? state.sidekiqJobLimiterLimitBytes : undefined;
-            resourceInputs["sidekiqJobLimiterMode"] = state ? state.sidekiqJobLimiterMode : undefined;
-            resourceInputs["signInText"] = state ? state.signInText : undefined;
-            resourceInputs["signupEnabled"] = state ? state.signupEnabled : undefined;
-            resourceInputs["silentAdminExportsEnabled"] = state ? state.silentAdminExportsEnabled : undefined;
-            resourceInputs["silentModeEnabled"] = state ? state.silentModeEnabled : undefined;
-            resourceInputs["slackAppEnabled"] = state ? state.slackAppEnabled : undefined;
-            resourceInputs["slackAppId"] = state ? state.slackAppId : undefined;
-            resourceInputs["slackAppSecret"] = state ? state.slackAppSecret : undefined;
-            resourceInputs["slackAppSigningSecret"] = state ? state.slackAppSigningSecret : undefined;
-            resourceInputs["slackAppVerificationToken"] = state ? state.slackAppVerificationToken : undefined;
-            resourceInputs["snippetSizeLimit"] = state ? state.snippetSizeLimit : undefined;
-            resourceInputs["snowplowAppId"] = state ? state.snowplowAppId : undefined;
-            resourceInputs["snowplowCollectorHostname"] = state ? state.snowplowCollectorHostname : undefined;
-            resourceInputs["snowplowCookieDomain"] = state ? state.snowplowCookieDomain : undefined;
-            resourceInputs["snowplowDatabaseCollectorHostname"] = state ? state.snowplowDatabaseCollectorHostname : undefined;
-            resourceInputs["snowplowEnabled"] = state ? state.snowplowEnabled : undefined;
-            resourceInputs["sourcegraphEnabled"] = state ? state.sourcegraphEnabled : undefined;
-            resourceInputs["sourcegraphPublicOnly"] = state ? state.sourcegraphPublicOnly : undefined;
-            resourceInputs["sourcegraphUrl"] = state ? state.sourcegraphUrl : undefined;
-            resourceInputs["spamCheckApiKey"] = state ? state.spamCheckApiKey : undefined;
-            resourceInputs["spamCheckEndpointEnabled"] = state ? state.spamCheckEndpointEnabled : undefined;
-            resourceInputs["spamCheckEndpointUrl"] = state ? state.spamCheckEndpointUrl : undefined;
-            resourceInputs["staticObjectsExternalStorageAuthToken"] = state ? state.staticObjectsExternalStorageAuthToken : undefined;
-            resourceInputs["staticObjectsExternalStorageUrl"] = state ? state.staticObjectsExternalStorageUrl : undefined;
-            resourceInputs["suggestPipelineEnabled"] = state ? state.suggestPipelineEnabled : undefined;
-            resourceInputs["terminalMaxSessionTime"] = state ? state.terminalMaxSessionTime : undefined;
-            resourceInputs["terms"] = state ? state.terms : undefined;
-            resourceInputs["throttleAuthenticatedApiEnabled"] = state ? state.throttleAuthenticatedApiEnabled : undefined;
-            resourceInputs["throttleAuthenticatedApiPeriodInSeconds"] = state ? state.throttleAuthenticatedApiPeriodInSeconds : undefined;
-            resourceInputs["throttleAuthenticatedApiRequestsPerPeriod"] = state ? state.throttleAuthenticatedApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleAuthenticatedPackagesApiEnabled"] = state ? state.throttleAuthenticatedPackagesApiEnabled : undefined;
-            resourceInputs["throttleAuthenticatedPackagesApiPeriodInSeconds"] = state ? state.throttleAuthenticatedPackagesApiPeriodInSeconds : undefined;
-            resourceInputs["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = state ? state.throttleAuthenticatedPackagesApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleAuthenticatedWebEnabled"] = state ? state.throttleAuthenticatedWebEnabled : undefined;
-            resourceInputs["throttleAuthenticatedWebPeriodInSeconds"] = state ? state.throttleAuthenticatedWebPeriodInSeconds : undefined;
-            resourceInputs["throttleAuthenticatedWebRequestsPerPeriod"] = state ? state.throttleAuthenticatedWebRequestsPerPeriod : undefined;
-            resourceInputs["throttleUnauthenticatedApiEnabled"] = state ? state.throttleUnauthenticatedApiEnabled : undefined;
-            resourceInputs["throttleUnauthenticatedApiPeriodInSeconds"] = state ? state.throttleUnauthenticatedApiPeriodInSeconds : undefined;
-            resourceInputs["throttleUnauthenticatedApiRequestsPerPeriod"] = state ? state.throttleUnauthenticatedApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleUnauthenticatedPackagesApiEnabled"] = state ? state.throttleUnauthenticatedPackagesApiEnabled : undefined;
-            resourceInputs["throttleUnauthenticatedPackagesApiPeriodInSeconds"] = state ? state.throttleUnauthenticatedPackagesApiPeriodInSeconds : undefined;
-            resourceInputs["throttleUnauthenticatedPackagesApiRequestsPerPeriod"] = state ? state.throttleUnauthenticatedPackagesApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleUnauthenticatedWebEnabled"] = state ? state.throttleUnauthenticatedWebEnabled : undefined;
-            resourceInputs["throttleUnauthenticatedWebPeriodInSeconds"] = state ? state.throttleUnauthenticatedWebPeriodInSeconds : undefined;
-            resourceInputs["throttleUnauthenticatedWebRequestsPerPeriod"] = state ? state.throttleUnauthenticatedWebRequestsPerPeriod : undefined;
-            resourceInputs["timeTrackingLimitToHours"] = state ? state.timeTrackingLimitToHours : undefined;
-            resourceInputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
-            resourceInputs["unconfirmedUsersDeleteAfterDays"] = state ? state.unconfirmedUsersDeleteAfterDays : undefined;
-            resourceInputs["uniqueIpsLimitEnabled"] = state ? state.uniqueIpsLimitEnabled : undefined;
-            resourceInputs["uniqueIpsLimitPerUser"] = state ? state.uniqueIpsLimitPerUser : undefined;
-            resourceInputs["uniqueIpsLimitTimeWindow"] = state ? state.uniqueIpsLimitTimeWindow : undefined;
-            resourceInputs["updateRunnerVersionsEnabled"] = state ? state.updateRunnerVersionsEnabled : undefined;
-            resourceInputs["usagePingEnabled"] = state ? state.usagePingEnabled : undefined;
-            resourceInputs["useClickhouseForAnalytics"] = state ? state.useClickhouseForAnalytics : undefined;
-            resourceInputs["userDeactivationEmailsEnabled"] = state ? state.userDeactivationEmailsEnabled : undefined;
-            resourceInputs["userDefaultExternal"] = state ? state.userDefaultExternal : undefined;
-            resourceInputs["userDefaultInternalRegex"] = state ? state.userDefaultInternalRegex : undefined;
-            resourceInputs["userDefaultsToPrivateProfile"] = state ? state.userDefaultsToPrivateProfile : undefined;
-            resourceInputs["userOauthApplications"] = state ? state.userOauthApplications : undefined;
-            resourceInputs["userShowAddSshKeyMessage"] = state ? state.userShowAddSshKeyMessage : undefined;
-            resourceInputs["validRunnerRegistrars"] = state ? state.validRunnerRegistrars : undefined;
-            resourceInputs["versionCheckEnabled"] = state ? state.versionCheckEnabled : undefined;
-            resourceInputs["webIdeClientsidePreviewEnabled"] = state ? state.webIdeClientsidePreviewEnabled : undefined;
-            resourceInputs["whatsNewVariant"] = state ? state.whatsNewVariant : undefined;
-            resourceInputs["wikiPageMaxContentBytes"] = state ? state.wikiPageMaxContentBytes : undefined;
+            resourceInputs["abuseNotificationEmail"] = state?.abuseNotificationEmail;
+            resourceInputs["adminMode"] = state?.adminMode;
+            resourceInputs["afterSignOutPath"] = state?.afterSignOutPath;
+            resourceInputs["afterSignUpText"] = state?.afterSignUpText;
+            resourceInputs["akismetApiKey"] = state?.akismetApiKey;
+            resourceInputs["akismetEnabled"] = state?.akismetEnabled;
+            resourceInputs["allowAccountDeletion"] = state?.allowAccountDeletion;
+            resourceInputs["allowGroupOwnersToManageLdap"] = state?.allowGroupOwnersToManageLdap;
+            resourceInputs["allowLocalRequestsFromSystemHooks"] = state?.allowLocalRequestsFromSystemHooks;
+            resourceInputs["allowLocalRequestsFromWebHooksAndServices"] = state?.allowLocalRequestsFromWebHooksAndServices;
+            resourceInputs["allowProjectCreationForGuestAndBelow"] = state?.allowProjectCreationForGuestAndBelow;
+            resourceInputs["allowRunnerRegistrationToken"] = state?.allowRunnerRegistrationToken;
+            resourceInputs["archiveBuildsInHumanReadable"] = state?.archiveBuildsInHumanReadable;
+            resourceInputs["asciidocMaxIncludes"] = state?.asciidocMaxIncludes;
+            resourceInputs["assetProxyAllowlists"] = state?.assetProxyAllowlists;
+            resourceInputs["assetProxyEnabled"] = state?.assetProxyEnabled;
+            resourceInputs["assetProxySecretKey"] = state?.assetProxySecretKey;
+            resourceInputs["assetProxyUrl"] = state?.assetProxyUrl;
+            resourceInputs["authorizedKeysEnabled"] = state?.authorizedKeysEnabled;
+            resourceInputs["autoBanUserOnExcessiveProjectsDownload"] = state?.autoBanUserOnExcessiveProjectsDownload;
+            resourceInputs["autoDevopsDomain"] = state?.autoDevopsDomain;
+            resourceInputs["autoDevopsEnabled"] = state?.autoDevopsEnabled;
+            resourceInputs["automaticPurchasedStorageAllocation"] = state?.automaticPurchasedStorageAllocation;
+            resourceInputs["bulkImportConcurrentPipelineBatchLimit"] = state?.bulkImportConcurrentPipelineBatchLimit;
+            resourceInputs["bulkImportEnabled"] = state?.bulkImportEnabled;
+            resourceInputs["bulkImportMaxDownloadFileSize"] = state?.bulkImportMaxDownloadFileSize;
+            resourceInputs["canCreateGroup"] = state?.canCreateGroup;
+            resourceInputs["checkNamespacePlan"] = state?.checkNamespacePlan;
+            resourceInputs["ciMaxIncludes"] = state?.ciMaxIncludes;
+            resourceInputs["ciMaxTotalYamlSizeBytes"] = state?.ciMaxTotalYamlSizeBytes;
+            resourceInputs["commitEmailHostname"] = state?.commitEmailHostname;
+            resourceInputs["concurrentBitbucketImportJobsLimit"] = state?.concurrentBitbucketImportJobsLimit;
+            resourceInputs["concurrentBitbucketServerImportJobsLimit"] = state?.concurrentBitbucketServerImportJobsLimit;
+            resourceInputs["concurrentGithubImportJobsLimit"] = state?.concurrentGithubImportJobsLimit;
+            resourceInputs["containerExpirationPoliciesEnableHistoricEntries"] = state?.containerExpirationPoliciesEnableHistoricEntries;
+            resourceInputs["containerRegistryCleanupTagsServiceMaxListSize"] = state?.containerRegistryCleanupTagsServiceMaxListSize;
+            resourceInputs["containerRegistryDeleteTagsServiceTimeout"] = state?.containerRegistryDeleteTagsServiceTimeout;
+            resourceInputs["containerRegistryExpirationPoliciesCaching"] = state?.containerRegistryExpirationPoliciesCaching;
+            resourceInputs["containerRegistryExpirationPoliciesWorkerCapacity"] = state?.containerRegistryExpirationPoliciesWorkerCapacity;
+            resourceInputs["containerRegistryTokenExpireDelay"] = state?.containerRegistryTokenExpireDelay;
+            resourceInputs["deactivateDormantUsers"] = state?.deactivateDormantUsers;
+            resourceInputs["deactivateDormantUsersPeriod"] = state?.deactivateDormantUsersPeriod;
+            resourceInputs["decompressArchiveFileTimeout"] = state?.decompressArchiveFileTimeout;
+            resourceInputs["defaultArtifactsExpireIn"] = state?.defaultArtifactsExpireIn;
+            resourceInputs["defaultBranchName"] = state?.defaultBranchName;
+            resourceInputs["defaultBranchProtection"] = state?.defaultBranchProtection;
+            resourceInputs["defaultBranchProtectionDefaults"] = state?.defaultBranchProtectionDefaults;
+            resourceInputs["defaultCiConfigPath"] = state?.defaultCiConfigPath;
+            resourceInputs["defaultGroupVisibility"] = state?.defaultGroupVisibility;
+            resourceInputs["defaultPreferredLanguage"] = state?.defaultPreferredLanguage;
+            resourceInputs["defaultProjectCreation"] = state?.defaultProjectCreation;
+            resourceInputs["defaultProjectVisibility"] = state?.defaultProjectVisibility;
+            resourceInputs["defaultProjectsLimit"] = state?.defaultProjectsLimit;
+            resourceInputs["defaultSnippetVisibility"] = state?.defaultSnippetVisibility;
+            resourceInputs["defaultSyntaxHighlightingTheme"] = state?.defaultSyntaxHighlightingTheme;
+            resourceInputs["deleteInactiveProjects"] = state?.deleteInactiveProjects;
+            resourceInputs["deleteUnconfirmedUsers"] = state?.deleteUnconfirmedUsers;
+            resourceInputs["deletionAdjournedPeriod"] = state?.deletionAdjournedPeriod;
+            resourceInputs["diagramsnetEnabled"] = state?.diagramsnetEnabled;
+            resourceInputs["diagramsnetUrl"] = state?.diagramsnetUrl;
+            resourceInputs["diffMaxFiles"] = state?.diffMaxFiles;
+            resourceInputs["diffMaxLines"] = state?.diffMaxLines;
+            resourceInputs["diffMaxPatchBytes"] = state?.diffMaxPatchBytes;
+            resourceInputs["disableAdminOauthScopes"] = state?.disableAdminOauthScopes;
+            resourceInputs["disableFeedToken"] = state?.disableFeedToken;
+            resourceInputs["disablePersonalAccessTokens"] = state?.disablePersonalAccessTokens;
+            resourceInputs["disabledOauthSignInSources"] = state?.disabledOauthSignInSources;
+            resourceInputs["dnsRebindingProtectionEnabled"] = state?.dnsRebindingProtectionEnabled;
+            resourceInputs["domainAllowlists"] = state?.domainAllowlists;
+            resourceInputs["domainDenylistEnabled"] = state?.domainDenylistEnabled;
+            resourceInputs["domainDenylists"] = state?.domainDenylists;
+            resourceInputs["downstreamPipelineTriggerLimitPerProjectUserSha"] = state?.downstreamPipelineTriggerLimitPerProjectUserSha;
+            resourceInputs["dsaKeyRestriction"] = state?.dsaKeyRestriction;
+            resourceInputs["duoFeaturesEnabled"] = state?.duoFeaturesEnabled;
+            resourceInputs["ecdsaKeyRestriction"] = state?.ecdsaKeyRestriction;
+            resourceInputs["ecdsaSkKeyRestriction"] = state?.ecdsaSkKeyRestriction;
+            resourceInputs["ed25519KeyRestriction"] = state?.ed25519KeyRestriction;
+            resourceInputs["ed25519SkKeyRestriction"] = state?.ed25519SkKeyRestriction;
+            resourceInputs["eksAccessKeyId"] = state?.eksAccessKeyId;
+            resourceInputs["eksAccountId"] = state?.eksAccountId;
+            resourceInputs["eksIntegrationEnabled"] = state?.eksIntegrationEnabled;
+            resourceInputs["eksSecretAccessKey"] = state?.eksSecretAccessKey;
+            resourceInputs["elasticsearchAws"] = state?.elasticsearchAws;
+            resourceInputs["elasticsearchAwsAccessKey"] = state?.elasticsearchAwsAccessKey;
+            resourceInputs["elasticsearchAwsRegion"] = state?.elasticsearchAwsRegion;
+            resourceInputs["elasticsearchAwsSecretAccessKey"] = state?.elasticsearchAwsSecretAccessKey;
+            resourceInputs["elasticsearchIndexedFieldLengthLimit"] = state?.elasticsearchIndexedFieldLengthLimit;
+            resourceInputs["elasticsearchIndexedFileSizeLimitKb"] = state?.elasticsearchIndexedFileSizeLimitKb;
+            resourceInputs["elasticsearchIndexing"] = state?.elasticsearchIndexing;
+            resourceInputs["elasticsearchLimitIndexing"] = state?.elasticsearchLimitIndexing;
+            resourceInputs["elasticsearchMaxBulkConcurrency"] = state?.elasticsearchMaxBulkConcurrency;
+            resourceInputs["elasticsearchMaxBulkSizeMb"] = state?.elasticsearchMaxBulkSizeMb;
+            resourceInputs["elasticsearchMaxCodeIndexingConcurrency"] = state?.elasticsearchMaxCodeIndexingConcurrency;
+            resourceInputs["elasticsearchNamespaceIds"] = state?.elasticsearchNamespaceIds;
+            resourceInputs["elasticsearchPassword"] = state?.elasticsearchPassword;
+            resourceInputs["elasticsearchProjectIds"] = state?.elasticsearchProjectIds;
+            resourceInputs["elasticsearchRequeueWorkers"] = state?.elasticsearchRequeueWorkers;
+            resourceInputs["elasticsearchSearch"] = state?.elasticsearchSearch;
+            resourceInputs["elasticsearchUrls"] = state?.elasticsearchUrls;
+            resourceInputs["elasticsearchUsername"] = state?.elasticsearchUsername;
+            resourceInputs["elasticsearchWorkerNumberOfShards"] = state?.elasticsearchWorkerNumberOfShards;
+            resourceInputs["emailAdditionalText"] = state?.emailAdditionalText;
+            resourceInputs["emailAuthorInBody"] = state?.emailAuthorInBody;
+            resourceInputs["emailConfirmationSetting"] = state?.emailConfirmationSetting;
+            resourceInputs["enableArtifactExternalRedirectWarningPage"] = state?.enableArtifactExternalRedirectWarningPage;
+            resourceInputs["enabledGitAccessProtocol"] = state?.enabledGitAccessProtocol;
+            resourceInputs["enforceNamespaceStorageLimit"] = state?.enforceNamespaceStorageLimit;
+            resourceInputs["enforceTerms"] = state?.enforceTerms;
+            resourceInputs["externalAuthClientCert"] = state?.externalAuthClientCert;
+            resourceInputs["externalAuthClientKey"] = state?.externalAuthClientKey;
+            resourceInputs["externalAuthClientKeyPass"] = state?.externalAuthClientKeyPass;
+            resourceInputs["externalAuthorizationServiceDefaultLabel"] = state?.externalAuthorizationServiceDefaultLabel;
+            resourceInputs["externalAuthorizationServiceEnabled"] = state?.externalAuthorizationServiceEnabled;
+            resourceInputs["externalAuthorizationServiceTimeout"] = state?.externalAuthorizationServiceTimeout;
+            resourceInputs["externalAuthorizationServiceUrl"] = state?.externalAuthorizationServiceUrl;
+            resourceInputs["externalPipelineValidationServiceTimeout"] = state?.externalPipelineValidationServiceTimeout;
+            resourceInputs["externalPipelineValidationServiceToken"] = state?.externalPipelineValidationServiceToken;
+            resourceInputs["externalPipelineValidationServiceUrl"] = state?.externalPipelineValidationServiceUrl;
+            resourceInputs["failedLoginAttemptsUnlockPeriodInMinutes"] = state?.failedLoginAttemptsUnlockPeriodInMinutes;
+            resourceInputs["fileTemplateProjectId"] = state?.fileTemplateProjectId;
+            resourceInputs["firstDayOfWeek"] = state?.firstDayOfWeek;
+            resourceInputs["geoNodeAllowedIps"] = state?.geoNodeAllowedIps;
+            resourceInputs["geoStatusTimeout"] = state?.geoStatusTimeout;
+            resourceInputs["gitRateLimitUsersAlertlists"] = state?.gitRateLimitUsersAlertlists;
+            resourceInputs["gitRateLimitUsersAllowlists"] = state?.gitRateLimitUsersAllowlists;
+            resourceInputs["gitTwoFactorSessionExpiry"] = state?.gitTwoFactorSessionExpiry;
+            resourceInputs["gitalyTimeoutDefault"] = state?.gitalyTimeoutDefault;
+            resourceInputs["gitalyTimeoutFast"] = state?.gitalyTimeoutFast;
+            resourceInputs["gitalyTimeoutMedium"] = state?.gitalyTimeoutMedium;
+            resourceInputs["gitlabDedicatedInstance"] = state?.gitlabDedicatedInstance;
+            resourceInputs["gitlabEnvironmentToolkitInstance"] = state?.gitlabEnvironmentToolkitInstance;
+            resourceInputs["gitlabShellOperationLimit"] = state?.gitlabShellOperationLimit;
+            resourceInputs["gitpodEnabled"] = state?.gitpodEnabled;
+            resourceInputs["gitpodUrl"] = state?.gitpodUrl;
+            resourceInputs["globallyAllowedIps"] = state?.globallyAllowedIps;
+            resourceInputs["grafanaEnabled"] = state?.grafanaEnabled;
+            resourceInputs["grafanaUrl"] = state?.grafanaUrl;
+            resourceInputs["gravatarEnabled"] = state?.gravatarEnabled;
+            resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = state?.groupOwnersCanManageDefaultBranchProtection;
+            resourceInputs["helpPageHideCommercialContent"] = state?.helpPageHideCommercialContent;
+            resourceInputs["helpPageSupportUrl"] = state?.helpPageSupportUrl;
+            resourceInputs["helpPageText"] = state?.helpPageText;
+            resourceInputs["helpText"] = state?.helpText;
+            resourceInputs["hideThirdPartyOffers"] = state?.hideThirdPartyOffers;
+            resourceInputs["homePageUrl"] = state?.homePageUrl;
+            resourceInputs["housekeepingEnabled"] = state?.housekeepingEnabled;
+            resourceInputs["housekeepingOptimizeRepositoryPeriod"] = state?.housekeepingOptimizeRepositoryPeriod;
+            resourceInputs["htmlEmailsEnabled"] = state?.htmlEmailsEnabled;
+            resourceInputs["importSources"] = state?.importSources;
+            resourceInputs["inProductMarketingEmailsEnabled"] = state?.inProductMarketingEmailsEnabled;
+            resourceInputs["inactiveProjectsDeleteAfterMonths"] = state?.inactiveProjectsDeleteAfterMonths;
+            resourceInputs["inactiveProjectsMinSizeMb"] = state?.inactiveProjectsMinSizeMb;
+            resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = state?.inactiveProjectsSendWarningEmailAfterMonths;
+            resourceInputs["includeOptionalMetricsInServicePing"] = state?.includeOptionalMetricsInServicePing;
+            resourceInputs["invisibleCaptchaEnabled"] = state?.invisibleCaptchaEnabled;
+            resourceInputs["issuesCreateLimit"] = state?.issuesCreateLimit;
+            resourceInputs["jiraConnectApplicationKey"] = state?.jiraConnectApplicationKey;
+            resourceInputs["jiraConnectProxyUrl"] = state?.jiraConnectProxyUrl;
+            resourceInputs["jiraConnectPublicKeyStorageEnabled"] = state?.jiraConnectPublicKeyStorageEnabled;
+            resourceInputs["keepLatestArtifact"] = state?.keepLatestArtifact;
+            resourceInputs["localMarkdownVersion"] = state?.localMarkdownVersion;
+            resourceInputs["lockDuoFeaturesEnabled"] = state?.lockDuoFeaturesEnabled;
+            resourceInputs["lockMembershipsToLdap"] = state?.lockMembershipsToLdap;
+            resourceInputs["mailgunEventsEnabled"] = state?.mailgunEventsEnabled;
+            resourceInputs["mailgunSigningKey"] = state?.mailgunSigningKey;
+            resourceInputs["maintenanceMode"] = state?.maintenanceMode;
+            resourceInputs["maintenanceModeMessage"] = state?.maintenanceModeMessage;
+            resourceInputs["mavenPackageRequestsForwarding"] = state?.mavenPackageRequestsForwarding;
+            resourceInputs["maxArtifactsSize"] = state?.maxArtifactsSize;
+            resourceInputs["maxAttachmentSize"] = state?.maxAttachmentSize;
+            resourceInputs["maxDecompressedArchiveSize"] = state?.maxDecompressedArchiveSize;
+            resourceInputs["maxExportSize"] = state?.maxExportSize;
+            resourceInputs["maxImportRemoteFileSize"] = state?.maxImportRemoteFileSize;
+            resourceInputs["maxImportSize"] = state?.maxImportSize;
+            resourceInputs["maxLoginAttempts"] = state?.maxLoginAttempts;
+            resourceInputs["maxNumberOfRepositoryDownloads"] = state?.maxNumberOfRepositoryDownloads;
+            resourceInputs["maxNumberOfRepositoryDownloadsWithinTimePeriod"] = state?.maxNumberOfRepositoryDownloadsWithinTimePeriod;
+            resourceInputs["maxPagesSize"] = state?.maxPagesSize;
+            resourceInputs["maxPersonalAccessTokenLifetime"] = state?.maxPersonalAccessTokenLifetime;
+            resourceInputs["maxSshKeyLifetime"] = state?.maxSshKeyLifetime;
+            resourceInputs["maxTerraformStateSizeBytes"] = state?.maxTerraformStateSizeBytes;
+            resourceInputs["metricsMethodCallThreshold"] = state?.metricsMethodCallThreshold;
+            resourceInputs["minimumPasswordLength"] = state?.minimumPasswordLength;
+            resourceInputs["mirrorAvailable"] = state?.mirrorAvailable;
+            resourceInputs["mirrorCapacityThreshold"] = state?.mirrorCapacityThreshold;
+            resourceInputs["mirrorMaxCapacity"] = state?.mirrorMaxCapacity;
+            resourceInputs["mirrorMaxDelay"] = state?.mirrorMaxDelay;
+            resourceInputs["npmPackageRequestsForwarding"] = state?.npmPackageRequestsForwarding;
+            resourceInputs["nugetSkipMetadataUrlValidation"] = state?.nugetSkipMetadataUrlValidation;
+            resourceInputs["outboundLocalRequestsWhitelists"] = state?.outboundLocalRequestsWhitelists;
+            resourceInputs["packageMetadataPurlTypes"] = state?.packageMetadataPurlTypes;
+            resourceInputs["packageRegistryAllowAnyoneToPullOption"] = state?.packageRegistryAllowAnyoneToPullOption;
+            resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = state?.packageRegistryCleanupPoliciesWorkerCapacity;
+            resourceInputs["pagesDomainVerificationEnabled"] = state?.pagesDomainVerificationEnabled;
+            resourceInputs["passwordAuthenticationEnabledForGit"] = state?.passwordAuthenticationEnabledForGit;
+            resourceInputs["passwordAuthenticationEnabledForWeb"] = state?.passwordAuthenticationEnabledForWeb;
+            resourceInputs["passwordLowercaseRequired"] = state?.passwordLowercaseRequired;
+            resourceInputs["passwordNumberRequired"] = state?.passwordNumberRequired;
+            resourceInputs["passwordSymbolRequired"] = state?.passwordSymbolRequired;
+            resourceInputs["passwordUppercaseRequired"] = state?.passwordUppercaseRequired;
+            resourceInputs["performanceBarAllowedGroupPath"] = state?.performanceBarAllowedGroupPath;
+            resourceInputs["personalAccessTokenPrefix"] = state?.personalAccessTokenPrefix;
+            resourceInputs["pipelineLimitPerProjectUserSha"] = state?.pipelineLimitPerProjectUserSha;
+            resourceInputs["plantumlEnabled"] = state?.plantumlEnabled;
+            resourceInputs["plantumlUrl"] = state?.plantumlUrl;
+            resourceInputs["pollingIntervalMultiplier"] = state?.pollingIntervalMultiplier;
+            resourceInputs["projectExportEnabled"] = state?.projectExportEnabled;
+            resourceInputs["projectJobsApiRateLimit"] = state?.projectJobsApiRateLimit;
+            resourceInputs["projectsApiRateLimitUnauthenticated"] = state?.projectsApiRateLimitUnauthenticated;
+            resourceInputs["prometheusMetricsEnabled"] = state?.prometheusMetricsEnabled;
+            resourceInputs["protectedCiVariables"] = state?.protectedCiVariables;
+            resourceInputs["pushEventActivitiesLimit"] = state?.pushEventActivitiesLimit;
+            resourceInputs["pushEventHooksLimit"] = state?.pushEventHooksLimit;
+            resourceInputs["pypiPackageRequestsForwarding"] = state?.pypiPackageRequestsForwarding;
+            resourceInputs["rateLimitingResponseText"] = state?.rateLimitingResponseText;
+            resourceInputs["rawBlobRequestLimit"] = state?.rawBlobRequestLimit;
+            resourceInputs["recaptchaEnabled"] = state?.recaptchaEnabled;
+            resourceInputs["recaptchaPrivateKey"] = state?.recaptchaPrivateKey;
+            resourceInputs["recaptchaSiteKey"] = state?.recaptchaSiteKey;
+            resourceInputs["receiveMaxInputSize"] = state?.receiveMaxInputSize;
+            resourceInputs["receptiveClusterAgentsEnabled"] = state?.receptiveClusterAgentsEnabled;
+            resourceInputs["rememberMeEnabled"] = state?.rememberMeEnabled;
+            resourceInputs["repositoryChecksEnabled"] = state?.repositoryChecksEnabled;
+            resourceInputs["repositorySizeLimit"] = state?.repositorySizeLimit;
+            resourceInputs["repositoryStoragesWeighted"] = state?.repositoryStoragesWeighted;
+            resourceInputs["requireAdminApprovalAfterUserSignup"] = state?.requireAdminApprovalAfterUserSignup;
+            resourceInputs["requireAdminTwoFactorAuthentication"] = state?.requireAdminTwoFactorAuthentication;
+            resourceInputs["requirePersonalAccessTokenExpiry"] = state?.requirePersonalAccessTokenExpiry;
+            resourceInputs["requireTwoFactorAuthentication"] = state?.requireTwoFactorAuthentication;
+            resourceInputs["restrictedVisibilityLevels"] = state?.restrictedVisibilityLevels;
+            resourceInputs["rsaKeyRestriction"] = state?.rsaKeyRestriction;
+            resourceInputs["searchRateLimit"] = state?.searchRateLimit;
+            resourceInputs["searchRateLimitUnauthenticated"] = state?.searchRateLimitUnauthenticated;
+            resourceInputs["securityApprovalPoliciesLimit"] = state?.securityApprovalPoliciesLimit;
+            resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = state?.securityPolicyGlobalGroupApproversEnabled;
+            resourceInputs["securityTxtContent"] = state?.securityTxtContent;
+            resourceInputs["sendUserConfirmationEmail"] = state?.sendUserConfirmationEmail;
+            resourceInputs["serviceAccessTokensExpirationEnforced"] = state?.serviceAccessTokensExpirationEnforced;
+            resourceInputs["sessionExpireDelay"] = state?.sessionExpireDelay;
+            resourceInputs["sharedRunnersEnabled"] = state?.sharedRunnersEnabled;
+            resourceInputs["sharedRunnersMinutes"] = state?.sharedRunnersMinutes;
+            resourceInputs["sharedRunnersText"] = state?.sharedRunnersText;
+            resourceInputs["sidekiqJobLimiterCompressionThresholdBytes"] = state?.sidekiqJobLimiterCompressionThresholdBytes;
+            resourceInputs["sidekiqJobLimiterLimitBytes"] = state?.sidekiqJobLimiterLimitBytes;
+            resourceInputs["sidekiqJobLimiterMode"] = state?.sidekiqJobLimiterMode;
+            resourceInputs["signInText"] = state?.signInText;
+            resourceInputs["signupEnabled"] = state?.signupEnabled;
+            resourceInputs["silentAdminExportsEnabled"] = state?.silentAdminExportsEnabled;
+            resourceInputs["silentModeEnabled"] = state?.silentModeEnabled;
+            resourceInputs["slackAppEnabled"] = state?.slackAppEnabled;
+            resourceInputs["slackAppId"] = state?.slackAppId;
+            resourceInputs["slackAppSecret"] = state?.slackAppSecret;
+            resourceInputs["slackAppSigningSecret"] = state?.slackAppSigningSecret;
+            resourceInputs["slackAppVerificationToken"] = state?.slackAppVerificationToken;
+            resourceInputs["snippetSizeLimit"] = state?.snippetSizeLimit;
+            resourceInputs["snowplowAppId"] = state?.snowplowAppId;
+            resourceInputs["snowplowCollectorHostname"] = state?.snowplowCollectorHostname;
+            resourceInputs["snowplowCookieDomain"] = state?.snowplowCookieDomain;
+            resourceInputs["snowplowDatabaseCollectorHostname"] = state?.snowplowDatabaseCollectorHostname;
+            resourceInputs["snowplowEnabled"] = state?.snowplowEnabled;
+            resourceInputs["sourcegraphEnabled"] = state?.sourcegraphEnabled;
+            resourceInputs["sourcegraphPublicOnly"] = state?.sourcegraphPublicOnly;
+            resourceInputs["sourcegraphUrl"] = state?.sourcegraphUrl;
+            resourceInputs["spamCheckApiKey"] = state?.spamCheckApiKey;
+            resourceInputs["spamCheckEndpointEnabled"] = state?.spamCheckEndpointEnabled;
+            resourceInputs["spamCheckEndpointUrl"] = state?.spamCheckEndpointUrl;
+            resourceInputs["staticObjectsExternalStorageAuthToken"] = state?.staticObjectsExternalStorageAuthToken;
+            resourceInputs["staticObjectsExternalStorageUrl"] = state?.staticObjectsExternalStorageUrl;
+            resourceInputs["suggestPipelineEnabled"] = state?.suggestPipelineEnabled;
+            resourceInputs["terminalMaxSessionTime"] = state?.terminalMaxSessionTime;
+            resourceInputs["terms"] = state?.terms;
+            resourceInputs["throttleAuthenticatedApiEnabled"] = state?.throttleAuthenticatedApiEnabled;
+            resourceInputs["throttleAuthenticatedApiPeriodInSeconds"] = state?.throttleAuthenticatedApiPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedApiRequestsPerPeriod"] = state?.throttleAuthenticatedApiRequestsPerPeriod;
+            resourceInputs["throttleAuthenticatedPackagesApiEnabled"] = state?.throttleAuthenticatedPackagesApiEnabled;
+            resourceInputs["throttleAuthenticatedPackagesApiPeriodInSeconds"] = state?.throttleAuthenticatedPackagesApiPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = state?.throttleAuthenticatedPackagesApiRequestsPerPeriod;
+            resourceInputs["throttleAuthenticatedWebEnabled"] = state?.throttleAuthenticatedWebEnabled;
+            resourceInputs["throttleAuthenticatedWebPeriodInSeconds"] = state?.throttleAuthenticatedWebPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedWebRequestsPerPeriod"] = state?.throttleAuthenticatedWebRequestsPerPeriod;
+            resourceInputs["throttleUnauthenticatedApiEnabled"] = state?.throttleUnauthenticatedApiEnabled;
+            resourceInputs["throttleUnauthenticatedApiPeriodInSeconds"] = state?.throttleUnauthenticatedApiPeriodInSeconds;
+            resourceInputs["throttleUnauthenticatedApiRequestsPerPeriod"] = state?.throttleUnauthenticatedApiRequestsPerPeriod;
+            resourceInputs["throttleUnauthenticatedPackagesApiEnabled"] = state?.throttleUnauthenticatedPackagesApiEnabled;
+            resourceInputs["throttleUnauthenticatedPackagesApiPeriodInSeconds"] = state?.throttleUnauthenticatedPackagesApiPeriodInSeconds;
+            resourceInputs["throttleUnauthenticatedPackagesApiRequestsPerPeriod"] = state?.throttleUnauthenticatedPackagesApiRequestsPerPeriod;
+            resourceInputs["throttleUnauthenticatedWebEnabled"] = state?.throttleUnauthenticatedWebEnabled;
+            resourceInputs["throttleUnauthenticatedWebPeriodInSeconds"] = state?.throttleUnauthenticatedWebPeriodInSeconds;
+            resourceInputs["throttleUnauthenticatedWebRequestsPerPeriod"] = state?.throttleUnauthenticatedWebRequestsPerPeriod;
+            resourceInputs["timeTrackingLimitToHours"] = state?.timeTrackingLimitToHours;
+            resourceInputs["twoFactorGracePeriod"] = state?.twoFactorGracePeriod;
+            resourceInputs["unconfirmedUsersDeleteAfterDays"] = state?.unconfirmedUsersDeleteAfterDays;
+            resourceInputs["uniqueIpsLimitEnabled"] = state?.uniqueIpsLimitEnabled;
+            resourceInputs["uniqueIpsLimitPerUser"] = state?.uniqueIpsLimitPerUser;
+            resourceInputs["uniqueIpsLimitTimeWindow"] = state?.uniqueIpsLimitTimeWindow;
+            resourceInputs["updateRunnerVersionsEnabled"] = state?.updateRunnerVersionsEnabled;
+            resourceInputs["usagePingEnabled"] = state?.usagePingEnabled;
+            resourceInputs["useClickhouseForAnalytics"] = state?.useClickhouseForAnalytics;
+            resourceInputs["userDeactivationEmailsEnabled"] = state?.userDeactivationEmailsEnabled;
+            resourceInputs["userDefaultExternal"] = state?.userDefaultExternal;
+            resourceInputs["userDefaultInternalRegex"] = state?.userDefaultInternalRegex;
+            resourceInputs["userDefaultsToPrivateProfile"] = state?.userDefaultsToPrivateProfile;
+            resourceInputs["userOauthApplications"] = state?.userOauthApplications;
+            resourceInputs["userShowAddSshKeyMessage"] = state?.userShowAddSshKeyMessage;
+            resourceInputs["validRunnerRegistrars"] = state?.validRunnerRegistrars;
+            resourceInputs["versionCheckEnabled"] = state?.versionCheckEnabled;
+            resourceInputs["webIdeClientsidePreviewEnabled"] = state?.webIdeClientsidePreviewEnabled;
+            resourceInputs["whatsNewVariant"] = state?.whatsNewVariant;
+            resourceInputs["wikiPageMaxContentBytes"] = state?.wikiPageMaxContentBytes;
         } else {
             const args = argsOrState as ApplicationSettingsArgs | undefined;
-            resourceInputs["abuseNotificationEmail"] = args ? args.abuseNotificationEmail : undefined;
-            resourceInputs["adminMode"] = args ? args.adminMode : undefined;
-            resourceInputs["afterSignOutPath"] = args ? args.afterSignOutPath : undefined;
-            resourceInputs["afterSignUpText"] = args ? args.afterSignUpText : undefined;
+            resourceInputs["abuseNotificationEmail"] = args?.abuseNotificationEmail;
+            resourceInputs["adminMode"] = args?.adminMode;
+            resourceInputs["afterSignOutPath"] = args?.afterSignOutPath;
+            resourceInputs["afterSignUpText"] = args?.afterSignUpText;
             resourceInputs["akismetApiKey"] = args?.akismetApiKey ? pulumi.secret(args.akismetApiKey) : undefined;
-            resourceInputs["akismetEnabled"] = args ? args.akismetEnabled : undefined;
-            resourceInputs["allowAccountDeletion"] = args ? args.allowAccountDeletion : undefined;
-            resourceInputs["allowGroupOwnersToManageLdap"] = args ? args.allowGroupOwnersToManageLdap : undefined;
-            resourceInputs["allowLocalRequestsFromSystemHooks"] = args ? args.allowLocalRequestsFromSystemHooks : undefined;
-            resourceInputs["allowLocalRequestsFromWebHooksAndServices"] = args ? args.allowLocalRequestsFromWebHooksAndServices : undefined;
-            resourceInputs["allowProjectCreationForGuestAndBelow"] = args ? args.allowProjectCreationForGuestAndBelow : undefined;
-            resourceInputs["allowRunnerRegistrationToken"] = args ? args.allowRunnerRegistrationToken : undefined;
-            resourceInputs["archiveBuildsInHumanReadable"] = args ? args.archiveBuildsInHumanReadable : undefined;
-            resourceInputs["asciidocMaxIncludes"] = args ? args.asciidocMaxIncludes : undefined;
-            resourceInputs["assetProxyAllowlists"] = args ? args.assetProxyAllowlists : undefined;
-            resourceInputs["assetProxyEnabled"] = args ? args.assetProxyEnabled : undefined;
+            resourceInputs["akismetEnabled"] = args?.akismetEnabled;
+            resourceInputs["allowAccountDeletion"] = args?.allowAccountDeletion;
+            resourceInputs["allowGroupOwnersToManageLdap"] = args?.allowGroupOwnersToManageLdap;
+            resourceInputs["allowLocalRequestsFromSystemHooks"] = args?.allowLocalRequestsFromSystemHooks;
+            resourceInputs["allowLocalRequestsFromWebHooksAndServices"] = args?.allowLocalRequestsFromWebHooksAndServices;
+            resourceInputs["allowProjectCreationForGuestAndBelow"] = args?.allowProjectCreationForGuestAndBelow;
+            resourceInputs["allowRunnerRegistrationToken"] = args?.allowRunnerRegistrationToken;
+            resourceInputs["archiveBuildsInHumanReadable"] = args?.archiveBuildsInHumanReadable;
+            resourceInputs["asciidocMaxIncludes"] = args?.asciidocMaxIncludes;
+            resourceInputs["assetProxyAllowlists"] = args?.assetProxyAllowlists;
+            resourceInputs["assetProxyEnabled"] = args?.assetProxyEnabled;
             resourceInputs["assetProxySecretKey"] = args?.assetProxySecretKey ? pulumi.secret(args.assetProxySecretKey) : undefined;
-            resourceInputs["assetProxyUrl"] = args ? args.assetProxyUrl : undefined;
-            resourceInputs["authorizedKeysEnabled"] = args ? args.authorizedKeysEnabled : undefined;
-            resourceInputs["autoBanUserOnExcessiveProjectsDownload"] = args ? args.autoBanUserOnExcessiveProjectsDownload : undefined;
-            resourceInputs["autoDevopsDomain"] = args ? args.autoDevopsDomain : undefined;
-            resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
-            resourceInputs["automaticPurchasedStorageAllocation"] = args ? args.automaticPurchasedStorageAllocation : undefined;
-            resourceInputs["bulkImportConcurrentPipelineBatchLimit"] = args ? args.bulkImportConcurrentPipelineBatchLimit : undefined;
-            resourceInputs["bulkImportEnabled"] = args ? args.bulkImportEnabled : undefined;
-            resourceInputs["bulkImportMaxDownloadFileSize"] = args ? args.bulkImportMaxDownloadFileSize : undefined;
-            resourceInputs["canCreateGroup"] = args ? args.canCreateGroup : undefined;
-            resourceInputs["checkNamespacePlan"] = args ? args.checkNamespacePlan : undefined;
-            resourceInputs["ciMaxIncludes"] = args ? args.ciMaxIncludes : undefined;
-            resourceInputs["ciMaxTotalYamlSizeBytes"] = args ? args.ciMaxTotalYamlSizeBytes : undefined;
-            resourceInputs["commitEmailHostname"] = args ? args.commitEmailHostname : undefined;
-            resourceInputs["concurrentBitbucketImportJobsLimit"] = args ? args.concurrentBitbucketImportJobsLimit : undefined;
-            resourceInputs["concurrentBitbucketServerImportJobsLimit"] = args ? args.concurrentBitbucketServerImportJobsLimit : undefined;
-            resourceInputs["concurrentGithubImportJobsLimit"] = args ? args.concurrentGithubImportJobsLimit : undefined;
-            resourceInputs["containerExpirationPoliciesEnableHistoricEntries"] = args ? args.containerExpirationPoliciesEnableHistoricEntries : undefined;
-            resourceInputs["containerRegistryCleanupTagsServiceMaxListSize"] = args ? args.containerRegistryCleanupTagsServiceMaxListSize : undefined;
-            resourceInputs["containerRegistryDeleteTagsServiceTimeout"] = args ? args.containerRegistryDeleteTagsServiceTimeout : undefined;
-            resourceInputs["containerRegistryExpirationPoliciesCaching"] = args ? args.containerRegistryExpirationPoliciesCaching : undefined;
-            resourceInputs["containerRegistryExpirationPoliciesWorkerCapacity"] = args ? args.containerRegistryExpirationPoliciesWorkerCapacity : undefined;
-            resourceInputs["containerRegistryTokenExpireDelay"] = args ? args.containerRegistryTokenExpireDelay : undefined;
-            resourceInputs["deactivateDormantUsers"] = args ? args.deactivateDormantUsers : undefined;
-            resourceInputs["deactivateDormantUsersPeriod"] = args ? args.deactivateDormantUsersPeriod : undefined;
-            resourceInputs["decompressArchiveFileTimeout"] = args ? args.decompressArchiveFileTimeout : undefined;
-            resourceInputs["defaultArtifactsExpireIn"] = args ? args.defaultArtifactsExpireIn : undefined;
-            resourceInputs["defaultBranchName"] = args ? args.defaultBranchName : undefined;
-            resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
-            resourceInputs["defaultBranchProtectionDefaults"] = args ? args.defaultBranchProtectionDefaults : undefined;
-            resourceInputs["defaultCiConfigPath"] = args ? args.defaultCiConfigPath : undefined;
-            resourceInputs["defaultGroupVisibility"] = args ? args.defaultGroupVisibility : undefined;
-            resourceInputs["defaultPreferredLanguage"] = args ? args.defaultPreferredLanguage : undefined;
-            resourceInputs["defaultProjectCreation"] = args ? args.defaultProjectCreation : undefined;
-            resourceInputs["defaultProjectVisibility"] = args ? args.defaultProjectVisibility : undefined;
-            resourceInputs["defaultProjectsLimit"] = args ? args.defaultProjectsLimit : undefined;
-            resourceInputs["defaultSnippetVisibility"] = args ? args.defaultSnippetVisibility : undefined;
-            resourceInputs["defaultSyntaxHighlightingTheme"] = args ? args.defaultSyntaxHighlightingTheme : undefined;
-            resourceInputs["deleteInactiveProjects"] = args ? args.deleteInactiveProjects : undefined;
-            resourceInputs["deleteUnconfirmedUsers"] = args ? args.deleteUnconfirmedUsers : undefined;
-            resourceInputs["deletionAdjournedPeriod"] = args ? args.deletionAdjournedPeriod : undefined;
-            resourceInputs["diagramsnetEnabled"] = args ? args.diagramsnetEnabled : undefined;
-            resourceInputs["diagramsnetUrl"] = args ? args.diagramsnetUrl : undefined;
-            resourceInputs["diffMaxFiles"] = args ? args.diffMaxFiles : undefined;
-            resourceInputs["diffMaxLines"] = args ? args.diffMaxLines : undefined;
-            resourceInputs["diffMaxPatchBytes"] = args ? args.diffMaxPatchBytes : undefined;
-            resourceInputs["disableAdminOauthScopes"] = args ? args.disableAdminOauthScopes : undefined;
-            resourceInputs["disableFeedToken"] = args ? args.disableFeedToken : undefined;
-            resourceInputs["disablePersonalAccessTokens"] = args ? args.disablePersonalAccessTokens : undefined;
-            resourceInputs["disabledOauthSignInSources"] = args ? args.disabledOauthSignInSources : undefined;
-            resourceInputs["dnsRebindingProtectionEnabled"] = args ? args.dnsRebindingProtectionEnabled : undefined;
-            resourceInputs["domainAllowlists"] = args ? args.domainAllowlists : undefined;
-            resourceInputs["domainDenylistEnabled"] = args ? args.domainDenylistEnabled : undefined;
-            resourceInputs["domainDenylists"] = args ? args.domainDenylists : undefined;
-            resourceInputs["downstreamPipelineTriggerLimitPerProjectUserSha"] = args ? args.downstreamPipelineTriggerLimitPerProjectUserSha : undefined;
-            resourceInputs["dsaKeyRestriction"] = args ? args.dsaKeyRestriction : undefined;
-            resourceInputs["duoFeaturesEnabled"] = args ? args.duoFeaturesEnabled : undefined;
-            resourceInputs["ecdsaKeyRestriction"] = args ? args.ecdsaKeyRestriction : undefined;
-            resourceInputs["ecdsaSkKeyRestriction"] = args ? args.ecdsaSkKeyRestriction : undefined;
-            resourceInputs["ed25519KeyRestriction"] = args ? args.ed25519KeyRestriction : undefined;
-            resourceInputs["ed25519SkKeyRestriction"] = args ? args.ed25519SkKeyRestriction : undefined;
+            resourceInputs["assetProxyUrl"] = args?.assetProxyUrl;
+            resourceInputs["authorizedKeysEnabled"] = args?.authorizedKeysEnabled;
+            resourceInputs["autoBanUserOnExcessiveProjectsDownload"] = args?.autoBanUserOnExcessiveProjectsDownload;
+            resourceInputs["autoDevopsDomain"] = args?.autoDevopsDomain;
+            resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
+            resourceInputs["automaticPurchasedStorageAllocation"] = args?.automaticPurchasedStorageAllocation;
+            resourceInputs["bulkImportConcurrentPipelineBatchLimit"] = args?.bulkImportConcurrentPipelineBatchLimit;
+            resourceInputs["bulkImportEnabled"] = args?.bulkImportEnabled;
+            resourceInputs["bulkImportMaxDownloadFileSize"] = args?.bulkImportMaxDownloadFileSize;
+            resourceInputs["canCreateGroup"] = args?.canCreateGroup;
+            resourceInputs["checkNamespacePlan"] = args?.checkNamespacePlan;
+            resourceInputs["ciMaxIncludes"] = args?.ciMaxIncludes;
+            resourceInputs["ciMaxTotalYamlSizeBytes"] = args?.ciMaxTotalYamlSizeBytes;
+            resourceInputs["commitEmailHostname"] = args?.commitEmailHostname;
+            resourceInputs["concurrentBitbucketImportJobsLimit"] = args?.concurrentBitbucketImportJobsLimit;
+            resourceInputs["concurrentBitbucketServerImportJobsLimit"] = args?.concurrentBitbucketServerImportJobsLimit;
+            resourceInputs["concurrentGithubImportJobsLimit"] = args?.concurrentGithubImportJobsLimit;
+            resourceInputs["containerExpirationPoliciesEnableHistoricEntries"] = args?.containerExpirationPoliciesEnableHistoricEntries;
+            resourceInputs["containerRegistryCleanupTagsServiceMaxListSize"] = args?.containerRegistryCleanupTagsServiceMaxListSize;
+            resourceInputs["containerRegistryDeleteTagsServiceTimeout"] = args?.containerRegistryDeleteTagsServiceTimeout;
+            resourceInputs["containerRegistryExpirationPoliciesCaching"] = args?.containerRegistryExpirationPoliciesCaching;
+            resourceInputs["containerRegistryExpirationPoliciesWorkerCapacity"] = args?.containerRegistryExpirationPoliciesWorkerCapacity;
+            resourceInputs["containerRegistryTokenExpireDelay"] = args?.containerRegistryTokenExpireDelay;
+            resourceInputs["deactivateDormantUsers"] = args?.deactivateDormantUsers;
+            resourceInputs["deactivateDormantUsersPeriod"] = args?.deactivateDormantUsersPeriod;
+            resourceInputs["decompressArchiveFileTimeout"] = args?.decompressArchiveFileTimeout;
+            resourceInputs["defaultArtifactsExpireIn"] = args?.defaultArtifactsExpireIn;
+            resourceInputs["defaultBranchName"] = args?.defaultBranchName;
+            resourceInputs["defaultBranchProtection"] = args?.defaultBranchProtection;
+            resourceInputs["defaultBranchProtectionDefaults"] = args?.defaultBranchProtectionDefaults;
+            resourceInputs["defaultCiConfigPath"] = args?.defaultCiConfigPath;
+            resourceInputs["defaultGroupVisibility"] = args?.defaultGroupVisibility;
+            resourceInputs["defaultPreferredLanguage"] = args?.defaultPreferredLanguage;
+            resourceInputs["defaultProjectCreation"] = args?.defaultProjectCreation;
+            resourceInputs["defaultProjectVisibility"] = args?.defaultProjectVisibility;
+            resourceInputs["defaultProjectsLimit"] = args?.defaultProjectsLimit;
+            resourceInputs["defaultSnippetVisibility"] = args?.defaultSnippetVisibility;
+            resourceInputs["defaultSyntaxHighlightingTheme"] = args?.defaultSyntaxHighlightingTheme;
+            resourceInputs["deleteInactiveProjects"] = args?.deleteInactiveProjects;
+            resourceInputs["deleteUnconfirmedUsers"] = args?.deleteUnconfirmedUsers;
+            resourceInputs["deletionAdjournedPeriod"] = args?.deletionAdjournedPeriod;
+            resourceInputs["diagramsnetEnabled"] = args?.diagramsnetEnabled;
+            resourceInputs["diagramsnetUrl"] = args?.diagramsnetUrl;
+            resourceInputs["diffMaxFiles"] = args?.diffMaxFiles;
+            resourceInputs["diffMaxLines"] = args?.diffMaxLines;
+            resourceInputs["diffMaxPatchBytes"] = args?.diffMaxPatchBytes;
+            resourceInputs["disableAdminOauthScopes"] = args?.disableAdminOauthScopes;
+            resourceInputs["disableFeedToken"] = args?.disableFeedToken;
+            resourceInputs["disablePersonalAccessTokens"] = args?.disablePersonalAccessTokens;
+            resourceInputs["disabledOauthSignInSources"] = args?.disabledOauthSignInSources;
+            resourceInputs["dnsRebindingProtectionEnabled"] = args?.dnsRebindingProtectionEnabled;
+            resourceInputs["domainAllowlists"] = args?.domainAllowlists;
+            resourceInputs["domainDenylistEnabled"] = args?.domainDenylistEnabled;
+            resourceInputs["domainDenylists"] = args?.domainDenylists;
+            resourceInputs["downstreamPipelineTriggerLimitPerProjectUserSha"] = args?.downstreamPipelineTriggerLimitPerProjectUserSha;
+            resourceInputs["dsaKeyRestriction"] = args?.dsaKeyRestriction;
+            resourceInputs["duoFeaturesEnabled"] = args?.duoFeaturesEnabled;
+            resourceInputs["ecdsaKeyRestriction"] = args?.ecdsaKeyRestriction;
+            resourceInputs["ecdsaSkKeyRestriction"] = args?.ecdsaSkKeyRestriction;
+            resourceInputs["ed25519KeyRestriction"] = args?.ed25519KeyRestriction;
+            resourceInputs["ed25519SkKeyRestriction"] = args?.ed25519SkKeyRestriction;
             resourceInputs["eksAccessKeyId"] = args?.eksAccessKeyId ? pulumi.secret(args.eksAccessKeyId) : undefined;
-            resourceInputs["eksAccountId"] = args ? args.eksAccountId : undefined;
-            resourceInputs["eksIntegrationEnabled"] = args ? args.eksIntegrationEnabled : undefined;
+            resourceInputs["eksAccountId"] = args?.eksAccountId;
+            resourceInputs["eksIntegrationEnabled"] = args?.eksIntegrationEnabled;
             resourceInputs["eksSecretAccessKey"] = args?.eksSecretAccessKey ? pulumi.secret(args.eksSecretAccessKey) : undefined;
-            resourceInputs["elasticsearchAws"] = args ? args.elasticsearchAws : undefined;
+            resourceInputs["elasticsearchAws"] = args?.elasticsearchAws;
             resourceInputs["elasticsearchAwsAccessKey"] = args?.elasticsearchAwsAccessKey ? pulumi.secret(args.elasticsearchAwsAccessKey) : undefined;
-            resourceInputs["elasticsearchAwsRegion"] = args ? args.elasticsearchAwsRegion : undefined;
+            resourceInputs["elasticsearchAwsRegion"] = args?.elasticsearchAwsRegion;
             resourceInputs["elasticsearchAwsSecretAccessKey"] = args?.elasticsearchAwsSecretAccessKey ? pulumi.secret(args.elasticsearchAwsSecretAccessKey) : undefined;
-            resourceInputs["elasticsearchIndexedFieldLengthLimit"] = args ? args.elasticsearchIndexedFieldLengthLimit : undefined;
-            resourceInputs["elasticsearchIndexedFileSizeLimitKb"] = args ? args.elasticsearchIndexedFileSizeLimitKb : undefined;
-            resourceInputs["elasticsearchIndexing"] = args ? args.elasticsearchIndexing : undefined;
-            resourceInputs["elasticsearchLimitIndexing"] = args ? args.elasticsearchLimitIndexing : undefined;
-            resourceInputs["elasticsearchMaxBulkConcurrency"] = args ? args.elasticsearchMaxBulkConcurrency : undefined;
-            resourceInputs["elasticsearchMaxBulkSizeMb"] = args ? args.elasticsearchMaxBulkSizeMb : undefined;
-            resourceInputs["elasticsearchMaxCodeIndexingConcurrency"] = args ? args.elasticsearchMaxCodeIndexingConcurrency : undefined;
-            resourceInputs["elasticsearchNamespaceIds"] = args ? args.elasticsearchNamespaceIds : undefined;
+            resourceInputs["elasticsearchIndexedFieldLengthLimit"] = args?.elasticsearchIndexedFieldLengthLimit;
+            resourceInputs["elasticsearchIndexedFileSizeLimitKb"] = args?.elasticsearchIndexedFileSizeLimitKb;
+            resourceInputs["elasticsearchIndexing"] = args?.elasticsearchIndexing;
+            resourceInputs["elasticsearchLimitIndexing"] = args?.elasticsearchLimitIndexing;
+            resourceInputs["elasticsearchMaxBulkConcurrency"] = args?.elasticsearchMaxBulkConcurrency;
+            resourceInputs["elasticsearchMaxBulkSizeMb"] = args?.elasticsearchMaxBulkSizeMb;
+            resourceInputs["elasticsearchMaxCodeIndexingConcurrency"] = args?.elasticsearchMaxCodeIndexingConcurrency;
+            resourceInputs["elasticsearchNamespaceIds"] = args?.elasticsearchNamespaceIds;
             resourceInputs["elasticsearchPassword"] = args?.elasticsearchPassword ? pulumi.secret(args.elasticsearchPassword) : undefined;
-            resourceInputs["elasticsearchProjectIds"] = args ? args.elasticsearchProjectIds : undefined;
-            resourceInputs["elasticsearchRequeueWorkers"] = args ? args.elasticsearchRequeueWorkers : undefined;
-            resourceInputs["elasticsearchSearch"] = args ? args.elasticsearchSearch : undefined;
-            resourceInputs["elasticsearchUrls"] = args ? args.elasticsearchUrls : undefined;
-            resourceInputs["elasticsearchUsername"] = args ? args.elasticsearchUsername : undefined;
-            resourceInputs["elasticsearchWorkerNumberOfShards"] = args ? args.elasticsearchWorkerNumberOfShards : undefined;
-            resourceInputs["emailAdditionalText"] = args ? args.emailAdditionalText : undefined;
-            resourceInputs["emailAuthorInBody"] = args ? args.emailAuthorInBody : undefined;
-            resourceInputs["emailConfirmationSetting"] = args ? args.emailConfirmationSetting : undefined;
-            resourceInputs["enableArtifactExternalRedirectWarningPage"] = args ? args.enableArtifactExternalRedirectWarningPage : undefined;
-            resourceInputs["enabledGitAccessProtocol"] = args ? args.enabledGitAccessProtocol : undefined;
-            resourceInputs["enforceNamespaceStorageLimit"] = args ? args.enforceNamespaceStorageLimit : undefined;
-            resourceInputs["enforceTerms"] = args ? args.enforceTerms : undefined;
-            resourceInputs["externalAuthClientCert"] = args ? args.externalAuthClientCert : undefined;
+            resourceInputs["elasticsearchProjectIds"] = args?.elasticsearchProjectIds;
+            resourceInputs["elasticsearchRequeueWorkers"] = args?.elasticsearchRequeueWorkers;
+            resourceInputs["elasticsearchSearch"] = args?.elasticsearchSearch;
+            resourceInputs["elasticsearchUrls"] = args?.elasticsearchUrls;
+            resourceInputs["elasticsearchUsername"] = args?.elasticsearchUsername;
+            resourceInputs["elasticsearchWorkerNumberOfShards"] = args?.elasticsearchWorkerNumberOfShards;
+            resourceInputs["emailAdditionalText"] = args?.emailAdditionalText;
+            resourceInputs["emailAuthorInBody"] = args?.emailAuthorInBody;
+            resourceInputs["emailConfirmationSetting"] = args?.emailConfirmationSetting;
+            resourceInputs["enableArtifactExternalRedirectWarningPage"] = args?.enableArtifactExternalRedirectWarningPage;
+            resourceInputs["enabledGitAccessProtocol"] = args?.enabledGitAccessProtocol;
+            resourceInputs["enforceNamespaceStorageLimit"] = args?.enforceNamespaceStorageLimit;
+            resourceInputs["enforceTerms"] = args?.enforceTerms;
+            resourceInputs["externalAuthClientCert"] = args?.externalAuthClientCert;
             resourceInputs["externalAuthClientKey"] = args?.externalAuthClientKey ? pulumi.secret(args.externalAuthClientKey) : undefined;
             resourceInputs["externalAuthClientKeyPass"] = args?.externalAuthClientKeyPass ? pulumi.secret(args.externalAuthClientKeyPass) : undefined;
-            resourceInputs["externalAuthorizationServiceDefaultLabel"] = args ? args.externalAuthorizationServiceDefaultLabel : undefined;
-            resourceInputs["externalAuthorizationServiceEnabled"] = args ? args.externalAuthorizationServiceEnabled : undefined;
-            resourceInputs["externalAuthorizationServiceTimeout"] = args ? args.externalAuthorizationServiceTimeout : undefined;
-            resourceInputs["externalAuthorizationServiceUrl"] = args ? args.externalAuthorizationServiceUrl : undefined;
-            resourceInputs["externalPipelineValidationServiceTimeout"] = args ? args.externalPipelineValidationServiceTimeout : undefined;
-            resourceInputs["externalPipelineValidationServiceToken"] = args ? args.externalPipelineValidationServiceToken : undefined;
-            resourceInputs["externalPipelineValidationServiceUrl"] = args ? args.externalPipelineValidationServiceUrl : undefined;
-            resourceInputs["failedLoginAttemptsUnlockPeriodInMinutes"] = args ? args.failedLoginAttemptsUnlockPeriodInMinutes : undefined;
-            resourceInputs["fileTemplateProjectId"] = args ? args.fileTemplateProjectId : undefined;
-            resourceInputs["firstDayOfWeek"] = args ? args.firstDayOfWeek : undefined;
-            resourceInputs["geoNodeAllowedIps"] = args ? args.geoNodeAllowedIps : undefined;
-            resourceInputs["geoStatusTimeout"] = args ? args.geoStatusTimeout : undefined;
-            resourceInputs["gitRateLimitUsersAlertlists"] = args ? args.gitRateLimitUsersAlertlists : undefined;
-            resourceInputs["gitRateLimitUsersAllowlists"] = args ? args.gitRateLimitUsersAllowlists : undefined;
-            resourceInputs["gitTwoFactorSessionExpiry"] = args ? args.gitTwoFactorSessionExpiry : undefined;
-            resourceInputs["gitalyTimeoutDefault"] = args ? args.gitalyTimeoutDefault : undefined;
-            resourceInputs["gitalyTimeoutFast"] = args ? args.gitalyTimeoutFast : undefined;
-            resourceInputs["gitalyTimeoutMedium"] = args ? args.gitalyTimeoutMedium : undefined;
-            resourceInputs["gitlabShellOperationLimit"] = args ? args.gitlabShellOperationLimit : undefined;
-            resourceInputs["gitpodEnabled"] = args ? args.gitpodEnabled : undefined;
-            resourceInputs["gitpodUrl"] = args ? args.gitpodUrl : undefined;
-            resourceInputs["globallyAllowedIps"] = args ? args.globallyAllowedIps : undefined;
-            resourceInputs["grafanaEnabled"] = args ? args.grafanaEnabled : undefined;
-            resourceInputs["grafanaUrl"] = args ? args.grafanaUrl : undefined;
-            resourceInputs["gravatarEnabled"] = args ? args.gravatarEnabled : undefined;
-            resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = args ? args.groupOwnersCanManageDefaultBranchProtection : undefined;
-            resourceInputs["helpPageHideCommercialContent"] = args ? args.helpPageHideCommercialContent : undefined;
-            resourceInputs["helpPageSupportUrl"] = args ? args.helpPageSupportUrl : undefined;
-            resourceInputs["helpPageText"] = args ? args.helpPageText : undefined;
-            resourceInputs["helpText"] = args ? args.helpText : undefined;
-            resourceInputs["hideThirdPartyOffers"] = args ? args.hideThirdPartyOffers : undefined;
-            resourceInputs["homePageUrl"] = args ? args.homePageUrl : undefined;
-            resourceInputs["housekeepingEnabled"] = args ? args.housekeepingEnabled : undefined;
-            resourceInputs["housekeepingOptimizeRepositoryPeriod"] = args ? args.housekeepingOptimizeRepositoryPeriod : undefined;
-            resourceInputs["htmlEmailsEnabled"] = args ? args.htmlEmailsEnabled : undefined;
-            resourceInputs["importSources"] = args ? args.importSources : undefined;
-            resourceInputs["inProductMarketingEmailsEnabled"] = args ? args.inProductMarketingEmailsEnabled : undefined;
-            resourceInputs["inactiveProjectsDeleteAfterMonths"] = args ? args.inactiveProjectsDeleteAfterMonths : undefined;
-            resourceInputs["inactiveProjectsMinSizeMb"] = args ? args.inactiveProjectsMinSizeMb : undefined;
-            resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = args ? args.inactiveProjectsSendWarningEmailAfterMonths : undefined;
-            resourceInputs["includeOptionalMetricsInServicePing"] = args ? args.includeOptionalMetricsInServicePing : undefined;
-            resourceInputs["invisibleCaptchaEnabled"] = args ? args.invisibleCaptchaEnabled : undefined;
-            resourceInputs["issuesCreateLimit"] = args ? args.issuesCreateLimit : undefined;
-            resourceInputs["jiraConnectApplicationKey"] = args ? args.jiraConnectApplicationKey : undefined;
-            resourceInputs["jiraConnectProxyUrl"] = args ? args.jiraConnectProxyUrl : undefined;
-            resourceInputs["jiraConnectPublicKeyStorageEnabled"] = args ? args.jiraConnectPublicKeyStorageEnabled : undefined;
-            resourceInputs["keepLatestArtifact"] = args ? args.keepLatestArtifact : undefined;
-            resourceInputs["localMarkdownVersion"] = args ? args.localMarkdownVersion : undefined;
-            resourceInputs["lockDuoFeaturesEnabled"] = args ? args.lockDuoFeaturesEnabled : undefined;
-            resourceInputs["lockMembershipsToLdap"] = args ? args.lockMembershipsToLdap : undefined;
-            resourceInputs["mailgunEventsEnabled"] = args ? args.mailgunEventsEnabled : undefined;
+            resourceInputs["externalAuthorizationServiceDefaultLabel"] = args?.externalAuthorizationServiceDefaultLabel;
+            resourceInputs["externalAuthorizationServiceEnabled"] = args?.externalAuthorizationServiceEnabled;
+            resourceInputs["externalAuthorizationServiceTimeout"] = args?.externalAuthorizationServiceTimeout;
+            resourceInputs["externalAuthorizationServiceUrl"] = args?.externalAuthorizationServiceUrl;
+            resourceInputs["externalPipelineValidationServiceTimeout"] = args?.externalPipelineValidationServiceTimeout;
+            resourceInputs["externalPipelineValidationServiceToken"] = args?.externalPipelineValidationServiceToken;
+            resourceInputs["externalPipelineValidationServiceUrl"] = args?.externalPipelineValidationServiceUrl;
+            resourceInputs["failedLoginAttemptsUnlockPeriodInMinutes"] = args?.failedLoginAttemptsUnlockPeriodInMinutes;
+            resourceInputs["fileTemplateProjectId"] = args?.fileTemplateProjectId;
+            resourceInputs["firstDayOfWeek"] = args?.firstDayOfWeek;
+            resourceInputs["geoNodeAllowedIps"] = args?.geoNodeAllowedIps;
+            resourceInputs["geoStatusTimeout"] = args?.geoStatusTimeout;
+            resourceInputs["gitRateLimitUsersAlertlists"] = args?.gitRateLimitUsersAlertlists;
+            resourceInputs["gitRateLimitUsersAllowlists"] = args?.gitRateLimitUsersAllowlists;
+            resourceInputs["gitTwoFactorSessionExpiry"] = args?.gitTwoFactorSessionExpiry;
+            resourceInputs["gitalyTimeoutDefault"] = args?.gitalyTimeoutDefault;
+            resourceInputs["gitalyTimeoutFast"] = args?.gitalyTimeoutFast;
+            resourceInputs["gitalyTimeoutMedium"] = args?.gitalyTimeoutMedium;
+            resourceInputs["gitlabShellOperationLimit"] = args?.gitlabShellOperationLimit;
+            resourceInputs["gitpodEnabled"] = args?.gitpodEnabled;
+            resourceInputs["gitpodUrl"] = args?.gitpodUrl;
+            resourceInputs["globallyAllowedIps"] = args?.globallyAllowedIps;
+            resourceInputs["grafanaEnabled"] = args?.grafanaEnabled;
+            resourceInputs["grafanaUrl"] = args?.grafanaUrl;
+            resourceInputs["gravatarEnabled"] = args?.gravatarEnabled;
+            resourceInputs["groupOwnersCanManageDefaultBranchProtection"] = args?.groupOwnersCanManageDefaultBranchProtection;
+            resourceInputs["helpPageHideCommercialContent"] = args?.helpPageHideCommercialContent;
+            resourceInputs["helpPageSupportUrl"] = args?.helpPageSupportUrl;
+            resourceInputs["helpPageText"] = args?.helpPageText;
+            resourceInputs["helpText"] = args?.helpText;
+            resourceInputs["hideThirdPartyOffers"] = args?.hideThirdPartyOffers;
+            resourceInputs["homePageUrl"] = args?.homePageUrl;
+            resourceInputs["housekeepingEnabled"] = args?.housekeepingEnabled;
+            resourceInputs["housekeepingOptimizeRepositoryPeriod"] = args?.housekeepingOptimizeRepositoryPeriod;
+            resourceInputs["htmlEmailsEnabled"] = args?.htmlEmailsEnabled;
+            resourceInputs["importSources"] = args?.importSources;
+            resourceInputs["inProductMarketingEmailsEnabled"] = args?.inProductMarketingEmailsEnabled;
+            resourceInputs["inactiveProjectsDeleteAfterMonths"] = args?.inactiveProjectsDeleteAfterMonths;
+            resourceInputs["inactiveProjectsMinSizeMb"] = args?.inactiveProjectsMinSizeMb;
+            resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = args?.inactiveProjectsSendWarningEmailAfterMonths;
+            resourceInputs["includeOptionalMetricsInServicePing"] = args?.includeOptionalMetricsInServicePing;
+            resourceInputs["invisibleCaptchaEnabled"] = args?.invisibleCaptchaEnabled;
+            resourceInputs["issuesCreateLimit"] = args?.issuesCreateLimit;
+            resourceInputs["jiraConnectApplicationKey"] = args?.jiraConnectApplicationKey;
+            resourceInputs["jiraConnectProxyUrl"] = args?.jiraConnectProxyUrl;
+            resourceInputs["jiraConnectPublicKeyStorageEnabled"] = args?.jiraConnectPublicKeyStorageEnabled;
+            resourceInputs["keepLatestArtifact"] = args?.keepLatestArtifact;
+            resourceInputs["localMarkdownVersion"] = args?.localMarkdownVersion;
+            resourceInputs["lockDuoFeaturesEnabled"] = args?.lockDuoFeaturesEnabled;
+            resourceInputs["lockMembershipsToLdap"] = args?.lockMembershipsToLdap;
+            resourceInputs["mailgunEventsEnabled"] = args?.mailgunEventsEnabled;
             resourceInputs["mailgunSigningKey"] = args?.mailgunSigningKey ? pulumi.secret(args.mailgunSigningKey) : undefined;
-            resourceInputs["maintenanceMode"] = args ? args.maintenanceMode : undefined;
-            resourceInputs["maintenanceModeMessage"] = args ? args.maintenanceModeMessage : undefined;
-            resourceInputs["mavenPackageRequestsForwarding"] = args ? args.mavenPackageRequestsForwarding : undefined;
-            resourceInputs["maxArtifactsSize"] = args ? args.maxArtifactsSize : undefined;
-            resourceInputs["maxAttachmentSize"] = args ? args.maxAttachmentSize : undefined;
-            resourceInputs["maxDecompressedArchiveSize"] = args ? args.maxDecompressedArchiveSize : undefined;
-            resourceInputs["maxExportSize"] = args ? args.maxExportSize : undefined;
-            resourceInputs["maxImportRemoteFileSize"] = args ? args.maxImportRemoteFileSize : undefined;
-            resourceInputs["maxImportSize"] = args ? args.maxImportSize : undefined;
-            resourceInputs["maxLoginAttempts"] = args ? args.maxLoginAttempts : undefined;
-            resourceInputs["maxNumberOfRepositoryDownloads"] = args ? args.maxNumberOfRepositoryDownloads : undefined;
-            resourceInputs["maxNumberOfRepositoryDownloadsWithinTimePeriod"] = args ? args.maxNumberOfRepositoryDownloadsWithinTimePeriod : undefined;
-            resourceInputs["maxPagesSize"] = args ? args.maxPagesSize : undefined;
-            resourceInputs["maxPersonalAccessTokenLifetime"] = args ? args.maxPersonalAccessTokenLifetime : undefined;
-            resourceInputs["maxSshKeyLifetime"] = args ? args.maxSshKeyLifetime : undefined;
-            resourceInputs["maxTerraformStateSizeBytes"] = args ? args.maxTerraformStateSizeBytes : undefined;
-            resourceInputs["metricsMethodCallThreshold"] = args ? args.metricsMethodCallThreshold : undefined;
-            resourceInputs["minimumPasswordLength"] = args ? args.minimumPasswordLength : undefined;
-            resourceInputs["mirrorAvailable"] = args ? args.mirrorAvailable : undefined;
-            resourceInputs["mirrorCapacityThreshold"] = args ? args.mirrorCapacityThreshold : undefined;
-            resourceInputs["mirrorMaxCapacity"] = args ? args.mirrorMaxCapacity : undefined;
-            resourceInputs["mirrorMaxDelay"] = args ? args.mirrorMaxDelay : undefined;
-            resourceInputs["npmPackageRequestsForwarding"] = args ? args.npmPackageRequestsForwarding : undefined;
-            resourceInputs["nugetSkipMetadataUrlValidation"] = args ? args.nugetSkipMetadataUrlValidation : undefined;
-            resourceInputs["outboundLocalRequestsWhitelists"] = args ? args.outboundLocalRequestsWhitelists : undefined;
-            resourceInputs["packageMetadataPurlTypes"] = args ? args.packageMetadataPurlTypes : undefined;
-            resourceInputs["packageRegistryAllowAnyoneToPullOption"] = args ? args.packageRegistryAllowAnyoneToPullOption : undefined;
-            resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = args ? args.packageRegistryCleanupPoliciesWorkerCapacity : undefined;
-            resourceInputs["pagesDomainVerificationEnabled"] = args ? args.pagesDomainVerificationEnabled : undefined;
-            resourceInputs["passwordAuthenticationEnabledForGit"] = args ? args.passwordAuthenticationEnabledForGit : undefined;
-            resourceInputs["passwordAuthenticationEnabledForWeb"] = args ? args.passwordAuthenticationEnabledForWeb : undefined;
-            resourceInputs["passwordLowercaseRequired"] = args ? args.passwordLowercaseRequired : undefined;
-            resourceInputs["passwordNumberRequired"] = args ? args.passwordNumberRequired : undefined;
-            resourceInputs["passwordSymbolRequired"] = args ? args.passwordSymbolRequired : undefined;
-            resourceInputs["passwordUppercaseRequired"] = args ? args.passwordUppercaseRequired : undefined;
-            resourceInputs["performanceBarAllowedGroupPath"] = args ? args.performanceBarAllowedGroupPath : undefined;
-            resourceInputs["personalAccessTokenPrefix"] = args ? args.personalAccessTokenPrefix : undefined;
-            resourceInputs["pipelineLimitPerProjectUserSha"] = args ? args.pipelineLimitPerProjectUserSha : undefined;
-            resourceInputs["plantumlEnabled"] = args ? args.plantumlEnabled : undefined;
-            resourceInputs["plantumlUrl"] = args ? args.plantumlUrl : undefined;
-            resourceInputs["pollingIntervalMultiplier"] = args ? args.pollingIntervalMultiplier : undefined;
-            resourceInputs["projectExportEnabled"] = args ? args.projectExportEnabled : undefined;
-            resourceInputs["projectJobsApiRateLimit"] = args ? args.projectJobsApiRateLimit : undefined;
-            resourceInputs["projectsApiRateLimitUnauthenticated"] = args ? args.projectsApiRateLimitUnauthenticated : undefined;
-            resourceInputs["prometheusMetricsEnabled"] = args ? args.prometheusMetricsEnabled : undefined;
-            resourceInputs["protectedCiVariables"] = args ? args.protectedCiVariables : undefined;
-            resourceInputs["pushEventActivitiesLimit"] = args ? args.pushEventActivitiesLimit : undefined;
-            resourceInputs["pushEventHooksLimit"] = args ? args.pushEventHooksLimit : undefined;
-            resourceInputs["pypiPackageRequestsForwarding"] = args ? args.pypiPackageRequestsForwarding : undefined;
-            resourceInputs["rateLimitingResponseText"] = args ? args.rateLimitingResponseText : undefined;
-            resourceInputs["rawBlobRequestLimit"] = args ? args.rawBlobRequestLimit : undefined;
-            resourceInputs["recaptchaEnabled"] = args ? args.recaptchaEnabled : undefined;
+            resourceInputs["maintenanceMode"] = args?.maintenanceMode;
+            resourceInputs["maintenanceModeMessage"] = args?.maintenanceModeMessage;
+            resourceInputs["mavenPackageRequestsForwarding"] = args?.mavenPackageRequestsForwarding;
+            resourceInputs["maxArtifactsSize"] = args?.maxArtifactsSize;
+            resourceInputs["maxAttachmentSize"] = args?.maxAttachmentSize;
+            resourceInputs["maxDecompressedArchiveSize"] = args?.maxDecompressedArchiveSize;
+            resourceInputs["maxExportSize"] = args?.maxExportSize;
+            resourceInputs["maxImportRemoteFileSize"] = args?.maxImportRemoteFileSize;
+            resourceInputs["maxImportSize"] = args?.maxImportSize;
+            resourceInputs["maxLoginAttempts"] = args?.maxLoginAttempts;
+            resourceInputs["maxNumberOfRepositoryDownloads"] = args?.maxNumberOfRepositoryDownloads;
+            resourceInputs["maxNumberOfRepositoryDownloadsWithinTimePeriod"] = args?.maxNumberOfRepositoryDownloadsWithinTimePeriod;
+            resourceInputs["maxPagesSize"] = args?.maxPagesSize;
+            resourceInputs["maxPersonalAccessTokenLifetime"] = args?.maxPersonalAccessTokenLifetime;
+            resourceInputs["maxSshKeyLifetime"] = args?.maxSshKeyLifetime;
+            resourceInputs["maxTerraformStateSizeBytes"] = args?.maxTerraformStateSizeBytes;
+            resourceInputs["metricsMethodCallThreshold"] = args?.metricsMethodCallThreshold;
+            resourceInputs["minimumPasswordLength"] = args?.minimumPasswordLength;
+            resourceInputs["mirrorAvailable"] = args?.mirrorAvailable;
+            resourceInputs["mirrorCapacityThreshold"] = args?.mirrorCapacityThreshold;
+            resourceInputs["mirrorMaxCapacity"] = args?.mirrorMaxCapacity;
+            resourceInputs["mirrorMaxDelay"] = args?.mirrorMaxDelay;
+            resourceInputs["npmPackageRequestsForwarding"] = args?.npmPackageRequestsForwarding;
+            resourceInputs["nugetSkipMetadataUrlValidation"] = args?.nugetSkipMetadataUrlValidation;
+            resourceInputs["outboundLocalRequestsWhitelists"] = args?.outboundLocalRequestsWhitelists;
+            resourceInputs["packageMetadataPurlTypes"] = args?.packageMetadataPurlTypes;
+            resourceInputs["packageRegistryAllowAnyoneToPullOption"] = args?.packageRegistryAllowAnyoneToPullOption;
+            resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = args?.packageRegistryCleanupPoliciesWorkerCapacity;
+            resourceInputs["pagesDomainVerificationEnabled"] = args?.pagesDomainVerificationEnabled;
+            resourceInputs["passwordAuthenticationEnabledForGit"] = args?.passwordAuthenticationEnabledForGit;
+            resourceInputs["passwordAuthenticationEnabledForWeb"] = args?.passwordAuthenticationEnabledForWeb;
+            resourceInputs["passwordLowercaseRequired"] = args?.passwordLowercaseRequired;
+            resourceInputs["passwordNumberRequired"] = args?.passwordNumberRequired;
+            resourceInputs["passwordSymbolRequired"] = args?.passwordSymbolRequired;
+            resourceInputs["passwordUppercaseRequired"] = args?.passwordUppercaseRequired;
+            resourceInputs["performanceBarAllowedGroupPath"] = args?.performanceBarAllowedGroupPath;
+            resourceInputs["personalAccessTokenPrefix"] = args?.personalAccessTokenPrefix;
+            resourceInputs["pipelineLimitPerProjectUserSha"] = args?.pipelineLimitPerProjectUserSha;
+            resourceInputs["plantumlEnabled"] = args?.plantumlEnabled;
+            resourceInputs["plantumlUrl"] = args?.plantumlUrl;
+            resourceInputs["pollingIntervalMultiplier"] = args?.pollingIntervalMultiplier;
+            resourceInputs["projectExportEnabled"] = args?.projectExportEnabled;
+            resourceInputs["projectJobsApiRateLimit"] = args?.projectJobsApiRateLimit;
+            resourceInputs["projectsApiRateLimitUnauthenticated"] = args?.projectsApiRateLimitUnauthenticated;
+            resourceInputs["prometheusMetricsEnabled"] = args?.prometheusMetricsEnabled;
+            resourceInputs["protectedCiVariables"] = args?.protectedCiVariables;
+            resourceInputs["pushEventActivitiesLimit"] = args?.pushEventActivitiesLimit;
+            resourceInputs["pushEventHooksLimit"] = args?.pushEventHooksLimit;
+            resourceInputs["pypiPackageRequestsForwarding"] = args?.pypiPackageRequestsForwarding;
+            resourceInputs["rateLimitingResponseText"] = args?.rateLimitingResponseText;
+            resourceInputs["rawBlobRequestLimit"] = args?.rawBlobRequestLimit;
+            resourceInputs["recaptchaEnabled"] = args?.recaptchaEnabled;
             resourceInputs["recaptchaPrivateKey"] = args?.recaptchaPrivateKey ? pulumi.secret(args.recaptchaPrivateKey) : undefined;
             resourceInputs["recaptchaSiteKey"] = args?.recaptchaSiteKey ? pulumi.secret(args.recaptchaSiteKey) : undefined;
-            resourceInputs["receiveMaxInputSize"] = args ? args.receiveMaxInputSize : undefined;
-            resourceInputs["receptiveClusterAgentsEnabled"] = args ? args.receptiveClusterAgentsEnabled : undefined;
-            resourceInputs["rememberMeEnabled"] = args ? args.rememberMeEnabled : undefined;
-            resourceInputs["repositoryChecksEnabled"] = args ? args.repositoryChecksEnabled : undefined;
-            resourceInputs["repositorySizeLimit"] = args ? args.repositorySizeLimit : undefined;
-            resourceInputs["repositoryStoragesWeighted"] = args ? args.repositoryStoragesWeighted : undefined;
-            resourceInputs["requireAdminApprovalAfterUserSignup"] = args ? args.requireAdminApprovalAfterUserSignup : undefined;
-            resourceInputs["requireAdminTwoFactorAuthentication"] = args ? args.requireAdminTwoFactorAuthentication : undefined;
-            resourceInputs["requirePersonalAccessTokenExpiry"] = args ? args.requirePersonalAccessTokenExpiry : undefined;
-            resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
-            resourceInputs["restrictedVisibilityLevels"] = args ? args.restrictedVisibilityLevels : undefined;
-            resourceInputs["rsaKeyRestriction"] = args ? args.rsaKeyRestriction : undefined;
-            resourceInputs["searchRateLimit"] = args ? args.searchRateLimit : undefined;
-            resourceInputs["searchRateLimitUnauthenticated"] = args ? args.searchRateLimitUnauthenticated : undefined;
-            resourceInputs["securityApprovalPoliciesLimit"] = args ? args.securityApprovalPoliciesLimit : undefined;
-            resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = args ? args.securityPolicyGlobalGroupApproversEnabled : undefined;
-            resourceInputs["securityTxtContent"] = args ? args.securityTxtContent : undefined;
-            resourceInputs["sendUserConfirmationEmail"] = args ? args.sendUserConfirmationEmail : undefined;
-            resourceInputs["serviceAccessTokensExpirationEnforced"] = args ? args.serviceAccessTokensExpirationEnforced : undefined;
-            resourceInputs["sessionExpireDelay"] = args ? args.sessionExpireDelay : undefined;
-            resourceInputs["sharedRunnersEnabled"] = args ? args.sharedRunnersEnabled : undefined;
-            resourceInputs["sharedRunnersMinutes"] = args ? args.sharedRunnersMinutes : undefined;
-            resourceInputs["sharedRunnersText"] = args ? args.sharedRunnersText : undefined;
-            resourceInputs["sidekiqJobLimiterCompressionThresholdBytes"] = args ? args.sidekiqJobLimiterCompressionThresholdBytes : undefined;
-            resourceInputs["sidekiqJobLimiterLimitBytes"] = args ? args.sidekiqJobLimiterLimitBytes : undefined;
-            resourceInputs["sidekiqJobLimiterMode"] = args ? args.sidekiqJobLimiterMode : undefined;
-            resourceInputs["signInText"] = args ? args.signInText : undefined;
-            resourceInputs["signupEnabled"] = args ? args.signupEnabled : undefined;
-            resourceInputs["silentAdminExportsEnabled"] = args ? args.silentAdminExportsEnabled : undefined;
-            resourceInputs["silentModeEnabled"] = args ? args.silentModeEnabled : undefined;
-            resourceInputs["slackAppEnabled"] = args ? args.slackAppEnabled : undefined;
-            resourceInputs["slackAppId"] = args ? args.slackAppId : undefined;
+            resourceInputs["receiveMaxInputSize"] = args?.receiveMaxInputSize;
+            resourceInputs["receptiveClusterAgentsEnabled"] = args?.receptiveClusterAgentsEnabled;
+            resourceInputs["rememberMeEnabled"] = args?.rememberMeEnabled;
+            resourceInputs["repositoryChecksEnabled"] = args?.repositoryChecksEnabled;
+            resourceInputs["repositorySizeLimit"] = args?.repositorySizeLimit;
+            resourceInputs["repositoryStoragesWeighted"] = args?.repositoryStoragesWeighted;
+            resourceInputs["requireAdminApprovalAfterUserSignup"] = args?.requireAdminApprovalAfterUserSignup;
+            resourceInputs["requireAdminTwoFactorAuthentication"] = args?.requireAdminTwoFactorAuthentication;
+            resourceInputs["requirePersonalAccessTokenExpiry"] = args?.requirePersonalAccessTokenExpiry;
+            resourceInputs["requireTwoFactorAuthentication"] = args?.requireTwoFactorAuthentication;
+            resourceInputs["restrictedVisibilityLevels"] = args?.restrictedVisibilityLevels;
+            resourceInputs["rsaKeyRestriction"] = args?.rsaKeyRestriction;
+            resourceInputs["searchRateLimit"] = args?.searchRateLimit;
+            resourceInputs["searchRateLimitUnauthenticated"] = args?.searchRateLimitUnauthenticated;
+            resourceInputs["securityApprovalPoliciesLimit"] = args?.securityApprovalPoliciesLimit;
+            resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = args?.securityPolicyGlobalGroupApproversEnabled;
+            resourceInputs["securityTxtContent"] = args?.securityTxtContent;
+            resourceInputs["sendUserConfirmationEmail"] = args?.sendUserConfirmationEmail;
+            resourceInputs["serviceAccessTokensExpirationEnforced"] = args?.serviceAccessTokensExpirationEnforced;
+            resourceInputs["sessionExpireDelay"] = args?.sessionExpireDelay;
+            resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
+            resourceInputs["sharedRunnersMinutes"] = args?.sharedRunnersMinutes;
+            resourceInputs["sharedRunnersText"] = args?.sharedRunnersText;
+            resourceInputs["sidekiqJobLimiterCompressionThresholdBytes"] = args?.sidekiqJobLimiterCompressionThresholdBytes;
+            resourceInputs["sidekiqJobLimiterLimitBytes"] = args?.sidekiqJobLimiterLimitBytes;
+            resourceInputs["sidekiqJobLimiterMode"] = args?.sidekiqJobLimiterMode;
+            resourceInputs["signInText"] = args?.signInText;
+            resourceInputs["signupEnabled"] = args?.signupEnabled;
+            resourceInputs["silentAdminExportsEnabled"] = args?.silentAdminExportsEnabled;
+            resourceInputs["silentModeEnabled"] = args?.silentModeEnabled;
+            resourceInputs["slackAppEnabled"] = args?.slackAppEnabled;
+            resourceInputs["slackAppId"] = args?.slackAppId;
             resourceInputs["slackAppSecret"] = args?.slackAppSecret ? pulumi.secret(args.slackAppSecret) : undefined;
             resourceInputs["slackAppSigningSecret"] = args?.slackAppSigningSecret ? pulumi.secret(args.slackAppSigningSecret) : undefined;
-            resourceInputs["slackAppVerificationToken"] = args ? args.slackAppVerificationToken : undefined;
-            resourceInputs["snippetSizeLimit"] = args ? args.snippetSizeLimit : undefined;
-            resourceInputs["snowplowAppId"] = args ? args.snowplowAppId : undefined;
-            resourceInputs["snowplowCollectorHostname"] = args ? args.snowplowCollectorHostname : undefined;
-            resourceInputs["snowplowCookieDomain"] = args ? args.snowplowCookieDomain : undefined;
-            resourceInputs["snowplowDatabaseCollectorHostname"] = args ? args.snowplowDatabaseCollectorHostname : undefined;
-            resourceInputs["snowplowEnabled"] = args ? args.snowplowEnabled : undefined;
-            resourceInputs["sourcegraphEnabled"] = args ? args.sourcegraphEnabled : undefined;
-            resourceInputs["sourcegraphPublicOnly"] = args ? args.sourcegraphPublicOnly : undefined;
-            resourceInputs["sourcegraphUrl"] = args ? args.sourcegraphUrl : undefined;
+            resourceInputs["slackAppVerificationToken"] = args?.slackAppVerificationToken;
+            resourceInputs["snippetSizeLimit"] = args?.snippetSizeLimit;
+            resourceInputs["snowplowAppId"] = args?.snowplowAppId;
+            resourceInputs["snowplowCollectorHostname"] = args?.snowplowCollectorHostname;
+            resourceInputs["snowplowCookieDomain"] = args?.snowplowCookieDomain;
+            resourceInputs["snowplowDatabaseCollectorHostname"] = args?.snowplowDatabaseCollectorHostname;
+            resourceInputs["snowplowEnabled"] = args?.snowplowEnabled;
+            resourceInputs["sourcegraphEnabled"] = args?.sourcegraphEnabled;
+            resourceInputs["sourcegraphPublicOnly"] = args?.sourcegraphPublicOnly;
+            resourceInputs["sourcegraphUrl"] = args?.sourcegraphUrl;
             resourceInputs["spamCheckApiKey"] = args?.spamCheckApiKey ? pulumi.secret(args.spamCheckApiKey) : undefined;
-            resourceInputs["spamCheckEndpointEnabled"] = args ? args.spamCheckEndpointEnabled : undefined;
-            resourceInputs["spamCheckEndpointUrl"] = args ? args.spamCheckEndpointUrl : undefined;
+            resourceInputs["spamCheckEndpointEnabled"] = args?.spamCheckEndpointEnabled;
+            resourceInputs["spamCheckEndpointUrl"] = args?.spamCheckEndpointUrl;
             resourceInputs["staticObjectsExternalStorageAuthToken"] = args?.staticObjectsExternalStorageAuthToken ? pulumi.secret(args.staticObjectsExternalStorageAuthToken) : undefined;
             resourceInputs["staticObjectsExternalStorageUrl"] = args?.staticObjectsExternalStorageUrl ? pulumi.secret(args.staticObjectsExternalStorageUrl) : undefined;
-            resourceInputs["suggestPipelineEnabled"] = args ? args.suggestPipelineEnabled : undefined;
-            resourceInputs["terminalMaxSessionTime"] = args ? args.terminalMaxSessionTime : undefined;
-            resourceInputs["terms"] = args ? args.terms : undefined;
-            resourceInputs["throttleAuthenticatedApiEnabled"] = args ? args.throttleAuthenticatedApiEnabled : undefined;
-            resourceInputs["throttleAuthenticatedApiPeriodInSeconds"] = args ? args.throttleAuthenticatedApiPeriodInSeconds : undefined;
-            resourceInputs["throttleAuthenticatedApiRequestsPerPeriod"] = args ? args.throttleAuthenticatedApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleAuthenticatedPackagesApiEnabled"] = args ? args.throttleAuthenticatedPackagesApiEnabled : undefined;
-            resourceInputs["throttleAuthenticatedPackagesApiPeriodInSeconds"] = args ? args.throttleAuthenticatedPackagesApiPeriodInSeconds : undefined;
-            resourceInputs["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = args ? args.throttleAuthenticatedPackagesApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleAuthenticatedWebEnabled"] = args ? args.throttleAuthenticatedWebEnabled : undefined;
-            resourceInputs["throttleAuthenticatedWebPeriodInSeconds"] = args ? args.throttleAuthenticatedWebPeriodInSeconds : undefined;
-            resourceInputs["throttleAuthenticatedWebRequestsPerPeriod"] = args ? args.throttleAuthenticatedWebRequestsPerPeriod : undefined;
-            resourceInputs["throttleUnauthenticatedApiEnabled"] = args ? args.throttleUnauthenticatedApiEnabled : undefined;
-            resourceInputs["throttleUnauthenticatedApiPeriodInSeconds"] = args ? args.throttleUnauthenticatedApiPeriodInSeconds : undefined;
-            resourceInputs["throttleUnauthenticatedApiRequestsPerPeriod"] = args ? args.throttleUnauthenticatedApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleUnauthenticatedPackagesApiEnabled"] = args ? args.throttleUnauthenticatedPackagesApiEnabled : undefined;
-            resourceInputs["throttleUnauthenticatedPackagesApiPeriodInSeconds"] = args ? args.throttleUnauthenticatedPackagesApiPeriodInSeconds : undefined;
-            resourceInputs["throttleUnauthenticatedPackagesApiRequestsPerPeriod"] = args ? args.throttleUnauthenticatedPackagesApiRequestsPerPeriod : undefined;
-            resourceInputs["throttleUnauthenticatedWebEnabled"] = args ? args.throttleUnauthenticatedWebEnabled : undefined;
-            resourceInputs["throttleUnauthenticatedWebPeriodInSeconds"] = args ? args.throttleUnauthenticatedWebPeriodInSeconds : undefined;
-            resourceInputs["throttleUnauthenticatedWebRequestsPerPeriod"] = args ? args.throttleUnauthenticatedWebRequestsPerPeriod : undefined;
-            resourceInputs["timeTrackingLimitToHours"] = args ? args.timeTrackingLimitToHours : undefined;
-            resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
-            resourceInputs["unconfirmedUsersDeleteAfterDays"] = args ? args.unconfirmedUsersDeleteAfterDays : undefined;
-            resourceInputs["uniqueIpsLimitEnabled"] = args ? args.uniqueIpsLimitEnabled : undefined;
-            resourceInputs["uniqueIpsLimitPerUser"] = args ? args.uniqueIpsLimitPerUser : undefined;
-            resourceInputs["uniqueIpsLimitTimeWindow"] = args ? args.uniqueIpsLimitTimeWindow : undefined;
-            resourceInputs["updateRunnerVersionsEnabled"] = args ? args.updateRunnerVersionsEnabled : undefined;
-            resourceInputs["usagePingEnabled"] = args ? args.usagePingEnabled : undefined;
-            resourceInputs["useClickhouseForAnalytics"] = args ? args.useClickhouseForAnalytics : undefined;
-            resourceInputs["userDeactivationEmailsEnabled"] = args ? args.userDeactivationEmailsEnabled : undefined;
-            resourceInputs["userDefaultExternal"] = args ? args.userDefaultExternal : undefined;
-            resourceInputs["userDefaultInternalRegex"] = args ? args.userDefaultInternalRegex : undefined;
-            resourceInputs["userDefaultsToPrivateProfile"] = args ? args.userDefaultsToPrivateProfile : undefined;
-            resourceInputs["userOauthApplications"] = args ? args.userOauthApplications : undefined;
-            resourceInputs["userShowAddSshKeyMessage"] = args ? args.userShowAddSshKeyMessage : undefined;
-            resourceInputs["validRunnerRegistrars"] = args ? args.validRunnerRegistrars : undefined;
-            resourceInputs["versionCheckEnabled"] = args ? args.versionCheckEnabled : undefined;
-            resourceInputs["webIdeClientsidePreviewEnabled"] = args ? args.webIdeClientsidePreviewEnabled : undefined;
-            resourceInputs["whatsNewVariant"] = args ? args.whatsNewVariant : undefined;
-            resourceInputs["wikiPageMaxContentBytes"] = args ? args.wikiPageMaxContentBytes : undefined;
+            resourceInputs["suggestPipelineEnabled"] = args?.suggestPipelineEnabled;
+            resourceInputs["terminalMaxSessionTime"] = args?.terminalMaxSessionTime;
+            resourceInputs["terms"] = args?.terms;
+            resourceInputs["throttleAuthenticatedApiEnabled"] = args?.throttleAuthenticatedApiEnabled;
+            resourceInputs["throttleAuthenticatedApiPeriodInSeconds"] = args?.throttleAuthenticatedApiPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedApiRequestsPerPeriod"] = args?.throttleAuthenticatedApiRequestsPerPeriod;
+            resourceInputs["throttleAuthenticatedPackagesApiEnabled"] = args?.throttleAuthenticatedPackagesApiEnabled;
+            resourceInputs["throttleAuthenticatedPackagesApiPeriodInSeconds"] = args?.throttleAuthenticatedPackagesApiPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = args?.throttleAuthenticatedPackagesApiRequestsPerPeriod;
+            resourceInputs["throttleAuthenticatedWebEnabled"] = args?.throttleAuthenticatedWebEnabled;
+            resourceInputs["throttleAuthenticatedWebPeriodInSeconds"] = args?.throttleAuthenticatedWebPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedWebRequestsPerPeriod"] = args?.throttleAuthenticatedWebRequestsPerPeriod;
+            resourceInputs["throttleUnauthenticatedApiEnabled"] = args?.throttleUnauthenticatedApiEnabled;
+            resourceInputs["throttleUnauthenticatedApiPeriodInSeconds"] = args?.throttleUnauthenticatedApiPeriodInSeconds;
+            resourceInputs["throttleUnauthenticatedApiRequestsPerPeriod"] = args?.throttleUnauthenticatedApiRequestsPerPeriod;
+            resourceInputs["throttleUnauthenticatedPackagesApiEnabled"] = args?.throttleUnauthenticatedPackagesApiEnabled;
+            resourceInputs["throttleUnauthenticatedPackagesApiPeriodInSeconds"] = args?.throttleUnauthenticatedPackagesApiPeriodInSeconds;
+            resourceInputs["throttleUnauthenticatedPackagesApiRequestsPerPeriod"] = args?.throttleUnauthenticatedPackagesApiRequestsPerPeriod;
+            resourceInputs["throttleUnauthenticatedWebEnabled"] = args?.throttleUnauthenticatedWebEnabled;
+            resourceInputs["throttleUnauthenticatedWebPeriodInSeconds"] = args?.throttleUnauthenticatedWebPeriodInSeconds;
+            resourceInputs["throttleUnauthenticatedWebRequestsPerPeriod"] = args?.throttleUnauthenticatedWebRequestsPerPeriod;
+            resourceInputs["timeTrackingLimitToHours"] = args?.timeTrackingLimitToHours;
+            resourceInputs["twoFactorGracePeriod"] = args?.twoFactorGracePeriod;
+            resourceInputs["unconfirmedUsersDeleteAfterDays"] = args?.unconfirmedUsersDeleteAfterDays;
+            resourceInputs["uniqueIpsLimitEnabled"] = args?.uniqueIpsLimitEnabled;
+            resourceInputs["uniqueIpsLimitPerUser"] = args?.uniqueIpsLimitPerUser;
+            resourceInputs["uniqueIpsLimitTimeWindow"] = args?.uniqueIpsLimitTimeWindow;
+            resourceInputs["updateRunnerVersionsEnabled"] = args?.updateRunnerVersionsEnabled;
+            resourceInputs["usagePingEnabled"] = args?.usagePingEnabled;
+            resourceInputs["useClickhouseForAnalytics"] = args?.useClickhouseForAnalytics;
+            resourceInputs["userDeactivationEmailsEnabled"] = args?.userDeactivationEmailsEnabled;
+            resourceInputs["userDefaultExternal"] = args?.userDefaultExternal;
+            resourceInputs["userDefaultInternalRegex"] = args?.userDefaultInternalRegex;
+            resourceInputs["userDefaultsToPrivateProfile"] = args?.userDefaultsToPrivateProfile;
+            resourceInputs["userOauthApplications"] = args?.userOauthApplications;
+            resourceInputs["userShowAddSshKeyMessage"] = args?.userShowAddSshKeyMessage;
+            resourceInputs["validRunnerRegistrars"] = args?.validRunnerRegistrars;
+            resourceInputs["versionCheckEnabled"] = args?.versionCheckEnabled;
+            resourceInputs["webIdeClientsidePreviewEnabled"] = args?.webIdeClientsidePreviewEnabled;
+            resourceInputs["whatsNewVariant"] = args?.whatsNewVariant;
+            resourceInputs["wikiPageMaxContentBytes"] = args?.wikiPageMaxContentBytes;
             resourceInputs["gitlabDedicatedInstance"] = undefined /*out*/;
             resourceInputs["gitlabEnvironmentToolkitInstance"] = undefined /*out*/;
         }

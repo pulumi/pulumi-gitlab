@@ -82,67 +82,67 @@ export class IntegrationMicrosoftTeams extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
      */
-    public readonly branchesToBeNotified!: pulumi.Output<string | undefined>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string | undefined>;
     /**
      * Enable notifications for confidential issue events
      */
-    public readonly confidentialIssuesEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly confidentialIssuesEvents: pulumi.Output<boolean | undefined>;
     /**
      * Enable notifications for confidential note events
      */
-    public readonly confidentialNoteEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly confidentialNoteEvents: pulumi.Output<boolean | undefined>;
     /**
      * Create time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Enable notifications for issue events
      */
-    public readonly issuesEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly issuesEvents: pulumi.Output<boolean | undefined>;
     /**
      * Enable notifications for merge request events
      */
-    public readonly mergeRequestsEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean | undefined>;
     /**
      * Enable notifications for note events
      */
-    public readonly noteEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly noteEvents: pulumi.Output<boolean | undefined>;
     /**
      * Send notifications for broken pipelines
      */
-    public readonly notifyOnlyBrokenPipelines!: pulumi.Output<boolean | undefined>;
+    declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean | undefined>;
     /**
      * Enable notifications for pipeline events
      */
-    public readonly pipelineEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly pipelineEvents: pulumi.Output<boolean | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Enable notifications for push events
      */
-    public readonly pushEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly pushEvents: pulumi.Output<boolean | undefined>;
     /**
      * Enable notifications for tag push events
      */
-    public readonly tagPushEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean | undefined>;
     /**
      * Update time.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
      */
-    public readonly webhook!: pulumi.Output<string>;
+    declare public readonly webhook: pulumi.Output<string>;
     /**
      * Enable notifications for wiki page events
      */
-    public readonly wikiPageEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly wikiPageEvents: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a IntegrationMicrosoftTeams resource with the given unique name, arguments, and options.
@@ -157,43 +157,43 @@ export class IntegrationMicrosoftTeams extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationMicrosoftTeamsState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["branchesToBeNotified"] = state ? state.branchesToBeNotified : undefined;
-            resourceInputs["confidentialIssuesEvents"] = state ? state.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteEvents"] = state ? state.confidentialNoteEvents : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["issuesEvents"] = state ? state.issuesEvents : undefined;
-            resourceInputs["mergeRequestsEvents"] = state ? state.mergeRequestsEvents : undefined;
-            resourceInputs["noteEvents"] = state ? state.noteEvents : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = state ? state.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["pipelineEvents"] = state ? state.pipelineEvents : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pushEvents"] = state ? state.pushEvents : undefined;
-            resourceInputs["tagPushEvents"] = state ? state.tagPushEvents : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["webhook"] = state ? state.webhook : undefined;
-            resourceInputs["wikiPageEvents"] = state ? state.wikiPageEvents : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["branchesToBeNotified"] = state?.branchesToBeNotified;
+            resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["issuesEvents"] = state?.issuesEvents;
+            resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["noteEvents"] = state?.noteEvents;
+            resourceInputs["notifyOnlyBrokenPipelines"] = state?.notifyOnlyBrokenPipelines;
+            resourceInputs["pipelineEvents"] = state?.pipelineEvents;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pushEvents"] = state?.pushEvents;
+            resourceInputs["tagPushEvents"] = state?.tagPushEvents;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["webhook"] = state?.webhook;
+            resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
             const args = argsOrState as IntegrationMicrosoftTeamsArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.webhook === undefined) && !opts.urn) {
+            if (args?.webhook === undefined && !opts.urn) {
                 throw new Error("Missing required property 'webhook'");
             }
-            resourceInputs["branchesToBeNotified"] = args ? args.branchesToBeNotified : undefined;
-            resourceInputs["confidentialIssuesEvents"] = args ? args.confidentialIssuesEvents : undefined;
-            resourceInputs["confidentialNoteEvents"] = args ? args.confidentialNoteEvents : undefined;
-            resourceInputs["issuesEvents"] = args ? args.issuesEvents : undefined;
-            resourceInputs["mergeRequestsEvents"] = args ? args.mergeRequestsEvents : undefined;
-            resourceInputs["noteEvents"] = args ? args.noteEvents : undefined;
-            resourceInputs["notifyOnlyBrokenPipelines"] = args ? args.notifyOnlyBrokenPipelines : undefined;
-            resourceInputs["pipelineEvents"] = args ? args.pipelineEvents : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pushEvents"] = args ? args.pushEvents : undefined;
-            resourceInputs["tagPushEvents"] = args ? args.tagPushEvents : undefined;
-            resourceInputs["webhook"] = args ? args.webhook : undefined;
-            resourceInputs["wikiPageEvents"] = args ? args.wikiPageEvents : undefined;
+            resourceInputs["branchesToBeNotified"] = args?.branchesToBeNotified;
+            resourceInputs["confidentialIssuesEvents"] = args?.confidentialIssuesEvents;
+            resourceInputs["confidentialNoteEvents"] = args?.confidentialNoteEvents;
+            resourceInputs["issuesEvents"] = args?.issuesEvents;
+            resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["noteEvents"] = args?.noteEvents;
+            resourceInputs["notifyOnlyBrokenPipelines"] = args?.notifyOnlyBrokenPipelines;
+            resourceInputs["pipelineEvents"] = args?.pipelineEvents;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pushEvents"] = args?.pushEvents;
+            resourceInputs["tagPushEvents"] = args?.tagPushEvents;
+            resourceInputs["webhook"] = args?.webhook;
+            resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

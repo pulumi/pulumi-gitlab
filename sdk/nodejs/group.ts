@@ -131,145 +131,145 @@ export class Group extends pulumi.CustomResource {
     /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
-    public readonly allowedEmailDomainsLists!: pulumi.Output<string[]>;
+    declare public readonly allowedEmailDomainsLists: pulumi.Output<string[]>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
-    public readonly autoDevopsEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoDevopsEnabled: pulumi.Output<boolean>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    public readonly avatar!: pulumi.Output<string | undefined>;
+    declare public readonly avatar: pulumi.Output<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    public readonly avatarHash!: pulumi.Output<string>;
+    declare public readonly avatarHash: pulumi.Output<string>;
     /**
      * The URL of the avatar image.
      */
-    public /*out*/ readonly avatarUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly avatarUrl: pulumi.Output<string>;
     /**
      * Initial default branch name.
      */
-    public readonly defaultBranch!: pulumi.Output<string | undefined>;
+    declare public readonly defaultBranch: pulumi.Output<string | undefined>;
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
      * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      */
-    public readonly defaultBranchProtection!: pulumi.Output<number>;
+    declare public readonly defaultBranchProtection: pulumi.Output<number>;
     /**
      * The default branch protection defaults
      */
-    public readonly defaultBranchProtectionDefaults!: pulumi.Output<outputs.GroupDefaultBranchProtectionDefaults>;
+    declare public readonly defaultBranchProtectionDefaults: pulumi.Output<outputs.GroupDefaultBranchProtectionDefaults>;
     /**
      * The group's description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable email notifications.
      */
-    public readonly emailsEnabled!: pulumi.Output<boolean>;
+    declare public readonly emailsEnabled: pulumi.Output<boolean>;
     /**
      * Can be set by administrators only. Additional CI/CD minutes for this group.
      */
-    public readonly extraSharedRunnersMinutesLimit!: pulumi.Output<number>;
+    declare public readonly extraSharedRunnersMinutesLimit: pulumi.Output<number>;
     /**
      * The full name of the group.
      */
-    public /*out*/ readonly fullName!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullName: pulumi.Output<string>;
     /**
      * The full path of the group.
      */
-    public /*out*/ readonly fullPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullPath: pulumi.Output<string>;
     /**
      * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
      */
-    public readonly ipRestrictionRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly ipRestrictionRanges: pulumi.Output<string[] | undefined>;
     /**
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
-    public readonly lfsEnabled!: pulumi.Output<boolean>;
+    declare public readonly lfsEnabled: pulumi.Output<boolean>;
     /**
      * Users cannot be added to projects in this group.
      */
-    public readonly membershipLock!: pulumi.Output<boolean>;
+    declare public readonly membershipLock: pulumi.Output<boolean>;
     /**
      * Disable the capability of a group from getting mentioned.
      */
-    public readonly mentionsDisabled!: pulumi.Output<boolean>;
+    declare public readonly mentionsDisabled: pulumi.Output<boolean>;
     /**
      * The name of the group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Id of the parent group (creates a nested group).
      */
-    public readonly parentId!: pulumi.Output<number>;
+    declare public readonly parentId: pulumi.Output<number>;
     /**
      * The path of the group.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
      */
-    public readonly permanentlyRemoveOnDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly permanentlyRemoveOnDelete: pulumi.Output<boolean | undefined>;
     /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
-    public readonly preventForkingOutsideGroup!: pulumi.Output<boolean>;
+    declare public readonly preventForkingOutsideGroup: pulumi.Output<boolean>;
     /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
      */
-    public readonly projectCreationLevel!: pulumi.Output<string>;
+    declare public readonly projectCreationLevel: pulumi.Output<string>;
     /**
      * Push rules for the group.
      */
-    public readonly pushRules!: pulumi.Output<outputs.GroupPushRules>;
+    declare public readonly pushRules: pulumi.Output<outputs.GroupPushRules>;
     /**
      * Allow users to request member access.
      */
-    public readonly requestAccessEnabled!: pulumi.Output<boolean>;
+    declare public readonly requestAccessEnabled: pulumi.Output<boolean>;
     /**
      * Require all users in this group to setup Two-factor authentication.
      */
-    public readonly requireTwoFactorAuthentication!: pulumi.Output<boolean>;
+    declare public readonly requireTwoFactorAuthentication: pulumi.Output<boolean>;
     /**
      * The group level registration token to use during runner setup.
      */
-    public /*out*/ readonly runnersToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly runnersToken: pulumi.Output<string>;
     /**
      * Prevent sharing a project with another group within this group.
      */
-    public readonly shareWithGroupLock!: pulumi.Output<boolean>;
+    declare public readonly shareWithGroupLock: pulumi.Output<boolean>;
     /**
      * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
-    public readonly sharedRunnersMinutesLimit!: pulumi.Output<number>;
+    declare public readonly sharedRunnersMinutesLimit: pulumi.Output<number>;
     /**
      * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      */
-    public readonly sharedRunnersSetting!: pulumi.Output<string>;
+    declare public readonly sharedRunnersSetting: pulumi.Output<string>;
     /**
      * Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      */
-    public readonly subgroupCreationLevel!: pulumi.Output<string>;
+    declare public readonly subgroupCreationLevel: pulumi.Output<string>;
     /**
      * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
-    public readonly twoFactorGracePeriod!: pulumi.Output<number>;
+    declare public readonly twoFactorGracePeriod: pulumi.Output<number>;
     /**
      * The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      */
-    public readonly visibilityLevel!: pulumi.Output<string>;
+    declare public readonly visibilityLevel: pulumi.Output<string>;
     /**
      * Web URL of the group.
      */
-    public /*out*/ readonly webUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webUrl: pulumi.Output<string>;
     /**
      * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
      */
-    public readonly wikiAccessLevel!: pulumi.Output<string>;
+    declare public readonly wikiAccessLevel: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -284,76 +284,76 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["allowedEmailDomainsLists"] = state ? state.allowedEmailDomainsLists : undefined;
-            resourceInputs["autoDevopsEnabled"] = state ? state.autoDevopsEnabled : undefined;
-            resourceInputs["avatar"] = state ? state.avatar : undefined;
-            resourceInputs["avatarHash"] = state ? state.avatarHash : undefined;
-            resourceInputs["avatarUrl"] = state ? state.avatarUrl : undefined;
-            resourceInputs["defaultBranch"] = state ? state.defaultBranch : undefined;
-            resourceInputs["defaultBranchProtection"] = state ? state.defaultBranchProtection : undefined;
-            resourceInputs["defaultBranchProtectionDefaults"] = state ? state.defaultBranchProtectionDefaults : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailsEnabled"] = state ? state.emailsEnabled : undefined;
-            resourceInputs["extraSharedRunnersMinutesLimit"] = state ? state.extraSharedRunnersMinutesLimit : undefined;
-            resourceInputs["fullName"] = state ? state.fullName : undefined;
-            resourceInputs["fullPath"] = state ? state.fullPath : undefined;
-            resourceInputs["ipRestrictionRanges"] = state ? state.ipRestrictionRanges : undefined;
-            resourceInputs["lfsEnabled"] = state ? state.lfsEnabled : undefined;
-            resourceInputs["membershipLock"] = state ? state.membershipLock : undefined;
-            resourceInputs["mentionsDisabled"] = state ? state.mentionsDisabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["permanentlyRemoveOnDelete"] = state ? state.permanentlyRemoveOnDelete : undefined;
-            resourceInputs["preventForkingOutsideGroup"] = state ? state.preventForkingOutsideGroup : undefined;
-            resourceInputs["projectCreationLevel"] = state ? state.projectCreationLevel : undefined;
-            resourceInputs["pushRules"] = state ? state.pushRules : undefined;
-            resourceInputs["requestAccessEnabled"] = state ? state.requestAccessEnabled : undefined;
-            resourceInputs["requireTwoFactorAuthentication"] = state ? state.requireTwoFactorAuthentication : undefined;
-            resourceInputs["runnersToken"] = state ? state.runnersToken : undefined;
-            resourceInputs["shareWithGroupLock"] = state ? state.shareWithGroupLock : undefined;
-            resourceInputs["sharedRunnersMinutesLimit"] = state ? state.sharedRunnersMinutesLimit : undefined;
-            resourceInputs["sharedRunnersSetting"] = state ? state.sharedRunnersSetting : undefined;
-            resourceInputs["subgroupCreationLevel"] = state ? state.subgroupCreationLevel : undefined;
-            resourceInputs["twoFactorGracePeriod"] = state ? state.twoFactorGracePeriod : undefined;
-            resourceInputs["visibilityLevel"] = state ? state.visibilityLevel : undefined;
-            resourceInputs["webUrl"] = state ? state.webUrl : undefined;
-            resourceInputs["wikiAccessLevel"] = state ? state.wikiAccessLevel : undefined;
+            resourceInputs["allowedEmailDomainsLists"] = state?.allowedEmailDomainsLists;
+            resourceInputs["autoDevopsEnabled"] = state?.autoDevopsEnabled;
+            resourceInputs["avatar"] = state?.avatar;
+            resourceInputs["avatarHash"] = state?.avatarHash;
+            resourceInputs["avatarUrl"] = state?.avatarUrl;
+            resourceInputs["defaultBranch"] = state?.defaultBranch;
+            resourceInputs["defaultBranchProtection"] = state?.defaultBranchProtection;
+            resourceInputs["defaultBranchProtectionDefaults"] = state?.defaultBranchProtectionDefaults;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["emailsEnabled"] = state?.emailsEnabled;
+            resourceInputs["extraSharedRunnersMinutesLimit"] = state?.extraSharedRunnersMinutesLimit;
+            resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["fullPath"] = state?.fullPath;
+            resourceInputs["ipRestrictionRanges"] = state?.ipRestrictionRanges;
+            resourceInputs["lfsEnabled"] = state?.lfsEnabled;
+            resourceInputs["membershipLock"] = state?.membershipLock;
+            resourceInputs["mentionsDisabled"] = state?.mentionsDisabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["permanentlyRemoveOnDelete"] = state?.permanentlyRemoveOnDelete;
+            resourceInputs["preventForkingOutsideGroup"] = state?.preventForkingOutsideGroup;
+            resourceInputs["projectCreationLevel"] = state?.projectCreationLevel;
+            resourceInputs["pushRules"] = state?.pushRules;
+            resourceInputs["requestAccessEnabled"] = state?.requestAccessEnabled;
+            resourceInputs["requireTwoFactorAuthentication"] = state?.requireTwoFactorAuthentication;
+            resourceInputs["runnersToken"] = state?.runnersToken;
+            resourceInputs["shareWithGroupLock"] = state?.shareWithGroupLock;
+            resourceInputs["sharedRunnersMinutesLimit"] = state?.sharedRunnersMinutesLimit;
+            resourceInputs["sharedRunnersSetting"] = state?.sharedRunnersSetting;
+            resourceInputs["subgroupCreationLevel"] = state?.subgroupCreationLevel;
+            resourceInputs["twoFactorGracePeriod"] = state?.twoFactorGracePeriod;
+            resourceInputs["visibilityLevel"] = state?.visibilityLevel;
+            resourceInputs["webUrl"] = state?.webUrl;
+            resourceInputs["wikiAccessLevel"] = state?.wikiAccessLevel;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["allowedEmailDomainsLists"] = args ? args.allowedEmailDomainsLists : undefined;
-            resourceInputs["autoDevopsEnabled"] = args ? args.autoDevopsEnabled : undefined;
-            resourceInputs["avatar"] = args ? args.avatar : undefined;
-            resourceInputs["avatarHash"] = args ? args.avatarHash : undefined;
-            resourceInputs["defaultBranch"] = args ? args.defaultBranch : undefined;
-            resourceInputs["defaultBranchProtection"] = args ? args.defaultBranchProtection : undefined;
-            resourceInputs["defaultBranchProtectionDefaults"] = args ? args.defaultBranchProtectionDefaults : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emailsEnabled"] = args ? args.emailsEnabled : undefined;
-            resourceInputs["extraSharedRunnersMinutesLimit"] = args ? args.extraSharedRunnersMinutesLimit : undefined;
-            resourceInputs["ipRestrictionRanges"] = args ? args.ipRestrictionRanges : undefined;
-            resourceInputs["lfsEnabled"] = args ? args.lfsEnabled : undefined;
-            resourceInputs["membershipLock"] = args ? args.membershipLock : undefined;
-            resourceInputs["mentionsDisabled"] = args ? args.mentionsDisabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["permanentlyRemoveOnDelete"] = args ? args.permanentlyRemoveOnDelete : undefined;
-            resourceInputs["preventForkingOutsideGroup"] = args ? args.preventForkingOutsideGroup : undefined;
-            resourceInputs["projectCreationLevel"] = args ? args.projectCreationLevel : undefined;
-            resourceInputs["pushRules"] = args ? args.pushRules : undefined;
-            resourceInputs["requestAccessEnabled"] = args ? args.requestAccessEnabled : undefined;
-            resourceInputs["requireTwoFactorAuthentication"] = args ? args.requireTwoFactorAuthentication : undefined;
-            resourceInputs["shareWithGroupLock"] = args ? args.shareWithGroupLock : undefined;
-            resourceInputs["sharedRunnersMinutesLimit"] = args ? args.sharedRunnersMinutesLimit : undefined;
-            resourceInputs["sharedRunnersSetting"] = args ? args.sharedRunnersSetting : undefined;
-            resourceInputs["subgroupCreationLevel"] = args ? args.subgroupCreationLevel : undefined;
-            resourceInputs["twoFactorGracePeriod"] = args ? args.twoFactorGracePeriod : undefined;
-            resourceInputs["visibilityLevel"] = args ? args.visibilityLevel : undefined;
-            resourceInputs["wikiAccessLevel"] = args ? args.wikiAccessLevel : undefined;
+            resourceInputs["allowedEmailDomainsLists"] = args?.allowedEmailDomainsLists;
+            resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
+            resourceInputs["avatar"] = args?.avatar;
+            resourceInputs["avatarHash"] = args?.avatarHash;
+            resourceInputs["defaultBranch"] = args?.defaultBranch;
+            resourceInputs["defaultBranchProtection"] = args?.defaultBranchProtection;
+            resourceInputs["defaultBranchProtectionDefaults"] = args?.defaultBranchProtectionDefaults;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["emailsEnabled"] = args?.emailsEnabled;
+            resourceInputs["extraSharedRunnersMinutesLimit"] = args?.extraSharedRunnersMinutesLimit;
+            resourceInputs["ipRestrictionRanges"] = args?.ipRestrictionRanges;
+            resourceInputs["lfsEnabled"] = args?.lfsEnabled;
+            resourceInputs["membershipLock"] = args?.membershipLock;
+            resourceInputs["mentionsDisabled"] = args?.mentionsDisabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["permanentlyRemoveOnDelete"] = args?.permanentlyRemoveOnDelete;
+            resourceInputs["preventForkingOutsideGroup"] = args?.preventForkingOutsideGroup;
+            resourceInputs["projectCreationLevel"] = args?.projectCreationLevel;
+            resourceInputs["pushRules"] = args?.pushRules;
+            resourceInputs["requestAccessEnabled"] = args?.requestAccessEnabled;
+            resourceInputs["requireTwoFactorAuthentication"] = args?.requireTwoFactorAuthentication;
+            resourceInputs["shareWithGroupLock"] = args?.shareWithGroupLock;
+            resourceInputs["sharedRunnersMinutesLimit"] = args?.sharedRunnersMinutesLimit;
+            resourceInputs["sharedRunnersSetting"] = args?.sharedRunnersSetting;
+            resourceInputs["subgroupCreationLevel"] = args?.subgroupCreationLevel;
+            resourceInputs["twoFactorGracePeriod"] = args?.twoFactorGracePeriod;
+            resourceInputs["visibilityLevel"] = args?.visibilityLevel;
+            resourceInputs["wikiAccessLevel"] = args?.wikiAccessLevel;
             resourceInputs["avatarUrl"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["fullPath"] = undefined /*out*/;

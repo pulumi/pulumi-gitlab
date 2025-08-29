@@ -69,19 +69,19 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
     /**
      * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    public readonly approvalRules!: pulumi.Output<outputs.GroupProtectedEnvironmentApprovalRule[]>;
+    declare public readonly approvalRules: pulumi.Output<outputs.GroupProtectedEnvironmentApprovalRule[]>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    public readonly deployAccessLevels!: pulumi.Output<outputs.GroupProtectedEnvironmentDeployAccessLevel[]>;
+    declare public readonly deployAccessLevels: pulumi.Output<outputs.GroupProtectedEnvironmentDeployAccessLevel[]>;
     /**
      * The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID or full path of the group which the protected environment is created against.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
 
     /**
      * Create a GroupProtectedEnvironment resource with the given unique name, arguments, and options.
@@ -96,25 +96,25 @@ export class GroupProtectedEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupProtectedEnvironmentState | undefined;
-            resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
-            resourceInputs["deployAccessLevels"] = state ? state.deployAccessLevels : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["approvalRules"] = state?.approvalRules;
+            resourceInputs["deployAccessLevels"] = state?.deployAccessLevels;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["group"] = state?.group;
         } else {
             const args = argsOrState as GroupProtectedEnvironmentArgs | undefined;
-            if ((!args || args.deployAccessLevels === undefined) && !opts.urn) {
+            if (args?.deployAccessLevels === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deployAccessLevels'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
-            resourceInputs["deployAccessLevels"] = args ? args.deployAccessLevels : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["approvalRules"] = args?.approvalRules;
+            resourceInputs["deployAccessLevels"] = args?.deployAccessLevels;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["group"] = args?.group;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupProtectedEnvironment.__pulumiType, name, resourceInputs, opts);

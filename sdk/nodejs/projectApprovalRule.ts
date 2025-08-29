@@ -60,43 +60,43 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
     /**
      * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
      */
-    public readonly appliesToAllProtectedBranches!: pulumi.Output<boolean | undefined>;
+    declare public readonly appliesToAllProtectedBranches: pulumi.Output<boolean | undefined>;
     /**
      * The number of approvals required for this rule.
      */
-    public readonly approvalsRequired!: pulumi.Output<number>;
+    declare public readonly approvalsRequired: pulumi.Output<number>;
     /**
      * When this flag is set, the default `anyApprover` rule will not be imported if present.
      */
-    public readonly disableImportingDefaultAnyApproverRuleOnCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableImportingDefaultAnyApproverRuleOnCreate: pulumi.Output<boolean | undefined>;
     /**
      * A list of group IDs whose members can approve of the merge request.
      */
-    public readonly groupIds!: pulumi.Output<number[] | undefined>;
+    declare public readonly groupIds: pulumi.Output<number[] | undefined>;
     /**
      * The name of the approval rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name or id of the project to add the approval rules.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A list of protected branch IDs (not branch names) for which the rule applies.
      */
-    public readonly protectedBranchIds!: pulumi.Output<number[] | undefined>;
+    declare public readonly protectedBranchIds: pulumi.Output<number[] | undefined>;
     /**
      * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      */
-    public readonly reportType!: pulumi.Output<string>;
+    declare public readonly reportType: pulumi.Output<string>;
     /**
      * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      */
-    public readonly ruleType!: pulumi.Output<string>;
+    declare public readonly ruleType: pulumi.Output<string>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
-    public readonly userIds!: pulumi.Output<number[] | undefined>;
+    declare public readonly userIds: pulumi.Output<number[] | undefined>;
 
     /**
      * Create a ProjectApprovalRule resource with the given unique name, arguments, and options.
@@ -111,34 +111,34 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectApprovalRuleState | undefined;
-            resourceInputs["appliesToAllProtectedBranches"] = state ? state.appliesToAllProtectedBranches : undefined;
-            resourceInputs["approvalsRequired"] = state ? state.approvalsRequired : undefined;
-            resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = state ? state.disableImportingDefaultAnyApproverRuleOnCreate : undefined;
-            resourceInputs["groupIds"] = state ? state.groupIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protectedBranchIds"] = state ? state.protectedBranchIds : undefined;
-            resourceInputs["reportType"] = state ? state.reportType : undefined;
-            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
-            resourceInputs["userIds"] = state ? state.userIds : undefined;
+            resourceInputs["appliesToAllProtectedBranches"] = state?.appliesToAllProtectedBranches;
+            resourceInputs["approvalsRequired"] = state?.approvalsRequired;
+            resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = state?.disableImportingDefaultAnyApproverRuleOnCreate;
+            resourceInputs["groupIds"] = state?.groupIds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protectedBranchIds"] = state?.protectedBranchIds;
+            resourceInputs["reportType"] = state?.reportType;
+            resourceInputs["ruleType"] = state?.ruleType;
+            resourceInputs["userIds"] = state?.userIds;
         } else {
             const args = argsOrState as ProjectApprovalRuleArgs | undefined;
-            if ((!args || args.approvalsRequired === undefined) && !opts.urn) {
+            if (args?.approvalsRequired === undefined && !opts.urn) {
                 throw new Error("Missing required property 'approvalsRequired'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["appliesToAllProtectedBranches"] = args ? args.appliesToAllProtectedBranches : undefined;
-            resourceInputs["approvalsRequired"] = args ? args.approvalsRequired : undefined;
-            resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = args ? args.disableImportingDefaultAnyApproverRuleOnCreate : undefined;
-            resourceInputs["groupIds"] = args ? args.groupIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protectedBranchIds"] = args ? args.protectedBranchIds : undefined;
-            resourceInputs["reportType"] = args ? args.reportType : undefined;
-            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
-            resourceInputs["userIds"] = args ? args.userIds : undefined;
+            resourceInputs["appliesToAllProtectedBranches"] = args?.appliesToAllProtectedBranches;
+            resourceInputs["approvalsRequired"] = args?.approvalsRequired;
+            resourceInputs["disableImportingDefaultAnyApproverRuleOnCreate"] = args?.disableImportingDefaultAnyApproverRuleOnCreate;
+            resourceInputs["groupIds"] = args?.groupIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protectedBranchIds"] = args?.protectedBranchIds;
+            resourceInputs["reportType"] = args?.reportType;
+            resourceInputs["ruleType"] = args?.ruleType;
+            resourceInputs["userIds"] = args?.userIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectApprovalRule.__pulumiType, name, resourceInputs, opts);

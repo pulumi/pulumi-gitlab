@@ -82,23 +82,23 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
     /**
      * Name of the variable.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The id of the pipeline schedule.
      */
-    public readonly pipelineScheduleId!: pulumi.Output<number>;
+    declare public readonly pipelineScheduleId: pulumi.Output<number>;
     /**
      * The id of the project to add the schedule to.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Value of the variable.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
      */
-    public readonly variableType!: pulumi.Output<string>;
+    declare public readonly variableType: pulumi.Output<string>;
 
     /**
      * Create a PipelineScheduleVariable resource with the given unique name, arguments, and options.
@@ -113,30 +113,30 @@ export class PipelineScheduleVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineScheduleVariableState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["pipelineScheduleId"] = state ? state.pipelineScheduleId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["variableType"] = state ? state.variableType : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["pipelineScheduleId"] = state?.pipelineScheduleId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["variableType"] = state?.variableType;
         } else {
             const args = argsOrState as PipelineScheduleVariableArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.pipelineScheduleId === undefined) && !opts.urn) {
+            if (args?.pipelineScheduleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pipelineScheduleId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["pipelineScheduleId"] = args ? args.pipelineScheduleId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["variableType"] = args ? args.variableType : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["pipelineScheduleId"] = args?.pipelineScheduleId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["variableType"] = args?.variableType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PipelineScheduleVariable.__pulumiType, name, resourceInputs, opts);

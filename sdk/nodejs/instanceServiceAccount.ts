@@ -93,20 +93,20 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
     /**
      * The email of the user account. If not set, generates a no-reply email address.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The name of the user. If not set, uses Service account user.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The service account id.
      */
-    public /*out*/ readonly serviceAccountId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.InstanceServiceAccountTimeouts | undefined>;
+    declare public /*out*/ readonly serviceAccountId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.InstanceServiceAccountTimeouts | undefined>;
     /**
      * The username of the user account. If not set, generates a name prepended with service*account*.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a InstanceServiceAccount resource with the given unique name, arguments, and options.
@@ -121,17 +121,17 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceServiceAccountState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["serviceAccountId"] = state?.serviceAccountId;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as InstanceServiceAccountArgs | undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["username"] = args?.username;
             resourceInputs["serviceAccountId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

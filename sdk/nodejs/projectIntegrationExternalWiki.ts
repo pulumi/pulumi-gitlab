@@ -79,31 +79,31 @@ export class ProjectIntegrationExternalWiki extends pulumi.CustomResource {
     /**
      * Whether the integration is active.
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The URL of the external wiki.
      */
-    public readonly externalWikiUrl!: pulumi.Output<string>;
+    declare public readonly externalWikiUrl: pulumi.Output<string>;
     /**
      * ID of the project you want to activate integration on.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * Title of the integration.
      */
-    public /*out*/ readonly title!: pulumi.Output<string>;
+    declare public /*out*/ readonly title: pulumi.Output<string>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ProjectIntegrationExternalWiki resource with the given unique name, arguments, and options.
@@ -118,23 +118,23 @@ export class ProjectIntegrationExternalWiki extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIntegrationExternalWikiState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["externalWikiUrl"] = state ? state.externalWikiUrl : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["externalWikiUrl"] = state?.externalWikiUrl;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ProjectIntegrationExternalWikiArgs | undefined;
-            if ((!args || args.externalWikiUrl === undefined) && !opts.urn) {
+            if (args?.externalWikiUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalWikiUrl'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["externalWikiUrl"] = args ? args.externalWikiUrl : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["externalWikiUrl"] = args?.externalWikiUrl;
+            resourceInputs["project"] = args?.project;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;

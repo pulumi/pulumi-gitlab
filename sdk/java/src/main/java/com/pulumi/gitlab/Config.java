@@ -15,17 +15,14 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("gitlab");
 /**
- * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab
- * Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from
- * the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
+ * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
  * 
  */
     public Optional<String> baseUrl() {
         return Codegen.stringProp("baseUrl").config(config).get();
     }
 /**
- * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab
- * CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
+ * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
  * 
  */
     public Optional<String> cacertFile() {
@@ -39,8 +36,7 @@ public final class Config {
         return Codegen.stringProp("clientCert").config(config).get();
     }
 /**
- * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when
- * `client_cert` is set.
+ * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
  * 
  */
     public Optional<String> clientKey() {
@@ -71,9 +67,7 @@ public final class Config {
         return Codegen.integerProp("retries").config(config).get();
     }
 /**
- * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is
- * used in this provider for authentication (using Bearer authorization token). See
- * https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
+ * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
  * 
  */
     public Optional<String> token() {

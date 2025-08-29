@@ -88,63 +88,63 @@ export class GroupCluster extends pulumi.CustomResource {
     /**
      * Cluster type.
      */
-    public /*out*/ readonly clusterType!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterType: pulumi.Output<string>;
     /**
      * Create time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The base domain of the cluster.
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
     /**
      * Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The associated environment to the cluster. Defaults to `*`.
      */
-    public readonly environmentScope!: pulumi.Output<string | undefined>;
+    declare public readonly environmentScope: pulumi.Output<string | undefined>;
     /**
      * The id of the group to add the cluster to.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The URL to access the Kubernetes API.
      */
-    public readonly kubernetesApiUrl!: pulumi.Output<string>;
+    declare public readonly kubernetesApiUrl: pulumi.Output<string>;
     /**
      * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      */
-    public readonly kubernetesAuthorizationType!: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesAuthorizationType: pulumi.Output<string | undefined>;
     /**
      * TLS certificate (needed if API is using a self-signed TLS certificate).
      */
-    public readonly kubernetesCaCert!: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesCaCert: pulumi.Output<string | undefined>;
     /**
      * The token to authenticate against Kubernetes.
      */
-    public readonly kubernetesToken!: pulumi.Output<string>;
+    declare public readonly kubernetesToken: pulumi.Output<string>;
     /**
      * Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
      */
-    public readonly managed!: pulumi.Output<boolean | undefined>;
+    declare public readonly managed: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the management project for the cluster.
      */
-    public readonly managementProjectId!: pulumi.Output<string | undefined>;
+    declare public readonly managementProjectId: pulumi.Output<string | undefined>;
     /**
      * The name of cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Platform type.
      */
-    public /*out*/ readonly platformType!: pulumi.Output<string>;
+    declare public /*out*/ readonly platformType: pulumi.Output<string>;
     /**
      * Provider type.
      */
-    public /*out*/ readonly providerType!: pulumi.Output<string>;
+    declare public /*out*/ readonly providerType: pulumi.Output<string>;
 
     /**
      * Create a GroupCluster resource with the given unique name, arguments, and options.
@@ -159,43 +159,43 @@ export class GroupCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupClusterState | undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["environmentScope"] = state ? state.environmentScope : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["kubernetesApiUrl"] = state ? state.kubernetesApiUrl : undefined;
-            resourceInputs["kubernetesAuthorizationType"] = state ? state.kubernetesAuthorizationType : undefined;
-            resourceInputs["kubernetesCaCert"] = state ? state.kubernetesCaCert : undefined;
-            resourceInputs["kubernetesToken"] = state ? state.kubernetesToken : undefined;
-            resourceInputs["managed"] = state ? state.managed : undefined;
-            resourceInputs["managementProjectId"] = state ? state.managementProjectId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["platformType"] = state ? state.platformType : undefined;
-            resourceInputs["providerType"] = state ? state.providerType : undefined;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["environmentScope"] = state?.environmentScope;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["kubernetesApiUrl"] = state?.kubernetesApiUrl;
+            resourceInputs["kubernetesAuthorizationType"] = state?.kubernetesAuthorizationType;
+            resourceInputs["kubernetesCaCert"] = state?.kubernetesCaCert;
+            resourceInputs["kubernetesToken"] = state?.kubernetesToken;
+            resourceInputs["managed"] = state?.managed;
+            resourceInputs["managementProjectId"] = state?.managementProjectId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["platformType"] = state?.platformType;
+            resourceInputs["providerType"] = state?.providerType;
         } else {
             const args = argsOrState as GroupClusterArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.kubernetesApiUrl === undefined) && !opts.urn) {
+            if (args?.kubernetesApiUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesApiUrl'");
             }
-            if ((!args || args.kubernetesToken === undefined) && !opts.urn) {
+            if (args?.kubernetesToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesToken'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["environmentScope"] = args ? args.environmentScope : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["kubernetesApiUrl"] = args ? args.kubernetesApiUrl : undefined;
-            resourceInputs["kubernetesAuthorizationType"] = args ? args.kubernetesAuthorizationType : undefined;
-            resourceInputs["kubernetesCaCert"] = args ? args.kubernetesCaCert : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["environmentScope"] = args?.environmentScope;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["kubernetesApiUrl"] = args?.kubernetesApiUrl;
+            resourceInputs["kubernetesAuthorizationType"] = args?.kubernetesAuthorizationType;
+            resourceInputs["kubernetesCaCert"] = args?.kubernetesCaCert;
             resourceInputs["kubernetesToken"] = args?.kubernetesToken ? pulumi.secret(args.kubernetesToken) : undefined;
-            resourceInputs["managed"] = args ? args.managed : undefined;
-            resourceInputs["managementProjectId"] = args ? args.managementProjectId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["managed"] = args?.managed;
+            resourceInputs["managementProjectId"] = args?.managementProjectId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["clusterType"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["platformType"] = undefined /*out*/;

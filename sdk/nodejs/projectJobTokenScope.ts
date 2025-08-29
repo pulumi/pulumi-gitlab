@@ -65,15 +65,15 @@ export class ProjectJobTokenScope extends pulumi.CustomResource {
     /**
      * The ID or full path of the project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID of the group that is in the CI/CD job token inbound allowlist.
      */
-    public readonly targetGroupId!: pulumi.Output<number | undefined>;
+    declare public readonly targetGroupId: pulumi.Output<number | undefined>;
     /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      */
-    public readonly targetProjectId!: pulumi.Output<number | undefined>;
+    declare public readonly targetProjectId: pulumi.Output<number | undefined>;
 
     /**
      * Create a ProjectJobTokenScope resource with the given unique name, arguments, and options.
@@ -88,17 +88,17 @@ export class ProjectJobTokenScope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectJobTokenScopeState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["targetGroupId"] = state ? state.targetGroupId : undefined;
-            resourceInputs["targetProjectId"] = state ? state.targetProjectId : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["targetGroupId"] = state?.targetGroupId;
+            resourceInputs["targetProjectId"] = state?.targetProjectId;
         } else {
             const args = argsOrState as ProjectJobTokenScopeArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["targetGroupId"] = args ? args.targetGroupId : undefined;
-            resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["targetGroupId"] = args?.targetGroupId;
+            resourceInputs["targetProjectId"] = args?.targetProjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectJobTokenScope.__pulumiType, name, resourceInputs, opts);
