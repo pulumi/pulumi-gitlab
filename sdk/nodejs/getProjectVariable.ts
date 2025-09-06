@@ -41,7 +41,7 @@ export function getProjectVariable(args: GetProjectVariableArgs, opts?: pulumi.I
  */
 export interface GetProjectVariableArgs {
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`).
      */
     environmentScope?: string;
     /**
@@ -49,7 +49,7 @@ export interface GetProjectVariableArgs {
      */
     key: string;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     project: string;
 }
@@ -59,15 +59,15 @@ export interface GetProjectVariableArgs {
  */
 export interface GetProjectVariableResult {
     /**
-     * The description of the variable.
+     * The description of the variable. Maximum of 255 characters.
      */
     readonly description: string;
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`).
      */
     readonly environmentScope: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:key:environment-scope>`.
      */
     readonly id: string;
     /**
@@ -75,19 +75,19 @@ export interface GetProjectVariableResult {
      */
     readonly key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs.
      */
     readonly masked: boolean;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     readonly project: string;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     readonly protected: boolean;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * If set to `true`, the variable will be treated as a raw string.
      */
     readonly raw: boolean;
     /**
@@ -95,7 +95,7 @@ export interface GetProjectVariableResult {
      */
     readonly value: string;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of the variable, either `envVar` or `file`.
      */
     readonly variableType: string;
 }
@@ -136,7 +136,7 @@ export function getProjectVariableOutput(args: GetProjectVariableOutputArgs, opt
  */
 export interface GetProjectVariableOutputArgs {
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`).
      */
     environmentScope?: pulumi.Input<string>;
     /**
@@ -144,7 +144,7 @@ export interface GetProjectVariableOutputArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     project: pulumi.Input<string>;
 }

@@ -16,14 +16,14 @@ public final class GetProjectVariablePlainArgs extends com.pulumi.resources.Invo
     public static final GetProjectVariablePlainArgs Empty = new GetProjectVariablePlainArgs();
 
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`).
      * 
      */
     @Import(name="environmentScope")
     private @Nullable String environmentScope;
 
     /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * @return The environment scope of the variable. Defaults to all environment (`*`).
      * 
      */
     public Optional<String> environmentScope() {
@@ -46,14 +46,14 @@ public final class GetProjectVariablePlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     public String project() {
@@ -87,7 +87,7 @@ public final class GetProjectVariablePlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GetProjectVariablePlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param project The name or id of the project.
+         * @param project The name or path of the project.
          * 
          * @return builder
          * 

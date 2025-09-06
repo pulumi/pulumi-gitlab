@@ -17,14 +17,14 @@ public final class GetProjectVariableArgs extends com.pulumi.resources.InvokeArg
     public static final GetProjectVariableArgs Empty = new GetProjectVariableArgs();
 
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`).
      * 
      */
     @Import(name="environmentScope")
     private @Nullable Output<String> environmentScope;
 
     /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * @return The environment scope of the variable. Defaults to all environment (`*`).
      * 
      */
     public Optional<Output<String>> environmentScope() {
@@ -47,14 +47,14 @@ public final class GetProjectVariableArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     public Output<String> project() {
@@ -88,7 +88,7 @@ public final class GetProjectVariableArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetProjectVariableArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+         * @param environmentScope The environment scope of the variable. Defaults to all environment (`*`).
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetProjectVariableArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param project The name or id of the project.
+         * @param project The name or path of the project.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GetProjectVariableArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param project The name or id of the project.
+         * @param project The name or path of the project.
          * 
          * @return builder
          * 

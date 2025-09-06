@@ -42,8 +42,29 @@ public final class Config {
     public Optional<String> clientKey() {
         return Codegen.stringProp("clientKey").config(config).get();
     }
+/**
+ * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+ * 
+ */
+    public Optional<String> configFile() {
+        return Codegen.stringProp("configFile").config(config).get();
+    }
+/**
+ * The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+ * 
+ */
+    public Optional<String> context() {
+        return Codegen.stringProp("context").config(config).get();
+    }
     public Optional<Boolean> earlyAuthCheck() {
         return Codegen.booleanProp("earlyAuthCheck").config(config).get();
+    }
+/**
+ * If automatic CI support should be enabled or not. This only works when not providing a token.
+ * 
+ */
+    public Optional<Boolean> enableAutoCiSupport() {
+        return Codegen.booleanProp("enableAutoCiSupport").config(config).get();
     }
 /**
  * A map of headers to append to all API request to the GitLab instance.

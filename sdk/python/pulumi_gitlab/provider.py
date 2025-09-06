@@ -23,7 +23,10 @@ class ProviderArgs:
                  cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 context: Optional[pulumi.Input[_builtins.str]] = None,
                  early_auth_check: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_auto_ci_support: Optional[pulumi.Input[_builtins.bool]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  insecure: Optional[pulumi.Input[_builtins.bool]] = None,
                  retries: Optional[pulumi.Input[_builtins.int]] = None,
@@ -34,6 +37,9 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         :param pulumi.Input[_builtins.str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+        :param pulumi.Input[_builtins.str] config_file: The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        :param pulumi.Input[_builtins.str] context: The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        :param pulumi.Input[_builtins.bool] enable_auto_ci_support: If automatic CI support should be enabled or not. This only works when not providing a token.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[_builtins.int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
@@ -47,8 +53,14 @@ class ProviderArgs:
             pulumi.set(__self__, "client_cert", client_cert)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if config_file is not None:
+            pulumi.set(__self__, "config_file", config_file)
+        if context is not None:
+            pulumi.set(__self__, "context", context)
         if early_auth_check is not None:
             pulumi.set(__self__, "early_auth_check", early_auth_check)
+        if enable_auto_ci_support is not None:
+            pulumi.set(__self__, "enable_auto_ci_support", enable_auto_ci_support)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if insecure is not None:
@@ -107,6 +119,30 @@ class ProviderArgs:
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="configFile")
+    def config_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        """
+        return pulumi.get(self, "config_file")
+
+    @config_file.setter
+    def config_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "config_file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def context(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        """
+        return pulumi.get(self, "context")
+
+    @context.setter
+    def context(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "context", value)
+
+    @_builtins.property
     @pulumi.getter(name="earlyAuthCheck")
     def early_auth_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "early_auth_check")
@@ -114,6 +150,18 @@ class ProviderArgs:
     @early_auth_check.setter
     def early_auth_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "early_auth_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutoCiSupport")
+    def enable_auto_ci_support(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If automatic CI support should be enabled or not. This only works when not providing a token.
+        """
+        return pulumi.get(self, "enable_auto_ci_support")
+
+    @enable_auto_ci_support.setter
+    def enable_auto_ci_support(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_auto_ci_support", value)
 
     @_builtins.property
     @pulumi.getter
@@ -174,7 +222,10 @@ class Provider(pulumi.ProviderResource):
                  cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 context: Optional[pulumi.Input[_builtins.str]] = None,
                  early_auth_check: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_auto_ci_support: Optional[pulumi.Input[_builtins.bool]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  insecure: Optional[pulumi.Input[_builtins.bool]] = None,
                  retries: Optional[pulumi.Input[_builtins.int]] = None,
@@ -192,6 +243,9 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         :param pulumi.Input[_builtins.str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+        :param pulumi.Input[_builtins.str] config_file: The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        :param pulumi.Input[_builtins.str] context: The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        :param pulumi.Input[_builtins.bool] enable_auto_ci_support: If automatic CI support should be enabled or not. This only works when not providing a token.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
         :param pulumi.Input[_builtins.int] retries: The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
@@ -228,7 +282,10 @@ class Provider(pulumi.ProviderResource):
                  cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 context: Optional[pulumi.Input[_builtins.str]] = None,
                  early_auth_check: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_auto_ci_support: Optional[pulumi.Input[_builtins.bool]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  insecure: Optional[pulumi.Input[_builtins.bool]] = None,
                  retries: Optional[pulumi.Input[_builtins.int]] = None,
@@ -246,7 +303,10 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cacert_file"] = cacert_file
             __props__.__dict__["client_cert"] = client_cert
             __props__.__dict__["client_key"] = client_key
+            __props__.__dict__["config_file"] = config_file
+            __props__.__dict__["context"] = context
             __props__.__dict__["early_auth_check"] = pulumi.Output.from_input(early_auth_check).apply(pulumi.runtime.to_json) if early_auth_check is not None else None
+            __props__.__dict__["enable_auto_ci_support"] = pulumi.Output.from_input(enable_auto_ci_support).apply(pulumi.runtime.to_json) if enable_auto_ci_support is not None else None
             __props__.__dict__["headers"] = pulumi.Output.from_input(headers).apply(pulumi.runtime.to_json) if headers is not None else None
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
@@ -290,6 +350,22 @@ class Provider(pulumi.ProviderResource):
         File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         """
         return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="configFile")
+    def config_file(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        """
+        return pulumi.get(self, "config_file")
+
+    @_builtins.property
+    @pulumi.getter
+    def context(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        """
+        return pulumi.get(self, "context")
 
     @_builtins.property
     @pulumi.getter
