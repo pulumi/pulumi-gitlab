@@ -72,11 +72,41 @@ namespace Pulumi.GitLab
             set => _clientKey.Set(value);
         }
 
+        private static readonly __Value<string?> _configFile = new __Value<string?>(() => __config.Get("configFile"));
+        /// <summary>
+        /// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        /// </summary>
+        public static string? ConfigFile
+        {
+            get => _configFile.Get();
+            set => _configFile.Set(value);
+        }
+
+        private static readonly __Value<string?> _context = new __Value<string?>(() => __config.Get("context"));
+        /// <summary>
+        /// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        /// </summary>
+        public static string? Context
+        {
+            get => _context.Get();
+            set => _context.Set(value);
+        }
+
         private static readonly __Value<bool?> _earlyAuthCheck = new __Value<bool?>(() => __config.GetBoolean("earlyAuthCheck"));
         public static bool? EarlyAuthCheck
         {
             get => _earlyAuthCheck.Get();
             set => _earlyAuthCheck.Set(value);
+        }
+
+        private static readonly __Value<bool?> _enableAutoCiSupport = new __Value<bool?>(() => __config.GetBoolean("enableAutoCiSupport"));
+        /// <summary>
+        /// If automatic CI support should be enabled or not. This only works when not providing a token.
+        /// </summary>
+        public static bool? EnableAutoCiSupport
+        {
+            get => _enableAutoCiSupport.Get();
+            set => _enableAutoCiSupport.Set(value);
         }
 
         private static readonly __Value<ImmutableDictionary<string, string>?> _headers = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("headers"));

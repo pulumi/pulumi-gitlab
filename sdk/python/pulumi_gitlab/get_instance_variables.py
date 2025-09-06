@@ -39,7 +39,7 @@ class GetInstanceVariablesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the hardcoded format `instance_variables`.
         """
         return pulumi.get(self, "id")
 
@@ -47,7 +47,7 @@ class GetInstanceVariablesResult:
     @pulumi.getter
     def variables(self) -> Sequence['outputs.GetInstanceVariablesVariableResult']:
         """
-        The list of variables returned by the search
+        The list of variables returned by the search.
         """
         return pulumi.get(self, "variables")
 
@@ -64,7 +64,7 @@ class AwaitableGetInstanceVariablesResult(GetInstanceVariablesResult):
 
 def get_instance_variables(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceVariablesResult:
     """
-    The `get_instance_variables` data source allows to retrieve all instance-level CI/CD variables.
+    The `get_instance_variables` data source retrieves all instance-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 
@@ -86,7 +86,7 @@ def get_instance_variables(opts: Optional[pulumi.InvokeOptions] = None) -> Await
         variables=pulumi.get(__ret__, 'variables'))
 def get_instance_variables_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceVariablesResult]:
     """
-    The `get_instance_variables` data source allows to retrieve all instance-level CI/CD variables.
+    The `get_instance_variables` data source retrieves all instance-level CI/CD variables.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 

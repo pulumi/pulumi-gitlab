@@ -12,17 +12,17 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectVariableResult {
     /**
-     * @return The description of the variable.
+     * @return The description of the variable. Maximum of 255 characters.
      * 
      */
     private String description;
     /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * @return The environment scope of the variable. Defaults to all environment (`*`).
      * 
      */
     private String environmentScope;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:key:environment-scope&gt;`.
      * 
      */
     private String id;
@@ -32,22 +32,22 @@ public final class GetProjectVariableResult {
      */
     private String key;
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs.
      * 
      */
     private Boolean masked;
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     private String project;
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     private Boolean protected_;
     /**
-     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * @return If set to `true`, the variable will be treated as a raw string.
      * 
      */
     private Boolean raw;
@@ -57,28 +57,28 @@ public final class GetProjectVariableResult {
      */
     private String value;
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of the variable, either `env_var` or `file`.
      * 
      */
     private String variableType;
 
     private GetProjectVariableResult() {}
     /**
-     * @return The description of the variable.
+     * @return The description of the variable. Maximum of 255 characters.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * @return The environment scope of the variable. Defaults to all environment (`*`).
      * 
      */
     public String environmentScope() {
         return this.environmentScope;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:key:environment-scope&gt;`.
      * 
      */
     public String id() {
@@ -92,28 +92,28 @@ public final class GetProjectVariableResult {
         return this.key;
     }
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs.
      * 
      */
     public Boolean masked() {
         return this.masked;
     }
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     public Boolean protected_() {
         return this.protected_;
     }
     /**
-     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * @return If set to `true`, the variable will be treated as a raw string.
      * 
      */
     public Boolean raw() {
@@ -127,7 +127,7 @@ public final class GetProjectVariableResult {
         return this.value;
     }
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of the variable, either `env_var` or `file`.
      * 
      */
     public String variableType() {

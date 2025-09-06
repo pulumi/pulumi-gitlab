@@ -78,11 +78,56 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientKey);
     }
 
+    /**
+     * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+     * 
+     */
+    @Import(name="configFile")
+    private @Nullable Output<String> configFile;
+
+    /**
+     * @return The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+     * 
+     */
+    public Optional<Output<String>> configFile() {
+        return Optional.ofNullable(this.configFile);
+    }
+
+    /**
+     * The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+     * 
+     */
+    @Import(name="context")
+    private @Nullable Output<String> context;
+
+    /**
+     * @return The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+     * 
+     */
+    public Optional<Output<String>> context() {
+        return Optional.ofNullable(this.context);
+    }
+
     @Import(name="earlyAuthCheck", json=true)
     private @Nullable Output<Boolean> earlyAuthCheck;
 
     public Optional<Output<Boolean>> earlyAuthCheck() {
         return Optional.ofNullable(this.earlyAuthCheck);
+    }
+
+    /**
+     * If automatic CI support should be enabled or not. This only works when not providing a token.
+     * 
+     */
+    @Import(name="enableAutoCiSupport", json=true)
+    private @Nullable Output<Boolean> enableAutoCiSupport;
+
+    /**
+     * @return If automatic CI support should be enabled or not. This only works when not providing a token.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAutoCiSupport() {
+        return Optional.ofNullable(this.enableAutoCiSupport);
     }
 
     /**
@@ -152,7 +197,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cacertFile = $.cacertFile;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
+        this.configFile = $.configFile;
+        this.context = $.context;
         this.earlyAuthCheck = $.earlyAuthCheck;
+        this.enableAutoCiSupport = $.enableAutoCiSupport;
         this.headers = $.headers;
         this.insecure = $.insecure;
         this.retries = $.retries;
@@ -261,6 +309,48 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return clientKey(Output.of(clientKey));
         }
 
+        /**
+         * @param configFile The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configFile(@Nullable Output<String> configFile) {
+            $.configFile = configFile;
+            return this;
+        }
+
+        /**
+         * @param configFile The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configFile(String configFile) {
+            return configFile(Output.of(configFile));
+        }
+
+        /**
+         * @param context The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder context(@Nullable Output<String> context) {
+            $.context = context;
+            return this;
+        }
+
+        /**
+         * @param context The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder context(String context) {
+            return context(Output.of(context));
+        }
+
         public Builder earlyAuthCheck(@Nullable Output<Boolean> earlyAuthCheck) {
             $.earlyAuthCheck = earlyAuthCheck;
             return this;
@@ -268,6 +358,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder earlyAuthCheck(Boolean earlyAuthCheck) {
             return earlyAuthCheck(Output.of(earlyAuthCheck));
+        }
+
+        /**
+         * @param enableAutoCiSupport If automatic CI support should be enabled or not. This only works when not providing a token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutoCiSupport(@Nullable Output<Boolean> enableAutoCiSupport) {
+            $.enableAutoCiSupport = enableAutoCiSupport;
+            return this;
+        }
+
+        /**
+         * @param enableAutoCiSupport If automatic CI support should be enabled or not. This only works when not providing a token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutoCiSupport(Boolean enableAutoCiSupport) {
+            return enableAutoCiSupport(Output.of(enableAutoCiSupport));
         }
 
         /**

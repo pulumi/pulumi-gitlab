@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
  *
+ * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectDeployToken` or `gitlab.GroupDeployToken` instead!
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
  *
  * ## Import
@@ -86,7 +88,7 @@ export class DeployToken extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string | undefined>;
     /**
-     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+     * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
     declare public readonly scopes: pulumi.Output<string[]>;
     /**
@@ -165,7 +167,7 @@ export interface DeployTokenState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+     * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -199,7 +201,7 @@ export interface DeployTokenArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+     * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

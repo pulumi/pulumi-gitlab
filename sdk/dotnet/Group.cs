@@ -269,7 +269,7 @@ namespace Pulumi.GitLab
         public Output<bool> PreventForkingOutsideGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         /// </summary>
         [Output("projectCreationLevel")]
         public Output<string> ProjectCreationLevel { get; private set; } = null!;
@@ -523,7 +523,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
-        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
@@ -741,7 +741,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
-        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
