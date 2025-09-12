@@ -1,6 +1,8 @@
 provider: gitlab
 major-version: 9
 upstreamProviderOrg: gitlabhq
+esc:
+  enabled: true
 env:
   PULUMI_GITLAB_TOKEN: ${{ secrets.PULUMI_GITLAB_TOKEN }}
 makeTemplate: bridged
