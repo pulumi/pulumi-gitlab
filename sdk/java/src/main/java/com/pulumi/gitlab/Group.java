@@ -459,14 +459,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.preventForkingOutsideGroup;
     }
     /**
-     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      * 
      */
     @Export(name="projectCreationLevel", refs={String.class}, tree="[0]")
     private Output<String> projectCreationLevel;
 
     /**
-     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      * 
      */
     public Output<String> projectCreationLevel() {
