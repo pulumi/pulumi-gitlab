@@ -57,6 +57,7 @@ __all__ = [
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
     'GetGroupProvisionedUsersProvisionedUserResult',
+    'GetGroupSamlLinksSamlLinkResult',
     'GetGroupSharedWithGroupResult',
     'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
@@ -4199,6 +4200,46 @@ class GetGroupProvisionedUsersProvisionedUserResult(dict):
 
 
 @pulumi.output_type
+class GetGroupSamlLinksSamlLinkResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 member_role_id: _builtins.int,
+                 name: _builtins.str):
+        """
+        :param _builtins.str access_level: The base access level for members of the SAML group.
+        :param _builtins.int member_role_id: Member Role ID (custom role for members of the SAML group.
+        :param _builtins.str name: Name of the SAML group.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "member_role_id", member_role_id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        The base access level for members of the SAML group.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> _builtins.int:
+        """
+        Member Role ID (custom role for members of the SAML group.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the SAML group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetGroupSharedWithGroupResult(dict):
     def __init__(__self__, *,
                  expires_at: _builtins.str,
@@ -4882,11 +4923,11 @@ class GetInstanceVariablesVariableResult(dict):
         """
         :param _builtins.str description: The description of the variable. Maximum of 255 characters.
         :param _builtins.str key: The name of the variable.
-        :param _builtins.bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
-        :param _builtins.bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param _builtins.bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param _builtins.bool masked: If set to `true`, the value of the variable will be hidden in job logs.
+        :param _builtins.bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param _builtins.bool raw: If set to `true`, the variable will be treated as a raw string.
         :param _builtins.str value: The value of the variable.
-        :param _builtins.str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param _builtins.str variable_type: The type of the variable, either `env_var` or `file`.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "key", key)
@@ -4916,7 +4957,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def masked(self) -> _builtins.bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs.
         """
         return pulumi.get(self, "masked")
 
@@ -4924,7 +4965,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -4932,7 +4973,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def raw(self) -> _builtins.bool:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        If set to `true`, the variable will be treated as a raw string.
         """
         return pulumi.get(self, "raw")
 
@@ -4948,7 +4989,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> _builtins.str:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of the variable, either `env_var` or `file`.
         """
         return pulumi.get(self, "variable_type")
 

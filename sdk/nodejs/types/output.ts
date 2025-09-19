@@ -475,6 +475,21 @@ export interface GetGroupProvisionedUsersProvisionedUser {
     websiteUrl: string;
 }
 
+export interface GetGroupSamlLinksSamlLink {
+    /**
+     * The base access level for members of the SAML group.
+     */
+    accessLevel: string;
+    /**
+     * Member Role ID (custom role for members of the SAML group.
+     */
+    memberRoleId: number;
+    /**
+     * Name of the SAML group.
+     */
+    name: string;
+}
+
 export interface GetGroupSharedWithGroup {
     /**
      * Share with group expiration date.
@@ -676,15 +691,15 @@ export interface GetInstanceVariablesVariable {
      */
     key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs.
      */
     masked: boolean;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     protected: boolean;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * If set to `true`, the variable will be treated as a raw string.
      */
     raw: boolean;
     /**
@@ -692,7 +707,7 @@ export interface GetInstanceVariablesVariable {
      */
     value: string;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of the variable, either `envVar` or `file`.
      */
     variableType: string;
 }

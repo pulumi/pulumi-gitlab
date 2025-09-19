@@ -35,6 +35,8 @@ import com.pulumi.gitlab.inputs.GetGroupMembershipPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersArgs;
 import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
+import com.pulumi.gitlab.inputs.GetGroupSamlLinksPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
 import com.pulumi.gitlab.inputs.GetGroupServiceAccountPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
@@ -135,6 +137,7 @@ import com.pulumi.gitlab.outputs.GetGroupIdsResult;
 import com.pulumi.gitlab.outputs.GetGroupMembershipResult;
 import com.pulumi.gitlab.outputs.GetGroupProvisionedUsersResult;
 import com.pulumi.gitlab.outputs.GetGroupResult;
+import com.pulumi.gitlab.outputs.GetGroupSamlLinksResult;
 import com.pulumi.gitlab.outputs.GetGroupServiceAccountResult;
 import com.pulumi.gitlab.outputs.GetGroupSubgroupsResult;
 import com.pulumi.gitlab.outputs.GetGroupVariableResult;
@@ -655,7 +658,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getClusterAgent:getClusterAgent", TypeShape.of(GetClusterAgentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+     * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
      * 
@@ -697,7 +700,7 @@ public final class GitlabFunctions {
         return getClusterAgents(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+     * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
      * 
@@ -739,7 +742,7 @@ public final class GitlabFunctions {
         return getClusterAgentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+     * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
      * 
@@ -781,7 +784,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getClusterAgents:getClusterAgents", TypeShape.of(GetClusterAgentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+     * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
      * 
@@ -823,7 +826,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getClusterAgents:getClusterAgents", TypeShape.of(GetClusterAgentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+     * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
      * 
@@ -2329,6 +2332,51 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", TypeShape.of(GetGroupProvisionedUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     */
+    public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args) {
+        return getGroupSamlLinks(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     */
+    public static CompletableFuture<GetGroupSamlLinksResult> getGroupSamlLinksPlain(GetGroupSamlLinksPlainArgs args) {
+        return getGroupSamlLinksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     */
+    public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     */
+    public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     */
+    public static CompletableFuture<GetGroupSamlLinksResult> getGroupSamlLinksPlain(GetGroupSamlLinksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
@@ -3733,7 +3781,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getInstanceServiceAccount:getInstanceServiceAccount", TypeShape.of(GetInstanceServiceAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+     * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -3775,7 +3823,7 @@ public final class GitlabFunctions {
         return getInstanceVariable(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+     * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -3817,7 +3865,7 @@ public final class GitlabFunctions {
         return getInstanceVariablePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+     * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -3859,7 +3907,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getInstanceVariable:getInstanceVariable", TypeShape.of(GetInstanceVariableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+     * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -3901,7 +3949,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getInstanceVariable:getInstanceVariable", TypeShape.of(GetInstanceVariableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+     * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -3943,7 +3991,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getInstanceVariable:getInstanceVariable", TypeShape.of(GetInstanceVariableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -3982,7 +4030,7 @@ public final class GitlabFunctions {
         return getInstanceVariables(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -4021,7 +4069,7 @@ public final class GitlabFunctions {
         return getInstanceVariablesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -4060,7 +4108,7 @@ public final class GitlabFunctions {
         return getInstanceVariables(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -4099,7 +4147,7 @@ public final class GitlabFunctions {
         return getInstanceVariablesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -4138,7 +4186,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getInstanceVariables:getInstanceVariables", TypeShape.of(GetInstanceVariablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 
@@ -4177,7 +4225,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getInstanceVariables:getInstanceVariables", TypeShape.of(GetInstanceVariablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+     * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
      * 

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+// The `getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 //
@@ -52,7 +52,7 @@ func GetClusterAgents(ctx *pulumi.Context, args *GetClusterAgentsArgs, opts ...p
 
 // A collection of arguments for invoking getClusterAgents.
 type GetClusterAgentsArgs struct {
-	// The ID or full path of the project owned by the authenticated user.
+	// ID or full path of the project maintained by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
@@ -60,9 +60,9 @@ type GetClusterAgentsArgs struct {
 type GetClusterAgentsResult struct {
 	// List of the registered agents.
 	ClusterAgents []GetClusterAgentsClusterAgent `pulumi:"clusterAgents"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this data source. In the format \n\n
 	Id string `pulumi:"id"`
-	// The ID or full path of the project owned by the authenticated user.
+	// ID or full path of the project maintained by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
@@ -77,7 +77,7 @@ func GetClusterAgentsOutput(ctx *pulumi.Context, args GetClusterAgentsOutputArgs
 
 // A collection of arguments for invoking getClusterAgents.
 type GetClusterAgentsOutputArgs struct {
-	// The ID or full path of the project owned by the authenticated user.
+	// ID or full path of the project maintained by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -105,12 +105,12 @@ func (o GetClusterAgentsResultOutput) ClusterAgents() GetClusterAgentsClusterAge
 	return o.ApplyT(func(v GetClusterAgentsResult) []GetClusterAgentsClusterAgent { return v.ClusterAgents }).(GetClusterAgentsClusterAgentArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this data source. In the format \n\n
 func (o GetClusterAgentsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterAgentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID or full path of the project owned by the authenticated user.
+// ID or full path of the project maintained by the authenticated user.
 func (o GetClusterAgentsResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterAgentsResult) string { return v.Project }).(pulumi.StringOutput)
 }

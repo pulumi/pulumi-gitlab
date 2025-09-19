@@ -31,6 +31,7 @@ from .get_group_hooks import *
 from .get_group_ids import *
 from .get_group_membership import *
 from .get_group_provisioned_users import *
+from .get_group_saml_links import *
 from .get_group_service_account import *
 from .get_group_subgroups import *
 from .get_group_variable import *
@@ -83,6 +84,7 @@ from .group_badge import *
 from .group_cluster import *
 from .group_custom_attribute import *
 from .group_dependency_proxy import *
+from .group_deploy_token import *
 from .group_epic_board import *
 from .group_hook import *
 from .group_issue_board import *
@@ -128,6 +130,7 @@ from .project_cluster import *
 from .project_compliance_frameworks import *
 from .project_container_repository_protection import *
 from .project_custom_attribute import *
+from .project_deploy_token import *
 from .project_environment import *
 from .project_freeze_period import *
 from .project_hook import *
@@ -336,6 +339,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupDependencyProxy:GroupDependencyProxy": "GroupDependencyProxy"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupDeployToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupDeployToken:GroupDeployToken": "GroupDeployToken"
   }
  },
  {
@@ -696,6 +707,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": "ProjectCustomAttribute"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectDeployToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectDeployToken:ProjectDeployToken": "ProjectDeployToken"
   }
  },
  {

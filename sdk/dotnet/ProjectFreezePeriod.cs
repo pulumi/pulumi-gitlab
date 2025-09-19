@@ -64,22 +64,22 @@ namespace Pulumi.GitLab
         /// The timezone.
         /// </summary>
         [Output("cronTimezone")]
-        public Output<string?> CronTimezone { get; private set; } = null!;
+        public Output<string> CronTimezone { get; private set; } = null!;
 
         /// <summary>
-        /// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+        /// End of the Freeze Period in cron format (for example, `0 2 * * *`).
         /// </summary>
         [Output("freezeEnd")]
         public Output<string> FreezeEnd { get; private set; } = null!;
 
         /// <summary>
-        /// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+        /// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         /// </summary>
         [Output("freezeStart")]
         public Output<string> FreezeStart { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or URL-encoded path of the project to add the schedule to.
+        /// The ID or path of the project to add the freeze period to.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -137,19 +137,19 @@ namespace Pulumi.GitLab
         public Input<string>? CronTimezone { get; set; }
 
         /// <summary>
-        /// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+        /// End of the Freeze Period in cron format (for example, `0 2 * * *`).
         /// </summary>
         [Input("freezeEnd", required: true)]
         public Input<string> FreezeEnd { get; set; } = null!;
 
         /// <summary>
-        /// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+        /// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         /// </summary>
         [Input("freezeStart", required: true)]
         public Input<string> FreezeStart { get; set; } = null!;
 
         /// <summary>
-        /// The ID or URL-encoded path of the project to add the schedule to.
+        /// The ID or path of the project to add the freeze period to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -169,19 +169,19 @@ namespace Pulumi.GitLab
         public Input<string>? CronTimezone { get; set; }
 
         /// <summary>
-        /// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+        /// End of the Freeze Period in cron format (for example, `0 2 * * *`).
         /// </summary>
         [Input("freezeEnd")]
         public Input<string>? FreezeEnd { get; set; }
 
         /// <summary>
-        /// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+        /// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         /// </summary>
         [Input("freezeStart")]
         public Input<string>? FreezeStart { get; set; }
 
         /// <summary>
-        /// The ID or URL-encoded path of the project to add the schedule to.
+        /// The ID or path of the project to add the freeze period to.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

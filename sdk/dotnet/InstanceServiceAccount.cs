@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
         /// The username of the user account. If not set, generates a name prepended with service*account*.
         /// </summary>
         [Output("username")]
-        public Output<string?> Username { get; private set; } = null!;
+        public Output<string> Username { get; private set; } = null!;
 
 
         /// <summary>

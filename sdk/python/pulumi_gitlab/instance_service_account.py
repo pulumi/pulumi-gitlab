@@ -403,7 +403,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def username(self) -> pulumi.Output[_builtins.str]:
         """
         The username of the user account. If not set, generates a name prepended with service*account*.
         """

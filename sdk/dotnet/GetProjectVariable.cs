@@ -121,7 +121,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectVariableArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        /// The environment scope of the variable. Defaults to all environment (`*`).
         /// </summary>
         [Input("environmentScope")]
         public string? EnvironmentScope { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.GitLab
         public string Key { get; set; } = null!;
 
         /// <summary>
-        /// The name or id of the project.
+        /// The name or path of the project.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectVariableInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        /// The environment scope of the variable. Defaults to all environment (`*`).
         /// </summary>
         [Input("environmentScope")]
         public Input<string>? EnvironmentScope { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The name or id of the project.
+        /// The name or path of the project.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -175,15 +175,15 @@ namespace Pulumi.GitLab
     public sealed class GetProjectVariableResult
     {
         /// <summary>
-        /// The description of the variable.
+        /// The description of the variable. Maximum of 255 characters.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        /// The environment scope of the variable. Defaults to all environment (`*`).
         /// </summary>
         public readonly string EnvironmentScope;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:key:environment-scope&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -191,19 +191,19 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs.
         /// </summary>
         public readonly bool Masked;
         /// <summary>
-        /// The name or id of the project.
+        /// The name or path of the project.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         /// </summary>
         public readonly bool Protected;
         /// <summary>
-        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// If set to `true`, the variable will be treated as a raw string.
         /// </summary>
         public readonly bool Raw;
         /// <summary>
@@ -211,7 +211,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        /// The type of the variable, either `env_var` or `file`.
         /// </summary>
         public readonly string VariableType;
 

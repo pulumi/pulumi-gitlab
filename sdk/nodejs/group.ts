@@ -219,7 +219,7 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly preventForkingOutsideGroup: pulumi.Output<boolean>;
     /**
-     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
     declare public readonly projectCreationLevel: pulumi.Output<string>;
     /**
@@ -462,7 +462,7 @@ export interface GroupState {
      */
     preventForkingOutsideGroup?: pulumi.Input<boolean>;
     /**
-     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
     projectCreationLevel?: pulumi.Input<string>;
     /**
@@ -598,7 +598,7 @@ export interface GroupArgs {
      */
     preventForkingOutsideGroup?: pulumi.Input<boolean>;
     /**
-     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
     projectCreationLevel?: pulumi.Input<string>;
     /**

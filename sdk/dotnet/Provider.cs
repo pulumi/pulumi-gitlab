@@ -43,6 +43,18 @@ namespace Pulumi.GitLab
         public Output<string?> ClientKey { get; private set; } = null!;
 
         /// <summary>
+        /// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        /// </summary>
+        [Output("configFile")]
+        public Output<string?> ConfigFile { get; private set; } = null!;
+
+        /// <summary>
+        /// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        /// </summary>
+        [Output("context")]
+        public Output<string?> Context { get; private set; } = null!;
+
+        /// <summary>
         /// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         /// </summary>
         [Output("token")]
@@ -110,8 +122,26 @@ namespace Pulumi.GitLab
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        /// </summary>
+        [Input("configFile")]
+        public Input<string>? ConfigFile { get; set; }
+
+        /// <summary>
+        /// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        /// </summary>
+        [Input("context")]
+        public Input<string>? Context { get; set; }
+
         [Input("earlyAuthCheck", json: true)]
         public Input<bool>? EarlyAuthCheck { get; set; }
+
+        /// <summary>
+        /// If automatic CI support should be enabled or not. This only works when not providing a token.
+        /// </summary>
+        [Input("enableAutoCiSupport", json: true)]
+        public Input<bool>? EnableAutoCiSupport { get; set; }
 
         [Input("headers", json: true)]
         private InputMap<string>? _headers;

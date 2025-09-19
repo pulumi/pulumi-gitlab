@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupCustomAttribute{}
 	case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
 		r = &GroupDependencyProxy{}
+	case "gitlab:index/groupDeployToken:GroupDeployToken":
+		r = &GroupDeployToken{}
 	case "gitlab:index/groupEpicBoard:GroupEpicBoard":
 		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
@@ -147,6 +149,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectContainerRepositoryProtection{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
 		r = &ProjectCustomAttribute{}
+	case "gitlab:index/projectDeployToken:ProjectDeployToken":
+		r = &ProjectDeployToken{}
 	case "gitlab:index/projectEnvironment:ProjectEnvironment":
 		r = &ProjectEnvironment{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
@@ -374,6 +378,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupDeployToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupEpicBoard",
 		&module{version},
 	)
@@ -595,6 +604,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectCustomAttribute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectDeployToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
