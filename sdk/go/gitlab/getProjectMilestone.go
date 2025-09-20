@@ -42,7 +42,7 @@ type LookupProjectMilestoneResult struct {
 	DueDate string `pulumi:"dueDate"`
 	// Bool, true if milestone expired.
 	Expired bool `pulumi:"expired"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:milestone-id>`.
 	Id string `pulumi:"id"`
 	// The ID of the project's milestone.
 	Iid int `pulumi:"iid"`
@@ -120,7 +120,7 @@ func (o LookupProjectMilestoneResultOutput) Expired() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) bool { return v.Expired }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:milestone-id>`.
 func (o LookupProjectMilestoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMilestoneResult) string { return v.Id }).(pulumi.StringOutput)
 }

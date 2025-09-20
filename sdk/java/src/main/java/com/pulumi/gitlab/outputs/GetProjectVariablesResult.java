@@ -20,12 +20,12 @@ public final class GetProjectVariablesResult {
      */
     private @Nullable String environmentScope;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:environment-scope&gt;`.
      * 
      */
     private String id;
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     private String project;
@@ -44,14 +44,14 @@ public final class GetProjectVariablesResult {
         return Optional.ofNullable(this.environmentScope);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:environment-scope&gt;`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     public String project() {

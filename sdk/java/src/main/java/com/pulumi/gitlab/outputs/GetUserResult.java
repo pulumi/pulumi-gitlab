@@ -70,7 +70,7 @@ public final class GetUserResult {
      */
     private Boolean external;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;user-id&gt;`.
      * 
      */
     private String id;
@@ -249,7 +249,7 @@ public final class GetUserResult {
         return this.external;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;user-id&gt;`.
      * 
      */
     public String id() {

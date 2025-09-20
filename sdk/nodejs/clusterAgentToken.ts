@@ -122,7 +122,7 @@ export class ClusterAgentToken extends pulumi.CustomResource {
     /**
      * The Description for the agent.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The ISO8601 datetime when the token was last used.
      */

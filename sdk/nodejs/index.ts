@@ -130,6 +130,11 @@ export const getGroupProvisionedUsers: typeof import("./getGroupProvisionedUsers
 export const getGroupProvisionedUsersOutput: typeof import("./getGroupProvisionedUsers").getGroupProvisionedUsersOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupProvisionedUsers","getGroupProvisionedUsersOutput"], () => require("./getGroupProvisionedUsers"));
 
+export { GetGroupSamlLinksArgs, GetGroupSamlLinksResult, GetGroupSamlLinksOutputArgs } from "./getGroupSamlLinks";
+export const getGroupSamlLinks: typeof import("./getGroupSamlLinks").getGroupSamlLinks = null as any;
+export const getGroupSamlLinksOutput: typeof import("./getGroupSamlLinks").getGroupSamlLinksOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupSamlLinks","getGroupSamlLinksOutput"], () => require("./getGroupSamlLinks"));
+
 export { GetGroupServiceAccountArgs, GetGroupServiceAccountResult, GetGroupServiceAccountOutputArgs } from "./getGroupServiceAccount";
 export const getGroupServiceAccount: typeof import("./getGroupServiceAccount").getGroupServiceAccount = null as any;
 export const getGroupServiceAccountOutput: typeof import("./getGroupServiceAccount").getGroupServiceAccountOutput = null as any;
@@ -390,6 +395,11 @@ export type GroupDependencyProxy = import("./groupDependencyProxy").GroupDepende
 export const GroupDependencyProxy: typeof import("./groupDependencyProxy").GroupDependencyProxy = null as any;
 utilities.lazyLoad(exports, ["GroupDependencyProxy"], () => require("./groupDependencyProxy"));
 
+export { GroupDeployTokenArgs, GroupDeployTokenState } from "./groupDeployToken";
+export type GroupDeployToken = import("./groupDeployToken").GroupDeployToken;
+export const GroupDeployToken: typeof import("./groupDeployToken").GroupDeployToken = null as any;
+utilities.lazyLoad(exports, ["GroupDeployToken"], () => require("./groupDeployToken"));
+
 export { GroupEpicBoardArgs, GroupEpicBoardState } from "./groupEpicBoard";
 export type GroupEpicBoard = import("./groupEpicBoard").GroupEpicBoard;
 export const GroupEpicBoard: typeof import("./groupEpicBoard").GroupEpicBoard = null as any;
@@ -414,6 +424,11 @@ export { GroupLdapLinkArgs, GroupLdapLinkState } from "./groupLdapLink";
 export type GroupLdapLink = import("./groupLdapLink").GroupLdapLink;
 export const GroupLdapLink: typeof import("./groupLdapLink").GroupLdapLink = null as any;
 utilities.lazyLoad(exports, ["GroupLdapLink"], () => require("./groupLdapLink"));
+
+export { GroupLevelMrApprovalsArgs, GroupLevelMrApprovalsState } from "./groupLevelMrApprovals";
+export type GroupLevelMrApprovals = import("./groupLevelMrApprovals").GroupLevelMrApprovals;
+export const GroupLevelMrApprovals: typeof import("./groupLevelMrApprovals").GroupLevelMrApprovals = null as any;
+utilities.lazyLoad(exports, ["GroupLevelMrApprovals"], () => require("./groupLevelMrApprovals"));
 
 export { GroupMembershipArgs, GroupMembershipState } from "./groupMembership";
 export type GroupMembership = import("./groupMembership").GroupMembership;
@@ -615,10 +630,20 @@ export type ProjectCustomAttribute = import("./projectCustomAttribute").ProjectC
 export const ProjectCustomAttribute: typeof import("./projectCustomAttribute").ProjectCustomAttribute = null as any;
 utilities.lazyLoad(exports, ["ProjectCustomAttribute"], () => require("./projectCustomAttribute"));
 
+export { ProjectDeployTokenArgs, ProjectDeployTokenState } from "./projectDeployToken";
+export type ProjectDeployToken = import("./projectDeployToken").ProjectDeployToken;
+export const ProjectDeployToken: typeof import("./projectDeployToken").ProjectDeployToken = null as any;
+utilities.lazyLoad(exports, ["ProjectDeployToken"], () => require("./projectDeployToken"));
+
 export { ProjectEnvironmentArgs, ProjectEnvironmentState } from "./projectEnvironment";
 export type ProjectEnvironment = import("./projectEnvironment").ProjectEnvironment;
 export const ProjectEnvironment: typeof import("./projectEnvironment").ProjectEnvironment = null as any;
 utilities.lazyLoad(exports, ["ProjectEnvironment"], () => require("./projectEnvironment"));
+
+export { ProjectExternalStatusCheckArgs, ProjectExternalStatusCheckState } from "./projectExternalStatusCheck";
+export type ProjectExternalStatusCheck = import("./projectExternalStatusCheck").ProjectExternalStatusCheck;
+export const ProjectExternalStatusCheck: typeof import("./projectExternalStatusCheck").ProjectExternalStatusCheck = null as any;
+utilities.lazyLoad(exports, ["ProjectExternalStatusCheck"], () => require("./projectExternalStatusCheck"));
 
 export { ProjectFreezePeriodArgs, ProjectFreezePeriodState } from "./projectFreezePeriod";
 export type ProjectFreezePeriod = import("./projectFreezePeriod").ProjectFreezePeriod;
@@ -928,6 +953,8 @@ const _module = {
                 return new GroupCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
                 return new GroupDependencyProxy(name, <any>undefined, { urn })
+            case "gitlab:index/groupDeployToken:GroupDeployToken":
+                return new GroupDeployToken(name, <any>undefined, { urn })
             case "gitlab:index/groupEpicBoard:GroupEpicBoard":
                 return new GroupEpicBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupHook:GroupHook":
@@ -938,6 +965,8 @@ const _module = {
                 return new GroupLabel(name, <any>undefined, { urn })
             case "gitlab:index/groupLdapLink:GroupLdapLink":
                 return new GroupLdapLink(name, <any>undefined, { urn })
+            case "gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals":
+                return new GroupLevelMrApprovals(name, <any>undefined, { urn })
             case "gitlab:index/groupMembership:GroupMembership":
                 return new GroupMembership(name, <any>undefined, { urn })
             case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
@@ -1018,8 +1047,12 @@ const _module = {
                 return new ProjectContainerRepositoryProtection(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
                 return new ProjectCustomAttribute(name, <any>undefined, { urn })
+            case "gitlab:index/projectDeployToken:ProjectDeployToken":
+                return new ProjectDeployToken(name, <any>undefined, { urn })
             case "gitlab:index/projectEnvironment:ProjectEnvironment":
                 return new ProjectEnvironment(name, <any>undefined, { urn })
+            case "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck":
+                return new ProjectExternalStatusCheck(name, <any>undefined, { urn })
             case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
                 return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
@@ -1145,11 +1178,13 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxy", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupLevelMrApprovals", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProjectFileTemplate", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProtectedEnvironment", _module)
@@ -1190,7 +1225,9 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFrameworks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerRepositoryProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectExternalStatusCheck", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationCustomIssueTracker", _module)

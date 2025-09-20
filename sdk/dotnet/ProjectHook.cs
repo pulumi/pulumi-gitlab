@@ -98,7 +98,7 @@ namespace Pulumi.GitLab
         public Output<bool> ConfidentialNoteEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Custom headers for the project webhook.
+        /// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         /// </summary>
         [Output("customHeaders")]
         public Output<ImmutableArray<Outputs.ProjectHookCustomHeader>> CustomHeaders { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectHookCustomHeaderArgs>? _customHeaders;
 
         /// <summary>
-        /// Custom headers for the project webhook.
+        /// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         /// </summary>
         public InputList<Inputs.ProjectHookCustomHeaderArgs> CustomHeaders
         {
@@ -451,7 +451,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectHookCustomHeaderGetArgs>? _customHeaders;
 
         /// <summary>
-        /// Custom headers for the project webhook.
+        /// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         /// </summary>
         public InputList<Inputs.ProjectHookCustomHeaderGetArgs> CustomHeaders
         {

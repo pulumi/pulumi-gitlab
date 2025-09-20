@@ -143,7 +143,7 @@ class GetProjectHookResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project>:<hook-id>`.
         """
         return pulumi.get(self, "id")
 
@@ -237,9 +237,10 @@ class GetProjectHookResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank.""")
     def token(self) -> _builtins.str:
         """
-        A token to present when invoking the hook. The token is not available for imported resources.
+        A token to present when invoking the hook. The token is not available in this datasource.
         """
         return pulumi.get(self, "token")
 
@@ -293,7 +294,7 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
                      project: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectHookResult:
     """
-    The `ProjectHook` data source allows to retrieve details about a hook in a project.
+    The `ProjectHook` data source retrieves details about a hook in a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
 
@@ -344,7 +345,7 @@ def get_project_hook_output(hook_id: Optional[pulumi.Input[_builtins.int]] = Non
                             project: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectHookResult]:
     """
-    The `ProjectHook` data source allows to retrieve details about a hook in a project.
+    The `ProjectHook` data source retrieves details about a hook in a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
 

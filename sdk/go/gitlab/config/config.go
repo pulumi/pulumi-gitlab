@@ -30,8 +30,23 @@ func GetClientCert(ctx *pulumi.Context) string {
 func GetClientKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gitlab:clientKey")
 }
+
+// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+func GetConfigFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gitlab:configFile")
+}
+
+// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+func GetContext(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gitlab:context")
+}
 func GetEarlyAuthCheck(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gitlab:earlyAuthCheck")
+}
+
+// If automatic CI support should be enabled or not. This only works when not providing a token.
+func GetEnableAutoCiSupport(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "gitlab:enableAutoCiSupport")
 }
 
 // A map of headers to append to all API request to the GitLab instance.

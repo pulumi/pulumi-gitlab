@@ -475,6 +475,21 @@ export interface GetGroupProvisionedUsersProvisionedUser {
     websiteUrl: string;
 }
 
+export interface GetGroupSamlLinksSamlLink {
+    /**
+     * The base access level for members of the SAML group.
+     */
+    accessLevel: string;
+    /**
+     * Member Role ID (custom role for members of the SAML group.
+     */
+    memberRoleId: number;
+    /**
+     * Name of the SAML group.
+     */
+    name: string;
+}
+
 export interface GetGroupSharedWithGroup {
     /**
      * Share with group expiration date.
@@ -676,15 +691,15 @@ export interface GetInstanceVariablesVariable {
      */
     key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs.
      */
     masked: boolean;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     protected: boolean;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * If set to `true`, the variable will be treated as a raw string.
      */
     raw: boolean;
     /**
@@ -692,7 +707,7 @@ export interface GetInstanceVariablesVariable {
      */
     value: string;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of the variable, either `envVar` or `file`.
      */
     variableType: string;
 }
@@ -868,7 +883,7 @@ export interface GetProjectBranchesBranch {
      */
     canPush: boolean;
     /**
-     * The commit associated with this branch.
+     * The commit associated with the branch ref.
      */
     commits: outputs.GetProjectBranchesBranchCommit[];
     /**
@@ -1108,7 +1123,9 @@ export interface GetProjectHooksHook {
      */
     tagPushEvents: boolean;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available in this datasource.
+     *
+     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank.
      */
     token: string;
     /**
@@ -1561,7 +1578,7 @@ export interface GetProjectMilestonesMilestone {
      */
     iid: number;
     /**
-     * The instance-wide ID of the project’s milestone.
+     * The instance-wide ID of the project's milestone.
      */
     milestoneId: number;
     /**
@@ -1981,11 +1998,11 @@ export interface GetProjectTagsTagRelease {
 
 export interface GetProjectVariablesVariable {
     /**
-     * The description of the variable.
+     * The description of the variable. Maximum of 255 characters.
      */
     description: string;
     /**
-     * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+     * The environment scope of the variable. Defaults to all environment (`*`).
      */
     environmentScope: string;
     /**
@@ -1993,19 +2010,19 @@ export interface GetProjectVariablesVariable {
      */
     key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs.
      */
     masked: boolean;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     project: string;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     protected: boolean;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * If set to `true`, the variable will be treated as a raw string.
      */
     raw: boolean;
     /**
@@ -2013,7 +2030,7 @@ export interface GetProjectVariablesVariable {
      */
     value: string;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of the variable, either `envVar` or `file`.
      */
     variableType: string;
 }
@@ -2635,7 +2652,7 @@ export interface GetReleaseLinksReleaseLink {
      */
     linkId: number;
     /**
-     * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
      */
     linkType: string;
     /**
@@ -2658,7 +2675,9 @@ export interface GetReleaseLinksReleaseLink {
 
 export interface GetRepositoryTreeTree {
     /**
-     * The SHA-1 hash of the tree or blob in the repository.
+     * The project ID.
+     *
+     * @deprecated Use `nodeId` instead. To be removed in version 19.0.
      */
     id: string;
     /**
@@ -2669,6 +2688,10 @@ export interface GetRepositoryTreeTree {
      * Name of the blob or tree in the repository
      */
     name: string;
+    /**
+     * The SHA-1 hash of the tree or blob in the repository.
+     */
+    nodeId: string;
     /**
      * Path of the object inside of the repository.
      */

@@ -43,7 +43,7 @@ public final class GetProjectHookResult {
      */
     private Integer hookId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project&gt;:&lt;hook-id&gt;`.
      * 
      */
     private String id;
@@ -103,9 +103,13 @@ public final class GetProjectHookResult {
      */
     private Boolean tagPushEvents;
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * 
+     * @deprecated
+     * The token is only available on resource creation, not in this datasource. It will always be blank.
      * 
      */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. */
     private String token;
     /**
      * @return The url of the hook to invoke.
@@ -162,7 +166,7 @@ public final class GetProjectHookResult {
         return this.hookId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project&gt;:&lt;hook-id&gt;`.
      * 
      */
     public String id() {
@@ -246,9 +250,13 @@ public final class GetProjectHookResult {
         return this.tagPushEvents;
     }
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * 
+     * @deprecated
+     * The token is only available on resource creation, not in this datasource. It will always be blank.
      * 
      */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. */
     public String token() {
         return this.token;
     }

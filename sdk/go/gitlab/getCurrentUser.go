@@ -64,7 +64,7 @@ type GetCurrentUserResult struct {
 	Name string `pulumi:"name"`
 	// Personal namespace of the user.
 	NamespaceId string `pulumi:"namespaceId"`
-	// User’s public email.
+	// User's public email.
 	PublicEmail string `pulumi:"publicEmail"`
 	// Username of the user. Unique within this instance of GitLab.
 	Username string `pulumi:"username"`
@@ -127,7 +127,7 @@ func (o GetCurrentUserResultOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentUserResult) string { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
-// User’s public email.
+// User's public email.
 func (o GetCurrentUserResultOutput) PublicEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentUserResult) string { return v.PublicEmail }).(pulumi.StringOutput)
 }

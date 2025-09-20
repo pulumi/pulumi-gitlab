@@ -134,14 +134,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.confidentialNoteEvents;
     }
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      * 
      */
     @Export(name="customHeaders", refs={List.class,ProjectHookCustomHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectHookCustomHeader>> customHeaders;
 
     /**
-     * @return Custom headers for the project webhook.
+     * @return Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      * 
      */
     public Output<Optional<List<ProjectHookCustomHeader>>> customHeaders() {

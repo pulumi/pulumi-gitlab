@@ -48,7 +48,7 @@ public final class GetCurrentUserResult {
      */
     private String namespaceId;
     /**
-     * @return User’s public email.
+     * @return User&#39;s public email.
      * 
      */
     private String publicEmail;
@@ -109,7 +109,7 @@ public final class GetCurrentUserResult {
         return this.namespaceId;
     }
     /**
-     * @return User’s public email.
+     * @return User&#39;s public email.
      * 
      */
     public String publicEmail() {
