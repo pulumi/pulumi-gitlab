@@ -20,14 +20,22 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
     /**
      * The full path of the project.
      * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
      */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     @Import(name="fullPath")
     private @Nullable String fullPath;
 
     /**
      * @return The full path of the project.
      * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
      */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     public Optional<String> fullPath() {
         return Optional.ofNullable(this.fullPath);
     }
@@ -48,16 +56,39 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The ID of the project.
+     * The ID or full path of the project.
      * 
      */
+    @Import(name="project")
+    private @Nullable String project;
+
+    /**
+     * @return The ID or full path of the project.
+     * 
+     */
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The ID of the project.
+     * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
+     */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     @Import(name="projectId")
     private @Nullable Integer projectId;
 
     /**
      * @return The ID of the project.
      * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
      */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     public Optional<Integer> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -97,6 +128,7 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
     private GetProjectMembershipPlainArgs(GetProjectMembershipPlainArgs $) {
         this.fullPath = $.fullPath;
         this.inherited = $.inherited;
+        this.project = $.project;
         this.projectId = $.projectId;
         this.query = $.query;
         this.userIds = $.userIds;
@@ -125,7 +157,11 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
          * 
          * @return builder
          * 
+         * @deprecated
+         * Will be removed in 19.0. Use `project` instead.
+         * 
          */
+        @Deprecated /* Will be removed in 19.0. Use `project` instead. */
         public Builder fullPath(@Nullable String fullPath) {
             $.fullPath = fullPath;
             return this;
@@ -143,11 +179,26 @@ public final class GetProjectMembershipPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param projectId The ID of the project.
+         * @param project The ID or full path of the project.
          * 
          * @return builder
          * 
          */
+        public Builder project(@Nullable String project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID of the project.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Will be removed in 19.0. Use `project` instead.
+         * 
+         */
+        @Deprecated /* Will be removed in 19.0. Use `project` instead. */
         public Builder projectId(@Nullable Integer projectId) {
             $.projectId = projectId;
             return this;

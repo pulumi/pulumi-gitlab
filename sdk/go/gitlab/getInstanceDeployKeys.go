@@ -36,7 +36,7 @@ type GetInstanceDeployKeysArgs struct {
 type GetInstanceDeployKeysResult struct {
 	// The list of all deploy keys across all projects of the GitLab instance.
 	DeployKeys []GetInstanceDeployKeysDeployKey `pulumi:"deployKeys"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<public>`.
 	Id string `pulumi:"id"`
 	// Only return deploy keys that are public.
 	Public *bool `pulumi:"public"`
@@ -81,7 +81,7 @@ func (o GetInstanceDeployKeysResultOutput) DeployKeys() GetInstanceDeployKeysDep
 	return o.ApplyT(func(v GetInstanceDeployKeysResult) []GetInstanceDeployKeysDeployKey { return v.DeployKeys }).(GetInstanceDeployKeysDeployKeyArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<public>`.
 func (o GetInstanceDeployKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceDeployKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }

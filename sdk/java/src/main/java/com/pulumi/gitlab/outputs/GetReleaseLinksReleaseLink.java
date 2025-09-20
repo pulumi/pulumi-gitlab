@@ -33,7 +33,7 @@ public final class GetReleaseLinksReleaseLink {
      */
     private Integer linkId;
     /**
-     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
      * 
      */
     private String linkType;
@@ -88,7 +88,7 @@ public final class GetReleaseLinksReleaseLink {
         return this.linkId;
     }
     /**
-     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
      * 
      */
     public String linkType() {

@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int Iid;
         /// <summary>
-        /// The instance-wide ID of the project’s milestone.
+        /// The instance-wide ID of the project's milestone.
         /// </summary>
         public readonly int MilestoneId;
         /// <summary>

@@ -106,7 +106,7 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
     /**
      * The username of the user account. If not set, generates a name prepended with service*account*.
      */
-    declare public readonly username: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a InstanceServiceAccount resource with the given unique name, arguments, and options.

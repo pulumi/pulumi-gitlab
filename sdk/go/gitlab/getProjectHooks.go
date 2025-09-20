@@ -66,7 +66,7 @@ type GetProjectHooksArgs struct {
 type GetProjectHooksResult struct {
 	// The list of hooks.
 	Hooks []GetProjectHooksHook `pulumi:"hooks"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project>`.
 	Id string `pulumi:"id"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
@@ -111,7 +111,7 @@ func (o GetProjectHooksResultOutput) Hooks() GetProjectHooksHookArrayOutput {
 	return o.ApplyT(func(v GetProjectHooksResult) []GetProjectHooksHook { return v.Hooks }).(GetProjectHooksHookArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project>`.
 func (o GetProjectHooksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectHooksResult) string { return v.Id }).(pulumi.StringOutput)
 }

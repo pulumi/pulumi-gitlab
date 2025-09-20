@@ -169,7 +169,7 @@ namespace Pulumi.GitLab
     public sealed class GetRepositoryTreeResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. A hash of project and ref, with path and recursive if set.
         /// </summary>
         public readonly string Id;
         /// <summary>

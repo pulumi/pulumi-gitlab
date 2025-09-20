@@ -15,14 +15,14 @@ public final class GetReleaseLinksArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetReleaseLinksArgs Empty = new GetReleaseLinksArgs();
 
     /**
-     * The ID or full path to the project.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The ID or full path to the project.
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     public Output<String> project() {
@@ -70,7 +70,7 @@ public final class GetReleaseLinksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The ID or full path to the project.
+         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetReleaseLinksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The ID or full path to the project.
+         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
          * 
          * @return builder
          * 

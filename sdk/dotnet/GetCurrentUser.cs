@@ -114,7 +114,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string NamespaceId;
         /// <summary>
-        /// User’s public email.
+        /// User's public email.
         /// </summary>
         public readonly string PublicEmail;
         /// <summary>

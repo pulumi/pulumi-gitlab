@@ -50,14 +50,14 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      * 
      */
     @Import(name="customHeaders")
     private @Nullable Output<List<ProjectHookCustomHeaderArgs>> customHeaders;
 
     /**
-     * @return Custom headers for the project webhook.
+     * @return Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      * 
      */
     public Optional<Output<List<ProjectHookCustomHeaderArgs>>> customHeaders() {
@@ -469,7 +469,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the project webhook. Available from GitLab 17.1 onwards.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the project webhook. Available from GitLab 17.1 onwards.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the project webhook. Available from GitLab 17.1 onwards.
          * 
          * @return builder
          * 

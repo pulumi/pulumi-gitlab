@@ -115,7 +115,7 @@ class GetCurrentUserResult:
     @pulumi.getter(name="publicEmail")
     def public_email(self) -> _builtins.str:
         """
-        User’s public email.
+        User's public email.
         """
         return pulumi.get(self, "public_email")
 

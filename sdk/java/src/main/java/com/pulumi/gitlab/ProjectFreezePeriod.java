@@ -11,7 +11,6 @@ import com.pulumi.gitlab.ProjectFreezePeriodArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectFreezePeriodState;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -85,52 +84,52 @@ public class ProjectFreezePeriod extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cronTimezone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cronTimezone;
+    private Output<String> cronTimezone;
 
     /**
      * @return The timezone.
      * 
      */
-    public Output<Optional<String>> cronTimezone() {
-        return Codegen.optional(this.cronTimezone);
+    public Output<String> cronTimezone() {
+        return this.cronTimezone;
     }
     /**
-     * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      * 
      */
     @Export(name="freezeEnd", refs={String.class}, tree="[0]")
     private Output<String> freezeEnd;
 
     /**
-     * @return End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * @return End of the Freeze Period in cron format (for example, `0 2 * * *`).
      * 
      */
     public Output<String> freezeEnd() {
         return this.freezeEnd;
     }
     /**
-     * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      * 
      */
     @Export(name="freezeStart", refs={String.class}, tree="[0]")
     private Output<String> freezeStart;
 
     /**
-     * @return Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * @return Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      * 
      */
     public Output<String> freezeStart() {
         return this.freezeStart;
     }
     /**
-     * The ID or URL-encoded path of the project to add the schedule to.
+     * The ID or path of the project to add the freeze period to.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or URL-encoded path of the project to add the schedule to.
+     * @return The ID or path of the project to add the freeze period to.
      * 
      */
     public Output<String> project() {

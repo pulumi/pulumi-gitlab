@@ -96,7 +96,7 @@ type InstanceServiceAccount struct {
 	ServiceAccountId pulumi.StringOutput                     `pulumi:"serviceAccountId"`
 	Timeouts         InstanceServiceAccountTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The username of the user account. If not set, generates a name prepended with service*account*.
-	Username pulumi.StringPtrOutput `pulumi:"username"`
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewInstanceServiceAccount registers a new resource with the given unique name, arguments, and options.
@@ -284,8 +284,8 @@ func (o InstanceServiceAccountOutput) Timeouts() InstanceServiceAccountTimeoutsP
 }
 
 // The username of the user account. If not set, generates a name prepended with service*account*.
-func (o InstanceServiceAccountOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+func (o InstanceServiceAccountOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type InstanceServiceAccountArrayOutput struct{ *pulumi.OutputState }

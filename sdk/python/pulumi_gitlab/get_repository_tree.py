@@ -51,7 +51,7 @@ class GetRepositoryTreeResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. A hash of project and ref, with path and recursive if set.
         """
         return pulumi.get(self, "id")
 

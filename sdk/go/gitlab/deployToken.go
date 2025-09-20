@@ -14,6 +14,8 @@ import (
 
 // The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
 //
+// > This resource is deprecated and will be removed in 19.0. Use `ProjectDeployToken` or `GroupDeployToken` instead!
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
 //
 // ## Import
@@ -56,7 +58,7 @@ type DeployToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -111,7 +113,7 @@ type deployTokenState struct {
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project *string `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
 	Scopes []string `pulumi:"scopes"`
 	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 	Token *string `pulumi:"token"`
@@ -130,7 +132,7 @@ type DeployTokenState struct {
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrInput
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
 	Scopes pulumi.StringArrayInput
 	// The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
 	Token pulumi.StringPtrInput
@@ -151,7 +153,7 @@ type deployTokenArgs struct {
 	Name *string `pulumi:"name"`
 	// The name or id of the project to add the deploy token to.
 	Project *string `pulumi:"project"`
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
 	Scopes []string `pulumi:"scopes"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
@@ -167,7 +169,7 @@ type DeployTokenArgs struct {
 	Name pulumi.StringPtrInput
 	// The name or id of the project to add the deploy token to.
 	Project pulumi.StringPtrInput
-	// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+	// The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
 	Scopes pulumi.StringArrayInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
@@ -285,7 +287,7 @@ func (o DeployTokenOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeployToken) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// Valid values: `readRepository`, `readRegistry`, `readPackageRegistry`, `writeRegistry`, `writePackageRegistry`.
+// The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
 func (o DeployTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeployToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

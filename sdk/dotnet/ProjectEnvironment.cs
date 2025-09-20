@@ -103,19 +103,19 @@ namespace Pulumi.GitLab
         /// Place to link to for this environment.
         /// </summary>
         [Output("externalUrl")]
-        public Output<string?> ExternalUrl { get; private set; } = null!;
+        public Output<string> ExternalUrl { get; private set; } = null!;
 
         /// <summary>
         /// The Flux resource path to associate with this environment.
         /// </summary>
         [Output("fluxResourcePath")]
-        public Output<string?> FluxResourcePath { get; private set; } = null!;
+        public Output<string> FluxResourcePath { get; private set; } = null!;
 
         /// <summary>
         /// The Kubernetes namespace to associate with this environment.
         /// </summary>
         [Output("kubernetesNamespace")]
-        public Output<string?> KubernetesNamespace { get; private set; } = null!;
+        public Output<string> KubernetesNamespace { get; private set; } = null!;
 
         /// <summary>
         /// The name of the environment.
@@ -145,7 +145,7 @@ namespace Pulumi.GitLab
         /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         /// </summary>
         [Output("stopBeforeDestroy")]
-        public Output<bool?> StopBeforeDestroy { get; private set; } = null!;
+        public Output<bool> StopBeforeDestroy { get; private set; } = null!;
 
         /// <summary>
         /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.

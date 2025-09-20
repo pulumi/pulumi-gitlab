@@ -57,7 +57,7 @@ export interface GetCurrentUserResult {
      */
     readonly namespaceId: string;
     /**
-     * User’s public email.
+     * User's public email.
      */
     readonly publicEmail: string;
     /**

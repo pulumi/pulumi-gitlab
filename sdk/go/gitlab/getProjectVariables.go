@@ -62,7 +62,7 @@ func GetProjectVariables(ctx *pulumi.Context, args *GetProjectVariablesArgs, opt
 type GetProjectVariablesArgs struct {
 	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project string `pulumi:"project"`
 }
 
@@ -70,9 +70,9 @@ type GetProjectVariablesArgs struct {
 type GetProjectVariablesResult struct {
 	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:environment-scope>`.
 	Id string `pulumi:"id"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project string `pulumi:"project"`
 	// The list of variables returned by the search
 	Variables []GetProjectVariablesVariable `pulumi:"variables"`
@@ -91,7 +91,7 @@ func GetProjectVariablesOutput(ctx *pulumi.Context, args GetProjectVariablesOutp
 type GetProjectVariablesOutputArgs struct {
 	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -119,12 +119,12 @@ func (o GetProjectVariablesResultOutput) EnvironmentScope() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetProjectVariablesResult) *string { return v.EnvironmentScope }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:environment-scope>`.
 func (o GetProjectVariablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name or id of the project.
+// The name or path of the project.
 func (o GetProjectVariablesResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesResult) string { return v.Project }).(pulumi.StringOutput)
 }

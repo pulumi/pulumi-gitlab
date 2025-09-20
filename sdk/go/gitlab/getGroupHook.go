@@ -52,7 +52,7 @@ type LookupGroupHookResult struct {
 	GroupId int `pulumi:"groupId"`
 	// The id of the group hook.
 	HookId int `pulumi:"hookId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this data source. In the format `<group:hook_id>`.
 	Id string `pulumi:"id"`
 	// Invoke the hook for issues events.
 	IssuesEvents bool `pulumi:"issuesEvents"`
@@ -74,7 +74,9 @@ type LookupGroupHookResult struct {
 	SubgroupEvents bool `pulumi:"subgroupEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available in this datasource.
+	//
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
@@ -163,7 +165,7 @@ func (o LookupGroupHookResultOutput) HookId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) int { return v.HookId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this data source. In the format `<group:hook_id>`.
 func (o LookupGroupHookResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -218,7 +220,9 @@ func (o LookupGroupHookResultOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available for imported resources.
+// A token to present when invoking the hook. The token is not available in this datasource.
+//
+// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 func (o LookupGroupHookResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) string { return v.Token }).(pulumi.StringOutput)
 }

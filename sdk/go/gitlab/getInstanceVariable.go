@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+// The `InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 //
@@ -60,19 +60,19 @@ type LookupInstanceVariableArgs struct {
 type LookupInstanceVariableResult struct {
 	// The description of the variable. Maximum of 255 characters.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<key>`.
 	Id string `pulumi:"id"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -115,7 +115,7 @@ func (o LookupInstanceVariableResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<key>`.
 func (o LookupInstanceVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -125,17 +125,17 @@ func (o LookupInstanceVariableResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs.
 func (o LookupInstanceVariableResultOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 func (o LookupInstanceVariableResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+// If set to `true`, the variable will be treated as a raw string.
 func (o LookupInstanceVariableResultOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) bool { return v.Raw }).(pulumi.BoolOutput)
 }
@@ -145,7 +145,7 @@ func (o LookupInstanceVariableResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+// The type of the variable, either `envVar` or `file`.
 func (o LookupInstanceVariableResultOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceVariableResult) string { return v.VariableType }).(pulumi.StringOutput)
 }
