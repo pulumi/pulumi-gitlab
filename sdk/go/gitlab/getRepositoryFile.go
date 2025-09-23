@@ -80,7 +80,7 @@ type LookupRepositoryFileResult struct {
 	FileName string `pulumi:"fileName"`
 	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
 	FilePath string `pulumi:"filePath"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:ref:file_path>`.
 	Id string `pulumi:"id"`
 	// The last known commit id.
 	LastCommitId string `pulumi:"lastCommitId"`
@@ -170,7 +170,7 @@ func (o LookupRepositoryFileResultOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.FilePath }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:ref:file_path>`.
 func (o LookupRepositoryFileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryFileResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -62,7 +62,7 @@ class GetProjectVariableResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the variable.
+        The description of the variable. Maximum of 255 characters.
         """
         return pulumi.get(self, "description")
 
@@ -70,7 +70,7 @@ class GetProjectVariableResult:
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> _builtins.str:
         """
-        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        The environment scope of the variable. Defaults to all environment (`*`).
         """
         return pulumi.get(self, "environment_scope")
 
@@ -78,7 +78,7 @@ class GetProjectVariableResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project:key:environment-scope>`.
         """
         return pulumi.get(self, "id")
 
@@ -94,7 +94,7 @@ class GetProjectVariableResult:
     @pulumi.getter
     def masked(self) -> _builtins.bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs.
         """
         return pulumi.get(self, "masked")
 
@@ -102,7 +102,7 @@ class GetProjectVariableResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name or id of the project.
+        The name or path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -110,7 +110,7 @@ class GetProjectVariableResult:
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -118,7 +118,7 @@ class GetProjectVariableResult:
     @pulumi.getter
     def raw(self) -> _builtins.bool:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        If set to `true`, the variable will be treated as a raw string.
         """
         return pulumi.get(self, "raw")
 
@@ -134,7 +134,7 @@ class GetProjectVariableResult:
     @pulumi.getter(name="variableType")
     def variable_type(self) -> _builtins.str:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of the variable, either `env_var` or `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -181,9 +181,9 @@ def get_project_variable(environment_scope: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+    :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
     :param _builtins.str key: The name of the variable.
-    :param _builtins.str project: The name or id of the project.
+    :param _builtins.str project: The name or path of the project.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -227,9 +227,9 @@ def get_project_variable_output(environment_scope: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+    :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
     :param _builtins.str key: The name of the variable.
-    :param _builtins.str project: The name or id of the project.
+    :param _builtins.str project: The name or path of the project.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope

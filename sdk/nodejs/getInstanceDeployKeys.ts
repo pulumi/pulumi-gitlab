@@ -40,7 +40,7 @@ export interface GetInstanceDeployKeysResult {
      */
     readonly deployKeys: outputs.GetInstanceDeployKeysDeployKey[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<public>`.
      */
     readonly id: string;
     /**

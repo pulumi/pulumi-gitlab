@@ -32,14 +32,14 @@ public final class GetProjectVariablesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     public Output<String> project() {
@@ -93,7 +93,7 @@ public final class GetProjectVariablesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project The name or id of the project.
+         * @param project The name or path of the project.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetProjectVariablesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project The name or id of the project.
+         * @param project The name or path of the project.
          * 
          * @return builder
          * 

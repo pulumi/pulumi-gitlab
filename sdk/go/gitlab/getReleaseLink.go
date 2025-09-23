@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ReleaseLink` data source allows get details of a release link.
+// The `ReleaseLink` data source allows you to get details of a release link.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 func LookupReleaseLink(ctx *pulumi.Context, args *LookupReleaseLinkArgs, opts ...pulumi.InvokeOption) (*LookupReleaseLinkResult, error) {
@@ -42,11 +42,11 @@ type LookupReleaseLinkResult struct {
 	External bool `pulumi:"external"`
 	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
 	Filepath string `pulumi:"filepath"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this data source.
 	Id string `pulumi:"id"`
 	// The ID of the link.
 	LinkId int `pulumi:"linkId"`
-	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
 	LinkType string `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name string `pulumi:"name"`
@@ -111,7 +111,7 @@ func (o LookupReleaseLinkResultOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Filepath }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this data source.
 func (o LookupReleaseLinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -121,7 +121,7 @@ func (o LookupReleaseLinkResultOutput) LinkId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) int { return v.LinkId }).(pulumi.IntOutput)
 }
 
-// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
 func (o LookupReleaseLinkResultOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.LinkType }).(pulumi.StringOutput)
 }

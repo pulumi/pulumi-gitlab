@@ -86,7 +86,7 @@ class GetReleaseLinkResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this data source.
         """
         return pulumi.get(self, "id")
 
@@ -102,7 +102,7 @@ class GetReleaseLinkResult:
     @pulumi.getter(name="linkType")
     def link_type(self) -> _builtins.str:
         """
-        The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
         """
         return pulumi.get(self, "link_type")
 
@@ -162,7 +162,7 @@ def get_release_link(link_id: Optional[_builtins.int] = None,
                      tag_name: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReleaseLinkResult:
     """
-    The `ReleaseLink` data source allows get details of a release link.
+    The `ReleaseLink` data source allows you to get details of a release link.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
@@ -194,7 +194,7 @@ def get_release_link_output(link_id: Optional[pulumi.Input[_builtins.int]] = Non
                             tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReleaseLinkResult]:
     """
-    The `ReleaseLink` data source allows get details of a release link.
+    The `ReleaseLink` data source allows you to get details of a release link.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 

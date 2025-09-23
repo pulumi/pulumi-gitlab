@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+// The `getInstanceVariables` data source retrieves all instance-level CI/CD variables.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 //
@@ -50,9 +50,9 @@ func GetInstanceVariables(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*Ge
 
 // A collection of values returned by getInstanceVariables.
 type GetInstanceVariablesResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the hardcoded format `instanceVariables`.
 	Id string `pulumi:"id"`
-	// The list of variables returned by the search
+	// The list of variables returned by the search.
 	Variables []GetInstanceVariablesVariable `pulumi:"variables"`
 }
 
@@ -78,12 +78,12 @@ func (o GetInstanceVariablesResultOutput) ToGetInstanceVariablesResultOutputWith
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the hardcoded format `instanceVariables`.
 func (o GetInstanceVariablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The list of variables returned by the search
+// The list of variables returned by the search.
 func (o GetInstanceVariablesResultOutput) Variables() GetInstanceVariablesVariableArrayOutput {
 	return o.ApplyT(func(v GetInstanceVariablesResult) []GetInstanceVariablesVariable { return v.Variables }).(GetInstanceVariablesVariableArrayOutput)
 }

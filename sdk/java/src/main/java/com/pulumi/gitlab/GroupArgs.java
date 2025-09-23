@@ -315,14 +315,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      * 
      */
     @Import(name="projectCreationLevel")
     private @Nullable Output<String> projectCreationLevel;
 
     /**
-     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      * 
      */
     public Optional<Output<String>> projectCreationLevel() {
@@ -960,7 +960,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectCreationLevel Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+         * @param projectCreationLevel Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
          * 
          * @return builder
          * 
@@ -971,7 +971,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectCreationLevel Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+         * @param projectCreationLevel Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
          * 
          * @return builder
          * 

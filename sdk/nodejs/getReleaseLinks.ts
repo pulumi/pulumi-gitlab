@@ -24,7 +24,7 @@ export function getReleaseLinks(args: GetReleaseLinksArgs, opts?: pulumi.InvokeO
  */
 export interface GetReleaseLinksArgs {
     /**
-     * The ID or full path to the project.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     project: string;
     /**
@@ -38,11 +38,11 @@ export interface GetReleaseLinksArgs {
  */
 export interface GetReleaseLinksResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this data source.
      */
     readonly id: string;
     /**
-     * The ID or full path to the project.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     readonly project: string;
     /**
@@ -72,7 +72,7 @@ export function getReleaseLinksOutput(args: GetReleaseLinksOutputArgs, opts?: pu
  */
 export interface GetReleaseLinksOutputArgs {
     /**
-     * The ID or full path to the project.
+     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      */
     project: pulumi.Input<string>;
     /**

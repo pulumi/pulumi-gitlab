@@ -42,7 +42,7 @@ type GetProjectMilestonesArgs struct {
 
 // A collection of values returned by getProjectMilestones.
 type GetProjectMilestonesResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:options-hash>`.
 	Id string `pulumi:"id"`
 	// Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
 	Iids []int `pulumi:"iids"`
@@ -104,7 +104,7 @@ func (o GetProjectMilestonesResultOutput) ToGetProjectMilestonesResultOutputWith
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:options-hash>`.
 func (o GetProjectMilestonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectMilestonesResult) string { return v.Id }).(pulumi.StringOutput)
 }

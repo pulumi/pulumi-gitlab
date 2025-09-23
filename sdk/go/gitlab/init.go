@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupCustomAttribute{}
 	case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
 		r = &GroupDependencyProxy{}
+	case "gitlab:index/groupDeployToken:GroupDeployToken":
+		r = &GroupDeployToken{}
 	case "gitlab:index/groupEpicBoard:GroupEpicBoard":
 		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
@@ -67,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupLabel{}
 	case "gitlab:index/groupLdapLink:GroupLdapLink":
 		r = &GroupLdapLink{}
+	case "gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals":
+		r = &GroupLevelMrApprovals{}
 	case "gitlab:index/groupMembership:GroupMembership":
 		r = &GroupMembership{}
 	case "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate":
@@ -147,8 +151,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectContainerRepositoryProtection{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
 		r = &ProjectCustomAttribute{}
+	case "gitlab:index/projectDeployToken:ProjectDeployToken":
+		r = &ProjectDeployToken{}
 	case "gitlab:index/projectEnvironment:ProjectEnvironment":
 		r = &ProjectEnvironment{}
+	case "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck":
+		r = &ProjectExternalStatusCheck{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
 		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
@@ -374,6 +382,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupDeployToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupEpicBoard",
 		&module{version},
 	)
@@ -395,6 +408,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupLdapLink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupLevelMrApprovals",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -599,7 +617,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectDeployToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectExternalStatusCheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

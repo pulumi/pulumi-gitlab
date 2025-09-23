@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetProjectHook
     {
         /// <summary>
-        /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
+        /// The `gitlab.ProjectHook` data source retrieves details about a hook in a project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectHookResult>("gitlab:index/getProjectHook:getProjectHook", args ?? new GetProjectHookArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
+        /// The `gitlab.ProjectHook` data source retrieves details about a hook in a project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectHookResult>("gitlab:index/getProjectHook:getProjectHook", args ?? new GetProjectHookInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
+        /// The `gitlab.ProjectHook` data source retrieves details about a hook in a project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
         /// 
@@ -178,7 +178,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int HookId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project&gt;:&lt;hook-id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -226,7 +226,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool TagPushEvents;
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// A token to present when invoking the hook. The token is not available in this datasource.
         /// </summary>
         public readonly string Token;
         /// <summary>

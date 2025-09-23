@@ -67,7 +67,7 @@ type GetRepositoryTreeArgs struct {
 
 // A collection of values returned by getRepositoryTree.
 type GetRepositoryTreeResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. A hash of project and ref, with path and recursive if set.
 	Id string `pulumi:"id"`
 	// The path inside repository. Used to get content of subdirectories.
 	Path *string `pulumi:"path"`
@@ -121,7 +121,7 @@ func (o GetRepositoryTreeResultOutput) ToGetRepositoryTreeResultOutputWithContex
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. A hash of project and ref, with path and recursive if set.
 func (o GetRepositoryTreeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryTreeResult) string { return v.Id }).(pulumi.StringOutput)
 }

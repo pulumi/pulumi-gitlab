@@ -70,12 +70,12 @@ type ProjectFreezePeriod struct {
 	pulumi.CustomResourceState
 
 	// The timezone.
-	CronTimezone pulumi.StringPtrOutput `pulumi:"cronTimezone"`
-	// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+	CronTimezone pulumi.StringOutput `pulumi:"cronTimezone"`
+	// End of the Freeze Period in cron format (for example, `0 2 * * *`).
 	FreezeEnd pulumi.StringOutput `pulumi:"freezeEnd"`
-	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+	// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
 	FreezeStart pulumi.StringOutput `pulumi:"freezeStart"`
-	// The ID or URL-encoded path of the project to add the schedule to.
+	// The ID or path of the project to add the freeze period to.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -120,22 +120,22 @@ func GetProjectFreezePeriod(ctx *pulumi.Context,
 type projectFreezePeriodState struct {
 	// The timezone.
 	CronTimezone *string `pulumi:"cronTimezone"`
-	// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+	// End of the Freeze Period in cron format (for example, `0 2 * * *`).
 	FreezeEnd *string `pulumi:"freezeEnd"`
-	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+	// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
 	FreezeStart *string `pulumi:"freezeStart"`
-	// The ID or URL-encoded path of the project to add the schedule to.
+	// The ID or path of the project to add the freeze period to.
 	Project *string `pulumi:"project"`
 }
 
 type ProjectFreezePeriodState struct {
 	// The timezone.
 	CronTimezone pulumi.StringPtrInput
-	// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+	// End of the Freeze Period in cron format (for example, `0 2 * * *`).
 	FreezeEnd pulumi.StringPtrInput
-	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+	// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
 	FreezeStart pulumi.StringPtrInput
-	// The ID or URL-encoded path of the project to add the schedule to.
+	// The ID or path of the project to add the freeze period to.
 	Project pulumi.StringPtrInput
 }
 
@@ -146,11 +146,11 @@ func (ProjectFreezePeriodState) ElementType() reflect.Type {
 type projectFreezePeriodArgs struct {
 	// The timezone.
 	CronTimezone *string `pulumi:"cronTimezone"`
-	// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+	// End of the Freeze Period in cron format (for example, `0 2 * * *`).
 	FreezeEnd string `pulumi:"freezeEnd"`
-	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+	// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
 	FreezeStart string `pulumi:"freezeStart"`
-	// The ID or URL-encoded path of the project to add the schedule to.
+	// The ID or path of the project to add the freeze period to.
 	Project string `pulumi:"project"`
 }
 
@@ -158,11 +158,11 @@ type projectFreezePeriodArgs struct {
 type ProjectFreezePeriodArgs struct {
 	// The timezone.
 	CronTimezone pulumi.StringPtrInput
-	// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+	// End of the Freeze Period in cron format (for example, `0 2 * * *`).
 	FreezeEnd pulumi.StringInput
-	// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+	// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
 	FreezeStart pulumi.StringInput
-	// The ID or URL-encoded path of the project to add the schedule to.
+	// The ID or path of the project to add the freeze period to.
 	Project pulumi.StringInput
 }
 
@@ -254,21 +254,21 @@ func (o ProjectFreezePeriodOutput) ToProjectFreezePeriodOutputWithContext(ctx co
 }
 
 // The timezone.
-func (o ProjectFreezePeriodOutput) CronTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringPtrOutput { return v.CronTimezone }).(pulumi.StringPtrOutput)
+func (o ProjectFreezePeriodOutput) CronTimezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.CronTimezone }).(pulumi.StringOutput)
 }
 
-// End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+// End of the Freeze Period in cron format (for example, `0 2 * * *`).
 func (o ProjectFreezePeriodOutput) FreezeEnd() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.FreezeEnd }).(pulumi.StringOutput)
 }
 
-// Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+// Start of the Freeze Period in cron format (for example, `0 1 * * *`).
 func (o ProjectFreezePeriodOutput) FreezeStart() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.FreezeStart }).(pulumi.StringOutput)
 }
 
-// The ID or URL-encoded path of the project to add the schedule to.
+// The ID or path of the project to add the freeze period to.
 func (o ProjectFreezePeriodOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectFreezePeriod) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

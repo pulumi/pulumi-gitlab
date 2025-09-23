@@ -27,7 +27,7 @@ class DeployTokenArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeployToken resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[_builtins.str] group: The name or id of the group to add the deploy token to.
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
@@ -50,7 +50,7 @@ class DeployTokenArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         """
         return pulumi.get(self, "scopes")
 
@@ -137,7 +137,7 @@ class _DeployTokenState:
         :param pulumi.Input[_builtins.str] group: The name or id of the group to add the deploy token to.
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy token to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
@@ -222,7 +222,7 @@ class _DeployTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         """
         return pulumi.get(self, "scopes")
 
@@ -271,6 +271,8 @@ class DeployToken(pulumi.CustomResource):
         """
         The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
 
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectDeployToken` or `GroupDeployToken` instead!
+
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
 
         ## Import
@@ -307,7 +309,7 @@ class DeployToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group: The name or id of the group to add the deploy token to.
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy token to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
         ...
@@ -318,6 +320,8 @@ class DeployToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectDeployToken` or `GroupDeployToken` instead!
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
 
@@ -421,7 +425,7 @@ class DeployToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group: The name or id of the group to add the deploy token to.
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy token to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
         """
@@ -483,7 +487,7 @@ class DeployToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+        The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         """
         return pulumi.get(self, "scopes")
 

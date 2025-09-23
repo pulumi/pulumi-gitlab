@@ -86,7 +86,7 @@ export interface GetRepositoryFileResult {
      */
     readonly filePath: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:ref:file_path>`.
      */
     readonly id: string;
     /**

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+ * The `gitlab.ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
  *
@@ -60,7 +60,7 @@ export interface GetClusterAgentResult {
      */
     readonly createdByUserId: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this data source. In the format project:agent_id
      */
     readonly id: string;
     /**
@@ -73,7 +73,7 @@ export interface GetClusterAgentResult {
     readonly project: string;
 }
 /**
- * The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+ * The `gitlab.ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
  *

@@ -49,7 +49,7 @@ class ProjectHookArgs:
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -163,7 +163,7 @@ class ProjectHookArgs:
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]]:
         """
-        Custom headers for the project webhook.
+        Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         """
         return pulumi.get(self, "custom_headers")
 
@@ -407,7 +407,7 @@ class _ProjectHookState:
         Input properties used for looking up and filtering ProjectHook resources.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -507,7 +507,7 @@ class _ProjectHookState:
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]]:
         """
-        Custom headers for the project webhook.
+        Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         """
         return pulumi.get(self, "custom_headers")
 
@@ -860,7 +860,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -1065,7 +1065,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -1138,7 +1138,7 @@ class ProjectHook(pulumi.CustomResource):
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectHookCustomHeader']]]:
         """
-        Custom headers for the project webhook.
+        Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         """
         return pulumi.get(self, "custom_headers")
 

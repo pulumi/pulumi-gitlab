@@ -11,9 +11,13 @@ import java.util.Objects;
 @CustomType
 public final class GetRepositoryTreeTree {
     /**
-     * @return The SHA-1 hash of the tree or blob in the repository.
+     * @return The project ID.
+     * 
+     * @deprecated
+     * Use `node_id` instead. To be removed in version 19.0.
      * 
      */
+    @Deprecated /* Use `node_id` instead. To be removed in version 19.0. */
     private String id;
     /**
      * @return Unix access mode of the file in the repository.
@@ -25,6 +29,11 @@ public final class GetRepositoryTreeTree {
      * 
      */
     private String name;
+    /**
+     * @return The SHA-1 hash of the tree or blob in the repository.
+     * 
+     */
+    private String nodeId;
     /**
      * @return Path of the object inside of the repository.
      * 
@@ -38,9 +47,13 @@ public final class GetRepositoryTreeTree {
 
     private GetRepositoryTreeTree() {}
     /**
-     * @return The SHA-1 hash of the tree or blob in the repository.
+     * @return The project ID.
+     * 
+     * @deprecated
+     * Use `node_id` instead. To be removed in version 19.0.
      * 
      */
+    @Deprecated /* Use `node_id` instead. To be removed in version 19.0. */
     public String id() {
         return this.id;
     }
@@ -57,6 +70,13 @@ public final class GetRepositoryTreeTree {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return The SHA-1 hash of the tree or blob in the repository.
+     * 
+     */
+    public String nodeId() {
+        return this.nodeId;
     }
     /**
      * @return Path of the object inside of the repository.
@@ -85,6 +105,7 @@ public final class GetRepositoryTreeTree {
         private String id;
         private String mode;
         private String name;
+        private String nodeId;
         private String path;
         private String type;
         public Builder() {}
@@ -93,6 +114,7 @@ public final class GetRepositoryTreeTree {
     	      this.id = defaults.id;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
+    	      this.nodeId = defaults.nodeId;
     	      this.path = defaults.path;
     	      this.type = defaults.type;
         }
@@ -122,6 +144,14 @@ public final class GetRepositoryTreeTree {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeId(String nodeId) {
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryTreeTree", "nodeId");
+            }
+            this.nodeId = nodeId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder path(String path) {
             if (path == null) {
               throw new MissingRequiredPropertyException("GetRepositoryTreeTree", "path");
@@ -142,6 +172,7 @@ public final class GetRepositoryTreeTree {
             _resultValue.id = id;
             _resultValue.mode = mode;
             _resultValue.name = name;
+            _resultValue.nodeId = nodeId;
             _resultValue.path = path;
             _resultValue.type = type;
             return _resultValue;

@@ -100,7 +100,7 @@ export interface GetUserResult {
      */
     readonly external: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<user-id>`.
      */
     readonly id: string;
     /**

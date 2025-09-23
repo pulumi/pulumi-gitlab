@@ -62,35 +62,35 @@ func LookupProjectVariable(ctx *pulumi.Context, args *LookupProjectVariableArgs,
 
 // A collection of arguments for invoking getProjectVariable.
 type LookupProjectVariableArgs struct {
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProjectVariable.
 type LookupProjectVariableResult struct {
-	// The description of the variable.
+	// The description of the variable. Maximum of 255 characters.
 	Description string `pulumi:"description"`
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope string `pulumi:"environmentScope"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:key:environment-scope>`.
 	Id string `pulumi:"id"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked bool `pulumi:"masked"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -105,11 +105,11 @@ func LookupProjectVariableOutput(ctx *pulumi.Context, args LookupProjectVariable
 
 // A collection of arguments for invoking getProjectVariable.
 type LookupProjectVariableOutputArgs struct {
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringPtrInput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -132,17 +132,17 @@ func (o LookupProjectVariableResultOutput) ToLookupProjectVariableResultOutputWi
 	return o
 }
 
-// The description of the variable.
+// The description of the variable. Maximum of 255 characters.
 func (o LookupProjectVariableResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+// The environment scope of the variable. Defaults to all environment (`*`).
 func (o LookupProjectVariableResultOutput) EnvironmentScope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.EnvironmentScope }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:key:environment-scope>`.
 func (o LookupProjectVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -152,22 +152,22 @@ func (o LookupProjectVariableResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs.
 func (o LookupProjectVariableResultOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// The name or id of the project.
+// The name or path of the project.
 func (o LookupProjectVariableResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 func (o LookupProjectVariableResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+// If set to `true`, the variable will be treated as a raw string.
 func (o LookupProjectVariableResultOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) bool { return v.Raw }).(pulumi.BoolOutput)
 }
@@ -177,7 +177,7 @@ func (o LookupProjectVariableResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+// The type of the variable, either `envVar` or `file`.
 func (o LookupProjectVariableResultOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVariableResult) string { return v.VariableType }).(pulumi.StringOutput)
 }

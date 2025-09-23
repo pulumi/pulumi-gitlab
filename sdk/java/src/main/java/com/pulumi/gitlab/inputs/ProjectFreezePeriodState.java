@@ -31,14 +31,14 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      * 
      */
     @Import(name="freezeEnd")
     private @Nullable Output<String> freezeEnd;
 
     /**
-     * @return End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+     * @return End of the Freeze Period in cron format (for example, `0 2 * * *`).
      * 
      */
     public Optional<Output<String>> freezeEnd() {
@@ -46,14 +46,14 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      * 
      */
     @Import(name="freezeStart")
     private @Nullable Output<String> freezeStart;
 
     /**
-     * @return Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+     * @return Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      * 
      */
     public Optional<Output<String>> freezeStart() {
@@ -61,14 +61,14 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID or URL-encoded path of the project to add the schedule to.
+     * The ID or path of the project to add the freeze period to.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID or URL-encoded path of the project to add the schedule to.
+     * @return The ID or path of the project to add the freeze period to.
      * 
      */
     public Optional<Output<String>> project() {
@@ -124,7 +124,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param freezeEnd End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+         * @param freezeEnd End of the Freeze Period in cron format (for example, `0 2 * * *`).
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param freezeEnd End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+         * @param freezeEnd End of the Freeze Period in cron format (for example, `0 2 * * *`).
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param freezeStart Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+         * @param freezeStart Start of the Freeze Period in cron format (for example, `0 1 * * *`).
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param freezeStart Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+         * @param freezeStart Start of the Freeze Period in cron format (for example, `0 1 * * *`).
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The ID or URL-encoded path of the project to add the schedule to.
+         * @param project The ID or path of the project to add the freeze period to.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ProjectFreezePeriodState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The ID or URL-encoded path of the project to add the schedule to.
+         * @param project The ID or path of the project to add the freeze period to.
          * 
          * @return builder
          * 

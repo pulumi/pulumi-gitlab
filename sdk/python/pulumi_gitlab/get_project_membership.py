@@ -27,7 +27,7 @@ class GetProjectMembershipResult:
     """
     A collection of values returned by getProjectMembership.
     """
-    def __init__(__self__, full_path=None, id=None, inherited=None, members=None, project_id=None, query=None, user_ids=None):
+    def __init__(__self__, full_path=None, id=None, inherited=None, members=None, project=None, project_id=None, query=None, user_ids=None):
         if full_path and not isinstance(full_path, str):
             raise TypeError("Expected argument 'full_path' to be a str")
         pulumi.set(__self__, "full_path", full_path)
@@ -40,6 +40,9 @@ class GetProjectMembershipResult:
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
         pulumi.set(__self__, "members", members)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
         if project_id and not isinstance(project_id, int):
             raise TypeError("Expected argument 'project_id' to be a int")
         pulumi.set(__self__, "project_id", project_id)
@@ -52,6 +55,7 @@ class GetProjectMembershipResult:
 
     @_builtins.property
     @pulumi.getter(name="fullPath")
+    @_utilities.deprecated("""Will be removed in 19.0. Use `project` instead.""")
     def full_path(self) -> _builtins.str:
         """
         The full path of the project.
@@ -62,7 +66,7 @@ class GetProjectMembershipResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project:query-hash>` if query is set, otherwise `<project>`.
         """
         return pulumi.get(self, "id")
 
@@ -83,7 +87,16 @@ class GetProjectMembershipResult:
         return pulumi.get(self, "members")
 
     @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        The ID or full path of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
     @pulumi.getter(name="projectId")
+    @_utilities.deprecated("""Will be removed in 19.0. Use `project` instead.""")
     def project_id(self) -> _builtins.int:
         """
         The ID of the project.
@@ -117,6 +130,7 @@ class AwaitableGetProjectMembershipResult(GetProjectMembershipResult):
             id=self.id,
             inherited=self.inherited,
             members=self.members,
+            project=self.project,
             project_id=self.project_id,
             query=self.query,
             user_ids=self.user_ids)
@@ -124,20 +138,20 @@ class AwaitableGetProjectMembershipResult(GetProjectMembershipResult):
 
 def get_project_membership(full_path: Optional[_builtins.str] = None,
                            inherited: Optional[_builtins.bool] = None,
+                           project: Optional[_builtins.str] = None,
                            project_id: Optional[_builtins.int] = None,
                            query: Optional[_builtins.str] = None,
                            user_ids: Optional[Sequence[_builtins.int]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectMembershipResult:
     """
-    The `ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
-
-    > **Note** exactly one of project_id or full_path must be provided.
+    The `ProjectMembership` data source allows you to list and filter all members of a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
     :param _builtins.str full_path: The full path of the project.
     :param _builtins.bool inherited: Return all project members including members through ancestor groups
+    :param _builtins.str project: The ID or full path of the project.
     :param _builtins.int project_id: The ID of the project.
     :param _builtins.str query: A query string to search for members
     :param Sequence[_builtins.int] user_ids: List of user ids to filter members by
@@ -145,6 +159,7 @@ def get_project_membership(full_path: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['fullPath'] = full_path
     __args__['inherited'] = inherited
+    __args__['project'] = project
     __args__['projectId'] = project_id
     __args__['query'] = query
     __args__['userIds'] = user_ids
@@ -156,25 +171,26 @@ def get_project_membership(full_path: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         inherited=pulumi.get(__ret__, 'inherited'),
         members=pulumi.get(__ret__, 'members'),
+        project=pulumi.get(__ret__, 'project'),
         project_id=pulumi.get(__ret__, 'project_id'),
         query=pulumi.get(__ret__, 'query'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
 def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   inherited: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   project_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                   query: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   user_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.int]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMembershipResult]:
     """
-    The `ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
-
-    > **Note** exactly one of project_id or full_path must be provided.
+    The `ProjectMembership` data source allows you to list and filter all members of a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
     :param _builtins.str full_path: The full path of the project.
     :param _builtins.bool inherited: Return all project members including members through ancestor groups
+    :param _builtins.str project: The ID or full path of the project.
     :param _builtins.int project_id: The ID of the project.
     :param _builtins.str query: A query string to search for members
     :param Sequence[_builtins.int] user_ids: List of user ids to filter members by
@@ -182,6 +198,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[_bui
     __args__ = dict()
     __args__['fullPath'] = full_path
     __args__['inherited'] = inherited
+    __args__['project'] = project
     __args__['projectId'] = project_id
     __args__['query'] = query
     __args__['userIds'] = user_ids
@@ -192,6 +209,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[_bui
         id=pulumi.get(__response__, 'id'),
         inherited=pulumi.get(__response__, 'inherited'),
         members=pulumi.get(__response__, 'members'),
+        project=pulumi.get(__response__, 'project'),
         project_id=pulumi.get(__response__, 'project_id'),
         query=pulumi.get(__response__, 'query'),
         user_ids=pulumi.get(__response__, 'user_ids')))

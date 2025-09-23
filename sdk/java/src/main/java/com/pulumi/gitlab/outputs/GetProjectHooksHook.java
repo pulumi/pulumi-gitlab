@@ -98,9 +98,13 @@ public final class GetProjectHooksHook {
      */
     private Boolean tagPushEvents;
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * 
+     * @deprecated
+     * The token is only available on resource creation, not in this datasource. It will always be blank.
      * 
      */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. */
     private String token;
     /**
      * @return The url of the hook to invoke.
@@ -234,9 +238,13 @@ public final class GetProjectHooksHook {
         return this.tagPushEvents;
     }
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * 
+     * @deprecated
+     * The token is only available on resource creation, not in this datasource. It will always be blank.
      * 
      */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. */
     public String token() {
         return this.token;
     }

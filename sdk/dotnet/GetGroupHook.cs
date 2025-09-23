@@ -118,7 +118,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int HookId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this data source. In the format `&lt;group:hook_id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool TagPushEvents;
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// A token to present when invoking the hook. The token is not available in this datasource.
         /// </summary>
         public readonly string Token;
         /// <summary>

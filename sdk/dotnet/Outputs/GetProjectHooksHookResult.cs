@@ -82,7 +82,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool TagPushEvents;
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// A token to present when invoking the hook. The token is not available in this datasource.
         /// </summary>
         public readonly string Token;
         /// <summary>
