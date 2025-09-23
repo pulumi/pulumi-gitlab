@@ -22,17 +22,17 @@ public final class GetInstanceVariablesVariable {
      */
     private String key;
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs.
      * 
      */
     private Boolean masked;
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     private Boolean protected_;
     /**
-     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * @return If set to `true`, the variable will be treated as a raw string.
      * 
      */
     private Boolean raw;
@@ -42,7 +42,7 @@ public final class GetInstanceVariablesVariable {
      */
     private String value;
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of the variable, either `env_var` or `file`.
      * 
      */
     private String variableType;
@@ -63,21 +63,21 @@ public final class GetInstanceVariablesVariable {
         return this.key;
     }
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs.
      * 
      */
     public Boolean masked() {
         return this.masked;
     }
     /**
-     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      * 
      */
     public Boolean protected_() {
         return this.protected_;
     }
     /**
-     * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * @return If set to `true`, the variable will be treated as a raw string.
      * 
      */
     public Boolean raw() {
@@ -91,7 +91,7 @@ public final class GetInstanceVariablesVariable {
         return this.value;
     }
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of the variable, either `env_var` or `file`.
      * 
      */
     public String variableType() {

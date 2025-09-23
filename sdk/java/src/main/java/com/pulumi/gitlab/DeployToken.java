@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
  * 
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectDeployToken` or `gitlab.GroupDeployToken` instead!
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
  * 
  * ## Import
@@ -123,14 +125,14 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.project);
     }
     /**
-     * Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+     * The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.
+     * @return The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
      * 
      */
     public Output<List<String>> scopes() {

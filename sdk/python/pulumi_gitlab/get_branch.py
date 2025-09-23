@@ -106,7 +106,7 @@ class GetBranchResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project:name>`.
         """
         return pulumi.get(self, "id")
 

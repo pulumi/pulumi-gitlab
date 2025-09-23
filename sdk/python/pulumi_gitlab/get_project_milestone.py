@@ -106,7 +106,7 @@ class GetProjectMilestoneResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project:milestone-id>`.
         """
         return pulumi.get(self, "id")
 

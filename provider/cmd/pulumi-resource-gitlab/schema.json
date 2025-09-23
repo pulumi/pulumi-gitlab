@@ -66,8 +66,20 @@
                 "type": "string",
                 "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set."
             },
+            "configFile": {
+                "type": "string",
+                "description": "The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable."
+            },
+            "context": {
+                "type": "string",
+                "description": "The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable."
+            },
             "earlyAuthCheck": {
                 "type": "boolean"
+            },
+            "enableAutoCiSupport": {
+                "type": "boolean",
+                "description": "If automatic CI support should be enabled or not. This only works when not providing a token."
             },
             "headers": {
                 "type": "object",
@@ -1824,6 +1836,33 @@
                 }
             }
         },
+        "gitlab:index/getGroupSamlLinksSamlLink:getGroupSamlLinksSamlLink": {
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "The base access level for members of the SAML group.\n"
+                },
+                "memberRoleId": {
+                    "type": "integer",
+                    "description": "Member Role ID (custom role for members of the SAML group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the SAML group.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessLevel",
+                "memberRoleId",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "gitlab:index/getGroupSharedWithGroup:getGroupSharedWithGroup": {
             "properties": {
                 "expiresAt": {
@@ -2233,15 +2272,15 @@
                 },
                 "masked": {
                     "type": "boolean",
-                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.\n"
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs.\n"
                 },
                 "protected": {
                     "type": "boolean",
-                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.\n"
                 },
                 "raw": {
                     "type": "boolean",
-                    "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n"
+                    "description": "If set to `true`, the variable will be treated as a raw string.\n"
                 },
                 "value": {
                     "type": "string",
@@ -2249,7 +2288,7 @@
                 },
                 "variableType": {
                     "type": "string",
-                    "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n"
+                    "description": "The type of the variable, either `env_var` or `file`.\n"
                 }
             },
             "type": "object",
@@ -2579,7 +2618,7 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/getProjectBranchesBranchCommit:getProjectBranchesBranchCommit"
                     },
-                    "description": "The commit associated with this branch.\n"
+                    "description": "The commit associated with the branch ref.\n"
                 },
                 "default": {
                     "type": "boolean",
@@ -2899,7 +2938,9 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "A token to present when invoking the hook. The token is not available for imported resources.\n"
+                    "description": "A token to present when invoking the hook. The token is not available in this datasource.\n",
+                    "deprecationMessage": "The token is only available on resource creation, not in this datasource. It will always be blank.",
+                    "secret": true
                 },
                 "url": {
                     "type": "string",
@@ -3593,7 +3634,7 @@
                 },
                 "milestoneId": {
                     "type": "integer",
-                    "description": "The instance-wide ID of the project’s milestone.\n"
+                    "description": "The instance-wide ID of the project's milestone.\n"
                 },
                 "project": {
                     "type": "string",
@@ -4260,11 +4301,11 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "The description of the variable.\n"
+                    "description": "The description of the variable. Maximum of 255 characters.\n"
                 },
                 "environmentScope": {
                     "type": "string",
-                    "description": "The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.\n"
+                    "description": "The environment scope of the variable. Defaults to all environment (`*`).\n"
                 },
                 "key": {
                     "type": "string",
@@ -4272,19 +4313,19 @@
                 },
                 "masked": {
                     "type": "boolean",
-                    "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.\n"
+                    "description": "If set to `true`, the value of the variable will be hidden in job logs.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project.\n"
+                    "description": "The name or path of the project.\n"
                 },
                 "protected": {
                     "type": "boolean",
-                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n"
+                    "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.\n"
                 },
                 "raw": {
                     "type": "boolean",
-                    "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n"
+                    "description": "If set to `true`, the variable will be treated as a raw string.\n"
                 },
                 "value": {
                     "type": "string",
@@ -4292,7 +4333,7 @@
                 },
                 "variableType": {
                     "type": "string",
-                    "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n"
+                    "description": "The type of the variable, either `env_var` or `file`.\n"
                 }
             },
             "type": "object",
@@ -5217,7 +5258,7 @@
                 },
                 "linkType": {
                     "type": "string",
-                    "description": "The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.\n"
+                    "description": "The type of the link. Valid values are `other`, `runbook`, `image`, `package`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -5258,7 +5299,8 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The SHA-1 hash of the tree or blob in the repository.\n"
+                    "description": "The project ID.\n",
+                    "deprecationMessage": "Use `node_id` instead. To be removed in version 19.0."
                 },
                 "mode": {
                     "type": "string",
@@ -5267,6 +5309,10 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the blob or tree in the repository\n"
+                },
+                "nodeId": {
+                    "type": "string",
+                    "description": "The SHA-1 hash of the tree or blob in the repository.\n"
                 },
                 "path": {
                     "type": "string",
@@ -5282,6 +5328,7 @@
                 "id",
                 "mode",
                 "name",
+                "nodeId",
                 "path",
                 "type"
             ],
@@ -5552,8 +5599,20 @@
                 "type": "string",
                 "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set."
             },
+            "configFile": {
+                "type": "string",
+                "description": "The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable."
+            },
+            "context": {
+                "type": "string",
+                "description": "The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable."
+            },
             "earlyAuthCheck": {
                 "type": "boolean"
+            },
+            "enableAutoCiSupport": {
+                "type": "boolean",
+                "description": "If automatic CI support should be enabled or not. This only works when not providing a token."
             },
             "headers": {
                 "type": "object",
@@ -5593,8 +5652,20 @@
                 "type": "string",
                 "description": "File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set."
             },
+            "configFile": {
+                "type": "string",
+                "description": "The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable."
+            },
+            "context": {
+                "type": "string",
+                "description": "The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable."
+            },
             "earlyAuthCheck": {
                 "type": "boolean"
+            },
+            "enableAutoCiSupport": {
+                "type": "boolean",
+                "description": "If automatic CI support should be enabled or not. This only works when not providing a token."
             },
             "headers": {
                 "type": "object",
@@ -10491,13 +10562,11 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The Name of the agent.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Name of the agent.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "ID or full path of the project maintained by the authenticated user.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID or full path of the project maintained by the authenticated user.\n"
                 }
             },
             "requiredInputs": [
@@ -10520,13 +10589,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The Name of the agent.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Name of the agent.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "ID or full path of the project maintained by the authenticated user.\n",
-                        "willReplaceOnChanges": true
+                        "description": "ID or full path of the project maintained by the authenticated user.\n"
                     }
                 },
                 "type": "object"
@@ -10581,6 +10648,7 @@
                 "agentId",
                 "createdAt",
                 "createdByUserId",
+                "description",
                 "lastUsedAt",
                 "name",
                 "project",
@@ -10591,23 +10659,19 @@
             "inputProperties": {
                 "agentId": {
                     "type": "integer",
-                    "description": "The ID of the agent.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the agent.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The Description for the agent.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Description for the agent.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The Name of the agent.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Name of the agent.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "ID or full path of the project maintained by the authenticated user.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID or full path of the project maintained by the authenticated user.\n"
                 }
             },
             "requiredInputs": [
@@ -10619,8 +10683,7 @@
                 "properties": {
                     "agentId": {
                         "type": "integer",
-                        "description": "The ID of the agent.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the agent.\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -10632,8 +10695,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "The Description for the agent.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Description for the agent.\n"
                     },
                     "lastUsedAt": {
                         "type": "string",
@@ -10641,13 +10703,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The Name of the agent.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Name of the agent.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "ID or full path of the project maintained by the authenticated user.\n",
-                        "willReplaceOnChanges": true
+                        "description": "ID or full path of the project maintained by the authenticated user.\n"
                     },
                     "status": {
                         "type": "string",
@@ -10964,7 +11024,7 @@
             }
         },
         "gitlab:index/deployToken:DeployToken": {
-            "description": "The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_token`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_deploy_token.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one of: project, group.\n\n```sh\n$ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3\n```\n\n```sh\n$ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4\n```\n\nNote: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "description": "The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.\n\n\u003e This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectDeployToken` or `gitlab.GroupDeployToken` instead!\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_token`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_deploy_token.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab deploy tokens can be imported using an id made up of `{type}:{type_id}:{deploy_token_id}`, where type is one of: project, group.\n\n```sh\n$ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3\n```\n\n```sh\n$ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4\n```\n\nNote: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
             "properties": {
                 "deployTokenId": {
                     "type": "integer",
@@ -10991,7 +11051,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.\n"
+                    "description": "The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
                 },
                 "token": {
                     "type": "string",
@@ -11036,7 +11096,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.\n",
+                    "description": "The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n",
                     "willReplaceOnChanges": true
                 },
                 "username": {
@@ -11080,7 +11140,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Valid values: `read_repository`, `read_registry`, `read_package_registry`, `write_registry`, `write_package_registry`.\n",
+                        "description": "The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n",
                         "willReplaceOnChanges": true
                     },
                     "token": {
@@ -11446,7 +11506,7 @@
                 },
                 "projectCreationLevel": {
                     "type": "string",
-                    "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`\n"
+                    "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`\n"
                 },
                 "pushRules": {
                     "$ref": "#/types/gitlab:index/GroupPushRules:GroupPushRules",
@@ -11616,7 +11676,7 @@
                 },
                 "projectCreationLevel": {
                     "type": "string",
-                    "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`\n"
+                    "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`\n"
                 },
                 "pushRules": {
                     "$ref": "#/types/gitlab:index/GroupPushRules:GroupPushRules",
@@ -11762,7 +11822,7 @@
                     },
                     "projectCreationLevel": {
                         "type": "string",
-                        "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`\n"
+                        "description": "Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`\n"
                     },
                     "pushRules": {
                         "$ref": "#/types/gitlab:index/GroupPushRules:GroupPushRules",
@@ -12402,6 +12462,128 @@
                         "type": "string",
                         "description": "Secret credential used to authenticate with Docker Hub when pulling images. Can be a password, personal access token (PAT), or organization access token (OAT). Cannot be imported.\n",
                         "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "gitlab:index/groupDeployToken:GroupDeployToken": {
+            "description": "The `gitlab.GroupDeployToken` resource allows you to manage the lifecycle of deploy tokens on a group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\nimport * as std from \"@pulumi/std\";\n\n// Example Usage\nconst example = new gitlab.GroupDeployToken(\"example\", {\n    group: \"example/deploying\",\n    name: \"Example group deploy token\",\n    username: \"example-username\",\n    expiresAt: \"2020-03-14T00:00:00.000Z\",\n    scopes: [\n        \"read_repository\",\n        \"read_registry\",\n    ],\n});\nconst example_two = new gitlab.GroupDeployToken(\"example-two\", {\n    group: \"12345678\",\n    name: \"Example group deploy token expires in 24h\",\n    expiresAt: std.timestamp({}).then(invoke =\u003e std.timeadd({\n        duration: invoke.result,\n        timestamp: \"24h\",\n    })).then(invoke =\u003e invoke.result),\n    scopes: [\n        \"read_repository\",\n        \"read_registry\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\nimport pulumi_std as std\n\n# Example Usage\nexample = gitlab.GroupDeployToken(\"example\",\n    group=\"example/deploying\",\n    name=\"Example group deploy token\",\n    username=\"example-username\",\n    expires_at=\"2020-03-14T00:00:00.000Z\",\n    scopes=[\n        \"read_repository\",\n        \"read_registry\",\n    ])\nexample_two = gitlab.GroupDeployToken(\"example-two\",\n    group=\"12345678\",\n    name=\"Example group deploy token expires in 24h\",\n    expires_at=std.timeadd(duration=std.timestamp().result,\n        timestamp=\"24h\").result,\n    scopes=[\n        \"read_repository\",\n        \"read_registry\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example Usage\n    var example = new GitLab.GroupDeployToken(\"example\", new()\n    {\n        Group = \"example/deploying\",\n        Name = \"Example group deploy token\",\n        Username = \"example-username\",\n        ExpiresAt = \"2020-03-14T00:00:00.000Z\",\n        Scopes = new[]\n        {\n            \"read_repository\",\n            \"read_registry\",\n        },\n    });\n\n    var example_two = new GitLab.GroupDeployToken(\"example-two\", new()\n    {\n        Group = \"12345678\",\n        Name = \"Example group deploy token expires in 24h\",\n        ExpiresAt = Std.Timestamp.Invoke().Apply(invoke =\u003e Std.Timeadd.Invoke(new()\n        {\n            Duration = invoke.Result,\n            Timestamp = \"24h\",\n        })).Apply(invoke =\u003e invoke.Result),\n        Scopes = new[]\n        {\n            \"read_repository\",\n            \"read_registry\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example Usage\n\t\t_, err := gitlab.NewGroupDeployToken(ctx, \"example\", \u0026gitlab.GroupDeployTokenArgs{\n\t\t\tGroup:     pulumi.String(\"example/deploying\"),\n\t\t\tName:      pulumi.String(\"Example group deploy token\"),\n\t\t\tUsername:  pulumi.String(\"example-username\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14T00:00:00.000Z\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t\tpulumi.String(\"read_registry\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeTimeadd, err := std.Timeadd(ctx, \u0026std.TimeaddArgs{\n\t\t\tDuration:  std.Timestamp(ctx, \u0026std.TimestampArgs{}, nil).Result,\n\t\t\tTimestamp: \"24h\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewGroupDeployToken(ctx, \"example-two\", \u0026gitlab.GroupDeployTokenArgs{\n\t\t\tGroup:     pulumi.String(\"12345678\"),\n\t\t\tName:      pulumi.String(\"Example group deploy token expires in 24h\"),\n\t\t\tExpiresAt: pulumi.String(invokeTimeadd.Result),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t\tpulumi.String(\"read_registry\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupDeployToken;\nimport com.pulumi.gitlab.GroupDeployTokenArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.TimestampArgs;\nimport com.pulumi.std.inputs.TimeaddArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example Usage\n        var example = new GroupDeployToken(\"example\", GroupDeployTokenArgs.builder()\n            .group(\"example/deploying\")\n            .name(\"Example group deploy token\")\n            .username(\"example-username\")\n            .expiresAt(\"2020-03-14T00:00:00.000Z\")\n            .scopes(            \n                \"read_repository\",\n                \"read_registry\")\n            .build());\n\n        var example_two = new GroupDeployToken(\"example-two\", GroupDeployTokenArgs.builder()\n            .group(\"12345678\")\n            .name(\"Example group deploy token expires in 24h\")\n            .expiresAt(StdFunctions.timeadd(TimeaddArgs.builder()\n                .duration(StdFunctions.timestamp(TimestampArgs.builder()\n                    .build()).result())\n                .timestamp(\"24h\")\n                .build()).result())\n            .scopes(            \n                \"read_repository\",\n                \"read_registry\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example Usage\n  example:\n    type: gitlab:GroupDeployToken\n    properties:\n      group: example/deploying\n      name: Example group deploy token\n      username: example-username\n      expiresAt: 2020-03-14T00:00:00.000Z\n      scopes:\n        - read_repository\n        - read_registry\n  example-two:\n    type: gitlab:GroupDeployToken\n    properties:\n      group: '12345678'\n      name: Example group deploy token expires in 24h\n      expiresAt:\n        fn::invoke:\n          function: std:timeadd\n          arguments:\n            duration:\n              fn::invoke:\n                function: std:timestamp\n                arguments: {}\n                return: result\n            timestamp: 24h\n          return: result\n      scopes:\n        - read_repository\n        - read_registry\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_group_deploy_token`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_deploy_token.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab group deploy tokens can be imported using an id made up of `{group_id}:{deploy_token_id}`.\n\n```sh\n$ pulumi import gitlab:index/groupDeployToken:GroupDeployToken group_token 1:4\n```\n\nNote: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "properties": {
+                "expired": {
+                    "type": "boolean",
+                    "description": "True if the token is expired.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Time the token expires in RFC3339 format. Not set by default.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The Id or full path of the group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name to describe the deploy token with.\n"
+                },
+                "revoked": {
+                    "type": "boolean",
+                    "description": "True if the token is revoked.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.\n",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                }
+            },
+            "required": [
+                "expired",
+                "expiresAt",
+                "group",
+                "name",
+                "revoked",
+                "scopes",
+                "token",
+                "username"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Time the token expires in RFC3339 format. Not set by default.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The Id or full path of the group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name to describe the deploy token with.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "scopes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupDeployToken resources.\n",
+                "properties": {
+                    "expired": {
+                        "type": "boolean",
+                        "description": "True if the token is expired.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Time the token expires in RFC3339 format. Not set by default.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The Id or full path of the group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name to describe the deploy token with.\n"
+                    },
+                    "revoked": {
+                        "type": "boolean",
+                        "description": "True if the token is revoked.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.\n",
+                        "secret": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
                     }
                 },
                 "type": "object"
@@ -13156,6 +13338,112 @@
                 "type": "object"
             }
         },
+        "gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  foo:\n    type: gitlab:Group\n    properties:\n      name: test_group\n      path: test_group\n      description: An example group\n  fooGroupLevelMrApprovals:\n    type: gitlab:GroupLevelMrApprovals\n    name: foo\n    properties:\n      group: ${foo.id}\n      allowAuthorApproval: true\n      allowCommitterApproval: true\n      allowOverridesToApproverListPerMergeRequest: true\n      retainApprovalsOnPush: true\n      selectiveCodeOwnerRemovals: false\n      requireReauthenticationToApprove: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_level_mr_approvals.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\n```sh\n$ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals You can import an approval configuration state using `\u003cresource\u003e \u003cgroup_id\u003e`.\n```\n\nFor example:\n\n```sh\n$ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals foo 1234\n```\n\n",
+            "properties": {
+                "allowAuthorApproval": {
+                    "type": "boolean",
+                    "description": "Allow or prevent authors from self approving merge requests; `true` means authors can self approve.\n"
+                },
+                "allowCommitterApproval": {
+                    "type": "boolean",
+                    "description": "Allow or prevent committers from self approving merge requests.\n"
+                },
+                "allowOverridesToApproverListPerMergeRequest": {
+                    "type": "boolean",
+                    "description": "Allow or prevent overriding approvers per merge request.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group.\n"
+                },
+                "keepSettingsOnDestroy": {
+                    "type": "boolean"
+                },
+                "requireReauthenticationToApprove": {
+                    "type": "boolean",
+                    "description": "Require approver to authenticate before adding the approval.\n"
+                },
+                "retainApprovalsOnPush": {
+                    "type": "boolean",
+                    "description": "Retain approval count on a new push.\n"
+                }
+            },
+            "required": [
+                "allowAuthorApproval",
+                "allowCommitterApproval",
+                "allowOverridesToApproverListPerMergeRequest",
+                "group",
+                "keepSettingsOnDestroy",
+                "requireReauthenticationToApprove",
+                "retainApprovalsOnPush"
+            ],
+            "inputProperties": {
+                "allowAuthorApproval": {
+                    "type": "boolean",
+                    "description": "Allow or prevent authors from self approving merge requests; `true` means authors can self approve.\n"
+                },
+                "allowCommitterApproval": {
+                    "type": "boolean",
+                    "description": "Allow or prevent committers from self approving merge requests.\n"
+                },
+                "allowOverridesToApproverListPerMergeRequest": {
+                    "type": "boolean",
+                    "description": "Allow or prevent overriding approvers per merge request.\n"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The ID or URL-encoded path of the group.\n"
+                },
+                "keepSettingsOnDestroy": {
+                    "type": "boolean"
+                },
+                "requireReauthenticationToApprove": {
+                    "type": "boolean",
+                    "description": "Require approver to authenticate before adding the approval.\n"
+                },
+                "retainApprovalsOnPush": {
+                    "type": "boolean",
+                    "description": "Retain approval count on a new push.\n"
+                }
+            },
+            "requiredInputs": [
+                "group"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupLevelMrApprovals resources.\n",
+                "properties": {
+                    "allowAuthorApproval": {
+                        "type": "boolean",
+                        "description": "Allow or prevent authors from self approving merge requests; `true` means authors can self approve.\n"
+                    },
+                    "allowCommitterApproval": {
+                        "type": "boolean",
+                        "description": "Allow or prevent committers from self approving merge requests.\n"
+                    },
+                    "allowOverridesToApproverListPerMergeRequest": {
+                        "type": "boolean",
+                        "description": "Allow or prevent overriding approvers per merge request.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the group.\n"
+                    },
+                    "keepSettingsOnDestroy": {
+                        "type": "boolean"
+                    },
+                    "requireReauthenticationToApprove": {
+                        "type": "boolean",
+                        "description": "Require approver to authenticate before adding the approval.\n"
+                    },
+                    "retainApprovalsOnPush": {
+                        "type": "boolean",
+                        "description": "Retain approval count on a new push.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/groupMembership:GroupMembership": {
             "description": "The `gitlab.GroupMembership` resource allows to manage the lifecycle of a users group membership.\n\n\u003e If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupMembership(\"test\", {\n    groupId: 12345,\n    userId: 1337,\n    accessLevel: \"guest\",\n    expiresAt: \"2020-12-31\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupMembership(\"test\",\n    group_id=12345,\n    user_id=1337,\n    access_level=\"guest\",\n    expires_at=\"2020-12-31\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new GitLab.GroupMembership(\"test\", new()\n    {\n        GroupId = 12345,\n        UserId = 1337,\n        AccessLevel = \"guest\",\n        ExpiresAt = \"2020-12-31\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupMembership(ctx, \"test\", \u0026gitlab.GroupMembershipArgs{\n\t\t\tGroupId:     pulumi.Int(12345),\n\t\t\tUserId:      pulumi.Int(1337),\n\t\t\tAccessLevel: pulumi.String(\"guest\"),\n\t\t\tExpiresAt:   pulumi.String(\"2020-12-31\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupMembership;\nimport com.pulumi.gitlab.GroupMembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new GroupMembership(\"test\", GroupMembershipArgs.builder()\n            .groupId(12345)\n            .userId(1337)\n            .accessLevel(\"guest\")\n            .expiresAt(\"2020-12-31\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: gitlab:GroupMembership\n    properties:\n      groupId: 12345\n      userId: 1337\n      accessLevel: guest\n      expiresAt: 2020-12-31\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_group_membership`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_membership.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupMembership:GroupMembership test \"12345:1337\"\n```\n\n",
             "properties": {
@@ -13769,7 +14057,7 @@
             }
         },
         "gitlab:index/groupShareGroup:GroupShareGroup": {
-            "description": "The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupShareGroup(\"test\", {\n    groupId: foo.id,\n    shareGroupId: bar.id,\n    groupAccess: \"guest\",\n    expiresAt: \"2099-01-01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupShareGroup(\"test\",\n    group_id=foo[\"id\"],\n    share_group_id=bar[\"id\"],\n    group_access=\"guest\",\n    expires_at=\"2099-01-01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new GitLab.GroupShareGroup(\"test\", new()\n    {\n        GroupId = foo.Id,\n        ShareGroupId = bar.Id,\n        GroupAccess = \"guest\",\n        ExpiresAt = \"2099-01-01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupShareGroup(ctx, \"test\", \u0026gitlab.GroupShareGroupArgs{\n\t\t\tGroupId:      pulumi.Any(foo.Id),\n\t\t\tShareGroupId: pulumi.Any(bar.Id),\n\t\t\tGroupAccess:  pulumi.String(\"guest\"),\n\t\t\tExpiresAt:    pulumi.String(\"2099-01-01\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupShareGroup;\nimport com.pulumi.gitlab.GroupShareGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new GroupShareGroup(\"test\", GroupShareGroupArgs.builder()\n            .groupId(foo.id())\n            .shareGroupId(bar.id())\n            .groupAccess(\"guest\")\n            .expiresAt(\"2099-01-01\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: gitlab:GroupShareGroup\n    properties:\n      groupId: ${foo.id}\n      shareGroupId: ${bar.id}\n      groupAccess: guest\n      expiresAt: 2099-01-01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_group_share_group`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_share_group.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337\n```\n\n",
+            "description": "The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.\n\n\u003e Note that `member_role_id` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst test = new gitlab.GroupShareGroup(\"test\", {\n    groupId: foo.id,\n    shareGroupId: bar.id,\n    groupAccess: \"guest\",\n    expiresAt: \"2099-01-01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\ntest = gitlab.GroupShareGroup(\"test\",\n    group_id=foo[\"id\"],\n    share_group_id=bar[\"id\"],\n    group_access=\"guest\",\n    expires_at=\"2099-01-01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new GitLab.GroupShareGroup(\"test\", new()\n    {\n        GroupId = foo.Id,\n        ShareGroupId = bar.Id,\n        GroupAccess = \"guest\",\n        ExpiresAt = \"2099-01-01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewGroupShareGroup(ctx, \"test\", \u0026gitlab.GroupShareGroupArgs{\n\t\t\tGroupId:      pulumi.Any(foo.Id),\n\t\t\tShareGroupId: pulumi.Any(bar.Id),\n\t\t\tGroupAccess:  pulumi.String(\"guest\"),\n\t\t\tExpiresAt:    pulumi.String(\"2099-01-01\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GroupShareGroup;\nimport com.pulumi.gitlab.GroupShareGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new GroupShareGroup(\"test\", GroupShareGroupArgs.builder()\n            .groupId(foo.id())\n            .shareGroupId(bar.id())\n            .groupAccess(\"guest\")\n            .expiresAt(\"2099-01-01\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: gitlab:GroupShareGroup\n    properties:\n      groupId: ${foo.id}\n      shareGroupId: ${bar.id}\n      groupAccess: guest\n      expiresAt: 2099-01-01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_group_share_group`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_group_share_group.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.\n\n```sh\n$ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337\n```\n\n",
             "properties": {
                 "expiresAt": {
                     "type": "string",
@@ -13785,7 +14073,7 @@
                 },
                 "memberRoleId": {
                     "type": "integer",
-                    "description": "The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.\n"
+                    "description": "The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.\n"
                 },
                 "shareGroupId": {
                     "type": "integer",
@@ -13812,7 +14100,7 @@
                 },
                 "memberRoleId": {
                     "type": "integer",
-                    "description": "The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.\n"
+                    "description": "The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.\n"
                 },
                 "shareGroupId": {
                     "type": "integer",
@@ -13841,7 +14129,7 @@
                     },
                     "memberRoleId": {
                         "type": "integer",
-                        "description": "The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.\n"
+                        "description": "The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.\n"
                     },
                     "shareGroupId": {
                         "type": "integer",
@@ -14226,7 +14514,8 @@
             "required": [
                 "email",
                 "name",
-                "serviceAccountId"
+                "serviceAccountId",
+                "username"
             ],
             "inputProperties": {
                 "email": {
@@ -19631,6 +19920,128 @@
                 "type": "object"
             }
         },
+        "gitlab:index/projectDeployToken:ProjectDeployToken": {
+            "description": "The `gitlab.ProjectDeployToken` resource allows you to manage the lifecycle of deploy tokens on a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\nimport * as std from \"@pulumi/std\";\n\n// Example Usage\nconst example = new gitlab.ProjectDeployToken(\"example\", {\n    project: \"example/deploying\",\n    name: \"Example project deploy token\",\n    username: \"example-username\",\n    expiresAt: \"2020-03-14T00:00:00.000Z\",\n    scopes: [\n        \"read_repository\",\n        \"read_registry\",\n    ],\n});\nconst example_two = new gitlab.ProjectDeployToken(\"example-two\", {\n    project: \"12345678\",\n    name: \"Example project deploy token expires in 24h\",\n    expiresAt: std.timestamp({}).then(invoke =\u003e std.timeadd({\n        duration: invoke.result,\n        timestamp: \"24h\",\n    })).then(invoke =\u003e invoke.result),\n    scopes: [\n        \"read_repository\",\n        \"read_registry\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\nimport pulumi_std as std\n\n# Example Usage\nexample = gitlab.ProjectDeployToken(\"example\",\n    project=\"example/deploying\",\n    name=\"Example project deploy token\",\n    username=\"example-username\",\n    expires_at=\"2020-03-14T00:00:00.000Z\",\n    scopes=[\n        \"read_repository\",\n        \"read_registry\",\n    ])\nexample_two = gitlab.ProjectDeployToken(\"example-two\",\n    project=\"12345678\",\n    name=\"Example project deploy token expires in 24h\",\n    expires_at=std.timeadd(duration=std.timestamp().result,\n        timestamp=\"24h\").result,\n    scopes=[\n        \"read_repository\",\n        \"read_registry\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example Usage\n    var example = new GitLab.ProjectDeployToken(\"example\", new()\n    {\n        Project = \"example/deploying\",\n        Name = \"Example project deploy token\",\n        Username = \"example-username\",\n        ExpiresAt = \"2020-03-14T00:00:00.000Z\",\n        Scopes = new[]\n        {\n            \"read_repository\",\n            \"read_registry\",\n        },\n    });\n\n    var example_two = new GitLab.ProjectDeployToken(\"example-two\", new()\n    {\n        Project = \"12345678\",\n        Name = \"Example project deploy token expires in 24h\",\n        ExpiresAt = Std.Timestamp.Invoke().Apply(invoke =\u003e Std.Timeadd.Invoke(new()\n        {\n            Duration = invoke.Result,\n            Timestamp = \"24h\",\n        })).Apply(invoke =\u003e invoke.Result),\n        Scopes = new[]\n        {\n            \"read_repository\",\n            \"read_registry\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example Usage\n\t\t_, err := gitlab.NewProjectDeployToken(ctx, \"example\", \u0026gitlab.ProjectDeployTokenArgs{\n\t\t\tProject:   pulumi.String(\"example/deploying\"),\n\t\t\tName:      pulumi.String(\"Example project deploy token\"),\n\t\t\tUsername:  pulumi.String(\"example-username\"),\n\t\t\tExpiresAt: pulumi.String(\"2020-03-14T00:00:00.000Z\"),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t\tpulumi.String(\"read_registry\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeTimeadd, err := std.Timeadd(ctx, \u0026std.TimeaddArgs{\n\t\t\tDuration:  std.Timestamp(ctx, \u0026std.TimestampArgs{}, nil).Result,\n\t\t\tTimestamp: \"24h\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectDeployToken(ctx, \"example-two\", \u0026gitlab.ProjectDeployTokenArgs{\n\t\t\tProject:   pulumi.String(\"12345678\"),\n\t\t\tName:      pulumi.String(\"Example project deploy token expires in 24h\"),\n\t\t\tExpiresAt: pulumi.String(invokeTimeadd.Result),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"read_repository\"),\n\t\t\t\tpulumi.String(\"read_registry\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectDeployToken;\nimport com.pulumi.gitlab.ProjectDeployTokenArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.TimestampArgs;\nimport com.pulumi.std.inputs.TimeaddArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example Usage\n        var example = new ProjectDeployToken(\"example\", ProjectDeployTokenArgs.builder()\n            .project(\"example/deploying\")\n            .name(\"Example project deploy token\")\n            .username(\"example-username\")\n            .expiresAt(\"2020-03-14T00:00:00.000Z\")\n            .scopes(            \n                \"read_repository\",\n                \"read_registry\")\n            .build());\n\n        var example_two = new ProjectDeployToken(\"example-two\", ProjectDeployTokenArgs.builder()\n            .project(\"12345678\")\n            .name(\"Example project deploy token expires in 24h\")\n            .expiresAt(StdFunctions.timeadd(TimeaddArgs.builder()\n                .duration(StdFunctions.timestamp(TimestampArgs.builder()\n                    .build()).result())\n                .timestamp(\"24h\")\n                .build()).result())\n            .scopes(            \n                \"read_repository\",\n                \"read_registry\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example Usage\n  example:\n    type: gitlab:ProjectDeployToken\n    properties:\n      project: example/deploying\n      name: Example project deploy token\n      username: example-username\n      expiresAt: 2020-03-14T00:00:00.000Z\n      scopes:\n        - read_repository\n        - read_registry\n  example-two:\n    type: gitlab:ProjectDeployToken\n    properties:\n      project: '12345678'\n      name: Example project deploy token expires in 24h\n      expiresAt:\n        fn::invoke:\n          function: std:timeadd\n          arguments:\n            duration:\n              fn::invoke:\n                function: std:timestamp\n                arguments: {}\n                return: result\n            timestamp: 24h\n          return: result\n      scopes:\n        - read_repository\n        - read_registry\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_project_deploy_token`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_project_deploy_token.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab project deploy tokens can be imported using an id made up of `{project_id}:{deploy_token_id}`.\n\n```sh\n$ pulumi import gitlab:index/projectDeployToken:ProjectDeployToken project_token 1:4\n```\n\nNote: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "properties": {
+                "expired": {
+                    "type": "boolean",
+                    "description": "True if the token is expired.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Time the token expires in RFC3339 format. Not set by default.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name to describe the deploy token with.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The Id or full path of the project.\n"
+                },
+                "revoked": {
+                    "type": "boolean",
+                    "description": "True if the token is revoked.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scopes of the project deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.\n",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                }
+            },
+            "required": [
+                "expired",
+                "expiresAt",
+                "name",
+                "project",
+                "revoked",
+                "scopes",
+                "token",
+                "username"
+            ],
+            "inputProperties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Time the token expires in RFC3339 format. Not set by default.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name to describe the deploy token with.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The Id or full path of the project.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The scopes of the project deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                }
+            },
+            "requiredInputs": [
+                "project",
+                "scopes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectDeployToken resources.\n",
+                "properties": {
+                    "expired": {
+                        "type": "boolean",
+                        "description": "True if the token is expired.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Time the token expires in RFC3339 format. Not set by default.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name to describe the deploy token with.\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The Id or full path of the project.\n"
+                    },
+                    "revoked": {
+                        "type": "boolean",
+                        "description": "True if the token is revoked.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The scopes of the project deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.\n",
+                        "secret": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "A username for the deploy token. Default is `gitlab+deploy-token-{n}`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/projectEnvironment:ProjectEnvironment": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst _this = new gitlab.Group(\"this\", {\n    name: \"example\",\n    path: \"example\",\n    description: \"An example group\",\n});\nconst thisProject = new gitlab.Project(\"this\", {\n    name: \"example\",\n    namespaceId: _this.id,\n    initializeWithReadme: true,\n});\nconst thisProjectEnvironment = new gitlab.ProjectEnvironment(\"this\", {\n    project: thisProject.id,\n    name: \"example\",\n    externalUrl: \"www.example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nthis = gitlab.Group(\"this\",\n    name=\"example\",\n    path=\"example\",\n    description=\"An example group\")\nthis_project = gitlab.Project(\"this\",\n    name=\"example\",\n    namespace_id=this.id,\n    initialize_with_readme=True)\nthis_project_environment = gitlab.ProjectEnvironment(\"this\",\n    project=this_project.id,\n    name=\"example\",\n    external_url=\"www.example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new GitLab.Group(\"this\", new()\n    {\n        Name = \"example\",\n        Path = \"example\",\n        Description = \"An example group\",\n    });\n\n    var thisProject = new GitLab.Project(\"this\", new()\n    {\n        Name = \"example\",\n        NamespaceId = @this.Id,\n        InitializeWithReadme = true,\n    });\n\n    var thisProjectEnvironment = new GitLab.ProjectEnvironment(\"this\", new()\n    {\n        Project = thisProject.Id,\n        Name = \"example\",\n        ExternalUrl = \"www.example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := gitlab.NewGroup(ctx, \"this\", \u0026gitlab.GroupArgs{\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tPath:        pulumi.String(\"example\"),\n\t\t\tDescription: pulumi.String(\"An example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthisProject, err := gitlab.NewProject(ctx, \"this\", \u0026gitlab.ProjectArgs{\n\t\t\tName:                 pulumi.String(\"example\"),\n\t\t\tNamespaceId:          this.ID(),\n\t\t\tInitializeWithReadme: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectEnvironment(ctx, \"this\", \u0026gitlab.ProjectEnvironmentArgs{\n\t\t\tProject:     thisProject.ID(),\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tExternalUrl: pulumi.String(\"www.example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Group;\nimport com.pulumi.gitlab.GroupArgs;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ProjectEnvironment;\nimport com.pulumi.gitlab.ProjectEnvironmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new Group(\"this\", GroupArgs.builder()\n            .name(\"example\")\n            .path(\"example\")\n            .description(\"An example group\")\n            .build());\n\n        var thisProject = new Project(\"thisProject\", ProjectArgs.builder()\n            .name(\"example\")\n            .namespaceId(this_.id())\n            .initializeWithReadme(true)\n            .build());\n\n        var thisProjectEnvironment = new ProjectEnvironment(\"thisProjectEnvironment\", ProjectEnvironmentArgs.builder()\n            .project(thisProject.id())\n            .name(\"example\")\n            .externalUrl(\"www.example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: gitlab:Group\n    properties:\n      name: example\n      path: example\n      description: An example group\n  thisProject:\n    type: gitlab:Project\n    name: this\n    properties:\n      name: example\n      namespaceId: ${this.id}\n      initializeWithReadme: true\n  thisProjectEnvironment:\n    type: gitlab:ProjectEnvironment\n    name: this\n    properties:\n      project: ${thisProject.id}\n      name: example\n      externalUrl: www.example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_project_environment`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_project_environment.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321\n```\n\n",
             "properties": {
@@ -19700,10 +20111,14 @@
                 "autoStopSetting",
                 "createdAt",
                 "description",
+                "externalUrl",
+                "fluxResourcePath",
+                "kubernetesNamespace",
                 "name",
                 "project",
                 "slug",
                 "state",
+                "stopBeforeDestroy",
                 "tier",
                 "updatedAt"
             ],
@@ -19734,13 +20149,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the environment.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the environment.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ID or full path of the project to environment is created for.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or full path of the project to environment is created for.\n"
                 },
                 "stopBeforeDestroy": {
                     "type": "boolean",
@@ -19791,13 +20204,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the environment.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the environment.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The ID or full path of the project to environment is created for.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or full path of the project to environment is created for.\n"
                     },
                     "slug": {
                         "type": "string",
@@ -19823,6 +20234,110 @@
                 "type": "object"
             }
         },
+        "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck": {
+            "description": "The `gitlab.ProjectExternalStatusCheck` resource allows you to manage the lifecycle of an external status check service on a project.\n\n\u003e This resource requires a GitLab Enterprise instance with an Ultimate license.\n\n**Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/status_checks/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = new gitlab.ProjectExternalStatusCheck(\"foo\", {\n    projectId: 123,\n    name: \"foo\",\n    externalUrl: \"https://example.gitlab.com\",\n});\nconst bar = new gitlab.ProjectExternalStatusCheck(\"bar\", {\n    projectId: 456,\n    name: \"bar\",\n    externalUrl: \"https://example.gitlab.com\",\n    sharedSecret: \"secret\",\n    protectedBranchIds: [\n        6,\n        28,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.ProjectExternalStatusCheck(\"foo\",\n    project_id=123,\n    name=\"foo\",\n    external_url=\"https://example.gitlab.com\")\nbar = gitlab.ProjectExternalStatusCheck(\"bar\",\n    project_id=456,\n    name=\"bar\",\n    external_url=\"https://example.gitlab.com\",\n    shared_secret=\"secret\",\n    protected_branch_ids=[\n        6,\n        28,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new GitLab.ProjectExternalStatusCheck(\"foo\", new()\n    {\n        ProjectId = 123,\n        Name = \"foo\",\n        ExternalUrl = \"https://example.gitlab.com\",\n    });\n\n    var bar = new GitLab.ProjectExternalStatusCheck(\"bar\", new()\n    {\n        ProjectId = 456,\n        Name = \"bar\",\n        ExternalUrl = \"https://example.gitlab.com\",\n        SharedSecret = \"secret\",\n        ProtectedBranchIds = new[]\n        {\n            6,\n            28,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectExternalStatusCheck(ctx, \"foo\", \u0026gitlab.ProjectExternalStatusCheckArgs{\n\t\t\tProjectId:   pulumi.Int(123),\n\t\t\tName:        pulumi.String(\"foo\"),\n\t\t\tExternalUrl: pulumi.String(\"https://example.gitlab.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectExternalStatusCheck(ctx, \"bar\", \u0026gitlab.ProjectExternalStatusCheckArgs{\n\t\t\tProjectId:    pulumi.Int(456),\n\t\t\tName:         pulumi.String(\"bar\"),\n\t\t\tExternalUrl:  pulumi.String(\"https://example.gitlab.com\"),\n\t\t\tSharedSecret: pulumi.String(\"secret\"),\n\t\t\tProtectedBranchIds: pulumi.IntArray{\n\t\t\t\tpulumi.Int(6),\n\t\t\t\tpulumi.Int(28),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectExternalStatusCheck;\nimport com.pulumi.gitlab.ProjectExternalStatusCheckArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new ProjectExternalStatusCheck(\"foo\", ProjectExternalStatusCheckArgs.builder()\n            .projectId(123)\n            .name(\"foo\")\n            .externalUrl(\"https://example.gitlab.com\")\n            .build());\n\n        var bar = new ProjectExternalStatusCheck(\"bar\", ProjectExternalStatusCheckArgs.builder()\n            .projectId(456)\n            .name(\"bar\")\n            .externalUrl(\"https://example.gitlab.com\")\n            .sharedSecret(\"secret\")\n            .protectedBranchIds(            \n                6,\n                28)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: gitlab:ProjectExternalStatusCheck\n    properties:\n      projectId: 123\n      name: foo\n      externalUrl: https://example.gitlab.com\n  bar:\n    type: gitlab:ProjectExternalStatusCheck\n    properties:\n      projectId: 456\n      name: bar\n      externalUrl: https://example.gitlab.com\n      sharedSecret: secret\n      protectedBranchIds:\n        - 6\n        - 28\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_project_external_status_check`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_project_external_status_check.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab project external status checks can be imported using an id made up of `\u003cproject-id\u003e:\u003cexternal-check-id\u003e`, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck foo \"123:42\"\n```\n\nNOTE: the `shared_secret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.\n\n",
+            "properties": {
+                "externalUrl": {
+                    "type": "string",
+                    "description": "The URL of the external status check service.\n"
+                },
+                "hmac": {
+                    "type": "boolean",
+                    "description": "True if the external status check uses an HMAC secret.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name of the external status check service.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project.\n"
+                },
+                "protectedBranchIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "The list of IDs of protected branches to scope the rule by.\n"
+                },
+                "sharedSecret": {
+                    "type": "string",
+                    "description": "The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "externalUrl",
+                "hmac",
+                "name",
+                "projectId",
+                "protectedBranchIds"
+            ],
+            "inputProperties": {
+                "externalUrl": {
+                    "type": "string",
+                    "description": "The URL of the external status check service.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name of the external status check service.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The ID of the project.\n"
+                },
+                "protectedBranchIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "The list of IDs of protected branches to scope the rule by.\n"
+                },
+                "sharedSecret": {
+                    "type": "string",
+                    "description": "The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.\n",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "externalUrl",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectExternalStatusCheck resources.\n",
+                "properties": {
+                    "externalUrl": {
+                        "type": "string",
+                        "description": "The URL of the external status check service.\n"
+                    },
+                    "hmac": {
+                        "type": "boolean",
+                        "description": "True if the external status check uses an HMAC secret.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The display name of the external status check service.\n"
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "description": "The ID of the project.\n"
+                    },
+                    "protectedBranchIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "The list of IDs of protected branches to scope the rule by.\n"
+                    },
+                    "sharedSecret": {
+                        "type": "string",
+                        "description": "The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.\n",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": {
             "description": "The `gitlab.ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/freeze_periods/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst schedule = new gitlab.ProjectFreezePeriod(\"schedule\", {\n    project: foo.id,\n    freezeStart: \"0 23 * * 5\",\n    freezeEnd: \"0 7 * * 1\",\n    cronTimezone: \"UTC\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nschedule = gitlab.ProjectFreezePeriod(\"schedule\",\n    project=foo[\"id\"],\n    freeze_start=\"0 23 * * 5\",\n    freeze_end=\"0 7 * * 1\",\n    cron_timezone=\"UTC\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var schedule = new GitLab.ProjectFreezePeriod(\"schedule\", new()\n    {\n        Project = foo.Id,\n        FreezeStart = \"0 23 * * 5\",\n        FreezeEnd = \"0 7 * * 1\",\n        CronTimezone = \"UTC\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.NewProjectFreezePeriod(ctx, \"schedule\", \u0026gitlab.ProjectFreezePeriodArgs{\n\t\t\tProject:      pulumi.Any(foo.Id),\n\t\t\tFreezeStart:  pulumi.String(\"0 23 * * 5\"),\n\t\t\tFreezeEnd:    pulumi.String(\"0 7 * * 1\"),\n\t\t\tCronTimezone: pulumi.String(\"UTC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.ProjectFreezePeriod;\nimport com.pulumi.gitlab.ProjectFreezePeriodArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schedule = new ProjectFreezePeriod(\"schedule\", ProjectFreezePeriodArgs.builder()\n            .project(foo.id())\n            .freezeStart(\"0 23 * * 5\")\n            .freezeEnd(\"0 7 * * 1\")\n            .cronTimezone(\"UTC\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schedule:\n    type: gitlab:ProjectFreezePeriod\n    properties:\n      project: ${foo.id}\n      freezeStart: 0 23 * * 5\n      freezeEnd: 0 7 * * 1\n      cronTimezone: UTC\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_project_freeze_period`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_project_freeze_period.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nGitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule \"12345:1337\"\n```\n\n",
             "properties": {
@@ -19832,18 +20347,19 @@
                 },
                 "freezeEnd": {
                     "type": "string",
-                    "description": "End of the Freeze Period in cron format (e.g. `0 2 * * *`).\n"
+                    "description": "End of the Freeze Period in cron format (for example, `0 2 * * *`).\n"
                 },
                 "freezeStart": {
                     "type": "string",
-                    "description": "Start of the Freeze Period in cron format (e.g. `0 1 * * *`).\n"
+                    "description": "Start of the Freeze Period in cron format (for example, `0 1 * * *`).\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ID or URL-encoded path of the project to add the schedule to.\n"
+                    "description": "The ID or path of the project to add the freeze period to.\n"
                 }
             },
             "required": [
+                "cronTimezone",
                 "freezeEnd",
                 "freezeStart",
                 "project"
@@ -19855,16 +20371,15 @@
                 },
                 "freezeEnd": {
                     "type": "string",
-                    "description": "End of the Freeze Period in cron format (e.g. `0 2 * * *`).\n"
+                    "description": "End of the Freeze Period in cron format (for example, `0 2 * * *`).\n"
                 },
                 "freezeStart": {
                     "type": "string",
-                    "description": "Start of the Freeze Period in cron format (e.g. `0 1 * * *`).\n"
+                    "description": "Start of the Freeze Period in cron format (for example, `0 1 * * *`).\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ID or URL-encoded path of the project to add the schedule to.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or path of the project to add the freeze period to.\n"
                 }
             },
             "requiredInputs": [
@@ -19881,16 +20396,15 @@
                     },
                     "freezeEnd": {
                         "type": "string",
-                        "description": "End of the Freeze Period in cron format (e.g. `0 2 * * *`).\n"
+                        "description": "End of the Freeze Period in cron format (for example, `0 2 * * *`).\n"
                     },
                     "freezeStart": {
                         "type": "string",
-                        "description": "Start of the Freeze Period in cron format (e.g. `0 1 * * *`).\n"
+                        "description": "Start of the Freeze Period in cron format (for example, `0 1 * * *`).\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The ID or URL-encoded path of the project to add the schedule to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or path of the project to add the freeze period to.\n"
                     }
                 },
                 "type": "object"
@@ -19912,7 +20426,7 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/ProjectHookCustomHeader:ProjectHookCustomHeader"
                     },
-                    "description": "Custom headers for the project webhook.\n"
+                    "description": "Custom headers for the project webhook. Available from GitLab 17.1 onwards.\n"
                 },
                 "customWebhookTemplate": {
                     "type": "string",
@@ -20039,7 +20553,7 @@
                     "items": {
                         "$ref": "#/types/gitlab:index/ProjectHookCustomHeader:ProjectHookCustomHeader"
                     },
-                    "description": "Custom headers for the project webhook.\n"
+                    "description": "Custom headers for the project webhook. Available from GitLab 17.1 onwards.\n"
                 },
                 "customWebhookTemplate": {
                     "type": "string",
@@ -20139,7 +20653,7 @@
                         "items": {
                             "$ref": "#/types/gitlab:index/ProjectHookCustomHeader:ProjectHookCustomHeader"
                         },
-                        "description": "Custom headers for the project webhook.\n"
+                        "description": "Custom headers for the project webhook. Available from GitLab 17.1 onwards.\n"
                     },
                     "customWebhookTemplate": {
                         "type": "string",
@@ -26943,7 +27457,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:name\u003e`.\n",
                         "type": "string"
                     },
                     "merged": {
@@ -26973,18 +27487,18 @@
                     "default",
                     "developerCanMerge",
                     "developerCanPush",
+                    "id",
                     "merged",
                     "name",
                     "project",
                     "protected",
-                    "webUrl",
-                    "id"
+                    "webUrl"
                 ],
                 "type": "object"
             }
         },
         "gitlab:index/getClusterAgent:getClusterAgent": {
-            "description": "The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getClusterAgent({\n    project: \"12345\",\n    agentId: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_cluster_agent(project=\"12345\",\n    agent_id=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetClusterAgent.Invoke(new()\n    {\n        Project = \"12345\",\n        AgentId = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupClusterAgent(ctx, \u0026gitlab.LookupClusterAgentArgs{\n\t\t\tProject: \"12345\",\n\t\t\tAgentId: 1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetClusterAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()\n            .project(\"12345\")\n            .agentId(1)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: gitlab:getClusterAgent\n      arguments:\n        project: '12345'\n        agentId: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `gitlab.ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getClusterAgent({\n    project: \"12345\",\n    agentId: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_cluster_agent(project=\"12345\",\n    agent_id=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetClusterAgent.Invoke(new()\n    {\n        Project = \"12345\",\n        AgentId = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupClusterAgent(ctx, \u0026gitlab.LookupClusterAgentArgs{\n\t\t\tProject: \"12345\",\n\t\t\tAgentId: 1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetClusterAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getClusterAgent(GetClusterAgentArgs.builder()\n            .project(\"12345\")\n            .agentId(1)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: gitlab:getClusterAgent\n      arguments:\n        project: '12345'\n        agentId: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getClusterAgent.\n",
                 "properties": {
@@ -27019,7 +27533,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this data source. In the format project:agent_id\n",
                         "type": "string"
                     },
                     "name": {
@@ -27035,21 +27549,21 @@
                     "agentId",
                     "createdAt",
                     "createdByUserId",
+                    "id",
                     "name",
-                    "project",
-                    "id"
+                    "project"
                 ],
                 "type": "object"
             }
         },
         "gitlab:index/getClusterAgents:getClusterAgents": {
-            "description": "The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst agents = gitlab.getClusterAgents({\n    project: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nagents = gitlab.get_cluster_agents(project=\"12345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var agents = GitLab.GetClusterAgents.Invoke(new()\n    {\n        Project = \"12345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetClusterAgents(ctx, \u0026gitlab.GetClusterAgentsArgs{\n\t\t\tProject: \"12345\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetClusterAgentsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var agents = GitlabFunctions.getClusterAgents(GetClusterAgentsArgs.builder()\n            .project(\"12345\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  agents:\n    fn::invoke:\n      function: gitlab:getClusterAgents\n      arguments:\n        project: '12345'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst agents = gitlab.getClusterAgents({\n    project: \"12345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nagents = gitlab.get_cluster_agents(project=\"12345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var agents = GitLab.GetClusterAgents.Invoke(new()\n    {\n        Project = \"12345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetClusterAgents(ctx, \u0026gitlab.GetClusterAgentsArgs{\n\t\t\tProject: \"12345\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetClusterAgentsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var agents = GitlabFunctions.getClusterAgents(GetClusterAgentsArgs.builder()\n            .project(\"12345\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  agents:\n    fn::invoke:\n      function: gitlab:getClusterAgents\n      arguments:\n        project: '12345'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getClusterAgents.\n",
                 "properties": {
                     "project": {
                         "type": "string",
-                        "description": "The ID or full path of the project owned by the authenticated user.\n"
+                        "description": "ID or full path of the project maintained by the authenticated user.\n"
                     }
                 },
                 "type": "object",
@@ -27068,18 +27582,18 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this data source. In the format \\n\\n\n",
                         "type": "string"
                     },
                     "project": {
-                        "description": "The ID or full path of the project owned by the authenticated user.\n",
+                        "description": "ID or full path of the project maintained by the authenticated user.\n",
                         "type": "string"
                     }
                 },
                 "required": [
                     "clusterAgents",
-                    "project",
-                    "id"
+                    "id",
+                    "project"
                 ],
                 "type": "object"
             }
@@ -27186,7 +27700,7 @@
                         "type": "string"
                     },
                     "publicEmail": {
-                        "description": "User’s public email.\n",
+                        "description": "User's public email.\n",
                         "type": "string"
                     },
                     "username": {
@@ -27500,7 +28014,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this data source. In the format `\u003cgroup:hook_id\u003e`.\n",
                         "type": "string"
                     },
                     "issuesEvents": {
@@ -27544,7 +28058,8 @@
                         "type": "boolean"
                     },
                     "token": {
-                        "description": "A token to present when invoking the hook. The token is not available for imported resources.\n",
+                        "deprecationMessage": "The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.",
+                        "description": "A token to present when invoking the hook. The token is not available in this datasource.\n",
                         "type": "string"
                     },
                     "url": {
@@ -27566,6 +28081,7 @@
                     "group",
                     "groupId",
                     "hookId",
+                    "id",
                     "issuesEvents",
                     "jobEvents",
                     "mergeRequestsEvents",
@@ -27578,8 +28094,7 @@
                     "tagPushEvents",
                     "token",
                     "url",
-                    "wikiPageEvents",
-                    "id"
+                    "wikiPageEvents"
                 ],
                 "type": "object"
             }
@@ -27826,6 +28341,47 @@
                 },
                 "required": [
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getGroupSamlLinks:getGroupSamlLinks": {
+            "description": "The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.\n\t\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: gitlab:getGroup\n      arguments:\n        id: foo/bar/baz\n  exampleGetGroupSamlLinks:\n    fn::invoke:\n      function: gitlab:getGroupSamlLinks\n      arguments:\n        group: ${example.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupSamlLinks.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "The name or id of the group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "group"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupSamlLinks.\n",
+                "properties": {
+                    "group": {
+                        "description": "The name or id of the group.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "samlLinks": {
+                        "description": "The list of group SAML links returned by the search\n",
+                        "items": {
+                            "$ref": "#/types/gitlab:index/getGroupSamlLinksSamlLink:getGroupSamlLinksSamlLink"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "group",
+                    "id",
+                    "samlLinks"
                 ],
                 "type": "object"
             }
@@ -28228,7 +28784,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cpublic\u003e`.\n",
                         "type": "string"
                     },
                     "public": {
@@ -28292,7 +28848,7 @@
             }
         },
         "gitlab:index/getInstanceVariable:getInstanceVariable": {
-            "description": "The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = gitlab.getInstanceVariable({\n    key: \"foo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_instance_variable(key=\"foo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = GitLab.GetInstanceVariable.Invoke(new()\n    {\n        Key = \"foo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupInstanceVariable(ctx, \u0026gitlab.LookupInstanceVariableArgs{\n\t\t\tKey: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetInstanceVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = GitlabFunctions.getInstanceVariable(GetInstanceVariableArgs.builder()\n            .key(\"foo\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: gitlab:getInstanceVariable\n      arguments:\n        key: foo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst foo = gitlab.getInstanceVariable({\n    key: \"foo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nfoo = gitlab.get_instance_variable(key=\"foo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = GitLab.GetInstanceVariable.Invoke(new()\n    {\n        Key = \"foo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupInstanceVariable(ctx, \u0026gitlab.LookupInstanceVariableArgs{\n\t\t\tKey: \"foo\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetInstanceVariableArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = GitlabFunctions.getInstanceVariable(GetInstanceVariableArgs.builder()\n            .key(\"foo\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      function: gitlab:getInstanceVariable\n      arguments:\n        key: foo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getInstanceVariable.\n",
                 "properties": {
@@ -28314,7 +28870,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003ckey\u003e`.\n",
                         "type": "string"
                     },
                     "key": {
@@ -28322,15 +28878,15 @@
                         "type": "string"
                     },
                     "masked": {
-                        "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.\n",
+                        "description": "If set to `true`, the value of the variable will be hidden in job logs.\n",
                         "type": "boolean"
                     },
                     "protected": {
-                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n",
+                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.\n",
                         "type": "boolean"
                     },
                     "raw": {
-                        "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n",
+                        "description": "If set to `true`, the variable will be treated as a raw string.\n",
                         "type": "boolean"
                     },
                     "value": {
@@ -28338,34 +28894,34 @@
                         "type": "string"
                     },
                     "variableType": {
-                        "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n",
+                        "description": "The type of the variable, either `env_var` or `file`.\n",
                         "type": "string"
                     }
                 },
                 "required": [
                     "description",
+                    "id",
                     "key",
                     "masked",
                     "protected",
                     "raw",
                     "value",
-                    "variableType",
-                    "id"
+                    "variableType"
                 ],
                 "type": "object"
             }
         },
         "gitlab:index/getInstanceVariables:getInstanceVariables": {
-            "description": "The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst vars = gitlab.getInstanceVariables({});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nvars = gitlab.get_instance_variables()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vars = GitLab.GetInstanceVariables.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetInstanceVariables(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  vars:\n    fn::invoke:\n      function: gitlab:getInstanceVariables\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst vars = gitlab.getInstanceVariables({});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nvars = gitlab.get_instance_variables()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vars = GitLab.GetInstanceVariables.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.GetInstanceVariables(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var vars = GitlabFunctions.getInstanceVariables(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  vars:\n    fn::invoke:\n      function: gitlab:getInstanceVariables\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getInstanceVariables.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the hardcoded format `instance_variables`.\n",
                         "type": "string"
                     },
                     "variables": {
-                        "description": "The list of variables returned by the search\n",
+                        "description": "The list of variables returned by the search.\n",
                         "items": {
                             "$ref": "#/types/gitlab:index/getInstanceVariablesVariable:getInstanceVariablesVariable"
                         },
@@ -28373,8 +28929,8 @@
                     }
                 },
                 "required": [
-                    "variables",
-                    "id"
+                    "id",
+                    "variables"
                 ],
                 "type": "object"
             }
@@ -29056,7 +29612,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject\u003e`.\n",
                         "type": "string"
                     },
                     "project": {
@@ -29066,8 +29622,8 @@
                 },
                 "required": [
                     "branches",
-                    "project",
-                    "id"
+                    "id",
+                    "project"
                 ],
                 "type": "object"
             }
@@ -29138,7 +29694,7 @@
             }
         },
         "gitlab:index/getProjectHook:getProjectHook": {
-            "description": "The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProject({\n    id: \"foo/bar/baz\",\n});\nconst exampleGetProjectHook = example.then(example =\u003e gitlab.getProjectHook({\n    project: example.id,\n    hookId: 1,\n}));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project(id=\"foo/bar/baz\")\nexample_get_project_hook = gitlab.get_project_hook(project=example.id,\n    hook_id=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProject.Invoke(new()\n    {\n        Id = \"foo/bar/baz\",\n    });\n\n    var exampleGetProjectHook = GitLab.GetProjectHook.Invoke(new()\n    {\n        Project = example.Apply(getProjectResult =\u003e getProjectResult.Id),\n        HookId = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.LookupProject(ctx, \u0026gitlab.LookupProjectArgs{\n\t\t\tId: pulumi.StringRef(\"foo/bar/baz\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.LookupProjectHook(ctx, \u0026gitlab.LookupProjectHookArgs{\n\t\t\tProject: example.Id,\n\t\t\tHookId:  1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectArgs;\nimport com.pulumi.gitlab.inputs.GetProjectHookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProject(GetProjectArgs.builder()\n            .id(\"foo/bar/baz\")\n            .build());\n\n        final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()\n            .project(example.id())\n            .hookId(1)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: gitlab:getProject\n      arguments:\n        id: foo/bar/baz\n  exampleGetProjectHook:\n    fn::invoke:\n      function: gitlab:getProjectHook\n      arguments:\n        project: ${example.id}\n        hookId: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The `gitlab.ProjectHook` data source retrieves details about a hook in a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getProject({\n    id: \"foo/bar/baz\",\n});\nconst exampleGetProjectHook = example.then(example =\u003e gitlab.getProjectHook({\n    project: example.id,\n    hookId: 1,\n}));\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_project(id=\"foo/bar/baz\")\nexample_get_project_hook = gitlab.get_project_hook(project=example.id,\n    hook_id=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetProject.Invoke(new()\n    {\n        Id = \"foo/bar/baz\",\n    });\n\n    var exampleGetProjectHook = GitLab.GetProjectHook.Invoke(new()\n    {\n        Project = example.Apply(getProjectResult =\u003e getProjectResult.Id),\n        HookId = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := gitlab.LookupProject(ctx, \u0026gitlab.LookupProjectArgs{\n\t\t\tId: pulumi.StringRef(\"foo/bar/baz\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.LookupProjectHook(ctx, \u0026gitlab.LookupProjectHookArgs{\n\t\t\tProject: example.Id,\n\t\t\tHookId:  1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetProjectArgs;\nimport com.pulumi.gitlab.inputs.GetProjectHookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getProject(GetProjectArgs.builder()\n            .id(\"foo/bar/baz\")\n            .build());\n\n        final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()\n            .project(example.id())\n            .hookId(1)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: gitlab:getProject\n      arguments:\n        id: foo/bar/baz\n  exampleGetProjectHook:\n    fn::invoke:\n      function: gitlab:getProjectHook\n      arguments:\n        project: ${example.id}\n        hookId: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getProjectHook.\n",
                 "properties": {
@@ -29185,7 +29741,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject\u003e:\u003chook-id\u003e`.\n",
                         "type": "string"
                     },
                     "issuesEvents": {
@@ -29233,7 +29789,9 @@
                         "type": "boolean"
                     },
                     "token": {
-                        "description": "A token to present when invoking the hook. The token is not available for imported resources.\n",
+                        "deprecationMessage": "The token is only available on resource creation, not in this datasource. It will always be blank.",
+                        "description": "A token to present when invoking the hook. The token is not available in this datasource.\n",
+                        "secret": true,
                         "type": "string"
                     },
                     "url": {
@@ -29252,6 +29810,7 @@
                     "deploymentEvents",
                     "enableSslVerification",
                     "hookId",
+                    "id",
                     "issuesEvents",
                     "jobEvents",
                     "mergeRequestsEvents",
@@ -29265,8 +29824,7 @@
                     "tagPushEvents",
                     "token",
                     "url",
-                    "wikiPageEvents",
-                    "id"
+                    "wikiPageEvents"
                 ],
                 "type": "object"
             }
@@ -29297,7 +29855,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject\u003e`.\n",
                         "type": "string"
                     },
                     "project": {
@@ -29307,8 +29865,8 @@
                 },
                 "required": [
                     "hooks",
-                    "project",
-                    "id"
+                    "id",
+                    "project"
                 ],
                 "type": "object"
             }
@@ -29866,21 +30424,27 @@
             }
         },
         "gitlab:index/getProjectMembership:getProjectMembership": {
-            "description": "The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.\n\n\u003e **Note** exactly one of project_id or full_path must be provided.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)\n\n",
+            "description": "The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)\n\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getProjectMembership.\n",
                 "properties": {
                     "fullPath": {
                         "type": "string",
-                        "description": "The full path of the project.\n"
+                        "description": "The full path of the project.\n",
+                        "deprecationMessage": "Will be removed in 19.0. Use `project` instead."
                     },
                     "inherited": {
                         "type": "boolean",
                         "description": "Return all project members including members through ancestor groups\n"
                     },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or full path of the project.\n"
+                    },
                     "projectId": {
                         "type": "integer",
-                        "description": "The ID of the project.\n"
+                        "description": "The ID of the project.\n",
+                        "deprecationMessage": "Will be removed in 19.0. Use `project` instead."
                     },
                     "query": {
                         "type": "string",
@@ -29900,11 +30464,12 @@
                 "description": "A collection of values returned by getProjectMembership.\n",
                 "properties": {
                     "fullPath": {
+                        "deprecationMessage": "Will be removed in 19.0. Use `project` instead.",
                         "description": "The full path of the project.\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:query-hash\u003e` if query is set, otherwise `\u003cproject\u003e`.\n",
                         "type": "string"
                     },
                     "inherited": {
@@ -29918,7 +30483,12 @@
                         },
                         "type": "array"
                     },
+                    "project": {
+                        "description": "The ID or full path of the project.\n",
+                        "type": "string"
+                    },
                     "projectId": {
+                        "deprecationMessage": "Will be removed in 19.0. Use `project` instead.",
                         "description": "The ID of the project.\n",
                         "type": "integer"
                     },
@@ -29936,9 +30506,10 @@
                 },
                 "required": [
                     "fullPath",
+                    "id",
                     "members",
-                    "projectId",
-                    "id"
+                    "project",
+                    "projectId"
                 ],
                 "type": "object"
             }
@@ -30262,7 +30833,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:milestone-id\u003e`.\n",
                         "type": "string"
                     },
                     "iid": {
@@ -30307,6 +30878,7 @@
                     "description",
                     "dueDate",
                     "expired",
+                    "id",
                     "iid",
                     "milestoneId",
                     "project",
@@ -30315,8 +30887,7 @@
                     "state",
                     "title",
                     "updatedAt",
-                    "webUrl",
-                    "id"
+                    "webUrl"
                 ],
                 "type": "object"
             }
@@ -30339,8 +30910,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The ID or URL-encoded path of the project owned by the authenticated user.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or URL-encoded path of the project owned by the authenticated user.\n"
                     },
                     "search": {
                         "type": "string",
@@ -30364,7 +30934,7 @@
                 "description": "A collection of values returned by getProjectMilestones.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:options-hash\u003e`.\n",
                         "type": "string"
                     },
                     "iids": {
@@ -30403,9 +30973,9 @@
                     }
                 },
                 "required": [
+                    "id",
                     "milestones",
-                    "project",
-                    "id"
+                    "project"
                 ],
                 "type": "object"
             }
@@ -30830,7 +31400,7 @@
                 "properties": {
                     "environmentScope": {
                         "type": "string",
-                        "description": "The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.\n"
+                        "description": "The environment scope of the variable. Defaults to all environment (`*`).\n"
                     },
                     "key": {
                         "type": "string",
@@ -30838,7 +31408,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project.\n"
+                        "description": "The name or path of the project.\n"
                     }
                 },
                 "type": "object",
@@ -30851,15 +31421,15 @@
                 "description": "A collection of values returned by getProjectVariable.\n",
                 "properties": {
                     "description": {
-                        "description": "The description of the variable.\n",
+                        "description": "The description of the variable. Maximum of 255 characters.\n",
                         "type": "string"
                     },
                     "environmentScope": {
-                        "description": "The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.\n",
+                        "description": "The environment scope of the variable. Defaults to all environment (`*`).\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:key:environment-scope\u003e`.\n",
                         "type": "string"
                     },
                     "key": {
@@ -30867,19 +31437,19 @@
                         "type": "string"
                     },
                     "masked": {
-                        "description": "If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.\n",
+                        "description": "If set to `true`, the value of the variable will be hidden in job logs.\n",
                         "type": "boolean"
                     },
                     "project": {
-                        "description": "The name or id of the project.\n",
+                        "description": "The name or path of the project.\n",
                         "type": "string"
                     },
                     "protected": {
-                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.\n",
+                        "description": "If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.\n",
                         "type": "boolean"
                     },
                     "raw": {
-                        "description": "Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.\n",
+                        "description": "If set to `true`, the variable will be treated as a raw string.\n",
                         "type": "boolean"
                     },
                     "value": {
@@ -30887,21 +31457,21 @@
                         "type": "string"
                     },
                     "variableType": {
-                        "description": "The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.\n",
+                        "description": "The type of the variable, either `env_var` or `file`.\n",
                         "type": "string"
                     }
                 },
                 "required": [
                     "description",
                     "environmentScope",
+                    "id",
                     "key",
                     "masked",
                     "project",
                     "protected",
                     "raw",
                     "value",
-                    "variableType",
-                    "id"
+                    "variableType"
                 ],
                 "type": "object"
             }
@@ -30917,8 +31487,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name or path of the project.\n"
                     }
                 },
                 "type": "object",
@@ -30934,11 +31503,11 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:environment-scope\u003e`.\n",
                         "type": "string"
                     },
                     "project": {
-                        "description": "The name or id of the project.\n",
+                        "description": "The name or path of the project.\n",
                         "type": "string"
                     },
                     "variables": {
@@ -30950,9 +31519,9 @@
                     }
                 },
                 "required": [
+                    "id",
                     "project",
-                    "variables",
-                    "id"
+                    "variables"
                 ],
                 "type": "object"
             }
@@ -31241,7 +31810,7 @@
             }
         },
         "gitlab:index/getReleaseLink:getReleaseLink": {
-            "description": "The `gitlab.ReleaseLink` data source allows get details of a release link.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)\n\n",
+            "description": "The `gitlab.ReleaseLink` data source allows you to get details of a release link.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)\n\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getReleaseLink.\n",
                 "properties": {
@@ -31281,7 +31850,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this data source.\n",
                         "type": "string"
                     },
                     "linkId": {
@@ -31289,7 +31858,7 @@
                         "type": "integer"
                     },
                     "linkType": {
-                        "description": "The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.\n",
+                        "description": "The type of the link. Valid values are `other`, `runbook`, `image`, `package`.\n",
                         "type": "string"
                     },
                     "name": {
@@ -31313,13 +31882,13 @@
                     "directAssetUrl",
                     "external",
                     "filepath",
+                    "id",
                     "linkId",
                     "linkType",
                     "name",
                     "project",
                     "tagName",
-                    "url",
-                    "id"
+                    "url"
                 ],
                 "type": "object"
             }
@@ -31331,13 +31900,11 @@
                 "properties": {
                     "project": {
                         "type": "string",
-                        "description": "The ID or full path to the project.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).\n"
                     },
                     "tagName": {
                         "type": "string",
-                        "description": "The tag associated with the Release.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The tag associated with the Release.\n"
                     }
                 },
                 "type": "object",
@@ -31350,11 +31917,11 @@
                 "description": "A collection of values returned by getReleaseLinks.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this data source.\n",
                         "type": "string"
                     },
                     "project": {
-                        "description": "The ID or full path to the project.\n",
+                        "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).\n",
                         "type": "string"
                     },
                     "releaseLinks": {
@@ -31370,10 +31937,10 @@
                     }
                 },
                 "required": [
+                    "id",
                     "project",
                     "releaseLinks",
-                    "tagName",
-                    "id"
+                    "tagName"
                 ],
                 "type": "object"
             }
@@ -31439,7 +32006,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:ref:file_path\u003e`.\n",
                         "type": "string"
                     },
                     "lastCommitId": {
@@ -31468,11 +32035,11 @@
                     "executeFilemode",
                     "fileName",
                     "filePath",
+                    "id",
                     "lastCommitId",
                     "project",
                     "ref",
-                    "size",
-                    "id"
+                    "size"
                 ],
                 "type": "object"
             }
@@ -31509,7 +32076,7 @@
                 "description": "A collection of values returned by getRepositoryTree.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. A hash of project and ref, with path and recursive if set.\n",
                         "type": "string"
                     },
                     "path": {
@@ -31537,10 +32104,10 @@
                     }
                 },
                 "required": [
+                    "id",
                     "project",
                     "ref",
-                    "trees",
-                    "id"
+                    "trees"
                 ],
                 "type": "object"
             }
@@ -31688,7 +32255,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cuser-id\u003e`.\n",
                         "type": "string"
                     },
                     "isAdmin": {
@@ -31779,6 +32346,7 @@
                     "email",
                     "externUid",
                     "external",
+                    "id",
                     "isAdmin",
                     "isBot",
                     "lastSignInAt",
@@ -31797,8 +32365,7 @@
                     "userId",
                     "userProvider",
                     "username",
-                    "websiteUrl",
-                    "id"
+                    "websiteUrl"
                 ],
                 "type": "object"
             }
@@ -31892,6 +32459,10 @@
                         "type": "boolean",
                         "description": "Filters only external users.\n"
                     },
+                    "humans": {
+                        "type": "boolean",
+                        "description": "Filters only regular users that are not bot or internal users.\n"
+                    },
                     "orderBy": {
                         "type": "string",
                         "description": "Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)\n"
@@ -31954,8 +32525,12 @@
                         "description": "Filters only external users.\n",
                         "type": "boolean"
                     },
+                    "humans": {
+                        "description": "Filters only regular users that are not bot or internal users.\n",
+                        "type": "boolean"
+                    },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format of a hash taken from the search options.\n",
                         "type": "string"
                     },
                     "orderBy": {
@@ -31987,8 +32562,8 @@
                     }
                 },
                 "required": [
-                    "users",
-                    "id"
+                    "id",
+                    "users"
                 ],
                 "type": "object"
             }

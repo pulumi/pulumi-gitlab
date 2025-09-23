@@ -44,7 +44,7 @@ export interface GetProjectVariablesArgs {
      */
     environmentScope?: string;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     project: string;
 }
@@ -58,11 +58,11 @@ export interface GetProjectVariablesResult {
      */
     readonly environmentScope?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:environment-scope>`.
      */
     readonly id: string;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     readonly project: string;
     /**
@@ -108,7 +108,7 @@ export interface GetProjectVariablesOutputArgs {
      */
     environmentScope?: pulumi.Input<string>;
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      */
     project: pulumi.Input<string>;
 }

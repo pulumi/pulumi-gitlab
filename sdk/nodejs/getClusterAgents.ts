@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+ * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
  *
@@ -34,7 +34,7 @@ export function getClusterAgents(args: GetClusterAgentsArgs, opts?: pulumi.Invok
  */
 export interface GetClusterAgentsArgs {
     /**
-     * The ID or full path of the project owned by the authenticated user.
+     * ID or full path of the project maintained by the authenticated user.
      */
     project: string;
 }
@@ -48,16 +48,16 @@ export interface GetClusterAgentsResult {
      */
     readonly clusterAgents: outputs.GetClusterAgentsClusterAgent[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this data source. In the format \n\n
      */
     readonly id: string;
     /**
-     * The ID or full path of the project owned by the authenticated user.
+     * ID or full path of the project maintained by the authenticated user.
      */
     readonly project: string;
 }
 /**
- * The `gitlab.getClusterAgents` data source allows details of GitLab Agents for Kubernetes in a project.
+ * The `gitlab.getClusterAgents` data source retrieves details of GitLab Agents for Kubernetes in a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
  *
@@ -84,7 +84,7 @@ export function getClusterAgentsOutput(args: GetClusterAgentsOutputArgs, opts?: 
  */
 export interface GetClusterAgentsOutputArgs {
     /**
-     * The ID or full path of the project owned by the authenticated user.
+     * ID or full path of the project maintained by the authenticated user.
      */
     project: pulumi.Input<string>;
 }

@@ -31,14 +31,14 @@ public final class GetProjectVariablesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The name or id of the project.
+     * The name or path of the project.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name or id of the project.
+     * @return The name or path of the project.
      * 
      */
     public String project() {
@@ -82,7 +82,7 @@ public final class GetProjectVariablesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param project The name or id of the project.
+         * @param project The name or path of the project.
          * 
          * @return builder
          * 

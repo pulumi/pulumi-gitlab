@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetClusterAgent
     {
         /// <summary>
-        /// The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+        /// The `gitlab.ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
         /// 
@@ -39,7 +39,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+        /// The `gitlab.ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterAgentResult>("gitlab:index/getClusterAgent:getClusterAgent", args ?? new GetClusterAgentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+        /// The `gitlab.ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
         /// 
@@ -151,7 +151,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int CreatedByUserId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this data source. In the format project:agent_id
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -7,9 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
- *
- * > **Note** exactly one of projectId or fullPath must be provided.
+ * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
  */
@@ -19,6 +17,7 @@ export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pul
     return pulumi.runtime.invoke("gitlab:index/getProjectMembership:getProjectMembership", {
         "fullPath": args.fullPath,
         "inherited": args.inherited,
+        "project": args.project,
         "projectId": args.projectId,
         "query": args.query,
         "userIds": args.userIds,
@@ -31,6 +30,8 @@ export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pul
 export interface GetProjectMembershipArgs {
     /**
      * The full path of the project.
+     *
+     * @deprecated Will be removed in 19.0. Use `project` instead.
      */
     fullPath?: string;
     /**
@@ -38,7 +39,13 @@ export interface GetProjectMembershipArgs {
      */
     inherited?: boolean;
     /**
+     * The ID or full path of the project.
+     */
+    project?: string;
+    /**
      * The ID of the project.
+     *
+     * @deprecated Will be removed in 19.0. Use `project` instead.
      */
     projectId?: number;
     /**
@@ -57,10 +64,12 @@ export interface GetProjectMembershipArgs {
 export interface GetProjectMembershipResult {
     /**
      * The full path of the project.
+     *
+     * @deprecated Will be removed in 19.0. Use `project` instead.
      */
     readonly fullPath: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:query-hash>` if query is set, otherwise `<project>`.
      */
     readonly id: string;
     /**
@@ -72,7 +81,13 @@ export interface GetProjectMembershipResult {
      */
     readonly members: outputs.GetProjectMembershipMember[];
     /**
+     * The ID or full path of the project.
+     */
+    readonly project: string;
+    /**
      * The ID of the project.
+     *
+     * @deprecated Will be removed in 19.0. Use `project` instead.
      */
     readonly projectId: number;
     /**
@@ -85,9 +100,7 @@ export interface GetProjectMembershipResult {
     readonly userIds?: number[];
 }
 /**
- * The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
- *
- * > **Note** exactly one of projectId or fullPath must be provided.
+ * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
  */
@@ -97,6 +110,7 @@ export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectMembership:getProjectMembership", {
         "fullPath": args.fullPath,
         "inherited": args.inherited,
+        "project": args.project,
         "projectId": args.projectId,
         "query": args.query,
         "userIds": args.userIds,
@@ -109,6 +123,8 @@ export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs
 export interface GetProjectMembershipOutputArgs {
     /**
      * The full path of the project.
+     *
+     * @deprecated Will be removed in 19.0. Use `project` instead.
      */
     fullPath?: pulumi.Input<string>;
     /**
@@ -116,7 +132,13 @@ export interface GetProjectMembershipOutputArgs {
      */
     inherited?: pulumi.Input<boolean>;
     /**
+     * The ID or full path of the project.
+     */
+    project?: pulumi.Input<string>;
+    /**
      * The ID of the project.
+     *
+     * @deprecated Will be removed in 19.0. Use `project` instead.
      */
     projectId?: pulumi.Input<number>;
     /**

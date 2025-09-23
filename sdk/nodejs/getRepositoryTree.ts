@@ -62,7 +62,7 @@ export interface GetRepositoryTreeArgs {
  */
 export interface GetRepositoryTreeResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. A hash of project and ref, with path and recursive if set.
      */
     readonly id: string;
     /**

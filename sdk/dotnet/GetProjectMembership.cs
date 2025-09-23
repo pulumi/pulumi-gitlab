@@ -12,9 +12,7 @@ namespace Pulumi.GitLab
     public static class GetProjectMembership
     {
         /// <summary>
-        /// The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
-        /// 
-        /// &gt; **Note** exactly one of project_id or full_path must be provided.
+        /// The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
         /// </summary>
@@ -22,9 +20,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
-        /// 
-        /// &gt; **Note** exactly one of project_id or full_path must be provided.
+        /// The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
         /// </summary>
@@ -32,9 +28,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ProjectMembership` data source allows to list and filter all members of a project specified by either its id or full path.
-        /// 
-        /// &gt; **Note** exactly one of project_id or full_path must be provided.
+        /// The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
         /// </summary>
@@ -56,6 +50,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("inherited")]
         public bool? Inherited { get; set; }
+
+        /// <summary>
+        /// The ID or full path of the project.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
 
         /// <summary>
         /// The ID of the project.
@@ -102,6 +102,12 @@ namespace Pulumi.GitLab
         public Input<bool>? Inherited { get; set; }
 
         /// <summary>
+        /// The ID or full path of the project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// The ID of the project.
         /// </summary>
         [Input("projectId")]
@@ -140,7 +146,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string FullPath;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -151,6 +157,10 @@ namespace Pulumi.GitLab
         /// The list of project members.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectMembershipMemberResult> Members;
+        /// <summary>
+        /// The ID or full path of the project.
+        /// </summary>
+        public readonly string Project;
         /// <summary>
         /// The ID of the project.
         /// </summary>
@@ -174,6 +184,8 @@ namespace Pulumi.GitLab
 
             ImmutableArray<Outputs.GetProjectMembershipMemberResult> members,
 
+            string project,
+
             int projectId,
 
             string? query,
@@ -184,6 +196,7 @@ namespace Pulumi.GitLab
             Id = id;
             Inherited = inherited;
             Members = members;
+            Project = project;
             ProjectId = projectId;
             Query = query;
             UserIds = userIds;

@@ -72,7 +72,7 @@ export interface GetGroupHookResult {
      */
     readonly hookId: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this data source. In the format `<group:hook_id>`.
      */
     readonly id: string;
     /**
@@ -116,7 +116,9 @@ export interface GetGroupHookResult {
      */
     readonly tagPushEvents: boolean;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available in this datasource.
+     *
+     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      */
     readonly token: string;
     /**

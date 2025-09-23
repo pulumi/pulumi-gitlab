@@ -74,7 +74,7 @@ class GetClusterAgentResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this data source. In the format project:agent_id
         """
         return pulumi.get(self, "id")
 
@@ -113,7 +113,7 @@ def get_cluster_agent(agent_id: Optional[_builtins.int] = None,
                       project: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterAgentResult:
     """
-    The `ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+    The `ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 
@@ -148,7 +148,7 @@ def get_cluster_agent_output(agent_id: Optional[pulumi.Input[_builtins.int]] = N
                              project: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterAgentResult]:
     """
-    The `ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+    The `ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 

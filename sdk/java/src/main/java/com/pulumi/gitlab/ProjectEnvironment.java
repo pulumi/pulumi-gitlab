@@ -168,42 +168,42 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="externalUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> externalUrl;
+    private Output<String> externalUrl;
 
     /**
      * @return Place to link to for this environment.
      * 
      */
-    public Output<Optional<String>> externalUrl() {
-        return Codegen.optional(this.externalUrl);
+    public Output<String> externalUrl() {
+        return this.externalUrl;
     }
     /**
      * The Flux resource path to associate with this environment.
      * 
      */
     @Export(name="fluxResourcePath", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> fluxResourcePath;
+    private Output<String> fluxResourcePath;
 
     /**
      * @return The Flux resource path to associate with this environment.
      * 
      */
-    public Output<Optional<String>> fluxResourcePath() {
-        return Codegen.optional(this.fluxResourcePath);
+    public Output<String> fluxResourcePath() {
+        return this.fluxResourcePath;
     }
     /**
      * The Kubernetes namespace to associate with this environment.
      * 
      */
     @Export(name="kubernetesNamespace", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kubernetesNamespace;
+    private Output<String> kubernetesNamespace;
 
     /**
      * @return The Kubernetes namespace to associate with this environment.
      * 
      */
-    public Output<Optional<String>> kubernetesNamespace() {
-        return Codegen.optional(this.kubernetesNamespace);
+    public Output<String> kubernetesNamespace() {
+        return this.kubernetesNamespace;
     }
     /**
      * The name of the environment.
@@ -266,14 +266,14 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="stopBeforeDestroy", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> stopBeforeDestroy;
+    private Output<Boolean> stopBeforeDestroy;
 
     /**
      * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
      * 
      */
-    public Output<Optional<Boolean>> stopBeforeDestroy() {
-        return Codegen.optional(this.stopBeforeDestroy);
+    public Output<Boolean> stopBeforeDestroy() {
+        return this.stopBeforeDestroy;
     }
     /**
      * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.

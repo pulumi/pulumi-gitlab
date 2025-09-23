@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
  *
+ * > Note that `memberRoleId` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
  *
  * ## Example Usage
@@ -86,7 +88,7 @@ export class GroupShareGroup extends pulumi.CustomResource {
      */
     declare public readonly groupId: pulumi.Output<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+     * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
     declare public readonly memberRoleId: pulumi.Output<number | undefined>;
     /**
@@ -151,7 +153,7 @@ export interface GroupShareGroupState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+     * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
     memberRoleId?: pulumi.Input<number>;
     /**
@@ -177,7 +179,7 @@ export interface GroupShareGroupArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+     * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
     memberRoleId?: pulumi.Input<number>;
     /**

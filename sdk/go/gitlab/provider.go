@@ -26,6 +26,10 @@ type Provider struct {
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
+	// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+	ConfigFile pulumi.StringPtrOutput `pulumi:"configFile"`
+	// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+	Context pulumi.StringPtrOutput `pulumi:"context"`
 	// The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
@@ -61,8 +65,14 @@ type providerArgs struct {
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert *string `pulumi:"clientCert"`
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
-	ClientKey      *string `pulumi:"clientKey"`
+	ClientKey *string `pulumi:"clientKey"`
+	// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+	ConfigFile *string `pulumi:"configFile"`
+	// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+	Context        *string `pulumi:"context"`
 	EarlyAuthCheck *bool   `pulumi:"earlyAuthCheck"`
+	// If automatic CI support should be enabled or not. This only works when not providing a token.
+	EnableAutoCiSupport *bool `pulumi:"enableAutoCiSupport"`
 	// A map of headers to append to all API request to the GitLab instance.
 	Headers map[string]string `pulumi:"headers"`
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
@@ -82,8 +92,14 @@ type ProviderArgs struct {
 	// File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
 	ClientCert pulumi.StringPtrInput
 	// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
-	ClientKey      pulumi.StringPtrInput
+	ClientKey pulumi.StringPtrInput
+	// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+	ConfigFile pulumi.StringPtrInput
+	// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+	Context        pulumi.StringPtrInput
 	EarlyAuthCheck pulumi.BoolPtrInput
+	// If automatic CI support should be enabled or not. This only works when not providing a token.
+	EnableAutoCiSupport pulumi.BoolPtrInput
 	// A map of headers to append to all API request to the GitLab instance.
 	Headers pulumi.StringMapInput
 	// When set to true this disables SSL verification of the connection to the GitLab instance.
@@ -172,6 +188,16 @@ func (o ProviderOutput) ClientCert() pulumi.StringPtrOutput {
 // File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
 func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+func (o ProviderOutput) ConfigFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigFile }).(pulumi.StringPtrOutput)
+}
+
+// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+func (o ProviderOutput) Context() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Context }).(pulumi.StringPtrOutput)
 }
 
 // The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
