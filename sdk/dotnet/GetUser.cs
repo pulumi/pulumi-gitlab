@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool External;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;user-id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -7176,6 +7176,121 @@ func (o GetGroupProvisionedUsersProvisionedUserArrayOutput) Index(i pulumi.IntIn
 	}).(GetGroupProvisionedUsersProvisionedUserOutput)
 }
 
+type GetGroupSamlLinksSamlLink struct {
+	// The base access level for members of the SAML group.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Member Role ID (custom role for members of the SAML group.
+	MemberRoleId int `pulumi:"memberRoleId"`
+	// Name of the SAML group.
+	Name string `pulumi:"name"`
+}
+
+// GetGroupSamlLinksSamlLinkInput is an input type that accepts GetGroupSamlLinksSamlLinkArgs and GetGroupSamlLinksSamlLinkOutput values.
+// You can construct a concrete instance of `GetGroupSamlLinksSamlLinkInput` via:
+//
+//	GetGroupSamlLinksSamlLinkArgs{...}
+type GetGroupSamlLinksSamlLinkInput interface {
+	pulumi.Input
+
+	ToGetGroupSamlLinksSamlLinkOutput() GetGroupSamlLinksSamlLinkOutput
+	ToGetGroupSamlLinksSamlLinkOutputWithContext(context.Context) GetGroupSamlLinksSamlLinkOutput
+}
+
+type GetGroupSamlLinksSamlLinkArgs struct {
+	// The base access level for members of the SAML group.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Member Role ID (custom role for members of the SAML group.
+	MemberRoleId pulumi.IntInput `pulumi:"memberRoleId"`
+	// Name of the SAML group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGroupSamlLinksSamlLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (i GetGroupSamlLinksSamlLinkArgs) ToGetGroupSamlLinksSamlLinkOutput() GetGroupSamlLinksSamlLinkOutput {
+	return i.ToGetGroupSamlLinksSamlLinkOutputWithContext(context.Background())
+}
+
+func (i GetGroupSamlLinksSamlLinkArgs) ToGetGroupSamlLinksSamlLinkOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSamlLinksSamlLinkOutput)
+}
+
+// GetGroupSamlLinksSamlLinkArrayInput is an input type that accepts GetGroupSamlLinksSamlLinkArray and GetGroupSamlLinksSamlLinkArrayOutput values.
+// You can construct a concrete instance of `GetGroupSamlLinksSamlLinkArrayInput` via:
+//
+//	GetGroupSamlLinksSamlLinkArray{ GetGroupSamlLinksSamlLinkArgs{...} }
+type GetGroupSamlLinksSamlLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupSamlLinksSamlLinkArrayOutput() GetGroupSamlLinksSamlLinkArrayOutput
+	ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(context.Context) GetGroupSamlLinksSamlLinkArrayOutput
+}
+
+type GetGroupSamlLinksSamlLinkArray []GetGroupSamlLinksSamlLinkInput
+
+func (GetGroupSamlLinksSamlLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (i GetGroupSamlLinksSamlLinkArray) ToGetGroupSamlLinksSamlLinkArrayOutput() GetGroupSamlLinksSamlLinkArrayOutput {
+	return i.ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupSamlLinksSamlLinkArray) ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupSamlLinksSamlLinkArrayOutput)
+}
+
+type GetGroupSamlLinksSamlLinkOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSamlLinksSamlLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (o GetGroupSamlLinksSamlLinkOutput) ToGetGroupSamlLinksSamlLinkOutput() GetGroupSamlLinksSamlLinkOutput {
+	return o
+}
+
+func (o GetGroupSamlLinksSamlLinkOutput) ToGetGroupSamlLinksSamlLinkOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkOutput {
+	return o
+}
+
+// The base access level for members of the SAML group.
+func (o GetGroupSamlLinksSamlLinkOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSamlLinksSamlLink) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Member Role ID (custom role for members of the SAML group.
+func (o GetGroupSamlLinksSamlLinkOutput) MemberRoleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupSamlLinksSamlLink) int { return v.MemberRoleId }).(pulumi.IntOutput)
+}
+
+// Name of the SAML group.
+func (o GetGroupSamlLinksSamlLinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupSamlLinksSamlLink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGroupSamlLinksSamlLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupSamlLinksSamlLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupSamlLinksSamlLink)(nil)).Elem()
+}
+
+func (o GetGroupSamlLinksSamlLinkArrayOutput) ToGetGroupSamlLinksSamlLinkArrayOutput() GetGroupSamlLinksSamlLinkArrayOutput {
+	return o
+}
+
+func (o GetGroupSamlLinksSamlLinkArrayOutput) ToGetGroupSamlLinksSamlLinkArrayOutputWithContext(ctx context.Context) GetGroupSamlLinksSamlLinkArrayOutput {
+	return o
+}
+
+func (o GetGroupSamlLinksSamlLinkArrayOutput) Index(i pulumi.IntInput) GetGroupSamlLinksSamlLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupSamlLinksSamlLink {
+		return vs[0].([]GetGroupSamlLinksSamlLink)[vs[1].(int)]
+	}).(GetGroupSamlLinksSamlLinkOutput)
+}
+
 type GetGroupSharedWithGroup struct {
 	// Share with group expiration date.
 	ExpiresAt string `pulumi:"expiresAt"`
@@ -8239,15 +8354,15 @@ type GetInstanceVariablesVariable struct {
 	Description string `pulumi:"description"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked bool `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -8267,15 +8382,15 @@ type GetInstanceVariablesVariableArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked pulumi.BoolInput `pulumi:"masked"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolInput `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw pulumi.BoolInput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType pulumi.StringInput `pulumi:"variableType"`
 }
 
@@ -8340,17 +8455,17 @@ func (o GetInstanceVariablesVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs.
 func (o GetInstanceVariablesVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 func (o GetInstanceVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+// If set to `true`, the variable will be treated as a raw string.
 func (o GetInstanceVariablesVariableOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
@@ -8360,7 +8475,7 @@ func (o GetInstanceVariablesVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+// The type of the variable, either `envVar` or `file`.
 func (o GetInstanceVariablesVariableOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVariablesVariable) string { return v.VariableType }).(pulumi.StringOutput)
 }
@@ -9193,7 +9308,7 @@ func (o GetProjectAccessTokensAccessTokenArrayOutput) Index(i pulumi.IntInput) G
 type GetProjectBranchesBranch struct {
 	// Bool, true if you can push to the branch.
 	CanPush bool `pulumi:"canPush"`
-	// The commit associated with this branch.
+	// The commit associated with the branch ref.
 	Commits []GetProjectBranchesBranchCommit `pulumi:"commits"`
 	// Bool, true if branch is the default branch for the project.
 	Default bool `pulumi:"default"`
@@ -9225,7 +9340,7 @@ type GetProjectBranchesBranchInput interface {
 type GetProjectBranchesBranchArgs struct {
 	// Bool, true if you can push to the branch.
 	CanPush pulumi.BoolInput `pulumi:"canPush"`
-	// The commit associated with this branch.
+	// The commit associated with the branch ref.
 	Commits GetProjectBranchesBranchCommitArrayInput `pulumi:"commits"`
 	// Bool, true if branch is the default branch for the project.
 	Default pulumi.BoolInput `pulumi:"default"`
@@ -9299,7 +9414,7 @@ func (o GetProjectBranchesBranchOutput) CanPush() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectBranchesBranch) bool { return v.CanPush }).(pulumi.BoolOutput)
 }
 
-// The commit associated with this branch.
+// The commit associated with the branch ref.
 func (o GetProjectBranchesBranchOutput) Commits() GetProjectBranchesBranchCommitArrayOutput {
 	return o.ApplyT(func(v GetProjectBranchesBranch) []GetProjectBranchesBranchCommit { return v.Commits }).(GetProjectBranchesBranchCommitArrayOutput)
 }
@@ -9946,7 +10061,9 @@ type GetProjectHooksHook struct {
 	ReleasesEvents bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available in this datasource.
+	//
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
@@ -10000,7 +10117,9 @@ type GetProjectHooksHookArgs struct {
 	ReleasesEvents pulumi.BoolInput `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolInput `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available in this datasource.
+	//
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 	Token pulumi.StringInput `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -10144,7 +10263,9 @@ func (o GetProjectHooksHookOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available for imported resources.
+// A token to present when invoking the hook. The token is not available in this datasource.
+//
+// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 func (o GetProjectHooksHookOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -11853,7 +11974,7 @@ type GetProjectMilestonesMilestone struct {
 	Expired bool `pulumi:"expired"`
 	// The ID of the project's milestone.
 	Iid int `pulumi:"iid"`
-	// The instance-wide ID of the project’s milestone.
+	// The instance-wide ID of the project's milestone.
 	MilestoneId int `pulumi:"milestoneId"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
@@ -11893,7 +12014,7 @@ type GetProjectMilestonesMilestoneArgs struct {
 	Expired pulumi.BoolInput `pulumi:"expired"`
 	// The ID of the project's milestone.
 	Iid pulumi.IntInput `pulumi:"iid"`
-	// The instance-wide ID of the project’s milestone.
+	// The instance-wide ID of the project's milestone.
 	MilestoneId pulumi.IntInput `pulumi:"milestoneId"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -11987,7 +12108,7 @@ func (o GetProjectMilestonesMilestoneOutput) Iid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectMilestonesMilestone) int { return v.Iid }).(pulumi.IntOutput)
 }
 
-// The instance-wide ID of the project’s milestone.
+// The instance-wide ID of the project's milestone.
 func (o GetProjectMilestonesMilestoneOutput) MilestoneId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectMilestonesMilestone) int { return v.MilestoneId }).(pulumi.IntOutput)
 }
@@ -14143,23 +14264,23 @@ func (o GetProjectTagsTagReleaseArrayOutput) Index(i pulumi.IntInput) GetProject
 }
 
 type GetProjectVariablesVariable struct {
-	// The description of the variable.
+	// The description of the variable. Maximum of 255 characters.
 	Description string `pulumi:"description"`
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked bool `pulumi:"masked"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project string `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected bool `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw bool `pulumi:"raw"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType string `pulumi:"variableType"`
 }
 
@@ -14175,23 +14296,23 @@ type GetProjectVariablesVariableInput interface {
 }
 
 type GetProjectVariablesVariableArgs struct {
-	// The description of the variable.
+	// The description of the variable. Maximum of 255 characters.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+	// The environment scope of the variable. Defaults to all environment (`*`).
 	EnvironmentScope pulumi.StringInput `pulumi:"environmentScope"`
 	// The name of the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+	// If set to `true`, the value of the variable will be hidden in job logs.
 	Masked pulumi.BoolInput `pulumi:"masked"`
-	// The name or id of the project.
+	// The name or path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
-	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 	Protected pulumi.BoolInput `pulumi:"protected"`
-	// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+	// If set to `true`, the variable will be treated as a raw string.
 	Raw pulumi.BoolInput `pulumi:"raw"`
 	// The value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
-	// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+	// The type of the variable, either `envVar` or `file`.
 	VariableType pulumi.StringInput `pulumi:"variableType"`
 }
 
@@ -14246,12 +14367,12 @@ func (o GetProjectVariablesVariableOutput) ToGetProjectVariablesVariableOutputWi
 	return o
 }
 
-// The description of the variable.
+// The description of the variable. Maximum of 255 characters.
 func (o GetProjectVariablesVariableOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+// The environment scope of the variable. Defaults to all environment (`*`).
 func (o GetProjectVariablesVariableOutput) EnvironmentScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.EnvironmentScope }).(pulumi.StringOutput)
 }
@@ -14261,22 +14382,22 @@ func (o GetProjectVariablesVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+// If set to `true`, the value of the variable will be hidden in job logs.
 func (o GetProjectVariablesVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
-// The name or id of the project.
+// The name or path of the project.
 func (o GetProjectVariablesVariableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
 func (o GetProjectVariablesVariableOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) bool { return v.Protected }).(pulumi.BoolOutput)
 }
 
-// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+// If set to `true`, the variable will be treated as a raw string.
 func (o GetProjectVariablesVariableOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) bool { return v.Raw }).(pulumi.BoolOutput)
 }
@@ -14286,7 +14407,7 @@ func (o GetProjectVariablesVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+// The type of the variable, either `envVar` or `file`.
 func (o GetProjectVariablesVariableOutput) VariableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectVariablesVariable) string { return v.VariableType }).(pulumi.StringOutput)
 }
@@ -16546,7 +16667,7 @@ type GetReleaseLinksReleaseLink struct {
 	Filepath string `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId int `pulumi:"linkId"`
-	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
 	LinkType string `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name string `pulumi:"name"`
@@ -16578,7 +16699,7 @@ type GetReleaseLinksReleaseLinkArgs struct {
 	Filepath pulumi.StringInput `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId pulumi.IntInput `pulumi:"linkId"`
-	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
 	LinkType pulumi.StringInput `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -16661,7 +16782,7 @@ func (o GetReleaseLinksReleaseLinkOutput) LinkId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) int { return v.LinkId }).(pulumi.IntOutput)
 }
 
-// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
 func (o GetReleaseLinksReleaseLinkOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.LinkType }).(pulumi.StringOutput)
 }
@@ -16707,12 +16828,16 @@ func (o GetReleaseLinksReleaseLinkArrayOutput) Index(i pulumi.IntInput) GetRelea
 }
 
 type GetRepositoryTreeTree struct {
-	// The SHA-1 hash of the tree or blob in the repository.
+	// The project ID.
+	//
+	// Deprecated: Use `nodeId` instead. To be removed in version 19.0.
 	Id string `pulumi:"id"`
 	// Unix access mode of the file in the repository.
 	Mode string `pulumi:"mode"`
 	// Name of the blob or tree in the repository
 	Name string `pulumi:"name"`
+	// The SHA-1 hash of the tree or blob in the repository.
+	NodeId string `pulumi:"nodeId"`
 	// Path of the object inside of the repository.
 	Path string `pulumi:"path"`
 	// Type of object in the repository. Can be either type tree or of type blob
@@ -16731,12 +16856,16 @@ type GetRepositoryTreeTreeInput interface {
 }
 
 type GetRepositoryTreeTreeArgs struct {
-	// The SHA-1 hash of the tree or blob in the repository.
+	// The project ID.
+	//
+	// Deprecated: Use `nodeId` instead. To be removed in version 19.0.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Unix access mode of the file in the repository.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Name of the blob or tree in the repository
 	Name pulumi.StringInput `pulumi:"name"`
+	// The SHA-1 hash of the tree or blob in the repository.
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
 	// Path of the object inside of the repository.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Type of object in the repository. Can be either type tree or of type blob
@@ -16794,7 +16923,9 @@ func (o GetRepositoryTreeTreeOutput) ToGetRepositoryTreeTreeOutputWithContext(ct
 	return o
 }
 
-// The SHA-1 hash of the tree or blob in the repository.
+// The project ID.
+//
+// Deprecated: Use `nodeId` instead. To be removed in version 19.0.
 func (o GetRepositoryTreeTreeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryTreeTree) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -16807,6 +16938,11 @@ func (o GetRepositoryTreeTreeOutput) Mode() pulumi.StringOutput {
 // Name of the blob or tree in the repository
 func (o GetRepositoryTreeTreeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryTreeTree) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SHA-1 hash of the tree or blob in the repository.
+func (o GetRepositoryTreeTreeOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryTreeTree) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
 // Path of the object inside of the repository.
@@ -17555,6 +17691,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserArrayInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkArrayInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupInput)(nil)).Elem(), GetGroupSharedWithGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupArrayInput)(nil)).Elem(), GetGroupSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArgs{})
@@ -17753,6 +17891,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserOutput{})
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkOutput{})
+	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupOutput{})

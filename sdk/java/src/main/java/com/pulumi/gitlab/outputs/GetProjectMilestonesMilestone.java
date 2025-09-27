@@ -38,7 +38,7 @@ public final class GetProjectMilestonesMilestone {
      */
     private Integer iid;
     /**
-     * @return The instance-wide ID of the project’s milestone.
+     * @return The instance-wide ID of the project&#39;s milestone.
      * 
      */
     private Integer milestoneId;
@@ -115,7 +115,7 @@ public final class GetProjectMilestonesMilestone {
         return this.iid;
     }
     /**
-     * @return The instance-wide ID of the project’s milestone.
+     * @return The instance-wide ID of the project&#39;s milestone.
      * 
      */
     public Integer milestoneId() {

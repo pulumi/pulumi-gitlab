@@ -39,7 +39,7 @@ public final class GetBranchResult {
      */
     private Boolean developerCanPush;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:name&gt;`.
      * 
      */
     private String id;
@@ -106,7 +106,7 @@ public final class GetBranchResult {
         return this.developerCanPush;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:name&gt;`.
      * 
      */
     public String id() {

@@ -33,7 +33,7 @@ public final class GetProjectMilestoneResult {
      */
     private Boolean expired;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:milestone-id&gt;`.
      * 
      */
     private String id;
@@ -113,7 +113,7 @@ public final class GetProjectMilestoneResult {
         return this.expired;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:milestone-id&gt;`.
      * 
      */
     public String id() {

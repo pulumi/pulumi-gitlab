@@ -52,7 +52,7 @@ export interface GetProjectMilestoneResult {
      */
     readonly expired: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:milestone-id>`.
      */
     readonly id: string;
     /**

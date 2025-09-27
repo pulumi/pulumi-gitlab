@@ -102,7 +102,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool DeveloperCanPush;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:name&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

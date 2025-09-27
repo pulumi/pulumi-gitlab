@@ -189,7 +189,7 @@ type Group struct {
 	PermanentlyRemoveOnDelete pulumi.BoolPtrOutput `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolOutput `pulumi:"preventForkingOutsideGroup"`
-	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel pulumi.StringOutput `pulumi:"projectCreationLevel"`
 	// Push rules for the group.
 	PushRules GroupPushRulesOutput `pulumi:"pushRules"`
@@ -300,7 +300,7 @@ type groupState struct {
 	PermanentlyRemoveOnDelete *bool `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
-	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Push rules for the group.
 	PushRules *GroupPushRules `pulumi:"pushRules"`
@@ -375,7 +375,7 @@ type GroupState struct {
 	PermanentlyRemoveOnDelete pulumi.BoolPtrInput
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
-	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Push rules for the group.
 	PushRules GroupPushRulesPtrInput
@@ -448,7 +448,7 @@ type groupArgs struct {
 	PermanentlyRemoveOnDelete *bool `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
-	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Push rules for the group.
 	PushRules *GroupPushRules `pulumi:"pushRules"`
@@ -514,7 +514,7 @@ type GroupArgs struct {
 	PermanentlyRemoveOnDelete pulumi.BoolPtrInput
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
-	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Push rules for the group.
 	PushRules GroupPushRulesPtrInput
@@ -737,7 +737,7 @@ func (o GroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
 }
 
-// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`
+// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 func (o GroupOutput) ProjectCreationLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.ProjectCreationLevel }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+ * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
  *
@@ -31,16 +31,16 @@ export function getInstanceVariables(opts?: pulumi.InvokeOptions): Promise<GetIn
  */
 export interface GetInstanceVariablesResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the hardcoded format `instanceVariables`.
      */
     readonly id: string;
     /**
-     * The list of variables returned by the search
+     * The list of variables returned by the search.
      */
     readonly variables: outputs.GetInstanceVariablesVariable[];
 }
 /**
- * The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+ * The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
  *

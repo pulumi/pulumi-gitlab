@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
  * 
+ * &gt; Note that `member_role_id` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
  * 
  * ## Example Usage
@@ -124,14 +126,14 @@ public class GroupShareGroup extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+     * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+     * @return The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
      * 
      */
     public Output<Optional<Integer>> memberRoleId() {

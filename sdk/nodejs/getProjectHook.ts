@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
+ * The `gitlab.ProjectHook` data source retrieves details about a hook in a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
  *
@@ -75,7 +75,7 @@ export interface GetProjectHookResult {
      */
     readonly hookId: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project>:<hook-id>`.
      */
     readonly id: string;
     /**
@@ -123,7 +123,9 @@ export interface GetProjectHookResult {
      */
     readonly tagPushEvents: boolean;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available in this datasource.
+     *
+     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank.
      */
     readonly token: string;
     /**
@@ -136,7 +138,7 @@ export interface GetProjectHookResult {
     readonly wikiPageEvents: boolean;
 }
 /**
- * The `gitlab.ProjectHook` data source allows to retrieve details about a hook in a project.
+ * The `gitlab.ProjectHook` data source retrieves details about a hook in a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
  *

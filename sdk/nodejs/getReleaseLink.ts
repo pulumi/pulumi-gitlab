@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ReleaseLink` data source allows get details of a release link.
+ * The `gitlab.ReleaseLink` data source allows you to get details of a release link.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  */
@@ -53,7 +53,7 @@ export interface GetReleaseLinkResult {
      */
     readonly filepath: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this data source.
      */
     readonly id: string;
     /**
@@ -61,7 +61,7 @@ export interface GetReleaseLinkResult {
      */
     readonly linkId: number;
     /**
-     * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
      */
     readonly linkType: string;
     /**
@@ -82,7 +82,7 @@ export interface GetReleaseLinkResult {
     readonly url: string;
 }
 /**
- * The `gitlab.ReleaseLink` data source allows get details of a release link.
+ * The `gitlab.ReleaseLink` data source allows you to get details of a release link.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  */

@@ -37,7 +37,7 @@ export interface GetProjectBranchesResult {
      */
     readonly branches: outputs.GetProjectBranchesBranch[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project>`.
      */
     readonly id: string;
     /**

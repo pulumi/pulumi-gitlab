@@ -128,7 +128,7 @@ namespace Pulumi.GitLab
         /// The Description for the agent.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The ISO8601 datetime when the token was last used.

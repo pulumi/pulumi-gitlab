@@ -82,6 +82,8 @@ type GetUsersArgs struct {
 	ExternUid *string `pulumi:"externUid"`
 	// Filters only external users.
 	External *bool `pulumi:"external"`
+	// Filters only regular users that are not bot or internal users.
+	Humans *bool `pulumi:"humans"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
 	// Search users by username, name or email.
@@ -114,7 +116,9 @@ type GetUsersResult struct {
 	ExternUid *string `pulumi:"externUid"`
 	// Filters only external users.
 	External *bool `pulumi:"external"`
-	// The provider-assigned unique ID for this managed resource.
+	// Filters only regular users that are not bot or internal users.
+	Humans *bool `pulumi:"humans"`
+	// The ID of this datasource. In the format of a hash taken from the search options.
 	Id string `pulumi:"id"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
@@ -159,6 +163,8 @@ type GetUsersOutputArgs struct {
 	ExternUid pulumi.StringPtrInput `pulumi:"externUid"`
 	// Filters only external users.
 	External pulumi.BoolPtrInput `pulumi:"external"`
+	// Filters only regular users that are not bot or internal users.
+	Humans pulumi.BoolPtrInput `pulumi:"humans"`
 	// Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Search users by username, name or email.
@@ -235,7 +241,12 @@ func (o GetUsersResultOutput) External() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *bool { return v.External }).(pulumi.BoolPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Filters only regular users that are not bot or internal users.
+func (o GetUsersResultOutput) Humans() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.Humans }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of this datasource. In the format of a hash taken from the search options.
 func (o GetUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }

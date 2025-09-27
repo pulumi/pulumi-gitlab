@@ -44,7 +44,7 @@ type LookupBranchResult struct {
 	DeveloperCanMerge bool `pulumi:"developerCanMerge"`
 	// Bool, true if developer level access allows git push.
 	DeveloperCanPush bool `pulumi:"developerCanPush"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:name>`.
 	Id string `pulumi:"id"`
 	// Bool, true if the branch has been merged into its parent.
 	Merged bool `pulumi:"merged"`
@@ -119,7 +119,7 @@ func (o LookupBranchResultOutput) DeveloperCanPush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBranchResult) bool { return v.DeveloperCanPush }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:name>`.
 func (o LookupBranchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBranchResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -19,10 +19,14 @@ public final class GetProjectMembershipResult {
     /**
      * @return The full path of the project.
      * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
      */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     private String fullPath;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
      * 
      */
     private String id;
@@ -37,9 +41,18 @@ public final class GetProjectMembershipResult {
      */
     private List<GetProjectMembershipMember> members;
     /**
-     * @return The ID of the project.
+     * @return The ID or full path of the project.
      * 
      */
+    private String project;
+    /**
+     * @return The ID of the project.
+     * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
+     */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     private Integer projectId;
     /**
      * @return A query string to search for members
@@ -56,12 +69,16 @@ public final class GetProjectMembershipResult {
     /**
      * @return The full path of the project.
      * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
      */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     public String fullPath() {
         return this.fullPath;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
      * 
      */
     public String id() {
@@ -82,9 +99,20 @@ public final class GetProjectMembershipResult {
         return this.members;
     }
     /**
-     * @return The ID of the project.
+     * @return The ID or full path of the project.
      * 
      */
+    public String project() {
+        return this.project;
+    }
+    /**
+     * @return The ID of the project.
+     * 
+     * @deprecated
+     * Will be removed in 19.0. Use `project` instead.
+     * 
+     */
+    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
     public Integer projectId() {
         return this.projectId;
     }
@@ -116,6 +144,7 @@ public final class GetProjectMembershipResult {
         private String id;
         private @Nullable Boolean inherited;
         private List<GetProjectMembershipMember> members;
+        private String project;
         private Integer projectId;
         private @Nullable String query;
         private @Nullable List<Integer> userIds;
@@ -126,6 +155,7 @@ public final class GetProjectMembershipResult {
     	      this.id = defaults.id;
     	      this.inherited = defaults.inherited;
     	      this.members = defaults.members;
+    	      this.project = defaults.project;
     	      this.projectId = defaults.projectId;
     	      this.query = defaults.query;
     	      this.userIds = defaults.userIds;
@@ -165,6 +195,14 @@ public final class GetProjectMembershipResult {
             return members(List.of(members));
         }
         @CustomType.Setter
+        public Builder project(String project) {
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "project");
+            }
+            this.project = project;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectId(Integer projectId) {
             if (projectId == null) {
               throw new MissingRequiredPropertyException("GetProjectMembershipResult", "projectId");
@@ -193,6 +231,7 @@ public final class GetProjectMembershipResult {
             _resultValue.id = id;
             _resultValue.inherited = inherited;
             _resultValue.members = members;
+            _resultValue.project = project;
             _resultValue.projectId = projectId;
             _resultValue.query = query;
             _resultValue.userIds = userIds;

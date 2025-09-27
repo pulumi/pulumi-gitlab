@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetInstanceVariable
     {
         /// <summary>
-        /// The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+        /// The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceVariableResult>("gitlab:index/getInstanceVariable:getInstanceVariable", args ?? new GetInstanceVariableArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+        /// The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceVariableResult>("gitlab:index/getInstanceVariable:getInstanceVariable", args ?? new GetInstanceVariableInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+        /// The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
         /// 
@@ -128,7 +128,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;key&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -136,15 +136,15 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs.
         /// </summary>
         public readonly bool Masked;
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         /// </summary>
         public readonly bool Protected;
         /// <summary>
-        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// If set to `true`, the variable will be treated as a raw string.
         /// </summary>
         public readonly bool Raw;
         /// <summary>
@@ -152,7 +152,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        /// The type of the variable, either `env_var` or `file`.
         /// </summary>
         public readonly string VariableType;
 

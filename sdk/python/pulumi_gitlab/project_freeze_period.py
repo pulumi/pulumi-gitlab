@@ -25,9 +25,9 @@ class ProjectFreezePeriodArgs:
                  cron_timezone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectFreezePeriod resource.
-        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
-        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the schedule to.
+        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (for example, `0 2 * * *`).
+        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (for example, `0 1 * * *`).
+        :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the freeze period to.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         """
         pulumi.set(__self__, "freeze_end", freeze_end)
@@ -40,7 +40,7 @@ class ProjectFreezePeriodArgs:
     @pulumi.getter(name="freezeEnd")
     def freeze_end(self) -> pulumi.Input[_builtins.str]:
         """
-        End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+        End of the Freeze Period in cron format (for example, `0 2 * * *`).
         """
         return pulumi.get(self, "freeze_end")
 
@@ -52,7 +52,7 @@ class ProjectFreezePeriodArgs:
     @pulumi.getter(name="freezeStart")
     def freeze_start(self) -> pulumi.Input[_builtins.str]:
         """
-        Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+        Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         """
         return pulumi.get(self, "freeze_start")
 
@@ -64,7 +64,7 @@ class ProjectFreezePeriodArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID or URL-encoded path of the project to add the schedule to.
+        The ID or path of the project to add the freeze period to.
         """
         return pulumi.get(self, "project")
 
@@ -95,9 +95,9 @@ class _ProjectFreezePeriodState:
         """
         Input properties used for looking up and filtering ProjectFreezePeriod resources.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
-        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
-        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the schedule to.
+        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (for example, `0 2 * * *`).
+        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (for example, `0 1 * * *`).
+        :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the freeze period to.
         """
         if cron_timezone is not None:
             pulumi.set(__self__, "cron_timezone", cron_timezone)
@@ -124,7 +124,7 @@ class _ProjectFreezePeriodState:
     @pulumi.getter(name="freezeEnd")
     def freeze_end(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+        End of the Freeze Period in cron format (for example, `0 2 * * *`).
         """
         return pulumi.get(self, "freeze_end")
 
@@ -136,7 +136,7 @@ class _ProjectFreezePeriodState:
     @pulumi.getter(name="freezeStart")
     def freeze_start(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+        Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         """
         return pulumi.get(self, "freeze_start")
 
@@ -148,7 +148,7 @@ class _ProjectFreezePeriodState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID or URL-encoded path of the project to add the schedule to.
+        The ID or path of the project to add the freeze period to.
         """
         return pulumi.get(self, "project")
 
@@ -211,9 +211,9 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
-        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
-        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the schedule to.
+        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (for example, `0 2 * * *`).
+        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (for example, `0 1 * * *`).
+        :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the freeze period to.
         """
         ...
     @overload
@@ -321,9 +321,9 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
-        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (e.g. `0 2 * * *`).
-        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
-        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the schedule to.
+        :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (for example, `0 2 * * *`).
+        :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (for example, `0 1 * * *`).
+        :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the freeze period to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,7 +337,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def cron_timezone(self) -> pulumi.Output[_builtins.str]:
         """
         The timezone.
         """
@@ -347,7 +347,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
     @pulumi.getter(name="freezeEnd")
     def freeze_end(self) -> pulumi.Output[_builtins.str]:
         """
-        End of the Freeze Period in cron format (e.g. `0 2 * * *`).
+        End of the Freeze Period in cron format (for example, `0 2 * * *`).
         """
         return pulumi.get(self, "freeze_end")
 
@@ -355,7 +355,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
     @pulumi.getter(name="freezeStart")
     def freeze_start(self) -> pulumi.Output[_builtins.str]:
         """
-        Start of the Freeze Period in cron format (e.g. `0 1 * * *`).
+        Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         """
         return pulumi.get(self, "freeze_start")
 
@@ -363,7 +363,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID or URL-encoded path of the project to add the schedule to.
+        The ID or path of the project to add the freeze period to.
         """
         return pulumi.get(self, "project")
 

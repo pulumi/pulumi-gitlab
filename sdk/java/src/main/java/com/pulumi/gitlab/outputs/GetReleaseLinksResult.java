@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetReleaseLinksResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source.
      * 
      */
     private String id;
     /**
-     * @return The ID or full path to the project.
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     private String project;
@@ -35,14 +35,14 @@ public final class GetReleaseLinksResult {
 
     private GetReleaseLinksResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID or full path to the project.
+     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
      * 
      */
     public String project() {

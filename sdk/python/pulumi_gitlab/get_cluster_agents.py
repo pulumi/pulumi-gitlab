@@ -50,7 +50,7 @@ class GetClusterAgentsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this data source. In the format \\n\\n
         """
         return pulumi.get(self, "id")
 
@@ -58,7 +58,7 @@ class GetClusterAgentsResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The ID or full path of the project owned by the authenticated user.
+        ID or full path of the project maintained by the authenticated user.
         """
         return pulumi.get(self, "project")
 
@@ -77,7 +77,7 @@ class AwaitableGetClusterAgentsResult(GetClusterAgentsResult):
 def get_cluster_agents(project: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterAgentsResult:
     """
-    The `get_cluster_agents` data source allows details of GitLab Agents for Kubernetes in a project.
+    The `get_cluster_agents` data source retrieves details of GitLab Agents for Kubernetes in a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 
@@ -91,7 +91,7 @@ def get_cluster_agents(project: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str project: The ID or full path of the project owned by the authenticated user.
+    :param _builtins.str project: ID or full path of the project maintained by the authenticated user.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -105,7 +105,7 @@ def get_cluster_agents(project: Optional[_builtins.str] = None,
 def get_cluster_agents_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterAgentsResult]:
     """
-    The `get_cluster_agents` data source allows details of GitLab Agents for Kubernetes in a project.
+    The `get_cluster_agents` data source retrieves details of GitLab Agents for Kubernetes in a project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 
@@ -119,7 +119,7 @@ def get_cluster_agents_output(project: Optional[pulumi.Input[_builtins.str]] = N
     ```
 
 
-    :param _builtins.str project: The ID or full path of the project owned by the authenticated user.
+    :param _builtins.str project: ID or full path of the project maintained by the authenticated user.
     """
     __args__ = dict()
     __args__['project'] = project

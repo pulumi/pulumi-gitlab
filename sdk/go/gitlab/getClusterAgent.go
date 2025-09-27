@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ClusterAgent` data source allows to retrieve details about a GitLab Agent for Kubernetes.
+// The `ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/cluster_agents/)
 //
@@ -67,7 +67,7 @@ type LookupClusterAgentResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of the user who created the agent.
 	CreatedByUserId int `pulumi:"createdByUserId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this data source. In the format project:agent_id
 	Id string `pulumi:"id"`
 	// The Name of the agent.
 	Name string `pulumi:"name"`
@@ -126,7 +126,7 @@ func (o LookupClusterAgentResultOutput) CreatedByUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) int { return v.CreatedByUserId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this data source. In the format project:agent_id
 func (o LookupClusterAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }

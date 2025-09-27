@@ -28,7 +28,7 @@ public final class GetReleaseLinkResult {
      */
     private String filepath;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source.
      * 
      */
     private String id;
@@ -38,7 +38,7 @@ public final class GetReleaseLinkResult {
      */
     private Integer linkId;
     /**
-     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
      * 
      */
     private String linkType;
@@ -86,7 +86,7 @@ public final class GetReleaseLinkResult {
         return this.filepath;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source.
      * 
      */
     public String id() {
@@ -100,7 +100,7 @@ public final class GetReleaseLinkResult {
         return this.linkId;
     }
     /**
-     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+     * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
      * 
      */
     public String linkType() {

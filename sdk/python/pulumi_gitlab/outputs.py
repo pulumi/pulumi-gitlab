@@ -57,6 +57,7 @@ __all__ = [
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
     'GetGroupProvisionedUsersProvisionedUserResult',
+    'GetGroupSamlLinksSamlLinkResult',
     'GetGroupSharedWithGroupResult',
     'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
@@ -4199,6 +4200,46 @@ class GetGroupProvisionedUsersProvisionedUserResult(dict):
 
 
 @pulumi.output_type
+class GetGroupSamlLinksSamlLinkResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 member_role_id: _builtins.int,
+                 name: _builtins.str):
+        """
+        :param _builtins.str access_level: The base access level for members of the SAML group.
+        :param _builtins.int member_role_id: Member Role ID (custom role for members of the SAML group.
+        :param _builtins.str name: Name of the SAML group.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "member_role_id", member_role_id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        The base access level for members of the SAML group.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="memberRoleId")
+    def member_role_id(self) -> _builtins.int:
+        """
+        Member Role ID (custom role for members of the SAML group.
+        """
+        return pulumi.get(self, "member_role_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the SAML group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetGroupSharedWithGroupResult(dict):
     def __init__(__self__, *,
                  expires_at: _builtins.str,
@@ -4882,11 +4923,11 @@ class GetInstanceVariablesVariableResult(dict):
         """
         :param _builtins.str description: The description of the variable. Maximum of 255 characters.
         :param _builtins.str key: The name of the variable.
-        :param _builtins.bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
-        :param _builtins.bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param _builtins.bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param _builtins.bool masked: If set to `true`, the value of the variable will be hidden in job logs.
+        :param _builtins.bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param _builtins.bool raw: If set to `true`, the variable will be treated as a raw string.
         :param _builtins.str value: The value of the variable.
-        :param _builtins.str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param _builtins.str variable_type: The type of the variable, either `env_var` or `file`.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "key", key)
@@ -4916,7 +4957,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def masked(self) -> _builtins.bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs.
         """
         return pulumi.get(self, "masked")
 
@@ -4924,7 +4965,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -4932,7 +4973,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter
     def raw(self) -> _builtins.bool:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        If set to `true`, the variable will be treated as a raw string.
         """
         return pulumi.get(self, "raw")
 
@@ -4948,7 +4989,7 @@ class GetInstanceVariablesVariableResult(dict):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> _builtins.str:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of the variable, either `env_var` or `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -5461,7 +5502,7 @@ class GetProjectBranchesBranchResult(dict):
                  web_url: _builtins.str):
         """
         :param _builtins.bool can_push: Bool, true if you can push to the branch.
-        :param Sequence['GetProjectBranchesBranchCommitArgs'] commits: The commit associated with this branch.
+        :param Sequence['GetProjectBranchesBranchCommitArgs'] commits: The commit associated with the branch ref.
         :param _builtins.bool default: Bool, true if branch is the default branch for the project.
         :param _builtins.bool developers_can_merge: Bool, true if developer level access allows to merge branch.
         :param _builtins.bool developers_can_push: Bool, true if developer level access allows git push.
@@ -5492,7 +5533,7 @@ class GetProjectBranchesBranchResult(dict):
     @pulumi.getter
     def commits(self) -> Sequence['outputs.GetProjectBranchesBranchCommitResult']:
         """
-        The commit associated with this branch.
+        The commit associated with the branch ref.
         """
         return pulumi.get(self, "commits")
 
@@ -5967,7 +6008,7 @@ class GetProjectHooksHookResult(dict):
         :param _builtins.str push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param _builtins.bool releases_events: Invoke the hook for releases events.
         :param _builtins.bool tag_push_events: Invoke the hook for tag push events.
-        :param _builtins.str token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param _builtins.str token: A token to present when invoking the hook. The token is not available in this datasource.
         :param _builtins.str url: The url of the hook to invoke.
         :param _builtins.bool wiki_page_events: Invoke the hook for wiki page events.
         """
@@ -6130,9 +6171,10 @@ class GetProjectHooksHookResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank.""")
     def token(self) -> _builtins.str:
         """
-        A token to present when invoking the hook. The token is not available for imported resources.
+        A token to present when invoking the hook. The token is not available in this datasource.
         """
         return pulumi.get(self, "token")
 
@@ -7310,7 +7352,7 @@ class GetProjectMilestonesMilestoneResult(dict):
         :param _builtins.str due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
         :param _builtins.bool expired: Bool, true if milestone expired.
         :param _builtins.int iid: The ID of the project's milestone.
-        :param _builtins.int milestone_id: The instance-wide ID of the project’s milestone.
+        :param _builtins.int milestone_id: The instance-wide ID of the project's milestone.
         :param _builtins.str project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param _builtins.int project_id: The project ID of milestone.
         :param _builtins.str start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
@@ -7377,7 +7419,7 @@ class GetProjectMilestonesMilestoneResult(dict):
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> _builtins.int:
         """
-        The instance-wide ID of the project’s milestone.
+        The instance-wide ID of the project's milestone.
         """
         return pulumi.get(self, "milestone_id")
 
@@ -8507,15 +8549,15 @@ class GetProjectVariablesVariableResult(dict):
                  value: _builtins.str,
                  variable_type: _builtins.str):
         """
-        :param _builtins.str description: The description of the variable.
-        :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        :param _builtins.str description: The description of the variable. Maximum of 255 characters.
+        :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
         :param _builtins.str key: The name of the variable.
-        :param _builtins.bool masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
-        :param _builtins.str project: The name or id of the project.
-        :param _builtins.bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
-        :param _builtins.bool raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        :param _builtins.bool masked: If set to `true`, the value of the variable will be hidden in job logs.
+        :param _builtins.str project: The name or path of the project.
+        :param _builtins.bool protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        :param _builtins.bool raw: If set to `true`, the variable will be treated as a raw string.
         :param _builtins.str value: The value of the variable.
-        :param _builtins.str variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        :param _builtins.str variable_type: The type of the variable, either `env_var` or `file`.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "environment_scope", environment_scope)
@@ -8531,7 +8573,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the variable.
+        The description of the variable. Maximum of 255 characters.
         """
         return pulumi.get(self, "description")
 
@@ -8539,7 +8581,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter(name="environmentScope")
     def environment_scope(self) -> _builtins.str:
         """
-        The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
+        The environment scope of the variable. Defaults to all environment (`*`).
         """
         return pulumi.get(self, "environment_scope")
 
@@ -8555,7 +8597,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def masked(self) -> _builtins.bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs.
         """
         return pulumi.get(self, "masked")
 
@@ -8563,7 +8605,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name or id of the project.
+        The name or path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -8571,7 +8613,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
@@ -8579,7 +8621,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter
     def raw(self) -> _builtins.bool:
         """
-        Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        If set to `true`, the variable will be treated as a raw string.
         """
         return pulumi.get(self, "raw")
 
@@ -8595,7 +8637,7 @@ class GetProjectVariablesVariableResult(dict):
     @pulumi.getter(name="variableType")
     def variable_type(self) -> _builtins.str:
         """
-        The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        The type of the variable, either `env_var` or `file`.
         """
         return pulumi.get(self, "variable_type")
 
@@ -10258,7 +10300,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
         :param _builtins.bool external: External or internal link.
         :param _builtins.str filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
         :param _builtins.int link_id: The ID of the link.
-        :param _builtins.str link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        :param _builtins.str link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
         :param _builtins.str name: The name of the link. Link names must be unique within the release.
         :param _builtins.str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         :param _builtins.str tag_name: The tag associated with the Release.
@@ -10310,7 +10352,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter(name="linkType")
     def link_type(self) -> _builtins.str:
         """
-        The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
         """
         return pulumi.get(self, "link_type")
 
@@ -10353,26 +10395,30 @@ class GetRepositoryTreeTreeResult(dict):
                  id: _builtins.str,
                  mode: _builtins.str,
                  name: _builtins.str,
+                 node_id: _builtins.str,
                  path: _builtins.str,
                  type: _builtins.str):
         """
-        :param _builtins.str id: The SHA-1 hash of the tree or blob in the repository.
+        :param _builtins.str id: The project ID.
         :param _builtins.str mode: Unix access mode of the file in the repository.
         :param _builtins.str name: Name of the blob or tree in the repository
+        :param _builtins.str node_id: The SHA-1 hash of the tree or blob in the repository.
         :param _builtins.str path: Path of the object inside of the repository.
         :param _builtins.str type: Type of object in the repository. Can be either type tree or of type blob
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_id", node_id)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `node_id` instead. To be removed in version 19.0.""")
     def id(self) -> _builtins.str:
         """
-        The SHA-1 hash of the tree or blob in the repository.
+        The project ID.
         """
         return pulumi.get(self, "id")
 
@@ -10391,6 +10437,14 @@ class GetRepositoryTreeTreeResult(dict):
         Name of the blob or tree in the repository
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> _builtins.str:
+        """
+        The SHA-1 hash of the tree or blob in the repository.
+        """
+        return pulumi.get(self, "node_id")
 
     @_builtins.property
     @pulumi.getter

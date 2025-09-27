@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     public sealed class GetReleaseLinksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID or full path to the project.
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
     public sealed class GetReleaseLinksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID or full path to the project.
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -82,11 +82,11 @@ namespace Pulumi.GitLab
     public sealed class GetReleaseLinksResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this data source.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID or full path to the project.
+        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
         /// </summary>
         public readonly string Project;
         /// <summary>

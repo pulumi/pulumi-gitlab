@@ -96,7 +96,7 @@ type ProjectHook struct {
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
-	// Custom headers for the project webhook.
+	// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
 	CustomHeaders ProjectHookCustomHeaderArrayOutput `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringOutput `pulumi:"customWebhookTemplate"`
@@ -189,7 +189,7 @@ type projectHookState struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
-	// Custom headers for the project webhook.
+	// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
 	CustomHeaders []ProjectHookCustomHeader `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
@@ -240,7 +240,7 @@ type ProjectHookState struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
-	// Custom headers for the project webhook.
+	// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
 	CustomHeaders ProjectHookCustomHeaderArrayInput
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
@@ -295,7 +295,7 @@ type projectHookArgs struct {
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
-	// Custom headers for the project webhook.
+	// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
 	CustomHeaders []ProjectHookCustomHeader `pulumi:"customHeaders"`
 	// Custom webhook template.
 	CustomWebhookTemplate *string `pulumi:"customWebhookTemplate"`
@@ -343,7 +343,7 @@ type ProjectHookArgs struct {
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
-	// Custom headers for the project webhook.
+	// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
 	CustomHeaders ProjectHookCustomHeaderArrayInput
 	// Custom webhook template.
 	CustomWebhookTemplate pulumi.StringPtrInput
@@ -482,7 +482,7 @@ func (o ProjectHookOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
 }
 
-// Custom headers for the project webhook.
+// Custom headers for the project webhook. Available from GitLab 17.1 onwards.
 func (o ProjectHookOutput) CustomHeaders() ProjectHookCustomHeaderArrayOutput {
 	return o.ApplyT(func(v *ProjectHook) ProjectHookCustomHeaderArrayOutput { return v.CustomHeaders }).(ProjectHookCustomHeaderArrayOutput)
 }

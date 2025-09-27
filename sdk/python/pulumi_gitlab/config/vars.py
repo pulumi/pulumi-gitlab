@@ -49,8 +49,29 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientKey')
 
     @_builtins.property
+    def config_file(self) -> Optional[str]:
+        """
+        The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+        """
+        return __config__.get('configFile')
+
+    @_builtins.property
+    def context(self) -> Optional[str]:
+        """
+        The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        """
+        return __config__.get('context')
+
+    @_builtins.property
     def early_auth_check(self) -> Optional[bool]:
         return __config__.get_bool('earlyAuthCheck')
+
+    @_builtins.property
+    def enable_auto_ci_support(self) -> Optional[bool]:
+        """
+        If automatic CI support should be enabled or not. This only works when not providing a token.
+        """
+        return __config__.get_bool('enableAutoCiSupport')
 
     @_builtins.property
     def headers(self) -> Optional[str]:

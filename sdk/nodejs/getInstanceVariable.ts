@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+ * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
  *
@@ -46,7 +46,7 @@ export interface GetInstanceVariableResult {
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<key>`.
      */
     readonly id: string;
     /**
@@ -54,15 +54,15 @@ export interface GetInstanceVariableResult {
      */
     readonly key: string;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs.
      */
     readonly masked: boolean;
     /**
-     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+     * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
     readonly protected: boolean;
     /**
-     * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+     * If set to `true`, the variable will be treated as a raw string.
      */
     readonly raw: boolean;
     /**
@@ -70,12 +70,12 @@ export interface GetInstanceVariableResult {
      */
     readonly value: string;
     /**
-     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
+     * The type of the variable, either `envVar` or `file`.
      */
     readonly variableType: string;
 }
 /**
- * The `gitlab.InstanceVariable` data source allows to retrieve details about an instance-level CI/CD variable.
+ * The `gitlab.InstanceVariable` data source retrieves details about an instance-level CI/CD variable.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
  *
