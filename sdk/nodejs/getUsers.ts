@@ -44,6 +44,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "externProvider": args.externProvider,
         "externUid": args.externUid,
         "external": args.external,
+        "humans": args.humans,
         "orderBy": args.orderBy,
         "search": args.search,
         "sort": args.sort,
@@ -92,6 +93,10 @@ export interface GetUsersArgs {
      * Filters only external users.
      */
     external?: boolean;
+    /**
+     * Filters only regular users that are not bot or internal users.
+     */
+    humans?: boolean;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      */
@@ -155,7 +160,11 @@ export interface GetUsersResult {
      */
     readonly external?: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Filters only regular users that are not bot or internal users.
+     */
+    readonly humans?: boolean;
+    /**
+     * The ID of this datasource. In the format of a hash taken from the search options.
      */
     readonly id: string;
     /**
@@ -221,6 +230,7 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
         "externProvider": args.externProvider,
         "externUid": args.externUid,
         "external": args.external,
+        "humans": args.humans,
         "orderBy": args.orderBy,
         "search": args.search,
         "sort": args.sort,
@@ -269,6 +279,10 @@ export interface GetUsersOutputArgs {
      * Filters only external users.
      */
     external?: pulumi.Input<boolean>;
+    /**
+     * Filters only regular users that are not bot or internal users.
+     */
+    humans?: pulumi.Input<boolean>;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      */

@@ -18,7 +18,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool CanPush;
         /// <summary>
-        /// The commit associated with this branch.
+        /// The commit associated with the branch ref.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectBranchesBranchCommitResult> Commits;
         /// <summary>

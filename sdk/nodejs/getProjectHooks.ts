@@ -51,7 +51,7 @@ export interface GetProjectHooksResult {
      */
     readonly hooks: outputs.GetProjectHooksHook[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project>`.
      */
     readonly id: string;
     /**

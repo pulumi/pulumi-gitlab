@@ -27,7 +27,7 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, exclude_external=None, exclude_internal=None, extern_provider=None, extern_uid=None, external=None, id=None, order_by=None, search=None, sort=None, username=None, users=None, without_project_bots=None):
+    def __init__(__self__, active=None, blocked=None, created_after=None, created_before=None, exclude_external=None, exclude_internal=None, extern_provider=None, extern_uid=None, external=None, humans=None, id=None, order_by=None, search=None, sort=None, username=None, users=None, without_project_bots=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         pulumi.set(__self__, "active", active)
@@ -55,6 +55,9 @@ class GetUsersResult:
         if external and not isinstance(external, bool):
             raise TypeError("Expected argument 'external' to be a bool")
         pulumi.set(__self__, "external", external)
+        if humans and not isinstance(humans, bool):
+            raise TypeError("Expected argument 'humans' to be a bool")
+        pulumi.set(__self__, "humans", humans)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -151,9 +154,17 @@ class GetUsersResult:
 
     @_builtins.property
     @pulumi.getter
+    def humans(self) -> Optional[_builtins.bool]:
+        """
+        Filters only regular users that are not bot or internal users.
+        """
+        return pulumi.get(self, "humans")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format of a hash taken from the search options.
         """
         return pulumi.get(self, "id")
 
@@ -221,6 +232,7 @@ class AwaitableGetUsersResult(GetUsersResult):
             extern_provider=self.extern_provider,
             extern_uid=self.extern_uid,
             external=self.external,
+            humans=self.humans,
             id=self.id,
             order_by=self.order_by,
             search=self.search,
@@ -239,6 +251,7 @@ def get_users(active: Optional[_builtins.bool] = None,
               extern_provider: Optional[_builtins.str] = None,
               extern_uid: Optional[_builtins.str] = None,
               external: Optional[_builtins.bool] = None,
+              humans: Optional[_builtins.bool] = None,
               order_by: Optional[_builtins.str] = None,
               search: Optional[_builtins.str] = None,
               sort: Optional[_builtins.str] = None,
@@ -276,6 +289,7 @@ def get_users(active: Optional[_builtins.bool] = None,
     :param _builtins.str extern_provider: Lookup users by external provider. (Requires administrator privileges)
     :param _builtins.str extern_uid: Lookup users by external UID. (Requires administrator privileges)
     :param _builtins.bool external: Filters only external users.
+    :param _builtins.bool humans: Filters only regular users that are not bot or internal users.
     :param _builtins.str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param _builtins.str search: Search users by username, name or email.
     :param _builtins.str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
@@ -292,6 +306,7 @@ def get_users(active: Optional[_builtins.bool] = None,
     __args__['externProvider'] = extern_provider
     __args__['externUid'] = extern_uid
     __args__['external'] = external
+    __args__['humans'] = humans
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
@@ -310,6 +325,7 @@ def get_users(active: Optional[_builtins.bool] = None,
         extern_provider=pulumi.get(__ret__, 'extern_provider'),
         extern_uid=pulumi.get(__ret__, 'extern_uid'),
         external=pulumi.get(__ret__, 'external'),
+        humans=pulumi.get(__ret__, 'humans'),
         id=pulumi.get(__ret__, 'id'),
         order_by=pulumi.get(__ret__, 'order_by'),
         search=pulumi.get(__ret__, 'search'),
@@ -326,6 +342,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[_builtins.bool]]] = 
                      extern_provider: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      extern_uid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      external: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                     humans: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                      order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      sort: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -363,6 +380,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[_builtins.bool]]] = 
     :param _builtins.str extern_provider: Lookup users by external provider. (Requires administrator privileges)
     :param _builtins.str extern_uid: Lookup users by external UID. (Requires administrator privileges)
     :param _builtins.bool external: Filters only external users.
+    :param _builtins.bool humans: Filters only regular users that are not bot or internal users.
     :param _builtins.str order_by: Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
     :param _builtins.str search: Search users by username, name or email.
     :param _builtins.str sort: Sort users' list in asc or desc order. (Requires administrator privileges)
@@ -379,6 +397,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[_builtins.bool]]] = 
     __args__['externProvider'] = extern_provider
     __args__['externUid'] = extern_uid
     __args__['external'] = external
+    __args__['humans'] = humans
     __args__['orderBy'] = order_by
     __args__['search'] = search
     __args__['sort'] = sort
@@ -396,6 +415,7 @@ def get_users_output(active: Optional[pulumi.Input[Optional[_builtins.bool]]] = 
         extern_provider=pulumi.get(__response__, 'extern_provider'),
         extern_uid=pulumi.get(__response__, 'extern_uid'),
         external=pulumi.get(__response__, 'external'),
+        humans=pulumi.get(__response__, 'humans'),
         id=pulumi.get(__response__, 'id'),
         order_by=pulumi.get(__response__, 'order_by'),
         search=pulumi.get(__response__, 'search'),

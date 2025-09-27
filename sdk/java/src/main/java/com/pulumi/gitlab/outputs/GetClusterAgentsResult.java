@@ -18,12 +18,12 @@ public final class GetClusterAgentsResult {
      */
     private List<GetClusterAgentsClusterAgent> clusterAgents;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format \n\n
      * 
      */
     private String id;
     /**
-     * @return The ID or full path of the project owned by the authenticated user.
+     * @return ID or full path of the project maintained by the authenticated user.
      * 
      */
     private String project;
@@ -37,14 +37,14 @@ public final class GetClusterAgentsResult {
         return this.clusterAgents;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format \n\n
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID or full path of the project owned by the authenticated user.
+     * @return ID or full path of the project maintained by the authenticated user.
      * 
      */
     public String project() {

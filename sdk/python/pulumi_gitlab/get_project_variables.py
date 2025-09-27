@@ -53,7 +53,7 @@ class GetProjectVariablesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project:environment-scope>`.
         """
         return pulumi.get(self, "id")
 
@@ -61,7 +61,7 @@ class GetProjectVariablesResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name or id of the project.
+        The name or path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -108,7 +108,7 @@ def get_project_variables(environment_scope: Optional[_builtins.str] = None,
 
 
     :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-    :param _builtins.str project: The name or id of the project.
+    :param _builtins.str project: The name or path of the project.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope
@@ -143,7 +143,7 @@ def get_project_variables_output(environment_scope: Optional[pulumi.Input[Option
 
 
     :param _builtins.str environment_scope: The environment scope of the variable. Defaults to all environment (`*`).
-    :param _builtins.str project: The name or id of the project.
+    :param _builtins.str project: The name or path of the project.
     """
     __args__ = dict()
     __args__['environmentScope'] = environment_scope

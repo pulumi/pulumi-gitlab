@@ -19,7 +19,7 @@ public final class GetProjectBranchesBranch {
      */
     private Boolean canPush;
     /**
-     * @return The commit associated with this branch.
+     * @return The commit associated with the branch ref.
      * 
      */
     private List<GetProjectBranchesBranchCommit> commits;
@@ -68,7 +68,7 @@ public final class GetProjectBranchesBranch {
         return this.canPush;
     }
     /**
-     * @return The commit associated with this branch.
+     * @return The commit associated with the branch ref.
      * 
      */
     public List<GetProjectBranchesBranchCommit> commits() {

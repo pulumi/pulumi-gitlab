@@ -14,6 +14,8 @@ import (
 
 // The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
 //
+// > Note that `memberRoleId` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
 //
 // ## Example Usage
@@ -75,7 +77,7 @@ type GroupShareGroup struct {
 	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+	// The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
 	MemberRoleId pulumi.IntPtrOutput `pulumi:"memberRoleId"`
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntOutput `pulumi:"shareGroupId"`
@@ -126,7 +128,7 @@ type groupShareGroupState struct {
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId *string `pulumi:"groupId"`
-	// The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+	// The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId *int `pulumi:"shareGroupId"`
@@ -139,7 +141,7 @@ type GroupShareGroupState struct {
 	GroupAccess pulumi.StringPtrInput
 	// The id of the main group to be shared.
 	GroupId pulumi.StringPtrInput
-	// The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+	// The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
 	MemberRoleId pulumi.IntPtrInput
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntPtrInput
@@ -156,7 +158,7 @@ type groupShareGroupArgs struct {
 	GroupAccess string `pulumi:"groupAccess"`
 	// The id of the main group to be shared.
 	GroupId string `pulumi:"groupId"`
-	// The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+	// The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId int `pulumi:"shareGroupId"`
@@ -170,7 +172,7 @@ type GroupShareGroupArgs struct {
 	GroupAccess pulumi.StringInput
 	// The id of the main group to be shared.
 	GroupId pulumi.StringInput
-	// The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+	// The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
 	MemberRoleId pulumi.IntPtrInput
 	// The id of the additional group with which the main group will be shared.
 	ShareGroupId pulumi.IntInput
@@ -278,7 +280,7 @@ func (o GroupShareGroupOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The ID of a custom member role. Only available for Ultimate instances. If `memberRoleId` is removed from the config, the group share will revert to a base role.
+// The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
 func (o GroupShareGroupOutput) MemberRoleId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GroupShareGroup) pulumi.IntPtrOutput { return v.MemberRoleId }).(pulumi.IntPtrOutput)
 }

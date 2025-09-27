@@ -98,7 +98,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool Expired;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:milestone-id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

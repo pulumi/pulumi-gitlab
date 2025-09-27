@@ -181,6 +181,12 @@ namespace Pulumi.GitLab
         public bool? External { get; set; }
 
         /// <summary>
+        /// Filters only regular users that are not bot or internal users.
+        /// </summary>
+        [Input("humans")]
+        public bool? Humans { get; set; }
+
+        /// <summary>
         /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
         /// </summary>
         [Input("orderBy")]
@@ -273,6 +279,12 @@ namespace Pulumi.GitLab
         public Input<bool>? External { get; set; }
 
         /// <summary>
+        /// Filters only regular users that are not bot or internal users.
+        /// </summary>
+        [Input("humans")]
+        public Input<bool>? Humans { get; set; }
+
+        /// <summary>
         /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
         /// </summary>
         [Input("orderBy")]
@@ -349,7 +361,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? External;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Filters only regular users that are not bot or internal users.
+        /// </summary>
+        public readonly bool? Humans;
+        /// <summary>
+        /// The ID of this datasource. In the format of a hash taken from the search options.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -397,6 +413,8 @@ namespace Pulumi.GitLab
 
             bool? external,
 
+            bool? humans,
+
             string id,
 
             string? orderBy,
@@ -420,6 +438,7 @@ namespace Pulumi.GitLab
             ExternProvider = externProvider;
             ExternUid = externUid;
             External = external;
+            Humans = humans;
             Id = id;
             OrderBy = orderBy;
             Search = search;

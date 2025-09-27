@@ -61,7 +61,12 @@ public final class GetUsersResult {
      */
     private @Nullable Boolean external;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Filters only regular users that are not bot or internal users.
+     * 
+     */
+    private @Nullable Boolean humans;
+    /**
+     * @return The ID of this datasource. In the format of a hash taken from the search options.
      * 
      */
     private String id;
@@ -161,7 +166,14 @@ public final class GetUsersResult {
         return Optional.ofNullable(this.external);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Filters only regular users that are not bot or internal users.
+     * 
+     */
+    public Optional<Boolean> humans() {
+        return Optional.ofNullable(this.humans);
+    }
+    /**
+     * @return The ID of this datasource. In the format of a hash taken from the search options.
      * 
      */
     public String id() {
@@ -228,6 +240,7 @@ public final class GetUsersResult {
         private @Nullable String externProvider;
         private @Nullable String externUid;
         private @Nullable Boolean external;
+        private @Nullable Boolean humans;
         private String id;
         private @Nullable String orderBy;
         private @Nullable String search;
@@ -247,6 +260,7 @@ public final class GetUsersResult {
     	      this.externProvider = defaults.externProvider;
     	      this.externUid = defaults.externUid;
     	      this.external = defaults.external;
+    	      this.humans = defaults.humans;
     	      this.id = defaults.id;
     	      this.orderBy = defaults.orderBy;
     	      this.search = defaults.search;
@@ -311,6 +325,12 @@ public final class GetUsersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder humans(@Nullable Boolean humans) {
+
+            this.humans = humans;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetUsersResult", "id");
@@ -370,6 +390,7 @@ public final class GetUsersResult {
             _resultValue.externProvider = externProvider;
             _resultValue.externUid = externUid;
             _resultValue.external = external;
+            _resultValue.humans = humans;
             _resultValue.id = id;
             _resultValue.orderBy = orderBy;
             _resultValue.search = search;

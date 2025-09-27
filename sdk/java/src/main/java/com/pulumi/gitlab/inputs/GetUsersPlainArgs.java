@@ -151,6 +151,21 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Filters only regular users that are not bot or internal users.
+     * 
+     */
+    @Import(name="humans")
+    private @Nullable Boolean humans;
+
+    /**
+     * @return Filters only regular users that are not bot or internal users.
+     * 
+     */
+    public Optional<Boolean> humans() {
+        return Optional.ofNullable(this.humans);
+    }
+
+    /**
      * Order the users&#39; list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
      * 
      */
@@ -237,6 +252,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.externProvider = $.externProvider;
         this.externUid = $.externUid;
         this.external = $.external;
+        this.humans = $.humans;
         this.orderBy = $.orderBy;
         this.search = $.search;
         this.sort = $.sort;
@@ -358,6 +374,17 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder external(@Nullable Boolean external) {
             $.external = external;
+            return this;
+        }
+
+        /**
+         * @param humans Filters only regular users that are not bot or internal users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder humans(@Nullable Boolean humans) {
+            $.humans = humans;
             return this;
         }
 

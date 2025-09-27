@@ -101,15 +101,15 @@ export class ProjectEnvironment extends pulumi.CustomResource {
     /**
      * Place to link to for this environment.
      */
-    declare public readonly externalUrl: pulumi.Output<string | undefined>;
+    declare public readonly externalUrl: pulumi.Output<string>;
     /**
      * The Flux resource path to associate with this environment.
      */
-    declare public readonly fluxResourcePath: pulumi.Output<string | undefined>;
+    declare public readonly fluxResourcePath: pulumi.Output<string>;
     /**
      * The Kubernetes namespace to associate with this environment.
      */
-    declare public readonly kubernetesNamespace: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesNamespace: pulumi.Output<string>;
     /**
      * The name of the environment.
      */
@@ -129,7 +129,7 @@ export class ProjectEnvironment extends pulumi.CustomResource {
     /**
      * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
-    declare public readonly stopBeforeDestroy: pulumi.Output<boolean | undefined>;
+    declare public readonly stopBeforeDestroy: pulumi.Output<boolean>;
     /**
      * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
      */

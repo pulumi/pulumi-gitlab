@@ -58,7 +58,7 @@ public final class GetGroupHookResult {
      */
     private Integer hookId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format `&lt;group:hook_id&gt;`.
      * 
      */
     private String id;
@@ -113,9 +113,13 @@ public final class GetGroupHookResult {
      */
     private Boolean tagPushEvents;
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * 
+     * @deprecated
+     * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      * 
      */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0. */
     private String token;
     /**
      * @return The url of the hook to invoke.
@@ -193,7 +197,7 @@ public final class GetGroupHookResult {
         return this.hookId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format `&lt;group:hook_id&gt;`.
      * 
      */
     public String id() {
@@ -270,9 +274,13 @@ public final class GetGroupHookResult {
         return this.tagPushEvents;
     }
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * 
+     * @deprecated
+     * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      * 
      */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0. */
     public String token() {
         return this.token;
     }

@@ -30,7 +30,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int LinkId;
         /// <summary>
-        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
         /// </summary>
         public readonly string LinkType;
         /// <summary>

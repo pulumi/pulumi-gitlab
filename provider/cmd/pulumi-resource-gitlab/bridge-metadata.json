@@ -192,6 +192,15 @@
                 "current": "gitlab:index/groupDependencyProxy:GroupDependencyProxy",
                 "majorVersion": 9
             },
+            "gitlab_group_deploy_token": {
+                "current": "gitlab:index/groupDeployToken:GroupDeployToken",
+                "majorVersion": 9,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_group_epic_board": {
                 "current": "gitlab:index/groupEpicBoard:GroupEpicBoard",
                 "majorVersion": 9,
@@ -228,6 +237,10 @@
             },
             "gitlab_group_ldap_link": {
                 "current": "gitlab:index/groupLdapLink:GroupLdapLink",
+                "majorVersion": 9
+            },
+            "gitlab_group_level_mr_approvals": {
+                "current": "gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals",
                 "majorVersion": 9
             },
             "gitlab_group_membership": {
@@ -461,9 +474,27 @@
                 "current": "gitlab:index/projectCustomAttribute:ProjectCustomAttribute",
                 "majorVersion": 9
             },
+            "gitlab_project_deploy_token": {
+                "current": "gitlab:index/projectDeployToken:ProjectDeployToken",
+                "majorVersion": 9,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_project_environment": {
                 "current": "gitlab:index/projectEnvironment:ProjectEnvironment",
                 "majorVersion": 9
+            },
+            "gitlab_project_external_status_check": {
+                "current": "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck",
+                "majorVersion": 9,
+                "fields": {
+                    "protected_branch_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_freeze_period": {
                 "current": "gitlab:index/projectFreezePeriod:ProjectFreezePeriod",
@@ -887,6 +918,15 @@
                 "majorVersion": 9,
                 "fields": {
                     "provisioned_users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_group_saml_links": {
+                "current": "gitlab:index/getGroupSamlLinks:getGroupSamlLinks",
+                "majorVersion": 9,
+                "fields": {
+                    "saml_links": {
                         "maxItemsOne": false
                     }
                 }
@@ -1422,8 +1462,8 @@
             "gitlab:index/applicationSettings:ApplicationSettings": 0,
             "gitlab:index/branch:Branch": 0,
             "gitlab:index/branchProtection:BranchProtection": 1,
-            "gitlab:index/clusterAgent:ClusterAgent": 0,
-            "gitlab:index/clusterAgentToken:ClusterAgentToken": 0,
+            "gitlab:index/clusterAgent:ClusterAgent": 1,
+            "gitlab:index/clusterAgentToken:ClusterAgentToken": 1,
             "gitlab:index/complianceFramework:ComplianceFramework": 1,
             "gitlab:index/deployKey:DeployKey": 0,
             "gitlab:index/deployKeyEnable:DeployKeyEnable": 0,
@@ -1435,11 +1475,13 @@
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
             "gitlab:index/groupDependencyProxy:GroupDependencyProxy": 1,
+            "gitlab:index/groupDeployToken:GroupDeployToken": 1,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 1,
             "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,
             "gitlab:index/groupLabel:GroupLabel": 1,
             "gitlab:index/groupLdapLink:GroupLdapLink": 0,
+            "gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals": 1,
             "gitlab:index/groupMembership:GroupMembership": 1,
             "gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate": 0,
             "gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment": 1,
@@ -1480,8 +1522,10 @@
             "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": 1,
             "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection": 1,
             "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": 0,
-            "gitlab:index/projectEnvironment:ProjectEnvironment": 0,
-            "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 0,
+            "gitlab:index/projectDeployToken:ProjectDeployToken": 1,
+            "gitlab:index/projectEnvironment:ProjectEnvironment": 1,
+            "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck": 1,
+            "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 1,
             "gitlab:index/projectHook:ProjectHook": 1,
             "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker": 1,
             "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush": 0,
@@ -1535,45 +1579,46 @@
         },
         "functions": {
             "gitlab:index/getApplication:getApplication": 1,
-            "gitlab:index/getBranch:getBranch": 0,
-            "gitlab:index/getClusterAgent:getClusterAgent": 0,
-            "gitlab:index/getClusterAgents:getClusterAgents": 0,
+            "gitlab:index/getBranch:getBranch": 1,
+            "gitlab:index/getClusterAgent:getClusterAgent": 1,
+            "gitlab:index/getClusterAgents:getClusterAgents": 1,
             "gitlab:index/getComplianceFramework:getComplianceFramework": 1,
-            "gitlab:index/getCurrentUser:getCurrentUser": 0,
+            "gitlab:index/getCurrentUser:getCurrentUser": 1,
             "gitlab:index/getGroup:getGroup": 0,
             "gitlab:index/getGroupAccessTokens:getGroupAccessTokens": 1,
             "gitlab:index/getGroupBillableMemberMemberships:getGroupBillableMemberMemberships": 1,
-            "gitlab:index/getGroupHook:getGroupHook": 0,
+            "gitlab:index/getGroupHook:getGroupHook": 1,
             "gitlab:index/getGroupHooks:getGroupHooks": 0,
             "gitlab:index/getGroupIds:getGroupIds": 1,
             "gitlab:index/getGroupMembership:getGroupMembership": 1,
             "gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers": 1,
+            "gitlab:index/getGroupSamlLinks:getGroupSamlLinks": 1,
             "gitlab:index/getGroupServiceAccount:getGroupServiceAccount": 1,
             "gitlab:index/getGroupSubgroups:getGroupSubgroups": 0,
             "gitlab:index/getGroupVariable:getGroupVariable": 1,
             "gitlab:index/getGroupVariables:getGroupVariables": 1,
             "gitlab:index/getGroups:getGroups": 0,
-            "gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys": 0,
+            "gitlab:index/getInstanceDeployKeys:getInstanceDeployKeys": 1,
             "gitlab:index/getInstanceServiceAccount:getInstanceServiceAccount": 1,
-            "gitlab:index/getInstanceVariable:getInstanceVariable": 0,
-            "gitlab:index/getInstanceVariables:getInstanceVariables": 0,
+            "gitlab:index/getInstanceVariable:getInstanceVariable": 1,
+            "gitlab:index/getInstanceVariables:getInstanceVariables": 1,
             "gitlab:index/getMetadata:getMetadata": 1,
             "gitlab:index/getPipelineSchedule:getPipelineSchedule": 1,
             "gitlab:index/getPipelineSchedules:getPipelineSchedules": 1,
             "gitlab:index/getProject:getProject": 0,
             "gitlab:index/getProjectAccessTokens:getProjectAccessTokens": 1,
-            "gitlab:index/getProjectBranches:getProjectBranches": 0,
+            "gitlab:index/getProjectBranches:getProjectBranches": 1,
             "gitlab:index/getProjectEnvironments:getProjectEnvironments": 1,
-            "gitlab:index/getProjectHook:getProjectHook": 0,
-            "gitlab:index/getProjectHooks:getProjectHooks": 0,
+            "gitlab:index/getProjectHook:getProjectHook": 1,
+            "gitlab:index/getProjectHooks:getProjectHooks": 1,
             "gitlab:index/getProjectIds:getProjectIds": 1,
             "gitlab:index/getProjectIssue:getProjectIssue": 0,
             "gitlab:index/getProjectIssues:getProjectIssues": 0,
-            "gitlab:index/getProjectMembership:getProjectMembership": 0,
+            "gitlab:index/getProjectMembership:getProjectMembership": 1,
             "gitlab:index/getProjectMergeRequest:getProjectMergeRequest": 1,
             "gitlab:index/getProjectMergeRequests:getProjectMergeRequests": 1,
-            "gitlab:index/getProjectMilestone:getProjectMilestone": 0,
-            "gitlab:index/getProjectMilestones:getProjectMilestones": 0,
+            "gitlab:index/getProjectMilestone:getProjectMilestone": 1,
+            "gitlab:index/getProjectMilestones:getProjectMilestones": 1,
             "gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey": 1,
             "gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch": 1,
             "gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches": 1,
@@ -1581,18 +1626,18 @@
             "gitlab:index/getProjectProtectedTags:getProjectProtectedTags": 1,
             "gitlab:index/getProjectTag:getProjectTag": 0,
             "gitlab:index/getProjectTags:getProjectTags": 0,
-            "gitlab:index/getProjectVariable:getProjectVariable": 0,
-            "gitlab:index/getProjectVariables:getProjectVariables": 0,
+            "gitlab:index/getProjectVariable:getProjectVariable": 1,
+            "gitlab:index/getProjectVariables:getProjectVariables": 1,
             "gitlab:index/getProjects:getProjects": 0,
             "gitlab:index/getRelease:getRelease": 1,
-            "gitlab:index/getReleaseLink:getReleaseLink": 0,
-            "gitlab:index/getReleaseLinks:getReleaseLinks": 0,
-            "gitlab:index/getRepositoryFile:getRepositoryFile": 0,
-            "gitlab:index/getRepositoryTree:getRepositoryTree": 0,
+            "gitlab:index/getReleaseLink:getReleaseLink": 1,
+            "gitlab:index/getReleaseLinks:getReleaseLinks": 1,
+            "gitlab:index/getRepositoryFile:getRepositoryFile": 1,
+            "gitlab:index/getRepositoryTree:getRepositoryTree": 1,
             "gitlab:index/getRunners:getRunners": 1,
-            "gitlab:index/getUser:getUser": 0,
+            "gitlab:index/getUser:getUser": 1,
             "gitlab:index/getUserSshkeys:getUserSshkeys": 0,
-            "gitlab:index/getUsers:getUsers": 0
+            "gitlab:index/getUsers:getUsers": 1
         }
     },
     "renames": {

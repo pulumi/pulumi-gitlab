@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectHook` data source allows to retrieve details about a hook in a project.
+// The `ProjectHook` data source retrieves details about a hook in a project.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/#get-a-project-webhook)
 //
@@ -79,7 +79,7 @@ type LookupProjectHookResult struct {
 	EnableSslVerification bool `pulumi:"enableSslVerification"`
 	// The id of the project hook.
 	HookId int `pulumi:"hookId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project>:<hook-id>`.
 	Id string `pulumi:"id"`
 	// Invoke the hook for issues events.
 	IssuesEvents bool `pulumi:"issuesEvents"`
@@ -103,7 +103,9 @@ type LookupProjectHookResult struct {
 	ReleasesEvents bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available in this datasource.
+	//
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
@@ -177,7 +179,7 @@ func (o LookupProjectHookResultOutput) HookId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) int { return v.HookId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project>:<hook-id>`.
 func (o LookupProjectHookResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -237,7 +239,9 @@ func (o LookupProjectHookResultOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available for imported resources.
+// A token to present when invoking the hook. The token is not available in this datasource.
+//
+// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 func (o LookupProjectHookResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) string { return v.Token }).(pulumi.StringOutput)
 }

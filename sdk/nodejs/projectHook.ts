@@ -104,7 +104,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      */
     declare public readonly customHeaders: pulumi.Output<outputs.ProjectHookCustomHeader[] | undefined>;
     /**
@@ -282,7 +282,7 @@ export interface ProjectHookState {
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      */
     customHeaders?: pulumi.Input<pulumi.Input<inputs.ProjectHookCustomHeader>[]>;
     /**
@@ -384,7 +384,7 @@ export interface ProjectHookArgs {
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the project webhook. Available from GitLab 17.1 onwards.
      */
     customHeaders?: pulumi.Input<pulumi.Input<inputs.ProjectHookCustomHeader>[]>;
     /**

@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceDeployKeysDeployKeyResult> DeployKeys;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;public&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
