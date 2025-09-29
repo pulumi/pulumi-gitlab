@@ -34,7 +34,7 @@ type GetProjectBranchesArgs struct {
 type GetProjectBranchesResult struct {
 	// The list of branches of the project, as defined below.
 	Branches []GetProjectBranchesBranch `pulumi:"branches"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project>`.
 	Id string `pulumi:"id"`
 	// ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
@@ -79,7 +79,7 @@ func (o GetProjectBranchesResultOutput) Branches() GetProjectBranchesBranchArray
 	return o.ApplyT(func(v GetProjectBranchesResult) []GetProjectBranchesBranch { return v.Branches }).(GetProjectBranchesBranchArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project>`.
 func (o GetProjectBranchesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectBranchesResult) string { return v.Id }).(pulumi.StringOutput)
 }

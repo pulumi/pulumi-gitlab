@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetInstanceVariables
     {
         /// <summary>
-        /// The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+        /// The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
         /// 
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceVariablesResult>("gitlab:index/getInstanceVariables:getInstanceVariables", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+        /// The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceVariablesResult>("gitlab:index/getInstanceVariables:getInstanceVariables", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getInstanceVariables` data source allows to retrieve all instance-level CI/CD variables.
+        /// The `gitlab.getInstanceVariables` data source retrieves all instance-level CI/CD variables.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
         /// 
@@ -86,11 +86,11 @@ namespace Pulumi.GitLab
     public sealed class GetInstanceVariablesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the hardcoded format `instance_variables`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The list of variables returned by the search
+        /// The list of variables returned by the search.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceVariablesVariableResult> Variables;
 

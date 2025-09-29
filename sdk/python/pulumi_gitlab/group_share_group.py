@@ -30,7 +30,7 @@ class GroupShareGroupArgs:
         :param pulumi.Input[_builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[_builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         pulumi.set(__self__, "group_access", group_access)
         pulumi.set(__self__, "group_id", group_id)
@@ -92,7 +92,7 @@ class GroupShareGroupArgs:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -114,7 +114,7 @@ class _GroupShareGroupState:
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] group_id: The id of the main group to be shared.
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         :param pulumi.Input[_builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         if expires_at is not None:
@@ -168,7 +168,7 @@ class _GroupShareGroupState:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -203,6 +203,8 @@ class GroupShareGroup(pulumi.CustomResource):
                  __props__=None):
         """
         The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
+
+        > Note that `member_role_id` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
 
@@ -246,7 +248,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] group_id: The id of the main group to be shared.
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         :param pulumi.Input[_builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         ...
@@ -257,6 +259,8 @@ class GroupShareGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
+
+        > Note that `member_role_id` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
 
@@ -360,7 +364,7 @@ class GroupShareGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] group_id: The id of the main group to be shared.
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         :param pulumi.Input[_builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -402,7 +406,7 @@ class GroupShareGroup(pulumi.CustomResource):
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances. If `member_role_id` is removed from the config, the group share will revert to a base role.
+        The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 

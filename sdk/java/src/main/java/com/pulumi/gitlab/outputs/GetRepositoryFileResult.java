@@ -53,7 +53,7 @@ public final class GetRepositoryFileResult {
      */
     private String filePath;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:ref:file_path&gt;`.
      * 
      */
     private String id;
@@ -136,7 +136,7 @@ public final class GetRepositoryFileResult {
         return this.filePath;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:ref:file_path&gt;`.
      * 
      */
     public String id() {

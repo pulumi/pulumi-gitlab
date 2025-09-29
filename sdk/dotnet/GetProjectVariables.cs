@@ -121,7 +121,7 @@ namespace Pulumi.GitLab
         public string? EnvironmentScope { get; set; }
 
         /// <summary>
-        /// The name or id of the project.
+        /// The name or path of the project.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.GitLab
         public Input<string>? EnvironmentScope { get; set; }
 
         /// <summary>
-        /// The name or id of the project.
+        /// The name or path of the project.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -161,11 +161,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? EnvironmentScope;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:environment-scope&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name or id of the project.
+        /// The name or path of the project.
         /// </summary>
         public readonly string Project;
         /// <summary>

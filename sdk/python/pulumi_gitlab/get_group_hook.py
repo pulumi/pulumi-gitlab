@@ -173,7 +173,7 @@ class GetGroupHookResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this data source. In the format `<group:hook_id>`.
         """
         return pulumi.get(self, "id")
 
@@ -259,9 +259,10 @@ class GetGroupHookResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.""")
     def token(self) -> _builtins.str:
         """
-        A token to present when invoking the hook. The token is not available for imported resources.
+        A token to present when invoking the hook. The token is not available in this datasource.
         """
         return pulumi.get(self, "token")
 

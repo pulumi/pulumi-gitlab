@@ -21,7 +21,7 @@ public final class GetInstanceDeployKeysResult {
      */
     private List<GetInstanceDeployKeysDeployKey> deployKeys;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;public&gt;`.
      * 
      */
     private String id;
@@ -40,7 +40,7 @@ public final class GetInstanceDeployKeysResult {
         return this.deployKeys;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;public&gt;`.
      * 
      */
     public String id() {

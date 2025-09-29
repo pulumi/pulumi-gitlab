@@ -153,14 +153,14 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> username;
+    private Output<String> username;
 
     /**
      * @return The username of the user account. If not set, generates a name prepended with service*account*.
      * 
      */
-    public Output<Optional<String>> username() {
-        return Codegen.optional(this.username);
+    public Output<String> username() {
+        return this.username;
     }
 
     /**

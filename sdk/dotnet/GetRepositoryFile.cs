@@ -186,7 +186,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string FilePath;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:ref:file_path&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

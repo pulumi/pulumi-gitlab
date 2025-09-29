@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetReleaseLink
     {
         /// <summary>
-        /// The `gitlab.ReleaseLink` data source allows get details of a release link.
+        /// The `gitlab.ReleaseLink` data source allows you to get details of a release link.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ReleaseLink` data source allows get details of a release link.
+        /// The `gitlab.ReleaseLink` data source allows you to get details of a release link.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetReleaseLinkResult>("gitlab:index/getReleaseLink:getReleaseLink", args ?? new GetReleaseLinkInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.ReleaseLink` data source allows get details of a release link.
+        /// The `gitlab.ReleaseLink` data source allows you to get details of a release link.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
         /// </summary>
@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Filepath;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this data source.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int LinkId;
         /// <summary>
-        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
         /// </summary>
         public readonly string LinkType;
         /// <summary>

@@ -51,10 +51,43 @@ Object.defineProperty(exports, "clientKey", {
     enumerable: true,
 });
 
+/**
+ * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+ */
+export declare const configFile: string | undefined;
+Object.defineProperty(exports, "configFile", {
+    get() {
+        return __config.get("configFile");
+    },
+    enumerable: true,
+});
+
+/**
+ * The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+ */
+export declare const context: string | undefined;
+Object.defineProperty(exports, "context", {
+    get() {
+        return __config.get("context");
+    },
+    enumerable: true,
+});
+
 export declare const earlyAuthCheck: boolean | undefined;
 Object.defineProperty(exports, "earlyAuthCheck", {
     get() {
         return __config.getObject<boolean>("earlyAuthCheck");
+    },
+    enumerable: true,
+});
+
+/**
+ * If automatic CI support should be enabled or not. This only works when not providing a token.
+ */
+export declare const enableAutoCiSupport: boolean | undefined;
+Object.defineProperty(exports, "enableAutoCiSupport", {
+    get() {
+        return __config.getObject<boolean>("enableAutoCiSupport");
     },
     enumerable: true,
 });

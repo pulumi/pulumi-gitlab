@@ -22,15 +22,15 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        /// If set to `true`, the value of the variable will be hidden in job logs.
         /// </summary>
         public readonly bool Masked;
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
+        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         /// </summary>
         public readonly bool Protected;
         /// <summary>
-        /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
+        /// If set to `true`, the variable will be treated as a raw string.
         /// </summary>
         public readonly bool Raw;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+        /// The type of the variable, either `env_var` or `file`.
         /// </summary>
         public readonly string VariableType;
 

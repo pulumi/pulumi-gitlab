@@ -27,7 +27,7 @@ public final class GetClusterAgentResult {
      */
     private Integer createdByUserId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format project:agent_id
      * 
      */
     private String id;
@@ -65,7 +65,7 @@ public final class GetClusterAgentResult {
         return this.createdByUserId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format project:agent_id
      * 
      */
     public String id() {

@@ -34,7 +34,22 @@ clientKey: Optional[str]
 File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
 """
 
+configFile: Optional[str]
+"""
+The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+"""
+
+context: Optional[str]
+"""
+The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+"""
+
 earlyAuthCheck: Optional[bool]
+
+enableAutoCiSupport: Optional[bool]
+"""
+If automatic CI support should be enabled or not. This only works when not providing a token.
+"""
 
 headers: Optional[str]
 """

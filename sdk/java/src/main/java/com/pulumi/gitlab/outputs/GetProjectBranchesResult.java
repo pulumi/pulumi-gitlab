@@ -18,7 +18,7 @@ public final class GetProjectBranchesResult {
      */
     private List<GetProjectBranchesBranch> branches;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project&gt;`.
      * 
      */
     private String id;
@@ -37,7 +37,7 @@ public final class GetProjectBranchesResult {
         return this.branches;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project&gt;`.
      * 
      */
     public String id() {

@@ -26,7 +26,7 @@ func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pul
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksArgs struct {
-	// The ID or full path to the project.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 	Project string `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
@@ -34,9 +34,9 @@ type GetReleaseLinksArgs struct {
 
 // A collection of values returned by getReleaseLinks.
 type GetReleaseLinksResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this data source.
 	Id string `pulumi:"id"`
-	// The ID or full path to the project.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 	Project string `pulumi:"project"`
 	// List of release links
 	ReleaseLinks []GetReleaseLinksReleaseLink `pulumi:"releaseLinks"`
@@ -55,7 +55,7 @@ func GetReleaseLinksOutput(ctx *pulumi.Context, args GetReleaseLinksOutputArgs, 
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksOutputArgs struct {
-	// The ID or full path to the project.
+	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 	Project pulumi.StringInput `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -80,12 +80,12 @@ func (o GetReleaseLinksResultOutput) ToGetReleaseLinksResultOutputWithContext(ct
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this data source.
 func (o GetReleaseLinksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID or full path to the project.
+// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
 func (o GetReleaseLinksResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.Project }).(pulumi.StringOutput)
 }

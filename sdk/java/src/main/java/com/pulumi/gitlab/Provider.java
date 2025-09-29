@@ -80,6 +80,34 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientKey);
     }
     /**
+     * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+     * 
+     */
+    @Export(name="configFile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> configFile;
+
+    /**
+     * @return The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
+     * 
+     */
+    public Output<Optional<String>> configFile() {
+        return Codegen.optional(this.configFile);
+    }
+    /**
+     * The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+     * 
+     */
+    @Export(name="context", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> context;
+
+    /**
+     * @return The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+     * 
+     */
+    public Output<Optional<String>> context() {
+        return Codegen.optional(this.context);
+    }
+    /**
      * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      * 
      */

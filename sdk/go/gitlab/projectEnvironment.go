@@ -91,11 +91,11 @@ type ProjectEnvironment struct {
 	// The description of the environment.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Place to link to for this environment.
-	ExternalUrl pulumi.StringPtrOutput `pulumi:"externalUrl"`
+	ExternalUrl pulumi.StringOutput `pulumi:"externalUrl"`
 	// The Flux resource path to associate with this environment.
-	FluxResourcePath pulumi.StringPtrOutput `pulumi:"fluxResourcePath"`
+	FluxResourcePath pulumi.StringOutput `pulumi:"fluxResourcePath"`
 	// The Kubernetes namespace to associate with this environment.
-	KubernetesNamespace pulumi.StringPtrOutput `pulumi:"kubernetesNamespace"`
+	KubernetesNamespace pulumi.StringOutput `pulumi:"kubernetesNamespace"`
 	// The name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID or full path of the project to environment is created for.
@@ -105,7 +105,7 @@ type ProjectEnvironment struct {
 	// State the environment is in. Valid values are `available`, `stopped`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
-	StopBeforeDestroy pulumi.BoolPtrOutput `pulumi:"stopBeforeDestroy"`
+	StopBeforeDestroy pulumi.BoolOutput `pulumi:"stopBeforeDestroy"`
 	// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The ISO8601 date/time that this environment was last updated at in UTC.
@@ -374,18 +374,18 @@ func (o ProjectEnvironmentOutput) Description() pulumi.StringOutput {
 }
 
 // Place to link to for this environment.
-func (o ProjectEnvironmentOutput) ExternalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.ExternalUrl }).(pulumi.StringPtrOutput)
+func (o ProjectEnvironmentOutput) ExternalUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.ExternalUrl }).(pulumi.StringOutput)
 }
 
 // The Flux resource path to associate with this environment.
-func (o ProjectEnvironmentOutput) FluxResourcePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.FluxResourcePath }).(pulumi.StringPtrOutput)
+func (o ProjectEnvironmentOutput) FluxResourcePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.FluxResourcePath }).(pulumi.StringOutput)
 }
 
 // The Kubernetes namespace to associate with this environment.
-func (o ProjectEnvironmentOutput) KubernetesNamespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringPtrOutput { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
+func (o ProjectEnvironmentOutput) KubernetesNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.StringOutput { return v.KubernetesNamespace }).(pulumi.StringOutput)
 }
 
 // The name of the environment.
@@ -409,8 +409,8 @@ func (o ProjectEnvironmentOutput) State() pulumi.StringOutput {
 }
 
 // Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
-func (o ProjectEnvironmentOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectEnvironment) pulumi.BoolPtrOutput { return v.StopBeforeDestroy }).(pulumi.BoolPtrOutput)
+func (o ProjectEnvironmentOutput) StopBeforeDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectEnvironment) pulumi.BoolOutput { return v.StopBeforeDestroy }).(pulumi.BoolOutput)
 }
 
 // The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.

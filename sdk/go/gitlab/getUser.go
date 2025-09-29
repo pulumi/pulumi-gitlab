@@ -66,7 +66,7 @@ type LookupUserResult struct {
 	ExternUid string `pulumi:"externUid"`
 	// Whether the user is external.
 	External bool `pulumi:"external"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<user-id>`.
 	Id string `pulumi:"id"`
 	// Whether the user is an admin.
 	IsAdmin bool `pulumi:"isAdmin"`
@@ -205,7 +205,7 @@ func (o LookupUserResultOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUserResult) bool { return v.External }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<user-id>`.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }

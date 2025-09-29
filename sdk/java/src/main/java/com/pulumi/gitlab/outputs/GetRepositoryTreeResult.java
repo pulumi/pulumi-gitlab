@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRepositoryTreeResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. A hash of project and ref, with path and recursive if set.
      * 
      */
     private String id;
@@ -48,7 +48,7 @@ public final class GetRepositoryTreeResult {
 
     private GetRepositoryTreeResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. A hash of project and ref, with path and recursive if set.
      * 
      */
     public String id() {

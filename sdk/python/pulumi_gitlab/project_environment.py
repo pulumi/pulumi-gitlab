@@ -715,7 +715,7 @@ class ProjectEnvironment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="externalUrl")
-    def external_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def external_url(self) -> pulumi.Output[_builtins.str]:
         """
         Place to link to for this environment.
         """
@@ -723,7 +723,7 @@ class ProjectEnvironment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="fluxResourcePath")
-    def flux_resource_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def flux_resource_path(self) -> pulumi.Output[_builtins.str]:
         """
         The Flux resource path to associate with this environment.
         """
@@ -731,7 +731,7 @@ class ProjectEnvironment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="kubernetesNamespace")
-    def kubernetes_namespace(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def kubernetes_namespace(self) -> pulumi.Output[_builtins.str]:
         """
         The Kubernetes namespace to associate with this environment.
         """
@@ -771,7 +771,7 @@ class ProjectEnvironment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
-    def stop_before_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def stop_before_destroy(self) -> pulumi.Output[_builtins.bool]:
         """
         Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         """

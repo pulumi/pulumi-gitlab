@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectBranchesBranchResult> Branches;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

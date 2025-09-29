@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetRepositoryTreeTreeResult
     {
         /// <summary>
-        /// The SHA-1 hash of the tree or blob in the repository.
+        /// The project ID.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -25,6 +25,10 @@ namespace Pulumi.GitLab.Outputs
         /// Name of the blob or tree in the repository
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The SHA-1 hash of the tree or blob in the repository.
+        /// </summary>
+        public readonly string NodeId;
         /// <summary>
         /// Path of the object inside of the repository.
         /// </summary>
@@ -42,6 +46,8 @@ namespace Pulumi.GitLab.Outputs
 
             string name,
 
+            string nodeId,
+
             string path,
 
             string type)
@@ -49,6 +55,7 @@ namespace Pulumi.GitLab.Outputs
             Id = id;
             Mode = mode;
             Name = name;
+            NodeId = nodeId;
             Path = path;
             Type = type;
         }
