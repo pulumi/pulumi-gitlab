@@ -12,6 +12,35 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new GitLab.Group("foo", new()
+    ///     {
+    ///         Name = "test_group",
+    ///         Path = "test_group",
+    ///         Description = "An example group",
+    ///     });
+    /// 
+    ///     var fooGroupLevelMrApprovals = new GitLab.GroupLevelMrApprovals("foo", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         AllowAuthorApproval = true,
+    ///         AllowCommitterApproval = true,
+    ///         AllowOverridesToApproverListPerMergeRequest = true,
+    ///         RetainApprovalsOnPush = true,
+    ///         SelectiveCodeOwnerRemovals = false,
+    ///         RequireReauthenticationToApprove = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:
@@ -42,7 +71,7 @@ namespace Pulumi.GitLab
     public partial class GroupLevelMrApprovals : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
+        /// Allow or prevent authors from self approving merge requests; `True` means authors can self approve.
         /// </summary>
         [Output("allowAuthorApproval")]
         public Output<bool> AllowAuthorApproval { get; private set; } = null!;
@@ -127,7 +156,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLevelMrApprovalsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
+        /// Allow or prevent authors from self approving merge requests; `True` means authors can self approve.
         /// </summary>
         [Input("allowAuthorApproval")]
         public Input<bool>? AllowAuthorApproval { get; set; }
@@ -174,7 +203,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLevelMrApprovalsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
+        /// Allow or prevent authors from self approving merge requests; `True` means authors can self approve.
         /// </summary>
         [Input("allowAuthorApproval")]
         public Input<bool>? AllowAuthorApproval { get; set; }

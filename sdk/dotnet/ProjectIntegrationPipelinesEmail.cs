@@ -71,7 +71,7 @@ namespace Pulumi.GitLab
     public partial class ProjectIntegrationPipelinesEmail : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, and `DefaultAndProtected`. Default is `Default`
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string?> BranchesToBeNotified { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectIntegrationPipelinesEmailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, and `DefaultAndProtected`. Default is `Default`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -179,7 +179,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectIntegrationPipelinesEmailState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, and `DefaultAndProtected`. Default is `Default`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }

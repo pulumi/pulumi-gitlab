@@ -18,6 +18,72 @@ import (
 //
 // **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewValueStreamAnalytics(ctx, "project", &gitlab.ValueStreamAnalyticsArgs{
+//				Name:            pulumi.String("TEST"),
+//				ProjectFullPath: pulumi.String("test/project"),
+//				Stages: gitlab.ValueStreamAnalyticsStageArray{
+//					&gitlab.ValueStreamAnalyticsStageArgs{
+//						Name:   pulumi.String("Issue"),
+//						Custom: pulumi.Bool(false),
+//						Hidden: pulumi.Bool(false),
+//					},
+//					&gitlab.ValueStreamAnalyticsStageArgs{
+//						Name:                   pulumi.String("Issue Labels"),
+//						Custom:                 pulumi.Bool(true),
+//						Hidden:                 pulumi.Bool(false),
+//						Start_event_identifier: "ISSUE_LABEL_ADDED",
+//						Start_event_label_id:   "gid://gitlab/ProjectLabel/0",
+//						End_event_identifier:   "ISSUE_LABEL_REMOVED",
+//						End_event_label_id:     "gid://gitlab/ProjectLabel/1",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewValueStreamAnalytics(ctx, "group", &gitlab.ValueStreamAnalyticsArgs{
+//				Name:          pulumi.String("TEST"),
+//				GroupFullPath: pulumi.String("test/group"),
+//				Stages: gitlab.ValueStreamAnalyticsStageArray{
+//					&gitlab.ValueStreamAnalyticsStageArgs{
+//						Name:   pulumi.String("Issue"),
+//						Custom: pulumi.Bool(false),
+//						Hidden: pulumi.Bool(false),
+//					},
+//					&gitlab.ValueStreamAnalyticsStageArgs{
+//						Name:                   pulumi.String("Issue Labels"),
+//						Custom:                 pulumi.Bool(true),
+//						Hidden:                 pulumi.Bool(false),
+//						Start_event_identifier: "ISSUE_LABEL_ADDED",
+//						Start_event_label_id:   "gid://gitlab/GroupLabel/0",
+//						End_event_identifier:   "ISSUE_LABEL_REMOVED",
+//						End_event_label_id:     "gid://gitlab/GroupLabel/1",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:

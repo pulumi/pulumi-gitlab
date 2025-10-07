@@ -87,7 +87,7 @@ namespace Pulumi.GitLab
         public Output<string?> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+        /// Determines if cluster is active or not. Defaults to `True`. This attribute cannot be read.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GitLab
         public Output<string> KubernetesApiUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+        /// The cluster authorization type. Valid values are `Rbac`, `Abac`, `UnknownAuthorization`. Defaults to `Rbac`.
         /// </summary>
         [Output("kubernetesAuthorizationType")]
         public Output<string?> KubernetesAuthorizationType { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.GitLab
         public Output<string> KubernetesToken { get; private set; } = null!;
 
         /// <summary>
-        /// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+        /// Determines if cluster is managed by gitlab or not. Defaults to `True`. This attribute cannot be read.
         /// </summary>
         [Output("managed")]
         public Output<bool?> Managed { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.GitLab
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+        /// Determines if cluster is active or not. Defaults to `True`. This attribute cannot be read.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.GitLab
         public Input<string> KubernetesApiUrl { get; set; } = null!;
 
         /// <summary>
-        /// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+        /// The cluster authorization type. Valid values are `Rbac`, `Abac`, `UnknownAuthorization`. Defaults to `Rbac`.
         /// </summary>
         [Input("kubernetesAuthorizationType")]
         public Input<string>? KubernetesAuthorizationType { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+        /// Determines if cluster is managed by gitlab or not. Defaults to `True`. This attribute cannot be read.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.GitLab
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
+        /// Determines if cluster is active or not. Defaults to `True`. This attribute cannot be read.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.GitLab
         public Input<string>? KubernetesApiUrl { get; set; }
 
         /// <summary>
-        /// The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+        /// The cluster authorization type. Valid values are `Rbac`, `Abac`, `UnknownAuthorization`. Defaults to `Rbac`.
         /// </summary>
         [Input("kubernetesAuthorizationType")]
         public Input<string>? KubernetesAuthorizationType { get; set; }
@@ -363,7 +363,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
+        /// Determines if cluster is managed by gitlab or not. Defaults to `True`. This attribute cannot be read.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }

@@ -108,14 +108,14 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
         return this.autoStopAt;
     }
     /**
-     * The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      * 
      */
     @Export(name="autoStopSetting", refs={String.class}, tree="[0]")
     private Output<String> autoStopSetting;
 
     /**
-     * @return The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * @return The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      * 
      */
     public Output<String> autoStopSetting() {
@@ -262,14 +262,14 @@ public class ProjectEnvironment extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      * 
      */
     @Export(name="stopBeforeDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> stopBeforeDestroy;
 
     /**
-     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      * 
      */
     public Output<Boolean> stopBeforeDestroy() {

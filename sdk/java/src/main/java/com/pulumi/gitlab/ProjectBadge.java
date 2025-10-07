@@ -166,28 +166,28 @@ public class ProjectBadge extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The image_url argument rendered (in case of use of placeholders).
+     * The imageUrl argument rendered (in case of use of placeholders).
      * 
      */
     @Export(name="renderedImageUrl", refs={String.class}, tree="[0]")
     private Output<String> renderedImageUrl;
 
     /**
-     * @return The image_url argument rendered (in case of use of placeholders).
+     * @return The imageUrl argument rendered (in case of use of placeholders).
      * 
      */
     public Output<String> renderedImageUrl() {
         return this.renderedImageUrl;
     }
     /**
-     * The link_url argument rendered (in case of use of placeholders).
+     * The linkUrl argument rendered (in case of use of placeholders).
      * 
      */
     @Export(name="renderedLinkUrl", refs={String.class}, tree="[0]")
     private Output<String> renderedLinkUrl;
 
     /**
-     * @return The link_url argument rendered (in case of use of placeholders).
+     * @return The linkUrl argument rendered (in case of use of placeholders).
      * 
      */
     public Output<String> renderedLinkUrl() {

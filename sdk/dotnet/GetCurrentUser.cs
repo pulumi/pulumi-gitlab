@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetCurrentUser
     {
         /// <summary>
-        /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
+        /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `Token` provider attribute) to be retrieved.
         /// 
         /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/index/#querycurrentuser)
         /// 
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("gitlab:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
+        /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `Token` provider attribute) to be retrieved.
         /// 
         /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/index/#querycurrentuser)
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("gitlab:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.
+        /// The `gitlab.getCurrentUser` data source allows details of the current user (determined by `Token` provider attribute) to be retrieved.
         /// 
         /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/index/#querycurrentuser)
         /// 

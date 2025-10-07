@@ -32,14 +32,14 @@ public final class IntegrationEmailsOnPushState extends com.pulumi.resources.Res
     }
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -253,7 +253,7 @@ public final class IntegrationEmailsOnPushState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class IntegrationEmailsOnPushState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
          * 
          * @return builder
          * 

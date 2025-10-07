@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupDependencyProxy` resource allows managing the group docker dependency proxy. More than one dependency proxy per group will conflict with each other.
     /// 
-    /// If you're looking to manage the project-level package dependency proxy, see the `gitlab_project_package_registry_proxy` resource instead.
+    /// If you're looking to manage the project-level package dependency proxy, see the `GitlabProjectPackageRegistryProxy` resource instead.
     /// 
     /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationupdatedependencyproxysettings)
     /// 

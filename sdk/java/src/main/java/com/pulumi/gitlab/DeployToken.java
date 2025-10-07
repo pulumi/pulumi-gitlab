@@ -125,14 +125,14 @@ public class DeployToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.project);
     }
     /**
-     * The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+     * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+     * @return The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      * 
      */
     public Output<List<String>> scopes() {

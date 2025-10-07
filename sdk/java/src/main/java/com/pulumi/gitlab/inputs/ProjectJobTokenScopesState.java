@@ -19,14 +19,14 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
     public static final ProjectJobTokenScopesState Empty = new ProjectJobTokenScopesState();
 
     /**
-     * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * @return Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -52,10 +52,10 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
      * The ID of the project.
      * 
      * @deprecated
-     * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      * 
      */
-    @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
     @Import(name="projectId")
     private @Nullable Output<Integer> projectId;
 
@@ -63,10 +63,10 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
      * @return The ID of the project.
      * 
      * @deprecated
-     * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      * 
      */
-    @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
     public Optional<Output<Integer>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -130,7 +130,7 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+         * @param enabled Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+         * @param enabled Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
          * 
          * @return builder
          * 
@@ -177,10 +177,10 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
          * @return builder
          * 
          * @deprecated
-         * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
+         * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
          * 
          */
-        @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
         public Builder projectId(@Nullable Output<Integer> projectId) {
             $.projectId = projectId;
             return this;
@@ -192,10 +192,10 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
          * @return builder
          * 
          * @deprecated
-         * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
+         * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
          * 
          */
-        @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
         public Builder projectId(Integer projectId) {
             return projectId(Output.of(projectId));
         }

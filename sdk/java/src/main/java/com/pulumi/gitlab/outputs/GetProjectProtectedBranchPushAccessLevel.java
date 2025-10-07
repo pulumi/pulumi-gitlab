@@ -24,17 +24,17 @@ public final class GetProjectProtectedBranchPushAccessLevel {
      */
     private String accessLevelDescription;
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      * 
      */
     private @Nullable Integer deployKeyId;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     private @Nullable Integer userId;
@@ -55,21 +55,21 @@ public final class GetProjectProtectedBranchPushAccessLevel {
         return this.accessLevelDescription;
     }
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      * 
      */
     public Optional<Integer> deployKeyId() {
         return Optional.ofNullable(this.deployKeyId);
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     public Optional<Integer> userId() {

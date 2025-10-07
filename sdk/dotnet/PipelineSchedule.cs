@@ -103,7 +103,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
+        /// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `Main`.
         /// </summary>
         [Output("ref")]
         public Output<string> Ref { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
+        /// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `Main`.
         /// </summary>
         [Input("ref", required: true)]
         public Input<string> Ref { get; set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
+        /// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `Main`.
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }

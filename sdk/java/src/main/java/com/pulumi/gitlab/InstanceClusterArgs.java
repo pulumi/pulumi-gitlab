@@ -78,14 +78,14 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      * 
      */
     @Import(name="kubernetesAuthorizationType")
     private @Nullable Output<String> kubernetesAuthorizationType;
 
     /**
-     * @return The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * @return The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      * 
      */
     public Optional<Output<String>> kubernetesAuthorizationType() {
@@ -301,7 +301,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kubernetesAuthorizationType The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+         * @param kubernetesAuthorizationType The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kubernetesAuthorizationType The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+         * @param kubernetesAuthorizationType The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class IntegrationPipelinesEmailState extends com.pulumi.resources.R
     public static final IntegrationPipelinesEmailState Empty = new IntegrationPipelinesEmailState();
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -105,7 +105,7 @@ public final class IntegrationPipelinesEmailState extends com.pulumi.resources.R
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class IntegrationPipelinesEmailState extends com.pulumi.resources.R
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
          * 
          * @return builder
          * 

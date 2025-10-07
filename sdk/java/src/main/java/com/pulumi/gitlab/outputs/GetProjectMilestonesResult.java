@@ -22,7 +22,7 @@ public final class GetProjectMilestonesResult {
      */
     private String id;
     /**
-     * @return Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+     * @return Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      * 
      */
     private @Nullable List<Integer> iids;
@@ -66,7 +66,7 @@ public final class GetProjectMilestonesResult {
         return this.id;
     }
     /**
-     * @return Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+     * @return Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      * 
      */
     public List<Integer> iids() {

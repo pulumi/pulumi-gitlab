@@ -76,14 +76,14 @@ public final class ProjectBadgeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The image_url argument rendered (in case of use of placeholders).
+     * The imageUrl argument rendered (in case of use of placeholders).
      * 
      */
     @Import(name="renderedImageUrl")
     private @Nullable Output<String> renderedImageUrl;
 
     /**
-     * @return The image_url argument rendered (in case of use of placeholders).
+     * @return The imageUrl argument rendered (in case of use of placeholders).
      * 
      */
     public Optional<Output<String>> renderedImageUrl() {
@@ -91,14 +91,14 @@ public final class ProjectBadgeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The link_url argument rendered (in case of use of placeholders).
+     * The linkUrl argument rendered (in case of use of placeholders).
      * 
      */
     @Import(name="renderedLinkUrl")
     private @Nullable Output<String> renderedLinkUrl;
 
     /**
-     * @return The link_url argument rendered (in case of use of placeholders).
+     * @return The linkUrl argument rendered (in case of use of placeholders).
      * 
      */
     public Optional<Output<String>> renderedLinkUrl() {
@@ -219,7 +219,7 @@ public final class ProjectBadgeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renderedImageUrl The image_url argument rendered (in case of use of placeholders).
+         * @param renderedImageUrl The imageUrl argument rendered (in case of use of placeholders).
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class ProjectBadgeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renderedImageUrl The image_url argument rendered (in case of use of placeholders).
+         * @param renderedImageUrl The imageUrl argument rendered (in case of use of placeholders).
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ProjectBadgeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renderedLinkUrl The link_url argument rendered (in case of use of placeholders).
+         * @param renderedLinkUrl The linkUrl argument rendered (in case of use of placeholders).
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ProjectBadgeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renderedLinkUrl The link_url argument rendered (in case of use of placeholders).
+         * @param renderedLinkUrl The linkUrl argument rendered (in case of use of placeholders).
          * 
          * @return builder
          * 

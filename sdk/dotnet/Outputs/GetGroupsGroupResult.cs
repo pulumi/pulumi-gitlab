@@ -62,11 +62,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string RunnersToken;
         /// <summary>
-        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
         /// </summary>
         public readonly string SharedRunnersSetting;
         /// <summary>
-        /// Visibility level of the group. Possible values are `private`, `internal`, `public`.
+        /// Visibility level of the group. Possible values are `Private`, `Internal`, `Public`.
         /// </summary>
         public readonly string VisibilityLevel;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string WebUrl;
         /// <summary>
-        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string WikiAccessLevel;
 

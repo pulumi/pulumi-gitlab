@@ -78,14 +78,14 @@ public final class DeployTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+     * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
     /**
-     * @return The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+     * @return The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      * 
      */
     public Output<List<String>> scopes() {
@@ -221,7 +221,7 @@ public final class DeployTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+         * @param scopes The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class DeployTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+         * @param scopes The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class DeployTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+         * @param scopes The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
          * 
          * @return builder
          * 

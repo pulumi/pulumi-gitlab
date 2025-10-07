@@ -19,14 +19,14 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
     public static final GetProjectMilestonesPlainArgs Empty = new GetProjectMilestonesPlainArgs();
 
     /**
-     * Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+     * Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      * 
      */
     @Import(name="iids")
     private @Nullable List<Integer> iids;
 
     /**
-     * @return Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+     * @return Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      * 
      */
     public Optional<List<Integer>> iids() {
@@ -138,7 +138,7 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param iids Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+         * @param iids Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class GetProjectMilestonesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param iids Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+         * @param iids Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
          * 
          * @return builder
          * 

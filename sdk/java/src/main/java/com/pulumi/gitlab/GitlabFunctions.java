@@ -1419,7 +1419,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * The `gitlabAccessTokens` data source allows to retrieve all group-level access tokens.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
      * 
@@ -1461,7 +1461,7 @@ public final class GitlabFunctions {
         return getGroupAccessTokens(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * The `gitlabAccessTokens` data source allows to retrieve all group-level access tokens.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
      * 
@@ -1503,7 +1503,7 @@ public final class GitlabFunctions {
         return getGroupAccessTokensPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * The `gitlabAccessTokens` data source allows to retrieve all group-level access tokens.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
      * 
@@ -1545,7 +1545,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", TypeShape.of(GetGroupAccessTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * The `gitlabAccessTokens` data source allows to retrieve all group-level access tokens.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
      * 
@@ -1587,7 +1587,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", TypeShape.of(GetGroupAccessTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+     * The `gitlabAccessTokens` data source allows to retrieve all group-level access tokens.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
      * 
@@ -1873,6 +1873,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args) {
         return getGroupHook(args, InvokeOptions.Empty);
@@ -1881,6 +1883,8 @@ public final class GitlabFunctions {
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupHookResult> getGroupHookPlain(GetGroupHookPlainArgs args) {
@@ -1891,6 +1895,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupHook:getGroupHook", TypeShape.of(GetGroupHookResult.class), args, Utilities.withVersion(options));
@@ -1899,6 +1905,8 @@ public final class GitlabFunctions {
      * The `gitlab.GroupHook` data source allows to retrieve details about a hook in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args, InvokeOutputOptions options) {
@@ -1909,6 +1917,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGroupHookResult> getGroupHookPlain(GetGroupHookPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupHook:getGroupHook", TypeShape.of(GetGroupHookResult.class), args, Utilities.withVersion(options));
@@ -1917,6 +1927,8 @@ public final class GitlabFunctions {
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args) {
@@ -1927,6 +1939,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args) {
         return getGroupHooksPlain(args, InvokeOptions.Empty);
@@ -1935,6 +1949,8 @@ public final class GitlabFunctions {
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args, InvokeOptions options) {
@@ -1945,6 +1961,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupHooks:getGroupHooks", TypeShape.of(GetGroupHooksResult.class), args, Utilities.withVersion(options));
@@ -1953,6 +1971,8 @@ public final class GitlabFunctions {
      * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args, InvokeOptions options) {
@@ -2336,6 +2356,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args) {
         return getGroupSamlLinks(args, InvokeOptions.Empty);
@@ -2344,6 +2366,8 @@ public final class GitlabFunctions {
      * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupSamlLinksResult> getGroupSamlLinksPlain(GetGroupSamlLinksPlainArgs args) {
@@ -2354,6 +2378,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
@@ -2362,6 +2388,8 @@ public final class GitlabFunctions {
      * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args, InvokeOutputOptions options) {
@@ -2372,6 +2400,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGroupSamlLinksResult> getGroupSamlLinksPlain(GetGroupSamlLinksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
@@ -2380,6 +2410,8 @@ public final class GitlabFunctions {
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args) {
@@ -2390,6 +2422,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args) {
         return getGroupServiceAccountPlain(args, InvokeOptions.Empty);
@@ -2398,6 +2432,8 @@ public final class GitlabFunctions {
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args, InvokeOptions options) {
@@ -2408,6 +2444,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", TypeShape.of(GetGroupServiceAccountResult.class), args, Utilities.withVersion(options));
@@ -2416,6 +2454,8 @@ public final class GitlabFunctions {
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args, InvokeOptions options) {

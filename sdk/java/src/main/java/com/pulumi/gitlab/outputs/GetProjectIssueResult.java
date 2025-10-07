@@ -116,7 +116,7 @@ public final class GetProjectIssueResult {
      */
     private Integer issueLinkId;
     /**
-     * @return The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+     * @return The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      * 
      */
     private String issueType;
@@ -141,7 +141,7 @@ public final class GetProjectIssueResult {
      */
     private Integer mergeRequestsCount;
     /**
-     * @return The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+     * @return The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
     private Integer milestoneId;
@@ -358,7 +358,7 @@ public final class GetProjectIssueResult {
         return this.issueLinkId;
     }
     /**
-     * @return The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+     * @return The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      * 
      */
     public String issueType() {
@@ -393,7 +393,7 @@ public final class GetProjectIssueResult {
         return this.mergeRequestsCount;
     }
     /**
-     * @return The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+     * @return The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
     public Integer milestoneId() {

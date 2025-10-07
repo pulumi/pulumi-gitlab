@@ -22,7 +22,7 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean archived;
     /**
-     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
      * 
      */
     private @Nullable Integer groupId;
@@ -32,7 +32,7 @@ public final class GetProjectsResult {
      */
     private String id;
     /**
-     * @return Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+     * @return Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
      * 
      */
     private @Nullable Boolean includeSubgroups;
@@ -47,12 +47,12 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean membership;
     /**
-     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
      * 
      */
     private @Nullable Integer minAccessLevel;
     /**
-     * @return Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+     * @return Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
      * 
      */
     private @Nullable String orderBy;
@@ -97,7 +97,7 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean starred;
     /**
-     * @return Include project statistics. Cannot be used with `group_id`.
+     * @return Include project statistics. Cannot be used with `groupId`.
      * 
      */
     private @Nullable Boolean statistics;
@@ -127,12 +127,12 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean withMergeRequestsEnabled;
     /**
-     * @return Limit by projects which use the given programming language. Cannot be used with `group_id`.
+     * @return Limit by projects which use the given programming language. Cannot be used with `groupId`.
      * 
      */
     private @Nullable String withProgrammingLanguage;
     /**
-     * @return Include projects shared to this group. Default is `true`. Needs `group_id`.
+     * @return Include projects shared to this group. Default is `true`. Needs `groupId`.
      * 
      */
     private @Nullable Boolean withShared;
@@ -146,7 +146,7 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.archived);
     }
     /**
-     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
      * 
      */
     public Optional<Integer> groupId() {
@@ -160,7 +160,7 @@ public final class GetProjectsResult {
         return this.id;
     }
     /**
-     * @return Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+     * @return Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
      * 
      */
     public Optional<Boolean> includeSubgroups() {
@@ -181,14 +181,14 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.membership);
     }
     /**
-     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
      * 
      */
     public Optional<Integer> minAccessLevel() {
         return Optional.ofNullable(this.minAccessLevel);
     }
     /**
-     * @return Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+     * @return Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
      * 
      */
     public Optional<String> orderBy() {
@@ -251,7 +251,7 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.starred);
     }
     /**
-     * @return Include project statistics. Cannot be used with `group_id`.
+     * @return Include project statistics. Cannot be used with `groupId`.
      * 
      */
     public Optional<Boolean> statistics() {
@@ -293,14 +293,14 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.withMergeRequestsEnabled);
     }
     /**
-     * @return Limit by projects which use the given programming language. Cannot be used with `group_id`.
+     * @return Limit by projects which use the given programming language. Cannot be used with `groupId`.
      * 
      */
     public Optional<String> withProgrammingLanguage() {
         return Optional.ofNullable(this.withProgrammingLanguage);
     }
     /**
-     * @return Include projects shared to this group. Default is `true`. Needs `group_id`.
+     * @return Include projects shared to this group. Default is `true`. Needs `groupId`.
      * 
      */
     public Optional<Boolean> withShared() {

@@ -153,14 +153,14 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`.
+     * The type of a variable. Valid values are: `envVar`, `file`.
      * 
      */
     @Import(name="variableType")
     private @Nullable Output<String> variableType;
 
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`.
+     * @return The type of a variable. Valid values are: `envVar`, `file`.
      * 
      */
     public Optional<Output<String>> variableType() {
@@ -390,7 +390,7 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param variableType The type of a variable. Valid values are: `env_var`, `file`.
+         * @param variableType The type of a variable. Valid values are: `envVar`, `file`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param variableType The type of a variable. Valid values are: `env_var`, `file`.
+         * @param variableType The type of a variable. Valid values are: `envVar`, `file`.
          * 
          * @return builder
          * 

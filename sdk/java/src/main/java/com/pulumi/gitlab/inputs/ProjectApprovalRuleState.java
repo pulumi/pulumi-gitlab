@@ -19,14 +19,14 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     public static final ProjectApprovalRuleState Empty = new ProjectApprovalRuleState();
 
     /**
-     * Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
      * 
      */
     @Import(name="appliesToAllProtectedBranches")
     private @Nullable Output<Boolean> appliesToAllProtectedBranches;
 
     /**
-     * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
      * 
      */
     public Optional<Output<Boolean>> appliesToAllProtectedBranches() {
@@ -49,14 +49,14 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * When this flag is set, the default `any_approver` rule will not be imported if present.
+     * When this flag is set, the default `anyApprover` rule will not be imported if present.
      * 
      */
     @Import(name="disableImportingDefaultAnyApproverRuleOnCreate")
     private @Nullable Output<Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
 
     /**
-     * @return When this flag is set, the default `any_approver` rule will not be imported if present.
+     * @return When this flag is set, the default `anyApprover` rule will not be imported if present.
      * 
      */
     public Optional<Output<Boolean>> disableImportingDefaultAnyApproverRuleOnCreate() {
@@ -124,14 +124,14 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      * 
      */
     @Import(name="reportType")
     private @Nullable Output<String> reportType;
 
     /**
-     * @return Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * @return Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      * 
      */
     public Optional<Output<String>> reportType() {
@@ -139,14 +139,14 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+     * String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     @Import(name="ruleType")
     private @Nullable Output<String> ruleType;
 
     /**
-     * @return String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+     * @return String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     public Optional<Output<String>> ruleType() {
@@ -202,7 +202,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param appliesToAllProtectedBranches Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+         * @param appliesToAllProtectedBranches Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param appliesToAllProtectedBranches Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+         * @param appliesToAllProtectedBranches Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param disableImportingDefaultAnyApproverRuleOnCreate When this flag is set, the default `any_approver` rule will not be imported if present.
+         * @param disableImportingDefaultAnyApproverRuleOnCreate When this flag is set, the default `anyApprover` rule will not be imported if present.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param disableImportingDefaultAnyApproverRuleOnCreate When this flag is set, the default `any_approver` rule will not be imported if present.
+         * @param disableImportingDefaultAnyApproverRuleOnCreate When this flag is set, the default `anyApprover` rule will not be imported if present.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param reportType Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+         * @param reportType Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param reportType Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+         * @param reportType Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
          * 
          * @return builder
          * 

@@ -121,7 +121,7 @@ namespace Pulumi.GitLab
         public Output<string?> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the milestone. Valid values are: `active`, `closed`.
+        /// The state of the milestone. Valid values are: `Active`, `Closed`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.GitLab
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The state of the milestone. Valid values are: `active`, `closed`.
+        /// The state of the milestone. Valid values are: `Active`, `Closed`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.GitLab
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The state of the milestone. Valid values are: `active`, `closed`.
+        /// The state of the milestone. Valid values are: `Active`, `Closed`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

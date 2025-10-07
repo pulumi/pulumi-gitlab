@@ -257,7 +257,7 @@ namespace Pulumi.GitLab
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        /// Whether the group should be permanently removed during a `Delete` operation. This only works with subgroups. Must be configured via an `Apply` before the `Destroy` is run.
         /// </summary>
         [Output("permanentlyRemoveOnDelete")]
         public Output<bool?> PermanentlyRemoveOnDelete { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.GitLab
         public Output<bool> PreventForkingOutsideGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+        /// Determine if developers can create projects in the group. Valid values are: `Noone`, `Owner`, `Maintainer`, `Developer`, `Administrator`
         /// </summary>
         [Output("projectCreationLevel")]
         public Output<string> ProjectCreationLevel { get; private set; } = null!;
@@ -311,13 +311,13 @@ namespace Pulumi.GitLab
         public Output<int> SharedRunnersMinutesLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
         /// </summary>
         [Output("sharedRunnersSetting")]
         public Output<string> SharedRunnersSetting { get; private set; } = null!;
 
         /// <summary>
-        /// Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+        /// Allowed to create subgroups. Valid values are: `Owner`, `Maintainer`.
         /// </summary>
         [Output("subgroupCreationLevel")]
         public Output<string> SubgroupCreationLevel { get; private set; } = null!;
@@ -329,7 +329,7 @@ namespace Pulumi.GitLab
         public Output<int> TwoFactorGracePeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
+        /// The group's visibility. Can be `Private`, `Internal`, or `Public`. Valid values are: `Private`, `Internal`, `Public`.
         /// </summary>
         [Output("visibilityLevel")]
         public Output<string> VisibilityLevel { get; private set; } = null!;
@@ -341,7 +341,7 @@ namespace Pulumi.GitLab
         public Output<string> WebUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Output("wikiAccessLevel")]
         public Output<string> WikiAccessLevel { get; private set; } = null!;
@@ -511,7 +511,7 @@ namespace Pulumi.GitLab
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        /// Whether the group should be permanently removed during a `Delete` operation. This only works with subgroups. Must be configured via an `Apply` before the `Destroy` is run.
         /// </summary>
         [Input("permanentlyRemoveOnDelete")]
         public Input<bool>? PermanentlyRemoveOnDelete { get; set; }
@@ -523,7 +523,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
-        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+        /// Determine if developers can create projects in the group. Valid values are: `Noone`, `Owner`, `Maintainer`, `Developer`, `Administrator`
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
@@ -559,13 +559,13 @@ namespace Pulumi.GitLab
         public Input<int>? SharedRunnersMinutesLimit { get; set; }
 
         /// <summary>
-        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
         /// </summary>
         [Input("sharedRunnersSetting")]
         public Input<string>? SharedRunnersSetting { get; set; }
 
         /// <summary>
-        /// Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+        /// Allowed to create subgroups. Valid values are: `Owner`, `Maintainer`.
         /// </summary>
         [Input("subgroupCreationLevel")]
         public Input<string>? SubgroupCreationLevel { get; set; }
@@ -577,13 +577,13 @@ namespace Pulumi.GitLab
         public Input<int>? TwoFactorGracePeriod { get; set; }
 
         /// <summary>
-        /// The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
+        /// The group's visibility. Can be `Private`, `Internal`, or `Public`. Valid values are: `Private`, `Internal`, `Public`.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
 
         /// <summary>
-        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Input("wikiAccessLevel")]
         public Input<string>? WikiAccessLevel { get; set; }
@@ -729,7 +729,7 @@ namespace Pulumi.GitLab
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
+        /// Whether the group should be permanently removed during a `Delete` operation. This only works with subgroups. Must be configured via an `Apply` before the `Destroy` is run.
         /// </summary>
         [Input("permanentlyRemoveOnDelete")]
         public Input<bool>? PermanentlyRemoveOnDelete { get; set; }
@@ -741,7 +741,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
-        /// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+        /// Determine if developers can create projects in the group. Valid values are: `Noone`, `Owner`, `Maintainer`, `Developer`, `Administrator`
         /// </summary>
         [Input("projectCreationLevel")]
         public Input<string>? ProjectCreationLevel { get; set; }
@@ -793,13 +793,13 @@ namespace Pulumi.GitLab
         public Input<int>? SharedRunnersMinutesLimit { get; set; }
 
         /// <summary>
-        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
         /// </summary>
         [Input("sharedRunnersSetting")]
         public Input<string>? SharedRunnersSetting { get; set; }
 
         /// <summary>
-        /// Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+        /// Allowed to create subgroups. Valid values are: `Owner`, `Maintainer`.
         /// </summary>
         [Input("subgroupCreationLevel")]
         public Input<string>? SubgroupCreationLevel { get; set; }
@@ -811,7 +811,7 @@ namespace Pulumi.GitLab
         public Input<int>? TwoFactorGracePeriod { get; set; }
 
         /// <summary>
-        /// The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
+        /// The group's visibility. Can be `Private`, `Internal`, or `Public`. Valid values are: `Private`, `Internal`, `Public`.
         /// </summary>
         [Input("visibilityLevel")]
         public Input<string>? VisibilityLevel { get; set; }
@@ -823,7 +823,7 @@ namespace Pulumi.GitLab
         public Input<string>? WebUrl { get; set; }
 
         /// <summary>
-        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+        /// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Input("wikiAccessLevel")]
         public Input<string>? WikiAccessLevel { get; set; }

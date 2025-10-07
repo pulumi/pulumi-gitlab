@@ -93,14 +93,14 @@ public final class IntegrationJenkinsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The URL-friendly project name. Example: `my_project_name`.
+     * The URL-friendly project name. Example: `myProjectName`.
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return The URL-friendly project name. Example: `my_project_name`.
+     * @return The URL-friendly project name. Example: `myProjectName`.
      * 
      */
     public Output<String> projectName() {
@@ -290,7 +290,7 @@ public final class IntegrationJenkinsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectName The URL-friendly project name. Example: `my_project_name`.
+         * @param projectName The URL-friendly project name. Example: `myProjectName`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class IntegrationJenkinsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectName The URL-friendly project name. Example: `my_project_name`.
+         * @param projectName The URL-friendly project name. Example: `myProjectName`.
          * 
          * @return builder
          * 

@@ -48,14 +48,14 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
     }
 
     /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      * 
      */
     @Import(name="deployKeyId")
     private @Nullable Output<Integer> deployKeyId;
 
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      * 
      */
     public Optional<Output<Integer>> deployKeyId() {
@@ -63,14 +63,14 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -78,14 +78,14 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -163,7 +163,7 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
         }
 
         /**
-         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
         }
 
         /**
-         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GetProjectProtectedBranchPushAccessLevelArgs extends com.pulu
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
          * 
          * @return builder
          * 

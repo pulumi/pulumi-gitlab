@@ -104,14 +104,14 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
         return this.active;
     }
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      * 
      */
     public Output<Optional<String>> branchesToBeNotified() {

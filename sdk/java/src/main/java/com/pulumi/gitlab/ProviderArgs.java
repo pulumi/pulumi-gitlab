@@ -64,14 +64,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+     * @return File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -289,7 +289,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientKey File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+         * @param clientKey File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientKey File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+         * @param clientKey File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
          * 
          * @return builder
          * 

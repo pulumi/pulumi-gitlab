@@ -175,14 +175,14 @@ public class GroupLdapLink extends com.pulumi.resources.CustomResource {
         return this.ldapProvider;
     }
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
     private Output<Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      * 
      */
     public Output<Integer> memberRoleId() {

@@ -179,6 +179,52 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        project = gitlab.ValueStreamAnalytics("project",
+            name="TEST",
+            project_full_path="test/project",
+            stages=[
+                {
+                    "name": "Issue",
+                    "custom": False,
+                    "hidden": False,
+                },
+                {
+                    "name": "Issue Labels",
+                    "custom": True,
+                    "hidden": False,
+                    "start_event_identifier": "ISSUE_LABEL_ADDED",
+                    "start_event_label_id": "gid://gitlab/ProjectLabel/0",
+                    "end_event_identifier": "ISSUE_LABEL_REMOVED",
+                    "end_event_label_id": "gid://gitlab/ProjectLabel/1",
+                },
+            ])
+        group = gitlab.ValueStreamAnalytics("group",
+            name="TEST",
+            group_full_path="test/group",
+            stages=[
+                {
+                    "name": "Issue",
+                    "custom": False,
+                    "hidden": False,
+                },
+                {
+                    "name": "Issue Labels",
+                    "custom": True,
+                    "hidden": False,
+                    "start_event_identifier": "ISSUE_LABEL_ADDED",
+                    "start_event_label_id": "gid://gitlab/GroupLabel/0",
+                    "end_event_identifier": "ISSUE_LABEL_REMOVED",
+                    "end_event_label_id": "gid://gitlab/GroupLabel/1",
+                },
+            ])
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
@@ -224,6 +270,52 @@ class ValueStreamAnalytics(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        project = gitlab.ValueStreamAnalytics("project",
+            name="TEST",
+            project_full_path="test/project",
+            stages=[
+                {
+                    "name": "Issue",
+                    "custom": False,
+                    "hidden": False,
+                },
+                {
+                    "name": "Issue Labels",
+                    "custom": True,
+                    "hidden": False,
+                    "start_event_identifier": "ISSUE_LABEL_ADDED",
+                    "start_event_label_id": "gid://gitlab/ProjectLabel/0",
+                    "end_event_identifier": "ISSUE_LABEL_REMOVED",
+                    "end_event_label_id": "gid://gitlab/ProjectLabel/1",
+                },
+            ])
+        group = gitlab.ValueStreamAnalytics("group",
+            name="TEST",
+            group_full_path="test/group",
+            stages=[
+                {
+                    "name": "Issue",
+                    "custom": False,
+                    "hidden": False,
+                },
+                {
+                    "name": "Issue Labels",
+                    "custom": True,
+                    "hidden": False,
+                    "start_event_identifier": "ISSUE_LABEL_ADDED",
+                    "start_event_label_id": "gid://gitlab/GroupLabel/0",
+                    "end_event_identifier": "ISSUE_LABEL_REMOVED",
+                    "end_event_label_id": "gid://gitlab/GroupLabel/1",
+                },
+            ])
+        ```
 
         ## Import
 

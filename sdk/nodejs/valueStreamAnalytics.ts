@@ -13,6 +13,54 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const project = new gitlab.ValueStreamAnalytics("project", {
+ *     name: "TEST",
+ *     projectFullPath: "test/project",
+ *     stages: [
+ *         {
+ *             name: "Issue",
+ *             custom: false,
+ *             hidden: false,
+ *         },
+ *         {
+ *             name: "Issue Labels",
+ *             custom: true,
+ *             hidden: false,
+ *             start_event_identifier: "ISSUE_LABEL_ADDED",
+ *             start_event_label_id: "gid://gitlab/ProjectLabel/0",
+ *             end_event_identifier: "ISSUE_LABEL_REMOVED",
+ *             end_event_label_id: "gid://gitlab/ProjectLabel/1",
+ *         },
+ *     ],
+ * });
+ * const group = new gitlab.ValueStreamAnalytics("group", {
+ *     name: "TEST",
+ *     groupFullPath: "test/group",
+ *     stages: [
+ *         {
+ *             name: "Issue",
+ *             custom: false,
+ *             hidden: false,
+ *         },
+ *         {
+ *             name: "Issue Labels",
+ *             custom: true,
+ *             hidden: false,
+ *             start_event_identifier: "ISSUE_LABEL_ADDED",
+ *             start_event_label_id: "gid://gitlab/GroupLabel/0",
+ *             end_event_identifier: "ISSUE_LABEL_REMOVED",
+ *             end_event_label_id: "gid://gitlab/GroupLabel/1",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:

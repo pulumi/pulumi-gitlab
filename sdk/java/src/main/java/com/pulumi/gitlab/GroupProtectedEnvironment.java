@@ -19,10 +19,10 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
  * 
- * &gt; In order to use a user_id in the `deploy_access_levels` configuration,
+ * &gt; In order to use a userId in the `deployAccessLevels` configuration,
  *    you need to make sure that users have access to the group with Maintainer role or higher.
- *    In order to use a group_id in the `deploy_access_levels` configuration,
- *    the group_id must be a sub-group under the given group.
+ *    In order to use a groupId in the `deployAccessLevels` configuration,
+ *    the groupId must be a sub-group under the given group.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_environments/)
  * 
@@ -52,28 +52,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment")
 public class GroupProtectedEnvironment extends com.pulumi.resources.CustomResource {
     /**
-     * Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Export(name="approvalRules", refs={List.class,GroupProtectedEnvironmentApprovalRule.class}, tree="[0,1]")
     private Output<List<GroupProtectedEnvironmentApprovalRule>> approvalRules;
 
     /**
-     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Output<List<GroupProtectedEnvironmentApprovalRule>> approvalRules() {
         return this.approvalRules;
     }
     /**
-     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Export(name="deployAccessLevels", refs={List.class,GroupProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
     private Output<List<GroupProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Output<List<GroupProtectedEnvironmentDeployAccessLevel>> deployAccessLevels() {

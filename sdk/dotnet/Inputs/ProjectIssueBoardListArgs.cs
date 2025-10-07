@@ -43,7 +43,7 @@ namespace Pulumi.GitLab.Inputs
         public Input<int>? MilestoneId { get; set; }
 
         /// <summary>
-        /// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        /// The position of the list within the board. The position for the list is based on the its position in the `Lists` array.
         /// </summary>
         [Input("position")]
         public Input<int>? Position { get; set; }

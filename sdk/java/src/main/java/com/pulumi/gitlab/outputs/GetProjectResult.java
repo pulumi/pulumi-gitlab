@@ -39,7 +39,7 @@ public final class GetProjectResult {
      */
     private String autoCancelPendingPipelines;
     /**
-     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      * 
      */
     private String autoDevopsDeployStrategy;
@@ -89,7 +89,7 @@ public final class GetProjectResult {
      */
     private List<String> ciIdTokenSubClaimComponents;
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      * 
      */
     private String ciPipelineVariablesMinimumOverrideRole;
@@ -104,7 +104,7 @@ public final class GetProjectResult {
      */
     private Boolean ciSeparatedCaches;
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      * 
      */
     private List<GetProjectContainerExpirationPolicy> containerExpirationPolicies;
@@ -414,7 +414,7 @@ public final class GetProjectResult {
         return this.autoCancelPendingPipelines;
     }
     /**
-     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      * 
      */
     public String autoDevopsDeployStrategy() {
@@ -484,7 +484,7 @@ public final class GetProjectResult {
         return this.ciIdTokenSubClaimComponents;
     }
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      * 
      */
     public String ciPipelineVariablesMinimumOverrideRole() {
@@ -505,7 +505,7 @@ public final class GetProjectResult {
         return this.ciSeparatedCaches;
     }
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      * 
      */
     public List<GetProjectContainerExpirationPolicy> containerExpirationPolicies() {
