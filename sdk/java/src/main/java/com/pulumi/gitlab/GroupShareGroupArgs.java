@@ -63,14 +63,14 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
+     * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      * 
      */
     @Import(name="memberRoleId")
     private @Nullable Output<Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
+     * @return The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      * 
      */
     public Optional<Output<Integer>> memberRoleId() {
@@ -184,7 +184,7 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GroupShareGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
          * 
          * @return builder
          * 

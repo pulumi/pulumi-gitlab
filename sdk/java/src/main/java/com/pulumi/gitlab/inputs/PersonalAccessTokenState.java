@@ -65,14 +65,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -125,14 +125,14 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+     * @return The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -266,7 +266,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+         * @param expiresAt When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scopes The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+         * @param scopes The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scopes The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+         * @param scopes The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scopes The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+         * @param scopes The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
          * 
          * @return builder
          * 

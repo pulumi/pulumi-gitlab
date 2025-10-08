@@ -116,7 +116,7 @@ namespace Pulumi.GitLab
         public Output<bool> Revoked { get; private set; } = null!;
 
         /// <summary>
-        /// The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+        /// The scopes of the group deploy token. Valid values are: `ReadRepository`, `ReadRegistry`, `WriteRegistry`, `ReadVirtualRegistry`, `WriteVirtualRegistry`, `ReadPackageRegistry`, `WritePackageRegistry`
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+        /// The scopes of the group deploy token. Valid values are: `ReadRepository`, `ReadRegistry`, `WriteRegistry`, `ReadVirtualRegistry`, `WriteVirtualRegistry`, `ReadPackageRegistry`, `WritePackageRegistry`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -261,7 +261,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
+        /// The scopes of the group deploy token. Valid values are: `ReadRepository`, `ReadRegistry`, `WriteRegistry`, `ReadVirtualRegistry`, `WriteVirtualRegistry`, `ReadPackageRegistry`, `WritePackageRegistry`
         /// </summary>
         public InputList<string> Scopes
         {

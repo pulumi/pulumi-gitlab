@@ -107,14 +107,14 @@ public final class ProjectIntegrationJenkinsState extends com.pulumi.resources.R
     }
 
     /**
-     * The URL-friendly project name. Example: `my_project_name`.
+     * The URL-friendly project name. Example: `myProjectName`.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The URL-friendly project name. Example: `my_project_name`.
+     * @return The URL-friendly project name. Example: `myProjectName`.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -326,7 +326,7 @@ public final class ProjectIntegrationJenkinsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param projectName The URL-friendly project name. Example: `my_project_name`.
+         * @param projectName The URL-friendly project name. Example: `myProjectName`.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class ProjectIntegrationJenkinsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param projectName The URL-friendly project name. Example: `my_project_name`.
+         * @param projectName The URL-friendly project name. Example: `myProjectName`.
          * 
          * @return builder
          * 

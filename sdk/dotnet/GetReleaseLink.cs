@@ -114,7 +114,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int LinkId;
         /// <summary>
-        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
+        /// The type of the link. Valid values are `Other`, `Runbook`, `Image`, `Package`.
         /// </summary>
         public readonly string LinkType;
         /// <summary>

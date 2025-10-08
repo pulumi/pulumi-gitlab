@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `main`.
+        /// The branch/tag name to be triggered. This will be the full branch reference, for example: `refs/heads/main`, not `Main`.
         /// </summary>
         public readonly string Ref;
         /// <summary>

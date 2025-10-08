@@ -16,6 +16,69 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new GitLab.ValueStreamAnalytics("project", new()
+    ///     {
+    ///         Name = "TEST",
+    ///         ProjectFullPath = "test/project",
+    ///         Stages = new[]
+    ///         {
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue",
+    ///                 Custom = false,
+    ///                 Hidden = false,
+    ///             },
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue Labels",
+    ///                 Custom = true,
+    ///                 Hidden = false,
+    ///                 Start_event_identifier = "ISSUE_LABEL_ADDED",
+    ///                 Start_event_label_id = "gid://gitlab/ProjectLabel/0",
+    ///                 End_event_identifier = "ISSUE_LABEL_REMOVED",
+    ///                 End_event_label_id = "gid://gitlab/ProjectLabel/1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @group = new GitLab.ValueStreamAnalytics("group", new()
+    ///     {
+    ///         Name = "TEST",
+    ///         GroupFullPath = "test/group",
+    ///         Stages = new[]
+    ///         {
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue",
+    ///                 Custom = false,
+    ///                 Hidden = false,
+    ///             },
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue Labels",
+    ///                 Custom = true,
+    ///                 Hidden = false,
+    ///                 Start_event_identifier = "ISSUE_LABEL_ADDED",
+    ///                 Start_event_label_id = "gid://gitlab/GroupLabel/0",
+    ///                 End_event_identifier = "ISSUE_LABEL_REMOVED",
+    ///                 End_event_label_id = "gid://gitlab/GroupLabel/1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
@@ -46,7 +109,7 @@ namespace Pulumi.GitLab
     public partial class ValueStreamAnalytics : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+        /// Full path of the group the value stream is created in. **One of `GroupFullPath` OR `ProjectFullPath` is required.**
         /// </summary>
         [Output("groupFullPath")]
         public Output<string?> GroupFullPath { get; private set; } = null!;
@@ -58,7 +121,7 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+        /// Full path of the project the value stream is created in. **One of `GroupFullPath` OR `ProjectFullPath` is required.**
         /// </summary>
         [Output("projectFullPath")]
         public Output<string?> ProjectFullPath { get; private set; } = null!;
@@ -116,7 +179,7 @@ namespace Pulumi.GitLab
     public sealed class ValueStreamAnalyticsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+        /// Full path of the group the value stream is created in. **One of `GroupFullPath` OR `ProjectFullPath` is required.**
         /// </summary>
         [Input("groupFullPath")]
         public Input<string>? GroupFullPath { get; set; }
@@ -128,7 +191,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+        /// Full path of the project the value stream is created in. **One of `GroupFullPath` OR `ProjectFullPath` is required.**
         /// </summary>
         [Input("projectFullPath")]
         public Input<string>? ProjectFullPath { get; set; }
@@ -154,7 +217,7 @@ namespace Pulumi.GitLab
     public sealed class ValueStreamAnalyticsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+        /// Full path of the group the value stream is created in. **One of `GroupFullPath` OR `ProjectFullPath` is required.**
         /// </summary>
         [Input("groupFullPath")]
         public Input<string>? GroupFullPath { get; set; }
@@ -166,7 +229,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+        /// Full path of the project the value stream is created in. **One of `GroupFullPath` OR `ProjectFullPath` is required.**
         /// </summary>
         [Input("projectFullPath")]
         public Input<string>? ProjectFullPath { get; set; }

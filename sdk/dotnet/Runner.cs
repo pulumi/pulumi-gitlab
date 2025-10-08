@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
     /// A runner can either be registered at an instance level or group level.
     /// The runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.
     /// 
-    /// ~ &gt; Using this resource will register a runner using the deprecated `registration_token` flow. To use the new `authentication_token` flow instead,
+    /// ~ &gt; Using this resource will register a runner using the deprecated `RegistrationToken` flow. To use the new `AuthenticationToken` flow instead,
     /// use the `gitlab.UserRunner` resource!
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#register-a-new-runner)
@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
     public partial class Runner : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+        /// The AccessLevel of the runner. Valid values are: `NotProtected`, `RefProtected`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
     public sealed class RunnerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+        /// The AccessLevel of the runner. Valid values are: `NotProtected`, `RefProtected`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.GitLab
     public sealed class RunnerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+        /// The AccessLevel of the runner. Valid values are: `NotProtected`, `RefProtected`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

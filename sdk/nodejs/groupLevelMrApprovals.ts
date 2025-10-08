@@ -7,6 +7,26 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const foo = new gitlab.Group("foo", {
+ *     name: "test_group",
+ *     path: "test_group",
+ *     description: "An example group",
+ * });
+ * const fooGroupLevelMrApprovals = new gitlab.GroupLevelMrApprovals("foo", {
+ *     group: foo.id,
+ *     allowAuthorApproval: true,
+ *     allowCommitterApproval: true,
+ *     allowOverridesToApproverListPerMergeRequest: true,
+ *     retainApprovalsOnPush: true,
+ *     selectiveCodeOwnerRemovals: false,
+ *     requireReauthenticationToApprove: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:

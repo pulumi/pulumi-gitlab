@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
  * 
- * &gt; In order to use a user or group in the `deploy_access_levels` configuration,
+ * &gt; In order to use a user or group in the `deployAccessLevels` configuration,
  *    you need to make sure that users have access to the project and groups must have this project shared.
- *    You may use the `gitlab.ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.
+ *    You may use the `gitlab.ProjectMembership` and `gitlabProjectSharedGroup` resources to achieve this.
  *    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
  *    In case this happens you will get perpetual state diffs.
  * 
@@ -55,46 +55,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment")
 public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomResource {
     /**
-     * Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Export(name="approvalRules", refs={List.class,ProjectProtectedEnvironmentApprovalRule.class}, tree="[0,1]")
     private Output<List<ProjectProtectedEnvironmentApprovalRule>> approvalRules;
 
     /**
-     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Output<List<ProjectProtectedEnvironmentApprovalRule>> approvalRules() {
         return this.approvalRules;
     }
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      * @deprecated
-     * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+     * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
+    @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
     @Export(name="deployAccessLevels", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevel>>> deployAccessLevels() {
         return Codegen.optional(this.deployAccessLevels);
     }
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Export(name="deployAccessLevelsAttributes", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevelsAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevelsAttribute>> deployAccessLevelsAttributes;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevelsAttribute>>> deployAccessLevelsAttributes() {

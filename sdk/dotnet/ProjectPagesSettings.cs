@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.ProjectPagesSettingsDeployment>> Deployments { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+        /// Boolean indicating if the project is set to force https. Requires `ExternalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         /// </summary>
         [Output("forceHttps")]
         public Output<bool> ForceHttps { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectPagesSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+        /// Boolean indicating if the project is set to force https. Requires `ExternalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         /// </summary>
         [Input("forceHttps")]
         public Input<bool>? ForceHttps { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+        /// Boolean indicating if the project is set to force https. Requires `ExternalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         /// </summary>
         [Input("forceHttps")]
         public Input<bool>? ForceHttps { get; set; }

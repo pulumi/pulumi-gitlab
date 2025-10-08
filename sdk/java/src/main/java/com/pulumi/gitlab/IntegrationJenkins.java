@@ -176,14 +176,14 @@ public class IntegrationJenkins extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The URL-friendly project name. Example: `my_project_name`.
+     * The URL-friendly project name. Example: `myProjectName`.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The URL-friendly project name. Example: `my_project_name`.
+     * @return The URL-friendly project name. Example: `myProjectName`.
      * 
      */
     public Output<String> projectName() {

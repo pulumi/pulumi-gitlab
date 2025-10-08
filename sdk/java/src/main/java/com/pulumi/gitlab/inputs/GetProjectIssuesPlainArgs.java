@@ -34,14 +34,14 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+     * Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      * 
      */
     @Import(name="assigneeUsername")
     private @Nullable String assigneeUsername;
 
     /**
-     * @return Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+     * @return Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      * 
      */
     public Optional<String> assigneeUsername() {
@@ -139,14 +139,14 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Filter to a given type of issue. Valid values are [issue incident test_case].
+     * Filter to a given type of issue. Valid values are [issue incident testCase].
      * 
      */
     @Import(name="issueType")
     private @Nullable String issueType;
 
     /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case].
+     * @return Filter to a given type of issue. Valid values are [issue incident testCase].
      * 
      */
     public Optional<String> issueType() {
@@ -274,14 +274,14 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+     * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      * 
      */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
     /**
-     * @return Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+     * @return Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      * 
      */
     public Optional<String> orderBy() {
@@ -304,14 +304,14 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+     * Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
      * 
      */
     @Import(name="scope")
     private @Nullable String scope;
 
     /**
-     * @return Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+     * @return Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
      * 
      */
     public Optional<String> scope() {
@@ -469,7 +469,7 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param assigneeUsername Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+         * @param assigneeUsername Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param issueType Filter to a given type of issue. Valid values are [issue incident test_case].
+         * @param issueType Filter to a given type of issue. Valid values are [issue incident testCase].
          * 
          * @return builder
          * 
@@ -675,7 +675,7 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param orderBy Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+         * @param orderBy Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class GetProjectIssuesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param scope Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+         * @param scope Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
          * 
          * @return builder
          * 

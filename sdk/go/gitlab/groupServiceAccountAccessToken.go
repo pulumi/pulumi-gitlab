@@ -24,6 +24,95 @@ import (
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/group_service_accounts/#create-a-personal-access-token-for-a-service-account-user)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This must be a top-level group
+//			example, err := gitlab.NewGroup(ctx, "example", &gitlab.GroupArgs{
+//				Name:        pulumi.String("example"),
+//				Path:        pulumi.String("example"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The service account against the top-level group
+//			exampleSa, err := gitlab.NewGroupServiceAccount(ctx, "example_sa", &gitlab.GroupServiceAccountArgs{
+//				Group:    example.ID(),
+//				Name:     pulumi.String("example-name"),
+//				Username: pulumi.String("example-username"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// To assign the service account to a group
+//			_, err = gitlab.NewGroupMembership(ctx, "example_membership", &gitlab.GroupMembershipArgs{
+//				GroupId:     example.ID(),
+//				UserId:      exampleSa.ServiceAccountId,
+//				AccessLevel: pulumi.String("developer"),
+//				ExpiresAt:   pulumi.String("2020-03-14"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The service account access token with no expiry
+//			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_no_expiry", &gitlab.GroupServiceAccountAccessTokenArgs{
+//				Group:  example.ID(),
+//				UserId: exampleSa.ServiceAccountId,
+//				Name:   pulumi.String("Example service account access token"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The service account access token with expires at
+//			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_expires_at", &gitlab.GroupServiceAccountAccessTokenArgs{
+//				Group:     example.ID(),
+//				UserId:    exampleSa.ServiceAccountId,
+//				Name:      pulumi.String("Example service account access token"),
+//				ExpiresAt: pulumi.String("2020-03-14"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The service account access token with rotation configuration
+//			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_rotation_configuration", &gitlab.GroupServiceAccountAccessTokenArgs{
+//				Group:  example.ID(),
+//				UserId: exampleSa.ServiceAccountId,
+//				Name:   pulumi.String("Example service account access token"),
+//				RotationConfiguration: &gitlab.GroupServiceAccountAccessTokenRotationConfigurationArgs{
+//					Rotate_before_days: 2,
+//					Expiration_days:    7,
+//				},
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("api"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:

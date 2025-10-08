@@ -17,6 +17,51 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Group;
+ * import com.pulumi.gitlab.GroupArgs;
+ * import com.pulumi.gitlab.GroupLevelMrApprovals;
+ * import com.pulumi.gitlab.GroupLevelMrApprovalsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Group("foo", GroupArgs.builder()
+ *             .name("test_group")
+ *             .path("test_group")
+ *             .description("An example group")
+ *             .build());
+ * 
+ *         var fooGroupLevelMrApprovals = new GroupLevelMrApprovals("fooGroupLevelMrApprovals", GroupLevelMrApprovalsArgs.builder()
+ *             .group(foo.id())
+ *             .allowAuthorApproval(true)
+ *             .allowCommitterApproval(true)
+ *             .allowOverridesToApproverListPerMergeRequest(true)
+ *             .retainApprovalsOnPush(true)
+ *             .selectiveCodeOwnerRemovals(false)
+ *             .requireReauthenticationToApprove(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:

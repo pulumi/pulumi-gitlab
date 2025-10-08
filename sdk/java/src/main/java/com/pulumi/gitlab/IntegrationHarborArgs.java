@@ -48,14 +48,14 @@ public final class IntegrationHarborArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+     * The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+     * @return The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
      * 
      */
     public Output<String> projectName() {
@@ -179,7 +179,7 @@ public final class IntegrationHarborArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectName The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+         * @param projectName The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class IntegrationHarborArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectName The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+         * @param projectName The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
          * 
          * @return builder
          * 

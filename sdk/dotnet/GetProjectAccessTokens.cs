@@ -46,7 +46,7 @@ namespace Pulumi.GitLab
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// List all project access token that match the specified state. Valid values are `active`, `inactive`. Returns all project access token if not set.
+        /// List all project access token that match the specified state. Valid values are `Active`, `Inactive`. Returns all project access token if not set.
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
@@ -66,7 +66,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// List all project access token that match the specified state. Valid values are `active`, `inactive`. Returns all project access token if not set.
+        /// List all project access token that match the specified state. Valid values are `Active`, `Inactive`. Returns all project access token if not set.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// List all project access token that match the specified state. Valid values are `active`, `inactive`. Returns all project access token if not set.
+        /// List all project access token that match the specified state. Valid values are `Active`, `Inactive`. Returns all project access token if not set.
         /// </summary>
         public readonly string? State;
 

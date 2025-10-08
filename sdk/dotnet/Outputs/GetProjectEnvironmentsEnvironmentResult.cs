@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string AutoStopSetting;
         /// <summary>
-        /// The ID of the environments cluster agent or `null` if none is assigned.
+        /// The ID of the environments cluster agent or `Null` if none is assigned.
         /// </summary>
         public readonly int ClusterAgentId;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Slug;
         /// <summary>
-        /// The state of the environment. Value can be one of `available`, `stopping`, `stopped`. Returns all environments if not set.
+        /// The state of the environment. Value can be one of `Available`, `Stopping`, `Stopped`. Returns all environments if not set.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The tier of the environment. Value can be one of `production`, `staging`, `testing`, `development`, `other`. Returns all environments if not set.
+        /// The tier of the environment. Value can be one of `Production`, `Staging`, `Testing`, `Development`, `Other`. Returns all environments if not set.
         /// </summary>
         public readonly string Tier;
         /// <summary>

@@ -19,14 +19,14 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
     public static final GroupProtectedEnvironmentState Empty = new GroupProtectedEnvironmentState();
 
     /**
-     * Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Import(name="approvalRules")
     private @Nullable Output<List<GroupProtectedEnvironmentApprovalRuleArgs>> approvalRules;
 
     /**
-     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Optional<Output<List<GroupProtectedEnvironmentApprovalRuleArgs>>> approvalRules() {
@@ -34,14 +34,14 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
     }
 
     /**
-     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Import(name="deployAccessLevels")
     private @Nullable Output<List<GroupProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Optional<Output<List<GroupProtectedEnvironmentDeployAccessLevelArgs>>> deployAccessLevels() {
@@ -106,7 +106,7 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class GroupProtectedEnvironmentState extends com.pulumi.resources.R
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 

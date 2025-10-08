@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         /// </summary>
         [Output("hidden")]
         public Output<bool> Hidden { get; private set; } = null!;
@@ -70,13 +70,13 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         [Output("masked")]
         public Output<bool> Masked { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        /// If set to `True`, the variable will be passed only to pipelines running on protected branches and tags.
         /// </summary>
         [Output("protected")]
         public Output<bool> Protected { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GitLab
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`.
+        /// The type of a variable. Valid values are: `EnvVar`, `File`.
         /// </summary>
         [Output("variableType")]
         public Output<string> VariableType { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -176,13 +176,13 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        /// If set to `True`, the variable will be passed only to pipelines running on protected branches and tags.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.GitLab
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`.
+        /// The type of a variable. Valid values are: `EnvVar`, `File`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.GitLab
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -244,13 +244,13 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
 
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
+        /// If set to `True`, the variable will be passed only to pipelines running on protected branches and tags.
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.GitLab
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`.
+        /// The type of a variable. Valid values are: `EnvVar`, `File`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }

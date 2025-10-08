@@ -25,7 +25,7 @@ namespace Pulumi.GitLab.Inputs
         public Input<int>? LabelId { get; set; }
 
         /// <summary>
-        /// The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
+        /// The position of the list within the board. The position for the list is sed on the its position in the `Lists` array.
         /// </summary>
         [Input("position")]
         public Input<int>? Position { get; set; }

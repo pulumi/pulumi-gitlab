@@ -37,7 +37,7 @@ namespace Pulumi.GitLab
         public Output<string?> ClientCert { get; private set; } = null!;
 
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `ClientCert` is set.
         /// </summary>
         [Output("clientKey")]
         public Output<string?> ClientKey { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.GitLab
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `ClientCert` is set.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }

@@ -76,7 +76,7 @@ namespace Pulumi.GitLab
         public Output<string> AutoStopAt { get; private set; } = null!;
 
         /// <summary>
-        /// The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        /// The auto stop setting for the environment. Allowed values are `Always`, `WithAction`. If this is set to `WithAction` and `StopBeforeDestroy` is `True`, the environment will be force-stopped.
         /// </summary>
         [Output("autoStopSetting")]
         public Output<string> AutoStopSetting { get; private set; } = null!;
@@ -136,19 +136,19 @@ namespace Pulumi.GitLab
         public Output<string> Slug { get; private set; } = null!;
 
         /// <summary>
-        /// State the environment is in. Valid values are `available`, `stopped`.
+        /// State the environment is in. Valid values are `Available`, `Stopped`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `AutoStopSetting` is set to `WithAction`, this will perform a force stop.
         /// </summary>
         [Output("stopBeforeDestroy")]
         public Output<bool> StopBeforeDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// The tier of the new environment. Valid values are `Production`, `Staging`, `Testing`, `Development`, `Other`.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        /// The auto stop setting for the environment. Allowed values are `Always`, `WithAction`. If this is set to `WithAction` and `StopBeforeDestroy` is `True`, the environment will be force-stopped.
         /// </summary>
         [Input("autoStopSetting")]
         public Input<string>? AutoStopSetting { get; set; }
@@ -254,13 +254,13 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `AutoStopSetting` is set to `WithAction`, this will perform a force stop.
         /// </summary>
         [Input("stopBeforeDestroy")]
         public Input<bool>? StopBeforeDestroy { get; set; }
 
         /// <summary>
-        /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// The tier of the new environment. Valid values are `Production`, `Staging`, `Testing`, `Development`, `Other`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.GitLab
         public Input<string>? AutoStopAt { get; set; }
 
         /// <summary>
-        /// The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+        /// The auto stop setting for the environment. Allowed values are `Always`, `WithAction`. If this is set to `WithAction` and `StopBeforeDestroy` is `True`, the environment will be force-stopped.
         /// </summary>
         [Input("autoStopSetting")]
         public Input<string>? AutoStopSetting { get; set; }
@@ -340,19 +340,19 @@ namespace Pulumi.GitLab
         public Input<string>? Slug { get; set; }
 
         /// <summary>
-        /// State the environment is in. Valid values are `available`, `stopped`.
+        /// State the environment is in. Valid values are `Available`, `Stopped`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+        /// Determines whether the environment is attempted to be stopped before the environment is deleted. If `AutoStopSetting` is set to `WithAction`, this will perform a force stop.
         /// </summary>
         [Input("stopBeforeDestroy")]
         public Input<bool>? StopBeforeDestroy { get; set; }
 
         /// <summary>
-        /// The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// The tier of the new environment. Valid values are `Production`, `Staging`, `Testing`, `Development`, `Other`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

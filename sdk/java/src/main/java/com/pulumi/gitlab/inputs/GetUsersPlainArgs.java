@@ -166,14 +166,14 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Order the users&#39; list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+     * Order the users&#39; list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      * 
      */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
     /**
-     * @return Order the users&#39; list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+     * @return Order the users&#39; list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      * 
      */
     public Optional<String> orderBy() {
@@ -389,7 +389,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orderBy Order the users&#39; list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+         * @param orderBy Order the users&#39; list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
          * 
          * @return builder
          * 

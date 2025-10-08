@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int? MilestoneId;
         /// <summary>
-        /// The position of the list within the board. The position for the list is based on the its position in the `lists` array.
+        /// The position of the list within the board. The position for the list is based on the its position in the `Lists` array.
         /// </summary>
         public readonly int? Position;
 

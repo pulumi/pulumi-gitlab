@@ -151,7 +151,7 @@ namespace Pulumi.GitLab
         public bool? Paused { get; set; }
 
         /// <summary>
-        /// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+        /// Filters for runners with the given status. Valid Values are `Online`, `Offline`, `Stale`, and `NeverContacted`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+        /// The type of runner to return. Valid values are `InstanceType`, `GroupType` and `ProjectType`
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+        /// Filters for runners with the given status. Valid Values are `Online`, `Offline`, `Stale`, and `NeverContacted`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+        /// The type of runner to return. Valid values are `InstanceType`, `GroupType` and `ProjectType`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRunnersRunnerResult> Runners;
         /// <summary>
-        /// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+        /// Filters for runners with the given status. Valid Values are `Online`, `Offline`, `Stale`, and `NeverContacted`.
         /// </summary>
         public readonly string? Status;
         /// <summary>
@@ -240,7 +240,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<string> TagLists;
         /// <summary>
-        /// The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+        /// The type of runner to return. Valid values are `InstanceType`, `GroupType` and `ProjectType`
         /// </summary>
         public readonly string? Type;
 

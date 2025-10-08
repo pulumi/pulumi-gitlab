@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
     public partial class DeployKey : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        /// Allow this deploy key to be used to push changes to the project. Defaults to `False`.
         /// </summary>
         [Output("canPush")]
         public Output<bool?> CanPush { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
     public sealed class DeployKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        /// Allow this deploy key to be used to push changes to the project. Defaults to `False`.
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.GitLab
     public sealed class DeployKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
+        /// Allow this deploy key to be used to push changes to the project. Defaults to `False`.
         /// </summary>
         [Input("canPush")]
         public Input<bool>? CanPush { get; set; }

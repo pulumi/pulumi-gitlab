@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectSharedWithGroupResult
     {
         /// <summary>
-        /// The access_level permission level of the shared group.
+        /// The AccessLevel permission level of the shared group.
         /// </summary>
         public readonly int GroupAccessLevel;
         /// <summary>

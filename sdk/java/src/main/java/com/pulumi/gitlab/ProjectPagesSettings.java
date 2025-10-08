@@ -59,14 +59,14 @@ public class ProjectPagesSettings extends com.pulumi.resources.CustomResource {
         return this.deployments;
     }
     /**
-     * Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+     * Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      * 
      */
     @Export(name="forceHttps", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceHttps;
 
     /**
-     * @return Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+     * @return Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      * 
      */
     public Output<Boolean> forceHttps() {

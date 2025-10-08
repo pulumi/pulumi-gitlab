@@ -33,14 +33,14 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      * 
      */
     @Import(name="autoStopSetting")
     private @Nullable Output<String> autoStopSetting;
 
     /**
-     * @return The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+     * @return The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      * 
      */
     public Optional<Output<String>> autoStopSetting() {
@@ -198,14 +198,14 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+     * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      * 
      */
     @Import(name="stopBeforeDestroy")
     private @Nullable Output<Boolean> stopBeforeDestroy;
 
     /**
-     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+     * @return Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      * 
      */
     public Optional<Output<Boolean>> stopBeforeDestroy() {
@@ -302,7 +302,7 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
+         * @param autoStopSetting The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class ProjectEnvironmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
+         * @param stopBeforeDestroy Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
          * 
          * @return builder
          * 
