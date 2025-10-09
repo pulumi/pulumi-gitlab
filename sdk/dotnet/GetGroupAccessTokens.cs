@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetGroupAccessTokens
     {
         /// <summary>
-        /// The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+        /// The `GitlabAccessTokens` data source allows to retrieve all group-level access tokens.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupAccessTokensResult>("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", args ?? new GetGroupAccessTokensArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+        /// The `GitlabAccessTokens` data source allows to retrieve all group-level access tokens.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupAccessTokensResult>("gitlab:index/getGroupAccessTokens:getGroupAccessTokens", args ?? new GetGroupAccessTokensInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.
+        /// The `GitlabAccessTokens` data source allows to retrieve all group-level access tokens.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_access_tokens/)
         /// 

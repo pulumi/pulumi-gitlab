@@ -93,7 +93,7 @@ namespace Pulumi.GitLab
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        /// The type of a variable. Available types are: `EnvVar`, `File`. Default is `EnvVar`.
         /// </summary>
         [Output("variableType")]
         public Output<string> VariableType { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GitLab
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        /// The type of a variable. Available types are: `EnvVar`, `File`. Default is `EnvVar`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.GitLab
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+        /// The type of a variable. Available types are: `EnvVar`, `File`. Default is `EnvVar`.
         /// </summary>
         [Input("variableType")]
         public Input<string>? VariableType { get; set; }

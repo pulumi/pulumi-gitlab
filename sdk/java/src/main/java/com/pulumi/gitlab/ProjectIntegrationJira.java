@@ -280,14 +280,14 @@ public class ProjectIntegrationJira extends com.pulumi.resources.CustomResource 
         return this.project;
     }
     /**
-     * Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+     * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
     @Export(name="projectKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> projectKeys;
 
     /**
-     * @return Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+     * @return Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
     public Output<Optional<List<String>>> projectKeys() {

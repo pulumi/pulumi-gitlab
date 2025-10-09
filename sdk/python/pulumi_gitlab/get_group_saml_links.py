@@ -78,6 +78,8 @@ def get_group_saml_links(group: Optional[_builtins.str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
 
+    ## Example Usage
+
 
     :param _builtins.str group: The name or id of the group.
     """
@@ -96,6 +98,8 @@ def get_group_saml_links_output(group: Optional[pulumi.Input[_builtins.str]] = N
     The `get_group_saml_links` data source retrieves all SAML links for a specified group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+
+    ## Example Usage
 
 
     :param _builtins.str group: The name or id of the group.

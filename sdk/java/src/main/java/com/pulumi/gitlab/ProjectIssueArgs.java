@@ -170,14 +170,14 @@ public final class ProjectIssueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+     * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      * 
      */
     @Import(name="issueType")
     private @Nullable Output<String> issueType;
 
     /**
-     * @return The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+     * @return The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      * 
      */
     public Optional<Output<String>> issueType() {
@@ -215,14 +215,14 @@ public final class ProjectIssueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+     * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
     @Import(name="milestoneId")
     private @Nullable Output<Integer> milestoneId;
 
     /**
-     * @return The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+     * @return The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
     public Optional<Output<Integer>> milestoneId() {
@@ -567,7 +567,7 @@ public final class ProjectIssueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issueType The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+         * @param issueType The type of issue. Valid values are: `issue`, `incident`, `testCase`.
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class ProjectIssueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issueType The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+         * @param issueType The type of issue. Valid values are: `issue`, `incident`, `testCase`.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class ProjectIssueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param milestoneId The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+         * @param milestoneId The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class ProjectIssueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param milestoneId The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+         * @param milestoneId The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
          * 
          * @return builder
          * 

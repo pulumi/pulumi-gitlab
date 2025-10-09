@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceVariablesResult {
     /**
-     * @return The ID of this datasource. In the hardcoded format `instance_variables`.
+     * @return The ID of this datasource. In the hardcoded format `instanceVariables`.
      * 
      */
     private String id;
@@ -25,7 +25,7 @@ public final class GetInstanceVariablesResult {
 
     private GetInstanceVariablesResult() {}
     /**
-     * @return The ID of this datasource. In the hardcoded format `instance_variables`.
+     * @return The ID of this datasource. In the hardcoded format `instanceVariables`.
      * 
      */
     public String id() {

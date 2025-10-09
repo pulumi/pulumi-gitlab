@@ -22,7 +22,7 @@ public final class GetProjectIssuesResult {
      */
     private @Nullable Integer assigneeId;
     /**
-     * @return Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+     * @return Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      * 
      */
     private @Nullable String assigneeUsername;
@@ -62,7 +62,7 @@ public final class GetProjectIssuesResult {
      */
     private @Nullable List<Integer> iids;
     /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case].
+     * @return Filter to a given type of issue. Valid values are [issue incident testCase].
      * 
      */
     private @Nullable String issueType;
@@ -112,7 +112,7 @@ public final class GetProjectIssuesResult {
      */
     private @Nullable String notMyReactionEmoji;
     /**
-     * @return Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+     * @return Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      * 
      */
     private @Nullable String orderBy;
@@ -122,7 +122,7 @@ public final class GetProjectIssuesResult {
      */
     private String project;
     /**
-     * @return Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+     * @return Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
      * 
      */
     private @Nullable String scope;
@@ -166,7 +166,7 @@ public final class GetProjectIssuesResult {
         return Optional.ofNullable(this.assigneeId);
     }
     /**
-     * @return Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+     * @return Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      * 
      */
     public Optional<String> assigneeUsername() {
@@ -222,7 +222,7 @@ public final class GetProjectIssuesResult {
         return this.iids == null ? List.of() : this.iids;
     }
     /**
-     * @return Filter to a given type of issue. Valid values are [issue incident test_case].
+     * @return Filter to a given type of issue. Valid values are [issue incident testCase].
      * 
      */
     public Optional<String> issueType() {
@@ -292,7 +292,7 @@ public final class GetProjectIssuesResult {
         return Optional.ofNullable(this.notMyReactionEmoji);
     }
     /**
-     * @return Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+     * @return Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      * 
      */
     public Optional<String> orderBy() {
@@ -306,7 +306,7 @@ public final class GetProjectIssuesResult {
         return this.project;
     }
     /**
-     * @return Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+     * @return Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
      * 
      */
     public Optional<String> scope() {

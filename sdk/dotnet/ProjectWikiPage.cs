@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/wikis/)
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
@@ -52,7 +54,7 @@ namespace Pulumi.GitLab
         public Output<string> Encoding { get; private set; } = null!;
 
         /// <summary>
-        /// Format of the wiki page (auto-generated if not provided). Valid values are: `markdown`, `rdoc`, `asciidoc`, `org`.
+        /// Format of the wiki page (auto-generated if not provided). Valid values are: `Markdown`, `Rdoc`, `Asciidoc`, `Org`.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -128,7 +130,7 @@ namespace Pulumi.GitLab
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// Format of the wiki page (auto-generated if not provided). Valid values are: `markdown`, `rdoc`, `asciidoc`, `org`.
+        /// Format of the wiki page (auto-generated if not provided). Valid values are: `Markdown`, `Rdoc`, `Asciidoc`, `Org`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
@@ -166,7 +168,7 @@ namespace Pulumi.GitLab
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// Format of the wiki page (auto-generated if not provided). Valid values are: `markdown`, `rdoc`, `asciidoc`, `org`.
+        /// Format of the wiki page (auto-generated if not provided). Valid values are: `Markdown`, `Rdoc`, `Asciidoc`, `Org`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

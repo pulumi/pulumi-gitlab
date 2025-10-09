@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectTagsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Return tags ordered by `name` or `updated` fields. Default is `updated`.
+        /// Return tags ordered by `Name` or `Updated` fields. Default is `Updated`.
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -52,13 +52,13 @@ namespace Pulumi.GitLab
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
+        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `Term` respectively. No other regular expressions are supported.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
         /// <summary>
-        /// Return tags sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return tags sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Return tags ordered by `name` or `updated` fields. Default is `updated`.
+        /// Return tags ordered by `Name` or `Updated` fields. Default is `Updated`.
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -84,13 +84,13 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
+        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `Term` respectively. No other regular expressions are supported.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
         /// <summary>
-        /// Return tags sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return tags sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Return tags ordered by `name` or `updated` fields. Default is `updated`.
+        /// Return tags ordered by `Name` or `Updated` fields. Default is `Updated`.
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>
@@ -118,11 +118,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
+        /// Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `Term` respectively. No other regular expressions are supported.
         /// </summary>
         public readonly string? Search;
         /// <summary>
-        /// Return tags sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return tags sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         public readonly string? Sort;
         /// <summary>

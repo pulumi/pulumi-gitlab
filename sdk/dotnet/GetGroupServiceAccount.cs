@@ -15,6 +15,8 @@ namespace Pulumi.GitLab
         /// The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetGroupServiceAccountResult> InvokeAsync(GetGroupServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountArgs(), options.WithDefaults());
@@ -23,6 +25,8 @@ namespace Pulumi.GitLab
         /// The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
@@ -31,6 +35,8 @@ namespace Pulumi.GitLab
         /// The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());

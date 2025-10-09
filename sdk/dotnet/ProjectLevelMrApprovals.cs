@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+    /// The `GitlabProjectLevelMrApprovalRule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance.
     /// 
@@ -74,19 +74,19 @@ namespace Pulumi.GitLab
     public partial class ProjectLevelMrApprovals : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set to `true` to disable overriding approvers per merge request.
+        /// Set to `True` to disable overriding approvers per merge request.
         /// </summary>
         [Output("disableOverridingApproversPerMergeRequest")]
         public Output<bool> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to allow merge requests authors to approve their own merge requests.
+        /// Set to `True` to allow merge requests authors to approve their own merge requests.
         /// </summary>
         [Output("mergeRequestsAuthorApproval")]
         public Output<bool> MergeRequestsAuthorApproval { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to disable merge request committers from approving their own merge requests.
+        /// Set to `True` to disable merge request committers from approving their own merge requests.
         /// </summary>
         [Output("mergeRequestsDisableCommittersApproval")]
         public Output<bool> MergeRequestsDisableCommittersApproval { get; private set; } = null!;
@@ -98,13 +98,13 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to require authentication to approve merge requests.
+        /// Set to `True` to require authentication to approve merge requests.
         /// </summary>
         [Output("requirePasswordToApprove")]
         public Output<bool> RequirePasswordToApprove { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `True` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `True`.
         /// </summary>
         [Output("resetApprovalsOnPush")]
         public Output<bool> ResetApprovalsOnPush { get; private set; } = null!;
@@ -162,19 +162,19 @@ namespace Pulumi.GitLab
     public sealed class ProjectLevelMrApprovalsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set to `true` to disable overriding approvers per merge request.
+        /// Set to `True` to disable overriding approvers per merge request.
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
-        /// Set to `true` to allow merge requests authors to approve their own merge requests.
+        /// Set to `True` to allow merge requests authors to approve their own merge requests.
         /// </summary>
         [Input("mergeRequestsAuthorApproval")]
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` to disable merge request committers from approving their own merge requests.
+        /// Set to `True` to disable merge request committers from approving their own merge requests.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -186,13 +186,13 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` to require authentication to approve merge requests.
+        /// Set to `True` to require authentication to approve merge requests.
         /// </summary>
         [Input("requirePasswordToApprove")]
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `True` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `True`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }
@@ -212,19 +212,19 @@ namespace Pulumi.GitLab
     public sealed class ProjectLevelMrApprovalsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set to `true` to disable overriding approvers per merge request.
+        /// Set to `True` to disable overriding approvers per merge request.
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
-        /// Set to `true` to allow merge requests authors to approve their own merge requests.
+        /// Set to `True` to allow merge requests authors to approve their own merge requests.
         /// </summary>
         [Input("mergeRequestsAuthorApproval")]
         public Input<bool>? MergeRequestsAuthorApproval { get; set; }
 
         /// <summary>
-        /// Set to `true` to disable merge request committers from approving their own merge requests.
+        /// Set to `True` to disable merge request committers from approving their own merge requests.
         /// </summary>
         [Input("mergeRequestsDisableCommittersApproval")]
         public Input<bool>? MergeRequestsDisableCommittersApproval { get; set; }
@@ -236,13 +236,13 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Set to `true` to require authentication to approve merge requests.
+        /// Set to `True` to require authentication to approve merge requests.
         /// </summary>
         [Input("requirePasswordToApprove")]
         public Input<bool>? RequirePasswordToApprove { get; set; }
 
         /// <summary>
-        /// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
+        /// Set to `True` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `True`.
         /// </summary>
         [Input("resetApprovalsOnPush")]
         public Input<bool>? ResetApprovalsOnPush { get; set; }

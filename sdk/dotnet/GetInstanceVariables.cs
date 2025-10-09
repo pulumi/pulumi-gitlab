@@ -86,7 +86,7 @@ namespace Pulumi.GitLab
     public sealed class GetInstanceVariablesResult
     {
         /// <summary>
-        /// The ID of this datasource. In the hardcoded format `instance_variables`.
+        /// The ID of this datasource. In the hardcoded format `InstanceVariables`.
         /// </summary>
         public readonly string Id;
         /// <summary>

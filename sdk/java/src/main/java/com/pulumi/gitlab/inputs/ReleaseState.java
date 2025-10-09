@@ -262,14 +262,14 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the release_at attribute is set to a future date.
+     * Whether the releaseAt attribute is set to a future date.
      * 
      */
     @Import(name="upcomingRelease")
     private @Nullable Output<Boolean> upcomingRelease;
 
     /**
-     * @return Whether the release_at attribute is set to a future date.
+     * @return Whether the releaseAt attribute is set to a future date.
      * 
      */
     public Optional<Output<Boolean>> upcomingRelease() {
@@ -663,7 +663,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upcomingRelease Whether the release_at attribute is set to a future date.
+         * @param upcomingRelease Whether the releaseAt attribute is set to a future date.
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upcomingRelease Whether the release_at attribute is set to a future date.
+         * @param upcomingRelease Whether the releaseAt attribute is set to a future date.
          * 
          * @return builder
          * 

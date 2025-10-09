@@ -17,14 +17,14 @@ public final class IntegrationTelegramState extends com.pulumi.resources.Resourc
     public static final IntegrationTelegramState Empty = new IntegrationTelegramState();
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -264,7 +264,7 @@ public final class IntegrationTelegramState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class IntegrationTelegramState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
          * 
          * @return builder
          * 

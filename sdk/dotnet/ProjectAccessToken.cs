@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
     /// 
-    /// &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+    /// &gt; Use `RotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
     /// 
     /// &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/project_access_tokens/#automatic-reuse-detection) it's possible that a new Project Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
     /// 
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
     public partial class ProjectAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.GitLab
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `RotationConfiguration` is used.
         /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.GitLab
         public Output<Outputs.ProjectAccessTokenRotationConfiguration?> RotationConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+        /// The scopes of the project access token. valid values are: `Api`, `ReadApi`, `ReadRegistry`, `WriteRegistry`, `ReadRepository`, `WriteRepository`, `CreateRunner`, `ManageRunner`, `AiFeatures`, `K8sProxy`, `ReadObservability`, `WriteObservability`, `SelfRotate`
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.GitLab
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// The user_id associated to the token.
+        /// The UserId associated to the token.
         /// </summary>
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `RotationConfiguration` is used.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+        /// The scopes of the project access token. valid values are: `Api`, `ReadApi`, `ReadRegistry`, `WriteRegistry`, `ReadRepository`, `WriteRepository`, `CreateRunner`, `ManageRunner`, `AiFeatures`, `K8sProxy`, `ReadObservability`, `WriteObservability`, `SelfRotate`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -258,7 +258,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+        /// When the token will expire, YYYY-MM-DD format. Is automatically set when `RotationConfiguration` is used.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+        /// The scopes of the project access token. valid values are: `Api`, `ReadApi`, `ReadRegistry`, `WriteRegistry`, `ReadRepository`, `WriteRepository`, `CreateRunner`, `ManageRunner`, `AiFeatures`, `K8sProxy`, `ReadObservability`, `WriteObservability`, `SelfRotate`
         /// </summary>
         public InputList<string> Scopes
         {
@@ -340,7 +340,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The user_id associated to the token.
+        /// The UserId associated to the token.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

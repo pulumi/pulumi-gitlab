@@ -84,10 +84,10 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
-     * Use `group_access` instead of the `access_level` attribute.
+     * Use `groupAccess` instead of the `accessLevel` attribute.
      * 
      */
-    @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
+    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessLevel;
 

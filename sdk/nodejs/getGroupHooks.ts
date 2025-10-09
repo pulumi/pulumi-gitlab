@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
+ *
+ * ## Example Usage
  */
 export function getGroupHooks(args: GetGroupHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupHooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +51,8 @@ export interface GetGroupHooksResult {
  * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
+ *
+ * ## Example Usage
  */
 export function getGroupHooksOutput(args: GetGroupHooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupHooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; You must be an administrator!
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+        /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
         /// the most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
@@ -48,7 +48,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; You must be an administrator!
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+        /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
         /// the most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; You must be an administrator!
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
+        /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
         /// the most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)

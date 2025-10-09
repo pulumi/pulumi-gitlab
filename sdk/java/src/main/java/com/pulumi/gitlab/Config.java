@@ -36,7 +36,7 @@ public final class Config {
         return Codegen.stringProp("clientCert").config(config).get();
     }
 /**
- * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+ * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
  * 
  */
     public Optional<String> clientKey() {

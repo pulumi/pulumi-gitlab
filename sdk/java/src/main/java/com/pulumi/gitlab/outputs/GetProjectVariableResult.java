@@ -57,7 +57,7 @@ public final class GetProjectVariableResult {
      */
     private String value;
     /**
-     * @return The type of the variable, either `env_var` or `file`.
+     * @return The type of the variable, either `envVar` or `file`.
      * 
      */
     private String variableType;
@@ -127,7 +127,7 @@ public final class GetProjectVariableResult {
         return this.value;
     }
     /**
-     * @return The type of the variable, either `env_var` or `file`.
+     * @return The type of the variable, either `envVar` or `file`.
      * 
      */
     public String variableType() {

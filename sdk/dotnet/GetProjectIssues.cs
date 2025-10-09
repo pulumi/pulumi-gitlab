@@ -118,7 +118,7 @@ namespace Pulumi.GitLab
         public int? AssigneeId { get; set; }
 
         /// <summary>
-        /// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+        /// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the AssigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
         /// </summary>
         [Input("assigneeUsername")]
         public string? AssigneeUsername { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case].
+        /// Filter to a given type of issue. Valid values are [issue incident TestCase].
         /// </summary>
         [Input("issueType")]
         public string? IssueType { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.GitLab
         public string? NotMyReactionEmoji { get; set; }
 
         /// <summary>
-        /// Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+        /// Return issues ordered by. Valid values are `CreatedAt`, `UpdatedAt`, `Priority`, `DueDate`, `RelativePosition`, `LabelPriority`, `MilestoneDue`, `Popularity`, `Weight`. Default is created_at
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.GitLab
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+        /// Return issues for the given scope. Valid values are `CreatedByMe`, `AssignedToMe`, `All`. Defaults to all.
         /// </summary>
         [Input("scope")]
         public string? Scope { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.GitLab
         public Input<int>? AssigneeId { get; set; }
 
         /// <summary>
-        /// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+        /// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the AssigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
         /// </summary>
         [Input("assigneeUsername")]
         public Input<string>? AssigneeUsername { get; set; }
@@ -348,7 +348,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case].
+        /// Filter to a given type of issue. Valid values are [issue incident TestCase].
         /// </summary>
         [Input("issueType")]
         public Input<string>? IssueType { get; set; }
@@ -414,7 +414,7 @@ namespace Pulumi.GitLab
         public Input<string>? NotMyReactionEmoji { get; set; }
 
         /// <summary>
-        /// Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+        /// Return issues ordered by. Valid values are `CreatedAt`, `UpdatedAt`, `Priority`, `DueDate`, `RelativePosition`, `LabelPriority`, `MilestoneDue`, `Popularity`, `Weight`. Default is created_at
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+        /// Return issues for the given scope. Valid values are `CreatedByMe`, `AssignedToMe`, `All`. Defaults to all.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -482,7 +482,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int? AssigneeId;
         /// <summary>
-        /// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
+        /// Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the AssigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
         /// </summary>
         public readonly string? AssigneeUsername;
         /// <summary>
@@ -514,7 +514,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<int> Iids;
         /// <summary>
-        /// Filter to a given type of issue. Valid values are [issue incident test_case].
+        /// Filter to a given type of issue. Valid values are [issue incident TestCase].
         /// </summary>
         public readonly string? IssueType;
         /// <summary>
@@ -554,7 +554,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? NotMyReactionEmoji;
         /// <summary>
-        /// Return issues ordered by. Valid values are `created_at`, `updated_at`, `priority`, `due_date`, `relative_position`, `label_priority`, `milestone_due`, `popularity`, `weight`. Default is created_at
+        /// Return issues ordered by. Valid values are `CreatedAt`, `UpdatedAt`, `Priority`, `DueDate`, `RelativePosition`, `LabelPriority`, `MilestoneDue`, `Popularity`, `Weight`. Default is created_at
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>
@@ -562,7 +562,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Return issues for the given scope. Valid values are `created_by_me`, `assigned_to_me`, `all`. Defaults to all.
+        /// Return issues for the given scope. Valid values are `CreatedByMe`, `AssignedToMe`, `All`. Defaults to all.
         /// </summary>
         public readonly string? Scope;
         /// <summary>

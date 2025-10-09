@@ -102,6 +102,8 @@ def get_group_service_account(group: Optional[_builtins.str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
 
+    ## Example Usage
+
 
     :param _builtins.str group: The ID or URL-encoded path of the target group. Must be a top-level group.
     :param _builtins.str service_account_id: The service account id.
@@ -125,6 +127,8 @@ def get_group_service_account_output(group: Optional[pulumi.Input[_builtins.str]
     The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+
+    ## Example Usage
 
 
     :param _builtins.str group: The ID or URL-encoded path of the target group. Must be a top-level group.

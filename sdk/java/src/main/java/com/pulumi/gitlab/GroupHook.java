@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupHook:GroupHook")
 public class GroupHook extends com.pulumi.resources.CustomResource {
     /**
-     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      * 
      */
     @Export(name="branchFilterStrategy", refs={String.class}, tree="[0]")
     private Output<String> branchFilterStrategy;
 
     /**
-     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      * 
      */
     public Output<String> branchFilterStrategy() {

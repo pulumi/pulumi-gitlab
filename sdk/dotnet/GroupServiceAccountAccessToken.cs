@@ -12,15 +12,17 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.
     /// 
-    /// &gt; Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
+    /// &gt; Use of the `timestamp()` function with ExpiresAt will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
     /// 
     /// &gt; Reading the access token status of a service account requires an admin token or a top-level group owner token on gitlab.com. As a result, this resource will ignore permission errors when attempting to read the token status, and will rely on the values in state instead. This can lead to apply-time failures if the token configured for the provider doesn't have permissions to rotate tokens for the service account.
     /// 
-    /// &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+    /// &gt; Use `RotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
     /// 
-    /// &gt; Due to a limitation in the API, the `rotation_configuration` is unable to set the new expiry date before GitLab 17.9. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
+    /// &gt; Due to a limitation in the API, the `RotationConfiguration` is unable to set the new expiry date before GitLab 17.9. Instead, when the resource is created, it will default the expiry date to 7 days in the future. On each subsequent apply, the new expiry will be 7 days from the date of the apply.
     /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/group_service_accounts/#create-a-personal-access-token-for-a-service-account-user)
+    /// 
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -96,7 +98,7 @@ namespace Pulumi.GitLab
         public Output<Outputs.GroupServiceAccountAccessTokenRotationConfiguration?> RotationConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
+        /// The scopes of the group service account access token. Valid values are: `Api`, `ReadUser`, `ReadApi`, `ReadRepository`, `WriteRepository`, `ReadRegistry`, `WriteRegistry`, `ReadVirtualRegistry`, `WriteVirtualRegistry`, `Sudo`, `AdminMode`, `CreateRunner`, `ManageRunner`, `AiFeatures`, `K8sProxy`, `SelfRotate`, `ReadServicePing`. If `SelfRotate` is included, you must also provide either `ExpiresAt` or `RotationConfiguration`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -191,7 +193,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
+        /// The scopes of the group service account access token. Valid values are: `Api`, `ReadUser`, `ReadApi`, `ReadRepository`, `WriteRepository`, `ReadRegistry`, `WriteRegistry`, `ReadVirtualRegistry`, `WriteVirtualRegistry`, `Sudo`, `AdminMode`, `CreateRunner`, `ManageRunner`, `AiFeatures`, `K8sProxy`, `SelfRotate`, `ReadServicePing`. If `SelfRotate` is included, you must also provide either `ExpiresAt` or `RotationConfiguration`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -259,7 +261,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
+        /// The scopes of the group service account access token. Valid values are: `Api`, `ReadUser`, `ReadApi`, `ReadRepository`, `WriteRepository`, `ReadRegistry`, `WriteRegistry`, `ReadVirtualRegistry`, `WriteVirtualRegistry`, `Sudo`, `AdminMode`, `CreateRunner`, `ManageRunner`, `AiFeatures`, `K8sProxy`, `SelfRotate`, `ReadServicePing`. If `SelfRotate` is included, you must also provide either `ExpiresAt` or `RotationConfiguration`.
         /// </summary>
         public InputList<string> Scopes
         {

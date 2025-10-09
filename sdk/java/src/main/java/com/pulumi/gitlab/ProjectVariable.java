@@ -207,14 +207,14 @@ public class ProjectVariable extends com.pulumi.resources.CustomResource {
         return this.value;
     }
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`.
+     * The type of a variable. Valid values are: `envVar`, `file`.
      * 
      */
     @Export(name="variableType", refs={String.class}, tree="[0]")
     private Output<String> variableType;
 
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`.
+     * @return The type of a variable. Valid values are: `envVar`, `file`.
      * 
      */
     public Output<String> variableType() {

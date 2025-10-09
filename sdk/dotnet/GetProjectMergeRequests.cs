@@ -172,7 +172,7 @@ namespace Pulumi.GitLab
         public string? MyReactionEmoji { get; set; }
 
         /// <summary>
-        /// Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+        /// Return requests ordered by `CreatedAt`, `Title` or `UpdatedAt`. Default is `CreatedAt`.
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -190,19 +190,19 @@ namespace Pulumi.GitLab
         public string? ReviewerUsername { get; set; }
 
         /// <summary>
-        /// Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+        /// Return merge requests for the given scope: `CreatedByMe`, `AssignedToMe`, or `All`.
         /// </summary>
         [Input("scope")]
         public string? Scope { get; set; }
 
         /// <summary>
-        /// Search merge requests against their `title` or `description`.
+        /// Search merge requests against their `Title` or `Description`.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
         /// <summary>
-        /// Return requests sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return requests sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.GitLab
         public string? UpdatedBefore { get; set; }
 
         /// <summary>
-        /// Filter merge requests against their wip status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
+        /// Filter merge requests against their wip status. `Yes` to return only draft merge requests, `No` to return non-draft merge requests.
         /// </summary>
         [Input("wip")]
         public string? Wip { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.GitLab
         public Input<string>? MyReactionEmoji { get; set; }
 
         /// <summary>
-        /// Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+        /// Return requests ordered by `CreatedAt`, `Title` or `UpdatedAt`. Default is `CreatedAt`.
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -318,19 +318,19 @@ namespace Pulumi.GitLab
         public Input<string>? ReviewerUsername { get; set; }
 
         /// <summary>
-        /// Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+        /// Return merge requests for the given scope: `CreatedByMe`, `AssignedToMe`, or `All`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
         /// <summary>
-        /// Search merge requests against their `title` or `description`.
+        /// Search merge requests against their `Title` or `Description`.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
         /// <summary>
-        /// Return requests sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return requests sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.GitLab
         public Input<string>? UpdatedBefore { get; set; }
 
         /// <summary>
-        /// Filter merge requests against their wip status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
+        /// Filter merge requests against their wip status. `Yes` to return only draft merge requests, `No` to return non-draft merge requests.
         /// </summary>
         [Input("wip")]
         public Input<string>? Wip { get; set; }
@@ -418,7 +418,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? MyReactionEmoji;
         /// <summary>
-        /// Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+        /// Return requests ordered by `CreatedAt`, `Title` or `UpdatedAt`. Default is `CreatedAt`.
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>
@@ -430,15 +430,15 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? ReviewerUsername;
         /// <summary>
-        /// Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+        /// Return merge requests for the given scope: `CreatedByMe`, `AssignedToMe`, or `All`.
         /// </summary>
         public readonly string? Scope;
         /// <summary>
-        /// Search merge requests against their `title` or `description`.
+        /// Search merge requests against their `Title` or `Description`.
         /// </summary>
         public readonly string? Search;
         /// <summary>
-        /// Return requests sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return requests sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         public readonly string? Sort;
         /// <summary>
@@ -462,7 +462,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? UpdatedBefore;
         /// <summary>
-        /// Filter merge requests against their wip status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
+        /// Filter merge requests against their wip status. `Yes` to return only draft merge requests, `No` to return non-draft merge requests.
         /// </summary>
         public readonly string? Wip;
 

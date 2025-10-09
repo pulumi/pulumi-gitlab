@@ -20,14 +20,14 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
     public static final GetProjectMilestonesArgs Empty = new GetProjectMilestonesArgs();
 
     /**
-     * Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+     * Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      * 
      */
     @Import(name="iids")
     private @Nullable Output<List<Integer>> iids;
 
     /**
-     * @return Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+     * @return Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      * 
      */
     public Optional<Output<List<Integer>>> iids() {
@@ -139,7 +139,7 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param iids Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+         * @param iids Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param iids Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+         * @param iids Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class GetProjectMilestonesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param iids Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+         * @param iids Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
          * 
          * @return builder
          * 

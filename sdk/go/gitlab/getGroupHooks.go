@@ -14,6 +14,8 @@ import (
 // The `getGroupHooks` data source allows to retrieve details about hooks in a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
+//
+// ## Example Usage
 func GetGroupHooks(ctx *pulumi.Context, args *GetGroupHooksArgs, opts ...pulumi.InvokeOption) (*GetGroupHooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupHooksResult

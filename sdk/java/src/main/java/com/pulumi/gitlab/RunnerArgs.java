@@ -20,14 +20,14 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
     public static final RunnerArgs Empty = new RunnerArgs();
 
     /**
-     * The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * @return The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -187,7 +187,7 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+         * @param accessLevel The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class RunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+         * @param accessLevel The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
          * 
          * @return builder
          * 

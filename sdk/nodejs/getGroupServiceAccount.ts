@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
  * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+ *
+ * ## Example Usage
  */
 export function getGroupServiceAccount(args: GetGroupServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +59,8 @@ export interface GetGroupServiceAccountResult {
  * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+ *
+ * ## Example Usage
  */
 export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

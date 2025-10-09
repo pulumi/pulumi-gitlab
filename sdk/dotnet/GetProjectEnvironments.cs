@@ -130,7 +130,7 @@ namespace Pulumi.GitLab
         public string? Search { get; set; }
 
         /// <summary>
-        /// List all environments that match the specified state. Valid values are `available`, `stopping`, `stopped`. Returns all environments if not set.
+        /// List all environments that match the specified state. Valid values are `Available`, `Stopping`, `Stopped`. Returns all environments if not set.
         /// </summary>
         [Input("states")]
         public string? States { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
         public Input<string>? Search { get; set; }
 
         /// <summary>
-        /// List all environments that match the specified state. Valid values are `available`, `stopping`, `stopped`. Returns all environments if not set.
+        /// List all environments that match the specified state. Valid values are `Available`, `Stopping`, `Stopped`. Returns all environments if not set.
         /// </summary>
         [Input("states")]
         public Input<string>? States { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? Search;
         /// <summary>
-        /// List all environments that match the specified state. Valid values are `available`, `stopping`, `stopped`. Returns all environments if not set.
+        /// List all environments that match the specified state. Valid values are `Available`, `Stopping`, `Stopped`. Returns all environments if not set.
         /// </summary>
         public readonly string? States;
 

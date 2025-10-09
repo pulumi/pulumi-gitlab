@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.GroupDependencyProxy` resource allows managing the group docker dependency proxy. More than one dependency proxy per group will conflict with each other.
  * 
- * If you&#39;re looking to manage the project-level package dependency proxy, see the `gitlab_project_package_registry_proxy` resource instead.
+ * If you&#39;re looking to manage the project-level package dependency proxy, see the `gitlabProjectPackageRegistryProxy` resource instead.
  * 
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationupdatedependencyproxysettings)
  * 

@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
@@ -53,14 +55,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/valueStreamAnalytics:ValueStreamAnalytics")
 public class ValueStreamAnalytics extends com.pulumi.resources.CustomResource {
     /**
-     * Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     @Export(name="groupFullPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupFullPath;
 
     /**
-     * @return Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * @return Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     public Output<Optional<String>> groupFullPath() {
@@ -81,14 +83,14 @@ public class ValueStreamAnalytics extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     @Export(name="projectFullPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectFullPath;
 
     /**
-     * @return Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * @return Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     public Output<Optional<String>> projectFullPath() {

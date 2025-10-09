@@ -66,14 +66,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientCert);
     }
     /**
-     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+     * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      * 
      */
     @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
-     * @return File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+     * @return File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      * 
      */
     public Output<Optional<String>> clientKey() {

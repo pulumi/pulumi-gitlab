@@ -93,7 +93,7 @@ namespace Pulumi.GitLab
         public Output<string> RedirectUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `api`, `read_api`, `read_user`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `openid`, `profile`, `email`.
+        /// Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `Api`, `ReadApi`, `ReadUser`, `ReadRepository`, `WriteRepository`, `ReadRegistry`, `WriteRegistry`, `Sudo`, `AdminMode`, `Openid`, `Profile`, `Email`.
         /// This is only populated when creating a new application. This attribute is not available for imported resources
         /// </summary>
         [Output("scopes")]
@@ -177,7 +177,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `api`, `read_api`, `read_user`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `openid`, `profile`, `email`.
+        /// Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `Api`, `ReadApi`, `ReadUser`, `ReadRepository`, `WriteRepository`, `ReadRegistry`, `WriteRegistry`, `Sudo`, `AdminMode`, `Openid`, `Profile`, `Email`.
         /// This is only populated when creating a new application. This attribute is not available for imported resources
         /// </summary>
         public InputList<string> Scopes
@@ -222,7 +222,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `api`, `read_api`, `read_user`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `openid`, `profile`, `email`.
+        /// Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `Api`, `ReadApi`, `ReadUser`, `ReadRepository`, `WriteRepository`, `ReadRegistry`, `WriteRegistry`, `Sudo`, `AdminMode`, `Openid`, `Profile`, `Email`.
         /// This is only populated when creating a new application. This attribute is not available for imported resources
         /// </summary>
         public InputList<string> Scopes

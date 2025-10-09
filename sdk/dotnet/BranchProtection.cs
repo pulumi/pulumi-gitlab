@@ -167,7 +167,7 @@ namespace Pulumi.GitLab
         public Output<bool> CodeOwnerApprovalRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Output("mergeAccessLevel")]
         public Output<string> MergeAccessLevel { get; private set; } = null!;
@@ -179,13 +179,13 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Output("pushAccessLevel")]
         public Output<string> PushAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to unprotect. Valid values are: `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Output("unprotectAccessLevel")]
         public Output<string> UnprotectAccessLevel { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
-        /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("mergeAccessLevel")]
         public Input<string>? MergeAccessLevel { get; set; }
@@ -303,13 +303,13 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("pushAccessLevel")]
         public Input<string>? PushAccessLevel { get; set; }
 
         /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to unprotect. Valid values are: `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("unprotectAccessLevel")]
         public Input<string>? UnprotectAccessLevel { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
-        /// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("mergeAccessLevel")]
         public Input<string>? MergeAccessLevel { get; set; }
@@ -395,13 +395,13 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("pushAccessLevel")]
         public Input<string>? PushAccessLevel { get; set; }
 
         /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to unprotect. Valid values are: `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("unprotectAccessLevel")]
         public Input<string>? UnprotectAccessLevel { get; set; }

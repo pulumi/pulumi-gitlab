@@ -130,14 +130,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/userRunner:UserRunner")
 public class UserRunner extends com.pulumi.resources.CustomResource {
     /**
-     * The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * @return The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     public Output<String> accessLevel() {
@@ -242,14 +242,14 @@ public class UserRunner extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectId);
     }
     /**
-     * The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+     * The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      * 
      */
     @Export(name="runnerType", refs={String.class}, tree="[0]")
     private Output<String> runnerType;
 
     /**
-     * @return The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+     * @return The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      * 
      */
     public Output<String> runnerType() {
