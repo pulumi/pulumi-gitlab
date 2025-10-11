@@ -75,7 +75,7 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Enable SSL verification. Defaults to `true` (enabled).
+        /// Enable SSL verification. Defaults to `True` (enabled).
         /// </summary>
         [Output("enableSslVerification")]
         public Output<bool> EnableSslVerification { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The URL-friendly project name. Example: `my_project_name`.
+        /// The URL-friendly project name. Example: `MyProjectName`.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectIntegrationJenkinsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable SSL verification. Defaults to `true` (enabled).
+        /// Enable SSL verification. Defaults to `True` (enabled).
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The URL-friendly project name. Example: `my_project_name`.
+        /// The URL-friendly project name. Example: `MyProjectName`.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Enable SSL verification. Defaults to `true` (enabled).
+        /// Enable SSL verification. Defaults to `True` (enabled).
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The URL-friendly project name. Example: `my_project_name`.
+        /// The URL-friendly project name. Example: `MyProjectName`.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// The type of a variable, one of: env_var and file.
+        /// The type of a variable, one of: EnvVar and file.
         /// </summary>
         public readonly string VariableType;
 

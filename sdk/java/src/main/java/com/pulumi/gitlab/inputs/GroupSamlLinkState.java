@@ -47,14 +47,14 @@ public final class GroupSamlLinkState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      * 
      */
     @Import(name="memberRoleId")
     private @Nullable Output<Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      * 
      */
     public Optional<Output<Integer>> memberRoleId() {
@@ -146,7 +146,7 @@ public final class GroupSamlLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GroupSamlLinkState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
          * 
          * @return builder
          * 

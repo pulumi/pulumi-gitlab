@@ -166,14 +166,14 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
         return this.value;
     }
     /**
-     * The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      * 
      */
     @Export(name="variableType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> variableType;
 
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      * 
      */
     public Output<Optional<String>> variableType() {

@@ -18,7 +18,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> _links;
         /// <summary>
-        /// Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        /// Whether AllowMergeOnSkippedPipeline is enabled for the project.
         /// </summary>
         public readonly bool AllowMergeOnSkippedPipeline;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool AllowPipelineTriggerApproveDeployment;
         /// <summary>
-        /// Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the analytics access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string AnalyticsAccessLevel;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string AutoCancelPendingPipelines;
         /// <summary>
-        /// Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+        /// Auto Deploy strategy. Valid values are `Continuous`, `Manual`, `TimedIncremental`.
         /// </summary>
         public readonly string AutoDevopsDeployStrategy;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int BuildTimeout;
         /// <summary>
-        /// Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the builds access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string BuildsAccessLevel;
         /// <summary>
@@ -94,23 +94,23 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool CiForwardDeploymentRollbackAllowed;
         /// <summary>
-        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include RefType and ref. Defaults to ["ProjectPath", "RefType", "ref"]. Introduced in GitLab 17.10.
         /// </summary>
         public readonly ImmutableArray<string> CiIdTokenSubClaimComponents;
         /// <summary>
-        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `Developer`, `Maintainer`, `Owner`, `NoOneAllowed`
         /// </summary>
         public readonly string CiPipelineVariablesMinimumOverrideRole;
         /// <summary>
-        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `no one`
         /// </summary>
         public readonly string CiRestrictPipelineCancellationRole;
         /// <summary>
-        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `ContainerExpirationPolicyAttributes` in the GitLab Upstream API.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
         /// <summary>
-        /// Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        /// Set visibility of container registry, for this project. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string ContainerRegistryAccessLevel;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool EmptyRepo;
         /// <summary>
-        /// Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the environments access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string EnvironmentsAccessLevel;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ExternalAuthorizationClassificationLabel;
         /// <summary>
-        /// Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the feature flags access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string FeatureFlagsAccessLevel;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectForkedFromProjectResult> ForkedFromProjects;
         /// <summary>
-        /// Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the forking access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string ForkingAccessLevel;
         /// <summary>
@@ -194,11 +194,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ImportUrl;
         /// <summary>
-        /// Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the infrastructure access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string InfrastructureAccessLevel;
         /// <summary>
-        /// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the issues access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string IssuesAccessLevel;
         /// <summary>
@@ -234,7 +234,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool MergePipelinesEnabled;
         /// <summary>
-        /// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the merge requests access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string MergeRequestsAccessLevel;
         /// <summary>
@@ -250,7 +250,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool Mirror;
         /// <summary>
-        /// Whether mirror_overwrites_diverged_branches is enabled for the project.
+        /// Whether MirrorOverwritesDivergedBranches is enabled for the project.
         /// </summary>
         public readonly bool MirrorOverwritesDivergedBranches;
         /// <summary>
@@ -270,7 +270,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ModelRegistryAccessLevel;
         /// <summary>
-        /// Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the monitor access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string MonitorAccessLevel;
         /// <summary>
@@ -286,15 +286,15 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> Namespaces;
         /// <summary>
-        /// Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+        /// Whether OnlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
         /// </summary>
         public readonly bool OnlyAllowMergeIfAllDiscussionsAreResolved;
         /// <summary>
-        /// Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+        /// Whether OnlyAllowMergeIfPipelineSucceeds is enabled for the project.
         /// </summary>
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         /// <summary>
-        /// Whether only_mirror_protected_branches is enabled for the project.
+        /// Whether OnlyMirrorProtectedBranches is enabled for the project.
         /// </summary>
         public readonly bool OnlyMirrorProtectedBranches;
         /// <summary>
@@ -331,11 +331,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ReadmeUrl;
         /// <summary>
-        /// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the releases access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string ReleasesAccessLevel;
         /// <summary>
-        /// Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the repository access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string RepositoryAccessLevel;
         /// <summary>
@@ -347,11 +347,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool RequestAccessEnabled;
         /// <summary>
-        /// Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the requirements access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string RequirementsAccessLevel;
         /// <summary>
-        /// Whether resolve_outdated_diff_discussions is enabled for the project
+        /// Whether ResolveOutdatedDiffDiscussions is enabled for the project
         /// </summary>
         public readonly bool ResolveOutdatedDiffDiscussions;
         /// <summary>
@@ -363,7 +363,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string RunnersToken;
         /// <summary>
-        /// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the security and compliance access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string SecurityAndComplianceAccessLevel;
         /// <summary>
@@ -375,7 +375,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectSharedWithGroupResult> SharedWithGroups;
         /// <summary>
-        /// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the snippets access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string SnippetsAccessLevel;
         /// <summary>
@@ -419,7 +419,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string WebUrl;
         /// <summary>
-        /// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
+        /// Set the wiki access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string WikiAccessLevel;
         /// <summary>

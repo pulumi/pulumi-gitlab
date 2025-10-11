@@ -279,14 +279,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.assetProxyUrl;
     }
     /**
-     * By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+     * By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
      * 
      */
     @Export(name="authorizedKeysEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> authorizedKeysEnabled;
 
     /**
-     * @return By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+     * @return By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
      * 
      */
     public Output<Boolean> authorizedKeysEnabled() {
@@ -2099,14 +2099,14 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.htmlEmailsEnabled;
     }
     /**
-     * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
+     * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      * 
      */
     @Export(name="importSources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> importSources;
 
     /**
-     * @return Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
+     * @return Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      * 
      */
     public Output<List<String>> importSources() {

@@ -17,14 +17,14 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
     public static final ProjectProtectedEnvironmentDeployAccessLevelArgs Empty = new ProjectProtectedEnvironmentDeployAccessLevelArgs();
 
     /**
-     * Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+     * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+     * @return Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -47,14 +47,14 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
     }
 
     /**
-     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+     * @return The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -92,14 +92,14 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
     }
 
     /**
-     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+     * @return The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -136,7 +136,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         }
 
         /**
-         * @param accessLevel Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+         * @param accessLevel Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         }
 
         /**
-         * @param accessLevel Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+         * @param accessLevel Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         }
 
         /**
-         * @param groupId The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+         * @param groupId The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         }
 
         /**
-         * @param groupId The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+         * @param groupId The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         }
 
         /**
-         * @param userId The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+         * @param userId The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ProjectProtectedEnvironmentDeployAccessLevelArgs extends com.
         }
 
         /**
-         * @param userId The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+         * @param userId The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
          * 
          * @return builder
          * 

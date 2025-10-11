@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
         public Output<string?> DeleteCommitMessage { get; private set; } = null!;
 
         /// <summary>
-        /// The file content encoding. Valid values are: `base64`, `text`.
+        /// The file content encoding. Valid values are: `Base64`, `Text`.
         /// </summary>
         [Output("encoding")]
         public Output<string> Encoding { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.GitLab
         public Output<string> LastCommitId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        /// Enable overwriting existing files, defaults to `False`. This attribute is only used during `Create` and must be use carefully. We suggest to use `Imports` whenever possible and limit the use of this attribute for when the project was imported on the same `Apply`. This attribute is not supported during a resource import.
         /// </summary>
         [Output("overwriteOnCreate")]
         public Output<bool?> OverwriteOnCreate { get; private set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.GitLab
         public Input<string>? DeleteCommitMessage { get; set; }
 
         /// <summary>
-        /// The file content encoding. Valid values are: `base64`, `text`.
+        /// The file content encoding. Valid values are: `Base64`, `Text`.
         /// </summary>
         [Input("encoding", required: true)]
         public Input<string> Encoding { get; set; } = null!;
@@ -336,7 +336,7 @@ namespace Pulumi.GitLab
         public Input<string> FilePath { get; set; } = null!;
 
         /// <summary>
-        /// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        /// Enable overwriting existing files, defaults to `False`. This attribute is only used during `Create` and must be use carefully. We suggest to use `Imports` whenever possible and limit the use of this attribute for when the project was imported on the same `Apply`. This attribute is not supported during a resource import.
         /// </summary>
         [Input("overwriteOnCreate")]
         public Input<bool>? OverwriteOnCreate { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.GitLab
         public Input<string>? DeleteCommitMessage { get; set; }
 
         /// <summary>
-        /// The file content encoding. Valid values are: `base64`, `text`.
+        /// The file content encoding. Valid values are: `Base64`, `Text`.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
@@ -458,7 +458,7 @@ namespace Pulumi.GitLab
         public Input<string>? LastCommitId { get; set; }
 
         /// <summary>
-        /// Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
+        /// Enable overwriting existing files, defaults to `False`. This attribute is only used during `Create` and must be use carefully. We suggest to use `Imports` whenever possible and limit the use of this attribute for when the project was imported on the same `Apply`. This attribute is not supported during a resource import.
         /// </summary>
         [Input("overwriteOnCreate")]
         public Input<bool>? OverwriteOnCreate { get; set; }

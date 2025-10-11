@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     public partial class ProjectApprovalRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
+        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `ProtectedBranchIds` is ignored. Default is 'false'.
         /// </summary>
         [Output("appliesToAllProtectedBranches")]
         public Output<bool?> AppliesToAllProtectedBranches { get; private set; } = null!;
@@ -50,7 +50,7 @@ namespace Pulumi.GitLab
         public Output<int> ApprovalsRequired { get; private set; } = null!;
 
         /// <summary>
-        /// When this flag is set, the default `any_approver` rule will not be imported if present.
+        /// When this flag is set, the default `AnyApprover` rule will not be imported if present.
         /// </summary>
         [Output("disableImportingDefaultAnyApproverRuleOnCreate")]
         public Output<bool?> DisableImportingDefaultAnyApproverRuleOnCreate { get; private set; } = null!;
@@ -80,13 +80,13 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<int>> ProtectedBranchIds { get; private set; } = null!;
 
         /// <summary>
-        /// Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        /// Report type is required when the RuleType is `ReportApprover`. Valid values are `CodeCoverage`.
         /// </summary>
         [Output("reportType")]
         public Output<string> ReportType { get; private set; } = null!;
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        /// String, defaults to 'regular'. The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
         /// </summary>
         [Output("ruleType")]
         public Output<string> RuleType { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectApprovalRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
+        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `ProtectedBranchIds` is ignored. Default is 'false'.
         /// </summary>
         [Input("appliesToAllProtectedBranches")]
         public Input<bool>? AppliesToAllProtectedBranches { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.GitLab
         public Input<int> ApprovalsRequired { get; set; } = null!;
 
         /// <summary>
-        /// When this flag is set, the default `any_approver` rule will not be imported if present.
+        /// When this flag is set, the default `AnyApprover` rule will not be imported if present.
         /// </summary>
         [Input("disableImportingDefaultAnyApproverRuleOnCreate")]
         public Input<bool>? DisableImportingDefaultAnyApproverRuleOnCreate { get; set; }
@@ -198,13 +198,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        /// Report type is required when the RuleType is `ReportApprover`. Valid values are `CodeCoverage`.
         /// </summary>
         [Input("reportType")]
         public Input<string>? ReportType { get; set; }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        /// String, defaults to 'regular'. The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectApprovalRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
+        /// Whether the rule is applied to all protected branches. If set to 'true', the value of `ProtectedBranchIds` is ignored. Default is 'false'.
         /// </summary>
         [Input("appliesToAllProtectedBranches")]
         public Input<bool>? AppliesToAllProtectedBranches { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.GitLab
         public Input<int>? ApprovalsRequired { get; set; }
 
         /// <summary>
-        /// When this flag is set, the default `any_approver` rule will not be imported if present.
+        /// When this flag is set, the default `AnyApprover` rule will not be imported if present.
         /// </summary>
         [Input("disableImportingDefaultAnyApproverRuleOnCreate")]
         public Input<bool>? DisableImportingDefaultAnyApproverRuleOnCreate { get; set; }
@@ -284,13 +284,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+        /// Report type is required when the RuleType is `ReportApprover`. Valid values are `CodeCoverage`.
         /// </summary>
         [Input("reportType")]
         public Input<string>? ReportType { get; set; }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        /// String, defaults to 'regular'. The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }

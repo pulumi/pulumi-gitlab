@@ -117,13 +117,13 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The image_url argument rendered (in case of use of placeholders).
+        /// The ImageUrl argument rendered (in case of use of placeholders).
         /// </summary>
         [Output("renderedImageUrl")]
         public Output<string> RenderedImageUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The link_url argument rendered (in case of use of placeholders).
+        /// The LinkUrl argument rendered (in case of use of placeholders).
         /// </summary>
         [Output("renderedLinkUrl")]
         public Output<string> RenderedLinkUrl { get; private set; } = null!;
@@ -231,13 +231,13 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The image_url argument rendered (in case of use of placeholders).
+        /// The ImageUrl argument rendered (in case of use of placeholders).
         /// </summary>
         [Input("renderedImageUrl")]
         public Input<string>? RenderedImageUrl { get; set; }
 
         /// <summary>
-        /// The link_url argument rendered (in case of use of placeholders).
+        /// The LinkUrl argument rendered (in case of use of placeholders).
         /// </summary>
         [Input("renderedLinkUrl")]
         public Input<string>? RenderedLinkUrl { get; set; }

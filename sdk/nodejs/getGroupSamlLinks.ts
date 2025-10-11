@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+ *
+ * ## Example Usage
  */
 export function getGroupSamlLinks(args: GetGroupSamlLinksArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSamlLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,6 +48,8 @@ export interface GetGroupSamlLinksResult {
  * The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+ *
+ * ## Example Usage
  */
 export function getGroupSamlLinksOutput(args: GetGroupSamlLinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupSamlLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

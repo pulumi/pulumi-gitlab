@@ -175,14 +175,14 @@ public class InstanceCluster extends com.pulumi.resources.CustomResource {
         return this.kubernetesApiUrl;
     }
     /**
-     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      * 
      */
     @Export(name="kubernetesAuthorizationType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubernetesAuthorizationType;
 
     /**
-     * @return The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
+     * @return The cluster authorization type. Valid values are `rbac`, `abac`, `unknownAuthorization`. Defaults to `rbac`.
      * 
      */
     public Output<Optional<String>> kubernetesAuthorizationType() {

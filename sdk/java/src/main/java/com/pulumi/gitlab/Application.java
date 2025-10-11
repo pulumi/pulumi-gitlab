@@ -143,7 +143,7 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.redirectUrl;
     }
     /**
-     * Scopes of the application. Use &#34;openid&#34; if you plan to use this as an oidc authentication application. Valid options are: `api`, `read_api`, `read_user`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `openid`, `profile`, `email`.
+     * Scopes of the application. Use &#34;openid&#34; if you plan to use this as an oidc authentication application. Valid options are: `api`, `readApi`, `readUser`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `openid`, `profile`, `email`.
      * This is only populated when creating a new application. This attribute is not available for imported resources
      * 
      */
@@ -151,7 +151,7 @@ public class Application extends com.pulumi.resources.CustomResource {
     private Output<List<String>> scopes;
 
     /**
-     * @return Scopes of the application. Use &#34;openid&#34; if you plan to use this as an oidc authentication application. Valid options are: `api`, `read_api`, `read_user`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `openid`, `profile`, `email`.
+     * @return Scopes of the application. Use &#34;openid&#34; if you plan to use this as an oidc authentication application. Valid options are: `api`, `readApi`, `readUser`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `openid`, `profile`, `email`.
      * This is only populated when creating a new application. This attribute is not available for imported resources
      * 
      */

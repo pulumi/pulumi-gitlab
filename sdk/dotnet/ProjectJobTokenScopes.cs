@@ -11,12 +11,12 @@ namespace Pulumi.GitLab
 {
     /// <summary>
     /// The `gitlab.ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
-    /// Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
+    /// Any project or group not within the defined set of `TargetProjectIds` or `TargetGroupIds`, respectively, will be removed,
     /// which allows this resource to be used as an explicit deny.
     /// 
     /// &gt; Conflicts with the use of `gitlab.ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
     /// 
-    /// &gt; If the `enabled` property is false, any project or group will be allowed regardless of the given allowlist attributes.
+    /// &gt; If the `Enabled` property is false, any project or group will be allowed regardless of the given allowlist attributes.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
     /// 
@@ -122,7 +122,7 @@ namespace Pulumi.GitLab
     public partial class ProjectJobTokenScopes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+        /// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `TargetProjectIds` or `TargetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectJobTokenScopesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+        /// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `TargetProjectIds` or `TargetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectJobTokenScopesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+        /// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `TargetProjectIds` or `TargetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

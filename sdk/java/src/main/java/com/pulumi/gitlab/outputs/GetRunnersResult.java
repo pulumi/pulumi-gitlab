@@ -27,7 +27,7 @@ public final class GetRunnersResult {
      */
     private List<GetRunnersRunner> runners;
     /**
-     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
      * 
      */
     private @Nullable String status;
@@ -37,7 +37,7 @@ public final class GetRunnersResult {
      */
     private @Nullable List<String> tagLists;
     /**
-     * @return The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+     * @return The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
      * 
      */
     private @Nullable String type;
@@ -61,7 +61,7 @@ public final class GetRunnersResult {
         return this.runners;
     }
     /**
-     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
      * 
      */
     public Optional<String> status() {
@@ -75,7 +75,7 @@ public final class GetRunnersResult {
         return this.tagLists == null ? List.of() : this.tagLists;
     }
     /**
-     * @return The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+     * @return The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
      * 
      */
     public Optional<String> type() {

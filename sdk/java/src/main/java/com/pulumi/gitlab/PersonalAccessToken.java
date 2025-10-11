@@ -23,11 +23,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires administration privileges.
  * 
- * &gt; Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
+ * &gt; Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
  * 
  * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
  * 
- * &gt; Use `rotation_configuration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
+ * &gt; Use `rotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
  * 
  * &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/personal_access_tokens/#automatic-reuse-detection) it&#39;s possible that a new Personal Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
  * 
@@ -147,14 +147,14 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+     * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
-     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
+     * @return When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      * 
      */
     public Output<String> expiresAt() {
@@ -203,14 +203,14 @@ public class PersonalAccessToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rotationConfiguration);
     }
     /**
-     * The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+     * The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
+     * @return The scopes of the personal access token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      * 
      */
     public Output<List<String>> scopes() {

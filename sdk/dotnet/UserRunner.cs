@@ -110,7 +110,7 @@ namespace Pulumi.GitLab
     public partial class UserRunner : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+        /// The access level of the runner. Valid values are: `NotProtected`, `RefProtected`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.GitLab
         public Output<int?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+        /// The scope of the runner. Valid values are: `InstanceType`, `GroupType`, `ProjectType`.
         /// </summary>
         [Output("runnerType")]
         public Output<string> RunnerType { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.GitLab
     public sealed class UserRunnerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+        /// The access level of the runner. Valid values are: `NotProtected`, `RefProtected`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.GitLab
         public Input<int>? ProjectId { get; set; }
 
         /// <summary>
-        /// The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+        /// The scope of the runner. Valid values are: `InstanceType`, `GroupType`, `ProjectType`.
         /// </summary>
         [Input("runnerType", required: true)]
         public Input<string> RunnerType { get; set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.GitLab
     public sealed class UserRunnerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+        /// The access level of the runner. Valid values are: `NotProtected`, `RefProtected`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.GitLab
         public Input<int>? ProjectId { get; set; }
 
         /// <summary>
-        /// The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+        /// The scope of the runner. Valid values are: `InstanceType`, `GroupType`, `ProjectType`.
         /// </summary>
         [Input("runnerType")]
         public Input<string>? RunnerType { get; set; }

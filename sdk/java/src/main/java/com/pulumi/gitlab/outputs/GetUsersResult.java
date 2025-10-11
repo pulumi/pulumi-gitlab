@@ -71,7 +71,7 @@ public final class GetUsersResult {
      */
     private String id;
     /**
-     * @return Order the users&#39; list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+     * @return Order the users&#39; list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      * 
      */
     private @Nullable String orderBy;
@@ -180,7 +180,7 @@ public final class GetUsersResult {
         return this.id;
     }
     /**
-     * @return Order the users&#39; list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+     * @return Order the users&#39; list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      * 
      */
     public Optional<String> orderBy() {

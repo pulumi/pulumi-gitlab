@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
         public Output<string> Color { get; private set; } = null!;
 
         /// <summary>
-        /// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        /// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `Color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `Color`.
         /// </summary>
         [Output("colorHex")]
         public Output<string> ColorHex { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.GitLab
         public Input<string>? Color { get; set; }
 
         /// <summary>
-        /// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
+        /// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `Color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `Color`.
         /// </summary>
         [Input("colorHex")]
         public Input<string>? ColorHex { get; set; }

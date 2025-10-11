@@ -13,7 +13,7 @@ namespace Pulumi.GitLab.Inputs
     public sealed class GetProjectProtectedBranchPushAccessLevelArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to push to protected branch. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public string AccessLevel { get; set; } = null!;
@@ -25,19 +25,19 @@ namespace Pulumi.GitLab.Inputs
         public string AccessLevelDescription { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        /// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `GroupId` and `UserId`. This field is read-only until Gitlab 17.5.
         /// </summary>
         [Input("deployKeyId")]
         public int? DeployKeyId { get; set; }
 
         /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `DeployKeyId` and `UserId`.
         /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `DeployKeyId` and `GroupId`.
         /// </summary>
         [Input("userId")]
         public int? UserId { get; set; }

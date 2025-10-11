@@ -93,7 +93,7 @@ namespace Pulumi.GitLab
         public Output<int> LinkId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// The type of the link. Valid values are `Other`, `Runbook`, `Image`, `Package`. Defaults to other.
         /// </summary>
         [Output("linkType")]
         public Output<string?> LinkType { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.GitLab
         public Input<string>? Filepath { get; set; }
 
         /// <summary>
-        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// The type of the link. Valid values are `Other`, `Runbook`, `Image`, `Package`. Defaults to other.
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.GitLab
         public Input<int>? LinkId { get; set; }
 
         /// <summary>
-        /// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
+        /// The type of the link. Valid values are `Other`, `Runbook`, `Image`, `Package`. Defaults to other.
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }

@@ -19,14 +19,14 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
     public static final ProjectIntegrationPipelinesEmailArgs Empty = new ProjectIntegrationPipelinesEmailArgs();
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -106,7 +106,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
          * 
          * @return builder
          * 

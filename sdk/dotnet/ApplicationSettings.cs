@@ -124,7 +124,7 @@ namespace Pulumi.GitLab
         public Output<string> AssetProxyUrl { get; private set; } = null!;
 
         /// <summary>
-        /// By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        /// By default, we write to the AuthorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
         /// </summary>
         [Output("authorizedKeysEnabled")]
         public Output<bool> AuthorizedKeysEnabled { get; private set; } = null!;
@@ -904,7 +904,7 @@ namespace Pulumi.GitLab
         public Output<bool> HtmlEmailsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
+        /// Sources to allow project import from. Valid values are: `Github`, `Bitbucket`, `BitbucketServer`, `Fogbugz`, `Git`, `gitlab.Project`, `Gitea`, `Manifest`
         /// </summary>
         [Output("importSources")]
         public Output<ImmutableArray<string>> ImportSources { get; private set; } = null!;
@@ -2067,7 +2067,7 @@ namespace Pulumi.GitLab
         public Input<string>? AssetProxyUrl { get; set; }
 
         /// <summary>
-        /// By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        /// By default, we write to the AuthorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
         /// </summary>
         [Input("authorizedKeysEnabled")]
         public Input<bool>? AuthorizedKeysEnabled { get; set; }
@@ -2956,7 +2956,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _importSources;
 
         /// <summary>
-        /// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
+        /// Sources to allow project import from. Valid values are: `Github`, `Bitbucket`, `BitbucketServer`, `Fogbugz`, `Git`, `gitlab.Project`, `Gitea`, `Manifest`
         /// </summary>
         public InputList<string> ImportSources
         {
@@ -4174,7 +4174,7 @@ namespace Pulumi.GitLab
         public Input<string>? AssetProxyUrl { get; set; }
 
         /// <summary>
-        /// By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
+        /// By default, we write to the AuthorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
         /// </summary>
         [Input("authorizedKeysEnabled")]
         public Input<bool>? AuthorizedKeysEnabled { get; set; }
@@ -5075,7 +5075,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _importSources;
 
         /// <summary>
-        /// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
+        /// Sources to allow project import from. Valid values are: `Github`, `Bitbucket`, `BitbucketServer`, `Fogbugz`, `Git`, `gitlab.Project`, `Gitea`, `Manifest`
         /// </summary>
         public InputList<string> ImportSources
         {

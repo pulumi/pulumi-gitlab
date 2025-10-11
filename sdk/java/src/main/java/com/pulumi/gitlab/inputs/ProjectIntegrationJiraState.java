@@ -221,14 +221,14 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+     * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
     @Import(name="projectKeys")
     private @Nullable Output<List<String>> projectKeys;
 
     /**
-     * @return Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+     * @return Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      * 
      */
     public Optional<Output<List<String>>> projectKeys() {
@@ -636,7 +636,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param projectKeys Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+         * @param projectKeys Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param projectKeys Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+         * @param projectKeys Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
          * 
          * @return builder
          * 
@@ -657,7 +657,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param projectKeys Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+         * @param projectKeys Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
          * 
          * @return builder
          * 

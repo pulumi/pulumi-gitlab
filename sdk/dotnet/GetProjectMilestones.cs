@@ -43,7 +43,7 @@ namespace Pulumi.GitLab
         private List<int>? _iids;
 
         /// <summary>
-        /// Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+        /// Return only the milestones having the given `Iid` (Note: ignored if `IncludeParentMilestones` is set as `True`).
         /// </summary>
         public List<int> Iids
         {
@@ -70,13 +70,13 @@ namespace Pulumi.GitLab
         public string? Search { get; set; }
 
         /// <summary>
-        /// Return only `active` or `closed` milestones.
+        /// Return only `Active` or `Closed` milestones.
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
         /// <summary>
-        /// Return only the milestones having the given `title`.
+        /// Return only the milestones having the given `Title`.
         /// </summary>
         [Input("title")]
         public string? Title { get; set; }
@@ -93,7 +93,7 @@ namespace Pulumi.GitLab
         private InputList<int>? _iids;
 
         /// <summary>
-        /// Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+        /// Return only the milestones having the given `Iid` (Note: ignored if `IncludeParentMilestones` is set as `True`).
         /// </summary>
         public InputList<int> Iids
         {
@@ -120,13 +120,13 @@ namespace Pulumi.GitLab
         public Input<string>? Search { get; set; }
 
         /// <summary>
-        /// Return only `active` or `closed` milestones.
+        /// Return only `Active` or `Closed` milestones.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Return only the milestones having the given `title`.
+        /// Return only the milestones having the given `Title`.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Return only the milestones having the given `iid` (Note: ignored if `include_parent_milestones` is set as `true`).
+        /// Return only the milestones having the given `Iid` (Note: ignored if `IncludeParentMilestones` is set as `True`).
         /// </summary>
         public readonly ImmutableArray<int> Iids;
         /// <summary>
@@ -166,11 +166,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? Search;
         /// <summary>
-        /// Return only `active` or `closed` milestones.
+        /// Return only `Active` or `Closed` milestones.
         /// </summary>
         public readonly string? State;
         /// <summary>
-        /// Return only the milestones having the given `title`.
+        /// Return only the milestones having the given `Title`.
         /// </summary>
         public readonly string? Title;
 

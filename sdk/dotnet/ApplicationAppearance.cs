@@ -95,13 +95,13 @@ namespace Pulumi.GitLab
         public Output<string> ProfileImageGuidelines { get; private set; } = null!;
 
         /// <summary>
-        /// An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
+        /// An explanation of what the Progressive Web App does. Used for the attribute `Description` in `manifest.json`.
         /// </summary>
         [Output("pwaDescription")]
         public Output<string> PwaDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
+        /// Full name of the Progressive Web App. Used for the attribute `Name` in `manifest.json`.
         /// </summary>
         [Output("pwaName")]
         public Output<string> PwaName { get; private set; } = null!;
@@ -222,13 +222,13 @@ namespace Pulumi.GitLab
         public Input<string>? ProfileImageGuidelines { get; set; }
 
         /// <summary>
-        /// An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
+        /// An explanation of what the Progressive Web App does. Used for the attribute `Description` in `manifest.json`.
         /// </summary>
         [Input("pwaDescription")]
         public Input<string>? PwaDescription { get; set; }
 
         /// <summary>
-        /// Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
+        /// Full name of the Progressive Web App. Used for the attribute `Name` in `manifest.json`.
         /// </summary>
         [Input("pwaName")]
         public Input<string>? PwaName { get; set; }
@@ -311,13 +311,13 @@ namespace Pulumi.GitLab
         public Input<string>? ProfileImageGuidelines { get; set; }
 
         /// <summary>
-        /// An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
+        /// An explanation of what the Progressive Web App does. Used for the attribute `Description` in `manifest.json`.
         /// </summary>
         [Input("pwaDescription")]
         public Input<string>? PwaDescription { get; set; }
 
         /// <summary>
-        /// Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
+        /// Full name of the Progressive Web App. Used for the attribute `Name` in `manifest.json`.
         /// </summary>
         [Input("pwaName")]
         public Input<string>? PwaName { get; set; }

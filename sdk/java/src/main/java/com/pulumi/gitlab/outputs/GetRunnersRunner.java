@@ -38,12 +38,12 @@ public final class GetRunnersRunner {
      */
     private Boolean paused;
     /**
-     * @return The runner type. Values are `instance_type`, `group_type` and `project_type`.
+     * @return The runner type. Values are `instanceType`, `groupType` and `projectType`.
      * 
      */
     private String runnerType;
     /**
-     * @return The status of the runner. Values can be `online`, `offline`, `stale`, and `never_contacted`.
+     * @return The status of the runner. Values can be `online`, `offline`, `stale`, and `neverContacted`.
      * 
      */
     private String status;
@@ -85,14 +85,14 @@ public final class GetRunnersRunner {
         return this.paused;
     }
     /**
-     * @return The runner type. Values are `instance_type`, `group_type` and `project_type`.
+     * @return The runner type. Values are `instanceType`, `groupType` and `projectType`.
      * 
      */
     public String runnerType() {
         return this.runnerType;
     }
     /**
-     * @return The status of the runner. Values can be `online`, `offline`, `stale`, and `never_contacted`.
+     * @return The status of the runner. Values can be `online`, `offline`, `stale`, and `neverContacted`.
      * 
      */
     public String status() {

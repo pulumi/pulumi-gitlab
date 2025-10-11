@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Notifications are always fired for tag pushes.
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string?> BranchesToBeNotified { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationEmailsOnPushArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Notifications are always fired for tag pushes.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Notifications are always fired for tag pushes.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }

@@ -77,14 +77,14 @@ public final class PipelineScheduleVariableState extends com.pulumi.resources.Re
     }
 
     /**
-     * The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+     * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
      * 
      */
     @Import(name="variableType")
     private @Nullable Output<String> variableType;
 
     /**
-     * @return The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+     * @return The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
      * 
      */
     public Optional<Output<String>> variableType() {
@@ -204,7 +204,7 @@ public final class PipelineScheduleVariableState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param variableType The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+         * @param variableType The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class PipelineScheduleVariableState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param variableType The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
+         * @param variableType The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
          * 
          * @return builder
          * 
