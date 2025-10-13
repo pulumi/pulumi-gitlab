@@ -133,14 +133,14 @@ public class ProjectIntegrationHarbor extends com.pulumi.resources.CustomResourc
         return this.project;
     }
     /**
-     * The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+     * The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+     * @return The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
      * 
      */
     public Output<String> projectName() {

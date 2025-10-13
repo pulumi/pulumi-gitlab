@@ -33,14 +33,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+     * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Integer groupId;
 
     /**
-     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+     * @return The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
      * 
      */
     public Optional<Integer> groupId() {
@@ -48,14 +48,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+     * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
      * 
      */
     @Import(name="includeSubgroups")
     private @Nullable Boolean includeSubgroups;
 
     /**
-     * @return Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+     * @return Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
      * 
      */
     public Optional<Boolean> includeSubgroups() {
@@ -93,14 +93,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
      * 
      */
     @Import(name="minAccessLevel")
     private @Nullable Integer minAccessLevel;
 
     /**
-     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
      * 
      */
     public Optional<Integer> minAccessLevel() {
@@ -108,14 +108,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+     * Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
      * 
      */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
     /**
-     * @return Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+     * @return Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
      * 
      */
     public Optional<String> orderBy() {
@@ -228,14 +228,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Include project statistics. Cannot be used with `group_id`.
+     * Include project statistics. Cannot be used with `groupId`.
      * 
      */
     @Import(name="statistics")
     private @Nullable Boolean statistics;
 
     /**
-     * @return Include project statistics. Cannot be used with `group_id`.
+     * @return Include project statistics. Cannot be used with `groupId`.
      * 
      */
     public Optional<Boolean> statistics() {
@@ -318,14 +318,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Limit by projects which use the given programming language. Cannot be used with `group_id`.
+     * Limit by projects which use the given programming language. Cannot be used with `groupId`.
      * 
      */
     @Import(name="withProgrammingLanguage")
     private @Nullable String withProgrammingLanguage;
 
     /**
-     * @return Limit by projects which use the given programming language. Cannot be used with `group_id`.
+     * @return Limit by projects which use the given programming language. Cannot be used with `groupId`.
      * 
      */
     public Optional<String> withProgrammingLanguage() {
@@ -333,14 +333,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Include projects shared to this group. Default is `true`. Needs `group_id`.
+     * Include projects shared to this group. Default is `true`. Needs `groupId`.
      * 
      */
     @Import(name="withShared")
     private @Nullable Boolean withShared;
 
     /**
-     * @return Include projects shared to this group. Default is `true`. Needs `group_id`.
+     * @return Include projects shared to this group. Default is `true`. Needs `groupId`.
      * 
      */
     public Optional<Boolean> withShared() {
@@ -404,7 +404,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param groupId The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+         * @param groupId The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param includeSubgroups Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+         * @param includeSubgroups Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param minAccessLevel Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+         * @param minAccessLevel Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param orderBy Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+         * @param orderBy Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param statistics Include project statistics. Cannot be used with `group_id`.
+         * @param statistics Include project statistics. Cannot be used with `groupId`.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param withProgrammingLanguage Limit by projects which use the given programming language. Cannot be used with `group_id`.
+         * @param withProgrammingLanguage Limit by projects which use the given programming language. Cannot be used with `groupId`.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param withShared Include projects shared to this group. Default is `true`. Needs `group_id`.
+         * @param withShared Include projects shared to this group. Default is `true`. Needs `groupId`.
          * 
          * @return builder
          * 

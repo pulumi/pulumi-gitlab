@@ -18,14 +18,14 @@ public final class ProjectMirrorArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectMirrorArgs Empty = new ProjectMirrorArgs();
 
     /**
-     * Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      * 
      */
     @Import(name="authMethod")
     private @Nullable Output<String> authMethod;
 
     /**
-     * @return Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * @return Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      * 
      */
     public Optional<Output<String>> authMethod() {
@@ -153,7 +153,7 @@ public final class ProjectMirrorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+         * @param authMethod Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ProjectMirrorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+         * @param authMethod Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
          * 
          * @return builder
          * 

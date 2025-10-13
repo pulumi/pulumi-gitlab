@@ -73,7 +73,7 @@ public final class GetGroupsGroup {
      */
     private String runnersToken;
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     private String sharedRunnersSetting;
@@ -179,7 +179,7 @@ public final class GetGroupsGroup {
         return this.runnersToken;
     }
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     public String sharedRunnersSetting() {

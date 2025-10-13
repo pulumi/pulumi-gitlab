@@ -21,7 +21,7 @@ public final class GetPipelineScheduleVariable {
      */
     private String value;
     /**
-     * @return The type of a variable, one of: env_var and file.
+     * @return The type of a variable, one of: envVar and file.
      * 
      */
     private String variableType;
@@ -42,7 +42,7 @@ public final class GetPipelineScheduleVariable {
         return this.value;
     }
     /**
-     * @return The type of a variable, one of: env_var and file.
+     * @return The type of a variable, one of: envVar and file.
      * 
      */
     public String variableType() {

@@ -53,7 +53,7 @@ public final class GetGroupVariableResult {
      */
     private String value;
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`.
+     * @return The type of a variable. Valid values are: `envVar`, `file`.
      * 
      */
     private String variableType;
@@ -119,7 +119,7 @@ public final class GetGroupVariableResult {
         return this.value;
     }
     /**
-     * @return The type of a variable. Valid values are: `env_var`, `file`.
+     * @return The type of a variable. Valid values are: `envVar`, `file`.
      * 
      */
     public String variableType() {

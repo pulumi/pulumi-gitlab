@@ -18,6 +18,8 @@ import (
 //
 // **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationvaluestreamcreate)
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:

@@ -155,14 +155,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+     * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+     * @return The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -185,14 +185,14 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The user_id associated to the token.
+     * The userId associated to the token.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The user_id associated to the token.
+     * @return The userId associated to the token.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -424,7 +424,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+         * @param scopes The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+         * @param scopes The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+         * @param scopes The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userId The user_id associated to the token.
+         * @param userId The userId associated to the token.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userId The user_id associated to the token.
+         * @param userId The userId associated to the token.
          * 
          * @return builder
          * 

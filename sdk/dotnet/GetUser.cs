@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some attributes might not be returned depending on if you're an admin or not.
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
+        /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some attributes might not be returned depending on if you're an admin or not.
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
+        /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; Some attributes might not be returned depending on if you're an admin or not.
         /// 
-        /// &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
+        /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
         /// </summary>

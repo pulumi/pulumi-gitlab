@@ -124,7 +124,7 @@ namespace Pulumi.GitLab
     public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
+        /// Order the groups' list by `Id`, `Name`, `Path`, or `Similarity`. (Requires administrator privileges)
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.GitLab
     public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
+        /// Order the groups' list by `Id`, `Name`, `Path`, or `Similarity`. (Requires administrator privileges)
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
+        /// Order the groups' list by `Id`, `Name`, `Path`, or `Similarity`. (Requires administrator privileges)
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

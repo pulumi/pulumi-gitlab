@@ -90,7 +90,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int IssueLinkId;
         /// <summary>
-        /// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+        /// The type of issue. Valid values are: `Issue`, `Incident`, `TestCase`.
         /// </summary>
         public readonly string IssueType;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int MergeRequestsCount;
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the MilestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         public readonly int MilestoneId;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> References;
         /// <summary>
-        /// The state of the issue. Valid values are: `opened`, `closed`.
+        /// The state of the issue. Valid values are: `Opened`, `Closed`.
         /// </summary>
         public readonly string State;
         /// <summary>

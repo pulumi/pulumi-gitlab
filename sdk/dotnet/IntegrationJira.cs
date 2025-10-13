@@ -151,7 +151,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+        /// Keys of Jira projects. When IssuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
         [Output("projectKeys")]
         public Output<ImmutableArray<string>> ProjectKeys { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _projectKeys;
 
         /// <summary>
-        /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+        /// Keys of Jira projects. When IssuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
         public InputList<string> ProjectKeys
         {
@@ -448,7 +448,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _projectKeys;
 
         /// <summary>
-        /// Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
+        /// Keys of Jira projects. When IssuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         /// </summary>
         public InputList<string> ProjectKeys
         {

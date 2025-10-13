@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ComplianceFramework` resource allows to manage the lifecycle of a compliance framework on top-level groups.
     /// 
-    /// There can be only one `default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.
+    /// There can be only one `Default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance with a Premium license to create the compliance framework.
     /// 
@@ -75,7 +75,7 @@ namespace Pulumi.GitLab
         public Output<string> Color { get; private set; } = null!;
 
         /// <summary>
-        /// Set this compliance framework as the default framework for the group. Default: `false`
+        /// Set this compliance framework as the default framework for the group. Default: `False`
         /// </summary>
         [Output("default")]
         public Output<bool> Default { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GitLab
         public Input<string> Color { get; set; } = null!;
 
         /// <summary>
-        /// Set this compliance framework as the default framework for the group. Default: `false`
+        /// Set this compliance framework as the default framework for the group. Default: `False`
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.GitLab
         public Input<string>? Color { get; set; }
 
         /// <summary>
-        /// Set this compliance framework as the default framework for the group. Default: `false`
+        /// Set this compliance framework as the default framework for the group. Default: `False`
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }

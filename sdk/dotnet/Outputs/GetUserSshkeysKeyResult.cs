@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ExpiresAt;
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+        /// The ssh key. The SSH key `Comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         public readonly string Key;
         /// <summary>

@@ -160,14 +160,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.autoCancelPendingPipelines;
     }
     /**
-     * Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      * 
      */
     @Export(name="autoDevopsDeployStrategy", refs={String.class}, tree="[0]")
     private Output<String> autoDevopsDeployStrategy;
 
     /**
-     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      * 
      */
     public Output<String> autoDevopsDeployStrategy() {
@@ -398,14 +398,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciIdTokenSubClaimComponents;
     }
     /**
-     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      * 
      */
     @Export(name="ciPipelineVariablesMinimumOverrideRole", refs={String.class}, tree="[0]")
     private Output<String> ciPipelineVariablesMinimumOverrideRole;
 
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      * 
      */
     public Output<String> ciPipelineVariablesMinimumOverrideRole() {
@@ -454,14 +454,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciSeparatedCaches;
     }
     /**
-     * Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      * 
      */
     @Export(name="containerExpirationPolicy", refs={ProjectContainerExpirationPolicy.class}, tree="[0]")
     private Output<ProjectContainerExpirationPolicy> containerExpirationPolicy;
 
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      * 
      */
     public Output<ProjectContainerExpirationPolicy> containerExpirationPolicy() {
@@ -485,10 +485,10 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Enable container registry for the project.
      * 
      * @deprecated
-     * Use `container_registry_access_level` instead.
+     * Use `containerRegistryAccessLevel` instead.
      * 
      */
-    @Deprecated /* Use `container_registry_access_level` instead. */
+    @Deprecated /* Use `containerRegistryAccessLevel` instead. */
     @Export(name="containerRegistryEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> containerRegistryEnabled;
 
@@ -668,42 +668,42 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.httpUrlToRepo;
     }
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrl() {
         return Codegen.optional(this.importUrl);
     }
     /**
-     * The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
+     * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrlPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrlPassword;
 
     /**
-     * @return The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
+     * @return The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrlPassword() {
         return Codegen.optional(this.importUrlPassword);
     }
     /**
-     * The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
+     * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrlUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> importUrlUsername;
 
     /**
-     * @return The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
+     * @return The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      * 
      */
     public Output<Optional<String>> importUrlUsername() {
@@ -724,14 +724,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.infrastructureAccessLevel;
     }
     /**
-     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
+     * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      * 
      */
     @Export(name="initializeWithReadme", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> initializeWithReadme;
 
     /**
-     * @return Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
+     * @return Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      * 
      */
     public Output<Optional<Boolean>> initializeWithReadme() {
@@ -822,14 +822,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mergeCommitTemplate);
     }
     /**
-     * Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
+     * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      * 
      */
     @Export(name="mergeMethod", refs={String.class}, tree="[0]")
     private Output<String> mergeMethod;
 
     /**
-     * @return Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
+     * @return Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      * 
      */
     public Output<String> mergeMethod() {
@@ -892,14 +892,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mergeRequestsTemplate);
     }
     /**
-     * Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+     * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      * 
      */
     @Export(name="mergeTrainsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeTrainsEnabled;
 
     /**
-     * @return Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+     * @return Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      * 
      */
     public Output<Boolean> mergeTrainsEnabled() {
@@ -1144,18 +1144,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.permanentlyDeleteOnDestroy);
     }
     /**
-     * Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      * 
      * @deprecated
-     * Deprecated in favor of `builds_access_level`
+     * Deprecated in favor of `buildsAccessLevel`
      * 
      */
-    @Deprecated /* Deprecated in favor of `builds_access_level` */
+    @Deprecated /* Deprecated in favor of `buildsAccessLevel` */
     @Export(name="pipelinesEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pipelinesEnabled;
 
     /**
-     * @return Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
      * 
      */
     public Output<Boolean> pipelinesEnabled() {
@@ -1207,10 +1207,10 @@ public class Project extends com.pulumi.resources.CustomResource {
      * If true, jobs can be viewed by non-project members.
      * 
      * @deprecated
-     * The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.
+     * The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider. */
+    @Deprecated /* The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider. */
     @Export(name="publicBuilds", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publicBuilds;
 
@@ -1466,14 +1466,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.squashCommitTemplate);
     }
     /**
-     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
+     * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      * 
      */
     @Export(name="squashOption", refs={String.class}, tree="[0]")
     private Output<String> squashOption;
 
     /**
-     * @return Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
+     * @return Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      * 
      */
     public Output<String> squashOption() {
@@ -1522,28 +1522,28 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.tags;
     }
     /**
-     * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+     * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      * 
      */
     @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateName;
 
     /**
-     * @return When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
+     * @return When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      * 
      */
     public Output<Optional<String>> templateName() {
         return Codegen.optional(this.templateName);
     }
     /**
-     * When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
+     * When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
      * 
      */
     @Export(name="templateProjectId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> templateProjectId;
 
     /**
-     * @return When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
+     * @return When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
      * 
      */
     public Output<Optional<Integer>> templateProjectId() {

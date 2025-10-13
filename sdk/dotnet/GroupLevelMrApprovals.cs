@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     public partial class GroupLevelMrApprovals : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
+        /// Allow or prevent authors from self approving merge requests; `True` means authors can self approve.
         /// </summary>
         [Output("allowAuthorApproval")]
         public Output<bool> AllowAuthorApproval { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLevelMrApprovalsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
+        /// Allow or prevent authors from self approving merge requests; `True` means authors can self approve.
         /// </summary>
         [Input("allowAuthorApproval")]
         public Input<bool>? AllowAuthorApproval { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
     public sealed class GroupLevelMrApprovalsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
+        /// Allow or prevent authors from self approving merge requests; `True` means authors can self approve.
         /// </summary>
         [Input("allowAuthorApproval")]
         public Input<bool>? AllowAuthorApproval { get; set; }

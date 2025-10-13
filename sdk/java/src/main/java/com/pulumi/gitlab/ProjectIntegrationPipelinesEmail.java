@@ -91,14 +91,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail")
 public class ProjectIntegrationPipelinesEmail extends com.pulumi.resources.CustomResource {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
      * 
      */
     public Output<Optional<String>> branchesToBeNotified() {

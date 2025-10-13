@@ -321,14 +321,14 @@ public class Release extends com.pulumi.resources.CustomResource {
         return this.tagPath;
     }
     /**
-     * Whether the release_at attribute is set to a future date.
+     * Whether the releaseAt attribute is set to a future date.
      * 
      */
     @Export(name="upcomingRelease", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> upcomingRelease;
 
     /**
-     * @return Whether the release_at attribute is set to a future date.
+     * @return Whether the releaseAt attribute is set to a future date.
      * 
      */
     public Output<Boolean> upcomingRelease() {

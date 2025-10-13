@@ -32,14 +32,14 @@ public final class GetRunnersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
      * 
      */
     public Optional<String> status() {
@@ -62,14 +62,14 @@ public final class GetRunnersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+     * The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+     * @return The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
      * 
      */
     public Optional<String> type() {
@@ -115,7 +115,7 @@ public final class GetRunnersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+         * @param status Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GetRunnersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+         * @param type The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
          * 
          * @return builder
          * 

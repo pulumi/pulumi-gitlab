@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     public partial class GroupHook : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
         /// </summary>
         [Output("branchFilterStrategy")]
         public Output<string> BranchFilterStrategy { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// The url of the hook to invoke. Forces re-creation to preserve `token`.
+        /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.GitLab
     public sealed class GroupHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
         /// </summary>
         [Input("branchFilterStrategy")]
         public Input<string>? BranchFilterStrategy { get; set; }
@@ -408,7 +408,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The url of the hook to invoke. Forces re-creation to preserve `token`.
+        /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -428,7 +428,7 @@ namespace Pulumi.GitLab
     public sealed class GroupHookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
         /// </summary>
         [Input("branchFilterStrategy")]
         public Input<string>? BranchFilterStrategy { get; set; }
@@ -594,7 +594,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The url of the hook to invoke. Forces re-creation to preserve `token`.
+        /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

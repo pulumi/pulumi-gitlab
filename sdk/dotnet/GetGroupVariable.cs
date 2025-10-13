@@ -192,11 +192,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
         /// </summary>
         public readonly bool Masked;
         /// <summary>
-        /// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
+        /// If set to `True`, the variable will be passed only to pipelines running on protected branches and tags
         /// </summary>
         public readonly bool Protected;
         /// <summary>
@@ -208,7 +208,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// The type of a variable. Valid values are: `env_var`, `file`.
+        /// The type of a variable. Valid values are: `EnvVar`, `File`.
         /// </summary>
         public readonly string VariableType;
 

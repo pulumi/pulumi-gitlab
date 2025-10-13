@@ -12,9 +12,9 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
     /// 
-    /// &gt; In order to use a user or group in the `deploy_access_levels` configuration,
+    /// &gt; In order to use a user or group in the `DeployAccessLevels` configuration,
     ///    you need to make sure that users have access to the project and groups must have this project shared.
-    ///    You may use the `gitlab.ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.
+    ///    You may use the `gitlab.ProjectMembership` and `GitlabProjectSharedGroup` resources to achieve this.
     ///    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
     ///    In case this happens you will get perpetual state diffs.
     /// 
@@ -46,19 +46,19 @@ namespace Pulumi.GitLab
     public partial class ProjectProtectedEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `ApprovalRules` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         [Output("approvalRules")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentApprovalRule>> ApprovalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         [Output("deployAccessLevels")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevel>> DeployAccessLevels { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         [Output("deployAccessLevelsAttributes")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute>> DeployAccessLevelsAttributes { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs>? _approvalRules;
 
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `ApprovalRules` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleArgs> ApprovalRules
         {
@@ -137,9 +137,9 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated. Use `deploy_access_levels_attribute` instead.")]
+        [Obsolete(@"This attribute is deprecated. Use `DeployAccessLevelsAttribute` instead.")]
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs> DeployAccessLevels
         {
             get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>());
@@ -150,7 +150,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs>? _deployAccessLevelsAttributes;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs> DeployAccessLevelsAttributes
         {
@@ -182,7 +182,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs>? _approvalRules;
 
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `ApprovalRules` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentApprovalRuleGetArgs> ApprovalRules
         {
@@ -194,9 +194,9 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated. Use `deploy_access_levels_attribute` instead.")]
+        [Obsolete(@"This attribute is deprecated. Use `DeployAccessLevelsAttribute` instead.")]
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs> DeployAccessLevels
         {
             get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>());
@@ -207,7 +207,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeGetArgs>? _deployAccessLevelsAttributes;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeGetArgs> DeployAccessLevelsAttributes
         {

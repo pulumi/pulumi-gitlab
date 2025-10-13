@@ -15,6 +15,8 @@ namespace Pulumi.GitLab
         /// The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
         /// 	
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetGroupSamlLinksResult> InvokeAsync(GetGroupSamlLinksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupSamlLinksResult>("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", args ?? new GetGroupSamlLinksArgs(), options.WithDefaults());
@@ -23,6 +25,8 @@ namespace Pulumi.GitLab
         /// The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
         /// 	
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGroupSamlLinksResult> Invoke(GetGroupSamlLinksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupSamlLinksResult>("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", args ?? new GetGroupSamlLinksInvokeArgs(), options.WithDefaults());
@@ -31,6 +35,8 @@ namespace Pulumi.GitLab
         /// The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
         /// 	
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGroupSamlLinksResult> Invoke(GetGroupSamlLinksInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupSamlLinksResult>("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", args ?? new GetGroupSamlLinksInvokeArgs(), options.WithDefaults());

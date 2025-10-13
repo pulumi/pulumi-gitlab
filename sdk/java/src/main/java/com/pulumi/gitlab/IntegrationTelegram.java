@@ -100,14 +100,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/integrationTelegram:IntegrationTelegram")
 public class IntegrationTelegram extends com.pulumi.resources.CustomResource {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     public Output<String> branchesToBeNotified() {

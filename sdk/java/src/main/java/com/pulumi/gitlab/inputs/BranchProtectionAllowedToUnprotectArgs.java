@@ -47,14 +47,14 @@ public final class BranchProtectionAllowedToUnprotectArgs extends com.pulumi.res
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -62,14 +62,14 @@ public final class BranchProtectionAllowedToUnprotectArgs extends com.pulumi.res
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -146,7 +146,7 @@ public final class BranchProtectionAllowedToUnprotectArgs extends com.pulumi.res
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class BranchProtectionAllowedToUnprotectArgs extends com.pulumi.res
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class BranchProtectionAllowedToUnprotectArgs extends com.pulumi.res
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class BranchProtectionAllowedToUnprotectArgs extends com.pulumi.res
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
          * 
          * @return builder
          * 

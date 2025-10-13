@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
     public partial class GroupSamlLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for members of the SAML group. Valid values are: `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `AccessLevel` must match the base role used to create the custom role.
         /// </summary>
         [Output("memberRoleId")]
         public Output<int?> MemberRoleId { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.GitLab
     public sealed class GroupSamlLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for members of the SAML group. Valid values are: `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `AccessLevel` must match the base role used to create the custom role.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
     public sealed class GroupSamlLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        /// Access level for members of the SAML group. Valid values are: `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.GitLab
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+        /// The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `AccessLevel` must match the base role used to create the custom role.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }

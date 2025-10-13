@@ -166,7 +166,7 @@ namespace Pulumi.GitLab
         public Output<string> TagPath { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the release_at attribute is set to a future date.
+        /// Whether the ReleaseAt attribute is set to a future date.
         /// </summary>
         [Output("upcomingRelease")]
         public Output<bool> UpcomingRelease { get; private set; } = null!;
@@ -388,7 +388,7 @@ namespace Pulumi.GitLab
         public Input<string>? TagPath { get; set; }
 
         /// <summary>
-        /// Whether the release_at attribute is set to a future date.
+        /// Whether the ReleaseAt attribute is set to a future date.
         /// </summary>
         [Input("upcomingRelease")]
         public Input<bool>? UpcomingRelease { get; set; }

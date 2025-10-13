@@ -47,14 +47,14 @@ public final class GetProjectProtectedBranchMergeAccessLevel extends com.pulumi.
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Integer groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      * 
      */
     public Optional<Integer> groupId() {
@@ -62,14 +62,14 @@ public final class GetProjectProtectedBranchMergeAccessLevel extends com.pulumi.
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      * 
      */
     @Import(name="userId")
     private @Nullable Integer userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      * 
      */
     public Optional<Integer> userId() {
@@ -126,7 +126,7 @@ public final class GetProjectProtectedBranchMergeAccessLevel extends com.pulumi.
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetProjectProtectedBranchMergeAccessLevel extends com.pulumi.
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
          * 
          * @return builder
          * 

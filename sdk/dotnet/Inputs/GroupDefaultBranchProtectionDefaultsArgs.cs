@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Inputs
         private InputList<string>? _allowedToMerges;
 
         /// <summary>
-        /// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
+        /// An array of access levels allowed to merge. Valid values are: `Developer`, `Maintainer`, `no one`.
         /// </summary>
         public InputList<string> AllowedToMerges
         {
@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Inputs
         private InputList<string>? _allowedToPushes;
 
         /// <summary>
-        /// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
+        /// An array of access levels allowed to push. Valid values are: `Developer`, `Maintainer`, `no one`.
         /// </summary>
         public InputList<string> AllowedToPushes
         {

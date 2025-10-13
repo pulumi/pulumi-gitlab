@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class ProjectProtectedEnvironmentDeployAccessLevelsAttribute
     {
         /// <summary>
-        /// Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
+        /// Levels of access required to deploy to this protected environment. Mutually exclusive with `UserId` and `GroupId`. Valid values are `Developer`, `Maintainer`.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string? AccessLevelDescription;
         /// <summary>
-        /// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
+        /// The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `AccessLevel` and `UserId`.
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
+        /// The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `AccessLevel` and `GroupId`.
         /// </summary>
         public readonly int? UserId;
 

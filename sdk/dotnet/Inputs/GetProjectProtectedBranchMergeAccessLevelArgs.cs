@@ -13,7 +13,7 @@ namespace Pulumi.GitLab.Inputs
     public sealed class GetProjectProtectedBranchMergeAccessLevelInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge to protected branch. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -25,13 +25,13 @@ namespace Pulumi.GitLab.Inputs
         public Input<string> AccessLevelDescription { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `UserId`.
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `GroupId`.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

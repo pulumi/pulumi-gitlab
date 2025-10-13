@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class BranchProtectionAllowedToMerge
     {
         /// <summary>
-        /// Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        /// Access levels allowed to merge to protected branch. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string? AccessLevelDescription;
         /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `UserId`.
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `GroupId`.
         /// </summary>
         public readonly int? UserId;
 

@@ -149,13 +149,13 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the token. Valid values are `active`, `revoked`.
+        /// The status of the token. Valid values are `Active`, `Revoked`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The secret token for the agent. The `token` is not available in imported resources.
+        /// The secret token for the agent. The `Token` is not available in imported resources.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The status of the token. Valid values are `active`, `revoked`.
+        /// The status of the token. Valid values are `Active`, `Revoked`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// The secret token for the agent. The `token` is not available in imported resources.
+        /// The secret token for the agent. The `Token` is not available in imported resources.
         /// </summary>
         public Input<string>? Token
         {

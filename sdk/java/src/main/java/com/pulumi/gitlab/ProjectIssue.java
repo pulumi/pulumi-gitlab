@@ -374,14 +374,14 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
         return this.issueLinkId;
     }
     /**
-     * The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+     * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      * 
      */
     @Export(name="issueType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> issueType;
 
     /**
-     * @return The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+     * @return The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      * 
      */
     public Output<Optional<String>> issueType() {
@@ -444,14 +444,14 @@ public class ProjectIssue extends com.pulumi.resources.CustomResource {
         return this.mergeRequestsCount;
     }
     /**
-     * The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+     * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
     @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> milestoneId;
 
     /**
-     * @return The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
+     * @return The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue&#39;s details.
      * 
      */
     public Output<Optional<Integer>> milestoneId() {

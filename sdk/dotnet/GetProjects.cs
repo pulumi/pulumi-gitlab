@@ -160,13 +160,13 @@ namespace Pulumi.GitLab
         public bool? Archived { get; set; }
 
         /// <summary>
-        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `MinAccessLevel`, `WithProgrammingLanguage` or `Statistics`.
         /// </summary>
         [Input("groupId")]
         public int? GroupId { get; set; }
 
         /// <summary>
-        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+        /// Include projects in subgroups of this group. Default is `False`. Needs `GroupId`.
         /// </summary>
         [Input("includeSubgroups")]
         public bool? IncludeSubgroups { get; set; }
@@ -184,13 +184,13 @@ namespace Pulumi.GitLab
         public bool? Membership { get; set; }
 
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `GroupId`.
         /// </summary>
         [Input("minAccessLevel")]
         public int? MinAccessLevel { get; set; }
 
         /// <summary>
-        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+        /// Return projects ordered ordered by: `Id`, `Name`, `Path`, `CreatedAt`, `UpdatedAt`, `LastActivityAt`, `Similarity`, `RepositorySize`, `StorageSize`, `PackagesSize`, `WikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.GitLab
         public bool? Simple { get; set; }
 
         /// <summary>
-        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return projects sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.GitLab
         public bool? Starred { get; set; }
 
         /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
+        /// Include project statistics. Cannot be used with `GroupId`.
         /// </summary>
         [Input("statistics")]
         public bool? Statistics { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
+        /// Limit by visibility `Public`, `Internal`, or `Private`.
         /// </summary>
         [Input("visibility")]
         public string? Visibility { get; set; }
@@ -268,25 +268,25 @@ namespace Pulumi.GitLab
         public bool? WithCustomAttributes { get; set; }
 
         /// <summary>
-        /// Limit by projects with issues feature enabled. Default is `false`.
+        /// Limit by projects with issues feature enabled. Default is `False`.
         /// </summary>
         [Input("withIssuesEnabled")]
         public bool? WithIssuesEnabled { get; set; }
 
         /// <summary>
-        /// Limit by projects with merge requests feature enabled. Default is `false`.
+        /// Limit by projects with merge requests feature enabled. Default is `False`.
         /// </summary>
         [Input("withMergeRequestsEnabled")]
         public bool? WithMergeRequestsEnabled { get; set; }
 
         /// <summary>
-        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
+        /// Limit by projects which use the given programming language. Cannot be used with `GroupId`.
         /// </summary>
         [Input("withProgrammingLanguage")]
         public string? WithProgrammingLanguage { get; set; }
 
         /// <summary>
-        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
+        /// Include projects shared to this group. Default is `True`. Needs `GroupId`.
         /// </summary>
         [Input("withShared")]
         public bool? WithShared { get; set; }
@@ -306,13 +306,13 @@ namespace Pulumi.GitLab
         public Input<bool>? Archived { get; set; }
 
         /// <summary>
-        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `MinAccessLevel`, `WithProgrammingLanguage` or `Statistics`.
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+        /// Include projects in subgroups of this group. Default is `False`. Needs `GroupId`.
         /// </summary>
         [Input("includeSubgroups")]
         public Input<bool>? IncludeSubgroups { get; set; }
@@ -330,13 +330,13 @@ namespace Pulumi.GitLab
         public Input<bool>? Membership { get; set; }
 
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `GroupId`.
         /// </summary>
         [Input("minAccessLevel")]
         public Input<int>? MinAccessLevel { get; set; }
 
         /// <summary>
-        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+        /// Return projects ordered ordered by: `Id`, `Name`, `Path`, `CreatedAt`, `UpdatedAt`, `LastActivityAt`, `Similarity`, `RepositorySize`, `StorageSize`, `PackagesSize`, `WikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Simple { get; set; }
 
         /// <summary>
-        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return projects sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Starred { get; set; }
 
         /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
+        /// Include project statistics. Cannot be used with `GroupId`.
         /// </summary>
         [Input("statistics")]
         public Input<bool>? Statistics { get; set; }
@@ -402,7 +402,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
+        /// Limit by visibility `Public`, `Internal`, or `Private`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -414,25 +414,25 @@ namespace Pulumi.GitLab
         public Input<bool>? WithCustomAttributes { get; set; }
 
         /// <summary>
-        /// Limit by projects with issues feature enabled. Default is `false`.
+        /// Limit by projects with issues feature enabled. Default is `False`.
         /// </summary>
         [Input("withIssuesEnabled")]
         public Input<bool>? WithIssuesEnabled { get; set; }
 
         /// <summary>
-        /// Limit by projects with merge requests feature enabled. Default is `false`.
+        /// Limit by projects with merge requests feature enabled. Default is `False`.
         /// </summary>
         [Input("withMergeRequestsEnabled")]
         public Input<bool>? WithMergeRequestsEnabled { get; set; }
 
         /// <summary>
-        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
+        /// Limit by projects which use the given programming language. Cannot be used with `GroupId`.
         /// </summary>
         [Input("withProgrammingLanguage")]
         public Input<string>? WithProgrammingLanguage { get; set; }
 
         /// <summary>
-        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
+        /// Include projects shared to this group. Default is `True`. Needs `GroupId`.
         /// </summary>
         [Input("withShared")]
         public Input<bool>? WithShared { get; set; }
@@ -452,7 +452,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Archived;
         /// <summary>
-        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
+        /// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `MinAccessLevel`, `WithProgrammingLanguage` or `Statistics`.
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
@@ -460,7 +460,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
+        /// Include projects in subgroups of this group. Default is `False`. Needs `GroupId`.
         /// </summary>
         public readonly bool? IncludeSubgroups;
         /// <summary>
@@ -472,11 +472,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Membership;
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `GroupId`.
         /// </summary>
         public readonly int? MinAccessLevel;
         /// <summary>
-        /// Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
+        /// Return projects ordered ordered by: `Id`, `Name`, `Path`, `CreatedAt`, `UpdatedAt`, `LastActivityAt`, `Similarity`, `RepositorySize`, `StorageSize`, `PackagesSize`, `WikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>
@@ -504,7 +504,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Simple;
         /// <summary>
-        /// Return projects sorted in `asc` or `desc` order. Default is `desc`.
+        /// Return projects sorted in `Asc` or `Desc` order. Default is `Desc`.
         /// </summary>
         public readonly string? Sort;
         /// <summary>
@@ -512,7 +512,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Starred;
         /// <summary>
-        /// Include project statistics. Cannot be used with `group_id`.
+        /// Include project statistics. Cannot be used with `GroupId`.
         /// </summary>
         public readonly bool? Statistics;
         /// <summary>
@@ -520,7 +520,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<string> Topics;
         /// <summary>
-        /// Limit by visibility `public`, `internal`, or `private`.
+        /// Limit by visibility `Public`, `Internal`, or `Private`.
         /// </summary>
         public readonly string? Visibility;
         /// <summary>
@@ -528,19 +528,19 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? WithCustomAttributes;
         /// <summary>
-        /// Limit by projects with issues feature enabled. Default is `false`.
+        /// Limit by projects with issues feature enabled. Default is `False`.
         /// </summary>
         public readonly bool? WithIssuesEnabled;
         /// <summary>
-        /// Limit by projects with merge requests feature enabled. Default is `false`.
+        /// Limit by projects with merge requests feature enabled. Default is `False`.
         /// </summary>
         public readonly bool? WithMergeRequestsEnabled;
         /// <summary>
-        /// Limit by projects which use the given programming language. Cannot be used with `group_id`.
+        /// Limit by projects which use the given programming language. Cannot be used with `GroupId`.
         /// </summary>
         public readonly string? WithProgrammingLanguage;
         /// <summary>
-        /// Include projects shared to this group. Default is `true`. Needs `group_id`.
+        /// Include projects shared to this group. Default is `True`. Needs `GroupId`.
         /// </summary>
         public readonly bool? WithShared;
 

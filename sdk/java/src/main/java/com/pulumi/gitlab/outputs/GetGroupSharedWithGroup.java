@@ -17,7 +17,7 @@ public final class GetGroupSharedWithGroup {
      */
     private String expiresAt;
     /**
-     * @return The access_level permission level of the shared group.
+     * @return The accessLevel permission level of the shared group.
      * 
      */
     private Integer groupAccessLevel;
@@ -46,7 +46,7 @@ public final class GetGroupSharedWithGroup {
         return this.expiresAt;
     }
     /**
-     * @return The access_level permission level of the shared group.
+     * @return The accessLevel permission level of the shared group.
      * 
      */
     public Integer groupAccessLevel() {

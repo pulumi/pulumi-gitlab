@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
 
         private static readonly __Value<string?> _clientKey = new __Value<string?>(() => __config.Get("clientKey"));
         /// <summary>
-        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
+        /// File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `ClientCert` is set.
         /// </summary>
         public static string? ClientKey
         {

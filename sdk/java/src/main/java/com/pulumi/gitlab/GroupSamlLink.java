@@ -120,14 +120,14 @@ public class GroupSamlLink extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
-     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+     * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
+     * @return The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      * 
      */
     public Output<Optional<Integer>> memberRoleId() {
