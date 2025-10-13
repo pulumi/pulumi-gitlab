@@ -61,7 +61,7 @@ public final class GetProjectMergeRequestsResult {
      */
     private @Nullable String myReactionEmoji;
     /**
-     * @return Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+     * @return Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
      * 
      */
     private @Nullable String orderBy;
@@ -76,7 +76,7 @@ public final class GetProjectMergeRequestsResult {
      */
     private @Nullable String reviewerUsername;
     /**
-     * @return Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+     * @return Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
      * 
      */
     private @Nullable String scope;
@@ -186,7 +186,7 @@ public final class GetProjectMergeRequestsResult {
         return Optional.ofNullable(this.myReactionEmoji);
     }
     /**
-     * @return Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+     * @return Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
      * 
      */
     public Optional<String> orderBy() {
@@ -207,7 +207,7 @@ public final class GetProjectMergeRequestsResult {
         return Optional.ofNullable(this.reviewerUsername);
     }
     /**
-     * @return Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+     * @return Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
      * 
      */
     public Optional<String> scope() {

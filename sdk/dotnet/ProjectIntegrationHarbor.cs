@@ -87,7 +87,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+        /// The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `MyProjectName`.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+        /// The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `MyProjectName`.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
+        /// The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `MyProjectName`.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

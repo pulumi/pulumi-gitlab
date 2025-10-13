@@ -147,7 +147,7 @@ namespace Pulumi.GitLab
         public Output<bool> NotifyOnlyBrokenPipelines { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter has been replaced with `branches_to_be_notified`.
+        /// This parameter has been replaced with `BranchesToBeNotified`.
         /// </summary>
         [Output("notifyOnlyDefaultBranch")]
         public Output<bool> NotifyOnlyDefaultBranch { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.GitLab
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
 
         /// <summary>
-        /// This parameter has been replaced with `branches_to_be_notified`.
+        /// This parameter has been replaced with `BranchesToBeNotified`.
         /// </summary>
         [Input("notifyOnlyDefaultBranch")]
         public Input<bool>? NotifyOnlyDefaultBranch { get; set; }
@@ -495,7 +495,7 @@ namespace Pulumi.GitLab
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
 
         /// <summary>
-        /// This parameter has been replaced with `branches_to_be_notified`.
+        /// This parameter has been replaced with `BranchesToBeNotified`.
         /// </summary>
         [Input("notifyOnlyDefaultBranch")]
         public Input<bool>? NotifyOnlyDefaultBranch { get; set; }

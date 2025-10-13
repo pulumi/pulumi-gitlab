@@ -26,7 +26,7 @@ public final class GetProjectsProject {
      */
     private Map<String,String> _links;
     /**
-     * @return Whether allow_merge_on_skipped_pipeline is enabled for the project.
+     * @return Whether allowMergeOnSkippedPipeline is enabled for the project.
      * 
      */
     private Boolean allowMergeOnSkippedPipeline;
@@ -56,7 +56,7 @@ public final class GetProjectsProject {
      */
     private String autoCancelPendingPipelines;
     /**
-     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      * 
      */
     private String autoDevopsDeployStrategy;
@@ -121,12 +121,12 @@ public final class GetProjectsProject {
      */
     private Boolean ciForwardDeploymentRollbackAllowed;
     /**
-     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to [&#34;project_path&#34;, &#34;ref_type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to [&#34;projectPath&#34;, &#34;refType&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
      * 
      */
     private List<String> ciIdTokenSubClaimComponents;
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      * 
      */
     private String ciPipelineVariablesMinimumOverrideRole;
@@ -136,7 +136,7 @@ public final class GetProjectsProject {
      */
     private String ciRestrictPipelineCancellationRole;
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      * 
      */
     private List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies;
@@ -316,7 +316,7 @@ public final class GetProjectsProject {
      */
     private Boolean mirror;
     /**
-     * @return Whether mirror_overwrites_diverged_branches is enabled for the project.
+     * @return Whether mirrorOverwritesDivergedBranches is enabled for the project.
      * 
      */
     private Boolean mirrorOverwritesDivergedBranches;
@@ -361,17 +361,17 @@ public final class GetProjectsProject {
      */
     private List<GetProjectsProjectNamespace> namespaces;
     /**
-     * @return Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+     * @return Whether onlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
      * 
      */
     private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
     /**
-     * @return Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+     * @return Whether onlyAllowMergeIfPipelineSucceeds is enabled for the project.
      * 
      */
     private Boolean onlyAllowMergeIfPipelineSucceeds;
     /**
-     * @return Whether only_mirror_protected_branches is enabled for the project.
+     * @return Whether onlyMirrorProtectedBranches is enabled for the project.
      * 
      */
     private Boolean onlyMirrorProtectedBranches;
@@ -442,7 +442,7 @@ public final class GetProjectsProject {
      */
     private String requirementsAccessLevel;
     /**
-     * @return Whether resolve_outdated_diff_discussions is enabled for the project
+     * @return Whether resolveOutdatedDiffDiscussions is enabled for the project
      * 
      */
     private Boolean resolveOutdatedDiffDiscussions;
@@ -546,7 +546,7 @@ public final class GetProjectsProject {
         return this._links;
     }
     /**
-     * @return Whether allow_merge_on_skipped_pipeline is enabled for the project.
+     * @return Whether allowMergeOnSkippedPipeline is enabled for the project.
      * 
      */
     public Boolean allowMergeOnSkippedPipeline() {
@@ -588,7 +588,7 @@ public final class GetProjectsProject {
         return this.autoCancelPendingPipelines;
     }
     /**
-     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
+     * @return Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      * 
      */
     public String autoDevopsDeployStrategy() {
@@ -679,14 +679,14 @@ public final class GetProjectsProject {
         return this.ciForwardDeploymentRollbackAllowed;
     }
     /**
-     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to [&#34;project_path&#34;, &#34;ref_type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to [&#34;projectPath&#34;, &#34;refType&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
      * 
      */
     public List<String> ciIdTokenSubClaimComponents() {
         return this.ciIdTokenSubClaimComponents;
     }
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      * 
      */
     public String ciPipelineVariablesMinimumOverrideRole() {
@@ -700,7 +700,7 @@ public final class GetProjectsProject {
         return this.ciRestrictPipelineCancellationRole;
     }
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      * 
      */
     public List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies() {
@@ -952,7 +952,7 @@ public final class GetProjectsProject {
         return this.mirror;
     }
     /**
-     * @return Whether mirror_overwrites_diverged_branches is enabled for the project.
+     * @return Whether mirrorOverwritesDivergedBranches is enabled for the project.
      * 
      */
     public Boolean mirrorOverwritesDivergedBranches() {
@@ -1015,21 +1015,21 @@ public final class GetProjectsProject {
         return this.namespaces;
     }
     /**
-     * @return Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+     * @return Whether onlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
      * 
      */
     public Boolean onlyAllowMergeIfAllDiscussionsAreResolved() {
         return this.onlyAllowMergeIfAllDiscussionsAreResolved;
     }
     /**
-     * @return Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+     * @return Whether onlyAllowMergeIfPipelineSucceeds is enabled for the project.
      * 
      */
     public Boolean onlyAllowMergeIfPipelineSucceeds() {
         return this.onlyAllowMergeIfPipelineSucceeds;
     }
     /**
-     * @return Whether only_mirror_protected_branches is enabled for the project.
+     * @return Whether onlyMirrorProtectedBranches is enabled for the project.
      * 
      */
     public Boolean onlyMirrorProtectedBranches() {
@@ -1130,7 +1130,7 @@ public final class GetProjectsProject {
         return this.requirementsAccessLevel;
     }
     /**
-     * @return Whether resolve_outdated_diff_discussions is enabled for the project
+     * @return Whether resolveOutdatedDiffDiscussions is enabled for the project
      * 
      */
     public Boolean resolveOutdatedDiffDiscussions() {

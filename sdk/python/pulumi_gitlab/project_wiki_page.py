@@ -205,6 +205,8 @@ class ProjectWikiPage(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/wikis/)
 
+        ## Example Usage
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
@@ -244,6 +246,8 @@ class ProjectWikiPage(pulumi.CustomResource):
         The `ProjectWikiPage` resource allows managing the lifecycle of a project wiki page.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/wikis/)
+
+        ## Example Usage
 
         ## Import
 

@@ -187,7 +187,7 @@ namespace Pulumi.GitLab
         public bool? Humans { get; set; }
 
         /// <summary>
-        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+        /// Order the users' list by `Id`, `Name`, `Username`, `CreatedAt` or `UpdatedAt`. (Requires administrator privileges)
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Humans { get; set; }
 
         /// <summary>
-        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+        /// Order the users' list by `Id`, `Name`, `Username`, `CreatedAt` or `UpdatedAt`. (Requires administrator privileges)
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Order the users' list by `id`, `name`, `username`, `created_at` or `updated_at`. (Requires administrator privileges)
+        /// Order the users' list by `Id`, `Name`, `Username`, `CreatedAt` or `UpdatedAt`. (Requires administrator privileges)
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

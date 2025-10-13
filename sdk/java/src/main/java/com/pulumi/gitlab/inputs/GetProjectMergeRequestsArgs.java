@@ -124,14 +124,14 @@ public final class GetProjectMergeRequestsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+     * Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
      * 
      */
     @Import(name="orderBy")
     private @Nullable Output<String> orderBy;
 
     /**
-     * @return Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+     * @return Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
      * 
      */
     public Optional<Output<String>> orderBy() {
@@ -169,14 +169,14 @@ public final class GetProjectMergeRequestsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+     * Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+     * @return Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -503,7 +503,7 @@ public final class GetProjectMergeRequestsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param orderBy Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+         * @param orderBy Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class GetProjectMergeRequestsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param orderBy Return requests ordered by `created_at`, `title` or `updated_at`. Default is `created_at`.
+         * @param orderBy Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class GetProjectMergeRequestsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param scope Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+         * @param scope Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class GetProjectMergeRequestsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param scope Return merge requests for the given scope: `created_by_me`, `assigned_to_me`, or `all`.
+         * @param scope Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
          * 
          * @return builder
          * 

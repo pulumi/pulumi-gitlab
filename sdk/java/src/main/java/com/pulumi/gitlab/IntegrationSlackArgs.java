@@ -198,7 +198,7 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This parameter has been replaced with `branches_to_be_notified`.
+     * This parameter has been replaced with `branchesToBeNotified`.
      * 
      * @deprecated
      * use &#39;branches_to_be_notified&#39; argument instead
@@ -209,7 +209,7 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Boolean> notifyOnlyDefaultBranch;
 
     /**
-     * @return This parameter has been replaced with `branches_to_be_notified`.
+     * @return This parameter has been replaced with `branchesToBeNotified`.
      * 
      * @deprecated
      * use &#39;branches_to_be_notified&#39; argument instead
@@ -685,7 +685,7 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyOnlyDefaultBranch This parameter has been replaced with `branches_to_be_notified`.
+         * @param notifyOnlyDefaultBranch This parameter has been replaced with `branchesToBeNotified`.
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyOnlyDefaultBranch This parameter has been replaced with `branches_to_be_notified`.
+         * @param notifyOnlyDefaultBranch This parameter has been replaced with `branchesToBeNotified`.
          * 
          * @return builder
          * 

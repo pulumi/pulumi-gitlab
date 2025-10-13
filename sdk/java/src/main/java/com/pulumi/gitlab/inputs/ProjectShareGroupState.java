@@ -20,10 +20,10 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
-     * Use `group_access` instead of the `access_level` attribute.
+     * Use `groupAccess` instead of the `accessLevel` attribute.
      * 
      */
-    @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
+    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
@@ -31,10 +31,10 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
      * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      * @deprecated
-     * Use `group_access` instead of the `access_level` attribute.
+     * Use `groupAccess` instead of the `accessLevel` attribute.
      * 
      */
-    @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
+    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
     public Optional<Output<String>> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
     }
@@ -117,10 +117,10 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * Use `group_access` instead of the `access_level` attribute.
+         * Use `groupAccess` instead of the `accessLevel` attribute.
          * 
          */
-        @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
+        @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
         public Builder accessLevel(@Nullable Output<String> accessLevel) {
             $.accessLevel = accessLevel;
             return this;
@@ -132,10 +132,10 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * Use `group_access` instead of the `access_level` attribute.
+         * Use `groupAccess` instead of the `accessLevel` attribute.
          * 
          */
-        @Deprecated /* Use `group_access` instead of the `access_level` attribute. */
+        @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
         }

@@ -18,11 +18,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool? AllowForcePush;
         /// <summary>
-        /// An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
+        /// An array of access levels allowed to merge. Valid values are: `Developer`, `Maintainer`, `no one`.
         /// </summary>
         public readonly ImmutableArray<string> AllowedToMerges;
         /// <summary>
-        /// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
+        /// An array of access levels allowed to push. Valid values are: `Developer`, `Maintainer`, `no one`.
         /// </summary>
         public readonly ImmutableArray<string> AllowedToPushes;
         /// <summary>

@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * A runner can either be registered at an instance level or group level.
  * The runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.
  * 
- * ~ &gt; Using this resource will register a runner using the deprecated `registration_token` flow. To use the new `authentication_token` flow instead,
+ * ~ &gt; Using this resource will register a runner using the deprecated `registrationToken` flow. To use the new `authenticationToken` flow instead,
  * use the `gitlab.UserRunner` resource!
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#register-a-new-runner)
@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/runner:Runner")
 public class Runner extends com.pulumi.resources.CustomResource {
     /**
-     * The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * @return The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     public Output<String> accessLevel() {

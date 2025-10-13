@@ -14,10 +14,10 @@ public final class GetRepositoryTreeTree {
      * @return The project ID.
      * 
      * @deprecated
-     * Use `node_id` instead. To be removed in version 19.0.
+     * Use `nodeId` instead. To be removed in version 19.0.
      * 
      */
-    @Deprecated /* Use `node_id` instead. To be removed in version 19.0. */
+    @Deprecated /* Use `nodeId` instead. To be removed in version 19.0. */
     private String id;
     /**
      * @return Unix access mode of the file in the repository.
@@ -50,10 +50,10 @@ public final class GetRepositoryTreeTree {
      * @return The project ID.
      * 
      * @deprecated
-     * Use `node_id` instead. To be removed in version 19.0.
+     * Use `nodeId` instead. To be removed in version 19.0.
      * 
      */
-    @Deprecated /* Use `node_id` instead. To be removed in version 19.0. */
+    @Deprecated /* Use `nodeId` instead. To be removed in version 19.0. */
     public String id() {
         return this.id;
     }

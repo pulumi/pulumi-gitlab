@@ -23,12 +23,12 @@ public final class BranchProtectionAllowedToMerge {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      * 
      */
     private @Nullable Integer userId;
@@ -49,14 +49,14 @@ public final class BranchProtectionAllowedToMerge {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      * 
      */
     public Optional<Integer> userId() {

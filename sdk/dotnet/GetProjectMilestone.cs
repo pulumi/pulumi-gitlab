@@ -122,7 +122,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string StartDate;
         /// <summary>
-        /// The state of the milestone. Valid values are: `active`, `closed`.
+        /// The state of the milestone. Valid values are: `Active`, `Closed`.
         /// </summary>
         public readonly string State;
         /// <summary>

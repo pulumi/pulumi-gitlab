@@ -20,14 +20,14 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
     public static final ProjectProtectedEnvironmentState Empty = new ProjectProtectedEnvironmentState();
 
     /**
-     * Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Import(name="approvalRules")
     private @Nullable Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>> approvalRules;
 
     /**
-     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Optional<Output<List<ProjectProtectedEnvironmentApprovalRuleArgs>>> approvalRules() {
@@ -35,37 +35,37 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
     }
 
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      * @deprecated
-     * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+     * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
+    @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
     @Import(name="deployAccessLevels")
     private @Nullable Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      * @deprecated
-     * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+     * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
+    @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
     public Optional<Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>>> deployAccessLevels() {
         return Optional.ofNullable(this.deployAccessLevels);
     }
 
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Import(name="deployAccessLevelsAttributes")
     private @Nullable Output<List<ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs>> deployAccessLevelsAttributes;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Optional<Output<List<ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs>>> deployAccessLevelsAttributes() {
@@ -131,7 +131,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+         * @param approvalRules Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -162,50 +162,50 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+         * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
+        @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
         public Builder deployAccessLevels(@Nullable Output<List<ProjectProtectedEnvironmentDeployAccessLevelArgs>> deployAccessLevels) {
             $.deployAccessLevels = deployAccessLevels;
             return this;
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+         * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
+        @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
         public Builder deployAccessLevels(List<ProjectProtectedEnvironmentDeployAccessLevelArgs> deployAccessLevels) {
             return deployAccessLevels(Output.of(deployAccessLevels));
         }
 
         /**
-         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevels Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated. Use `deploy_access_levels_attribute` instead.
+         * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. Use `deploy_access_levels_attribute` instead. */
+        @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
         public Builder deployAccessLevels(ProjectProtectedEnvironmentDeployAccessLevelArgs... deployAccessLevels) {
             return deployAccessLevels(List.of(deployAccessLevels));
         }
 
         /**
-         * @param deployAccessLevelsAttributes Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevelsAttributes Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param deployAccessLevelsAttributes Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevelsAttributes Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ProjectProtectedEnvironmentState extends com.pulumi.resources
         }
 
         /**
-         * @param deployAccessLevelsAttributes Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+         * @param deployAccessLevelsAttributes Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
          * 
          * @return builder
          * 

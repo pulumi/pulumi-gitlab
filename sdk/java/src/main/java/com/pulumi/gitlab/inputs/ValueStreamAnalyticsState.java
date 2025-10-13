@@ -18,14 +18,14 @@ public final class ValueStreamAnalyticsState extends com.pulumi.resources.Resour
     public static final ValueStreamAnalyticsState Empty = new ValueStreamAnalyticsState();
 
     /**
-     * Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     @Import(name="groupFullPath")
     private @Nullable Output<String> groupFullPath;
 
     /**
-     * @return Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * @return Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     public Optional<Output<String>> groupFullPath() {
@@ -48,14 +48,14 @@ public final class ValueStreamAnalyticsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     @Import(name="projectFullPath")
     private @Nullable Output<String> projectFullPath;
 
     /**
-     * @return Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+     * @return Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      * 
      */
     public Optional<Output<String>> projectFullPath() {
@@ -105,7 +105,7 @@ public final class ValueStreamAnalyticsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupFullPath Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+         * @param groupFullPath Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ValueStreamAnalyticsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupFullPath Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+         * @param groupFullPath Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ValueStreamAnalyticsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectFullPath Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+         * @param projectFullPath Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ValueStreamAnalyticsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectFullPath Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
+         * @param projectFullPath Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
          * 
          * @return builder
          * 

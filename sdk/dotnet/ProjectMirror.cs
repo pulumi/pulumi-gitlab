@@ -13,10 +13,10 @@ namespace Pulumi.GitLab
     /// The `gitlab.ProjectMirror` resource allows to manage the lifecycle of a project mirror.
     /// 
     /// This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
-    /// import_url, mirror, and mirror_trigger_builds properties on the gitlab.Project resource.
+    /// import_url, mirror, and MirrorTriggerBuilds properties on the gitlab.Project resource.
     /// 
-    /// &gt; **Warning** By default, the provider sets the `keep_divergent_refs` argument to `True`.
-    ///    If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
+    /// &gt; **Warning** By default, the provider sets the `KeepDivergentRefs` argument to `True`.
+    ///    If you manually set `KeepDivergentRefs` to `False`, GitLab mirroring removes branches in the target that aren't in the source.
     ///    This action can result in unexpected branch deletions.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
@@ -66,7 +66,7 @@ namespace Pulumi.GitLab
     public partial class ProjectMirror : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        /// Determines the mirror authentication method. Valid values are: `SshPublicKey`, `Password`.
         /// </summary>
         [Output("authMethod")]
         public Output<string> AuthMethod { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectMirrorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        /// Determines the mirror authentication method. Valid values are: `SshPublicKey`, `Password`.
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectMirrorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+        /// Determines the mirror authentication method. Valid values are: `SshPublicKey`, `Password`.
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }

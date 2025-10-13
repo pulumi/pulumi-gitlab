@@ -14,6 +14,8 @@ import (
 // The `getGroupSamlLinks` data source retrieves all SAML links for a specified group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
+//
+// ## Example Usage
 func GetGroupSamlLinks(ctx *pulumi.Context, args *GetGroupSamlLinksArgs, opts ...pulumi.InvokeOption) (*GetGroupSamlLinksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupSamlLinksResult

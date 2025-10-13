@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+        /// The ssh key. The SSH key `Comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+        /// The ssh key. The SSH key `Comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
+        /// The ssh key. The SSH key `Comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

@@ -20,14 +20,14 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
     public static final UserRunnerArgs Empty = new UserRunnerArgs();
 
     /**
-     * The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+     * @return The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -140,14 +140,14 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+     * The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      * 
      */
     @Import(name="runnerType", required=true)
     private Output<String> runnerType;
 
     /**
-     * @return The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+     * @return The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      * 
      */
     public Output<String> runnerType() {
@@ -219,7 +219,7 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+         * @param accessLevel The access level of the runner. Valid values are: `notProtected`, `refProtected`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLevel The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
+         * @param accessLevel The access level of the runner. Valid values are: `notProtected`, `refProtected`.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runnerType The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+         * @param runnerType The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class UserRunnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runnerType The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
+         * @param runnerType The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
          * 
          * @return builder
          * 

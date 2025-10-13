@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
     public partial class IntegrationTelegram : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`.
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string> BranchesToBeNotified { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationTelegramArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationTelegramState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }

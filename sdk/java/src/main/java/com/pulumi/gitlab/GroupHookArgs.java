@@ -20,14 +20,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupHookArgs Empty = new GroupHookArgs();
 
     /**
-     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      * 
      */
     @Import(name="branchFilterStrategy")
     private @Nullable Output<String> branchFilterStrategy;
 
     /**
-     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      * 
      */
     public Optional<Output<String>> branchFilterStrategy() {
@@ -443,7 +443,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
          * 
          * @return builder
          * 

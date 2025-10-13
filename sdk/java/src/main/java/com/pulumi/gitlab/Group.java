@@ -234,10 +234,10 @@ public class Group extends com.pulumi.resources.CustomResource {
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
      * @deprecated
-     * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.
+     * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead. */
+    @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead. */
     @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 
@@ -557,14 +557,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.sharedRunnersMinutesLimit;
     }
     /**
-     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     @Export(name="sharedRunnersSetting", refs={String.class}, tree="[0]")
     private Output<String> sharedRunnersSetting;
 
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     public Output<String> sharedRunnersSetting() {

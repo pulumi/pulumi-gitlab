@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectApprovalRule:ProjectApprovalRule")
 public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
      * 
      */
     @Export(name="appliesToAllProtectedBranches", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> appliesToAllProtectedBranches;
 
     /**
-     * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protected_branch_ids` is ignored. Default is &#39;false&#39;.
+     * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
      * 
      */
     public Output<Optional<Boolean>> appliesToAllProtectedBranches() {
@@ -74,14 +74,14 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
         return this.approvalsRequired;
     }
     /**
-     * When this flag is set, the default `any_approver` rule will not be imported if present.
+     * When this flag is set, the default `anyApprover` rule will not be imported if present.
      * 
      */
     @Export(name="disableImportingDefaultAnyApproverRuleOnCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
 
     /**
-     * @return When this flag is set, the default `any_approver` rule will not be imported if present.
+     * @return When this flag is set, the default `anyApprover` rule will not be imported if present.
      * 
      */
     public Output<Optional<Boolean>> disableImportingDefaultAnyApproverRuleOnCreate() {
@@ -144,28 +144,28 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protectedBranchIds);
     }
     /**
-     * Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      * 
      */
     @Export(name="reportType", refs={String.class}, tree="[0]")
     private Output<String> reportType;
 
     /**
-     * @return Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
+     * @return Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      * 
      */
     public Output<String> reportType() {
         return this.reportType;
     }
     /**
-     * String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+     * String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     @Export(name="ruleType", refs={String.class}, tree="[0]")
     private Output<String> ruleType;
 
     /**
-     * @return String, defaults to &#39;regular&#39;. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+     * @return String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     public Output<String> ruleType() {

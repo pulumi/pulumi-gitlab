@@ -77,73 +77,73 @@ namespace Pulumi.GitLab
     public partial class ProjectLevelNotifications : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable notifications for closed issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for closed issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("closeIssue")]
         public Output<bool> CloseIssue { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for closed merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("closeMergeRequest")]
         public Output<bool> CloseMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for failed pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("failedPipeline")]
         public Output<bool> FailedPipeline { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for fixed pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("fixedPipeline")]
         public Output<bool> FixedPipeline { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for due issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for due issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("issueDue")]
         public Output<bool> IssueDue { get; private set; } = null!;
 
         /// <summary>
-        /// The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
+        /// The level of the notification. Valid values are: `Disabled`, `Participating`, `Watch`, `Global`, `Mention`, `Custom`.
         /// </summary>
         [Output("level")]
         public Output<string> Level { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for merged merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("mergeMergeRequest")]
         public Output<bool> MergeMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
+        /// Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("mergeWhenPipelineSucceeds")]
         public Output<bool> MergeWhenPipelineSucceeds { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for moved projects. Can only be used when `level` is `custom`.
+        /// Enable notifications for moved projects. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("movedProject")]
         public Output<bool> MovedProject { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for new issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for new issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("newIssue")]
         public Output<bool> NewIssue { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for new merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for new merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("newMergeRequest")]
         public Output<bool> NewMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for new notes on merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("newNote")]
         public Output<bool> NewNote { get; private set; } = null!;
@@ -155,37 +155,37 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
+        /// Enable notifications for push to merge request branches. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("pushToMergeRequest")]
         public Output<bool> PushToMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
+        /// Enable notifications for issue reassignments. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("reassignIssue")]
         public Output<bool> ReassignIssue { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
+        /// Enable notifications for merge request reassignments. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("reassignMergeRequest")]
         public Output<bool> ReassignMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for reopened issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for reopened issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("reopenIssue")]
         public Output<bool> ReopenIssue { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for reopened merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("reopenMergeRequest")]
         public Output<bool> ReopenMergeRequest { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for successful pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Output("successPipeline")]
         public Output<bool> SuccessPipeline { get; private set; } = null!;
@@ -237,73 +237,73 @@ namespace Pulumi.GitLab
     public sealed class ProjectLevelNotificationsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable notifications for closed issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for closed issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("closeIssue")]
         public Input<bool>? CloseIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for closed merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("closeMergeRequest")]
         public Input<bool>? CloseMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for failed pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("failedPipeline")]
         public Input<bool>? FailedPipeline { get; set; }
 
         /// <summary>
-        /// Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for fixed pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("fixedPipeline")]
         public Input<bool>? FixedPipeline { get; set; }
 
         /// <summary>
-        /// Enable notifications for due issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for due issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("issueDue")]
         public Input<bool>? IssueDue { get; set; }
 
         /// <summary>
-        /// The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
+        /// The level of the notification. Valid values are: `Disabled`, `Participating`, `Watch`, `Global`, `Mention`, `Custom`.
         /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
 
         /// <summary>
-        /// Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for merged merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("mergeMergeRequest")]
         public Input<bool>? MergeMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
+        /// Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("mergeWhenPipelineSucceeds")]
         public Input<bool>? MergeWhenPipelineSucceeds { get; set; }
 
         /// <summary>
-        /// Enable notifications for moved projects. Can only be used when `level` is `custom`.
+        /// Enable notifications for moved projects. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("movedProject")]
         public Input<bool>? MovedProject { get; set; }
 
         /// <summary>
-        /// Enable notifications for new issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for new issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("newIssue")]
         public Input<bool>? NewIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for new merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for new merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("newMergeRequest")]
         public Input<bool>? NewMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for new notes on merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("newNote")]
         public Input<bool>? NewNote { get; set; }
@@ -315,37 +315,37 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
+        /// Enable notifications for push to merge request branches. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("pushToMergeRequest")]
         public Input<bool>? PushToMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
+        /// Enable notifications for issue reassignments. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reassignIssue")]
         public Input<bool>? ReassignIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
+        /// Enable notifications for merge request reassignments. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reassignMergeRequest")]
         public Input<bool>? ReassignMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for reopened issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for reopened issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reopenIssue")]
         public Input<bool>? ReopenIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for reopened merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reopenMergeRequest")]
         public Input<bool>? ReopenMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for successful pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("successPipeline")]
         public Input<bool>? SuccessPipeline { get; set; }
@@ -359,73 +359,73 @@ namespace Pulumi.GitLab
     public sealed class ProjectLevelNotificationsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable notifications for closed issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for closed issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("closeIssue")]
         public Input<bool>? CloseIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for closed merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("closeMergeRequest")]
         public Input<bool>? CloseMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for failed pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("failedPipeline")]
         public Input<bool>? FailedPipeline { get; set; }
 
         /// <summary>
-        /// Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for fixed pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("fixedPipeline")]
         public Input<bool>? FixedPipeline { get; set; }
 
         /// <summary>
-        /// Enable notifications for due issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for due issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("issueDue")]
         public Input<bool>? IssueDue { get; set; }
 
         /// <summary>
-        /// The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
+        /// The level of the notification. Valid values are: `Disabled`, `Participating`, `Watch`, `Global`, `Mention`, `Custom`.
         /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
 
         /// <summary>
-        /// Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for merged merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("mergeMergeRequest")]
         public Input<bool>? MergeMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
+        /// Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("mergeWhenPipelineSucceeds")]
         public Input<bool>? MergeWhenPipelineSucceeds { get; set; }
 
         /// <summary>
-        /// Enable notifications for moved projects. Can only be used when `level` is `custom`.
+        /// Enable notifications for moved projects. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("movedProject")]
         public Input<bool>? MovedProject { get; set; }
 
         /// <summary>
-        /// Enable notifications for new issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for new issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("newIssue")]
         public Input<bool>? NewIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for new merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for new merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("newMergeRequest")]
         public Input<bool>? NewMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for new notes on merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("newNote")]
         public Input<bool>? NewNote { get; set; }
@@ -437,37 +437,37 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
+        /// Enable notifications for push to merge request branches. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("pushToMergeRequest")]
         public Input<bool>? PushToMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
+        /// Enable notifications for issue reassignments. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reassignIssue")]
         public Input<bool>? ReassignIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
+        /// Enable notifications for merge request reassignments. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reassignMergeRequest")]
         public Input<bool>? ReassignMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for reopened issues. Can only be used when `level` is `custom`.
+        /// Enable notifications for reopened issues. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reopenIssue")]
         public Input<bool>? ReopenIssue { get; set; }
 
         /// <summary>
-        /// Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
+        /// Enable notifications for reopened merge requests. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("reopenMergeRequest")]
         public Input<bool>? ReopenMergeRequest { get; set; }
 
         /// <summary>
-        /// Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
+        /// Enable notifications for successful pipelines. Can only be used when `Level` is `Custom`.
         /// </summary>
         [Input("successPipeline")]
         public Input<bool>? SuccessPipeline { get; set; }

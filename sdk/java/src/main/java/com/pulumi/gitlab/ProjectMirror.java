@@ -20,10 +20,10 @@ import javax.annotation.Nullable;
  * The `gitlab.ProjectMirror` resource allows to manage the lifecycle of a project mirror.
  * 
  * This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
- * import_url, mirror, and mirror_trigger_builds properties on the gitlab.Project resource.
+ * import_url, mirror, and mirrorTriggerBuilds properties on the gitlab.Project resource.
  * 
- * &gt; **Warning** By default, the provider sets the `keep_divergent_refs` argument to `True`.
- *    If you manually set `keep_divergent_refs` to `False`, GitLab mirroring removes branches in the target that aren&#39;t in the source.
+ * &gt; **Warning** By default, the provider sets the `keepDivergentRefs` argument to `True`.
+ *    If you manually set `keepDivergentRefs` to `False`, GitLab mirroring removes branches in the target that aren&#39;t in the source.
  *    This action can result in unexpected branch deletions.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
@@ -88,14 +88,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectMirror:ProjectMirror")
 public class ProjectMirror extends com.pulumi.resources.CustomResource {
     /**
-     * Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      * 
      */
     @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
-     * @return Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
+     * @return Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      * 
      */
     public Output<String> authMethod() {

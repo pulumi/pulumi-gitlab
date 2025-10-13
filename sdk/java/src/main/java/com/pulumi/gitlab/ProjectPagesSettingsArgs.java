@@ -18,14 +18,14 @@ public final class ProjectPagesSettingsArgs extends com.pulumi.resources.Resourc
     public static final ProjectPagesSettingsArgs Empty = new ProjectPagesSettingsArgs();
 
     /**
-     * Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+     * Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      * 
      */
     @Import(name="forceHttps")
     private @Nullable Output<Boolean> forceHttps;
 
     /**
-     * @return Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+     * @return Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      * 
      */
     public Optional<Output<Boolean>> forceHttps() {
@@ -97,7 +97,7 @@ public final class ProjectPagesSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceHttps Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+         * @param forceHttps Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ProjectPagesSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceHttps Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
+         * @param forceHttps Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
          * 
          * @return builder
          * 

@@ -12,10 +12,10 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
     /// 
-    /// &gt; In order to use a user_id in the `deploy_access_levels` configuration,
+    /// &gt; In order to use a UserId in the `DeployAccessLevels` configuration,
     ///    you need to make sure that users have access to the group with Maintainer role or higher.
-    ///    In order to use a group_id in the `deploy_access_levels` configuration,
-    ///    the group_id must be a sub-group under the given group.
+    ///    In order to use a GroupId in the `DeployAccessLevels` configuration,
+    ///    the GroupId must be a sub-group under the given group.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_environments/)
     /// 
@@ -45,19 +45,19 @@ namespace Pulumi.GitLab
     public partial class GroupProtectedEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `ApprovalRules` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         [Output("approvalRules")]
         public Output<ImmutableArray<Outputs.GroupProtectedEnvironmentApprovalRule>> ApprovalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash. Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         [Output("deployAccessLevels")]
         public Output<ImmutableArray<Outputs.GroupProtectedEnvironmentDeployAccessLevel>> DeployAccessLevels { get; private set; } = null!;
 
         /// <summary>
-        /// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// The deployment tier of the environment.  Valid values are `Production`, `Staging`, `Testing`, `Development`, `Other`.
         /// </summary>
         [Output("environment")]
         public Output<string> Environment { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.GroupProtectedEnvironmentApprovalRuleArgs>? _approvalRules;
 
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `ApprovalRules` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.GroupProtectedEnvironmentApprovalRuleArgs> ApprovalRules
         {
@@ -130,7 +130,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.GroupProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash. Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.GroupProtectedEnvironmentDeployAccessLevelArgs> DeployAccessLevels
         {
@@ -139,7 +139,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// The deployment tier of the environment.  Valid values are `Production`, `Staging`, `Testing`, `Development`, `Other`.
         /// </summary>
         [Input("environment", required: true)]
         public Input<string> Environment { get; set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.GroupProtectedEnvironmentApprovalRuleGetArgs>? _approvalRules;
 
         /// <summary>
-        /// Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of approval rules to deploy, with each described by a hash. Elements in the `ApprovalRules` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.GroupProtectedEnvironmentApprovalRuleGetArgs> ApprovalRules
         {
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.GroupProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        /// Array of access levels allowed to deploy, with each described by a hash. Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.GroupProtectedEnvironmentDeployAccessLevelGetArgs> DeployAccessLevels
         {
@@ -183,7 +183,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
+        /// The deployment tier of the environment.  Valid values are `Production`, `Staging`, `Testing`, `Development`, `Other`.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

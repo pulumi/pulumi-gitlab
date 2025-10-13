@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 /**
  * The `gitlab.ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
- * Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
+ * Any project or group not within the defined set of `targetProjectIds` or `targetGroupIds`, respectively, will be removed,
  * which allows this resource to be used as an explicit deny.
  * 
  * &gt; Conflicts with the use of `gitlab.ProjectJobTokenScope` when used on the same project. Use one or the other to ensure the desired state.
@@ -128,14 +128,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes")
 public class ProjectJobTokenScopes extends com.pulumi.resources.CustomResource {
     /**
-     * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
+     * @return Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      * 
      */
     public Output<Boolean> enabled() {
@@ -159,10 +159,10 @@ public class ProjectJobTokenScopes extends com.pulumi.resources.CustomResource {
      * The ID of the project.
      * 
      * @deprecated
-     * `project_id` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
      * 
      */
-    @Deprecated /* `project_id` has been deprecated and will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
     @Export(name="projectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectId;
 

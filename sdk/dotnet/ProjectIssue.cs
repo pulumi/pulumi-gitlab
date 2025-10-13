@@ -190,7 +190,7 @@ namespace Pulumi.GitLab
         public Output<int> IssueLinkId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+        /// The type of issue. Valid values are: `Issue`, `Incident`, `TestCase`.
         /// </summary>
         [Output("issueType")]
         public Output<string?> IssueType { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.GitLab
         public Output<int> MergeRequestsCount { get; private set; } = null!;
 
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the MilestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         [Output("milestoneId")]
         public Output<int?> MilestoneId { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableDictionary<string, string>> References { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the issue. Valid values are: `opened`, `closed`.
+        /// The state of the issue. Valid values are: `Opened`, `Closed`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -422,7 +422,7 @@ namespace Pulumi.GitLab
         public Input<int>? Iid { get; set; }
 
         /// <summary>
-        /// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+        /// The type of issue. Valid values are: `Issue`, `Incident`, `TestCase`.
         /// </summary>
         [Input("issueType")]
         public Input<string>? IssueType { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.GitLab
         public Input<int>? MergeRequestToResolveDiscussionsOf { get; set; }
 
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the MilestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }
@@ -458,7 +458,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The state of the issue. Valid values are: `opened`, `closed`.
+        /// The state of the issue. Valid values are: `Opened`, `Closed`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -616,7 +616,7 @@ namespace Pulumi.GitLab
         public Input<int>? IssueLinkId { get; set; }
 
         /// <summary>
-        /// The type of issue. Valid values are: `issue`, `incident`, `test_case`.
+        /// The type of issue. Valid values are: `Issue`, `Incident`, `TestCase`.
         /// </summary>
         [Input("issueType")]
         public Input<string>? IssueType { get; set; }
@@ -658,7 +658,7 @@ namespace Pulumi.GitLab
         public Input<int>? MergeRequestsCount { get; set; }
 
         /// <summary>
-        /// The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
+        /// The global ID of a milestone to assign issue. To find the MilestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }
@@ -688,7 +688,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The state of the issue. Valid values are: `opened`, `closed`.
+        /// The state of the issue. Valid values are: `Opened`, `Closed`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

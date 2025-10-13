@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         public Output<string> GroupPath { get; private set; } = null!;
 
         /// <summary>
-        /// The id integer value extracted from the `id` attribute
+        /// The id integer value extracted from the `Id` attribute
         /// </summary>
         [Output("iid")]
         public Output<int> Iid { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.GitLab
         public Input<string>? GroupPath { get; set; }
 
         /// <summary>
-        /// The id integer value extracted from the `id` attribute
+        /// The id integer value extracted from the `Id` attribute
         /// </summary>
         [Input("iid")]
         public Input<int>? Iid { get; set; }

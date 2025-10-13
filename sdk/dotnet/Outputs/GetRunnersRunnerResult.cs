@@ -34,11 +34,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool Paused;
         /// <summary>
-        /// The runner type. Values are `instance_type`, `group_type` and `project_type`.
+        /// The runner type. Values are `InstanceType`, `GroupType` and `ProjectType`.
         /// </summary>
         public readonly string RunnerType;
         /// <summary>
-        /// The status of the runner. Values can be `online`, `offline`, `stale`, and `never_contacted`.
+        /// The status of the runner. Values can be `Online`, `Offline`, `Stale`, and `NeverContacted`.
         /// </summary>
         public readonly string Status;
 

@@ -218,7 +218,7 @@ namespace Pulumi.GitLab
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// The url of the hook to invoke. Forces re-creation to preserve `token`.
+        /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -416,7 +416,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The url of the hook to invoke. Forces re-creation to preserve `token`.
+        /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -584,7 +584,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// The url of the hook to invoke. Forces re-creation to preserve `token`.
+        /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
