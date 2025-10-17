@@ -102,7 +102,7 @@ export interface GetGroupSubgroupsResult {
      */
     readonly groupId: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<group-id>`.
      */
     readonly id: string;
     /**

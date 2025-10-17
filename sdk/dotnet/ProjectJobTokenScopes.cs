@@ -134,7 +134,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project.
+        /// The ID of the project. Use `Project` instead. To be removed in 19.0.
         /// </summary>
         [Output("projectId")]
         public Output<int> ProjectId { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ID of the project.
+        /// The ID of the project. Use `Project` instead. To be removed in 19.0.
         /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ID of the project.
+        /// The ID of the project. Use `Project` instead. To be removed in 19.0.
         /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }

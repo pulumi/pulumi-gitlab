@@ -77,8 +77,8 @@ type GroupMembership struct {
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The ID of the group.
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
-	// The ID of a custom member role. Only available for Ultimate instances.
-	MemberRoleId pulumi.IntOutput `pulumi:"memberRoleId"`
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
+	MemberRoleId pulumi.IntPtrOutput `pulumi:"memberRoleId"`
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy pulumi.BoolOutput `pulumi:"skipSubresourcesOnDestroy"`
 	// Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
@@ -132,7 +132,7 @@ type groupMembershipState struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID of the group.
 	GroupId *int `pulumi:"groupId"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy *bool `pulumi:"skipSubresourcesOnDestroy"`
@@ -149,7 +149,7 @@ type GroupMembershipState struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The ID of the group.
 	GroupId pulumi.IntPtrInput
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrInput
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy pulumi.BoolPtrInput
@@ -170,7 +170,7 @@ type groupMembershipArgs struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID of the group.
 	GroupId int `pulumi:"groupId"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy *bool `pulumi:"skipSubresourcesOnDestroy"`
@@ -188,7 +188,7 @@ type GroupMembershipArgs struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The ID of the group.
 	GroupId pulumi.IntInput
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrInput
 	// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
 	SkipSubresourcesOnDestroy pulumi.BoolPtrInput
@@ -300,9 +300,9 @@ func (o GroupMembershipOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.IntOutput { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// The ID of a custom member role. Only available for Ultimate instances.
-func (o GroupMembershipOutput) MemberRoleId() pulumi.IntOutput {
-	return o.ApplyT(func(v *GroupMembership) pulumi.IntOutput { return v.MemberRoleId }).(pulumi.IntOutput)
+// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
+func (o GroupMembershipOutput) MemberRoleId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.IntPtrOutput { return v.MemberRoleId }).(pulumi.IntPtrOutput)
 }
 
 // Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.

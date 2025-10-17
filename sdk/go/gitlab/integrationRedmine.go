@@ -14,7 +14,8 @@ import (
 
 // The `IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
 //
-// > Using Redmine requires that GitLab internal issue tracking is disabled for the project.
+// > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationRedmine`instead.
+// Using Redmine requires that GitLab internal issue tracking is disabled for the project.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
 //

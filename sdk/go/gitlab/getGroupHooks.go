@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getGroupHooks` data source allows to retrieve details about hooks in a group.
+// The `getGroupHooks` data source retrieves details about hooks in a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
 //
@@ -38,7 +38,7 @@ type GetGroupHooksResult struct {
 	Group string `pulumi:"group"`
 	// The list of hooks.
 	Hooks []GetGroupHooksHook `pulumi:"hooks"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this data source. In the format `<group>`.
 	Id string `pulumi:"id"`
 }
 
@@ -86,7 +86,7 @@ func (o GetGroupHooksResultOutput) Hooks() GetGroupHooksHookArrayOutput {
 	return o.ApplyT(func(v GetGroupHooksResult) []GetGroupHooksHook { return v.Hooks }).(GetGroupHooksHookArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this data source. In the format `<group>`.
 func (o GetGroupHooksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupHooksResult) string { return v.Id }).(pulumi.StringOutput)
 }

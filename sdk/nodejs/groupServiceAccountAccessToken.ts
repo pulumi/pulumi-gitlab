@@ -117,6 +117,10 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
      * The ID of a service account user.
      */
     declare public readonly userId: pulumi.Output<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
     /**
      * Create a GroupServiceAccountAccessToken resource with the given unique name, arguments, and options.
@@ -141,6 +145,7 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
             resourceInputs["scopes"] = state?.scopes;
             resourceInputs["token"] = state?.token;
             resourceInputs["userId"] = state?.userId;
+            resourceInputs["validatePastExpirationDate"] = state?.validatePastExpirationDate;
         } else {
             const args = argsOrState as GroupServiceAccountAccessTokenArgs | undefined;
             if (args?.group === undefined && !opts.urn) {
@@ -158,6 +163,7 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
             resourceInputs["rotationConfiguration"] = args?.rotationConfiguration;
             resourceInputs["scopes"] = args?.scopes;
             resourceInputs["userId"] = args?.userId;
+            resourceInputs["validatePastExpirationDate"] = args?.validatePastExpirationDate;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;
@@ -214,6 +220,10 @@ export interface GroupServiceAccountAccessTokenState {
      * The ID of a service account user.
      */
     userId?: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }
 
 /**
@@ -244,4 +254,8 @@ export interface GroupServiceAccountAccessTokenArgs {
      * The ID of a service account user.
      */
     userId: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }

@@ -375,7 +375,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -727,6 +727,9 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
             pulumi.set(__self__, "default_branch_name", default_branch_name)
+        if default_branch_protection is not None:
+            warnings.warn("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""default_branch_protection is deprecated: Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_branch_protection_defaults is not None:
@@ -1794,9 +1797,10 @@ class ApplicationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -5293,7 +5297,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -5647,6 +5651,9 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
             pulumi.set(__self__, "default_branch_name", default_branch_name)
+        if default_branch_protection is not None:
+            warnings.warn("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""default_branch_protection is deprecated: Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
         if default_branch_protection is not None:
             pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_branch_protection_defaults is not None:
@@ -6718,9 +6725,10 @@ class _ApplicationSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
     def default_branch_protection(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
 
@@ -10246,7 +10254,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -11530,7 +11538,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -12471,9 +12479,10 @@ class ApplicationSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
     def default_branch_protection(self) -> pulumi.Output[_builtins.int]:
         """
-        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
 

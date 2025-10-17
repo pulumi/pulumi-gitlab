@@ -324,7 +324,9 @@ export interface GetGroupHooksHook {
      */
     tagPushEvents: boolean;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
+     *
+     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      */
     token: string;
     /**
@@ -514,33 +516,117 @@ export interface GetGroupSharedWithGroup {
 }
 
 export interface GetGroupSubgroupsSubgroup {
+    /**
+     * A list of email address domains to allow group access.
+     */
     allowedEmailDomainsList: string;
+    /**
+     * Default to Auto DevOps pipeline for all projects within this group.
+     */
     autoDevopsEnabled: boolean;
+    /**
+     * The URL of the avatar image.
+     */
     avatarUrl: string;
+    /**
+     * Group created at date.
+     */
     createdAt: string;
+    /**
+     * Whether developers and maintainers can push to the applicable default branch.
+     */
     defaultBranchProtection: number;
+    /**
+     * The description of the group.
+     */
     description: string;
+    /**
+     * Enable email notifications.
+     */
     emailsEnabled: boolean;
+    /**
+     * The ID of the project that will be used for file templates.
+     */
     fileTemplateProjectId: number;
+    /**
+     * The full name of the group.
+     */
     fullName: string;
+    /**
+     * The full path of the group.
+     */
     fullPath: string;
+    /**
+     * The ID of the group.
+     */
     groupId: number;
+    /**
+     * A list of IP addresses or subnet masks to restrict group access.
+     */
     ipRestrictionRanges: string;
+    /**
+     * Is LFS enabled for projects in this group.
+     */
     lfsEnabled: boolean;
+    /**
+     * Disable the capability of a group from getting mentioned.
+     */
     mentionsDisabled: boolean;
+    /**
+     * The name of this group.
+     */
     name: string;
+    /**
+     * ID of the parent group.
+     */
     parentId: number;
+    /**
+     * The path of the group.
+     */
     path: string;
+    /**
+     * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+     */
     projectCreationLevel: string;
+    /**
+     * Is request for access enabled to the group.
+     */
     requestAccessEnabled: boolean;
+    /**
+     * Require all users in this group to setup Two-factor authentication.
+     */
     requireTwoFactorAuthentication: boolean;
+    /**
+     * Prevent sharing a project with another group within this group.
+     */
     shareWithGroupLock: boolean;
+    /**
+     * Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     */
     sharedRunnersSetting: string;
+    /**
+     * Group statistics.
+     */
     statistics: {[key: string]: string};
+    /**
+     * Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+     */
     subgroupCreationLevel: string;
+    /**
+     * Time before Two-factor authentication is enforced (in hours).
+     */
     twoFactorGracePeriod: number;
+    /**
+     * Limited by visibility `public`, `internal`, or `private`.
+     */
     visibility: string;
+    /**
+     * Web URL of the group.
+     */
     webUrl: string;
+    /**
+     * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     */
     wikiAccessLevel: string;
 }
 
@@ -558,7 +644,9 @@ export interface GetGroupVariablesVariable {
 
 export interface GetGroupsGroup {
     /**
-     * Whether developers and maintainers can push to the applicable default branch.
+     * Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+     *
+     * @deprecated Will be removed in 19.0.
      */
     defaultBranchProtection: number;
     /**
@@ -578,7 +666,7 @@ export interface GetGroupsGroup {
      */
     groupId: number;
     /**
-     * Boolean, is LFS enabled for projects in this group.
+     * Is LFS enabled for projects in this group.
      */
     lfsEnabled: boolean;
     /**
@@ -586,7 +674,7 @@ export interface GetGroupsGroup {
      */
     name: string;
     /**
-     * Integer, ID of the parent group.
+     * ID of the parent group.
      */
     parentId: number;
     /**
@@ -598,7 +686,7 @@ export interface GetGroupsGroup {
      */
     preventForkingOutsideGroup: boolean;
     /**
-     * Boolean, is request for access enabled to the group.
+     * Is request for access enabled to the group.
      */
     requestAccessEnabled: boolean;
     /**
@@ -606,7 +694,7 @@ export interface GetGroupsGroup {
      */
     runnersToken: string;
     /**
-     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      */
     sharedRunnersSetting: string;
     /**
@@ -877,6 +965,49 @@ export interface GetProjectAccessTokensAccessToken {
     userId: number;
 }
 
+export interface GetProjectApprovalRulesApprovalRule {
+    /**
+     * If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+     */
+    appliesToAllProtectedBranches: boolean;
+    /**
+     * The number of approvals required for this rule.
+     */
+    approvalsRequired: number;
+    /**
+     * List of all approver IDs that are eligible to approve this rule.
+     */
+    eligibleApproverIds: number[];
+    /**
+     * List of group IDs that are eligible to approve this rule.
+     */
+    groupIds: number[];
+    /**
+     * The ID of the approval rule.
+     */
+    id: number;
+    /**
+     * The name of the approval rule.
+     */
+    name: string;
+    /**
+     * List of protected branch IDs that this rule applies to.
+     */
+    protectedBranchIds: number[];
+    /**
+     * The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
+     */
+    reportType: string;
+    /**
+     * The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
+     */
+    ruleType: string;
+    /**
+     * List of user IDs that are eligible to approve this rule.
+     */
+    userIds: number[];
+}
+
 export interface GetProjectBranchesBranch {
     /**
      * Bool, true if you can push to the branch.
@@ -1123,7 +1254,7 @@ export interface GetProjectHooksHook {
      */
     tagPushEvents: boolean;
     /**
-     * A token to present when invoking the hook. The token is not available in this datasource.
+     * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
      *
      * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank.
      */
@@ -1825,11 +1956,11 @@ export interface GetProjectPushRule {
      */
     preventSecrets: boolean;
     /**
-     * Reject commit when it’s not DCO certified.
+     * Reject commit when it's not DCO certified.
      */
     rejectNonDcoCommits: boolean;
     /**
-     * Reject commit when it’s not signed through GPG.
+     * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits: boolean;
 }
@@ -2037,7 +2168,9 @@ export interface GetProjectVariablesVariable {
 
 export interface GetProjectsProject {
     /**
-     * Links for the project.
+     * Links for the project. Use `links` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `links` instead. To be removed in 19.0.
      */
     _links: {[key: string]: string};
     /**
@@ -2245,6 +2378,10 @@ export interface GetProjectsProject {
      */
     lfsEnabled: boolean;
     /**
+     * Links for the project.
+     */
+    links: {[key: string]: string};
+    /**
      * Template used to create merge commit message in merge requests.
      */
     mergeCommitTemplate: string;
@@ -2377,6 +2514,10 @@ export interface GetProjectsProject {
      * Whether resolveOutdatedDiffDiscussions is enabled for the project
      */
     resolveOutdatedDiffDiscussions: boolean;
+    /**
+     * The default resource group process mode for the project.
+     */
+    resourceGroupDefaultProcessMode: string;
     /**
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      */
@@ -2675,9 +2816,9 @@ export interface GetReleaseLinksReleaseLink {
 
 export interface GetRepositoryTreeTree {
     /**
-     * The project ID.
+     * The project ID. Use `nodeId` instead. To be removed in 19.0.
      *
-     * @deprecated Use `nodeId` instead. To be removed in version 19.0.
+     * @deprecated Use `nodeId` instead. To be removed in 19.0.
      */
     id: string;
     /**
@@ -3068,6 +3209,13 @@ export interface GroupServiceAccountAccessTokenRotationConfiguration {
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
     rotateBeforeDays: number;
+}
+
+export interface GroupServiceAccountTimeouts {
+    /**
+     * How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+     */
+    delete?: string;
 }
 
 export interface InstanceServiceAccountTimeouts {

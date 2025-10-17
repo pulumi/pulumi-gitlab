@@ -202,6 +202,8 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         """
         The `IntegrationCustomIssueTracker` resource manages the lifecycle of a project integration with a Custom Issue Tracker.
 
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationCustomIssueTracker`instead.
+
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#custom-issue-tracker)
 
         ## Example Usage
@@ -256,6 +258,8 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `IntegrationCustomIssueTracker` resource manages the lifecycle of a project integration with a Custom Issue Tracker.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationCustomIssueTracker`instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#custom-issue-tracker)
 

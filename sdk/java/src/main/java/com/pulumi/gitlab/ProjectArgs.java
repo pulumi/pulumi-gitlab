@@ -66,22 +66,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
     @Import(name="approvalsBeforeMerge")
     private @Nullable Output<Integer> approvalsBeforeMerge;
 
     /**
-     * @return Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * @return Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
     public Optional<Output<Integer>> approvalsBeforeMerge() {
         return Optional.ofNullable(this.approvalsBeforeMerge);
     }
@@ -462,24 +464,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable container registry for the project.
+     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * Use `containerRegistryAccessLevel` instead.
+     * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead. */
+    @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
     @Import(name="containerRegistryEnabled")
     private @Nullable Output<Boolean> containerRegistryEnabled;
 
     /**
-     * @return Enable container registry for the project.
+     * @return Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * Use `containerRegistryAccessLevel` instead.
+     * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead. */
+    @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> containerRegistryEnabled() {
         return Optional.ofNullable(this.containerRegistryEnabled);
     }
@@ -725,16 +727,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable issue tracking for the project.
+     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `issuesAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
     @Import(name="issuesEnabled")
     private @Nullable Output<Boolean> issuesEnabled;
 
     /**
-     * @return Enable issue tracking for the project.
+     * @return Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `issuesAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> issuesEnabled() {
         return Optional.ofNullable(this.issuesEnabled);
     }
@@ -845,16 +855,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable merge requests for the project.
+     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
     @Import(name="mergeRequestsEnabled")
     private @Nullable Output<Boolean> mergeRequestsEnabled;
 
     /**
-     * @return Enable merge requests for the project.
+     * @return Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> mergeRequestsEnabled() {
         return Optional.ofNullable(this.mergeRequestsEnabled);
     }
@@ -1130,24 +1148,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * Deprecated in favor of `buildsAccessLevel`
+     * Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* Deprecated in favor of `buildsAccessLevel` */
+    @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
     @Import(name="pipelinesEnabled")
     private @Nullable Output<Boolean> pipelinesEnabled;
 
     /**
-     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * Deprecated in favor of `buildsAccessLevel`
+     * Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* Deprecated in favor of `buildsAccessLevel` */
+    @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> pipelinesEnabled() {
         return Optional.ofNullable(this.pipelinesEnabled);
     }
@@ -1356,16 +1374,39 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * The default resource group process mode for the project.
      * 
      */
+    @Import(name="resourceGroupDefaultProcessMode")
+    private @Nullable Output<String> resourceGroupDefaultProcessMode;
+
+    /**
+     * @return The default resource group process mode for the project.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupDefaultProcessMode() {
+        return Optional.ofNullable(this.resourceGroupDefaultProcessMode);
+    }
+
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     * 
+     */
+    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
     @Import(name="restrictUserDefinedVariables")
     private @Nullable Output<Boolean> restrictUserDefinedVariables;
 
     /**
-     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> restrictUserDefinedVariables() {
         return Optional.ofNullable(this.restrictUserDefinedVariables);
     }
@@ -1437,16 +1478,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable snippets for the project.
+     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
     @Import(name="snippetsEnabled")
     private @Nullable Output<Boolean> snippetsEnabled;
 
     /**
-     * @return Enable snippets for the project.
+     * @return Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> snippetsEnabled() {
         return Optional.ofNullable(this.snippetsEnabled);
     }
@@ -1497,16 +1546,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `topics` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `topics` instead. To be removed in 19.0. */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * @return The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `topics` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `topics` instead. To be removed in 19.0. */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -1604,16 +1661,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable wiki for the project.
+     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
     @Import(name="wikiEnabled")
     private @Nullable Output<Boolean> wikiEnabled;
 
     /**
-     * @return Enable wiki for the project.
+     * @return Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
     public Optional<Output<Boolean>> wikiEnabled() {
         return Optional.ofNullable(this.wikiEnabled);
     }
@@ -1708,6 +1773,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.requestAccessEnabled = $.requestAccessEnabled;
         this.requirementsAccessLevel = $.requirementsAccessLevel;
         this.resolveOutdatedDiffDiscussions = $.resolveOutdatedDiffDiscussions;
+        this.resourceGroupDefaultProcessMode = $.resourceGroupDefaultProcessMode;
         this.restrictUserDefinedVariables = $.restrictUserDefinedVariables;
         this.securityAndComplianceAccessLevel = $.securityAndComplianceAccessLevel;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
@@ -1809,28 +1875,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvalsBeforeMerge Number of merge request approvals required for merging. Default is 0.
-         * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-         * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-         * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+         * @param approvalsBeforeMerge Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
         public Builder approvalsBeforeMerge(@Nullable Output<Integer> approvalsBeforeMerge) {
             $.approvalsBeforeMerge = approvalsBeforeMerge;
             return this;
         }
 
         /**
-         * @param approvalsBeforeMerge Number of merge request approvals required for merging. Default is 0.
-         * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-         * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-         * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+         * @param approvalsBeforeMerge Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
         public Builder approvalsBeforeMerge(Integer approvalsBeforeMerge) {
             return approvalsBeforeMerge(Output.of(approvalsBeforeMerge));
         }
@@ -2371,30 +2439,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerRegistryEnabled Enable container registry for the project.
+         * @param containerRegistryEnabled Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `containerRegistryAccessLevel` instead.
+         * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
          * 
          */
-        @Deprecated /* Use `containerRegistryAccessLevel` instead. */
+        @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
         public Builder containerRegistryEnabled(@Nullable Output<Boolean> containerRegistryEnabled) {
             $.containerRegistryEnabled = containerRegistryEnabled;
             return this;
         }
 
         /**
-         * @param containerRegistryEnabled Enable container registry for the project.
+         * @param containerRegistryEnabled Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `containerRegistryAccessLevel` instead.
+         * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
          * 
          */
-        @Deprecated /* Use `containerRegistryAccessLevel` instead. */
+        @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
         public Builder containerRegistryEnabled(Boolean containerRegistryEnabled) {
             return containerRegistryEnabled(Output.of(containerRegistryEnabled));
         }
@@ -2736,22 +2804,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuesEnabled Enable issue tracking for the project.
+         * @param issuesEnabled Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `issuesAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
         public Builder issuesEnabled(@Nullable Output<Boolean> issuesEnabled) {
             $.issuesEnabled = issuesEnabled;
             return this;
         }
 
         /**
-         * @param issuesEnabled Enable issue tracking for the project.
+         * @param issuesEnabled Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `issuesAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
         public Builder issuesEnabled(Boolean issuesEnabled) {
             return issuesEnabled(Output.of(issuesEnabled));
         }
@@ -2904,22 +2980,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeRequestsEnabled Enable merge requests for the project.
+         * @param mergeRequestsEnabled Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
         public Builder mergeRequestsEnabled(@Nullable Output<Boolean> mergeRequestsEnabled) {
             $.mergeRequestsEnabled = mergeRequestsEnabled;
             return this;
         }
 
         /**
-         * @param mergeRequestsEnabled Enable merge requests for the project.
+         * @param mergeRequestsEnabled Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
         public Builder mergeRequestsEnabled(Boolean mergeRequestsEnabled) {
             return mergeRequestsEnabled(Output.of(mergeRequestsEnabled));
         }
@@ -3303,30 +3387,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pipelinesEnabled Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+         * @param pipelinesEnabled Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `buildsAccessLevel`
+         * Use `buildsAccessLevel` instead. To be removed in 19.0.
          * 
          */
-        @Deprecated /* Deprecated in favor of `buildsAccessLevel` */
+        @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
         public Builder pipelinesEnabled(@Nullable Output<Boolean> pipelinesEnabled) {
             $.pipelinesEnabled = pipelinesEnabled;
             return this;
         }
 
         /**
-         * @param pipelinesEnabled Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+         * @param pipelinesEnabled Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `buildsAccessLevel`
+         * Use `buildsAccessLevel` instead. To be removed in 19.0.
          * 
          */
-        @Deprecated /* Deprecated in favor of `buildsAccessLevel` */
+        @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
         public Builder pipelinesEnabled(Boolean pipelinesEnabled) {
             return pipelinesEnabled(Output.of(pipelinesEnabled));
         }
@@ -3613,22 +3697,51 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+         * @param resourceGroupDefaultProcessMode The default resource group process mode for the project.
          * 
          * @return builder
          * 
          */
+        public Builder resourceGroupDefaultProcessMode(@Nullable Output<String> resourceGroupDefaultProcessMode) {
+            $.resourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupDefaultProcessMode The default resource group process mode for the project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupDefaultProcessMode(String resourceGroupDefaultProcessMode) {
+            return resourceGroupDefaultProcessMode(Output.of(resourceGroupDefaultProcessMode));
+        }
+
+        /**
+         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+         * 
+         */
+        @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
         public Builder restrictUserDefinedVariables(@Nullable Output<Boolean> restrictUserDefinedVariables) {
             $.restrictUserDefinedVariables = restrictUserDefinedVariables;
             return this;
         }
 
         /**
-         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
         public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
             return restrictUserDefinedVariables(Output.of(restrictUserDefinedVariables));
         }
@@ -3724,22 +3837,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetsEnabled Enable snippets for the project.
+         * @param snippetsEnabled Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `snippetsAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
         public Builder snippetsEnabled(@Nullable Output<Boolean> snippetsEnabled) {
             $.snippetsEnabled = snippetsEnabled;
             return this;
         }
 
         /**
-         * @param snippetsEnabled Enable snippets for the project.
+         * @param snippetsEnabled Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `snippetsAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
         public Builder snippetsEnabled(Boolean snippetsEnabled) {
             return snippetsEnabled(Output.of(snippetsEnabled));
         }
@@ -3808,32 +3929,44 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `topics` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `topics` instead. To be removed in 19.0. */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
         /**
-         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `topics` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `topics` instead. To be removed in 19.0. */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
         /**
-         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `topics` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `topics` instead. To be removed in 19.0. */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
@@ -3977,22 +4110,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wikiEnabled Enable wiki for the project.
+         * @param wikiEnabled Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `wikiAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
         public Builder wikiEnabled(@Nullable Output<Boolean> wikiEnabled) {
             $.wikiEnabled = wikiEnabled;
             return this;
         }
 
         /**
-         * @param wikiEnabled Enable wiki for the project.
+         * @param wikiEnabled Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `wikiAccessLevel` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
         public Builder wikiEnabled(Boolean wikiEnabled) {
             return wikiEnabled(Output.of(wikiEnabled));
         }

@@ -251,6 +251,8 @@ class IntegrationHarbor(pulumi.CustomResource):
         """
         The `IntegrationHarbor` resource manages the lifecycle of a project integration with Harbor.
 
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationHarbor`instead.
+
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#harbor)
 
         ## Example Usage
@@ -315,6 +317,8 @@ class IntegrationHarbor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `IntegrationHarbor` resource manages the lifecycle of a project integration with Harbor.
+
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationHarbor`instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#harbor)
 

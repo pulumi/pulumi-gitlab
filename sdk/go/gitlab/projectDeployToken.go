@@ -112,6 +112,8 @@ type ProjectDeployToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringOutput `pulumi:"username"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
 // NewProjectDeployToken registers a new resource with the given unique name, arguments, and options.
@@ -170,6 +172,8 @@ type projectDeployTokenState struct {
 	Token *string `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 type ProjectDeployTokenState struct {
@@ -189,6 +193,8 @@ type ProjectDeployTokenState struct {
 	Token pulumi.StringPtrInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (ProjectDeployTokenState) ElementType() reflect.Type {
@@ -206,6 +212,8 @@ type projectDeployTokenArgs struct {
 	Scopes []string `pulumi:"scopes"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 // The set of arguments for constructing a ProjectDeployToken resource.
@@ -220,6 +228,8 @@ type ProjectDeployTokenArgs struct {
 	Scopes pulumi.StringArrayInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (ProjectDeployTokenArgs) ElementType() reflect.Type {
@@ -347,6 +357,11 @@ func (o ProjectDeployTokenOutput) Token() pulumi.StringOutput {
 // A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 func (o ProjectDeployTokenOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectDeployToken) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
+// Wether to validate if the expiration date is in the future.
+func (o ProjectDeployTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectDeployToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }
 
 type ProjectDeployTokenArrayOutput struct{ *pulumi.OutputState }

@@ -338,6 +338,92 @@ export interface GetGroupProvisionedUsersProvisionedUserArgs {
     websiteUrl?: pulumi.Input<string>;
 }
 
+export interface GetProjectApprovalRulesApprovalRule {
+    /**
+     * If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+     */
+    appliesToAllProtectedBranches?: boolean;
+    /**
+     * The number of approvals required for this rule.
+     */
+    approvalsRequired?: number;
+    /**
+     * List of all approver IDs that are eligible to approve this rule.
+     */
+    eligibleApproverIds?: number[];
+    /**
+     * List of group IDs that are eligible to approve this rule.
+     */
+    groupIds?: number[];
+    /**
+     * The ID of the approval rule.
+     */
+    id?: number;
+    /**
+     * The name of the approval rule.
+     */
+    name?: string;
+    /**
+     * List of protected branch IDs that this rule applies to.
+     */
+    protectedBranchIds?: number[];
+    /**
+     * The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
+     */
+    reportType?: string;
+    /**
+     * The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
+     */
+    ruleType?: string;
+    /**
+     * List of user IDs that are eligible to approve this rule.
+     */
+    userIds?: number[];
+}
+
+export interface GetProjectApprovalRulesApprovalRuleArgs {
+    /**
+     * If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+     */
+    appliesToAllProtectedBranches?: pulumi.Input<boolean>;
+    /**
+     * The number of approvals required for this rule.
+     */
+    approvalsRequired?: pulumi.Input<number>;
+    /**
+     * List of all approver IDs that are eligible to approve this rule.
+     */
+    eligibleApproverIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of group IDs that are eligible to approve this rule.
+     */
+    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The ID of the approval rule.
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The name of the approval rule.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * List of protected branch IDs that this rule applies to.
+     */
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
+     */
+    reportType?: pulumi.Input<string>;
+    /**
+     * The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
+     */
+    ruleType?: pulumi.Input<string>;
+    /**
+     * List of user IDs that are eligible to approve this rule.
+     */
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
 export interface GetProjectProtectedBranchMergeAccessLevel {
     /**
      * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
@@ -843,6 +929,13 @@ export interface GroupServiceAccountAccessTokenRotationConfiguration {
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
     rotateBeforeDays: pulumi.Input<number>;
+}
+
+export interface GroupServiceAccountTimeouts {
+    /**
+     * How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+     */
+    delete?: pulumi.Input<string>;
 }
 
 export interface InstanceServiceAccountTimeouts {

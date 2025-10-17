@@ -179,9 +179,13 @@ public final class GetProjectResult {
      */
     private String issuesAccessLevel;
     /**
-     * @return Enable issue tracking for the project.
+     * @return Enable issue tracking for the project. Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead. This attribute will be removed in 19.0. */
     private Boolean issuesEnabled;
     /**
      * @return Disable or enable the ability to keep the latest artifact for this project.
@@ -209,9 +213,13 @@ public final class GetProjectResult {
      */
     private String mergeRequestsAccessLevel;
     /**
-     * @return Enable merge requests for the project.
+     * @return Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0. */
     private Boolean mergeRequestsEnabled;
     /**
      * @return Enable or disable merge trains.
@@ -254,9 +262,13 @@ public final class GetProjectResult {
      */
     private String pathWithNamespace;
     /**
-     * @return Enable pipelines for the project.
+     * @return Enable pipelines for the project. Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0. */
     private Boolean pipelinesEnabled;
     /**
      * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
@@ -314,9 +326,13 @@ public final class GetProjectResult {
      */
     private Boolean resolveOutdatedDiffDiscussions;
     /**
-     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0. */
     private Boolean restrictUserDefinedVariables;
     /**
      * @return Registration token to use during runner setup.
@@ -339,9 +355,13 @@ public final class GetProjectResult {
      */
     private String snippetsAccessLevel;
     /**
-     * @return Enable snippets for the project.
+     * @return Enable snippets for the project. Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0. */
     private Boolean snippetsEnabled;
     /**
      * @return Template used to create squash commit message in merge requests.
@@ -379,9 +399,13 @@ public final class GetProjectResult {
      */
     private String wikiAccessLevel;
     /**
-     * @return Enable wiki for the project.
+     * @return Enable wiki for the project. Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead. This attribute will be removed in 19.0. */
     private Boolean wikiEnabled;
 
     private GetProjectResult() {}
@@ -610,9 +634,13 @@ public final class GetProjectResult {
         return this.issuesAccessLevel;
     }
     /**
-     * @return Enable issue tracking for the project.
+     * @return Enable issue tracking for the project. Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead. This attribute will be removed in 19.0. */
     public Boolean issuesEnabled() {
         return this.issuesEnabled;
     }
@@ -652,9 +680,13 @@ public final class GetProjectResult {
         return this.mergeRequestsAccessLevel;
     }
     /**
-     * @return Enable merge requests for the project.
+     * @return Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0. */
     public Boolean mergeRequestsEnabled() {
         return this.mergeRequestsEnabled;
     }
@@ -715,9 +747,13 @@ public final class GetProjectResult {
         return this.pathWithNamespace;
     }
     /**
-     * @return Enable pipelines for the project.
+     * @return Enable pipelines for the project. Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0. */
     public Boolean pipelinesEnabled() {
         return this.pipelinesEnabled;
     }
@@ -799,9 +835,13 @@ public final class GetProjectResult {
         return this.resolveOutdatedDiffDiscussions;
     }
     /**
-     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0. */
     public Boolean restrictUserDefinedVariables() {
         return this.restrictUserDefinedVariables;
     }
@@ -834,9 +874,13 @@ public final class GetProjectResult {
         return this.snippetsAccessLevel;
     }
     /**
-     * @return Enable snippets for the project.
+     * @return Enable snippets for the project. Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0. */
     public Boolean snippetsEnabled() {
         return this.snippetsEnabled;
     }
@@ -890,9 +934,13 @@ public final class GetProjectResult {
         return this.wikiAccessLevel;
     }
     /**
-     * @return Enable wiki for the project.
+     * @return Enable wiki for the project. Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead. This attribute will be removed in 19.0. */
     public Boolean wikiEnabled() {
         return this.wikiEnabled;
     }

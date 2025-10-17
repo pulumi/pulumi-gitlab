@@ -110,7 +110,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;group-id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int SharedRunnersMinutesLimit;
         /// <summary>
-        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
+        /// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
         /// </summary>
         public readonly string SharedRunnersSetting;
         /// <summary>

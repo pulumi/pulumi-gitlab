@@ -72,7 +72,7 @@ export interface GetGroupsResult {
      */
     readonly groups: outputs.GetGroupsGroup[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format of a hash of the provided search attributes.
      */
     readonly id: string;
     /**

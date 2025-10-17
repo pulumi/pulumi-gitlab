@@ -264,7 +264,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;group-id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

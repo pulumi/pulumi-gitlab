@@ -32,7 +32,7 @@ class GroupMembershipArgs:
         :param pulumi.Input[_builtins.int] group_id: The ID of the group.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         :param pulumi.Input[_builtins.bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[_builtins.bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         """
@@ -100,7 +100,7 @@ class GroupMembershipArgs:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -148,7 +148,7 @@ class _GroupMembershipState:
         :param pulumi.Input[_builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.int] group_id: The ID of the group.
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         :param pulumi.Input[_builtins.bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[_builtins.bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
@@ -208,7 +208,7 @@ class _GroupMembershipState:
     @pulumi.getter(name="memberRoleId")
     def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 
@@ -314,7 +314,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.int] group_id: The ID of the group.
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         :param pulumi.Input[_builtins.bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[_builtins.bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
@@ -438,7 +438,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.int] group_id: The ID of the group.
-        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances.
+        :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         :param pulumi.Input[_builtins.bool] skip_subresources_on_destroy: Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         :param pulumi.Input[_builtins.bool] unassign_issuables_on_destroy: Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
@@ -482,9 +482,9 @@ class GroupMembership(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> pulumi.Output[_builtins.int]:
+    def member_role_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The ID of a custom member role. Only available for Ultimate instances.
+        The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 

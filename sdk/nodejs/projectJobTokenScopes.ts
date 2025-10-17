@@ -126,9 +126,9 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. To be removed in 19.0.
      *
-     * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. To be removed in 19.0.
      */
     declare public readonly projectId: pulumi.Output<number>;
     /**
@@ -184,9 +184,9 @@ export interface ProjectJobTokenScopesState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. To be removed in 19.0.
      *
-     * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. To be removed in 19.0.
      */
     projectId?: pulumi.Input<number>;
     /**
@@ -212,9 +212,9 @@ export interface ProjectJobTokenScopesArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. To be removed in 19.0.
      *
-     * @deprecated `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. To be removed in 19.0.
      */
     projectId?: pulumi.Input<number>;
     /**

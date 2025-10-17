@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.ProjectAccessTokenRotationConfigurationArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,6 +124,21 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         return this.scopes;
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private ProjectAccessTokenArgs() {}
 
     private ProjectAccessTokenArgs(ProjectAccessTokenArgs $) {
@@ -133,6 +149,7 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.rotationConfiguration = $.rotationConfiguration;
         this.scopes = $.scopes;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -308,6 +325,27 @@ public final class ProjectAccessTokenArgs extends com.pulumi.resources.ResourceA
          */
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public ProjectAccessTokenArgs build() {

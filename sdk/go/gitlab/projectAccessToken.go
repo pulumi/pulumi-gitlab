@@ -112,6 +112,8 @@ type ProjectAccessToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The userId associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
 // NewProjectAccessToken registers a new resource with the given unique name, arguments, and options.
@@ -178,6 +180,8 @@ type projectAccessTokenState struct {
 	Token *string `pulumi:"token"`
 	// The userId associated to the token.
 	UserId *int `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 type ProjectAccessTokenState struct {
@@ -205,6 +209,8 @@ type ProjectAccessTokenState struct {
 	Token pulumi.StringPtrInput
 	// The userId associated to the token.
 	UserId pulumi.IntPtrInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (ProjectAccessTokenState) ElementType() reflect.Type {
@@ -226,6 +232,8 @@ type projectAccessTokenArgs struct {
 	RotationConfiguration *ProjectAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
 	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 // The set of arguments for constructing a ProjectAccessToken resource.
@@ -244,6 +252,8 @@ type ProjectAccessTokenArgs struct {
 	RotationConfiguration ProjectAccessTokenRotationConfigurationPtrInput
 	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (ProjectAccessTokenArgs) ElementType() reflect.Type {
@@ -393,6 +403,11 @@ func (o ProjectAccessTokenOutput) Token() pulumi.StringOutput {
 // The userId associated to the token.
 func (o ProjectAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
+// Wether to validate if the expiration date is in the future.
+func (o ProjectAccessTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectAccessToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }
 
 type ProjectAccessTokenArrayOutput struct{ *pulumi.OutputState }

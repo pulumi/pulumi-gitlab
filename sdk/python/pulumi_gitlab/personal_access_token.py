@@ -26,7 +26,8 @@ class PersonalAccessTokenArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_configuration: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']] = None):
+                 rotation_configuration: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PersonalAccessToken resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
@@ -35,6 +36,7 @@ class PersonalAccessTokenArgs:
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
         :param pulumi.Input['PersonalAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "user_id", user_id)
@@ -46,6 +48,8 @@ class PersonalAccessTokenArgs:
             pulumi.set(__self__, "name", name)
         if rotation_configuration is not None:
             pulumi.set(__self__, "rotation_configuration", rotation_configuration)
+        if validate_past_expiration_date is not None:
+            pulumi.set(__self__, "validate_past_expiration_date", validate_past_expiration_date)
 
     @_builtins.property
     @pulumi.getter
@@ -119,6 +123,18 @@ class PersonalAccessTokenArgs:
     def rotation_configuration(self, value: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']]):
         pulumi.set(self, "rotation_configuration", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
+
+    @validate_past_expiration_date.setter
+    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "validate_past_expiration_date", value)
+
 
 @pulumi.input_type
 class _PersonalAccessTokenState:
@@ -132,7 +148,8 @@ class _PersonalAccessTokenState:
                  rotation_configuration: Optional[pulumi.Input['PersonalAccessTokenRotationConfigurationArgs']] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PersonalAccessToken resources.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
@@ -145,6 +162,7 @@ class _PersonalAccessTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[_builtins.str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -166,6 +184,8 @@ class _PersonalAccessTokenState:
             pulumi.set(__self__, "token", token)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if validate_past_expiration_date is not None:
+            pulumi.set(__self__, "validate_past_expiration_date", validate_past_expiration_date)
 
     @_builtins.property
     @pulumi.getter
@@ -287,6 +307,18 @@ class _PersonalAccessTokenState:
     def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
+
+    @validate_past_expiration_date.setter
+    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "validate_past_expiration_date", value)
+
 
 @pulumi.type_token("gitlab:index/personalAccessToken:PersonalAccessToken")
 class PersonalAccessToken(pulumi.CustomResource):
@@ -300,6 +332,7 @@ class PersonalAccessToken(pulumi.CustomResource):
                  rotation_configuration: Optional[pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
@@ -365,6 +398,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         ...
     @overload
@@ -449,6 +483,7 @@ class PersonalAccessToken(pulumi.CustomResource):
                  rotation_configuration: Optional[pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -468,6 +503,7 @@ class PersonalAccessToken(pulumi.CustomResource):
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
             __props__.__dict__["active"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["revoked"] = None
@@ -493,7 +529,8 @@ class PersonalAccessToken(pulumi.CustomResource):
             rotation_configuration: Optional[pulumi.Input[Union['PersonalAccessTokenRotationConfigurationArgs', 'PersonalAccessTokenRotationConfigurationArgsDict']]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             token: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'PersonalAccessToken':
+            user_id: Optional[pulumi.Input[_builtins.int]] = None,
+            validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None) -> 'PersonalAccessToken':
         """
         Get an existing PersonalAccessToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -511,6 +548,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the personal access token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[_builtins.str] token: The token of the personal access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -526,6 +564,7 @@ class PersonalAccessToken(pulumi.CustomResource):
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["token"] = token
         __props__.__dict__["user_id"] = user_id
+        __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
         return PersonalAccessToken(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -607,4 +646,12 @@ class PersonalAccessToken(pulumi.CustomResource):
         The ID of the user.
         """
         return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
 

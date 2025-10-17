@@ -98,7 +98,7 @@ public final class GetProjectHooksHook {
      */
     private Boolean tagPushEvents;
     /**
-     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
      * 
      * @deprecated
      * The token is only available on resource creation, not in this datasource. It will always be blank.
@@ -238,7 +238,7 @@ public final class GetProjectHooksHook {
         return this.tagPushEvents;
     }
     /**
-     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
      * 
      * @deprecated
      * The token is only available on resource creation, not in this datasource. It will always be blank.

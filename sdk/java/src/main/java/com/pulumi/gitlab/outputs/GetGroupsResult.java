@@ -21,7 +21,7 @@ public final class GetGroupsResult {
      */
     private List<GetGroupsGroup> groups;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format of a hash of the provided search attributes.
      * 
      */
     private String id;
@@ -55,7 +55,7 @@ public final class GetGroupsResult {
         return this.groups;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format of a hash of the provided search attributes.
      * 
      */
     public String id() {

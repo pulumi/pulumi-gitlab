@@ -48,14 +48,14 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      * 
      */
     @Import(name="memberRoleId")
     private @Nullable Output<Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * @return The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      * 
      */
     public Optional<Output<Integer>> memberRoleId() {
@@ -163,7 +163,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * @param memberRoleId The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param memberRoleId The ID of a custom member role. Only available for Ultimate instances.
+         * @param memberRoleId The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
          * 
          * @return builder
          * 

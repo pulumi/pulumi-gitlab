@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -78,6 +79,21 @@ public final class UserImpersonationTokenArgs extends com.pulumi.resources.Resou
         return this.userId;
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private UserImpersonationTokenArgs() {}
 
     private UserImpersonationTokenArgs(UserImpersonationTokenArgs $) {
@@ -85,6 +101,7 @@ public final class UserImpersonationTokenArgs extends com.pulumi.resources.Resou
         this.name = $.name;
         this.scopes = $.scopes;
         this.userId = $.userId;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -197,6 +214,27 @@ public final class UserImpersonationTokenArgs extends com.pulumi.resources.Resou
          */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public UserImpersonationTokenArgs build() {

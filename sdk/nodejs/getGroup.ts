@@ -67,7 +67,7 @@ export interface GetGroupResult {
      */
     readonly groupId: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<group-id>`.
      */
     readonly id: string;
     /**
@@ -107,7 +107,7 @@ export interface GetGroupResult {
      */
     readonly sharedRunnersMinutesLimit: number;
     /**
-     * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      */
     readonly sharedRunnersSetting: string;
     /**

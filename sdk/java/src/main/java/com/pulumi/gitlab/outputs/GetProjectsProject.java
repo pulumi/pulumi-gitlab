@@ -21,9 +21,13 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProject {
     /**
-     * @return Links for the project.
+     * @return Links for the project. Use `links` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `links` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `links` instead. To be removed in 19.0. */
     private Map<String,String> _links;
     /**
      * @return Whether allowMergeOnSkippedPipeline is enabled for the project.
@@ -281,6 +285,11 @@ public final class GetProjectsProject {
      */
     private Boolean lfsEnabled;
     /**
+     * @return Links for the project.
+     * 
+     */
+    private Map<String,String> links;
+    /**
      * @return Template used to create merge commit message in merge requests.
      * 
      */
@@ -447,6 +456,11 @@ public final class GetProjectsProject {
      */
     private Boolean resolveOutdatedDiffDiscussions;
     /**
+     * @return The default resource group process mode for the project.
+     * 
+     */
+    private String resourceGroupDefaultProcessMode;
+    /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
      */
@@ -539,9 +553,13 @@ public final class GetProjectsProject {
 
     private GetProjectsProject() {}
     /**
-     * @return Links for the project.
+     * @return Links for the project. Use `links` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `links` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `links` instead. To be removed in 19.0. */
     public Map<String,String> _links() {
         return this._links;
     }
@@ -903,6 +921,13 @@ public final class GetProjectsProject {
         return this.lfsEnabled;
     }
     /**
+     * @return Links for the project.
+     * 
+     */
+    public Map<String,String> links() {
+        return this.links;
+    }
+    /**
      * @return Template used to create merge commit message in merge requests.
      * 
      */
@@ -1137,6 +1162,13 @@ public final class GetProjectsProject {
         return this.resolveOutdatedDiffDiscussions;
     }
     /**
+     * @return The default resource group process mode for the project.
+     * 
+     */
+    public String resourceGroupDefaultProcessMode() {
+        return this.resourceGroupDefaultProcessMode;
+    }
+    /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
      */
@@ -1324,6 +1356,7 @@ public final class GetProjectsProject {
         private Boolean keepLatestArtifact;
         private String lastActivityAt;
         private Boolean lfsEnabled;
+        private Map<String,String> links;
         private String mergeCommitTemplate;
         private String mergeMethod;
         private Boolean mergePipelinesEnabled;
@@ -1358,6 +1391,7 @@ public final class GetProjectsProject {
         private Boolean requestAccessEnabled;
         private String requirementsAccessLevel;
         private Boolean resolveOutdatedDiffDiscussions;
+        private String resourceGroupDefaultProcessMode;
         private Boolean restrictUserDefinedVariables;
         private String runnersToken;
         private String securityAndComplianceAccessLevel;
@@ -1431,6 +1465,7 @@ public final class GetProjectsProject {
     	      this.keepLatestArtifact = defaults.keepLatestArtifact;
     	      this.lastActivityAt = defaults.lastActivityAt;
     	      this.lfsEnabled = defaults.lfsEnabled;
+    	      this.links = defaults.links;
     	      this.mergeCommitTemplate = defaults.mergeCommitTemplate;
     	      this.mergeMethod = defaults.mergeMethod;
     	      this.mergePipelinesEnabled = defaults.mergePipelinesEnabled;
@@ -1465,6 +1500,7 @@ public final class GetProjectsProject {
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.requirementsAccessLevel = defaults.requirementsAccessLevel;
     	      this.resolveOutdatedDiffDiscussions = defaults.resolveOutdatedDiffDiscussions;
+    	      this.resourceGroupDefaultProcessMode = defaults.resourceGroupDefaultProcessMode;
     	      this.restrictUserDefinedVariables = defaults.restrictUserDefinedVariables;
     	      this.runnersToken = defaults.runnersToken;
     	      this.securityAndComplianceAccessLevel = defaults.securityAndComplianceAccessLevel;
@@ -1911,6 +1947,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder links(Map<String,String> links) {
+            if (links == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "links");
+            }
+            this.links = links;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mergeCommitTemplate(String mergeCommitTemplate) {
             if (mergeCommitTemplate == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "mergeCommitTemplate");
@@ -2192,6 +2236,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceGroupDefaultProcessMode(String resourceGroupDefaultProcessMode) {
+            if (resourceGroupDefaultProcessMode == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "resourceGroupDefaultProcessMode");
+            }
+            this.resourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
             if (restrictUserDefinedVariables == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "restrictUserDefinedVariables");
@@ -2398,6 +2450,7 @@ public final class GetProjectsProject {
             _resultValue.keepLatestArtifact = keepLatestArtifact;
             _resultValue.lastActivityAt = lastActivityAt;
             _resultValue.lfsEnabled = lfsEnabled;
+            _resultValue.links = links;
             _resultValue.mergeCommitTemplate = mergeCommitTemplate;
             _resultValue.mergeMethod = mergeMethod;
             _resultValue.mergePipelinesEnabled = mergePipelinesEnabled;
@@ -2432,6 +2485,7 @@ public final class GetProjectsProject {
             _resultValue.requestAccessEnabled = requestAccessEnabled;
             _resultValue.requirementsAccessLevel = requirementsAccessLevel;
             _resultValue.resolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
+            _resultValue.resourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
             _resultValue.restrictUserDefinedVariables = restrictUserDefinedVariables;
             _resultValue.runnersToken = runnersToken;
             _resultValue.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;

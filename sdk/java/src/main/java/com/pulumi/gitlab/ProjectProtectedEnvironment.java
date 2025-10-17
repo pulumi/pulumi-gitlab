@@ -69,18 +69,18 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
         return this.approvalRules;
     }
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
+     * Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use `deployAccessLevelsAttribute` instead. */
+    @Deprecated /* Use `deployAccessLevelsAttribute` instead. To be removed in 19.0. */
     @Export(name="deployAccessLevels", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      * 
      */
     public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevel>>> deployAccessLevels() {

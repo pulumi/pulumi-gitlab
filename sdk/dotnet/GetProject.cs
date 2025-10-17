@@ -258,7 +258,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string IssuesAccessLevel;
         /// <summary>
-        /// Enable issue tracking for the project.
+        /// Enable issue tracking for the project. Use `IssuesAccessLevel` instead. This attribute will be removed in 19.0.
         /// </summary>
         public readonly bool IssuesEnabled;
         /// <summary>
@@ -282,7 +282,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string MergeRequestsAccessLevel;
         /// <summary>
-        /// Enable merge requests for the project.
+        /// Enable merge requests for the project. Use `MergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
         /// </summary>
         public readonly bool MergeRequestsEnabled;
         /// <summary>
@@ -318,7 +318,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string PathWithNamespace;
         /// <summary>
-        /// Enable pipelines for the project.
+        /// Enable pipelines for the project. Use `PipelinesAccessLevel` instead. This attribute will be removed in 19.0.
         /// </summary>
         public readonly bool PipelinesEnabled;
         /// <summary>
@@ -366,7 +366,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool ResolveOutdatedDiffDiscussions;
         /// <summary>
-        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `CiRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
         /// </summary>
         public readonly bool RestrictUserDefinedVariables;
         /// <summary>
@@ -386,7 +386,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string SnippetsAccessLevel;
         /// <summary>
-        /// Enable snippets for the project.
+        /// Enable snippets for the project. Use `SnippetsAccessLevel` instead. This attribute will be removed in 19.0.
         /// </summary>
         public readonly bool SnippetsEnabled;
         /// <summary>
@@ -418,7 +418,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string WikiAccessLevel;
         /// <summary>
-        /// Enable wiki for the project.
+        /// Enable wiki for the project. Use `WikiAccessLevel` instead. This attribute will be removed in 19.0.
         /// </summary>
         public readonly bool WikiEnabled;
 

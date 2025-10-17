@@ -68,12 +68,12 @@ public final class GetProjectPushRule {
      */
     private Boolean preventSecrets;
     /**
-     * @return Reject commit when it’s not DCO certified.
+     * @return Reject commit when it&#39;s not DCO certified.
      * 
      */
     private Boolean rejectNonDcoCommits;
     /**
-     * @return Reject commit when it’s not signed through GPG.
+     * @return Reject commit when it&#39;s not signed through GPG.
      * 
      */
     private Boolean rejectUnsignedCommits;
@@ -157,14 +157,14 @@ public final class GetProjectPushRule {
         return this.preventSecrets;
     }
     /**
-     * @return Reject commit when it’s not DCO certified.
+     * @return Reject commit when it&#39;s not DCO certified.
      * 
      */
     public Boolean rejectNonDcoCommits() {
         return this.rejectNonDcoCommits;
     }
     /**
-     * @return Reject commit when it’s not signed through GPG.
+     * @return Reject commit when it&#39;s not signed through GPG.
      * 
      */
     public Boolean rejectUnsignedCommits() {

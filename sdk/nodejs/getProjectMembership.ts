@@ -29,9 +29,9 @@ export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pul
  */
 export interface GetProjectMembershipArgs {
     /**
-     * The full path of the project.
+     * The full path of the project. Use `project` instead. Will be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. Will be removed in 19.0.
      */
     fullPath?: string;
     /**
@@ -43,9 +43,9 @@ export interface GetProjectMembershipArgs {
      */
     project?: string;
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. Will be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. Will be removed in 19.0.
      */
     projectId?: number;
     /**
@@ -63,9 +63,9 @@ export interface GetProjectMembershipArgs {
  */
 export interface GetProjectMembershipResult {
     /**
-     * The full path of the project.
+     * The full path of the project. Use `project` instead. Will be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. Will be removed in 19.0.
      */
     readonly fullPath: string;
     /**
@@ -85,9 +85,9 @@ export interface GetProjectMembershipResult {
      */
     readonly project: string;
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. Will be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. Will be removed in 19.0.
      */
     readonly projectId: number;
     /**
@@ -122,9 +122,9 @@ export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs
  */
 export interface GetProjectMembershipOutputArgs {
     /**
-     * The full path of the project.
+     * The full path of the project. Use `project` instead. Will be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. Will be removed in 19.0.
      */
     fullPath?: pulumi.Input<string>;
     /**
@@ -136,9 +136,9 @@ export interface GetProjectMembershipOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. Will be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0. Use `project` instead.
+     * @deprecated Use `project` instead. Will be removed in 19.0.
      */
     projectId?: pulumi.Input<number>;
     /**

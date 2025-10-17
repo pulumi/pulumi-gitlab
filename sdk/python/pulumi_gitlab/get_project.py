@@ -506,9 +506,10 @@ class GetProjectResult:
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
+    @_utilities.deprecated("""Use `issues_access_level` instead. This attribute will be removed in 19.0.""")
     def issues_enabled(self) -> _builtins.bool:
         """
-        Enable issue tracking for the project.
+        Enable issue tracking for the project. Use `issues_access_level` instead. This attribute will be removed in 19.0.
         """
         return pulumi.get(self, "issues_enabled")
 
@@ -554,9 +555,10 @@ class GetProjectResult:
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
+    @_utilities.deprecated("""Use `merge_requests_access_level` instead. This attribute will be removed in 19.0.""")
     def merge_requests_enabled(self) -> _builtins.bool:
         """
-        Enable merge requests for the project.
+        Enable merge requests for the project. Use `merge_requests_access_level` instead. This attribute will be removed in 19.0.
         """
         return pulumi.get(self, "merge_requests_enabled")
 
@@ -626,9 +628,10 @@ class GetProjectResult:
 
     @_builtins.property
     @pulumi.getter(name="pipelinesEnabled")
+    @_utilities.deprecated("""Use `pipelines_access_level` instead. This attribute will be removed in 19.0.""")
     def pipelines_enabled(self) -> _builtins.bool:
         """
-        Enable pipelines for the project.
+        Enable pipelines for the project. Use `pipelines_access_level` instead. This attribute will be removed in 19.0.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -722,9 +725,10 @@ class GetProjectResult:
 
     @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
+    @_utilities.deprecated("""Use `ci_restrict_pipeline_variables_role` instead. This attribute will be removed in 19.0.""")
     def restrict_user_defined_variables(self) -> _builtins.bool:
         """
-        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_restrict_pipeline_variables_role` instead. This attribute will be removed in 19.0.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
 
@@ -762,9 +766,10 @@ class GetProjectResult:
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
+    @_utilities.deprecated("""Use `snippets_access_level` instead. This attribute will be removed in 19.0.""")
     def snippets_enabled(self) -> _builtins.bool:
         """
-        Enable snippets for the project.
+        Enable snippets for the project. Use `snippets_access_level` instead. This attribute will be removed in 19.0.
         """
         return pulumi.get(self, "snippets_enabled")
 
@@ -826,9 +831,10 @@ class GetProjectResult:
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
+    @_utilities.deprecated("""Use `wiki_access_level` instead. This attribute will be removed in 19.0.""")
     def wiki_enabled(self) -> _builtins.bool:
         """
-        Enable wiki for the project.
+        Enable wiki for the project. Use `wiki_access_level` instead. This attribute will be removed in 19.0.
         """
         return pulumi.get(self, "wiki_enabled")
 

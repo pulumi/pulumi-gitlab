@@ -168,6 +168,21 @@ public final class UserImpersonationTokenState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private UserImpersonationTokenState() {}
 
     private UserImpersonationTokenState(UserImpersonationTokenState $) {
@@ -181,6 +196,7 @@ public final class UserImpersonationTokenState extends com.pulumi.resources.Reso
         this.token = $.token;
         this.tokenId = $.tokenId;
         this.userId = $.userId;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -419,6 +435,27 @@ public final class UserImpersonationTokenState extends com.pulumi.resources.Reso
          */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public UserImpersonationTokenState build() {

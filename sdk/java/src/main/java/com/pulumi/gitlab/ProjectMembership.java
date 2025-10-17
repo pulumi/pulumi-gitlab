@@ -118,14 +118,14 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiresAt);
     }
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * @return The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      * 
      */
     public Output<Optional<Integer>> memberRoleId() {

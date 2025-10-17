@@ -46,6 +46,7 @@ from .get_pipeline_schedule import *
 from .get_pipeline_schedules import *
 from .get_project import *
 from .get_project_access_tokens import *
+from .get_project_approval_rules import *
 from .get_project_branches import *
 from .get_project_environments import *
 from .get_project_hook import *

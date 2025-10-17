@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -112,6 +114,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
      * The service account id.
      */
     declare public /*out*/ readonly serviceAccountId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.GroupServiceAccountTimeouts | undefined>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
      */
@@ -134,6 +137,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
             resourceInputs["group"] = state?.group;
             resourceInputs["name"] = state?.name;
             resourceInputs["serviceAccountId"] = state?.serviceAccountId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as GroupServiceAccountArgs | undefined;
@@ -143,6 +147,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["group"] = args?.group;
             resourceInputs["name"] = args?.name;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["username"] = args?.username;
             resourceInputs["serviceAccountId"] = undefined /*out*/;
         }
@@ -171,6 +176,7 @@ export interface GroupServiceAccountState {
      * The service account id.
      */
     serviceAccountId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
      */
@@ -193,6 +199,7 @@ export interface GroupServiceAccountArgs {
      * The name of the user. If not specified, the default Service account user name is used.
      */
     name?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
      */

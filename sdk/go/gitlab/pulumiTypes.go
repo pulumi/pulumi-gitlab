@@ -2275,6 +2275,143 @@ func (o GroupServiceAccountAccessTokenRotationConfigurationPtrOutput) RotateBefo
 	}).(pulumi.IntPtrOutput)
 }
 
+type GroupServiceAccountTimeouts struct {
+	// How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+	Delete *string `pulumi:"delete"`
+}
+
+// GroupServiceAccountTimeoutsInput is an input type that accepts GroupServiceAccountTimeoutsArgs and GroupServiceAccountTimeoutsOutput values.
+// You can construct a concrete instance of `GroupServiceAccountTimeoutsInput` via:
+//
+//	GroupServiceAccountTimeoutsArgs{...}
+type GroupServiceAccountTimeoutsInput interface {
+	pulumi.Input
+
+	ToGroupServiceAccountTimeoutsOutput() GroupServiceAccountTimeoutsOutput
+	ToGroupServiceAccountTimeoutsOutputWithContext(context.Context) GroupServiceAccountTimeoutsOutput
+}
+
+type GroupServiceAccountTimeoutsArgs struct {
+	// How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (GroupServiceAccountTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (i GroupServiceAccountTimeoutsArgs) ToGroupServiceAccountTimeoutsOutput() GroupServiceAccountTimeoutsOutput {
+	return i.ToGroupServiceAccountTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GroupServiceAccountTimeoutsArgs) ToGroupServiceAccountTimeoutsOutputWithContext(ctx context.Context) GroupServiceAccountTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupServiceAccountTimeoutsOutput)
+}
+
+func (i GroupServiceAccountTimeoutsArgs) ToGroupServiceAccountTimeoutsPtrOutput() GroupServiceAccountTimeoutsPtrOutput {
+	return i.ToGroupServiceAccountTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GroupServiceAccountTimeoutsArgs) ToGroupServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) GroupServiceAccountTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupServiceAccountTimeoutsOutput).ToGroupServiceAccountTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GroupServiceAccountTimeoutsPtrInput is an input type that accepts GroupServiceAccountTimeoutsArgs, GroupServiceAccountTimeoutsPtr and GroupServiceAccountTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GroupServiceAccountTimeoutsPtrInput` via:
+//
+//	        GroupServiceAccountTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupServiceAccountTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGroupServiceAccountTimeoutsPtrOutput() GroupServiceAccountTimeoutsPtrOutput
+	ToGroupServiceAccountTimeoutsPtrOutputWithContext(context.Context) GroupServiceAccountTimeoutsPtrOutput
+}
+
+type groupServiceAccountTimeoutsPtrType GroupServiceAccountTimeoutsArgs
+
+func GroupServiceAccountTimeoutsPtr(v *GroupServiceAccountTimeoutsArgs) GroupServiceAccountTimeoutsPtrInput {
+	return (*groupServiceAccountTimeoutsPtrType)(v)
+}
+
+func (*groupServiceAccountTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (i *groupServiceAccountTimeoutsPtrType) ToGroupServiceAccountTimeoutsPtrOutput() GroupServiceAccountTimeoutsPtrOutput {
+	return i.ToGroupServiceAccountTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *groupServiceAccountTimeoutsPtrType) ToGroupServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) GroupServiceAccountTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupServiceAccountTimeoutsPtrOutput)
+}
+
+type GroupServiceAccountTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GroupServiceAccountTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (o GroupServiceAccountTimeoutsOutput) ToGroupServiceAccountTimeoutsOutput() GroupServiceAccountTimeoutsOutput {
+	return o
+}
+
+func (o GroupServiceAccountTimeoutsOutput) ToGroupServiceAccountTimeoutsOutputWithContext(ctx context.Context) GroupServiceAccountTimeoutsOutput {
+	return o
+}
+
+func (o GroupServiceAccountTimeoutsOutput) ToGroupServiceAccountTimeoutsPtrOutput() GroupServiceAccountTimeoutsPtrOutput {
+	return o.ToGroupServiceAccountTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GroupServiceAccountTimeoutsOutput) ToGroupServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) GroupServiceAccountTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupServiceAccountTimeouts) *GroupServiceAccountTimeouts {
+		return &v
+	}).(GroupServiceAccountTimeoutsPtrOutput)
+}
+
+// How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+func (o GroupServiceAccountTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupServiceAccountTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+type GroupServiceAccountTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupServiceAccountTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupServiceAccountTimeouts)(nil)).Elem()
+}
+
+func (o GroupServiceAccountTimeoutsPtrOutput) ToGroupServiceAccountTimeoutsPtrOutput() GroupServiceAccountTimeoutsPtrOutput {
+	return o
+}
+
+func (o GroupServiceAccountTimeoutsPtrOutput) ToGroupServiceAccountTimeoutsPtrOutputWithContext(ctx context.Context) GroupServiceAccountTimeoutsPtrOutput {
+	return o
+}
+
+func (o GroupServiceAccountTimeoutsPtrOutput) Elem() GroupServiceAccountTimeoutsOutput {
+	return o.ApplyT(func(v *GroupServiceAccountTimeouts) GroupServiceAccountTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GroupServiceAccountTimeouts
+		return ret
+	}).(GroupServiceAccountTimeoutsOutput)
+}
+
+// How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+func (o GroupServiceAccountTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupServiceAccountTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceServiceAccountTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 	Delete *string `pulumi:"delete"`
@@ -6456,7 +6593,9 @@ type GetGroupHooksHook struct {
 	SubgroupEvents bool `pulumi:"subgroupEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
+	//
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
@@ -6514,7 +6653,9 @@ type GetGroupHooksHookArgs struct {
 	SubgroupEvents pulumi.BoolInput `pulumi:"subgroupEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolInput `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
+	//
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	Token pulumi.StringInput `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -6668,7 +6809,9 @@ func (o GetGroupHooksHookOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupHooksHook) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available for imported resources.
+// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
+//
+// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 func (o GetGroupHooksHookOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupHooksHook) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -7425,34 +7568,62 @@ func (o GetGroupSharedWithGroupArrayOutput) Index(i pulumi.IntInput) GetGroupSha
 }
 
 type GetGroupSubgroupsSubgroup struct {
-	AllowedEmailDomainsList        string            `pulumi:"allowedEmailDomainsList"`
-	AutoDevopsEnabled              bool              `pulumi:"autoDevopsEnabled"`
-	AvatarUrl                      string            `pulumi:"avatarUrl"`
-	CreatedAt                      string            `pulumi:"createdAt"`
-	DefaultBranchProtection        int               `pulumi:"defaultBranchProtection"`
-	Description                    string            `pulumi:"description"`
-	EmailsEnabled                  bool              `pulumi:"emailsEnabled"`
-	FileTemplateProjectId          int               `pulumi:"fileTemplateProjectId"`
-	FullName                       string            `pulumi:"fullName"`
-	FullPath                       string            `pulumi:"fullPath"`
-	GroupId                        int               `pulumi:"groupId"`
-	IpRestrictionRanges            string            `pulumi:"ipRestrictionRanges"`
-	LfsEnabled                     bool              `pulumi:"lfsEnabled"`
-	MentionsDisabled               bool              `pulumi:"mentionsDisabled"`
-	Name                           string            `pulumi:"name"`
-	ParentId                       int               `pulumi:"parentId"`
-	Path                           string            `pulumi:"path"`
-	ProjectCreationLevel           string            `pulumi:"projectCreationLevel"`
-	RequestAccessEnabled           bool              `pulumi:"requestAccessEnabled"`
-	RequireTwoFactorAuthentication bool              `pulumi:"requireTwoFactorAuthentication"`
-	ShareWithGroupLock             bool              `pulumi:"shareWithGroupLock"`
-	SharedRunnersSetting           string            `pulumi:"sharedRunnersSetting"`
-	Statistics                     map[string]string `pulumi:"statistics"`
-	SubgroupCreationLevel          string            `pulumi:"subgroupCreationLevel"`
-	TwoFactorGracePeriod           int               `pulumi:"twoFactorGracePeriod"`
-	Visibility                     string            `pulumi:"visibility"`
-	WebUrl                         string            `pulumi:"webUrl"`
-	WikiAccessLevel                string            `pulumi:"wikiAccessLevel"`
+	// A list of email address domains to allow group access.
+	AllowedEmailDomainsList string `pulumi:"allowedEmailDomainsList"`
+	// Default to Auto DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled bool `pulumi:"autoDevopsEnabled"`
+	// The URL of the avatar image.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// Group created at date.
+	CreatedAt string `pulumi:"createdAt"`
+	// Whether developers and maintainers can push to the applicable default branch.
+	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
+	// The description of the group.
+	Description string `pulumi:"description"`
+	// Enable email notifications.
+	EmailsEnabled bool `pulumi:"emailsEnabled"`
+	// The ID of the project that will be used for file templates.
+	FileTemplateProjectId int `pulumi:"fileTemplateProjectId"`
+	// The full name of the group.
+	FullName string `pulumi:"fullName"`
+	// The full path of the group.
+	FullPath string `pulumi:"fullPath"`
+	// The ID of the group.
+	GroupId int `pulumi:"groupId"`
+	// A list of IP addresses or subnet masks to restrict group access.
+	IpRestrictionRanges string `pulumi:"ipRestrictionRanges"`
+	// Is LFS enabled for projects in this group.
+	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Disable the capability of a group from getting mentioned.
+	MentionsDisabled bool `pulumi:"mentionsDisabled"`
+	// The name of this group.
+	Name string `pulumi:"name"`
+	// ID of the parent group.
+	ParentId int `pulumi:"parentId"`
+	// The path of the group.
+	Path string `pulumi:"path"`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+	ProjectCreationLevel string `pulumi:"projectCreationLevel"`
+	// Is request for access enabled to the group.
+	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
+	// Require all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication bool `pulumi:"requireTwoFactorAuthentication"`
+	// Prevent sharing a project with another group within this group.
+	ShareWithGroupLock bool `pulumi:"shareWithGroupLock"`
+	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
+	// Group statistics.
+	Statistics map[string]string `pulumi:"statistics"`
+	// Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+	SubgroupCreationLevel string `pulumi:"subgroupCreationLevel"`
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod int `pulumi:"twoFactorGracePeriod"`
+	// Limited by visibility `public`, `internal`, or `private`.
+	Visibility string `pulumi:"visibility"`
+	// Web URL of the group.
+	WebUrl string `pulumi:"webUrl"`
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel string `pulumi:"wikiAccessLevel"`
 }
 
 // GetGroupSubgroupsSubgroupInput is an input type that accepts GetGroupSubgroupsSubgroupArgs and GetGroupSubgroupsSubgroupOutput values.
@@ -7467,34 +7638,62 @@ type GetGroupSubgroupsSubgroupInput interface {
 }
 
 type GetGroupSubgroupsSubgroupArgs struct {
-	AllowedEmailDomainsList        pulumi.StringInput    `pulumi:"allowedEmailDomainsList"`
-	AutoDevopsEnabled              pulumi.BoolInput      `pulumi:"autoDevopsEnabled"`
-	AvatarUrl                      pulumi.StringInput    `pulumi:"avatarUrl"`
-	CreatedAt                      pulumi.StringInput    `pulumi:"createdAt"`
-	DefaultBranchProtection        pulumi.IntInput       `pulumi:"defaultBranchProtection"`
-	Description                    pulumi.StringInput    `pulumi:"description"`
-	EmailsEnabled                  pulumi.BoolInput      `pulumi:"emailsEnabled"`
-	FileTemplateProjectId          pulumi.IntInput       `pulumi:"fileTemplateProjectId"`
-	FullName                       pulumi.StringInput    `pulumi:"fullName"`
-	FullPath                       pulumi.StringInput    `pulumi:"fullPath"`
-	GroupId                        pulumi.IntInput       `pulumi:"groupId"`
-	IpRestrictionRanges            pulumi.StringInput    `pulumi:"ipRestrictionRanges"`
-	LfsEnabled                     pulumi.BoolInput      `pulumi:"lfsEnabled"`
-	MentionsDisabled               pulumi.BoolInput      `pulumi:"mentionsDisabled"`
-	Name                           pulumi.StringInput    `pulumi:"name"`
-	ParentId                       pulumi.IntInput       `pulumi:"parentId"`
-	Path                           pulumi.StringInput    `pulumi:"path"`
-	ProjectCreationLevel           pulumi.StringInput    `pulumi:"projectCreationLevel"`
-	RequestAccessEnabled           pulumi.BoolInput      `pulumi:"requestAccessEnabled"`
-	RequireTwoFactorAuthentication pulumi.BoolInput      `pulumi:"requireTwoFactorAuthentication"`
-	ShareWithGroupLock             pulumi.BoolInput      `pulumi:"shareWithGroupLock"`
-	SharedRunnersSetting           pulumi.StringInput    `pulumi:"sharedRunnersSetting"`
-	Statistics                     pulumi.StringMapInput `pulumi:"statistics"`
-	SubgroupCreationLevel          pulumi.StringInput    `pulumi:"subgroupCreationLevel"`
-	TwoFactorGracePeriod           pulumi.IntInput       `pulumi:"twoFactorGracePeriod"`
-	Visibility                     pulumi.StringInput    `pulumi:"visibility"`
-	WebUrl                         pulumi.StringInput    `pulumi:"webUrl"`
-	WikiAccessLevel                pulumi.StringInput    `pulumi:"wikiAccessLevel"`
+	// A list of email address domains to allow group access.
+	AllowedEmailDomainsList pulumi.StringInput `pulumi:"allowedEmailDomainsList"`
+	// Default to Auto DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled pulumi.BoolInput `pulumi:"autoDevopsEnabled"`
+	// The URL of the avatar image.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// Group created at date.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Whether developers and maintainers can push to the applicable default branch.
+	DefaultBranchProtection pulumi.IntInput `pulumi:"defaultBranchProtection"`
+	// The description of the group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Enable email notifications.
+	EmailsEnabled pulumi.BoolInput `pulumi:"emailsEnabled"`
+	// The ID of the project that will be used for file templates.
+	FileTemplateProjectId pulumi.IntInput `pulumi:"fileTemplateProjectId"`
+	// The full name of the group.
+	FullName pulumi.StringInput `pulumi:"fullName"`
+	// The full path of the group.
+	FullPath pulumi.StringInput `pulumi:"fullPath"`
+	// The ID of the group.
+	GroupId pulumi.IntInput `pulumi:"groupId"`
+	// A list of IP addresses or subnet masks to restrict group access.
+	IpRestrictionRanges pulumi.StringInput `pulumi:"ipRestrictionRanges"`
+	// Is LFS enabled for projects in this group.
+	LfsEnabled pulumi.BoolInput `pulumi:"lfsEnabled"`
+	// Disable the capability of a group from getting mentioned.
+	MentionsDisabled pulumi.BoolInput `pulumi:"mentionsDisabled"`
+	// The name of this group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// ID of the parent group.
+	ParentId pulumi.IntInput `pulumi:"parentId"`
+	// The path of the group.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+	ProjectCreationLevel pulumi.StringInput `pulumi:"projectCreationLevel"`
+	// Is request for access enabled to the group.
+	RequestAccessEnabled pulumi.BoolInput `pulumi:"requestAccessEnabled"`
+	// Require all users in this group to setup Two-factor authentication.
+	RequireTwoFactorAuthentication pulumi.BoolInput `pulumi:"requireTwoFactorAuthentication"`
+	// Prevent sharing a project with another group within this group.
+	ShareWithGroupLock pulumi.BoolInput `pulumi:"shareWithGroupLock"`
+	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+	SharedRunnersSetting pulumi.StringInput `pulumi:"sharedRunnersSetting"`
+	// Group statistics.
+	Statistics pulumi.StringMapInput `pulumi:"statistics"`
+	// Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+	SubgroupCreationLevel pulumi.StringInput `pulumi:"subgroupCreationLevel"`
+	// Time before Two-factor authentication is enforced (in hours).
+	TwoFactorGracePeriod pulumi.IntInput `pulumi:"twoFactorGracePeriod"`
+	// Limited by visibility `public`, `internal`, or `private`.
+	Visibility pulumi.StringInput `pulumi:"visibility"`
+	// Web URL of the group.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+	// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+	WikiAccessLevel pulumi.StringInput `pulumi:"wikiAccessLevel"`
 }
 
 func (GetGroupSubgroupsSubgroupArgs) ElementType() reflect.Type {
@@ -7548,114 +7747,142 @@ func (o GetGroupSubgroupsSubgroupOutput) ToGetGroupSubgroupsSubgroupOutputWithCo
 	return o
 }
 
+// A list of email address domains to allow group access.
 func (o GetGroupSubgroupsSubgroupOutput) AllowedEmailDomainsList() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.AllowedEmailDomainsList }).(pulumi.StringOutput)
 }
 
+// Default to Auto DevOps pipeline for all projects within this group.
 func (o GetGroupSubgroupsSubgroupOutput) AutoDevopsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
 }
 
+// The URL of the avatar image.
 func (o GetGroupSubgroupsSubgroupOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.AvatarUrl }).(pulumi.StringOutput)
 }
 
+// Group created at date.
 func (o GetGroupSubgroupsSubgroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Whether developers and maintainers can push to the applicable default branch.
 func (o GetGroupSubgroupsSubgroupOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }
 
+// The description of the group.
 func (o GetGroupSubgroupsSubgroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Enable email notifications.
 func (o GetGroupSubgroupsSubgroupOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
 }
 
+// The ID of the project that will be used for file templates.
 func (o GetGroupSubgroupsSubgroupOutput) FileTemplateProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.FileTemplateProjectId }).(pulumi.IntOutput)
 }
 
+// The full name of the group.
 func (o GetGroupSubgroupsSubgroupOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.FullName }).(pulumi.StringOutput)
 }
 
+// The full path of the group.
 func (o GetGroupSubgroupsSubgroupOutput) FullPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.FullPath }).(pulumi.StringOutput)
 }
 
+// The ID of the group.
 func (o GetGroupSubgroupsSubgroupOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
+// A list of IP addresses or subnet masks to restrict group access.
 func (o GetGroupSubgroupsSubgroupOutput) IpRestrictionRanges() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.IpRestrictionRanges }).(pulumi.StringOutput)
 }
 
+// Is LFS enabled for projects in this group.
 func (o GetGroupSubgroupsSubgroupOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
+// Disable the capability of a group from getting mentioned.
 func (o GetGroupSubgroupsSubgroupOutput) MentionsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.MentionsDisabled }).(pulumi.BoolOutput)
 }
 
+// The name of this group.
 func (o GetGroupSubgroupsSubgroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ID of the parent group.
 func (o GetGroupSubgroupsSubgroupOutput) ParentId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.ParentId }).(pulumi.IntOutput)
 }
 
+// The path of the group.
 func (o GetGroupSubgroupsSubgroupOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 func (o GetGroupSubgroupsSubgroupOutput) ProjectCreationLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.ProjectCreationLevel }).(pulumi.StringOutput)
 }
 
+// Is request for access enabled to the group.
 func (o GetGroupSubgroupsSubgroupOutput) RequestAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
 }
 
+// Require all users in this group to setup Two-factor authentication.
 func (o GetGroupSubgroupsSubgroupOutput) RequireTwoFactorAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.RequireTwoFactorAuthentication }).(pulumi.BoolOutput)
 }
 
+// Prevent sharing a project with another group within this group.
 func (o GetGroupSubgroupsSubgroupOutput) ShareWithGroupLock() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) bool { return v.ShareWithGroupLock }).(pulumi.BoolOutput)
 }
 
+// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 func (o GetGroupSubgroupsSubgroupOutput) SharedRunnersSetting() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
 }
 
+// Group statistics.
 func (o GetGroupSubgroupsSubgroupOutput) Statistics() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) map[string]string { return v.Statistics }).(pulumi.StringMapOutput)
 }
 
+// Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
 func (o GetGroupSubgroupsSubgroupOutput) SubgroupCreationLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.SubgroupCreationLevel }).(pulumi.StringOutput)
 }
 
+// Time before Two-factor authentication is enforced (in hours).
 func (o GetGroupSubgroupsSubgroupOutput) TwoFactorGracePeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) int { return v.TwoFactorGracePeriod }).(pulumi.IntOutput)
 }
 
+// Limited by visibility `public`, `internal`, or `private`.
 func (o GetGroupSubgroupsSubgroupOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.Visibility }).(pulumi.StringOutput)
 }
 
+// Web URL of the group.
 func (o GetGroupSubgroupsSubgroupOutput) WebUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.WebUrl }).(pulumi.StringOutput)
 }
 
+// The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
 func (o GetGroupSubgroupsSubgroupOutput) WikiAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsSubgroup) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
@@ -7823,7 +8050,9 @@ func (o GetGroupVariablesVariableArrayOutput) Index(i pulumi.IntInput) GetGroupV
 }
 
 type GetGroupsGroup struct {
-	// Whether developers and maintainers can push to the applicable default branch.
+	// Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+	//
+	// Deprecated: Will be removed in 19.0.
 	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description string `pulumi:"description"`
@@ -7833,21 +8062,21 @@ type GetGroupsGroup struct {
 	FullPath string `pulumi:"fullPath"`
 	// The ID of the group.
 	GroupId int `pulumi:"groupId"`
-	// Boolean, is LFS enabled for projects in this group.
+	// Is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
 	// The name of this group.
 	Name string `pulumi:"name"`
-	// Integer, ID of the parent group.
+	// ID of the parent group.
 	ParentId int `pulumi:"parentId"`
 	// The path of the group.
 	Path string `pulumi:"path"`
 	// When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup bool `pulumi:"preventForkingOutsideGroup"`
-	// Boolean, is request for access enabled to the group.
+	// Is request for access enabled to the group.
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
 	RunnersToken string `pulumi:"runnersToken"`
-	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel string `pulumi:"visibilityLevel"`
@@ -7869,7 +8098,9 @@ type GetGroupsGroupInput interface {
 }
 
 type GetGroupsGroupArgs struct {
-	// Whether developers and maintainers can push to the applicable default branch.
+	// Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+	//
+	// Deprecated: Will be removed in 19.0.
 	DefaultBranchProtection pulumi.IntInput `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -7879,21 +8110,21 @@ type GetGroupsGroupArgs struct {
 	FullPath pulumi.StringInput `pulumi:"fullPath"`
 	// The ID of the group.
 	GroupId pulumi.IntInput `pulumi:"groupId"`
-	// Boolean, is LFS enabled for projects in this group.
+	// Is LFS enabled for projects in this group.
 	LfsEnabled pulumi.BoolInput `pulumi:"lfsEnabled"`
 	// The name of this group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Integer, ID of the parent group.
+	// ID of the parent group.
 	ParentId pulumi.IntInput `pulumi:"parentId"`
 	// The path of the group.
 	Path pulumi.StringInput `pulumi:"path"`
 	// When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolInput `pulumi:"preventForkingOutsideGroup"`
-	// Boolean, is request for access enabled to the group.
+	// Is request for access enabled to the group.
 	RequestAccessEnabled pulumi.BoolInput `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
 	RunnersToken pulumi.StringInput `pulumi:"runnersToken"`
-	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting pulumi.StringInput `pulumi:"sharedRunnersSetting"`
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel pulumi.StringInput `pulumi:"visibilityLevel"`
@@ -7954,7 +8185,9 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Whether developers and maintainers can push to the applicable default branch.
+// Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+//
+// Deprecated: Will be removed in 19.0.
 func (o GetGroupsGroupOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupsGroup) int { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }
@@ -7979,7 +8212,7 @@ func (o GetGroupsGroupOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupsGroup) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// Boolean, is LFS enabled for projects in this group.
+// Is LFS enabled for projects in this group.
 func (o GetGroupsGroupOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
@@ -7989,7 +8222,7 @@ func (o GetGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Integer, ID of the parent group.
+// ID of the parent group.
 func (o GetGroupsGroupOutput) ParentId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupsGroup) int { return v.ParentId }).(pulumi.IntOutput)
 }
@@ -8004,7 +8237,7 @@ func (o GetGroupsGroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
 }
 
-// Boolean, is request for access enabled to the group.
+// Is request for access enabled to the group.
 func (o GetGroupsGroupOutput) RequestAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
 }
@@ -8014,7 +8247,7 @@ func (o GetGroupsGroupOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.RunnersToken }).(pulumi.StringOutput)
 }
 
-// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 func (o GetGroupsGroupOutput) SharedRunnersSetting() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
 }
@@ -9305,6 +9538,184 @@ func (o GetProjectAccessTokensAccessTokenArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetProjectAccessTokensAccessTokenOutput)
 }
 
+type GetProjectApprovalRulesApprovalRule struct {
+	// If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+	AppliesToAllProtectedBranches bool `pulumi:"appliesToAllProtectedBranches"`
+	// The number of approvals required for this rule.
+	ApprovalsRequired int `pulumi:"approvalsRequired"`
+	// List of all approver IDs that are eligible to approve this rule.
+	EligibleApproverIds []int `pulumi:"eligibleApproverIds"`
+	// List of group IDs that are eligible to approve this rule.
+	GroupIds []int `pulumi:"groupIds"`
+	// The ID of the approval rule.
+	Id int `pulumi:"id"`
+	// The name of the approval rule.
+	Name string `pulumi:"name"`
+	// List of protected branch IDs that this rule applies to.
+	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
+	// The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
+	ReportType string `pulumi:"reportType"`
+	// The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
+	RuleType string `pulumi:"ruleType"`
+	// List of user IDs that are eligible to approve this rule.
+	UserIds []int `pulumi:"userIds"`
+}
+
+// GetProjectApprovalRulesApprovalRuleInput is an input type that accepts GetProjectApprovalRulesApprovalRuleArgs and GetProjectApprovalRulesApprovalRuleOutput values.
+// You can construct a concrete instance of `GetProjectApprovalRulesApprovalRuleInput` via:
+//
+//	GetProjectApprovalRulesApprovalRuleArgs{...}
+type GetProjectApprovalRulesApprovalRuleInput interface {
+	pulumi.Input
+
+	ToGetProjectApprovalRulesApprovalRuleOutput() GetProjectApprovalRulesApprovalRuleOutput
+	ToGetProjectApprovalRulesApprovalRuleOutputWithContext(context.Context) GetProjectApprovalRulesApprovalRuleOutput
+}
+
+type GetProjectApprovalRulesApprovalRuleArgs struct {
+	// If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+	AppliesToAllProtectedBranches pulumi.BoolInput `pulumi:"appliesToAllProtectedBranches"`
+	// The number of approvals required for this rule.
+	ApprovalsRequired pulumi.IntInput `pulumi:"approvalsRequired"`
+	// List of all approver IDs that are eligible to approve this rule.
+	EligibleApproverIds pulumi.IntArrayInput `pulumi:"eligibleApproverIds"`
+	// List of group IDs that are eligible to approve this rule.
+	GroupIds pulumi.IntArrayInput `pulumi:"groupIds"`
+	// The ID of the approval rule.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the approval rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of protected branch IDs that this rule applies to.
+	ProtectedBranchIds pulumi.IntArrayInput `pulumi:"protectedBranchIds"`
+	// The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
+	ReportType pulumi.StringInput `pulumi:"reportType"`
+	// The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
+	RuleType pulumi.StringInput `pulumi:"ruleType"`
+	// List of user IDs that are eligible to approve this rule.
+	UserIds pulumi.IntArrayInput `pulumi:"userIds"`
+}
+
+func (GetProjectApprovalRulesApprovalRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (i GetProjectApprovalRulesApprovalRuleArgs) ToGetProjectApprovalRulesApprovalRuleOutput() GetProjectApprovalRulesApprovalRuleOutput {
+	return i.ToGetProjectApprovalRulesApprovalRuleOutputWithContext(context.Background())
+}
+
+func (i GetProjectApprovalRulesApprovalRuleArgs) ToGetProjectApprovalRulesApprovalRuleOutputWithContext(ctx context.Context) GetProjectApprovalRulesApprovalRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectApprovalRulesApprovalRuleOutput)
+}
+
+// GetProjectApprovalRulesApprovalRuleArrayInput is an input type that accepts GetProjectApprovalRulesApprovalRuleArray and GetProjectApprovalRulesApprovalRuleArrayOutput values.
+// You can construct a concrete instance of `GetProjectApprovalRulesApprovalRuleArrayInput` via:
+//
+//	GetProjectApprovalRulesApprovalRuleArray{ GetProjectApprovalRulesApprovalRuleArgs{...} }
+type GetProjectApprovalRulesApprovalRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectApprovalRulesApprovalRuleArrayOutput() GetProjectApprovalRulesApprovalRuleArrayOutput
+	ToGetProjectApprovalRulesApprovalRuleArrayOutputWithContext(context.Context) GetProjectApprovalRulesApprovalRuleArrayOutput
+}
+
+type GetProjectApprovalRulesApprovalRuleArray []GetProjectApprovalRulesApprovalRuleInput
+
+func (GetProjectApprovalRulesApprovalRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (i GetProjectApprovalRulesApprovalRuleArray) ToGetProjectApprovalRulesApprovalRuleArrayOutput() GetProjectApprovalRulesApprovalRuleArrayOutput {
+	return i.ToGetProjectApprovalRulesApprovalRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectApprovalRulesApprovalRuleArray) ToGetProjectApprovalRulesApprovalRuleArrayOutputWithContext(ctx context.Context) GetProjectApprovalRulesApprovalRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectApprovalRulesApprovalRuleArrayOutput)
+}
+
+type GetProjectApprovalRulesApprovalRuleOutput struct{ *pulumi.OutputState }
+
+func (GetProjectApprovalRulesApprovalRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (o GetProjectApprovalRulesApprovalRuleOutput) ToGetProjectApprovalRulesApprovalRuleOutput() GetProjectApprovalRulesApprovalRuleOutput {
+	return o
+}
+
+func (o GetProjectApprovalRulesApprovalRuleOutput) ToGetProjectApprovalRulesApprovalRuleOutputWithContext(ctx context.Context) GetProjectApprovalRulesApprovalRuleOutput {
+	return o
+}
+
+// If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+func (o GetProjectApprovalRulesApprovalRuleOutput) AppliesToAllProtectedBranches() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) bool { return v.AppliesToAllProtectedBranches }).(pulumi.BoolOutput)
+}
+
+// The number of approvals required for this rule.
+func (o GetProjectApprovalRulesApprovalRuleOutput) ApprovalsRequired() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) int { return v.ApprovalsRequired }).(pulumi.IntOutput)
+}
+
+// List of all approver IDs that are eligible to approve this rule.
+func (o GetProjectApprovalRulesApprovalRuleOutput) EligibleApproverIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) []int { return v.EligibleApproverIds }).(pulumi.IntArrayOutput)
+}
+
+// List of group IDs that are eligible to approve this rule.
+func (o GetProjectApprovalRulesApprovalRuleOutput) GroupIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) []int { return v.GroupIds }).(pulumi.IntArrayOutput)
+}
+
+// The ID of the approval rule.
+func (o GetProjectApprovalRulesApprovalRuleOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the approval rule.
+func (o GetProjectApprovalRulesApprovalRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of protected branch IDs that this rule applies to.
+func (o GetProjectApprovalRulesApprovalRuleOutput) ProtectedBranchIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) []int { return v.ProtectedBranchIds }).(pulumi.IntArrayOutput)
+}
+
+// The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
+func (o GetProjectApprovalRulesApprovalRuleOutput) ReportType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) string { return v.ReportType }).(pulumi.StringOutput)
+}
+
+// The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
+func (o GetProjectApprovalRulesApprovalRuleOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// List of user IDs that are eligible to approve this rule.
+func (o GetProjectApprovalRulesApprovalRuleOutput) UserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetProjectApprovalRulesApprovalRule) []int { return v.UserIds }).(pulumi.IntArrayOutput)
+}
+
+type GetProjectApprovalRulesApprovalRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectApprovalRulesApprovalRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (o GetProjectApprovalRulesApprovalRuleArrayOutput) ToGetProjectApprovalRulesApprovalRuleArrayOutput() GetProjectApprovalRulesApprovalRuleArrayOutput {
+	return o
+}
+
+func (o GetProjectApprovalRulesApprovalRuleArrayOutput) ToGetProjectApprovalRulesApprovalRuleArrayOutputWithContext(ctx context.Context) GetProjectApprovalRulesApprovalRuleArrayOutput {
+	return o
+}
+
+func (o GetProjectApprovalRulesApprovalRuleArrayOutput) Index(i pulumi.IntInput) GetProjectApprovalRulesApprovalRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectApprovalRulesApprovalRule {
+		return vs[0].([]GetProjectApprovalRulesApprovalRule)[vs[1].(int)]
+	}).(GetProjectApprovalRulesApprovalRuleOutput)
+}
+
 type GetProjectBranchesBranch struct {
 	// Bool, true if you can push to the branch.
 	CanPush bool `pulumi:"canPush"`
@@ -10061,7 +10472,7 @@ type GetProjectHooksHook struct {
 	ReleasesEvents bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available in this datasource.
+	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
 	//
 	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 	Token string `pulumi:"token"`
@@ -10117,7 +10528,7 @@ type GetProjectHooksHookArgs struct {
 	ReleasesEvents pulumi.BoolInput `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents pulumi.BoolInput `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available in this datasource.
+	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
 	//
 	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 	Token pulumi.StringInput `pulumi:"token"`
@@ -10263,7 +10674,7 @@ func (o GetProjectHooksHookOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available in this datasource.
+// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
 //
 // Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 func (o GetProjectHooksHookOutput) Token() pulumi.StringOutput {
@@ -13229,9 +13640,9 @@ type GetProjectPushRule struct {
 	MemberCheck bool `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets bool `pulumi:"preventSecrets"`
-	// Reject commit when it’s not DCO certified.
+	// Reject commit when it's not DCO certified.
 	RejectNonDcoCommits bool `pulumi:"rejectNonDcoCommits"`
-	// Reject commit when it’s not signed through GPG.
+	// Reject commit when it's not signed through GPG.
 	RejectUnsignedCommits bool `pulumi:"rejectUnsignedCommits"`
 }
 
@@ -13269,9 +13680,9 @@ type GetProjectPushRuleArgs struct {
 	MemberCheck pulumi.BoolInput `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets pulumi.BoolInput `pulumi:"preventSecrets"`
-	// Reject commit when it’s not DCO certified.
+	// Reject commit when it's not DCO certified.
 	RejectNonDcoCommits pulumi.BoolInput `pulumi:"rejectNonDcoCommits"`
-	// Reject commit when it’s not signed through GPG.
+	// Reject commit when it's not signed through GPG.
 	RejectUnsignedCommits pulumi.BoolInput `pulumi:"rejectUnsignedCommits"`
 }
 
@@ -13381,12 +13792,12 @@ func (o GetProjectPushRuleOutput) PreventSecrets() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectPushRule) bool { return v.PreventSecrets }).(pulumi.BoolOutput)
 }
 
-// Reject commit when it’s not DCO certified.
+// Reject commit when it's not DCO certified.
 func (o GetProjectPushRuleOutput) RejectNonDcoCommits() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectPushRule) bool { return v.RejectNonDcoCommits }).(pulumi.BoolOutput)
 }
 
-// Reject commit when it’s not signed through GPG.
+// Reject commit when it's not signed through GPG.
 func (o GetProjectPushRuleOutput) RejectUnsignedCommits() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectPushRule) bool { return v.RejectUnsignedCommits }).(pulumi.BoolOutput)
 }
@@ -14433,7 +14844,9 @@ func (o GetProjectVariablesVariableArrayOutput) Index(i pulumi.IntInput) GetProj
 }
 
 type GetProjectsProject struct {
-	// Links for the project.
+	// Links for the project. Use `links` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `links` instead. To be removed in 19.0.
 	_links map[string]string `pulumi:"_links"`
 	// Whether allowMergeOnSkippedPipeline is enabled for the project.
 	AllowMergeOnSkippedPipeline bool `pulumi:"allowMergeOnSkippedPipeline"`
@@ -14537,6 +14950,8 @@ type GetProjectsProject struct {
 	LastActivityAt string `pulumi:"lastActivityAt"`
 	// Whether LFS (large file storage) is enabled for the project.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Links for the project.
+	Links map[string]string `pulumi:"links"`
 	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate string `pulumi:"mergeCommitTemplate"`
 	// Merge method for the project.
@@ -14604,6 +15019,8 @@ type GetProjectsProject struct {
 	RequirementsAccessLevel string `pulumi:"requirementsAccessLevel"`
 	// Whether resolveOutdatedDiffDiscussions is enabled for the project
 	ResolveOutdatedDiffDiscussions bool `pulumi:"resolveOutdatedDiffDiscussions"`
+	// The default resource group process mode for the project.
+	ResourceGroupDefaultProcessMode string `pulumi:"resourceGroupDefaultProcessMode"`
 	// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
 	RestrictUserDefinedVariables bool `pulumi:"restrictUserDefinedVariables"`
 	// The runners token for the project.
@@ -14654,7 +15071,9 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
-	// Links for the project.
+	// Links for the project. Use `links` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `links` instead. To be removed in 19.0.
 	_links pulumi.StringMapInput `pulumi:"_links"`
 	// Whether allowMergeOnSkippedPipeline is enabled for the project.
 	AllowMergeOnSkippedPipeline pulumi.BoolInput `pulumi:"allowMergeOnSkippedPipeline"`
@@ -14758,6 +15177,8 @@ type GetProjectsProjectArgs struct {
 	LastActivityAt pulumi.StringInput `pulumi:"lastActivityAt"`
 	// Whether LFS (large file storage) is enabled for the project.
 	LfsEnabled pulumi.BoolInput `pulumi:"lfsEnabled"`
+	// Links for the project.
+	Links pulumi.StringMapInput `pulumi:"links"`
 	// Template used to create merge commit message in merge requests.
 	MergeCommitTemplate pulumi.StringInput `pulumi:"mergeCommitTemplate"`
 	// Merge method for the project.
@@ -14825,6 +15246,8 @@ type GetProjectsProjectArgs struct {
 	RequirementsAccessLevel pulumi.StringInput `pulumi:"requirementsAccessLevel"`
 	// Whether resolveOutdatedDiffDiscussions is enabled for the project
 	ResolveOutdatedDiffDiscussions pulumi.BoolInput `pulumi:"resolveOutdatedDiffDiscussions"`
+	// The default resource group process mode for the project.
+	ResourceGroupDefaultProcessMode pulumi.StringInput `pulumi:"resourceGroupDefaultProcessMode"`
 	// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
 	RestrictUserDefinedVariables pulumi.BoolInput `pulumi:"restrictUserDefinedVariables"`
 	// The runners token for the project.
@@ -14914,7 +15337,9 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx cont
 	return o
 }
 
-// Links for the project.
+// Links for the project. Use `links` instead. To be removed in 19.0.
+//
+// Deprecated: Use `links` instead. To be removed in 19.0.
 func (o GetProjectsProjectOutput) _links() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProjectsProject) map[string]string { return v._links }).(pulumi.StringMapOutput)
 }
@@ -15176,6 +15601,11 @@ func (o GetProjectsProjectOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
+// Links for the project.
+func (o GetProjectsProjectOutput) Links() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectsProject) map[string]string { return v.Links }).(pulumi.StringMapOutput)
+}
+
 // Template used to create merge commit message in merge requests.
 func (o GetProjectsProjectOutput) MergeCommitTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeCommitTemplate }).(pulumi.StringOutput)
@@ -15343,6 +15773,11 @@ func (o GetProjectsProjectOutput) RequirementsAccessLevel() pulumi.StringOutput 
 // Whether resolveOutdatedDiffDiscussions is enabled for the project
 func (o GetProjectsProjectOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.ResolveOutdatedDiffDiscussions }).(pulumi.BoolOutput)
+}
+
+// The default resource group process mode for the project.
+func (o GetProjectsProjectOutput) ResourceGroupDefaultProcessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ResourceGroupDefaultProcessMode }).(pulumi.StringOutput)
 }
 
 // Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
@@ -16828,9 +17263,9 @@ func (o GetReleaseLinksReleaseLinkArrayOutput) Index(i pulumi.IntInput) GetRelea
 }
 
 type GetRepositoryTreeTree struct {
-	// The project ID.
+	// The project ID. Use `nodeId` instead. To be removed in 19.0.
 	//
-	// Deprecated: Use `nodeId` instead. To be removed in version 19.0.
+	// Deprecated: Use `nodeId` instead. To be removed in 19.0.
 	Id string `pulumi:"id"`
 	// Unix access mode of the file in the repository.
 	Mode string `pulumi:"mode"`
@@ -16856,9 +17291,9 @@ type GetRepositoryTreeTreeInput interface {
 }
 
 type GetRepositoryTreeTreeArgs struct {
-	// The project ID.
+	// The project ID. Use `nodeId` instead. To be removed in 19.0.
 	//
-	// Deprecated: Use `nodeId` instead. To be removed in version 19.0.
+	// Deprecated: Use `nodeId` instead. To be removed in 19.0.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Unix access mode of the file in the repository.
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -16923,9 +17358,9 @@ func (o GetRepositoryTreeTreeOutput) ToGetRepositoryTreeTreeOutputWithContext(ct
 	return o
 }
 
-// The project ID.
+// The project ID. Use `nodeId` instead. To be removed in 19.0.
 //
-// Deprecated: Use `nodeId` instead. To be removed in version 19.0.
+// Deprecated: Use `nodeId` instead. To be removed in 19.0.
 func (o GetRepositoryTreeTreeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryTreeTree) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -17637,6 +18072,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountTimeoutsInput)(nil)).Elem(), GroupServiceAccountTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountTimeoutsPtrInput)(nil)).Elem(), GroupServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServiceAccountTimeoutsInput)(nil)).Elem(), InstanceServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServiceAccountTimeoutsPtrInput)(nil)).Elem(), InstanceServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
@@ -17717,6 +18154,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSchedulesPipelineScheduleOwnerInput)(nil)).Elem(), GetPipelineSchedulesPipelineScheduleOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectAccessTokensAccessTokenInput)(nil)).Elem(), GetProjectAccessTokensAccessTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectAccessTokensAccessTokenArrayInput)(nil)).Elem(), GetProjectAccessTokensAccessTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectApprovalRulesApprovalRuleInput)(nil)).Elem(), GetProjectApprovalRulesApprovalRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectApprovalRulesApprovalRuleArrayInput)(nil)).Elem(), GetProjectApprovalRulesApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchInput)(nil)).Elem(), GetProjectBranchesBranchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchArrayInput)(nil)).Elem(), GetProjectBranchesBranchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBranchesBranchCommitInput)(nil)).Elem(), GetProjectBranchesBranchCommitArgs{})
@@ -17837,6 +18276,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GroupServiceAccountTimeoutsOutput{})
+	pulumi.RegisterOutputType(GroupServiceAccountTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceServiceAccountTimeoutsOutput{})
 	pulumi.RegisterOutputType(InstanceServiceAccountTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationOutput{})
@@ -17917,6 +18358,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineSchedulesPipelineScheduleOwnerOutput{})
 	pulumi.RegisterOutputType(GetProjectAccessTokensAccessTokenOutput{})
 	pulumi.RegisterOutputType(GetProjectAccessTokensAccessTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectApprovalRulesApprovalRuleOutput{})
+	pulumi.RegisterOutputType(GetProjectApprovalRulesApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectBranchesBranchCommitOutput{})

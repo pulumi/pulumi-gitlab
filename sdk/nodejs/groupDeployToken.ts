@@ -125,6 +125,10 @@ export class GroupDeployToken extends pulumi.CustomResource {
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
     declare public readonly username: pulumi.Output<string>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
     /**
      * Create a GroupDeployToken resource with the given unique name, arguments, and options.
@@ -147,6 +151,7 @@ export class GroupDeployToken extends pulumi.CustomResource {
             resourceInputs["scopes"] = state?.scopes;
             resourceInputs["token"] = state?.token;
             resourceInputs["username"] = state?.username;
+            resourceInputs["validatePastExpirationDate"] = state?.validatePastExpirationDate;
         } else {
             const args = argsOrState as GroupDeployTokenArgs | undefined;
             if (args?.group === undefined && !opts.urn) {
@@ -160,6 +165,7 @@ export class GroupDeployToken extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["scopes"] = args?.scopes;
             resourceInputs["username"] = args?.username;
+            resourceInputs["validatePastExpirationDate"] = args?.validatePastExpirationDate;
             resourceInputs["expired"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
@@ -207,6 +213,10 @@ export interface GroupDeployTokenState {
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
     username?: pulumi.Input<string>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }
 
 /**
@@ -233,4 +243,8 @@ export interface GroupDeployTokenArgs {
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
     username?: pulumi.Input<string>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }

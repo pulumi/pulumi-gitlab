@@ -76,7 +76,7 @@ type LookupGroupHookResult struct {
 	SubgroupEvents bool `pulumi:"subgroupEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available in this datasource.
+	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	//
 	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	Token string `pulumi:"token"`
@@ -222,7 +222,7 @@ func (o LookupGroupHookResultOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available in this datasource.
+// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 //
 // Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 func (o LookupGroupHookResultOutput) Token() pulumi.StringOutput {

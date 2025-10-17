@@ -108,6 +108,7 @@ class ProjectArgs:
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -130,10 +131,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
-               This field **does not** work well in combination with the `ProjectApprovalRule` resource
-               and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-               In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
@@ -159,7 +157,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project.
+        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
@@ -176,7 +174,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
@@ -184,7 +182,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
@@ -203,7 +201,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[_builtins.str] path: The path of the repository.
         :param pulumi.Input[_builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
-        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[_builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
@@ -217,7 +215,8 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
-        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
@@ -225,11 +224,11 @@ class ProjectArgs:
                There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[_builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
         :param pulumi.Input[_builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[_builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
@@ -237,7 +236,7 @@ class ProjectArgs:
                	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project.
+        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         if allow_merge_on_skipped_pipeline is not None:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
@@ -245,6 +244,9 @@ class ProjectArgs:
             pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         if analytics_access_level is not None:
             pulumi.set(__self__, "analytics_access_level", analytics_access_level)
+        if approvals_before_merge is not None:
+            warnings.warn("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""approvals_before_merge is deprecated: Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
         if approvals_before_merge is not None:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archive_on_destroy is not None:
@@ -298,8 +300,8 @@ class ProjectArgs:
         if container_registry_access_level is not None:
             pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         if container_registry_enabled is not None:
-            warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
-            pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
+            warnings.warn("""Use `container_registry_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead. To be removed in 19.0.""")
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -335,6 +337,9 @@ class ProjectArgs:
         if issues_access_level is not None:
             pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_enabled is not None:
+            warnings.warn("""Use `issues_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""issues_enabled is deprecated: Use `issues_access_level` instead. To be removed in 19.0.""")
+        if issues_enabled is not None:
             pulumi.set(__self__, "issues_enabled", issues_enabled)
         if issues_template is not None:
             pulumi.set(__self__, "issues_template", issues_template)
@@ -350,6 +355,9 @@ class ProjectArgs:
             pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_access_level is not None:
             pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
+        if merge_requests_enabled is not None:
+            warnings.warn("""Use `merge_requests_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""merge_requests_enabled is deprecated: Use `merge_requests_access_level` instead. To be removed in 19.0.""")
         if merge_requests_enabled is not None:
             pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
         if merge_requests_template is not None:
@@ -389,8 +397,8 @@ class ProjectArgs:
         if permanently_delete_on_destroy is not None:
             pulumi.set(__self__, "permanently_delete_on_destroy", permanently_delete_on_destroy)
         if pipelines_enabled is not None:
-            warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
-            pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
+            warnings.warn("""Use `builds_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""pipelines_enabled is deprecated: Use `builds_access_level` instead. To be removed in 19.0.""")
         if pipelines_enabled is not None:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if pre_receive_secret_detection_enabled is not None:
@@ -422,6 +430,11 @@ class ProjectArgs:
             pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         if resolve_outdated_diff_discussions is not None:
             pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+        if resource_group_default_process_mode is not None:
+            pulumi.set(__self__, "resource_group_default_process_mode", resource_group_default_process_mode)
+        if restrict_user_defined_variables is not None:
+            warnings.warn("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""restrict_user_defined_variables is deprecated: Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
         if restrict_user_defined_variables is not None:
             pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         if security_and_compliance_access_level is not None:
@@ -433,6 +446,9 @@ class ProjectArgs:
         if snippets_access_level is not None:
             pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled is not None:
+            warnings.warn("""Use `snippets_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""snippets_enabled is deprecated: Use `snippets_access_level` instead. To be removed in 19.0.""")
+        if snippets_enabled is not None:
             pulumi.set(__self__, "snippets_enabled", snippets_enabled)
         if squash_commit_template is not None:
             pulumi.set(__self__, "squash_commit_template", squash_commit_template)
@@ -440,6 +456,9 @@ class ProjectArgs:
             pulumi.set(__self__, "squash_option", squash_option)
         if suggestion_commit_message is not None:
             pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
+        if tags is not None:
+            warnings.warn("""Use `topics` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""tags is deprecated: Use `topics` instead. To be removed in 19.0.""")
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template_name is not None:
@@ -454,6 +473,9 @@ class ProjectArgs:
             pulumi.set(__self__, "visibility_level", visibility_level)
         if wiki_access_level is not None:
             pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+        if wiki_enabled is not None:
+            warnings.warn("""Use `wiki_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""wiki_enabled is deprecated: Use `wiki_access_level` instead. To be removed in 19.0.""")
         if wiki_enabled is not None:
             pulumi.set(__self__, "wiki_enabled", wiki_enabled)
 
@@ -495,12 +517,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalsBeforeMerge")
+    @_utilities.deprecated("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
     def approvals_before_merge(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of merge request approvals required for merging. Default is 0.
-        This field **does not** work well in combination with the `ProjectApprovalRule` resource
-        and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-        In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -810,10 +830,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryEnabled")
-    @_utilities.deprecated("""Use `container_registry_access_level` instead.""")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead. To be removed in 19.0.""")
     def container_registry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable container registry for the project.
+        Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "container_registry_enabled")
 
@@ -1015,9 +1035,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
+    @_utilities.deprecated("""Use `issues_access_level` instead. To be removed in 19.0.""")
     def issues_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable issue tracking for the project.
+        Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "issues_enabled")
 
@@ -1111,9 +1132,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
+    @_utilities.deprecated("""Use `merge_requests_access_level` instead. To be removed in 19.0.""")
     def merge_requests_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable merge requests for the project.
+        Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "merge_requests_enabled")
 
@@ -1339,10 +1361,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="pipelinesEnabled")
-    @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
+    @_utilities.deprecated("""Use `builds_access_level` instead. To be removed in 19.0.""")
     def pipelines_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -1508,10 +1530,23 @@ class ProjectArgs:
         pulumi.set(self, "resolve_outdated_diff_discussions", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupDefaultProcessMode")
+    def resource_group_default_process_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default resource group process mode for the project.
+        """
+        return pulumi.get(self, "resource_group_default_process_mode")
+
+    @resource_group_default_process_mode.setter
+    def resource_group_default_process_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_default_process_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
+    @_utilities.deprecated("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
     def restrict_user_defined_variables(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
 
@@ -1572,9 +1607,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
+    @_utilities.deprecated("""Use `snippets_access_level` instead. To be removed in 19.0.""")
     def snippets_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable snippets for the project.
+        Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "snippets_enabled")
 
@@ -1620,9 +1656,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `topics` instead. To be removed in 19.0.""")
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "tags")
 
@@ -1705,9 +1742,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
+    @_utilities.deprecated("""Use `wiki_access_level` instead. To be removed in 19.0.""")
     def wiki_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable wiki for the project.
+        Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "wiki_enabled")
 
@@ -1810,6 +1848,7 @@ class _ProjectState:
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
                  runners_token: Optional[pulumi.Input[_builtins.str]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1835,10 +1874,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
-               This field **does not** work well in combination with the `ProjectApprovalRule` resource
-               and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-               In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
@@ -1865,7 +1901,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input['ProjectContainerExpirationPolicyArgs'] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project.
+        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
@@ -1884,7 +1920,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
@@ -1892,7 +1928,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
@@ -1912,7 +1948,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] path: The path of the repository.
         :param pulumi.Input[_builtins.str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[_builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
-        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[_builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
@@ -1926,7 +1962,8 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
-        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
@@ -1935,12 +1972,12 @@ class _ProjectState:
                There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[_builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
         :param pulumi.Input[_builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[_builtins.str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[_builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
@@ -1949,7 +1986,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project.
+        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         if allow_merge_on_skipped_pipeline is not None:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
@@ -1957,6 +1994,9 @@ class _ProjectState:
             pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         if analytics_access_level is not None:
             pulumi.set(__self__, "analytics_access_level", analytics_access_level)
+        if approvals_before_merge is not None:
+            warnings.warn("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""approvals_before_merge is deprecated: Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
         if approvals_before_merge is not None:
             pulumi.set(__self__, "approvals_before_merge", approvals_before_merge)
         if archive_on_destroy is not None:
@@ -2012,8 +2052,8 @@ class _ProjectState:
         if container_registry_access_level is not None:
             pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         if container_registry_enabled is not None:
-            warnings.warn("""Use `container_registry_access_level` instead.""", DeprecationWarning)
-            pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead.""")
+            warnings.warn("""Use `container_registry_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""container_registry_enabled is deprecated: Use `container_registry_access_level` instead. To be removed in 19.0.""")
         if container_registry_enabled is not None:
             pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
         if default_branch is not None:
@@ -2053,6 +2093,9 @@ class _ProjectState:
         if issues_access_level is not None:
             pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_enabled is not None:
+            warnings.warn("""Use `issues_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""issues_enabled is deprecated: Use `issues_access_level` instead. To be removed in 19.0.""")
+        if issues_enabled is not None:
             pulumi.set(__self__, "issues_enabled", issues_enabled)
         if issues_template is not None:
             pulumi.set(__self__, "issues_template", issues_template)
@@ -2068,6 +2111,9 @@ class _ProjectState:
             pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
         if merge_requests_access_level is not None:
             pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
+        if merge_requests_enabled is not None:
+            warnings.warn("""Use `merge_requests_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""merge_requests_enabled is deprecated: Use `merge_requests_access_level` instead. To be removed in 19.0.""")
         if merge_requests_enabled is not None:
             pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
         if merge_requests_template is not None:
@@ -2109,8 +2155,8 @@ class _ProjectState:
         if permanently_delete_on_destroy is not None:
             pulumi.set(__self__, "permanently_delete_on_destroy", permanently_delete_on_destroy)
         if pipelines_enabled is not None:
-            warnings.warn("""Deprecated in favor of `builds_access_level`""", DeprecationWarning)
-            pulumi.log.warn("""pipelines_enabled is deprecated: Deprecated in favor of `builds_access_level`""")
+            warnings.warn("""Use `builds_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""pipelines_enabled is deprecated: Use `builds_access_level` instead. To be removed in 19.0.""")
         if pipelines_enabled is not None:
             pulumi.set(__self__, "pipelines_enabled", pipelines_enabled)
         if pre_receive_secret_detection_enabled is not None:
@@ -2142,6 +2188,11 @@ class _ProjectState:
             pulumi.set(__self__, "requirements_access_level", requirements_access_level)
         if resolve_outdated_diff_discussions is not None:
             pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
+        if resource_group_default_process_mode is not None:
+            pulumi.set(__self__, "resource_group_default_process_mode", resource_group_default_process_mode)
+        if restrict_user_defined_variables is not None:
+            warnings.warn("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""restrict_user_defined_variables is deprecated: Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
         if restrict_user_defined_variables is not None:
             pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
         if runners_token is not None:
@@ -2155,6 +2206,9 @@ class _ProjectState:
         if snippets_access_level is not None:
             pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         if snippets_enabled is not None:
+            warnings.warn("""Use `snippets_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""snippets_enabled is deprecated: Use `snippets_access_level` instead. To be removed in 19.0.""")
+        if snippets_enabled is not None:
             pulumi.set(__self__, "snippets_enabled", snippets_enabled)
         if squash_commit_template is not None:
             pulumi.set(__self__, "squash_commit_template", squash_commit_template)
@@ -2164,6 +2218,9 @@ class _ProjectState:
             pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
         if suggestion_commit_message is not None:
             pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
+        if tags is not None:
+            warnings.warn("""Use `topics` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""tags is deprecated: Use `topics` instead. To be removed in 19.0.""")
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template_name is not None:
@@ -2180,6 +2237,9 @@ class _ProjectState:
             pulumi.set(__self__, "web_url", web_url)
         if wiki_access_level is not None:
             pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+        if wiki_enabled is not None:
+            warnings.warn("""Use `wiki_access_level` instead. To be removed in 19.0.""", DeprecationWarning)
+            pulumi.log.warn("""wiki_enabled is deprecated: Use `wiki_access_level` instead. To be removed in 19.0.""")
         if wiki_enabled is not None:
             pulumi.set(__self__, "wiki_enabled", wiki_enabled)
 
@@ -2221,12 +2281,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="approvalsBeforeMerge")
+    @_utilities.deprecated("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
     def approvals_before_merge(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of merge request approvals required for merging. Default is 0.
-        This field **does not** work well in combination with the `ProjectApprovalRule` resource
-        and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-        In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -2548,10 +2606,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryEnabled")
-    @_utilities.deprecated("""Use `container_registry_access_level` instead.""")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead. To be removed in 19.0.""")
     def container_registry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable container registry for the project.
+        Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "container_registry_enabled")
 
@@ -2777,9 +2835,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
+    @_utilities.deprecated("""Use `issues_access_level` instead. To be removed in 19.0.""")
     def issues_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable issue tracking for the project.
+        Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "issues_enabled")
 
@@ -2873,9 +2932,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
+    @_utilities.deprecated("""Use `merge_requests_access_level` instead. To be removed in 19.0.""")
     def merge_requests_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable merge requests for the project.
+        Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "merge_requests_enabled")
 
@@ -3113,10 +3173,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="pipelinesEnabled")
-    @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
+    @_utilities.deprecated("""Use `builds_access_level` instead. To be removed in 19.0.""")
     def pipelines_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -3282,10 +3342,23 @@ class _ProjectState:
         pulumi.set(self, "resolve_outdated_diff_discussions", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupDefaultProcessMode")
+    def resource_group_default_process_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default resource group process mode for the project.
+        """
+        return pulumi.get(self, "resource_group_default_process_mode")
+
+    @resource_group_default_process_mode.setter
+    def resource_group_default_process_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_default_process_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
+    @_utilities.deprecated("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
     def restrict_user_defined_variables(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
 
@@ -3358,9 +3431,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
+    @_utilities.deprecated("""Use `snippets_access_level` instead. To be removed in 19.0.""")
     def snippets_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable snippets for the project.
+        Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "snippets_enabled")
 
@@ -3418,9 +3492,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `topics` instead. To be removed in 19.0.""")
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "tags")
 
@@ -3515,9 +3590,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
+    @_utilities.deprecated("""Use `wiki_access_level` instead. To be removed in 19.0.""")
     def wiki_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable wiki for the project.
+        Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "wiki_enabled")
 
@@ -3619,6 +3695,7 @@ class Project(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -3675,10 +3752,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
-               This field **does not** work well in combination with the `ProjectApprovalRule` resource
-               and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-               In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
@@ -3704,7 +3778,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project.
+        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
@@ -3721,7 +3795,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
@@ -3729,7 +3803,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
@@ -3748,7 +3822,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[_builtins.str] path: The path of the repository.
         :param pulumi.Input[_builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
-        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[_builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
@@ -3762,7 +3836,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
-        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
@@ -3770,11 +3845,11 @@ class Project(pulumi.CustomResource):
                There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[_builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
         :param pulumi.Input[_builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[_builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
@@ -3782,7 +3857,7 @@ class Project(pulumi.CustomResource):
                	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project.
+        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         ...
     @overload
@@ -3925,6 +4000,7 @@ class Project(pulumi.CustomResource):
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -4038,6 +4114,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["request_access_enabled"] = request_access_enabled
             __props__.__dict__["requirements_access_level"] = requirements_access_level
             __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
+            __props__.__dict__["resource_group_default_process_mode"] = resource_group_default_process_mode
             __props__.__dict__["restrict_user_defined_variables"] = restrict_user_defined_variables
             __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
@@ -4165,6 +4242,7 @@ class Project(pulumi.CustomResource):
             request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
             resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
+            resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
             restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
             runners_token: Optional[pulumi.Input[_builtins.str]] = None,
             security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4195,10 +4273,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0.
-               This field **does not** work well in combination with the `ProjectApprovalRule` resource
-               and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-               In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
@@ -4225,7 +4300,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ci_separated_caches: Use separate caches for protected branches.
         :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project.
+        :param pulumi.Input[_builtins.bool] container_registry_enabled: Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
@@ -4244,7 +4319,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project.
+        :param pulumi.Input[_builtins.bool] issues_enabled: Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
@@ -4252,7 +4327,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project.
+        :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
@@ -4272,7 +4347,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] path: The path of the repository.
         :param pulumi.Input[_builtins.str] path_with_namespace: The path of the repository with namespace.
         :param pulumi.Input[_builtins.bool] permanently_delete_on_destroy: Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
-        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        :param pulumi.Input[_builtins.bool] pipelines_enabled: Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] pre_receive_secret_detection_enabled: Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         :param pulumi.Input[_builtins.bool] prevent_merge_without_jira_issue: Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line
@@ -4286,7 +4361,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
-        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.bool] restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
@@ -4295,12 +4371,12 @@ class Project(pulumi.CustomResource):
                There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
                This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
         :param pulumi.Input[_builtins.str] snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project.
+        :param pulumi.Input[_builtins.bool] snippets_enabled: Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] squash_commit_template: Template used to create squash commit message in merge requests.
         :param pulumi.Input[_builtins.str] squash_option: Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         :param pulumi.Input[_builtins.str] ssh_url_to_repo: URL that can be provided to `git clone` to clone the
         :param pulumi.Input[_builtins.str] suggestion_commit_message: The commit message used to apply merge request suggestions.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] template_name: When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
@@ -4309,7 +4385,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
-        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project.
+        :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -4406,6 +4482,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["request_access_enabled"] = request_access_enabled
         __props__.__dict__["requirements_access_level"] = requirements_access_level
         __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
+        __props__.__dict__["resource_group_default_process_mode"] = resource_group_default_process_mode
         __props__.__dict__["restrict_user_defined_variables"] = restrict_user_defined_variables
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
@@ -4454,12 +4531,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="approvalsBeforeMerge")
+    @_utilities.deprecated("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
     def approvals_before_merge(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Number of merge request approvals required for merging. Default is 0.
-        This field **does not** work well in combination with the `ProjectApprovalRule` resource
-        and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-        In the meantime we recommend against using this attribute and use `ProjectApprovalRule` instead.
+        Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -4673,10 +4748,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryEnabled")
-    @_utilities.deprecated("""Use `container_registry_access_level` instead.""")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead. To be removed in 19.0.""")
     def container_registry_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable container registry for the project.
+        Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "container_registry_enabled")
 
@@ -4826,9 +4901,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
+    @_utilities.deprecated("""Use `issues_access_level` instead. To be removed in 19.0.""")
     def issues_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable issue tracking for the project.
+        Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "issues_enabled")
 
@@ -4890,9 +4966,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
+    @_utilities.deprecated("""Use `merge_requests_access_level` instead. To be removed in 19.0.""")
     def merge_requests_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable merge requests for the project.
+        Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "merge_requests_enabled")
 
@@ -5050,10 +5127,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pipelinesEnabled")
-    @_utilities.deprecated("""Deprecated in favor of `builds_access_level`""")
+    @_utilities.deprecated("""Use `builds_access_level` instead. To be removed in 19.0.""")
     def pipelines_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls.
+        Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "pipelines_enabled")
 
@@ -5163,10 +5240,19 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "resolve_outdated_diff_discussions")
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupDefaultProcessMode")
+    def resource_group_default_process_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The default resource group process mode for the project.
+        """
+        return pulumi.get(self, "resource_group_default_process_mode")
+
+    @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
+    @_utilities.deprecated("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
     def restrict_user_defined_variables(self) -> pulumi.Output[_builtins.bool]:
         """
-        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+        Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
 
@@ -5215,9 +5301,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
+    @_utilities.deprecated("""Use `snippets_access_level` instead. To be removed in 19.0.""")
     def snippets_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable snippets for the project.
+        Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "snippets_enabled")
 
@@ -5255,9 +5342,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `topics` instead. To be removed in 19.0.""")
     def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+        The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "tags")
 
@@ -5320,9 +5408,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
+    @_utilities.deprecated("""Use `wiki_access_level` instead. To be removed in 19.0.""")
     def wiki_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable wiki for the project.
+        Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "wiki_enabled")
 

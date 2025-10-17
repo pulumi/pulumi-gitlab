@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectMembershipArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full path of the project.
+        /// The full path of the project. Use `Project` instead. Will be removed in 19.0.
         /// </summary>
         [Input("fullPath")]
         public string? FullPath { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
         public string? Project { get; set; }
 
         /// <summary>
-        /// The ID of the project.
+        /// The ID of the project. Use `Project` instead. Will be removed in 19.0.
         /// </summary>
         [Input("projectId")]
         public int? ProjectId { get; set; }
@@ -90,7 +90,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectMembershipInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full path of the project.
+        /// The full path of the project. Use `Project` instead. Will be removed in 19.0.
         /// </summary>
         [Input("fullPath")]
         public Input<string>? FullPath { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ID of the project.
+        /// The ID of the project. Use `Project` instead. Will be removed in 19.0.
         /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectMembershipResult
     {
         /// <summary>
-        /// The full path of the project.
+        /// The full path of the project. Use `Project` instead. Will be removed in 19.0.
         /// </summary>
         public readonly string FullPath;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The ID of the project.
+        /// The ID of the project. Use `Project` instead. Will be removed in 19.0.
         /// </summary>
         public readonly int ProjectId;
         /// <summary>

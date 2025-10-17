@@ -169,6 +169,21 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private PersonalAccessTokenState() {}
 
     private PersonalAccessTokenState(PersonalAccessTokenState $) {
@@ -182,6 +197,7 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -420,6 +436,27 @@ public final class PersonalAccessTokenState extends com.pulumi.resources.Resourc
          */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public PersonalAccessTokenState build() {

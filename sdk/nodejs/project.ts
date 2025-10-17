@@ -80,10 +80,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly analyticsAccessLevel: pulumi.Output<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+     *
+     * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      */
     declare public readonly approvalsBeforeMerge: pulumi.Output<number | undefined>;
     /**
@@ -191,9 +190,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly containerRegistryAccessLevel: pulumi.Output<string>;
     /**
-     * Enable container registry for the project.
+     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      *
-     * @deprecated Use `containerRegistryAccessLevel` instead.
+     * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      */
     declare public readonly containerRegistryEnabled: pulumi.Output<boolean>;
     /**
@@ -269,7 +268,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly issuesAccessLevel: pulumi.Output<string>;
     /**
-     * Enable issue tracking for the project.
+     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
      */
     declare public readonly issuesEnabled: pulumi.Output<boolean>;
     /**
@@ -301,7 +302,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly mergeRequestsAccessLevel: pulumi.Output<string>;
     /**
-     * Enable merge requests for the project.
+     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      */
     declare public readonly mergeRequestsEnabled: pulumi.Output<boolean>;
     /**
@@ -381,9 +384,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly permanentlyDeleteOnDestroy: pulumi.Output<boolean | undefined>;
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      *
-     * @deprecated Deprecated in favor of `buildsAccessLevel`
+     * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
      */
     declare public readonly pipelinesEnabled: pulumi.Output<boolean>;
     /**
@@ -441,7 +444,13 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly resolveOutdatedDiffDiscussions: pulumi.Output<boolean | undefined>;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * The default resource group process mode for the project.
+     */
+    declare public readonly resourceGroupDefaultProcessMode: pulumi.Output<string>;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      */
     declare public readonly restrictUserDefinedVariables: pulumi.Output<boolean>;
     /**
@@ -468,7 +477,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly snippetsAccessLevel: pulumi.Output<string>;
     /**
-     * Enable snippets for the project.
+     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
      */
     declare public readonly snippetsEnabled: pulumi.Output<boolean>;
     /**
@@ -488,7 +499,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly suggestionCommitMessage: pulumi.Output<string | undefined>;
     /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `topics` instead. To be removed in 19.0.
      */
     declare public readonly tags: pulumi.Output<string[]>;
     /**
@@ -521,7 +534,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly wikiAccessLevel: pulumi.Output<string>;
     /**
-     * Enable wiki for the project.
+     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
      */
     declare public readonly wikiEnabled: pulumi.Output<boolean>;
 
@@ -629,6 +644,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["requestAccessEnabled"] = state?.requestAccessEnabled;
             resourceInputs["requirementsAccessLevel"] = state?.requirementsAccessLevel;
             resourceInputs["resolveOutdatedDiffDiscussions"] = state?.resolveOutdatedDiffDiscussions;
+            resourceInputs["resourceGroupDefaultProcessMode"] = state?.resourceGroupDefaultProcessMode;
             resourceInputs["restrictUserDefinedVariables"] = state?.restrictUserDefinedVariables;
             resourceInputs["runnersToken"] = state?.runnersToken;
             resourceInputs["securityAndComplianceAccessLevel"] = state?.securityAndComplianceAccessLevel;
@@ -738,6 +754,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["requestAccessEnabled"] = args?.requestAccessEnabled;
             resourceInputs["requirementsAccessLevel"] = args?.requirementsAccessLevel;
             resourceInputs["resolveOutdatedDiffDiscussions"] = args?.resolveOutdatedDiffDiscussions;
+            resourceInputs["resourceGroupDefaultProcessMode"] = args?.resourceGroupDefaultProcessMode;
             resourceInputs["restrictUserDefinedVariables"] = args?.restrictUserDefinedVariables;
             resourceInputs["securityAndComplianceAccessLevel"] = args?.securityAndComplianceAccessLevel;
             resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
@@ -787,10 +804,9 @@ export interface ProjectState {
      */
     analyticsAccessLevel?: pulumi.Input<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+     *
+     * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      */
     approvalsBeforeMerge?: pulumi.Input<number>;
     /**
@@ -898,9 +914,9 @@ export interface ProjectState {
      */
     containerRegistryAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable container registry for the project.
+     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      *
-     * @deprecated Use `containerRegistryAccessLevel` instead.
+     * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
@@ -976,7 +992,9 @@ export interface ProjectState {
      */
     issuesAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable issue tracking for the project.
+     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
      */
     issuesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1008,7 +1026,9 @@ export interface ProjectState {
      */
     mergeRequestsAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable merge requests for the project.
+     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      */
     mergeRequestsEnabled?: pulumi.Input<boolean>;
     /**
@@ -1088,9 +1108,9 @@ export interface ProjectState {
      */
     permanentlyDeleteOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      *
-     * @deprecated Deprecated in favor of `buildsAccessLevel`
+     * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1148,7 +1168,13 @@ export interface ProjectState {
      */
     resolveOutdatedDiffDiscussions?: pulumi.Input<boolean>;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * The default resource group process mode for the project.
+     */
+    resourceGroupDefaultProcessMode?: pulumi.Input<string>;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      */
     restrictUserDefinedVariables?: pulumi.Input<boolean>;
     /**
@@ -1175,7 +1201,9 @@ export interface ProjectState {
      */
     snippetsAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable snippets for the project.
+     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
@@ -1195,7 +1223,9 @@ export interface ProjectState {
      */
     suggestionCommitMessage?: pulumi.Input<string>;
     /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `topics` instead. To be removed in 19.0.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1228,7 +1258,9 @@ export interface ProjectState {
      */
     wikiAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable wiki for the project.
+     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
      */
     wikiEnabled?: pulumi.Input<boolean>;
 }
@@ -1250,10 +1282,9 @@ export interface ProjectArgs {
      */
     analyticsAccessLevel?: pulumi.Input<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+     *
+     * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      */
     approvalsBeforeMerge?: pulumi.Input<number>;
     /**
@@ -1357,9 +1388,9 @@ export interface ProjectArgs {
      */
     containerRegistryAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable container registry for the project.
+     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      *
-     * @deprecated Use `containerRegistryAccessLevel` instead.
+     * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      */
     containerRegistryEnabled?: pulumi.Input<boolean>;
     /**
@@ -1427,7 +1458,9 @@ export interface ProjectArgs {
      */
     issuesAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable issue tracking for the project.
+     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
      */
     issuesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1459,7 +1492,9 @@ export interface ProjectArgs {
      */
     mergeRequestsAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable merge requests for the project.
+     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      */
     mergeRequestsEnabled?: pulumi.Input<boolean>;
     /**
@@ -1535,9 +1570,9 @@ export interface ProjectArgs {
      */
     permanentlyDeleteOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      *
-     * @deprecated Deprecated in favor of `buildsAccessLevel`
+     * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
      */
     pipelinesEnabled?: pulumi.Input<boolean>;
     /**
@@ -1595,7 +1630,13 @@ export interface ProjectArgs {
      */
     resolveOutdatedDiffDiscussions?: pulumi.Input<boolean>;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * The default resource group process mode for the project.
+     */
+    resourceGroupDefaultProcessMode?: pulumi.Input<string>;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      */
     restrictUserDefinedVariables?: pulumi.Input<boolean>;
     /**
@@ -1618,7 +1659,9 @@ export interface ProjectArgs {
      */
     snippetsAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable snippets for the project.
+     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
      */
     snippetsEnabled?: pulumi.Input<boolean>;
     /**
@@ -1634,7 +1677,9 @@ export interface ProjectArgs {
      */
     suggestionCommitMessage?: pulumi.Input<string>;
     /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `topics` instead. To be removed in 19.0.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1663,7 +1708,9 @@ export interface ProjectArgs {
      */
     wikiAccessLevel?: pulumi.Input<string>;
     /**
-     * Enable wiki for the project.
+     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
      */
     wikiEnabled?: pulumi.Input<boolean>;
 }

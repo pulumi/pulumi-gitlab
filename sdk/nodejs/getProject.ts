@@ -182,7 +182,9 @@ export interface GetProjectResult {
      */
     readonly issuesAccessLevel: string;
     /**
-     * Enable issue tracking for the project.
+     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+     *
+     * @deprecated Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
      */
     readonly issuesEnabled: boolean;
     /**
@@ -206,7 +208,9 @@ export interface GetProjectResult {
      */
     readonly mergeRequestsAccessLevel: string;
     /**
-     * Enable merge requests for the project.
+     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+     *
+     * @deprecated Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
      */
     readonly mergeRequestsEnabled: boolean;
     /**
@@ -242,7 +246,9 @@ export interface GetProjectResult {
      */
     readonly pathWithNamespace: string;
     /**
-     * Enable pipelines for the project.
+     * Enable pipelines for the project. Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
+     *
+     * @deprecated Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
      */
     readonly pipelinesEnabled: boolean;
     /**
@@ -290,7 +296,9 @@ export interface GetProjectResult {
      */
     readonly resolveOutdatedDiffDiscussions: boolean;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+     *
+     * @deprecated Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
      */
     readonly restrictUserDefinedVariables: boolean;
     /**
@@ -310,7 +318,9 @@ export interface GetProjectResult {
      */
     readonly snippetsAccessLevel: string;
     /**
-     * Enable snippets for the project.
+     * Enable snippets for the project. Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+     *
+     * @deprecated Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
      */
     readonly snippetsEnabled: boolean;
     /**
@@ -342,7 +352,9 @@ export interface GetProjectResult {
      */
     readonly wikiAccessLevel: string;
     /**
-     * Enable wiki for the project.
+     * Enable wiki for the project. Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+     *
+     * @deprecated Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
      */
     readonly wikiEnabled: boolean;
 }

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationHarbor` resource manages the lifecycle of a project integration with Harbor.
  * 
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationHarbor`instead.
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#harbor)
  * 
  * ## Example Usage

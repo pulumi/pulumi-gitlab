@@ -81,10 +81,10 @@ namespace Pulumi.GitLab
         public Output<int> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         /// </summary>
         [Output("memberRoleId")]
-        public Output<int> MemberRoleId { get; private set; } = null!;
+        public Output<int?> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
@@ -169,7 +169,7 @@ namespace Pulumi.GitLab
         public Input<int> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.GitLab
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of a custom member role. Only available for Ultimate instances.
+        /// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         /// </summary>
         [Input("memberRoleId")]
         public Input<int>? MemberRoleId { get; set; }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+ * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
  *
@@ -43,12 +43,12 @@ export interface GetGroupHooksResult {
      */
     readonly hooks: outputs.GetGroupHooksHook[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this data source. In the format `<group>`.
      */
     readonly id: string;
 }
 /**
- * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+ * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
  *

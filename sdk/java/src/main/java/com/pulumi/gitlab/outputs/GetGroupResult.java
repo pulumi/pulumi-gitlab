@@ -50,7 +50,7 @@ public final class GetGroupResult {
      */
     private Integer groupId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;group-id&gt;`.
      * 
      */
     private String id;
@@ -100,7 +100,7 @@ public final class GetGroupResult {
      */
     private Integer sharedRunnersMinutesLimit;
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * @return Enable or disable shared runners for a group&#39;s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     private String sharedRunnersSetting;
@@ -176,7 +176,7 @@ public final class GetGroupResult {
         return this.groupId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;group-id&gt;`.
      * 
      */
     public String id() {
@@ -246,7 +246,7 @@ public final class GetGroupResult {
         return this.sharedRunnersMinutesLimit;
     }
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * @return Enable or disable shared runners for a group&#39;s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     public String sharedRunnersSetting() {

@@ -697,16 +697,24 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
     @Import(name="defaultBranchProtection")
     private @Nullable Output<Integer> defaultBranchProtection;
 
     /**
-     * @return Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+     * @return Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
     public Optional<Output<Integer>> defaultBranchProtection() {
         return Optional.ofNullable(this.defaultBranchProtection);
     }
@@ -5936,22 +5944,30 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultBranchProtection Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+         * @param defaultBranchProtection Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
         public Builder defaultBranchProtection(@Nullable Output<Integer> defaultBranchProtection) {
             $.defaultBranchProtection = defaultBranchProtection;
             return this;
         }
 
         /**
-         * @param defaultBranchProtection Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+         * @param defaultBranchProtection Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+         * 
          */
+        @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
         public Builder defaultBranchProtection(Integer defaultBranchProtection) {
             return defaultBranchProtection(Output.of(defaultBranchProtection));
         }

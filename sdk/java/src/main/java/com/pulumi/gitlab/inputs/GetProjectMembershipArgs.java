@@ -19,24 +19,24 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
     public static final GetProjectMembershipArgs Empty = new GetProjectMembershipArgs();
 
     /**
-     * The full path of the project.
+     * The full path of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     @Import(name="fullPath")
     private @Nullable Output<String> fullPath;
 
     /**
-     * @return The full path of the project.
+     * @return The full path of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     public Optional<Output<String>> fullPath() {
         return Optional.ofNullable(this.fullPath);
     }
@@ -72,24 +72,24 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     @Import(name="projectId")
     private @Nullable Output<Integer> projectId;
 
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     public Optional<Output<Integer>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -154,30 +154,30 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param fullPath The full path of the project.
+         * @param fullPath The full path of the project. Use `project` instead. Will be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Will be removed in 19.0. Use `project` instead.
+         * Use `project` instead. Will be removed in 19.0.
          * 
          */
-        @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
         public Builder fullPath(@Nullable Output<String> fullPath) {
             $.fullPath = fullPath;
             return this;
         }
 
         /**
-         * @param fullPath The full path of the project.
+         * @param fullPath The full path of the project. Use `project` instead. Will be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Will be removed in 19.0. Use `project` instead.
+         * Use `project` instead. Will be removed in 19.0.
          * 
          */
-        @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
         public Builder fullPath(String fullPath) {
             return fullPath(Output.of(fullPath));
         }
@@ -225,30 +225,30 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param projectId The ID of the project.
+         * @param projectId The ID of the project. Use `project` instead. Will be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Will be removed in 19.0. Use `project` instead.
+         * Use `project` instead. Will be removed in 19.0.
          * 
          */
-        @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
         public Builder projectId(@Nullable Output<Integer> projectId) {
             $.projectId = projectId;
             return this;
         }
 
         /**
-         * @param projectId The ID of the project.
+         * @param projectId The ID of the project. Use `project` instead. Will be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * Will be removed in 19.0. Use `project` instead.
+         * Use `project` instead. Will be removed in 19.0.
          * 
          */
-        @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
         public Builder projectId(Integer projectId) {
             return projectId(Output.of(projectId));
         }

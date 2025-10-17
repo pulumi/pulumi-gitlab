@@ -83,7 +83,7 @@ type ProjectMembership struct {
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrOutput `pulumi:"memberRoleId"`
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -134,7 +134,7 @@ type projectMembershipState struct {
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The ID or URL-encoded path of the project.
 	Project *string `pulumi:"project"`
@@ -147,7 +147,7 @@ type ProjectMembershipState struct {
 	AccessLevel pulumi.StringPtrInput
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrInput
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type projectMembershipArgs struct {
 	AccessLevel string `pulumi:"accessLevel"`
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId *int `pulumi:"memberRoleId"`
 	// The ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`
@@ -178,7 +178,7 @@ type ProjectMembershipArgs struct {
 	AccessLevel pulumi.StringInput
 	// Expiration date for the project membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
-	// The ID of a custom member role. Only available for Ultimate instances.
+	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrInput
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringInput
@@ -283,7 +283,7 @@ func (o ProjectMembershipOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
-// The ID of a custom member role. Only available for Ultimate instances.
+// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 func (o ProjectMembershipOutput) MemberRoleId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.IntPtrOutput { return v.MemberRoleId }).(pulumi.IntPtrOutput)
 }

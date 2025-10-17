@@ -155,7 +155,7 @@ class GetGroupResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<group-id>`.
         """
         return pulumi.get(self, "id")
 
@@ -235,7 +235,7 @@ class GetGroupResult:
     @pulumi.getter(name="sharedRunnersSetting")
     def shared_runners_setting(self) -> _builtins.str:
         """
-        Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         """
         return pulumi.get(self, "shared_runners_setting")
 

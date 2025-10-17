@@ -14,10 +14,12 @@ import (
 
 // The `Runner` resource allows to manage the lifecycle of a runner.
 //
+// > This resource has been deprecated in favor of the `UserRunner` resource. Please use that resource, and the new registration flow, instead.
+//
 // A runner can either be registered at an instance level or group level.
 // The runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.
 //
-// ~ > Using this resource will register a runner using the deprecated `registrationToken` flow. To use the new `authenticationToken` flow instead,
+// > Using this resource will register a runner using the deprecated `registrationToken` flow. To use the new `authenticationToken` flow instead,
 // use the `UserRunner` resource!
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#register-a-new-runner)

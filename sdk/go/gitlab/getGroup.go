@@ -48,7 +48,7 @@ type LookupGroupResult struct {
 	FullPath string `pulumi:"fullPath"`
 	// The ID of the group.
 	GroupId int `pulumi:"groupId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<group-id>`.
 	Id string `pulumi:"id"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
@@ -68,7 +68,7 @@ type LookupGroupResult struct {
 	RunnersToken string `pulumi:"runnersToken"`
 	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit int `pulumi:"sharedRunnersMinutesLimit"`
-	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
 	// Describes groups which have access shared to this group.
 	SharedWithGroups []GetGroupSharedWithGroup `pulumi:"sharedWithGroups"`
@@ -151,7 +151,7 @@ func (o LookupGroupResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<group-id>`.
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -201,7 +201,7 @@ func (o LookupGroupResultOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.SharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }
 
-// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 func (o LookupGroupResultOutput) SharedRunnersSetting() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.SharedRunnersSetting }).(pulumi.StringOutput)
 }

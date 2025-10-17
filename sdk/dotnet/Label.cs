@@ -12,6 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.Label` resource manages the lifecycle of a project label.
     /// 
+    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectLabel`instead.
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/#get-a-single-project-label)
     /// </summary>
     [GitLabResourceType("gitlab:index/label:Label")]

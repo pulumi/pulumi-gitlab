@@ -111,6 +111,8 @@ type PersonalAccessToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The ID of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
 // NewPersonalAccessToken registers a new resource with the given unique name, arguments, and options.
@@ -173,6 +175,8 @@ type personalAccessTokenState struct {
 	Token *string `pulumi:"token"`
 	// The ID of the user.
 	UserId *int `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 type PersonalAccessTokenState struct {
@@ -196,6 +200,8 @@ type PersonalAccessTokenState struct {
 	Token pulumi.StringPtrInput
 	// The ID of the user.
 	UserId pulumi.IntPtrInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (PersonalAccessTokenState) ElementType() reflect.Type {
@@ -215,6 +221,8 @@ type personalAccessTokenArgs struct {
 	Scopes []string `pulumi:"scopes"`
 	// The ID of the user.
 	UserId int `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 // The set of arguments for constructing a PersonalAccessToken resource.
@@ -231,6 +239,8 @@ type PersonalAccessTokenArgs struct {
 	Scopes pulumi.StringArrayInput
 	// The ID of the user.
 	UserId pulumi.IntInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (PersonalAccessTokenArgs) ElementType() reflect.Type {
@@ -370,6 +380,11 @@ func (o PersonalAccessTokenOutput) Token() pulumi.StringOutput {
 // The ID of the user.
 func (o PersonalAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *PersonalAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
+// Wether to validate if the expiration date is in the future.
+func (o PersonalAccessTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PersonalAccessToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }
 
 type PersonalAccessTokenArrayOutput struct{ *pulumi.OutputState }

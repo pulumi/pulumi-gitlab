@@ -22,19 +22,23 @@ class UserImpersonationTokenArgs:
                  expires_at: pulumi.Input[_builtins.str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  user_id: pulumi.Input[_builtins.int],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UserImpersonationToken resource.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
         :param pulumi.Input[_builtins.str] name: The name of the impersonation token.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         pulumi.set(__self__, "expires_at", expires_at)
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "user_id", user_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if validate_past_expiration_date is not None:
+            pulumi.set(__self__, "validate_past_expiration_date", validate_past_expiration_date)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
@@ -84,6 +88,18 @@ class UserImpersonationTokenArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
+
+    @validate_past_expiration_date.setter
+    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "validate_past_expiration_date", value)
+
 
 @pulumi.input_type
 class _UserImpersonationTokenState:
@@ -97,7 +113,8 @@ class _UserImpersonationTokenState:
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  token_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering UserImpersonationToken resources.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
@@ -110,6 +127,7 @@ class _UserImpersonationTokenState:
         :param pulumi.Input[_builtins.str] token: The token of the user impersonation token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] token_id: ID of the impersonation token.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -131,6 +149,8 @@ class _UserImpersonationTokenState:
             pulumi.set(__self__, "token_id", token_id)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if validate_past_expiration_date is not None:
+            pulumi.set(__self__, "validate_past_expiration_date", validate_past_expiration_date)
 
     @_builtins.property
     @pulumi.getter
@@ -252,6 +272,18 @@ class _UserImpersonationTokenState:
     def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
+
+    @validate_past_expiration_date.setter
+    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "validate_past_expiration_date", value)
+
 
 @pulumi.type_token("gitlab:index/userImpersonationToken:UserImpersonationToken")
 class UserImpersonationToken(pulumi.CustomResource):
@@ -263,6 +295,7 @@ class UserImpersonationToken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         The `UserImpersonationToken` resource allows to manage impersonation tokens of users.
@@ -313,6 +346,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the impersonation token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         ...
     @overload
@@ -382,6 +416,7 @@ class UserImpersonationToken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -401,6 +436,7 @@ class UserImpersonationToken(pulumi.CustomResource):
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
             __props__.__dict__["active"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["impersonation"] = None
@@ -428,7 +464,8 @@ class UserImpersonationToken(pulumi.CustomResource):
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             token: Optional[pulumi.Input[_builtins.str]] = None,
             token_id: Optional[pulumi.Input[_builtins.int]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'UserImpersonationToken':
+            user_id: Optional[pulumi.Input[_builtins.int]] = None,
+            validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None) -> 'UserImpersonationToken':
         """
         Get an existing UserImpersonationToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -446,6 +483,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] token: The token of the user impersonation token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] token_id: ID of the impersonation token.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -461,6 +499,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         __props__.__dict__["token"] = token
         __props__.__dict__["token_id"] = token_id
         __props__.__dict__["user_id"] = user_id
+        __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
         return UserImpersonationToken(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -542,4 +581,12 @@ class UserImpersonationToken(pulumi.CustomResource):
         The ID of the user.
         """
         return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
 
