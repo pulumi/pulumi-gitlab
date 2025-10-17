@@ -23,7 +23,7 @@ public final class GetGroupHooksResult {
      */
     private List<GetGroupHooksHook> hooks;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format `&lt;group&gt;`.
      * 
      */
     private String id;
@@ -44,7 +44,7 @@ public final class GetGroupHooksResult {
         return this.hooks;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this data source. In the format `&lt;group&gt;`.
      * 
      */
     public String id() {

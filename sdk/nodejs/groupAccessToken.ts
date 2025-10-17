@@ -137,6 +137,10 @@ export class GroupAccessToken extends pulumi.CustomResource {
      * The userId associated to the token.
      */
     declare public /*out*/ readonly userId: pulumi.Output<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
     /**
      * Create a GroupAccessToken resource with the given unique name, arguments, and options.
@@ -163,6 +167,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
             resourceInputs["scopes"] = state?.scopes;
             resourceInputs["token"] = state?.token;
             resourceInputs["userId"] = state?.userId;
+            resourceInputs["validatePastExpirationDate"] = state?.validatePastExpirationDate;
         } else {
             const args = argsOrState as GroupAccessTokenArgs | undefined;
             if (args?.group === undefined && !opts.urn) {
@@ -178,6 +183,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["rotationConfiguration"] = args?.rotationConfiguration;
             resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["validatePastExpirationDate"] = args?.validatePastExpirationDate;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;
@@ -243,6 +249,10 @@ export interface GroupAccessTokenState {
      * The userId associated to the token.
      */
     userId?: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }
 
 /**
@@ -277,4 +287,8 @@ export interface GroupAccessTokenArgs {
      * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }

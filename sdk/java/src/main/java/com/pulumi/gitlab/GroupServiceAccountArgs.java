@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.inputs.GroupServiceAccountTimeoutsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,6 +62,13 @@ public final class GroupServiceAccountArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GroupServiceAccountTimeoutsArgs> timeouts;
+
+    public Optional<Output<GroupServiceAccountTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * The username of the user. If not specified, it’s automatically generated.
      * 
@@ -82,6 +90,7 @@ public final class GroupServiceAccountArgs extends com.pulumi.resources.Resource
         this.email = $.email;
         this.group = $.group;
         this.name = $.name;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -164,6 +173,15 @@ public final class GroupServiceAccountArgs extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder timeouts(@Nullable Output<GroupServiceAccountTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GroupServiceAccountTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

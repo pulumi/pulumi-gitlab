@@ -89,7 +89,7 @@ export class ProjectMembership extends pulumi.CustomResource {
      */
     declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
     declare public readonly memberRoleId: pulumi.Output<number | undefined>;
     /**
@@ -154,7 +154,7 @@ export interface ProjectMembershipState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
     memberRoleId?: pulumi.Input<number>;
     /**
@@ -180,7 +180,7 @@ export interface ProjectMembershipArgs {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
     memberRoleId?: pulumi.Input<number>;
     /**

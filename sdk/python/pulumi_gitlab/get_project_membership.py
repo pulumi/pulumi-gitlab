@@ -55,10 +55,10 @@ class GetProjectMembershipResult:
 
     @_builtins.property
     @pulumi.getter(name="fullPath")
-    @_utilities.deprecated("""Will be removed in 19.0. Use `project` instead.""")
+    @_utilities.deprecated("""Use `project` instead. Will be removed in 19.0.""")
     def full_path(self) -> _builtins.str:
         """
-        The full path of the project.
+        The full path of the project. Use `project` instead. Will be removed in 19.0.
         """
         return pulumi.get(self, "full_path")
 
@@ -96,10 +96,10 @@ class GetProjectMembershipResult:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    @_utilities.deprecated("""Will be removed in 19.0. Use `project` instead.""")
+    @_utilities.deprecated("""Use `project` instead. Will be removed in 19.0.""")
     def project_id(self) -> _builtins.int:
         """
-        The ID of the project.
+        The ID of the project. Use `project` instead. Will be removed in 19.0.
         """
         return pulumi.get(self, "project_id")
 
@@ -149,10 +149,10 @@ def get_project_membership(full_path: Optional[_builtins.str] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
-    :param _builtins.str full_path: The full path of the project.
+    :param _builtins.str full_path: The full path of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.bool inherited: Return all project members including members through ancestor groups
     :param _builtins.str project: The ID or full path of the project.
-    :param _builtins.int project_id: The ID of the project.
+    :param _builtins.int project_id: The ID of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.str query: A query string to search for members
     :param Sequence[_builtins.int] user_ids: List of user ids to filter members by
     """
@@ -188,10 +188,10 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[_bui
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
 
 
-    :param _builtins.str full_path: The full path of the project.
+    :param _builtins.str full_path: The full path of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.bool inherited: Return all project members including members through ancestor groups
     :param _builtins.str project: The ID or full path of the project.
-    :param _builtins.int project_id: The ID of the project.
+    :param _builtins.int project_id: The ID of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.str query: A query string to search for members
     :param Sequence[_builtins.int] user_ids: List of user ids to filter members by
     """

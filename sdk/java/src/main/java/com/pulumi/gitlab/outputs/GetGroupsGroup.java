@@ -13,9 +13,13 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupsGroup {
     /**
-     * @return Whether developers and maintainers can push to the applicable default branch.
+     * @return Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+     * 
+     * @deprecated
+     * Will be removed in 19.0.
      * 
      */
+    @Deprecated /* Will be removed in 19.0. */
     private Integer defaultBranchProtection;
     /**
      * @return The description of the group.
@@ -38,7 +42,7 @@ public final class GetGroupsGroup {
      */
     private Integer groupId;
     /**
-     * @return Boolean, is LFS enabled for projects in this group.
+     * @return Is LFS enabled for projects in this group.
      * 
      */
     private Boolean lfsEnabled;
@@ -48,7 +52,7 @@ public final class GetGroupsGroup {
      */
     private String name;
     /**
-     * @return Integer, ID of the parent group.
+     * @return ID of the parent group.
      * 
      */
     private Integer parentId;
@@ -63,7 +67,7 @@ public final class GetGroupsGroup {
      */
     private Boolean preventForkingOutsideGroup;
     /**
-     * @return Boolean, is request for access enabled to the group.
+     * @return Is request for access enabled to the group.
      * 
      */
     private Boolean requestAccessEnabled;
@@ -73,7 +77,7 @@ public final class GetGroupsGroup {
      */
     private String runnersToken;
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * @return Enable or disable shared runners for a group&#39;s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     private String sharedRunnersSetting;
@@ -95,9 +99,13 @@ public final class GetGroupsGroup {
 
     private GetGroupsGroup() {}
     /**
-     * @return Whether developers and maintainers can push to the applicable default branch.
+     * @return Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+     * 
+     * @deprecated
+     * Will be removed in 19.0.
      * 
      */
+    @Deprecated /* Will be removed in 19.0. */
     public Integer defaultBranchProtection() {
         return this.defaultBranchProtection;
     }
@@ -130,7 +138,7 @@ public final class GetGroupsGroup {
         return this.groupId;
     }
     /**
-     * @return Boolean, is LFS enabled for projects in this group.
+     * @return Is LFS enabled for projects in this group.
      * 
      */
     public Boolean lfsEnabled() {
@@ -144,7 +152,7 @@ public final class GetGroupsGroup {
         return this.name;
     }
     /**
-     * @return Integer, ID of the parent group.
+     * @return ID of the parent group.
      * 
      */
     public Integer parentId() {
@@ -165,7 +173,7 @@ public final class GetGroupsGroup {
         return this.preventForkingOutsideGroup;
     }
     /**
-     * @return Boolean, is request for access enabled to the group.
+     * @return Is request for access enabled to the group.
      * 
      */
     public Boolean requestAccessEnabled() {
@@ -179,7 +187,7 @@ public final class GetGroupsGroup {
         return this.runnersToken;
     }
     /**
-     * @return Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * @return Enable or disable shared runners for a group&#39;s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      * 
      */
     public String sharedRunnersSetting() {

@@ -59,7 +59,7 @@ class GetGroupsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format of a hash of the provided search attributes.
         """
         return pulumi.get(self, "id")
 

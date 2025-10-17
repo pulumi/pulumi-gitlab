@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupServiceAccountArgs', 'GroupServiceAccount']
 
@@ -22,6 +24,7 @@ class GroupServiceAccountArgs:
                  group: pulumi.Input[_builtins.str],
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['GroupServiceAccountTimeoutsArgs']] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupServiceAccount resource.
@@ -35,6 +38,8 @@ class GroupServiceAccountArgs:
             pulumi.set(__self__, "email", email)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -76,6 +81,15 @@ class GroupServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['GroupServiceAccountTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['GroupServiceAccountTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The username of the user. If not specified, it’s automatically generated.
@@ -94,6 +108,7 @@ class _GroupServiceAccountState:
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['GroupServiceAccountTimeoutsArgs']] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupServiceAccount resources.
@@ -111,6 +126,8 @@ class _GroupServiceAccountState:
             pulumi.set(__self__, "name", name)
         if service_account_id is not None:
             pulumi.set(__self__, "service_account_id", service_account_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -164,6 +181,15 @@ class _GroupServiceAccountState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['GroupServiceAccountTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['GroupServiceAccountTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The username of the user. If not specified, it’s automatically generated.
@@ -184,6 +210,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -337,6 +364,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -352,6 +380,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
             __props__.__dict__["name"] = name
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["username"] = username
             __props__.__dict__["service_account_id"] = None
         super(GroupServiceAccount, __self__).__init__(
@@ -368,6 +397,7 @@ class GroupServiceAccount(pulumi.CustomResource):
             group: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
             username: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupServiceAccount':
         """
         Get an existing GroupServiceAccount resource's state with the given name, id, and optional extra
@@ -390,6 +420,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         __props__.__dict__["group"] = group
         __props__.__dict__["name"] = name
         __props__.__dict__["service_account_id"] = service_account_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["username"] = username
         return GroupServiceAccount(resource_name, opts=opts, __props__=__props__)
 
@@ -424,6 +455,11 @@ class GroupServiceAccount(pulumi.CustomResource):
         The service account id.
         """
         return pulumi.get(self, "service_account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.GroupServiceAccountTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter

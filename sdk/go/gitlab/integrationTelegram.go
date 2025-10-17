@@ -14,6 +14,8 @@ import (
 
 // The `IntegrationTelegram` resource manages the lifecycle of a project integration with Telegram.
 //
+// > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationTelegram`instead.
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#telegram)
 //
 // ## Example Usage

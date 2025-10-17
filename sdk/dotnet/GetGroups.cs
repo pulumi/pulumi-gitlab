@@ -194,7 +194,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format of a hash of the provided search attributes.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -123,7 +123,7 @@ export interface GetProjectHookResult {
      */
     readonly tagPushEvents: boolean;
     /**
-     * A token to present when invoking the hook. The token is not available in this datasource.
+     * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank.
      *
      * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank.
      */

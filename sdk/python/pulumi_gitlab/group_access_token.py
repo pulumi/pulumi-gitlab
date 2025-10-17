@@ -27,7 +27,8 @@ class GroupAccessTokenArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_configuration: Optional[pulumi.Input['GroupAccessTokenRotationConfigurationArgs']] = None):
+                 rotation_configuration: Optional[pulumi.Input['GroupAccessTokenRotationConfigurationArgs']] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupAccessToken resource.
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group.
@@ -37,6 +38,7 @@ class GroupAccessTokenArgs:
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[_builtins.str] name: The name of the group access token.
         :param pulumi.Input['GroupAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "scopes", scopes)
@@ -50,6 +52,8 @@ class GroupAccessTokenArgs:
             pulumi.set(__self__, "name", name)
         if rotation_configuration is not None:
             pulumi.set(__self__, "rotation_configuration", rotation_configuration)
+        if validate_past_expiration_date is not None:
+            pulumi.set(__self__, "validate_past_expiration_date", validate_past_expiration_date)
 
     @_builtins.property
     @pulumi.getter
@@ -135,6 +139,18 @@ class GroupAccessTokenArgs:
     def rotation_configuration(self, value: Optional[pulumi.Input['GroupAccessTokenRotationConfigurationArgs']]):
         pulumi.set(self, "rotation_configuration", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
+
+    @validate_past_expiration_date.setter
+    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "validate_past_expiration_date", value)
+
 
 @pulumi.input_type
 class _GroupAccessTokenState:
@@ -150,7 +166,8 @@ class _GroupAccessTokenState:
                  rotation_configuration: Optional[pulumi.Input['GroupAccessTokenRotationConfigurationArgs']] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupAccessToken resources.
         :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
@@ -165,6 +182,7 @@ class _GroupAccessTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] token: The token of the group access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The user_id associated to the token.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -190,6 +208,8 @@ class _GroupAccessTokenState:
             pulumi.set(__self__, "token", token)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if validate_past_expiration_date is not None:
+            pulumi.set(__self__, "validate_past_expiration_date", validate_past_expiration_date)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
@@ -335,6 +355,18 @@ class _GroupAccessTokenState:
     def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
+
+    @validate_past_expiration_date.setter
+    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "validate_past_expiration_date", value)
+
 
 @pulumi.type_token("gitlab:index/groupAccessToken:GroupAccessToken")
 class GroupAccessToken(pulumi.CustomResource):
@@ -349,6 +381,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  rotation_configuration: Optional[pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
@@ -412,6 +445,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the group access token.
         :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         ...
     @overload
@@ -494,6 +528,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  rotation_configuration: Optional[pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -514,6 +549,7 @@ class GroupAccessToken(pulumi.CustomResource):
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
+            __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
             __props__.__dict__["active"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["revoked"] = None
@@ -542,7 +578,8 @@ class GroupAccessToken(pulumi.CustomResource):
             rotation_configuration: Optional[pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             token: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'GroupAccessToken':
+            user_id: Optional[pulumi.Input[_builtins.int]] = None,
+            validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GroupAccessToken':
         """
         Get an existing GroupAccessToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -562,6 +599,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] token: The token of the group access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The user_id associated to the token.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -579,6 +617,7 @@ class GroupAccessToken(pulumi.CustomResource):
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["token"] = token
         __props__.__dict__["user_id"] = user_id
+        __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
         return GroupAccessToken(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -676,4 +715,12 @@ class GroupAccessToken(pulumi.CustomResource):
         The user_id associated to the token.
         """
         return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="validatePastExpirationDate")
+    def validate_past_expiration_date(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Wether to validate if the expiration date is in the future.
+        """
+        return pulumi.get(self, "validate_past_expiration_date")
 

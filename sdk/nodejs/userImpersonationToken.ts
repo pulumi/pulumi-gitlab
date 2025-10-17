@@ -116,6 +116,10 @@ export class UserImpersonationToken extends pulumi.CustomResource {
      * The ID of the user.
      */
     declare public readonly userId: pulumi.Output<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
     /**
      * Create a UserImpersonationToken resource with the given unique name, arguments, and options.
@@ -140,6 +144,7 @@ export class UserImpersonationToken extends pulumi.CustomResource {
             resourceInputs["token"] = state?.token;
             resourceInputs["tokenId"] = state?.tokenId;
             resourceInputs["userId"] = state?.userId;
+            resourceInputs["validatePastExpirationDate"] = state?.validatePastExpirationDate;
         } else {
             const args = argsOrState as UserImpersonationTokenArgs | undefined;
             if (args?.expiresAt === undefined && !opts.urn) {
@@ -155,6 +160,7 @@ export class UserImpersonationToken extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["scopes"] = args?.scopes;
             resourceInputs["userId"] = args?.userId;
+            resourceInputs["validatePastExpirationDate"] = args?.validatePastExpirationDate;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["impersonation"] = undefined /*out*/;
@@ -213,6 +219,10 @@ export interface UserImpersonationTokenState {
      * The ID of the user.
      */
     userId?: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }
 
 /**
@@ -235,4 +245,8 @@ export interface UserImpersonationTokenArgs {
      * The ID of the user.
      */
     userId: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }

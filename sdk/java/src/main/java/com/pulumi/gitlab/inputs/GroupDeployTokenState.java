@@ -137,6 +137,21 @@ public final class GroupDeployTokenState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.username);
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private GroupDeployTokenState() {}
 
     private GroupDeployTokenState(GroupDeployTokenState $) {
@@ -148,6 +163,7 @@ public final class GroupDeployTokenState extends com.pulumi.resources.ResourceAr
         this.scopes = $.scopes;
         this.token = $.token;
         this.username = $.username;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -344,6 +360,27 @@ public final class GroupDeployTokenState extends com.pulumi.resources.ResourceAr
          */
         public Builder username(String username) {
             return username(Output.of(username));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public GroupDeployTokenState build() {

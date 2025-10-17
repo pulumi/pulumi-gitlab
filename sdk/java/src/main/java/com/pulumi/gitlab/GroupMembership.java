@@ -13,6 +13,7 @@ import com.pulumi.gitlab.inputs.GroupMembershipState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -126,18 +127,18 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * The ID of a custom member role. Only available for Ultimate instances.
+     * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      * 
      */
     @Export(name="memberRoleId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> memberRoleId;
+    private Output</* @Nullable */ Integer> memberRoleId;
 
     /**
-     * @return The ID of a custom member role. Only available for Ultimate instances.
+     * @return The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      * 
      */
-    public Output<Integer> memberRoleId() {
-        return this.memberRoleId;
+    public Output<Optional<Integer>> memberRoleId() {
+        return Codegen.optional(this.memberRoleId);
     }
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.

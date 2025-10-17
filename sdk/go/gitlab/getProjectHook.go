@@ -103,7 +103,7 @@ type LookupProjectHookResult struct {
 	ReleasesEvents bool `pulumi:"releasesEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available in this datasource.
+	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank.
 	//
 	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 	Token string `pulumi:"token"`
@@ -239,7 +239,7 @@ func (o LookupProjectHookResultOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available in this datasource.
+// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank.
 //
 // Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
 func (o LookupProjectHookResultOutput) Token() pulumi.StringOutput {

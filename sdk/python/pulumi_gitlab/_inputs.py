@@ -43,6 +43,8 @@ __all__ = [
     'GroupPushRulesArgsDict',
     'GroupServiceAccountAccessTokenRotationConfigurationArgs',
     'GroupServiceAccountAccessTokenRotationConfigurationArgsDict',
+    'GroupServiceAccountTimeoutsArgs',
+    'GroupServiceAccountTimeoutsArgsDict',
     'InstanceServiceAccountTimeoutsArgs',
     'InstanceServiceAccountTimeoutsArgsDict',
     'PersonalAccessTokenRotationConfigurationArgs',
@@ -85,6 +87,8 @@ __all__ = [
     'ValueStreamAnalyticsStageArgsDict',
     'GetGroupProvisionedUsersProvisionedUserArgs',
     'GetGroupProvisionedUsersProvisionedUserArgsDict',
+    'GetProjectApprovalRulesApprovalRuleArgs',
+    'GetProjectApprovalRulesApprovalRuleArgsDict',
     'GetProjectProtectedBranchMergeAccessLevelArgs',
     'GetProjectProtectedBranchMergeAccessLevelArgsDict',
     'GetProjectProtectedBranchPushAccessLevelArgs',
@@ -1666,6 +1670,38 @@ class GroupServiceAccountAccessTokenRotationConfigurationArgs:
     @expiration_days.setter
     def expiration_days(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "expiration_days", value)
+
+
+if not MYPY:
+    class GroupServiceAccountTimeoutsArgsDict(TypedDict):
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+        """
+elif False:
+    GroupServiceAccountTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GroupServiceAccountTimeoutsArgs:
+    def __init__(__self__, *,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] delete: How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+        """
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
 
 
 if not MYPY:
@@ -4566,6 +4602,208 @@ class GetGroupProvisionedUsersProvisionedUserArgs:
     @website_url.setter
     def website_url(self, value: _builtins.str):
         pulumi.set(self, "website_url", value)
+
+
+if not MYPY:
+    class GetProjectApprovalRulesApprovalRuleArgsDict(TypedDict):
+        applies_to_all_protected_branches: _builtins.bool
+        """
+        If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+        """
+        approvals_required: _builtins.int
+        """
+        The number of approvals required for this rule.
+        """
+        eligible_approver_ids: Sequence[_builtins.int]
+        """
+        List of all approver IDs that are eligible to approve this rule.
+        """
+        group_ids: Sequence[_builtins.int]
+        """
+        List of group IDs that are eligible to approve this rule.
+        """
+        id: _builtins.int
+        """
+        The ID of the approval rule.
+        """
+        name: _builtins.str
+        """
+        The name of the approval rule.
+        """
+        protected_branch_ids: Sequence[_builtins.int]
+        """
+        List of protected branch IDs that this rule applies to.
+        """
+        report_type: _builtins.str
+        """
+        The report type. Required when the rule type is `report_approver`. The supported report types are `license_scanning` and `code_coverage`.
+        """
+        rule_type: _builtins.str
+        """
+        The type of the approval rule. Can be `any_approver`, `regular` or `report_approver`.
+        """
+        user_ids: Sequence[_builtins.int]
+        """
+        List of user IDs that are eligible to approve this rule.
+        """
+elif False:
+    GetProjectApprovalRulesApprovalRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetProjectApprovalRulesApprovalRuleArgs:
+    def __init__(__self__, *,
+                 applies_to_all_protected_branches: _builtins.bool,
+                 approvals_required: _builtins.int,
+                 eligible_approver_ids: Sequence[_builtins.int],
+                 group_ids: Sequence[_builtins.int],
+                 id: _builtins.int,
+                 name: _builtins.str,
+                 protected_branch_ids: Sequence[_builtins.int],
+                 report_type: _builtins.str,
+                 rule_type: _builtins.str,
+                 user_ids: Sequence[_builtins.int]):
+        """
+        :param _builtins.bool applies_to_all_protected_branches: If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+        :param _builtins.int approvals_required: The number of approvals required for this rule.
+        :param Sequence[_builtins.int] eligible_approver_ids: List of all approver IDs that are eligible to approve this rule.
+        :param Sequence[_builtins.int] group_ids: List of group IDs that are eligible to approve this rule.
+        :param _builtins.int id: The ID of the approval rule.
+        :param _builtins.str name: The name of the approval rule.
+        :param Sequence[_builtins.int] protected_branch_ids: List of protected branch IDs that this rule applies to.
+        :param _builtins.str report_type: The report type. Required when the rule type is `report_approver`. The supported report types are `license_scanning` and `code_coverage`.
+        :param _builtins.str rule_type: The type of the approval rule. Can be `any_approver`, `regular` or `report_approver`.
+        :param Sequence[_builtins.int] user_ids: List of user IDs that are eligible to approve this rule.
+        """
+        pulumi.set(__self__, "applies_to_all_protected_branches", applies_to_all_protected_branches)
+        pulumi.set(__self__, "approvals_required", approvals_required)
+        pulumi.set(__self__, "eligible_approver_ids", eligible_approver_ids)
+        pulumi.set(__self__, "group_ids", group_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
+        pulumi.set(__self__, "report_type", report_type)
+        pulumi.set(__self__, "rule_type", rule_type)
+        pulumi.set(__self__, "user_ids", user_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="appliesToAllProtectedBranches")
+    def applies_to_all_protected_branches(self) -> _builtins.bool:
+        """
+        If true, applies the rule to all protected branches, ignoring the protected branches attribute.
+        """
+        return pulumi.get(self, "applies_to_all_protected_branches")
+
+    @applies_to_all_protected_branches.setter
+    def applies_to_all_protected_branches(self, value: _builtins.bool):
+        pulumi.set(self, "applies_to_all_protected_branches", value)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalsRequired")
+    def approvals_required(self) -> _builtins.int:
+        """
+        The number of approvals required for this rule.
+        """
+        return pulumi.get(self, "approvals_required")
+
+    @approvals_required.setter
+    def approvals_required(self, value: _builtins.int):
+        pulumi.set(self, "approvals_required", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eligibleApproverIds")
+    def eligible_approver_ids(self) -> Sequence[_builtins.int]:
+        """
+        List of all approver IDs that are eligible to approve this rule.
+        """
+        return pulumi.get(self, "eligible_approver_ids")
+
+    @eligible_approver_ids.setter
+    def eligible_approver_ids(self, value: Sequence[_builtins.int]):
+        pulumi.set(self, "eligible_approver_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupIds")
+    def group_ids(self) -> Sequence[_builtins.int]:
+        """
+        List of group IDs that are eligible to approve this rule.
+        """
+        return pulumi.get(self, "group_ids")
+
+    @group_ids.setter
+    def group_ids(self, value: Sequence[_builtins.int]):
+        pulumi.set(self, "group_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the approval rule.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: _builtins.int):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the approval rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protectedBranchIds")
+    def protected_branch_ids(self) -> Sequence[_builtins.int]:
+        """
+        List of protected branch IDs that this rule applies to.
+        """
+        return pulumi.get(self, "protected_branch_ids")
+
+    @protected_branch_ids.setter
+    def protected_branch_ids(self, value: Sequence[_builtins.int]):
+        pulumi.set(self, "protected_branch_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> _builtins.str:
+        """
+        The report type. Required when the rule type is `report_approver`. The supported report types are `license_scanning` and `code_coverage`.
+        """
+        return pulumi.get(self, "report_type")
+
+    @report_type.setter
+    def report_type(self, value: _builtins.str):
+        pulumi.set(self, "report_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> _builtins.str:
+        """
+        The type of the approval rule. Can be `any_approver`, `regular` or `report_approver`.
+        """
+        return pulumi.get(self, "rule_type")
+
+    @rule_type.setter
+    def rule_type(self, value: _builtins.str):
+        pulumi.set(self, "rule_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Sequence[_builtins.int]:
+        """
+        List of user IDs that are eligible to approve this rule.
+        """
+        return pulumi.get(self, "user_ids")
+
+    @user_ids.setter
+    def user_ids(self, value: Sequence[_builtins.int]):
+        pulumi.set(self, "user_ids", value)
 
 
 if not MYPY:

@@ -199,6 +199,21 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private ProjectAccessTokenState() {}
 
     private ProjectAccessTokenState(ProjectAccessTokenState $) {
@@ -214,6 +229,7 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -494,6 +510,27 @@ public final class ProjectAccessTokenState extends com.pulumi.resources.Resource
          */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public ProjectAccessTokenState build() {

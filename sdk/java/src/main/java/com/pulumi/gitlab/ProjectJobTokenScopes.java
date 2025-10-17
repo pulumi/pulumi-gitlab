@@ -156,18 +156,18 @@ public class ProjectJobTokenScopes extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. To be removed in 19.0. */
     @Export(name="projectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> projectId;
 
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Use `project` instead. To be removed in 19.0.
      * 
      */
     public Output<Integer> projectId() {

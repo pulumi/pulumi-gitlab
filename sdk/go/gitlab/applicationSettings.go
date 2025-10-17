@@ -105,7 +105,9 @@ type ApplicationSettings struct {
 	DefaultArtifactsExpireIn pulumi.StringOutput `pulumi:"defaultArtifactsExpireIn"`
 	// Instance-level custom initial branch name
 	DefaultBranchName pulumi.StringOutput `pulumi:"defaultBranchName"`
-	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
 	DefaultBranchProtection pulumi.IntOutput `pulumi:"defaultBranchProtection"`
 	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
 	DefaultBranchProtectionDefaults ApplicationSettingsDefaultBranchProtectionDefaultsOutput `pulumi:"defaultBranchProtectionDefaults"`
@@ -825,7 +827,9 @@ type applicationSettingsState struct {
 	DefaultArtifactsExpireIn *string `pulumi:"defaultArtifactsExpireIn"`
 	// Instance-level custom initial branch name
 	DefaultBranchName *string `pulumi:"defaultBranchName"`
-	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
 	DefaultBranchProtectionDefaults *ApplicationSettingsDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
@@ -1445,7 +1449,9 @@ type ApplicationSettingsState struct {
 	DefaultArtifactsExpireIn pulumi.StringPtrInput
 	// Instance-level custom initial branch name
 	DefaultBranchName pulumi.StringPtrInput
-	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
 	DefaultBranchProtectionDefaults ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput
@@ -2069,7 +2075,9 @@ type applicationSettingsArgs struct {
 	DefaultArtifactsExpireIn *string `pulumi:"defaultArtifactsExpireIn"`
 	// Instance-level custom initial branch name
 	DefaultBranchName *string `pulumi:"defaultBranchName"`
-	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
 	DefaultBranchProtection *int `pulumi:"defaultBranchProtection"`
 	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
 	DefaultBranchProtectionDefaults *ApplicationSettingsDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
@@ -2686,7 +2694,9 @@ type ApplicationSettingsArgs struct {
 	DefaultArtifactsExpireIn pulumi.StringPtrInput
 	// Instance-level custom initial branch name
 	DefaultBranchName pulumi.StringPtrInput
-	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+	// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+	//
+	// Deprecated: Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
 	DefaultBranchProtection pulumi.IntPtrInput
 	// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
 	DefaultBranchProtectionDefaults ApplicationSettingsDefaultBranchProtectionDefaultsPtrInput
@@ -3527,7 +3537,9 @@ func (o ApplicationSettingsOutput) DefaultBranchName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.DefaultBranchName }).(pulumi.StringOutput)
 }
 
-// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+//
+// Deprecated: Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
 func (o ApplicationSettingsOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.DefaultBranchProtection }).(pulumi.IntOutput)
 }

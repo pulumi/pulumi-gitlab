@@ -286,7 +286,7 @@ namespace Pulumi.GitLab
         public Output<string> DefaultBranchName { get; private set; } = null!;
 
         /// <summary>
-        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `DefaultBranchProtectionDefaults` instead. To be removed in 19.0.
         /// </summary>
         [Output("defaultBranchProtection")]
         public Output<int> DefaultBranchProtection { get; private set; } = null!;
@@ -2229,7 +2229,7 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultBranchName { get; set; }
 
         /// <summary>
-        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `DefaultBranchProtectionDefaults` instead. To be removed in 19.0.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }
@@ -4336,7 +4336,7 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultBranchName { get; set; }
 
         /// <summary>
-        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `DefaultBranchProtectionDefaults` instead. To be removed in 19.0.
         /// </summary>
         [Input("defaultBranchProtection")]
         public Input<int>? DefaultBranchProtection { get; set; }

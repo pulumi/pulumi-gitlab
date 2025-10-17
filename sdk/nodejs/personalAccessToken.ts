@@ -132,6 +132,10 @@ export class PersonalAccessToken extends pulumi.CustomResource {
      * The ID of the user.
      */
     declare public readonly userId: pulumi.Output<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
     /**
      * Create a PersonalAccessToken resource with the given unique name, arguments, and options.
@@ -156,6 +160,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
             resourceInputs["scopes"] = state?.scopes;
             resourceInputs["token"] = state?.token;
             resourceInputs["userId"] = state?.userId;
+            resourceInputs["validatePastExpirationDate"] = state?.validatePastExpirationDate;
         } else {
             const args = argsOrState as PersonalAccessTokenArgs | undefined;
             if (args?.scopes === undefined && !opts.urn) {
@@ -170,6 +175,7 @@ export class PersonalAccessToken extends pulumi.CustomResource {
             resourceInputs["rotationConfiguration"] = args?.rotationConfiguration;
             resourceInputs["scopes"] = args?.scopes;
             resourceInputs["userId"] = args?.userId;
+            resourceInputs["validatePastExpirationDate"] = args?.validatePastExpirationDate;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revoked"] = undefined /*out*/;
@@ -226,6 +232,10 @@ export interface PersonalAccessTokenState {
      * The ID of the user.
      */
     userId?: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }
 
 /**
@@ -256,4 +266,8 @@ export interface PersonalAccessTokenArgs {
      * The ID of the user.
      */
     userId: pulumi.Input<number>;
+    /**
+     * Wether to validate if the expiration date is in the future.
+     */
+    validatePastExpirationDate?: pulumi.Input<boolean>;
 }

@@ -12,7 +12,8 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.IntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
     /// 
-    /// &gt; Using Redmine requires that GitLab internal issue tracking is disabled for the project.
+    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationRedmine`instead.
+    /// Using Redmine requires that GitLab internal issue tracking is disabled for the project.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#redmine)
     /// 

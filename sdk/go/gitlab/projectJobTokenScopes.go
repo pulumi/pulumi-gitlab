@@ -133,9 +133,9 @@ type ProjectJobTokenScopes struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The ID or full path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The ID of the project.
+	// The ID of the project. Use `project` instead. To be removed in 19.0.
 	//
-	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+	// Deprecated: Use `project` instead. To be removed in 19.0.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds pulumi.IntArrayOutput `pulumi:"targetGroupIds"`
@@ -177,9 +177,9 @@ type projectJobTokenScopesState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The ID or full path of the project.
 	Project *string `pulumi:"project"`
-	// The ID of the project.
+	// The ID of the project. Use `project` instead. To be removed in 19.0.
 	//
-	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+	// Deprecated: Use `project` instead. To be removed in 19.0.
 	ProjectId *int `pulumi:"projectId"`
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds []int `pulumi:"targetGroupIds"`
@@ -192,9 +192,9 @@ type ProjectJobTokenScopesState struct {
 	Enabled pulumi.BoolPtrInput
 	// The ID or full path of the project.
 	Project pulumi.StringPtrInput
-	// The ID of the project.
+	// The ID of the project. Use `project` instead. To be removed in 19.0.
 	//
-	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+	// Deprecated: Use `project` instead. To be removed in 19.0.
 	ProjectId pulumi.IntPtrInput
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds pulumi.IntArrayInput
@@ -211,9 +211,9 @@ type projectJobTokenScopesArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The ID or full path of the project.
 	Project *string `pulumi:"project"`
-	// The ID of the project.
+	// The ID of the project. Use `project` instead. To be removed in 19.0.
 	//
-	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+	// Deprecated: Use `project` instead. To be removed in 19.0.
 	ProjectId *int `pulumi:"projectId"`
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds []int `pulumi:"targetGroupIds"`
@@ -227,9 +227,9 @@ type ProjectJobTokenScopesArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// The ID or full path of the project.
 	Project pulumi.StringPtrInput
-	// The ID of the project.
+	// The ID of the project. Use `project` instead. To be removed in 19.0.
 	//
-	// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+	// Deprecated: Use `project` instead. To be removed in 19.0.
 	ProjectId pulumi.IntPtrInput
 	// A set of group IDs that are in the CI/CD job token inbound allowlist.
 	TargetGroupIds pulumi.IntArrayInput
@@ -334,9 +334,9 @@ func (o ProjectJobTokenScopesOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The ID of the project.
+// The ID of the project. Use `project` instead. To be removed in 19.0.
 //
-// Deprecated: `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+// Deprecated: Use `project` instead. To be removed in 19.0.
 func (o ProjectJobTokenScopesOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectJobTokenScopes) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }

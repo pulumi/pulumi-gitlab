@@ -205,6 +205,11 @@ export const getProjectAccessTokens: typeof import("./getProjectAccessTokens").g
 export const getProjectAccessTokensOutput: typeof import("./getProjectAccessTokens").getProjectAccessTokensOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectAccessTokens","getProjectAccessTokensOutput"], () => require("./getProjectAccessTokens"));
 
+export { GetProjectApprovalRulesArgs, GetProjectApprovalRulesResult, GetProjectApprovalRulesOutputArgs } from "./getProjectApprovalRules";
+export const getProjectApprovalRules: typeof import("./getProjectApprovalRules").getProjectApprovalRules = null as any;
+export const getProjectApprovalRulesOutput: typeof import("./getProjectApprovalRules").getProjectApprovalRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectApprovalRules","getProjectApprovalRulesOutput"], () => require("./getProjectApprovalRules"));
+
 export { GetProjectBranchesArgs, GetProjectBranchesResult, GetProjectBranchesOutputArgs } from "./getProjectBranches";
 export const getProjectBranches: typeof import("./getProjectBranches").getProjectBranches = null as any;
 export const getProjectBranchesOutput: typeof import("./getProjectBranches").getProjectBranchesOutput = null as any;

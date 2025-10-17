@@ -115,6 +115,12 @@ namespace Pulumi.GitLab
         [Output("userId")]
         public Output<int> UserId { get; private set; } = null!;
 
+        /// <summary>
+        /// Wether to validate if the expiration date is in the future.
+        /// </summary>
+        [Output("validatePastExpirationDate")]
+        public Output<bool> ValidatePastExpirationDate { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GroupServiceAccountAccessToken resource with the given unique name, arguments, and options.
@@ -207,6 +213,12 @@ namespace Pulumi.GitLab
         [Input("userId", required: true)]
         public Input<int> UserId { get; set; } = null!;
 
+        /// <summary>
+        /// Wether to validate if the expiration date is in the future.
+        /// </summary>
+        [Input("validatePastExpirationDate")]
+        public Input<bool>? ValidatePastExpirationDate { get; set; }
+
         public GroupServiceAccountAccessTokenArgs()
         {
         }
@@ -290,6 +302,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
+
+        /// <summary>
+        /// Wether to validate if the expiration date is in the future.
+        /// </summary>
+        [Input("validatePastExpirationDate")]
+        public Input<bool>? ValidatePastExpirationDate { get; set; }
 
         public GroupServiceAccountAccessTokenState()
         {

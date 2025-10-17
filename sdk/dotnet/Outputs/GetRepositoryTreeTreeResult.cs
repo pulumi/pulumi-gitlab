@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetRepositoryTreeTreeResult
     {
         /// <summary>
-        /// The project ID.
+        /// The project ID. Use `NodeId` instead. To be removed in 19.0.
         /// </summary>
         public readonly string Id;
         /// <summary>

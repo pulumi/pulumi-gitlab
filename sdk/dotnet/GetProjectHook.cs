@@ -226,7 +226,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool TagPushEvents;
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available in this datasource.
+        /// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank.
         /// </summary>
         public readonly string Token;
         /// <summary>

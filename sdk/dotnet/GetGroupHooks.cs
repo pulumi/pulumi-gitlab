@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetGroupHooks
     {
         /// <summary>
-        /// The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+        /// The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
         /// 
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupHooksResult>("gitlab:index/getGroupHooks:getGroupHooks", args ?? new GetGroupHooksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+        /// The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
         /// 
@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupHooksResult>("gitlab:index/getGroupHooks:getGroupHooks", args ?? new GetGroupHooksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+        /// The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupHooksHookResult> Hooks;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this data source. In the format `&lt;group&gt;`.
         /// </summary>
         public readonly string Id;
 

@@ -133,6 +133,12 @@ namespace Pulumi.GitLab
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
+        /// <summary>
+        /// Wether to validate if the expiration date is in the future.
+        /// </summary>
+        [Output("validatePastExpirationDate")]
+        public Output<bool> ValidatePastExpirationDate { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ProjectDeployToken resource with the given unique name, arguments, and options.
@@ -219,6 +225,12 @@ namespace Pulumi.GitLab
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        /// <summary>
+        /// Wether to validate if the expiration date is in the future.
+        /// </summary>
+        [Input("validatePastExpirationDate")]
+        public Input<bool>? ValidatePastExpirationDate { get; set; }
+
         public ProjectDeployTokenArgs()
         {
         }
@@ -290,6 +302,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Wether to validate if the expiration date is in the future.
+        /// </summary>
+        [Input("validatePastExpirationDate")]
+        public Input<bool>? ValidatePastExpirationDate { get; set; }
 
         public ProjectDeployTokenState()
         {

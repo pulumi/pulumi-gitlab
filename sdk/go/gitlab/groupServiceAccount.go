@@ -108,7 +108,8 @@ type GroupServiceAccount struct {
 	// The name of the user. If not specified, the default Service account user name is used.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service account id.
-	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
+	ServiceAccountId pulumi.StringOutput                  `pulumi:"serviceAccountId"`
+	Timeouts         GroupServiceAccountTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The username of the user. If not specified, it’s automatically generated.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
@@ -153,7 +154,8 @@ type groupServiceAccountState struct {
 	// The name of the user. If not specified, the default Service account user name is used.
 	Name *string `pulumi:"name"`
 	// The service account id.
-	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	ServiceAccountId *string                      `pulumi:"serviceAccountId"`
+	Timeouts         *GroupServiceAccountTimeouts `pulumi:"timeouts"`
 	// The username of the user. If not specified, it’s automatically generated.
 	Username *string `pulumi:"username"`
 }
@@ -167,6 +169,7 @@ type GroupServiceAccountState struct {
 	Name pulumi.StringPtrInput
 	// The service account id.
 	ServiceAccountId pulumi.StringPtrInput
+	Timeouts         GroupServiceAccountTimeoutsPtrInput
 	// The username of the user. If not specified, it’s automatically generated.
 	Username pulumi.StringPtrInput
 }
@@ -181,7 +184,8 @@ type groupServiceAccountArgs struct {
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group string `pulumi:"group"`
 	// The name of the user. If not specified, the default Service account user name is used.
-	Name *string `pulumi:"name"`
+	Name     *string                      `pulumi:"name"`
+	Timeouts *GroupServiceAccountTimeouts `pulumi:"timeouts"`
 	// The username of the user. If not specified, it’s automatically generated.
 	Username *string `pulumi:"username"`
 }
@@ -193,7 +197,8 @@ type GroupServiceAccountArgs struct {
 	// The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
 	Group pulumi.StringInput
 	// The name of the user. If not specified, the default Service account user name is used.
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
+	Timeouts GroupServiceAccountTimeoutsPtrInput
 	// The username of the user. If not specified, it’s automatically generated.
 	Username pulumi.StringPtrInput
 }
@@ -303,6 +308,10 @@ func (o GroupServiceAccountOutput) Name() pulumi.StringOutput {
 // The service account id.
 func (o GroupServiceAccountOutput) ServiceAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupServiceAccount) pulumi.StringOutput { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+func (o GroupServiceAccountOutput) Timeouts() GroupServiceAccountTimeoutsPtrOutput {
+	return o.ApplyT(func(v *GroupServiceAccount) GroupServiceAccountTimeoutsPtrOutput { return v.Timeouts }).(GroupServiceAccountTimeoutsPtrOutput)
 }
 
 // The username of the user. If not specified, it’s automatically generated.

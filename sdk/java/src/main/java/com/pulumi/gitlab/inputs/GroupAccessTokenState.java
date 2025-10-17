@@ -199,6 +199,21 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * Wether to validate if the expiration date is in the future.
+     * 
+     */
+    @Import(name="validatePastExpirationDate")
+    private @Nullable Output<Boolean> validatePastExpirationDate;
+
+    /**
+     * @return Wether to validate if the expiration date is in the future.
+     * 
+     */
+    public Optional<Output<Boolean>> validatePastExpirationDate() {
+        return Optional.ofNullable(this.validatePastExpirationDate);
+    }
+
     private GroupAccessTokenState() {}
 
     private GroupAccessTokenState(GroupAccessTokenState $) {
@@ -214,6 +229,7 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
         this.scopes = $.scopes;
         this.token = $.token;
         this.userId = $.userId;
+        this.validatePastExpirationDate = $.validatePastExpirationDate;
     }
 
     public static Builder builder() {
@@ -494,6 +510,27 @@ public final class GroupAccessTokenState extends com.pulumi.resources.ResourceAr
          */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(@Nullable Output<Boolean> validatePastExpirationDate) {
+            $.validatePastExpirationDate = validatePastExpirationDate;
+            return this;
+        }
+
+        /**
+         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatePastExpirationDate(Boolean validatePastExpirationDate) {
+            return validatePastExpirationDate(Output.of(validatePastExpirationDate));
         }
 
         public GroupAccessTokenState build() {

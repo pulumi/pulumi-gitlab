@@ -76,6 +76,8 @@ type GroupServiceAccountAccessToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The ID of a service account user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
 // NewGroupServiceAccountAccessToken registers a new resource with the given unique name, arguments, and options.
@@ -141,6 +143,8 @@ type groupServiceAccountAccessTokenState struct {
 	Token *string `pulumi:"token"`
 	// The ID of a service account user.
 	UserId *int `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 type GroupServiceAccountAccessTokenState struct {
@@ -164,6 +168,8 @@ type GroupServiceAccountAccessTokenState struct {
 	Token pulumi.StringPtrInput
 	// The ID of a service account user.
 	UserId pulumi.IntPtrInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (GroupServiceAccountAccessTokenState) ElementType() reflect.Type {
@@ -183,6 +189,8 @@ type groupServiceAccountAccessTokenArgs struct {
 	Scopes []string `pulumi:"scopes"`
 	// The ID of a service account user.
 	UserId int `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 // The set of arguments for constructing a GroupServiceAccountAccessToken resource.
@@ -199,6 +207,8 @@ type GroupServiceAccountAccessTokenArgs struct {
 	Scopes pulumi.StringArrayInput
 	// The ID of a service account user.
 	UserId pulumi.IntInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (GroupServiceAccountAccessTokenArgs) ElementType() reflect.Type {
@@ -338,6 +348,11 @@ func (o GroupServiceAccountAccessTokenOutput) Token() pulumi.StringOutput {
 // The ID of a service account user.
 func (o GroupServiceAccountAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupServiceAccountAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
+// Wether to validate if the expiration date is in the future.
+func (o GroupServiceAccountAccessTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupServiceAccountAccessToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }
 
 type GroupServiceAccountAccessTokenArrayOutput struct{ *pulumi.OutputState }

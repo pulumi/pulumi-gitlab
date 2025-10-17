@@ -112,6 +112,8 @@ type GroupAccessToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The userId associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
 // NewGroupAccessToken registers a new resource with the given unique name, arguments, and options.
@@ -178,6 +180,8 @@ type groupAccessTokenState struct {
 	Token *string `pulumi:"token"`
 	// The userId associated to the token.
 	UserId *int `pulumi:"userId"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 type GroupAccessTokenState struct {
@@ -205,6 +209,8 @@ type GroupAccessTokenState struct {
 	Token pulumi.StringPtrInput
 	// The userId associated to the token.
 	UserId pulumi.IntPtrInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (GroupAccessTokenState) ElementType() reflect.Type {
@@ -226,6 +232,8 @@ type groupAccessTokenArgs struct {
 	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
 	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
 // The set of arguments for constructing a GroupAccessToken resource.
@@ -244,6 +252,8 @@ type GroupAccessTokenArgs struct {
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
 	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
+	// Wether to validate if the expiration date is in the future.
+	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
 func (GroupAccessTokenArgs) ElementType() reflect.Type {
@@ -393,6 +403,11 @@ func (o GroupAccessTokenOutput) Token() pulumi.StringOutput {
 // The userId associated to the token.
 func (o GroupAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
+}
+
+// Wether to validate if the expiration date is in the future.
+func (o GroupAccessTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupAccessToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }
 
 type GroupAccessTokenArrayOutput struct{ *pulumi.OutputState }

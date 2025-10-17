@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectResult
     {
         /// <summary>
-        /// Links for the project.
+        /// Links for the project. Use `Links` instead. To be removed in 19.0.
         /// </summary>
         public readonly ImmutableDictionary<string, string> _links;
         /// <summary>
@@ -222,6 +222,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
+        /// Links for the project.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Links;
+        /// <summary>
         /// Template used to create merge commit message in merge requests.
         /// </summary>
         public readonly string MergeCommitTemplate;
@@ -354,6 +358,10 @@ namespace Pulumi.GitLab.Outputs
         /// Whether ResolveOutdatedDiffDiscussions is enabled for the project
         /// </summary>
         public readonly bool ResolveOutdatedDiffDiscussions;
+        /// <summary>
+        /// The default resource group process mode for the project.
+        /// </summary>
+        public readonly string ResourceGroupDefaultProcessMode;
         /// <summary>
         /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         /// </summary>
@@ -533,6 +541,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool lfsEnabled,
 
+            ImmutableDictionary<string, string> links,
+
             string mergeCommitTemplate,
 
             string mergeMethod,
@@ -600,6 +610,8 @@ namespace Pulumi.GitLab.Outputs
             string requirementsAccessLevel,
 
             bool resolveOutdatedDiffDiscussions,
+
+            string resourceGroupDefaultProcessMode,
 
             bool restrictUserDefinedVariables,
 
@@ -689,6 +701,7 @@ namespace Pulumi.GitLab.Outputs
             KeepLatestArtifact = keepLatestArtifact;
             LastActivityAt = lastActivityAt;
             LfsEnabled = lfsEnabled;
+            Links = links;
             MergeCommitTemplate = mergeCommitTemplate;
             MergeMethod = mergeMethod;
             MergePipelinesEnabled = mergePipelinesEnabled;
@@ -723,6 +736,7 @@ namespace Pulumi.GitLab.Outputs
             RequestAccessEnabled = requestAccessEnabled;
             RequirementsAccessLevel = requirementsAccessLevel;
             ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
+            ResourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
             RestrictUserDefinedVariables = restrictUserDefinedVariables;
             RunnersToken = runnersToken;
             SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;

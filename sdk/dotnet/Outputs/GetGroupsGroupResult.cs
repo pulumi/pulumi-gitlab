@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetGroupsGroupResult
     {
         /// <summary>
-        /// Whether developers and maintainers can push to the applicable default branch.
+        /// Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
         /// </summary>
         public readonly int DefaultBranchProtection;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// Boolean, is LFS enabled for projects in this group.
+        /// Is LFS enabled for projects in this group.
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Integer, ID of the parent group.
+        /// ID of the parent group.
         /// </summary>
         public readonly int ParentId;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool PreventForkingOutsideGroup;
         /// <summary>
-        /// Boolean, is request for access enabled to the group.
+        /// Is request for access enabled to the group.
         /// </summary>
         public readonly bool RequestAccessEnabled;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string RunnersToken;
         /// <summary>
-        /// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
+        /// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `Enabled`, `DisabledAndOverridable`, `DisabledAndUnoverridable`, `DisabledWithOverride`.
         /// </summary>
         public readonly string SharedRunnersSetting;
         /// <summary>

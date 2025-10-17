@@ -55,6 +55,7 @@
         "getPipelineSchedules.ts",
         "getProject.ts",
         "getProjectAccessTokens.ts",
+        "getProjectApprovalRules.ts",
         "getProjectBranches.ts",
         "getProjectEnvironments.ts",
         "getProjectHook.ts",

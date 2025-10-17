@@ -98,20 +98,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.analyticsAccessLevel;
     }
     /**
-     * Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
     @Export(name="approvalsBeforeMerge", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> approvalsBeforeMerge;
 
     /**
-     * @return Number of merge request approvals required for merging. Default is 0.
-     * This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource
-     * and is most likely gonna be deprecated in a future GitLab version (see [this upstream epic](https://gitlab.com/groups/gitlab-org/-/epics/7572)).
-     * In the meantime we recommend against using this attribute and use `gitlab.ProjectApprovalRule` instead.
+     * @return Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      * 
      */
     public Output<Optional<Integer>> approvalsBeforeMerge() {
@@ -482,18 +480,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.containerRegistryAccessLevel;
     }
     /**
-     * Enable container registry for the project.
+     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * Use `containerRegistryAccessLevel` instead.
+     * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead. */
+    @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
     @Export(name="containerRegistryEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> containerRegistryEnabled;
 
     /**
-     * @return Enable container registry for the project.
+     * @return Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> containerRegistryEnabled() {
@@ -752,14 +750,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.issuesAccessLevel;
     }
     /**
-     * Enable issue tracking for the project.
+     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `issuesAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
     @Export(name="issuesEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> issuesEnabled;
 
     /**
-     * @return Enable issue tracking for the project.
+     * @return Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> issuesEnabled() {
@@ -864,14 +866,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.mergeRequestsAccessLevel;
     }
     /**
-     * Enable merge requests for the project.
+     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
     @Export(name="mergeRequestsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsEnabled;
 
     /**
-     * @return Enable merge requests for the project.
+     * @return Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> mergeRequestsEnabled() {
@@ -1144,18 +1150,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.permanentlyDeleteOnDestroy);
     }
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * Deprecated in favor of `buildsAccessLevel`
+     * Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* Deprecated in favor of `buildsAccessLevel` */
+    @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
     @Export(name="pipelinesEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pipelinesEnabled;
 
     /**
-     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls.
+     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> pipelinesEnabled() {
@@ -1348,14 +1354,32 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resolveOutdatedDiffDiscussions);
     }
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * The default resource group process mode for the project.
      * 
      */
+    @Export(name="resourceGroupDefaultProcessMode", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupDefaultProcessMode;
+
+    /**
+     * @return The default resource group process mode for the project.
+     * 
+     */
+    public Output<String> resourceGroupDefaultProcessMode() {
+        return this.resourceGroupDefaultProcessMode;
+    }
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
+     * 
+     */
+    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
     @Export(name="restrictUserDefinedVariables", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> restrictUserDefinedVariables;
 
     /**
-     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> restrictUserDefinedVariables() {
@@ -1438,14 +1462,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.snippetsAccessLevel;
     }
     /**
-     * Enable snippets for the project.
+     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
     @Export(name="snippetsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> snippetsEnabled;
 
     /**
-     * @return Enable snippets for the project.
+     * @return Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> snippetsEnabled() {
@@ -1508,14 +1536,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.suggestionCommitMessage);
     }
     /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `topics` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `topics` instead. To be removed in 19.0. */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
-     * @return The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.
+     * @return The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
      * 
      */
     public Output<List<String>> tags() {
@@ -1622,14 +1654,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.wikiAccessLevel;
     }
     /**
-     * Enable wiki for the project.
+     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
+     * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead. To be removed in 19.0.
      * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
     @Export(name="wikiEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> wikiEnabled;
 
     /**
-     * @return Enable wiki for the project.
+     * @return Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
      * 
      */
     public Output<Boolean> wikiEnabled() {

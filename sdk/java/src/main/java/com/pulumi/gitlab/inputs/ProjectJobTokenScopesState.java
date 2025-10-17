@@ -49,24 +49,24 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the project.
+     * The ID of the project. Use `project` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. To be removed in 19.0. */
     @Import(name="projectId")
     private @Nullable Output<Integer> projectId;
 
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Use `project` instead. To be removed in 19.0.
      * 
      * @deprecated
-     * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. To be removed in 19.0.
      * 
      */
-    @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. To be removed in 19.0. */
     public Optional<Output<Integer>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -172,30 +172,30 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId The ID of the project.
+         * @param projectId The ID of the project. Use `project` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+         * Use `project` instead. To be removed in 19.0.
          * 
          */
-        @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* Use `project` instead. To be removed in 19.0. */
         public Builder projectId(@Nullable Output<Integer> projectId) {
             $.projectId = projectId;
             return this;
         }
 
         /**
-         * @param projectId The ID of the project.
+         * @param projectId The ID of the project. Use `project` instead. To be removed in 19.0.
          * 
          * @return builder
          * 
          * @deprecated
-         * `projectId` has been deprecated and will be removed in 19.0. Use `project` instead.
+         * Use `project` instead. To be removed in 19.0.
          * 
          */
-        @Deprecated /* `projectId` has been deprecated and will be removed in 19.0. Use `project` instead. */
+        @Deprecated /* Use `project` instead. To be removed in 19.0. */
         public Builder projectId(Integer projectId) {
             return projectId(Output.of(projectId));
         }

@@ -17,13 +17,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectMembershipResult {
     /**
-     * @return The full path of the project.
+     * @return The full path of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     private String fullPath;
     /**
      * @return The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
@@ -46,13 +46,13 @@ public final class GetProjectMembershipResult {
      */
     private String project;
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     private Integer projectId;
     /**
      * @return A query string to search for members
@@ -67,13 +67,13 @@ public final class GetProjectMembershipResult {
 
     private GetProjectMembershipResult() {}
     /**
-     * @return The full path of the project.
+     * @return The full path of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     public String fullPath() {
         return this.fullPath;
     }
@@ -106,13 +106,13 @@ public final class GetProjectMembershipResult {
         return this.project;
     }
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Use `project` instead. Will be removed in 19.0.
      * 
      * @deprecated
-     * Will be removed in 19.0. Use `project` instead.
+     * Use `project` instead. Will be removed in 19.0.
      * 
      */
-    @Deprecated /* Will be removed in 19.0. Use `project` instead. */
+    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
     public Integer projectId() {
         return this.projectId;
     }

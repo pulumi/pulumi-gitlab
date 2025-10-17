@@ -13,117 +13,341 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupSubgroupsSubgroup {
+    /**
+     * @return A list of email address domains to allow group access.
+     * 
+     */
     private String allowedEmailDomainsList;
+    /**
+     * @return Default to Auto DevOps pipeline for all projects within this group.
+     * 
+     */
     private Boolean autoDevopsEnabled;
+    /**
+     * @return The URL of the avatar image.
+     * 
+     */
     private String avatarUrl;
+    /**
+     * @return Group created at date.
+     * 
+     */
     private String createdAt;
+    /**
+     * @return Whether developers and maintainers can push to the applicable default branch.
+     * 
+     */
     private Integer defaultBranchProtection;
+    /**
+     * @return The description of the group.
+     * 
+     */
     private String description;
+    /**
+     * @return Enable email notifications.
+     * 
+     */
     private Boolean emailsEnabled;
+    /**
+     * @return The ID of the project that will be used for file templates.
+     * 
+     */
     private Integer fileTemplateProjectId;
+    /**
+     * @return The full name of the group.
+     * 
+     */
     private String fullName;
+    /**
+     * @return The full path of the group.
+     * 
+     */
     private String fullPath;
+    /**
+     * @return The ID of the group.
+     * 
+     */
     private Integer groupId;
+    /**
+     * @return A list of IP addresses or subnet masks to restrict group access.
+     * 
+     */
     private String ipRestrictionRanges;
+    /**
+     * @return Is LFS enabled for projects in this group.
+     * 
+     */
     private Boolean lfsEnabled;
+    /**
+     * @return Disable the capability of a group from getting mentioned.
+     * 
+     */
     private Boolean mentionsDisabled;
+    /**
+     * @return The name of this group.
+     * 
+     */
     private String name;
+    /**
+     * @return ID of the parent group.
+     * 
+     */
     private Integer parentId;
+    /**
+     * @return The path of the group.
+     * 
+     */
     private String path;
+    /**
+     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+     * 
+     */
     private String projectCreationLevel;
+    /**
+     * @return Is request for access enabled to the group.
+     * 
+     */
     private Boolean requestAccessEnabled;
+    /**
+     * @return Require all users in this group to setup Two-factor authentication.
+     * 
+     */
     private Boolean requireTwoFactorAuthentication;
+    /**
+     * @return Prevent sharing a project with another group within this group.
+     * 
+     */
     private Boolean shareWithGroupLock;
+    /**
+     * @return Enable or disable shared runners for a group&#39;s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * 
+     */
     private String sharedRunnersSetting;
+    /**
+     * @return Group statistics.
+     * 
+     */
     private Map<String,String> statistics;
+    /**
+     * @return Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+     * 
+     */
     private String subgroupCreationLevel;
+    /**
+     * @return Time before Two-factor authentication is enforced (in hours).
+     * 
+     */
     private Integer twoFactorGracePeriod;
+    /**
+     * @return Limited by visibility `public`, `internal`, or `private`.
+     * 
+     */
     private String visibility;
+    /**
+     * @return Web URL of the group.
+     * 
+     */
     private String webUrl;
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     private String wikiAccessLevel;
 
     private GetGroupSubgroupsSubgroup() {}
+    /**
+     * @return A list of email address domains to allow group access.
+     * 
+     */
     public String allowedEmailDomainsList() {
         return this.allowedEmailDomainsList;
     }
+    /**
+     * @return Default to Auto DevOps pipeline for all projects within this group.
+     * 
+     */
     public Boolean autoDevopsEnabled() {
         return this.autoDevopsEnabled;
     }
+    /**
+     * @return The URL of the avatar image.
+     * 
+     */
     public String avatarUrl() {
         return this.avatarUrl;
     }
+    /**
+     * @return Group created at date.
+     * 
+     */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Whether developers and maintainers can push to the applicable default branch.
+     * 
+     */
     public Integer defaultBranchProtection() {
         return this.defaultBranchProtection;
     }
+    /**
+     * @return The description of the group.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Enable email notifications.
+     * 
+     */
     public Boolean emailsEnabled() {
         return this.emailsEnabled;
     }
+    /**
+     * @return The ID of the project that will be used for file templates.
+     * 
+     */
     public Integer fileTemplateProjectId() {
         return this.fileTemplateProjectId;
     }
+    /**
+     * @return The full name of the group.
+     * 
+     */
     public String fullName() {
         return this.fullName;
     }
+    /**
+     * @return The full path of the group.
+     * 
+     */
     public String fullPath() {
         return this.fullPath;
     }
+    /**
+     * @return The ID of the group.
+     * 
+     */
     public Integer groupId() {
         return this.groupId;
     }
+    /**
+     * @return A list of IP addresses or subnet masks to restrict group access.
+     * 
+     */
     public String ipRestrictionRanges() {
         return this.ipRestrictionRanges;
     }
+    /**
+     * @return Is LFS enabled for projects in this group.
+     * 
+     */
     public Boolean lfsEnabled() {
         return this.lfsEnabled;
     }
+    /**
+     * @return Disable the capability of a group from getting mentioned.
+     * 
+     */
     public Boolean mentionsDisabled() {
         return this.mentionsDisabled;
     }
+    /**
+     * @return The name of this group.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return ID of the parent group.
+     * 
+     */
     public Integer parentId() {
         return this.parentId;
     }
+    /**
+     * @return The path of the group.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
+     * 
+     */
     public String projectCreationLevel() {
         return this.projectCreationLevel;
     }
+    /**
+     * @return Is request for access enabled to the group.
+     * 
+     */
     public Boolean requestAccessEnabled() {
         return this.requestAccessEnabled;
     }
+    /**
+     * @return Require all users in this group to setup Two-factor authentication.
+     * 
+     */
     public Boolean requireTwoFactorAuthentication() {
         return this.requireTwoFactorAuthentication;
     }
+    /**
+     * @return Prevent sharing a project with another group within this group.
+     * 
+     */
     public Boolean shareWithGroupLock() {
         return this.shareWithGroupLock;
     }
+    /**
+     * @return Enable or disable shared runners for a group&#39;s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
+     * 
+     */
     public String sharedRunnersSetting() {
         return this.sharedRunnersSetting;
     }
+    /**
+     * @return Group statistics.
+     * 
+     */
     public Map<String,String> statistics() {
         return this.statistics;
     }
+    /**
+     * @return Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
+     * 
+     */
     public String subgroupCreationLevel() {
         return this.subgroupCreationLevel;
     }
+    /**
+     * @return Time before Two-factor authentication is enforced (in hours).
+     * 
+     */
     public Integer twoFactorGracePeriod() {
         return this.twoFactorGracePeriod;
     }
+    /**
+     * @return Limited by visibility `public`, `internal`, or `private`.
+     * 
+     */
     public String visibility() {
         return this.visibility;
     }
+    /**
+     * @return Web URL of the group.
+     * 
+     */
     public String webUrl() {
         return this.webUrl;
     }
+    /**
+     * @return The group&#39;s wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
     public String wikiAccessLevel() {
         return this.wikiAccessLevel;
     }

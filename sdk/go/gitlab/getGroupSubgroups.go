@@ -81,7 +81,7 @@ type GetGroupSubgroupsResult struct {
 	AllAvailable bool `pulumi:"allAvailable"`
 	// The ID of the group.
 	GroupId int `pulumi:"groupId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<group-id>`.
 	Id string `pulumi:"id"`
 	// Limit to groups where current user has at least this access level.
 	MinAccessLevel string `pulumi:"minAccessLevel"`
@@ -165,7 +165,7 @@ func (o GetGroupSubgroupsResultOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsResult) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<group-id>`.
 func (o GetGroupSubgroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSubgroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }

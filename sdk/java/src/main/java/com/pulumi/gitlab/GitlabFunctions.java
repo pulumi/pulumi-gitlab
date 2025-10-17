@@ -59,6 +59,8 @@ import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
 import com.pulumi.gitlab.inputs.GetPipelineSchedulesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectAccessTokensArgs;
 import com.pulumi.gitlab.inputs.GetProjectAccessTokensPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
+import com.pulumi.gitlab.inputs.GetProjectApprovalRulesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesPlainArgs;
@@ -151,6 +153,7 @@ import com.pulumi.gitlab.outputs.GetMetadataResult;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleResult;
 import com.pulumi.gitlab.outputs.GetPipelineSchedulesResult;
 import com.pulumi.gitlab.outputs.GetProjectAccessTokensResult;
+import com.pulumi.gitlab.outputs.GetProjectApprovalRulesResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectEnvironmentsResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
@@ -1924,7 +1927,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupHook:getGroupHook", TypeShape.of(GetGroupHookResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+     * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
@@ -1935,7 +1938,7 @@ public final class GitlabFunctions {
         return getGroupHooks(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+     * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
@@ -1946,7 +1949,7 @@ public final class GitlabFunctions {
         return getGroupHooksPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+     * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
@@ -1957,7 +1960,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getGroupHooks:getGroupHooks", TypeShape.of(GetGroupHooksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+     * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
@@ -1968,7 +1971,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getGroupHooks:getGroupHooks", TypeShape.of(GetGroupHooksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getGroupHooks` data source allows to retrieve details about hooks in a group.
+     * The `gitlab.getGroupHooks` data source retrieves details about hooks in a group.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
@@ -5108,6 +5111,236 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectAccessTokensResult> getProjectAccessTokensPlain(GetProjectAccessTokensPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", TypeShape.of(GetProjectAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *         final var byProjectPath = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("my-group/my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectApprovalRulesResult> getProjectApprovalRules(GetProjectApprovalRulesArgs args) {
+        return getProjectApprovalRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *         final var byProjectPath = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("my-group/my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectApprovalRulesResult> getProjectApprovalRulesPlain(GetProjectApprovalRulesPlainArgs args) {
+        return getProjectApprovalRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *         final var byProjectPath = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("my-group/my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectApprovalRulesResult> getProjectApprovalRules(GetProjectApprovalRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", TypeShape.of(GetProjectApprovalRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *         final var byProjectPath = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("my-group/my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectApprovalRulesResult> getProjectApprovalRules(GetProjectApprovalRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", TypeShape.of(GetProjectApprovalRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byProjectId = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("12345")
+     *             .build());
+     * 
+     *         final var byProjectPath = GitlabFunctions.getProjectApprovalRules(GetProjectApprovalRulesArgs.builder()
+     *             .project("my-group/my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectApprovalRulesResult> getProjectApprovalRulesPlain(GetProjectApprovalRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", TypeShape.of(GetProjectApprovalRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.

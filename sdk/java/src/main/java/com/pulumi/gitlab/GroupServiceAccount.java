@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupServiceAccountArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupServiceAccountState;
+import com.pulumi.gitlab.outputs.GroupServiceAccountTimeouts;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -165,6 +166,12 @@ public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serviceAccountId() {
         return this.serviceAccountId;
+    }
+    @Export(name="timeouts", refs={GroupServiceAccountTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ GroupServiceAccountTimeouts> timeouts;
+
+    public Output<Optional<GroupServiceAccountTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * The username of the user. If not specified, it’s automatically generated.

@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentApprovalRule>> ApprovalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`. Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.
         /// </summary>
         [Output("deployAccessLevels")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevel>> DeployAccessLevels { get; private set; } = null!;
@@ -137,9 +137,9 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`. Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated. Use `DeployAccessLevelsAttribute` instead.")]
+        [Obsolete(@"Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.")]
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs> DeployAccessLevels
         {
             get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>());
@@ -194,9 +194,9 @@ namespace Pulumi.GitLab
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`. Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated. Use `DeployAccessLevelsAttribute` instead.")]
+        [Obsolete(@"Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.")]
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs> DeployAccessLevels
         {
             get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>());

@@ -104,7 +104,9 @@ type LookupProjectResult struct {
 	InfrastructureAccessLevel string `pulumi:"infrastructureAccessLevel"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel string `pulumi:"issuesAccessLevel"`
-	// Enable issue tracking for the project.
+	// Enable issue tracking for the project. Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+	//
+	// Deprecated: Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
 	IssuesEnabled bool `pulumi:"issuesEnabled"`
 	// Disable or enable the ability to keep the latest artifact for this project.
 	KeepLatestArtifact bool `pulumi:"keepLatestArtifact"`
@@ -116,7 +118,9 @@ type LookupProjectResult struct {
 	MergePipelinesEnabled bool `pulumi:"mergePipelinesEnabled"`
 	// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
 	MergeRequestsAccessLevel string `pulumi:"mergeRequestsAccessLevel"`
-	// Enable merge requests for the project.
+	// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+	//
+	// Deprecated: Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
@@ -134,7 +138,9 @@ type LookupProjectResult struct {
 	Path string `pulumi:"path"`
 	// The path of the repository with namespace.
 	PathWithNamespace string `pulumi:"pathWithNamespace"`
-	// Enable pipelines for the project.
+	// Enable pipelines for the project. Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
+	//
+	// Deprecated: Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
 	PipelinesEnabled bool `pulumi:"pipelinesEnabled"`
 	// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue bool `pulumi:"preventMergeWithoutJiraIssue"`
@@ -158,7 +164,9 @@ type LookupProjectResult struct {
 	RequirementsAccessLevel string `pulumi:"requirementsAccessLevel"`
 	// Automatically resolve merge request diffs discussions on lines changed with a push.
 	ResolveOutdatedDiffDiscussions bool `pulumi:"resolveOutdatedDiffDiscussions"`
-	// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+	// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+	//
+	// Deprecated: Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
 	RestrictUserDefinedVariables bool `pulumi:"restrictUserDefinedVariables"`
 	// Registration token to use during runner setup.
 	RunnersToken string `pulumi:"runnersToken"`
@@ -168,7 +176,9 @@ type LookupProjectResult struct {
 	SharedWithGroups []GetProjectSharedWithGroup `pulumi:"sharedWithGroups"`
 	// Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
 	SnippetsAccessLevel string `pulumi:"snippetsAccessLevel"`
-	// Enable snippets for the project.
+	// Enable snippets for the project. Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+	//
+	// Deprecated: Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
 	SnippetsEnabled bool `pulumi:"snippetsEnabled"`
 	// Template used to create squash commit message in merge requests.
 	SquashCommitTemplate string `pulumi:"squashCommitTemplate"`
@@ -184,7 +194,9 @@ type LookupProjectResult struct {
 	WebUrl string `pulumi:"webUrl"`
 	// Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
 	WikiAccessLevel string `pulumi:"wikiAccessLevel"`
-	// Enable wiki for the project.
+	// Enable wiki for the project. Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+	//
+	// Deprecated: Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
 	WikiEnabled bool `pulumi:"wikiEnabled"`
 }
 
@@ -392,7 +404,9 @@ func (o LookupProjectResultOutput) IssuesAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.IssuesAccessLevel }).(pulumi.StringOutput)
 }
 
-// Enable issue tracking for the project.
+// Enable issue tracking for the project. Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+//
+// Deprecated: Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
 func (o LookupProjectResultOutput) IssuesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.IssuesEnabled }).(pulumi.BoolOutput)
 }
@@ -422,7 +436,9 @@ func (o LookupProjectResultOutput) MergeRequestsAccessLevel() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupProjectResult) string { return v.MergeRequestsAccessLevel }).(pulumi.StringOutput)
 }
 
-// Enable merge requests for the project.
+// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+//
+// Deprecated: Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
 func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeRequestsEnabled }).(pulumi.BoolOutput)
 }
@@ -467,7 +483,9 @@ func (o LookupProjectResultOutput) PathWithNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.PathWithNamespace }).(pulumi.StringOutput)
 }
 
-// Enable pipelines for the project.
+// Enable pipelines for the project. Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
+//
+// Deprecated: Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
 func (o LookupProjectResultOutput) PipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.PipelinesEnabled }).(pulumi.BoolOutput)
 }
@@ -527,7 +545,9 @@ func (o LookupProjectResultOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolO
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.ResolveOutdatedDiffDiscussions }).(pulumi.BoolOutput)
 }
 
-// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+//
+// Deprecated: Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
 func (o LookupProjectResultOutput) RestrictUserDefinedVariables() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.RestrictUserDefinedVariables }).(pulumi.BoolOutput)
 }
@@ -552,7 +572,9 @@ func (o LookupProjectResultOutput) SnippetsAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SnippetsAccessLevel }).(pulumi.StringOutput)
 }
 
-// Enable snippets for the project.
+// Enable snippets for the project. Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+//
+// Deprecated: Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
 func (o LookupProjectResultOutput) SnippetsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.SnippetsEnabled }).(pulumi.BoolOutput)
 }
@@ -592,7 +614,9 @@ func (o LookupProjectResultOutput) WikiAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.WikiAccessLevel }).(pulumi.StringOutput)
 }
 
-// Enable wiki for the project.
+// Enable wiki for the project. Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+//
+// Deprecated: Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
 func (o LookupProjectResultOutput) WikiEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.WikiEnabled }).(pulumi.BoolOutput)
 }

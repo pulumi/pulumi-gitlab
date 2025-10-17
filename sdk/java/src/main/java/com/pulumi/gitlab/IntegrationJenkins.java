@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationJenkins` resource manages the lifecycle of a project integration with Jenkins.
  * 
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationJenkins`instead.
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jenkins)
  * 
  * ## Example Usage

@@ -58,7 +58,7 @@ class GetGroupHooksResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this data source. In the format `<group>`.
         """
         return pulumi.get(self, "id")
 
@@ -77,7 +77,7 @@ class AwaitableGetGroupHooksResult(GetGroupHooksResult):
 def get_group_hooks(group: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupHooksResult:
     """
-    The `get_group_hooks` data source allows to retrieve details about hooks in a group.
+    The `get_group_hooks` data source retrieves details about hooks in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
 
@@ -98,7 +98,7 @@ def get_group_hooks(group: Optional[_builtins.str] = None,
 def get_group_hooks_output(group: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupHooksResult]:
     """
-    The `get_group_hooks` data source allows to retrieve details about hooks in a group.
+    The `get_group_hooks` data source retrieves details about hooks in a group.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
 

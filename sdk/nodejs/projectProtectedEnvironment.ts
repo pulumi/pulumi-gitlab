@@ -72,9 +72,9 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
      */
     declare public readonly approvalRules: pulumi.Output<outputs.ProjectProtectedEnvironmentApprovalRule[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      *
-     * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
+     * @deprecated Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      */
     declare public readonly deployAccessLevels: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
     /**
@@ -136,9 +136,9 @@ export interface ProjectProtectedEnvironmentState {
      */
     approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      *
-     * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
+     * @deprecated Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      */
     deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
     /**
@@ -164,9 +164,9 @@ export interface ProjectProtectedEnvironmentArgs {
      */
     approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      *
-     * @deprecated This attribute is deprecated. Use `deployAccessLevelsAttribute` instead.
+     * @deprecated Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
      */
     deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[]>;
     /**

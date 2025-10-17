@@ -113,7 +113,7 @@ public final class GetGroupHookResult {
      */
     private Boolean tagPushEvents;
     /**
-     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      * 
      * @deprecated
      * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
@@ -274,7 +274,7 @@ public final class GetGroupHookResult {
         return this.tagPushEvents;
     }
     /**
-     * @return A token to present when invoking the hook. The token is not available in this datasource.
+     * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      * 
      * @deprecated
      * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.

@@ -77,7 +77,7 @@ type GetGroupsArgs struct {
 type GetGroupsResult struct {
 	// The list of groups.
 	Groups []GetGroupsGroup `pulumi:"groups"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format of a hash of the provided search attributes.
 	Id string `pulumi:"id"`
 	// Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
 	OrderBy *string `pulumi:"orderBy"`
@@ -134,7 +134,7 @@ func (o GetGroupsResultOutput) Groups() GetGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []GetGroupsGroup { return v.Groups }).(GetGroupsGroupArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format of a hash of the provided search attributes.
 func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }

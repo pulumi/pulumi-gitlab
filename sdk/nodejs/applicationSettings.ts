@@ -218,7 +218,9 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly defaultBranchName: pulumi.Output<string>;
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      */
     declare public readonly defaultBranchProtection: pulumi.Output<number>;
     /**
@@ -2097,7 +2099,9 @@ export interface ApplicationSettingsState {
      */
     defaultBranchName?: pulumi.Input<string>;
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
@@ -3336,7 +3340,9 @@ export interface ApplicationSettingsArgs {
      */
     defaultBranchName?: pulumi.Input<string>;
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2.
+     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
+     *
+     * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      */
     defaultBranchProtection?: pulumi.Input<number>;
     /**
