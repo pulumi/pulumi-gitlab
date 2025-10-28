@@ -1,5 +1,5 @@
 [[tools.dotnet]]
-version = "8.0.415"
+version = "8.0.414"
 backend = "asdf:dotnet"
 
 [[tools."github:pulumi/pulumictl"]]
@@ -8,8 +8,10 @@ backend = "github:pulumi/pulumictl"
 
 [tools."github:pulumi/pulumictl".platforms.linux-x64]
 checksum = "blake3:c128dd74993f779c613296fe7cd21c20cbd323f24e59cb76e007620660b60348"
+name = "pulumictl-v0.0.50-linux-amd64.tar.gz"
 size = 27744219
 url = "https://github.com/pulumi/pulumictl/releases/download/v0.0.50/pulumictl-v0.0.50-linux-amd64.tar.gz"
+url_api = ""
 
 [[tools."github:pulumi/schema-tools"]]
 version = "0.6.0"
@@ -17,8 +19,10 @@ backend = "github:pulumi/schema-tools"
 
 [tools."github:pulumi/schema-tools".platforms.linux-x64]
 checksum = "blake3:82dfe616fee18b4258f6e3d2dc3c4e9f14afd43a0a4cc33eff2d2a04088d6ca3"
+name = "schema-tools-v0.6.0-linux-amd64.tar.gz"
 size = 14282746
 url = "https://github.com/pulumi/schema-tools/releases/download/v0.6.0/schema-tools-v0.6.0-linux-amd64.tar.gz"
+url_api = ""
 
 [[tools.go]]
 version = "1.24.5"
@@ -65,6 +69,10 @@ checksum = "sha256:4eba5fbe1fb10753bc06e42f001a91c5cec16798b7764a3e9257adc59af47
 size = 47041607
 url = "https://nodejs.org/dist/v20.19.5/node-v20.19.5-linux-x64.tar.gz"
 
+[[tools."npm:yarn"]]
+version = "1.22.22"
+backend = "npm:yarn"
+
 [[tools.pulumi]]
 version = "3.190.0"
 backend = "aqua:pulumi/pulumi"
@@ -77,3 +85,15 @@ url = "https://github.com/pulumi/pulumi/releases/download/v3.190.0/pulumi-v3.190
 [[tools.python]]
 version = "3.11.8"
 backend = "core:python"
+
+[[tools."vfox-pulumi:pulumi/pulumi-converter-terraform"]]
+version = "1.2.4"
+backend = "vfox-pulumi:pulumi/pulumi-converter-terraform"
+
+[[tools."vfox-pulumi:pulumi/pulumi-local"]]
+version = "0.1.6"
+backend = "vfox-pulumi:pulumi/pulumi-local"
+
+[[tools."vfox-pulumi:pulumi/pulumi-std"]]
+version = "2.2.0"
+backend = "vfox-pulumi:pulumi/pulumi-std"
