@@ -21,7 +21,13 @@ pulumi = "{{ get_env(name='MISE_PULUMI_VERSION', default='latest') }}"
 "github:pulumi/schema-tools" = "latest"
 gradle = '7.6'
 golangci-lint = "1.64.8" # See note about about overrides if you need to customize this.
+"vfox-pulumi:pulumi/pulumi-std" = "latest"
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
+"vfox-pulumi:pulumi/pulumi-local" = "latest"
 
 [settings]
 experimental = true # Required for Go binaries (e.g. pulumictl).
 lockfile = true
+
+[plugins]
+vfox-pulumi = "https://github.com/pulumi/vfox-pulumi"
