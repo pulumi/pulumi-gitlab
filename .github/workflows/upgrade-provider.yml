@@ -56,6 +56,8 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@v3
         with:
+          # Latest working version. See https://github.com/jdx/mise/discussions/6781
+          version: 2025.10.16
           github_token: ${{ secrets.GITHUB_TOKEN }}
           cache_key: "mise-{{platform}}-{{file_hash}}"
           # only saving the cache in the prerequisites job
@@ -87,7 +89,7 @@ jobs:
         id: upgrade_provider
         if: steps.target_version.outputs.version != ''
         continue-on-error: true
-        uses: pulumi/pulumi-upgrade-provider-action@3c670a7cb92732324c8ccc17f7f9ef9dfca126d0 # v0.0.17
+        uses: pulumi/pulumi-upgrade-provider-action@e247104aede3eb4641f48c8ad0ea9de9346f2457 # v0.0.18
         with:
           kind: provider
           email: bot@pulumi.com
