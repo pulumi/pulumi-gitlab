@@ -12,6 +12,28 @@ import * as utilities from "./utilities";
  * > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = gitlab.getUser({
+ *     username: "myuser",
+ * });
+ * // Example using `for_each`
+ * const example_two = std.toset({
+ *     input: [
+ *         "user1",
+ *         "user2",
+ *         "user3",
+ *     ],
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ *     username: __value,
+ * }) })));
+ * ```
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
@@ -188,6 +210,28 @@ export interface GetUserResult {
  * > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = gitlab.getUser({
+ *     username: "myuser",
+ * });
+ * // Example using `for_each`
+ * const example_two = std.toset({
+ *     input: [
+ *         "user1",
+ *         "user2",
+ *         "user3",
+ *     ],
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ *     username: __value,
+ * }) })));
+ * ```
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     args = args || {};

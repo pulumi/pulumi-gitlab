@@ -9898,6 +9898,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetUserResult> getUser() {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
@@ -9910,6 +9912,8 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -9924,6 +9928,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
@@ -9936,6 +9942,8 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -9950,6 +9958,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
@@ -9963,6 +9973,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
@@ -9975,6 +9987,8 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {

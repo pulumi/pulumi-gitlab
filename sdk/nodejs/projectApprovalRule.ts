@@ -7,6 +7,76 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as std from "@pulumi/std";
+ *
+ * const example_one = new gitlab.ProjectApprovalRule("example-one", {
+ *     project: "5",
+ *     name: "Example Rule",
+ *     approvalsRequired: 3,
+ *     userIds: [
+ *         50,
+ *         500,
+ *     ],
+ *     groupIds: [51],
+ * });
+ * // With Protected Branch IDs
+ * const example = new gitlab.BranchProtection("example", {
+ *     project: "5",
+ *     branch: "release/*",
+ *     pushAccessLevel: "maintainer",
+ *     mergeAccessLevel: "developer",
+ * });
+ * const example_two = new gitlab.ProjectApprovalRule("example-two", {
+ *     project: "5",
+ *     name: "Example Rule 2",
+ *     approvalsRequired: 3,
+ *     userIds: [
+ *         50,
+ *         500,
+ *     ],
+ *     groupIds: [51],
+ *     protectedBranchIds: [example.branchProtectionId],
+ * });
+ * // Example using `data.gitlab_user` and `for` loop
+ * const users = std.toset({
+ *     input: [
+ *         "user1",
+ *         "user2",
+ *         "user3",
+ *     ],
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ *     username: __value,
+ * }) })));
+ * const example_three = new gitlab.ProjectApprovalRule("example-three", {
+ *     project: "5",
+ *     name: "Example Rule 3",
+ *     approvalsRequired: 3,
+ *     userIds: users.apply(users => Object.values(users).map(user => (user.id))),
+ * });
+ * // Example using `approval_rule` using `any_approver` as rule type
+ * const anyApprover = new gitlab.ProjectApprovalRule("any_approver", {
+ *     project: "5",
+ *     name: "Any name",
+ *     ruleType: "any_approver",
+ *     approvalsRequired: 1,
+ * });
+ * // Example using `applies_to_all_protected_branches`
+ * const example_four = new gitlab.ProjectApprovalRule("example-four", {
+ *     project: "5",
+ *     name: "Example Rule 4",
+ *     approvalsRequired: 3,
+ *     userIds: [
+ *         50,
+ *         500,
+ *     ],
+ *     groupIds: [51],
+ *     appliesToAllProtectedBranches: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:

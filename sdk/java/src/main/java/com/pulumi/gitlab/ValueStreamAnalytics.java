@@ -25,6 +25,74 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ValueStreamAnalytics;
+ * import com.pulumi.gitlab.ValueStreamAnalyticsArgs;
+ * import com.pulumi.gitlab.inputs.ValueStreamAnalyticsStageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new ValueStreamAnalytics("project", ValueStreamAnalyticsArgs.builder()
+ *             .name("TEST")
+ *             .projectFullPath("test/project")
+ *             .stages(            
+ *                 ValueStreamAnalyticsStageArgs.builder()
+ *                     .name("Issue")
+ *                     .custom(false)
+ *                     .hidden(false)
+ *                     .build(),
+ *                 ValueStreamAnalyticsStageArgs.builder()
+ *                     .name("Issue Labels")
+ *                     .custom(true)
+ *                     .hidden(false)
+ *                     .startEventIdentifier("ISSUE_LABEL_ADDED")
+ *                     .startEventLabelId("gid://gitlab/ProjectLabel/0")
+ *                     .endEventIdentifier("ISSUE_LABEL_REMOVED")
+ *                     .endEventLabelId("gid://gitlab/ProjectLabel/1")
+ *                     .build())
+ *             .build());
+ * 
+ *         var group = new ValueStreamAnalytics("group", ValueStreamAnalyticsArgs.builder()
+ *             .name("TEST")
+ *             .groupFullPath("test/group")
+ *             .stages(            
+ *                 ValueStreamAnalyticsStageArgs.builder()
+ *                     .name("Issue")
+ *                     .custom(false)
+ *                     .hidden(false)
+ *                     .build(),
+ *                 ValueStreamAnalyticsStageArgs.builder()
+ *                     .name("Issue Labels")
+ *                     .custom(true)
+ *                     .hidden(false)
+ *                     .startEventIdentifier("ISSUE_LABEL_ADDED")
+ *                     .startEventLabelId("gid://gitlab/GroupLabel/0")
+ *                     .endEventIdentifier("ISSUE_LABEL_REMOVED")
+ *                     .endEventLabelId("gid://gitlab/GroupLabel/1")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:

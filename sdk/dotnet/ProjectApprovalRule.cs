@@ -12,6 +12,112 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_one = new GitLab.ProjectApprovalRule("example-one", new()
+    ///     {
+    ///         Project = "5",
+    ///         Name = "Example Rule",
+    ///         ApprovalsRequired = 3,
+    ///         UserIds = new[]
+    ///         {
+    ///             50,
+    ///             500,
+    ///         },
+    ///         GroupIds = new[]
+    ///         {
+    ///             51,
+    ///         },
+    ///     });
+    /// 
+    ///     // With Protected Branch IDs
+    ///     var example = new GitLab.BranchProtection("example", new()
+    ///     {
+    ///         Project = "5",
+    ///         Branch = "release/*",
+    ///         PushAccessLevel = "maintainer",
+    ///         MergeAccessLevel = "developer",
+    ///     });
+    /// 
+    ///     var example_two = new GitLab.ProjectApprovalRule("example-two", new()
+    ///     {
+    ///         Project = "5",
+    ///         Name = "Example Rule 2",
+    ///         ApprovalsRequired = 3,
+    ///         UserIds = new[]
+    ///         {
+    ///             50,
+    ///             500,
+    ///         },
+    ///         GroupIds = new[]
+    ///         {
+    ///             51,
+    ///         },
+    ///         ProtectedBranchIds = new[]
+    ///         {
+    ///             example.BranchProtectionId,
+    ///         },
+    ///     });
+    /// 
+    ///     // Example using `data.gitlab_user` and `for` loop
+    ///     var users = Std.Toset.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             "user1",
+    ///             "user2",
+    ///             "user3",
+    ///         },
+    ///     }).Apply(invoke =&gt; );
+    /// 
+    ///     var example_three = new GitLab.ProjectApprovalRule("example-three", new()
+    ///     {
+    ///         Project = "5",
+    ///         Name = "Example Rule 3",
+    ///         ApprovalsRequired = 3,
+    ///         UserIds = users.Apply(users =&gt; (users).Values.Select(user =&gt; 
+    ///         {
+    ///             return user.Id;
+    ///         }).ToList()),
+    ///     });
+    /// 
+    ///     // Example using `approval_rule` using `any_approver` as rule type
+    ///     var anyApprover = new GitLab.ProjectApprovalRule("any_approver", new()
+    ///     {
+    ///         Project = "5",
+    ///         Name = "Any name",
+    ///         RuleType = "any_approver",
+    ///         ApprovalsRequired = 1,
+    ///     });
+    /// 
+    ///     // Example using `applies_to_all_protected_branches`
+    ///     var example_four = new GitLab.ProjectApprovalRule("example-four", new()
+    ///     {
+    ///         Project = "5",
+    ///         Name = "Example Rule 4",
+    ///         ApprovalsRequired = 3,
+    ///         UserIds = new[]
+    ///         {
+    ///             50,
+    ///             500,
+    ///         },
+    ///         GroupIds = new[]
+    ///         {
+    ///             51,
+    ///         },
+    ///         AppliesToAllProtectedBranches = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:

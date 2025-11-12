@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scope`. For example:

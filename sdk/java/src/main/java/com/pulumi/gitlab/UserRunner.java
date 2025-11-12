@@ -76,10 +76,10 @@ import javax.annotation.Nullable;
  *   session_timeout = 1800
  * 
  * [[runners]]
- *   name = "my_gitlab_runner"
- *   url = "https://example.gitlab.com"
- *   token = "%s"
- *   executor = "docker"
+ *   name = \"my_gitlab_runner\"
+ *   url = \"https://example.gitlab.com\"
+ *   token = \"%s\"
+ *   executor = \"docker\"
  * 
  *   [runners.custom_build_dir]
  *   [runners.cache]
@@ -88,12 +88,12 @@ import javax.annotation.Nullable;
  *     [runners.cache.azure]
  *   [runners.docker]
  *     tls_verify = false
- *     image = "ubuntu"
+ *     image = \"ubuntu\"
  *     privileged = true
  *     disable_entrypoint_overwrite = false
  *     oom_kill_disable = false
  *     disable_cache = false
- *     volumes = ["/cache", "/certs/client"]
+ *     volumes = [\"/cache\", \"/certs/client\"]
  *     shm_size = 0
  * ", _token));
  * 

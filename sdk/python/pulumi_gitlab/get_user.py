@@ -424,6 +424,22 @@ def get_user(email: Optional[_builtins.str] = None,
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+    import pulumi_std as std
+
+    example = gitlab.get_user(username="myuser")
+    # Example using `for_each`
+    example_two = {__key: gitlab.get_user(username=__value) for __key, __value in std.toset(input=[
+        "user1",
+        "user2",
+        "user3",
+    ]).result}
+    ```
+
 
     :param _builtins.str email: The public email address of the user.
     :param _builtins.bool email_exact_match: (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
@@ -486,6 +502,22 @@ def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
     > When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+    import pulumi_std as std
+
+    example = gitlab.get_user(username="myuser")
+    # Example using `for_each`
+    example_two = {__key: gitlab.get_user(username=__value) for __key, __value in std.toset(input=[
+        "user1",
+        "user2",
+        "user3",
+    ]).result}
+    ```
 
 
     :param _builtins.str email: The public email address of the user.
