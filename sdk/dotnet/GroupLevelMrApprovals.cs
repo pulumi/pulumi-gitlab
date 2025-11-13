@@ -12,6 +12,35 @@ namespace Pulumi.GitLab
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new GitLab.Group("foo", new()
+    ///     {
+    ///         Name = "test_group",
+    ///         Path = "test_group",
+    ///         Description = "An example group",
+    ///     });
+    /// 
+    ///     var fooGroupLevelMrApprovals = new GitLab.GroupLevelMrApprovals("foo", new()
+    ///     {
+    ///         Group = foo.Id,
+    ///         AllowAuthorApproval = true,
+    ///         AllowCommitterApproval = true,
+    ///         AllowOverridesToApproverListPerMergeRequest = true,
+    ///         RetainApprovalsOnPush = true,
+    ///         SelectiveCodeOwnerRemovals = false,
+    ///         RequireReauthenticationToApprove = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:

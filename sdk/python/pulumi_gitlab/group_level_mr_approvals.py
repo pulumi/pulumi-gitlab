@@ -264,6 +264,24 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo",
+            name="test_group",
+            path="test_group",
+            description="An example group")
+        foo_group_level_mr_approvals = gitlab.GroupLevelMrApprovals("foo",
+            group=foo.id,
+            allow_author_approval=True,
+            allow_committer_approval=True,
+            allow_overrides_to_approver_list_per_merge_request=True,
+            retain_approvals_on_push=True,
+            selective_code_owner_removals=False,
+            require_reauthentication_to_approve=True)
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:
@@ -307,6 +325,24 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        foo = gitlab.Group("foo",
+            name="test_group",
+            path="test_group",
+            description="An example group")
+        foo_group_level_mr_approvals = gitlab.GroupLevelMrApprovals("foo",
+            group=foo.id,
+            allow_author_approval=True,
+            allow_committer_approval=True,
+            allow_overrides_to_approver_list_per_merge_request=True,
+            retain_approvals_on_push=True,
+            selective_code_owner_removals=False,
+            require_reauthentication_to_approve=True)
+        ```
 
         ## Import
 

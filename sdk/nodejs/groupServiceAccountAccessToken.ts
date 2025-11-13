@@ -21,6 +21,57 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // This must be a top-level group
+ * const example = new gitlab.Group("example", {
+ *     name: "example",
+ *     path: "example",
+ *     description: "An example group",
+ * });
+ * // The service account against the top-level group
+ * const exampleSa = new gitlab.GroupServiceAccount("example_sa", {
+ *     group: example.id,
+ *     name: "example-name",
+ *     username: "example-username",
+ * });
+ * // To assign the service account to a group
+ * const exampleMembership = new gitlab.GroupMembership("example_membership", {
+ *     groupId: example.id,
+ *     userId: exampleSa.serviceAccountId,
+ *     accessLevel: "developer",
+ *     expiresAt: "2020-03-14",
+ * });
+ * // The service account access token with no expiry
+ * const exampleSaTokenNoExpiry = new gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry", {
+ *     group: example.id,
+ *     userId: exampleSa.serviceAccountId,
+ *     name: "Example service account access token",
+ *     scopes: ["api"],
+ * });
+ * // The service account access token with expires at
+ * const exampleSaTokenExpiresAt = new gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at", {
+ *     group: example.id,
+ *     userId: exampleSa.serviceAccountId,
+ *     name: "Example service account access token",
+ *     expiresAt: "2020-03-14",
+ *     scopes: ["api"],
+ * });
+ * // The service account access token with rotation configuration
+ * const exampleSaTokenRotationConfiguration = new gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", {
+ *     group: example.id,
+ *     userId: exampleSa.serviceAccountId,
+ *     name: "Example service account access token",
+ *     rotationConfiguration: {
+ *         rotateBeforeDays: 2,
+ *         expirationDays: 7,
+ *     },
+ *     scopes: ["api"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:

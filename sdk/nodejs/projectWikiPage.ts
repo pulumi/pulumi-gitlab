@@ -11,6 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.ProjectWikiPage("example", {
+ *     project: "12345",
+ *     slug: "test-wiki-page",
+ *     title: "Test Wiki Page",
+ *     content: `This is a test content for the wiki page.
+ * And this is a second line of content.
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:

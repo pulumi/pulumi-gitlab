@@ -18,6 +18,67 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new GitLab.ValueStreamAnalytics("project", new()
+    ///     {
+    ///         Name = "TEST",
+    ///         ProjectFullPath = "test/project",
+    ///         Stages = new[]
+    ///         {
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue",
+    ///                 Custom = false,
+    ///                 Hidden = false,
+    ///             },
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue Labels",
+    ///                 Custom = true,
+    ///                 Hidden = false,
+    ///                 StartEventIdentifier = "ISSUE_LABEL_ADDED",
+    ///                 StartEventLabelId = "gid://gitlab/ProjectLabel/0",
+    ///                 EndEventIdentifier = "ISSUE_LABEL_REMOVED",
+    ///                 EndEventLabelId = "gid://gitlab/ProjectLabel/1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @group = new GitLab.ValueStreamAnalytics("group", new()
+    ///     {
+    ///         Name = "TEST",
+    ///         GroupFullPath = "test/group",
+    ///         Stages = new[]
+    ///         {
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue",
+    ///                 Custom = false,
+    ///                 Hidden = false,
+    ///             },
+    ///             new GitLab.Inputs.ValueStreamAnalyticsStageArgs
+    ///             {
+    ///                 Name = "Issue Labels",
+    ///                 Custom = true,
+    ///                 Hidden = false,
+    ///                 StartEventIdentifier = "ISSUE_LABEL_ADDED",
+    ///                 StartEventLabelId = "gid://gitlab/GroupLabel/0",
+    ///                 EndEventIdentifier = "ISSUE_LABEL_REMOVED",
+    ///                 EndEventLabelId = "gid://gitlab/GroupLabel/1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:

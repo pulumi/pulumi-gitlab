@@ -15,6 +15,52 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const project = new gitlab.ValueStreamAnalytics("project", {
+ *     name: "TEST",
+ *     projectFullPath: "test/project",
+ *     stages: [
+ *         {
+ *             name: "Issue",
+ *             custom: false,
+ *             hidden: false,
+ *         },
+ *         {
+ *             name: "Issue Labels",
+ *             custom: true,
+ *             hidden: false,
+ *             startEventIdentifier: "ISSUE_LABEL_ADDED",
+ *             startEventLabelId: "gid://gitlab/ProjectLabel/0",
+ *             endEventIdentifier: "ISSUE_LABEL_REMOVED",
+ *             endEventLabelId: "gid://gitlab/ProjectLabel/1",
+ *         },
+ *     ],
+ * });
+ * const group = new gitlab.ValueStreamAnalytics("group", {
+ *     name: "TEST",
+ *     groupFullPath: "test/group",
+ *     stages: [
+ *         {
+ *             name: "Issue",
+ *             custom: false,
+ *             hidden: false,
+ *         },
+ *         {
+ *             name: "Issue Labels",
+ *             custom: true,
+ *             hidden: false,
+ *             startEventIdentifier: "ISSUE_LABEL_ADDED",
+ *             startEventLabelId: "gid://gitlab/GroupLabel/0",
+ *             endEventIdentifier: "ISSUE_LABEL_REMOVED",
+ *             endEventLabelId: "gid://gitlab/GroupLabel/1",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:

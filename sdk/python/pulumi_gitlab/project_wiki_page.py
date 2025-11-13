@@ -207,6 +207,19 @@ class ProjectWikiPage(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectWikiPage("example",
+            project="12345",
+            slug="test-wiki-page",
+            title="Test Wiki Page",
+            content=\"\"\"This is a test content for the wiki page.
+        And this is a second line of content.
+        \"\"\")
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
@@ -248,6 +261,19 @@ class ProjectWikiPage(pulumi.CustomResource):
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/wikis/)
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.ProjectWikiPage("example",
+            project="12345",
+            slug="test-wiki-page",
+            title="Test Wiki Page",
+            content=\"\"\"This is a test content for the wiki page.
+        And this is a second line of content.
+        \"\"\")
+        ```
 
         ## Import
 

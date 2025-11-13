@@ -18,6 +18,33 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectWikiPage(ctx, "example", &gitlab.ProjectWikiPageArgs{
+//				Project: pulumi.String("12345"),
+//				Slug:    "test-wiki-page",
+//				Title:   pulumi.String("Test Wiki Page"),
+//				Content: pulumi.String("This is a test content for the wiki page.\nAnd this is a second line of content.\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:

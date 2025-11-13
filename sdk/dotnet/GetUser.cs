@@ -19,6 +19,36 @@ namespace Pulumi.GitLab
         /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetUser.Invoke(new()
+        ///     {
+        ///         Username = "myuser",
+        ///     });
+        /// 
+        ///     // Example using `for_each`
+        ///     var example_two = Std.Toset.Invoke(new()
+        ///     {
+        ///         Input = new[]
+        ///         {
+        ///             "user1",
+        ///             "user2",
+        ///             "user3",
+        ///         },
+        ///     }).Apply(invoke =&gt; );
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
@@ -31,6 +61,36 @@ namespace Pulumi.GitLab
         /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetUser.Invoke(new()
+        ///     {
+        ///         Username = "myuser",
+        ///     });
+        /// 
+        ///     // Example using `for_each`
+        ///     var example_two = Std.Toset.Invoke(new()
+        ///     {
+        ///         Input = new[]
+        ///         {
+        ///             "user1",
+        ///             "user2",
+        ///             "user3",
+        ///         },
+        ///     }).Apply(invoke =&gt; );
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -43,6 +103,36 @@ namespace Pulumi.GitLab
         /// &gt; When using the `Email` attribute, an exact match is not guaranteed. The most related match will be returned. The most related match will prioritize an exact match if one is available.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#get-a-single-user)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetUser.Invoke(new()
+        ///     {
+        ///         Username = "myuser",
+        ///     });
+        /// 
+        ///     // Example using `for_each`
+        ///     var example_two = Std.Toset.Invoke(new()
+        ///     {
+        ///         Input = new[]
+        ///         {
+        ///             "user1",
+        ///             "user2",
+        ///             "user3",
+        ///         },
+        ///     }).Apply(invoke =&gt; );
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("gitlab:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());

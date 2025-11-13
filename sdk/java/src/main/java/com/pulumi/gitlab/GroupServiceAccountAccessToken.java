@@ -33,6 +33,91 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Group;
+ * import com.pulumi.gitlab.GroupArgs;
+ * import com.pulumi.gitlab.GroupServiceAccount;
+ * import com.pulumi.gitlab.GroupServiceAccountArgs;
+ * import com.pulumi.gitlab.GroupMembership;
+ * import com.pulumi.gitlab.GroupMembershipArgs;
+ * import com.pulumi.gitlab.GroupServiceAccountAccessToken;
+ * import com.pulumi.gitlab.GroupServiceAccountAccessTokenArgs;
+ * import com.pulumi.gitlab.inputs.GroupServiceAccountAccessTokenRotationConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // This must be a top-level group
+ *         var example = new Group("example", GroupArgs.builder()
+ *             .name("example")
+ *             .path("example")
+ *             .description("An example group")
+ *             .build());
+ * 
+ *         // The service account against the top-level group
+ *         var exampleSa = new GroupServiceAccount("exampleSa", GroupServiceAccountArgs.builder()
+ *             .group(example.id())
+ *             .name("example-name")
+ *             .username("example-username")
+ *             .build());
+ * 
+ *         // To assign the service account to a group
+ *         var exampleMembership = new GroupMembership("exampleMembership", GroupMembershipArgs.builder()
+ *             .groupId(example.id())
+ *             .userId(exampleSa.serviceAccountId())
+ *             .accessLevel("developer")
+ *             .expiresAt("2020-03-14")
+ *             .build());
+ * 
+ *         // The service account access token with no expiry
+ *         var exampleSaTokenNoExpiry = new GroupServiceAccountAccessToken("exampleSaTokenNoExpiry", GroupServiceAccountAccessTokenArgs.builder()
+ *             .group(example.id())
+ *             .userId(exampleSa.serviceAccountId())
+ *             .name("Example service account access token")
+ *             .scopes("api")
+ *             .build());
+ * 
+ *         // The service account access token with expires at
+ *         var exampleSaTokenExpiresAt = new GroupServiceAccountAccessToken("exampleSaTokenExpiresAt", GroupServiceAccountAccessTokenArgs.builder()
+ *             .group(example.id())
+ *             .userId(exampleSa.serviceAccountId())
+ *             .name("Example service account access token")
+ *             .expiresAt("2020-03-14")
+ *             .scopes("api")
+ *             .build());
+ * 
+ *         // The service account access token with rotation configuration
+ *         var exampleSaTokenRotationConfiguration = new GroupServiceAccountAccessToken("exampleSaTokenRotationConfiguration", GroupServiceAccountAccessTokenArgs.builder()
+ *             .group(example.id())
+ *             .userId(exampleSa.serviceAccountId())
+ *             .name("Example service account access token")
+ *             .rotationConfiguration(GroupServiceAccountAccessTokenRotationConfigurationArgs.builder()
+ *                 .rotateBeforeDays(2)
+ *                 .expirationDays(7)
+ *                 .build())
+ *             .scopes("api")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:

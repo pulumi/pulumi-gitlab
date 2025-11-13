@@ -370,6 +370,66 @@ class ProjectApprovalRule(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+        import pulumi_std as std
+
+        example_one = gitlab.ProjectApprovalRule("example-one",
+            project="5",
+            name="Example Rule",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51])
+        # With Protected Branch IDs
+        example = gitlab.BranchProtection("example",
+            project="5",
+            branch="release/*",
+            push_access_level="maintainer",
+            merge_access_level="developer")
+        example_two = gitlab.ProjectApprovalRule("example-two",
+            project="5",
+            name="Example Rule 2",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51],
+            protected_branch_ids=[example.branch_protection_id])
+        # Example using `data.gitlab_user` and `for` loop
+        users = {__key: gitlab.get_user(username=__value) for __key, __value in std.toset(input=[
+            "user1",
+            "user2",
+            "user3",
+        ]).result}
+        example_three = gitlab.ProjectApprovalRule("example-three",
+            project="5",
+            name="Example Rule 3",
+            approvals_required=3,
+            user_ids=[user.id for user in users])
+        # Example using `approval_rule` using `any_approver` as rule type
+        any_approver = gitlab.ProjectApprovalRule("any_approver",
+            project="5",
+            name="Any name",
+            rule_type="any_approver",
+            approvals_required=1)
+        # Example using `applies_to_all_protected_branches`
+        example_four = gitlab.ProjectApprovalRule("example-four",
+            project="5",
+            name="Example Rule 4",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51],
+            applies_to_all_protected_branches=True)
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:
@@ -413,6 +473,66 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+        import pulumi_std as std
+
+        example_one = gitlab.ProjectApprovalRule("example-one",
+            project="5",
+            name="Example Rule",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51])
+        # With Protected Branch IDs
+        example = gitlab.BranchProtection("example",
+            project="5",
+            branch="release/*",
+            push_access_level="maintainer",
+            merge_access_level="developer")
+        example_two = gitlab.ProjectApprovalRule("example-two",
+            project="5",
+            name="Example Rule 2",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51],
+            protected_branch_ids=[example.branch_protection_id])
+        # Example using `data.gitlab_user` and `for` loop
+        users = {__key: gitlab.get_user(username=__value) for __key, __value in std.toset(input=[
+            "user1",
+            "user2",
+            "user3",
+        ]).result}
+        example_three = gitlab.ProjectApprovalRule("example-three",
+            project="5",
+            name="Example Rule 3",
+            approvals_required=3,
+            user_ids=[user.id for user in users])
+        # Example using `approval_rule` using `any_approver` as rule type
+        any_approver = gitlab.ProjectApprovalRule("any_approver",
+            project="5",
+            name="Any name",
+            rule_type="any_approver",
+            approvals_required=1)
+        # Example using `applies_to_all_protected_branches`
+        example_four = gitlab.ProjectApprovalRule("example-four",
+            project="5",
+            name="Example Rule 4",
+            approvals_required=3,
+            user_ids=[
+                50,
+                500,
+            ],
+            group_ids=[51],
+            applies_to_all_protected_branches=True)
+        ```
 
         ## Import
 
