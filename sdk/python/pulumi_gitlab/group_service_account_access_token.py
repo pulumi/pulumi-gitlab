@@ -348,6 +348,51 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # This must be a top-level group
+        example = gitlab.Group("example",
+            name="example",
+            path="example",
+            description="An example group")
+        # The service account against the top-level group
+        example_sa = gitlab.GroupServiceAccount("example_sa",
+            group=example.id,
+            name="example-name",
+            username="example-username")
+        # To assign the service account to a group
+        example_membership = gitlab.GroupMembership("example_membership",
+            group_id=example.id,
+            user_id=example_sa.service_account_id,
+            access_level="developer",
+            expires_at="2020-03-14")
+        # The service account access token with no expiry
+        example_sa_token_no_expiry = gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry",
+            group=example.id,
+            user_id=example_sa.service_account_id,
+            name="Example service account access token",
+            scopes=["api"])
+        # The service account access token with expires at
+        example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
+            group=example.id,
+            user_id=example_sa.service_account_id,
+            name="Example service account access token",
+            expires_at="2020-03-14",
+            scopes=["api"])
+        # The service account access token with rotation configuration
+        example_sa_token_rotation_configuration = gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration",
+            group=example.id,
+            user_id=example_sa.service_account_id,
+            name="Example service account access token",
+            rotation_configuration={
+                "rotate_before_days": 2,
+                "expiration_days": 7,
+            },
+            scopes=["api"])
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
@@ -406,6 +451,51 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/group_service_accounts/#create-a-personal-access-token-for-a-service-account-user)
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # This must be a top-level group
+        example = gitlab.Group("example",
+            name="example",
+            path="example",
+            description="An example group")
+        # The service account against the top-level group
+        example_sa = gitlab.GroupServiceAccount("example_sa",
+            group=example.id,
+            name="example-name",
+            username="example-username")
+        # To assign the service account to a group
+        example_membership = gitlab.GroupMembership("example_membership",
+            group_id=example.id,
+            user_id=example_sa.service_account_id,
+            access_level="developer",
+            expires_at="2020-03-14")
+        # The service account access token with no expiry
+        example_sa_token_no_expiry = gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry",
+            group=example.id,
+            user_id=example_sa.service_account_id,
+            name="Example service account access token",
+            scopes=["api"])
+        # The service account access token with expires at
+        example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
+            group=example.id,
+            user_id=example_sa.service_account_id,
+            name="Example service account access token",
+            expires_at="2020-03-14",
+            scopes=["api"])
+        # The service account access token with rotation configuration
+        example_sa_token_rotation_configuration = gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration",
+            group=example.id,
+            user_id=example_sa.service_account_id,
+            name="Example service account access token",
+            rotation_configuration={
+                "rotate_before_days": 2,
+                "expiration_days": 7,
+            },
+            scopes=["api"])
+        ```
 
         ## Import
 

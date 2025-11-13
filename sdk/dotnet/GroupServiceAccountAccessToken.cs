@@ -24,6 +24,84 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This must be a top-level group
+    ///     var example = new GitLab.Group("example", new()
+    ///     {
+    ///         Name = "example",
+    ///         Path = "example",
+    ///         Description = "An example group",
+    ///     });
+    /// 
+    ///     // The service account against the top-level group
+    ///     var exampleSa = new GitLab.GroupServiceAccount("example_sa", new()
+    ///     {
+    ///         Group = example.Id,
+    ///         Name = "example-name",
+    ///         Username = "example-username",
+    ///     });
+    /// 
+    ///     // To assign the service account to a group
+    ///     var exampleMembership = new GitLab.GroupMembership("example_membership", new()
+    ///     {
+    ///         GroupId = example.Id,
+    ///         UserId = exampleSa.ServiceAccountId,
+    ///         AccessLevel = "developer",
+    ///         ExpiresAt = "2020-03-14",
+    ///     });
+    /// 
+    ///     // The service account access token with no expiry
+    ///     var exampleSaTokenNoExpiry = new GitLab.GroupServiceAccountAccessToken("example_sa_token_no_expiry", new()
+    ///     {
+    ///         Group = example.Id,
+    ///         UserId = exampleSa.ServiceAccountId,
+    ///         Name = "Example service account access token",
+    ///         Scopes = new[]
+    ///         {
+    ///             "api",
+    ///         },
+    ///     });
+    /// 
+    ///     // The service account access token with expires at
+    ///     var exampleSaTokenExpiresAt = new GitLab.GroupServiceAccountAccessToken("example_sa_token_expires_at", new()
+    ///     {
+    ///         Group = example.Id,
+    ///         UserId = exampleSa.ServiceAccountId,
+    ///         Name = "Example service account access token",
+    ///         ExpiresAt = "2020-03-14",
+    ///         Scopes = new[]
+    ///         {
+    ///             "api",
+    ///         },
+    ///     });
+    /// 
+    ///     // The service account access token with rotation configuration
+    ///     var exampleSaTokenRotationConfiguration = new GitLab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", new()
+    ///     {
+    ///         Group = example.Id,
+    ///         UserId = exampleSa.ServiceAccountId,
+    ///         Name = "Example service account access token",
+    ///         RotationConfiguration = new GitLab.Inputs.GroupServiceAccountAccessTokenRotationConfigurationArgs
+    ///         {
+    ///             RotateBeforeDays = 2,
+    ///             ExpirationDays = 7,
+    ///         },
+    ///         Scopes = new[]
+    ///         {
+    ///             "api",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:

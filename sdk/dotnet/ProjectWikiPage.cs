@@ -16,6 +16,27 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.ProjectWikiPage("example", new()
+    ///     {
+    ///         Project = "12345",
+    ///         Slug = "test-wiki-page",
+    ///         Title = "Test Wiki Page",
+    ///         Content = @"This is a test content for the wiki page.
+    /// And this is a second line of content.
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:

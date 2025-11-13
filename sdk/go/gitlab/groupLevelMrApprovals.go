@@ -14,6 +14,44 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := gitlab.NewGroup(ctx, "foo", &gitlab.GroupArgs{
+//				Name:        pulumi.String("test_group"),
+//				Path:        pulumi.String("test_group"),
+//				Description: pulumi.String("An example group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewGroupLevelMrApprovals(ctx, "foo", &gitlab.GroupLevelMrApprovalsArgs{
+//				Group:                  foo.ID(),
+//				AllowAuthorApproval:    pulumi.Bool(true),
+//				AllowCommitterApproval: pulumi.Bool(true),
+//				AllowOverridesToApproverListPerMergeRequest: pulumi.Bool(true),
+//				RetainApprovalsOnPush:                       pulumi.Bool(true),
+//				SelectiveCodeOwnerRemovals:                  false,
+//				RequireReauthenticationToApprove:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:

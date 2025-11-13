@@ -145,6 +145,8 @@ class ProjectJobTokenScope(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 
+        ## Example Usage
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scope`. For example:
@@ -186,6 +188,8 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         > Conflicts with the use of `ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
+
+        ## Example Usage
 
         ## Import
 

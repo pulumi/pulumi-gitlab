@@ -451,10 +451,10 @@ class UserRunner(pulumi.CustomResource):
           session_timeout = 1800
 
         [[runners]]
-          name = "my_gitlab_runner"
-          url = "https://example.gitlab.com"
-          token = "{token}"
-          executor = "docker"
+          name = \\"my_gitlab_runner\\"
+          url = \\"https://example.gitlab.com\\"
+          token = \\"{token}\\"
+          executor = \\"docker\\"
 
           [runners.custom_build_dir]
           [runners.cache]
@@ -463,12 +463,12 @@ class UserRunner(pulumi.CustomResource):
             [runners.cache.azure]
           [runners.docker]
             tls_verify = false
-            image = "ubuntu"
+            image = \\"ubuntu\\"
             privileged = true
             disable_entrypoint_overwrite = false
             oom_kill_disable = false
             disable_cache = false
-            volumes = ["/cache", "/certs/client"]
+            volumes = [\\"/cache\\", \\"/certs/client\\"]
             shm_size = 0
         \"\"\")
         ```
@@ -551,10 +551,10 @@ class UserRunner(pulumi.CustomResource):
           session_timeout = 1800
 
         [[runners]]
-          name = "my_gitlab_runner"
-          url = "https://example.gitlab.com"
-          token = "{token}"
-          executor = "docker"
+          name = \\"my_gitlab_runner\\"
+          url = \\"https://example.gitlab.com\\"
+          token = \\"{token}\\"
+          executor = \\"docker\\"
 
           [runners.custom_build_dir]
           [runners.cache]
@@ -563,12 +563,12 @@ class UserRunner(pulumi.CustomResource):
             [runners.cache.azure]
           [runners.docker]
             tls_verify = false
-            image = "ubuntu"
+            image = \\"ubuntu\\"
             privileged = true
             disable_entrypoint_overwrite = false
             oom_kill_disable = false
             disable_cache = false
-            volumes = ["/cache", "/certs/client"]
+            volumes = [\\"/cache\\", \\"/certs/client\\"]
             shm_size = 0
         \"\"\")
         ```
