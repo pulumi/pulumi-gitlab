@@ -2033,7 +2033,7 @@ export interface GetProjectTagCommit {
 
 export interface GetProjectTagRelease {
     /**
-     * The description of release.
+     * The description of the release.
      */
     description: string;
     /**
@@ -2056,7 +2056,7 @@ export interface GetProjectTagsTag {
      */
     name: string;
     /**
-     * Bool, true if tag has tag protection.
+     * True if tag has tag protection.
      */
     protected: boolean;
     /**
@@ -2118,7 +2118,7 @@ export interface GetProjectTagsTagCommit {
 
 export interface GetProjectTagsTagRelease {
     /**
-     * The description of release.
+     * The description of the release.
      */
     description: string;
     /**

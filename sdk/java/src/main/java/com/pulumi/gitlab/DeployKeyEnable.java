@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.DeployKeyEnableState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -114,14 +113,14 @@ public class DeployKeyEnable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="canPush", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> canPush;
+    private Output<Boolean> canPush;
 
     /**
      * @return Can deploy key push to the project&#39;s repository.
      * 
      */
-    public Output<Optional<Boolean>> canPush() {
-        return Codegen.optional(this.canPush);
+    public Output<Boolean> canPush() {
+        return this.canPush;
     }
     /**
      * Deploy key.

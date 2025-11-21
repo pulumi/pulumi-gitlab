@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectTagRelease {
     /**
-     * @return The description of release.
+     * @return The description of the release.
      * 
      */
     private String description;
@@ -23,7 +23,7 @@ public final class GetProjectTagRelease {
 
     private GetProjectTagRelease() {}
     /**
-     * @return The description of release.
+     * @return The description of the release.
      * 
      */
     public String description() {

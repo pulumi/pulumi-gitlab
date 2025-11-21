@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
     public sealed class GetProjectTagsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;project:hash-of-other-options&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

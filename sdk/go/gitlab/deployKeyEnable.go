@@ -100,7 +100,7 @@ type DeployKeyEnable struct {
 	pulumi.CustomResourceState
 
 	// Can deploy key push to the project's repository.
-	CanPush pulumi.BoolPtrOutput `pulumi:"canPush"`
+	CanPush pulumi.BoolOutput `pulumi:"canPush"`
 	// Deploy key.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
@@ -179,28 +179,20 @@ func (DeployKeyEnableState) ElementType() reflect.Type {
 type deployKeyEnableArgs struct {
 	// Can deploy key push to the project's repository.
 	CanPush *bool `pulumi:"canPush"`
-	// Deploy key.
-	Key *string `pulumi:"key"`
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId string `pulumi:"keyId"`
 	// The name or id of the project to add the deploy key to.
 	Project string `pulumi:"project"`
-	// Deploy key's title.
-	Title *string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a DeployKeyEnable resource.
 type DeployKeyEnableArgs struct {
 	// Can deploy key push to the project's repository.
 	CanPush pulumi.BoolPtrInput
-	// Deploy key.
-	Key pulumi.StringPtrInput
 	// The Gitlab key id for the pre-existing deploy key
 	KeyId pulumi.StringInput
 	// The name or id of the project to add the deploy key to.
 	Project pulumi.StringInput
-	// Deploy key's title.
-	Title pulumi.StringPtrInput
 }
 
 func (DeployKeyEnableArgs) ElementType() reflect.Type {
@@ -291,8 +283,8 @@ func (o DeployKeyEnableOutput) ToDeployKeyEnableOutputWithContext(ctx context.Co
 }
 
 // Can deploy key push to the project's repository.
-func (o DeployKeyEnableOutput) CanPush() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DeployKeyEnable) pulumi.BoolPtrOutput { return v.CanPush }).(pulumi.BoolPtrOutput)
+func (o DeployKeyEnableOutput) CanPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DeployKeyEnable) pulumi.BoolOutput { return v.CanPush }).(pulumi.BoolOutput)
 }
 
 // Deploy key.

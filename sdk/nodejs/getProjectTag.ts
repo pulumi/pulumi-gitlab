@@ -42,7 +42,7 @@ export interface GetProjectTagResult {
      */
     readonly commits: outputs.GetProjectTagCommit[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:name>`.
      */
     readonly id: string;
     /**
@@ -58,7 +58,7 @@ export interface GetProjectTagResult {
      */
     readonly project: string;
     /**
-     * Bool, true if tag has tag protection.
+     * True if tag has tag protection.
      */
     readonly protected: boolean;
     /**

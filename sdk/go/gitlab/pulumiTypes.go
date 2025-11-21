@@ -14134,7 +14134,7 @@ func (o GetProjectTagCommitArrayOutput) Index(i pulumi.IntInput) GetProjectTagCo
 }
 
 type GetProjectTagRelease struct {
-	// The description of release.
+	// The description of the release.
 	Description string `pulumi:"description"`
 	// The name of the tag.
 	TagName string `pulumi:"tagName"`
@@ -14152,7 +14152,7 @@ type GetProjectTagReleaseInput interface {
 }
 
 type GetProjectTagReleaseArgs struct {
-	// The description of release.
+	// The description of the release.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the tag.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -14209,7 +14209,7 @@ func (o GetProjectTagReleaseOutput) ToGetProjectTagReleaseOutputWithContext(ctx 
 	return o
 }
 
-// The description of release.
+// The description of the release.
 func (o GetProjectTagReleaseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagRelease) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -14246,7 +14246,7 @@ type GetProjectTagsTag struct {
 	Message string `pulumi:"message"`
 	// The name of a tag.
 	Name string `pulumi:"name"`
-	// Bool, true if tag has tag protection.
+	// True if tag has tag protection.
 	Protected bool `pulumi:"protected"`
 	// The release associated with the tag.
 	Releases []GetProjectTagsTagRelease `pulumi:"releases"`
@@ -14272,7 +14272,7 @@ type GetProjectTagsTagArgs struct {
 	Message pulumi.StringInput `pulumi:"message"`
 	// The name of a tag.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Bool, true if tag has tag protection.
+	// True if tag has tag protection.
 	Protected pulumi.BoolInput `pulumi:"protected"`
 	// The release associated with the tag.
 	Releases GetProjectTagsTagReleaseArrayInput `pulumi:"releases"`
@@ -14346,7 +14346,7 @@ func (o GetProjectTagsTagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagsTag) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Bool, true if tag has tag protection.
+// True if tag has tag protection.
 func (o GetProjectTagsTagOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectTagsTag) bool { return v.Protected }).(pulumi.BoolOutput)
 }
@@ -14569,7 +14569,7 @@ func (o GetProjectTagsTagCommitArrayOutput) Index(i pulumi.IntInput) GetProjectT
 }
 
 type GetProjectTagsTagRelease struct {
-	// The description of release.
+	// The description of the release.
 	Description string `pulumi:"description"`
 	// The name of the tag.
 	TagName string `pulumi:"tagName"`
@@ -14587,7 +14587,7 @@ type GetProjectTagsTagReleaseInput interface {
 }
 
 type GetProjectTagsTagReleaseArgs struct {
-	// The description of release.
+	// The description of the release.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the tag.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -14644,7 +14644,7 @@ func (o GetProjectTagsTagReleaseOutput) ToGetProjectTagsTagReleaseOutputWithCont
 	return o
 }
 
-// The description of release.
+// The description of the release.
 func (o GetProjectTagsTagReleaseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagsTagRelease) string { return v.Description }).(pulumi.StringOutput)
 }

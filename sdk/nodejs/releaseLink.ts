@@ -98,7 +98,7 @@ export class ReleaseLink extends pulumi.CustomResource {
     /**
      * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
      */
-    declare public readonly linkType: pulumi.Output<string | undefined>;
+    declare public readonly linkType: pulumi.Output<string>;
     /**
      * The name of the link. Link names must be unique within the release.
      */

@@ -65,6 +65,11 @@ export const getApplication: typeof import("./getApplication").getApplication = 
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
 utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
 
+export { GetArtifactFileArgs, GetArtifactFileResult, GetArtifactFileOutputArgs } from "./getArtifactFile";
+export const getArtifactFile: typeof import("./getArtifactFile").getArtifactFile = null as any;
+export const getArtifactFileOutput: typeof import("./getArtifactFile").getArtifactFileOutput = null as any;
+utilities.lazyLoad(exports, ["getArtifactFile","getArtifactFileOutput"], () => require("./getArtifactFile"));
+
 export { GetBranchArgs, GetBranchResult, GetBranchOutputArgs } from "./getBranch";
 export const getBranch: typeof import("./getBranch").getBranch = null as any;
 export const getBranchOutput: typeof import("./getBranch").getBranchOutput = null as any;
@@ -179,6 +184,11 @@ export { GetInstanceVariablesResult } from "./getInstanceVariables";
 export const getInstanceVariables: typeof import("./getInstanceVariables").getInstanceVariables = null as any;
 export const getInstanceVariablesOutput: typeof import("./getInstanceVariables").getInstanceVariablesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceVariables","getInstanceVariablesOutput"], () => require("./getInstanceVariables"));
+
+export { GetMemberRoleArgs, GetMemberRoleResult, GetMemberRoleOutputArgs } from "./getMemberRole";
+export const getMemberRole: typeof import("./getMemberRole").getMemberRole = null as any;
+export const getMemberRoleOutput: typeof import("./getMemberRole").getMemberRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getMemberRole","getMemberRoleOutput"], () => require("./getMemberRole"));
 
 export { GetMetadataResult } from "./getMetadata";
 export const getMetadata: typeof import("./getMetadata").getMetadata = null as any;

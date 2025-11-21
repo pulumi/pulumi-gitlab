@@ -33,21 +33,6 @@ public final class DeployKeyEnableArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Deploy key.
-     * 
-     */
-    @Import(name="key")
-    private @Nullable Output<String> key;
-
-    /**
-     * @return Deploy key.
-     * 
-     */
-    public Optional<Output<String>> key() {
-        return Optional.ofNullable(this.key);
-    }
-
-    /**
      * The Gitlab key id for the pre-existing deploy key
      * 
      */
@@ -77,29 +62,12 @@ public final class DeployKeyEnableArgs extends com.pulumi.resources.ResourceArgs
         return this.project;
     }
 
-    /**
-     * Deploy key&#39;s title.
-     * 
-     */
-    @Import(name="title")
-    private @Nullable Output<String> title;
-
-    /**
-     * @return Deploy key&#39;s title.
-     * 
-     */
-    public Optional<Output<String>> title() {
-        return Optional.ofNullable(this.title);
-    }
-
     private DeployKeyEnableArgs() {}
 
     private DeployKeyEnableArgs(DeployKeyEnableArgs $) {
         this.canPush = $.canPush;
-        this.key = $.key;
         this.keyId = $.keyId;
         this.project = $.project;
-        this.title = $.title;
     }
 
     public static Builder builder() {
@@ -142,27 +110,6 @@ public final class DeployKeyEnableArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param key Deploy key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder key(@Nullable Output<String> key) {
-            $.key = key;
-            return this;
-        }
-
-        /**
-         * @param key Deploy key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder key(String key) {
-            return key(Output.of(key));
-        }
-
-        /**
          * @param keyId The Gitlab key id for the pre-existing deploy key
          * 
          * @return builder
@@ -202,27 +149,6 @@ public final class DeployKeyEnableArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param title Deploy key&#39;s title.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder title(@Nullable Output<String> title) {
-            $.title = title;
-            return this;
-        }
-
-        /**
-         * @param title Deploy key&#39;s title.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder title(String title) {
-            return title(Output.of(title));
         }
 
         public DeployKeyEnableArgs build() {

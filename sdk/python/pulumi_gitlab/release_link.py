@@ -517,7 +517,7 @@ class ReleaseLink(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def link_type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         """

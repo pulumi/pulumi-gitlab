@@ -30,7 +30,7 @@ public final class GetProjectTagsTag {
      */
     private String name;
     /**
-     * @return Bool, true if tag has tag protection.
+     * @return True if tag has tag protection.
      * 
      */
     private Boolean protected_;
@@ -68,7 +68,7 @@ public final class GetProjectTagsTag {
         return this.name;
     }
     /**
-     * @return Bool, true if tag has tag protection.
+     * @return True if tag has tag protection.
      * 
      */
     public Boolean protected_() {

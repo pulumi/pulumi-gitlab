@@ -38,7 +38,7 @@ type GetProjectTagsArgs struct {
 
 // A collection of values returned by getProjectTags.
 type GetProjectTagsResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:hash-of-other-options>`.
 	Id string `pulumi:"id"`
 	// Return tags ordered by `name` or `updated` fields. Default is `updated`.
 	OrderBy *string `pulumi:"orderBy"`
@@ -92,7 +92,7 @@ func (o GetProjectTagsResultOutput) ToGetProjectTagsResultOutputWithContext(ctx 
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:hash-of-other-options>`.
 func (o GetProjectTagsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectTagsResult) string { return v.Id }).(pulumi.StringOutput)
 }

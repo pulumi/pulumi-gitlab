@@ -8537,7 +8537,7 @@ class GetProjectTagReleaseResult(dict):
                  description: _builtins.str,
                  tag_name: _builtins.str):
         """
-        :param _builtins.str description: The description of release.
+        :param _builtins.str description: The description of the release.
         :param _builtins.str tag_name: The name of the tag.
         """
         pulumi.set(__self__, "description", description)
@@ -8547,7 +8547,7 @@ class GetProjectTagReleaseResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of release.
+        The description of the release.
         """
         return pulumi.get(self, "description")
 
@@ -8573,7 +8573,7 @@ class GetProjectTagsTagResult(dict):
         :param Sequence['GetProjectTagsTagCommitArgs'] commits: The commit associated with the tag.
         :param _builtins.str message: The message of the annotated tag.
         :param _builtins.str name: The name of a tag.
-        :param _builtins.bool protected: Bool, true if tag has tag protection.
+        :param _builtins.bool protected: True if tag has tag protection.
         :param Sequence['GetProjectTagsTagReleaseArgs'] releases: The release associated with the tag.
         :param _builtins.str target: The unique id assigned to the commit by Gitlab.
         """
@@ -8612,7 +8612,7 @@ class GetProjectTagsTagResult(dict):
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        Bool, true if tag has tag protection.
+        True if tag has tag protection.
         """
         return pulumi.get(self, "protected")
 
@@ -8767,7 +8767,7 @@ class GetProjectTagsTagReleaseResult(dict):
                  description: _builtins.str,
                  tag_name: _builtins.str):
         """
-        :param _builtins.str description: The description of release.
+        :param _builtins.str description: The description of the release.
         :param _builtins.str tag_name: The name of the tag.
         """
         pulumi.set(__self__, "description", description)
@@ -8777,7 +8777,7 @@ class GetProjectTagsTagReleaseResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of release.
+        The description of the release.
         """
         return pulumi.get(self, "description")
 

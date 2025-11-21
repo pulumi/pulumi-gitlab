@@ -26,7 +26,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Bool, true if tag has tag protection.
+        /// True if tag has tag protection.
         /// </summary>
         public readonly bool Protected;
         /// <summary>
