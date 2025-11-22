@@ -99,7 +99,7 @@ export class Branch extends pulumi.CustomResource {
     /**
      * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
      */
-    declare public readonly keepOnDestroy: pulumi.Output<boolean | undefined>;
+    declare public readonly keepOnDestroy: pulumi.Output<boolean>;
     /**
      * Bool, true if the branch has been merged into its parent.
      */

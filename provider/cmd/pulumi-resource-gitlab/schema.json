@@ -4252,7 +4252,7 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "The description of release.\n"
+                    "description": "The description of the release.\n"
                 },
                 "tagName": {
                     "type": "string",
@@ -4289,7 +4289,7 @@
                 },
                 "protected": {
                     "type": "boolean",
-                    "description": "Bool, true if tag has tag protection.\n"
+                    "description": "True if tag has tag protection.\n"
                 },
                 "releases": {
                     "type": "array",
@@ -4392,7 +4392,7 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "The description of release.\n"
+                    "description": "The description of the release.\n"
                 },
                 "tagName": {
                     "type": "string",
@@ -10383,6 +10383,7 @@
                 "default",
                 "developerCanMerge",
                 "developerCanPush",
+                "keepOnDestroy",
                 "merged",
                 "name",
                 "project",
@@ -10397,18 +10398,15 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name for this branch.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name for this branch.\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ID or full path of the project which the branch is created against.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or full path of the project which the branch is created against.\n"
                 },
                 "ref": {
                     "type": "string",
-                    "description": "The ref which the branch is created from.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ref which the branch is created from.\n"
                 }
             },
             "requiredInputs": [
@@ -10451,13 +10449,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name for this branch.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name for this branch.\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The ID or full path of the project which the branch is created against.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or full path of the project which the branch is created against.\n"
                     },
                     "protected": {
                         "type": "boolean",
@@ -10465,8 +10461,7 @@
                     },
                     "ref": {
                         "type": "string",
-                        "description": "The ref which the branch is created from.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ref which the branch is created from.\n"
                     },
                     "webUrl": {
                         "type": "string",
@@ -11089,6 +11084,7 @@
                 }
             },
             "required": [
+                "canPush",
                 "key",
                 "keyId",
                 "project",
@@ -11097,26 +11093,15 @@
             "inputProperties": {
                 "canPush": {
                     "type": "boolean",
-                    "description": "Can deploy key push to the project's repository.\n",
-                    "willReplaceOnChanges": true
-                },
-                "key": {
-                    "type": "string",
-                    "description": "Deploy key.\n"
+                    "description": "Can deploy key push to the project's repository.\n"
                 },
                 "keyId": {
                     "type": "string",
-                    "description": "The Gitlab key id for the pre-existing deploy key\n",
-                    "willReplaceOnChanges": true
+                    "description": "The Gitlab key id for the pre-existing deploy key\n"
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name or id of the project to add the deploy key to.\n",
-                    "willReplaceOnChanges": true
-                },
-                "title": {
-                    "type": "string",
-                    "description": "Deploy key's title.\n"
+                    "description": "The name or id of the project to add the deploy key to.\n"
                 }
             },
             "requiredInputs": [
@@ -11128,8 +11113,7 @@
                 "properties": {
                     "canPush": {
                         "type": "boolean",
-                        "description": "Can deploy key push to the project's repository.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Can deploy key push to the project's repository.\n"
                     },
                     "key": {
                         "type": "string",
@@ -11137,13 +11121,11 @@
                     },
                     "keyId": {
                         "type": "string",
-                        "description": "The Gitlab key id for the pre-existing deploy key\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Gitlab key id for the pre-existing deploy key\n"
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name or id of the project to add the deploy key to.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name or id of the project to add the deploy key to.\n"
                     },
                     "title": {
                         "type": "string",
@@ -25929,6 +25911,7 @@
                 "directAssetUrl",
                 "external",
                 "linkId",
+                "linkType",
                 "name",
                 "project",
                 "tagName",
@@ -25949,8 +25932,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).\n"
                 },
                 "tagName": {
                     "type": "string",
@@ -25995,8 +25977,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).\n"
                     },
                     "tagName": {
                         "type": "string",
@@ -27673,6 +27654,88 @@
                 "type": "object"
             }
         },
+        "gitlab:index/getArtifactFile:getArtifactFile": {
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.getArtifactFile`\" pulumi-lang-dotnet=\"`gitlab.getArtifactFile`\" pulumi-lang-go=\"`getArtifactFile`\" pulumi-lang-python=\"`get_artifact_file`\" pulumi-lang-yaml=\"`gitlab.getArtifactFile`\" pulumi-lang-java=\"`gitlab.getArtifactFile`\"\u003e`gitlab.getArtifactFile`\u003c/span\u003e data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// Download a text artifact file from the latest successful pipeline\nconst config = gitlab.getArtifactFile({\n    project: \"namespace/myproject\",\n    job: \"build-job\",\n    ref: \"main\",\n    artifactPath: \"config/settings.json\",\n});\nexport const configContent = config.then(config =\u003e config.content);\n// Download a binary artifact file using base64 encoding\nconst binary = gitlab.getArtifactFile({\n    project: \"namespace/myproject\",\n    job: \"build-job\",\n    ref: \"v1.0.0\",\n    artifactPath: \"dist/app.zip\",\n});\nexport const binaryContentBase64 = binary.then(binary =\u003e binary.contentBase64);\n// Download artifact from a specific tag\nconst release = gitlab.getArtifactFile({\n    project: \"12345\",\n    job: \"release-job\",\n    ref: \"v2.1.0\",\n    artifactPath: \"release-notes.txt\",\n});\n// Download a larger artifact with custom size limit\nconst largeArtifact = gitlab.getArtifactFile({\n    project: \"namespace/myproject\",\n    job: \"build-job\",\n    ref: \"main\",\n    artifactPath: \"dist/large-file.zip\",\n    maxSizeBytes: 20971520,\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# Download a text artifact file from the latest successful pipeline\nconfig = gitlab.get_artifact_file(project=\"namespace/myproject\",\n    job=\"build-job\",\n    ref=\"main\",\n    artifact_path=\"config/settings.json\")\npulumi.export(\"configContent\", config.content)\n# Download a binary artifact file using base64 encoding\nbinary = gitlab.get_artifact_file(project=\"namespace/myproject\",\n    job=\"build-job\",\n    ref=\"v1.0.0\",\n    artifact_path=\"dist/app.zip\")\npulumi.export(\"binaryContentBase64\", binary.content_base64)\n# Download artifact from a specific tag\nrelease = gitlab.get_artifact_file(project=\"12345\",\n    job=\"release-job\",\n    ref=\"v2.1.0\",\n    artifact_path=\"release-notes.txt\")\n# Download a larger artifact with custom size limit\nlarge_artifact = gitlab.get_artifact_file(project=\"namespace/myproject\",\n    job=\"build-job\",\n    ref=\"main\",\n    artifact_path=\"dist/large-file.zip\",\n    max_size_bytes=20971520)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Download a text artifact file from the latest successful pipeline\n    var config = GitLab.GetArtifactFile.Invoke(new()\n    {\n        Project = \"namespace/myproject\",\n        Job = \"build-job\",\n        Ref = \"main\",\n        ArtifactPath = \"config/settings.json\",\n    });\n\n    // Download a binary artifact file using base64 encoding\n    var binary = GitLab.GetArtifactFile.Invoke(new()\n    {\n        Project = \"namespace/myproject\",\n        Job = \"build-job\",\n        Ref = \"v1.0.0\",\n        ArtifactPath = \"dist/app.zip\",\n    });\n\n    // Download artifact from a specific tag\n    var release = GitLab.GetArtifactFile.Invoke(new()\n    {\n        Project = \"12345\",\n        Job = \"release-job\",\n        Ref = \"v2.1.0\",\n        ArtifactPath = \"release-notes.txt\",\n    });\n\n    // Download a larger artifact with custom size limit\n    var largeArtifact = GitLab.GetArtifactFile.Invoke(new()\n    {\n        Project = \"namespace/myproject\",\n        Job = \"build-job\",\n        Ref = \"main\",\n        ArtifactPath = \"dist/large-file.zip\",\n        MaxSizeBytes = 20971520,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"configContent\"] = config.Apply(getArtifactFileResult =\u003e getArtifactFileResult.Content),\n        [\"binaryContentBase64\"] = binary.Apply(getArtifactFileResult =\u003e getArtifactFileResult.ContentBase64),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Download a text artifact file from the latest successful pipeline\n\t\tconfig, err := gitlab.GetArtifactFile(ctx, \u0026gitlab.GetArtifactFileArgs{\n\t\t\tProject:      \"namespace/myproject\",\n\t\t\tJob:          \"build-job\",\n\t\t\tRef:          \"main\",\n\t\t\tArtifactPath: \"config/settings.json\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"configContent\", config.Content)\n\t\t// Download a binary artifact file using base64 encoding\n\t\tbinary, err := gitlab.GetArtifactFile(ctx, \u0026gitlab.GetArtifactFileArgs{\n\t\t\tProject:      \"namespace/myproject\",\n\t\t\tJob:          \"build-job\",\n\t\t\tRef:          \"v1.0.0\",\n\t\t\tArtifactPath: \"dist/app.zip\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"binaryContentBase64\", binary.ContentBase64)\n\t\t// Download artifact from a specific tag\n\t\t_, err = gitlab.GetArtifactFile(ctx, \u0026gitlab.GetArtifactFileArgs{\n\t\t\tProject:      \"12345\",\n\t\t\tJob:          \"release-job\",\n\t\t\tRef:          \"v2.1.0\",\n\t\t\tArtifactPath: \"release-notes.txt\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Download a larger artifact with custom size limit\n\t\t_, err = gitlab.GetArtifactFile(ctx, \u0026gitlab.GetArtifactFileArgs{\n\t\t\tProject:      \"namespace/myproject\",\n\t\t\tJob:          \"build-job\",\n\t\t\tRef:          \"main\",\n\t\t\tArtifactPath: \"dist/large-file.zip\",\n\t\t\tMaxSizeBytes: pulumi.IntRef(20971520),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetArtifactFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Download a text artifact file from the latest successful pipeline\n        final var config = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()\n            .project(\"namespace/myproject\")\n            .job(\"build-job\")\n            .ref(\"main\")\n            .artifactPath(\"config/settings.json\")\n            .build());\n\n        ctx.export(\"configContent\", config.content());\n        // Download a binary artifact file using base64 encoding\n        final var binary = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()\n            .project(\"namespace/myproject\")\n            .job(\"build-job\")\n            .ref(\"v1.0.0\")\n            .artifactPath(\"dist/app.zip\")\n            .build());\n\n        ctx.export(\"binaryContentBase64\", binary.contentBase64());\n        // Download artifact from a specific tag\n        final var release = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()\n            .project(\"12345\")\n            .job(\"release-job\")\n            .ref(\"v2.1.0\")\n            .artifactPath(\"release-notes.txt\")\n            .build());\n\n        // Download a larger artifact with custom size limit\n        final var largeArtifact = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()\n            .project(\"namespace/myproject\")\n            .job(\"build-job\")\n            .ref(\"main\")\n            .artifactPath(\"dist/large-file.zip\")\n            .maxSizeBytes(20971520)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  # Download a text artifact file from the latest successful pipeline\n  config:\n    fn::invoke:\n      function: gitlab:getArtifactFile\n      arguments:\n        project: namespace/myproject\n        job: build-job\n        ref: main\n        artifactPath: config/settings.json\n  # Download a binary artifact file using base64 encoding\n  binary:\n    fn::invoke:\n      function: gitlab:getArtifactFile\n      arguments:\n        project: namespace/myproject\n        job: build-job\n        ref: v1.0.0\n        artifactPath: dist/app.zip\n  # Download artifact from a specific tag\n  release:\n    fn::invoke:\n      function: gitlab:getArtifactFile\n      arguments:\n        project: '12345'\n        job: release-job\n        ref: v2.1.0\n        artifactPath: release-notes.txt\n  # Download a larger artifact with custom size limit\n  largeArtifact:\n    fn::invoke:\n      function: gitlab:getArtifactFile\n      arguments:\n        project: namespace/myproject\n        job: build-job\n        ref: main\n        artifactPath: dist/large-file.zip\n        maxSizeBytes: 2.097152e+07\noutputs:\n  # Use the artifact content\n  configContent: ${config.content}\n  binaryContentBase64: ${binary.contentBase64}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getArtifactFile.\n",
+                "properties": {
+                    "artifactPath": {
+                        "type": "string",
+                        "description": "Path to the artifact file within the job's artifacts archive. This path is relative to the archive contents (not the local filesystem). Ensure each \u003cspan pulumi-lang-nodejs=\"`gitlab.getArtifactFile`\" pulumi-lang-dotnet=\"`gitlab.getArtifactFile`\" pulumi-lang-go=\"`getArtifactFile`\" pulumi-lang-python=\"`get_artifact_file`\" pulumi-lang-yaml=\"`gitlab.getArtifactFile`\" pulumi-lang-java=\"`gitlab.getArtifactFile`\"\u003e`gitlab.getArtifactFile`\u003c/span\u003e data source in your configuration uses a unique\u003cspan pulumi-lang-nodejs=\" artifactPath \" pulumi-lang-dotnet=\" ArtifactPath \" pulumi-lang-go=\" artifactPath \" pulumi-lang-python=\" artifact_path \" pulumi-lang-yaml=\" artifactPath \" pulumi-lang-java=\" artifactPath \"\u003e artifact_path \u003c/span\u003eto avoid ambiguity.\n"
+                    },
+                    "job": {
+                        "type": "string",
+                        "description": "The name of the job.\n"
+                    },
+                    "maxSizeBytes": {
+                        "type": "integer",
+                        "description": "Maximum bytes to read from the artifact. Defaults to 10MB (10485760 bytes).\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The ID or URL-encoded path of the project.\n"
+                    },
+                    "ref": {
+                        "type": "string",
+                        "description": "The name of the branch, tag, or commit SHA.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "artifactPath",
+                    "job",
+                    "project",
+                    "ref"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getArtifactFile.\n",
+                "properties": {
+                    "artifactPath": {
+                        "description": "Path to the artifact file within the job's artifacts archive. This path is relative to the archive contents (not the local filesystem). Ensure each \u003cspan pulumi-lang-nodejs=\"`gitlab.getArtifactFile`\" pulumi-lang-dotnet=\"`gitlab.getArtifactFile`\" pulumi-lang-go=\"`getArtifactFile`\" pulumi-lang-python=\"`get_artifact_file`\" pulumi-lang-yaml=\"`gitlab.getArtifactFile`\" pulumi-lang-java=\"`gitlab.getArtifactFile`\"\u003e`gitlab.getArtifactFile`\u003c/span\u003e data source in your configuration uses a unique\u003cspan pulumi-lang-nodejs=\" artifactPath \" pulumi-lang-dotnet=\" ArtifactPath \" pulumi-lang-go=\" artifactPath \" pulumi-lang-python=\" artifact_path \" pulumi-lang-yaml=\" artifactPath \" pulumi-lang-java=\" artifactPath \"\u003e artifact_path \u003c/span\u003eto avoid ambiguity.\n",
+                        "type": "string"
+                    },
+                    "content": {
+                        "description": "The content of the artifact file as a UTF-8 string. Use \u003cspan pulumi-lang-nodejs=\"`contentBase64`\" pulumi-lang-dotnet=\"`ContentBase64`\" pulumi-lang-go=\"`contentBase64`\" pulumi-lang-python=\"`content_base64`\" pulumi-lang-yaml=\"`contentBase64`\" pulumi-lang-java=\"`contentBase64`\"\u003e`content_base64`\u003c/span\u003e for binary files.\n",
+                        "type": "string"
+                    },
+                    "contentBase64": {
+                        "description": "The content of the artifact file as a base64-encoded string. Useful for binary files.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID of this datasource. In the format `\u003cproject\u003e:\u003cref\u003e:\u003cjob\u003e:\u003cartifact_path\u003e`.\n",
+                        "type": "string"
+                    },
+                    "job": {
+                        "description": "The name of the job.\n",
+                        "type": "string"
+                    },
+                    "maxSizeBytes": {
+                        "description": "Maximum bytes to read from the artifact. Defaults to 10MB (10485760 bytes).\n",
+                        "type": "integer"
+                    },
+                    "project": {
+                        "description": "The ID or URL-encoded path of the project.\n",
+                        "type": "string"
+                    },
+                    "ref": {
+                        "description": "The name of the branch, tag, or commit SHA.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "artifactPath",
+                    "content",
+                    "contentBase64",
+                    "id",
+                    "job",
+                    "project",
+                    "ref"
+                ],
+                "type": "object"
+            }
+        },
         "gitlab:index/getBranch:getBranch": {
             "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.Branch`\" pulumi-lang-dotnet=\"`gitlab.Branch`\" pulumi-lang-go=\"`Branch`\" pulumi-lang-python=\"`Branch`\" pulumi-lang-yaml=\"`gitlab.Branch`\" pulumi-lang-java=\"`gitlab.Branch`\"\u003e`gitlab.Branch`\u003c/span\u003e data source allows details of a repository branch to be retrieved by its name and project.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/#get-single-repository-branch)\n\n",
             "inputs": {
@@ -29194,6 +29257,73 @@
                 "required": [
                     "id",
                     "variables"
+                ],
+                "type": "object"
+            }
+        },
+        "gitlab:index/getMemberRole:getMemberRole": {
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.MemberRole`\" pulumi-lang-dotnet=\"`gitlab.MemberRole`\" pulumi-lang-go=\"`MemberRole`\" pulumi-lang-python=\"`MemberRole`\" pulumi-lang-yaml=\"`gitlab.MemberRole`\" pulumi-lang-java=\"`gitlab.MemberRole`\"\u003e`gitlab.MemberRole`\u003c/span\u003e data source allows details of a custom member role to be retrieved.\n\n**Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querymemberrole)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst example = gitlab.getMemberRole({\n    id: \"gid://gitlab/MemberRole/1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nexample = gitlab.get_member_role(id=\"gid://gitlab/MemberRole/1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = GitLab.GetMemberRole.Invoke(new()\n    {\n        Id = \"gid://gitlab/MemberRole/1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gitlab.LookupMemberRole(ctx, \u0026gitlab.LookupMemberRoleArgs{\n\t\t\tId: \"gid://gitlab/MemberRole/1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.GitlabFunctions;\nimport com.pulumi.gitlab.inputs.GetMemberRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GitlabFunctions.getMemberRole(GetMemberRoleArgs.builder()\n            .id(\"gid://gitlab/MemberRole/1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: gitlab:getMemberRole\n      arguments:\n        id: gid://gitlab/MemberRole/1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMemberRole.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Globally unique ID of the member role. In the format of `gid://gitlab/MemberRole/1`\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMemberRole.\n",
+                "properties": {
+                    "baseAccessLevel": {
+                        "description": "The base access level of the custom role.\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "Timestamp of when the member role was created.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the member role.\n",
+                        "type": "string"
+                    },
+                    "editPath": {
+                        "description": "The Web UI path to edit the member role\n",
+                        "type": "string"
+                    },
+                    "enabledPermissions": {
+                        "description": "All permissions enabled for the custom role.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "Globally unique ID of the member role. In the format of `gid://gitlab/MemberRole/1`\n",
+                        "type": "string"
+                    },
+                    "iid": {
+                        "description": "The member role ID integer value extracted from the \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e attribute\n",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Name of the member role.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "baseAccessLevel",
+                    "createdAt",
+                    "description",
+                    "editPath",
+                    "enabledPermissions",
+                    "id",
+                    "iid",
+                    "name"
                 ],
                 "type": "object"
             }
@@ -31599,7 +31729,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:name\u003e`.\n",
                         "type": "string"
                     },
                     "message": {
@@ -31615,7 +31745,7 @@
                         "type": "string"
                     },
                     "protected": {
-                        "description": "Bool, true if tag has tag protection.\n",
+                        "description": "True if tag has tag protection.\n",
                         "type": "boolean"
                     },
                     "releases": {
@@ -31632,13 +31762,13 @@
                 },
                 "required": [
                     "commits",
+                    "id",
                     "message",
                     "name",
                     "project",
                     "protected",
                     "releases",
-                    "target",
-                    "id"
+                    "target"
                 ],
                 "type": "object"
             }
@@ -31674,7 +31804,7 @@
                 "description": "A collection of values returned by getProjectTags.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of this datasource. In the format `\u003cproject:hash-of-other-options\u003e`.\n",
                         "type": "string"
                     },
                     "orderBy": {
@@ -31702,9 +31832,9 @@
                     }
                 },
                 "required": [
+                    "id",
                     "project",
-                    "tags",
-                    "id"
+                    "tags"
                 ],
                 "type": "object"
             }

@@ -93,11 +93,11 @@ export class DeployKeyEnable extends pulumi.CustomResource {
     /**
      * Can deploy key push to the project's repository.
      */
-    declare public readonly canPush: pulumi.Output<boolean | undefined>;
+    declare public readonly canPush: pulumi.Output<boolean>;
     /**
      * Deploy key.
      */
-    declare public readonly key: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * The Gitlab key id for the pre-existing deploy key
      */
@@ -109,7 +109,7 @@ export class DeployKeyEnable extends pulumi.CustomResource {
     /**
      * Deploy key's title.
      */
-    declare public readonly title: pulumi.Output<string>;
+    declare public /*out*/ readonly title: pulumi.Output<string>;
 
     /**
      * Create a DeployKeyEnable resource with the given unique name, arguments, and options.
@@ -138,10 +138,10 @@ export class DeployKeyEnable extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             resourceInputs["canPush"] = args?.canPush;
-            resourceInputs["key"] = args?.key;
             resourceInputs["keyId"] = args?.keyId;
             resourceInputs["project"] = args?.project;
-            resourceInputs["title"] = args?.title;
+            resourceInputs["key"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeployKeyEnable.__pulumiType, name, resourceInputs, opts);
@@ -183,10 +183,6 @@ export interface DeployKeyEnableArgs {
      */
     canPush?: pulumi.Input<boolean>;
     /**
-     * Deploy key.
-     */
-    key?: pulumi.Input<string>;
-    /**
      * The Gitlab key id for the pre-existing deploy key
      */
     keyId: pulumi.Input<string>;
@@ -194,8 +190,4 @@ export interface DeployKeyEnableArgs {
      * The name or id of the project to add the deploy key to.
      */
     project: pulumi.Input<string>;
-    /**
-     * Deploy key's title.
-     */
-    title?: pulumi.Input<string>;
 }

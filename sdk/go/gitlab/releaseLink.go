@@ -87,7 +87,7 @@ type ReleaseLink struct {
 	// The ID of the link.
 	LinkId pulumi.IntOutput `pulumi:"linkId"`
 	// The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
-	LinkType pulumi.StringPtrOutput `pulumi:"linkType"`
+	LinkType pulumi.StringOutput `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
@@ -321,8 +321,8 @@ func (o ReleaseLinkOutput) LinkId() pulumi.IntOutput {
 }
 
 // The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
-func (o ReleaseLinkOutput) LinkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseLink) pulumi.StringPtrOutput { return v.LinkType }).(pulumi.StringPtrOutput)
+func (o ReleaseLinkOutput) LinkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReleaseLink) pulumi.StringOutput { return v.LinkType }).(pulumi.StringOutput)
 }
 
 // The name of the link. Link names must be unique within the release.

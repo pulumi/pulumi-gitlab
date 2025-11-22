@@ -20,7 +20,7 @@ public final class GetProjectTagResult {
      */
     private List<GetProjectTagCommit> commits;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:name&gt;`.
      * 
      */
     private String id;
@@ -40,7 +40,7 @@ public final class GetProjectTagResult {
      */
     private String project;
     /**
-     * @return Bool, true if tag has tag protection.
+     * @return True if tag has tag protection.
      * 
      */
     private Boolean protected_;
@@ -64,7 +64,7 @@ public final class GetProjectTagResult {
         return this.commits;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;project:name&gt;`.
      * 
      */
     public String id() {
@@ -92,7 +92,7 @@ public final class GetProjectTagResult {
         return this.project;
     }
     /**
-     * @return Bool, true if tag has tag protection.
+     * @return True if tag has tag protection.
      * 
      */
     public Boolean protected_() {

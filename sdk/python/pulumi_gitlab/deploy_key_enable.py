@@ -21,25 +21,17 @@ class DeployKeyEnableArgs:
     def __init__(__self__, *,
                  key_id: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_push: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DeployKeyEnable resource.
         :param pulumi.Input[_builtins.str] key_id: The Gitlab key id for the pre-existing deploy key
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[_builtins.bool] can_push: Can deploy key push to the project's repository.
-        :param pulumi.Input[_builtins.str] key: Deploy key.
-        :param pulumi.Input[_builtins.str] title: Deploy key's title.
         """
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "project", project)
         if can_push is not None:
             pulumi.set(__self__, "can_push", can_push)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
@@ -76,30 +68,6 @@ class DeployKeyEnableArgs:
     @can_push.setter
     def can_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "can_push", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Deploy key.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Deploy key's title.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "title", value)
 
 
 @pulumi.input_type
@@ -197,10 +165,8 @@ class DeployKeyEnable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
                  key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         The `DeployKeyEnable` resource allows to enable an already existing deploy key (see `DeployKey resource`) for a specific project.
@@ -261,10 +227,8 @@ class DeployKeyEnable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] can_push: Can deploy key push to the project's repository.
-        :param pulumi.Input[_builtins.str] key: Deploy key.
         :param pulumi.Input[_builtins.str] key_id: The Gitlab key id for the pre-existing deploy key
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy key to.
-        :param pulumi.Input[_builtins.str] title: Deploy key's title.
         """
         ...
     @overload
@@ -344,10 +308,8 @@ class DeployKeyEnable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
                  key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,14 +320,14 @@ class DeployKeyEnable(pulumi.CustomResource):
             __props__ = DeployKeyEnableArgs.__new__(DeployKeyEnableArgs)
 
             __props__.__dict__["can_push"] = can_push
-            __props__.__dict__["key"] = key
             if key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_id'")
             __props__.__dict__["key_id"] = key_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["title"] = title
+            __props__.__dict__["key"] = None
+            __props__.__dict__["title"] = None
         super(DeployKeyEnable, __self__).__init__(
             'gitlab:index/deployKeyEnable:DeployKeyEnable',
             resource_name,
@@ -407,7 +369,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="canPush")
-    def can_push(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def can_push(self) -> pulumi.Output[_builtins.bool]:
         """
         Can deploy key push to the project's repository.
         """

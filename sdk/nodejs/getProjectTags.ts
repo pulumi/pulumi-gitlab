@@ -48,7 +48,7 @@ export interface GetProjectTagsArgs {
  */
 export interface GetProjectTagsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<project:hash-of-other-options>`.
      */
     readonly id: string;
     /**

@@ -36,7 +36,7 @@ type LookupProjectTagArgs struct {
 type LookupProjectTagResult struct {
 	// The commit associated with the tag.
 	Commits []GetProjectTagCommit `pulumi:"commits"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<project:name>`.
 	Id string `pulumi:"id"`
 	// The message of the annotated tag.
 	Message string `pulumi:"message"`
@@ -44,7 +44,7 @@ type LookupProjectTagResult struct {
 	Name string `pulumi:"name"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
-	// Bool, true if tag has tag protection.
+	// True if tag has tag protection.
 	Protected bool `pulumi:"protected"`
 	// The release associated with the tag.
 	Releases []GetProjectTagRelease `pulumi:"releases"`
@@ -93,7 +93,7 @@ func (o LookupProjectTagResultOutput) Commits() GetProjectTagCommitArrayOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) []GetProjectTagCommit { return v.Commits }).(GetProjectTagCommitArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<project:name>`.
 func (o LookupProjectTagResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -113,7 +113,7 @@ func (o LookupProjectTagResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Bool, true if tag has tag protection.
+// True if tag has tag protection.
 func (o LookupProjectTagResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectTagResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }

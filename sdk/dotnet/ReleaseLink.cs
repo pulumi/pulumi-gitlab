@@ -96,7 +96,7 @@ namespace Pulumi.GitLab
         /// The type of the link. Valid values are `Other`, `Runbook`, `Image`, `Package`. Defaults to other.
         /// </summary>
         [Output("linkType")]
-        public Output<string?> LinkType { get; private set; } = null!;
+        public Output<string> LinkType { get; private set; } = null!;
 
         /// <summary>
         /// The name of the link. Link names must be unique within the release.

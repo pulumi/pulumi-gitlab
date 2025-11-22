@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GetApplicationArgs;
 import com.pulumi.gitlab.inputs.GetApplicationPlainArgs;
+import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
+import com.pulumi.gitlab.inputs.GetArtifactFilePlainArgs;
 import com.pulumi.gitlab.inputs.GetBranchArgs;
 import com.pulumi.gitlab.inputs.GetBranchPlainArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
@@ -53,6 +55,8 @@ import com.pulumi.gitlab.inputs.GetInstanceServiceAccountArgs;
 import com.pulumi.gitlab.inputs.GetInstanceServiceAccountPlainArgs;
 import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
 import com.pulumi.gitlab.inputs.GetInstanceVariablePlainArgs;
+import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
+import com.pulumi.gitlab.inputs.GetMemberRolePlainArgs;
 import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
 import com.pulumi.gitlab.inputs.GetPipelineSchedulePlainArgs;
 import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
@@ -126,6 +130,7 @@ import com.pulumi.gitlab.inputs.GetUserSshkeysPlainArgs;
 import com.pulumi.gitlab.inputs.GetUsersArgs;
 import com.pulumi.gitlab.inputs.GetUsersPlainArgs;
 import com.pulumi.gitlab.outputs.GetApplicationResult;
+import com.pulumi.gitlab.outputs.GetArtifactFileResult;
 import com.pulumi.gitlab.outputs.GetBranchResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentsResult;
@@ -149,6 +154,7 @@ import com.pulumi.gitlab.outputs.GetInstanceDeployKeysResult;
 import com.pulumi.gitlab.outputs.GetInstanceServiceAccountResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariableResult;
 import com.pulumi.gitlab.outputs.GetInstanceVariablesResult;
+import com.pulumi.gitlab.outputs.GetMemberRoleResult;
 import com.pulumi.gitlab.outputs.GetMetadataResult;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleResult;
 import com.pulumi.gitlab.outputs.GetPipelineSchedulesResult;
@@ -399,6 +405,366 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Download a text artifact file from the latest successful pipeline
+     *         final var config = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("config/settings.json")
+     *             .build());
+     * 
+     *         ctx.export("configContent", config.content());
+     *         // Download a binary artifact file using base64 encoding
+     *         final var binary = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("v1.0.0")
+     *             .artifactPath("dist/app.zip")
+     *             .build());
+     * 
+     *         ctx.export("binaryContentBase64", binary.contentBase64());
+     *         // Download artifact from a specific tag
+     *         final var release = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("12345")
+     *             .job("release-job")
+     *             .ref("v2.1.0")
+     *             .artifactPath("release-notes.txt")
+     *             .build());
+     * 
+     *         // Download a larger artifact with custom size limit
+     *         final var largeArtifact = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("dist/large-file.zip")
+     *             .maxSizeBytes(20971520)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactFileResult> getArtifactFile(GetArtifactFileArgs args) {
+        return getArtifactFile(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Download a text artifact file from the latest successful pipeline
+     *         final var config = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("config/settings.json")
+     *             .build());
+     * 
+     *         ctx.export("configContent", config.content());
+     *         // Download a binary artifact file using base64 encoding
+     *         final var binary = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("v1.0.0")
+     *             .artifactPath("dist/app.zip")
+     *             .build());
+     * 
+     *         ctx.export("binaryContentBase64", binary.contentBase64());
+     *         // Download artifact from a specific tag
+     *         final var release = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("12345")
+     *             .job("release-job")
+     *             .ref("v2.1.0")
+     *             .artifactPath("release-notes.txt")
+     *             .build());
+     * 
+     *         // Download a larger artifact with custom size limit
+     *         final var largeArtifact = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("dist/large-file.zip")
+     *             .maxSizeBytes(20971520)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetArtifactFileResult> getArtifactFilePlain(GetArtifactFilePlainArgs args) {
+        return getArtifactFilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Download a text artifact file from the latest successful pipeline
+     *         final var config = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("config/settings.json")
+     *             .build());
+     * 
+     *         ctx.export("configContent", config.content());
+     *         // Download a binary artifact file using base64 encoding
+     *         final var binary = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("v1.0.0")
+     *             .artifactPath("dist/app.zip")
+     *             .build());
+     * 
+     *         ctx.export("binaryContentBase64", binary.contentBase64());
+     *         // Download artifact from a specific tag
+     *         final var release = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("12345")
+     *             .job("release-job")
+     *             .ref("v2.1.0")
+     *             .artifactPath("release-notes.txt")
+     *             .build());
+     * 
+     *         // Download a larger artifact with custom size limit
+     *         final var largeArtifact = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("dist/large-file.zip")
+     *             .maxSizeBytes(20971520)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactFileResult> getArtifactFile(GetArtifactFileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getArtifactFile:getArtifactFile", TypeShape.of(GetArtifactFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Download a text artifact file from the latest successful pipeline
+     *         final var config = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("config/settings.json")
+     *             .build());
+     * 
+     *         ctx.export("configContent", config.content());
+     *         // Download a binary artifact file using base64 encoding
+     *         final var binary = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("v1.0.0")
+     *             .artifactPath("dist/app.zip")
+     *             .build());
+     * 
+     *         ctx.export("binaryContentBase64", binary.contentBase64());
+     *         // Download artifact from a specific tag
+     *         final var release = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("12345")
+     *             .job("release-job")
+     *             .ref("v2.1.0")
+     *             .artifactPath("release-notes.txt")
+     *             .build());
+     * 
+     *         // Download a larger artifact with custom size limit
+     *         final var largeArtifact = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("dist/large-file.zip")
+     *             .maxSizeBytes(20971520)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactFileResult> getArtifactFile(GetArtifactFileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getArtifactFile:getArtifactFile", TypeShape.of(GetArtifactFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Download a text artifact file from the latest successful pipeline
+     *         final var config = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("config/settings.json")
+     *             .build());
+     * 
+     *         ctx.export("configContent", config.content());
+     *         // Download a binary artifact file using base64 encoding
+     *         final var binary = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("v1.0.0")
+     *             .artifactPath("dist/app.zip")
+     *             .build());
+     * 
+     *         ctx.export("binaryContentBase64", binary.contentBase64());
+     *         // Download artifact from a specific tag
+     *         final var release = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("12345")
+     *             .job("release-job")
+     *             .ref("v2.1.0")
+     *             .artifactPath("release-notes.txt")
+     *             .build());
+     * 
+     *         // Download a larger artifact with custom size limit
+     *         final var largeArtifact = GitlabFunctions.getArtifactFile(GetArtifactFileArgs.builder()
+     *             .project("namespace/myproject")
+     *             .job("build-job")
+     *             .ref("main")
+     *             .artifactPath("dist/large-file.zip")
+     *             .maxSizeBytes(20971520)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetArtifactFileResult> getArtifactFilePlain(GetArtifactFilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getArtifactFile:getArtifactFile", TypeShape.of(GetArtifactFileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.Branch` data source allows details of a repository branch to be retrieved by its name and project.
@@ -4305,6 +4671,216 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetInstanceVariablesResult> getInstanceVariablesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getInstanceVariables:getInstanceVariables", TypeShape.of(GetInstanceVariablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.MemberRole` data source allows details of a custom member role to be retrieved.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querymemberrole)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getMemberRole(GetMemberRoleArgs.builder()
+     *             .id("gid://gitlab/MemberRole/1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMemberRoleResult> getMemberRole(GetMemberRoleArgs args) {
+        return getMemberRole(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.MemberRole` data source allows details of a custom member role to be retrieved.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querymemberrole)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getMemberRole(GetMemberRoleArgs.builder()
+     *             .id("gid://gitlab/MemberRole/1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMemberRoleResult> getMemberRolePlain(GetMemberRolePlainArgs args) {
+        return getMemberRolePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.MemberRole` data source allows details of a custom member role to be retrieved.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querymemberrole)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getMemberRole(GetMemberRoleArgs.builder()
+     *             .id("gid://gitlab/MemberRole/1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMemberRoleResult> getMemberRole(GetMemberRoleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getMemberRole:getMemberRole", TypeShape.of(GetMemberRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.MemberRole` data source allows details of a custom member role to be retrieved.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querymemberrole)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getMemberRole(GetMemberRoleArgs.builder()
+     *             .id("gid://gitlab/MemberRole/1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMemberRoleResult> getMemberRole(GetMemberRoleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getMemberRole:getMemberRole", TypeShape.of(GetMemberRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.MemberRole` data source allows details of a custom member role to be retrieved.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querymemberrole)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getMemberRole(GetMemberRoleArgs.builder()
+     *             .id("gid://gitlab/MemberRole/1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMemberRoleResult> getMemberRolePlain(GetMemberRolePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getMemberRole:getMemberRole", TypeShape.of(GetMemberRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getMetadata` data source retrieves the metadata of the GitLab instance.

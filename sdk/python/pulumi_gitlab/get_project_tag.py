@@ -65,7 +65,7 @@ class GetProjectTagResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<project:name>`.
         """
         return pulumi.get(self, "id")
 
@@ -97,7 +97,7 @@ class GetProjectTagResult:
     @pulumi.getter
     def protected(self) -> _builtins.bool:
         """
-        Bool, true if tag has tag protection.
+        True if tag has tag protection.
         """
         return pulumi.get(self, "protected")
 

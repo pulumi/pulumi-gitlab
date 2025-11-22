@@ -538,7 +538,7 @@ class Branch(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="keepOnDestroy")
-    def keep_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def keep_on_destroy(self) -> pulumi.Output[_builtins.bool]:
         """
         Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         """

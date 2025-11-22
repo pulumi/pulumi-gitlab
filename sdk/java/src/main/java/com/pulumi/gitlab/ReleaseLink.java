@@ -152,14 +152,14 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="linkType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> linkType;
+    private Output<String> linkType;
 
     /**
      * @return The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
      * 
      */
-    public Output<Optional<String>> linkType() {
-        return Codegen.optional(this.linkType);
+    public Output<String> linkType() {
+        return this.linkType;
     }
     /**
      * The name of the link. Link names must be unique within the release.

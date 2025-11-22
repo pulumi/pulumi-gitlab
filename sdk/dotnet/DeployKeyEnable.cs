@@ -91,7 +91,7 @@ namespace Pulumi.GitLab
         /// Can deploy key push to the project's repository.
         /// </summary>
         [Output("canPush")]
-        public Output<bool?> CanPush { get; private set; } = null!;
+        public Output<bool> CanPush { get; private set; } = null!;
 
         /// <summary>
         /// Deploy key.
@@ -170,12 +170,6 @@ namespace Pulumi.GitLab
         public Input<bool>? CanPush { get; set; }
 
         /// <summary>
-        /// Deploy key.
-        /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
-
-        /// <summary>
         /// The Gitlab key id for the pre-existing deploy key
         /// </summary>
         [Input("keyId", required: true)]
@@ -186,12 +180,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// Deploy key's title.
-        /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
 
         public DeployKeyEnableArgs()
         {

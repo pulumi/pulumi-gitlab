@@ -97,7 +97,7 @@ namespace Pulumi.GitLab
         /// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         /// </summary>
         [Output("keepOnDestroy")]
-        public Output<bool?> KeepOnDestroy { get; private set; } = null!;
+        public Output<bool> KeepOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Bool, true if the branch has been merged into its parent.

@@ -18,6 +18,7 @@ from .deploy_key import *
 from .deploy_key_enable import *
 from .deploy_token import *
 from .get_application import *
+from .get_artifact_file import *
 from .get_branch import *
 from .get_cluster_agent import *
 from .get_cluster_agents import *
@@ -41,6 +42,7 @@ from .get_instance_deploy_keys import *
 from .get_instance_service_account import *
 from .get_instance_variable import *
 from .get_instance_variables import *
+from .get_member_role import *
 from .get_metadata import *
 from .get_pipeline_schedule import *
 from .get_pipeline_schedules import *
