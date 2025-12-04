@@ -70,6 +70,7 @@ config:
         value: 'TODO: var.gitlab_token'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as gitlab from "@pulumi/gitlab";
@@ -105,6 +106,7 @@ const sampleGroupProject = new gitlab.Project("sample_group_project", {
     namespaceId: sampleGroup.id,
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -116,6 +118,7 @@ config:
         value: 'TODO: var.gitlab_token'
 
 ```
+
 ```python
 import pulumi
 import pulumi_gitlab as gitlab
@@ -146,6 +149,7 @@ sample_group_project = gitlab.Project("sample_group_project",
     name="example",
     namespace_id=sample_group.id)
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -157,6 +161,7 @@ config:
         value: 'TODO: var.gitlab_token'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -212,6 +217,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -223,6 +229,7 @@ config:
         value: 'TODO: var.gitlab_token'
 
 ```
+
 ```go
 package main
 
@@ -287,6 +294,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -298,6 +306,7 @@ config:
         value: 'TODO: var.gitlab_token'
 
 ```
+
 ```yaml
 resources:
   # Add a project owned by the user
@@ -345,6 +354,7 @@ resources:
       name: example
       namespaceId: ${sampleGroup.id}
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -356,6 +366,7 @@ config:
         value: 'TODO: var.gitlab_token'
 
 ```
+
 ```java
 package generated_program;
 
@@ -426,6 +437,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
