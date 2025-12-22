@@ -100,7 +100,7 @@ def get_group_service_account(group: Optional[_builtins.str] = None,
     """
     The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
 
     ## Example Usage
 
@@ -126,7 +126,7 @@ def get_group_service_account_output(group: Optional[pulumi.Input[_builtins.str]
     """
     The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
 
     ## Example Usage
 

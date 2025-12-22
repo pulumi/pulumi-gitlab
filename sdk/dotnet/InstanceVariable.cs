@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
         /// The description of the variable. Maximum of 255 characters.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The name of the variable.
@@ -73,22 +73,22 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `False`.
+        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `False`.
         /// </summary>
         [Output("masked")]
-        public Output<bool?> Masked { get; private set; } = null!;
+        public Output<bool> Masked { get; private set; } = null!;
 
         /// <summary>
         /// If set to `True`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `False`.
         /// </summary>
         [Output("protected")]
-        public Output<bool?> Protected { get; private set; } = null!;
+        public Output<bool> Protected { get; private set; } = null!;
 
         /// <summary>
         /// Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         /// </summary>
         [Output("raw")]
-        public Output<bool?> Raw { get; private set; } = null!;
+        public Output<bool> Raw { get; private set; } = null!;
 
         /// <summary>
         /// The value of the variable.
@@ -100,7 +100,7 @@ namespace Pulumi.GitLab
         /// The type of a variable. Valid values are: `EnvVar`, `File`. Default is `EnvVar`.
         /// </summary>
         [Output("variableType")]
-        public Output<string?> VariableType { get; private set; } = null!;
+        public Output<string> VariableType { get; private set; } = null!;
 
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `False`.
+        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `False`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `False`.
+        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `False`.
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }

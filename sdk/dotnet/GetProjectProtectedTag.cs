@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
         /// </summary>
         public static Task<GetProjectProtectedTagResult> InvokeAsync(GetProjectProtectedTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectProtectedTagResult>("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", args ?? new GetProjectProtectedTagArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
         /// </summary>
         public static Output<GetProjectProtectedTagResult> Invoke(GetProjectProtectedTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedTagResult>("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", args ?? new GetProjectProtectedTagInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
         /// </summary>
         public static Output<GetProjectProtectedTagResult> Invoke(GetProjectProtectedTagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectProtectedTagResult>("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", args ?? new GetProjectProtectedTagInvokeArgs(), options.WithDefaults());

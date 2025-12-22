@@ -118,7 +118,7 @@ def get_group_membership(access_level: Optional[_builtins.str] = None,
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
 
 
     :param _builtins.str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -149,7 +149,7 @@ def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[_bu
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
 
 
     :param _builtins.str access_level: Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.

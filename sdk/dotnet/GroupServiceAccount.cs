@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupServiceAccount` resource allows creating a GitLab group service account.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#group-service-accounts)
     /// 
     /// ## Example Usage
     /// 

@@ -124,6 +124,8 @@ type LookupProjectResult struct {
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
+	// Allows merge train merge requests to be merged without waiting for pipelines to finish.
+	MergeTrainsSkipTrainAllowed bool `pulumi:"mergeTrainsSkipTrainAllowed"`
 	// The visibility of machine learning model experiments.
 	ModelExperimentsAccessLevel string `pulumi:"modelExperimentsAccessLevel"`
 	// The visibility of machine learning model registry.
@@ -446,6 +448,11 @@ func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 // Enable or disable merge trains.
 func (o LookupProjectResultOutput) MergeTrainsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeTrainsEnabled }).(pulumi.BoolOutput)
+}
+
+// Allows merge train merge requests to be merged without waiting for pipelines to finish.
+func (o LookupProjectResultOutput) MergeTrainsSkipTrainAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.MergeTrainsSkipTrainAllowed }).(pulumi.BoolOutput)
 }
 
 // The visibility of machine learning model experiments.

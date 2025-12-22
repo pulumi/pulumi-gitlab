@@ -94,14 +94,14 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      * 
      */
     @Import(name="minAccessLevel")
     private @Nullable Output<Integer> minAccessLevel;
 
     /**
-     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      * 
      */
     public Optional<Output<Integer>> minAccessLevel() {
@@ -499,7 +499,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param minAccessLevel Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+         * @param minAccessLevel Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param minAccessLevel Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+         * @param minAccessLevel Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
          * 
          * @return builder
          * 

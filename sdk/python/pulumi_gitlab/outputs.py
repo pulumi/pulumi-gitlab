@@ -59,6 +59,7 @@ __all__ = [
     'GetGroupMembershipMemberResult',
     'GetGroupProvisionedUsersProvisionedUserResult',
     'GetGroupSamlLinksSamlLinkResult',
+    'GetGroupServiceAccountAccessTokensAccessTokenResult',
     'GetGroupSharedWithGroupResult',
     'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
@@ -79,6 +80,9 @@ __all__ = [
     'GetProjectContainerExpirationPolicyResult',
     'GetProjectEnvironmentsEnvironmentResult',
     'GetProjectHooksHookResult',
+    'GetProjectIssueLabelEventsEventResult',
+    'GetProjectIssueLabelEventsEventLabelResult',
+    'GetProjectIssueLabelEventsEventUserResult',
     'GetProjectIssueTaskCompletionStatusResult',
     'GetProjectIssuesIssueResult',
     'GetProjectIssuesIssueTaskCompletionStatusResult',
@@ -100,6 +104,9 @@ __all__ = [
     'GetProjectProtectedTagsProtectedTagResult',
     'GetProjectProtectedTagsProtectedTagCreateAccessLevelResult',
     'GetProjectPushRuleResult',
+    'GetProjectSecureFileMetadataResult',
+    'GetProjectSecureFileMetadataIssuerResult',
+    'GetProjectSecureFileMetadataSubjectResult',
     'GetProjectSharedWithGroupResult',
     'GetProjectTagCommitResult',
     'GetProjectTagReleaseResult',
@@ -120,6 +127,12 @@ __all__ = [
     'GetReleaseLinksReleaseLinkResult',
     'GetRepositoryTreeTreeResult',
     'GetRunnersRunnerResult',
+    'GetSecurityPolicyDocumentScanExecutionPolicyResult',
+    'GetSecurityPolicyDocumentScanExecutionPolicyActionResult',
+    'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeResult',
+    'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsResult',
+    'GetSecurityPolicyDocumentScanExecutionPolicyRuleResult',
+    'GetSecurityPolicyDocumentScanExecutionPolicySkipCiResult',
     'GetUserSshkeysKeyResult',
     'GetUsersUserResult',
 ]
@@ -3521,7 +3534,7 @@ class GetGroupBillableMemberMembershipsMembershipResult(dict):
                  source_id: _builtins.int,
                  source_members_url: _builtins.str):
         """
-        :param _builtins.str access_level: Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
+        :param _builtins.str access_level: Access-level of the member. For details see: https://docs.gitlab.com/user/permissions/#default-roles
         :param _builtins.str created_at: Datetime when the membership was first added.
         :param _builtins.str expires_at: Date when the membership will end.
         :param _builtins.int id: The id of the membership.
@@ -3541,7 +3554,7 @@ class GetGroupBillableMemberMembershipsMembershipResult(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
         """
-        Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
+        Access-level of the member. For details see: https://docs.gitlab.com/user/permissions/#default-roles
         """
         return pulumi.get(self, "access_level")
 
@@ -4259,6 +4272,60 @@ class GetGroupSamlLinksSamlLinkResult(dict):
         Name of the SAML group.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGroupServiceAccountAccessTokensAccessTokenResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool,
+                 created_at: _builtins.str,
+                 expires_at: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 revoked: _builtins.bool,
+                 scopes: Sequence[_builtins.str]):
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "revoked", revoked)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> _builtins.str:
+        return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def revoked(self) -> _builtins.bool:
+        return pulumi.get(self, "revoked")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "scopes")
 
 
 @pulumi.output_type
@@ -6450,6 +6517,214 @@ class GetProjectHooksHookResult(dict):
 
 
 @pulumi.output_type
+class GetProjectIssueLabelEventsEventResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 created_at: _builtins.str,
+                 id: _builtins.int,
+                 label: 'outputs.GetProjectIssueLabelEventsEventLabelResult',
+                 resource_id: _builtins.int,
+                 resource_type: _builtins.str,
+                 user: 'outputs.GetProjectIssueLabelEventsEventUserResult'):
+        """
+        :param _builtins.str action: The action performed on the label (add, remove).
+        :param _builtins.str created_at: The date and time when the label event was created.
+        :param _builtins.int id: The ID of the label event.
+        :param 'GetProjectIssueLabelEventsEventLabelArgs' label: The label that was added or removed.
+        :param _builtins.int resource_id: The ID of the resource associated with the label event.
+        :param _builtins.str resource_type: The type of the resource associated with the label event.
+        :param 'GetProjectIssueLabelEventsEventUserArgs' user: The user who performed the action.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "user", user)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action performed on the label (add, remove).
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time when the label event was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the label event.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> 'outputs.GetProjectIssueLabelEventsEventLabelResult':
+        """
+        The label that was added or removed.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.int:
+        """
+        The ID of the resource associated with the label event.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        The type of the resource associated with the label event.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def user(self) -> 'outputs.GetProjectIssueLabelEventsEventUserResult':
+        """
+        The user who performed the action.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetProjectIssueLabelEventsEventLabelResult(dict):
+    def __init__(__self__, *,
+                 color: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.int,
+                 name: _builtins.str):
+        """
+        :param _builtins.str color: The color of the label.
+        :param _builtins.str description: The description of the label.
+        :param _builtins.int id: The ID of the label.
+        :param _builtins.str name: The name of the label.
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> _builtins.str:
+        """
+        The color of the label.
+        """
+        return pulumi.get(self, "color")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the label.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the label.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the label.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetProjectIssueLabelEventsEventUserResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: _builtins.str,
+                 id: _builtins.int,
+                 name: _builtins.str,
+                 state: _builtins.str,
+                 username: _builtins.str,
+                 web_url: _builtins.str):
+        """
+        :param _builtins.str avatar_url: The avatar URL of the user.
+        :param _builtins.int id: The ID of the user.
+        :param _builtins.str name: The name of the user.
+        :param _builtins.str state: The state of the user.
+        :param _builtins.str username: The username of the user.
+        :param _builtins.str web_url: The web URL of the user.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @_builtins.property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> _builtins.str:
+        """
+        The avatar URL of the user.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the user.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        The username of the user.
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> _builtins.str:
+        """
+        The web URL of the user.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
 class GetProjectIssueTaskCompletionStatusResult(dict):
     def __init__(__self__, *,
                  completed_count: _builtins.int,
@@ -8350,6 +8625,170 @@ class GetProjectPushRuleResult(dict):
         Reject commit when it's not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class GetProjectSecureFileMetadataResult(dict):
+    def __init__(__self__, *,
+                 expires_at: _builtins.str,
+                 id: _builtins.str,
+                 issuer: 'outputs.GetProjectSecureFileMetadataIssuerResult',
+                 subject: 'outputs.GetProjectSecureFileMetadataSubjectResult'):
+        """
+        :param _builtins.str expires_at: Certificate expiration date
+        :param _builtins.str id: Certificate ID
+        :param 'GetProjectSecureFileMetadataIssuerArgs' issuer: Certificate issuer information
+        :param 'GetProjectSecureFileMetadataSubjectArgs' subject: Certificate subject information
+        """
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> _builtins.str:
+        """
+        Certificate expiration date
+        """
+        return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Certificate ID
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> 'outputs.GetProjectSecureFileMetadataIssuerResult':
+        """
+        Certificate issuer information
+        """
+        return pulumi.get(self, "issuer")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> 'outputs.GetProjectSecureFileMetadataSubjectResult':
+        """
+        Certificate subject information
+        """
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
+class GetProjectSecureFileMetadataIssuerResult(dict):
+    def __init__(__self__, *,
+                 c: _builtins.str,
+                 cn: _builtins.str,
+                 o: _builtins.str,
+                 ou: _builtins.str):
+        """
+        :param _builtins.str c: Country
+        :param _builtins.str cn: Common Name
+        :param _builtins.str o: Organization
+        :param _builtins.str ou: Organizational Unit
+        """
+        pulumi.set(__self__, "c", c)
+        pulumi.set(__self__, "cn", cn)
+        pulumi.set(__self__, "o", o)
+        pulumi.set(__self__, "ou", ou)
+
+    @_builtins.property
+    @pulumi.getter
+    def c(self) -> _builtins.str:
+        """
+        Country
+        """
+        return pulumi.get(self, "c")
+
+    @_builtins.property
+    @pulumi.getter
+    def cn(self) -> _builtins.str:
+        """
+        Common Name
+        """
+        return pulumi.get(self, "cn")
+
+    @_builtins.property
+    @pulumi.getter
+    def o(self) -> _builtins.str:
+        """
+        Organization
+        """
+        return pulumi.get(self, "o")
+
+    @_builtins.property
+    @pulumi.getter
+    def ou(self) -> _builtins.str:
+        """
+        Organizational Unit
+        """
+        return pulumi.get(self, "ou")
+
+
+@pulumi.output_type
+class GetProjectSecureFileMetadataSubjectResult(dict):
+    def __init__(__self__, *,
+                 c: _builtins.str,
+                 cn: _builtins.str,
+                 o: _builtins.str,
+                 ou: _builtins.str,
+                 uid: _builtins.str):
+        """
+        :param _builtins.str c: Country
+        :param _builtins.str cn: Common Name
+        :param _builtins.str o: Organization
+        :param _builtins.str ou: Organizational Unit
+        :param _builtins.str uid: User ID
+        """
+        pulumi.set(__self__, "c", c)
+        pulumi.set(__self__, "cn", cn)
+        pulumi.set(__self__, "o", o)
+        pulumi.set(__self__, "ou", ou)
+        pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter
+    def c(self) -> _builtins.str:
+        """
+        Country
+        """
+        return pulumi.get(self, "c")
+
+    @_builtins.property
+    @pulumi.getter
+    def cn(self) -> _builtins.str:
+        """
+        Common Name
+        """
+        return pulumi.get(self, "cn")
+
+    @_builtins.property
+    @pulumi.getter
+    def o(self) -> _builtins.str:
+        """
+        Organization
+        """
+        return pulumi.get(self, "o")
+
+    @_builtins.property
+    @pulumi.getter
+    def ou(self) -> _builtins.str:
+        """
+        Organizational Unit
+        """
+        return pulumi.get(self, "ou")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        """
+        User ID
+        """
+        return pulumi.get(self, "uid")
 
 
 @pulumi.output_type
@@ -10573,13 +11012,13 @@ class GetReleaseLinksReleaseLinkResult(dict):
                  tag_name: _builtins.str,
                  url: _builtins.str):
         """
-        :param _builtins.str direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param _builtins.str direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param _builtins.bool external: External or internal link.
-        :param _builtins.str filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param _builtins.str filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param _builtins.int link_id: The ID of the link.
         :param _builtins.str link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`.
         :param _builtins.str name: The name of the link. Link names must be unique within the release.
-        :param _builtins.str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        :param _builtins.str project: The ID or Namespace path of the project.
         :param _builtins.str tag_name: The tag associated with the Release.
         :param _builtins.str url: The URL of the link. Link URLs must be unique within the release.
         """
@@ -10597,7 +11036,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> _builtins.str:
         """
-        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
@@ -10613,7 +11052,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter
     def filepath(self) -> _builtins.str:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -10645,7 +11084,7 @@ class GetReleaseLinksReleaseLinkResult(dict):
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -10822,6 +11261,329 @@ class GetRunnersRunnerResult(dict):
         The status of the runner. Values can be `online`, `offline`, `stale`, and `never_contacted`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetSecurityPolicyDocumentScanExecutionPolicyResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetSecurityPolicyDocumentScanExecutionPolicyActionResult'],
+                 enabled: _builtins.bool,
+                 name: _builtins.str,
+                 rules: Sequence['outputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleResult'],
+                 description: Optional[_builtins.str] = None,
+                 policy_scope: Optional['outputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeResult'] = None,
+                 skip_ci: Optional['outputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCiResult'] = None):
+        """
+        :param Sequence['GetSecurityPolicyDocumentScanExecutionPolicyActionArgs'] actions: Actions to execute when rules match. At least one action is required.
+        :param _builtins.bool enabled: Whether the policy is enabled.
+        :param _builtins.str name: Name of the scan execution policy.
+        :param Sequence['GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs'] rules: Rules that trigger the policy. At least one rule is required.
+        :param _builtins.str description: Description of the scan execution policy.
+        :param 'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs' policy_scope: Scope configuration to limit which projects the policy applies to.
+        :param 'GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs' skip_ci: Control whether users can use the skip-ci directive.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rules", rules)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if policy_scope is not None:
+            pulumi.set(__self__, "policy_scope", policy_scope)
+        if skip_ci is not None:
+            pulumi.set(__self__, "skip_ci", skip_ci)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetSecurityPolicyDocumentScanExecutionPolicyActionResult']:
+        """
+        Actions to execute when rules match. At least one action is required.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the policy is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the scan execution policy.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleResult']:
+        """
+        Rules that trigger the policy. At least one rule is required.
+        """
+        return pulumi.get(self, "rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the scan execution policy.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="policyScope")
+    def policy_scope(self) -> Optional['outputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeResult']:
+        """
+        Scope configuration to limit which projects the policy applies to.
+        """
+        return pulumi.get(self, "policy_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="skipCi")
+    def skip_ci(self) -> Optional['outputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCiResult']:
+        """
+        Control whether users can use the skip-ci directive.
+        """
+        return pulumi.get(self, "skip_ci")
+
+
+@pulumi.output_type
+class GetSecurityPolicyDocumentScanExecutionPolicyActionResult(dict):
+    def __init__(__self__, *,
+                 scan: _builtins.str,
+                 scanner_profile: Optional[_builtins.str] = None,
+                 site_profile: Optional[_builtins.str] = None,
+                 tags_to_excludes: Optional[Sequence[_builtins.str]] = None,
+                 template: Optional[_builtins.str] = None,
+                 variables: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str scan: Type of scan to run. Valid values: `sast`, `secret_detection`, `container_scanning`, `dependency_scanning`, `dast`, `sast_iac`, `cluster_image_scanning`, `api_fuzzing`, `coverage_fuzzing`.
+        :param _builtins.str scanner_profile: Scanner profile to use for DAST scans.
+        :param _builtins.str site_profile: Site profile to use for DAST scans.
+        :param Sequence[_builtins.str] tags_to_excludes: Tags to exclude from the scan.
+        :param _builtins.str template: The template to use for the scan. Valid values: `default`, `latest`.
+        :param Mapping[str, _builtins.str] variables: Environment variables to pass to the scan job.
+        """
+        pulumi.set(__self__, "scan", scan)
+        if scanner_profile is not None:
+            pulumi.set(__self__, "scanner_profile", scanner_profile)
+        if site_profile is not None:
+            pulumi.set(__self__, "site_profile", site_profile)
+        if tags_to_excludes is not None:
+            pulumi.set(__self__, "tags_to_excludes", tags_to_excludes)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @_builtins.property
+    @pulumi.getter
+    def scan(self) -> _builtins.str:
+        """
+        Type of scan to run. Valid values: `sast`, `secret_detection`, `container_scanning`, `dependency_scanning`, `dast`, `sast_iac`, `cluster_image_scanning`, `api_fuzzing`, `coverage_fuzzing`.
+        """
+        return pulumi.get(self, "scan")
+
+    @_builtins.property
+    @pulumi.getter(name="scannerProfile")
+    def scanner_profile(self) -> Optional[_builtins.str]:
+        """
+        Scanner profile to use for DAST scans.
+        """
+        return pulumi.get(self, "scanner_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="siteProfile")
+    def site_profile(self) -> Optional[_builtins.str]:
+        """
+        Site profile to use for DAST scans.
+        """
+        return pulumi.get(self, "site_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="tagsToExcludes")
+    def tags_to_excludes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Tags to exclude from the scan.
+        """
+        return pulumi.get(self, "tags_to_excludes")
+
+    @_builtins.property
+    @pulumi.getter
+    def template(self) -> Optional[_builtins.str]:
+        """
+        The template to use for the scan. Valid values: `default`, `latest`.
+        """
+        return pulumi.get(self, "template")
+
+    @_builtins.property
+    @pulumi.getter
+    def variables(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Environment variables to pass to the scan job.
+        """
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeResult(dict):
+    def __init__(__self__, *,
+                 compliance_frameworks: Optional[Sequence[_builtins.str]] = None,
+                 projects: Optional['outputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsResult'] = None):
+        """
+        :param Sequence[_builtins.str] compliance_frameworks: Compliance framework names to scope the policy to.
+        :param 'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs' projects: Project scope configuration.
+        """
+        if compliance_frameworks is not None:
+            pulumi.set(__self__, "compliance_frameworks", compliance_frameworks)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceFrameworks")
+    def compliance_frameworks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Compliance framework names to scope the policy to.
+        """
+        return pulumi.get(self, "compliance_frameworks")
+
+    @_builtins.property
+    @pulumi.getter
+    def projects(self) -> Optional['outputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsResult']:
+        """
+        Project scope configuration.
+        """
+        return pulumi.get(self, "projects")
+
+
+@pulumi.output_type
+class GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsResult(dict):
+    def __init__(__self__, *,
+                 excludings: Optional[Sequence[_builtins.int]] = None,
+                 includings: Optional[Sequence[_builtins.int]] = None):
+        """
+        :param Sequence[_builtins.int] excludings: List of project IDs to exclude from this policy.
+        :param Sequence[_builtins.int] includings: List of project IDs to explicitly include in this policy.
+        """
+        if excludings is not None:
+            pulumi.set(__self__, "excludings", excludings)
+        if includings is not None:
+            pulumi.set(__self__, "includings", includings)
+
+    @_builtins.property
+    @pulumi.getter
+    def excludings(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        List of project IDs to exclude from this policy.
+        """
+        return pulumi.get(self, "excludings")
+
+    @_builtins.property
+    @pulumi.getter
+    def includings(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        List of project IDs to explicitly include in this policy.
+        """
+        return pulumi.get(self, "includings")
+
+
+@pulumi.output_type
+class GetSecurityPolicyDocumentScanExecutionPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 agents: Optional[Mapping[str, _builtins.str]] = None,
+                 branch_exceptions: Optional[Sequence[_builtins.str]] = None,
+                 branch_type: Optional[_builtins.str] = None,
+                 branches: Optional[Sequence[_builtins.str]] = None,
+                 cadence: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+        :param Mapping[str, _builtins.str] agents: Kubernetes agents configuration for agent-based policies.
+        :param Sequence[_builtins.str] branch_exceptions: Branches to exclude from the policy.
+        :param _builtins.str branch_type: Type of branches to match. Valid values: `all`, `protected`, `default`.
+        :param Sequence[_builtins.str] branches: Branch names or patterns to match.
+        :param _builtins.str cadence: Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+        """
+        pulumi.set(__self__, "type", type)
+        if agents is not None:
+            pulumi.set(__self__, "agents", agents)
+        if branch_exceptions is not None:
+            pulumi.set(__self__, "branch_exceptions", branch_exceptions)
+        if branch_type is not None:
+            pulumi.set(__self__, "branch_type", branch_type)
+        if branches is not None:
+            pulumi.set(__self__, "branches", branches)
+        if cadence is not None:
+            pulumi.set(__self__, "cadence", cadence)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def agents(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Kubernetes agents configuration for agent-based policies.
+        """
+        return pulumi.get(self, "agents")
+
+    @_builtins.property
+    @pulumi.getter(name="branchExceptions")
+    def branch_exceptions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Branches to exclude from the policy.
+        """
+        return pulumi.get(self, "branch_exceptions")
+
+    @_builtins.property
+    @pulumi.getter(name="branchType")
+    def branch_type(self) -> Optional[_builtins.str]:
+        """
+        Type of branches to match. Valid values: `all`, `protected`, `default`.
+        """
+        return pulumi.get(self, "branch_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def branches(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Branch names or patterns to match.
+        """
+        return pulumi.get(self, "branches")
+
+    @_builtins.property
+    @pulumi.getter
+    def cadence(self) -> Optional[_builtins.str]:
+        """
+        Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+        """
+        return pulumi.get(self, "cadence")
+
+
+@pulumi.output_type
+class GetSecurityPolicyDocumentScanExecutionPolicySkipCiResult(dict):
+    def __init__(__self__, *,
+                 allowed: _builtins.bool):
+        """
+        :param _builtins.bool allowed: Allow (true) or prevent (false) the use of skip-ci directive.
+        """
+        pulumi.set(__self__, "allowed", allowed)
+
+    @_builtins.property
+    @pulumi.getter
+    def allowed(self) -> _builtins.bool:
+        """
+        Allow (true) or prevent (false) the use of skip-ci directive.
+        """
+        return pulumi.get(self, "allowed")
 
 
 @pulumi.output_type

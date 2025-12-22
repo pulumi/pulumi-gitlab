@@ -25,14 +25,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/label:Label")
 public class Label extends com.pulumi.resources.CustomResource {
     /**
-     * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      * 
      */
     @Export(name="color", refs={String.class}, tree="[0]")
     private Output<String> color;
 
     /**
-     * @return The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * @return The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      * 
      */
     public Output<String> color() {

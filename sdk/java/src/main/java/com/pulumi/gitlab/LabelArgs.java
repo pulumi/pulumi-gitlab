@@ -17,14 +17,14 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
     public static final LabelArgs Empty = new LabelArgs();
 
     /**
-     * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      * 
      */
     @Import(name="color", required=true)
     private Output<String> color;
 
     /**
-     * @return The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * @return The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      * 
      */
     public Output<String> color() {
@@ -104,7 +104,7 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param color The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+         * @param color The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param color The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+         * @param color The color of the label given in 6-digit hex notation with leading &#39;#&#39; sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
          * 
          * @return builder
          * 

@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+        /// If set to `True`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         public readonly bool Masked;
         /// <summary>

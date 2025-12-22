@@ -93,14 +93,14 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or Namespace path of the project owned by the authenticated user.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * @return The ID or Namespace path of the project owned by the authenticated user.
      * 
      */
     public Output<String> project() {
@@ -242,7 +242,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+         * @param project The ID or Namespace path of the project owned by the authenticated user.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+         * @param project The ID or Namespace path of the project owned by the authenticated user.
          * 
          * @return builder
          * 

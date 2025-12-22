@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
  * 
- * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
+ * &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
  * 
  * &gt; Use `rotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
  * 

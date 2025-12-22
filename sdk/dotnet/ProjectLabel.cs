@@ -65,17 +65,17 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
+    /// Gitlab Project labels can be imported using an id made up of `{project_id}:{label_id}`, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
+    /// $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:101010
     /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/projectLabel:ProjectLabel")]
     public partial class ProjectLabel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectLabelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+        /// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }

@@ -153,7 +153,7 @@ class GetProjectsResult:
     @pulumi.getter(name="minAccessLevel")
     def min_access_level(self) -> Optional[_builtins.int]:
         """
-        Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+        Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `group_id`.
         """
         return pulumi.get(self, "min_access_level")
 
@@ -381,7 +381,7 @@ def get_projects(archived: Optional[_builtins.bool] = None,
     :param _builtins.bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param _builtins.int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param _builtins.bool membership: Limit by projects that the current user is a member of.
-    :param _builtins.int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+    :param _builtins.int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `group_id`.
     :param _builtins.str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
     :param _builtins.bool owned: Limit by projects owned by the current user.
     :param _builtins.int page: The first page to begin the query on.
@@ -505,7 +505,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[_builtins.bool]
     :param _builtins.bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
     :param _builtins.int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
     :param _builtins.bool membership: Limit by projects that the current user is a member of.
-    :param _builtins.int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `group_id`.
+    :param _builtins.int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `group_id`.
     :param _builtins.str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
     :param _builtins.bool owned: Limit by projects owned by the current user.
     :param _builtins.int page: The first page to begin the query on.

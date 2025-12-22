@@ -26,7 +26,7 @@ func GetReleaseLinks(ctx *pulumi.Context, args *GetReleaseLinksArgs, opts ...pul
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksArgs struct {
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project string `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
@@ -36,7 +36,7 @@ type GetReleaseLinksArgs struct {
 type GetReleaseLinksResult struct {
 	// The ID of this data source.
 	Id string `pulumi:"id"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project string `pulumi:"project"`
 	// List of release links
 	ReleaseLinks []GetReleaseLinksReleaseLink `pulumi:"releaseLinks"`
@@ -55,7 +55,7 @@ func GetReleaseLinksOutput(ctx *pulumi.Context, args GetReleaseLinksOutputArgs, 
 
 // A collection of arguments for invoking getReleaseLinks.
 type GetReleaseLinksOutputArgs struct {
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -85,7 +85,7 @@ func (o GetReleaseLinksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+// The ID or Namespace path of the project.
 func (o GetReleaseLinksResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksResult) string { return v.Project }).(pulumi.StringOutput)
 }

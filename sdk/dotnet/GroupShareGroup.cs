@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Note that `MemberRoleId` requires a feature flag enabled, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#share-groups-with-groups)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/#invite-groups)
     /// 
     /// ## Example Usage
     /// 

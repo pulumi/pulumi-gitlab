@@ -18,7 +18,7 @@ public final class GetReleaseLinksResult {
      */
     private String id;
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * @return The ID or Namespace path of the project.
      * 
      */
     private String project;
@@ -42,7 +42,7 @@ public final class GetReleaseLinksResult {
         return this.id;
     }
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * @return The ID or Namespace path of the project.
      * 
      */
     public String project() {

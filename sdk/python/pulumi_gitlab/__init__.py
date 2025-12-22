@@ -34,6 +34,7 @@ from .get_group_membership import *
 from .get_group_provisioned_users import *
 from .get_group_saml_links import *
 from .get_group_service_account import *
+from .get_group_service_account_access_tokens import *
 from .get_group_subgroups import *
 from .get_group_variable import *
 from .get_group_variables import *
@@ -55,6 +56,7 @@ from .get_project_hook import *
 from .get_project_hooks import *
 from .get_project_ids import *
 from .get_project_issue import *
+from .get_project_issue_label_events import *
 from .get_project_issues import *
 from .get_project_membership import *
 from .get_project_merge_request import *
@@ -66,6 +68,7 @@ from .get_project_protected_branch import *
 from .get_project_protected_branches import *
 from .get_project_protected_tag import *
 from .get_project_protected_tags import *
+from .get_project_secure_file import *
 from .get_project_tag import *
 from .get_project_tags import *
 from .get_project_variable import *
@@ -77,6 +80,7 @@ from .get_release_links import *
 from .get_repository_file import *
 from .get_repository_tree import *
 from .get_runners import *
+from .get_security_policy_document import *
 from .get_user import *
 from .get_user_sshkeys import *
 from .get_users import *
@@ -182,6 +186,7 @@ from .system_hook import *
 from .tag_protection import *
 from .topic import *
 from .user import *
+from .user_avatar import *
 from .user_custom_attribute import *
 from .user_gpg_key import *
 from .user_identity import *
@@ -1096,6 +1101,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userAvatar",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userAvatar:UserAvatar": "UserAvatar"
   }
  },
  {

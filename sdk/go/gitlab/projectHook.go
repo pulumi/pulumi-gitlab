@@ -14,7 +14,7 @@ import (
 
 // The `ProjectHook` resource allows to manage the lifecycle of a project hook.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#hooks)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
 //
 // ## Example Usage
 //

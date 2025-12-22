@@ -290,6 +290,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool MergeTrainsEnabled;
         /// <summary>
+        /// Allows merge train merge requests to be merged without waiting for pipelines to finish.
+        /// </summary>
+        public readonly bool MergeTrainsSkipTrainAllowed;
+        /// <summary>
         /// The visibility of machine learning model experiments.
         /// </summary>
         public readonly string ModelExperimentsAccessLevel;
@@ -504,6 +508,8 @@ namespace Pulumi.GitLab
 
             bool mergeTrainsEnabled,
 
+            bool mergeTrainsSkipTrainAllowed,
+
             string modelExperimentsAccessLevel,
 
             string modelRegistryAccessLevel,
@@ -610,6 +616,7 @@ namespace Pulumi.GitLab
             MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
             MergeTrainsEnabled = mergeTrainsEnabled;
+            MergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             ModelExperimentsAccessLevel = modelExperimentsAccessLevel;
             ModelRegistryAccessLevel = modelRegistryAccessLevel;
             MonitorAccessLevel = monitorAccessLevel;

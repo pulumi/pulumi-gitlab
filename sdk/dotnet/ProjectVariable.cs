@@ -85,7 +85,7 @@ namespace Pulumi.GitLab
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         [Output("masked")]
         public Output<bool> Masked { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.GitLab
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }
@@ -259,7 +259,7 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        /// If set to `True`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         /// </summary>
         [Input("masked")]
         public Input<bool>? Masked { get; set; }

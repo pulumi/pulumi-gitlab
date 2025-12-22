@@ -90,7 +90,7 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      */
     declare public readonly masked: pulumi.Output<boolean>;
     /**
@@ -185,7 +185,7 @@ export interface ProjectVariableState {
      */
     key?: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -231,7 +231,7 @@ export interface ProjectVariableArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      */
     masked?: pulumi.Input<boolean>;
     /**

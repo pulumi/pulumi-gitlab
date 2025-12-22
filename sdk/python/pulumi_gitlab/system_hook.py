@@ -34,7 +34,7 @@ class SystemHookArgs:
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
-        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         pulumi.set(__self__, "url", url)
         if enable_ssl_verification is not None:
@@ -126,7 +126,7 @@ class SystemHookArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -154,7 +154,7 @@ class _SystemHookState:
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
-        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The hook URL.
         """
         if created_at is not None:
@@ -250,7 +250,7 @@ class _SystemHookState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
@@ -337,7 +337,7 @@ class SystemHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
-        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The hook URL.
         """
         ...
@@ -465,7 +465,7 @@ class SystemHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
-        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The hook URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -534,7 +534,7 @@ class SystemHook(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         return pulumi.get(self, "token")
 

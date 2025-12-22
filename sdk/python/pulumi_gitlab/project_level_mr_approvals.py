@@ -274,7 +274,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#merge-request-level-mr-approvals)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-a-merge-request)
 
         ## Example Usage
 
@@ -340,7 +340,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         > This resource requires a GitLab Enterprise instance.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#merge-request-level-mr-approvals)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-a-merge-request)
 
         ## Example Usage
 

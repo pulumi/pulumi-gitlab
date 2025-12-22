@@ -17,14 +17,14 @@ public final class ReleaseLinkArgs extends com.pulumi.resources.ResourceArgs {
     public static final ReleaseLinkArgs Empty = new ReleaseLinkArgs();
 
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      * 
      */
     @Import(name="filepath")
     private @Nullable Output<String> filepath;
 
     /**
-     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      * 
      */
     public Optional<Output<String>> filepath() {
@@ -62,14 +62,14 @@ public final class ReleaseLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * @return The ID or Namespace path of the project.
      * 
      */
     public Output<String> project() {
@@ -136,7 +136,7 @@ public final class ReleaseLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filepath Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+         * @param filepath Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ReleaseLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filepath Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+         * @param filepath Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ReleaseLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+         * @param project The ID or Namespace path of the project.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ReleaseLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+         * @param project The ID or Namespace path of the project.
          * 
          * @return builder
          * 

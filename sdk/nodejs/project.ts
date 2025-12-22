@@ -316,6 +316,10 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly mergeTrainsEnabled: pulumi.Output<boolean>;
     /**
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     */
+    declare public readonly mergeTrainsSkipTrainAllowed: pulumi.Output<boolean>;
+    /**
      * Enable project pull mirror.
      */
     declare public readonly mirror: pulumi.Output<boolean | undefined>;
@@ -518,7 +522,7 @@ export class Project extends pulumi.CustomResource {
     declare public readonly topics: pulumi.Output<string[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     declare public readonly useCustomTemplate: pulumi.Output<boolean | undefined>;
     /**
@@ -613,6 +617,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeRequestsEnabled"] = state?.mergeRequestsEnabled;
             resourceInputs["mergeRequestsTemplate"] = state?.mergeRequestsTemplate;
             resourceInputs["mergeTrainsEnabled"] = state?.mergeTrainsEnabled;
+            resourceInputs["mergeTrainsSkipTrainAllowed"] = state?.mergeTrainsSkipTrainAllowed;
             resourceInputs["mirror"] = state?.mirror;
             resourceInputs["mirrorOverwritesDivergedBranches"] = state?.mirrorOverwritesDivergedBranches;
             resourceInputs["mirrorTriggerBuilds"] = state?.mirrorTriggerBuilds;
@@ -724,6 +729,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeRequestsEnabled"] = args?.mergeRequestsEnabled;
             resourceInputs["mergeRequestsTemplate"] = args?.mergeRequestsTemplate;
             resourceInputs["mergeTrainsEnabled"] = args?.mergeTrainsEnabled;
+            resourceInputs["mergeTrainsSkipTrainAllowed"] = args?.mergeTrainsSkipTrainAllowed;
             resourceInputs["mirror"] = args?.mirror;
             resourceInputs["mirrorOverwritesDivergedBranches"] = args?.mirrorOverwritesDivergedBranches;
             resourceInputs["mirrorTriggerBuilds"] = args?.mirrorTriggerBuilds;
@@ -1040,6 +1046,10 @@ export interface ProjectState {
      */
     mergeTrainsEnabled?: pulumi.Input<boolean>;
     /**
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     */
+    mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean>;
+    /**
      * Enable project pull mirror.
      */
     mirror?: pulumi.Input<boolean>;
@@ -1242,7 +1252,7 @@ export interface ProjectState {
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**
@@ -1506,6 +1516,10 @@ export interface ProjectArgs {
      */
     mergeTrainsEnabled?: pulumi.Input<boolean>;
     /**
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     */
+    mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean>;
+    /**
      * Enable project pull mirror.
      */
     mirror?: pulumi.Input<boolean>;
@@ -1696,7 +1710,7 @@ export interface ProjectArgs {
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+     * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
     useCustomTemplate?: pulumi.Input<boolean>;
     /**

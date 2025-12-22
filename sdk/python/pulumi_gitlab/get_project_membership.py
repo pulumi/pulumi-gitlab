@@ -146,7 +146,7 @@ def get_project_membership(full_path: Optional[_builtins.str] = None,
     """
     The `ProjectMembership` data source allows you to list and filter all members of a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
 
 
     :param _builtins.str full_path: The full path of the project. Use `project` instead. Will be removed in 19.0.
@@ -185,7 +185,7 @@ def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[_bui
     """
     The `ProjectMembership` data source allows you to list and filter all members of a project.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
 
 
     :param _builtins.str full_path: The full path of the project. Use `project` instead. Will be removed in 19.0.

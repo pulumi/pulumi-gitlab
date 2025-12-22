@@ -92,14 +92,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/releaseLink:ReleaseLink")
 public class ReleaseLink extends com.pulumi.resources.CustomResource {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      * 
      */
     @Export(name="directAssetUrl", refs={String.class}, tree="[0]")
     private Output<String> directAssetUrl;
 
     /**
-     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * @return Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      * 
      */
     public Output<String> directAssetUrl() {
@@ -120,14 +120,14 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
         return this.external;
     }
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      * 
      */
     @Export(name="filepath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filepath;
 
     /**
-     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * @return Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      * 
      */
     public Output<Optional<String>> filepath() {
@@ -176,14 +176,14 @@ public class ReleaseLink extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * @return The ID or Namespace path of the project.
      * 
      */
     public Output<String> project() {

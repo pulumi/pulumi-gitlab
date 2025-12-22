@@ -227,6 +227,11 @@ public final class GetProjectResult {
      */
     private Boolean mergeTrainsEnabled;
     /**
+     * @return Allows merge train merge requests to be merged without waiting for pipelines to finish.
+     * 
+     */
+    private Boolean mergeTrainsSkipTrainAllowed;
+    /**
      * @return The visibility of machine learning model experiments.
      * 
      */
@@ -698,6 +703,13 @@ public final class GetProjectResult {
         return this.mergeTrainsEnabled;
     }
     /**
+     * @return Allows merge train merge requests to be merged without waiting for pipelines to finish.
+     * 
+     */
+    public Boolean mergeTrainsSkipTrainAllowed() {
+        return this.mergeTrainsSkipTrainAllowed;
+    }
+    /**
      * @return The visibility of machine learning model experiments.
      * 
      */
@@ -994,6 +1006,7 @@ public final class GetProjectResult {
         private String mergeRequestsAccessLevel;
         private Boolean mergeRequestsEnabled;
         private Boolean mergeTrainsEnabled;
+        private Boolean mergeTrainsSkipTrainAllowed;
         private String modelExperimentsAccessLevel;
         private String modelRegistryAccessLevel;
         private String monitorAccessLevel;
@@ -1070,6 +1083,7 @@ public final class GetProjectResult {
     	      this.mergeRequestsAccessLevel = defaults.mergeRequestsAccessLevel;
     	      this.mergeRequestsEnabled = defaults.mergeRequestsEnabled;
     	      this.mergeTrainsEnabled = defaults.mergeTrainsEnabled;
+    	      this.mergeTrainsSkipTrainAllowed = defaults.mergeTrainsSkipTrainAllowed;
     	      this.modelExperimentsAccessLevel = defaults.modelExperimentsAccessLevel;
     	      this.modelRegistryAccessLevel = defaults.modelRegistryAccessLevel;
     	      this.monitorAccessLevel = defaults.monitorAccessLevel;
@@ -1432,6 +1446,14 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mergeTrainsSkipTrainAllowed(Boolean mergeTrainsSkipTrainAllowed) {
+            if (mergeTrainsSkipTrainAllowed == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergeTrainsSkipTrainAllowed");
+            }
+            this.mergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
+            return this;
+        }
+        @CustomType.Setter
         public Builder modelExperimentsAccessLevel(String modelExperimentsAccessLevel) {
             if (modelExperimentsAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectResult", "modelExperimentsAccessLevel");
@@ -1744,6 +1766,7 @@ public final class GetProjectResult {
             _resultValue.mergeRequestsAccessLevel = mergeRequestsAccessLevel;
             _resultValue.mergeRequestsEnabled = mergeRequestsEnabled;
             _resultValue.mergeTrainsEnabled = mergeTrainsEnabled;
+            _resultValue.mergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             _resultValue.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
             _resultValue.modelRegistryAccessLevel = modelRegistryAccessLevel;
             _resultValue.monitorAccessLevel = monitorAccessLevel;

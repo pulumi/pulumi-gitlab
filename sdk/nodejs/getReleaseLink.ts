@@ -27,7 +27,7 @@ export interface GetReleaseLinkArgs {
      */
     linkId: number;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     project: string;
     /**
@@ -41,7 +41,7 @@ export interface GetReleaseLinkArgs {
  */
 export interface GetReleaseLinkResult {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     readonly directAssetUrl: string;
     /**
@@ -49,7 +49,7 @@ export interface GetReleaseLinkResult {
      */
     readonly external: boolean;
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     readonly filepath: string;
     /**
@@ -69,7 +69,7 @@ export interface GetReleaseLinkResult {
      */
     readonly name: string;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     readonly project: string;
     /**
@@ -104,7 +104,7 @@ export interface GetReleaseLinkOutputArgs {
      */
     linkId: pulumi.Input<number>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     project: pulumi.Input<string>;
     /**

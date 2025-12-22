@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
  *
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
  *
  * ## Example Usage
  *

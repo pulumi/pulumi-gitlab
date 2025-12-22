@@ -141,7 +141,7 @@ def get_artifact_file(artifact_path: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetArtifactFileResult:
     """
     The `get_artifact_file` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
 
     ## Example Usage
 
@@ -207,7 +207,7 @@ def get_artifact_file_output(artifact_path: Optional[pulumi.Input[_builtins.str]
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetArtifactFileResult]:
     """
     The `get_artifact_file` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
 
     ## Example Usage
 

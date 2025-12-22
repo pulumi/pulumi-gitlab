@@ -12,7 +12,7 @@ import (
 )
 
 // The `getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
 //
 // ## Example Usage
 //

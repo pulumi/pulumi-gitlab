@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/)
     /// 
     /// ## Example Usage
     /// 

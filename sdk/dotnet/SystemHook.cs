@@ -102,7 +102,7 @@ namespace Pulumi.GitLab
         public Output<bool?> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        /// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        /// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         /// </summary>
         public Input<string>? Token
         {
@@ -263,7 +263,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+        /// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         /// </summary>
         public Input<string>? Token
         {

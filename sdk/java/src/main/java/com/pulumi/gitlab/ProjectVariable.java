@@ -137,14 +137,14 @@ public class ProjectVariable extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     @Export(name="masked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> masked;
 
     /**
-     * @return If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * @return If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     public Output<Boolean> masked() {

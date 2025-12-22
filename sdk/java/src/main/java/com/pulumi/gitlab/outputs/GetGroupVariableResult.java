@@ -33,7 +33,7 @@ public final class GetGroupVariableResult {
      */
     private String key;
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     private Boolean masked;
@@ -91,7 +91,7 @@ public final class GetGroupVariableResult {
         return this.key;
     }
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     public Boolean masked() {

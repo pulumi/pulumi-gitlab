@@ -27,10 +27,10 @@ class ReleaseLinkArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReleaseLink resource.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project.
         :param pulumi.Input[_builtins.str] tag_name: The tag associated with the Release.
         :param pulumi.Input[_builtins.str] url: The URL of the link. Link URLs must be unique within the release.
-        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.str] link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         :param pulumi.Input[_builtins.str] name: The name of the link. Link names must be unique within the release.
         """
@@ -48,7 +48,7 @@ class ReleaseLinkArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -84,7 +84,7 @@ class ReleaseLinkArgs:
     @pulumi.getter
     def filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -131,13 +131,13 @@ class _ReleaseLinkState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReleaseLink resources.
-        :param pulumi.Input[_builtins.str] direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param pulumi.Input[_builtins.str] direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.bool] external: External or internal link.
-        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.int] link_id: The ID of the link.
         :param pulumi.Input[_builtins.str] link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         :param pulumi.Input[_builtins.str] name: The name of the link. Link names must be unique within the release.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project.
         :param pulumi.Input[_builtins.str] tag_name: The tag associated with the Release.
         :param pulumi.Input[_builtins.str] url: The URL of the link. Link URLs must be unique within the release.
         """
@@ -164,7 +164,7 @@ class _ReleaseLinkState:
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
@@ -188,7 +188,7 @@ class _ReleaseLinkState:
     @pulumi.getter
     def filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -236,7 +236,7 @@ class _ReleaseLinkState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -329,10 +329,10 @@ class ReleaseLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.str] link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         :param pulumi.Input[_builtins.str] name: The name of the link. Link names must be unique within the release.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project.
         :param pulumi.Input[_builtins.str] tag_name: The tag associated with the Release.
         :param pulumi.Input[_builtins.str] url: The URL of the link. Link URLs must be unique within the release.
         """
@@ -458,13 +458,13 @@ class ReleaseLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param pulumi.Input[_builtins.str] direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.bool] external: External or internal link.
-        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.int] link_id: The ID of the link.
         :param pulumi.Input[_builtins.str] link_type: The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         :param pulumi.Input[_builtins.str] name: The name of the link. Link names must be unique within the release.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project.
         :param pulumi.Input[_builtins.str] tag_name: The tag associated with the Release.
         :param pulumi.Input[_builtins.str] url: The URL of the link. Link URLs must be unique within the release.
         """
@@ -487,7 +487,7 @@ class ReleaseLink(pulumi.CustomResource):
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> pulumi.Output[_builtins.str]:
         """
-        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
@@ -503,7 +503,7 @@ class ReleaseLink(pulumi.CustomResource):
     @pulumi.getter
     def filepath(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -535,7 +535,7 @@ class ReleaseLink(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 

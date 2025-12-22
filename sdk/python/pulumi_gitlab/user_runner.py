@@ -420,7 +420,7 @@ class UserRunner(pulumi.CustomResource):
         """
         The `UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ci/runners/new_creation_workflow/).
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#create-a-runner)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#create-a-runner-linked-to-a-user)
 
         ## Example Usage
 
@@ -520,7 +520,7 @@ class UserRunner(pulumi.CustomResource):
         """
         The `UserRunner` resource allows creating a GitLab runner using the new [GitLab Runner Registration Flow](https://docs.gitlab.com/ci/runners/new_creation_workflow/).
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#create-a-runner)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/users/#create-a-runner-linked-to-a-user)
 
         ## Example Usage
 

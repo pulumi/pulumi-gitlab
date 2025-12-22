@@ -80,7 +80,7 @@ export class PagesDomain extends pulumi.CustomResource {
      */
     declare public readonly key: pulumi.Output<string | undefined>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or Namespace path of the project owned by the authenticated user.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface PagesDomainState {
      */
     key?: pulumi.Input<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or Namespace path of the project owned by the authenticated user.
      */
     project?: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface PagesDomainArgs {
      */
     key?: pulumi.Input<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or Namespace path of the project owned by the authenticated user.
      */
     project: pulumi.Input<string>;
 }

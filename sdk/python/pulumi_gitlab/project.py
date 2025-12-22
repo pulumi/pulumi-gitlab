@@ -78,6 +78,7 @@ class ProjectArgs:
                  merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -185,6 +186,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
         :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -233,7 +235,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
         :param pulumi.Input[_builtins.bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
@@ -364,6 +366,8 @@ class ProjectArgs:
             pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         if merge_trains_enabled is not None:
             pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
+        if merge_trains_skip_train_allowed is not None:
+            pulumi.set(__self__, "merge_trains_skip_train_allowed", merge_trains_skip_train_allowed)
         if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
@@ -1168,6 +1172,18 @@ class ProjectArgs:
         pulumi.set(self, "merge_trains_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="mergeTrainsSkipTrainAllowed")
+    def merge_trains_skip_train_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        """
+        return pulumi.get(self, "merge_trains_skip_train_allowed")
+
+    @merge_trains_skip_train_allowed.setter
+    def merge_trains_skip_train_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "merge_trains_skip_train_allowed", value)
+
+    @_builtins.property
     @pulumi.getter
     def mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1708,7 +1724,7 @@ class ProjectArgs:
     def use_custom_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -1817,6 +1833,7 @@ class _ProjectState:
                  merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1931,6 +1948,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
         :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -1982,7 +2000,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
         :param pulumi.Input[_builtins.bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
@@ -2120,6 +2138,8 @@ class _ProjectState:
             pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         if merge_trains_enabled is not None:
             pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
+        if merge_trains_skip_train_allowed is not None:
+            pulumi.set(__self__, "merge_trains_skip_train_allowed", merge_trains_skip_train_allowed)
         if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
@@ -2968,6 +2988,18 @@ class _ProjectState:
         pulumi.set(self, "merge_trains_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="mergeTrainsSkipTrainAllowed")
+    def merge_trains_skip_train_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        """
+        return pulumi.get(self, "merge_trains_skip_train_allowed")
+
+    @merge_trains_skip_train_allowed.setter
+    def merge_trains_skip_train_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "merge_trains_skip_train_allowed", value)
+
+    @_builtins.property
     @pulumi.getter
     def mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -3544,7 +3576,7 @@ class _ProjectState:
     def use_custom_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 
@@ -3665,6 +3697,7 @@ class Project(pulumi.CustomResource):
                  merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -3806,6 +3839,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
         :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -3854,7 +3888,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
         :param pulumi.Input[_builtins.bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] wiki_enabled: Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
@@ -3970,6 +4004,7 @@ class Project(pulumi.CustomResource):
                  merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
                  mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -4084,6 +4119,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
             __props__.__dict__["merge_requests_template"] = merge_requests_template
             __props__.__dict__["merge_trains_enabled"] = merge_trains_enabled
+            __props__.__dict__["merge_trains_skip_train_allowed"] = merge_trains_skip_train_allowed
             __props__.__dict__["mirror"] = mirror
             __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
             __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
@@ -4211,6 +4247,7 @@ class Project(pulumi.CustomResource):
             merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
             merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
             mirror: Optional[pulumi.Input[_builtins.bool]] = None,
             mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
             mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -4330,6 +4367,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] merge_requests_enabled: Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
         :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
@@ -4381,7 +4419,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] template_project_id: When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: The list of topics for the project.
         :param pulumi.Input[_builtins.bool] use_custom_template: Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+               	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         :param pulumi.Input[_builtins.str] visibility_level: Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         :param pulumi.Input[_builtins.str] web_url: URL that can be used to find the project in a browser.
         :param pulumi.Input[_builtins.str] wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4451,6 +4489,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["merge_requests_enabled"] = merge_requests_enabled
         __props__.__dict__["merge_requests_template"] = merge_requests_template
         __props__.__dict__["merge_trains_enabled"] = merge_trains_enabled
+        __props__.__dict__["merge_trains_skip_train_allowed"] = merge_trains_skip_train_allowed
         __props__.__dict__["mirror"] = mirror
         __props__.__dict__["mirror_overwrites_diverged_branches"] = mirror_overwrites_diverged_branches
         __props__.__dict__["mirror_trigger_builds"] = mirror_trigger_builds
@@ -4990,6 +5029,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "merge_trains_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="mergeTrainsSkipTrainAllowed")
+    def merge_trains_skip_train_allowed(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
+        """
+        return pulumi.get(self, "merge_trains_skip_train_allowed")
+
+    @_builtins.property
     @pulumi.getter
     def mirror(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -5378,7 +5425,7 @@ class Project(pulumi.CustomResource):
     def use_custom_template(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         """
         return pulumi.get(self, "use_custom_template")
 

@@ -206,7 +206,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/)
 
         ## Example Usage
 
@@ -266,7 +266,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/)
 
         ## Example Usage
 

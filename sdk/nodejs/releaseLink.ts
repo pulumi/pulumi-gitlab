@@ -80,7 +80,7 @@ export class ReleaseLink extends pulumi.CustomResource {
     }
 
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     declare public /*out*/ readonly directAssetUrl: pulumi.Output<string>;
     /**
@@ -88,7 +88,7 @@ export class ReleaseLink extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly external: pulumi.Output<boolean>;
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     declare public readonly filepath: pulumi.Output<string | undefined>;
     /**
@@ -104,7 +104,7 @@ export class ReleaseLink extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -169,7 +169,7 @@ export class ReleaseLink extends pulumi.CustomResource {
  */
 export interface ReleaseLinkState {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     directAssetUrl?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface ReleaseLinkState {
      */
     external?: pulumi.Input<boolean>;
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     filepath?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface ReleaseLinkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     project?: pulumi.Input<string>;
     /**
@@ -211,7 +211,7 @@ export interface ReleaseLinkState {
  */
 export interface ReleaseLinkArgs {
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     filepath?: pulumi.Input<string>;
     /**
@@ -223,7 +223,7 @@ export interface ReleaseLinkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     project: pulumi.Input<string>;
     /**

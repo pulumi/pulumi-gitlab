@@ -47,10 +47,10 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * Gitlab Project labels can be imported using an id made up of `{project_id}:{label_name}`, e.g.
+ * Gitlab Project labels can be imported using an id made up of `{project_id}:{label_id}`, e.g.
  *
  * ```sh
- * $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:fixme
+ * $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:101010
  * ```
  */
 export class ProjectLabel extends pulumi.CustomResource {
@@ -82,7 +82,7 @@ export class ProjectLabel extends pulumi.CustomResource {
     }
 
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      */
     declare public readonly color: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export class ProjectLabel extends pulumi.CustomResource {
  */
 export interface ProjectLabelState {
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      */
     color?: pulumi.Input<string>;
     /**
@@ -180,7 +180,7 @@ export interface ProjectLabelState {
  */
 export interface ProjectLabelArgs {
     /**
-     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+     * The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
      */
     color: pulumi.Input<string>;
     /**

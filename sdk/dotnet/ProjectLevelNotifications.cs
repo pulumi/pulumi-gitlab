@@ -14,7 +14,7 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; While the API supports both groups and projects, this resource only supports projects currently.
     /// 
-    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#group--project-level-notification-settings)
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#get-group-or-project-notification-settings)
     /// 
     /// ## Example Usage
     /// 

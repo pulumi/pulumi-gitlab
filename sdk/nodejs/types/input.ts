@@ -736,6 +736,234 @@ export interface GetReleaseAssetsSourceArgs {
     url?: pulumi.Input<string>;
 }
 
+export interface GetSecurityPolicyDocumentScanExecutionPolicy {
+    /**
+     * Actions to execute when rules match. At least one action is required.
+     */
+    actions: inputs.GetSecurityPolicyDocumentScanExecutionPolicyAction[];
+    /**
+     * Description of the scan execution policy.
+     */
+    description?: string;
+    /**
+     * Whether the policy is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Name of the scan execution policy.
+     */
+    name: string;
+    /**
+     * Scope configuration to limit which projects the policy applies to.
+     */
+    policyScope?: inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope;
+    /**
+     * Rules that trigger the policy. At least one rule is required.
+     */
+    rules: inputs.GetSecurityPolicyDocumentScanExecutionPolicyRule[];
+    /**
+     * Control whether users can use the skip-ci directive.
+     */
+    skipCi?: inputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCi;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyArgs {
+    /**
+     * Actions to execute when rules match. At least one action is required.
+     */
+    actions: pulumi.Input<pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs>[]>;
+    /**
+     * Description of the scan execution policy.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether the policy is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Name of the scan execution policy.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Scope configuration to limit which projects the policy applies to.
+     */
+    policyScope?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs>;
+    /**
+     * Rules that trigger the policy. At least one rule is required.
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs>[]>;
+    /**
+     * Control whether users can use the skip-ci directive.
+     */
+    skipCi?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs>;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyAction {
+    /**
+     * Type of scan to run. Valid values: `sast`, `secretDetection`, `containerScanning`, `dependencyScanning`, `dast`, `sastIac`, `clusterImageScanning`, `apiFuzzing`, `coverageFuzzing`.
+     */
+    scan: string;
+    /**
+     * Scanner profile to use for DAST scans.
+     */
+    scannerProfile?: string;
+    /**
+     * Site profile to use for DAST scans.
+     */
+    siteProfile?: string;
+    /**
+     * Tags to exclude from the scan.
+     */
+    tagsToExcludes?: string[];
+    /**
+     * The template to use for the scan. Valid values: `default`, `latest`.
+     */
+    template?: string;
+    /**
+     * Environment variables to pass to the scan job.
+     */
+    variables?: {[key: string]: string};
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyActionArgs {
+    /**
+     * Type of scan to run. Valid values: `sast`, `secretDetection`, `containerScanning`, `dependencyScanning`, `dast`, `sastIac`, `clusterImageScanning`, `apiFuzzing`, `coverageFuzzing`.
+     */
+    scan: pulumi.Input<string>;
+    /**
+     * Scanner profile to use for DAST scans.
+     */
+    scannerProfile?: pulumi.Input<string>;
+    /**
+     * Site profile to use for DAST scans.
+     */
+    siteProfile?: pulumi.Input<string>;
+    /**
+     * Tags to exclude from the scan.
+     */
+    tagsToExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The template to use for the scan. Valid values: `default`, `latest`.
+     */
+    template?: pulumi.Input<string>;
+    /**
+     * Environment variables to pass to the scan job.
+     */
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope {
+    /**
+     * Compliance framework names to scope the policy to.
+     */
+    complianceFrameworks?: string[];
+    /**
+     * Project scope configuration.
+     */
+    projects?: inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs {
+    /**
+     * Compliance framework names to scope the policy to.
+     */
+    complianceFrameworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Project scope configuration.
+     */
+    projects?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs>;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
+    /**
+     * List of project IDs to exclude from this policy.
+     */
+    excludings?: number[];
+    /**
+     * List of project IDs to explicitly include in this policy.
+     */
+    includings?: number[];
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs {
+    /**
+     * List of project IDs to exclude from this policy.
+     */
+    excludings?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of project IDs to explicitly include in this policy.
+     */
+    includings?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyRule {
+    /**
+     * Kubernetes agents configuration for agent-based policies.
+     */
+    agents?: {[key: string]: string};
+    /**
+     * Branches to exclude from the policy.
+     */
+    branchExceptions?: string[];
+    /**
+     * Type of branches to match. Valid values: `all`, `protected`, `default`.
+     */
+    branchType?: string;
+    /**
+     * Branch names or patterns to match.
+     */
+    branches?: string[];
+    /**
+     * Cron expression for schedule type rules (e.g., `*&#47;15 * * * *` for every 15 minutes).
+     */
+    cadence?: string;
+    /**
+     * Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+     */
+    type: string;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs {
+    /**
+     * Kubernetes agents configuration for agent-based policies.
+     */
+    agents?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Branches to exclude from the policy.
+     */
+    branchExceptions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of branches to match. Valid values: `all`, `protected`, `default`.
+     */
+    branchType?: pulumi.Input<string>;
+    /**
+     * Branch names or patterns to match.
+     */
+    branches?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Cron expression for schedule type rules (e.g., `*&#47;15 * * * *` for every 15 minutes).
+     */
+    cadence?: pulumi.Input<string>;
+    /**
+     * Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicySkipCi {
+    /**
+     * Allow (true) or prevent (false) the use of skip-ci directive.
+     */
+    allowed: boolean;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs {
+    /**
+     * Allow (true) or prevent (false) the use of skip-ci directive.
+     */
+    allowed: pulumi.Input<boolean>;
+}
+
 export interface GroupAccessTokenRotationConfiguration {
     /**
      * The duration (in days) the new token should be valid for.

@@ -12,11 +12,11 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.GroupAccessToken` resource allows to manage the lifecycle of a group access token.
     /// 
-    /// &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
+    /// &gt; Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
     /// 
     /// &gt; Use `RotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
     /// 
-    /// &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/group_access_tokens/#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
+    /// &gt; Due to [Automatic reuse detection](https://docs.gitlab.com/api/personal_access_tokens/#automatic-reuse-detection) it's possible that a new Group Access Token will immediately be revoked. Check if an old process using the old token is running if this happens.
     /// 
     /// **Upstream API**: [GitLab REST API](https://docs.gitlab.com/api/group_access_tokens/)
     /// 
