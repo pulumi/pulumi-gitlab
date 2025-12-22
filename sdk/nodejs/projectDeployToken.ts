@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectDeployToken` resource allows you to manage the lifecycle of deploy tokens on a project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/deploy_tokens/#project-deploy-tokens)
  *
  * ## Example Usage
  *

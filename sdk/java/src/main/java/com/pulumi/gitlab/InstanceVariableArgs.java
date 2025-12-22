@@ -48,14 +48,14 @@ public final class InstanceVariableArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      * 
      */
     @Import(name="masked")
     private @Nullable Output<Boolean> masked;
 
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> masked() {
@@ -195,7 +195,7 @@ public final class InstanceVariableArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param masked If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+         * @param masked If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class InstanceVariableArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param masked If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+         * @param masked If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
          * 
          * @return builder
          * 

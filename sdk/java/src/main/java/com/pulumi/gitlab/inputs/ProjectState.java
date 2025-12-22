@@ -953,6 +953,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     * 
+     */
+    @Import(name="mergeTrainsSkipTrainAllowed")
+    private @Nullable Output<Boolean> mergeTrainsSkipTrainAllowed;
+
+    /**
+     * @return Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     * 
+     */
+    public Optional<Output<Boolean>> mergeTrainsSkipTrainAllowed() {
+        return Optional.ofNullable(this.mergeTrainsSkipTrainAllowed);
+    }
+
+    /**
      * Enable project pull mirror.
      * 
      */
@@ -1705,7 +1720,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     @Import(name="useCustomTemplate")
@@ -1713,7 +1728,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     public Optional<Output<Boolean>> useCustomTemplate() {
@@ -1851,6 +1866,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.mergeRequestsEnabled = $.mergeRequestsEnabled;
         this.mergeRequestsTemplate = $.mergeRequestsTemplate;
         this.mergeTrainsEnabled = $.mergeTrainsEnabled;
+        this.mergeTrainsSkipTrainAllowed = $.mergeTrainsSkipTrainAllowed;
         this.mirror = $.mirror;
         this.mirrorOverwritesDivergedBranches = $.mirrorOverwritesDivergedBranches;
         this.mirrorTriggerBuilds = $.mirrorTriggerBuilds;
@@ -3226,6 +3242,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param mergeTrainsSkipTrainAllowed Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeTrainsSkipTrainAllowed(@Nullable Output<Boolean> mergeTrainsSkipTrainAllowed) {
+            $.mergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
+            return this;
+        }
+
+        /**
+         * @param mergeTrainsSkipTrainAllowed Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeTrainsSkipTrainAllowed(Boolean mergeTrainsSkipTrainAllowed) {
+            return mergeTrainsSkipTrainAllowed(Output.of(mergeTrainsSkipTrainAllowed));
+        }
+
+        /**
          * @param mirror Enable project pull mirror.
          * 
          * @return builder
@@ -4284,7 +4321,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param useCustomTemplate Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-         * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+         * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
          * 
          * @return builder
          * 
@@ -4296,7 +4333,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param useCustomTemplate Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-         * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+         * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
          * 
          * @return builder
          * 

@@ -84,7 +84,7 @@ type GetProjectsArgs struct {
 	MaxQueryablePages *int `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership *bool `pulumi:"membership"`
-	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
 	MinAccessLevel *int `pulumi:"minAccessLevel"`
 	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 	OrderBy *string `pulumi:"orderBy"`
@@ -134,7 +134,7 @@ type GetProjectsResult struct {
 	MaxQueryablePages *int `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership *bool `pulumi:"membership"`
-	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
 	MinAccessLevel *int `pulumi:"minAccessLevel"`
 	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 	OrderBy *string `pulumi:"orderBy"`
@@ -193,7 +193,7 @@ type GetProjectsOutputArgs struct {
 	MaxQueryablePages pulumi.IntPtrInput `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership pulumi.BoolPtrInput `pulumi:"membership"`
-	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+	// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
 	MinAccessLevel pulumi.IntPtrInput `pulumi:"minAccessLevel"`
 	// Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
@@ -278,7 +278,7 @@ func (o GetProjectsResultOutput) Membership() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Membership }).(pulumi.BoolPtrOutput)
 }
 
-// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
 func (o GetProjectsResultOutput) MinAccessLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *int { return v.MinAccessLevel }).(pulumi.IntPtrOutput)
 }

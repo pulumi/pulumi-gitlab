@@ -31,7 +31,7 @@ class InstanceVariableArgs:
         :param pulumi.Input[_builtins.str] key: The name of the variable.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
         :param pulumi.Input[_builtins.str] description: The description of the variable. Maximum of 255 characters.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[_builtins.str] variable_type: The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
@@ -89,7 +89,7 @@ class InstanceVariableArgs:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -148,7 +148,7 @@ class _InstanceVariableState:
         Input properties used for looking up and filtering InstanceVariable resources.
         :param pulumi.Input[_builtins.str] description: The description of the variable. Maximum of 255 characters.
         :param pulumi.Input[_builtins.str] key: The name of the variable.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
@@ -197,7 +197,7 @@ class _InstanceVariableState:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
@@ -312,7 +312,7 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the variable. Maximum of 255 characters.
         :param pulumi.Input[_builtins.str] key: The name of the variable.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
@@ -432,7 +432,7 @@ class InstanceVariable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the variable. Maximum of 255 characters.
         :param pulumi.Input[_builtins.str] key: The name of the variable.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
@@ -453,7 +453,7 @@ class InstanceVariable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         The description of the variable. Maximum of 255 characters.
         """
@@ -469,15 +469,15 @@ class InstanceVariable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def masked(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def masked(self) -> pulumi.Output[_builtins.bool]:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def protected(self) -> pulumi.Output[_builtins.bool]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         """
@@ -485,7 +485,7 @@ class InstanceVariable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def raw(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def raw(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         """
@@ -501,7 +501,7 @@ class InstanceVariable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def variable_type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """

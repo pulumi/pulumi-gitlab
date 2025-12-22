@@ -99,7 +99,7 @@ class GetGroupVariableResult:
     @pulumi.getter
     def masked(self) -> _builtins.bool:
         """
-        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+        If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 

@@ -53,7 +53,7 @@ class GetReleaseLinksResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -95,7 +95,7 @@ def get_release_links(project: Optional[_builtins.str] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
 
-    :param _builtins.str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+    :param _builtins.str project: The ID or Namespace path of the project.
     :param _builtins.str tag_name: The tag associated with the Release.
     """
     __args__ = dict()
@@ -118,7 +118,7 @@ def get_release_links_output(project: Optional[pulumi.Input[_builtins.str]] = No
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
 
-    :param _builtins.str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+    :param _builtins.str project: The ID or Namespace path of the project.
     :param _builtins.str tag_name: The tag associated with the Release.
     """
     __args__ = dict()

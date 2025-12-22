@@ -28,7 +28,7 @@ class PagesDomainArgs:
         """
         The set of arguments for constructing a PagesDomain resource.
         :param pulumi.Input[_builtins.str] domain: The custom domain indicated by the user.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         :param pulumi.Input[_builtins.str] certificate: The certificate in PEM format with intermediates following in most specific to least specific order.
         :param pulumi.Input[_builtins.bool] expired: Whether the certificate is expired.
@@ -61,7 +61,7 @@ class PagesDomainArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        The ID or Namespace path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
@@ -137,7 +137,7 @@ class _PagesDomainState:
         :param pulumi.Input[_builtins.str] domain: The custom domain indicated by the user.
         :param pulumi.Input[_builtins.bool] expired: Whether the certificate is expired.
         :param pulumi.Input[_builtins.str] key: The certificate key in PEM format.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.str] url: The URL for the given domain.
         :param pulumi.Input[_builtins.str] verification_code: The verification code for the domain.
         :param pulumi.Input[_builtins.bool] verified: The certificate data.
@@ -225,7 +225,7 @@ class _PagesDomainState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        The ID or Namespace path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
@@ -317,7 +317,7 @@ class PagesDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain: The custom domain indicated by the user.
         :param pulumi.Input[_builtins.bool] expired: Whether the certificate is expired.
         :param pulumi.Input[_builtins.str] key: The certificate key in PEM format.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project owned by the authenticated user.
         """
         ...
     @overload
@@ -428,7 +428,7 @@ class PagesDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain: The custom domain indicated by the user.
         :param pulumi.Input[_builtins.bool] expired: Whether the certificate is expired.
         :param pulumi.Input[_builtins.str] key: The certificate key in PEM format.
-        :param pulumi.Input[_builtins.str] project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.str] url: The URL for the given domain.
         :param pulumi.Input[_builtins.str] verification_code: The verification code for the domain.
         :param pulumi.Input[_builtins.bool] verified: The certificate data.
@@ -492,7 +492,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        The ID or Namespace path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 

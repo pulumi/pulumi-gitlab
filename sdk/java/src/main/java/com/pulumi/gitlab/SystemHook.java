@@ -172,14 +172,14 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tagPushEvents);
     }
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
-     * @return Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * @return Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
      * 
      */
     public Output<Optional<String>> token() {

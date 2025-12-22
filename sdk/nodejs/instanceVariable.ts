@@ -76,23 +76,23 @@ export class InstanceVariable extends pulumi.CustomResource {
     /**
      * The description of the variable. Maximum of 255 characters.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the variable.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      */
-    declare public readonly masked: pulumi.Output<boolean | undefined>;
+    declare public readonly masked: pulumi.Output<boolean>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    declare public readonly protected: pulumi.Output<boolean | undefined>;
+    declare public readonly protected: pulumi.Output<boolean>;
     /**
      * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
      */
-    declare public readonly raw: pulumi.Output<boolean | undefined>;
+    declare public readonly raw: pulumi.Output<boolean>;
     /**
      * The value of the variable.
      */
@@ -100,7 +100,7 @@ export class InstanceVariable extends pulumi.CustomResource {
     /**
      * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
-    declare public readonly variableType: pulumi.Output<string | undefined>;
+    declare public readonly variableType: pulumi.Output<string>;
 
     /**
      * Create a InstanceVariable resource with the given unique name, arguments, and options.
@@ -156,7 +156,7 @@ export interface InstanceVariableState {
      */
     key?: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**
@@ -190,7 +190,7 @@ export interface InstanceVariableArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      */
     masked?: pulumi.Input<boolean>;
     /**

@@ -77,7 +77,7 @@ type ProjectVariable struct {
 	Hidden pulumi.BoolOutput `pulumi:"hidden"`
 	// The name of the variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolOutput `pulumi:"masked"`
 	// The name or id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -138,7 +138,7 @@ type projectVariableState struct {
 	Hidden *bool `pulumi:"hidden"`
 	// The name of the variable.
 	Key *string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project *string `pulumi:"project"`
@@ -161,7 +161,7 @@ type ProjectVariableState struct {
 	Hidden pulumi.BoolPtrInput
 	// The name of the variable.
 	Key pulumi.StringPtrInput
-	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringPtrInput
@@ -188,7 +188,7 @@ type projectVariableArgs struct {
 	Hidden *bool `pulumi:"hidden"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked *bool `pulumi:"masked"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
@@ -212,7 +212,7 @@ type ProjectVariableArgs struct {
 	Hidden pulumi.BoolPtrInput
 	// The name of the variable.
 	Key pulumi.StringInput
-	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+	// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked pulumi.BoolPtrInput
 	// The name or id of the project.
 	Project pulumi.StringInput
@@ -333,7 +333,7 @@ func (o ProjectVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+// If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 func (o ProjectVariableOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolOutput { return v.Masked }).(pulumi.BoolOutput)
 }

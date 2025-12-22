@@ -78,14 +78,14 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     @Import(name="masked")
     private @Nullable Output<Boolean> masked;
 
     /**
-     * @return If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+     * @return If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      * 
      */
     public Optional<Output<Boolean>> masked() {
@@ -285,7 +285,7 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param masked If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+         * @param masked If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ProjectVariableArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param masked If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+         * @param masked If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
          * 
          * @return builder
          * 

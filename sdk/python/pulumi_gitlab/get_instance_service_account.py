@@ -101,7 +101,7 @@ def get_instance_service_account(service_account_id: Optional[_builtins.str] = N
 
     > In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
 
     ## Example Usage
 
@@ -133,7 +133,7 @@ def get_instance_service_account_output(service_account_id: Optional[pulumi.Inpu
 
     > In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
 
     ## Example Usage
 

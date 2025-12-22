@@ -6404,7 +6404,7 @@ func (o GetGroupAccessTokensAccessTokenArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetGroupBillableMemberMembershipsMembership struct {
-	// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
+	// Access-level of the member. For details see: https://docs.gitlab.com/user/permissions/#default-roles
 	AccessLevel string `pulumi:"accessLevel"`
 	// Datetime when the membership was first added.
 	CreatedAt string `pulumi:"createdAt"`
@@ -6432,7 +6432,7 @@ type GetGroupBillableMemberMembershipsMembershipInput interface {
 }
 
 type GetGroupBillableMemberMembershipsMembershipArgs struct {
-	// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
+	// Access-level of the member. For details see: https://docs.gitlab.com/user/permissions/#default-roles
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// Datetime when the membership was first added.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
@@ -6499,7 +6499,7 @@ func (o GetGroupBillableMemberMembershipsMembershipOutput) ToGetGroupBillableMem
 	return o
 }
 
-// Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
+// Access-level of the member. For details see: https://docs.gitlab.com/user/permissions/#default-roles
 func (o GetGroupBillableMemberMembershipsMembershipOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupBillableMemberMembershipsMembership) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -7432,6 +7432,136 @@ func (o GetGroupSamlLinksSamlLinkArrayOutput) Index(i pulumi.IntInput) GetGroupS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupSamlLinksSamlLink {
 		return vs[0].([]GetGroupSamlLinksSamlLink)[vs[1].(int)]
 	}).(GetGroupSamlLinksSamlLinkOutput)
+}
+
+type GetGroupServiceAccountAccessTokensAccessToken struct {
+	Active    bool     `pulumi:"active"`
+	CreatedAt string   `pulumi:"createdAt"`
+	ExpiresAt string   `pulumi:"expiresAt"`
+	Id        string   `pulumi:"id"`
+	Name      string   `pulumi:"name"`
+	Revoked   bool     `pulumi:"revoked"`
+	Scopes    []string `pulumi:"scopes"`
+}
+
+// GetGroupServiceAccountAccessTokensAccessTokenInput is an input type that accepts GetGroupServiceAccountAccessTokensAccessTokenArgs and GetGroupServiceAccountAccessTokensAccessTokenOutput values.
+// You can construct a concrete instance of `GetGroupServiceAccountAccessTokensAccessTokenInput` via:
+//
+//	GetGroupServiceAccountAccessTokensAccessTokenArgs{...}
+type GetGroupServiceAccountAccessTokensAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetGroupServiceAccountAccessTokensAccessTokenOutput() GetGroupServiceAccountAccessTokensAccessTokenOutput
+	ToGetGroupServiceAccountAccessTokensAccessTokenOutputWithContext(context.Context) GetGroupServiceAccountAccessTokensAccessTokenOutput
+}
+
+type GetGroupServiceAccountAccessTokensAccessTokenArgs struct {
+	Active    pulumi.BoolInput        `pulumi:"active"`
+	CreatedAt pulumi.StringInput      `pulumi:"createdAt"`
+	ExpiresAt pulumi.StringInput      `pulumi:"expiresAt"`
+	Id        pulumi.StringInput      `pulumi:"id"`
+	Name      pulumi.StringInput      `pulumi:"name"`
+	Revoked   pulumi.BoolInput        `pulumi:"revoked"`
+	Scopes    pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (GetGroupServiceAccountAccessTokensAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupServiceAccountAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (i GetGroupServiceAccountAccessTokensAccessTokenArgs) ToGetGroupServiceAccountAccessTokensAccessTokenOutput() GetGroupServiceAccountAccessTokensAccessTokenOutput {
+	return i.ToGetGroupServiceAccountAccessTokensAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetGroupServiceAccountAccessTokensAccessTokenArgs) ToGetGroupServiceAccountAccessTokensAccessTokenOutputWithContext(ctx context.Context) GetGroupServiceAccountAccessTokensAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupServiceAccountAccessTokensAccessTokenOutput)
+}
+
+// GetGroupServiceAccountAccessTokensAccessTokenArrayInput is an input type that accepts GetGroupServiceAccountAccessTokensAccessTokenArray and GetGroupServiceAccountAccessTokensAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetGroupServiceAccountAccessTokensAccessTokenArrayInput` via:
+//
+//	GetGroupServiceAccountAccessTokensAccessTokenArray{ GetGroupServiceAccountAccessTokensAccessTokenArgs{...} }
+type GetGroupServiceAccountAccessTokensAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutput() GetGroupServiceAccountAccessTokensAccessTokenArrayOutput
+	ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutputWithContext(context.Context) GetGroupServiceAccountAccessTokensAccessTokenArrayOutput
+}
+
+type GetGroupServiceAccountAccessTokensAccessTokenArray []GetGroupServiceAccountAccessTokensAccessTokenInput
+
+func (GetGroupServiceAccountAccessTokensAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupServiceAccountAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (i GetGroupServiceAccountAccessTokensAccessTokenArray) ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutput() GetGroupServiceAccountAccessTokensAccessTokenArrayOutput {
+	return i.ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupServiceAccountAccessTokensAccessTokenArray) ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutputWithContext(ctx context.Context) GetGroupServiceAccountAccessTokensAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupServiceAccountAccessTokensAccessTokenArrayOutput)
+}
+
+type GetGroupServiceAccountAccessTokensAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetGroupServiceAccountAccessTokensAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupServiceAccountAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) ToGetGroupServiceAccountAccessTokensAccessTokenOutput() GetGroupServiceAccountAccessTokensAccessTokenOutput {
+	return o
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) ToGetGroupServiceAccountAccessTokensAccessTokenOutputWithContext(ctx context.Context) GetGroupServiceAccountAccessTokensAccessTokenOutput {
+	return o
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) bool { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type GetGroupServiceAccountAccessTokensAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupServiceAccountAccessTokensAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupServiceAccountAccessTokensAccessToken)(nil)).Elem()
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenArrayOutput) ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutput() GetGroupServiceAccountAccessTokensAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenArrayOutput) ToGetGroupServiceAccountAccessTokensAccessTokenArrayOutputWithContext(ctx context.Context) GetGroupServiceAccountAccessTokensAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenArrayOutput) Index(i pulumi.IntInput) GetGroupServiceAccountAccessTokensAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupServiceAccountAccessTokensAccessToken {
+		return vs[0].([]GetGroupServiceAccountAccessTokensAccessToken)[vs[1].(int)]
+	}).(GetGroupServiceAccountAccessTokensAccessTokenOutput)
 }
 
 type GetGroupSharedWithGroup struct {
@@ -10711,6 +10841,333 @@ func (o GetProjectHooksHookArrayOutput) Index(i pulumi.IntInput) GetProjectHooks
 	}).(GetProjectHooksHookOutput)
 }
 
+type GetProjectIssueLabelEventsEvent struct {
+	// The action performed on the label (add, remove).
+	Action string `pulumi:"action"`
+	// The date and time when the label event was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The ID of the label event.
+	Id int `pulumi:"id"`
+	// The label that was added or removed.
+	Label GetProjectIssueLabelEventsEventLabel `pulumi:"label"`
+	// The ID of the resource associated with the label event.
+	ResourceId int `pulumi:"resourceId"`
+	// The type of the resource associated with the label event.
+	ResourceType string `pulumi:"resourceType"`
+	// The user who performed the action.
+	User GetProjectIssueLabelEventsEventUser `pulumi:"user"`
+}
+
+// GetProjectIssueLabelEventsEventInput is an input type that accepts GetProjectIssueLabelEventsEventArgs and GetProjectIssueLabelEventsEventOutput values.
+// You can construct a concrete instance of `GetProjectIssueLabelEventsEventInput` via:
+//
+//	GetProjectIssueLabelEventsEventArgs{...}
+type GetProjectIssueLabelEventsEventInput interface {
+	pulumi.Input
+
+	ToGetProjectIssueLabelEventsEventOutput() GetProjectIssueLabelEventsEventOutput
+	ToGetProjectIssueLabelEventsEventOutputWithContext(context.Context) GetProjectIssueLabelEventsEventOutput
+}
+
+type GetProjectIssueLabelEventsEventArgs struct {
+	// The action performed on the label (add, remove).
+	Action pulumi.StringInput `pulumi:"action"`
+	// The date and time when the label event was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The ID of the label event.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label that was added or removed.
+	Label GetProjectIssueLabelEventsEventLabelInput `pulumi:"label"`
+	// The ID of the resource associated with the label event.
+	ResourceId pulumi.IntInput `pulumi:"resourceId"`
+	// The type of the resource associated with the label event.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The user who performed the action.
+	User GetProjectIssueLabelEventsEventUserInput `pulumi:"user"`
+}
+
+func (GetProjectIssueLabelEventsEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueLabelEventsEvent)(nil)).Elem()
+}
+
+func (i GetProjectIssueLabelEventsEventArgs) ToGetProjectIssueLabelEventsEventOutput() GetProjectIssueLabelEventsEventOutput {
+	return i.ToGetProjectIssueLabelEventsEventOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssueLabelEventsEventArgs) ToGetProjectIssueLabelEventsEventOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssueLabelEventsEventOutput)
+}
+
+// GetProjectIssueLabelEventsEventArrayInput is an input type that accepts GetProjectIssueLabelEventsEventArray and GetProjectIssueLabelEventsEventArrayOutput values.
+// You can construct a concrete instance of `GetProjectIssueLabelEventsEventArrayInput` via:
+//
+//	GetProjectIssueLabelEventsEventArray{ GetProjectIssueLabelEventsEventArgs{...} }
+type GetProjectIssueLabelEventsEventArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectIssueLabelEventsEventArrayOutput() GetProjectIssueLabelEventsEventArrayOutput
+	ToGetProjectIssueLabelEventsEventArrayOutputWithContext(context.Context) GetProjectIssueLabelEventsEventArrayOutput
+}
+
+type GetProjectIssueLabelEventsEventArray []GetProjectIssueLabelEventsEventInput
+
+func (GetProjectIssueLabelEventsEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssueLabelEventsEvent)(nil)).Elem()
+}
+
+func (i GetProjectIssueLabelEventsEventArray) ToGetProjectIssueLabelEventsEventArrayOutput() GetProjectIssueLabelEventsEventArrayOutput {
+	return i.ToGetProjectIssueLabelEventsEventArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssueLabelEventsEventArray) ToGetProjectIssueLabelEventsEventArrayOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssueLabelEventsEventArrayOutput)
+}
+
+type GetProjectIssueLabelEventsEventOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssueLabelEventsEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueLabelEventsEvent)(nil)).Elem()
+}
+
+func (o GetProjectIssueLabelEventsEventOutput) ToGetProjectIssueLabelEventsEventOutput() GetProjectIssueLabelEventsEventOutput {
+	return o
+}
+
+func (o GetProjectIssueLabelEventsEventOutput) ToGetProjectIssueLabelEventsEventOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventOutput {
+	return o
+}
+
+// The action performed on the label (add, remove).
+func (o GetProjectIssueLabelEventsEventOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// The date and time when the label event was created.
+func (o GetProjectIssueLabelEventsEventOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The ID of the label event.
+func (o GetProjectIssueLabelEventsEventOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label that was added or removed.
+func (o GetProjectIssueLabelEventsEventOutput) Label() GetProjectIssueLabelEventsEventLabelOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) GetProjectIssueLabelEventsEventLabel { return v.Label }).(GetProjectIssueLabelEventsEventLabelOutput)
+}
+
+// The ID of the resource associated with the label event.
+func (o GetProjectIssueLabelEventsEventOutput) ResourceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) int { return v.ResourceId }).(pulumi.IntOutput)
+}
+
+// The type of the resource associated with the label event.
+func (o GetProjectIssueLabelEventsEventOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The user who performed the action.
+func (o GetProjectIssueLabelEventsEventOutput) User() GetProjectIssueLabelEventsEventUserOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEvent) GetProjectIssueLabelEventsEventUser { return v.User }).(GetProjectIssueLabelEventsEventUserOutput)
+}
+
+type GetProjectIssueLabelEventsEventArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssueLabelEventsEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectIssueLabelEventsEvent)(nil)).Elem()
+}
+
+func (o GetProjectIssueLabelEventsEventArrayOutput) ToGetProjectIssueLabelEventsEventArrayOutput() GetProjectIssueLabelEventsEventArrayOutput {
+	return o
+}
+
+func (o GetProjectIssueLabelEventsEventArrayOutput) ToGetProjectIssueLabelEventsEventArrayOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventArrayOutput {
+	return o
+}
+
+func (o GetProjectIssueLabelEventsEventArrayOutput) Index(i pulumi.IntInput) GetProjectIssueLabelEventsEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectIssueLabelEventsEvent {
+		return vs[0].([]GetProjectIssueLabelEventsEvent)[vs[1].(int)]
+	}).(GetProjectIssueLabelEventsEventOutput)
+}
+
+type GetProjectIssueLabelEventsEventLabel struct {
+	// The color of the label.
+	Color string `pulumi:"color"`
+	// The description of the label.
+	Description string `pulumi:"description"`
+	// The ID of the label.
+	Id int `pulumi:"id"`
+	// The name of the label.
+	Name string `pulumi:"name"`
+}
+
+// GetProjectIssueLabelEventsEventLabelInput is an input type that accepts GetProjectIssueLabelEventsEventLabelArgs and GetProjectIssueLabelEventsEventLabelOutput values.
+// You can construct a concrete instance of `GetProjectIssueLabelEventsEventLabelInput` via:
+//
+//	GetProjectIssueLabelEventsEventLabelArgs{...}
+type GetProjectIssueLabelEventsEventLabelInput interface {
+	pulumi.Input
+
+	ToGetProjectIssueLabelEventsEventLabelOutput() GetProjectIssueLabelEventsEventLabelOutput
+	ToGetProjectIssueLabelEventsEventLabelOutputWithContext(context.Context) GetProjectIssueLabelEventsEventLabelOutput
+}
+
+type GetProjectIssueLabelEventsEventLabelArgs struct {
+	// The color of the label.
+	Color pulumi.StringInput `pulumi:"color"`
+	// The description of the label.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the label.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the label.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetProjectIssueLabelEventsEventLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueLabelEventsEventLabel)(nil)).Elem()
+}
+
+func (i GetProjectIssueLabelEventsEventLabelArgs) ToGetProjectIssueLabelEventsEventLabelOutput() GetProjectIssueLabelEventsEventLabelOutput {
+	return i.ToGetProjectIssueLabelEventsEventLabelOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssueLabelEventsEventLabelArgs) ToGetProjectIssueLabelEventsEventLabelOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssueLabelEventsEventLabelOutput)
+}
+
+type GetProjectIssueLabelEventsEventLabelOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssueLabelEventsEventLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueLabelEventsEventLabel)(nil)).Elem()
+}
+
+func (o GetProjectIssueLabelEventsEventLabelOutput) ToGetProjectIssueLabelEventsEventLabelOutput() GetProjectIssueLabelEventsEventLabelOutput {
+	return o
+}
+
+func (o GetProjectIssueLabelEventsEventLabelOutput) ToGetProjectIssueLabelEventsEventLabelOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventLabelOutput {
+	return o
+}
+
+// The color of the label.
+func (o GetProjectIssueLabelEventsEventLabelOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventLabel) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// The description of the label.
+func (o GetProjectIssueLabelEventsEventLabelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventLabel) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the label.
+func (o GetProjectIssueLabelEventsEventLabelOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventLabel) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the label.
+func (o GetProjectIssueLabelEventsEventLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetProjectIssueLabelEventsEventUser struct {
+	// The avatar URL of the user.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// The ID of the user.
+	Id int `pulumi:"id"`
+	// The name of the user.
+	Name string `pulumi:"name"`
+	// The state of the user.
+	State string `pulumi:"state"`
+	// The username of the user.
+	Username string `pulumi:"username"`
+	// The web URL of the user.
+	WebUrl string `pulumi:"webUrl"`
+}
+
+// GetProjectIssueLabelEventsEventUserInput is an input type that accepts GetProjectIssueLabelEventsEventUserArgs and GetProjectIssueLabelEventsEventUserOutput values.
+// You can construct a concrete instance of `GetProjectIssueLabelEventsEventUserInput` via:
+//
+//	GetProjectIssueLabelEventsEventUserArgs{...}
+type GetProjectIssueLabelEventsEventUserInput interface {
+	pulumi.Input
+
+	ToGetProjectIssueLabelEventsEventUserOutput() GetProjectIssueLabelEventsEventUserOutput
+	ToGetProjectIssueLabelEventsEventUserOutputWithContext(context.Context) GetProjectIssueLabelEventsEventUserOutput
+}
+
+type GetProjectIssueLabelEventsEventUserArgs struct {
+	// The avatar URL of the user.
+	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
+	// The ID of the user.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the user.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The state of the user.
+	State pulumi.StringInput `pulumi:"state"`
+	// The username of the user.
+	Username pulumi.StringInput `pulumi:"username"`
+	// The web URL of the user.
+	WebUrl pulumi.StringInput `pulumi:"webUrl"`
+}
+
+func (GetProjectIssueLabelEventsEventUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueLabelEventsEventUser)(nil)).Elem()
+}
+
+func (i GetProjectIssueLabelEventsEventUserArgs) ToGetProjectIssueLabelEventsEventUserOutput() GetProjectIssueLabelEventsEventUserOutput {
+	return i.ToGetProjectIssueLabelEventsEventUserOutputWithContext(context.Background())
+}
+
+func (i GetProjectIssueLabelEventsEventUserArgs) ToGetProjectIssueLabelEventsEventUserOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectIssueLabelEventsEventUserOutput)
+}
+
+type GetProjectIssueLabelEventsEventUserOutput struct{ *pulumi.OutputState }
+
+func (GetProjectIssueLabelEventsEventUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectIssueLabelEventsEventUser)(nil)).Elem()
+}
+
+func (o GetProjectIssueLabelEventsEventUserOutput) ToGetProjectIssueLabelEventsEventUserOutput() GetProjectIssueLabelEventsEventUserOutput {
+	return o
+}
+
+func (o GetProjectIssueLabelEventsEventUserOutput) ToGetProjectIssueLabelEventsEventUserOutputWithContext(ctx context.Context) GetProjectIssueLabelEventsEventUserOutput {
+	return o
+}
+
+// The avatar URL of the user.
+func (o GetProjectIssueLabelEventsEventUserOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventUser) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// The ID of the user.
+func (o GetProjectIssueLabelEventsEventUserOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventUser) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the user.
+func (o GetProjectIssueLabelEventsEventUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the user.
+func (o GetProjectIssueLabelEventsEventUserOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventUser) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The username of the user.
+func (o GetProjectIssueLabelEventsEventUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// The web URL of the user.
+func (o GetProjectIssueLabelEventsEventUserOutput) WebUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectIssueLabelEventsEventUser) string { return v.WebUrl }).(pulumi.StringOutput)
+}
+
 type GetProjectIssueTaskCompletionStatus struct {
 	// The number of tasks that are completed.
 	CompletedCount int `pulumi:"completedCount"`
@@ -13820,6 +14277,252 @@ func (o GetProjectPushRuleArrayOutput) Index(i pulumi.IntInput) GetProjectPushRu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectPushRule {
 		return vs[0].([]GetProjectPushRule)[vs[1].(int)]
 	}).(GetProjectPushRuleOutput)
+}
+
+type GetProjectSecureFileMetadata struct {
+	// Certificate expiration date
+	ExpiresAt string `pulumi:"expiresAt"`
+	// Certificate ID
+	Id string `pulumi:"id"`
+	// Certificate issuer information
+	Issuer GetProjectSecureFileMetadataIssuer `pulumi:"issuer"`
+	// Certificate subject information
+	Subject GetProjectSecureFileMetadataSubject `pulumi:"subject"`
+}
+
+// GetProjectSecureFileMetadataInput is an input type that accepts GetProjectSecureFileMetadataArgs and GetProjectSecureFileMetadataOutput values.
+// You can construct a concrete instance of `GetProjectSecureFileMetadataInput` via:
+//
+//	GetProjectSecureFileMetadataArgs{...}
+type GetProjectSecureFileMetadataInput interface {
+	pulumi.Input
+
+	ToGetProjectSecureFileMetadataOutput() GetProjectSecureFileMetadataOutput
+	ToGetProjectSecureFileMetadataOutputWithContext(context.Context) GetProjectSecureFileMetadataOutput
+}
+
+type GetProjectSecureFileMetadataArgs struct {
+	// Certificate expiration date
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// Certificate ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Certificate issuer information
+	Issuer GetProjectSecureFileMetadataIssuerInput `pulumi:"issuer"`
+	// Certificate subject information
+	Subject GetProjectSecureFileMetadataSubjectInput `pulumi:"subject"`
+}
+
+func (GetProjectSecureFileMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSecureFileMetadata)(nil)).Elem()
+}
+
+func (i GetProjectSecureFileMetadataArgs) ToGetProjectSecureFileMetadataOutput() GetProjectSecureFileMetadataOutput {
+	return i.ToGetProjectSecureFileMetadataOutputWithContext(context.Background())
+}
+
+func (i GetProjectSecureFileMetadataArgs) ToGetProjectSecureFileMetadataOutputWithContext(ctx context.Context) GetProjectSecureFileMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectSecureFileMetadataOutput)
+}
+
+type GetProjectSecureFileMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetProjectSecureFileMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSecureFileMetadata)(nil)).Elem()
+}
+
+func (o GetProjectSecureFileMetadataOutput) ToGetProjectSecureFileMetadataOutput() GetProjectSecureFileMetadataOutput {
+	return o
+}
+
+func (o GetProjectSecureFileMetadataOutput) ToGetProjectSecureFileMetadataOutputWithContext(ctx context.Context) GetProjectSecureFileMetadataOutput {
+	return o
+}
+
+// Certificate expiration date
+func (o GetProjectSecureFileMetadataOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadata) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// Certificate ID
+func (o GetProjectSecureFileMetadataOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadata) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Certificate issuer information
+func (o GetProjectSecureFileMetadataOutput) Issuer() GetProjectSecureFileMetadataIssuerOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadata) GetProjectSecureFileMetadataIssuer { return v.Issuer }).(GetProjectSecureFileMetadataIssuerOutput)
+}
+
+// Certificate subject information
+func (o GetProjectSecureFileMetadataOutput) Subject() GetProjectSecureFileMetadataSubjectOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadata) GetProjectSecureFileMetadataSubject { return v.Subject }).(GetProjectSecureFileMetadataSubjectOutput)
+}
+
+type GetProjectSecureFileMetadataIssuer struct {
+	// Country
+	C string `pulumi:"c"`
+	// Common Name
+	Cn string `pulumi:"cn"`
+	// Organization
+	O string `pulumi:"o"`
+	// Organizational Unit
+	Ou string `pulumi:"ou"`
+}
+
+// GetProjectSecureFileMetadataIssuerInput is an input type that accepts GetProjectSecureFileMetadataIssuerArgs and GetProjectSecureFileMetadataIssuerOutput values.
+// You can construct a concrete instance of `GetProjectSecureFileMetadataIssuerInput` via:
+//
+//	GetProjectSecureFileMetadataIssuerArgs{...}
+type GetProjectSecureFileMetadataIssuerInput interface {
+	pulumi.Input
+
+	ToGetProjectSecureFileMetadataIssuerOutput() GetProjectSecureFileMetadataIssuerOutput
+	ToGetProjectSecureFileMetadataIssuerOutputWithContext(context.Context) GetProjectSecureFileMetadataIssuerOutput
+}
+
+type GetProjectSecureFileMetadataIssuerArgs struct {
+	// Country
+	C pulumi.StringInput `pulumi:"c"`
+	// Common Name
+	Cn pulumi.StringInput `pulumi:"cn"`
+	// Organization
+	O pulumi.StringInput `pulumi:"o"`
+	// Organizational Unit
+	Ou pulumi.StringInput `pulumi:"ou"`
+}
+
+func (GetProjectSecureFileMetadataIssuerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSecureFileMetadataIssuer)(nil)).Elem()
+}
+
+func (i GetProjectSecureFileMetadataIssuerArgs) ToGetProjectSecureFileMetadataIssuerOutput() GetProjectSecureFileMetadataIssuerOutput {
+	return i.ToGetProjectSecureFileMetadataIssuerOutputWithContext(context.Background())
+}
+
+func (i GetProjectSecureFileMetadataIssuerArgs) ToGetProjectSecureFileMetadataIssuerOutputWithContext(ctx context.Context) GetProjectSecureFileMetadataIssuerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectSecureFileMetadataIssuerOutput)
+}
+
+type GetProjectSecureFileMetadataIssuerOutput struct{ *pulumi.OutputState }
+
+func (GetProjectSecureFileMetadataIssuerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSecureFileMetadataIssuer)(nil)).Elem()
+}
+
+func (o GetProjectSecureFileMetadataIssuerOutput) ToGetProjectSecureFileMetadataIssuerOutput() GetProjectSecureFileMetadataIssuerOutput {
+	return o
+}
+
+func (o GetProjectSecureFileMetadataIssuerOutput) ToGetProjectSecureFileMetadataIssuerOutputWithContext(ctx context.Context) GetProjectSecureFileMetadataIssuerOutput {
+	return o
+}
+
+// Country
+func (o GetProjectSecureFileMetadataIssuerOutput) C() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataIssuer) string { return v.C }).(pulumi.StringOutput)
+}
+
+// Common Name
+func (o GetProjectSecureFileMetadataIssuerOutput) Cn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataIssuer) string { return v.Cn }).(pulumi.StringOutput)
+}
+
+// Organization
+func (o GetProjectSecureFileMetadataIssuerOutput) O() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataIssuer) string { return v.O }).(pulumi.StringOutput)
+}
+
+// Organizational Unit
+func (o GetProjectSecureFileMetadataIssuerOutput) Ou() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataIssuer) string { return v.Ou }).(pulumi.StringOutput)
+}
+
+type GetProjectSecureFileMetadataSubject struct {
+	// Country
+	C string `pulumi:"c"`
+	// Common Name
+	Cn string `pulumi:"cn"`
+	// Organization
+	O string `pulumi:"o"`
+	// Organizational Unit
+	Ou string `pulumi:"ou"`
+	// User ID
+	Uid string `pulumi:"uid"`
+}
+
+// GetProjectSecureFileMetadataSubjectInput is an input type that accepts GetProjectSecureFileMetadataSubjectArgs and GetProjectSecureFileMetadataSubjectOutput values.
+// You can construct a concrete instance of `GetProjectSecureFileMetadataSubjectInput` via:
+//
+//	GetProjectSecureFileMetadataSubjectArgs{...}
+type GetProjectSecureFileMetadataSubjectInput interface {
+	pulumi.Input
+
+	ToGetProjectSecureFileMetadataSubjectOutput() GetProjectSecureFileMetadataSubjectOutput
+	ToGetProjectSecureFileMetadataSubjectOutputWithContext(context.Context) GetProjectSecureFileMetadataSubjectOutput
+}
+
+type GetProjectSecureFileMetadataSubjectArgs struct {
+	// Country
+	C pulumi.StringInput `pulumi:"c"`
+	// Common Name
+	Cn pulumi.StringInput `pulumi:"cn"`
+	// Organization
+	O pulumi.StringInput `pulumi:"o"`
+	// Organizational Unit
+	Ou pulumi.StringInput `pulumi:"ou"`
+	// User ID
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetProjectSecureFileMetadataSubjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSecureFileMetadataSubject)(nil)).Elem()
+}
+
+func (i GetProjectSecureFileMetadataSubjectArgs) ToGetProjectSecureFileMetadataSubjectOutput() GetProjectSecureFileMetadataSubjectOutput {
+	return i.ToGetProjectSecureFileMetadataSubjectOutputWithContext(context.Background())
+}
+
+func (i GetProjectSecureFileMetadataSubjectArgs) ToGetProjectSecureFileMetadataSubjectOutputWithContext(ctx context.Context) GetProjectSecureFileMetadataSubjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectSecureFileMetadataSubjectOutput)
+}
+
+type GetProjectSecureFileMetadataSubjectOutput struct{ *pulumi.OutputState }
+
+func (GetProjectSecureFileMetadataSubjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectSecureFileMetadataSubject)(nil)).Elem()
+}
+
+func (o GetProjectSecureFileMetadataSubjectOutput) ToGetProjectSecureFileMetadataSubjectOutput() GetProjectSecureFileMetadataSubjectOutput {
+	return o
+}
+
+func (o GetProjectSecureFileMetadataSubjectOutput) ToGetProjectSecureFileMetadataSubjectOutputWithContext(ctx context.Context) GetProjectSecureFileMetadataSubjectOutput {
+	return o
+}
+
+// Country
+func (o GetProjectSecureFileMetadataSubjectOutput) C() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataSubject) string { return v.C }).(pulumi.StringOutput)
+}
+
+// Common Name
+func (o GetProjectSecureFileMetadataSubjectOutput) Cn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataSubject) string { return v.Cn }).(pulumi.StringOutput)
+}
+
+// Organization
+func (o GetProjectSecureFileMetadataSubjectOutput) O() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataSubject) string { return v.O }).(pulumi.StringOutput)
+}
+
+// Organizational Unit
+func (o GetProjectSecureFileMetadataSubjectOutput) Ou() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataSubject) string { return v.Ou }).(pulumi.StringOutput)
+}
+
+// User ID
+func (o GetProjectSecureFileMetadataSubjectOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectSecureFileMetadataSubject) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 type GetProjectSharedWithGroup struct {
@@ -17094,11 +17797,11 @@ func (o GetReleaseAssetsSourceArrayOutput) Index(i pulumi.IntInput) GetReleaseAs
 }
 
 type GetReleaseLinksReleaseLink struct {
-	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	DirectAssetUrl string `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External bool `pulumi:"external"`
-	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	Filepath string `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId int `pulumi:"linkId"`
@@ -17106,7 +17809,7 @@ type GetReleaseLinksReleaseLink struct {
 	LinkType string `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name string `pulumi:"name"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project string `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
@@ -17126,11 +17829,11 @@ type GetReleaseLinksReleaseLinkInput interface {
 }
 
 type GetReleaseLinksReleaseLinkArgs struct {
-	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	DirectAssetUrl pulumi.StringInput `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External pulumi.BoolInput `pulumi:"external"`
-	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	Filepath pulumi.StringInput `pulumi:"filepath"`
 	// The ID of the link.
 	LinkId pulumi.IntInput `pulumi:"linkId"`
@@ -17138,7 +17841,7 @@ type GetReleaseLinksReleaseLinkArgs struct {
 	LinkType pulumi.StringInput `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -17197,7 +17900,7 @@ func (o GetReleaseLinksReleaseLinkOutput) ToGetReleaseLinksReleaseLinkOutputWith
 	return o
 }
 
-// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 func (o GetReleaseLinksReleaseLinkOutput) DirectAssetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.DirectAssetUrl }).(pulumi.StringOutput)
 }
@@ -17207,7 +17910,7 @@ func (o GetReleaseLinksReleaseLinkOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) bool { return v.External }).(pulumi.BoolOutput)
 }
 
-// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 func (o GetReleaseLinksReleaseLinkOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.Filepath }).(pulumi.StringOutput)
 }
@@ -17227,7 +17930,7 @@ func (o GetReleaseLinksReleaseLinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+// The ID or Namespace path of the project.
 func (o GetReleaseLinksReleaseLinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseLinksReleaseLink) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -17559,6 +18262,902 @@ func (o GetRunnersRunnerArrayOutput) Index(i pulumi.IntInput) GetRunnersRunnerOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRunnersRunner {
 		return vs[0].([]GetRunnersRunner)[vs[1].(int)]
 	}).(GetRunnersRunnerOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicy struct {
+	// Actions to execute when rules match. At least one action is required.
+	Actions []GetSecurityPolicyDocumentScanExecutionPolicyAction `pulumi:"actions"`
+	// Description of the scan execution policy.
+	Description *string `pulumi:"description"`
+	// Whether the policy is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Name of the scan execution policy.
+	Name string `pulumi:"name"`
+	// Scope configuration to limit which projects the policy applies to.
+	PolicyScope *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope `pulumi:"policyScope"`
+	// Rules that trigger the policy. At least one rule is required.
+	Rules []GetSecurityPolicyDocumentScanExecutionPolicyRule `pulumi:"rules"`
+	// Control whether users can use the skip-ci directive.
+	SkipCi *GetSecurityPolicyDocumentScanExecutionPolicySkipCi `pulumi:"skipCi"`
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyArgs and GetSecurityPolicyDocumentScanExecutionPolicyOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyArgs{...}
+type GetSecurityPolicyDocumentScanExecutionPolicyInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyOutput() GetSecurityPolicyDocumentScanExecutionPolicyOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyArgs struct {
+	// Actions to execute when rules match. At least one action is required.
+	Actions GetSecurityPolicyDocumentScanExecutionPolicyActionArrayInput `pulumi:"actions"`
+	// Description of the scan execution policy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the policy is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Name of the scan execution policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Scope configuration to limit which projects the policy applies to.
+	PolicyScope GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrInput `pulumi:"policyScope"`
+	// Rules that trigger the policy. At least one rule is required.
+	Rules GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayInput `pulumi:"rules"`
+	// Control whether users can use the skip-ci directive.
+	SkipCi GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrInput `pulumi:"skipCi"`
+}
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicy)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyOutput() GetSecurityPolicyDocumentScanExecutionPolicyOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyOutput)
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyArrayInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyArray and GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyArrayInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyArray{ GetSecurityPolicyDocumentScanExecutionPolicyArgs{...} }
+type GetSecurityPolicyDocumentScanExecutionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyArray []GetSecurityPolicyDocumentScanExecutionPolicyInput
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyDocumentScanExecutionPolicy)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyArray) ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyArray) ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicy)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyOutput() GetSecurityPolicyDocumentScanExecutionPolicyOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyOutput {
+	return o
+}
+
+// Actions to execute when rules match. At least one action is required.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) Actions() GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) []GetSecurityPolicyDocumentScanExecutionPolicyAction {
+		return v.Actions
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput)
+}
+
+// Description of the scan execution policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the policy is enabled.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of the scan execution policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Scope configuration to limit which projects the policy applies to.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) PolicyScope() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope {
+		return v.PolicyScope
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput)
+}
+
+// Rules that trigger the policy. At least one rule is required.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) Rules() GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) []GetSecurityPolicyDocumentScanExecutionPolicyRule {
+		return v.Rules
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput)
+}
+
+// Control whether users can use the skip-ci directive.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyOutput) SkipCi() GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicy) *GetSecurityPolicyDocumentScanExecutionPolicySkipCi {
+		return v.SkipCi
+	}).(GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyDocumentScanExecutionPolicy)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyArrayOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyDocumentScanExecutionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyDocumentScanExecutionPolicy {
+		return vs[0].([]GetSecurityPolicyDocumentScanExecutionPolicy)[vs[1].(int)]
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyAction struct {
+	// Type of scan to run. Valid values: `sast`, `secretDetection`, `containerScanning`, `dependencyScanning`, `dast`, `sastIac`, `clusterImageScanning`, `apiFuzzing`, `coverageFuzzing`.
+	Scan string `pulumi:"scan"`
+	// Scanner profile to use for DAST scans.
+	ScannerProfile *string `pulumi:"scannerProfile"`
+	// Site profile to use for DAST scans.
+	SiteProfile *string `pulumi:"siteProfile"`
+	// Tags to exclude from the scan.
+	TagsToExcludes []string `pulumi:"tagsToExcludes"`
+	// The template to use for the scan. Valid values: `default`, `latest`.
+	Template *string `pulumi:"template"`
+	// Environment variables to pass to the scan job.
+	Variables map[string]string `pulumi:"variables"`
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyActionInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyActionArgs and GetSecurityPolicyDocumentScanExecutionPolicyActionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyActionInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyActionArgs{...}
+type GetSecurityPolicyDocumentScanExecutionPolicyActionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutput() GetSecurityPolicyDocumentScanExecutionPolicyActionOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyActionOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyActionArgs struct {
+	// Type of scan to run. Valid values: `sast`, `secretDetection`, `containerScanning`, `dependencyScanning`, `dast`, `sastIac`, `clusterImageScanning`, `apiFuzzing`, `coverageFuzzing`.
+	Scan pulumi.StringInput `pulumi:"scan"`
+	// Scanner profile to use for DAST scans.
+	ScannerProfile pulumi.StringPtrInput `pulumi:"scannerProfile"`
+	// Site profile to use for DAST scans.
+	SiteProfile pulumi.StringPtrInput `pulumi:"siteProfile"`
+	// Tags to exclude from the scan.
+	TagsToExcludes pulumi.StringArrayInput `pulumi:"tagsToExcludes"`
+	// The template to use for the scan. Valid values: `default`, `latest`.
+	Template pulumi.StringPtrInput `pulumi:"template"`
+	// Environment variables to pass to the scan job.
+	Variables pulumi.StringMapInput `pulumi:"variables"`
+}
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyAction)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyActionArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutput() GetSecurityPolicyDocumentScanExecutionPolicyActionOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyActionArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyActionOutput)
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyActionArrayInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyActionArray and GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyActionArrayInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyActionArray{ GetSecurityPolicyDocumentScanExecutionPolicyActionArgs{...} }
+type GetSecurityPolicyDocumentScanExecutionPolicyActionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyActionArray []GetSecurityPolicyDocumentScanExecutionPolicyActionInput
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyDocumentScanExecutionPolicyAction)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyActionArray) ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyActionArray) ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyActionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyAction)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutput() GetSecurityPolicyDocumentScanExecutionPolicyActionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyActionOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyActionOutput {
+	return o
+}
+
+// Type of scan to run. Valid values: `sast`, `secretDetection`, `containerScanning`, `dependencyScanning`, `dast`, `sastIac`, `clusterImageScanning`, `apiFuzzing`, `coverageFuzzing`.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) Scan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyAction) string { return v.Scan }).(pulumi.StringOutput)
+}
+
+// Scanner profile to use for DAST scans.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) ScannerProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyAction) *string { return v.ScannerProfile }).(pulumi.StringPtrOutput)
+}
+
+// Site profile to use for DAST scans.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) SiteProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyAction) *string { return v.SiteProfile }).(pulumi.StringPtrOutput)
+}
+
+// Tags to exclude from the scan.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) TagsToExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyAction) []string { return v.TagsToExcludes }).(pulumi.StringArrayOutput)
+}
+
+// The template to use for the scan. Valid values: `default`, `latest`.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) Template() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyAction) *string { return v.Template }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables to pass to the scan job.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyAction) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyDocumentScanExecutionPolicyAction)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyDocumentScanExecutionPolicyActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyDocumentScanExecutionPolicyAction {
+		return vs[0].([]GetSecurityPolicyDocumentScanExecutionPolicyAction)[vs[1].(int)]
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyActionOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope struct {
+	// Compliance framework names to scope the policy to.
+	ComplianceFrameworks []string `pulumi:"complianceFrameworks"`
+	// Project scope configuration.
+	Projects *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects `pulumi:"projects"`
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs and GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs{...}
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs struct {
+	// Compliance framework names to scope the policy to.
+	ComplianceFrameworks pulumi.StringArrayInput `pulumi:"complianceFrameworks"`
+	// Project scope configuration.
+	Projects GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrInput `pulumi:"projects"`
+}
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput)
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput).ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(ctx)
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs, GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtr and GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrInput` via:
+//
+//	        GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput
+}
+
+type getSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrType GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs
+
+func GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtr(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrInput {
+	return (*getSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrType)(v)
+}
+
+func (*getSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope)(nil)).Elem()
+}
+
+func (i *getSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrType) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(context.Background())
+}
+
+func (i *getSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrType) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return o.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(context.Background())
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope) *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope {
+		return &v
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput)
+}
+
+// Compliance framework names to scope the policy to.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) ComplianceFrameworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope) []string {
+		return v.ComplianceFrameworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Project scope configuration.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput) Projects() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope) *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
+		return v.Projects
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput) Elem() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope {
+		if v != nil {
+			return *v
+		}
+		var ret GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope
+		return ret
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput)
+}
+
+// Compliance framework names to scope the policy to.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput) ComplianceFrameworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ComplianceFrameworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Project scope configuration.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput) Projects() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope) *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
+		if v == nil {
+			return nil
+		}
+		return v.Projects
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects struct {
+	// List of project IDs to exclude from this policy.
+	Excludings []int `pulumi:"excludings"`
+	// List of project IDs to explicitly include in this policy.
+	Includings []int `pulumi:"includings"`
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs and GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs{...}
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs struct {
+	// List of project IDs to exclude from this policy.
+	Excludings pulumi.IntArrayInput `pulumi:"excludings"`
+	// List of project IDs to explicitly include in this policy.
+	Includings pulumi.IntArrayInput `pulumi:"includings"`
+}
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput)
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput).ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(ctx)
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs, GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtr and GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrInput` via:
+//
+//	        GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput
+}
+
+type getSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrType GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs
+
+func GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtr(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrInput {
+	return (*getSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrType)(v)
+}
+
+func (*getSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects)(nil)).Elem()
+}
+
+func (i *getSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrType) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrType) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return o.ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects) *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
+		return &v
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput)
+}
+
+// List of project IDs to exclude from this policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) Excludings() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects) []int { return v.Excludings }).(pulumi.IntArrayOutput)
+}
+
+// List of project IDs to explicitly include in this policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput) Includings() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects) []int { return v.Includings }).(pulumi.IntArrayOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput) Elem() GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects) GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
+		if v != nil {
+			return *v
+		}
+		var ret GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects
+		return ret
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput)
+}
+
+// List of project IDs to exclude from this policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput) Excludings() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Excludings
+	}).(pulumi.IntArrayOutput)
+}
+
+// List of project IDs to explicitly include in this policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput) Includings() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Includings
+	}).(pulumi.IntArrayOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyRule struct {
+	// Kubernetes agents configuration for agent-based policies.
+	Agents map[string]string `pulumi:"agents"`
+	// Branches to exclude from the policy.
+	BranchExceptions []string `pulumi:"branchExceptions"`
+	// Type of branches to match. Valid values: `all`, `protected`, `default`.
+	BranchType *string `pulumi:"branchType"`
+	// Branch names or patterns to match.
+	Branches []string `pulumi:"branches"`
+	// Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+	Cadence *string `pulumi:"cadence"`
+	// Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+	Type string `pulumi:"type"`
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyRuleInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs and GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyRuleInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs{...}
+type GetSecurityPolicyDocumentScanExecutionPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutput() GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs struct {
+	// Kubernetes agents configuration for agent-based policies.
+	Agents pulumi.StringMapInput `pulumi:"agents"`
+	// Branches to exclude from the policy.
+	BranchExceptions pulumi.StringArrayInput `pulumi:"branchExceptions"`
+	// Type of branches to match. Valid values: `all`, `protected`, `default`.
+	BranchType pulumi.StringPtrInput `pulumi:"branchType"`
+	// Branch names or patterns to match.
+	Branches pulumi.StringArrayInput `pulumi:"branches"`
+	// Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+	Cadence pulumi.StringPtrInput `pulumi:"cadence"`
+	// Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyRule)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutput() GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput)
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicyRuleArray and GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicyRuleArray{ GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs{...} }
+type GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyRuleArray []GetSecurityPolicyDocumentScanExecutionPolicyRuleInput
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyDocumentScanExecutionPolicyRule)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyRuleArray) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicyRuleArray) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyRule)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutput() GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput {
+	return o
+}
+
+// Kubernetes agents configuration for agent-based policies.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) Agents() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyRule) map[string]string { return v.Agents }).(pulumi.StringMapOutput)
+}
+
+// Branches to exclude from the policy.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) BranchExceptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyRule) []string { return v.BranchExceptions }).(pulumi.StringArrayOutput)
+}
+
+// Type of branches to match. Valid values: `all`, `protected`, `default`.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) BranchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyRule) *string { return v.BranchType }).(pulumi.StringPtrOutput)
+}
+
+// Branch names or patterns to match.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) Branches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyRule) []string { return v.Branches }).(pulumi.StringArrayOutput)
+}
+
+// Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) Cadence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyRule) *string { return v.Cadence }).(pulumi.StringPtrOutput)
+}
+
+// Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicyRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyDocumentScanExecutionPolicyRule)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput() GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput) ToGetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyDocumentScanExecutionPolicyRule {
+		return vs[0].([]GetSecurityPolicyDocumentScanExecutionPolicyRule)[vs[1].(int)]
+	}).(GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicySkipCi struct {
+	// Allow (true) or prevent (false) the use of skip-ci directive.
+	Allowed bool `pulumi:"allowed"`
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicySkipCiInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs and GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicySkipCiInput` via:
+//
+//	GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs{...}
+type GetSecurityPolicyDocumentScanExecutionPolicySkipCiInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs struct {
+	// Allow (true) or prevent (false) the use of skip-ci directive.
+	Allowed pulumi.BoolInput `pulumi:"allowed"`
+}
+
+func (GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicySkipCi)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput)
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput).ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(ctx)
+}
+
+// GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrInput is an input type that accepts GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs, GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtr and GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrInput` via:
+//
+//	        GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput
+	ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput
+}
+
+type getSecurityPolicyDocumentScanExecutionPolicySkipCiPtrType GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs
+
+func GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtr(v *GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs) GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrInput {
+	return (*getSecurityPolicyDocumentScanExecutionPolicySkipCiPtrType)(v)
+}
+
+func (*getSecurityPolicyDocumentScanExecutionPolicySkipCiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecurityPolicyDocumentScanExecutionPolicySkipCi)(nil)).Elem()
+}
+
+func (i *getSecurityPolicyDocumentScanExecutionPolicySkipCiPtrType) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return i.ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(context.Background())
+}
+
+func (i *getSecurityPolicyDocumentScanExecutionPolicySkipCiPtrType) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicySkipCi)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return o.ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(context.Background())
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSecurityPolicyDocumentScanExecutionPolicySkipCi) *GetSecurityPolicyDocumentScanExecutionPolicySkipCi {
+		return &v
+	}).(GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput)
+}
+
+// Allow (true) or prevent (false) the use of skip-ci directive.
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput) Allowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyDocumentScanExecutionPolicySkipCi) bool { return v.Allowed }).(pulumi.BoolOutput)
+}
+
+type GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecurityPolicyDocumentScanExecutionPolicySkipCi)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput() GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput) ToGetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutputWithContext(ctx context.Context) GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput {
+	return o
+}
+
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput) Elem() GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicySkipCi) GetSecurityPolicyDocumentScanExecutionPolicySkipCi {
+		if v != nil {
+			return *v
+		}
+		var ret GetSecurityPolicyDocumentScanExecutionPolicySkipCi
+		return ret
+	}).(GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput)
+}
+
+// Allow (true) or prevent (false) the use of skip-ci directive.
+func (o GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput) Allowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetSecurityPolicyDocumentScanExecutionPolicySkipCi) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Allowed
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetUserSshkeysKey struct {
@@ -18130,6 +19729,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserArrayInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkArrayInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupServiceAccountAccessTokensAccessTokenInput)(nil)).Elem(), GetGroupServiceAccountAccessTokensAccessTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupServiceAccountAccessTokensAccessTokenArrayInput)(nil)).Elem(), GetGroupServiceAccountAccessTokensAccessTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupInput)(nil)).Elem(), GetGroupSharedWithGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSharedWithGroupArrayInput)(nil)).Elem(), GetGroupSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSubgroupsSubgroupInput)(nil)).Elem(), GetGroupSubgroupsSubgroupArgs{})
@@ -18166,6 +19767,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectEnvironmentsEnvironmentArrayInput)(nil)).Elem(), GetProjectEnvironmentsEnvironmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectHooksHookInput)(nil)).Elem(), GetProjectHooksHookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectHooksHookArrayInput)(nil)).Elem(), GetProjectHooksHookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueLabelEventsEventInput)(nil)).Elem(), GetProjectIssueLabelEventsEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueLabelEventsEventArrayInput)(nil)).Elem(), GetProjectIssueLabelEventsEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueLabelEventsEventLabelInput)(nil)).Elem(), GetProjectIssueLabelEventsEventLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueLabelEventsEventUserInput)(nil)).Elem(), GetProjectIssueLabelEventsEventUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueTaskCompletionStatusInput)(nil)).Elem(), GetProjectIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssueTaskCompletionStatusArrayInput)(nil)).Elem(), GetProjectIssueTaskCompletionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueInput)(nil)).Elem(), GetProjectIssuesIssueArgs{})
@@ -18204,6 +19809,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayInput)(nil)).Elem(), GetProjectProtectedTagsProtectedTagCreateAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRuleInput)(nil)).Elem(), GetProjectPushRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectPushRuleArrayInput)(nil)).Elem(), GetProjectPushRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSecureFileMetadataInput)(nil)).Elem(), GetProjectSecureFileMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSecureFileMetadataIssuerInput)(nil)).Elem(), GetProjectSecureFileMetadataIssuerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSecureFileMetadataSubjectInput)(nil)).Elem(), GetProjectSecureFileMetadataSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSharedWithGroupInput)(nil)).Elem(), GetProjectSharedWithGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectSharedWithGroupArrayInput)(nil)).Elem(), GetProjectSharedWithGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagCommitInput)(nil)).Elem(), GetProjectTagCommitArgs{})
@@ -18244,6 +19852,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryTreeTreeArrayInput)(nil)).Elem(), GetRepositoryTreeTreeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnersRunnerInput)(nil)).Elem(), GetRunnersRunnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnersRunnerArrayInput)(nil)).Elem(), GetRunnersRunnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyArrayInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyActionInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyActionArrayInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyRuleInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicySkipCiInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserSshkeysKeyInput)(nil)).Elem(), GetUserSshkeysKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserSshkeysKeyArrayInput)(nil)).Elem(), GetUserSshkeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
@@ -18334,6 +19954,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkOutput{})
 	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupServiceAccountAccessTokensAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetGroupServiceAccountAccessTokensAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSubgroupsSubgroupOutput{})
@@ -18370,6 +19992,10 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectEnvironmentsEnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectHooksHookOutput{})
 	pulumi.RegisterOutputType(GetProjectHooksHookArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectIssueLabelEventsEventOutput{})
+	pulumi.RegisterOutputType(GetProjectIssueLabelEventsEventArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectIssueLabelEventsEventLabelOutput{})
+	pulumi.RegisterOutputType(GetProjectIssueLabelEventsEventUserOutput{})
 	pulumi.RegisterOutputType(GetProjectIssueTaskCompletionStatusOutput{})
 	pulumi.RegisterOutputType(GetProjectIssueTaskCompletionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectIssuesIssueOutput{})
@@ -18408,6 +20034,9 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectProtectedTagsProtectedTagCreateAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRuleOutput{})
 	pulumi.RegisterOutputType(GetProjectPushRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectSecureFileMetadataOutput{})
+	pulumi.RegisterOutputType(GetProjectSecureFileMetadataIssuerOutput{})
+	pulumi.RegisterOutputType(GetProjectSecureFileMetadataSubjectOutput{})
 	pulumi.RegisterOutputType(GetProjectSharedWithGroupOutput{})
 	pulumi.RegisterOutputType(GetProjectSharedWithGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectTagCommitOutput{})
@@ -18448,6 +20077,18 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryTreeTreeArrayOutput{})
 	pulumi.RegisterOutputType(GetRunnersRunnerOutput{})
 	pulumi.RegisterOutputType(GetRunnersRunnerArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyActionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyActionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopePtrOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsPtrOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicySkipCiOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicySkipCiPtrOutput{})
 	pulumi.RegisterOutputType(GetUserSshkeysKeyOutput{})
 	pulumi.RegisterOutputType(GetUserSshkeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})

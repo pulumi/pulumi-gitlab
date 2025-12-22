@@ -117,14 +117,14 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.key);
     }
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * The ID or Namespace path of the project owned by the authenticated user.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+     * @return The ID or Namespace path of the project owned by the authenticated user.
      * 
      */
     public Output<String> project() {

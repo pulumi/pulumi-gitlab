@@ -107,14 +107,14 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * @return Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
      * 
      */
     public Optional<Output<String>> token() {
@@ -294,7 +294,7 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+         * @param token Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+         * @param token Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
          * 
          * @return builder
          * 

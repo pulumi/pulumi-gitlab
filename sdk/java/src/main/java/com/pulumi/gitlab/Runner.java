@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * &gt; Using this resource will register a runner using the deprecated `registrationToken` flow. To use the new `authenticationToken` flow instead,
  * use the `gitlab.UserRunner` resource!
  * 
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#register-a-new-runner)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/)
  * 
  * ## Import
  * 

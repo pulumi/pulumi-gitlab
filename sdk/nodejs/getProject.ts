@@ -218,6 +218,10 @@ export interface GetProjectResult {
      */
     readonly mergeTrainsEnabled: boolean;
     /**
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish.
+     */
+    readonly mergeTrainsSkipTrainAllowed: boolean;
+    /**
      * The visibility of machine learning model experiments.
      */
     readonly modelExperimentsAccessLevel: string;

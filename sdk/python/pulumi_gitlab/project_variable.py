@@ -37,7 +37,7 @@ class ProjectVariableArgs:
         :param pulumi.Input[_builtins.str] description: The description of the variable.
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         :param pulumi.Input[_builtins.str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
@@ -136,7 +136,7 @@ class ProjectVariableArgs:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -200,7 +200,7 @@ class _ProjectVariableState:
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[_builtins.str] key: The name of the variable.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
@@ -280,7 +280,7 @@ class _ProjectVariableState:
     @pulumi.getter
     def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
@@ -412,7 +412,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[_builtins.str] key: The name of the variable.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
@@ -546,7 +546,7 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[_builtins.str] key: The name of the variable.
-        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
@@ -605,7 +605,7 @@ class ProjectVariable(pulumi.CustomResource):
     @pulumi.getter
     def masked(self) -> pulumi.Output[_builtins.bool]:
         """
-        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable).
+        If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 

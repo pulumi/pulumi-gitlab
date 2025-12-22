@@ -380,7 +380,7 @@ class Runner(pulumi.CustomResource):
         > Using this resource will register a runner using the deprecated `registration_token` flow. To use the new `authentication_token` flow instead,
         use the `UserRunner` resource!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#register-a-new-runner)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/)
 
         ## Import
 
@@ -433,7 +433,7 @@ class Runner(pulumi.CustomResource):
         > Using this resource will register a runner using the deprecated `registration_token` flow. To use the new `authentication_token` flow instead,
         use the `UserRunner` resource!
 
-        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/#register-a-new-runner)
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runners/)
 
         ## Import
 

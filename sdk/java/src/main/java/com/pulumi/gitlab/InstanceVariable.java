@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.InstanceVariableState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -86,14 +85,14 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the variable. Maximum of 255 characters.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * The name of the variable.
@@ -110,46 +109,46 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      * 
      */
     @Export(name="masked", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> masked;
+    private Output<Boolean> masked;
 
     /**
-     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables). Defaults to `false`.
+     * @return If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      * 
      */
-    public Output<Optional<Boolean>> masked() {
-        return Codegen.optional(this.masked);
+    public Output<Boolean> masked() {
+        return this.masked;
     }
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      * 
      */
     @Export(name="protected", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> protected_;
+    private Output<Boolean> protected_;
 
     /**
      * @return If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      * 
      */
-    public Output<Optional<Boolean>> protected_() {
-        return Codegen.optional(this.protected_);
+    public Output<Boolean> protected_() {
+        return this.protected_;
     }
     /**
      * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
      * 
      */
     @Export(name="raw", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> raw;
+    private Output<Boolean> raw;
 
     /**
      * @return Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
      * 
      */
-    public Output<Optional<Boolean>> raw() {
-        return Codegen.optional(this.raw);
+    public Output<Boolean> raw() {
+        return this.raw;
     }
     /**
      * The value of the variable.
@@ -170,14 +169,14 @@ public class InstanceVariable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="variableType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> variableType;
+    private Output<String> variableType;
 
     /**
      * @return The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      * 
      */
-    public Output<Optional<String>> variableType() {
-        return Codegen.optional(this.variableType);
+    public Output<String> variableType() {
+        return this.variableType;
     }
 
     /**

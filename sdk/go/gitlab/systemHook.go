@@ -86,7 +86,7 @@ type SystemHook struct {
 	RepositoryUpdateEvents pulumi.BoolPtrOutput `pulumi:"repositoryUpdateEvents"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// The hook URL.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -144,7 +144,7 @@ type systemHookState struct {
 	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The hook URL.
 	Url *string `pulumi:"url"`
@@ -163,7 +163,7 @@ type SystemHookState struct {
 	RepositoryUpdateEvents pulumi.BoolPtrInput
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrInput
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The hook URL.
 	Url pulumi.StringPtrInput
@@ -184,7 +184,7 @@ type systemHookArgs struct {
 	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The hook URL.
 	Url string `pulumi:"url"`
@@ -202,7 +202,7 @@ type SystemHookArgs struct {
 	RepositoryUpdateEvents pulumi.BoolPtrInput
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrInput
-	// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The hook URL.
 	Url pulumi.StringInput
@@ -325,7 +325,7 @@ func (o SystemHookOutput) TagPushEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
 }
 
-// Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
 func (o SystemHookOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SystemHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }

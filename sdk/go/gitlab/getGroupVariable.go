@@ -81,7 +81,7 @@ type LookupGroupVariableResult struct {
 	Id    string `pulumi:"id"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
-	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 	Masked bool `pulumi:"masked"`
 	// If set to `true`, the variable will be passed only to pipelines running on protected branches and tags
 	Protected bool `pulumi:"protected"`
@@ -155,7 +155,7 @@ func (o LookupGroupVariableResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#masked-variables).
+// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
 func (o LookupGroupVariableResultOutput) Masked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) bool { return v.Masked }).(pulumi.BoolOutput)
 }

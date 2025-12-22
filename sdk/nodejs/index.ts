@@ -145,6 +145,11 @@ export const getGroupServiceAccount: typeof import("./getGroupServiceAccount").g
 export const getGroupServiceAccountOutput: typeof import("./getGroupServiceAccount").getGroupServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupServiceAccount","getGroupServiceAccountOutput"], () => require("./getGroupServiceAccount"));
 
+export { GetGroupServiceAccountAccessTokensArgs, GetGroupServiceAccountAccessTokensResult, GetGroupServiceAccountAccessTokensOutputArgs } from "./getGroupServiceAccountAccessTokens";
+export const getGroupServiceAccountAccessTokens: typeof import("./getGroupServiceAccountAccessTokens").getGroupServiceAccountAccessTokens = null as any;
+export const getGroupServiceAccountAccessTokensOutput: typeof import("./getGroupServiceAccountAccessTokens").getGroupServiceAccountAccessTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupServiceAccountAccessTokens","getGroupServiceAccountAccessTokensOutput"], () => require("./getGroupServiceAccountAccessTokens"));
+
 export { GetGroupSubgroupsArgs, GetGroupSubgroupsResult, GetGroupSubgroupsOutputArgs } from "./getGroupSubgroups";
 export const getGroupSubgroups: typeof import("./getGroupSubgroups").getGroupSubgroups = null as any;
 export const getGroupSubgroupsOutput: typeof import("./getGroupSubgroups").getGroupSubgroupsOutput = null as any;
@@ -250,6 +255,11 @@ export const getProjectIssue: typeof import("./getProjectIssue").getProjectIssue
 export const getProjectIssueOutput: typeof import("./getProjectIssue").getProjectIssueOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectIssue","getProjectIssueOutput"], () => require("./getProjectIssue"));
 
+export { GetProjectIssueLabelEventsArgs, GetProjectIssueLabelEventsResult, GetProjectIssueLabelEventsOutputArgs } from "./getProjectIssueLabelEvents";
+export const getProjectIssueLabelEvents: typeof import("./getProjectIssueLabelEvents").getProjectIssueLabelEvents = null as any;
+export const getProjectIssueLabelEventsOutput: typeof import("./getProjectIssueLabelEvents").getProjectIssueLabelEventsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectIssueLabelEvents","getProjectIssueLabelEventsOutput"], () => require("./getProjectIssueLabelEvents"));
+
 export { GetProjectIssuesArgs, GetProjectIssuesResult, GetProjectIssuesOutputArgs } from "./getProjectIssues";
 export const getProjectIssues: typeof import("./getProjectIssues").getProjectIssues = null as any;
 export const getProjectIssuesOutput: typeof import("./getProjectIssues").getProjectIssuesOutput = null as any;
@@ -305,6 +315,11 @@ export const getProjectProtectedTags: typeof import("./getProjectProtectedTags")
 export const getProjectProtectedTagsOutput: typeof import("./getProjectProtectedTags").getProjectProtectedTagsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectProtectedTags","getProjectProtectedTagsOutput"], () => require("./getProjectProtectedTags"));
 
+export { GetProjectSecureFileArgs, GetProjectSecureFileResult, GetProjectSecureFileOutputArgs } from "./getProjectSecureFile";
+export const getProjectSecureFile: typeof import("./getProjectSecureFile").getProjectSecureFile = null as any;
+export const getProjectSecureFileOutput: typeof import("./getProjectSecureFile").getProjectSecureFileOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectSecureFile","getProjectSecureFileOutput"], () => require("./getProjectSecureFile"));
+
 export { GetProjectTagArgs, GetProjectTagResult, GetProjectTagOutputArgs } from "./getProjectTag";
 export const getProjectTag: typeof import("./getProjectTag").getProjectTag = null as any;
 export const getProjectTagOutput: typeof import("./getProjectTag").getProjectTagOutput = null as any;
@@ -359,6 +374,11 @@ export { GetRunnersArgs, GetRunnersResult, GetRunnersOutputArgs } from "./getRun
 export const getRunners: typeof import("./getRunners").getRunners = null as any;
 export const getRunnersOutput: typeof import("./getRunners").getRunnersOutput = null as any;
 utilities.lazyLoad(exports, ["getRunners","getRunnersOutput"], () => require("./getRunners"));
+
+export { GetSecurityPolicyDocumentArgs, GetSecurityPolicyDocumentResult, GetSecurityPolicyDocumentOutputArgs } from "./getSecurityPolicyDocument";
+export const getSecurityPolicyDocument: typeof import("./getSecurityPolicyDocument").getSecurityPolicyDocument = null as any;
+export const getSecurityPolicyDocumentOutput: typeof import("./getSecurityPolicyDocument").getSecurityPolicyDocumentOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityPolicyDocument","getSecurityPolicyDocumentOutput"], () => require("./getSecurityPolicyDocument"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -883,6 +903,11 @@ export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { UserAvatarArgs, UserAvatarState } from "./userAvatar";
+export type UserAvatar = import("./userAvatar").UserAvatar;
+export const UserAvatar: typeof import("./userAvatar").UserAvatar = null as any;
+utilities.lazyLoad(exports, ["UserAvatar"], () => require("./userAvatar"));
+
 export { UserCustomAttributeArgs, UserCustomAttributeState } from "./userCustomAttribute";
 export type UserCustomAttribute = import("./userCustomAttribute").UserCustomAttribute;
 export const UserCustomAttribute: typeof import("./userCustomAttribute").UserCustomAttribute = null as any;
@@ -1156,6 +1181,8 @@ const _module = {
                 return new Topic(name, <any>undefined, { urn })
             case "gitlab:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "gitlab:index/userAvatar:UserAvatar":
+                return new UserAvatar(name, <any>undefined, { urn })
             case "gitlab:index/userCustomAttribute:UserCustomAttribute":
                 return new UserCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/userGpgKey:UserGpgKey":
@@ -1287,6 +1314,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/systemHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/user", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userAvatar", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userIdentity", _module)

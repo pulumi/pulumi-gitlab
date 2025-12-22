@@ -217,7 +217,7 @@ export interface GetGroupAccessTokensAccessToken {
 
 export interface GetGroupBillableMemberMembershipsMembership {
     /**
-     * Access-level of the member. For details see: https://docs.gitlab.com/api/access_requests/#valid-access-levels
+     * Access-level of the member. For details see: https://docs.gitlab.com/user/permissions/#default-roles
      */
     accessLevel: string;
     /**
@@ -490,6 +490,16 @@ export interface GetGroupSamlLinksSamlLink {
      * Name of the SAML group.
      */
     name: string;
+}
+
+export interface GetGroupServiceAccountAccessTokensAccessToken {
+    active: boolean;
+    createdAt: string;
+    expiresAt: string;
+    id: string;
+    name: string;
+    revoked: boolean;
+    scopes: string[];
 }
 
 export interface GetGroupSharedWithGroup {
@@ -1269,6 +1279,83 @@ export interface GetProjectHooksHook {
     wikiPageEvents: boolean;
 }
 
+export interface GetProjectIssueLabelEventsEvent {
+    /**
+     * The action performed on the label (add, remove).
+     */
+    action: string;
+    /**
+     * The date and time when the label event was created.
+     */
+    createdAt: string;
+    /**
+     * The ID of the label event.
+     */
+    id: number;
+    /**
+     * The label that was added or removed.
+     */
+    label: outputs.GetProjectIssueLabelEventsEventLabel;
+    /**
+     * The ID of the resource associated with the label event.
+     */
+    resourceId: number;
+    /**
+     * The type of the resource associated with the label event.
+     */
+    resourceType: string;
+    /**
+     * The user who performed the action.
+     */
+    user: outputs.GetProjectIssueLabelEventsEventUser;
+}
+
+export interface GetProjectIssueLabelEventsEventLabel {
+    /**
+     * The color of the label.
+     */
+    color: string;
+    /**
+     * The description of the label.
+     */
+    description: string;
+    /**
+     * The ID of the label.
+     */
+    id: number;
+    /**
+     * The name of the label.
+     */
+    name: string;
+}
+
+export interface GetProjectIssueLabelEventsEventUser {
+    /**
+     * The avatar URL of the user.
+     */
+    avatarUrl: string;
+    /**
+     * The ID of the user.
+     */
+    id: number;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The state of the user.
+     */
+    state: string;
+    /**
+     * The username of the user.
+     */
+    username: string;
+    /**
+     * The web URL of the user.
+     */
+    webUrl: string;
+}
+
 export interface GetProjectIssueTaskCompletionStatus {
     /**
      * The number of tasks that are completed.
@@ -1963,6 +2050,67 @@ export interface GetProjectPushRule {
      * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits: boolean;
+}
+
+export interface GetProjectSecureFileMetadata {
+    /**
+     * Certificate expiration date
+     */
+    expiresAt: string;
+    /**
+     * Certificate ID
+     */
+    id: string;
+    /**
+     * Certificate issuer information
+     */
+    issuer: outputs.GetProjectSecureFileMetadataIssuer;
+    /**
+     * Certificate subject information
+     */
+    subject: outputs.GetProjectSecureFileMetadataSubject;
+}
+
+export interface GetProjectSecureFileMetadataIssuer {
+    /**
+     * Country
+     */
+    c: string;
+    /**
+     * Common Name
+     */
+    cn: string;
+    /**
+     * Organization
+     */
+    o: string;
+    /**
+     * Organizational Unit
+     */
+    ou: string;
+}
+
+export interface GetProjectSecureFileMetadataSubject {
+    /**
+     * Country
+     */
+    c: string;
+    /**
+     * Common Name
+     */
+    cn: string;
+    /**
+     * Organization
+     */
+    o: string;
+    /**
+     * Organizational Unit
+     */
+    ou: string;
+    /**
+     * User ID
+     */
+    uid: string;
 }
 
 export interface GetProjectSharedWithGroup {
@@ -2777,7 +2925,7 @@ export interface GetReleaseAssetsSource {
 
 export interface GetReleaseLinksReleaseLink {
     /**
-     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     directAssetUrl: string;
     /**
@@ -2785,7 +2933,7 @@ export interface GetReleaseLinksReleaseLink {
      */
     external: boolean;
     /**
-     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+     * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
     filepath: string;
     /**
@@ -2801,7 +2949,7 @@ export interface GetReleaseLinksReleaseLink {
      */
     name: string;
     /**
-     * The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+     * The ID or Namespace path of the project.
      */
     project: string;
     /**
@@ -2872,6 +3020,120 @@ export interface GetRunnersRunner {
      * The status of the runner. Values can be `online`, `offline`, `stale`, and `neverContacted`.
      */
     status: string;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicy {
+    /**
+     * Actions to execute when rules match. At least one action is required.
+     */
+    actions: outputs.GetSecurityPolicyDocumentScanExecutionPolicyAction[];
+    /**
+     * Description of the scan execution policy.
+     */
+    description?: string;
+    /**
+     * Whether the policy is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Name of the scan execution policy.
+     */
+    name: string;
+    /**
+     * Scope configuration to limit which projects the policy applies to.
+     */
+    policyScope?: outputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope;
+    /**
+     * Rules that trigger the policy. At least one rule is required.
+     */
+    rules: outputs.GetSecurityPolicyDocumentScanExecutionPolicyRule[];
+    /**
+     * Control whether users can use the skip-ci directive.
+     */
+    skipCi?: outputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCi;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyAction {
+    /**
+     * Type of scan to run. Valid values: `sast`, `secretDetection`, `containerScanning`, `dependencyScanning`, `dast`, `sastIac`, `clusterImageScanning`, `apiFuzzing`, `coverageFuzzing`.
+     */
+    scan: string;
+    /**
+     * Scanner profile to use for DAST scans.
+     */
+    scannerProfile?: string;
+    /**
+     * Site profile to use for DAST scans.
+     */
+    siteProfile?: string;
+    /**
+     * Tags to exclude from the scan.
+     */
+    tagsToExcludes?: string[];
+    /**
+     * The template to use for the scan. Valid values: `default`, `latest`.
+     */
+    template?: string;
+    /**
+     * Environment variables to pass to the scan job.
+     */
+    variables?: {[key: string]: string};
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope {
+    /**
+     * Compliance framework names to scope the policy to.
+     */
+    complianceFrameworks?: string[];
+    /**
+     * Project scope configuration.
+     */
+    projects?: outputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
+    /**
+     * List of project IDs to exclude from this policy.
+     */
+    excludings?: number[];
+    /**
+     * List of project IDs to explicitly include in this policy.
+     */
+    includings?: number[];
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicyRule {
+    /**
+     * Kubernetes agents configuration for agent-based policies.
+     */
+    agents?: {[key: string]: string};
+    /**
+     * Branches to exclude from the policy.
+     */
+    branchExceptions?: string[];
+    /**
+     * Type of branches to match. Valid values: `all`, `protected`, `default`.
+     */
+    branchType?: string;
+    /**
+     * Branch names or patterns to match.
+     */
+    branches?: string[];
+    /**
+     * Cron expression for schedule type rules (e.g., `*&#47;15 * * * *` for every 15 minutes).
+     */
+    cadence?: string;
+    /**
+     * Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+     */
+    type: string;
+}
+
+export interface GetSecurityPolicyDocumentScanExecutionPolicySkipCi {
+    /**
+     * Allow (true) or prevent (false) the use of skip-ci directive.
+     */
+    allowed: boolean;
 }
 
 export interface GetUserSshkeysKey {

@@ -184,7 +184,7 @@ namespace Pulumi.GitLab
         public bool? Membership { get; set; }
 
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `GroupId`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `GroupId`.
         /// </summary>
         [Input("minAccessLevel")]
         public int? MinAccessLevel { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Membership { get; set; }
 
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `GroupId`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `GroupId`.
         /// </summary>
         [Input("minAccessLevel")]
         public Input<int>? MinAccessLevel { get; set; }
@@ -472,7 +472,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Membership;
         /// <summary>
-        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `GroupId`.
+        /// Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `GroupId`.
         /// </summary>
         public readonly int? MinAccessLevel;
         /// <summary>

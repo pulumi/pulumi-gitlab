@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
  *
  * ## Example Usage
  */
@@ -58,7 +58,7 @@ export interface GetGroupServiceAccountResult {
 /**
  * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
  *
  * ## Example Usage
  */

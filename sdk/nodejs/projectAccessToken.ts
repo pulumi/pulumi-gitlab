@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
  *
- * > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/operations/tracing/)
+ * > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
  *
  * > Use `rotationConfiguration` to automatically rotate tokens instead of using `timestamp()` as timestamp will cause changes with every plan. `pulumi up` must still be run to rotate the token.
  *

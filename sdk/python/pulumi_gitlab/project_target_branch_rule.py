@@ -138,7 +138,7 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
         """
         The `ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
 
-        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
 
         ## Example Usage
 
@@ -194,7 +194,7 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
         """
         The `ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
 
-        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationprojecttargetbranchrulecreate)
 
         ## Example Usage
 

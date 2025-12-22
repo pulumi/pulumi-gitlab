@@ -406,6 +406,12 @@ namespace Pulumi.GitLab
         public Output<bool> MergeTrainsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `MergePipelinesEnabled` to be set to `True` to take effect.
+        /// </summary>
+        [Output("mergeTrainsSkipTrainAllowed")]
+        public Output<bool> MergeTrainsSkipTrainAllowed { get; private set; } = null!;
+
+        /// <summary>
         /// Enable project pull mirror.
         /// </summary>
         [Output("mirror")]
@@ -692,7 +698,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Output("useCustomTemplate")]
         public Output<bool?> UseCustomTemplate { get; private set; } = null!;
@@ -1131,6 +1137,12 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeTrainsEnabled { get; set; }
 
         /// <summary>
+        /// Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `MergePipelinesEnabled` to be set to `True` to take effect.
+        /// </summary>
+        [Input("mergeTrainsSkipTrainAllowed")]
+        public Input<bool>? MergeTrainsSkipTrainAllowed { get; set; }
+
+        /// <summary>
         /// Enable project pull mirror.
         /// </summary>
         [Input("mirror")]
@@ -1412,7 +1424,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }
@@ -1820,6 +1832,12 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeTrainsEnabled { get; set; }
 
         /// <summary>
+        /// Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `MergePipelinesEnabled` to be set to `True` to take effect.
+        /// </summary>
+        [Input("mergeTrainsSkipTrainAllowed")]
+        public Input<bool>? MergeTrainsSkipTrainAllowed { get; set; }
+
+        /// <summary>
         /// Enable project pull mirror.
         /// </summary>
         [Input("mirror")]
@@ -2129,7 +2147,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
+        /// 	&gt; When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
         /// </summary>
         [Input("useCustomTemplate")]
         public Input<bool>? UseCustomTemplate { get; set; }

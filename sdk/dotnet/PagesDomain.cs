@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        /// The ID or Namespace path of the project owned by the authenticated user.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        /// The ID or Namespace path of the project owned by the authenticated user.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.GitLab
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+        /// The ID or Namespace path of the project owned by the authenticated user.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

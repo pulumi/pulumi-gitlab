@@ -20,7 +20,7 @@ import (
 type Label struct {
 	pulumi.CustomResourceState
 
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
 	ColorHex pulumi.StringOutput `pulumi:"colorHex"`
@@ -70,7 +70,7 @@ func GetLabel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Label resources.
 type labelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color *string `pulumi:"color"`
 	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
 	ColorHex *string `pulumi:"colorHex"`
@@ -85,7 +85,7 @@ type labelState struct {
 }
 
 type LabelState struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color pulumi.StringPtrInput
 	// Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
 	ColorHex pulumi.StringPtrInput
@@ -104,7 +104,7 @@ func (LabelState) ElementType() reflect.Type {
 }
 
 type labelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color string `pulumi:"color"`
 	// The description of the label.
 	Description *string `pulumi:"description"`
@@ -116,7 +116,7 @@ type labelArgs struct {
 
 // The set of arguments for constructing a Label resource.
 type LabelArgs struct {
-	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color pulumi.StringInput
 	// The description of the label.
 	Description pulumi.StringPtrInput
@@ -213,7 +213,7 @@ func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
 }
 
-// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
+// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 func (o LabelOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }

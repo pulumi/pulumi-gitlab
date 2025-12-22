@@ -245,6 +245,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Topic{}
 	case "gitlab:index/user:User":
 		r = &User{}
+	case "gitlab:index/userAvatar:UserAvatar":
+		r = &UserAvatar{}
 	case "gitlab:index/userCustomAttribute:UserCustomAttribute":
 		r = &UserCustomAttribute{}
 	case "gitlab:index/userGpgKey:UserGpgKey":
@@ -848,6 +850,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userAvatar",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

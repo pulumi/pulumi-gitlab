@@ -13,7 +13,7 @@ import (
 
 // The `ProjectMembership` data source allows you to list and filter all members of a project.
 //
-// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
 func LookupProjectMembership(ctx *pulumi.Context, args *LookupProjectMembershipArgs, opts ...pulumi.InvokeOption) (*LookupProjectMembershipResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectMembershipResult

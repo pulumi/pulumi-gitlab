@@ -28,7 +28,7 @@ func LookupReleaseLink(ctx *pulumi.Context, args *LookupReleaseLinkArgs, opts ..
 type LookupReleaseLinkArgs struct {
 	// The ID of the link.
 	LinkId int `pulumi:"linkId"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project string `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
@@ -36,11 +36,11 @@ type LookupReleaseLinkArgs struct {
 
 // A collection of values returned by getReleaseLink.
 type LookupReleaseLinkResult struct {
-	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+	// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	DirectAssetUrl string `pulumi:"directAssetUrl"`
 	// External or internal link.
 	External bool `pulumi:"external"`
-	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	Filepath string `pulumi:"filepath"`
 	// The ID of this data source.
 	Id string `pulumi:"id"`
@@ -50,7 +50,7 @@ type LookupReleaseLinkResult struct {
 	LinkType string `pulumi:"linkType"`
 	// The name of the link. Link names must be unique within the release.
 	Name string `pulumi:"name"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project string `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName string `pulumi:"tagName"`
@@ -71,7 +71,7 @@ func LookupReleaseLinkOutput(ctx *pulumi.Context, args LookupReleaseLinkOutputAr
 type LookupReleaseLinkOutputArgs struct {
 	// The ID of the link.
 	LinkId pulumi.IntInput `pulumi:"linkId"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+	// The ID or Namespace path of the project.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The tag associated with the Release.
 	TagName pulumi.StringInput `pulumi:"tagName"`
@@ -96,7 +96,7 @@ func (o LookupReleaseLinkResultOutput) ToLookupReleaseLinkResultOutputWithContex
 	return o
 }
 
-// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+// Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 func (o LookupReleaseLinkResultOutput) DirectAssetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.DirectAssetUrl }).(pulumi.StringOutput)
 }
@@ -106,7 +106,7 @@ func (o LookupReleaseLinkResultOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) bool { return v.External }).(pulumi.BoolOutput)
 }
 
-// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 func (o LookupReleaseLinkResultOutput) Filepath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Filepath }).(pulumi.StringOutput)
 }
@@ -131,7 +131,7 @@ func (o LookupReleaseLinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+// The ID or Namespace path of the project.
 func (o LookupReleaseLinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseLinkResult) string { return v.Project }).(pulumi.StringOutput)
 }

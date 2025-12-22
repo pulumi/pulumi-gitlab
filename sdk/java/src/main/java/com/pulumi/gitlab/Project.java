@@ -912,6 +912,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.mergeTrainsEnabled;
     }
     /**
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     * 
+     */
+    @Export(name="mergeTrainsSkipTrainAllowed", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mergeTrainsSkipTrainAllowed;
+
+    /**
+     * @return Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
+     * 
+     */
+    public Output<Boolean> mergeTrainsSkipTrainAllowed() {
+        return this.mergeTrainsSkipTrainAllowed;
+    }
+    /**
      * Enable project pull mirror.
      * 
      */
@@ -1597,7 +1611,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     @Export(name="useCustomTemplate", refs={Boolean.class}, tree="[0]")
@@ -1605,7 +1619,7 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
-     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/15.7/ee/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
+     * 	&gt; When using a custom template, [Group Tokens won&#39;t work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user&#39;s Personal Access Token.
      * 
      */
     public Output<Optional<Boolean>> useCustomTemplate() {

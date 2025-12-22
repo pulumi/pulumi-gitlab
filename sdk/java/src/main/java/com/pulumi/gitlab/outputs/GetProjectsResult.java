@@ -47,7 +47,7 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean membership;
     /**
-     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      * 
      */
     private @Nullable Integer minAccessLevel;
@@ -181,7 +181,7 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.membership);
     }
     /**
-     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * @return Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      * 
      */
     public Optional<Integer> minAccessLevel() {

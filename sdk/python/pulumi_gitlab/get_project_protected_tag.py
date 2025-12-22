@@ -92,7 +92,7 @@ def get_project_protected_tag(project: Optional[_builtins.str] = None,
     """
     The `get_project_protected_tag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
 
 
     :param _builtins.str project: The integer or path with namespace that uniquely identifies the project.
@@ -115,7 +115,7 @@ def get_project_protected_tag_output(project: Optional[pulumi.Input[_builtins.st
     """
     The `get_project_protected_tag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
 
 
     :param _builtins.str project: The integer or path with namespace that uniquely identifies the project.

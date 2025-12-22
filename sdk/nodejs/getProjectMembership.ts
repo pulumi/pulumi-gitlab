@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
  */
 export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     args = args || {};
@@ -102,7 +102,7 @@ export interface GetProjectMembershipResult {
 /**
  * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
  *
- * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
  */
 export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMembershipResult> {
     args = args || {};

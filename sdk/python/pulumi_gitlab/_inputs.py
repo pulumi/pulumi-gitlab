@@ -105,6 +105,18 @@ __all__ = [
     'GetReleaseAssetsLinkArgsDict',
     'GetReleaseAssetsSourceArgs',
     'GetReleaseAssetsSourceArgsDict',
+    'GetSecurityPolicyDocumentScanExecutionPolicyArgs',
+    'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict',
+    'GetSecurityPolicyDocumentScanExecutionPolicyActionArgs',
+    'GetSecurityPolicyDocumentScanExecutionPolicyActionArgsDict',
+    'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs',
+    'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgsDict',
+    'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs',
+    'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgsDict',
+    'GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs',
+    'GetSecurityPolicyDocumentScanExecutionPolicyRuleArgsDict',
+    'GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs',
+    'GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgsDict',
 ]
 
 MYPY = False
@@ -5541,5 +5553,550 @@ class GetReleaseAssetsSourceArgs:
     @url.setter
     def url(self, value: _builtins.str):
         pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class GetSecurityPolicyDocumentScanExecutionPolicyArgsDict(TypedDict):
+        actions: Sequence['GetSecurityPolicyDocumentScanExecutionPolicyActionArgsDict']
+        """
+        Actions to execute when rules match. At least one action is required.
+        """
+        enabled: _builtins.bool
+        """
+        Whether the policy is enabled.
+        """
+        name: _builtins.str
+        """
+        Name of the scan execution policy.
+        """
+        rules: Sequence['GetSecurityPolicyDocumentScanExecutionPolicyRuleArgsDict']
+        """
+        Rules that trigger the policy. At least one rule is required.
+        """
+        description: NotRequired[_builtins.str]
+        """
+        Description of the scan execution policy.
+        """
+        policy_scope: NotRequired['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgsDict']
+        """
+        Scope configuration to limit which projects the policy applies to.
+        """
+        skip_ci: NotRequired['GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgsDict']
+        """
+        Control whether users can use the skip-ci directive.
+        """
+elif False:
+    GetSecurityPolicyDocumentScanExecutionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSecurityPolicyDocumentScanExecutionPolicyArgs:
+    def __init__(__self__, *,
+                 actions: Sequence['GetSecurityPolicyDocumentScanExecutionPolicyActionArgs'],
+                 enabled: _builtins.bool,
+                 name: _builtins.str,
+                 rules: Sequence['GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs'],
+                 description: Optional[_builtins.str] = None,
+                 policy_scope: Optional['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs'] = None,
+                 skip_ci: Optional['GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs'] = None):
+        """
+        :param Sequence['GetSecurityPolicyDocumentScanExecutionPolicyActionArgs'] actions: Actions to execute when rules match. At least one action is required.
+        :param _builtins.bool enabled: Whether the policy is enabled.
+        :param _builtins.str name: Name of the scan execution policy.
+        :param Sequence['GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs'] rules: Rules that trigger the policy. At least one rule is required.
+        :param _builtins.str description: Description of the scan execution policy.
+        :param 'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs' policy_scope: Scope configuration to limit which projects the policy applies to.
+        :param 'GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs' skip_ci: Control whether users can use the skip-ci directive.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rules", rules)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if policy_scope is not None:
+            pulumi.set(__self__, "policy_scope", policy_scope)
+        if skip_ci is not None:
+            pulumi.set(__self__, "skip_ci", skip_ci)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['GetSecurityPolicyDocumentScanExecutionPolicyActionArgs']:
+        """
+        Actions to execute when rules match. At least one action is required.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Sequence['GetSecurityPolicyDocumentScanExecutionPolicyActionArgs']):
+        pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the policy is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the scan execution policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs']:
+        """
+        Rules that trigger the policy. At least one rule is required.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Sequence['GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs']):
+        pulumi.set(self, "rules", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the scan execution policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="policyScope")
+    def policy_scope(self) -> Optional['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs']:
+        """
+        Scope configuration to limit which projects the policy applies to.
+        """
+        return pulumi.get(self, "policy_scope")
+
+    @policy_scope.setter
+    def policy_scope(self, value: Optional['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs']):
+        pulumi.set(self, "policy_scope", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipCi")
+    def skip_ci(self) -> Optional['GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs']:
+        """
+        Control whether users can use the skip-ci directive.
+        """
+        return pulumi.get(self, "skip_ci")
+
+    @skip_ci.setter
+    def skip_ci(self, value: Optional['GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs']):
+        pulumi.set(self, "skip_ci", value)
+
+
+if not MYPY:
+    class GetSecurityPolicyDocumentScanExecutionPolicyActionArgsDict(TypedDict):
+        scan: _builtins.str
+        """
+        Type of scan to run. Valid values: `sast`, `secret_detection`, `container_scanning`, `dependency_scanning`, `dast`, `sast_iac`, `cluster_image_scanning`, `api_fuzzing`, `coverage_fuzzing`.
+        """
+        scanner_profile: NotRequired[_builtins.str]
+        """
+        Scanner profile to use for DAST scans.
+        """
+        site_profile: NotRequired[_builtins.str]
+        """
+        Site profile to use for DAST scans.
+        """
+        tags_to_excludes: NotRequired[Sequence[_builtins.str]]
+        """
+        Tags to exclude from the scan.
+        """
+        template: NotRequired[_builtins.str]
+        """
+        The template to use for the scan. Valid values: `default`, `latest`.
+        """
+        variables: NotRequired[Mapping[str, _builtins.str]]
+        """
+        Environment variables to pass to the scan job.
+        """
+elif False:
+    GetSecurityPolicyDocumentScanExecutionPolicyActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSecurityPolicyDocumentScanExecutionPolicyActionArgs:
+    def __init__(__self__, *,
+                 scan: _builtins.str,
+                 scanner_profile: Optional[_builtins.str] = None,
+                 site_profile: Optional[_builtins.str] = None,
+                 tags_to_excludes: Optional[Sequence[_builtins.str]] = None,
+                 template: Optional[_builtins.str] = None,
+                 variables: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str scan: Type of scan to run. Valid values: `sast`, `secret_detection`, `container_scanning`, `dependency_scanning`, `dast`, `sast_iac`, `cluster_image_scanning`, `api_fuzzing`, `coverage_fuzzing`.
+        :param _builtins.str scanner_profile: Scanner profile to use for DAST scans.
+        :param _builtins.str site_profile: Site profile to use for DAST scans.
+        :param Sequence[_builtins.str] tags_to_excludes: Tags to exclude from the scan.
+        :param _builtins.str template: The template to use for the scan. Valid values: `default`, `latest`.
+        :param Mapping[str, _builtins.str] variables: Environment variables to pass to the scan job.
+        """
+        pulumi.set(__self__, "scan", scan)
+        if scanner_profile is not None:
+            pulumi.set(__self__, "scanner_profile", scanner_profile)
+        if site_profile is not None:
+            pulumi.set(__self__, "site_profile", site_profile)
+        if tags_to_excludes is not None:
+            pulumi.set(__self__, "tags_to_excludes", tags_to_excludes)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @_builtins.property
+    @pulumi.getter
+    def scan(self) -> _builtins.str:
+        """
+        Type of scan to run. Valid values: `sast`, `secret_detection`, `container_scanning`, `dependency_scanning`, `dast`, `sast_iac`, `cluster_image_scanning`, `api_fuzzing`, `coverage_fuzzing`.
+        """
+        return pulumi.get(self, "scan")
+
+    @scan.setter
+    def scan(self, value: _builtins.str):
+        pulumi.set(self, "scan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scannerProfile")
+    def scanner_profile(self) -> Optional[_builtins.str]:
+        """
+        Scanner profile to use for DAST scans.
+        """
+        return pulumi.get(self, "scanner_profile")
+
+    @scanner_profile.setter
+    def scanner_profile(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "scanner_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="siteProfile")
+    def site_profile(self) -> Optional[_builtins.str]:
+        """
+        Site profile to use for DAST scans.
+        """
+        return pulumi.get(self, "site_profile")
+
+    @site_profile.setter
+    def site_profile(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "site_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagsToExcludes")
+    def tags_to_excludes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Tags to exclude from the scan.
+        """
+        return pulumi.get(self, "tags_to_excludes")
+
+    @tags_to_excludes.setter
+    def tags_to_excludes(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "tags_to_excludes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def template(self) -> Optional[_builtins.str]:
+        """
+        The template to use for the scan. Valid values: `default`, `latest`.
+        """
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "template", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variables(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Environment variables to pass to the scan job.
+        """
+        return pulumi.get(self, "variables")
+
+    @variables.setter
+    def variables(self, value: Optional[Mapping[str, _builtins.str]]):
+        pulumi.set(self, "variables", value)
+
+
+if not MYPY:
+    class GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgsDict(TypedDict):
+        compliance_frameworks: NotRequired[Sequence[_builtins.str]]
+        """
+        Compliance framework names to scope the policy to.
+        """
+        projects: NotRequired['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgsDict']
+        """
+        Project scope configuration.
+        """
+elif False:
+    GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs:
+    def __init__(__self__, *,
+                 compliance_frameworks: Optional[Sequence[_builtins.str]] = None,
+                 projects: Optional['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs'] = None):
+        """
+        :param Sequence[_builtins.str] compliance_frameworks: Compliance framework names to scope the policy to.
+        :param 'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs' projects: Project scope configuration.
+        """
+        if compliance_frameworks is not None:
+            pulumi.set(__self__, "compliance_frameworks", compliance_frameworks)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceFrameworks")
+    def compliance_frameworks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Compliance framework names to scope the policy to.
+        """
+        return pulumi.get(self, "compliance_frameworks")
+
+    @compliance_frameworks.setter
+    def compliance_frameworks(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "compliance_frameworks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def projects(self) -> Optional['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs']:
+        """
+        Project scope configuration.
+        """
+        return pulumi.get(self, "projects")
+
+    @projects.setter
+    def projects(self, value: Optional['GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs']):
+        pulumi.set(self, "projects", value)
+
+
+if not MYPY:
+    class GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgsDict(TypedDict):
+        excludings: NotRequired[Sequence[_builtins.int]]
+        """
+        List of project IDs to exclude from this policy.
+        """
+        includings: NotRequired[Sequence[_builtins.int]]
+        """
+        List of project IDs to explicitly include in this policy.
+        """
+elif False:
+    GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs:
+    def __init__(__self__, *,
+                 excludings: Optional[Sequence[_builtins.int]] = None,
+                 includings: Optional[Sequence[_builtins.int]] = None):
+        """
+        :param Sequence[_builtins.int] excludings: List of project IDs to exclude from this policy.
+        :param Sequence[_builtins.int] includings: List of project IDs to explicitly include in this policy.
+        """
+        if excludings is not None:
+            pulumi.set(__self__, "excludings", excludings)
+        if includings is not None:
+            pulumi.set(__self__, "includings", includings)
+
+    @_builtins.property
+    @pulumi.getter
+    def excludings(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        List of project IDs to exclude from this policy.
+        """
+        return pulumi.get(self, "excludings")
+
+    @excludings.setter
+    def excludings(self, value: Optional[Sequence[_builtins.int]]):
+        pulumi.set(self, "excludings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def includings(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        List of project IDs to explicitly include in this policy.
+        """
+        return pulumi.get(self, "includings")
+
+    @includings.setter
+    def includings(self, value: Optional[Sequence[_builtins.int]]):
+        pulumi.set(self, "includings", value)
+
+
+if not MYPY:
+    class GetSecurityPolicyDocumentScanExecutionPolicyRuleArgsDict(TypedDict):
+        type: _builtins.str
+        """
+        Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+        """
+        agents: NotRequired[Mapping[str, _builtins.str]]
+        """
+        Kubernetes agents configuration for agent-based policies.
+        """
+        branch_exceptions: NotRequired[Sequence[_builtins.str]]
+        """
+        Branches to exclude from the policy.
+        """
+        branch_type: NotRequired[_builtins.str]
+        """
+        Type of branches to match. Valid values: `all`, `protected`, `default`.
+        """
+        branches: NotRequired[Sequence[_builtins.str]]
+        """
+        Branch names or patterns to match.
+        """
+        cadence: NotRequired[_builtins.str]
+        """
+        Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+        """
+elif False:
+    GetSecurityPolicyDocumentScanExecutionPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs:
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 agents: Optional[Mapping[str, _builtins.str]] = None,
+                 branch_exceptions: Optional[Sequence[_builtins.str]] = None,
+                 branch_type: Optional[_builtins.str] = None,
+                 branches: Optional[Sequence[_builtins.str]] = None,
+                 cadence: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+        :param Mapping[str, _builtins.str] agents: Kubernetes agents configuration for agent-based policies.
+        :param Sequence[_builtins.str] branch_exceptions: Branches to exclude from the policy.
+        :param _builtins.str branch_type: Type of branches to match. Valid values: `all`, `protected`, `default`.
+        :param Sequence[_builtins.str] branches: Branch names or patterns to match.
+        :param _builtins.str cadence: Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+        """
+        pulumi.set(__self__, "type", type)
+        if agents is not None:
+            pulumi.set(__self__, "agents", agents)
+        if branch_exceptions is not None:
+            pulumi.set(__self__, "branch_exceptions", branch_exceptions)
+        if branch_type is not None:
+            pulumi.set(__self__, "branch_type", branch_type)
+        if branches is not None:
+            pulumi.set(__self__, "branches", branches)
+        if cadence is not None:
+            pulumi.set(__self__, "cadence", cadence)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: _builtins.str):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def agents(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Kubernetes agents configuration for agent-based policies.
+        """
+        return pulumi.get(self, "agents")
+
+    @agents.setter
+    def agents(self, value: Optional[Mapping[str, _builtins.str]]):
+        pulumi.set(self, "agents", value)
+
+    @_builtins.property
+    @pulumi.getter(name="branchExceptions")
+    def branch_exceptions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Branches to exclude from the policy.
+        """
+        return pulumi.get(self, "branch_exceptions")
+
+    @branch_exceptions.setter
+    def branch_exceptions(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "branch_exceptions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="branchType")
+    def branch_type(self) -> Optional[_builtins.str]:
+        """
+        Type of branches to match. Valid values: `all`, `protected`, `default`.
+        """
+        return pulumi.get(self, "branch_type")
+
+    @branch_type.setter
+    def branch_type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "branch_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def branches(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Branch names or patterns to match.
+        """
+        return pulumi.get(self, "branches")
+
+    @branches.setter
+    def branches(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "branches", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cadence(self) -> Optional[_builtins.str]:
+        """
+        Cron expression for schedule type rules (e.g., `*/15 * * * *` for every 15 minutes).
+        """
+        return pulumi.get(self, "cadence")
+
+    @cadence.setter
+    def cadence(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "cadence", value)
+
+
+if not MYPY:
+    class GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgsDict(TypedDict):
+        allowed: _builtins.bool
+        """
+        Allow (true) or prevent (false) the use of skip-ci directive.
+        """
+elif False:
+    GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs:
+    def __init__(__self__, *,
+                 allowed: _builtins.bool):
+        """
+        :param _builtins.bool allowed: Allow (true) or prevent (false) the use of skip-ci directive.
+        """
+        pulumi.set(__self__, "allowed", allowed)
+
+    @_builtins.property
+    @pulumi.getter
+    def allowed(self) -> _builtins.bool:
+        """
+        Allow (true) or prevent (false) the use of skip-ci directive.
+        """
+        return pulumi.get(self, "allowed")
+
+    @allowed.setter
+    def allowed(self, value: _builtins.bool):
+        pulumi.set(self, "allowed", value)
 
 

@@ -103,7 +103,7 @@ export class SystemHook extends pulumi.CustomResource {
      */
     declare public readonly tagPushEvents: pulumi.Output<boolean | undefined>;
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
      */
     declare public readonly token: pulumi.Output<string | undefined>;
     /**
@@ -182,7 +182,7 @@ export interface SystemHookState {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**
@@ -216,7 +216,7 @@ export interface SystemHookArgs {
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
-     * Secret token to validate received payloads; this isn’t returned in the response. This attribute is not available for imported resources.
+     * Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
      */
     token?: pulumi.Input<string>;
     /**

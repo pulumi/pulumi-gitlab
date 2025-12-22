@@ -50,7 +50,7 @@ type PagesDomain struct {
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// The certificate key in PEM format.
 	Key pulumi.StringPtrOutput `pulumi:"key"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or Namespace path of the project owned by the authenticated user.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL for the given domain.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -110,7 +110,7 @@ type pagesDomainState struct {
 	Expired *bool `pulumi:"expired"`
 	// The certificate key in PEM format.
 	Key *string `pulumi:"key"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or Namespace path of the project owned by the authenticated user.
 	Project *string `pulumi:"project"`
 	// The URL for the given domain.
 	Url *string `pulumi:"url"`
@@ -131,7 +131,7 @@ type PagesDomainState struct {
 	Expired pulumi.BoolPtrInput
 	// The certificate key in PEM format.
 	Key pulumi.StringPtrInput
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or Namespace path of the project owned by the authenticated user.
 	Project pulumi.StringPtrInput
 	// The URL for the given domain.
 	Url pulumi.StringPtrInput
@@ -156,7 +156,7 @@ type pagesDomainArgs struct {
 	Expired *bool `pulumi:"expired"`
 	// The certificate key in PEM format.
 	Key *string `pulumi:"key"`
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or Namespace path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
 }
 
@@ -172,7 +172,7 @@ type PagesDomainArgs struct {
 	Expired pulumi.BoolPtrInput
 	// The certificate key in PEM format.
 	Key pulumi.StringPtrInput
-	// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+	// The ID or Namespace path of the project owned by the authenticated user.
 	Project pulumi.StringInput
 }
 
@@ -288,7 +288,7 @@ func (o PagesDomainOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding) owned by the authenticated user.
+// The ID or Namespace path of the project owned by the authenticated user.
 func (o PagesDomainOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

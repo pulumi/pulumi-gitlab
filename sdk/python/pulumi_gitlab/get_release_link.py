@@ -62,7 +62,7 @@ class GetReleaseLinkResult:
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> _builtins.str:
         """
-        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
@@ -78,7 +78,7 @@ class GetReleaseLinkResult:
     @pulumi.getter
     def filepath(self) -> _builtins.str:
         """
-        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/index/#permanent-links-to-release-assets).
+        Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
@@ -118,7 +118,7 @@ class GetReleaseLinkResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+        The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 
@@ -168,7 +168,7 @@ def get_release_link(link_id: Optional[_builtins.int] = None,
 
 
     :param _builtins.int link_id: The ID of the link.
-    :param _builtins.str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+    :param _builtins.str project: The ID or Namespace path of the project.
     :param _builtins.str tag_name: The tag associated with the Release.
     """
     __args__ = dict()
@@ -200,7 +200,7 @@ def get_release_link_output(link_id: Optional[pulumi.Input[_builtins.int]] = Non
 
 
     :param _builtins.int link_id: The ID of the link.
-    :param _builtins.str project: The ID or [URL-encoded path of the project](https://docs.gitlab.com/api/index/#namespaced-path-encoding).
+    :param _builtins.str project: The ID or Namespace path of the project.
     :param _builtins.str tag_name: The tag associated with the Release.
     """
     __args__ = dict()

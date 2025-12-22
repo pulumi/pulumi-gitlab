@@ -92,7 +92,7 @@ export interface GetProjectsArgs {
      */
     membership?: boolean;
     /**
-     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      */
     minAccessLevel?: number;
     /**
@@ -190,7 +190,7 @@ export interface GetProjectsResult {
      */
     readonly membership?: boolean;
     /**
-     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      */
     readonly minAccessLevel?: number;
     /**
@@ -348,7 +348,7 @@ export interface GetProjectsOutputArgs {
      */
     membership?: pulumi.Input<boolean>;
     /**
-     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/api/members/) for values. Cannot be used with `groupId`.
+     * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      */
     minAccessLevel?: pulumi.Input<number>;
     /**

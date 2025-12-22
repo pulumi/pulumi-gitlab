@@ -39,6 +39,8 @@ import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersArgs;
 import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
 import com.pulumi.gitlab.inputs.GetGroupSamlLinksPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupServiceAccountAccessTokensArgs;
+import com.pulumi.gitlab.inputs.GetGroupServiceAccountAccessTokensPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
 import com.pulumi.gitlab.inputs.GetGroupServiceAccountPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
@@ -77,6 +79,8 @@ import com.pulumi.gitlab.inputs.GetProjectHooksPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
 import com.pulumi.gitlab.inputs.GetProjectIdsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
+import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
+import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuesPlainArgs;
@@ -101,6 +105,8 @@ import com.pulumi.gitlab.inputs.GetProjectProtectedTagArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedTagPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedTagsArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedTagsPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
+import com.pulumi.gitlab.inputs.GetProjectSecureFilePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
@@ -123,6 +129,8 @@ import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreePlainArgs;
 import com.pulumi.gitlab.inputs.GetRunnersArgs;
 import com.pulumi.gitlab.inputs.GetRunnersPlainArgs;
+import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentPlainArgs;
 import com.pulumi.gitlab.inputs.GetUserArgs;
 import com.pulumi.gitlab.inputs.GetUserPlainArgs;
 import com.pulumi.gitlab.inputs.GetUserSshkeysArgs;
@@ -145,6 +153,7 @@ import com.pulumi.gitlab.outputs.GetGroupMembershipResult;
 import com.pulumi.gitlab.outputs.GetGroupProvisionedUsersResult;
 import com.pulumi.gitlab.outputs.GetGroupResult;
 import com.pulumi.gitlab.outputs.GetGroupSamlLinksResult;
+import com.pulumi.gitlab.outputs.GetGroupServiceAccountAccessTokensResult;
 import com.pulumi.gitlab.outputs.GetGroupServiceAccountResult;
 import com.pulumi.gitlab.outputs.GetGroupSubgroupsResult;
 import com.pulumi.gitlab.outputs.GetGroupVariableResult;
@@ -165,6 +174,7 @@ import com.pulumi.gitlab.outputs.GetProjectEnvironmentsResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
 import com.pulumi.gitlab.outputs.GetProjectIdsResult;
+import com.pulumi.gitlab.outputs.GetProjectIssueLabelEventsResult;
 import com.pulumi.gitlab.outputs.GetProjectIssueResult;
 import com.pulumi.gitlab.outputs.GetProjectIssuesResult;
 import com.pulumi.gitlab.outputs.GetProjectMembershipResult;
@@ -178,6 +188,7 @@ import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedTagResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedTagsResult;
 import com.pulumi.gitlab.outputs.GetProjectResult;
+import com.pulumi.gitlab.outputs.GetProjectSecureFileResult;
 import com.pulumi.gitlab.outputs.GetProjectTagResult;
 import com.pulumi.gitlab.outputs.GetProjectTagsResult;
 import com.pulumi.gitlab.outputs.GetProjectVariableResult;
@@ -189,6 +200,7 @@ import com.pulumi.gitlab.outputs.GetReleaseResult;
 import com.pulumi.gitlab.outputs.GetRepositoryFileResult;
 import com.pulumi.gitlab.outputs.GetRepositoryTreeResult;
 import com.pulumi.gitlab.outputs.GetRunnersResult;
+import com.pulumi.gitlab.outputs.GetSecurityPolicyDocumentResult;
 import com.pulumi.gitlab.outputs.GetUserResult;
 import com.pulumi.gitlab.outputs.GetUserSshkeysResult;
 import com.pulumi.gitlab.outputs.GetUsersResult;
@@ -408,7 +420,7 @@ public final class GitlabFunctions {
     }
     /**
      * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
      * 
      * ## Example Usage
      * 
@@ -480,7 +492,7 @@ public final class GitlabFunctions {
     }
     /**
      * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
      * 
      * ## Example Usage
      * 
@@ -552,7 +564,7 @@ public final class GitlabFunctions {
     }
     /**
      * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
      * 
      * ## Example Usage
      * 
@@ -624,7 +636,7 @@ public final class GitlabFunctions {
     }
     /**
      * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
      * 
      * ## Example Usage
      * 
@@ -696,7 +708,7 @@ public final class GitlabFunctions {
     }
     /**
      * The `gitlab.getArtifactFile` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/ee/api/job_artifacts.html#download-a-single-artifact-file-from-specific-tag-or-branch)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/job_artifacts/#download-a-single-artifact-file-by-reference-name)
      * 
      * ## Example Usage
      * 
@@ -2005,7 +2017,7 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
      * the most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-billable-members-of-a-group)
      * 
      * ## Example Usage
      * 
@@ -2053,7 +2065,7 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
      * the most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-billable-members-of-a-group)
      * 
      * ## Example Usage
      * 
@@ -2101,7 +2113,7 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
      * the most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-billable-members-of-a-group)
      * 
      * ## Example Usage
      * 
@@ -2149,7 +2161,7 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
      * the most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-billable-members-of-a-group)
      * 
      * ## Example Usage
      * 
@@ -2197,7 +2209,7 @@ public final class GitlabFunctions {
      * &gt; When using the `email` attribute, an exact match is not guaranteed. The most related match will be returned. Starting with GitLab 16.6,
      * the most related match will prioritize an exact match if one is available.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-memberships-for-a-billable-member-of-a-group)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-billable-members-of-a-group)
      * 
      * ## Example Usage
      * 
@@ -2615,7 +2627,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership() {
@@ -2624,7 +2636,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain() {
@@ -2633,7 +2645,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args) {
@@ -2642,7 +2654,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args) {
@@ -2651,7 +2663,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args, InvokeOptions options) {
@@ -2660,7 +2672,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static Output<GetGroupMembershipResult> getGroupMembership(GetGroupMembershipArgs args, InvokeOutputOptions options) {
@@ -2669,7 +2681,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
      * 
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args, InvokeOptions options) {
@@ -2778,7 +2790,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -2789,7 +2801,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -2800,7 +2812,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -2811,7 +2823,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -2822,13 +2834,78 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.GroupServiceAccount` data source retrieves information about a GitLab service account in a group.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_service_accounts/#list-service-account-users)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", TypeShape.of(GetGroupServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupServiceAccountAccessTokens` data source allows to retrieve all access tokens for a group service account.
+     * 
+     * &gt; **Note:** The data source returns the token metadata only. The token value is not available.
+     * 
+     * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     */
+    public static Output<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokens(GetGroupServiceAccountAccessTokensArgs args) {
+        return getGroupServiceAccountAccessTokens(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupServiceAccountAccessTokens` data source allows to retrieve all access tokens for a group service account.
+     * 
+     * &gt; **Note:** The data source returns the token metadata only. The token value is not available.
+     * 
+     * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     */
+    public static CompletableFuture<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokensPlain(GetGroupServiceAccountAccessTokensPlainArgs args) {
+        return getGroupServiceAccountAccessTokensPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupServiceAccountAccessTokens` data source allows to retrieve all access tokens for a group service account.
+     * 
+     * &gt; **Note:** The data source returns the token metadata only. The token value is not available.
+     * 
+     * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     */
+    public static Output<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokens(GetGroupServiceAccountAccessTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", TypeShape.of(GetGroupServiceAccountAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupServiceAccountAccessTokens` data source allows to retrieve all access tokens for a group service account.
+     * 
+     * &gt; **Note:** The data source returns the token metadata only. The token value is not available.
+     * 
+     * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     */
+    public static Output<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokens(GetGroupServiceAccountAccessTokensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", TypeShape.of(GetGroupServiceAccountAccessTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupServiceAccountAccessTokens` data source allows to retrieve all access tokens for a group service account.
+     * 
+     * &gt; **Note:** The data source returns the token metadata only. The token value is not available.
+     * 
+     * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     */
+    public static CompletableFuture<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokensPlain(GetGroupServiceAccountAccessTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", TypeShape.of(GetGroupServiceAccountAccessTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getGroupSubgroups` data source allows to get subgroups of a group.
@@ -3974,7 +4051,7 @@ public final class GitlabFunctions {
      * 
      * &gt; In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -4018,7 +4095,7 @@ public final class GitlabFunctions {
      * 
      * &gt; In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -4062,7 +4139,7 @@ public final class GitlabFunctions {
      * 
      * &gt; In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -4106,7 +4183,7 @@ public final class GitlabFunctions {
      * 
      * &gt; In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -4150,7 +4227,7 @@ public final class GitlabFunctions {
      * 
      * &gt; In order for a user to create a user account, they must have admin privileges at the instance level. This makes this feature unavailable on `gitlab.com`
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_service_accounts/)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#instance-service-accounts)
      * 
      * ## Example Usage
      * 
@@ -7184,6 +7261,221 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectIssue:getProjectIssue", TypeShape.of(GetProjectIssueResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.getProjectIssueLabelEvents` data source retrieves label events for a specific GitLab project issue.
+     * 
+     * **Upstream API**: [GitLab Resource Label Events API docs](https://docs.gitlab.com/api/resource_label_events/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs.builder()
+     *             .project("my-group/my-project")
+     *             .issueIid(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectIssueLabelEventsResult> getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs args) {
+        return getProjectIssueLabelEvents(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectIssueLabelEvents` data source retrieves label events for a specific GitLab project issue.
+     * 
+     * **Upstream API**: [GitLab Resource Label Events API docs](https://docs.gitlab.com/api/resource_label_events/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs.builder()
+     *             .project("my-group/my-project")
+     *             .issueIid(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectIssueLabelEventsResult> getProjectIssueLabelEventsPlain(GetProjectIssueLabelEventsPlainArgs args) {
+        return getProjectIssueLabelEventsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectIssueLabelEvents` data source retrieves label events for a specific GitLab project issue.
+     * 
+     * **Upstream API**: [GitLab Resource Label Events API docs](https://docs.gitlab.com/api/resource_label_events/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs.builder()
+     *             .project("my-group/my-project")
+     *             .issueIid(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectIssueLabelEventsResult> getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectIssueLabelEvents:getProjectIssueLabelEvents", TypeShape.of(GetProjectIssueLabelEventsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectIssueLabelEvents` data source retrieves label events for a specific GitLab project issue.
+     * 
+     * **Upstream API**: [GitLab Resource Label Events API docs](https://docs.gitlab.com/api/resource_label_events/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs.builder()
+     *             .project("my-group/my-project")
+     *             .issueIid(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectIssueLabelEventsResult> getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectIssueLabelEvents:getProjectIssueLabelEvents", TypeShape.of(GetProjectIssueLabelEventsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectIssueLabelEvents` data source retrieves label events for a specific GitLab project issue.
+     * 
+     * **Upstream API**: [GitLab Resource Label Events API docs](https://docs.gitlab.com/api/resource_label_events/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectIssueLabelEvents(GetProjectIssueLabelEventsArgs.builder()
+     *             .project("my-group/my-project")
+     *             .issueIid(42)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectIssueLabelEventsResult> getProjectIssueLabelEventsPlain(GetProjectIssueLabelEventsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectIssueLabelEvents:getProjectIssueLabelEvents", TypeShape.of(GetProjectIssueLabelEventsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.getProjectIssues` data source allows to retrieve details about issues in a project.
      * 
      * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
@@ -7426,7 +7718,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership() {
@@ -7435,7 +7727,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain() {
@@ -7444,7 +7736,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args) {
@@ -7453,7 +7745,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args) {
@@ -7462,7 +7754,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args, InvokeOptions options) {
@@ -7471,7 +7763,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args, InvokeOutputOptions options) {
@@ -7480,7 +7772,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/members/#list-all-members-of-a-group-or-project)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
     public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain(GetProjectMembershipPlainArgs args, InvokeOptions options) {
@@ -8224,7 +8516,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
      * 
      */
     public static Output<GetProjectProtectedTagResult> getProjectProtectedTag(GetProjectProtectedTagArgs args) {
@@ -8233,7 +8525,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
      * 
      */
     public static CompletableFuture<GetProjectProtectedTagResult> getProjectProtectedTagPlain(GetProjectProtectedTagPlainArgs args) {
@@ -8242,7 +8534,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
      * 
      */
     public static Output<GetProjectProtectedTagResult> getProjectProtectedTag(GetProjectProtectedTagArgs args, InvokeOptions options) {
@@ -8251,7 +8543,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
      * 
      */
     public static Output<GetProjectProtectedTagResult> getProjectProtectedTag(GetProjectProtectedTagArgs args, InvokeOutputOptions options) {
@@ -8260,7 +8552,7 @@ public final class GitlabFunctions {
     /**
      * The `gitlab.getProjectProtectedTag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-single-protected-tag-or-wildcard-protected-tag)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/#get-a-protected-tag-or-wildcard-protected-tag)
      * 
      */
     public static CompletableFuture<GetProjectProtectedTagResult> getProjectProtectedTagPlain(GetProjectProtectedTagPlainArgs args, InvokeOptions options) {
@@ -8310,6 +8602,246 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectProtectedTagsResult> getProjectProtectedTagsPlain(GetProjectProtectedTagsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", TypeShape.of(GetProjectProtectedTagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .secureFileId(123)
+     *             .build());
+     * 
+     *         final var byName = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .name("secret.pem")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectSecureFileResult> getProjectSecureFile(GetProjectSecureFileArgs args) {
+        return getProjectSecureFile(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .secureFileId(123)
+     *             .build());
+     * 
+     *         final var byName = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .name("secret.pem")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectSecureFileResult> getProjectSecureFilePlain(GetProjectSecureFilePlainArgs args) {
+        return getProjectSecureFilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .secureFileId(123)
+     *             .build());
+     * 
+     *         final var byName = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .name("secret.pem")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectSecureFileResult> getProjectSecureFile(GetProjectSecureFileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectSecureFile:getProjectSecureFile", TypeShape.of(GetProjectSecureFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .secureFileId(123)
+     *             .build());
+     * 
+     *         final var byName = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .name("secret.pem")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectSecureFileResult> getProjectSecureFile(GetProjectSecureFileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectSecureFile:getProjectSecureFile", TypeShape.of(GetProjectSecureFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .secureFileId(123)
+     *             .build());
+     * 
+     *         final var byName = GitlabFunctions.getProjectSecureFile(GetProjectSecureFileArgs.builder()
+     *             .project("123")
+     *             .name("secret.pem")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectSecureFileResult> getProjectSecureFilePlain(GetProjectSecureFilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectSecureFile:getProjectSecureFile", TypeShape.of(GetProjectSecureFileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
@@ -10464,6 +10996,461 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetRunnersResult> getRunnersPlain(GetRunnersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getRunners:getRunners", TypeShape.of(GetRunnersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityPolicyDocumentResult> getSecurityPolicyDocument() {
+        return getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityPolicyDocumentResult> getSecurityPolicyDocumentPlain() {
+        return getSecurityPolicyDocumentPlain(GetSecurityPolicyDocumentPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityPolicyDocumentResult> getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs args) {
+        return getSecurityPolicyDocument(args, InvokeOptions.Empty);
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityPolicyDocumentResult> getSecurityPolicyDocumentPlain(GetSecurityPolicyDocumentPlainArgs args) {
+        return getSecurityPolicyDocumentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityPolicyDocumentResult> getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getSecurityPolicyDocument:getSecurityPolicyDocument", TypeShape.of(GetSecurityPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityPolicyDocumentResult> getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getSecurityPolicyDocument:getSecurityPolicyDocument", TypeShape.of(GetSecurityPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Generates a GitLab security policy YAML document from structured configuration.
+     * This data source performs pure transformation without any API calls.
+     * 
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.RepositoryFile;
+     * import com.pulumi.gitlab.RepositoryFileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Use this with `gitlab_repository_file` to manage your policies using native HCL
+     *         final var scan = GitlabFunctions.getSecurityPolicyDocument(GetSecurityPolicyDocumentArgs.builder()
+     *             .scanExecutionPolicies(GetSecurityPolicyDocumentScanExecutionPolicyArgs.builder()
+     *                 .name("Basic SAST Policy")
+     *                 .enabled(true)
+     *                 .rules(GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs.builder()
+     *                     .type("pipeline")
+     *                     .branchType("all")
+     *                     .build())
+     *                 .actions(GetSecurityPolicyDocumentScanExecutionPolicyActionArgs.builder()
+     *                     .scan("sast")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
+     *         // for how to link a security policy project to a project or group.
+     *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
+     *             .project("1234")
+     *             .ref("main")
+     *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .content(scan.yaml())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityPolicyDocumentResult> getSecurityPolicyDocumentPlain(GetSecurityPolicyDocumentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getSecurityPolicyDocument:getSecurityPolicyDocument", TypeShape.of(GetSecurityPolicyDocumentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.
