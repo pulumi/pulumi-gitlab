@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectTag` resource allows to manage the lifecycle of a tag in a project.
+    /// The `gitlab.ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
     /// 
     /// **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.GitLab
         /// The message of the annotated tag.
         /// </summary>
         [Output("message")]
-        public Output<string?> Message { get; private set; } = null!;
+        public Output<string> Message { get; private set; } = null!;
 
         /// <summary>
         /// The name of a tag.

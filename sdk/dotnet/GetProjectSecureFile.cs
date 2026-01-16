@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetProjectSecureFile
     {
         /// <summary>
-        /// The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+        /// The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectSecureFileResult>("gitlab:index/getProjectSecureFile:getProjectSecureFile", args ?? new GetProjectSecureFileArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+        /// The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectSecureFileResult>("gitlab:index/getProjectSecureFile:getProjectSecureFile", args ?? new GetProjectSecureFileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+        /// The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
         /// 

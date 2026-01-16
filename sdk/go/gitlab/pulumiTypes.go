@@ -6853,6 +6853,8 @@ type GetGroupMembershipMember struct {
 	AvatarUrl string `pulumi:"avatarUrl"`
 	// Expiration date for the group membership.
 	ExpiresAt string `pulumi:"expiresAt"`
+	// SAML identity linked to the group member.
+	GroupSamlIdentity GetGroupMembershipMemberGroupSamlIdentity `pulumi:"groupSamlIdentity"`
 	// The unique id assigned to the user by the gitlab server.
 	Id int `pulumi:"id"`
 	// The name of the user.
@@ -6883,6 +6885,8 @@ type GetGroupMembershipMemberArgs struct {
 	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
 	// Expiration date for the group membership.
 	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// SAML identity linked to the group member.
+	GroupSamlIdentity GetGroupMembershipMemberGroupSamlIdentityInput `pulumi:"groupSamlIdentity"`
 	// The unique id assigned to the user by the gitlab server.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The name of the user.
@@ -6961,6 +6965,11 @@ func (o GetGroupMembershipMemberOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipMember) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
+// SAML identity linked to the group member.
+func (o GetGroupMembershipMemberOutput) GroupSamlIdentity() GetGroupMembershipMemberGroupSamlIdentityOutput {
+	return o.ApplyT(func(v GetGroupMembershipMember) GetGroupMembershipMemberGroupSamlIdentity { return v.GroupSamlIdentity }).(GetGroupMembershipMemberGroupSamlIdentityOutput)
+}
+
 // The unique id assigned to the user by the gitlab server.
 func (o GetGroupMembershipMemberOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMembershipMember) int { return v.Id }).(pulumi.IntOutput)
@@ -7004,6 +7013,76 @@ func (o GetGroupMembershipMemberArrayOutput) Index(i pulumi.IntInput) GetGroupMe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipMember {
 		return vs[0].([]GetGroupMembershipMember)[vs[1].(int)]
 	}).(GetGroupMembershipMemberOutput)
+}
+
+type GetGroupMembershipMemberGroupSamlIdentity struct {
+	// The external UID of the group SAML identity.
+	ExternUid string `pulumi:"externUid"`
+	// The provider of the SAML identity.
+	Provider string `pulumi:"provider"`
+	// The ID of the SAML provider.
+	SamlProviderId int `pulumi:"samlProviderId"`
+}
+
+// GetGroupMembershipMemberGroupSamlIdentityInput is an input type that accepts GetGroupMembershipMemberGroupSamlIdentityArgs and GetGroupMembershipMemberGroupSamlIdentityOutput values.
+// You can construct a concrete instance of `GetGroupMembershipMemberGroupSamlIdentityInput` via:
+//
+//	GetGroupMembershipMemberGroupSamlIdentityArgs{...}
+type GetGroupMembershipMemberGroupSamlIdentityInput interface {
+	pulumi.Input
+
+	ToGetGroupMembershipMemberGroupSamlIdentityOutput() GetGroupMembershipMemberGroupSamlIdentityOutput
+	ToGetGroupMembershipMemberGroupSamlIdentityOutputWithContext(context.Context) GetGroupMembershipMemberGroupSamlIdentityOutput
+}
+
+type GetGroupMembershipMemberGroupSamlIdentityArgs struct {
+	// The external UID of the group SAML identity.
+	ExternUid pulumi.StringInput `pulumi:"externUid"`
+	// The provider of the SAML identity.
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// The ID of the SAML provider.
+	SamlProviderId pulumi.IntInput `pulumi:"samlProviderId"`
+}
+
+func (GetGroupMembershipMemberGroupSamlIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMembershipMemberGroupSamlIdentity)(nil)).Elem()
+}
+
+func (i GetGroupMembershipMemberGroupSamlIdentityArgs) ToGetGroupMembershipMemberGroupSamlIdentityOutput() GetGroupMembershipMemberGroupSamlIdentityOutput {
+	return i.ToGetGroupMembershipMemberGroupSamlIdentityOutputWithContext(context.Background())
+}
+
+func (i GetGroupMembershipMemberGroupSamlIdentityArgs) ToGetGroupMembershipMemberGroupSamlIdentityOutputWithContext(ctx context.Context) GetGroupMembershipMemberGroupSamlIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipMemberGroupSamlIdentityOutput)
+}
+
+type GetGroupMembershipMemberGroupSamlIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMembershipMemberGroupSamlIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMembershipMemberGroupSamlIdentity)(nil)).Elem()
+}
+
+func (o GetGroupMembershipMemberGroupSamlIdentityOutput) ToGetGroupMembershipMemberGroupSamlIdentityOutput() GetGroupMembershipMemberGroupSamlIdentityOutput {
+	return o
+}
+
+func (o GetGroupMembershipMemberGroupSamlIdentityOutput) ToGetGroupMembershipMemberGroupSamlIdentityOutputWithContext(ctx context.Context) GetGroupMembershipMemberGroupSamlIdentityOutput {
+	return o
+}
+
+// The external UID of the group SAML identity.
+func (o GetGroupMembershipMemberGroupSamlIdentityOutput) ExternUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMemberGroupSamlIdentity) string { return v.ExternUid }).(pulumi.StringOutput)
+}
+
+// The provider of the SAML identity.
+func (o GetGroupMembershipMemberGroupSamlIdentityOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipMemberGroupSamlIdentity) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// The ID of the SAML provider.
+func (o GetGroupMembershipMemberGroupSamlIdentityOutput) SamlProviderId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupMembershipMemberGroupSamlIdentity) int { return v.SamlProviderId }).(pulumi.IntOutput)
 }
 
 type GetGroupProvisionedUsersProvisionedUser struct {
@@ -10604,7 +10683,7 @@ type GetProjectHooksHook struct {
 	TagPushEvents bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
 	//
-	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
@@ -10660,7 +10739,7 @@ type GetProjectHooksHookArgs struct {
 	TagPushEvents pulumi.BoolInput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
 	//
-	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
+	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 	Token pulumi.StringInput `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -10806,7 +10885,7 @@ func (o GetProjectHooksHookOutput) TagPushEvents() pulumi.BoolOutput {
 
 // A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
 //
-// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank.
+// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
 func (o GetProjectHooksHookOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -19725,6 +19804,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupHooksHookArrayInput)(nil)).Elem(), GetGroupHooksHookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberInput)(nil)).Elem(), GetGroupMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberArrayInput)(nil)).Elem(), GetGroupMembershipMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipMemberGroupSamlIdentityInput)(nil)).Elem(), GetGroupMembershipMemberGroupSamlIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupProvisionedUsersProvisionedUserArrayInput)(nil)).Elem(), GetGroupProvisionedUsersProvisionedUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupSamlLinksSamlLinkInput)(nil)).Elem(), GetGroupSamlLinksSamlLinkArgs{})
@@ -19950,6 +20030,7 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupHooksHookArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMembershipMemberGroupSamlIdentityOutput{})
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserOutput{})
 	pulumi.RegisterOutputType(GetGroupProvisionedUsersProvisionedUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupSamlLinksSamlLinkOutput{})

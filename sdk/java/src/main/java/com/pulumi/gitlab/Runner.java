@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.Runner` resource allows to manage the lifecycle of a runner.
  * 
- * &gt; This resource has been deprecated in favor of the `gitlab.UserRunner` resource. Please use that resource, and the new registration flow, instead.
+ * &gt; This resource has been deprecated in favor of the `gitlab.UserRunner` resource. Please use that resource, and the new registration flow, instead. To be removed in 19.0.
  * 
  * A runner can either be registered at an instance level or group level.
  * The runner will be registered at a group level if the token used is from a group, or at an instance level if the token used is for the instance.

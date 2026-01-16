@@ -137,6 +137,12 @@ namespace Pulumi.GitLab
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+        /// </summary>
+        [Output("allowMergeOnSkippedPipeline")]
+        public Output<bool> AllowMergeOnSkippedPipeline { get; private set; } = null!;
+
+        /// <summary>
         /// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         /// </summary>
         [Output("allowedEmailDomainsLists")]
@@ -243,6 +249,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        /// </summary>
+        [Output("onlyAllowMergeIfAllDiscussionsAreResolved")]
+        public Output<bool> OnlyAllowMergeIfAllDiscussionsAreResolved { get; private set; } = null!;
+
+        /// <summary>
+        /// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        /// </summary>
+        [Output("onlyAllowMergeIfPipelineSucceeds")]
+        public Output<bool> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
 
         /// <summary>
         /// Id of the parent group (creates a nested group).
@@ -396,6 +414,12 @@ namespace Pulumi.GitLab
 
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+        /// </summary>
+        [Input("allowMergeOnSkippedPipeline")]
+        public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
+
         [Input("allowedEmailDomainsLists")]
         private InputList<string>? _allowedEmailDomainsLists;
 
@@ -499,6 +523,18 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        /// </summary>
+        [Input("onlyAllowMergeIfAllDiscussionsAreResolved")]
+        public Input<bool>? OnlyAllowMergeIfAllDiscussionsAreResolved { get; set; }
+
+        /// <summary>
+        /// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        /// </summary>
+        [Input("onlyAllowMergeIfPipelineSucceeds")]
+        public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
+
+        /// <summary>
         /// Id of the parent group (creates a nested group).
         /// </summary>
         [Input("parentId")]
@@ -596,6 +632,12 @@ namespace Pulumi.GitLab
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+        /// </summary>
+        [Input("allowMergeOnSkippedPipeline")]
+        public Input<bool>? AllowMergeOnSkippedPipeline { get; set; }
+
         [Input("allowedEmailDomainsLists")]
         private InputList<string>? _allowedEmailDomainsLists;
 
@@ -715,6 +757,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        /// </summary>
+        [Input("onlyAllowMergeIfAllDiscussionsAreResolved")]
+        public Input<bool>? OnlyAllowMergeIfAllDiscussionsAreResolved { get; set; }
+
+        /// <summary>
+        /// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        /// </summary>
+        [Input("onlyAllowMergeIfPipelineSucceeds")]
+        public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
         /// Id of the parent group (creates a nested group).

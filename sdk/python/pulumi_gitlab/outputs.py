@@ -57,6 +57,7 @@ __all__ = [
     'GetGroupBillableMemberMembershipsMembershipResult',
     'GetGroupHooksHookResult',
     'GetGroupMembershipMemberResult',
+    'GetGroupMembershipMemberGroupSamlIdentityResult',
     'GetGroupProvisionedUsersProvisionedUserResult',
     'GetGroupSamlLinksSamlLinkResult',
     'GetGroupServiceAccountAccessTokensAccessTokenResult',
@@ -3863,6 +3864,7 @@ class GetGroupMembershipMemberResult(dict):
                  access_level: _builtins.str,
                  avatar_url: _builtins.str,
                  expires_at: _builtins.str,
+                 group_saml_identity: 'outputs.GetGroupMembershipMemberGroupSamlIdentityResult',
                  id: _builtins.int,
                  name: _builtins.str,
                  state: _builtins.str,
@@ -3872,6 +3874,7 @@ class GetGroupMembershipMemberResult(dict):
         :param _builtins.str access_level: The level of access to the group.
         :param _builtins.str avatar_url: The avatar URL of the user.
         :param _builtins.str expires_at: Expiration date for the group membership.
+        :param 'GetGroupMembershipMemberGroupSamlIdentityArgs' group_saml_identity: SAML identity linked to the group member.
         :param _builtins.int id: The unique id assigned to the user by the gitlab server.
         :param _builtins.str name: The name of the user.
         :param _builtins.str state: Whether the user is active or blocked.
@@ -3881,6 +3884,7 @@ class GetGroupMembershipMemberResult(dict):
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "group_saml_identity", group_saml_identity)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
@@ -3910,6 +3914,14 @@ class GetGroupMembershipMemberResult(dict):
         Expiration date for the group membership.
         """
         return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter(name="groupSamlIdentity")
+    def group_saml_identity(self) -> 'outputs.GetGroupMembershipMemberGroupSamlIdentityResult':
+        """
+        SAML identity linked to the group member.
+        """
+        return pulumi.get(self, "group_saml_identity")
 
     @_builtins.property
     @pulumi.getter
@@ -3950,6 +3962,46 @@ class GetGroupMembershipMemberResult(dict):
         User's website URL.
         """
         return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetGroupMembershipMemberGroupSamlIdentityResult(dict):
+    def __init__(__self__, *,
+                 extern_uid: _builtins.str,
+                 provider: _builtins.str,
+                 saml_provider_id: _builtins.int):
+        """
+        :param _builtins.str extern_uid: The external UID of the group SAML identity.
+        :param _builtins.str provider: The provider of the SAML identity.
+        :param _builtins.int saml_provider_id: The ID of the SAML provider.
+        """
+        pulumi.set(__self__, "extern_uid", extern_uid)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "saml_provider_id", saml_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="externUid")
+    def extern_uid(self) -> _builtins.str:
+        """
+        The external UID of the group SAML identity.
+        """
+        return pulumi.get(self, "extern_uid")
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> _builtins.str:
+        """
+        The provider of the SAML identity.
+        """
+        return pulumi.get(self, "provider")
+
+    @_builtins.property
+    @pulumi.getter(name="samlProviderId")
+    def saml_provider_id(self) -> _builtins.int:
+        """
+        The ID of the SAML provider.
+        """
+        return pulumi.get(self, "saml_provider_id")
 
 
 @pulumi.output_type
@@ -6492,7 +6544,7 @@ class GetProjectHooksHookResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank.""")
+    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.""")
     def token(self) -> _builtins.str:
         """
         A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.

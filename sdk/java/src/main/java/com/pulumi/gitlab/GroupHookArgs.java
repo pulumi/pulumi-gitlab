@@ -35,14 +35,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      * 
      */
     @Import(name="confidentialIssuesEvents")
     private @Nullable Output<Boolean> confidentialIssuesEvents;
 
     /**
-     * @return Invoke the hook for confidential issues events.
+     * @return Invoke the hook for confidential issues events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> confidentialIssuesEvents() {
@@ -50,14 +50,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      * 
      */
     @Import(name="confidentialNoteEvents")
     private @Nullable Output<Boolean> confidentialNoteEvents;
 
     /**
-     * @return Invoke the hook for confidential note events.
+     * @return Invoke the hook for confidential note events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> confidentialNoteEvents() {
@@ -95,14 +95,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      * 
      */
     @Import(name="deploymentEvents")
     private @Nullable Output<Boolean> deploymentEvents;
 
     /**
-     * @return Invoke the hook for deployment events.
+     * @return Invoke the hook for deployment events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> deploymentEvents() {
@@ -125,14 +125,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for emoji events.
+     * Invoke the hook for emoji events. Defaults to `false`.
      * 
      */
     @Import(name="emojiEvents")
     private @Nullable Output<Boolean> emojiEvents;
 
     /**
-     * @return Invoke the hook for emoji events.
+     * @return Invoke the hook for emoji events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> emojiEvents() {
@@ -140,14 +140,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      * 
      */
     @Import(name="enableSslVerification")
     private @Nullable Output<Boolean> enableSslVerification;
 
     /**
-     * @return Enable SSL verification when invoking the hook.
+     * @return Enable SSL verification when invoking the hook. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enableSslVerification() {
@@ -155,14 +155,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for feature flag events.
+     * Invoke the hook for feature flag events. Defaults to `false`.
      * 
      */
     @Import(name="featureFlagEvents")
     private @Nullable Output<Boolean> featureFlagEvents;
 
     /**
-     * @return Invoke the hook for feature flag events.
+     * @return Invoke the hook for feature flag events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> featureFlagEvents() {
@@ -185,14 +185,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      * 
      */
     @Import(name="issuesEvents")
     private @Nullable Output<Boolean> issuesEvents;
 
     /**
-     * @return Invoke the hook for issues events.
+     * @return Invoke the hook for issues events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> issuesEvents() {
@@ -200,14 +200,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      * 
      */
     @Import(name="jobEvents")
     private @Nullable Output<Boolean> jobEvents;
 
     /**
-     * @return Invoke the hook for job events.
+     * @return Invoke the hook for job events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> jobEvents() {
@@ -215,14 +215,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
     @Import(name="mergeRequestsEvents")
     private @Nullable Output<Boolean> mergeRequestsEvents;
 
     /**
-     * @return Invoke the hook for merge requests events.
+     * @return Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> mergeRequestsEvents() {
@@ -245,14 +245,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      * 
      */
     @Import(name="noteEvents")
     private @Nullable Output<Boolean> noteEvents;
 
     /**
-     * @return Invoke the hook for note events.
+     * @return Invoke the hook for note events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> noteEvents() {
@@ -260,14 +260,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      * 
      */
     @Import(name="pipelineEvents")
     private @Nullable Output<Boolean> pipelineEvents;
 
     /**
-     * @return Invoke the hook for pipeline events.
+     * @return Invoke the hook for pipeline events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> pipelineEvents() {
@@ -275,14 +275,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      * 
      */
     @Import(name="pushEvents")
     private @Nullable Output<Boolean> pushEvents;
 
     /**
-     * @return Invoke the hook for push events.
+     * @return Invoke the hook for push events. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> pushEvents() {
@@ -305,14 +305,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      * 
      */
     @Import(name="releasesEvents")
     private @Nullable Output<Boolean> releasesEvents;
 
     /**
-     * @return Invoke the hook for release events.
+     * @return Invoke the hook for release events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> releasesEvents() {
@@ -320,14 +320,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for subgroup events.
+     * Invoke the hook for subgroup events. Defaults to `false`.
      * 
      */
     @Import(name="subgroupEvents")
     private @Nullable Output<Boolean> subgroupEvents;
 
     /**
-     * @return Invoke the hook for subgroup events.
+     * @return Invoke the hook for subgroup events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> subgroupEvents() {
@@ -335,14 +335,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      * 
      */
     @Import(name="tagPushEvents")
     private @Nullable Output<Boolean> tagPushEvents;
 
     /**
-     * @return Invoke the hook for tag push events.
+     * @return Invoke the hook for tag push events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> tagPushEvents() {
@@ -380,14 +380,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      * 
      */
     @Import(name="wikiPageEvents")
     private @Nullable Output<Boolean> wikiPageEvents;
 
     /**
-     * @return Invoke the hook for wiki page events.
+     * @return Invoke the hook for wiki page events. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> wikiPageEvents() {
@@ -464,7 +464,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param confidentialIssuesEvents Invoke the hook for confidential issues events.
+         * @param confidentialIssuesEvents Invoke the hook for confidential issues events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param confidentialIssuesEvents Invoke the hook for confidential issues events.
+         * @param confidentialIssuesEvents Invoke the hook for confidential issues events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param confidentialNoteEvents Invoke the hook for confidential note events.
+         * @param confidentialNoteEvents Invoke the hook for confidential note events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param confidentialNoteEvents Invoke the hook for confidential note events.
+         * @param confidentialNoteEvents Invoke the hook for confidential note events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentEvents Invoke the hook for deployment events.
+         * @param deploymentEvents Invoke the hook for deployment events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentEvents Invoke the hook for deployment events.
+         * @param deploymentEvents Invoke the hook for deployment events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emojiEvents Invoke the hook for emoji events.
+         * @param emojiEvents Invoke the hook for emoji events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emojiEvents Invoke the hook for emoji events.
+         * @param emojiEvents Invoke the hook for emoji events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSslVerification Enable SSL verification when invoking the hook.
+         * @param enableSslVerification Enable SSL verification when invoking the hook. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSslVerification Enable SSL verification when invoking the hook.
+         * @param enableSslVerification Enable SSL verification when invoking the hook. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -642,7 +642,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featureFlagEvents Invoke the hook for feature flag events.
+         * @param featureFlagEvents Invoke the hook for feature flag events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featureFlagEvents Invoke the hook for feature flag events.
+         * @param featureFlagEvents Invoke the hook for feature flag events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuesEvents Invoke the hook for issues events.
+         * @param issuesEvents Invoke the hook for issues events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuesEvents Invoke the hook for issues events.
+         * @param issuesEvents Invoke the hook for issues events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -705,7 +705,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobEvents Invoke the hook for job events.
+         * @param jobEvents Invoke the hook for job events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -716,7 +716,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobEvents Invoke the hook for job events.
+         * @param jobEvents Invoke the hook for job events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeRequestsEvents Invoke the hook for merge requests events.
+         * @param mergeRequestsEvents Invoke the hook for merge requests events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeRequestsEvents Invoke the hook for merge requests events.
+         * @param mergeRequestsEvents Invoke the hook for merge requests events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -768,7 +768,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noteEvents Invoke the hook for note events.
+         * @param noteEvents Invoke the hook for note events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noteEvents Invoke the hook for note events.
+         * @param noteEvents Invoke the hook for note events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pipelineEvents Invoke the hook for pipeline events.
+         * @param pipelineEvents Invoke the hook for pipeline events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -800,7 +800,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pipelineEvents Invoke the hook for pipeline events.
+         * @param pipelineEvents Invoke the hook for pipeline events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pushEvents Invoke the hook for push events.
+         * @param pushEvents Invoke the hook for push events. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -821,7 +821,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pushEvents Invoke the hook for push events.
+         * @param pushEvents Invoke the hook for push events. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -852,7 +852,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releasesEvents Invoke the hook for release events.
+         * @param releasesEvents Invoke the hook for release events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -863,7 +863,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releasesEvents Invoke the hook for release events.
+         * @param releasesEvents Invoke the hook for release events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -873,7 +873,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subgroupEvents Invoke the hook for subgroup events.
+         * @param subgroupEvents Invoke the hook for subgroup events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -884,7 +884,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subgroupEvents Invoke the hook for subgroup events.
+         * @param subgroupEvents Invoke the hook for subgroup events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tagPushEvents Invoke the hook for tag push events.
+         * @param tagPushEvents Invoke the hook for tag push events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -905,7 +905,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tagPushEvents Invoke the hook for tag push events.
+         * @param tagPushEvents Invoke the hook for tag push events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -957,7 +957,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wikiPageEvents Invoke the hook for wiki page events.
+         * @param wikiPageEvents Invoke the hook for wiki page events. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wikiPageEvents Invoke the hook for wiki page events.
+         * @param wikiPageEvents Invoke the hook for wiki page events. Defaults to `false`.
          * 
          * @return builder
          * 

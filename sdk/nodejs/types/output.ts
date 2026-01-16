@@ -353,6 +353,10 @@ export interface GetGroupMembershipMember {
      */
     expiresAt: string;
     /**
+     * SAML identity linked to the group member.
+     */
+    groupSamlIdentity: outputs.GetGroupMembershipMemberGroupSamlIdentity;
+    /**
      * The unique id assigned to the user by the gitlab server.
      */
     id: number;
@@ -372,6 +376,21 @@ export interface GetGroupMembershipMember {
      * User's website URL.
      */
     webUrl: string;
+}
+
+export interface GetGroupMembershipMemberGroupSamlIdentity {
+    /**
+     * The external UID of the group SAML identity.
+     */
+    externUid: string;
+    /**
+     * The provider of the SAML identity.
+     */
+    provider: string;
+    /**
+     * The ID of the SAML provider.
+     */
+    samlProviderId: number;
 }
 
 export interface GetGroupProvisionedUsersProvisionedUser {
@@ -1266,7 +1285,7 @@ export interface GetProjectHooksHook {
     /**
      * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
      *
-     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank.
+     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      */
     token: string;
     /**

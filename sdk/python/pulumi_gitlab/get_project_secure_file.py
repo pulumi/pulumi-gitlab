@@ -163,7 +163,7 @@ def get_project_secure_file(name: Optional[_builtins.str] = None,
                             secure_file_id: Optional[_builtins.int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectSecureFileResult:
     """
-    The `get_project_secure_file` data source allows the contents of a secure file to be retrieved by either Name or ID.
+    The `ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
 
@@ -207,7 +207,7 @@ def get_project_secure_file_output(name: Optional[pulumi.Input[Optional[_builtin
                                    secure_file_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectSecureFileResult]:
     """
-    The `get_project_secure_file` data source allows the contents of a secure file to be retrieved by either Name or ID.
+    The `ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
 

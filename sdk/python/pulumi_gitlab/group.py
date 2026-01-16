@@ -22,6 +22,7 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[_builtins.str]] = None,
@@ -37,6 +38,8 @@ class GroupArgs:
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.int]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -54,6 +57,7 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[_builtins.str] path: The path of the group.
+        :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -69,6 +73,8 @@ class GroupArgs:
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         :param pulumi.Input[_builtins.int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
@@ -85,6 +91,8 @@ class GroupArgs:
         :param pulumi.Input[_builtins.str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         pulumi.set(__self__, "path", path)
+        if allow_merge_on_skipped_pipeline is not None:
+            pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if allowed_email_domains_lists is not None:
             pulumi.set(__self__, "allowed_email_domains_lists", allowed_email_domains_lists)
         if auto_devops_enabled is not None:
@@ -118,6 +126,10 @@ class GroupArgs:
             pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if only_allow_merge_if_all_discussions_are_resolved is not None:
+            pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+        if only_allow_merge_if_pipeline_succeeds is not None:
+            pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
         if permanently_remove_on_delete is not None:
@@ -158,6 +170,18 @@ class GroupArgs:
     @path.setter
     def path(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @allow_merge_on_skipped_pipeline.setter
+    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomainsLists")
@@ -341,6 +365,30 @@ class GroupArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
+
+    @only_allow_merge_if_all_discussions_are_resolved.setter
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
+    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @only_allow_merge_if_pipeline_succeeds.setter
+    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
+
+    @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -512,6 +560,7 @@ class GroupArgs:
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[_builtins.str]] = None,
@@ -530,6 +579,8 @@ class _GroupState:
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.int]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -549,6 +600,7 @@ class _GroupState:
                  wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -567,6 +619,8 @@ class _GroupState:
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         :param pulumi.Input[_builtins.int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
@@ -585,6 +639,8 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] web_url: Web URL of the group.
         :param pulumi.Input[_builtins.str] wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
+        if allow_merge_on_skipped_pipeline is not None:
+            pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if allowed_email_domains_lists is not None:
             pulumi.set(__self__, "allowed_email_domains_lists", allowed_email_domains_lists)
         if auto_devops_enabled is not None:
@@ -624,6 +680,10 @@ class _GroupState:
             pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if only_allow_merge_if_all_discussions_are_resolved is not None:
+            pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+        if only_allow_merge_if_pipeline_succeeds is not None:
+            pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
         if path is not None:
@@ -658,6 +718,18 @@ class _GroupState:
             pulumi.set(__self__, "web_url", web_url)
         if wiki_access_level is not None:
             pulumi.set(__self__, "wiki_access_level", wiki_access_level)
+
+    @_builtins.property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @allow_merge_on_skipped_pipeline.setter
+    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomainsLists")
@@ -877,6 +949,30 @@ class _GroupState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
+
+    @only_allow_merge_if_all_discussions_are_resolved.setter
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
+    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @only_allow_merge_if_pipeline_succeeds.setter
+    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
+
+    @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -1087,6 +1183,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1102,6 +1199,8 @@ class Group(pulumi.CustomResource):
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.int]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1208,6 +1307,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -1223,6 +1323,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         :param pulumi.Input[_builtins.int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
@@ -1348,6 +1450,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  avatar: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1363,6 +1466,8 @@ class Group(pulumi.CustomResource):
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
                  parent_id: Optional[pulumi.Input[_builtins.int]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1387,6 +1492,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
             __props__.__dict__["allowed_email_domains_lists"] = allowed_email_domains_lists
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["avatar"] = avatar
@@ -1402,6 +1508,8 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["membership_lock"] = membership_lock
             __props__.__dict__["mentions_disabled"] = mentions_disabled
             __props__.__dict__["name"] = name
+            __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
+            __props__.__dict__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
             __props__.__dict__["parent_id"] = parent_id
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
@@ -1436,6 +1544,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
             allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             avatar: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1454,6 +1563,8 @@ class Group(pulumi.CustomResource):
             membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
             mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
+            only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
             parent_id: Optional[pulumi.Input[_builtins.int]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
             permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1478,6 +1589,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -1496,6 +1608,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         :param pulumi.Input[_builtins.int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
@@ -1518,6 +1632,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
         __props__.__dict__["allowed_email_domains_lists"] = allowed_email_domains_lists
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["avatar"] = avatar
@@ -1536,6 +1651,8 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["membership_lock"] = membership_lock
         __props__.__dict__["mentions_disabled"] = mentions_disabled
         __props__.__dict__["name"] = name
+        __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
+        __props__.__dict__["only_allow_merge_if_pipeline_succeeds"] = only_allow_merge_if_pipeline_succeeds
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["path"] = path
         __props__.__dict__["permanently_remove_on_delete"] = permanently_remove_on_delete
@@ -1554,6 +1671,14 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["web_url"] = web_url
         __props__.__dict__["wiki_access_level"] = wiki_access_level
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomainsLists")
@@ -1699,6 +1824,22 @@ class Group(pulumi.CustomResource):
         The name of the group.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @_builtins.property
     @pulumi.getter(name="parentId")

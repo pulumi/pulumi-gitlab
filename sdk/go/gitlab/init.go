@@ -143,6 +143,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectApprovalRule{}
 	case "gitlab:index/projectBadge:ProjectBadge":
 		r = &ProjectBadge{}
+	case "gitlab:index/projectCicdCatalog:ProjectCicdCatalog":
+		r = &ProjectCicdCatalog{}
 	case "gitlab:index/projectCluster:ProjectCluster":
 		r = &ProjectCluster{}
 	case "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks":
@@ -191,6 +193,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectIssue{}
 	case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
 		r = &ProjectIssueBoard{}
+	case "gitlab:index/projectIssueLink:ProjectIssueLink":
+		r = &ProjectIssueLink{}
 	case "gitlab:index/projectJobTokenScope:ProjectJobTokenScope":
 		r = &ProjectJobTokenScope{}
 	case "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes":
@@ -209,14 +213,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMilestone{}
 	case "gitlab:index/projectMirror:ProjectMirror":
 		r = &ProjectMirror{}
+	case "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy":
+		r = &ProjectPackageDependencyProxy{}
 	case "gitlab:index/projectPagesSettings:ProjectPagesSettings":
 		r = &ProjectPagesSettings{}
 	case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
 		r = &ProjectProtectedEnvironment{}
+	case "gitlab:index/projectPullMirror:ProjectPullMirror":
+		r = &ProjectPullMirror{}
+	case "gitlab:index/projectPushMirror:ProjectPushMirror":
+		r = &ProjectPushMirror{}
 	case "gitlab:index/projectPushRules:ProjectPushRules":
 		r = &ProjectPushRules{}
 	case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
 		r = &ProjectRunnerEnablement{}
+	case "gitlab:index/projectSecureFile:ProjectSecureFile":
+		r = &ProjectSecureFile{}
 	case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
 		r = &ProjectSecurityPolicyAttachment{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
@@ -599,6 +611,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectCicdCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectCluster",
 		&module{version},
 	)
@@ -719,6 +736,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectIssueLink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectJobTokenScope",
 		&module{version},
 	)
@@ -764,6 +786,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectPackageDependencyProxy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectPagesSettings",
 		&module{version},
 	)
@@ -774,12 +801,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectPullMirror",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectPushMirror",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectPushRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectRunnerEnablement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectSecureFile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

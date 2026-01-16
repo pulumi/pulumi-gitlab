@@ -15,11 +15,10 @@ import com.pulumi.gitlab.outputs.ProjectTagRelease;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectTag` resource allows to manage the lifecycle of a tag in a project.
+ * The `gitlab.ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
  * 
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
  * 
@@ -113,14 +112,14 @@ public class ProjectTag extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="message", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> message;
+    private Output<String> message;
 
     /**
      * @return The message of the annotated tag.
      * 
      */
-    public Output<Optional<String>> message() {
-        return Codegen.optional(this.message);
+    public Output<String> message() {
+        return this.message;
     }
     /**
      * The name of a tag.

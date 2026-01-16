@@ -236,7 +236,7 @@ class ProjectTag(pulumi.CustomResource):
                  ref: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
+        The `ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
 
@@ -295,7 +295,7 @@ class ProjectTag(pulumi.CustomResource):
                  args: ProjectTagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
+        The `ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
 
@@ -438,7 +438,7 @@ class ProjectTag(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def message(self) -> pulumi.Output[_builtins.str]:
         """
         The message of the annotated tag.
         """

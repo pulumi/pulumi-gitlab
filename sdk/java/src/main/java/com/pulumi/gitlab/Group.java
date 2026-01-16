@@ -147,6 +147,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
     /**
+     * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="allowMergeOnSkippedPipeline", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowMergeOnSkippedPipeline;
+
+    /**
+     * @return Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> allowMergeOnSkippedPipeline() {
+        return this.allowMergeOnSkippedPipeline;
+    }
+    /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      * 
      */
@@ -401,6 +415,34 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="onlyAllowMergeIfAllDiscussionsAreResolved", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved;
+
+    /**
+     * @return Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved() {
+        return this.onlyAllowMergeIfAllDiscussionsAreResolved;
+    }
+    /**
+     * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="onlyAllowMergeIfPipelineSucceeds", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> onlyAllowMergeIfPipelineSucceeds;
+
+    /**
+     * @return Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> onlyAllowMergeIfPipelineSucceeds() {
+        return this.onlyAllowMergeIfPipelineSucceeds;
     }
     /**
      * Id of the parent group (creates a nested group).

@@ -134,6 +134,7 @@ from .project import *
 from .project_access_token import *
 from .project_approval_rule import *
 from .project_badge import *
+from .project_cicd_catalog import *
 from .project_cluster import *
 from .project_compliance_frameworks import *
 from .project_container_repository_protection import *
@@ -158,6 +159,7 @@ from .project_integration_telegram import *
 from .project_integration_youtrack import *
 from .project_issue import *
 from .project_issue_board import *
+from .project_issue_link import *
 from .project_job_token_scope import *
 from .project_job_token_scopes import *
 from .project_label import *
@@ -167,10 +169,14 @@ from .project_membership import *
 from .project_merge_request_note import *
 from .project_milestone import *
 from .project_mirror import *
+from .project_package_dependency_proxy import *
 from .project_pages_settings import *
 from .project_protected_environment import *
+from .project_pull_mirror import *
+from .project_push_mirror import *
 from .project_push_rules import *
 from .project_runner_enablement import *
+from .project_secure_file import *
 from .project_security_policy_attachment import *
 from .project_share_group import *
 from .project_tag import *
@@ -697,6 +703,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectCicdCatalog",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectCicdCatalog:ProjectCicdCatalog": "ProjectCicdCatalog"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectCluster",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -889,6 +903,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectIssueLink",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIssueLink:ProjectIssueLink": "ProjectIssueLink"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectJobTokenScope",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -961,6 +983,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectPackageDependencyProxy",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy": "ProjectPackageDependencyProxy"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectPagesSettings",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -977,6 +1007,22 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectPullMirror",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectPullMirror:ProjectPullMirror": "ProjectPullMirror"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectPushMirror",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectPushMirror:ProjectPushMirror": "ProjectPushMirror"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectPushRules",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -989,6 +1035,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": "ProjectRunnerEnablement"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectSecureFile",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectSecureFile:ProjectSecureFile": "ProjectSecureFile"
   }
  },
  {

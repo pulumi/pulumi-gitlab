@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+ * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
  *
@@ -100,7 +100,7 @@ export interface GetProjectSecureFileResult {
     readonly secureFileId: number;
 }
 /**
- * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+ * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
  *

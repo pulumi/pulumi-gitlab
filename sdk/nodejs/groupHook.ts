@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
  *
+ * > Note that `pushEvents` defaults to `true`.
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
  *
  * ## Import
@@ -68,11 +70,11 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly branchFilterStrategy: pulumi.Output<string>;
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     declare public readonly confidentialIssuesEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      */
     declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
@@ -84,7 +86,7 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly customWebhookTemplate: pulumi.Output<string>;
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      */
     declare public readonly deploymentEvents: pulumi.Output<boolean>;
     /**
@@ -92,15 +94,15 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Invoke the hook for emoji events.
+     * Invoke the hook for emoji events. Defaults to `false`.
      */
     declare public readonly emojiEvents: pulumi.Output<boolean>;
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     declare public readonly enableSslVerification: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for feature flag events.
+     * Invoke the hook for feature flag events. Defaults to `false`.
      */
     declare public readonly featureFlagEvents: pulumi.Output<boolean>;
     /**
@@ -116,15 +118,15 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hookId: pulumi.Output<number>;
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      */
     declare public readonly issuesEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      */
     declare public readonly jobEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
@@ -132,15 +134,15 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      */
     declare public readonly noteEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      */
     declare public readonly pipelineEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      */
     declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
@@ -148,15 +150,15 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly pushEventsBranchFilter: pulumi.Output<string>;
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      */
     declare public readonly releasesEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for subgroup events.
+     * Invoke the hook for subgroup events. Defaults to `false`.
      */
     declare public readonly subgroupEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      */
     declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
@@ -168,7 +170,7 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly url: pulumi.Output<string>;
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      */
     declare public readonly wikiPageEvents: pulumi.Output<boolean>;
 
@@ -264,11 +266,11 @@ export interface GroupHookState {
      */
     branchFilterStrategy?: pulumi.Input<string>;
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
@@ -280,7 +282,7 @@ export interface GroupHookState {
      */
     customWebhookTemplate?: pulumi.Input<string>;
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
@@ -288,15 +290,15 @@ export interface GroupHookState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Invoke the hook for emoji events.
+     * Invoke the hook for emoji events. Defaults to `false`.
      */
     emojiEvents?: pulumi.Input<boolean>;
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for feature flag events.
+     * Invoke the hook for feature flag events. Defaults to `false`.
      */
     featureFlagEvents?: pulumi.Input<boolean>;
     /**
@@ -312,15 +314,15 @@ export interface GroupHookState {
      */
     hookId?: pulumi.Input<number>;
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
@@ -328,15 +330,15 @@ export interface GroupHookState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      */
     noteEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      */
     pipelineEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
@@ -344,15 +346,15 @@ export interface GroupHookState {
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for subgroup events.
+     * Invoke the hook for subgroup events. Defaults to `false`.
      */
     subgroupEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
@@ -364,7 +366,7 @@ export interface GroupHookState {
      */
     url?: pulumi.Input<string>;
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      */
     wikiPageEvents?: pulumi.Input<boolean>;
 }
@@ -378,11 +380,11 @@ export interface GroupHookArgs {
      */
     branchFilterStrategy?: pulumi.Input<string>;
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
@@ -394,7 +396,7 @@ export interface GroupHookArgs {
      */
     customWebhookTemplate?: pulumi.Input<string>;
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
@@ -402,15 +404,15 @@ export interface GroupHookArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Invoke the hook for emoji events.
+     * Invoke the hook for emoji events. Defaults to `false`.
      */
     emojiEvents?: pulumi.Input<boolean>;
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for feature flag events.
+     * Invoke the hook for feature flag events. Defaults to `false`.
      */
     featureFlagEvents?: pulumi.Input<boolean>;
     /**
@@ -418,15 +420,15 @@ export interface GroupHookArgs {
      */
     group: pulumi.Input<string>;
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
@@ -434,15 +436,15 @@ export interface GroupHookArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      */
     noteEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      */
     pipelineEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
@@ -450,15 +452,15 @@ export interface GroupHookArgs {
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for subgroup events.
+     * Invoke the hook for subgroup events. Defaults to `false`.
      */
     subgroupEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
@@ -470,7 +472,7 @@ export interface GroupHookArgs {
      */
     url: pulumi.Input<string>;
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      */
     wikiPageEvents?: pulumi.Input<boolean>;
 }
