@@ -453,6 +453,10 @@
                 "current": "gitlab:index/projectBadge:ProjectBadge",
                 "majorVersion": 9
             },
+            "gitlab_project_cicd_catalog": {
+                "current": "gitlab:index/projectCicdCatalog:ProjectCicdCatalog",
+                "majorVersion": 9
+            },
             "gitlab_project_cluster": {
                 "current": "gitlab:index/projectCluster:ProjectCluster",
                 "majorVersion": 9
@@ -598,6 +602,10 @@
                     }
                 }
             },
+            "gitlab_project_issue_link": {
+                "current": "gitlab:index/projectIssueLink:ProjectIssueLink",
+                "majorVersion": 9
+            },
             "gitlab_project_job_token_scope": {
                 "current": "gitlab:index/projectJobTokenScope:ProjectJobTokenScope",
                 "majorVersion": 9
@@ -642,6 +650,10 @@
                 "current": "gitlab:index/projectMirror:ProjectMirror",
                 "majorVersion": 9
             },
+            "gitlab_project_package_dependency_proxy": {
+                "current": "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy",
+                "majorVersion": 9
+            },
             "gitlab_project_pages_settings": {
                 "current": "gitlab:index/projectPagesSettings:ProjectPagesSettings",
                 "majorVersion": 9,
@@ -666,12 +678,24 @@
                     }
                 }
             },
+            "gitlab_project_pull_mirror": {
+                "current": "gitlab:index/projectPullMirror:ProjectPullMirror",
+                "majorVersion": 9
+            },
+            "gitlab_project_push_mirror": {
+                "current": "gitlab:index/projectPushMirror:ProjectPushMirror",
+                "majorVersion": 9
+            },
             "gitlab_project_push_rules": {
                 "current": "gitlab:index/projectPushRules:ProjectPushRules",
                 "majorVersion": 9
             },
             "gitlab_project_runner_enablement": {
                 "current": "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement",
+                "majorVersion": 9
+            },
+            "gitlab_project_secure_file": {
+                "current": "gitlab:index/projectSecureFile:ProjectSecureFile",
                 "majorVersion": 9
             },
             "gitlab_project_security_policy_attachment": {
@@ -1642,6 +1666,7 @@
             "gitlab:index/projectAccessToken:ProjectAccessToken": 1,
             "gitlab:index/projectApprovalRule:ProjectApprovalRule": 0,
             "gitlab:index/projectBadge:ProjectBadge": 0,
+            "gitlab:index/projectCicdCatalog:ProjectCicdCatalog": 1,
             "gitlab:index/projectCluster:ProjectCluster": 0,
             "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": 1,
             "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection": 1,
@@ -1666,6 +1691,7 @@
             "gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack": 1,
             "gitlab:index/projectIssue:ProjectIssue": 0,
             "gitlab:index/projectIssueBoard:ProjectIssueBoard": 0,
+            "gitlab:index/projectIssueLink:ProjectIssueLink": 1,
             "gitlab:index/projectJobTokenScope:ProjectJobTokenScope": 1,
             "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes": 1,
             "gitlab:index/projectLabel:ProjectLabel": 1,
@@ -1675,13 +1701,17 @@
             "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote": 1,
             "gitlab:index/projectMilestone:ProjectMilestone": 0,
             "gitlab:index/projectMirror:ProjectMirror": 1,
+            "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy": 1,
             "gitlab:index/projectPagesSettings:ProjectPagesSettings": 1,
             "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment": 1,
+            "gitlab:index/projectPullMirror:ProjectPullMirror": 1,
+            "gitlab:index/projectPushMirror:ProjectPushMirror": 1,
             "gitlab:index/projectPushRules:ProjectPushRules": 1,
             "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": 0,
+            "gitlab:index/projectSecureFile:ProjectSecureFile": 1,
             "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": 1,
             "gitlab:index/projectShareGroup:ProjectShareGroup": 0,
-            "gitlab:index/projectTag:ProjectTag": 0,
+            "gitlab:index/projectTag:ProjectTag": 1,
             "gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule": 1,
             "gitlab:index/projectVariable:ProjectVariable": 1,
             "gitlab:index/projectWikiPage:ProjectWikiPage": 1,
