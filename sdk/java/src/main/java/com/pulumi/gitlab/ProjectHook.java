@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
  * 
+ * &gt; Note that `pushEvents` defaults to `true`.
+ * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
  * 
  * ## Example Usage
@@ -54,6 +56,7 @@ import javax.annotation.Nullable;
  *             .name("example")
  *             .description("Example hook")
  *             .mergeRequestsEvents(true)
+ *             .pushEvents(false)
  *             .build());
  * 
  *         // Using Custom Headers
@@ -106,28 +109,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectHook:ProjectHook")
 public class ProjectHook extends com.pulumi.resources.CustomResource {
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      * 
      */
     @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> confidentialIssuesEvents;
 
     /**
-     * @return Invoke the hook for confidential issues events.
+     * @return Invoke the hook for confidential issues events. Defaults to `false`.
      * 
      */
     public Output<Boolean> confidentialIssuesEvents() {
         return this.confidentialIssuesEvents;
     }
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      * 
      */
     @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> confidentialNoteEvents;
 
     /**
-     * @return Invoke the hook for confidential note events.
+     * @return Invoke the hook for confidential note events. Defaults to `false`.
      * 
      */
     public Output<Boolean> confidentialNoteEvents() {
@@ -162,14 +165,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.customWebhookTemplate;
     }
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      * 
      */
     @Export(name="deploymentEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deploymentEvents;
 
     /**
-     * @return Invoke the hook for deployment events.
+     * @return Invoke the hook for deployment events. Defaults to `false`.
      * 
      */
     public Output<Boolean> deploymentEvents() {
@@ -190,14 +193,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      * 
      */
     @Export(name="enableSslVerification", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableSslVerification;
 
     /**
-     * @return Enable SSL verification when invoking the hook.
+     * @return Enable SSL verification when invoking the hook. Defaults to `true`.
      * 
      */
     public Output<Boolean> enableSslVerification() {
@@ -218,42 +221,42 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.hookId;
     }
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      * 
      */
     @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> issuesEvents;
 
     /**
-     * @return Invoke the hook for issues events.
+     * @return Invoke the hook for issues events. Defaults to `false`.
      * 
      */
     public Output<Boolean> issuesEvents() {
         return this.issuesEvents;
     }
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      * 
      */
     @Export(name="jobEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> jobEvents;
 
     /**
-     * @return Invoke the hook for job events.
+     * @return Invoke the hook for job events. Defaults to `false`.
      * 
      */
     public Output<Boolean> jobEvents() {
         return this.jobEvents;
     }
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
     @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mergeRequestsEvents;
 
     /**
-     * @return Invoke the hook for merge requests events.
+     * @return Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
     public Output<Boolean> mergeRequestsEvents() {
@@ -274,28 +277,28 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      * 
      */
     @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> noteEvents;
 
     /**
-     * @return Invoke the hook for note events.
+     * @return Invoke the hook for note events. Defaults to `false`.
      * 
      */
     public Output<Boolean> noteEvents() {
         return this.noteEvents;
     }
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      * 
      */
     @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pipelineEvents;
 
     /**
-     * @return Invoke the hook for pipeline events.
+     * @return Invoke the hook for pipeline events. Defaults to `false`.
      * 
      */
     public Output<Boolean> pipelineEvents() {
@@ -330,14 +333,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      * 
      */
     @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pushEvents;
 
     /**
-     * @return Invoke the hook for push events.
+     * @return Invoke the hook for push events. Defaults to `true`.
      * 
      */
     public Output<Boolean> pushEvents() {
@@ -358,42 +361,42 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.pushEventsBranchFilter;
     }
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      * 
      */
     @Export(name="releasesEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> releasesEvents;
 
     /**
-     * @return Invoke the hook for release events.
+     * @return Invoke the hook for release events. Defaults to `false`.
      * 
      */
     public Output<Boolean> releasesEvents() {
         return this.releasesEvents;
     }
     /**
-     * Invoke the hook for project access token expiry events.
+     * Invoke the hook for project access token expiry events. Defaults to `false`.
      * 
      */
     @Export(name="resourceAccessTokenEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> resourceAccessTokenEvents;
 
     /**
-     * @return Invoke the hook for project access token expiry events.
+     * @return Invoke the hook for project access token expiry events. Defaults to `false`.
      * 
      */
     public Output<Boolean> resourceAccessTokenEvents() {
         return this.resourceAccessTokenEvents;
     }
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      * 
      */
     @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> tagPushEvents;
 
     /**
-     * @return Invoke the hook for tag push events.
+     * @return Invoke the hook for tag push events. Defaults to `false`.
      * 
      */
     public Output<Boolean> tagPushEvents() {
@@ -428,14 +431,14 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      * 
      */
     @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> wikiPageEvents;
 
     /**
-     * @return Invoke the hook for wiki page events.
+     * @return Invoke the hook for wiki page events. Defaults to `false`.
      * 
      */
     public Output<Boolean> wikiPageEvents() {

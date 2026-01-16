@@ -645,6 +645,11 @@ export type ProjectBadge = import("./projectBadge").ProjectBadge;
 export const ProjectBadge: typeof import("./projectBadge").ProjectBadge = null as any;
 utilities.lazyLoad(exports, ["ProjectBadge"], () => require("./projectBadge"));
 
+export { ProjectCicdCatalogArgs, ProjectCicdCatalogState } from "./projectCicdCatalog";
+export type ProjectCicdCatalog = import("./projectCicdCatalog").ProjectCicdCatalog;
+export const ProjectCicdCatalog: typeof import("./projectCicdCatalog").ProjectCicdCatalog = null as any;
+utilities.lazyLoad(exports, ["ProjectCicdCatalog"], () => require("./projectCicdCatalog"));
+
 export { ProjectClusterArgs, ProjectClusterState } from "./projectCluster";
 export type ProjectCluster = import("./projectCluster").ProjectCluster;
 export const ProjectCluster: typeof import("./projectCluster").ProjectCluster = null as any;
@@ -765,6 +770,11 @@ export type ProjectIssueBoard = import("./projectIssueBoard").ProjectIssueBoard;
 export const ProjectIssueBoard: typeof import("./projectIssueBoard").ProjectIssueBoard = null as any;
 utilities.lazyLoad(exports, ["ProjectIssueBoard"], () => require("./projectIssueBoard"));
 
+export { ProjectIssueLinkArgs, ProjectIssueLinkState } from "./projectIssueLink";
+export type ProjectIssueLink = import("./projectIssueLink").ProjectIssueLink;
+export const ProjectIssueLink: typeof import("./projectIssueLink").ProjectIssueLink = null as any;
+utilities.lazyLoad(exports, ["ProjectIssueLink"], () => require("./projectIssueLink"));
+
 export { ProjectJobTokenScopeArgs, ProjectJobTokenScopeState } from "./projectJobTokenScope";
 export type ProjectJobTokenScope = import("./projectJobTokenScope").ProjectJobTokenScope;
 export const ProjectJobTokenScope: typeof import("./projectJobTokenScope").ProjectJobTokenScope = null as any;
@@ -810,6 +820,11 @@ export type ProjectMirror = import("./projectMirror").ProjectMirror;
 export const ProjectMirror: typeof import("./projectMirror").ProjectMirror = null as any;
 utilities.lazyLoad(exports, ["ProjectMirror"], () => require("./projectMirror"));
 
+export { ProjectPackageDependencyProxyArgs, ProjectPackageDependencyProxyState } from "./projectPackageDependencyProxy";
+export type ProjectPackageDependencyProxy = import("./projectPackageDependencyProxy").ProjectPackageDependencyProxy;
+export const ProjectPackageDependencyProxy: typeof import("./projectPackageDependencyProxy").ProjectPackageDependencyProxy = null as any;
+utilities.lazyLoad(exports, ["ProjectPackageDependencyProxy"], () => require("./projectPackageDependencyProxy"));
+
 export { ProjectPagesSettingsArgs, ProjectPagesSettingsState } from "./projectPagesSettings";
 export type ProjectPagesSettings = import("./projectPagesSettings").ProjectPagesSettings;
 export const ProjectPagesSettings: typeof import("./projectPagesSettings").ProjectPagesSettings = null as any;
@@ -820,6 +835,16 @@ export type ProjectProtectedEnvironment = import("./projectProtectedEnvironment"
 export const ProjectProtectedEnvironment: typeof import("./projectProtectedEnvironment").ProjectProtectedEnvironment = null as any;
 utilities.lazyLoad(exports, ["ProjectProtectedEnvironment"], () => require("./projectProtectedEnvironment"));
 
+export { ProjectPullMirrorArgs, ProjectPullMirrorState } from "./projectPullMirror";
+export type ProjectPullMirror = import("./projectPullMirror").ProjectPullMirror;
+export const ProjectPullMirror: typeof import("./projectPullMirror").ProjectPullMirror = null as any;
+utilities.lazyLoad(exports, ["ProjectPullMirror"], () => require("./projectPullMirror"));
+
+export { ProjectPushMirrorArgs, ProjectPushMirrorState } from "./projectPushMirror";
+export type ProjectPushMirror = import("./projectPushMirror").ProjectPushMirror;
+export const ProjectPushMirror: typeof import("./projectPushMirror").ProjectPushMirror = null as any;
+utilities.lazyLoad(exports, ["ProjectPushMirror"], () => require("./projectPushMirror"));
+
 export { ProjectPushRulesArgs, ProjectPushRulesState } from "./projectPushRules";
 export type ProjectPushRules = import("./projectPushRules").ProjectPushRules;
 export const ProjectPushRules: typeof import("./projectPushRules").ProjectPushRules = null as any;
@@ -829,6 +854,11 @@ export { ProjectRunnerEnablementArgs, ProjectRunnerEnablementState } from "./pro
 export type ProjectRunnerEnablement = import("./projectRunnerEnablement").ProjectRunnerEnablement;
 export const ProjectRunnerEnablement: typeof import("./projectRunnerEnablement").ProjectRunnerEnablement = null as any;
 utilities.lazyLoad(exports, ["ProjectRunnerEnablement"], () => require("./projectRunnerEnablement"));
+
+export { ProjectSecureFileArgs, ProjectSecureFileState } from "./projectSecureFile";
+export type ProjectSecureFile = import("./projectSecureFile").ProjectSecureFile;
+export const ProjectSecureFile: typeof import("./projectSecureFile").ProjectSecureFile = null as any;
+utilities.lazyLoad(exports, ["ProjectSecureFile"], () => require("./projectSecureFile"));
 
 export { ProjectSecurityPolicyAttachmentArgs, ProjectSecurityPolicyAttachmentState } from "./projectSecurityPolicyAttachment";
 export type ProjectSecurityPolicyAttachment = import("./projectSecurityPolicyAttachment").ProjectSecurityPolicyAttachment;
@@ -1079,6 +1109,8 @@ const _module = {
                 return new ProjectApprovalRule(name, <any>undefined, { urn })
             case "gitlab:index/projectBadge:ProjectBadge":
                 return new ProjectBadge(name, <any>undefined, { urn })
+            case "gitlab:index/projectCicdCatalog:ProjectCicdCatalog":
+                return new ProjectCicdCatalog(name, <any>undefined, { urn })
             case "gitlab:index/projectCluster:ProjectCluster":
                 return new ProjectCluster(name, <any>undefined, { urn })
             case "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks":
@@ -1127,6 +1159,8 @@ const _module = {
                 return new ProjectIssue(name, <any>undefined, { urn })
             case "gitlab:index/projectIssueBoard:ProjectIssueBoard":
                 return new ProjectIssueBoard(name, <any>undefined, { urn })
+            case "gitlab:index/projectIssueLink:ProjectIssueLink":
+                return new ProjectIssueLink(name, <any>undefined, { urn })
             case "gitlab:index/projectJobTokenScope:ProjectJobTokenScope":
                 return new ProjectJobTokenScope(name, <any>undefined, { urn })
             case "gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes":
@@ -1145,14 +1179,22 @@ const _module = {
                 return new ProjectMilestone(name, <any>undefined, { urn })
             case "gitlab:index/projectMirror:ProjectMirror":
                 return new ProjectMirror(name, <any>undefined, { urn })
+            case "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy":
+                return new ProjectPackageDependencyProxy(name, <any>undefined, { urn })
             case "gitlab:index/projectPagesSettings:ProjectPagesSettings":
                 return new ProjectPagesSettings(name, <any>undefined, { urn })
             case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
                 return new ProjectProtectedEnvironment(name, <any>undefined, { urn })
+            case "gitlab:index/projectPullMirror:ProjectPullMirror":
+                return new ProjectPullMirror(name, <any>undefined, { urn })
+            case "gitlab:index/projectPushMirror:ProjectPushMirror":
+                return new ProjectPushMirror(name, <any>undefined, { urn })
             case "gitlab:index/projectPushRules:ProjectPushRules":
                 return new ProjectPushRules(name, <any>undefined, { urn })
             case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
                 return new ProjectRunnerEnablement(name, <any>undefined, { urn })
+            case "gitlab:index/projectSecureFile:ProjectSecureFile":
+                return new ProjectSecureFile(name, <any>undefined, { urn })
             case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
                 return new ProjectSecurityPolicyAttachment(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
@@ -1263,6 +1305,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/project", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectCicdCatalog", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFrameworks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerRepositoryProtection", _module)
@@ -1287,6 +1330,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationTelegra
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationYoutrack", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssue", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueBoard", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIssueLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScope", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectJobTokenScopes", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectLabel", _module)
@@ -1296,10 +1340,14 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMergeRequestNote", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectPackageDependencyProxy", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPagesSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectProtectedEnvironment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectPullMirror", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectPushMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPushRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectSecureFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)

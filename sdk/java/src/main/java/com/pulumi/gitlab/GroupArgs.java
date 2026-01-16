@@ -22,6 +22,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupArgs Empty = new GroupArgs();
 
     /**
+     * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="allowMergeOnSkippedPipeline")
+    private @Nullable Output<Boolean> allowMergeOnSkippedPipeline;
+
+    /**
+     * @return Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> allowMergeOnSkippedPipeline() {
+        return Optional.ofNullable(this.allowMergeOnSkippedPipeline);
+    }
+
+    /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      * 
      */
@@ -255,6 +270,36 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    private @Nullable Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved;
+
+    /**
+     * @return Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> onlyAllowMergeIfAllDiscussionsAreResolved() {
+        return Optional.ofNullable(this.onlyAllowMergeIfAllDiscussionsAreResolved);
+    }
+
+    /**
+     * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="onlyAllowMergeIfPipelineSucceeds")
+    private @Nullable Output<Boolean> onlyAllowMergeIfPipelineSucceeds;
+
+    /**
+     * @return Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> onlyAllowMergeIfPipelineSucceeds() {
+        return Optional.ofNullable(this.onlyAllowMergeIfPipelineSucceeds);
+    }
+
+    /**
      * Id of the parent group (creates a nested group).
      * 
      */
@@ -482,6 +527,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     private GroupArgs() {}
 
     private GroupArgs(GroupArgs $) {
+        this.allowMergeOnSkippedPipeline = $.allowMergeOnSkippedPipeline;
         this.allowedEmailDomainsLists = $.allowedEmailDomainsLists;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.avatar = $.avatar;
@@ -497,6 +543,8 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.membershipLock = $.membershipLock;
         this.mentionsDisabled = $.mentionsDisabled;
         this.name = $.name;
+        this.onlyAllowMergeIfAllDiscussionsAreResolved = $.onlyAllowMergeIfAllDiscussionsAreResolved;
+        this.onlyAllowMergeIfPipelineSucceeds = $.onlyAllowMergeIfPipelineSucceeds;
         this.parentId = $.parentId;
         this.path = $.path;
         this.permanentlyRemoveOnDelete = $.permanentlyRemoveOnDelete;
@@ -530,6 +578,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupArgs defaults) {
             $ = new GroupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowMergeOnSkippedPipeline Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowMergeOnSkippedPipeline(@Nullable Output<Boolean> allowMergeOnSkippedPipeline) {
+            $.allowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
+            return this;
+        }
+
+        /**
+         * @param allowMergeOnSkippedPipeline Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowMergeOnSkippedPipeline(Boolean allowMergeOnSkippedPipeline) {
+            return allowMergeOnSkippedPipeline(Output.of(allowMergeOnSkippedPipeline));
         }
 
         /**
@@ -873,6 +942,48 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param onlyAllowMergeIfAllDiscussionsAreResolved Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onlyAllowMergeIfAllDiscussionsAreResolved(@Nullable Output<Boolean> onlyAllowMergeIfAllDiscussionsAreResolved) {
+            $.onlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
+            return this;
+        }
+
+        /**
+         * @param onlyAllowMergeIfAllDiscussionsAreResolved Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onlyAllowMergeIfAllDiscussionsAreResolved(Boolean onlyAllowMergeIfAllDiscussionsAreResolved) {
+            return onlyAllowMergeIfAllDiscussionsAreResolved(Output.of(onlyAllowMergeIfAllDiscussionsAreResolved));
+        }
+
+        /**
+         * @param onlyAllowMergeIfPipelineSucceeds Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onlyAllowMergeIfPipelineSucceeds(@Nullable Output<Boolean> onlyAllowMergeIfPipelineSucceeds) {
+            $.onlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
+            return this;
+        }
+
+        /**
+         * @param onlyAllowMergeIfPipelineSucceeds Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onlyAllowMergeIfPipelineSucceeds(Boolean onlyAllowMergeIfPipelineSucceeds) {
+            return onlyAllowMergeIfPipelineSucceeds(Output.of(onlyAllowMergeIfPipelineSucceeds));
         }
 
         /**

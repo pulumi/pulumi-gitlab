@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
  *
+ * > Note that `pushEvents` defaults to `true`.
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
  *
  * ## Example Usage
@@ -23,6 +25,7 @@ import * as utilities from "./utilities";
  *     name: "example",
  *     description: "Example hook",
  *     mergeRequestsEvents: true,
+ *     pushEvents: false,
  * });
  * // Using Custom Headers
  * // Values of headers can't be imported
@@ -96,11 +99,11 @@ export class ProjectHook extends pulumi.CustomResource {
     }
 
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     declare public readonly confidentialIssuesEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      */
     declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
@@ -112,7 +115,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly customWebhookTemplate: pulumi.Output<string>;
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      */
     declare public readonly deploymentEvents: pulumi.Output<boolean>;
     /**
@@ -120,7 +123,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     declare public readonly enableSslVerification: pulumi.Output<boolean>;
     /**
@@ -128,15 +131,15 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hookId: pulumi.Output<number>;
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      */
     declare public readonly issuesEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      */
     declare public readonly jobEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
@@ -144,11 +147,11 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      */
     declare public readonly noteEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      */
     declare public readonly pipelineEvents: pulumi.Output<boolean>;
     /**
@@ -160,7 +163,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly projectId: pulumi.Output<number>;
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      */
     declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
@@ -168,15 +171,15 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly pushEventsBranchFilter: pulumi.Output<string>;
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      */
     declare public readonly releasesEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for project access token expiry events.
+     * Invoke the hook for project access token expiry events. Defaults to `false`.
      */
     declare public readonly resourceAccessTokenEvents: pulumi.Output<boolean>;
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      */
     declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
@@ -188,7 +191,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly url: pulumi.Output<string>;
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      */
     declare public readonly wikiPageEvents: pulumi.Output<boolean>;
 
@@ -274,11 +277,11 @@ export class ProjectHook extends pulumi.CustomResource {
  */
 export interface ProjectHookState {
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
@@ -290,7 +293,7 @@ export interface ProjectHookState {
      */
     customWebhookTemplate?: pulumi.Input<string>;
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
@@ -298,7 +301,7 @@ export interface ProjectHookState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
@@ -306,15 +309,15 @@ export interface ProjectHookState {
      */
     hookId?: pulumi.Input<number>;
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
@@ -322,11 +325,11 @@ export interface ProjectHookState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      */
     noteEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      */
     pipelineEvents?: pulumi.Input<boolean>;
     /**
@@ -338,7 +341,7 @@ export interface ProjectHookState {
      */
     projectId?: pulumi.Input<number>;
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
@@ -346,15 +349,15 @@ export interface ProjectHookState {
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for project access token expiry events.
+     * Invoke the hook for project access token expiry events. Defaults to `false`.
      */
     resourceAccessTokenEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
@@ -366,7 +369,7 @@ export interface ProjectHookState {
      */
     url?: pulumi.Input<string>;
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      */
     wikiPageEvents?: pulumi.Input<boolean>;
 }
@@ -376,11 +379,11 @@ export interface ProjectHookState {
  */
 export interface ProjectHookArgs {
     /**
-     * Invoke the hook for confidential issues events.
+     * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for confidential note events.
+     * Invoke the hook for confidential note events. Defaults to `false`.
      */
     confidentialNoteEvents?: pulumi.Input<boolean>;
     /**
@@ -392,7 +395,7 @@ export interface ProjectHookArgs {
      */
     customWebhookTemplate?: pulumi.Input<string>;
     /**
-     * Invoke the hook for deployment events.
+     * Invoke the hook for deployment events. Defaults to `false`.
      */
     deploymentEvents?: pulumi.Input<boolean>;
     /**
@@ -400,19 +403,19 @@ export interface ProjectHookArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable SSL verification when invoking the hook.
+     * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     enableSslVerification?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for issues events.
+     * Invoke the hook for issues events. Defaults to `false`.
      */
     issuesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for job events.
+     * Invoke the hook for job events. Defaults to `false`.
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for merge requests events.
+     * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
     /**
@@ -420,11 +423,11 @@ export interface ProjectHookArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Invoke the hook for note events.
+     * Invoke the hook for note events. Defaults to `false`.
      */
     noteEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for pipeline events.
+     * Invoke the hook for pipeline events. Defaults to `false`.
      */
     pipelineEvents?: pulumi.Input<boolean>;
     /**
@@ -432,7 +435,7 @@ export interface ProjectHookArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Invoke the hook for push events.
+     * Invoke the hook for push events. Defaults to `true`.
      */
     pushEvents?: pulumi.Input<boolean>;
     /**
@@ -440,15 +443,15 @@ export interface ProjectHookArgs {
      */
     pushEventsBranchFilter?: pulumi.Input<string>;
     /**
-     * Invoke the hook for release events.
+     * Invoke the hook for release events. Defaults to `false`.
      */
     releasesEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for project access token expiry events.
+     * Invoke the hook for project access token expiry events. Defaults to `false`.
      */
     resourceAccessTokenEvents?: pulumi.Input<boolean>;
     /**
-     * Invoke the hook for tag push events.
+     * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean>;
     /**
@@ -460,7 +463,7 @@ export interface ProjectHookArgs {
      */
     url: pulumi.Input<string>;
     /**
-     * Invoke the hook for wiki page events.
+     * Invoke the hook for wiki page events. Defaults to `false`.
      */
     wikiPageEvents?: pulumi.Input<boolean>;
 }

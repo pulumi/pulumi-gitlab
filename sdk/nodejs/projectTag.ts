@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectTag` resource allows to manage the lifecycle of a tag in a project.
+ * The `gitlab.ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
  *
  * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
  *
@@ -89,7 +89,7 @@ export class ProjectTag extends pulumi.CustomResource {
     /**
      * The message of the annotated tag.
      */
-    declare public readonly message: pulumi.Output<string | undefined>;
+    declare public readonly message: pulumi.Output<string>;
     /**
      * The name of a tag.
      */

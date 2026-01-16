@@ -17,16 +17,17 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectMirror` resource allows to manage the lifecycle of a project mirror.
+ * The `gitlab.ProjectMirror` resource manages the lifecycle of a project mirror.
  * 
- * This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured using a combination of the
- * import_url, mirror, and mirrorTriggerBuilds properties on the gitlab.Project resource.
+ * This is for *pushing* changes to a remote repository. *Pull Mirroring* can be configured with the gitlab.ProjectPullMirror resource.
  * 
  * &gt; **Warning** By default, the provider sets the `keepDivergentRefs` argument to `True`.
  *    If you manually set `keepDivergentRefs` to `False`, GitLab mirroring removes branches in the target that aren&#39;t in the source.
  *    This action can result in unexpected branch deletions.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/remote_mirrors/)
+ * 
+ * This resource is deprecated in favor of `gitlab.ProjectPushMirror` which is a rename. The alias will be removed in version 19.0.
  * 
  * ## Example Usage
  * 

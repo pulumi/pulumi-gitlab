@@ -101,10 +101,10 @@ public final class GetProjectHooksHook {
      * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
      * 
      * @deprecated
-     * The token is only available on resource creation, not in this datasource. It will always be blank.
+     * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      * 
      */
-    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0. */
     private String token;
     /**
      * @return The url of the hook to invoke.
@@ -241,10 +241,10 @@ public final class GetProjectHooksHook {
      * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
      * 
      * @deprecated
-     * The token is only available on resource creation, not in this datasource. It will always be blank.
+     * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
      * 
      */
-    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. */
+    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0. */
     public String token() {
         return this.token;
     }

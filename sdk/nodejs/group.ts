@@ -129,6 +129,10 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
+     * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     */
+    declare public readonly allowMergeOnSkippedPipeline: pulumi.Output<boolean>;
+    /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
     declare public readonly allowedEmailDomainsLists: pulumi.Output<string[]>;
@@ -202,6 +206,14 @@ export class Group extends pulumi.CustomResource {
      * The name of the group.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     */
+    declare public readonly onlyAllowMergeIfAllDiscussionsAreResolved: pulumi.Output<boolean>;
+    /**
+     * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     */
+    declare public readonly onlyAllowMergeIfPipelineSucceeds: pulumi.Output<boolean>;
     /**
      * Id of the parent group (creates a nested group).
      */
@@ -284,6 +296,7 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["allowMergeOnSkippedPipeline"] = state?.allowMergeOnSkippedPipeline;
             resourceInputs["allowedEmailDomainsLists"] = state?.allowedEmailDomainsLists;
             resourceInputs["autoDevopsEnabled"] = state?.autoDevopsEnabled;
             resourceInputs["avatar"] = state?.avatar;
@@ -302,6 +315,8 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["membershipLock"] = state?.membershipLock;
             resourceInputs["mentionsDisabled"] = state?.mentionsDisabled;
             resourceInputs["name"] = state?.name;
+            resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state?.onlyAllowMergeIfAllDiscussionsAreResolved;
+            resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = state?.onlyAllowMergeIfPipelineSucceeds;
             resourceInputs["parentId"] = state?.parentId;
             resourceInputs["path"] = state?.path;
             resourceInputs["permanentlyRemoveOnDelete"] = state?.permanentlyRemoveOnDelete;
@@ -324,6 +339,7 @@ export class Group extends pulumi.CustomResource {
             if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
+            resourceInputs["allowMergeOnSkippedPipeline"] = args?.allowMergeOnSkippedPipeline;
             resourceInputs["allowedEmailDomainsLists"] = args?.allowedEmailDomainsLists;
             resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
             resourceInputs["avatar"] = args?.avatar;
@@ -339,6 +355,8 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["membershipLock"] = args?.membershipLock;
             resourceInputs["mentionsDisabled"] = args?.mentionsDisabled;
             resourceInputs["name"] = args?.name;
+            resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args?.onlyAllowMergeIfAllDiscussionsAreResolved;
+            resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = args?.onlyAllowMergeIfPipelineSucceeds;
             resourceInputs["parentId"] = args?.parentId;
             resourceInputs["path"] = args?.path;
             resourceInputs["permanentlyRemoveOnDelete"] = args?.permanentlyRemoveOnDelete;
@@ -371,6 +389,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     */
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
     /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
@@ -446,6 +468,14 @@ export interface GroupState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     */
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    /**
+     * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     */
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    /**
      * Id of the parent group (creates a nested group).
      */
     parentId?: pulumi.Input<number>;
@@ -520,6 +550,10 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
+     * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+     */
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
     allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -581,6 +615,14 @@ export interface GroupArgs {
      * The name of the group.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     */
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    /**
+     * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+     */
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
      * Id of the parent group (creates a nested group).
      */

@@ -8604,7 +8604,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectProtectedTags:getProjectProtectedTags", TypeShape.of(GetProjectProtectedTagsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
      * 
@@ -8652,7 +8652,7 @@ public final class GitlabFunctions {
         return getProjectSecureFile(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
      * 
@@ -8700,7 +8700,7 @@ public final class GitlabFunctions {
         return getProjectSecureFilePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
      * 
@@ -8748,7 +8748,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getProjectSecureFile:getProjectSecureFile", TypeShape.of(GetProjectSecureFileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
      * 
@@ -8796,7 +8796,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getProjectSecureFile:getProjectSecureFile", TypeShape.of(GetProjectSecureFileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+     * The `gitlab.ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
      * 

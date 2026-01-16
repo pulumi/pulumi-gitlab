@@ -143,6 +143,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+	AllowMergeOnSkippedPipeline pulumi.BoolOutput `pulumi:"allowMergeOnSkippedPipeline"`
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists pulumi.StringArrayOutput `pulumi:"allowedEmailDomainsLists"`
 	// Default to Auto DevOps pipeline for all projects within this group.
@@ -181,6 +183,10 @@ type Group struct {
 	MentionsDisabled pulumi.BoolOutput `pulumi:"mentionsDisabled"`
 	// The name of the group.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolOutput `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
+	// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolOutput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Id of the parent group (creates a nested group).
 	ParentId pulumi.IntOutput `pulumi:"parentId"`
 	// The path of the group.
@@ -254,6 +260,8 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists []string `pulumi:"allowedEmailDomainsLists"`
 	// Default to Auto DevOps pipeline for all projects within this group.
@@ -292,6 +300,10 @@ type groupState struct {
 	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of the group.
 	Name *string `pulumi:"name"`
+	// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
+	// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Id of the parent group (creates a nested group).
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
@@ -329,6 +341,8 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists pulumi.StringArrayInput
 	// Default to Auto DevOps pipeline for all projects within this group.
@@ -367,6 +381,10 @@ type GroupState struct {
 	MentionsDisabled pulumi.BoolPtrInput
 	// The name of the group.
 	Name pulumi.StringPtrInput
+	// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
+	// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
 	// Id of the parent group (creates a nested group).
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
@@ -408,6 +426,8 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists []string `pulumi:"allowedEmailDomainsLists"`
 	// Default to Auto DevOps pipeline for all projects within this group.
@@ -440,6 +460,10 @@ type groupArgs struct {
 	MentionsDisabled *bool `pulumi:"mentionsDisabled"`
 	// The name of the group.
 	Name *string `pulumi:"name"`
+	// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
+	// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfPipelineSucceeds *bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Id of the parent group (creates a nested group).
 	ParentId *int `pulumi:"parentId"`
 	// The path of the group.
@@ -474,6 +498,8 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists pulumi.StringArrayInput
 	// Default to Auto DevOps pipeline for all projects within this group.
@@ -506,6 +532,10 @@ type GroupArgs struct {
 	MentionsDisabled pulumi.BoolPtrInput
 	// The name of the group.
 	Name pulumi.StringPtrInput
+	// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolPtrInput
+	// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolPtrInput
 	// Id of the parent group (creates a nested group).
 	ParentId pulumi.IntPtrInput
 	// The path of the group.
@@ -625,6 +655,11 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
+func (o GroupOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolOutput)
+}
+
 // A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 func (o GroupOutput) AllowedEmailDomainsLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AllowedEmailDomainsLists }).(pulumi.StringArrayOutput)
@@ -715,6 +750,16 @@ func (o GroupOutput) MentionsDisabled() pulumi.BoolOutput {
 // The name of the group.
 func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+func (o GroupOutput) OnlyAllowMergeIfAllDiscussionsAreResolved() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.OnlyAllowMergeIfAllDiscussionsAreResolved }).(pulumi.BoolOutput)
+}
+
+// Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
+func (o GroupOutput) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.OnlyAllowMergeIfPipelineSucceeds }).(pulumi.BoolOutput)
 }
 
 // Id of the parent group (creates a nested group).

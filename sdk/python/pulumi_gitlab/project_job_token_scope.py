@@ -163,10 +163,18 @@ class ProjectJobTokenScope(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project job token scopes can be imported using an id made up of `projectId:targetProjectId`, e.g.
+        GitLab project job token scopes can be imported using an id made up of `projectId:type:targetId`, e.g.
+
+        For target_project_id:
 
         ```sh
-        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
+        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:project:321
+        ```
+
+        For target_group_id:
+
+        ```sh
+        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:group:321
         ```
 
         :param str resource_name: The name of the resource.
@@ -207,10 +215,18 @@ class ProjectJobTokenScope(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project job token scopes can be imported using an id made up of `projectId:targetProjectId`, e.g.
+        GitLab project job token scopes can be imported using an id made up of `projectId:type:targetId`, e.g.
+
+        For target_project_id:
 
         ```sh
-        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:321
+        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:project:321
+        ```
+
+        For target_group_id:
+
+        ```sh
+        $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:group:321
         ```
 
         :param str resource_name: The name of the resource.

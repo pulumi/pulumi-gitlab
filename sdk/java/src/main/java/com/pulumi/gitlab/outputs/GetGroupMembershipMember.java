@@ -5,6 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.outputs.GetGroupMembershipMemberGroupSamlIdentity;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -26,6 +27,11 @@ public final class GetGroupMembershipMember {
      * 
      */
     private String expiresAt;
+    /**
+     * @return SAML identity linked to the group member.
+     * 
+     */
+    private GetGroupMembershipMemberGroupSamlIdentity groupSamlIdentity;
     /**
      * @return The unique id assigned to the user by the gitlab server.
      * 
@@ -75,6 +81,13 @@ public final class GetGroupMembershipMember {
         return this.expiresAt;
     }
     /**
+     * @return SAML identity linked to the group member.
+     * 
+     */
+    public GetGroupMembershipMemberGroupSamlIdentity groupSamlIdentity() {
+        return this.groupSamlIdentity;
+    }
+    /**
      * @return The unique id assigned to the user by the gitlab server.
      * 
      */
@@ -122,6 +135,7 @@ public final class GetGroupMembershipMember {
         private String accessLevel;
         private String avatarUrl;
         private String expiresAt;
+        private GetGroupMembershipMemberGroupSamlIdentity groupSamlIdentity;
         private Integer id;
         private String name;
         private String state;
@@ -133,6 +147,7 @@ public final class GetGroupMembershipMember {
     	      this.accessLevel = defaults.accessLevel;
     	      this.avatarUrl = defaults.avatarUrl;
     	      this.expiresAt = defaults.expiresAt;
+    	      this.groupSamlIdentity = defaults.groupSamlIdentity;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.state = defaults.state;
@@ -162,6 +177,14 @@ public final class GetGroupMembershipMember {
               throw new MissingRequiredPropertyException("GetGroupMembershipMember", "expiresAt");
             }
             this.expiresAt = expiresAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupSamlIdentity(GetGroupMembershipMemberGroupSamlIdentity groupSamlIdentity) {
+            if (groupSamlIdentity == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipMember", "groupSamlIdentity");
+            }
+            this.groupSamlIdentity = groupSamlIdentity;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +232,7 @@ public final class GetGroupMembershipMember {
             _resultValue.accessLevel = accessLevel;
             _resultValue.avatarUrl = avatarUrl;
             _resultValue.expiresAt = expiresAt;
+            _resultValue.groupSamlIdentity = groupSamlIdentity;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.state = state;

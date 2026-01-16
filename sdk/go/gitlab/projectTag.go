@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectTag` resource allows to manage the lifecycle of a tag in a project.
+// The `ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
 //
 // **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/tags/)
 //
@@ -82,7 +82,7 @@ type ProjectTag struct {
 	// The commit associated with the tag.
 	Commits ProjectTagCommitArrayOutput `pulumi:"commits"`
 	// The message of the annotated tag.
-	Message pulumi.StringPtrOutput `pulumi:"message"`
+	Message pulumi.StringOutput `pulumi:"message"`
 	// The name of a tag.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
@@ -290,8 +290,8 @@ func (o ProjectTagOutput) Commits() ProjectTagCommitArrayOutput {
 }
 
 // The message of the annotated tag.
-func (o ProjectTagOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectTag) pulumi.StringPtrOutput { return v.Message }).(pulumi.StringPtrOutput)
+func (o ProjectTagOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectTag) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
 // The name of a tag.

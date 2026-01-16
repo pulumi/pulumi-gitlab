@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
+// The `ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/secure_files/)
 //
@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetProjectSecureFile(ctx, &gitlab.GetProjectSecureFileArgs{
+//			_, err := gitlab.LookupProjectSecureFile(ctx, &gitlab.LookupProjectSecureFileArgs{
 //				Project:      "123",
 //				SecureFileId: pulumi.IntRef(123),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.GetProjectSecureFile(ctx, &gitlab.GetProjectSecureFileArgs{
+//			_, err = gitlab.LookupProjectSecureFile(ctx, &gitlab.LookupProjectSecureFileArgs{
 //				Project: "123",
 //				Name:    pulumi.StringRef("secret.pem"),
 //			}, nil)
@@ -48,9 +48,9 @@ import (
 //	}
 //
 // ```
-func GetProjectSecureFile(ctx *pulumi.Context, args *GetProjectSecureFileArgs, opts ...pulumi.InvokeOption) (*GetProjectSecureFileResult, error) {
+func LookupProjectSecureFile(ctx *pulumi.Context, args *LookupProjectSecureFileArgs, opts ...pulumi.InvokeOption) (*LookupProjectSecureFileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetProjectSecureFileResult
+	var rv LookupProjectSecureFileResult
 	err := ctx.Invoke("gitlab:index/getProjectSecureFile:getProjectSecureFile", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func GetProjectSecureFile(ctx *pulumi.Context, args *GetProjectSecureFileArgs, o
 }
 
 // A collection of arguments for invoking getProjectSecureFile.
-type GetProjectSecureFileArgs struct {
+type LookupProjectSecureFileArgs struct {
 	// The name for the secure file, unique per project
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project the secure file resides.
@@ -69,7 +69,7 @@ type GetProjectSecureFileArgs struct {
 }
 
 // A collection of values returned by getProjectSecureFile.
-type GetProjectSecureFileResult struct {
+type LookupProjectSecureFileResult struct {
 	// The checksum of the file
 	Checksum string `pulumi:"checksum"`
 	// The checksum algorithm used
@@ -92,17 +92,17 @@ type GetProjectSecureFileResult struct {
 	SecureFileId int `pulumi:"secureFileId"`
 }
 
-func GetProjectSecureFileOutput(ctx *pulumi.Context, args GetProjectSecureFileOutputArgs, opts ...pulumi.InvokeOption) GetProjectSecureFileResultOutput {
+func LookupProjectSecureFileOutput(ctx *pulumi.Context, args LookupProjectSecureFileOutputArgs, opts ...pulumi.InvokeOption) LookupProjectSecureFileResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectSecureFileResultOutput, error) {
-			args := v.(GetProjectSecureFileArgs)
+		ApplyT(func(v interface{}) (LookupProjectSecureFileResultOutput, error) {
+			args := v.(LookupProjectSecureFileArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectSecureFile:getProjectSecureFile", args, GetProjectSecureFileResultOutput{}, options).(GetProjectSecureFileResultOutput), nil
-		}).(GetProjectSecureFileResultOutput)
+			return ctx.InvokeOutput("gitlab:index/getProjectSecureFile:getProjectSecureFile", args, LookupProjectSecureFileResultOutput{}, options).(LookupProjectSecureFileResultOutput), nil
+		}).(LookupProjectSecureFileResultOutput)
 }
 
 // A collection of arguments for invoking getProjectSecureFile.
-type GetProjectSecureFileOutputArgs struct {
+type LookupProjectSecureFileOutputArgs struct {
 	// The name for the secure file, unique per project
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID or full path of the project the secure file resides.
@@ -111,75 +111,75 @@ type GetProjectSecureFileOutputArgs struct {
 	SecureFileId pulumi.IntPtrInput `pulumi:"secureFileId"`
 }
 
-func (GetProjectSecureFileOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectSecureFileArgs)(nil)).Elem()
+func (LookupProjectSecureFileOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectSecureFileArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getProjectSecureFile.
-type GetProjectSecureFileResultOutput struct{ *pulumi.OutputState }
+type LookupProjectSecureFileResultOutput struct{ *pulumi.OutputState }
 
-func (GetProjectSecureFileResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectSecureFileResult)(nil)).Elem()
+func (LookupProjectSecureFileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectSecureFileResult)(nil)).Elem()
 }
 
-func (o GetProjectSecureFileResultOutput) ToGetProjectSecureFileResultOutput() GetProjectSecureFileResultOutput {
+func (o LookupProjectSecureFileResultOutput) ToLookupProjectSecureFileResultOutput() LookupProjectSecureFileResultOutput {
 	return o
 }
 
-func (o GetProjectSecureFileResultOutput) ToGetProjectSecureFileResultOutputWithContext(ctx context.Context) GetProjectSecureFileResultOutput {
+func (o LookupProjectSecureFileResultOutput) ToLookupProjectSecureFileResultOutputWithContext(ctx context.Context) LookupProjectSecureFileResultOutput {
 	return o
 }
 
 // The checksum of the file
-func (o GetProjectSecureFileResultOutput) Checksum() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.Checksum }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
 // The checksum algorithm used
-func (o GetProjectSecureFileResultOutput) ChecksumAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.ChecksumAlgorithm }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) ChecksumAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.ChecksumAlgorithm }).(pulumi.StringOutput)
 }
 
 // The contents of the secure file
-func (o GetProjectSecureFileResultOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.Content }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.Content }).(pulumi.StringOutput)
 }
 
 // The time the secure file was uploaded
-func (o GetProjectSecureFileResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The time the secure file will expire
-func (o GetProjectSecureFileResultOutput) ExpiresAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 // The ID of this data source. In the format `<project:id>`
-func (o GetProjectSecureFileResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // metadata returned by the gitlab api about the secure file
-func (o GetProjectSecureFileResultOutput) Metadata() GetProjectSecureFileMetadataOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) GetProjectSecureFileMetadata { return v.Metadata }).(GetProjectSecureFileMetadataOutput)
+func (o LookupProjectSecureFileResultOutput) Metadata() GetProjectSecureFileMetadataOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) GetProjectSecureFileMetadata { return v.Metadata }).(GetProjectSecureFileMetadataOutput)
 }
 
 // The name for the secure file, unique per project
-func (o GetProjectSecureFileResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupProjectSecureFileResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The ID or full path of the project the secure file resides.
-func (o GetProjectSecureFileResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupProjectSecureFileResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // The id of the secure file in gitlab
-func (o GetProjectSecureFileResultOutput) SecureFileId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectSecureFileResult) int { return v.SecureFileId }).(pulumi.IntOutput)
+func (o LookupProjectSecureFileResultOutput) SecureFileId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupProjectSecureFileResult) int { return v.SecureFileId }).(pulumi.IntOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetProjectSecureFileResultOutput{})
+	pulumi.RegisterOutputType(LookupProjectSecureFileResultOutput{})
 }

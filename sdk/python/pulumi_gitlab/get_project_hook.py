@@ -237,10 +237,10 @@ class GetProjectHookResult:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank.""")
+    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.""")
     def token(self) -> _builtins.str:
         """
-        A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank.
+        A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
         """
         return pulumi.get(self, "token")
 

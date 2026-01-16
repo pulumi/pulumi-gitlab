@@ -26,6 +26,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ExpiresAt;
         /// <summary>
+        /// SAML identity linked to the group member.
+        /// </summary>
+        public readonly Outputs.GetGroupMembershipMemberGroupSamlIdentityResult GroupSamlIdentity;
+        /// <summary>
         /// The unique id assigned to the user by the gitlab server.
         /// </summary>
         public readonly int Id;
@@ -54,6 +58,8 @@ namespace Pulumi.GitLab.Outputs
 
             string expiresAt,
 
+            Outputs.GetGroupMembershipMemberGroupSamlIdentityResult groupSamlIdentity,
+
             int id,
 
             string name,
@@ -67,6 +73,7 @@ namespace Pulumi.GitLab.Outputs
             AccessLevel = accessLevel;
             AvatarUrl = avatarUrl;
             ExpiresAt = expiresAt;
+            GroupSamlIdentity = groupSamlIdentity;
             Id = id;
             Name = name;
             State = state;
