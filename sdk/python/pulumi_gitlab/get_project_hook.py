@@ -26,7 +26,7 @@ class GetProjectHookResult:
     """
     A collection of values returned by getProjectHook.
     """
-    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, enable_ssl_verification=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, project_id=None, push_events=None, push_events_branch_filter=None, releases_events=None, tag_push_events=None, token=None, url=None, wiki_page_events=None):
+    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, enable_ssl_verification=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, project_id=None, push_events=None, push_events_branch_filter=None, releases_events=None, tag_push_events=None, token=None, url=None, vulnerability_events=None, wiki_page_events=None):
         if confidential_issues_events and not isinstance(confidential_issues_events, bool):
             raise TypeError("Expected argument 'confidential_issues_events' to be a bool")
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
@@ -87,6 +87,9 @@ class GetProjectHookResult:
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
+        if vulnerability_events and not isinstance(vulnerability_events, bool):
+            raise TypeError("Expected argument 'vulnerability_events' to be a bool")
+        pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         if wiki_page_events and not isinstance(wiki_page_events, bool):
             raise TypeError("Expected argument 'wiki_page_events' to be a bool")
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
@@ -253,6 +256,14 @@ class GetProjectHookResult:
         return pulumi.get(self, "url")
 
     @_builtins.property
+    @pulumi.getter(name="vulnerabilityEvents")
+    def vulnerability_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for vulnerability events.
+        """
+        return pulumi.get(self, "vulnerability_events")
+
+    @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> _builtins.bool:
         """
@@ -287,6 +298,7 @@ class AwaitableGetProjectHookResult(GetProjectHookResult):
             tag_push_events=self.tag_push_events,
             token=self.token,
             url=self.url,
+            vulnerability_events=self.vulnerability_events,
             wiki_page_events=self.wiki_page_events)
 
 
@@ -340,6 +352,7 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
         tag_push_events=pulumi.get(__ret__, 'tag_push_events'),
         token=pulumi.get(__ret__, 'token'),
         url=pulumi.get(__ret__, 'url'),
+        vulnerability_events=pulumi.get(__ret__, 'vulnerability_events'),
         wiki_page_events=pulumi.get(__ret__, 'wiki_page_events'))
 def get_project_hook_output(hook_id: Optional[pulumi.Input[_builtins.int]] = None,
                             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -390,4 +403,5 @@ def get_project_hook_output(hook_id: Optional[pulumi.Input[_builtins.int]] = Non
         tag_push_events=pulumi.get(__response__, 'tag_push_events'),
         token=pulumi.get(__response__, 'token'),
         url=pulumi.get(__response__, 'url'),
+        vulnerability_events=pulumi.get(__response__, 'vulnerability_events'),
         wiki_page_events=pulumi.get(__response__, 'wiki_page_events')))

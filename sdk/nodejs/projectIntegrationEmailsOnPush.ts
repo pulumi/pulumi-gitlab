@@ -23,6 +23,11 @@ import * as utilities from "./utilities";
  * const emails = new gitlab.ProjectIntegrationEmailsOnPush("emails", {
  *     project: awesomeProject.id,
  *     recipients: "myrecipient@example.com myotherrecipient@example.com",
+ *     disableDiffs: false,
+ *     sendFromCommitterEmail: false,
+ *     pushEvents: true,
+ *     tagPushEvents: true,
+ *     branchesToBeNotified: "all",
  * });
  * ```
  *
@@ -83,7 +88,7 @@ export class ProjectIntegrationEmailsOnPush extends pulumi.CustomResource {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      */
-    declare public readonly branchesToBeNotified: pulumi.Output<string | undefined>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
@@ -91,7 +96,7 @@ export class ProjectIntegrationEmailsOnPush extends pulumi.CustomResource {
     /**
      * Disable code diffs.
      */
-    declare public readonly disableDiffs: pulumi.Output<boolean | undefined>;
+    declare public readonly disableDiffs: pulumi.Output<boolean>;
     /**
      * ID or full-path of the project you want to activate integration on.
      */
@@ -99,7 +104,7 @@ export class ProjectIntegrationEmailsOnPush extends pulumi.CustomResource {
     /**
      * Enable notifications for push events.
      */
-    declare public readonly pushEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
      * Emails separated by whitespace.
      */
@@ -107,7 +112,7 @@ export class ProjectIntegrationEmailsOnPush extends pulumi.CustomResource {
     /**
      * Send from committer.
      */
-    declare public readonly sendFromCommitterEmail: pulumi.Output<boolean | undefined>;
+    declare public readonly sendFromCommitterEmail: pulumi.Output<boolean>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
@@ -115,7 +120,7 @@ export class ProjectIntegrationEmailsOnPush extends pulumi.CustomResource {
     /**
      * Enable notifications for tag push events.
      */
-    declare public readonly tagPushEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
      * Title of the integration.
      */

@@ -200,6 +200,12 @@ namespace Pulumi.GitLab
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for vulnerability events. Defaults to `False`.
+        /// </summary>
+        [Output("vulnerabilityEvents")]
+        public Output<bool> VulnerabilityEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for wiki page events. Defaults to `False`.
         /// </summary>
         [Output("wikiPageEvents")]
@@ -416,6 +422,12 @@ namespace Pulumi.GitLab
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for vulnerability events. Defaults to `False`.
+        /// </summary>
+        [Input("vulnerabilityEvents")]
+        public Input<bool>? VulnerabilityEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for wiki page events. Defaults to `False`.
         /// </summary>
         [Input("wikiPageEvents")]
@@ -600,6 +612,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for vulnerability events. Defaults to `False`.
+        /// </summary>
+        [Input("vulnerabilityEvents")]
+        public Input<bool>? VulnerabilityEvents { get; set; }
 
         /// <summary>
         /// Invoke the hook for wiki page events. Defaults to `False`.

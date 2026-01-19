@@ -117,6 +117,11 @@ public final class GetProjectHookResult {
      */
     private String url;
     /**
+     * @return Invoke the hook for vulnerability events.
+     * 
+     */
+    private Boolean vulnerabilityEvents;
+    /**
      * @return Invoke the hook for wiki page events.
      * 
      */
@@ -268,6 +273,13 @@ public final class GetProjectHookResult {
         return this.url;
     }
     /**
+     * @return Invoke the hook for vulnerability events.
+     * 
+     */
+    public Boolean vulnerabilityEvents() {
+        return this.vulnerabilityEvents;
+    }
+    /**
      * @return Invoke the hook for wiki page events.
      * 
      */
@@ -304,6 +316,7 @@ public final class GetProjectHookResult {
         private Boolean tagPushEvents;
         private String token;
         private String url;
+        private Boolean vulnerabilityEvents;
         private Boolean wikiPageEvents;
         public Builder() {}
         public Builder(GetProjectHookResult defaults) {
@@ -328,6 +341,7 @@ public final class GetProjectHookResult {
     	      this.tagPushEvents = defaults.tagPushEvents;
     	      this.token = defaults.token;
     	      this.url = defaults.url;
+    	      this.vulnerabilityEvents = defaults.vulnerabilityEvents;
     	      this.wikiPageEvents = defaults.wikiPageEvents;
         }
 
@@ -492,6 +506,14 @@ public final class GetProjectHookResult {
             return this;
         }
         @CustomType.Setter
+        public Builder vulnerabilityEvents(Boolean vulnerabilityEvents) {
+            if (vulnerabilityEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHookResult", "vulnerabilityEvents");
+            }
+            this.vulnerabilityEvents = vulnerabilityEvents;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wikiPageEvents(Boolean wikiPageEvents) {
             if (wikiPageEvents == null) {
               throw new MissingRequiredPropertyException("GetProjectHookResult", "wikiPageEvents");
@@ -521,6 +543,7 @@ public final class GetProjectHookResult {
             _resultValue.tagPushEvents = tagPushEvents;
             _resultValue.token = token;
             _resultValue.url = url;
+            _resultValue.vulnerabilityEvents = vulnerabilityEvents;
             _resultValue.wikiPageEvents = wikiPageEvents;
             return _resultValue;
         }

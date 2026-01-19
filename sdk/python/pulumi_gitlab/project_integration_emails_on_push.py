@@ -365,7 +365,12 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
             visibility_level="public")
         emails = gitlab.ProjectIntegrationEmailsOnPush("emails",
             project=awesome_project.id,
-            recipients="myrecipient@example.com myotherrecipient@example.com")
+            recipients="myrecipient@example.com myotherrecipient@example.com",
+            disable_diffs=False,
+            send_from_committer_email=False,
+            push_events=True,
+            tag_push_events=True,
+            branches_to_be_notified="all")
         ```
 
         ## Import
@@ -423,7 +428,12 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
             visibility_level="public")
         emails = gitlab.ProjectIntegrationEmailsOnPush("emails",
             project=awesome_project.id,
-            recipients="myrecipient@example.com myotherrecipient@example.com")
+            recipients="myrecipient@example.com myotherrecipient@example.com",
+            disable_diffs=False,
+            send_from_committer_email=False,
+            push_events=True,
+            tag_push_events=True,
+            branches_to_be_notified="all")
         ```
 
         ## Import
@@ -565,7 +575,7 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
         """
@@ -581,7 +591,7 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableDiffs")
-    def disable_diffs(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def disable_diffs(self) -> pulumi.Output[_builtins.bool]:
         """
         Disable code diffs.
         """
@@ -597,7 +607,7 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def push_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable notifications for push events.
         """
@@ -613,7 +623,7 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sendFromCommitterEmail")
-    def send_from_committer_email(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def send_from_committer_email(self) -> pulumi.Output[_builtins.bool]:
         """
         Send from committer.
         """
@@ -629,7 +639,7 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable notifications for tag push events.
         """

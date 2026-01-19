@@ -39,8 +39,13 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationEmailsOnPush(ctx, "emails", &gitlab.ProjectIntegrationEmailsOnPushArgs{
-//				Project:    awesomeProject.ID(),
-//				Recipients: pulumi.String("myrecipient@example.com myotherrecipient@example.com"),
+//				Project:                awesomeProject.ID(),
+//				Recipients:             pulumi.String("myrecipient@example.com myotherrecipient@example.com"),
+//				DisableDiffs:           pulumi.Bool(false),
+//				SendFromCommitterEmail: pulumi.Bool(false),
+//				PushEvents:             pulumi.Bool(true),
+//				TagPushEvents:          pulumi.Bool(true),
+//				BranchesToBeNotified:   pulumi.String("all"),
 //			})
 //			if err != nil {
 //				return err
@@ -78,23 +83,23 @@ type ProjectIntegrationEmailsOnPush struct {
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
-	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
+	BranchesToBeNotified pulumi.StringOutput `pulumi:"branchesToBeNotified"`
 	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Disable code diffs.
-	DisableDiffs pulumi.BoolPtrOutput `pulumi:"disableDiffs"`
+	DisableDiffs pulumi.BoolOutput `pulumi:"disableDiffs"`
 	// ID or full-path of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Enable notifications for push events.
-	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
+	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
 	// Emails separated by whitespace.
 	Recipients pulumi.StringOutput `pulumi:"recipients"`
 	// Send from committer.
-	SendFromCommitterEmail pulumi.BoolPtrOutput `pulumi:"sendFromCommitterEmail"`
+	SendFromCommitterEmail pulumi.BoolOutput `pulumi:"sendFromCommitterEmail"`
 	// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Enable notifications for tag push events.
-	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
+	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Title of the integration.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// The ISO8601 date/time that this integration was last updated at in UTC.
@@ -322,8 +327,8 @@ func (o ProjectIntegrationEmailsOnPushOutput) Active() pulumi.BoolOutput {
 }
 
 // Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
-func (o ProjectIntegrationEmailsOnPushOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationEmailsOnPushOutput) BranchesToBeNotified() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
 }
 
 // The ISO8601 date/time that this integration was activated at in UTC.
@@ -332,8 +337,8 @@ func (o ProjectIntegrationEmailsOnPushOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // Disable code diffs.
-func (o ProjectIntegrationEmailsOnPushOutput) DisableDiffs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolPtrOutput { return v.DisableDiffs }).(pulumi.BoolPtrOutput)
+func (o ProjectIntegrationEmailsOnPushOutput) DisableDiffs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolOutput { return v.DisableDiffs }).(pulumi.BoolOutput)
 }
 
 // ID or full-path of the project you want to activate integration on.
@@ -342,8 +347,8 @@ func (o ProjectIntegrationEmailsOnPushOutput) Project() pulumi.StringOutput {
 }
 
 // Enable notifications for push events.
-func (o ProjectIntegrationEmailsOnPushOutput) PushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+func (o ProjectIntegrationEmailsOnPushOutput) PushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
 }
 
 // Emails separated by whitespace.
@@ -352,8 +357,8 @@ func (o ProjectIntegrationEmailsOnPushOutput) Recipients() pulumi.StringOutput {
 }
 
 // Send from committer.
-func (o ProjectIntegrationEmailsOnPushOutput) SendFromCommitterEmail() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolPtrOutput { return v.SendFromCommitterEmail }).(pulumi.BoolPtrOutput)
+func (o ProjectIntegrationEmailsOnPushOutput) SendFromCommitterEmail() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolOutput { return v.SendFromCommitterEmail }).(pulumi.BoolOutput)
 }
 
 // The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
@@ -362,8 +367,8 @@ func (o ProjectIntegrationEmailsOnPushOutput) Slug() pulumi.StringOutput {
 }
 
 // Enable notifications for tag push events.
-func (o ProjectIntegrationEmailsOnPushOutput) TagPushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+func (o ProjectIntegrationEmailsOnPushOutput) TagPushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationEmailsOnPush) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
 // Title of the integration.

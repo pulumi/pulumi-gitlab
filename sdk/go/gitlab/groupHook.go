@@ -96,6 +96,8 @@ type GroupHook struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringOutput `pulumi:"url"`
+	// Invoke the hook for vulnerability events. Defaults to `false`.
+	VulnerabilityEvents pulumi.BoolOutput `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events. Defaults to `false`.
 	WikiPageEvents pulumi.BoolOutput `pulumi:"wikiPageEvents"`
 }
@@ -195,6 +197,8 @@ type groupHookState struct {
 	Token *string `pulumi:"token"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url *string `pulumi:"url"`
+	// Invoke the hook for vulnerability events. Defaults to `false`.
+	VulnerabilityEvents *bool `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events. Defaults to `false`.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
 }
@@ -252,6 +256,8 @@ type GroupHookState struct {
 	Token pulumi.StringPtrInput
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringPtrInput
+	// Invoke the hook for vulnerability events. Defaults to `false`.
+	VulnerabilityEvents pulumi.BoolPtrInput
 	// Invoke the hook for wiki page events. Defaults to `false`.
 	WikiPageEvents pulumi.BoolPtrInput
 }
@@ -309,6 +315,8 @@ type groupHookArgs struct {
 	Token *string `pulumi:"token"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url string `pulumi:"url"`
+	// Invoke the hook for vulnerability events. Defaults to `false`.
+	VulnerabilityEvents *bool `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events. Defaults to `false`.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
 }
@@ -363,6 +371,8 @@ type GroupHookArgs struct {
 	Token pulumi.StringPtrInput
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringInput
+	// Invoke the hook for vulnerability events. Defaults to `false`.
+	VulnerabilityEvents pulumi.BoolPtrInput
 	// Invoke the hook for wiki page events. Defaults to `false`.
 	WikiPageEvents pulumi.BoolPtrInput
 }
@@ -582,6 +592,11 @@ func (o GroupHookOutput) Token() pulumi.StringOutput {
 // The url of the hook to invoke. Forces re-creation to preserve `token`.
 func (o GroupHookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Invoke the hook for vulnerability events. Defaults to `false`.
+func (o GroupHookOutput) VulnerabilityEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.VulnerabilityEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for wiki page events. Defaults to `false`.

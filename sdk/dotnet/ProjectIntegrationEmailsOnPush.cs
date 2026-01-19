@@ -35,6 +35,11 @@ namespace Pulumi.GitLab
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Recipients = "myrecipient@example.com myotherrecipient@example.com",
+    ///         DisableDiffs = false,
+    ///         SendFromCommitterEmail = false,
+    ///         PushEvents = true,
+    ///         TagPushEvents = true,
+    ///         BranchesToBeNotified = "all",
     ///     });
     /// 
     /// });
@@ -75,7 +80,7 @@ namespace Pulumi.GitLab
         /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Notifications are always fired for tag pushes.
         /// </summary>
         [Output("branchesToBeNotified")]
-        public Output<string?> BranchesToBeNotified { get; private set; } = null!;
+        public Output<string> BranchesToBeNotified { get; private set; } = null!;
 
         /// <summary>
         /// The ISO8601 date/time that this integration was activated at in UTC.
@@ -87,7 +92,7 @@ namespace Pulumi.GitLab
         /// Disable code diffs.
         /// </summary>
         [Output("disableDiffs")]
-        public Output<bool?> DisableDiffs { get; private set; } = null!;
+        public Output<bool> DisableDiffs { get; private set; } = null!;
 
         /// <summary>
         /// ID or full-path of the project you want to activate integration on.
@@ -99,7 +104,7 @@ namespace Pulumi.GitLab
         /// Enable notifications for push events.
         /// </summary>
         [Output("pushEvents")]
-        public Output<bool?> PushEvents { get; private set; } = null!;
+        public Output<bool> PushEvents { get; private set; } = null!;
 
         /// <summary>
         /// Emails separated by whitespace.
@@ -111,7 +116,7 @@ namespace Pulumi.GitLab
         /// Send from committer.
         /// </summary>
         [Output("sendFromCommitterEmail")]
-        public Output<bool?> SendFromCommitterEmail { get; private set; } = null!;
+        public Output<bool> SendFromCommitterEmail { get; private set; } = null!;
 
         /// <summary>
         /// The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
@@ -123,7 +128,7 @@ namespace Pulumi.GitLab
         /// Enable notifications for tag push events.
         /// </summary>
         [Output("tagPushEvents")]
-        public Output<bool?> TagPushEvents { get; private set; } = null!;
+        public Output<bool> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
         /// Title of the integration.

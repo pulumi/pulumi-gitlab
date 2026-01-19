@@ -109,6 +109,8 @@ type LookupProjectHookResult struct {
 	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
+	// Invoke the hook for vulnerability events.
+	VulnerabilityEvents bool `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events.
 	WikiPageEvents bool `pulumi:"wikiPageEvents"`
 }
@@ -249,6 +251,11 @@ func (o LookupProjectHookResultOutput) Token() pulumi.StringOutput {
 // The url of the hook to invoke.
 func (o LookupProjectHookResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Invoke the hook for vulnerability events.
+func (o LookupProjectHookResultOutput) VulnerabilityEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectHookResult) bool { return v.VulnerabilityEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for wiki page events.

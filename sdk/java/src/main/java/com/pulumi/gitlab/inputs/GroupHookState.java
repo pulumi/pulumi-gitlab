@@ -410,6 +410,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for vulnerability events. Defaults to `false`.
+     * 
+     */
+    @Import(name="vulnerabilityEvents")
+    private @Nullable Output<Boolean> vulnerabilityEvents;
+
+    /**
+     * @return Invoke the hook for vulnerability events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> vulnerabilityEvents() {
+        return Optional.ofNullable(this.vulnerabilityEvents);
+    }
+
+    /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      * 
      */
@@ -453,6 +468,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
         this.url = $.url;
+        this.vulnerabilityEvents = $.vulnerabilityEvents;
         this.wikiPageEvents = $.wikiPageEvents;
     }
 
@@ -1028,6 +1044,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param vulnerabilityEvents Invoke the hook for vulnerability events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulnerabilityEvents(@Nullable Output<Boolean> vulnerabilityEvents) {
+            $.vulnerabilityEvents = vulnerabilityEvents;
+            return this;
+        }
+
+        /**
+         * @param vulnerabilityEvents Invoke the hook for vulnerability events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulnerabilityEvents(Boolean vulnerabilityEvents) {
+            return vulnerabilityEvents(Output.of(vulnerabilityEvents));
         }
 
         /**

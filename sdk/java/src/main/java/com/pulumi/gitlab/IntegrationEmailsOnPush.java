@@ -12,13 +12,12 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.IntegrationEmailsOnPushState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * The `gitlab.IntegrationEmailsOnPush` resource manages the lifecycle of a project integration with the Emails on Push Service.
  * 
- * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationEmailsOnPush`instead!
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationEmailsOnPush`instead.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)
  * 
@@ -48,6 +47,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         // This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.
  *         var awesomeProject = new Project("awesomeProject", ProjectArgs.builder()
  *             .name("awesome_project")
  *             .description("My awesome project.")
@@ -108,14 +108,14 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> branchesToBeNotified;
+    private Output<String> branchesToBeNotified;
 
     /**
      * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      * 
      */
-    public Output<Optional<String>> branchesToBeNotified() {
-        return Codegen.optional(this.branchesToBeNotified);
+    public Output<String> branchesToBeNotified() {
+        return this.branchesToBeNotified;
     }
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
@@ -136,14 +136,14 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="disableDiffs", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disableDiffs;
+    private Output<Boolean> disableDiffs;
 
     /**
      * @return Disable code diffs.
      * 
      */
-    public Output<Optional<Boolean>> disableDiffs() {
-        return Codegen.optional(this.disableDiffs);
+    public Output<Boolean> disableDiffs() {
+        return this.disableDiffs;
     }
     /**
      * ID or full-path of the project you want to activate integration on.
@@ -164,14 +164,14 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pushEvents;
+    private Output<Boolean> pushEvents;
 
     /**
      * @return Enable notifications for push events.
      * 
      */
-    public Output<Optional<Boolean>> pushEvents() {
-        return Codegen.optional(this.pushEvents);
+    public Output<Boolean> pushEvents() {
+        return this.pushEvents;
     }
     /**
      * Emails separated by whitespace.
@@ -192,14 +192,14 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="sendFromCommitterEmail", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> sendFromCommitterEmail;
+    private Output<Boolean> sendFromCommitterEmail;
 
     /**
      * @return Send from committer.
      * 
      */
-    public Output<Optional<Boolean>> sendFromCommitterEmail() {
-        return Codegen.optional(this.sendFromCommitterEmail);
+    public Output<Boolean> sendFromCommitterEmail() {
+        return this.sendFromCommitterEmail;
     }
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
@@ -220,14 +220,14 @@ public class IntegrationEmailsOnPush extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tagPushEvents;
+    private Output<Boolean> tagPushEvents;
 
     /**
      * @return Enable notifications for tag push events.
      * 
      */
-    public Output<Optional<Boolean>> tagPushEvents() {
-        return Codegen.optional(this.tagPushEvents);
+    public Output<Boolean> tagPushEvents() {
+        return this.tagPushEvents;
     }
     /**
      * Title of the integration.

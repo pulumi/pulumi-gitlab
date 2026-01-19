@@ -351,7 +351,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
         """
         The `IntegrationEmailsOnPush` resource manages the lifecycle of a project integration with the Emails on Push Service.
 
-        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationEmailsOnPush`instead!
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationEmailsOnPush`instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)
 
@@ -361,6 +361,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        # This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.
         awesome_project = gitlab.Project("awesome_project",
             name="awesome_project",
             description="My awesome project.",
@@ -411,7 +412,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
         """
         The `IntegrationEmailsOnPush` resource manages the lifecycle of a project integration with the Emails on Push Service.
 
-        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationEmailsOnPush`instead!
+        > This resource is deprecated and will be removed in 19.0. Use `ProjectIntegrationEmailsOnPush`instead.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)
 
@@ -421,6 +422,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
+        # This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.
         awesome_project = gitlab.Project("awesome_project",
             name="awesome_project",
             description="My awesome project.",
@@ -569,7 +571,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
         """
@@ -585,7 +587,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableDiffs")
-    def disable_diffs(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def disable_diffs(self) -> pulumi.Output[_builtins.bool]:
         """
         Disable code diffs.
         """
@@ -601,7 +603,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def push_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable notifications for push events.
         """
@@ -617,7 +619,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sendFromCommitterEmail")
-    def send_from_committer_email(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def send_from_committer_email(self) -> pulumi.Output[_builtins.bool]:
         """
         Send from committer.
         """
@@ -633,7 +635,7 @@ class IntegrationEmailsOnPush(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable notifications for tag push events.
         """
