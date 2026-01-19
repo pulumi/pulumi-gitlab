@@ -90,6 +90,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Url;
         /// <summary>
+        /// Invoke the hook for vulnerability events.
+        /// </summary>
+        public readonly bool VulnerabilityEvents;
+        /// <summary>
         /// Invoke the hook for wiki page events.
         /// </summary>
         public readonly bool WikiPageEvents;
@@ -134,6 +138,8 @@ namespace Pulumi.GitLab.Outputs
 
             string url,
 
+            bool vulnerabilityEvents,
+
             bool wikiPageEvents)
         {
             ConfidentialIssuesEvents = confidentialIssuesEvents;
@@ -155,6 +161,7 @@ namespace Pulumi.GitLab.Outputs
             TagPushEvents = tagPushEvents;
             Token = token;
             Url = url;
+            VulnerabilityEvents = vulnerabilityEvents;
             WikiPageEvents = wikiPageEvents;
         }
     }

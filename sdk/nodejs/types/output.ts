@@ -334,6 +334,10 @@ export interface GetGroupHooksHook {
      */
     url: string;
     /**
+     * Invoke the hook for vulnerability events.
+     */
+    vulnerabilityEvents: boolean;
+    /**
      * Invoke the hook for wiki page events.
      */
     wikiPageEvents: boolean;
@@ -1292,6 +1296,10 @@ export interface GetProjectHooksHook {
      * The url of the hook to invoke.
      */
     url: string;
+    /**
+     * Invoke the hook for vulnerability events.
+     */
+    vulnerabilityEvents: boolean;
     /**
      * Invoke the hook for wiki page events.
      */

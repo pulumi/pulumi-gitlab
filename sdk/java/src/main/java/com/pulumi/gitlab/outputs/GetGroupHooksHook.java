@@ -122,6 +122,11 @@ public final class GetGroupHooksHook {
      */
     private String url;
     /**
+     * @return Invoke the hook for vulnerability events.
+     * 
+     */
+    private Boolean vulnerabilityEvents;
+    /**
      * @return Invoke the hook for wiki page events.
      * 
      */
@@ -280,6 +285,13 @@ public final class GetGroupHooksHook {
         return this.url;
     }
     /**
+     * @return Invoke the hook for vulnerability events.
+     * 
+     */
+    public Boolean vulnerabilityEvents() {
+        return this.vulnerabilityEvents;
+    }
+    /**
      * @return Invoke the hook for wiki page events.
      * 
      */
@@ -317,6 +329,7 @@ public final class GetGroupHooksHook {
         private Boolean tagPushEvents;
         private String token;
         private String url;
+        private Boolean vulnerabilityEvents;
         private Boolean wikiPageEvents;
         public Builder() {}
         public Builder(GetGroupHooksHook defaults) {
@@ -342,6 +355,7 @@ public final class GetGroupHooksHook {
     	      this.tagPushEvents = defaults.tagPushEvents;
     	      this.token = defaults.token;
     	      this.url = defaults.url;
+    	      this.vulnerabilityEvents = defaults.vulnerabilityEvents;
     	      this.wikiPageEvents = defaults.wikiPageEvents;
         }
 
@@ -514,6 +528,14 @@ public final class GetGroupHooksHook {
             return this;
         }
         @CustomType.Setter
+        public Builder vulnerabilityEvents(Boolean vulnerabilityEvents) {
+            if (vulnerabilityEvents == null) {
+              throw new MissingRequiredPropertyException("GetGroupHooksHook", "vulnerabilityEvents");
+            }
+            this.vulnerabilityEvents = vulnerabilityEvents;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wikiPageEvents(Boolean wikiPageEvents) {
             if (wikiPageEvents == null) {
               throw new MissingRequiredPropertyException("GetGroupHooksHook", "wikiPageEvents");
@@ -544,6 +566,7 @@ public final class GetGroupHooksHook {
             _resultValue.tagPushEvents = tagPushEvents;
             _resultValue.token = token;
             _resultValue.url = url;
+            _resultValue.vulnerabilityEvents = vulnerabilityEvents;
             _resultValue.wikiPageEvents = wikiPageEvents;
             return _resultValue;
         }

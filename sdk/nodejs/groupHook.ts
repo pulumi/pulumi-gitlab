@@ -170,6 +170,10 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly url: pulumi.Output<string>;
     /**
+     * Invoke the hook for vulnerability events. Defaults to `false`.
+     */
+    declare public readonly vulnerabilityEvents: pulumi.Output<boolean>;
+    /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      */
     declare public readonly wikiPageEvents: pulumi.Output<boolean>;
@@ -213,6 +217,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["tagPushEvents"] = state?.tagPushEvents;
             resourceInputs["token"] = state?.token;
             resourceInputs["url"] = state?.url;
+            resourceInputs["vulnerabilityEvents"] = state?.vulnerabilityEvents;
             resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
             const args = argsOrState as GroupHookArgs | undefined;
@@ -246,6 +251,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args?.url;
+            resourceInputs["vulnerabilityEvents"] = args?.vulnerabilityEvents;
             resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
             resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["hookId"] = undefined /*out*/;
@@ -366,6 +372,10 @@ export interface GroupHookState {
      */
     url?: pulumi.Input<string>;
     /**
+     * Invoke the hook for vulnerability events. Defaults to `false`.
+     */
+    vulnerabilityEvents?: pulumi.Input<boolean>;
+    /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      */
     wikiPageEvents?: pulumi.Input<boolean>;
@@ -471,6 +481,10 @@ export interface GroupHookArgs {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url: pulumi.Input<string>;
+    /**
+     * Invoke the hook for vulnerability events. Defaults to `false`.
+     */
+    vulnerabilityEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      */

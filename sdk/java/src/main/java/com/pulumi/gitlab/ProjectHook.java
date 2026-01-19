@@ -431,6 +431,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
+     * Invoke the hook for vulnerability events. Defaults to `false`.
+     * 
+     */
+    @Export(name="vulnerabilityEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> vulnerabilityEvents;
+
+    /**
+     * @return Invoke the hook for vulnerability events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> vulnerabilityEvents() {
+        return this.vulnerabilityEvents;
+    }
+    /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      * 
      */

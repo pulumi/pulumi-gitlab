@@ -3632,6 +3632,7 @@ class GetGroupHooksHookResult(dict):
                  tag_push_events: _builtins.bool,
                  token: _builtins.str,
                  url: _builtins.str,
+                 vulnerability_events: _builtins.bool,
                  wiki_page_events: _builtins.bool):
         """
         :param _builtins.bool confidential_issues_events: Invoke the hook for confidential issues events.
@@ -3655,6 +3656,7 @@ class GetGroupHooksHookResult(dict):
         :param _builtins.bool tag_push_events: Invoke the hook for tag push events.
         :param _builtins.str token: A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
         :param _builtins.str url: The url of the hook to invoke.
+        :param _builtins.bool vulnerability_events: Invoke the hook for vulnerability events.
         :param _builtins.bool wiki_page_events: Invoke the hook for wiki page events.
         """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
@@ -3678,6 +3680,7 @@ class GetGroupHooksHookResult(dict):
         pulumi.set(__self__, "tag_push_events", tag_push_events)
         pulumi.set(__self__, "token", token)
         pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
     @_builtins.property
@@ -3848,6 +3851,14 @@ class GetGroupHooksHookResult(dict):
         The url of the hook to invoke.
         """
         return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="vulnerabilityEvents")
+    def vulnerability_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for vulnerability events.
+        """
+        return pulumi.get(self, "vulnerability_events")
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
@@ -6362,6 +6373,7 @@ class GetProjectHooksHookResult(dict):
                  tag_push_events: _builtins.bool,
                  token: _builtins.str,
                  url: _builtins.str,
+                 vulnerability_events: _builtins.bool,
                  wiki_page_events: _builtins.bool):
         """
         :param _builtins.bool confidential_issues_events: Invoke the hook for confidential issues events.
@@ -6383,6 +6395,7 @@ class GetProjectHooksHookResult(dict):
         :param _builtins.bool tag_push_events: Invoke the hook for tag push events.
         :param _builtins.str token: A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
         :param _builtins.str url: The url of the hook to invoke.
+        :param _builtins.bool vulnerability_events: Invoke the hook for vulnerability events.
         :param _builtins.bool wiki_page_events: Invoke the hook for wiki page events.
         """
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
@@ -6404,6 +6417,7 @@ class GetProjectHooksHookResult(dict):
         pulumi.set(__self__, "tag_push_events", tag_push_events)
         pulumi.set(__self__, "token", token)
         pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
     @_builtins.property
@@ -6558,6 +6572,14 @@ class GetProjectHooksHookResult(dict):
         The url of the hook to invoke.
         """
         return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="vulnerabilityEvents")
+    def vulnerability_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for vulnerability events.
+        """
+        return pulumi.get(self, "vulnerability_events")
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")

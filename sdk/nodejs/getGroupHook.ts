@@ -128,6 +128,10 @@ export interface GetGroupHookResult {
      */
     readonly url: string;
     /**
+     * Invoke the hook for vulnerability events.
+     */
+    readonly vulnerabilityEvents: boolean;
+    /**
      * Invoke the hook for wiki page events.
      */
     readonly wikiPageEvents: boolean;

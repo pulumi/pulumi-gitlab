@@ -12,7 +12,6 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectIntegrationEmailsOnPushState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -55,6 +54,11 @@ import javax.annotation.Nullable;
  *         var emails = new ProjectIntegrationEmailsOnPush("emails", ProjectIntegrationEmailsOnPushArgs.builder()
  *             .project(awesomeProject.id())
  *             .recipients("myrecipient}{@literal @}{@code example.com myotherrecipient}{@literal @}{@code example.com")
+ *             .disableDiffs(false)
+ *             .sendFromCommitterEmail(false)
+ *             .pushEvents(true)
+ *             .tagPushEvents(true)
+ *             .branchesToBeNotified("all")
  *             .build());
  * 
  *     }}{@code
@@ -106,14 +110,14 @@ public class ProjectIntegrationEmailsOnPush extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> branchesToBeNotified;
+    private Output<String> branchesToBeNotified;
 
     /**
      * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      * 
      */
-    public Output<Optional<String>> branchesToBeNotified() {
-        return Codegen.optional(this.branchesToBeNotified);
+    public Output<String> branchesToBeNotified() {
+        return this.branchesToBeNotified;
     }
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
@@ -134,14 +138,14 @@ public class ProjectIntegrationEmailsOnPush extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="disableDiffs", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disableDiffs;
+    private Output<Boolean> disableDiffs;
 
     /**
      * @return Disable code diffs.
      * 
      */
-    public Output<Optional<Boolean>> disableDiffs() {
-        return Codegen.optional(this.disableDiffs);
+    public Output<Boolean> disableDiffs() {
+        return this.disableDiffs;
     }
     /**
      * ID or full-path of the project you want to activate integration on.
@@ -162,14 +166,14 @@ public class ProjectIntegrationEmailsOnPush extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pushEvents;
+    private Output<Boolean> pushEvents;
 
     /**
      * @return Enable notifications for push events.
      * 
      */
-    public Output<Optional<Boolean>> pushEvents() {
-        return Codegen.optional(this.pushEvents);
+    public Output<Boolean> pushEvents() {
+        return this.pushEvents;
     }
     /**
      * Emails separated by whitespace.
@@ -190,14 +194,14 @@ public class ProjectIntegrationEmailsOnPush extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="sendFromCommitterEmail", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> sendFromCommitterEmail;
+    private Output<Boolean> sendFromCommitterEmail;
 
     /**
      * @return Send from committer.
      * 
      */
-    public Output<Optional<Boolean>> sendFromCommitterEmail() {
-        return Codegen.optional(this.sendFromCommitterEmail);
+    public Output<Boolean> sendFromCommitterEmail() {
+        return this.sendFromCommitterEmail;
     }
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
@@ -218,14 +222,14 @@ public class ProjectIntegrationEmailsOnPush extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tagPushEvents;
+    private Output<Boolean> tagPushEvents;
 
     /**
      * @return Enable notifications for tag push events.
      * 
      */
-    public Output<Optional<Boolean>> tagPushEvents() {
-        return Codegen.optional(this.tagPushEvents);
+    public Output<Boolean> tagPushEvents() {
+        return this.tagPushEvents;
     }
     /**
      * Title of the integration.

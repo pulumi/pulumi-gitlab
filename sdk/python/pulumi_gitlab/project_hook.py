@@ -42,6 +42,7 @@ class ProjectHookArgs:
                  resource_access_token_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
+                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectHook resource.
@@ -66,6 +67,7 @@ class ProjectHookArgs:
         :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for project access token expiry events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
         pulumi.set(__self__, "project", project)
@@ -108,6 +110,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if vulnerability_events is not None:
+            pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         if wiki_page_events is not None:
             pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
@@ -364,6 +368,18 @@ class ProjectHookArgs:
         pulumi.set(self, "token", value)
 
     @_builtins.property
+    @pulumi.getter(name="vulnerabilityEvents")
+    def vulnerability_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Invoke the hook for vulnerability events. Defaults to `false`.
+        """
+        return pulumi.get(self, "vulnerability_events")
+
+    @vulnerability_events.setter
+    def vulnerability_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "vulnerability_events", value)
+
+    @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -402,6 +418,7 @@ class _ProjectHookState:
                  tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
+                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectHook resources.
@@ -428,6 +445,7 @@ class _ProjectHookState:
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
         if confidential_issues_events is not None:
@@ -476,6 +494,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "token", token)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if vulnerability_events is not None:
+            pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         if wiki_page_events is not None:
             pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
@@ -756,6 +776,18 @@ class _ProjectHookState:
         pulumi.set(self, "url", value)
 
     @_builtins.property
+    @pulumi.getter(name="vulnerabilityEvents")
+    def vulnerability_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Invoke the hook for vulnerability events. Defaults to `false`.
+        """
+        return pulumi.get(self, "vulnerability_events")
+
+    @vulnerability_events.setter
+    def vulnerability_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "vulnerability_events", value)
+
+    @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -795,6 +827,7 @@ class ProjectHook(pulumi.CustomResource):
                  tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
+                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -882,6 +915,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
         ...
@@ -988,6 +1022,7 @@ class ProjectHook(pulumi.CustomResource):
                  tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
+                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1023,6 +1058,7 @@ class ProjectHook(pulumi.CustomResource):
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+            __props__.__dict__["vulnerability_events"] = vulnerability_events
             __props__.__dict__["wiki_page_events"] = wiki_page_events
             __props__.__dict__["hook_id"] = None
             __props__.__dict__["project_id"] = None
@@ -1061,6 +1097,7 @@ class ProjectHook(pulumi.CustomResource):
             tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
             token: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
+            vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
             wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ProjectHook':
         """
         Get an existing ProjectHook resource's state with the given name, id, and optional extra
@@ -1092,6 +1129,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1121,6 +1159,7 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["tag_push_events"] = tag_push_events
         __props__.__dict__["token"] = token
         __props__.__dict__["url"] = url
+        __props__.__dict__["vulnerability_events"] = vulnerability_events
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return ProjectHook(resource_name, opts=opts, __props__=__props__)
 
@@ -1307,6 +1346,14 @@ class ProjectHook(pulumi.CustomResource):
         The url of the hook to invoke. Forces re-creation to preserve `token`.
         """
         return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="vulnerabilityEvents")
+    def vulnerability_events(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Invoke the hook for vulnerability events. Defaults to `false`.
+        """
+        return pulumi.get(self, "vulnerability_events")
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
