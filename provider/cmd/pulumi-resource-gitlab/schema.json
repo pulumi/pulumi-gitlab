@@ -1621,6 +1621,10 @@
                     "type": "string",
                     "description": "The url of the hook to invoke.\n"
                 },
+                "vulnerabilityEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for vulnerability events.\n"
+                },
                 "wikiPageEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for wiki page events.\n"
@@ -1649,6 +1653,7 @@
                 "tagPushEvents",
                 "token",
                 "url",
+                "vulnerabilityEvents",
                 "wikiPageEvents"
             ],
             "language": {
@@ -3134,6 +3139,10 @@
                     "type": "string",
                     "description": "The url of the hook to invoke.\n"
                 },
+                "vulnerabilityEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for vulnerability events.\n"
+                },
                 "wikiPageEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for wiki page events.\n"
@@ -3160,6 +3169,7 @@
                 "tagPushEvents",
                 "token",
                 "url",
+                "vulnerabilityEvents",
                 "wikiPageEvents"
             ],
             "language": {
@@ -13410,6 +13420,10 @@
                     "type": "string",
                     "description": "The url of the hook to invoke. Forces re-creation to preserve \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
                 },
+                "vulnerabilityEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for vulnerability events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
                 "wikiPageEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for wiki page events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
@@ -13441,6 +13455,7 @@
                 "tagPushEvents",
                 "token",
                 "url",
+                "vulnerabilityEvents",
                 "wikiPageEvents"
             ],
             "inputProperties": {
@@ -13543,6 +13558,10 @@
                 "url": {
                     "type": "string",
                     "description": "The url of the hook to invoke. Forces re-creation to preserve \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
+                },
+                "vulnerabilityEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for vulnerability events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -13663,6 +13682,10 @@
                     "url": {
                         "type": "string",
                         "description": "The url of the hook to invoke. Forces re-creation to preserve \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
+                    },
+                    "vulnerabilityEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for vulnerability events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                     },
                     "wikiPageEvents": {
                         "type": "boolean",
@@ -15432,7 +15455,7 @@
             }
         },
         "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush": {
-            "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.IntegrationEmailsOnPush`\" pulumi-lang-dotnet=\"`gitlab.IntegrationEmailsOnPush`\" pulumi-lang-go=\"`IntegrationEmailsOnPush`\" pulumi-lang-python=\"`IntegrationEmailsOnPush`\" pulumi-lang-yaml=\"`gitlab.IntegrationEmailsOnPush`\" pulumi-lang-java=\"`gitlab.IntegrationEmailsOnPush`\"\u003e`gitlab.IntegrationEmailsOnPush`\u003c/span\u003e resource manages the lifecycle of a project integration with the Emails on Push Service.\n\n\u003e This resource is deprecated and will be removed in 19.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-dotnet=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-go=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-python=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-yaml=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-java=\"`gitlab.ProjectIntegrationEmailsOnPush`\"\u003e`gitlab.ProjectIntegrationEmailsOnPush`\u003c/span\u003einstead!\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst emails = new gitlab.IntegrationEmailsOnPush(\"emails\", {\n    project: awesomeProject.id,\n    recipients: \"myrecipient@example.com myotherrecipient@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nemails = gitlab.IntegrationEmailsOnPush(\"emails\",\n    project=awesome_project.id,\n    recipients=\"myrecipient@example.com myotherrecipient@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var emails = new GitLab.IntegrationEmailsOnPush(\"emails\", new()\n    {\n        Project = awesomeProject.Id,\n        Recipients = \"myrecipient@example.com myotherrecipient@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationEmailsOnPush(ctx, \"emails\", \u0026gitlab.IntegrationEmailsOnPushArgs{\n\t\t\tProject:    awesomeProject.ID(),\n\t\t\tRecipients: pulumi.String(\"myrecipient@example.com myotherrecipient@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationEmailsOnPush;\nimport com.pulumi.gitlab.IntegrationEmailsOnPushArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var emails = new IntegrationEmailsOnPush(\"emails\", IntegrationEmailsOnPushArgs.builder()\n            .project(awesomeProject.id())\n            .recipients(\"myrecipient@example.com myotherrecipient@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  emails:\n    type: gitlab:IntegrationEmailsOnPush\n    properties:\n      project: ${awesomeProject.id}\n      recipients: myrecipient@example.com myotherrecipient@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_emails_on_push`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_integration_emails_on_push.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nYou can import a gitlab_integration_emails_on_push state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush emails 1\n```\n\n",
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.IntegrationEmailsOnPush`\" pulumi-lang-dotnet=\"`gitlab.IntegrationEmailsOnPush`\" pulumi-lang-go=\"`IntegrationEmailsOnPush`\" pulumi-lang-python=\"`IntegrationEmailsOnPush`\" pulumi-lang-yaml=\"`gitlab.IntegrationEmailsOnPush`\" pulumi-lang-java=\"`gitlab.IntegrationEmailsOnPush`\"\u003e`gitlab.IntegrationEmailsOnPush`\u003c/span\u003e resource manages the lifecycle of a project integration with the Emails on Push Service.\n\n\u003e This resource is deprecated and will be removed in 19.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-dotnet=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-go=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-python=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-yaml=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-java=\"`gitlab.ProjectIntegrationEmailsOnPush`\"\u003e`gitlab.ProjectIntegrationEmailsOnPush`\u003c/span\u003einstead.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\n// This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst emails = new gitlab.IntegrationEmailsOnPush(\"emails\", {\n    project: awesomeProject.id,\n    recipients: \"myrecipient@example.com myotherrecipient@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\n# This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nemails = gitlab.IntegrationEmailsOnPush(\"emails\",\n    project=awesome_project.id,\n    recipients=\"myrecipient@example.com myotherrecipient@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var emails = new GitLab.IntegrationEmailsOnPush(\"emails\", new()\n    {\n        Project = awesomeProject.Id,\n        Recipients = \"myrecipient@example.com myotherrecipient@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewIntegrationEmailsOnPush(ctx, \"emails\", \u0026gitlab.IntegrationEmailsOnPushArgs{\n\t\t\tProject:    awesomeProject.ID(),\n\t\t\tRecipients: pulumi.String(\"myrecipient@example.com myotherrecipient@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.IntegrationEmailsOnPush;\nimport com.pulumi.gitlab.IntegrationEmailsOnPushArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var emails = new IntegrationEmailsOnPush(\"emails\", IntegrationEmailsOnPushArgs.builder()\n            .project(awesomeProject.id())\n            .recipients(\"myrecipient@example.com myotherrecipient@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  emails:\n    type: gitlab:IntegrationEmailsOnPush\n    properties:\n      project: ${awesomeProject.id}\n      recipients: myrecipient@example.com myotherrecipient@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_emails_on_push`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_integration_emails_on_push.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nYou can import a gitlab_integration_emails_on_push state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush emails 1\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -15485,10 +15508,15 @@
             },
             "required": [
                 "active",
+                "branchesToBeNotified",
                 "createdAt",
+                "disableDiffs",
                 "project",
+                "pushEvents",
                 "recipients",
+                "sendFromCommitterEmail",
                 "slug",
+                "tagPushEvents",
                 "title",
                 "updatedAt"
             ],
@@ -15503,8 +15531,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "ID or full-path of the project you want to activate integration on.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID or full-path of the project you want to activate integration on.\n"
                 },
                 "pushEvents": {
                     "type": "boolean",
@@ -15548,8 +15575,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "ID or full-path of the project you want to activate integration on.\n",
-                        "willReplaceOnChanges": true
+                        "description": "ID or full-path of the project you want to activate integration on.\n"
                     },
                     "pushEvents": {
                         "type": "boolean",
@@ -21319,6 +21345,10 @@
                     "type": "string",
                     "description": "The url of the hook to invoke. Forces re-creation to preserve \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
                 },
+                "vulnerabilityEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for vulnerability events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
                 "wikiPageEvents": {
                     "type": "boolean",
                     "description": "Invoke the hook for wiki page events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
@@ -21347,6 +21377,7 @@
                 "tagPushEvents",
                 "token",
                 "url",
+                "vulnerabilityEvents",
                 "wikiPageEvents"
             ],
             "inputProperties": {
@@ -21437,6 +21468,10 @@
                 "url": {
                     "type": "string",
                     "description": "The url of the hook to invoke. Forces re-creation to preserve \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
+                },
+                "vulnerabilityEvents": {
+                    "type": "boolean",
+                    "description": "Invoke the hook for vulnerability events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "wikiPageEvents": {
                     "type": "boolean",
@@ -21546,6 +21581,10 @@
                         "type": "string",
                         "description": "The url of the hook to invoke. Forces re-creation to preserve \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e.\n"
                     },
+                    "vulnerabilityEvents": {
+                        "type": "boolean",
+                        "description": "Invoke the hook for vulnerability events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                    },
                     "wikiPageEvents": {
                         "type": "boolean",
                         "description": "Invoke the hook for wiki page events. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
@@ -21650,7 +21689,7 @@
             }
         },
         "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush": {
-            "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-dotnet=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-go=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-python=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-yaml=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-java=\"`gitlab.ProjectIntegrationEmailsOnPush`\"\u003e`gitlab.ProjectIntegrationEmailsOnPush`\u003c/span\u003e resource manages the lifecycle of a project integration with the Emails on Push Service.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst emails = new gitlab.ProjectIntegrationEmailsOnPush(\"emails\", {\n    project: awesomeProject.id,\n    recipients: \"myrecipient@example.com myotherrecipient@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nemails = gitlab.ProjectIntegrationEmailsOnPush(\"emails\",\n    project=awesome_project.id,\n    recipients=\"myrecipient@example.com myotherrecipient@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var emails = new GitLab.ProjectIntegrationEmailsOnPush(\"emails\", new()\n    {\n        Project = awesomeProject.Id,\n        Recipients = \"myrecipient@example.com myotherrecipient@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectIntegrationEmailsOnPush(ctx, \"emails\", \u0026gitlab.ProjectIntegrationEmailsOnPushArgs{\n\t\t\tProject:    awesomeProject.ID(),\n\t\t\tRecipients: pulumi.String(\"myrecipient@example.com myotherrecipient@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ProjectIntegrationEmailsOnPush;\nimport com.pulumi.gitlab.ProjectIntegrationEmailsOnPushArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var emails = new ProjectIntegrationEmailsOnPush(\"emails\", ProjectIntegrationEmailsOnPushArgs.builder()\n            .project(awesomeProject.id())\n            .recipients(\"myrecipient@example.com myotherrecipient@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  emails:\n    type: gitlab:ProjectIntegrationEmailsOnPush\n    properties:\n      project: ${awesomeProject.id}\n      recipients: myrecipient@example.com myotherrecipient@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_emails_on_push`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_project_integration_emails_on_push.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nYou can import a gitlab_project_integration_emails_on_push state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush emails 1\n```\n\n",
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-dotnet=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-go=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-python=\"`ProjectIntegrationEmailsOnPush`\" pulumi-lang-yaml=\"`gitlab.ProjectIntegrationEmailsOnPush`\" pulumi-lang-java=\"`gitlab.ProjectIntegrationEmailsOnPush`\"\u003e`gitlab.ProjectIntegrationEmailsOnPush`\u003c/span\u003e resource manages the lifecycle of a project integration with the Emails on Push Service.\n\n**Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#emails-on-push)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gitlab from \"@pulumi/gitlab\";\n\nconst awesomeProject = new gitlab.Project(\"awesome_project\", {\n    name: \"awesome_project\",\n    description: \"My awesome project.\",\n    visibilityLevel: \"public\",\n});\nconst emails = new gitlab.ProjectIntegrationEmailsOnPush(\"emails\", {\n    project: awesomeProject.id,\n    recipients: \"myrecipient@example.com myotherrecipient@example.com\",\n    disableDiffs: false,\n    sendFromCommitterEmail: false,\n    pushEvents: true,\n    tagPushEvents: true,\n    branchesToBeNotified: \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gitlab as gitlab\n\nawesome_project = gitlab.Project(\"awesome_project\",\n    name=\"awesome_project\",\n    description=\"My awesome project.\",\n    visibility_level=\"public\")\nemails = gitlab.ProjectIntegrationEmailsOnPush(\"emails\",\n    project=awesome_project.id,\n    recipients=\"myrecipient@example.com myotherrecipient@example.com\",\n    disable_diffs=False,\n    send_from_committer_email=False,\n    push_events=True,\n    tag_push_events=True,\n    branches_to_be_notified=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing GitLab = Pulumi.GitLab;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awesomeProject = new GitLab.Project(\"awesome_project\", new()\n    {\n        Name = \"awesome_project\",\n        Description = \"My awesome project.\",\n        VisibilityLevel = \"public\",\n    });\n\n    var emails = new GitLab.ProjectIntegrationEmailsOnPush(\"emails\", new()\n    {\n        Project = awesomeProject.Id,\n        Recipients = \"myrecipient@example.com myotherrecipient@example.com\",\n        DisableDiffs = false,\n        SendFromCommitterEmail = false,\n        PushEvents = true,\n        TagPushEvents = true,\n        BranchesToBeNotified = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawesomeProject, err := gitlab.NewProject(ctx, \"awesome_project\", \u0026gitlab.ProjectArgs{\n\t\t\tName:            pulumi.String(\"awesome_project\"),\n\t\t\tDescription:     pulumi.String(\"My awesome project.\"),\n\t\t\tVisibilityLevel: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = gitlab.NewProjectIntegrationEmailsOnPush(ctx, \"emails\", \u0026gitlab.ProjectIntegrationEmailsOnPushArgs{\n\t\t\tProject:                awesomeProject.ID(),\n\t\t\tRecipients:             pulumi.String(\"myrecipient@example.com myotherrecipient@example.com\"),\n\t\t\tDisableDiffs:           pulumi.Bool(false),\n\t\t\tSendFromCommitterEmail: pulumi.Bool(false),\n\t\t\tPushEvents:             pulumi.Bool(true),\n\t\t\tTagPushEvents:          pulumi.Bool(true),\n\t\t\tBranchesToBeNotified:   pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gitlab.Project;\nimport com.pulumi.gitlab.ProjectArgs;\nimport com.pulumi.gitlab.ProjectIntegrationEmailsOnPush;\nimport com.pulumi.gitlab.ProjectIntegrationEmailsOnPushArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awesomeProject = new Project(\"awesomeProject\", ProjectArgs.builder()\n            .name(\"awesome_project\")\n            .description(\"My awesome project.\")\n            .visibilityLevel(\"public\")\n            .build());\n\n        var emails = new ProjectIntegrationEmailsOnPush(\"emails\", ProjectIntegrationEmailsOnPushArgs.builder()\n            .project(awesomeProject.id())\n            .recipients(\"myrecipient@example.com myotherrecipient@example.com\")\n            .disableDiffs(false)\n            .sendFromCommitterEmail(false)\n            .pushEvents(true)\n            .tagPushEvents(true)\n            .branchesToBeNotified(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awesomeProject:\n    type: gitlab:Project\n    name: awesome_project\n    properties:\n      name: awesome_project\n      description: My awesome project.\n      visibilityLevel: public\n  emails:\n    type: gitlab:ProjectIntegrationEmailsOnPush\n    properties:\n      project: ${awesomeProject.id}\n      recipients: myrecipient@example.com myotherrecipient@example.com\n      disableDiffs: false\n      sendFromCommitterEmail: false\n      pushEvents: true\n      tagPushEvents: true\n      branchesToBeNotified: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nStarting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_emails_on_push`. For example:\n\nterraform\n\nimport {\n\n  to = gitlab_project_integration_emails_on_push.example\n\n  id = \"see CLI command below for ID\"\n\n}\n\nImporting using the CLI is supported with the following syntax:\n\nYou can import a gitlab_project_integration_emails_on_push state using the project ID, e.g.\n\n```sh\n$ pulumi import gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush emails 1\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -21703,10 +21742,15 @@
             },
             "required": [
                 "active",
+                "branchesToBeNotified",
                 "createdAt",
+                "disableDiffs",
                 "project",
+                "pushEvents",
                 "recipients",
+                "sendFromCommitterEmail",
                 "slug",
+                "tagPushEvents",
                 "title",
                 "updatedAt"
             ],
@@ -21721,8 +21765,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "ID or full-path of the project you want to activate integration on.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID or full-path of the project you want to activate integration on.\n"
                 },
                 "pushEvents": {
                     "type": "boolean",
@@ -21766,8 +21809,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "ID or full-path of the project you want to activate integration on.\n",
-                        "willReplaceOnChanges": true
+                        "description": "ID or full-path of the project you want to activate integration on.\n"
                     },
                     "pushEvents": {
                         "type": "boolean",
@@ -29632,6 +29674,10 @@
                         "description": "The url of the hook to invoke.\n",
                         "type": "string"
                     },
+                    "vulnerabilityEvents": {
+                        "description": "Invoke the hook for vulnerability events.\n",
+                        "type": "boolean"
+                    },
                     "wikiPageEvents": {
                         "description": "Invoke the hook for wiki page events.\n",
                         "type": "boolean"
@@ -29660,6 +29706,7 @@
                     "tagPushEvents",
                     "token",
                     "url",
+                    "vulnerabilityEvents",
                     "wikiPageEvents"
                 ],
                 "type": "object"
@@ -31540,6 +31587,10 @@
                         "description": "The url of the hook to invoke.\n",
                         "type": "string"
                     },
+                    "vulnerabilityEvents": {
+                        "description": "Invoke the hook for vulnerability events.\n",
+                        "type": "boolean"
+                    },
                     "wikiPageEvents": {
                         "description": "Invoke the hook for wiki page events.\n",
                         "type": "boolean"
@@ -31566,6 +31617,7 @@
                     "tagPushEvents",
                     "token",
                     "url",
+                    "vulnerabilityEvents",
                     "wikiPageEvents"
                 ],
                 "type": "object"

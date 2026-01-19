@@ -2637,8 +2637,8 @@ github.com/zclconf/go-cty-yaml v1.0.3/go.mod h1:9YLUH4g7lOhVWqUbctnVlZ5KLpg7JApr
 github.com/zeebo/assert v1.3.0/go.mod h1:Pq9JiuJQpG8JLJdtkwrJESF0Foym2/D9XMU5ciN/wJ0=
 github.com/zeebo/errs v1.4.0/go.mod h1:sgbWHsvVuTPHcqJJGQ1WhI5KbWlHYz+2+2C/LSEtCw4=
 github.com/zeebo/xxh3 v1.0.2/go.mod h1:5NWz9Sef7zIDm2JHfFlcQvNekmcEl9ekUZQQKCYaDcA=
-gitlab.com/gitlab-org/api/client-go v1.12.0 h1:vYeraq+4eC/5Scir5nWve3LPxLoY5rgW2qRNUgjKS2k=
-gitlab.com/gitlab-org/api/client-go v1.12.0/go.mod h1:adtVJ4zSTEJ2fP5Pb1zF4Ox1OKFg0MH43yxpb0T0248=
+gitlab.com/gitlab-org/api/client-go v1.14.0 h1:0TAU8zwN4p6ZMUnXLUEkSRmUr+mN4B3JQpdOp+PCpO8=
+gitlab.com/gitlab-org/api/client-go v1.14.0/go.mod h1:adtVJ4zSTEJ2fP5Pb1zF4Ox1OKFg0MH43yxpb0T0248=
 go.einride.tech/aip v0.66.0/go.mod h1:qAhMsfT7plxBX+Oy7Huol6YUvZ0ZzdUz26yZsQwfl1M=
 go.etcd.io/bbolt v1.3.3/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
 go.etcd.io/etcd v0.0.0-20191023171146-3cf2f69b5738/go.mod h1:dnLIgRNXwCJa5e+c6mIZCrds/GIG4ncV9HhK5PX7jPg=
