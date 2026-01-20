@@ -195,6 +195,8 @@ type Group struct {
 	PermanentlyRemoveOnDelete pulumi.BoolPtrOutput `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolOutput `pulumi:"preventForkingOutsideGroup"`
+	// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy pulumi.BoolOutput `pulumi:"preventSharingGroupsOutsideHierarchy"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel pulumi.StringOutput `pulumi:"projectCreationLevel"`
 	// Push rules for the group.
@@ -312,6 +314,8 @@ type groupState struct {
 	PermanentlyRemoveOnDelete *bool `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
+	// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy *bool `pulumi:"preventSharingGroupsOutsideHierarchy"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Push rules for the group.
@@ -393,6 +397,8 @@ type GroupState struct {
 	PermanentlyRemoveOnDelete pulumi.BoolPtrInput
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
+	// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy pulumi.BoolPtrInput
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Push rules for the group.
@@ -472,6 +478,8 @@ type groupArgs struct {
 	PermanentlyRemoveOnDelete *bool `pulumi:"permanentlyRemoveOnDelete"`
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup *bool `pulumi:"preventForkingOutsideGroup"`
+	// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy *bool `pulumi:"preventSharingGroupsOutsideHierarchy"`
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel *string `pulumi:"projectCreationLevel"`
 	// Push rules for the group.
@@ -544,6 +552,8 @@ type GroupArgs struct {
 	PermanentlyRemoveOnDelete pulumi.BoolPtrInput
 	// Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolPtrInput
+	// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy pulumi.BoolPtrInput
 	// Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
 	ProjectCreationLevel pulumi.StringPtrInput
 	// Push rules for the group.
@@ -780,6 +790,11 @@ func (o GroupOutput) PermanentlyRemoveOnDelete() pulumi.BoolPtrOutput {
 // Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
 func (o GroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
+}
+
+// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+func (o GroupOutput) PreventSharingGroupsOutsideHierarchy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.PreventSharingGroupsOutsideHierarchy }).(pulumi.BoolOutput)
 }
 
 // Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`

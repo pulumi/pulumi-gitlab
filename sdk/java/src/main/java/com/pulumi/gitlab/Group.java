@@ -501,6 +501,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.preventForkingOutsideGroup;
     }
     /**
+     * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * 
+     */
+    @Export(name="preventSharingGroupsOutsideHierarchy", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventSharingGroupsOutsideHierarchy;
+
+    /**
+     * @return Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * 
+     */
+    public Output<Boolean> preventSharingGroupsOutsideHierarchy() {
+        return this.preventSharingGroupsOutsideHierarchy;
+    }
+    /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      * 
      */

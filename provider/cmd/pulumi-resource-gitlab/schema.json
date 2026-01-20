@@ -2236,6 +2236,10 @@
                     "type": "boolean",
                     "description": "When enabled, users can not fork projects from this group to external namespaces.\n"
                 },
+                "preventSharingGroupsOutsideHierarchy": {
+                    "type": "boolean",
+                    "description": "When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.\n"
+                },
                 "requestAccessEnabled": {
                     "type": "boolean",
                     "description": "Is request for access enabled to the group.\n"
@@ -2274,6 +2278,7 @@
                 "parentId",
                 "path",
                 "preventForkingOutsideGroup",
+                "preventSharingGroupsOutsideHierarchy",
                 "requestAccessEnabled",
                 "runnersToken",
                 "sharedRunnersSetting",
@@ -12106,6 +12111,10 @@
                     "type": "boolean",
                     "description": "Defaults to false. When enabled, users can not fork projects from this group to external namespaces.\n"
                 },
+                "preventSharingGroupsOutsideHierarchy": {
+                    "type": "boolean",
+                    "description": "Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.\n"
+                },
                 "projectCreationLevel": {
                     "type": "string",
                     "description": "Determine if developers can create projects in the group. Valid values are: \u003cspan pulumi-lang-nodejs=\"`noone`\" pulumi-lang-dotnet=\"`Noone`\" pulumi-lang-go=\"`noone`\" pulumi-lang-python=\"`noone`\" pulumi-lang-yaml=\"`noone`\" pulumi-lang-java=\"`noone`\"\u003e`noone`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`owner`\" pulumi-lang-dotnet=\"`Owner`\" pulumi-lang-go=\"`owner`\" pulumi-lang-python=\"`owner`\" pulumi-lang-yaml=\"`owner`\" pulumi-lang-java=\"`owner`\"\u003e`owner`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`maintainer`\" pulumi-lang-dotnet=\"`Maintainer`\" pulumi-lang-go=\"`maintainer`\" pulumi-lang-python=\"`maintainer`\" pulumi-lang-yaml=\"`maintainer`\" pulumi-lang-java=\"`maintainer`\"\u003e`maintainer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`developer`\" pulumi-lang-dotnet=\"`Developer`\" pulumi-lang-go=\"`developer`\" pulumi-lang-python=\"`developer`\" pulumi-lang-yaml=\"`developer`\" pulumi-lang-java=\"`developer`\"\u003e`developer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`administrator`\" pulumi-lang-dotnet=\"`Administrator`\" pulumi-lang-go=\"`administrator`\" pulumi-lang-python=\"`administrator`\" pulumi-lang-yaml=\"`administrator`\" pulumi-lang-java=\"`administrator`\"\u003e`administrator`\u003c/span\u003e\n"
@@ -12181,6 +12190,7 @@
                 "parentId",
                 "path",
                 "preventForkingOutsideGroup",
+                "preventSharingGroupsOutsideHierarchy",
                 "projectCreationLevel",
                 "pushRules",
                 "requestAccessEnabled",
@@ -12290,6 +12300,10 @@
                 "preventForkingOutsideGroup": {
                     "type": "boolean",
                     "description": "Defaults to false. When enabled, users can not fork projects from this group to external namespaces.\n"
+                },
+                "preventSharingGroupsOutsideHierarchy": {
+                    "type": "boolean",
+                    "description": "Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.\n"
                 },
                 "projectCreationLevel": {
                     "type": "string",
@@ -12448,6 +12462,10 @@
                     "preventForkingOutsideGroup": {
                         "type": "boolean",
                         "description": "Defaults to false. When enabled, users can not fork projects from this group to external namespaces.\n"
+                    },
+                    "preventSharingGroupsOutsideHierarchy": {
+                        "type": "boolean",
+                        "description": "Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.\n"
                     },
                     "projectCreationLevel": {
                         "type": "string",
@@ -18854,6 +18872,7 @@
                 "forkingAccessLevel",
                 "groupRunnersEnabled",
                 "httpUrlToRepo",
+                "importUrl",
                 "infrastructureAccessLevel",
                 "issuesAccessLevel",
                 "issuesEnabled",
@@ -18865,6 +18884,7 @@
                 "mergeRequestsEnabled",
                 "mergeTrainsEnabled",
                 "mergeTrainsSkipTrainAllowed",
+                "mirror",
                 "mirrorOverwritesDivergedBranches",
                 "mirrorTriggerBuilds",
                 "modelExperimentsAccessLevel",
@@ -29405,6 +29425,10 @@
                         "description": "When enabled, users can not fork projects from this group to external namespaces.\n",
                         "type": "boolean"
                     },
+                    "preventSharingGroupsOutsideHierarchy": {
+                        "description": "When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.\n",
+                        "type": "boolean"
+                    },
                     "requestAccessEnabled": {
                         "description": "Boolean, is request for access enabled to the group.\n",
                         "type": "boolean"
@@ -29457,6 +29481,7 @@
                     "parentId",
                     "path",
                     "preventForkingOutsideGroup",
+                    "preventSharingGroupsOutsideHierarchy",
                     "requestAccessEnabled",
                     "runnersToken",
                     "sharedRunnersMinutesLimit",

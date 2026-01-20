@@ -95,6 +95,10 @@ export interface GetGroupResult {
      */
     readonly preventForkingOutsideGroup: boolean;
     /**
+     * When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     */
+    readonly preventSharingGroupsOutsideHierarchy: boolean;
+    /**
      * Boolean, is request for access enabled to the group.
      */
     readonly requestAccessEnabled: boolean;

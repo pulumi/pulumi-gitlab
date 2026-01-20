@@ -8290,6 +8290,8 @@ type GetGroupsGroup struct {
 	Path string `pulumi:"path"`
 	// When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup bool `pulumi:"preventForkingOutsideGroup"`
+	// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy bool `pulumi:"preventSharingGroupsOutsideHierarchy"`
 	// Is request for access enabled to the group.
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
@@ -8338,6 +8340,8 @@ type GetGroupsGroupArgs struct {
 	Path pulumi.StringInput `pulumi:"path"`
 	// When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup pulumi.BoolInput `pulumi:"preventForkingOutsideGroup"`
+	// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy pulumi.BoolInput `pulumi:"preventSharingGroupsOutsideHierarchy"`
 	// Is request for access enabled to the group.
 	RequestAccessEnabled pulumi.BoolInput `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
@@ -8453,6 +8457,11 @@ func (o GetGroupsGroupOutput) Path() pulumi.StringOutput {
 // When enabled, users can not fork projects from this group to external namespaces.
 func (o GetGroupsGroupOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
+}
+
+// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+func (o GetGroupsGroupOutput) PreventSharingGroupsOutsideHierarchy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.PreventSharingGroupsOutsideHierarchy }).(pulumi.BoolOutput)
 }
 
 // Is request for access enabled to the group.

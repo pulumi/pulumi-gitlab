@@ -246,7 +246,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    declare public readonly importUrl: pulumi.Output<string | undefined>;
+    declare public readonly importUrl: pulumi.Output<string>;
     /**
      * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
@@ -322,7 +322,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Enable project pull mirror.
      */
-    declare public readonly mirror: pulumi.Output<boolean | undefined>;
+    declare public readonly mirror: pulumi.Output<boolean>;
     /**
      * Enable overwrite diverged branches for a mirrored project.
      */

@@ -404,6 +404,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * 
+     */
+    @Import(name="preventSharingGroupsOutsideHierarchy")
+    private @Nullable Output<Boolean> preventSharingGroupsOutsideHierarchy;
+
+    /**
+     * @return Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * 
+     */
+    public Optional<Output<Boolean>> preventSharingGroupsOutsideHierarchy() {
+        return Optional.ofNullable(this.preventSharingGroupsOutsideHierarchy);
+    }
+
+    /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      * 
      */
@@ -626,6 +641,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.path = $.path;
         this.permanentlyRemoveOnDelete = $.permanentlyRemoveOnDelete;
         this.preventForkingOutsideGroup = $.preventForkingOutsideGroup;
+        this.preventSharingGroupsOutsideHierarchy = $.preventSharingGroupsOutsideHierarchy;
         this.projectCreationLevel = $.projectCreationLevel;
         this.pushRules = $.pushRules;
         this.requestAccessEnabled = $.requestAccessEnabled;
@@ -1210,6 +1226,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder preventForkingOutsideGroup(Boolean preventForkingOutsideGroup) {
             return preventForkingOutsideGroup(Output.of(preventForkingOutsideGroup));
+        }
+
+        /**
+         * @param preventSharingGroupsOutsideHierarchy Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventSharingGroupsOutsideHierarchy(@Nullable Output<Boolean> preventSharingGroupsOutsideHierarchy) {
+            $.preventSharingGroupsOutsideHierarchy = preventSharingGroupsOutsideHierarchy;
+            return this;
+        }
+
+        /**
+         * @param preventSharingGroupsOutsideHierarchy Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventSharingGroupsOutsideHierarchy(Boolean preventSharingGroupsOutsideHierarchy) {
+            return preventSharingGroupsOutsideHierarchy(Output.of(preventSharingGroupsOutsideHierarchy));
         }
 
         /**

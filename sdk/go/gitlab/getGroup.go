@@ -62,6 +62,8 @@ type LookupGroupResult struct {
 	Path string `pulumi:"path"`
 	// When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup bool `pulumi:"preventForkingOutsideGroup"`
+	// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	PreventSharingGroupsOutsideHierarchy bool `pulumi:"preventSharingGroupsOutsideHierarchy"`
 	// Boolean, is request for access enabled to the group.
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
@@ -184,6 +186,11 @@ func (o LookupGroupResultOutput) Path() pulumi.StringOutput {
 // When enabled, users can not fork projects from this group to external namespaces.
 func (o LookupGroupResultOutput) PreventForkingOutsideGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
+}
+
+// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+func (o LookupGroupResultOutput) PreventSharingGroupsOutsideHierarchy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.PreventSharingGroupsOutsideHierarchy }).(pulumi.BoolOutput)
 }
 
 // Boolean, is request for access enabled to the group.

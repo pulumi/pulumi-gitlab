@@ -670,14 +670,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="importUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> importUrl;
+    private Output<String> importUrl;
 
     /**
      * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
-    public Output<Optional<String>> importUrl() {
-        return Codegen.optional(this.importUrl);
+    public Output<String> importUrl() {
+        return this.importUrl;
     }
     /**
      * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
@@ -930,14 +930,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mirror", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mirror;
+    private Output<Boolean> mirror;
 
     /**
      * @return Enable project pull mirror.
      * 
      */
-    public Output<Optional<Boolean>> mirror() {
-        return Codegen.optional(this.mirror);
+    public Output<Boolean> mirror() {
+        return this.mirror;
     }
     /**
      * Enable overwrite diverged branches for a mirrored project.

@@ -4892,7 +4892,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="importUrl")
-    def import_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def import_url(self) -> pulumi.Output[_builtins.str]:
         """
         Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
@@ -5038,7 +5038,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mirror(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def mirror(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable project pull mirror.
         """

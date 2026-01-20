@@ -27,7 +27,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch=None, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, visibility_level=None, web_url=None, wiki_access_level=None):
+    def __init__(__self__, default_branch=None, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, visibility_level=None, web_url=None, wiki_access_level=None):
         if default_branch and not isinstance(default_branch, str):
             raise TypeError("Expected argument 'default_branch' to be a str")
         pulumi.set(__self__, "default_branch", default_branch)
@@ -70,6 +70,9 @@ class GetGroupResult:
         if prevent_forking_outside_group and not isinstance(prevent_forking_outside_group, bool):
             raise TypeError("Expected argument 'prevent_forking_outside_group' to be a bool")
         pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+        if prevent_sharing_groups_outside_hierarchy and not isinstance(prevent_sharing_groups_outside_hierarchy, bool):
+            raise TypeError("Expected argument 'prevent_sharing_groups_outside_hierarchy' to be a bool")
+        pulumi.set(__self__, "prevent_sharing_groups_outside_hierarchy", prevent_sharing_groups_outside_hierarchy)
         if request_access_enabled and not isinstance(request_access_enabled, bool):
             raise TypeError("Expected argument 'request_access_enabled' to be a bool")
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
@@ -208,6 +211,14 @@ class GetGroupResult:
         return pulumi.get(self, "prevent_forking_outside_group")
 
     @_builtins.property
+    @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
+    def prevent_sharing_groups_outside_hierarchy(self) -> _builtins.bool:
+        """
+        When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        """
+        return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
+
+    @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> _builtins.bool:
         """
@@ -292,6 +303,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             parent_id=self.parent_id,
             path=self.path,
             prevent_forking_outside_group=self.prevent_forking_outside_group,
+            prevent_sharing_groups_outside_hierarchy=self.prevent_sharing_groups_outside_hierarchy,
             request_access_enabled=self.request_access_enabled,
             runners_token=self.runners_token,
             shared_runners_minutes_limit=self.shared_runners_minutes_limit,
@@ -335,6 +347,7 @@ def get_group(full_path: Optional[_builtins.str] = None,
         parent_id=pulumi.get(__ret__, 'parent_id'),
         path=pulumi.get(__ret__, 'path'),
         prevent_forking_outside_group=pulumi.get(__ret__, 'prevent_forking_outside_group'),
+        prevent_sharing_groups_outside_hierarchy=pulumi.get(__ret__, 'prevent_sharing_groups_outside_hierarchy'),
         request_access_enabled=pulumi.get(__ret__, 'request_access_enabled'),
         runners_token=pulumi.get(__ret__, 'runners_token'),
         shared_runners_minutes_limit=pulumi.get(__ret__, 'shared_runners_minutes_limit'),
@@ -375,6 +388,7 @@ def get_group_output(full_path: Optional[pulumi.Input[Optional[_builtins.str]]] 
         parent_id=pulumi.get(__response__, 'parent_id'),
         path=pulumi.get(__response__, 'path'),
         prevent_forking_outside_group=pulumi.get(__response__, 'prevent_forking_outside_group'),
+        prevent_sharing_groups_outside_hierarchy=pulumi.get(__response__, 'prevent_sharing_groups_outside_hierarchy'),
         request_access_enabled=pulumi.get(__response__, 'request_access_enabled'),
         runners_token=pulumi.get(__response__, 'runners_token'),
         shared_runners_minutes_limit=pulumi.get(__response__, 'shared_runners_minutes_limit'),
