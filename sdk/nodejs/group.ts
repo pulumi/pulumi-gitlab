@@ -231,6 +231,10 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly preventForkingOutsideGroup: pulumi.Output<boolean>;
     /**
+     * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     */
+    declare public readonly preventSharingGroupsOutsideHierarchy: pulumi.Output<boolean>;
+    /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
     declare public readonly projectCreationLevel: pulumi.Output<string>;
@@ -321,6 +325,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["path"] = state?.path;
             resourceInputs["permanentlyRemoveOnDelete"] = state?.permanentlyRemoveOnDelete;
             resourceInputs["preventForkingOutsideGroup"] = state?.preventForkingOutsideGroup;
+            resourceInputs["preventSharingGroupsOutsideHierarchy"] = state?.preventSharingGroupsOutsideHierarchy;
             resourceInputs["projectCreationLevel"] = state?.projectCreationLevel;
             resourceInputs["pushRules"] = state?.pushRules;
             resourceInputs["requestAccessEnabled"] = state?.requestAccessEnabled;
@@ -361,6 +366,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["path"] = args?.path;
             resourceInputs["permanentlyRemoveOnDelete"] = args?.permanentlyRemoveOnDelete;
             resourceInputs["preventForkingOutsideGroup"] = args?.preventForkingOutsideGroup;
+            resourceInputs["preventSharingGroupsOutsideHierarchy"] = args?.preventSharingGroupsOutsideHierarchy;
             resourceInputs["projectCreationLevel"] = args?.projectCreationLevel;
             resourceInputs["pushRules"] = args?.pushRules;
             resourceInputs["requestAccessEnabled"] = args?.requestAccessEnabled;
@@ -491,6 +497,10 @@ export interface GroupState {
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
     preventForkingOutsideGroup?: pulumi.Input<boolean>;
+    /**
+     * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     */
+    preventSharingGroupsOutsideHierarchy?: pulumi.Input<boolean>;
     /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
@@ -639,6 +649,10 @@ export interface GroupArgs {
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
     preventForkingOutsideGroup?: pulumi.Input<boolean>;
+    /**
+     * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     */
+    preventSharingGroupsOutsideHierarchy?: pulumi.Input<boolean>;
     /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */

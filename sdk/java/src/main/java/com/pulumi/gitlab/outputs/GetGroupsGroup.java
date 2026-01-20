@@ -67,6 +67,11 @@ public final class GetGroupsGroup {
      */
     private Boolean preventForkingOutsideGroup;
     /**
+     * @return When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * 
+     */
+    private Boolean preventSharingGroupsOutsideHierarchy;
+    /**
      * @return Is request for access enabled to the group.
      * 
      */
@@ -173,6 +178,13 @@ public final class GetGroupsGroup {
         return this.preventForkingOutsideGroup;
     }
     /**
+     * @return When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * 
+     */
+    public Boolean preventSharingGroupsOutsideHierarchy() {
+        return this.preventSharingGroupsOutsideHierarchy;
+    }
+    /**
      * @return Is request for access enabled to the group.
      * 
      */
@@ -234,6 +246,7 @@ public final class GetGroupsGroup {
         private Integer parentId;
         private String path;
         private Boolean preventForkingOutsideGroup;
+        private Boolean preventSharingGroupsOutsideHierarchy;
         private Boolean requestAccessEnabled;
         private String runnersToken;
         private String sharedRunnersSetting;
@@ -253,6 +266,7 @@ public final class GetGroupsGroup {
     	      this.parentId = defaults.parentId;
     	      this.path = defaults.path;
     	      this.preventForkingOutsideGroup = defaults.preventForkingOutsideGroup;
+    	      this.preventSharingGroupsOutsideHierarchy = defaults.preventSharingGroupsOutsideHierarchy;
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.runnersToken = defaults.runnersToken;
     	      this.sharedRunnersSetting = defaults.sharedRunnersSetting;
@@ -342,6 +356,14 @@ public final class GetGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder preventSharingGroupsOutsideHierarchy(Boolean preventSharingGroupsOutsideHierarchy) {
+            if (preventSharingGroupsOutsideHierarchy == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "preventSharingGroupsOutsideHierarchy");
+            }
+            this.preventSharingGroupsOutsideHierarchy = preventSharingGroupsOutsideHierarchy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestAccessEnabled(Boolean requestAccessEnabled) {
             if (requestAccessEnabled == null) {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "requestAccessEnabled");
@@ -401,6 +423,7 @@ public final class GetGroupsGroup {
             _resultValue.parentId = parentId;
             _resultValue.path = path;
             _resultValue.preventForkingOutsideGroup = preventForkingOutsideGroup;
+            _resultValue.preventSharingGroupsOutsideHierarchy = preventSharingGroupsOutsideHierarchy;
             _resultValue.requestAccessEnabled = requestAccessEnabled;
             _resultValue.runnersToken = runnersToken;
             _resultValue.sharedRunnersSetting = sharedRunnersSetting;

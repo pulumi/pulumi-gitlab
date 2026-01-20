@@ -43,6 +43,7 @@ class GroupArgs:
                  parent_id: Optional[pulumi.Input[_builtins.int]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
                  push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -78,6 +79,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.int] parent_id: Id of the parent group (creates a nested group).
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[_builtins.bool] prevent_sharing_groups_outside_hierarchy: Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param pulumi.Input[_builtins.str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
@@ -136,6 +138,8 @@ class GroupArgs:
             pulumi.set(__self__, "permanently_remove_on_delete", permanently_remove_on_delete)
         if prevent_forking_outside_group is not None:
             pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+        if prevent_sharing_groups_outside_hierarchy is not None:
+            pulumi.set(__self__, "prevent_sharing_groups_outside_hierarchy", prevent_sharing_groups_outside_hierarchy)
         if project_creation_level is not None:
             pulumi.set(__self__, "project_creation_level", project_creation_level)
         if push_rules is not None:
@@ -425,6 +429,18 @@ class GroupArgs:
         pulumi.set(self, "prevent_forking_outside_group", value)
 
     @_builtins.property
+    @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
+    def prevent_sharing_groups_outside_hierarchy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        """
+        return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
+
+    @prevent_sharing_groups_outside_hierarchy.setter
+    def prevent_sharing_groups_outside_hierarchy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_sharing_groups_outside_hierarchy", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -585,6 +601,7 @@ class _GroupState:
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
                  push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -625,6 +642,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[_builtins.bool] prevent_sharing_groups_outside_hierarchy: Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param pulumi.Input[_builtins.str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         :param pulumi.Input['GroupPushRulesArgs'] push_rules: Push rules for the group.
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
@@ -692,6 +710,8 @@ class _GroupState:
             pulumi.set(__self__, "permanently_remove_on_delete", permanently_remove_on_delete)
         if prevent_forking_outside_group is not None:
             pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+        if prevent_sharing_groups_outside_hierarchy is not None:
+            pulumi.set(__self__, "prevent_sharing_groups_outside_hierarchy", prevent_sharing_groups_outside_hierarchy)
         if project_creation_level is not None:
             pulumi.set(__self__, "project_creation_level", project_creation_level)
         if push_rules is not None:
@@ -1021,6 +1041,18 @@ class _GroupState:
         pulumi.set(self, "prevent_forking_outside_group", value)
 
     @_builtins.property
+    @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
+    def prevent_sharing_groups_outside_hierarchy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        """
+        return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
+
+    @prevent_sharing_groups_outside_hierarchy.setter
+    def prevent_sharing_groups_outside_hierarchy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_sharing_groups_outside_hierarchy", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectCreationLevel")
     def project_creation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1205,6 +1237,7 @@ class Group(pulumi.CustomResource):
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
                  push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1329,6 +1362,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[_builtins.bool] prevent_sharing_groups_outside_hierarchy: Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param pulumi.Input[_builtins.str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
@@ -1472,6 +1506,7 @@ class Group(pulumi.CustomResource):
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
                  push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
                  request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1516,6 +1551,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["path"] = path
             __props__.__dict__["permanently_remove_on_delete"] = permanently_remove_on_delete
             __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
+            __props__.__dict__["prevent_sharing_groups_outside_hierarchy"] = prevent_sharing_groups_outside_hierarchy
             __props__.__dict__["project_creation_level"] = project_creation_level
             __props__.__dict__["push_rules"] = push_rules
             __props__.__dict__["request_access_enabled"] = request_access_enabled
@@ -1569,6 +1605,7 @@ class Group(pulumi.CustomResource):
             path: Optional[pulumi.Input[_builtins.str]] = None,
             permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
+            prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
             project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
             push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
             request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1614,6 +1651,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] permanently_remove_on_delete: Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
+        :param pulumi.Input[_builtins.bool] prevent_sharing_groups_outside_hierarchy: Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param pulumi.Input[_builtins.str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
@@ -1657,6 +1695,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["path"] = path
         __props__.__dict__["permanently_remove_on_delete"] = permanently_remove_on_delete
         __props__.__dict__["prevent_forking_outside_group"] = prevent_forking_outside_group
+        __props__.__dict__["prevent_sharing_groups_outside_hierarchy"] = prevent_sharing_groups_outside_hierarchy
         __props__.__dict__["project_creation_level"] = project_creation_level
         __props__.__dict__["push_rules"] = push_rules
         __props__.__dict__["request_access_enabled"] = request_access_enabled
@@ -1872,6 +1911,14 @@ class Group(pulumi.CustomResource):
         Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
+
+    @_builtins.property
+    @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
+    def prevent_sharing_groups_outside_hierarchy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        """
+        return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
 
     @_builtins.property
     @pulumi.getter(name="projectCreationLevel")

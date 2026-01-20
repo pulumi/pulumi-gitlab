@@ -307,7 +307,7 @@ namespace Pulumi.GitLab
         /// Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `ForkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         /// </summary>
         [Output("importUrl")]
-        public Output<string?> ImportUrl { get; private set; } = null!;
+        public Output<string> ImportUrl { get; private set; } = null!;
 
         /// <summary>
         /// The password for the `ImportUrl`. The value of this field is used to construct a valid `ImportUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
@@ -415,7 +415,7 @@ namespace Pulumi.GitLab
         /// Enable project pull mirror.
         /// </summary>
         [Output("mirror")]
-        public Output<bool?> Mirror { get; private set; } = null!;
+        public Output<bool> Mirror { get; private set; } = null!;
 
         /// <summary>
         /// Enable overwrite diverged branches for a mirrored project.

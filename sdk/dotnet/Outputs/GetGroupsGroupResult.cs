@@ -54,6 +54,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool PreventForkingOutsideGroup;
         /// <summary>
+        /// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        /// </summary>
+        public readonly bool PreventSharingGroupsOutsideHierarchy;
+        /// <summary>
         /// Is request for access enabled to the group.
         /// </summary>
         public readonly bool RequestAccessEnabled;
@@ -100,6 +104,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool preventForkingOutsideGroup,
 
+            bool preventSharingGroupsOutsideHierarchy,
+
             bool requestAccessEnabled,
 
             string runnersToken,
@@ -122,6 +128,7 @@ namespace Pulumi.GitLab.Outputs
             ParentId = parentId;
             Path = path;
             PreventForkingOutsideGroup = preventForkingOutsideGroup;
+            PreventSharingGroupsOutsideHierarchy = preventSharingGroupsOutsideHierarchy;
             RequestAccessEnabled = requestAccessEnabled;
             RunnersToken = runnersToken;
             SharedRunnersSetting = sharedRunnersSetting;

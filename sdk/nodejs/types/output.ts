@@ -719,6 +719,10 @@ export interface GetGroupsGroup {
      */
     preventForkingOutsideGroup: boolean;
     /**
+     * When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     */
+    preventSharingGroupsOutsideHierarchy: boolean;
+    /**
      * Is request for access enabled to the group.
      */
     requestAccessEnabled: boolean;

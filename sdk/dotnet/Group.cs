@@ -287,6 +287,12 @@ namespace Pulumi.GitLab
         public Output<bool> PreventForkingOutsideGroup { get; private set; } = null!;
 
         /// <summary>
+        /// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        /// </summary>
+        [Output("preventSharingGroupsOutsideHierarchy")]
+        public Output<bool> PreventSharingGroupsOutsideHierarchy { get; private set; } = null!;
+
+        /// <summary>
         /// Determine if developers can create projects in the group. Valid values are: `Noone`, `Owner`, `Maintainer`, `Developer`, `Administrator`
         /// </summary>
         [Output("projectCreationLevel")]
@@ -559,6 +565,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
 
         /// <summary>
+        /// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        /// </summary>
+        [Input("preventSharingGroupsOutsideHierarchy")]
+        public Input<bool>? PreventSharingGroupsOutsideHierarchy { get; set; }
+
+        /// <summary>
         /// Determine if developers can create projects in the group. Valid values are: `Noone`, `Owner`, `Maintainer`, `Developer`, `Administrator`
         /// </summary>
         [Input("projectCreationLevel")]
@@ -793,6 +805,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("preventForkingOutsideGroup")]
         public Input<bool>? PreventForkingOutsideGroup { get; set; }
+
+        /// <summary>
+        /// Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        /// </summary>
+        [Input("preventSharingGroupsOutsideHierarchy")]
+        public Input<bool>? PreventSharingGroupsOutsideHierarchy { get; set; }
 
         /// <summary>
         /// Determine if developers can create projects in the group. Valid values are: `Noone`, `Owner`, `Maintainer`, `Developer`, `Administrator`

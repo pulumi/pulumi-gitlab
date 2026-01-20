@@ -4849,6 +4849,7 @@ class GetGroupsGroupResult(dict):
                  parent_id: _builtins.int,
                  path: _builtins.str,
                  prevent_forking_outside_group: _builtins.bool,
+                 prevent_sharing_groups_outside_hierarchy: _builtins.bool,
                  request_access_enabled: _builtins.bool,
                  runners_token: _builtins.str,
                  shared_runners_setting: _builtins.str,
@@ -4866,6 +4867,7 @@ class GetGroupsGroupResult(dict):
         :param _builtins.int parent_id: ID of the parent group.
         :param _builtins.str path: The path of the group.
         :param _builtins.bool prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
+        :param _builtins.bool prevent_sharing_groups_outside_hierarchy: When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param _builtins.bool request_access_enabled: Is request for access enabled to the group.
         :param _builtins.str runners_token: The group level registration token to use during runner setup.
         :param _builtins.str shared_runners_setting: Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
@@ -4883,6 +4885,7 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "parent_id", parent_id)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
+        pulumi.set(__self__, "prevent_sharing_groups_outside_hierarchy", prevent_sharing_groups_outside_hierarchy)
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         pulumi.set(__self__, "runners_token", runners_token)
         pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
@@ -4970,6 +4973,14 @@ class GetGroupsGroupResult(dict):
         When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
+
+    @_builtins.property
+    @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
+    def prevent_sharing_groups_outside_hierarchy(self) -> _builtins.bool:
+        """
+        When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        """
+        return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
