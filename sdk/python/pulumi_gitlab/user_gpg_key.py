@@ -137,7 +137,7 @@ class UserGpgKey(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        The `UserGpgKey` resource allows to manage the lifecycle of a GPG key assigned to the current user or a specific user.
+        The `UserGpgKey` resource manages the lifecycle of a GPG key assigned to the current user or a specific user.
 
         > Managing GPG keys for arbitrary users requires admin privileges.
 
@@ -202,7 +202,7 @@ class UserGpgKey(pulumi.CustomResource):
                  args: UserGpgKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `UserGpgKey` resource allows to manage the lifecycle of a GPG key assigned to the current user or a specific user.
+        The `UserGpgKey` resource manages the lifecycle of a GPG key assigned to the current user or a specific user.
 
         > Managing GPG keys for arbitrary users requires admin privileges.
 

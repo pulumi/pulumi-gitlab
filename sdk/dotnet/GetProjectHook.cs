@@ -154,6 +154,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectHookResult
     {
         /// <summary>
+        /// Filter push events by branch.
+        /// </summary>
+        public readonly string BranchFilterStrategy;
+        /// <summary>
         /// Invoke the hook for confidential issues events.
         /// </summary>
         public readonly bool ConfidentialIssuesEvents;
@@ -169,6 +173,10 @@ namespace Pulumi.GitLab
         /// Invoke the hook for deployment events.
         /// </summary>
         public readonly bool DeploymentEvents;
+        /// <summary>
+        /// Invoke the hook for emoji events.
+        /// </summary>
+        public readonly bool EmojiEvents;
         /// <summary>
         /// Enable ssl verification when invoking the hook.
         /// </summary>
@@ -244,6 +252,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectHookResult(
+            string branchFilterStrategy,
+
             bool confidentialIssuesEvents,
 
             bool confidentialNoteEvents,
@@ -251,6 +261,8 @@ namespace Pulumi.GitLab
             string customWebhookTemplate,
 
             bool deploymentEvents,
+
+            bool emojiEvents,
 
             bool enableSslVerification,
 
@@ -288,10 +300,12 @@ namespace Pulumi.GitLab
 
             bool wikiPageEvents)
         {
+            BranchFilterStrategy = branchFilterStrategy;
             ConfidentialIssuesEvents = confidentialIssuesEvents;
             ConfidentialNoteEvents = confidentialNoteEvents;
             CustomWebhookTemplate = customWebhookTemplate;
             DeploymentEvents = deploymentEvents;
+            EmojiEvents = emojiEvents;
             EnableSslVerification = enableSslVerification;
             HookId = hookId;
             Id = id;

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectMembership` resource allows to manage the lifecycle of a users project membership.
+ * The `gitlab.ProjectMembership` resource manages the lifecycle of a users project membership.
  *
  * > If a project should grant membership to an entire group use the `gitlab.ProjectShareGroup` resource instead.
  *

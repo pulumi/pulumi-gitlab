@@ -72,7 +72,7 @@ class GetRunnersResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+        Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `never_contacted`.
         """
         return pulumi.get(self, "status")
 
@@ -88,7 +88,7 @@ class GetRunnersResult:
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+        The type of runner to return. Valid values are `instance_type`, `group_type`, `project_type`.
         """
         return pulumi.get(self, "type")
 
@@ -140,9 +140,9 @@ def get_runners(paused: Optional[_builtins.bool] = None,
 
 
     :param _builtins.bool paused: Filters for runners with the given paused value
-    :param _builtins.str status: Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+    :param _builtins.str status: Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `never_contacted`.
     :param Sequence[_builtins.str] tag_lists: Filters for runners with all of the given tags
-    :param _builtins.str type: The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+    :param _builtins.str type: The type of runner to return. Valid values are `instance_type`, `group_type`, `project_type`.
     """
     __args__ = dict()
     __args__['paused'] = paused
@@ -192,9 +192,9 @@ def get_runners_output(paused: Optional[pulumi.Input[Optional[_builtins.bool]]] 
 
 
     :param _builtins.bool paused: Filters for runners with the given paused value
-    :param _builtins.str status: Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `never_contacted`.
+    :param _builtins.str status: Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `never_contacted`.
     :param Sequence[_builtins.str] tag_lists: Filters for runners with all of the given tags
-    :param _builtins.str type: The type of runner to return. Valid values are `instance_type`, `group_type` and `project_type`
+    :param _builtins.str type: The type of runner to return. Valid values are `instance_type`, `group_type`, `project_type`.
     """
     __args__ = dict()
     __args__['paused'] = paused

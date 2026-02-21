@@ -70,11 +70,11 @@ func GetRunners(ctx *pulumi.Context, args *GetRunnersArgs, opts ...pulumi.Invoke
 type GetRunnersArgs struct {
 	// Filters for runners with the given paused value
 	Paused *bool `pulumi:"paused"`
-	// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+	// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
 	Status *string `pulumi:"status"`
 	// Filters for runners with all of the given tags
 	TagLists []string `pulumi:"tagLists"`
-	// The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+	// The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
 	Type *string `pulumi:"type"`
 }
 
@@ -85,11 +85,11 @@ type GetRunnersResult struct {
 	Paused *bool `pulumi:"paused"`
 	// The list of runners.
 	Runners []GetRunnersRunner `pulumi:"runners"`
-	// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+	// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
 	Status *string `pulumi:"status"`
 	// Filters for runners with all of the given tags
 	TagLists []string `pulumi:"tagLists"`
-	// The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+	// The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
 	Type *string `pulumi:"type"`
 }
 
@@ -106,11 +106,11 @@ func GetRunnersOutput(ctx *pulumi.Context, args GetRunnersOutputArgs, opts ...pu
 type GetRunnersOutputArgs struct {
 	// Filters for runners with the given paused value
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
-	// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+	// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Filters for runners with all of the given tags
 	TagLists pulumi.StringArrayInput `pulumi:"tagLists"`
-	// The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+	// The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -147,7 +147,7 @@ func (o GetRunnersResultOutput) Runners() GetRunnersRunnerArrayOutput {
 	return o.ApplyT(func(v GetRunnersResult) []GetRunnersRunner { return v.Runners }).(GetRunnersRunnerArrayOutput)
 }
 
-// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+// Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
 func (o GetRunnersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRunnersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -157,7 +157,7 @@ func (o GetRunnersResultOutput) TagLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRunnersResult) []string { return v.TagLists }).(pulumi.StringArrayOutput)
 }
 
-// The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+// The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
 func (o GetRunnersResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRunnersResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

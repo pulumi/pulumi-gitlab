@@ -2790,11 +2790,11 @@ if not MYPY:
         """
         reject_non_dco_commits: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Reject commit when it’s not DCO certified.
+        Reject commit when it's not DCO certified.
         """
         reject_unsigned_commits: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Reject commit when it’s not signed through GPG.
+        Reject commit when it's not signed through GPG.
         """
 elif False:
     ProjectPushRulesArgsDict: TypeAlias = Mapping[str, Any]
@@ -2827,8 +2827,8 @@ class ProjectPushRulesArgs:
         :param pulumi.Input[_builtins.int] max_file_size: Maximum file size (MB).
         :param pulumi.Input[_builtins.bool] member_check: Restrict commits by author (email) to existing GitLab users.
         :param pulumi.Input[_builtins.bool] prevent_secrets: GitLab will reject any files that are likely to contain secrets.
-        :param pulumi.Input[_builtins.bool] reject_non_dco_commits: Reject commit when it’s not DCO certified.
-        :param pulumi.Input[_builtins.bool] reject_unsigned_commits: Reject commit when it’s not signed through GPG.
+        :param pulumi.Input[_builtins.bool] reject_non_dco_commits: Reject commit when it's not DCO certified.
+        :param pulumi.Input[_builtins.bool] reject_unsigned_commits: Reject commit when it's not signed through GPG.
         """
         if author_email_regex is not None:
             pulumi.set(__self__, "author_email_regex", author_email_regex)
@@ -2993,7 +2993,7 @@ class ProjectPushRulesArgs:
     @pulumi.getter(name="rejectNonDcoCommits")
     def reject_non_dco_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Reject commit when it’s not DCO certified.
+        Reject commit when it's not DCO certified.
         """
         return pulumi.get(self, "reject_non_dco_commits")
 
@@ -3005,7 +3005,7 @@ class ProjectPushRulesArgs:
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Reject commit when it’s not signed through GPG.
+        Reject commit when it's not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
@@ -3876,13 +3876,17 @@ if not MYPY:
         """
         Readable description of access level.
         """
+        deploy_key_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
+        """
         group_id: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         user_id: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
 elif False:
     TagProtectionAllowedToCreateArgsDict: TypeAlias = Mapping[str, Any]
@@ -3892,18 +3896,22 @@ class TagProtectionAllowedToCreateArgs:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy_key_id: Optional[pulumi.Input[_builtins.int]] = None,
                  group_id: Optional[pulumi.Input[_builtins.int]] = None,
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of access level.
-        :param pulumi.Input[_builtins.int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param pulumi.Input[_builtins.int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param pulumi.Input[_builtins.int] deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
+        :param pulumi.Input[_builtins.int] group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param pulumi.Input[_builtins.int] user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_level_description is not None:
             pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -3934,10 +3942,22 @@ class TagProtectionAllowedToCreateArgs:
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @deploy_key_id.setter
+    def deploy_key_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "deploy_key_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -3949,7 +3969,7 @@ class TagProtectionAllowedToCreateArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 

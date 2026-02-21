@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
+ * The `gitlab.ProjectMilestone` resource manages the lifecycle of a project milestone.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  *
@@ -21,9 +21,19 @@ import * as utilities from "./utilities";
  *     description: "An example project",
  *     namespaceId: exampleGitlabGroup.id,
  * });
+ * // Basic milestone with required fields only
  * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {
  *     project: example.id,
  *     title: "example",
+ * });
+ * // Comprehensive milestone with all optional fields
+ * const comprehensive = new gitlab.ProjectMilestone("comprehensive", {
+ *     project: example.id,
+ *     title: "Q4 2024 Release",
+ *     description: "Major release for Q4 2024",
+ *     startDate: "2024-01-01",
+ *     dueDate: "2024-12-31",
+ *     state: "active",
  * });
  * ```
  *
@@ -84,11 +94,11 @@ export class ProjectMilestone extends pulumi.CustomResource {
     /**
      * The description of the milestone.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
-     * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    declare public readonly dueDate: pulumi.Output<string | undefined>;
+    declare public readonly dueDate: pulumi.Output<string>;
     /**
      * Bool, true if milestone expired.
      */
@@ -98,7 +108,7 @@ export class ProjectMilestone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly iid: pulumi.Output<number>;
     /**
-     * The instance-wide ID of the project’s milestone.
+     * The instance-wide ID of the project's milestone.
      */
     declare public /*out*/ readonly milestoneId: pulumi.Output<number>;
     /**
@@ -110,13 +120,13 @@ export class ProjectMilestone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly projectId: pulumi.Output<number>;
     /**
-     * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    declare public readonly startDate: pulumi.Output<string | undefined>;
+    declare public readonly startDate: pulumi.Output<string>;
     /**
      * The state of the milestone. Valid values are: `active`, `closed`.
      */
-    declare public readonly state: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * The title of a milestone.
      */
@@ -196,7 +206,7 @@ export interface ProjectMilestoneState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
     dueDate?: pulumi.Input<string>;
     /**
@@ -208,7 +218,7 @@ export interface ProjectMilestoneState {
      */
     iid?: pulumi.Input<number>;
     /**
-     * The instance-wide ID of the project’s milestone.
+     * The instance-wide ID of the project's milestone.
      */
     milestoneId?: pulumi.Input<number>;
     /**
@@ -220,7 +230,7 @@ export interface ProjectMilestoneState {
      */
     projectId?: pulumi.Input<number>;
     /**
-     * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
     startDate?: pulumi.Input<string>;
     /**
@@ -250,7 +260,7 @@ export interface ProjectMilestoneArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
     dueDate?: pulumi.Input<string>;
     /**
@@ -258,7 +268,7 @@ export interface ProjectMilestoneArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
     startDate?: pulumi.Input<string>;
     /**

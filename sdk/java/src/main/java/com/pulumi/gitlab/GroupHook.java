@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
+ * The `gitlab.GroupHook` resource manages the lifecycle of a group hook.
  * 
  * &gt; Note that `pushEvents` defaults to `true`.
  * 

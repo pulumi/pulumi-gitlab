@@ -104,7 +104,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectComplianceFrameworks` resource allows to manage the lifecycle of compliance frameworks on a project.
+        The `ProjectComplianceFrameworks` resource manages the lifecycle of compliance frameworks on a project.
 
         > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance frameworks on a project.
 
@@ -170,7 +170,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
                  args: ProjectComplianceFrameworksArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectComplianceFrameworks` resource allows to manage the lifecycle of compliance frameworks on a project.
+        The `ProjectComplianceFrameworks` resource manages the lifecycle of compliance frameworks on a project.
 
         > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance frameworks on a project.
 

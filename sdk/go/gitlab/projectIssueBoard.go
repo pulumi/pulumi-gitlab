@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectIssueBoard` resource allows to manage the lifecycle of a Project Issue Board.
+// The `ProjectIssueBoard` resource manages the lifecycle of a Project Issue Board.
 //
 // > **NOTE:** If the board lists are changed all lists will be recreated.
 //

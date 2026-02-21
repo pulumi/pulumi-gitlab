@@ -335,7 +335,7 @@ class PersonalAccessToken(pulumi.CustomResource):
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
+        The `PersonalAccessToken` resource manages the lifecycle of a personal access token.
 
         > This resource requires administration privileges.
 
@@ -407,7 +407,7 @@ class PersonalAccessToken(pulumi.CustomResource):
                  args: PersonalAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
+        The `PersonalAccessToken` resource manages the lifecycle of a personal access token.
 
         > This resource requires administration privileges.
 

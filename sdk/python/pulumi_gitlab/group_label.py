@@ -202,7 +202,7 @@ class GroupLabel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupLabel` resource allows to manage the lifecycle of labels within a group.
+        The `GroupLabel` resource manages the lifecycle of labels within a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
 
@@ -255,7 +255,7 @@ class GroupLabel(pulumi.CustomResource):
                  args: GroupLabelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupLabel` resource allows to manage the lifecycle of labels within a group.
+        The `GroupLabel` resource manages the lifecycle of labels within a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
 

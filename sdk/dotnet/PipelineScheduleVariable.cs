@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
+    /// The `gitlab.PipelineScheduleVariable` resource manages the lifecycle of a variable for a pipeline schedule.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/#get-a-pipeline-schedule-variable)
     /// 

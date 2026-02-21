@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ReleaseLink` resource allows to manage the lifecycle of a release link.
+// The `ReleaseLink` resource manages the lifecycle of a release link.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 //

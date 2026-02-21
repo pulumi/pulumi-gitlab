@@ -9,6 +9,8 @@ import com.pulumi.gitlab.outputs.GetProjectBranchesBranch;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectBranchesResult {
@@ -27,6 +29,16 @@ public final class GetProjectBranchesResult {
      * 
      */
     private String project;
+    /**
+     * @return Regex pattern to filter the returned branches by name.
+     * 
+     */
+    private @Nullable String regex;
+    /**
+     * @return A search string to filter branches by name.
+     * 
+     */
+    private @Nullable String search;
 
     private GetProjectBranchesResult() {}
     /**
@@ -50,6 +62,20 @@ public final class GetProjectBranchesResult {
     public String project() {
         return this.project;
     }
+    /**
+     * @return Regex pattern to filter the returned branches by name.
+     * 
+     */
+    public Optional<String> regex() {
+        return Optional.ofNullable(this.regex);
+    }
+    /**
+     * @return A search string to filter branches by name.
+     * 
+     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +89,16 @@ public final class GetProjectBranchesResult {
         private List<GetProjectBranchesBranch> branches;
         private String id;
         private String project;
+        private @Nullable String regex;
+        private @Nullable String search;
         public Builder() {}
         public Builder(GetProjectBranchesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branches = defaults.branches;
     	      this.id = defaults.id;
     	      this.project = defaults.project;
+    	      this.regex = defaults.regex;
+    	      this.search = defaults.search;
         }
 
         @CustomType.Setter
@@ -98,11 +128,25 @@ public final class GetProjectBranchesResult {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
+        public Builder regex(@Nullable String regex) {
+
+            this.regex = regex;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder search(@Nullable String search) {
+
+            this.search = search;
+            return this;
+        }
         public GetProjectBranchesResult build() {
             final var _resultValue = new GetProjectBranchesResult();
             _resultValue.branches = branches;
             _resultValue.id = id;
             _resultValue.project = project;
+            _resultValue.regex = regex;
+            _resultValue.search = search;
             return _resultValue;
         }
     }

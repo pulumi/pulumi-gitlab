@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupHook` resource allows to manage the lifecycle of a group hook.
+ * The `gitlab.GroupHook` resource manages the lifecycle of a group hook.
  *
  * > Note that `pushEvents` defaults to `true`.
  *

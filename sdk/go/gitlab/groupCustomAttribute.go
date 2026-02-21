@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupCustomAttribute` resource allows to manage custom attributes for a group.
+// The `GroupCustomAttribute` resource manages custom attributes for a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 //

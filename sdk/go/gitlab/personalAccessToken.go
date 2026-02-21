@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
+// The `PersonalAccessToken` resource manages the lifecycle of a personal access token.
 //
 // > This resource requires administration privileges.
 //

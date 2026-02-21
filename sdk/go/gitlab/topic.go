@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Topic` resource allows to manage the lifecycle of topics that are then assignable to projects.
+// The `Topic` resource manages the lifecycle of topics that are then assignable to projects.
 //
 // > Topics are the successors for project tags. Aside from avoiding terminology collisions with Git tags, they are more descriptive and better searchable.
 //

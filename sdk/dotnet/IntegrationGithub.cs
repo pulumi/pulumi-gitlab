@@ -79,7 +79,7 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Creation time.
+        /// The ISO8601 date/time that this integration was activated at in UTC.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -97,10 +97,10 @@ namespace Pulumi.GitLab
         /// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         /// </summary>
         [Output("staticContext")]
-        public Output<bool?> StaticContext { get; private set; } = null!;
+        public Output<bool> StaticContext { get; private set; } = null!;
 
         /// <summary>
-        /// The title of this resource.
+        /// Title of the integration.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.GitLab
         public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
-        /// Update time.
+        /// The ISO8601 date/time that this integration was last updated at in UTC.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Creation time.
+        /// The ISO8601 date/time that this integration was activated at in UTC.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.GitLab
         public Input<bool>? StaticContext { get; set; }
 
         /// <summary>
-        /// The title of this resource.
+        /// Title of the integration.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Update time.
+        /// The ISO8601 date/time that this integration was last updated at in UTC.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

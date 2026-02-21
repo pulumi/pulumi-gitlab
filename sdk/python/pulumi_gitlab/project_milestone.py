@@ -30,8 +30,8 @@ class ProjectMilestoneArgs:
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.str] title: The title of a milestone.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
-        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.str] state: The state of the milestone. Valid values are: `active`, `closed`.
         """
         pulumi.set(__self__, "project", project)
@@ -85,7 +85,7 @@ class ProjectMilestoneArgs:
     @pulumi.getter(name="dueDate")
     def due_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "due_date")
 
@@ -97,7 +97,7 @@ class ProjectMilestoneArgs:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "start_date")
 
@@ -138,13 +138,13 @@ class _ProjectMilestoneState:
         Input properties used for looking up and filtering ProjectMilestone resources.
         :param pulumi.Input[_builtins.str] created_at: The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
-        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.bool] expired: Bool, true if milestone expired.
         :param pulumi.Input[_builtins.int] iid: The ID of the project's milestone.
-        :param pulumi.Input[_builtins.int] milestone_id: The instance-wide ID of the project’s milestone.
+        :param pulumi.Input[_builtins.int] milestone_id: The instance-wide ID of the project's milestone.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.int] project_id: The project ID of milestone.
-        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.str] state: The state of the milestone. Valid values are: `active`, `closed`.
         :param pulumi.Input[_builtins.str] title: The title of a milestone.
         :param pulumi.Input[_builtins.str] updated_at: The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -205,7 +205,7 @@ class _ProjectMilestoneState:
     @pulumi.getter(name="dueDate")
     def due_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "due_date")
 
@@ -241,7 +241,7 @@ class _ProjectMilestoneState:
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The instance-wide ID of the project’s milestone.
+        The instance-wide ID of the project's milestone.
         """
         return pulumi.get(self, "milestone_id")
 
@@ -277,7 +277,7 @@ class _ProjectMilestoneState:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "start_date")
 
@@ -348,7 +348,7 @@ class ProjectMilestone(pulumi.CustomResource):
                  title: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
+        The `ProjectMilestone` resource manages the lifecycle of a project milestone.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 
@@ -363,9 +363,18 @@ class ProjectMilestone(pulumi.CustomResource):
             name="example",
             description="An example project",
             namespace_id=example_gitlab_group["id"])
+        # Basic milestone with required fields only
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
             title="example")
+        # Comprehensive milestone with all optional fields
+        comprehensive = gitlab.ProjectMilestone("comprehensive",
+            project=example.id,
+            title="Q4 2024 Release",
+            description="Major release for Q4 2024",
+            start_date="2024-01-01",
+            due_date="2024-12-31",
+            state="active")
         ```
 
         ## Import
@@ -393,9 +402,9 @@ class ProjectMilestone(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
-        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project owned by the authenticated user.
-        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.str] state: The state of the milestone. Valid values are: `active`, `closed`.
         :param pulumi.Input[_builtins.str] title: The title of a milestone.
         """
@@ -406,7 +415,7 @@ class ProjectMilestone(pulumi.CustomResource):
                  args: ProjectMilestoneArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
+        The `ProjectMilestone` resource manages the lifecycle of a project milestone.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 
@@ -421,9 +430,18 @@ class ProjectMilestone(pulumi.CustomResource):
             name="example",
             description="An example project",
             namespace_id=example_gitlab_group["id"])
+        # Basic milestone with required fields only
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
             title="example")
+        # Comprehensive milestone with all optional fields
+        comprehensive = gitlab.ProjectMilestone("comprehensive",
+            project=example.id,
+            title="Q4 2024 Release",
+            description="Major release for Q4 2024",
+            start_date="2024-01-01",
+            due_date="2024-12-31",
+            state="active")
         ```
 
         ## Import
@@ -527,13 +545,13 @@ class ProjectMilestone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
-        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.bool] expired: Bool, true if milestone expired.
         :param pulumi.Input[_builtins.int] iid: The ID of the project's milestone.
-        :param pulumi.Input[_builtins.int] milestone_id: The instance-wide ID of the project’s milestone.
+        :param pulumi.Input[_builtins.int] milestone_id: The instance-wide ID of the project's milestone.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.int] project_id: The project ID of milestone.
-        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        :param pulumi.Input[_builtins.str] start_date: The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         :param pulumi.Input[_builtins.str] state: The state of the milestone. Valid values are: `active`, `closed`.
         :param pulumi.Input[_builtins.str] title: The title of a milestone.
         :param pulumi.Input[_builtins.str] updated_at: The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -568,7 +586,7 @@ class ProjectMilestone(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         The description of the milestone.
         """
@@ -576,9 +594,9 @@ class ProjectMilestone(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dueDate")
-    def due_date(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def due_date(self) -> pulumi.Output[_builtins.str]:
         """
-        The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "due_date")
 
@@ -602,7 +620,7 @@ class ProjectMilestone(pulumi.CustomResource):
     @pulumi.getter(name="milestoneId")
     def milestone_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The instance-wide ID of the project’s milestone.
+        The instance-wide ID of the project's milestone.
         """
         return pulumi.get(self, "milestone_id")
 
@@ -624,15 +642,15 @@ class ProjectMilestone(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def start_date(self) -> pulumi.Output[_builtins.str]:
         """
-        The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "start_date")
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def state(self) -> pulumi.Output[_builtins.str]:
         """
         The state of the milestone. Valid values are: `active`, `closed`.
         """

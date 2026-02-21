@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+// The `DeployToken` resource manages the lifecycle of group and project deploy tokens.
 //
 // > This resource is deprecated and will be removed in 19.0. Use `ProjectDeployToken` or `GroupDeployToken` instead!
 //

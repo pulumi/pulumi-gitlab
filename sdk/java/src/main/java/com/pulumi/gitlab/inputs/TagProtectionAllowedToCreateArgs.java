@@ -47,14 +47,29 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+     * 
+     */
+    @Import(name="deployKeyId")
+    private @Nullable Output<Integer> deployKeyId;
+
+    /**
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+     * 
+     */
+    public Optional<Output<Integer>> deployKeyId() {
+        return Optional.ofNullable(this.deployKeyId);
+    }
+
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -62,14 +77,14 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -81,6 +96,7 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
     private TagProtectionAllowedToCreateArgs(TagProtectionAllowedToCreateArgs $) {
         this.accessLevel = $.accessLevel;
         this.accessLevelDescription = $.accessLevelDescription;
+        this.deployKeyId = $.deployKeyId;
         this.groupId = $.groupId;
         this.userId = $.userId;
     }
@@ -146,7 +162,28 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployKeyId(@Nullable Output<Integer> deployKeyId) {
+            $.deployKeyId = deployKeyId;
+            return this;
+        }
+
+        /**
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployKeyId(Integer deployKeyId) {
+            return deployKeyId(Output.of(deployKeyId));
+        }
+
+        /**
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
          * 
          * @return builder
          * 
@@ -157,7 +194,7 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
          * 
          * @return builder
          * 
@@ -167,7 +204,7 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
          * 
          * @return builder
          * 
@@ -178,7 +215,7 @@ public final class TagProtectionAllowedToCreateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
          * 
          * @return builder
          * 

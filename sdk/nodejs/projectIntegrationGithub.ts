@@ -86,7 +86,7 @@ export class ProjectIntegrationGithub extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
-     * Creation time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -97,9 +97,9 @@ export class ProjectIntegrationGithub extends pulumi.CustomResource {
     /**
      * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      */
-    declare public readonly staticContext: pulumi.Output<boolean | undefined>;
+    declare public readonly staticContext: pulumi.Output<boolean>;
     /**
-     * The title of this resource.
+     * Title of the integration.
      */
     declare public /*out*/ readonly title: pulumi.Output<string>;
     /**
@@ -107,7 +107,7 @@ export class ProjectIntegrationGithub extends pulumi.CustomResource {
      */
     declare public readonly token: pulumi.Output<string>;
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -168,7 +168,7 @@ export interface ProjectIntegrationGithubState {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * Creation time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface ProjectIntegrationGithubState {
      */
     staticContext?: pulumi.Input<boolean>;
     /**
-     * The title of this resource.
+     * Title of the integration.
      */
     title?: pulumi.Input<string>;
     /**
@@ -189,7 +189,7 @@ export interface ProjectIntegrationGithubState {
      */
     token?: pulumi.Input<string>;
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      */
     updatedAt?: pulumi.Input<string>;
 }

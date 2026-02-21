@@ -251,9 +251,9 @@ class MemberRole(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `MemberRole` resource allows to manage the lifecycle of a custom member role.
+        The `MemberRole` resource manages the lifecycle of a custom member role.
 
-        Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization’s needs.
+        Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization's needs.
 
         > This resource requires an Ultimate license.
 
@@ -300,9 +300,9 @@ class MemberRole(pulumi.CustomResource):
                  args: MemberRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `MemberRole` resource allows to manage the lifecycle of a custom member role.
+        The `MemberRole` resource manages the lifecycle of a custom member role.
 
-        Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization’s needs.
+        Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization's needs.
 
         > This resource requires an Ultimate license.
 

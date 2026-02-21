@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupCustomAttribute` resource allows to manage custom attributes for a group.
+    /// The `gitlab.GroupCustomAttribute` resource manages custom attributes for a group.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
     /// 

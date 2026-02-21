@@ -334,7 +334,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.
+        The `GroupServiceAccountAccessToken` resource manages the lifecycle of a group service account access token.
 
         > Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
 
@@ -438,7 +438,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
                  args: GroupServiceAccountAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.
+        The `GroupServiceAccountAccessToken` resource manages the lifecycle of a group service account access token.
 
         > Use of the `timestamp()` function with expires_at will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
 

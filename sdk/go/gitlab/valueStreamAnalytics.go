@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ValueStreamAnalytics` resource allows to manage the lifecycle of value stream analytics.
+// The `ValueStreamAnalytics` resource manages the lifecycle of value stream analytics.
 //
 // > This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
 //

@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
+ * The `gitlab.ProjectHook` resource manages the lifecycle of a project hook.
  * 
  * &gt; Note that `pushEvents` defaults to `true`.
  * 
@@ -109,6 +109,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectHook:ProjectHook")
 public class ProjectHook extends com.pulumi.resources.CustomResource {
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     * 
+     */
+    @Export(name="branchFilterStrategy", refs={String.class}, tree="[0]")
+    private Output<String> branchFilterStrategy;
+
+    /**
+     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     * 
+     */
+    public Output<String> branchFilterStrategy() {
+        return this.branchFilterStrategy;
+    }
+    /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      * 
      */
@@ -191,6 +205,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Invoke the hook for emoji events. Defaults to `false`.
+     * 
+     */
+    @Export(name="emojiEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> emojiEvents;
+
+    /**
+     * @return Invoke the hook for emoji events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> emojiEvents() {
+        return this.emojiEvents;
     }
     /**
      * Enable SSL verification when invoking the hook. Defaults to `true`.

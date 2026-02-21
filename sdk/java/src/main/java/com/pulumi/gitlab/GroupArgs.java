@@ -225,6 +225,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     * 
+     */
+    @Import(name="maxArtifactsSize")
+    private @Nullable Output<Integer> maxArtifactsSize;
+
+    /**
+     * @return The maximum file size in megabytes for individual job artifacts.
+     * 
+     */
+    public Optional<Output<Integer>> maxArtifactsSize() {
+        return Optional.ofNullable(this.maxArtifactsSize);
+    }
+
+    /**
      * Users cannot be added to projects in this group.
      * 
      */
@@ -555,6 +570,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.extraSharedRunnersMinutesLimit = $.extraSharedRunnersMinutesLimit;
         this.ipRestrictionRanges = $.ipRestrictionRanges;
         this.lfsEnabled = $.lfsEnabled;
+        this.maxArtifactsSize = $.maxArtifactsSize;
         this.membershipLock = $.membershipLock;
         this.mentionsDisabled = $.mentionsDisabled;
         this.name = $.name;
@@ -895,6 +911,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lfsEnabled(Boolean lfsEnabled) {
             return lfsEnabled(Output.of(lfsEnabled));
+        }
+
+        /**
+         * @param maxArtifactsSize The maximum file size in megabytes for individual job artifacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxArtifactsSize(@Nullable Output<Integer> maxArtifactsSize) {
+            $.maxArtifactsSize = maxArtifactsSize;
+            return this;
+        }
+
+        /**
+         * @param maxArtifactsSize The maximum file size in megabytes for individual job artifacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxArtifactsSize(Integer maxArtifactsSize) {
+            return maxArtifactsSize(Output.of(maxArtifactsSize));
         }
 
         /**

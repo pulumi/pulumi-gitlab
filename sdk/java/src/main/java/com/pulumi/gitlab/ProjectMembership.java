@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectMembership` resource allows to manage the lifecycle of a users project membership.
+ * The `gitlab.ProjectMembership` resource manages the lifecycle of a users project membership.
  * 
  * &gt; If a project should grant membership to an entire group use the `gitlab.ProjectShareGroup` resource instead.
  * 

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupHook` resource allows to manage the lifecycle of a group hook.
+// The `GroupHook` resource manages the lifecycle of a group hook.
 //
 // > Note that `pushEvents` defaults to `true`.
 //

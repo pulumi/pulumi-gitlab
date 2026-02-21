@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
+// The `ClusterAgent` resource manages the lifecycle of a GitLab Agent for Kubernetes.
 //
 // > Note that this resource only registers the agent, but doesn't configure it.
 //

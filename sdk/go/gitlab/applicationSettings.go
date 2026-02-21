@@ -390,6 +390,8 @@ type ApplicationSettings struct {
 	MirrorMaxCapacity pulumi.IntOutput `pulumi:"mirrorMaxCapacity"`
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay pulumi.IntOutput `pulumi:"mirrorMaxDelay"`
+	// Enable sending notification if sign in from unknown IP address happens
+	NotifyOnUnknownSignIn pulumi.BoolOutput `pulumi:"notifyOnUnknownSignIn"`
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
 	NpmPackageRequestsForwarding pulumi.BoolOutput `pulumi:"npmPackageRequestsForwarding"`
 	// Indicates whether to skip metadata URL validation for the NuGet package.
@@ -1112,6 +1114,8 @@ type applicationSettingsState struct {
 	MirrorMaxCapacity *int `pulumi:"mirrorMaxCapacity"`
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay *int `pulumi:"mirrorMaxDelay"`
+	// Enable sending notification if sign in from unknown IP address happens
+	NotifyOnUnknownSignIn *bool `pulumi:"notifyOnUnknownSignIn"`
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
 	NpmPackageRequestsForwarding *bool `pulumi:"npmPackageRequestsForwarding"`
 	// Indicates whether to skip metadata URL validation for the NuGet package.
@@ -1734,6 +1738,8 @@ type ApplicationSettingsState struct {
 	MirrorMaxCapacity pulumi.IntPtrInput
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay pulumi.IntPtrInput
+	// Enable sending notification if sign in from unknown IP address happens
+	NotifyOnUnknownSignIn pulumi.BoolPtrInput
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
 	NpmPackageRequestsForwarding pulumi.BoolPtrInput
 	// Indicates whether to skip metadata URL validation for the NuGet package.
@@ -2356,6 +2362,8 @@ type applicationSettingsArgs struct {
 	MirrorMaxCapacity *int `pulumi:"mirrorMaxCapacity"`
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay *int `pulumi:"mirrorMaxDelay"`
+	// Enable sending notification if sign in from unknown IP address happens
+	NotifyOnUnknownSignIn *bool `pulumi:"notifyOnUnknownSignIn"`
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
 	NpmPackageRequestsForwarding *bool `pulumi:"npmPackageRequestsForwarding"`
 	// Indicates whether to skip metadata URL validation for the NuGet package.
@@ -2975,6 +2983,8 @@ type ApplicationSettingsArgs struct {
 	MirrorMaxCapacity pulumi.IntPtrInput
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay pulumi.IntPtrInput
+	// Enable sending notification if sign in from unknown IP address happens
+	NotifyOnUnknownSignIn pulumi.BoolPtrInput
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
 	NpmPackageRequestsForwarding pulumi.BoolPtrInput
 	// Indicates whether to skip metadata URL validation for the NuGet package.
@@ -4250,6 +4260,11 @@ func (o ApplicationSettingsOutput) MirrorMaxCapacity() pulumi.IntOutput {
 // Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 func (o ApplicationSettingsOutput) MirrorMaxDelay() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MirrorMaxDelay }).(pulumi.IntOutput)
+}
+
+// Enable sending notification if sign in from unknown IP address happens
+func (o ApplicationSettingsOutput) NotifyOnUnknownSignIn() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.NotifyOnUnknownSignIn }).(pulumi.BoolOutput)
 }
 
 // Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.

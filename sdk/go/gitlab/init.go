@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
 		r = &GroupHook{}
+	case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
+		r = &GroupIntegrationMattermost{}
 	case "gitlab:index/groupIssueBoard:GroupIssueBoard":
 		r = &GroupIssueBoard{}
 	case "gitlab:index/groupLabel:GroupLabel":
@@ -407,6 +409,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupHook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupIntegrationMattermost",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

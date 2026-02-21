@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupCustomAttribute` resource allows to manage custom attributes for a group.
+ * The `gitlab.GroupCustomAttribute` resource manages custom attributes for a group.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
  * 

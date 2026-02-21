@@ -233,6 +233,12 @@ namespace Pulumi.GitLab
         public Output<bool> LfsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum file size in megabytes for individual job artifacts.
+        /// </summary>
+        [Output("maxArtifactsSize")]
+        public Output<int> MaxArtifactsSize { get; private set; } = null!;
+
+        /// <summary>
         /// Users cannot be added to projects in this group.
         /// </summary>
         [Output("membershipLock")]
@@ -511,6 +517,12 @@ namespace Pulumi.GitLab
         public Input<bool>? LfsEnabled { get; set; }
 
         /// <summary>
+        /// The maximum file size in megabytes for individual job artifacts.
+        /// </summary>
+        [Input("maxArtifactsSize")]
+        public Input<int>? MaxArtifactsSize { get; set; }
+
+        /// <summary>
         /// Users cannot be added to projects in this group.
         /// </summary>
         [Input("membershipLock")]
@@ -751,6 +763,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
+        /// The maximum file size in megabytes for individual job artifacts.
+        /// </summary>
+        [Input("maxArtifactsSize")]
+        public Input<int>? MaxArtifactsSize { get; set; }
 
         /// <summary>
         /// Users cannot be added to projects in this group.

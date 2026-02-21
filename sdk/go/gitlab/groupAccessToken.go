@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
+// The `GroupAccessToken` resource manages the lifecycle of a group access token.
 //
 // > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
 //

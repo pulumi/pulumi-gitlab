@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Release` resource allows to manage the lifecycle of releases in gitlab.
+// The `Release` resource manages the lifecycle of releases in gitlab.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
 //

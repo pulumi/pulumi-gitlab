@@ -213,7 +213,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                  target_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
-        The `ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
+        The `ProjectJobTokenScopes` resource manages the CI/CD Job Token scopes in a project.
         Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
         which allows this resource to be used as an explicit deny.
 
@@ -306,7 +306,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                  args: Optional[ProjectJobTokenScopesArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
+        The `ProjectJobTokenScopes` resource manages the CI/CD Job Token scopes in a project.
         Any project or group not within the defined set of `target_project_ids` or `target_group_ids`, respectively, will be removed,
         which allows this resource to be used as an explicit deny.
 

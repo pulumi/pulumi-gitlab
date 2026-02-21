@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
+    /// The `gitlab.ClusterAgent` resource manages the lifecycle of a GitLab Agent for Kubernetes.
     /// 
     /// &gt; Note that this resource only registers the agent, but doesn't configure it.
     ///    The configuration needs to be manually added as described in

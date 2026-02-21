@@ -69,12 +69,12 @@ public final class ProjectPushRules {
      */
     private @Nullable Boolean preventSecrets;
     /**
-     * @return Reject commit when it’s not DCO certified.
+     * @return Reject commit when it&#39;s not DCO certified.
      * 
      */
     private @Nullable Boolean rejectNonDcoCommits;
     /**
-     * @return Reject commit when it’s not signed through GPG.
+     * @return Reject commit when it&#39;s not signed through GPG.
      * 
      */
     private @Nullable Boolean rejectUnsignedCommits;
@@ -158,14 +158,14 @@ public final class ProjectPushRules {
         return Optional.ofNullable(this.preventSecrets);
     }
     /**
-     * @return Reject commit when it’s not DCO certified.
+     * @return Reject commit when it&#39;s not DCO certified.
      * 
      */
     public Optional<Boolean> rejectNonDcoCommits() {
         return Optional.ofNullable(this.rejectNonDcoCommits);
     }
     /**
-     * @return Reject commit when it’s not signed through GPG.
+     * @return Reject commit when it&#39;s not signed through GPG.
      * 
      */
     public Optional<Boolean> rejectUnsignedCommits() {

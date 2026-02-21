@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.
+ * The `gitlab.GroupEpicBoard` resource manages the lifecycle of a epic board in a group.
  * 
  * &gt; Multiple epic boards on one group requires a GitLab Premium or above License.
  * 

@@ -269,7 +269,7 @@ class InstanceVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
+        The `InstanceVariable` resource manages the lifecycle of an instance-level CI/CD variable.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 
@@ -325,7 +325,7 @@ class InstanceVariable(pulumi.CustomResource):
                  args: InstanceVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
+        The `InstanceVariable` resource manages the lifecycle of an instance-level CI/CD variable.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 

@@ -930,7 +930,7 @@ class GroupHook(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `GroupHook` resource allows to manage the lifecycle of a group hook.
+        The `GroupHook` resource manages the lifecycle of a group hook.
 
         > Note that `push_events` defaults to `true`.
 
@@ -996,7 +996,7 @@ class GroupHook(pulumi.CustomResource):
                  args: GroupHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupHook` resource allows to manage the lifecycle of a group hook.
+        The `GroupHook` resource manages the lifecycle of a group hook.
 
         > Note that `push_events` defaults to `true`.
 

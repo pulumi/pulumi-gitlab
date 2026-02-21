@@ -1223,6 +1223,10 @@ export interface GetProjectEnvironmentsEnvironment {
 
 export interface GetProjectHooksHook {
     /**
+     * Filter push events by branch.
+     */
+    branchFilterStrategy: string;
+    /**
      * Invoke the hook for confidential issues events.
      */
     confidentialIssuesEvents: boolean;
@@ -1238,6 +1242,10 @@ export interface GetProjectHooksHook {
      * Invoke the hook for deployment events.
      */
     deploymentEvents: boolean;
+    /**
+     * Invoke the hook for emoji events.
+     */
+    emojiEvents: boolean;
     /**
      * Enable ssl verification when invoking the hook.
      */
@@ -1566,6 +1574,53 @@ export interface GetProjectIssuesIssueTaskCompletionStatus {
      * The number of tasks.
      */
     count: number;
+}
+
+export interface GetProjectLabelsLabel {
+    /**
+     * The number of closed issues with this label.
+     */
+    closedIssuesCount: number;
+    /**
+     * The color of the label given in 6-digit hex notation with leading '#' sign.
+     */
+    color: string;
+    /**
+     * The description of the label.
+     */
+    description: string;
+    /**
+     * The ID of the label.
+     */
+    id: number;
+    /**
+     * Whether the label is a project label.
+     */
+    isProjectLabel: boolean;
+    /**
+     * The name of the label.
+     */
+    name: string;
+    /**
+     * The number of open issues with this label.
+     */
+    openIssuesCount: number;
+    /**
+     * The number of open merge requests with this label.
+     */
+    openMergeRequestsCount: number;
+    /**
+     * The priority of the label. Null if no priority is set.
+     */
+    priority: number;
+    /**
+     * Whether the authenticated user is subscribed to the label.
+     */
+    subscribed: boolean;
+    /**
+     * The text color of the label given in 6-digit hex notation with leading '#' sign.
+     */
+    textColor: string;
 }
 
 export interface GetProjectMembershipMember {
@@ -3770,11 +3825,11 @@ export interface ProjectPushRules {
      */
     preventSecrets?: boolean;
     /**
-     * Reject commit when it’s not DCO certified.
+     * Reject commit when it's not DCO certified.
      */
     rejectNonDcoCommits?: boolean;
     /**
-     * Reject commit when it’s not signed through GPG.
+     * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits?: boolean;
 }
@@ -3963,11 +4018,15 @@ export interface TagProtectionAllowedToCreate {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: number;
 }

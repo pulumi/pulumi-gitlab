@@ -71,6 +71,7 @@ class ProjectArgs:
                  issues_template: Optional[pulumi.Input[_builtins.str]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_method: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -135,7 +136,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
-        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         :param pulumi.Input[_builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
@@ -169,7 +170,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[_builtins.int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
-        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
@@ -179,6 +180,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
@@ -187,9 +189,9 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
-        :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
-        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
-        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror: Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
+        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
@@ -198,7 +200,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[_builtins.str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[_builtins.str] path: The path of the repository.
@@ -349,6 +351,8 @@ class ProjectArgs:
             pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if max_artifacts_size is not None:
+            pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if merge_commit_template is not None:
             pulumi.set(__self__, "merge_commit_template", merge_commit_template)
         if merge_method is not None:
@@ -369,9 +373,18 @@ class ProjectArgs:
         if merge_trains_skip_train_allowed is not None:
             pulumi.set(__self__, "merge_trains_skip_train_allowed", merge_trains_skip_train_allowed)
         if mirror is not None:
+            warnings.warn("""To be removed in 19.0. Use `ProjectPullMirror` instead.""", DeprecationWarning)
+            pulumi.log.warn("""mirror is deprecated: To be removed in 19.0. Use `ProjectPullMirror` instead.""")
+        if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
+            warnings.warn("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""", DeprecationWarning)
+            pulumi.log.warn("""mirror_overwrites_diverged_branches is deprecated: To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
+        if mirror_overwrites_diverged_branches is not None:
             pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
+        if mirror_trigger_builds is not None:
+            warnings.warn("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""", DeprecationWarning)
+            pulumi.log.warn("""mirror_trigger_builds is deprecated: To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
         if mirror_trigger_builds is not None:
             pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
         if model_experiments_access_level is not None:
@@ -390,6 +403,9 @@ class ProjectArgs:
             pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         if only_allow_merge_if_pipeline_succeeds is not None:
             pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+        if only_mirror_protected_branches is not None:
+            warnings.warn("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""", DeprecationWarning)
+            pulumi.log.warn("""only_mirror_protected_branches is deprecated: To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
         if only_mirror_protected_branches is not None:
             pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         if packages_enabled is not None:
@@ -560,7 +576,7 @@ class ProjectArgs:
     @pulumi.getter(name="autoCancelPendingPipelines")
     def auto_cancel_pending_pipelines(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
@@ -969,7 +985,7 @@ class ProjectArgs:
     @pulumi.getter(name="importUrl")
     def import_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
@@ -1087,6 +1103,18 @@ class ProjectArgs:
         pulumi.set(self, "lfs_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum file size in megabytes for individual job artifacts.
+        """
+        return pulumi.get(self, "max_artifacts_size")
+
+    @max_artifacts_size.setter
+    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_artifacts_size", value)
+
+    @_builtins.property
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1185,9 +1213,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""To be removed in 19.0. Use `ProjectPullMirror` instead.""")
     def mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable project pull mirror.
+        Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
@@ -1197,9 +1226,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
     def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable overwrite diverged branches for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
@@ -1209,9 +1239,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
     def mirror_trigger_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable trigger builds on pushes for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
@@ -1317,9 +1348,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
     def only_mirror_protected_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable only mirror protected branches for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
@@ -1826,6 +1858,7 @@ class _ProjectState:
                  issues_template: Optional[pulumi.Input[_builtins.str]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_method: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1894,7 +1927,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
-        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         :param pulumi.Input[_builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
@@ -1931,7 +1964,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[_builtins.int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[_builtins.str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1941,6 +1974,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
@@ -1949,9 +1983,9 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
-        :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
-        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
-        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror: Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
+        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1960,7 +1994,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[_builtins.str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[_builtins.str] path: The path of the repository.
@@ -2121,6 +2155,8 @@ class _ProjectState:
             pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if max_artifacts_size is not None:
+            pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if merge_commit_template is not None:
             pulumi.set(__self__, "merge_commit_template", merge_commit_template)
         if merge_method is not None:
@@ -2141,9 +2177,18 @@ class _ProjectState:
         if merge_trains_skip_train_allowed is not None:
             pulumi.set(__self__, "merge_trains_skip_train_allowed", merge_trains_skip_train_allowed)
         if mirror is not None:
+            warnings.warn("""To be removed in 19.0. Use `ProjectPullMirror` instead.""", DeprecationWarning)
+            pulumi.log.warn("""mirror is deprecated: To be removed in 19.0. Use `ProjectPullMirror` instead.""")
+        if mirror is not None:
             pulumi.set(__self__, "mirror", mirror)
         if mirror_overwrites_diverged_branches is not None:
+            warnings.warn("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""", DeprecationWarning)
+            pulumi.log.warn("""mirror_overwrites_diverged_branches is deprecated: To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
+        if mirror_overwrites_diverged_branches is not None:
             pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
+        if mirror_trigger_builds is not None:
+            warnings.warn("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""", DeprecationWarning)
+            pulumi.log.warn("""mirror_trigger_builds is deprecated: To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
         if mirror_trigger_builds is not None:
             pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
         if model_experiments_access_level is not None:
@@ -2162,6 +2207,9 @@ class _ProjectState:
             pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         if only_allow_merge_if_pipeline_succeeds is not None:
             pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+        if only_mirror_protected_branches is not None:
+            warnings.warn("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""", DeprecationWarning)
+            pulumi.log.warn("""only_mirror_protected_branches is deprecated: To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
         if only_mirror_protected_branches is not None:
             pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         if packages_enabled is not None:
@@ -2340,7 +2388,7 @@ class _ProjectState:
     @pulumi.getter(name="autoCancelPendingPipelines")
     def auto_cancel_pending_pipelines(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
@@ -2785,7 +2833,7 @@ class _ProjectState:
     @pulumi.getter(name="importUrl")
     def import_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
@@ -2903,6 +2951,18 @@ class _ProjectState:
         pulumi.set(self, "lfs_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum file size in megabytes for individual job artifacts.
+        """
+        return pulumi.get(self, "max_artifacts_size")
+
+    @max_artifacts_size.setter
+    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_artifacts_size", value)
+
+    @_builtins.property
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -3001,9 +3061,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""To be removed in 19.0. Use `ProjectPullMirror` instead.""")
     def mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable project pull mirror.
+        Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
@@ -3013,9 +3074,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
     def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable overwrite diverged branches for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
@@ -3025,9 +3087,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
     def mirror_trigger_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable trigger builds on pushes for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
@@ -3133,9 +3196,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
     def only_mirror_protected_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable only mirror protected branches for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
@@ -3690,6 +3754,7 @@ class Project(pulumi.CustomResource):
                  issues_template: Optional[pulumi.Input[_builtins.str]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_method: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -3788,7 +3853,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
-        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         :param pulumi.Input[_builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
@@ -3822,7 +3887,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] forking_access_level: Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[_builtins.int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
-        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3832,6 +3897,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
@@ -3840,9 +3906,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
-        :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
-        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
-        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror: Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
+        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3851,7 +3917,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[_builtins.str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[_builtins.str] path: The path of the repository.
@@ -3997,6 +4063,7 @@ class Project(pulumi.CustomResource):
                  issues_template: Optional[pulumi.Input[_builtins.str]] = None,
                  keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_method: Optional[pulumi.Input[_builtins.str]] = None,
                  merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -4112,6 +4179,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["issues_template"] = issues_template
             __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
             __props__.__dict__["lfs_enabled"] = lfs_enabled
+            __props__.__dict__["max_artifacts_size"] = max_artifacts_size
             __props__.__dict__["merge_commit_template"] = merge_commit_template
             __props__.__dict__["merge_method"] = merge_method
             __props__.__dict__["merge_pipelines_enabled"] = merge_pipelines_enabled
@@ -4240,6 +4308,7 @@ class Project(pulumi.CustomResource):
             issues_template: Optional[pulumi.Input[_builtins.str]] = None,
             keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
             lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
             merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
             merge_method: Optional[pulumi.Input[_builtins.str]] = None,
             merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -4313,7 +4382,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] approvals_before_merge: Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] archived: Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
-        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        :param pulumi.Input[_builtins.str] auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         :param pulumi.Input[_builtins.str] auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
@@ -4350,7 +4419,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] group_runners_enabled: Enable group runners for this project.
         :param pulumi.Input[_builtins.int] group_with_project_templates_id: For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         :param pulumi.Input[_builtins.str] http_url_to_repo: URL that can be provided to `git clone` to clone the
-        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        :param pulumi.Input[_builtins.str] import_url: Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_password: The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4360,6 +4429,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable LFS for the project.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.str] merge_commit_template: Template used to create merge commit message in merge requests.
         :param pulumi.Input[_builtins.str] merge_method: Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         :param pulumi.Input[_builtins.bool] merge_pipelines_enabled: Enable or disable merge pipelines.
@@ -4368,9 +4438,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
-        :param pulumi.Input[_builtins.bool] mirror: Enable project pull mirror.
-        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Enable overwrite diverged branches for a mirrored project.
-        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Enable trigger builds on pushes for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror: Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
+        :param pulumi.Input[_builtins.bool] mirror_overwrites_diverged_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] mirror_trigger_builds: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4379,7 +4449,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_pipeline_succeeds: Set to true if you want allow merges only if a pipeline succeeds.
-        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Enable only mirror protected branches for a mirrored project.
+        :param pulumi.Input[_builtins.bool] only_mirror_protected_branches: Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         :param pulumi.Input[_builtins.bool] packages_enabled: Enable packages repository for the project.
         :param pulumi.Input[_builtins.str] pages_access_level: Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         :param pulumi.Input[_builtins.str] path: The path of the repository.
@@ -4482,6 +4552,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["issues_template"] = issues_template
         __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
         __props__.__dict__["lfs_enabled"] = lfs_enabled
+        __props__.__dict__["max_artifacts_size"] = max_artifacts_size
         __props__.__dict__["merge_commit_template"] = merge_commit_template
         __props__.__dict__["merge_method"] = merge_method
         __props__.__dict__["merge_pipelines_enabled"] = merge_pipelines_enabled
@@ -4597,7 +4668,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="autoCancelPendingPipelines")
     def auto_cancel_pending_pipelines(self) -> pulumi.Output[_builtins.str]:
         """
-        Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
@@ -4894,7 +4965,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="importUrl")
     def import_url(self) -> pulumi.Output[_builtins.str]:
         """
-        Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
@@ -4972,6 +5043,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "lfs_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum file size in megabytes for individual job artifacts.
+        """
+        return pulumi.get(self, "max_artifacts_size")
+
+    @_builtins.property
     @pulumi.getter(name="mergeCommitTemplate")
     def merge_commit_template(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -5038,25 +5117,28 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""To be removed in 19.0. Use `ProjectPullMirror` instead.""")
     def mirror(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable project pull mirror.
+        Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
     def mirror_overwrites_diverged_branches(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable overwrite diverged branches for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
     def mirror_trigger_builds(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable trigger builds on pushes for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
@@ -5126,9 +5208,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
+    @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
     def only_mirror_protected_branches(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable only mirror protected branches for a mirrored project.
+        Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 

@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectCustomAttribute` resource allows to manage custom attributes for a project.
+ * The `gitlab.ProjectCustomAttribute` resource manages custom attributes for a project.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
  * 

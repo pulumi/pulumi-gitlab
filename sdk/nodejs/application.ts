@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Application` resource allows to manage the lifecycle of applications in gitlab.
+ * The `gitlab.Application` resource manages the lifecycle of applications in gitlab.
  *
  * > In order to use a user for a user to create an application, they must have admin privileges at the instance level.
  * To create an OIDC application, a scope of "openid".

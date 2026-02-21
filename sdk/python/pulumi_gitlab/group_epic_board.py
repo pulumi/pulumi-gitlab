@@ -140,7 +140,7 @@ class GroupEpicBoard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.
+        The `GroupEpicBoard` resource manages the lifecycle of a epic board in a group.
 
         > Multiple epic boards on one group requires a GitLab Premium or above License.
 
@@ -207,7 +207,7 @@ class GroupEpicBoard(pulumi.CustomResource):
                  args: GroupEpicBoardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.
+        The `GroupEpicBoard` resource manages the lifecycle of a epic board in a group.
 
         > Multiple epic boards on one group requires a GitLab Premium or above License.
 

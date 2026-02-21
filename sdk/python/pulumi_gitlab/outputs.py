@@ -87,6 +87,7 @@ __all__ = [
     'GetProjectIssueTaskCompletionStatusResult',
     'GetProjectIssuesIssueResult',
     'GetProjectIssuesIssueTaskCompletionStatusResult',
+    'GetProjectLabelsLabelResult',
     'GetProjectMembershipMemberResult',
     'GetProjectMergeRequestAssigneeResult',
     'GetProjectMergeRequestAuthorResult',
@@ -2284,8 +2285,8 @@ class ProjectPushRules(dict):
         :param _builtins.int max_file_size: Maximum file size (MB).
         :param _builtins.bool member_check: Restrict commits by author (email) to existing GitLab users.
         :param _builtins.bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
-        :param _builtins.bool reject_non_dco_commits: Reject commit when it’s not DCO certified.
-        :param _builtins.bool reject_unsigned_commits: Reject commit when it’s not signed through GPG.
+        :param _builtins.bool reject_non_dco_commits: Reject commit when it's not DCO certified.
+        :param _builtins.bool reject_unsigned_commits: Reject commit when it's not signed through GPG.
         """
         if author_email_regex is not None:
             pulumi.set(__self__, "author_email_regex", author_email_regex)
@@ -2406,7 +2407,7 @@ class ProjectPushRules(dict):
     @pulumi.getter(name="rejectNonDcoCommits")
     def reject_non_dco_commits(self) -> Optional[_builtins.bool]:
         """
-        Reject commit when it’s not DCO certified.
+        Reject commit when it's not DCO certified.
         """
         return pulumi.get(self, "reject_non_dco_commits")
 
@@ -2414,7 +2415,7 @@ class ProjectPushRules(dict):
     @pulumi.getter(name="rejectUnsignedCommits")
     def reject_unsigned_commits(self) -> Optional[_builtins.bool]:
         """
-        Reject commit when it’s not signed through GPG.
+        Reject commit when it's not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
@@ -3065,6 +3066,8 @@ class TagProtectionAllowedToCreate(dict):
             suggest = "access_level"
         elif key == "accessLevelDescription":
             suggest = "access_level_description"
+        elif key == "deployKeyId":
+            suggest = "deploy_key_id"
         elif key == "groupId":
             suggest = "group_id"
         elif key == "userId":
@@ -3084,18 +3087,22 @@ class TagProtectionAllowedToCreate(dict):
     def __init__(__self__, *,
                  access_level: Optional[_builtins.str] = None,
                  access_level_description: Optional[_builtins.str] = None,
+                 deploy_key_id: Optional[_builtins.int] = None,
                  group_id: Optional[_builtins.int] = None,
                  user_id: Optional[_builtins.int] = None):
         """
         :param _builtins.str access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_level_description is not None:
             pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if user_id is not None:
@@ -3118,10 +3125,18 @@ class TagProtectionAllowedToCreate(dict):
         return pulumi.get(self, "access_level_description")
 
     @_builtins.property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -3129,7 +3144,7 @@ class TagProtectionAllowedToCreate(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
@@ -6365,10 +6380,12 @@ class GetProjectEnvironmentsEnvironmentResult(dict):
 @pulumi.output_type
 class GetProjectHooksHookResult(dict):
     def __init__(__self__, *,
+                 branch_filter_strategy: _builtins.str,
                  confidential_issues_events: _builtins.bool,
                  confidential_note_events: _builtins.bool,
                  custom_webhook_template: _builtins.str,
                  deployment_events: _builtins.bool,
+                 emoji_events: _builtins.bool,
                  enable_ssl_verification: _builtins.bool,
                  hook_id: _builtins.int,
                  issues_events: _builtins.bool,
@@ -6387,10 +6404,12 @@ class GetProjectHooksHookResult(dict):
                  vulnerability_events: _builtins.bool,
                  wiki_page_events: _builtins.bool):
         """
+        :param _builtins.str branch_filter_strategy: Filter push events by branch.
         :param _builtins.bool confidential_issues_events: Invoke the hook for confidential issues events.
         :param _builtins.bool confidential_note_events: Invoke the hook for confidential notes events.
         :param _builtins.str custom_webhook_template: Set a custom webhook template.
         :param _builtins.bool deployment_events: Invoke the hook for deployment events.
+        :param _builtins.bool emoji_events: Invoke the hook for emoji events.
         :param _builtins.bool enable_ssl_verification: Enable ssl verification when invoking the hook.
         :param _builtins.int hook_id: The id of the project hook.
         :param _builtins.bool issues_events: Invoke the hook for issues events.
@@ -6409,10 +6428,12 @@ class GetProjectHooksHookResult(dict):
         :param _builtins.bool vulnerability_events: Invoke the hook for vulnerability events.
         :param _builtins.bool wiki_page_events: Invoke the hook for wiki page events.
         """
+        pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
         pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         pulumi.set(__self__, "deployment_events", deployment_events)
+        pulumi.set(__self__, "emoji_events", emoji_events)
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         pulumi.set(__self__, "hook_id", hook_id)
         pulumi.set(__self__, "issues_events", issues_events)
@@ -6430,6 +6451,14 @@ class GetProjectHooksHookResult(dict):
         pulumi.set(__self__, "url", url)
         pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> _builtins.str:
+        """
+        Filter push events by branch.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -6462,6 +6491,14 @@ class GetProjectHooksHookResult(dict):
         Invoke the hook for deployment events.
         """
         return pulumi.get(self, "deployment_events")
+
+    @_builtins.property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for emoji events.
+        """
+        return pulumi.get(self, "emoji_events")
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
@@ -7301,6 +7338,134 @@ class GetProjectIssuesIssueTaskCompletionStatusResult(dict):
         The number of tasks.
         """
         return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class GetProjectLabelsLabelResult(dict):
+    def __init__(__self__, *,
+                 closed_issues_count: _builtins.int,
+                 color: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.int,
+                 is_project_label: _builtins.bool,
+                 name: _builtins.str,
+                 open_issues_count: _builtins.int,
+                 open_merge_requests_count: _builtins.int,
+                 priority: _builtins.int,
+                 subscribed: _builtins.bool,
+                 text_color: _builtins.str):
+        """
+        :param _builtins.int closed_issues_count: The number of closed issues with this label.
+        :param _builtins.str color: The color of the label given in 6-digit hex notation with leading '#' sign.
+        :param _builtins.str description: The description of the label.
+        :param _builtins.int id: The ID of the label.
+        :param _builtins.bool is_project_label: Whether the label is a project label.
+        :param _builtins.str name: The name of the label.
+        :param _builtins.int open_issues_count: The number of open issues with this label.
+        :param _builtins.int open_merge_requests_count: The number of open merge requests with this label.
+        :param _builtins.int priority: The priority of the label. Null if no priority is set.
+        :param _builtins.bool subscribed: Whether the authenticated user is subscribed to the label.
+        :param _builtins.str text_color: The text color of the label given in 6-digit hex notation with leading '#' sign.
+        """
+        pulumi.set(__self__, "closed_issues_count", closed_issues_count)
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_project_label", is_project_label)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "open_issues_count", open_issues_count)
+        pulumi.set(__self__, "open_merge_requests_count", open_merge_requests_count)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "subscribed", subscribed)
+        pulumi.set(__self__, "text_color", text_color)
+
+    @_builtins.property
+    @pulumi.getter(name="closedIssuesCount")
+    def closed_issues_count(self) -> _builtins.int:
+        """
+        The number of closed issues with this label.
+        """
+        return pulumi.get(self, "closed_issues_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> _builtins.str:
+        """
+        The color of the label given in 6-digit hex notation with leading '#' sign.
+        """
+        return pulumi.get(self, "color")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the label.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the label.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isProjectLabel")
+    def is_project_label(self) -> _builtins.bool:
+        """
+        Whether the label is a project label.
+        """
+        return pulumi.get(self, "is_project_label")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the label.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="openIssuesCount")
+    def open_issues_count(self) -> _builtins.int:
+        """
+        The number of open issues with this label.
+        """
+        return pulumi.get(self, "open_issues_count")
+
+    @_builtins.property
+    @pulumi.getter(name="openMergeRequestsCount")
+    def open_merge_requests_count(self) -> _builtins.int:
+        """
+        The number of open merge requests with this label.
+        """
+        return pulumi.get(self, "open_merge_requests_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> _builtins.int:
+        """
+        The priority of the label. Null if no priority is set.
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter
+    def subscribed(self) -> _builtins.bool:
+        """
+        Whether the authenticated user is subscribed to the label.
+        """
+        return pulumi.get(self, "subscribed")
+
+    @_builtins.property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> _builtins.str:
+        """
+        The text color of the label given in 6-digit hex notation with leading '#' sign.
+        """
+        return pulumi.get(self, "text_color")
 
 
 @pulumi.output_type

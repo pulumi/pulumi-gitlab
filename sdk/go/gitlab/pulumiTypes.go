@@ -4050,9 +4050,9 @@ type ProjectPushRulesType struct {
 	MemberCheck *bool `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets *bool `pulumi:"preventSecrets"`
-	// Reject commit when it’s not DCO certified.
+	// Reject commit when it's not DCO certified.
 	RejectNonDcoCommits *bool `pulumi:"rejectNonDcoCommits"`
-	// Reject commit when it’s not signed through GPG.
+	// Reject commit when it's not signed through GPG.
 	RejectUnsignedCommits *bool `pulumi:"rejectUnsignedCommits"`
 }
 
@@ -4090,9 +4090,9 @@ type ProjectPushRulesTypeArgs struct {
 	MemberCheck pulumi.BoolPtrInput `pulumi:"memberCheck"`
 	// GitLab will reject any files that are likely to contain secrets.
 	PreventSecrets pulumi.BoolPtrInput `pulumi:"preventSecrets"`
-	// Reject commit when it’s not DCO certified.
+	// Reject commit when it's not DCO certified.
 	RejectNonDcoCommits pulumi.BoolPtrInput `pulumi:"rejectNonDcoCommits"`
-	// Reject commit when it’s not signed through GPG.
+	// Reject commit when it's not signed through GPG.
 	RejectUnsignedCommits pulumi.BoolPtrInput `pulumi:"rejectUnsignedCommits"`
 }
 
@@ -4228,12 +4228,12 @@ func (o ProjectPushRulesTypeOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.PreventSecrets }).(pulumi.BoolPtrOutput)
 }
 
-// Reject commit when it’s not DCO certified.
+// Reject commit when it's not DCO certified.
 func (o ProjectPushRulesTypeOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.RejectNonDcoCommits }).(pulumi.BoolPtrOutput)
 }
 
-// Reject commit when it’s not signed through GPG.
+// Reject commit when it's not signed through GPG.
 func (o ProjectPushRulesTypeOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPushRulesType) *bool { return v.RejectUnsignedCommits }).(pulumi.BoolPtrOutput)
 }
@@ -4372,7 +4372,7 @@ func (o ProjectPushRulesTypePtrOutput) PreventSecrets() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Reject commit when it’s not DCO certified.
+// Reject commit when it's not DCO certified.
 func (o ProjectPushRulesTypePtrOutput) RejectNonDcoCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
@@ -4382,7 +4382,7 @@ func (o ProjectPushRulesTypePtrOutput) RejectNonDcoCommits() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Reject commit when it’s not signed through GPG.
+// Reject commit when it's not signed through GPG.
 func (o ProjectPushRulesTypePtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPushRulesType) *bool {
 		if v == nil {
@@ -5656,9 +5656,11 @@ type TagProtectionAllowedToCreate struct {
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription *string `pulumi:"accessLevelDescription"`
-	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+	DeployKeyId *int `pulumi:"deployKeyId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
 	GroupId *int `pulumi:"groupId"`
-	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
 	UserId *int `pulumi:"userId"`
 }
 
@@ -5678,9 +5680,11 @@ type TagProtectionAllowedToCreateArgs struct {
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// Readable description of access level.
 	AccessLevelDescription pulumi.StringPtrInput `pulumi:"accessLevelDescription"`
-	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+	// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+	DeployKeyId pulumi.IntPtrInput `pulumi:"deployKeyId"`
+	// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
-	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+	// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
@@ -5745,12 +5749,17 @@ func (o TagProtectionAllowedToCreateOutput) AccessLevelDescription() pulumi.Stri
 	return o.ApplyT(func(v TagProtectionAllowedToCreate) *string { return v.AccessLevelDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+func (o TagProtectionAllowedToCreateOutput) DeployKeyId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TagProtectionAllowedToCreate) *int { return v.DeployKeyId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
 func (o TagProtectionAllowedToCreateOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TagProtectionAllowedToCreate) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
 func (o TagProtectionAllowedToCreateOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TagProtectionAllowedToCreate) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -10665,6 +10674,8 @@ func (o GetProjectEnvironmentsEnvironmentArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetProjectHooksHook struct {
+	// Filter push events by branch.
+	BranchFilterStrategy string `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
@@ -10673,6 +10684,8 @@ type GetProjectHooksHook struct {
 	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
+	// Invoke the hook for emoji events.
+	EmojiEvents bool `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification bool `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -10723,6 +10736,8 @@ type GetProjectHooksHookInput interface {
 }
 
 type GetProjectHooksHookArgs struct {
+	// Filter push events by branch.
+	BranchFilterStrategy pulumi.StringInput `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolInput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
@@ -10731,6 +10746,8 @@ type GetProjectHooksHookArgs struct {
 	CustomWebhookTemplate pulumi.StringInput `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents pulumi.BoolInput `pulumi:"deploymentEvents"`
+	// Invoke the hook for emoji events.
+	EmojiEvents pulumi.BoolInput `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification pulumi.BoolInput `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -10820,6 +10837,11 @@ func (o GetProjectHooksHookOutput) ToGetProjectHooksHookOutputWithContext(ctx co
 	return o
 }
 
+// Filter push events by branch.
+func (o GetProjectHooksHookOutput) BranchFilterStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectHooksHook) string { return v.BranchFilterStrategy }).(pulumi.StringOutput)
+}
+
 // Invoke the hook for confidential issues events.
 func (o GetProjectHooksHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) bool { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
@@ -10838,6 +10860,11 @@ func (o GetProjectHooksHookOutput) CustomWebhookTemplate() pulumi.StringOutput {
 // Invoke the hook for deployment events.
 func (o GetProjectHooksHookOutput) DeploymentEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectHooksHook) bool { return v.DeploymentEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for emoji events.
+func (o GetProjectHooksHookOutput) EmojiEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectHooksHook) bool { return v.EmojiEvents }).(pulumi.BoolOutput)
 }
 
 // Enable ssl verification when invoking the hook.
@@ -11925,6 +11952,193 @@ func (o GetProjectIssuesIssueTaskCompletionStatusArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectIssuesIssueTaskCompletionStatus {
 		return vs[0].([]GetProjectIssuesIssueTaskCompletionStatus)[vs[1].(int)]
 	}).(GetProjectIssuesIssueTaskCompletionStatusOutput)
+}
+
+type GetProjectLabelsLabel struct {
+	// The number of closed issues with this label.
+	ClosedIssuesCount int `pulumi:"closedIssuesCount"`
+	// The color of the label given in 6-digit hex notation with leading '#' sign.
+	Color string `pulumi:"color"`
+	// The description of the label.
+	Description string `pulumi:"description"`
+	// The ID of the label.
+	Id int `pulumi:"id"`
+	// Whether the label is a project label.
+	IsProjectLabel bool `pulumi:"isProjectLabel"`
+	// The name of the label.
+	Name string `pulumi:"name"`
+	// The number of open issues with this label.
+	OpenIssuesCount int `pulumi:"openIssuesCount"`
+	// The number of open merge requests with this label.
+	OpenMergeRequestsCount int `pulumi:"openMergeRequestsCount"`
+	// The priority of the label. Null if no priority is set.
+	Priority int `pulumi:"priority"`
+	// Whether the authenticated user is subscribed to the label.
+	Subscribed bool `pulumi:"subscribed"`
+	// The text color of the label given in 6-digit hex notation with leading '#' sign.
+	TextColor string `pulumi:"textColor"`
+}
+
+// GetProjectLabelsLabelInput is an input type that accepts GetProjectLabelsLabelArgs and GetProjectLabelsLabelOutput values.
+// You can construct a concrete instance of `GetProjectLabelsLabelInput` via:
+//
+//	GetProjectLabelsLabelArgs{...}
+type GetProjectLabelsLabelInput interface {
+	pulumi.Input
+
+	ToGetProjectLabelsLabelOutput() GetProjectLabelsLabelOutput
+	ToGetProjectLabelsLabelOutputWithContext(context.Context) GetProjectLabelsLabelOutput
+}
+
+type GetProjectLabelsLabelArgs struct {
+	// The number of closed issues with this label.
+	ClosedIssuesCount pulumi.IntInput `pulumi:"closedIssuesCount"`
+	// The color of the label given in 6-digit hex notation with leading '#' sign.
+	Color pulumi.StringInput `pulumi:"color"`
+	// The description of the label.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the label.
+	Id pulumi.IntInput `pulumi:"id"`
+	// Whether the label is a project label.
+	IsProjectLabel pulumi.BoolInput `pulumi:"isProjectLabel"`
+	// The name of the label.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of open issues with this label.
+	OpenIssuesCount pulumi.IntInput `pulumi:"openIssuesCount"`
+	// The number of open merge requests with this label.
+	OpenMergeRequestsCount pulumi.IntInput `pulumi:"openMergeRequestsCount"`
+	// The priority of the label. Null if no priority is set.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// Whether the authenticated user is subscribed to the label.
+	Subscribed pulumi.BoolInput `pulumi:"subscribed"`
+	// The text color of the label given in 6-digit hex notation with leading '#' sign.
+	TextColor pulumi.StringInput `pulumi:"textColor"`
+}
+
+func (GetProjectLabelsLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectLabelsLabel)(nil)).Elem()
+}
+
+func (i GetProjectLabelsLabelArgs) ToGetProjectLabelsLabelOutput() GetProjectLabelsLabelOutput {
+	return i.ToGetProjectLabelsLabelOutputWithContext(context.Background())
+}
+
+func (i GetProjectLabelsLabelArgs) ToGetProjectLabelsLabelOutputWithContext(ctx context.Context) GetProjectLabelsLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectLabelsLabelOutput)
+}
+
+// GetProjectLabelsLabelArrayInput is an input type that accepts GetProjectLabelsLabelArray and GetProjectLabelsLabelArrayOutput values.
+// You can construct a concrete instance of `GetProjectLabelsLabelArrayInput` via:
+//
+//	GetProjectLabelsLabelArray{ GetProjectLabelsLabelArgs{...} }
+type GetProjectLabelsLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectLabelsLabelArrayOutput() GetProjectLabelsLabelArrayOutput
+	ToGetProjectLabelsLabelArrayOutputWithContext(context.Context) GetProjectLabelsLabelArrayOutput
+}
+
+type GetProjectLabelsLabelArray []GetProjectLabelsLabelInput
+
+func (GetProjectLabelsLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectLabelsLabel)(nil)).Elem()
+}
+
+func (i GetProjectLabelsLabelArray) ToGetProjectLabelsLabelArrayOutput() GetProjectLabelsLabelArrayOutput {
+	return i.ToGetProjectLabelsLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectLabelsLabelArray) ToGetProjectLabelsLabelArrayOutputWithContext(ctx context.Context) GetProjectLabelsLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectLabelsLabelArrayOutput)
+}
+
+type GetProjectLabelsLabelOutput struct{ *pulumi.OutputState }
+
+func (GetProjectLabelsLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectLabelsLabel)(nil)).Elem()
+}
+
+func (o GetProjectLabelsLabelOutput) ToGetProjectLabelsLabelOutput() GetProjectLabelsLabelOutput {
+	return o
+}
+
+func (o GetProjectLabelsLabelOutput) ToGetProjectLabelsLabelOutputWithContext(ctx context.Context) GetProjectLabelsLabelOutput {
+	return o
+}
+
+// The number of closed issues with this label.
+func (o GetProjectLabelsLabelOutput) ClosedIssuesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) int { return v.ClosedIssuesCount }).(pulumi.IntOutput)
+}
+
+// The color of the label given in 6-digit hex notation with leading '#' sign.
+func (o GetProjectLabelsLabelOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// The description of the label.
+func (o GetProjectLabelsLabelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the label.
+func (o GetProjectLabelsLabelOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Whether the label is a project label.
+func (o GetProjectLabelsLabelOutput) IsProjectLabel() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) bool { return v.IsProjectLabel }).(pulumi.BoolOutput)
+}
+
+// The name of the label.
+func (o GetProjectLabelsLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of open issues with this label.
+func (o GetProjectLabelsLabelOutput) OpenIssuesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) int { return v.OpenIssuesCount }).(pulumi.IntOutput)
+}
+
+// The number of open merge requests with this label.
+func (o GetProjectLabelsLabelOutput) OpenMergeRequestsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) int { return v.OpenMergeRequestsCount }).(pulumi.IntOutput)
+}
+
+// The priority of the label. Null if no priority is set.
+func (o GetProjectLabelsLabelOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Whether the authenticated user is subscribed to the label.
+func (o GetProjectLabelsLabelOutput) Subscribed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) bool { return v.Subscribed }).(pulumi.BoolOutput)
+}
+
+// The text color of the label given in 6-digit hex notation with leading '#' sign.
+func (o GetProjectLabelsLabelOutput) TextColor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectLabelsLabel) string { return v.TextColor }).(pulumi.StringOutput)
+}
+
+type GetProjectLabelsLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectLabelsLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectLabelsLabel)(nil)).Elem()
+}
+
+func (o GetProjectLabelsLabelArrayOutput) ToGetProjectLabelsLabelArrayOutput() GetProjectLabelsLabelArrayOutput {
+	return o
+}
+
+func (o GetProjectLabelsLabelArrayOutput) ToGetProjectLabelsLabelArrayOutputWithContext(ctx context.Context) GetProjectLabelsLabelArrayOutput {
+	return o
+}
+
+func (o GetProjectLabelsLabelArrayOutput) Index(i pulumi.IntInput) GetProjectLabelsLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectLabelsLabel {
+		return vs[0].([]GetProjectLabelsLabel)[vs[1].(int)]
+	}).(GetProjectLabelsLabelOutput)
 }
 
 type GetProjectMembershipMember struct {
@@ -19884,6 +20098,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueArrayInput)(nil)).Elem(), GetProjectIssuesIssueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatusInput)(nil)).Elem(), GetProjectIssuesIssueTaskCompletionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectIssuesIssueTaskCompletionStatusArrayInput)(nil)).Elem(), GetProjectIssuesIssueTaskCompletionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectLabelsLabelInput)(nil)).Elem(), GetProjectLabelsLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectLabelsLabelArrayInput)(nil)).Elem(), GetProjectLabelsLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMembershipMemberInput)(nil)).Elem(), GetProjectMembershipMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMembershipMemberArrayInput)(nil)).Elem(), GetProjectMembershipMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMergeRequestAssigneeInput)(nil)).Elem(), GetProjectMergeRequestAssigneeArgs{})
@@ -20110,6 +20326,8 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectIssuesIssueArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectIssuesIssueTaskCompletionStatusOutput{})
 	pulumi.RegisterOutputType(GetProjectIssuesIssueTaskCompletionStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectLabelsLabelOutput{})
+	pulumi.RegisterOutputType(GetProjectLabelsLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectMembershipMemberOutput{})
 	pulumi.RegisterOutputType(GetProjectMembershipMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectMergeRequestAssigneeOutput{})

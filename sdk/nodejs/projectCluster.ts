@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+ * The `gitlab.ProjectCluster` resource manages the lifecycle of a project cluster.
  *
  * > This is deprecated, due for removal in GitLab 19.0.
  *

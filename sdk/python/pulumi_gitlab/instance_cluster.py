@@ -465,7 +465,7 @@ class InstanceCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
+        The `InstanceCluster` resource manages the lifecycle of an instance cluster.
 
         > This is deprecated, due for removal in GitLab 19.0.
 
@@ -533,7 +533,7 @@ class InstanceCluster(pulumi.CustomResource):
                  args: InstanceClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
+        The `InstanceCluster` resource manages the lifecycle of an instance cluster.
 
         > This is deprecated, due for removal in GitLab 19.0.
 

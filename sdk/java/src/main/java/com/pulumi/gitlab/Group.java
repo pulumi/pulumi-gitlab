@@ -375,6 +375,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.lfsEnabled;
     }
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     * 
+     */
+    @Export(name="maxArtifactsSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxArtifactsSize;
+
+    /**
+     * @return The maximum file size in megabytes for individual job artifacts.
+     * 
+     */
+    public Output<Integer> maxArtifactsSize() {
+        return this.maxArtifactsSize;
+    }
+    /**
      * Users cannot be added to projects in this group.
      * 
      */

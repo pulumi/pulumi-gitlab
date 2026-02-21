@@ -216,7 +216,7 @@ class ProjectIssueLink(pulumi.CustomResource):
                  target_project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectIssueLink` resource allows to manage the lifecycle of project issue links.
+        The `ProjectIssueLink` resource manages the lifecycle of project issue links.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/issue_links/)
 
@@ -298,7 +298,7 @@ class ProjectIssueLink(pulumi.CustomResource):
                  args: ProjectIssueLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectIssueLink` resource allows to manage the lifecycle of project issue links.
+        The `ProjectIssueLink` resource manages the lifecycle of project issue links.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/issue_links/)
 

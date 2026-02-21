@@ -23,12 +23,14 @@ class ProjectHookArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
+                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  job_events: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -48,12 +50,14 @@ class ProjectHookArgs:
         The set of arguments for constructing a ProjectHook resource.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
+        :param pulumi.Input[_builtins.bool] emoji_events: Invoke the hook for emoji events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] issues_events: Invoke the hook for issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] job_events: Invoke the hook for job events. Defaults to `false`.
@@ -72,6 +76,8 @@ class ProjectHookArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "url", url)
+        if branch_filter_strategy is not None:
+            pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
@@ -84,6 +90,8 @@ class ProjectHookArgs:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if emoji_events is not None:
+            pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if issues_events is not None:
@@ -138,6 +146,18 @@ class ProjectHookArgs:
     @url.setter
     def url(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
+
+    @branch_filter_strategy.setter
+    def branch_filter_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "branch_filter_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -210,6 +230,18 @@ class ProjectHookArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Invoke the hook for emoji events. Defaults to `false`.
+        """
+        return pulumi.get(self, "emoji_events")
+
+    @emoji_events.setter
+    def emoji_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "emoji_events", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
@@ -395,12 +427,14 @@ class ProjectHookArgs:
 @pulumi.input_type
 class _ProjectHookState:
     def __init__(__self__, *,
+                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
                  hook_id: Optional[pulumi.Input[_builtins.int]] = None,
                  issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -422,12 +456,14 @@ class _ProjectHookState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectHook resources.
+        :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
+        :param pulumi.Input[_builtins.bool] emoji_events: Invoke the hook for emoji events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook. Defaults to `true`.
         :param pulumi.Input[_builtins.int] hook_id: The id of the project hook.
         :param pulumi.Input[_builtins.bool] issues_events: Invoke the hook for issues events. Defaults to `false`.
@@ -448,6 +484,8 @@ class _ProjectHookState:
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
+        if branch_filter_strategy is not None:
+            pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         if confidential_issues_events is not None:
             pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         if confidential_note_events is not None:
@@ -460,6 +498,8 @@ class _ProjectHookState:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if emoji_events is not None:
+            pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if hook_id is not None:
@@ -498,6 +538,18 @@ class _ProjectHookState:
             pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         if wiki_page_events is not None:
             pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
+
+    @branch_filter_strategy.setter
+    def branch_filter_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "branch_filter_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -570,6 +622,18 @@ class _ProjectHookState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Invoke the hook for emoji events. Defaults to `false`.
+        """
+        return pulumi.get(self, "emoji_events")
+
+    @emoji_events.setter
+    def emoji_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "emoji_events", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
@@ -806,12 +870,14 @@ class ProjectHook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  job_events: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -831,7 +897,7 @@ class ProjectHook(pulumi.CustomResource):
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `ProjectHook` resource allows to manage the lifecycle of a project hook.
+        The `ProjectHook` resource manages the lifecycle of a project hook.
 
         > Note that `push_events` defaults to `true`.
 
@@ -894,12 +960,14 @@ class ProjectHook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
+        :param pulumi.Input[_builtins.bool] emoji_events: Invoke the hook for emoji events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] issues_events: Invoke the hook for issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] job_events: Invoke the hook for job events. Defaults to `false`.
@@ -925,7 +993,7 @@ class ProjectHook(pulumi.CustomResource):
                  args: ProjectHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectHook` resource allows to manage the lifecycle of a project hook.
+        The `ProjectHook` resource manages the lifecycle of a project hook.
 
         > Note that `push_events` defaults to `true`.
 
@@ -1001,12 +1069,14 @@ class ProjectHook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
                  custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
                  deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  job_events: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1033,12 +1103,14 @@ class ProjectHook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectHookArgs.__new__(ProjectHookArgs)
 
+            __props__.__dict__["branch_filter_strategy"] = branch_filter_strategy
             __props__.__dict__["confidential_issues_events"] = confidential_issues_events
             __props__.__dict__["confidential_note_events"] = confidential_note_events
             __props__.__dict__["custom_headers"] = custom_headers
             __props__.__dict__["custom_webhook_template"] = custom_webhook_template
             __props__.__dict__["deployment_events"] = deployment_events
             __props__.__dict__["description"] = description
+            __props__.__dict__["emoji_events"] = emoji_events
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
             __props__.__dict__["issues_events"] = issues_events
             __props__.__dict__["job_events"] = job_events
@@ -1074,12 +1146,14 @@ class ProjectHook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
             confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
             confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
             custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
             custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
             deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
             hook_id: Optional[pulumi.Input[_builtins.int]] = None,
             issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1106,12 +1180,14 @@ class ProjectHook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
+        :param pulumi.Input[_builtins.bool] emoji_events: Invoke the hook for emoji events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook. Defaults to `true`.
         :param pulumi.Input[_builtins.int] hook_id: The id of the project hook.
         :param pulumi.Input[_builtins.bool] issues_events: Invoke the hook for issues events. Defaults to `false`.
@@ -1136,12 +1212,14 @@ class ProjectHook(pulumi.CustomResource):
 
         __props__ = _ProjectHookState.__new__(_ProjectHookState)
 
+        __props__.__dict__["branch_filter_strategy"] = branch_filter_strategy
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
         __props__.__dict__["confidential_note_events"] = confidential_note_events
         __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
         __props__.__dict__["description"] = description
+        __props__.__dict__["emoji_events"] = emoji_events
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
         __props__.__dict__["hook_id"] = hook_id
         __props__.__dict__["issues_events"] = issues_events
@@ -1162,6 +1240,14 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["vulnerability_events"] = vulnerability_events
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return ProjectHook(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -1210,6 +1296,14 @@ class ProjectHook(pulumi.CustomResource):
         Description of the webhook.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Invoke the hook for emoji events. Defaults to `false`.
+        """
+        return pulumi.get(self, "emoji_events")
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")

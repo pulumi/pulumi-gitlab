@@ -26,7 +26,10 @@ class GetProjectHookResult:
     """
     A collection of values returned by getProjectHook.
     """
-    def __init__(__self__, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, enable_ssl_verification=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, project_id=None, push_events=None, push_events_branch_filter=None, releases_events=None, tag_push_events=None, token=None, url=None, vulnerability_events=None, wiki_page_events=None):
+    def __init__(__self__, branch_filter_strategy=None, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, emoji_events=None, enable_ssl_verification=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, project_id=None, push_events=None, push_events_branch_filter=None, releases_events=None, tag_push_events=None, token=None, url=None, vulnerability_events=None, wiki_page_events=None):
+        if branch_filter_strategy and not isinstance(branch_filter_strategy, str):
+            raise TypeError("Expected argument 'branch_filter_strategy' to be a str")
+        pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         if confidential_issues_events and not isinstance(confidential_issues_events, bool):
             raise TypeError("Expected argument 'confidential_issues_events' to be a bool")
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
@@ -39,6 +42,9 @@ class GetProjectHookResult:
         if deployment_events and not isinstance(deployment_events, bool):
             raise TypeError("Expected argument 'deployment_events' to be a bool")
         pulumi.set(__self__, "deployment_events", deployment_events)
+        if emoji_events and not isinstance(emoji_events, bool):
+            raise TypeError("Expected argument 'emoji_events' to be a bool")
+        pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification and not isinstance(enable_ssl_verification, bool):
             raise TypeError("Expected argument 'enable_ssl_verification' to be a bool")
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
@@ -95,6 +101,14 @@ class GetProjectHookResult:
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
 
     @_builtins.property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> _builtins.str:
+        """
+        Filter push events by branch.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
+
+    @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
     def confidential_issues_events(self) -> _builtins.bool:
         """
@@ -125,6 +139,14 @@ class GetProjectHookResult:
         Invoke the hook for deployment events.
         """
         return pulumi.get(self, "deployment_events")
+
+    @_builtins.property
+    @pulumi.getter(name="emojiEvents")
+    def emoji_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for emoji events.
+        """
+        return pulumi.get(self, "emoji_events")
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
@@ -278,10 +300,12 @@ class AwaitableGetProjectHookResult(GetProjectHookResult):
         if False:
             yield self
         return GetProjectHookResult(
+            branch_filter_strategy=self.branch_filter_strategy,
             confidential_issues_events=self.confidential_issues_events,
             confidential_note_events=self.confidential_note_events,
             custom_webhook_template=self.custom_webhook_template,
             deployment_events=self.deployment_events,
+            emoji_events=self.emoji_events,
             enable_ssl_verification=self.enable_ssl_verification,
             hook_id=self.hook_id,
             id=self.id,
@@ -332,10 +356,12 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectHook:getProjectHook', __args__, opts=opts, typ=GetProjectHookResult).value
 
     return AwaitableGetProjectHookResult(
+        branch_filter_strategy=pulumi.get(__ret__, 'branch_filter_strategy'),
         confidential_issues_events=pulumi.get(__ret__, 'confidential_issues_events'),
         confidential_note_events=pulumi.get(__ret__, 'confidential_note_events'),
         custom_webhook_template=pulumi.get(__ret__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__ret__, 'deployment_events'),
+        emoji_events=pulumi.get(__ret__, 'emoji_events'),
         enable_ssl_verification=pulumi.get(__ret__, 'enable_ssl_verification'),
         hook_id=pulumi.get(__ret__, 'hook_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -383,10 +409,12 @@ def get_project_hook_output(hook_id: Optional[pulumi.Input[_builtins.int]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectHook:getProjectHook', __args__, opts=opts, typ=GetProjectHookResult)
     return __ret__.apply(lambda __response__: GetProjectHookResult(
+        branch_filter_strategy=pulumi.get(__response__, 'branch_filter_strategy'),
         confidential_issues_events=pulumi.get(__response__, 'confidential_issues_events'),
         confidential_note_events=pulumi.get(__response__, 'confidential_note_events'),
         custom_webhook_template=pulumi.get(__response__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__response__, 'deployment_events'),
+        emoji_events=pulumi.get(__response__, 'emoji_events'),
         enable_ssl_verification=pulumi.get(__response__, 'enable_ssl_verification'),
         hook_id=pulumi.get(__response__, 'hook_id'),
         id=pulumi.get(__response__, 'id'),

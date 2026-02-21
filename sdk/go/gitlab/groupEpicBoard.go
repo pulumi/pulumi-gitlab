@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.
+// The `GroupEpicBoard` resource manages the lifecycle of a epic board in a group.
 //
 // > Multiple epic boards on one group requires a GitLab Premium or above License.
 //

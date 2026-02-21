@@ -25,13 +25,19 @@ namespace Pulumi.GitLab.Inputs
         public Input<string>? AccessLevelDescription { get; set; }
 
         /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `UserId`.
+        /// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `GroupId` and `UserId`.
+        /// </summary>
+        [Input("deployKeyId")]
+        public Input<int>? DeployKeyId { get; set; }
+
+        /// <summary>
+        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `DeployKeyId` and `UserId`.
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `GroupId`.
+        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `DeployKeyId` and `GroupId`.
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

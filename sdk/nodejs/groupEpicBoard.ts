@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupEpicBoard` resource allows to manage the lifecycle of a epic board in a group.
+ * The `gitlab.GroupEpicBoard` resource manages the lifecycle of a epic board in a group.
  *
  * > Multiple epic boards on one group requires a GitLab Premium or above License.
  *

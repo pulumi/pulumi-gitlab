@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
+    /// The `gitlab.ProjectHook` resource manages the lifecycle of a project hook.
     /// 
     /// &gt; Note that `PushEvents` defaults to `True`.
     /// 
@@ -89,6 +89,12 @@ namespace Pulumi.GitLab
     public partial class ProjectHook : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
+        /// </summary>
+        [Output("branchFilterStrategy")]
+        public Output<string> BranchFilterStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for confidential issues events. Defaults to `False`.
         /// </summary>
         [Output("confidentialIssuesEvents")]
@@ -123,6 +129,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for emoji events. Defaults to `False`.
+        /// </summary>
+        [Output("emojiEvents")]
+        public Output<bool> EmojiEvents { get; private set; } = null!;
 
         /// <summary>
         /// Enable SSL verification when invoking the hook. Defaults to `True`.
@@ -289,6 +301,12 @@ namespace Pulumi.GitLab
     public sealed class ProjectHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
+        /// </summary>
+        [Input("branchFilterStrategy")]
+        public Input<string>? BranchFilterStrategy { get; set; }
+
+        /// <summary>
         /// Invoke the hook for confidential issues events. Defaults to `False`.
         /// </summary>
         [Input("confidentialIssuesEvents")]
@@ -329,6 +347,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for emoji events. Defaults to `False`.
+        /// </summary>
+        [Input("emojiEvents")]
+        public Input<bool>? EmojiEvents { get; set; }
 
         /// <summary>
         /// Enable SSL verification when invoking the hook. Defaults to `True`.
@@ -451,6 +475,12 @@ namespace Pulumi.GitLab
     public sealed class ProjectHookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
+        /// </summary>
+        [Input("branchFilterStrategy")]
+        public Input<string>? BranchFilterStrategy { get; set; }
+
+        /// <summary>
         /// Invoke the hook for confidential issues events. Defaults to `False`.
         /// </summary>
         [Input("confidentialIssuesEvents")]
@@ -491,6 +521,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for emoji events. Defaults to `False`.
+        /// </summary>
+        [Input("emojiEvents")]
+        public Input<bool>? EmojiEvents { get; set; }
 
         /// <summary>
         /// Enable SSL verification when invoking the hook. Defaults to `True`.

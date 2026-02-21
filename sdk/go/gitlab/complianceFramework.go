@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ComplianceFramework` resource allows to manage the lifecycle of a compliance framework on top-level groups.
+// The `ComplianceFramework` resource manages the lifecycle of a compliance framework on top-level groups.
 //
 // There can be only one `default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.
 //

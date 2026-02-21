@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.Release` resource allows to manage the lifecycle of releases in gitlab.
+    /// The `gitlab.Release` resource manages the lifecycle of releases in gitlab.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
     /// 

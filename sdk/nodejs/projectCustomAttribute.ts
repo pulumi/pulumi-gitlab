@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectCustomAttribute` resource allows to manage custom attributes for a project.
+ * The `gitlab.ProjectCustomAttribute` resource manages custom attributes for a project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
  *

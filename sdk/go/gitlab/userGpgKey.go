@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `UserGpgKey` resource allows to manage the lifecycle of a GPG key assigned to the current user or a specific user.
+// The `UserGpgKey` resource manages the lifecycle of a GPG key assigned to the current user or a specific user.
 //
 // > Managing GPG keys for arbitrary users requires admin privileges.
 //

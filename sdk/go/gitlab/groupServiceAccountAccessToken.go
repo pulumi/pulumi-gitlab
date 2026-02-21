@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.
+// The `GroupServiceAccountAccessToken` resource manages the lifecycle of a group service account access token.
 //
 // > Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
 //

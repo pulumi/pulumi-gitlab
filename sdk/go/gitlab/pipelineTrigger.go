@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
+// The `PipelineTrigger` resource manages the lifecycle of a pipeline trigger.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_triggers/)
 //

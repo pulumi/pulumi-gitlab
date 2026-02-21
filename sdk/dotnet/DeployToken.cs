@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+    /// The `gitlab.DeployToken` resource manages the lifecycle of group and project deploy tokens.
     /// 
     /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectDeployToken` or `gitlab.GroupDeployToken` instead!
     /// 

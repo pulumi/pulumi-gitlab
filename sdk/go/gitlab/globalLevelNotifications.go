@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GlobalLevelNotifications` resource allows to manage global notifications.
+// The `GlobalLevelNotifications` resource manages global notifications.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#get-group-or-project-notification-settings)
 //

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
+    /// The `gitlab.ProjectMilestone` resource manages the lifecycle of a project milestone.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
     /// 
@@ -32,10 +32,22 @@ namespace Pulumi.GitLab
     ///         NamespaceId = exampleGitlabGroup.Id,
     ///     });
     /// 
+    ///     // Basic milestone with required fields only
     ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("example", new()
     ///     {
     ///         Project = example.Id,
     ///         Title = "example",
+    ///     });
+    /// 
+    ///     // Comprehensive milestone with all optional fields
+    ///     var comprehensive = new GitLab.ProjectMilestone("comprehensive", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         Title = "Q4 2024 Release",
+    ///         Description = "Major release for Q4 2024",
+    ///         StartDate = "2024-01-01",
+    ///         DueDate = "2024-12-31",
+    ///         State = "active",
     ///     });
     /// 
     /// });
@@ -76,13 +88,13 @@ namespace Pulumi.GitLab
         /// The description of the milestone.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         /// </summary>
         [Output("dueDate")]
-        public Output<string?> DueDate { get; private set; } = null!;
+        public Output<string> DueDate { get; private set; } = null!;
 
         /// <summary>
         /// Bool, true if milestone expired.
@@ -97,7 +109,7 @@ namespace Pulumi.GitLab
         public Output<int> Iid { get; private set; } = null!;
 
         /// <summary>
-        /// The instance-wide ID of the project’s milestone.
+        /// The instance-wide ID of the project's milestone.
         /// </summary>
         [Output("milestoneId")]
         public Output<int> MilestoneId { get; private set; } = null!;
@@ -115,16 +127,16 @@ namespace Pulumi.GitLab
         public Output<int> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         /// </summary>
         [Output("startDate")]
-        public Output<string?> StartDate { get; private set; } = null!;
+        public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
         /// The state of the milestone. Valid values are: `Active`, `Closed`.
         /// </summary>
         [Output("state")]
-        public Output<string?> State { get; private set; } = null!;
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The title of a milestone.
@@ -197,7 +209,7 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }
@@ -209,7 +221,7 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
@@ -247,7 +259,7 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         /// </summary>
         [Input("dueDate")]
         public Input<string>? DueDate { get; set; }
@@ -265,7 +277,7 @@ namespace Pulumi.GitLab
         public Input<int>? Iid { get; set; }
 
         /// <summary>
-        /// The instance-wide ID of the project’s milestone.
+        /// The instance-wide ID of the project's milestone.
         /// </summary>
         [Input("milestoneId")]
         public Input<int>? MilestoneId { get; set; }
@@ -283,7 +295,7 @@ namespace Pulumi.GitLab
         public Input<int>? ProjectId { get; set; }
 
         /// <summary>
-        /// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+        /// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }

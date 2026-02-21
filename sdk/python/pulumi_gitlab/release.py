@@ -465,7 +465,7 @@ class Release(pulumi.CustomResource):
                  tag_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `Release` resource allows to manage the lifecycle of releases in gitlab.
+        The `Release` resource manages the lifecycle of releases in gitlab.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
 
@@ -529,7 +529,7 @@ class Release(pulumi.CustomResource):
                  args: ReleaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Release` resource allows to manage the lifecycle of releases in gitlab.
+        The `Release` resource manages the lifecycle of releases in gitlab.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
 

@@ -286,7 +286,7 @@ class SystemHook(pulumi.CustomResource):
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `SystemHook` resource allows to manage the lifecycle of a system hook.
+        The `SystemHook` resource manages the lifecycle of a system hook.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
 
@@ -347,7 +347,7 @@ class SystemHook(pulumi.CustomResource):
                  args: SystemHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `SystemHook` resource allows to manage the lifecycle of a system hook.
+        The `SystemHook` resource manages the lifecycle of a system hook.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
 

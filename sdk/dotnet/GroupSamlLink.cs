@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
+    /// The `gitlab.GroupSamlLink` resource manages the lifecycle of an SAML integration with a group.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
     /// 

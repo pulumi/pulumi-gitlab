@@ -15,6 +15,8 @@ export function getProjectBranches(args: GetProjectBranchesArgs, opts?: pulumi.I
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectBranches:getProjectBranches", {
         "project": args.project,
+        "regex": args.regex,
+        "search": args.search,
     }, opts);
 }
 
@@ -26,6 +28,14 @@ export interface GetProjectBranchesArgs {
      * ID or URL-encoded path of the project owned by the authenticated user.
      */
     project: string;
+    /**
+     * Regex pattern to filter the returned branches by name.
+     */
+    regex?: string;
+    /**
+     * A search string to filter branches by name.
+     */
+    search?: string;
 }
 
 /**
@@ -44,6 +54,14 @@ export interface GetProjectBranchesResult {
      * ID or URL-encoded path of the project owned by the authenticated user.
      */
     readonly project: string;
+    /**
+     * Regex pattern to filter the returned branches by name.
+     */
+    readonly regex?: string;
+    /**
+     * A search string to filter branches by name.
+     */
+    readonly search?: string;
 }
 /**
  * The `gitlab.getProjectBranches` data source allows details of the branches of a given project to be retrieved.
@@ -54,6 +72,8 @@ export function getProjectBranchesOutput(args: GetProjectBranchesOutputArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectBranches:getProjectBranches", {
         "project": args.project,
+        "regex": args.regex,
+        "search": args.search,
     }, opts);
 }
 
@@ -65,4 +85,12 @@ export interface GetProjectBranchesOutputArgs {
      * ID or URL-encoded path of the project owned by the authenticated user.
      */
     project: pulumi.Input<string>;
+    /**
+     * Regex pattern to filter the returned branches by name.
+     */
+    regex?: pulumi.Input<string>;
+    /**
+     * A search string to filter branches by name.
+     */
+    search?: pulumi.Input<string>;
 }

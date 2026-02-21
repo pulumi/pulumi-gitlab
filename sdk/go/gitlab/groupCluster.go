@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupCluster` resource allows to manage the lifecycle of a group cluster.
+// The `GroupCluster` resource manages the lifecycle of a group cluster.
 //
 // > This is deprecated, due for removal in GitLab 19.0.
 //

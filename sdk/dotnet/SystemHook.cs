@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.SystemHook` resource allows to manage the lifecycle of a system hook.
+    /// The `gitlab.SystemHook` resource manages the lifecycle of a system hook.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
     /// 

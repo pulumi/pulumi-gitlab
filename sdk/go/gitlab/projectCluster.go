@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+// The `ProjectCluster` resource manages the lifecycle of a project cluster.
 //
 // > This is deprecated, due for removal in GitLab 19.0.
 //

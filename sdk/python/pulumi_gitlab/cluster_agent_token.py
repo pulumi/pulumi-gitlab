@@ -266,7 +266,7 @@ class ClusterAgentToken(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ClusterAgentToken` resource allows to manage the lifecycle of a token for a GitLab Agent for Kubernetes.
+        The `ClusterAgentToken` resource manages the lifecycle of a token for a GitLab Agent for Kubernetes.
 
         > Requires at least maintainer permissions on the project.
 
@@ -348,7 +348,7 @@ class ClusterAgentToken(pulumi.CustomResource):
                  args: ClusterAgentTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ClusterAgentToken` resource allows to manage the lifecycle of a token for a GitLab Agent for Kubernetes.
+        The `ClusterAgentToken` resource manages the lifecycle of a token for a GitLab Agent for Kubernetes.
 
         > Requires at least maintainer permissions on the project.
 

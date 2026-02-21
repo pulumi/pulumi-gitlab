@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
+// The `ProjectJobTokenScopes` resource manages the CI/CD Job Token scopes in a project.
 // Any project or group not within the defined set of `targetProjectIds` or `targetGroupIds`, respectively, will be removed,
 // which allows this resource to be used as an explicit deny.
 //

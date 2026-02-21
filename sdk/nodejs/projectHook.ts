@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectHook` resource allows to manage the lifecycle of a project hook.
+ * The `gitlab.ProjectHook` resource manages the lifecycle of a project hook.
  *
  * > Note that `pushEvents` defaults to `true`.
  *
@@ -99,6 +99,10 @@ export class ProjectHook extends pulumi.CustomResource {
     }
 
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     */
+    declare public readonly branchFilterStrategy: pulumi.Output<string>;
+    /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     declare public readonly confidentialIssuesEvents: pulumi.Output<boolean>;
@@ -122,6 +126,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * Description of the webhook.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * Invoke the hook for emoji events. Defaults to `false`.
+     */
+    declare public readonly emojiEvents: pulumi.Output<boolean>;
     /**
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
@@ -212,12 +220,14 @@ export class ProjectHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectHookState | undefined;
+            resourceInputs["branchFilterStrategy"] = state?.branchFilterStrategy;
             resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
             resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
             resourceInputs["customHeaders"] = state?.customHeaders;
             resourceInputs["customWebhookTemplate"] = state?.customWebhookTemplate;
             resourceInputs["deploymentEvents"] = state?.deploymentEvents;
             resourceInputs["description"] = state?.description;
+            resourceInputs["emojiEvents"] = state?.emojiEvents;
             resourceInputs["enableSslVerification"] = state?.enableSslVerification;
             resourceInputs["hookId"] = state?.hookId;
             resourceInputs["issuesEvents"] = state?.issuesEvents;
@@ -245,12 +255,14 @@ export class ProjectHook extends pulumi.CustomResource {
             if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["branchFilterStrategy"] = args?.branchFilterStrategy;
             resourceInputs["confidentialIssuesEvents"] = args?.confidentialIssuesEvents;
             resourceInputs["confidentialNoteEvents"] = args?.confidentialNoteEvents;
             resourceInputs["customHeaders"] = args?.customHeaders;
             resourceInputs["customWebhookTemplate"] = args?.customWebhookTemplate;
             resourceInputs["deploymentEvents"] = args?.deploymentEvents;
             resourceInputs["description"] = args?.description;
+            resourceInputs["emojiEvents"] = args?.emojiEvents;
             resourceInputs["enableSslVerification"] = args?.enableSslVerification;
             resourceInputs["issuesEvents"] = args?.issuesEvents;
             resourceInputs["jobEvents"] = args?.jobEvents;
@@ -283,6 +295,10 @@ export class ProjectHook extends pulumi.CustomResource {
  */
 export interface ProjectHookState {
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     */
+    branchFilterStrategy?: pulumi.Input<string>;
+    /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
@@ -306,6 +322,10 @@ export interface ProjectHookState {
      * Description of the webhook.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Invoke the hook for emoji events. Defaults to `false`.
+     */
+    emojiEvents?: pulumi.Input<boolean>;
     /**
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
@@ -389,6 +409,10 @@ export interface ProjectHookState {
  */
 export interface ProjectHookArgs {
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     */
+    branchFilterStrategy?: pulumi.Input<string>;
+    /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      */
     confidentialIssuesEvents?: pulumi.Input<boolean>;
@@ -412,6 +436,10 @@ export interface ProjectHookArgs {
      * Description of the webhook.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Invoke the hook for emoji events. Defaults to `false`.
+     */
+    emojiEvents?: pulumi.Input<boolean>;
     /**
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */

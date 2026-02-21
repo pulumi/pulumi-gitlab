@@ -27,7 +27,7 @@ class ProjectBadgeArgs:
         The set of arguments for constructing a ProjectBadge resource.
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
-        :param pulumi.Input[_builtins.str] project: The id of the project to add the badge to.
+        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the badge to.
         :param pulumi.Input[_builtins.str] name: The name of the badge.
         """
         pulumi.set(__self__, "image_url", image_url)
@@ -64,7 +64,7 @@ class ProjectBadgeArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The id of the project to add the badge to.
+        The ID or URL-encoded path of the project to add the badge to.
         """
         return pulumi.get(self, "project")
 
@@ -99,7 +99,7 @@ class _ProjectBadgeState:
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
         :param pulumi.Input[_builtins.str] name: The name of the badge.
-        :param pulumi.Input[_builtins.str] project: The id of the project to add the badge to.
+        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the badge to.
         :param pulumi.Input[_builtins.str] rendered_image_url: The image_url argument rendered (in case of use of placeholders).
         :param pulumi.Input[_builtins.str] rendered_link_url: The link_url argument rendered (in case of use of placeholders).
         """
@@ -156,7 +156,7 @@ class _ProjectBadgeState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The id of the project to add the badge to.
+        The ID or URL-encoded path of the project to add the badge to.
         """
         return pulumi.get(self, "project")
 
@@ -201,7 +201,7 @@ class ProjectBadge(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectBadge` resource allows to manage the lifecycle of project badges.
+        The `ProjectBadge` resource manages the lifecycle of project badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
 
@@ -264,7 +264,7 @@ class ProjectBadge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
         :param pulumi.Input[_builtins.str] name: The name of the badge.
-        :param pulumi.Input[_builtins.str] project: The id of the project to add the badge to.
+        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the badge to.
         """
         ...
     @overload
@@ -273,7 +273,7 @@ class ProjectBadge(pulumi.CustomResource):
                  args: ProjectBadgeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectBadge` resource allows to manage the lifecycle of project badges.
+        The `ProjectBadge` resource manages the lifecycle of project badges.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
 
@@ -397,7 +397,7 @@ class ProjectBadge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
         :param pulumi.Input[_builtins.str] name: The name of the badge.
-        :param pulumi.Input[_builtins.str] project: The id of the project to add the badge to.
+        :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the badge to.
         :param pulumi.Input[_builtins.str] rendered_image_url: The image_url argument rendered (in case of use of placeholders).
         :param pulumi.Input[_builtins.str] rendered_link_url: The link_url argument rendered (in case of use of placeholders).
         """
@@ -441,7 +441,7 @@ class ProjectBadge(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The id of the project to add the badge to.
+        The ID or URL-encoded path of the project to add the badge to.
         """
         return pulumi.get(self, "project")
 

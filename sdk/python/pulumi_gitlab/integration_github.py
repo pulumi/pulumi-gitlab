@@ -95,12 +95,12 @@ class _IntegrationGithubState:
         """
         Input properties used for looking up and filtering IntegrationGithub resources.
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
-        :param pulumi.Input[_builtins.str] created_at: Creation time.
+        :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
         :param pulumi.Input[_builtins.bool] static_context: Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
-        :param pulumi.Input[_builtins.str] title: The title of this resource.
+        :param pulumi.Input[_builtins.str] title: Title of the integration.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
-        :param pulumi.Input[_builtins.str] updated_at: Update time.
+        :param pulumi.Input[_builtins.str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -135,7 +135,7 @@ class _IntegrationGithubState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Creation time.
+        The ISO8601 date/time that this integration was activated at in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -180,7 +180,7 @@ class _IntegrationGithubState:
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The title of this resource.
+        Title of the integration.
         """
         return pulumi.get(self, "title")
 
@@ -204,7 +204,7 @@ class _IntegrationGithubState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Update time.
+        The ISO8601 date/time that this integration was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 
@@ -404,12 +404,12 @@ class IntegrationGithub(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
-        :param pulumi.Input[_builtins.str] created_at: Creation time.
+        :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
         :param pulumi.Input[_builtins.bool] static_context: Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
-        :param pulumi.Input[_builtins.str] title: The title of this resource.
+        :param pulumi.Input[_builtins.str] title: Title of the integration.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
-        :param pulumi.Input[_builtins.str] updated_at: Update time.
+        :param pulumi.Input[_builtins.str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -437,7 +437,7 @@ class IntegrationGithub(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Creation time.
+        The ISO8601 date/time that this integration was activated at in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -456,7 +456,7 @@ class IntegrationGithub(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="staticContext")
-    def static_context(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def static_context(self) -> pulumi.Output[_builtins.bool]:
         """
         Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         """
@@ -466,7 +466,7 @@ class IntegrationGithub(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[_builtins.str]:
         """
-        The title of this resource.
+        Title of the integration.
         """
         return pulumi.get(self, "title")
 
@@ -482,7 +482,7 @@ class IntegrationGithub(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Update time.
+        The ISO8601 date/time that this integration was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 

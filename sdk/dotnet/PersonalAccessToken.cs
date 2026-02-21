@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
+    /// The `gitlab.PersonalAccessToken` resource manages the lifecycle of a personal access token.
     /// 
     /// &gt; This resource requires administration privileges.
     /// 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
+ * The `gitlab.GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
  *
  * > In order to use a userId in the `deployAccessLevels` configuration,
  *    you need to make sure that users have access to the group with Maintainer role or higher.

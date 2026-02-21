@@ -23,12 +23,17 @@ public final class TagProtectionAllowedToCreate {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+     * 
+     */
+    private @Nullable Integer deployKeyId;
+    /**
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     private @Nullable Integer userId;
@@ -49,14 +54,21 @@ public final class TagProtectionAllowedToCreate {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+     * 
+     */
+    public Optional<Integer> deployKeyId() {
+        return Optional.ofNullable(this.deployKeyId);
+    }
+    /**
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      * 
      */
     public Optional<Integer> userId() {
@@ -74,6 +86,7 @@ public final class TagProtectionAllowedToCreate {
     public static final class Builder {
         private @Nullable String accessLevel;
         private @Nullable String accessLevelDescription;
+        private @Nullable Integer deployKeyId;
         private @Nullable Integer groupId;
         private @Nullable Integer userId;
         public Builder() {}
@@ -81,6 +94,7 @@ public final class TagProtectionAllowedToCreate {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
     	      this.accessLevelDescription = defaults.accessLevelDescription;
+    	      this.deployKeyId = defaults.deployKeyId;
     	      this.groupId = defaults.groupId;
     	      this.userId = defaults.userId;
         }
@@ -95,6 +109,12 @@ public final class TagProtectionAllowedToCreate {
         public Builder accessLevelDescription(@Nullable String accessLevelDescription) {
 
             this.accessLevelDescription = accessLevelDescription;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deployKeyId(@Nullable Integer deployKeyId) {
+
+            this.deployKeyId = deployKeyId;
             return this;
         }
         @CustomType.Setter
@@ -113,6 +133,7 @@ public final class TagProtectionAllowedToCreate {
             final var _resultValue = new TagProtectionAllowedToCreate();
             _resultValue.accessLevel = accessLevel;
             _resultValue.accessLevelDescription = accessLevelDescription;
+            _resultValue.deployKeyId = deployKeyId;
             _resultValue.groupId = groupId;
             _resultValue.userId = userId;
             return _resultValue;

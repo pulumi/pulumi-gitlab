@@ -202,7 +202,7 @@ class UserSshKey(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        The `UserSshKey` resource allows to manage the lifecycle of an SSH key assigned to a user.
+        The `UserSshKey` resource manages the lifecycle of an SSH key assigned to a user.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/user_keys/#get-an-ssh-key-for-a-user)
 
@@ -256,7 +256,7 @@ class UserSshKey(pulumi.CustomResource):
                  args: UserSshKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `UserSshKey` resource allows to manage the lifecycle of an SSH key assigned to a user.
+        The `UserSshKey` resource manages the lifecycle of an SSH key assigned to a user.
 
         **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/user_keys/#get-an-ssh-key-for-a-user)
 

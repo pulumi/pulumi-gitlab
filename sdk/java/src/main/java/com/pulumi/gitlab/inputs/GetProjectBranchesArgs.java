@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetProjectBranchesArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +31,42 @@ public final class GetProjectBranchesArgs extends com.pulumi.resources.InvokeArg
         return this.project;
     }
 
+    /**
+     * Regex pattern to filter the returned branches by name.
+     * 
+     */
+    @Import(name="regex")
+    private @Nullable Output<String> regex;
+
+    /**
+     * @return Regex pattern to filter the returned branches by name.
+     * 
+     */
+    public Optional<Output<String>> regex() {
+        return Optional.ofNullable(this.regex);
+    }
+
+    /**
+     * A search string to filter branches by name.
+     * 
+     */
+    @Import(name="search")
+    private @Nullable Output<String> search;
+
+    /**
+     * @return A search string to filter branches by name.
+     * 
+     */
+    public Optional<Output<String>> search() {
+        return Optional.ofNullable(this.search);
+    }
+
     private GetProjectBranchesArgs() {}
 
     private GetProjectBranchesArgs(GetProjectBranchesArgs $) {
         this.project = $.project;
+        this.regex = $.regex;
+        this.search = $.search;
     }
 
     public static Builder builder() {
@@ -72,6 +106,48 @@ public final class GetProjectBranchesArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param regex Regex pattern to filter the returned branches by name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regex(@Nullable Output<String> regex) {
+            $.regex = regex;
+            return this;
+        }
+
+        /**
+         * @param regex Regex pattern to filter the returned branches by name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regex(String regex) {
+            return regex(Output.of(regex));
+        }
+
+        /**
+         * @param search A search string to filter branches by name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(@Nullable Output<String> search) {
+            $.search = search;
+            return this;
+        }
+
+        /**
+         * @param search A search string to filter branches by name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(String search) {
+            return search(Output.of(search));
         }
 
         public GetProjectBranchesArgs build() {

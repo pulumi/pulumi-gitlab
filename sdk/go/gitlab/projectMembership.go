@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectMembership` resource allows to manage the lifecycle of a users project membership.
+// The `ProjectMembership` resource manages the lifecycle of a users project membership.
 //
 // > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 //

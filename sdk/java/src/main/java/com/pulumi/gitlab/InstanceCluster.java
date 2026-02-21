@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
+ * The `gitlab.InstanceCluster` resource manages the lifecycle of an instance cluster.
  * 
  * &gt; This is deprecated, due for removal in GitLab 19.0.
  * 

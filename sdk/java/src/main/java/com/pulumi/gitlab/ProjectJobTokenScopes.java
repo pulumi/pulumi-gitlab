@@ -17,7 +17,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectJobTokenScopes` resource allows to manage the CI/CD Job Token scopes in a project.
+ * The `gitlab.ProjectJobTokenScopes` resource manages the CI/CD Job Token scopes in a project.
  * Any project or group not within the defined set of `targetProjectIds` or `targetGroupIds`, respectively, will be removed,
  * which allows this resource to be used as an explicit deny.
  * 

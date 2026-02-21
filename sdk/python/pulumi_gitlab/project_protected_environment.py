@@ -213,7 +213,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
+        The `ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
 
         > In order to use a user or group in the `deploy_access_levels` configuration,
            you need to make sure that users have access to the project and groups must have this project shared.
@@ -260,7 +260,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                  args: ProjectProtectedEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
+        The `ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
 
         > In order to use a user or group in the `deploy_access_levels` configuration,
            you need to make sure that users have access to the project and groups must have this project shared.

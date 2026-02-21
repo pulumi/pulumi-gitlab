@@ -55,7 +55,7 @@ export interface GetRunnersArgs {
      */
     paused?: boolean;
     /**
-     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
      */
     status?: string;
     /**
@@ -63,7 +63,7 @@ export interface GetRunnersArgs {
      */
     tagLists?: string[];
     /**
-     * The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+     * The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
      */
     type?: string;
 }
@@ -82,7 +82,7 @@ export interface GetRunnersResult {
      */
     readonly runners: outputs.GetRunnersRunner[];
     /**
-     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
      */
     readonly status?: string;
     /**
@@ -90,7 +90,7 @@ export interface GetRunnersResult {
      */
     readonly tagLists?: string[];
     /**
-     * The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+     * The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
      */
     readonly type?: string;
 }
@@ -143,7 +143,7 @@ export interface GetRunnersOutputArgs {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -151,7 +151,7 @@ export interface GetRunnersOutputArgs {
      */
     tagLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+     * The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
      */
     type?: pulumi.Input<string>;
 }

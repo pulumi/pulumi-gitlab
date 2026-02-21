@@ -51,6 +51,10 @@ export interface GetProjectHookArgs {
  */
 export interface GetProjectHookResult {
     /**
+     * Filter push events by branch.
+     */
+    readonly branchFilterStrategy: string;
+    /**
      * Invoke the hook for confidential issues events.
      */
     readonly confidentialIssuesEvents: boolean;
@@ -66,6 +70,10 @@ export interface GetProjectHookResult {
      * Invoke the hook for deployment events.
      */
     readonly deploymentEvents: boolean;
+    /**
+     * Invoke the hook for emoji events.
+     */
+    readonly emojiEvents: boolean;
     /**
      * Enable ssl verification when invoking the hook.
      */

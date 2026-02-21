@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.
+ * The `gitlab.ProjectJobTokenScope` resource manages the CI/CD Job Token scope in a project.
  * Any projects added to the CI/CD Job Token scope outside of TF will be untouched by the resource.
  * 
  * &gt; Conflicts with the use of `gitlab.ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.

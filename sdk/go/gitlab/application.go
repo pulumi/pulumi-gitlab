@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Application` resource allows to manage the lifecycle of applications in gitlab.
+// The `Application` resource manages the lifecycle of applications in gitlab.
 //
 // > In order to use a user for a user to create an application, they must have admin privileges at the instance level.
 // To create an OIDC application, a scope of "openid".

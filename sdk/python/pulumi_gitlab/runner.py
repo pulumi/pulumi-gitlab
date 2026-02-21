@@ -370,7 +370,7 @@ class Runner(pulumi.CustomResource):
                  tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        The `Runner` resource allows to manage the lifecycle of a runner.
+        The `Runner` resource manages the lifecycle of a runner.
 
         > This resource has been deprecated in favor of the `UserRunner` resource. Please use that resource, and the new registration flow, instead. To be removed in 19.0.
 
@@ -423,7 +423,7 @@ class Runner(pulumi.CustomResource):
                  args: RunnerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Runner` resource allows to manage the lifecycle of a runner.
+        The `Runner` resource manages the lifecycle of a runner.
 
         > This resource has been deprecated in favor of the `UserRunner` resource. Please use that resource, and the new registration flow, instead. To be removed in 19.0.
 

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectBadge` resource allows to manage the lifecycle of project badges.
+ * The `gitlab.ProjectBadge` resource manages the lifecycle of project badges.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
  * 
@@ -152,14 +152,14 @@ public class ProjectBadge extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The id of the project to add the badge to.
+     * The ID or URL-encoded path of the project to add the badge to.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The id of the project to add the badge to.
+     * @return The ID or URL-encoded path of the project to add the badge to.
      * 
      */
     public Output<String> project() {

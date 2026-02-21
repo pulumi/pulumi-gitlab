@@ -171,7 +171,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
+        The `GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
 
         > In order to use a user_id in the `deploy_access_levels` configuration,
            you need to make sure that users have access to the group with Maintainer role or higher.
@@ -216,7 +216,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
                  args: GroupProtectedEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
+        The `GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
 
         > In order to use a user_id in the `deploy_access_levels` configuration,
            you need to make sure that users have access to the group with Maintainer role or higher.

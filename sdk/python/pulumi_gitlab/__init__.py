@@ -58,6 +58,8 @@ from .get_project_ids import *
 from .get_project_issue import *
 from .get_project_issue_label_events import *
 from .get_project_issues import *
+from .get_project_label import *
+from .get_project_labels import *
 from .get_project_membership import *
 from .get_project_merge_request import *
 from .get_project_merge_requests import *
@@ -94,6 +96,7 @@ from .group_dependency_proxy import *
 from .group_deploy_token import *
 from .group_epic_board import *
 from .group_hook import *
+from .group_integration_mattermost import *
 from .group_issue_board import *
 from .group_label import *
 from .group_ldap_link import *
@@ -379,6 +382,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupHook:GroupHook": "GroupHook"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupIntegrationMattermost",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost": "GroupIntegrationMattermost"
   }
  },
  {

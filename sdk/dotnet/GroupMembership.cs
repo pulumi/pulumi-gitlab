@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupMembership` resource allows to manage the lifecycle of a users group membership.
+    /// The `gitlab.GroupMembership` resource manages the lifecycle of a users group membership.
     /// 
     /// &gt; If a group should grant membership to another group use the `gitlab.GroupShareGroup` resource instead.
     /// 

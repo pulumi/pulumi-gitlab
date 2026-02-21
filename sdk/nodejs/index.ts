@@ -265,6 +265,16 @@ export const getProjectIssues: typeof import("./getProjectIssues").getProjectIss
 export const getProjectIssuesOutput: typeof import("./getProjectIssues").getProjectIssuesOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectIssues","getProjectIssuesOutput"], () => require("./getProjectIssues"));
 
+export { GetProjectLabelArgs, GetProjectLabelResult, GetProjectLabelOutputArgs } from "./getProjectLabel";
+export const getProjectLabel: typeof import("./getProjectLabel").getProjectLabel = null as any;
+export const getProjectLabelOutput: typeof import("./getProjectLabel").getProjectLabelOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectLabel","getProjectLabelOutput"], () => require("./getProjectLabel"));
+
+export { GetProjectLabelsArgs, GetProjectLabelsResult, GetProjectLabelsOutputArgs } from "./getProjectLabels";
+export const getProjectLabels: typeof import("./getProjectLabels").getProjectLabels = null as any;
+export const getProjectLabelsOutput: typeof import("./getProjectLabels").getProjectLabelsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectLabels","getProjectLabelsOutput"], () => require("./getProjectLabels"));
+
 export { GetProjectMembershipArgs, GetProjectMembershipResult, GetProjectMembershipOutputArgs } from "./getProjectMembership";
 export const getProjectMembership: typeof import("./getProjectMembership").getProjectMembership = null as any;
 export const getProjectMembershipOutput: typeof import("./getProjectMembership").getProjectMembershipOutput = null as any;
@@ -444,6 +454,11 @@ export { GroupHookArgs, GroupHookState } from "./groupHook";
 export type GroupHook = import("./groupHook").GroupHook;
 export const GroupHook: typeof import("./groupHook").GroupHook = null as any;
 utilities.lazyLoad(exports, ["GroupHook"], () => require("./groupHook"));
+
+export { GroupIntegrationMattermostArgs, GroupIntegrationMattermostState } from "./groupIntegrationMattermost";
+export type GroupIntegrationMattermost = import("./groupIntegrationMattermost").GroupIntegrationMattermost;
+export const GroupIntegrationMattermost: typeof import("./groupIntegrationMattermost").GroupIntegrationMattermost = null as any;
+utilities.lazyLoad(exports, ["GroupIntegrationMattermost"], () => require("./groupIntegrationMattermost"));
 
 export { GroupIssueBoardArgs, GroupIssueBoardState } from "./groupIssueBoard";
 export type GroupIssueBoard = import("./groupIssueBoard").GroupIssueBoard;
@@ -1029,6 +1044,8 @@ const _module = {
                 return new GroupEpicBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupHook:GroupHook":
                 return new GroupHook(name, <any>undefined, { urn })
+            case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
+                return new GroupIntegrationMattermost(name, <any>undefined, { urn })
             case "gitlab:index/groupIssueBoard:GroupIssueBoard":
                 return new GroupIssueBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupLabel:GroupLabel":
@@ -1265,6 +1282,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxy", _m
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)

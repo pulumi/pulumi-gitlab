@@ -67,6 +67,8 @@ type LookupProjectHookArgs struct {
 
 // A collection of values returned by getProjectHook.
 type LookupProjectHookResult struct {
+	// Filter push events by branch.
+	BranchFilterStrategy string `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
@@ -75,6 +77,8 @@ type LookupProjectHookResult struct {
 	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
+	// Invoke the hook for emoji events.
+	EmojiEvents bool `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification bool `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -151,6 +155,11 @@ func (o LookupProjectHookResultOutput) ToLookupProjectHookResultOutputWithContex
 	return o
 }
 
+// Filter push events by branch.
+func (o LookupProjectHookResultOutput) BranchFilterStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectHookResult) string { return v.BranchFilterStrategy }).(pulumi.StringOutput)
+}
+
 // Invoke the hook for confidential issues events.
 func (o LookupProjectHookResultOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) bool { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
@@ -169,6 +178,11 @@ func (o LookupProjectHookResultOutput) CustomWebhookTemplate() pulumi.StringOutp
 // Invoke the hook for deployment events.
 func (o LookupProjectHookResultOutput) DeploymentEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectHookResult) bool { return v.DeploymentEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for emoji events.
+func (o LookupProjectHookResultOutput) EmojiEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectHookResult) bool { return v.EmojiEvents }).(pulumi.BoolOutput)
 }
 
 // Enable ssl verification when invoking the hook.

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `SystemHook` resource allows to manage the lifecycle of a system hook.
+// The `SystemHook` resource manages the lifecycle of a system hook.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/)
 //

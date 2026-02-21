@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectIssueBoard` resource allows to manage the lifecycle of a Project Issue Board.
+ * The `gitlab.ProjectIssueBoard` resource manages the lifecycle of a Project Issue Board.
  * 
  * &gt; **NOTE:** If the board lists are changed all lists will be recreated.
  * 

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `MemberRole` resource allows to manage the lifecycle of a custom member role.
+// The `MemberRole` resource manages the lifecycle of a custom member role.
 //
-// Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization’s needs.
+// Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization's needs.
 //
 // > This resource requires an Ultimate license.
 //

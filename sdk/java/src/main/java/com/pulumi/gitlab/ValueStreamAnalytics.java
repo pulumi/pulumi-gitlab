@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ValueStreamAnalytics` resource allows to manage the lifecycle of value stream analytics.
+ * The `gitlab.ValueStreamAnalytics` resource manages the lifecycle of value stream analytics.
  * 
  * &gt; This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
  * 
