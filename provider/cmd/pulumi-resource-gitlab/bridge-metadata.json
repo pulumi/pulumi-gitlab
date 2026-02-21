@@ -219,6 +219,10 @@
                     }
                 }
             },
+            "gitlab_group_integration_mattermost": {
+                "current": "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost",
+                "majorVersion": 9
+            },
             "gitlab_group_issue_board": {
                 "current": "gitlab:index/groupIssueBoard:GroupIssueBoard",
                 "majorVersion": 9,
@@ -1247,6 +1251,19 @@
                     }
                 }
             },
+            "gitlab_project_label": {
+                "current": "gitlab:index/getProjectLabel:getProjectLabel",
+                "majorVersion": 9
+            },
+            "gitlab_project_labels": {
+                "current": "gitlab:index/getProjectLabels:getProjectLabels",
+                "majorVersion": 9,
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_project_membership": {
                 "current": "gitlab:index/getProjectMembership:getProjectMembership",
                 "majorVersion": 9,
@@ -1626,6 +1643,7 @@
             "gitlab:index/groupDeployToken:GroupDeployToken": 1,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 1,
+            "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost": 1,
             "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,
             "gitlab:index/groupLabel:GroupLabel": 1,
             "gitlab:index/groupLdapLink:GroupLdapLink": 0,
@@ -1644,8 +1662,8 @@
             "gitlab:index/instanceVariable:InstanceVariable": 1,
             "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker": 1,
             "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush": 1,
-            "gitlab:index/integrationExternalWiki:IntegrationExternalWiki": 0,
-            "gitlab:index/integrationGithub:IntegrationGithub": 0,
+            "gitlab:index/integrationExternalWiki:IntegrationExternalWiki": 1,
+            "gitlab:index/integrationGithub:IntegrationGithub": 1,
             "gitlab:index/integrationHarbor:IntegrationHarbor": 1,
             "gitlab:index/integrationJenkins:IntegrationJenkins": 1,
             "gitlab:index/integrationJira:IntegrationJira": 0,
@@ -1665,7 +1683,7 @@
             "gitlab:index/project:Project": 0,
             "gitlab:index/projectAccessToken:ProjectAccessToken": 1,
             "gitlab:index/projectApprovalRule:ProjectApprovalRule": 0,
-            "gitlab:index/projectBadge:ProjectBadge": 0,
+            "gitlab:index/projectBadge:ProjectBadge": 1,
             "gitlab:index/projectCicdCatalog:ProjectCicdCatalog": 1,
             "gitlab:index/projectCluster:ProjectCluster": 0,
             "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": 1,
@@ -1678,8 +1696,8 @@
             "gitlab:index/projectHook:ProjectHook": 1,
             "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker": 1,
             "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush": 1,
-            "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki": 0,
-            "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub": 0,
+            "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki": 1,
+            "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub": 1,
             "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor": 1,
             "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins": 1,
             "gitlab:index/projectIntegrationJira:ProjectIntegrationJira": 0,
@@ -1699,7 +1717,7 @@
             "gitlab:index/projectLevelNotifications:ProjectLevelNotifications": 1,
             "gitlab:index/projectMembership:ProjectMembership": 0,
             "gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote": 1,
-            "gitlab:index/projectMilestone:ProjectMilestone": 0,
+            "gitlab:index/projectMilestone:ProjectMilestone": 1,
             "gitlab:index/projectMirror:ProjectMirror": 1,
             "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy": 1,
             "gitlab:index/projectPagesSettings:ProjectPagesSettings": 1,
@@ -1774,6 +1792,8 @@
             "gitlab:index/getProjectIssue:getProjectIssue": 0,
             "gitlab:index/getProjectIssueLabelEvents:getProjectIssueLabelEvents": 1,
             "gitlab:index/getProjectIssues:getProjectIssues": 0,
+            "gitlab:index/getProjectLabel:getProjectLabel": 1,
+            "gitlab:index/getProjectLabels:getProjectLabels": 1,
             "gitlab:index/getProjectMembership:getProjectMembership": 1,
             "gitlab:index/getProjectMergeRequest:getProjectMergeRequest": 1,
             "gitlab:index/getProjectMergeRequests:getProjectMergeRequests": 1,
