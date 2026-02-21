@@ -28,6 +28,10 @@ func GetProjectBranches(ctx *pulumi.Context, args *GetProjectBranchesArgs, opts 
 type GetProjectBranchesArgs struct {
 	// ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
+	// Regex pattern to filter the returned branches by name.
+	Regex *string `pulumi:"regex"`
+	// A search string to filter branches by name.
+	Search *string `pulumi:"search"`
 }
 
 // A collection of values returned by getProjectBranches.
@@ -38,6 +42,10 @@ type GetProjectBranchesResult struct {
 	Id string `pulumi:"id"`
 	// ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
+	// Regex pattern to filter the returned branches by name.
+	Regex *string `pulumi:"regex"`
+	// A search string to filter branches by name.
+	Search *string `pulumi:"search"`
 }
 
 func GetProjectBranchesOutput(ctx *pulumi.Context, args GetProjectBranchesOutputArgs, opts ...pulumi.InvokeOption) GetProjectBranchesResultOutput {
@@ -53,6 +61,10 @@ func GetProjectBranchesOutput(ctx *pulumi.Context, args GetProjectBranchesOutput
 type GetProjectBranchesOutputArgs struct {
 	// ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringInput `pulumi:"project"`
+	// Regex pattern to filter the returned branches by name.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+	// A search string to filter branches by name.
+	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
 func (GetProjectBranchesOutputArgs) ElementType() reflect.Type {
@@ -87,6 +99,16 @@ func (o GetProjectBranchesResultOutput) Id() pulumi.StringOutput {
 // ID or URL-encoded path of the project owned by the authenticated user.
 func (o GetProjectBranchesResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectBranchesResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Regex pattern to filter the returned branches by name.
+func (o GetProjectBranchesResultOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectBranchesResult) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+// A search string to filter branches by name.
+func (o GetProjectBranchesResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectBranchesResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
 func init() {

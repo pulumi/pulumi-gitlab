@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.Runner` resource allows to manage the lifecycle of a runner.
+ * The `gitlab.Runner` resource manages the lifecycle of a runner.
  * 
  * &gt; This resource has been deprecated in favor of the `gitlab.UserRunner` resource. Please use that resource, and the new registration flow, instead. To be removed in 19.0.
  * 

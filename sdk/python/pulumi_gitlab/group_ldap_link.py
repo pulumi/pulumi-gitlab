@@ -268,7 +268,7 @@ class GroupLdapLink(pulumi.CustomResource):
                  member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+        The `GroupLdapLink` resource manages the lifecycle of an LDAP integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
 
@@ -332,7 +332,7 @@ class GroupLdapLink(pulumi.CustomResource):
                  args: GroupLdapLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+        The `GroupLdapLink` resource manages the lifecycle of an LDAP integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
 

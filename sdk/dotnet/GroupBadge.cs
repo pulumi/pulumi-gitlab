@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupBadge` resource allows to manage the lifecycle of group badges.
+    /// The `gitlab.GroupBadge` resource manages the lifecycle of group badges.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
     /// 

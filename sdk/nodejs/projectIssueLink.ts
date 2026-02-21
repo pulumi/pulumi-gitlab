@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectIssueLink` resource allows to manage the lifecycle of project issue links.
+ * The `gitlab.ProjectIssueLink` resource manages the lifecycle of project issue links.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/issue_links/)
  *

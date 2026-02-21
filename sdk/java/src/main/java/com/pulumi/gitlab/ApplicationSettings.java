@@ -2641,6 +2641,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.mirrorMaxDelay;
     }
     /**
+     * Enable sending notification if sign in from unknown IP address happens
+     * 
+     */
+    @Export(name="notifyOnUnknownSignIn", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> notifyOnUnknownSignIn;
+
+    /**
+     * @return Enable sending notification if sign in from unknown IP address happens
+     * 
+     */
+    public Output<Boolean> notifyOnUnknownSignIn() {
+        return this.notifyOnUnknownSignIn;
+    }
+    /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      * 
      */

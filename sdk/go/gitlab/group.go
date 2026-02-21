@@ -177,6 +177,8 @@ type Group struct {
 	IpRestrictionRanges pulumi.StringArrayOutput `pulumi:"ipRestrictionRanges"`
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolOutput `pulumi:"lfsEnabled"`
+	// The maximum file size in megabytes for individual job artifacts.
+	MaxArtifactsSize pulumi.IntOutput `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
 	MembershipLock pulumi.BoolOutput `pulumi:"membershipLock"`
 	// Disable the capability of a group from getting mentioned.
@@ -296,6 +298,8 @@ type groupState struct {
 	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// The maximum file size in megabytes for individual job artifacts.
+	MaxArtifactsSize *int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
 	MembershipLock *bool `pulumi:"membershipLock"`
 	// Disable the capability of a group from getting mentioned.
@@ -379,6 +383,8 @@ type GroupState struct {
 	IpRestrictionRanges pulumi.StringArrayInput
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// The maximum file size in megabytes for individual job artifacts.
+	MaxArtifactsSize pulumi.IntPtrInput
 	// Users cannot be added to projects in this group.
 	MembershipLock pulumi.BoolPtrInput
 	// Disable the capability of a group from getting mentioned.
@@ -460,6 +466,8 @@ type groupArgs struct {
 	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// The maximum file size in megabytes for individual job artifacts.
+	MaxArtifactsSize *int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
 	MembershipLock *bool `pulumi:"membershipLock"`
 	// Disable the capability of a group from getting mentioned.
@@ -534,6 +542,8 @@ type GroupArgs struct {
 	IpRestrictionRanges pulumi.StringArrayInput
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// The maximum file size in megabytes for individual job artifacts.
+	MaxArtifactsSize pulumi.IntPtrInput
 	// Users cannot be added to projects in this group.
 	MembershipLock pulumi.BoolPtrInput
 	// Disable the capability of a group from getting mentioned.
@@ -745,6 +755,11 @@ func (o GroupOutput) IpRestrictionRanges() pulumi.StringArrayOutput {
 // Enable/disable Large File Storage (LFS) for the projects in this group.
 func (o GroupOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+// The maximum file size in megabytes for individual job artifacts.
+func (o GroupOutput) MaxArtifactsSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.MaxArtifactsSize }).(pulumi.IntOutput)
 }
 
 // Users cannot be added to projects in this group.

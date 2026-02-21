@@ -17,7 +17,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
+ * The `gitlab.GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
  * 
  * &gt; In order to use a userId in the `deployAccessLevels` configuration,
  *    you need to make sure that users have access to the group with Maintainer role or higher.

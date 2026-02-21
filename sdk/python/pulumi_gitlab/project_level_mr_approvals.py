@@ -270,7 +270,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+        The `gitlab_project_level_mr_approval_rule` resource manages the lifecycle of a Merge Request-level approval rule.
 
         > This resource requires a GitLab Enterprise instance.
 
@@ -336,7 +336,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  args: ProjectLevelMrApprovalsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `gitlab_project_level_mr_approval_rule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+        The `gitlab_project_level_mr_approval_rule` resource manages the lifecycle of a Merge Request-level approval rule.
 
         > This resource requires a GitLab Enterprise instance.
 

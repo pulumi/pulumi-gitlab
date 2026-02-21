@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupAccessToken` resource allows to manage the lifecycle of a group access token.
+ * The `gitlab.GroupAccessToken` resource manages the lifecycle of a group access token.
  *
  * > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
  *

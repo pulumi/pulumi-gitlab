@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationExternalWiki` resource manages the lifecycle of a project integration with the External Wiki Service.
  *
- * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationExternalWiki`instead!
+ * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationExternalWiki` instead.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#external-wiki)
  *

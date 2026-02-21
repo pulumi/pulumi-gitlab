@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `InstanceCluster` resource allows to manage the lifecycle of an instance cluster.
+// The `InstanceCluster` resource manages the lifecycle of an instance cluster.
 //
 // > This is deprecated, due for removal in GitLab 19.0.
 //

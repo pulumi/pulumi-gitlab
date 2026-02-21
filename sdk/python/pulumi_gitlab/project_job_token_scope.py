@@ -138,7 +138,7 @@ class ProjectJobTokenScope(pulumi.CustomResource):
                  target_project_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        The `ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.
+        The `ProjectJobTokenScope` resource manages the CI/CD Job Token scope in a project.
         Any projects added to the CI/CD Job Token scope outside of TF will be untouched by the resource.
 
         > Conflicts with the use of `ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.
@@ -190,7 +190,7 @@ class ProjectJobTokenScope(pulumi.CustomResource):
                  args: ProjectJobTokenScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.
+        The `ProjectJobTokenScope` resource manages the CI/CD Job Token scope in a project.
         Any projects added to the CI/CD Job Token scope outside of TF will be untouched by the resource.
 
         > Conflicts with the use of `ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.

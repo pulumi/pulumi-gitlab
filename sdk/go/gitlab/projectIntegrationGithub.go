@@ -82,18 +82,18 @@ type ProjectIntegrationGithub struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// Creation time.
+	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ID of the project you want to activate the integration on.
 	Project       pulumi.StringOutput `pulumi:"project"`
 	RepositoryUrl pulumi.StringOutput `pulumi:"repositoryUrl"`
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
-	StaticContext pulumi.BoolPtrOutput `pulumi:"staticContext"`
-	// The title of this resource.
+	StaticContext pulumi.BoolOutput `pulumi:"staticContext"`
+	// Title of the integration.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// A GitHub personal access token with at least the `repo:status` scope.
 	Token pulumi.StringOutput `pulumi:"token"`
-	// Update time.
+	// The ISO8601 date/time that this integration was last updated at in UTC.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -145,36 +145,36 @@ func GetProjectIntegrationGithub(ctx *pulumi.Context,
 type projectIntegrationGithubState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// Creation time.
+	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
 	// ID of the project you want to activate the integration on.
 	Project       *string `pulumi:"project"`
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
-	// The title of this resource.
+	// Title of the integration.
 	Title *string `pulumi:"title"`
 	// A GitHub personal access token with at least the `repo:status` scope.
 	Token *string `pulumi:"token"`
-	// Update time.
+	// The ISO8601 date/time that this integration was last updated at in UTC.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type ProjectIntegrationGithubState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// Creation time.
+	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringPtrInput
 	// ID of the project you want to activate the integration on.
 	Project       pulumi.StringPtrInput
 	RepositoryUrl pulumi.StringPtrInput
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
-	// The title of this resource.
+	// Title of the integration.
 	Title pulumi.StringPtrInput
 	// A GitHub personal access token with at least the `repo:status` scope.
 	Token pulumi.StringPtrInput
-	// Update time.
+	// The ISO8601 date/time that this integration was last updated at in UTC.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -295,7 +295,7 @@ func (o ProjectIntegrationGithubOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// Creation time.
+// The ISO8601 date/time that this integration was activated at in UTC.
 func (o ProjectIntegrationGithubOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -310,11 +310,11 @@ func (o ProjectIntegrationGithubOutput) RepositoryUrl() pulumi.StringOutput {
 }
 
 // Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
-func (o ProjectIntegrationGithubOutput) StaticContext() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.BoolPtrOutput { return v.StaticContext }).(pulumi.BoolPtrOutput)
+func (o ProjectIntegrationGithubOutput) StaticContext() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.BoolOutput { return v.StaticContext }).(pulumi.BoolOutput)
 }
 
-// The title of this resource.
+// Title of the integration.
 func (o ProjectIntegrationGithubOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
@@ -324,7 +324,7 @@ func (o ProjectIntegrationGithubOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
-// Update time.
+// The ISO8601 date/time that this integration was last updated at in UTC.
 func (o ProjectIntegrationGithubOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationGithub) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

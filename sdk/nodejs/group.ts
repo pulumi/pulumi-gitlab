@@ -195,6 +195,10 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly lfsEnabled: pulumi.Output<boolean>;
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     */
+    declare public readonly maxArtifactsSize: pulumi.Output<number>;
+    /**
      * Users cannot be added to projects in this group.
      */
     declare public readonly membershipLock: pulumi.Output<boolean>;
@@ -316,6 +320,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["fullPath"] = state?.fullPath;
             resourceInputs["ipRestrictionRanges"] = state?.ipRestrictionRanges;
             resourceInputs["lfsEnabled"] = state?.lfsEnabled;
+            resourceInputs["maxArtifactsSize"] = state?.maxArtifactsSize;
             resourceInputs["membershipLock"] = state?.membershipLock;
             resourceInputs["mentionsDisabled"] = state?.mentionsDisabled;
             resourceInputs["name"] = state?.name;
@@ -357,6 +362,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["extraSharedRunnersMinutesLimit"] = args?.extraSharedRunnersMinutesLimit;
             resourceInputs["ipRestrictionRanges"] = args?.ipRestrictionRanges;
             resourceInputs["lfsEnabled"] = args?.lfsEnabled;
+            resourceInputs["maxArtifactsSize"] = args?.maxArtifactsSize;
             resourceInputs["membershipLock"] = args?.membershipLock;
             resourceInputs["mentionsDisabled"] = args?.mentionsDisabled;
             resourceInputs["name"] = args?.name;
@@ -461,6 +467,10 @@ export interface GroupState {
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum file size in megabytes for individual job artifacts.
+     */
+    maxArtifactsSize?: pulumi.Input<number>;
     /**
      * Users cannot be added to projects in this group.
      */
@@ -613,6 +623,10 @@ export interface GroupArgs {
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum file size in megabytes for individual job artifacts.
+     */
+    maxArtifactsSize?: pulumi.Input<number>;
     /**
      * Users cannot be added to projects in this group.
      */

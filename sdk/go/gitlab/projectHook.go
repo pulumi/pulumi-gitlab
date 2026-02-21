@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectHook` resource allows to manage the lifecycle of a project hook.
+// The `ProjectHook` resource manages the lifecycle of a project hook.
 //
 // > Note that `pushEvents` defaults to `true`.
 //
@@ -95,6 +95,8 @@ import (
 type ProjectHook struct {
 	pulumi.CustomResourceState
 
+	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+	BranchFilterStrategy pulumi.StringOutput `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events. Defaults to `false`.
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events. Defaults to `false`.
@@ -107,6 +109,8 @@ type ProjectHook struct {
 	DeploymentEvents pulumi.BoolOutput `pulumi:"deploymentEvents"`
 	// Description of the webhook.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Invoke the hook for emoji events. Defaults to `false`.
+	EmojiEvents pulumi.BoolOutput `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification pulumi.BoolOutput `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -190,6 +194,8 @@ func GetProjectHook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectHook resources.
 type projectHookState struct {
+	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+	BranchFilterStrategy *string `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events. Defaults to `false`.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events. Defaults to `false`.
@@ -202,6 +208,8 @@ type projectHookState struct {
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Description of the webhook.
 	Description *string `pulumi:"description"`
+	// Invoke the hook for emoji events. Defaults to `false`.
+	EmojiEvents *bool `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// The id of the project hook.
@@ -243,6 +251,8 @@ type projectHookState struct {
 }
 
 type ProjectHookState struct {
+	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+	BranchFilterStrategy pulumi.StringPtrInput
 	// Invoke the hook for confidential issues events. Defaults to `false`.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events. Defaults to `false`.
@@ -255,6 +265,8 @@ type ProjectHookState struct {
 	DeploymentEvents pulumi.BoolPtrInput
 	// Description of the webhook.
 	Description pulumi.StringPtrInput
+	// Invoke the hook for emoji events. Defaults to `false`.
+	EmojiEvents pulumi.BoolPtrInput
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification pulumi.BoolPtrInput
 	// The id of the project hook.
@@ -300,6 +312,8 @@ func (ProjectHookState) ElementType() reflect.Type {
 }
 
 type projectHookArgs struct {
+	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+	BranchFilterStrategy *string `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events. Defaults to `false`.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential note events. Defaults to `false`.
@@ -312,6 +326,8 @@ type projectHookArgs struct {
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Description of the webhook.
 	Description *string `pulumi:"description"`
+	// Invoke the hook for emoji events. Defaults to `false`.
+	EmojiEvents *bool `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Invoke the hook for issues events. Defaults to `false`.
@@ -350,6 +366,8 @@ type projectHookArgs struct {
 
 // The set of arguments for constructing a ProjectHook resource.
 type ProjectHookArgs struct {
+	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+	BranchFilterStrategy pulumi.StringPtrInput
 	// Invoke the hook for confidential issues events. Defaults to `false`.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for confidential note events. Defaults to `false`.
@@ -362,6 +380,8 @@ type ProjectHookArgs struct {
 	DeploymentEvents pulumi.BoolPtrInput
 	// Description of the webhook.
 	Description pulumi.StringPtrInput
+	// Invoke the hook for emoji events. Defaults to `false`.
+	EmojiEvents pulumi.BoolPtrInput
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Invoke the hook for issues events. Defaults to `false`.
@@ -485,6 +505,11 @@ func (o ProjectHookOutput) ToProjectHookOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+func (o ProjectHookOutput) BranchFilterStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.BranchFilterStrategy }).(pulumi.StringOutput)
+}
+
 // Invoke the hook for confidential issues events. Defaults to `false`.
 func (o ProjectHookOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
@@ -513,6 +538,11 @@ func (o ProjectHookOutput) DeploymentEvents() pulumi.BoolOutput {
 // Description of the webhook.
 func (o ProjectHookOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Invoke the hook for emoji events. Defaults to `false`.
+func (o ProjectHookOutput) EmojiEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.EmojiEvents }).(pulumi.BoolOutput)
 }
 
 // Enable SSL verification when invoking the hook. Defaults to `true`.

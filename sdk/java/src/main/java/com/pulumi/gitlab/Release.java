@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.Release` resource allows to manage the lifecycle of releases in gitlab.
+ * The `gitlab.Release` resource manages the lifecycle of releases in gitlab.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
  * 

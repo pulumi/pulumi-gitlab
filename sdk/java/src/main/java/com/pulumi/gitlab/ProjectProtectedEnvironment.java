@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
+ * The `gitlab.ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
  * 
  * &gt; In order to use a user or group in the `deployAccessLevels` configuration,
  *    you need to make sure that users have access to the project and groups must have this project shared.

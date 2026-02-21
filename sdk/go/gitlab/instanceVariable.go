@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `InstanceVariable` resource allows to manage the lifecycle of an instance-level CI/CD variable.
+// The `InstanceVariable` resource manages the lifecycle of an instance-level CI/CD variable.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_level_ci_variables/)
 //

@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
+ * The `gitlab.ProjectShareGroup` resource manages the lifecycle of project shared with a group.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-a-project-with-a-group)
  * 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+    /// The `gitlab.PipelineSchedule` resource manages the lifecycle of a scheduled pipeline.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
     /// 

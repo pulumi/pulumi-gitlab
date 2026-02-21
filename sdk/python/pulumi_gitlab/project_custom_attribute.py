@@ -136,7 +136,7 @@ class ProjectCustomAttribute(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectCustomAttribute` resource allows to manage custom attributes for a project.
+        The `ProjectCustomAttribute` resource manages custom attributes for a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 
@@ -187,7 +187,7 @@ class ProjectCustomAttribute(pulumi.CustomResource):
                  args: ProjectCustomAttributeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectCustomAttribute` resource allows to manage custom attributes for a project.
+        The `ProjectCustomAttribute` resource manages custom attributes for a project.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 

@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupLabel` resource allows to manage the lifecycle of labels within a group.
+ * The `gitlab.GroupLabel` resource manages the lifecycle of labels within a group.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
  * 

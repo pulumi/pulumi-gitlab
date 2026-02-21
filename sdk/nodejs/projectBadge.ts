@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectBadge` resource allows to manage the lifecycle of project badges.
+ * The `gitlab.ProjectBadge` resource manages the lifecycle of project badges.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
  *
@@ -108,7 +108,7 @@ export class ProjectBadge extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The id of the project to add the badge to.
+     * The ID or URL-encoded path of the project to add the badge to.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface ProjectBadgeState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the project to add the badge to.
+     * The ID or URL-encoded path of the project to add the badge to.
      */
     project?: pulumi.Input<string>;
     /**
@@ -209,7 +209,7 @@ export interface ProjectBadgeArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the project to add the badge to.
+     * The ID or URL-encoded path of the project to add the badge to.
      */
     project: pulumi.Input<string>;
 }

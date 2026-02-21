@@ -785,6 +785,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly mirrorMaxDelay: pulumi.Output<number>;
     /**
+     * Enable sending notification if sign in from unknown IP address happens
+     */
+    declare public readonly notifyOnUnknownSignIn: pulumi.Output<boolean>;
+    /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      */
     declare public readonly npmPackageRequestsForwarding: pulumi.Output<boolean>;
@@ -1473,6 +1477,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["mirrorCapacityThreshold"] = state?.mirrorCapacityThreshold;
             resourceInputs["mirrorMaxCapacity"] = state?.mirrorMaxCapacity;
             resourceInputs["mirrorMaxDelay"] = state?.mirrorMaxDelay;
+            resourceInputs["notifyOnUnknownSignIn"] = state?.notifyOnUnknownSignIn;
             resourceInputs["npmPackageRequestsForwarding"] = state?.npmPackageRequestsForwarding;
             resourceInputs["nugetSkipMetadataUrlValidation"] = state?.nugetSkipMetadataUrlValidation;
             resourceInputs["outboundLocalRequestsWhitelists"] = state?.outboundLocalRequestsWhitelists;
@@ -1782,6 +1787,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["mirrorCapacityThreshold"] = args?.mirrorCapacityThreshold;
             resourceInputs["mirrorMaxCapacity"] = args?.mirrorMaxCapacity;
             resourceInputs["mirrorMaxDelay"] = args?.mirrorMaxDelay;
+            resourceInputs["notifyOnUnknownSignIn"] = args?.notifyOnUnknownSignIn;
             resourceInputs["npmPackageRequestsForwarding"] = args?.npmPackageRequestsForwarding;
             resourceInputs["nugetSkipMetadataUrlValidation"] = args?.nugetSkipMetadataUrlValidation;
             resourceInputs["outboundLocalRequestsWhitelists"] = args?.outboundLocalRequestsWhitelists;
@@ -2665,6 +2671,10 @@ export interface ApplicationSettingsState {
      * Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
      */
     mirrorMaxDelay?: pulumi.Input<number>;
+    /**
+     * Enable sending notification if sign in from unknown IP address happens
+     */
+    notifyOnUnknownSignIn?: pulumi.Input<boolean>;
     /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      */
@@ -3898,6 +3908,10 @@ export interface ApplicationSettingsArgs {
      * Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
      */
     mirrorMaxDelay?: pulumi.Input<number>;
+    /**
+     * Enable sending notification if sign in from unknown IP address happens
+     */
+    notifyOnUnknownSignIn?: pulumi.Input<boolean>;
     /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      */

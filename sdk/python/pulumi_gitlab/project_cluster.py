@@ -497,7 +497,7 @@ class ProjectCluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+        The `ProjectCluster` resource manages the lifecycle of a project cluster.
 
         > This is deprecated, due for removal in GitLab 19.0.
 
@@ -568,7 +568,7 @@ class ProjectCluster(pulumi.CustomResource):
                  args: ProjectClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+        The `ProjectCluster` resource manages the lifecycle of a project cluster.
 
         > This is deprecated, due for removal in GitLab 19.0.
 

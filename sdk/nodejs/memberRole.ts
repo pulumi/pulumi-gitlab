@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.MemberRole` resource allows to manage the lifecycle of a custom member role.
+ * The `gitlab.MemberRole` resource manages the lifecycle of a custom member role.
  *
- * Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization’s needs.
+ * Custom roles allow an organization to create user roles with the precise privileges and permissions required for that organization's needs.
  *
  * > This resource requires an Ultimate license.
  *

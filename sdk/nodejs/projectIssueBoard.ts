@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ProjectIssueBoard` resource allows to manage the lifecycle of a Project Issue Board.
+ * The `gitlab.ProjectIssueBoard` resource manages the lifecycle of a Project Issue Board.
  *
  * > **NOTE:** If the board lists are changed all lists will be recreated.
  *

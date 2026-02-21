@@ -27,7 +27,7 @@ class GetProjectBranchesResult:
     """
     A collection of values returned by getProjectBranches.
     """
-    def __init__(__self__, branches=None, id=None, project=None):
+    def __init__(__self__, branches=None, id=None, project=None, regex=None, search=None):
         if branches and not isinstance(branches, list):
             raise TypeError("Expected argument 'branches' to be a list")
         pulumi.set(__self__, "branches", branches)
@@ -37,6 +37,12 @@ class GetProjectBranchesResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if regex and not isinstance(regex, str):
+            raise TypeError("Expected argument 'regex' to be a str")
+        pulumi.set(__self__, "regex", regex)
+        if search and not isinstance(search, str):
+            raise TypeError("Expected argument 'search' to be a str")
+        pulumi.set(__self__, "search", search)
 
     @_builtins.property
     @pulumi.getter
@@ -62,6 +68,22 @@ class GetProjectBranchesResult:
         """
         return pulumi.get(self, "project")
 
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> Optional[_builtins.str]:
+        """
+        Regex pattern to filter the returned branches by name.
+        """
+        return pulumi.get(self, "regex")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        A search string to filter branches by name.
+        """
+        return pulumi.get(self, "search")
+
 
 class AwaitableGetProjectBranchesResult(GetProjectBranchesResult):
     # pylint: disable=using-constant-test
@@ -71,10 +93,14 @@ class AwaitableGetProjectBranchesResult(GetProjectBranchesResult):
         return GetProjectBranchesResult(
             branches=self.branches,
             id=self.id,
-            project=self.project)
+            project=self.project,
+            regex=self.regex,
+            search=self.search)
 
 
 def get_project_branches(project: Optional[_builtins.str] = None,
+                         regex: Optional[_builtins.str] = None,
+                         search: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectBranchesResult:
     """
     The `get_project_branches` data source allows details of the branches of a given project to be retrieved.
@@ -83,17 +109,25 @@ def get_project_branches(project: Optional[_builtins.str] = None,
 
 
     :param _builtins.str project: ID or URL-encoded path of the project owned by the authenticated user.
+    :param _builtins.str regex: Regex pattern to filter the returned branches by name.
+    :param _builtins.str search: A search string to filter branches by name.
     """
     __args__ = dict()
     __args__['project'] = project
+    __args__['regex'] = regex
+    __args__['search'] = search
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectBranches:getProjectBranches', __args__, opts=opts, typ=GetProjectBranchesResult).value
 
     return AwaitableGetProjectBranchesResult(
         branches=pulumi.get(__ret__, 'branches'),
         id=pulumi.get(__ret__, 'id'),
-        project=pulumi.get(__ret__, 'project'))
+        project=pulumi.get(__ret__, 'project'),
+        regex=pulumi.get(__ret__, 'regex'),
+        search=pulumi.get(__ret__, 'search'))
 def get_project_branches_output(project: Optional[pulumi.Input[_builtins.str]] = None,
+                                regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectBranchesResult]:
     """
     The `get_project_branches` data source allows details of the branches of a given project to be retrieved.
@@ -102,12 +136,18 @@ def get_project_branches_output(project: Optional[pulumi.Input[_builtins.str]] =
 
 
     :param _builtins.str project: ID or URL-encoded path of the project owned by the authenticated user.
+    :param _builtins.str regex: Regex pattern to filter the returned branches by name.
+    :param _builtins.str search: A search string to filter branches by name.
     """
     __args__ = dict()
     __args__['project'] = project
+    __args__['regex'] = regex
+    __args__['search'] = search
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectBranches:getProjectBranches', __args__, opts=opts, typ=GetProjectBranchesResult)
     return __ret__.apply(lambda __response__: GetProjectBranchesResult(
         branches=pulumi.get(__response__, 'branches'),
         id=pulumi.get(__response__, 'id'),
-        project=pulumi.get(__response__, 'project')))
+        project=pulumi.get(__response__, 'project'),
+        regex=pulumi.get(__response__, 'regex'),
+        search=pulumi.get(__response__, 'search')))

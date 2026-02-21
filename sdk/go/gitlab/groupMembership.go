@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupMembership` resource allows to manage the lifecycle of a users group membership.
+// The `GroupMembership` resource manages the lifecycle of a users group membership.
 //
 // > If a group should grant membership to another group use the `GroupShareGroup` resource instead.
 //

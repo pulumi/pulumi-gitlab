@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `UserCustomAttribute` resource allows to manage custom attributes for a user.
+// The `UserCustomAttribute` resource manages custom attributes for a user.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 //

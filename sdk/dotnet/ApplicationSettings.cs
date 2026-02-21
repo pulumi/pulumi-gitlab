@@ -1135,6 +1135,12 @@ namespace Pulumi.GitLab
         public Output<int> MirrorMaxDelay { get; private set; } = null!;
 
         /// <summary>
+        /// Enable sending notification if sign in from unknown IP address happens
+        /// </summary>
+        [Output("notifyOnUnknownSignIn")]
+        public Output<bool> NotifyOnUnknownSignIn { get; private set; } = null!;
+
+        /// <summary>
         /// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         /// </summary>
         [Output("npmPackageRequestsForwarding")]
@@ -3198,6 +3204,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mirrorMaxDelay")]
         public Input<int>? MirrorMaxDelay { get; set; }
+
+        /// <summary>
+        /// Enable sending notification if sign in from unknown IP address happens
+        /// </summary>
+        [Input("notifyOnUnknownSignIn")]
+        public Input<bool>? NotifyOnUnknownSignIn { get; set; }
 
         /// <summary>
         /// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
@@ -5317,6 +5329,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mirrorMaxDelay")]
         public Input<int>? MirrorMaxDelay { get; set; }
+
+        /// <summary>
+        /// Enable sending notification if sign in from unknown IP address happens
+        /// </summary>
+        [Input("notifyOnUnknownSignIn")]
+        public Input<bool>? NotifyOnUnknownSignIn { get; set; }
 
         /// <summary>
         /// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.

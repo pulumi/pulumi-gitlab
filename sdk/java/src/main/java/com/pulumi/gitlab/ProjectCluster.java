@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+ * The `gitlab.ProjectCluster` resource manages the lifecycle of a project cluster.
  * 
  * &gt; This is deprecated, due for removal in GitLab 19.0.
  * 

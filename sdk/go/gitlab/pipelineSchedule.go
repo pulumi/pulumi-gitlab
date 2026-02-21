@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+// The `PipelineSchedule` resource manages the lifecycle of a scheduled pipeline.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 //

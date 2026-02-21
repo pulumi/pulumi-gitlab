@@ -35,6 +35,7 @@ class GroupArgs:
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -71,6 +72,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
@@ -122,6 +124,8 @@ class GroupArgs:
             pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if max_artifacts_size is not None:
+            pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if membership_lock is not None:
             pulumi.set(__self__, "membership_lock", membership_lock)
         if mentions_disabled is not None:
@@ -331,6 +335,18 @@ class GroupArgs:
     @lfs_enabled.setter
     def lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum file size in megabytes for individual job artifacts.
+        """
+        return pulumi.get(self, "max_artifacts_size")
+
+    @max_artifacts_size.setter
+    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="membershipLock")
@@ -592,6 +608,7 @@ class _GroupState:
                  full_path: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -633,6 +650,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
@@ -692,6 +710,8 @@ class _GroupState:
             pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if max_artifacts_size is not None:
+            pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if membership_lock is not None:
             pulumi.set(__self__, "membership_lock", membership_lock)
         if mentions_disabled is not None:
@@ -931,6 +951,18 @@ class _GroupState:
     @lfs_enabled.setter
     def lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum file size in megabytes for individual job artifacts.
+        """
+        return pulumi.get(self, "max_artifacts_size")
+
+    @max_artifacts_size.setter
+    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="membershipLock")
@@ -1228,6 +1260,7 @@ class Group(pulumi.CustomResource):
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1353,6 +1386,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
@@ -1497,6 +1531,7 @@ class Group(pulumi.CustomResource):
                  extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
                  membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
                  mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1540,6 +1575,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
             __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
             __props__.__dict__["lfs_enabled"] = lfs_enabled
+            __props__.__dict__["max_artifacts_size"] = max_artifacts_size
             __props__.__dict__["membership_lock"] = membership_lock
             __props__.__dict__["mentions_disabled"] = mentions_disabled
             __props__.__dict__["name"] = name
@@ -1596,6 +1632,7 @@ class Group(pulumi.CustomResource):
             full_path: Optional[pulumi.Input[_builtins.str]] = None,
             ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
             membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
             mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1642,6 +1679,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
         :param pulumi.Input[_builtins.str] name: The name of the group.
@@ -1686,6 +1724,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["full_path"] = full_path
         __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
         __props__.__dict__["lfs_enabled"] = lfs_enabled
+        __props__.__dict__["max_artifacts_size"] = max_artifacts_size
         __props__.__dict__["membership_lock"] = membership_lock
         __props__.__dict__["mentions_disabled"] = mentions_disabled
         __props__.__dict__["name"] = name
@@ -1839,6 +1878,14 @@ class Group(pulumi.CustomResource):
         Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum file size in megabytes for individual job artifacts.
+        """
+        return pulumi.get(self, "max_artifacts_size")
 
     @_builtins.property
     @pulumi.getter(name="membershipLock")

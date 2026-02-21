@@ -500,7 +500,7 @@ class User(pulumi.CustomResource):
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `User` resource allows to manage the lifecycle of a user.
+        The `User` resource manages the lifecycle of a user.
 
         > the provider needs to be configured with admin-level access for this resource to work.
 
@@ -578,7 +578,7 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `User` resource allows to manage the lifecycle of a user.
+        The `User` resource manages the lifecycle of a user.
 
         > the provider needs to be configured with admin-level access for this resource to work.
 

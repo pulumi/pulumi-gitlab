@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GroupLabel` resource allows to manage the lifecycle of labels within a group.
+ * The `gitlab.GroupLabel` resource manages the lifecycle of labels within a group.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
  *

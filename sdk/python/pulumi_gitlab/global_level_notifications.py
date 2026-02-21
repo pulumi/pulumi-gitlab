@@ -634,7 +634,7 @@ class GlobalLevelNotifications(pulumi.CustomResource):
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `GlobalLevelNotifications` resource allows to manage global notifications.
+        The `GlobalLevelNotifications` resource manages global notifications.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#get-group-or-project-notification-settings)
 
@@ -692,7 +692,7 @@ class GlobalLevelNotifications(pulumi.CustomResource):
                  args: Optional[GlobalLevelNotificationsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GlobalLevelNotifications` resource allows to manage global notifications.
+        The `GlobalLevelNotifications` resource manages global notifications.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#get-group-or-project-notification-settings)
 

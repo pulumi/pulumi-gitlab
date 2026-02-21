@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.User` resource allows to manage the lifecycle of a user.
+    /// The `gitlab.User` resource manages the lifecycle of a user.
     /// 
     /// &gt; the provider needs to be configured with admin-level access for this resource to work.
     /// 

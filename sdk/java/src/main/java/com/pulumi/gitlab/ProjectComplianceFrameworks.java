@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectComplianceFrameworks` resource allows to manage the lifecycle of compliance frameworks on a project.
+ * The `gitlab.ProjectComplianceFrameworks` resource manages the lifecycle of compliance frameworks on a project.
  * 
  * &gt; This resource requires a GitLab Enterprise instance with a Premium license to set the compliance frameworks on a project.
  * 

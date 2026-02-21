@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.Release` resource allows to manage the lifecycle of releases in gitlab.
+ * The `gitlab.Release` resource manages the lifecycle of releases in gitlab.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/)
  *

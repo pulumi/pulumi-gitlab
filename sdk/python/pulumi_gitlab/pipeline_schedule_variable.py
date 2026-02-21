@@ -201,7 +201,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
+        The `PipelineScheduleVariable` resource manages the lifecycle of a variable for a pipeline schedule.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/#get-a-pipeline-schedule-variable)
 
@@ -260,7 +260,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
                  args: PipelineScheduleVariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `PipelineScheduleVariable` resource allows to manage the lifecycle of a variable for a pipeline schedule.
+        The `PipelineScheduleVariable` resource manages the lifecycle of a variable for a pipeline schedule.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/#get-a-pipeline-schedule-variable)
 

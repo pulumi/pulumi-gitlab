@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+ * The `gitlab.DeployToken` resource manages the lifecycle of group and project deploy tokens.
  *
  * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectDeployToken` or `gitlab.GroupDeployToken` instead!
  *

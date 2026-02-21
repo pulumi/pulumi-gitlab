@@ -269,7 +269,7 @@ class DeployToken(pulumi.CustomResource):
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+        The `DeployToken` resource manages the lifecycle of group and project deploy tokens.
 
         > This resource is deprecated and will be removed in 19.0. Use `ProjectDeployToken` or `GroupDeployToken` instead!
 
@@ -319,7 +319,7 @@ class DeployToken(pulumi.CustomResource):
                  args: DeployTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `DeployToken` resource allows to manage the lifecycle of group and project deploy tokens.
+        The `DeployToken` resource manages the lifecycle of group and project deploy tokens.
 
         > This resource is deprecated and will be removed in 19.0. Use `ProjectDeployToken` or `GroupDeployToken` instead!
 

@@ -20,6 +20,21 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectHookArgs Empty = new ProjectHookArgs();
 
     /**
+     * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     * 
+     */
+    @Import(name="branchFilterStrategy")
+    private @Nullable Output<String> branchFilterStrategy;
+
+    /**
+     * @return Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+     * 
+     */
+    public Optional<Output<String>> branchFilterStrategy() {
+        return Optional.ofNullable(this.branchFilterStrategy);
+    }
+
+    /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      * 
      */
@@ -107,6 +122,21 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Invoke the hook for emoji events. Defaults to `false`.
+     * 
+     */
+    @Import(name="emojiEvents")
+    private @Nullable Output<Boolean> emojiEvents;
+
+    /**
+     * @return Invoke the hook for emoji events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> emojiEvents() {
+        return Optional.ofNullable(this.emojiEvents);
     }
 
     /**
@@ -367,12 +397,14 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
     private ProjectHookArgs() {}
 
     private ProjectHookArgs(ProjectHookArgs $) {
+        this.branchFilterStrategy = $.branchFilterStrategy;
         this.confidentialIssuesEvents = $.confidentialIssuesEvents;
         this.confidentialNoteEvents = $.confidentialNoteEvents;
         this.customHeaders = $.customHeaders;
         this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
         this.description = $.description;
+        this.emojiEvents = $.emojiEvents;
         this.enableSslVerification = $.enableSslVerification;
         this.issuesEvents = $.issuesEvents;
         this.jobEvents = $.jobEvents;
@@ -408,6 +440,27 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProjectHookArgs defaults) {
             $ = new ProjectHookArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branchFilterStrategy(@Nullable Output<String> branchFilterStrategy) {
+            $.branchFilterStrategy = branchFilterStrategy;
+            return this;
+        }
+
+        /**
+         * @param branchFilterStrategy Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branchFilterStrategy(String branchFilterStrategy) {
+            return branchFilterStrategy(Output.of(branchFilterStrategy));
         }
 
         /**
@@ -544,6 +597,27 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param emojiEvents Invoke the hook for emoji events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emojiEvents(@Nullable Output<Boolean> emojiEvents) {
+            $.emojiEvents = emojiEvents;
+            return this;
+        }
+
+        /**
+         * @param emojiEvents Invoke the hook for emoji events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emojiEvents(Boolean emojiEvents) {
+            return emojiEvents(Output.of(emojiEvents));
         }
 
         /**

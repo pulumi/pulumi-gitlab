@@ -94,7 +94,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly archived: pulumi.Output<boolean | undefined>;
     /**
-     * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
      */
     declare public readonly autoCancelPendingPipelines: pulumi.Output<string>;
     /**
@@ -244,7 +244,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly httpUrlToRepo: pulumi.Output<string>;
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     declare public readonly importUrl: pulumi.Output<string>;
     /**
@@ -286,6 +286,10 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly lfsEnabled: pulumi.Output<boolean>;
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     */
+    declare public readonly maxArtifactsSize: pulumi.Output<number>;
+    /**
      * Template used to create merge commit message in merge requests.
      */
     declare public readonly mergeCommitTemplate: pulumi.Output<string | undefined>;
@@ -320,15 +324,21 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly mergeTrainsSkipTrainAllowed: pulumi.Output<boolean>;
     /**
-     * Enable project pull mirror.
+     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      */
     declare public readonly mirror: pulumi.Output<boolean>;
     /**
-     * Enable overwrite diverged branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      */
     declare public readonly mirrorOverwritesDivergedBranches: pulumi.Output<boolean>;
     /**
-     * Enable trigger builds on pushes for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      */
     declare public readonly mirrorTriggerBuilds: pulumi.Output<boolean>;
     /**
@@ -364,7 +374,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly onlyAllowMergeIfPipelineSucceeds: pulumi.Output<boolean>;
     /**
-     * Enable only mirror protected branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      */
     declare public readonly onlyMirrorProtectedBranches: pulumi.Output<boolean>;
     /**
@@ -610,6 +622,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["issuesTemplate"] = state?.issuesTemplate;
             resourceInputs["keepLatestArtifact"] = state?.keepLatestArtifact;
             resourceInputs["lfsEnabled"] = state?.lfsEnabled;
+            resourceInputs["maxArtifactsSize"] = state?.maxArtifactsSize;
             resourceInputs["mergeCommitTemplate"] = state?.mergeCommitTemplate;
             resourceInputs["mergeMethod"] = state?.mergeMethod;
             resourceInputs["mergePipelinesEnabled"] = state?.mergePipelinesEnabled;
@@ -722,6 +735,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["issuesTemplate"] = args?.issuesTemplate;
             resourceInputs["keepLatestArtifact"] = args?.keepLatestArtifact;
             resourceInputs["lfsEnabled"] = args?.lfsEnabled;
+            resourceInputs["maxArtifactsSize"] = args?.maxArtifactsSize;
             resourceInputs["mergeCommitTemplate"] = args?.mergeCommitTemplate;
             resourceInputs["mergeMethod"] = args?.mergeMethod;
             resourceInputs["mergePipelinesEnabled"] = args?.mergePipelinesEnabled;
@@ -824,7 +838,7 @@ export interface ProjectState {
      */
     archived?: pulumi.Input<boolean>;
     /**
-     * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
      */
     autoCancelPendingPipelines?: pulumi.Input<string>;
     /**
@@ -974,7 +988,7 @@ export interface ProjectState {
      */
     httpUrlToRepo?: pulumi.Input<string>;
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string>;
     /**
@@ -1016,6 +1030,10 @@ export interface ProjectState {
      */
     lfsEnabled?: pulumi.Input<boolean>;
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     */
+    maxArtifactsSize?: pulumi.Input<number>;
+    /**
      * Template used to create merge commit message in merge requests.
      */
     mergeCommitTemplate?: pulumi.Input<string>;
@@ -1050,15 +1068,21 @@ export interface ProjectState {
      */
     mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean>;
     /**
-     * Enable project pull mirror.
+     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      */
     mirror?: pulumi.Input<boolean>;
     /**
-     * Enable overwrite diverged branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      */
     mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
     /**
-     * Enable trigger builds on pushes for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      */
     mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
@@ -1094,7 +1118,9 @@ export interface ProjectState {
      */
     onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
-     * Enable only mirror protected branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      */
     onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
     /**
@@ -1306,7 +1332,7 @@ export interface ProjectArgs {
      */
     archived?: pulumi.Input<boolean>;
     /**
-     * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
      */
     autoCancelPendingPipelines?: pulumi.Input<string>;
     /**
@@ -1444,7 +1470,7 @@ export interface ProjectArgs {
      */
     groupWithProjectTemplatesId?: pulumi.Input<number>;
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string>;
     /**
@@ -1486,6 +1512,10 @@ export interface ProjectArgs {
      */
     lfsEnabled?: pulumi.Input<boolean>;
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     */
+    maxArtifactsSize?: pulumi.Input<number>;
+    /**
      * Template used to create merge commit message in merge requests.
      */
     mergeCommitTemplate?: pulumi.Input<string>;
@@ -1520,15 +1550,21 @@ export interface ProjectArgs {
      */
     mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean>;
     /**
-     * Enable project pull mirror.
+     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      */
     mirror?: pulumi.Input<boolean>;
     /**
-     * Enable overwrite diverged branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      */
     mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
     /**
-     * Enable trigger builds on pushes for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      */
     mirrorTriggerBuilds?: pulumi.Input<boolean>;
     /**
@@ -1564,7 +1600,9 @@ export interface ProjectArgs {
      */
     onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
     /**
-     * Enable only mirror protected branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+     *
+     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      */
     onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
     /**

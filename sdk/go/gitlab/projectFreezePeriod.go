@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectFreezePeriod` resource allows to manage the lifecycle of a freeze period for a project.
+// The `ProjectFreezePeriod` resource manages the lifecycle of a freeze period for a project.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/freeze_periods/)
 //

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupBadge` resource allows to manage the lifecycle of group badges.
+// The `GroupBadge` resource manages the lifecycle of group badges.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#group-badges)
 //

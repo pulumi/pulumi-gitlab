@@ -384,7 +384,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
+        The `ProjectAccessToken` resource manages the lifecycle of a project access token.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
 
@@ -454,7 +454,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  args: ProjectAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectAccessToken` resource allows to manage the lifecycle of a project access token.
+        The `ProjectAccessToken` resource manages the lifecycle of a project access token.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
 

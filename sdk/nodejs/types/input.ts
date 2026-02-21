@@ -1425,11 +1425,11 @@ export interface ProjectPushRules {
      */
     preventSecrets?: pulumi.Input<boolean>;
     /**
-     * Reject commit when it’s not DCO certified.
+     * Reject commit when it's not DCO certified.
      */
     rejectNonDcoCommits?: pulumi.Input<boolean>;
     /**
-     * Reject commit when it’s not signed through GPG.
+     * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean>;
 }
@@ -1618,11 +1618,15 @@ export interface TagProtectionAllowedToCreate {
      */
     accessLevelDescription?: pulumi.Input<string>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
+     */
+    deployKeyId?: pulumi.Input<number>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
     groupId?: pulumi.Input<number>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
     userId?: pulumi.Input<number>;
 }

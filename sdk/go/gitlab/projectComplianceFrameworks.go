@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectComplianceFrameworks` resource allows to manage the lifecycle of compliance frameworks on a project.
+// The `ProjectComplianceFrameworks` resource manages the lifecycle of compliance frameworks on a project.
 //
 // > This resource requires a GitLab Enterprise instance with a Premium license to set the compliance frameworks on a project.
 //

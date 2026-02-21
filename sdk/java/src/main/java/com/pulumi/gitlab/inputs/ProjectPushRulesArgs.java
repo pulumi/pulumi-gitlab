@@ -183,14 +183,14 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Reject commit when it’s not DCO certified.
+     * Reject commit when it&#39;s not DCO certified.
      * 
      */
     @Import(name="rejectNonDcoCommits")
     private @Nullable Output<Boolean> rejectNonDcoCommits;
 
     /**
-     * @return Reject commit when it’s not DCO certified.
+     * @return Reject commit when it&#39;s not DCO certified.
      * 
      */
     public Optional<Output<Boolean>> rejectNonDcoCommits() {
@@ -198,14 +198,14 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Reject commit when it’s not signed through GPG.
+     * Reject commit when it&#39;s not signed through GPG.
      * 
      */
     @Import(name="rejectUnsignedCommits")
     private @Nullable Output<Boolean> rejectUnsignedCommits;
 
     /**
-     * @return Reject commit when it’s not signed through GPG.
+     * @return Reject commit when it&#39;s not signed through GPG.
      * 
      */
     public Optional<Output<Boolean>> rejectUnsignedCommits() {
@@ -480,7 +480,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rejectNonDcoCommits Reject commit when it’s not DCO certified.
+         * @param rejectNonDcoCommits Reject commit when it&#39;s not DCO certified.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rejectNonDcoCommits Reject commit when it’s not DCO certified.
+         * @param rejectNonDcoCommits Reject commit when it&#39;s not DCO certified.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rejectUnsignedCommits Reject commit when it’s not signed through GPG.
+         * @param rejectUnsignedCommits Reject commit when it&#39;s not signed through GPG.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ProjectPushRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rejectUnsignedCommits Reject commit when it’s not signed through GPG.
+         * @param rejectUnsignedCommits Reject commit when it&#39;s not signed through GPG.
          * 
          * @return builder
          * 

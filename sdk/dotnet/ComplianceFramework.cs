@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ComplianceFramework` resource allows to manage the lifecycle of a compliance framework on top-level groups.
+    /// The `gitlab.ComplianceFramework` resource manages the lifecycle of a compliance framework on top-level groups.
     /// 
     /// There can be only one `Default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.
     /// 

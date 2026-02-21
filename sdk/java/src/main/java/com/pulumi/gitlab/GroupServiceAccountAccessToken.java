@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.
+ * The `gitlab.GroupServiceAccountAccessToken` resource manages the lifecycle of a group service account access token.
  * 
  * &gt; Use of the `timestamp()` function with expiresAt will cause the resource to be re-created with every apply, it&#39;s recommended to use `plantimestamp()` or a static value instead.
  * 

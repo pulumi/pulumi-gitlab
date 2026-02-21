@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectShareGroup` resource allows to manage the lifecycle of project shared with a group.
+// The `ProjectShareGroup` resource manages the lifecycle of project shared with a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/#share-a-project-with-a-group)
 //

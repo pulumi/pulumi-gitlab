@@ -206,6 +206,7 @@ class ApplicationSettingsArgs:
                  mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -514,6 +515,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
@@ -1010,6 +1012,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "mirror_max_capacity", mirror_max_capacity)
         if mirror_max_delay is not None:
             pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
+        if notify_on_unknown_sign_in is not None:
+            pulumi.set(__self__, "notify_on_unknown_sign_in", notify_on_unknown_sign_in)
         if npm_package_requests_forwarding is not None:
             pulumi.set(__self__, "npm_package_requests_forwarding", npm_package_requests_forwarding)
         if nuget_skip_metadata_url_validation is not None:
@@ -3474,6 +3478,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "mirror_max_delay", value)
 
     @_builtins.property
+    @pulumi.getter(name="notifyOnUnknownSignIn")
+    def notify_on_unknown_sign_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable sending notification if sign in from unknown IP address happens
+        """
+        return pulumi.get(self, "notify_on_unknown_sign_in")
+
+    @notify_on_unknown_sign_in.setter
+    def notify_on_unknown_sign_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "notify_on_unknown_sign_in", value)
+
+    @_builtins.property
     @pulumi.getter(name="npmPackageRequestsForwarding")
     def npm_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -5128,6 +5144,7 @@ class _ApplicationSettingsState:
                  mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -5438,6 +5455,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
@@ -5938,6 +5956,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "mirror_max_capacity", mirror_max_capacity)
         if mirror_max_delay is not None:
             pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
+        if notify_on_unknown_sign_in is not None:
+            pulumi.set(__self__, "notify_on_unknown_sign_in", notify_on_unknown_sign_in)
         if npm_package_requests_forwarding is not None:
             pulumi.set(__self__, "npm_package_requests_forwarding", npm_package_requests_forwarding)
         if nuget_skip_metadata_url_validation is not None:
@@ -8426,6 +8446,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "mirror_max_delay", value)
 
     @_builtins.property
+    @pulumi.getter(name="notifyOnUnknownSignIn")
+    def notify_on_unknown_sign_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable sending notification if sign in from unknown IP address happens
+        """
+        return pulumi.get(self, "notify_on_unknown_sign_in")
+
+    @notify_on_unknown_sign_in.setter
+    def notify_on_unknown_sign_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "notify_on_unknown_sign_in", value)
+
+    @_builtins.property
     @pulumi.getter(name="npmPackageRequestsForwarding")
     def npm_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -10081,6 +10113,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -10393,6 +10426,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
@@ -10725,6 +10759,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
                  npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -11041,6 +11076,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["mirror_capacity_threshold"] = mirror_capacity_threshold
             __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
             __props__.__dict__["mirror_max_delay"] = mirror_max_delay
+            __props__.__dict__["notify_on_unknown_sign_in"] = notify_on_unknown_sign_in
             __props__.__dict__["npm_package_requests_forwarding"] = npm_package_requests_forwarding
             __props__.__dict__["nuget_skip_metadata_url_validation"] = nuget_skip_metadata_url_validation
             __props__.__dict__["outbound_local_requests_whitelists"] = outbound_local_requests_whitelists
@@ -11364,6 +11400,7 @@ class ApplicationSettings(pulumi.CustomResource):
             mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
             mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
+            notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
             npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
             nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
             outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -11679,6 +11716,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_local_requests_whitelists: Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
@@ -11993,6 +12031,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["mirror_capacity_threshold"] = mirror_capacity_threshold
         __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
         __props__.__dict__["mirror_max_delay"] = mirror_max_delay
+        __props__.__dict__["notify_on_unknown_sign_in"] = notify_on_unknown_sign_in
         __props__.__dict__["npm_package_requests_forwarding"] = npm_package_requests_forwarding
         __props__.__dict__["nuget_skip_metadata_url_validation"] = nuget_skip_metadata_url_validation
         __props__.__dict__["outbound_local_requests_whitelists"] = outbound_local_requests_whitelists
@@ -13610,6 +13649,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         """
         return pulumi.get(self, "mirror_max_delay")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyOnUnknownSignIn")
+    def notify_on_unknown_sign_in(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enable sending notification if sign in from unknown IP address happens
+        """
+        return pulumi.get(self, "notify_on_unknown_sign_in")
 
     @_builtins.property
     @pulumi.getter(name="npmPackageRequestsForwarding")

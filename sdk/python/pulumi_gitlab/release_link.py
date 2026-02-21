@@ -283,7 +283,7 @@ class ReleaseLink(pulumi.CustomResource):
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ReleaseLink` resource allows to manage the lifecycle of a release link.
+        The `ReleaseLink` resource manages the lifecycle of a release link.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 
@@ -343,7 +343,7 @@ class ReleaseLink(pulumi.CustomResource):
                  args: ReleaseLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ReleaseLink` resource allows to manage the lifecycle of a release link.
+        The `ReleaseLink` resource manages the lifecycle of a release link.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
 

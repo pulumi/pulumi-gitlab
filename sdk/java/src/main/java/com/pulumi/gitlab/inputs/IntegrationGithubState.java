@@ -32,14 +32,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Creation time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Creation time.
+     * @return The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -84,14 +84,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The title of this resource.
+     * Title of the integration.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return The title of this resource.
+     * @return Title of the integration.
      * 
      */
     public Optional<Output<String>> title() {
@@ -114,14 +114,14 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Update time.
+     * @return The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -181,7 +181,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt Creation time.
+         * @param createdAt The ISO8601 date/time that this integration was activated at in UTC.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt Creation time.
+         * @param createdAt The ISO8601 date/time that this integration was activated at in UTC.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param title The title of this resource.
+         * @param title Title of the integration.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param title The title of this resource.
+         * @param title Title of the integration.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param updatedAt Update time.
+         * @param updatedAt The ISO8601 date/time that this integration was last updated at in UTC.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class IntegrationGithubState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param updatedAt Update time.
+         * @param updatedAt The ISO8601 date/time that this integration was last updated at in UTC.
          * 
          * @return builder
          * 

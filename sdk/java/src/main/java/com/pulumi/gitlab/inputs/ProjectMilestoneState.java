@@ -48,14 +48,14 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
     @Import(name="dueDate")
     private @Nullable Output<String> dueDate;
 
     /**
-     * @return The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * @return The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
     public Optional<Output<String>> dueDate() {
@@ -93,14 +93,14 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The instance-wide ID of the project’s milestone.
+     * The instance-wide ID of the project&#39;s milestone.
      * 
      */
     @Import(name="milestoneId")
     private @Nullable Output<Integer> milestoneId;
 
     /**
-     * @return The instance-wide ID of the project’s milestone.
+     * @return The instance-wide ID of the project&#39;s milestone.
      * 
      */
     public Optional<Output<Integer>> milestoneId() {
@@ -138,14 +138,14 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
     @Import(name="startDate")
     private @Nullable Output<String> startDate;
 
     /**
-     * @return The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * @return The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
     public Optional<Output<String>> startDate() {
@@ -291,7 +291,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dueDate The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+         * @param dueDate The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dueDate The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+         * @param dueDate The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param milestoneId The instance-wide ID of the project’s milestone.
+         * @param milestoneId The instance-wide ID of the project&#39;s milestone.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param milestoneId The instance-wide ID of the project’s milestone.
+         * @param milestoneId The instance-wide ID of the project&#39;s milestone.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param startDate The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+         * @param startDate The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ProjectMilestoneState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param startDate The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+         * @param startDate The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
          * 
          * @return builder
          * 

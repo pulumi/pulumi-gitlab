@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+    /// The `gitlab.GroupLdapLink` resource manages the lifecycle of an LDAP integration with a group.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
     /// 

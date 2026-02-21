@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.ClusterAgentToken` resource allows to manage the lifecycle of a token for a GitLab Agent for Kubernetes.
+ * The `gitlab.ClusterAgentToken` resource manages the lifecycle of a token for a GitLab Agent for Kubernetes.
  *
  * > Requires at least maintainer permissions on the project.
  *

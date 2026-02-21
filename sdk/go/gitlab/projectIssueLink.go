@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectIssueLink` resource allows to manage the lifecycle of project issue links.
+// The `ProjectIssueLink` resource manages the lifecycle of project issue links.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/issue_links/)
 //

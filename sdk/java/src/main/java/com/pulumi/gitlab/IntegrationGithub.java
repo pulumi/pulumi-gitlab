@@ -13,7 +13,6 @@ import com.pulumi.gitlab.inputs.IntegrationGithubState;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -110,14 +109,14 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
         return this.active;
     }
     /**
-     * Creation time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Creation time.
+     * @return The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     public Output<String> createdAt() {
@@ -148,24 +147,24 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="staticContext", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> staticContext;
+    private Output<Boolean> staticContext;
 
     /**
      * @return Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
      * 
      */
-    public Output<Optional<Boolean>> staticContext() {
-        return Codegen.optional(this.staticContext);
+    public Output<Boolean> staticContext() {
+        return this.staticContext;
     }
     /**
-     * The title of this resource.
+     * Title of the integration.
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
-     * @return The title of this resource.
+     * @return Title of the integration.
      * 
      */
     public Output<String> title() {
@@ -186,14 +185,14 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
         return this.token;
     }
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return Update time.
+     * @return The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     public Output<String> updatedAt() {

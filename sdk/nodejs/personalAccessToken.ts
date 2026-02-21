@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.PersonalAccessToken` resource allows to manage the lifecycle of a personal access token.
+ * The `gitlab.PersonalAccessToken` resource manages the lifecycle of a personal access token.
  *
  * > This resource requires administration privileges.
  *

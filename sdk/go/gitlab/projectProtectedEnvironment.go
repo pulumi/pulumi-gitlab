@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a project.
+// The `ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
 //
 // > In order to use a user or group in the `deployAccessLevels` configuration,
 //

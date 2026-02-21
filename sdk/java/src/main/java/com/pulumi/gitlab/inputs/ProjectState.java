@@ -119,14 +119,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * Auto-cancel pending pipelines. This isn&#39;t a boolean, but enabled/disabled.
      * 
      */
     @Import(name="autoCancelPendingPipelines")
     private @Nullable Output<String> autoCancelPendingPipelines;
 
     /**
-     * @return Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * @return Auto-cancel pending pipelines. This isn&#39;t a boolean, but enabled/disabled.
      * 
      */
     public Optional<Output<String>> autoCancelPendingPipelines() {
@@ -682,14 +682,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Import(name="importUrl")
     private @Nullable Output<String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * @return Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Optional<Output<String>> importUrl() {
@@ -840,6 +840,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum file size in megabytes for individual job artifacts.
+     * 
+     */
+    @Import(name="maxArtifactsSize")
+    private @Nullable Output<Integer> maxArtifactsSize;
+
+    /**
+     * @return The maximum file size in megabytes for individual job artifacts.
+     * 
+     */
+    public Optional<Output<Integer>> maxArtifactsSize() {
+        return Optional.ofNullable(this.maxArtifactsSize);
+    }
+
+    /**
      * Template used to create merge commit message in merge requests.
      * 
      */
@@ -968,46 +983,70 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable project pull mirror.
+     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
     @Import(name="mirror")
     private @Nullable Output<Boolean> mirror;
 
     /**
-     * @return Enable project pull mirror.
+     * @return Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
     public Optional<Output<Boolean>> mirror() {
         return Optional.ofNullable(this.mirror);
     }
 
     /**
-     * Enable overwrite diverged branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
     @Import(name="mirrorOverwritesDivergedBranches")
     private @Nullable Output<Boolean> mirrorOverwritesDivergedBranches;
 
     /**
-     * @return Enable overwrite diverged branches for a mirrored project.
+     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
     public Optional<Output<Boolean>> mirrorOverwritesDivergedBranches() {
         return Optional.ofNullable(this.mirrorOverwritesDivergedBranches);
     }
 
     /**
-     * Enable trigger builds on pushes for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
     @Import(name="mirrorTriggerBuilds")
     private @Nullable Output<Boolean> mirrorTriggerBuilds;
 
     /**
-     * @return Enable trigger builds on pushes for a mirrored project.
+     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
     public Optional<Output<Boolean>> mirrorTriggerBuilds() {
         return Optional.ofNullable(this.mirrorTriggerBuilds);
     }
@@ -1133,16 +1172,24 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable only mirror protected branches for a mirrored project.
+     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
     @Import(name="onlyMirrorProtectedBranches")
     private @Nullable Output<Boolean> onlyMirrorProtectedBranches;
 
     /**
-     * @return Enable only mirror protected branches for a mirrored project.
+     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+     * 
+     * @deprecated
+     * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      * 
      */
+    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
     public Optional<Output<Boolean>> onlyMirrorProtectedBranches() {
         return Optional.ofNullable(this.onlyMirrorProtectedBranches);
     }
@@ -1859,6 +1906,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.issuesTemplate = $.issuesTemplate;
         this.keepLatestArtifact = $.keepLatestArtifact;
         this.lfsEnabled = $.lfsEnabled;
+        this.maxArtifactsSize = $.maxArtifactsSize;
         this.mergeCommitTemplate = $.mergeCommitTemplate;
         this.mergeMethod = $.mergeMethod;
         this.mergePipelinesEnabled = $.mergePipelinesEnabled;
@@ -2074,7 +2122,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCancelPendingPipelines Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+         * @param autoCancelPendingPipelines Auto-cancel pending pipelines. This isn&#39;t a boolean, but enabled/disabled.
          * 
          * @return builder
          * 
@@ -2085,7 +2133,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCancelPendingPipelines Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+         * @param autoCancelPendingPipelines Auto-cancel pending pipelines. This isn&#39;t a boolean, but enabled/disabled.
          * 
          * @return builder
          * 
@@ -2869,7 +2917,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+         * @param importUrl Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2880,7 +2928,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+         * @param importUrl Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -3087,6 +3135,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maxArtifactsSize The maximum file size in megabytes for individual job artifacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxArtifactsSize(@Nullable Output<Integer> maxArtifactsSize) {
+            $.maxArtifactsSize = maxArtifactsSize;
+            return this;
+        }
+
+        /**
+         * @param maxArtifactsSize The maximum file size in megabytes for individual job artifacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxArtifactsSize(Integer maxArtifactsSize) {
+            return maxArtifactsSize(Output.of(maxArtifactsSize));
+        }
+
+        /**
          * @param mergeCommitTemplate Template used to create merge commit message in merge requests.
          * 
          * @return builder
@@ -3263,64 +3332,88 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mirror Enable project pull mirror.
+         * @param mirror Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
         public Builder mirror(@Nullable Output<Boolean> mirror) {
             $.mirror = mirror;
             return this;
         }
 
         /**
-         * @param mirror Enable project pull mirror.
+         * @param mirror Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
         public Builder mirror(Boolean mirror) {
             return mirror(Output.of(mirror));
         }
 
         /**
-         * @param mirrorOverwritesDivergedBranches Enable overwrite diverged branches for a mirrored project.
+         * @param mirrorOverwritesDivergedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
         public Builder mirrorOverwritesDivergedBranches(@Nullable Output<Boolean> mirrorOverwritesDivergedBranches) {
             $.mirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             return this;
         }
 
         /**
-         * @param mirrorOverwritesDivergedBranches Enable overwrite diverged branches for a mirrored project.
+         * @param mirrorOverwritesDivergedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
         public Builder mirrorOverwritesDivergedBranches(Boolean mirrorOverwritesDivergedBranches) {
             return mirrorOverwritesDivergedBranches(Output.of(mirrorOverwritesDivergedBranches));
         }
 
         /**
-         * @param mirrorTriggerBuilds Enable trigger builds on pushes for a mirrored project.
+         * @param mirrorTriggerBuilds Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
         public Builder mirrorTriggerBuilds(@Nullable Output<Boolean> mirrorTriggerBuilds) {
             $.mirrorTriggerBuilds = mirrorTriggerBuilds;
             return this;
         }
 
         /**
-         * @param mirrorTriggerBuilds Enable trigger builds on pushes for a mirrored project.
+         * @param mirrorTriggerBuilds Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
         public Builder mirrorTriggerBuilds(Boolean mirrorTriggerBuilds) {
             return mirrorTriggerBuilds(Output.of(mirrorTriggerBuilds));
         }
@@ -3494,22 +3587,30 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onlyMirrorProtectedBranches Enable only mirror protected branches for a mirrored project.
+         * @param onlyMirrorProtectedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
         public Builder onlyMirrorProtectedBranches(@Nullable Output<Boolean> onlyMirrorProtectedBranches) {
             $.onlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             return this;
         }
 
         /**
-         * @param onlyMirrorProtectedBranches Enable only mirror protected branches for a mirrored project.
+         * @param onlyMirrorProtectedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
          * 
          * @return builder
          * 
+         * @deprecated
+         * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+         * 
          */
+        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
         public Builder onlyMirrorProtectedBranches(Boolean onlyMirrorProtectedBranches) {
             return onlyMirrorProtectedBranches(Output.of(onlyMirrorProtectedBranches));
         }

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupLdapLink` resource allows to manage the lifecycle of an LDAP integration with a group.
+// The `GroupLdapLink` resource manages the lifecycle of an LDAP integration with a group.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_ldap_links/)
 //

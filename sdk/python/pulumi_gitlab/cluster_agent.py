@@ -153,7 +153,7 @@ class ClusterAgent(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
+        The `ClusterAgent` resource manages the lifecycle of a GitLab Agent for Kubernetes.
 
         > Note that this resource only registers the agent, but doesn't configure it.
            The configuration needs to be manually added as described in
@@ -221,7 +221,7 @@ class ClusterAgent(pulumi.CustomResource):
                  args: ClusterAgentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ClusterAgent` resource allows to manage the lifecycle of a GitLab Agent for Kubernetes.
+        The `ClusterAgent` resource manages the lifecycle of a GitLab Agent for Kubernetes.
 
         > Note that this resource only registers the agent, but doesn't configure it.
            The configuration needs to be manually added as described in

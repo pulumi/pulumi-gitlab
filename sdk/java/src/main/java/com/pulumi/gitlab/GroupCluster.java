@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.GroupCluster` resource allows to manage the lifecycle of a group cluster.
+ * The `gitlab.GroupCluster` resource manages the lifecycle of a group cluster.
  * 
  * &gt; This is deprecated, due for removal in GitLab 19.0.
  * 

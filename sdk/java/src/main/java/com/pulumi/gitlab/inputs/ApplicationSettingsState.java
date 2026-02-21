@@ -2827,6 +2827,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable sending notification if sign in from unknown IP address happens
+     * 
+     */
+    @Import(name="notifyOnUnknownSignIn")
+    private @Nullable Output<Boolean> notifyOnUnknownSignIn;
+
+    /**
+     * @return Enable sending notification if sign in from unknown IP address happens
+     * 
+     */
+    public Optional<Output<Boolean>> notifyOnUnknownSignIn() {
+        return Optional.ofNullable(this.notifyOnUnknownSignIn);
+    }
+
+    /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      * 
      */
@@ -4846,6 +4861,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.mirrorCapacityThreshold = $.mirrorCapacityThreshold;
         this.mirrorMaxCapacity = $.mirrorMaxCapacity;
         this.mirrorMaxDelay = $.mirrorMaxDelay;
+        this.notifyOnUnknownSignIn = $.notifyOnUnknownSignIn;
         this.npmPackageRequestsForwarding = $.npmPackageRequestsForwarding;
         this.nugetSkipMetadataUrlValidation = $.nugetSkipMetadataUrlValidation;
         this.outboundLocalRequestsWhitelists = $.outboundLocalRequestsWhitelists;
@@ -9009,6 +9025,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder mirrorMaxDelay(Integer mirrorMaxDelay) {
             return mirrorMaxDelay(Output.of(mirrorMaxDelay));
+        }
+
+        /**
+         * @param notifyOnUnknownSignIn Enable sending notification if sign in from unknown IP address happens
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyOnUnknownSignIn(@Nullable Output<Boolean> notifyOnUnknownSignIn) {
+            $.notifyOnUnknownSignIn = notifyOnUnknownSignIn;
+            return this;
+        }
+
+        /**
+         * @param notifyOnUnknownSignIn Enable sending notification if sign in from unknown IP address happens
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyOnUnknownSignIn(Boolean notifyOnUnknownSignIn) {
+            return notifyOnUnknownSignIn(Output.of(notifyOnUnknownSignIn));
         }
 
         /**

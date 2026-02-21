@@ -45,6 +45,18 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Regex pattern to filter the returned branches by name.
+        /// </summary>
+        [Input("regex")]
+        public string? Regex { get; set; }
+
+        /// <summary>
+        /// A search string to filter branches by name.
+        /// </summary>
+        [Input("search")]
+        public string? Search { get; set; }
+
         public GetProjectBranchesArgs()
         {
         }
@@ -58,6 +70,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// Regex pattern to filter the returned branches by name.
+        /// </summary>
+        [Input("regex")]
+        public Input<string>? Regex { get; set; }
+
+        /// <summary>
+        /// A search string to filter branches by name.
+        /// </summary>
+        [Input("search")]
+        public Input<string>? Search { get; set; }
 
         public GetProjectBranchesInvokeArgs()
         {
@@ -81,6 +105,14 @@ namespace Pulumi.GitLab
         /// ID or URL-encoded path of the project owned by the authenticated user.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Regex pattern to filter the returned branches by name.
+        /// </summary>
+        public readonly string? Regex;
+        /// <summary>
+        /// A search string to filter branches by name.
+        /// </summary>
+        public readonly string? Search;
 
         [OutputConstructor]
         private GetProjectBranchesResult(
@@ -88,11 +120,17 @@ namespace Pulumi.GitLab
 
             string id,
 
-            string project)
+            string project,
+
+            string? regex,
+
+            string? search)
         {
             Branches = branches;
             Id = id;
             Project = project;
+            Regex = regex;
+            Search = search;
         }
     }
 }

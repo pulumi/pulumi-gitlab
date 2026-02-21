@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectHookResult {
     /**
+     * @return Filter push events by branch.
+     * 
+     */
+    private String branchFilterStrategy;
+    /**
      * @return Invoke the hook for confidential issues events.
      * 
      */
@@ -32,6 +37,11 @@ public final class GetProjectHookResult {
      * 
      */
     private Boolean deploymentEvents;
+    /**
+     * @return Invoke the hook for emoji events.
+     * 
+     */
+    private Boolean emojiEvents;
     /**
      * @return Enable ssl verification when invoking the hook.
      * 
@@ -129,6 +139,13 @@ public final class GetProjectHookResult {
 
     private GetProjectHookResult() {}
     /**
+     * @return Filter push events by branch.
+     * 
+     */
+    public String branchFilterStrategy() {
+        return this.branchFilterStrategy;
+    }
+    /**
      * @return Invoke the hook for confidential issues events.
      * 
      */
@@ -155,6 +172,13 @@ public final class GetProjectHookResult {
      */
     public Boolean deploymentEvents() {
         return this.deploymentEvents;
+    }
+    /**
+     * @return Invoke the hook for emoji events.
+     * 
+     */
+    public Boolean emojiEvents() {
+        return this.emojiEvents;
     }
     /**
      * @return Enable ssl verification when invoking the hook.
@@ -296,10 +320,12 @@ public final class GetProjectHookResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String branchFilterStrategy;
         private Boolean confidentialIssuesEvents;
         private Boolean confidentialNoteEvents;
         private String customWebhookTemplate;
         private Boolean deploymentEvents;
+        private Boolean emojiEvents;
         private Boolean enableSslVerification;
         private Integer hookId;
         private String id;
@@ -321,10 +347,12 @@ public final class GetProjectHookResult {
         public Builder() {}
         public Builder(GetProjectHookResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.branchFilterStrategy = defaults.branchFilterStrategy;
     	      this.confidentialIssuesEvents = defaults.confidentialIssuesEvents;
     	      this.confidentialNoteEvents = defaults.confidentialNoteEvents;
     	      this.customWebhookTemplate = defaults.customWebhookTemplate;
     	      this.deploymentEvents = defaults.deploymentEvents;
+    	      this.emojiEvents = defaults.emojiEvents;
     	      this.enableSslVerification = defaults.enableSslVerification;
     	      this.hookId = defaults.hookId;
     	      this.id = defaults.id;
@@ -345,6 +373,14 @@ public final class GetProjectHookResult {
     	      this.wikiPageEvents = defaults.wikiPageEvents;
         }
 
+        @CustomType.Setter
+        public Builder branchFilterStrategy(String branchFilterStrategy) {
+            if (branchFilterStrategy == null) {
+              throw new MissingRequiredPropertyException("GetProjectHookResult", "branchFilterStrategy");
+            }
+            this.branchFilterStrategy = branchFilterStrategy;
+            return this;
+        }
         @CustomType.Setter
         public Builder confidentialIssuesEvents(Boolean confidentialIssuesEvents) {
             if (confidentialIssuesEvents == null) {
@@ -375,6 +411,14 @@ public final class GetProjectHookResult {
               throw new MissingRequiredPropertyException("GetProjectHookResult", "deploymentEvents");
             }
             this.deploymentEvents = deploymentEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emojiEvents(Boolean emojiEvents) {
+            if (emojiEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHookResult", "emojiEvents");
+            }
+            this.emojiEvents = emojiEvents;
             return this;
         }
         @CustomType.Setter
@@ -523,10 +567,12 @@ public final class GetProjectHookResult {
         }
         public GetProjectHookResult build() {
             final var _resultValue = new GetProjectHookResult();
+            _resultValue.branchFilterStrategy = branchFilterStrategy;
             _resultValue.confidentialIssuesEvents = confidentialIssuesEvents;
             _resultValue.confidentialNoteEvents = confidentialNoteEvents;
             _resultValue.customWebhookTemplate = customWebhookTemplate;
             _resultValue.deploymentEvents = deploymentEvents;
+            _resultValue.emojiEvents = emojiEvents;
             _resultValue.enableSslVerification = enableSslVerification;
             _resultValue.hookId = hookId;
             _resultValue.id = id;

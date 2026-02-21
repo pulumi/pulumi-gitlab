@@ -62,14 +62,14 @@ public final class ProjectBadgeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the project to add the badge to.
+     * The ID or URL-encoded path of the project to add the badge to.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The id of the project to add the badge to.
+     * @return The ID or URL-encoded path of the project to add the badge to.
      * 
      */
     public Output<String> project() {
@@ -167,7 +167,7 @@ public final class ProjectBadgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The id of the project to add the badge to.
+         * @param project The ID or URL-encoded path of the project to add the badge to.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ProjectBadgeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The id of the project to add the badge to.
+         * @param project The ID or URL-encoded path of the project to add the badge to.
          * 
          * @return builder
          * 

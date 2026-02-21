@@ -291,7 +291,7 @@ class PipelineSchedule(pulumi.CustomResource):
                  take_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+        The `PipelineSchedule` resource manages the lifecycle of a scheduled pipeline.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 
@@ -346,7 +346,7 @@ class PipelineSchedule(pulumi.CustomResource):
                  args: PipelineScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `PipelineSchedule` resource allows to manage the lifecycle of a scheduled pipeline.
+        The `PipelineSchedule` resource manages the lifecycle of a scheduled pipeline.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_schedules/)
 

@@ -464,7 +464,7 @@ class GroupCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupCluster` resource allows to manage the lifecycle of a group cluster.
+        The `GroupCluster` resource manages the lifecycle of a group cluster.
 
         > This is deprecated, due for removal in GitLab 19.0.
 
@@ -535,7 +535,7 @@ class GroupCluster(pulumi.CustomResource):
                  args: GroupClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupCluster` resource allows to manage the lifecycle of a group cluster.
+        The `GroupCluster` resource manages the lifecycle of a group cluster.
 
         > This is deprecated, due for removal in GitLab 19.0.
 

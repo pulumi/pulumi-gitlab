@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
+    /// The `gitlab.GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
     /// 
     /// &gt; In order to use a UserId in the `DeployAccessLevels` configuration,
     ///    you need to make sure that users have access to the group with Maintainer role or higher.

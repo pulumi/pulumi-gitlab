@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.UserGpgKey` resource allows to manage the lifecycle of a GPG key assigned to the current user or a specific user.
+ * The `gitlab.UserGpgKey` resource manages the lifecycle of a GPG key assigned to the current user or a specific user.
  * 
  * &gt; Managing GPG keys for arbitrary users requires admin privileges.
  * 

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.PipelineTrigger` resource allows to manage the lifecycle of a pipeline trigger.
+ * The `gitlab.PipelineTrigger` resource manages the lifecycle of a pipeline trigger.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pipeline_triggers/)
  *

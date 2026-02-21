@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
+// The `ProjectMilestone` resource manages the lifecycle of a project milestone.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
 //
@@ -39,9 +39,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Basic milestone with required fields only
 //			_, err = gitlab.NewProjectMilestone(ctx, "example", &gitlab.ProjectMilestoneArgs{
 //				Project: example.ID(),
 //				Title:   pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Comprehensive milestone with all optional fields
+//			_, err = gitlab.NewProjectMilestone(ctx, "comprehensive", &gitlab.ProjectMilestoneArgs{
+//				Project:     example.ID(),
+//				Title:       pulumi.String("Q4 2024 Release"),
+//				Description: pulumi.String("Major release for Q4 2024"),
+//				StartDate:   pulumi.String("2024-01-01"),
+//				DueDate:     pulumi.String("2024-12-31"),
+//				State:       pulumi.String("active"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,23 +92,23 @@ type ProjectMilestone struct {
 	// The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the milestone.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	DueDate pulumi.StringPtrOutput `pulumi:"dueDate"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
+	DueDate pulumi.StringOutput `pulumi:"dueDate"`
 	// Bool, true if milestone expired.
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// The ID of the project's milestone.
 	Iid pulumi.IntOutput `pulumi:"iid"`
-	// The instance-wide ID of the project’s milestone.
+	// The instance-wide ID of the project's milestone.
 	MilestoneId pulumi.IntOutput `pulumi:"milestoneId"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The project ID of milestone.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
-	// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-	StartDate pulumi.StringPtrOutput `pulumi:"startDate"`
+	// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
+	StartDate pulumi.StringOutput `pulumi:"startDate"`
 	// The state of the milestone. Valid values are: `active`, `closed`.
-	State pulumi.StringPtrOutput `pulumi:"state"`
+	State pulumi.StringOutput `pulumi:"state"`
 	// The title of a milestone.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -144,19 +157,19 @@ type projectMilestoneState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the milestone.
 	Description *string `pulumi:"description"`
-	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate *string `pulumi:"dueDate"`
 	// Bool, true if milestone expired.
 	Expired *bool `pulumi:"expired"`
 	// The ID of the project's milestone.
 	Iid *int `pulumi:"iid"`
-	// The instance-wide ID of the project’s milestone.
+	// The instance-wide ID of the project's milestone.
 	MilestoneId *int `pulumi:"milestoneId"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project *string `pulumi:"project"`
 	// The project ID of milestone.
 	ProjectId *int `pulumi:"projectId"`
-	// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	StartDate *string `pulumi:"startDate"`
 	// The state of the milestone. Valid values are: `active`, `closed`.
 	State *string `pulumi:"state"`
@@ -173,19 +186,19 @@ type ProjectMilestoneState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The description of the milestone.
 	Description pulumi.StringPtrInput
-	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate pulumi.StringPtrInput
 	// Bool, true if milestone expired.
 	Expired pulumi.BoolPtrInput
 	// The ID of the project's milestone.
 	Iid pulumi.IntPtrInput
-	// The instance-wide ID of the project’s milestone.
+	// The instance-wide ID of the project's milestone.
 	MilestoneId pulumi.IntPtrInput
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringPtrInput
 	// The project ID of milestone.
 	ProjectId pulumi.IntPtrInput
-	// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	StartDate pulumi.StringPtrInput
 	// The state of the milestone. Valid values are: `active`, `closed`.
 	State pulumi.StringPtrInput
@@ -204,11 +217,11 @@ func (ProjectMilestoneState) ElementType() reflect.Type {
 type projectMilestoneArgs struct {
 	// The description of the milestone.
 	Description *string `pulumi:"description"`
-	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate *string `pulumi:"dueDate"`
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`
-	// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	StartDate *string `pulumi:"startDate"`
 	// The state of the milestone. Valid values are: `active`, `closed`.
 	State *string `pulumi:"state"`
@@ -220,11 +233,11 @@ type projectMilestoneArgs struct {
 type ProjectMilestoneArgs struct {
 	// The description of the milestone.
 	Description pulumi.StringPtrInput
-	// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	DueDate pulumi.StringPtrInput
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project pulumi.StringInput
-	// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+	// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
 	StartDate pulumi.StringPtrInput
 	// The state of the milestone. Valid values are: `active`, `closed`.
 	State pulumi.StringPtrInput
@@ -325,13 +338,13 @@ func (o ProjectMilestoneOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The description of the milestone.
-func (o ProjectMilestoneOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ProjectMilestoneOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-func (o ProjectMilestoneOutput) DueDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringPtrOutput { return v.DueDate }).(pulumi.StringPtrOutput)
+// The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
+func (o ProjectMilestoneOutput) DueDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringOutput { return v.DueDate }).(pulumi.StringOutput)
 }
 
 // Bool, true if milestone expired.
@@ -344,7 +357,7 @@ func (o ProjectMilestoneOutput) Iid() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectMilestone) pulumi.IntOutput { return v.Iid }).(pulumi.IntOutput)
 }
 
-// The instance-wide ID of the project’s milestone.
+// The instance-wide ID of the project's milestone.
 func (o ProjectMilestoneOutput) MilestoneId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectMilestone) pulumi.IntOutput { return v.MilestoneId }).(pulumi.IntOutput)
 }
@@ -359,14 +372,14 @@ func (o ProjectMilestoneOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectMilestone) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }
 
-// The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
-func (o ProjectMilestoneOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringPtrOutput { return v.StartDate }).(pulumi.StringPtrOutput)
+// The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
+func (o ProjectMilestoneOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }
 
 // The state of the milestone. Valid values are: `active`, `closed`.
-func (o ProjectMilestoneOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+func (o ProjectMilestoneOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMilestone) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The title of a milestone.

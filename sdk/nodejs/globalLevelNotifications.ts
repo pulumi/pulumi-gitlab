@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.GlobalLevelNotifications` resource allows to manage global notifications.
+ * The `gitlab.GlobalLevelNotifications` resource manages global notifications.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/notification_settings/#get-group-or-project-notification-settings)
  *

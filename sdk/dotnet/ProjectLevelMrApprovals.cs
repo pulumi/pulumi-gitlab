@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `GitlabProjectLevelMrApprovalRule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+    /// The `GitlabProjectLevelMrApprovalRule` resource manages the lifecycle of a Merge Request-level approval rule.
     /// 
     /// &gt; This resource requires a GitLab Enterprise instance.
     /// 

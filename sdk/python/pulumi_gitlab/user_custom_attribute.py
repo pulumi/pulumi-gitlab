@@ -136,7 +136,7 @@ class UserCustomAttribute(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `UserCustomAttribute` resource allows to manage custom attributes for a user.
+        The `UserCustomAttribute` resource manages custom attributes for a user.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 
@@ -187,7 +187,7 @@ class UserCustomAttribute(pulumi.CustomResource):
                  args: UserCustomAttributeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `UserCustomAttribute` resource allows to manage custom attributes for a user.
+        The `UserCustomAttribute` resource manages custom attributes for a user.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 

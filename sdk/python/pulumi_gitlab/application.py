@@ -206,7 +206,7 @@ class Application(pulumi.CustomResource):
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        The `Application` resource allows to manage the lifecycle of applications in gitlab.
+        The `Application` resource manages the lifecycle of applications in gitlab.
 
         > In order to use a user for a user to create an application, they must have admin privileges at the instance level.
         To create an OIDC application, a scope of "openid".
@@ -265,7 +265,7 @@ class Application(pulumi.CustomResource):
                  args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `Application` resource allows to manage the lifecycle of applications in gitlab.
+        The `Application` resource manages the lifecycle of applications in gitlab.
 
         > In order to use a user for a user to create an application, they must have admin privileges at the instance level.
         To create an OIDC application, a scope of "openid".

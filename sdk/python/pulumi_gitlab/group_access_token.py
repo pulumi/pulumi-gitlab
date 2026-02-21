@@ -384,7 +384,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
+        The `GroupAccessToken` resource manages the lifecycle of a group access token.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
 
@@ -454,7 +454,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  args: GroupAccessTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupAccessToken` resource allows to manage the lifecycle of a group access token.
+        The `GroupAccessToken` resource manages the lifecycle of a group access token.
 
         > Observability scopes are in beta and may not work on all instances. See more details in [the documentation](https://docs.gitlab.com/development/tracing/)
 

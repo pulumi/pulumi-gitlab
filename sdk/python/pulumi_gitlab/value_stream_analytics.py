@@ -173,7 +173,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
                  stages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
                  __props__=None):
         """
-        The `ValueStreamAnalytics` resource allows to manage the lifecycle of value stream analytics.
+        The `ValueStreamAnalytics` resource manages the lifecycle of value stream analytics.
 
         > This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
 
@@ -265,7 +265,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
                  args: ValueStreamAnalyticsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ValueStreamAnalytics` resource allows to manage the lifecycle of value stream analytics.
+        The `ValueStreamAnalytics` resource manages the lifecycle of value stream analytics.
 
         > This resource requires a GitLab Enterprise instance with a Premium license to create custom value stream analytics.
 

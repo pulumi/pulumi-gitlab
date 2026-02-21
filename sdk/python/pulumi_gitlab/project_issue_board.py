@@ -272,7 +272,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        The `ProjectIssueBoard` resource allows to manage the lifecycle of a Project Issue Board.
+        The `ProjectIssueBoard` resource manages the lifecycle of a Project Issue Board.
 
         > **NOTE:** If the board lists are changed all lists will be recreated.
 
@@ -365,7 +365,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
                  args: ProjectIssueBoardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectIssueBoard` resource allows to manage the lifecycle of a Project Issue Board.
+        The `ProjectIssueBoard` resource manages the lifecycle of a Project Issue Board.
 
         > **NOTE:** If the board lists are changed all lists will be recreated.
 

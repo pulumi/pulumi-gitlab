@@ -13,11 +13,10 @@ import com.pulumi.gitlab.inputs.ProjectMilestoneState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ProjectMilestone` resource allows to manage the lifecycle of a project milestone.
+ * The `gitlab.ProjectMilestone` resource manages the lifecycle of a project milestone.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/milestones/)
  * 
@@ -54,9 +53,20 @@ import javax.annotation.Nullable;
  *             .namespaceId(exampleGitlabGroup.id())
  *             .build());
  * 
+ *         // Basic milestone with required fields only
  *         var exampleProjectMilestone = new ProjectMilestone("exampleProjectMilestone", ProjectMilestoneArgs.builder()
  *             .project(example.id())
  *             .title("example")
+ *             .build());
+ * 
+ *         // Comprehensive milestone with all optional fields
+ *         var comprehensive = new ProjectMilestone("comprehensive", ProjectMilestoneArgs.builder()
+ *             .project(example.id())
+ *             .title("Q4 2024 Release")
+ *             .description("Major release for Q4 2024")
+ *             .startDate("2024-01-01")
+ *             .dueDate("2024-12-31")
+ *             .state("active")
  *             .build());
  * 
  *     }
@@ -108,28 +118,28 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the milestone.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
     @Export(name="dueDate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dueDate;
+    private Output<String> dueDate;
 
     /**
-     * @return The due date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * @return The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
-    public Output<Optional<String>> dueDate() {
-        return Codegen.optional(this.dueDate);
+    public Output<String> dueDate() {
+        return this.dueDate;
     }
     /**
      * Bool, true if milestone expired.
@@ -160,14 +170,14 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
         return this.iid;
     }
     /**
-     * The instance-wide ID of the project’s milestone.
+     * The instance-wide ID of the project&#39;s milestone.
      * 
      */
     @Export(name="milestoneId", refs={Integer.class}, tree="[0]")
     private Output<Integer> milestoneId;
 
     /**
-     * @return The instance-wide ID of the project’s milestone.
+     * @return The instance-wide ID of the project&#39;s milestone.
      * 
      */
     public Output<Integer> milestoneId() {
@@ -202,32 +212,32 @@ public class ProjectMilestone extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
     @Export(name="startDate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> startDate;
+    private Output<String> startDate;
 
     /**
-     * @return The start date of the milestone. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
+     * @return The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      * 
      */
-    public Output<Optional<String>> startDate() {
-        return Codegen.optional(this.startDate);
+    public Output<String> startDate() {
+        return this.startDate;
     }
     /**
      * The state of the milestone. Valid values are: `active`, `closed`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> state;
+    private Output<String> state;
 
     /**
      * @return The state of the milestone. Valid values are: `active`, `closed`.
      * 
      */
-    public Output<Optional<String>> state() {
-        return Codegen.optional(this.state);
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * The title of a milestone.

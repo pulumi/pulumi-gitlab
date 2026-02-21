@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `UserImpersonationToken` resource allows to manage impersonation tokens of users.
+// The `UserImpersonationToken` resource manages impersonation tokens of users.
 // Requires administrator access. Token values are returned once. You are only able to create impersonation tokens to impersonate the user and perform both API calls and Git reads and writes. The user can’t see these tokens in their profile settings page.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/user_tokens/#create-an-impersonation-token)

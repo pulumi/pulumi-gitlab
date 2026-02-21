@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectBadge` resource allows to manage the lifecycle of project badges.
+// The `ProjectBadge` resource manages the lifecycle of project badges.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
 //
@@ -111,7 +111,7 @@ type ProjectBadge struct {
 	LinkUrl pulumi.StringOutput `pulumi:"linkUrl"`
 	// The name of the badge.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The id of the project to add the badge to.
+	// The ID or URL-encoded path of the project to add the badge to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringOutput `pulumi:"renderedImageUrl"`
@@ -164,7 +164,7 @@ type projectBadgeState struct {
 	LinkUrl *string `pulumi:"linkUrl"`
 	// The name of the badge.
 	Name *string `pulumi:"name"`
-	// The id of the project to add the badge to.
+	// The ID or URL-encoded path of the project to add the badge to.
 	Project *string `pulumi:"project"`
 	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl *string `pulumi:"renderedImageUrl"`
@@ -179,7 +179,7 @@ type ProjectBadgeState struct {
 	LinkUrl pulumi.StringPtrInput
 	// The name of the badge.
 	Name pulumi.StringPtrInput
-	// The id of the project to add the badge to.
+	// The ID or URL-encoded path of the project to add the badge to.
 	Project pulumi.StringPtrInput
 	// The imageUrl argument rendered (in case of use of placeholders).
 	RenderedImageUrl pulumi.StringPtrInput
@@ -198,7 +198,7 @@ type projectBadgeArgs struct {
 	LinkUrl string `pulumi:"linkUrl"`
 	// The name of the badge.
 	Name *string `pulumi:"name"`
-	// The id of the project to add the badge to.
+	// The ID or URL-encoded path of the project to add the badge to.
 	Project string `pulumi:"project"`
 }
 
@@ -210,7 +210,7 @@ type ProjectBadgeArgs struct {
 	LinkUrl pulumi.StringInput
 	// The name of the badge.
 	Name pulumi.StringPtrInput
-	// The id of the project to add the badge to.
+	// The ID or URL-encoded path of the project to add the badge to.
 	Project pulumi.StringInput
 }
 
@@ -316,7 +316,7 @@ func (o ProjectBadgeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The id of the project to add the badge to.
+// The ID or URL-encoded path of the project to add the badge to.
 func (o ProjectBadgeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBadge) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

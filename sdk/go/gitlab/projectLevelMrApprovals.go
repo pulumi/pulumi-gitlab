@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `gitlabProjectLevelMrApprovalRule` resource allows to manage the lifecycle of a Merge Request-level approval rule.
+// The `gitlabProjectLevelMrApprovalRule` resource manages the lifecycle of a Merge Request-level approval rule.
 //
 // > This resource requires a GitLab Enterprise instance.
 //

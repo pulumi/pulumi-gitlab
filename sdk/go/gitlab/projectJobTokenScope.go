@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ProjectJobTokenScope` resource allows to manage the CI/CD Job Token scope in a project.
+// The `ProjectJobTokenScope` resource manages the CI/CD Job Token scope in a project.
 // Any projects added to the CI/CD Job Token scope outside of TF will be untouched by the resource.
 //
 // > Conflicts with the use of `ProjectJobTokenScopes` when used on the same project. Use one or the other to ensure the desired state.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.GroupServiceAccountAccessToken` resource allows to manage the lifecycle of a group service account access token.
+    /// The `gitlab.GroupServiceAccountAccessToken` resource manages the lifecycle of a group service account access token.
     /// 
     /// &gt; Use of the `timestamp()` function with ExpiresAt will cause the resource to be re-created with every apply, it's recommended to use `plantimestamp()` or a static value instead.
     /// 

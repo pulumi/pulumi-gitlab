@@ -84,6 +84,10 @@ import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuePlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
 import com.pulumi.gitlab.inputs.GetProjectIssuesPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
+import com.pulumi.gitlab.inputs.GetProjectLabelPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
+import com.pulumi.gitlab.inputs.GetProjectLabelsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectMembershipArgs;
 import com.pulumi.gitlab.inputs.GetProjectMembershipPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
@@ -177,6 +181,8 @@ import com.pulumi.gitlab.outputs.GetProjectIdsResult;
 import com.pulumi.gitlab.outputs.GetProjectIssueLabelEventsResult;
 import com.pulumi.gitlab.outputs.GetProjectIssueResult;
 import com.pulumi.gitlab.outputs.GetProjectIssuesResult;
+import com.pulumi.gitlab.outputs.GetProjectLabelResult;
+import com.pulumi.gitlab.outputs.GetProjectLabelsResult;
 import com.pulumi.gitlab.outputs.GetProjectMembershipResult;
 import com.pulumi.gitlab.outputs.GetProjectMergeRequestResult;
 import com.pulumi.gitlab.outputs.GetProjectMergeRequestsResult;
@@ -7714,6 +7720,466 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectIssuesResult> getProjectIssuesPlain(GetProjectIssuesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectIssues:getProjectIssues", TypeShape.of(GetProjectIssuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectLabel` data source retrieves details about a project label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a project label by its ID
+     *         final var example = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *         // Retrieve using project path
+     *         final var byPath = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("group/project")
+     *             .labelId(25)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectLabelResult> getProjectLabel(GetProjectLabelArgs args) {
+        return getProjectLabel(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ProjectLabel` data source retrieves details about a project label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a project label by its ID
+     *         final var example = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *         // Retrieve using project path
+     *         final var byPath = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("group/project")
+     *             .labelId(25)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectLabelResult> getProjectLabelPlain(GetProjectLabelPlainArgs args) {
+        return getProjectLabelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ProjectLabel` data source retrieves details about a project label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a project label by its ID
+     *         final var example = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *         // Retrieve using project path
+     *         final var byPath = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("group/project")
+     *             .labelId(25)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectLabelResult> getProjectLabel(GetProjectLabelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectLabel:getProjectLabel", TypeShape.of(GetProjectLabelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectLabel` data source retrieves details about a project label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a project label by its ID
+     *         final var example = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *         // Retrieve using project path
+     *         final var byPath = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("group/project")
+     *             .labelId(25)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectLabelResult> getProjectLabel(GetProjectLabelArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectLabel:getProjectLabel", TypeShape.of(GetProjectLabelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectLabel` data source retrieves details about a project label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a project label by its ID
+     *         final var example = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *         // Retrieve using project path
+     *         final var byPath = GitlabFunctions.getProjectLabel(GetProjectLabelArgs.builder()
+     *             .project("group/project")
+     *             .labelId(25)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectLabelResult> getProjectLabelPlain(GetProjectLabelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectLabel:getProjectLabel", TypeShape.of(GetProjectLabelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectLabels` data source retrieves a list of labels for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectLabels(GetProjectLabelsArgs.builder()
+     *             .project("385")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectLabelsResult> getProjectLabels(GetProjectLabelsArgs args) {
+        return getProjectLabels(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectLabels` data source retrieves a list of labels for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectLabels(GetProjectLabelsArgs.builder()
+     *             .project("385")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectLabelsResult> getProjectLabelsPlain(GetProjectLabelsPlainArgs args) {
+        return getProjectLabelsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getProjectLabels` data source retrieves a list of labels for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectLabels(GetProjectLabelsArgs.builder()
+     *             .project("385")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectLabelsResult> getProjectLabels(GetProjectLabelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectLabels:getProjectLabels", TypeShape.of(GetProjectLabelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectLabels` data source retrieves a list of labels for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectLabels(GetProjectLabelsArgs.builder()
+     *             .project("385")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectLabelsResult> getProjectLabels(GetProjectLabelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectLabels:getProjectLabels", TypeShape.of(GetProjectLabelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getProjectLabels` data source retrieves a list of labels for a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectLabels(GetProjectLabelsArgs.builder()
+     *             .project("385")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectLabelsResult> getProjectLabelsPlain(GetProjectLabelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectLabels:getProjectLabels", TypeShape.of(GetProjectLabelsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.

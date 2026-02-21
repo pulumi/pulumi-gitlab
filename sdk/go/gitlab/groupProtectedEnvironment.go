@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `GroupProtectedEnvironment` resource allows to manage the lifecycle of a protected environment in a group.
+// The `GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
 //
 // > In order to use a userId in the `deployAccessLevels` configuration,
 //

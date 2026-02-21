@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ReleaseLink` resource allows to manage the lifecycle of a release link.
+ * The `gitlab.ReleaseLink` resource manages the lifecycle of a release link.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/releases/links/)
  * 

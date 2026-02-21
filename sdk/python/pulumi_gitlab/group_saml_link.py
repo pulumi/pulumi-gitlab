@@ -169,7 +169,7 @@ class GroupSamlLink(pulumi.CustomResource):
                  saml_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
+        The `GroupSamlLink` resource manages the lifecycle of an SAML integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
 
@@ -230,7 +230,7 @@ class GroupSamlLink(pulumi.CustomResource):
                  args: GroupSamlLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupSamlLink` resource allows to manage the lifecycle of an SAML integration with a group.
+        The `GroupSamlLink` resource manages the lifecycle of an SAML integration with a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
 

@@ -202,7 +202,7 @@ class ProjectMembership(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        The `ProjectMembership` resource allows to manage the lifecycle of a users project membership.
+        The `ProjectMembership` resource manages the lifecycle of a users project membership.
 
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 
@@ -262,7 +262,7 @@ class ProjectMembership(pulumi.CustomResource):
                  args: ProjectMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ProjectMembership` resource allows to manage the lifecycle of a users project membership.
+        The `ProjectMembership` resource manages the lifecycle of a users project membership.
 
         > If a project should grant membership to an entire group use the `ProjectShareGroup` resource instead.
 

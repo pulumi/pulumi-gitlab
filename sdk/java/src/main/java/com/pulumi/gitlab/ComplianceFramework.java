@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `gitlab.ComplianceFramework` resource allows to manage the lifecycle of a compliance framework on top-level groups.
+ * The `gitlab.ComplianceFramework` resource manages the lifecycle of a compliance framework on top-level groups.
  * 
  * There can be only one `default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.
  * 

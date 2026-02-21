@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectBadge` resource allows to manage the lifecycle of project badges.
+    /// The `gitlab.ProjectBadge` resource manages the lifecycle of project badges.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/user/project/badges/#project-badges)
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the project to add the badge to.
+        /// The ID or URL-encoded path of the project to add the badge to.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The id of the project to add the badge to.
+        /// The ID or URL-encoded path of the project to add the badge to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The id of the project to add the badge to.
+        /// The ID or URL-encoded path of the project to add the badge to.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

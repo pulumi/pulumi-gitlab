@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetProjectBranchesPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +30,42 @@ public final class GetProjectBranchesPlainArgs extends com.pulumi.resources.Invo
         return this.project;
     }
 
+    /**
+     * Regex pattern to filter the returned branches by name.
+     * 
+     */
+    @Import(name="regex")
+    private @Nullable String regex;
+
+    /**
+     * @return Regex pattern to filter the returned branches by name.
+     * 
+     */
+    public Optional<String> regex() {
+        return Optional.ofNullable(this.regex);
+    }
+
+    /**
+     * A search string to filter branches by name.
+     * 
+     */
+    @Import(name="search")
+    private @Nullable String search;
+
+    /**
+     * @return A search string to filter branches by name.
+     * 
+     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
+
     private GetProjectBranchesPlainArgs() {}
 
     private GetProjectBranchesPlainArgs(GetProjectBranchesPlainArgs $) {
         this.project = $.project;
+        this.regex = $.regex;
+        this.search = $.search;
     }
 
     public static Builder builder() {
@@ -60,6 +94,28 @@ public final class GetProjectBranchesPlainArgs extends com.pulumi.resources.Invo
          */
         public Builder project(String project) {
             $.project = project;
+            return this;
+        }
+
+        /**
+         * @param regex Regex pattern to filter the returned branches by name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regex(@Nullable String regex) {
+            $.regex = regex;
+            return this;
+        }
+
+        /**
+         * @param search A search string to filter branches by name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(@Nullable String search) {
+            $.search = search;
             return this;
         }
 

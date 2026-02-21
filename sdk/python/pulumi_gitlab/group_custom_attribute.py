@@ -136,7 +136,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The `GroupCustomAttribute` resource allows to manage custom attributes for a group.
+        The `GroupCustomAttribute` resource manages custom attributes for a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 
@@ -187,7 +187,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
                  args: GroupCustomAttributeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `GroupCustomAttribute` resource allows to manage custom attributes for a group.
+        The `GroupCustomAttribute` resource manages custom attributes for a group.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/custom_attributes/)
 

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `User` resource allows to manage the lifecycle of a user.
+// The `User` resource manages the lifecycle of a user.
 //
 // > the provider needs to be configured with admin-level access for this resource to work.
 //

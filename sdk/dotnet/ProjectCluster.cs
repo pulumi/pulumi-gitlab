@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ProjectCluster` resource allows to manage the lifecycle of a project cluster.
+    /// The `gitlab.ProjectCluster` resource manages the lifecycle of a project cluster.
     /// 
     /// &gt; This is deprecated, due for removal in GitLab 19.0.
     /// 

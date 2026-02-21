@@ -33,14 +33,14 @@ public final class GetRunnersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+     * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+     * @return Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -63,14 +63,14 @@ public final class GetRunnersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+     * The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+     * @return The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -126,7 +126,7 @@ public final class GetRunnersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+         * @param status Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetRunnersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, and `neverContacted`.
+         * @param status Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GetRunnersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+         * @param type The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class GetRunnersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type The type of runner to return. Valid values are `instanceType`, `groupType` and `projectType`
+         * @param type The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
          * 
          * @return builder
          * 
