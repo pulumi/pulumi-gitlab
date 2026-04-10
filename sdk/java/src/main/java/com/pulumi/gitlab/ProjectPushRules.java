@@ -16,6 +16,17 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * The `gitlab.ProjectPushRules` resource manages the lifecycle of push rules on a project.
+ * 
+ * &gt; This resource will compete with the `gitlab.Project` resource if push rules are also defined as
+ *    part of that resource, since this resource will take over ownership of the project push rules created for the referenced project.
+ *    It is recommended to define push rules using this resource OR in the `gitlab.Project` resource,
+ *    but not in both as it may result in terraform identifying changes with every &#34;plan&#34; operation.
+ * 
+ * &gt; This resource requires a GitLab Enterprise instance with a Premium license to set the push rules on a project.
+ * 
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/project_push_rules/)
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -63,17 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_push_rules`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_push_rules.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPushRules`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

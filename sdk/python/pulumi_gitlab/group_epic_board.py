@@ -174,17 +174,7 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_epic_board`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_epic_board.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupEpicBoard`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -241,17 +231,7 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_epic_board`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_epic_board.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupEpicBoard`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

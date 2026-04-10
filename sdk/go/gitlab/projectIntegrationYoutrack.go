@@ -54,21 +54,11 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_youtrack`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_integration_youtrack.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationYoutrack`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a gitlab_project_integration_youtrack state using the project ID, for example:
+// You can import a ProjectIntegrationYoutrack state using the project ID, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack default 1

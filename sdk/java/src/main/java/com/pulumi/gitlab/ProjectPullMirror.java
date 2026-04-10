@@ -86,17 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pull_mirror`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_pull_mirror.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPullMirror`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -107,9 +97,7 @@ import javax.annotation.Nullable;
  * ```
  * 
  * Import using project path
- * 
  * Note: Import is not supported for disabled mirrors because the GitLab API returns
- * 
  * http 400 for disabled mirrors.
  * 
  * ```sh

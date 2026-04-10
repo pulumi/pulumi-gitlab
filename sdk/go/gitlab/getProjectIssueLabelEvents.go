@@ -65,7 +65,8 @@ type GetProjectIssueLabelEventsArgs struct {
 type GetProjectIssueLabelEventsResult struct {
 	// List of label events for the issue.
 	Events []GetProjectIssueLabelEventsEvent `pulumi:"events"`
-	Id     string                            `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<project>:<issue_iid>`.
+	Id string `pulumi:"id"`
 	// The internal ID of the issue.
 	IssueIid int `pulumi:"issueIid"`
 	// Number of pages to return. Default is 1.
@@ -117,6 +118,7 @@ func (o GetProjectIssueLabelEventsResultOutput) Events() GetProjectIssueLabelEve
 	return o.ApplyT(func(v GetProjectIssueLabelEventsResult) []GetProjectIssueLabelEventsEvent { return v.Events }).(GetProjectIssueLabelEventsEventArrayOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<project>:<issue_iid>`.
 func (o GetProjectIssueLabelEventsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIssueLabelEventsResult) string { return v.Id }).(pulumi.StringOutput)
 }

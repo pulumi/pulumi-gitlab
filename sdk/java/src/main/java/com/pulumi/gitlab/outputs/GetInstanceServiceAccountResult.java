@@ -15,6 +15,10 @@ public final class GetInstanceServiceAccountResult {
      * 
      */
     private String email;
+    /**
+     * @return The ID of this Terraform resource. This matches the service account id.
+     * 
+     */
     private String id;
     /**
      * @return The name of the user.
@@ -40,6 +44,10 @@ public final class GetInstanceServiceAccountResult {
     public String email() {
         return this.email;
     }
+    /**
+     * @return The ID of this Terraform resource. This matches the service account id.
+     * 
+     */
     public String id() {
         return this.id;
     }

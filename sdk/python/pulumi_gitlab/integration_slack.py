@@ -878,17 +878,7 @@ class IntegrationSlack(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_slack`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_slack.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationSlack`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -956,17 +946,7 @@ class IntegrationSlack(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_slack`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_slack.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationSlack`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

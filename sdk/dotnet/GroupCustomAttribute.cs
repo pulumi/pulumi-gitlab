@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attr = new GitLab.GroupCustomAttribute("attr", new()
+    ///     var attr = new GitLab.Index.GroupCustomAttribute("attr", new()
     ///     {
     ///         Group = 42,
     ///         Key = "location",
@@ -36,17 +36,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_custom_attribute`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_custom_attribute.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupCustomAttribute`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

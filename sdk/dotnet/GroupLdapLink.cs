@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.GroupLdapLink("test", new()
+    ///     var test = new GitLab.Index.GroupLdapLink("test", new()
     ///     {
     ///         Group = "12345",
     ///         Cn = "testuser",
@@ -37,17 +37,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_ldap_link`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_ldap_link.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupLdapLink`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

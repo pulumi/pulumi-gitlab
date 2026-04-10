@@ -78,6 +78,9 @@ class GetGroupIdsResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of this Terraform resource. In the format of `<group_id>`.
+        """
         return pulumi.get(self, "id")
 
 

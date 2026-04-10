@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPipelineSchedulesResult {
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     private String id;
     /**
      * @return The list of pipeline schedules.
@@ -25,6 +29,10 @@ public final class GetPipelineSchedulesResult {
     private String project;
 
     private GetPipelineSchedulesResult() {}
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

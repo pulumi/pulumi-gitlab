@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.ProjectEnvironment` resource manages the lifecycle of an environment in a project.
+    /// 
+    /// &gt; During a terraform destroy this resource by default will not attempt to stop the environment first.
+    /// An environment is required to be in a stopped state before a deletion of the environment can occur.
+    /// Set the `StopBeforeDestroy` flag to attempt to automatically stop the environment before deletion. If the
+    /// environment's `AutoStopSetting` is set to `WithAction`, the environment will be force-stopped.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -20,21 +29,21 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Group("this", new()
+    ///     var @this = new GitLab.Index.Group("this", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Project("this", new()
+    ///     var thisProject = new GitLab.Index.Project("this", new()
     ///     {
     ///         Name = "example",
     ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisProjectEnvironment = new GitLab.ProjectEnvironment("this", new()
+    ///     var thisProjectEnvironment = new GitLab.Index.ProjectEnvironment("this", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         Name = "example",
@@ -46,17 +55,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_environment`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_environment.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectEnvironment`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -28,17 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cicd_catalog`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_project_cicd_catalog.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectCicdCatalog`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
@@ -80,6 +70,9 @@ export class ProjectCicdCatalog extends pulumi.CustomResource {
      * Whether the project should be enabled as a CI/CD Catalog resource.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
+    /**
+     * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     */
     declare public readonly keepSettingsOnDestroy: pulumi.Output<boolean>;
     /**
      * The ID or URL-encoded path of the project.
@@ -127,6 +120,9 @@ export interface ProjectCicdCatalogState {
      * Whether the project should be enabled as a CI/CD Catalog resource.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     */
     keepSettingsOnDestroy?: pulumi.Input<boolean>;
     /**
      * The ID or URL-encoded path of the project.
@@ -142,6 +138,9 @@ export interface ProjectCicdCatalogArgs {
      * Whether the project should be enabled as a CI/CD Catalog resource.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     */
     keepSettingsOnDestroy?: pulumi.Input<boolean>;
     /**
      * The ID or URL-encoded path of the project.

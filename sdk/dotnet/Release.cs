@@ -25,14 +25,14 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project
-    ///     var example = new GitLab.Project("example", new()
+    ///     var example = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
     ///     });
     /// 
     ///     // Create a release
-    ///     var exampleRelease = new GitLab.Release("example", new()
+    ///     var exampleRelease = new GitLab.Index.Release("example", new()
     ///     {
     ///         Project = example.Id,
     ///         Name = "test-release",
@@ -46,17 +46,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_release`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_release.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Release`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -95,17 +95,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_value_stream_analytics.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ValueStreamAnalytics`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -113,9 +103,7 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics group &#34;group:people/engineers:42&#34;
- * ```
  * 
- * ```sh
  * $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics project &#34;project:projects/sample:43&#34;
  * ```
  * 

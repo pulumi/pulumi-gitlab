@@ -81,6 +81,9 @@ class GetReleaseResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of this Terraform resource. In the format of `<project_id:tag_name>`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

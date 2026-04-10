@@ -46,21 +46,21 @@ import (
 //			// The following example creates a GitLab Agent for Kubernetes in a given project,
 //			// creates a token and install the `gitlab-agent` Helm Chart.
 //			// (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
-//			this, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+//			this, err := gitlab.GetProject(ctx, &gitlab.LookupProjectArgs{
 //				PathWithNamespace: pulumi.StringRef("my-org/example"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			thisClusterAgent, err := gitlab.NewClusterAgent(ctx, "this", &gitlab.ClusterAgentArgs{
-//				Project: pulumi.String(this.Id),
+//				Project: pulumi.String(pulumi.String(this.Id)),
 //				Name:    pulumi.String("my-agent"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			thisClusterAgentToken, err := gitlab.NewClusterAgentToken(ctx, "this", &gitlab.ClusterAgentTokenArgs{
-//				Project:     pulumi.String(this.Id),
+//				Project:     pulumi.String(pulumi.String(this.Id)),
 //				AgentId:     thisClusterAgent.AgentId,
 //				Name:        pulumi.String("my-agent-token"),
 //				Description: pulumi.String("Token for the my-agent used with `gitlab-agent` Helm Chart"),
@@ -93,17 +93,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_cluster_agent_token.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ClusterAgentToken`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

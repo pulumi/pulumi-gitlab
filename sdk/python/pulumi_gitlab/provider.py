@@ -39,6 +39,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         :param pulumi.Input[_builtins.str] config_file: The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
         :param pulumi.Input[_builtins.str] context: The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        :param pulumi.Input[_builtins.bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
         :param pulumi.Input[_builtins.bool] enable_auto_ci_support: If automatic CI support should be enabled or not. This only works when not providing a token.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
@@ -145,6 +146,9 @@ class ProviderArgs:
     @_builtins.property
     @pulumi.getter(name="earlyAuthCheck")
     def early_auth_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
+        """
         return pulumi.get(self, "early_auth_check")
 
     @early_auth_check.setter
@@ -245,6 +249,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         :param pulumi.Input[_builtins.str] config_file: The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
         :param pulumi.Input[_builtins.str] context: The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        :param pulumi.Input[_builtins.bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
         :param pulumi.Input[_builtins.bool] enable_auto_ci_support: If automatic CI support should be enabled or not. This only works when not providing a token.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.

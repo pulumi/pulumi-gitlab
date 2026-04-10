@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var allowedSingleProject = new GitLab.ProjectJobTokenScopes("allowed_single_project", new()
+    ///     var allowedSingleProject = new GitLab.Index.ProjectJobTokenScopes("allowed_single_project", new()
     ///     {
     ///         Project = "111",
     ///         TargetProjectIds = new[]
@@ -39,7 +39,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var allowedMultipleProject = new GitLab.ProjectJobTokenScopes("allowed_multiple_project", new()
+    ///     var allowedMultipleProject = new GitLab.Index.ProjectJobTokenScopes("allowed_multiple_project", new()
     ///     {
     ///         Project = "111",
     ///         TargetProjectIds = new[]
@@ -50,7 +50,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var allowedMultipleGroups = new GitLab.ProjectJobTokenScopes("allowed_multiple_groups", new()
+    ///     var allowedMultipleGroups = new GitLab.Index.ProjectJobTokenScopes("allowed_multiple_groups", new()
     ///     {
     ///         Project = "111",
     ///         TargetProjectIds = new[] {},
@@ -62,14 +62,14 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // This will remove all job token scopes, even if added outside of TF.
-    ///     var explicitDeny = new GitLab.ProjectJobTokenScopes("explicit_deny", new()
+    ///     var explicitDeny = new GitLab.Index.ProjectJobTokenScopes("explicit_deny", new()
     ///     {
     ///         Project = "111",
     ///         TargetProjectIds = new[] {},
     ///     });
     /// 
     ///     // This shows the explicit behavior of the enabled flag with a list of projects and groups.
-    ///     var allowProjectsAndGroups = new GitLab.ProjectJobTokenScopes("allow_projects_and_groups", new()
+    ///     var allowProjectsAndGroups = new GitLab.Index.ProjectJobTokenScopes("allow_projects_and_groups", new()
     ///     {
     ///         Project = "111",
     ///         Enabled = true,
@@ -87,7 +87,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // This allows all projects and groups (disabling the CI Job Token scope protection)
-    ///     var allowAll = new GitLab.ProjectJobTokenScopes("allow_all", new()
+    ///     var allowAll = new GitLab.Index.ProjectJobTokenScopes("allow_all", new()
     ///     {
     ///         Project = "111",
     ///         Enabled = false,
@@ -98,21 +98,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scopes`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_job_token_scopes.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectJobTokenScopes`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project job token scopes can be imported using an id made up of just the `project_id`
+    /// GitLab project job token scopes can be imported using an id made up of just the `ProjectId`
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123

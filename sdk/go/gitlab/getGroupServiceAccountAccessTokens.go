@@ -42,7 +42,8 @@ type GetGroupServiceAccountAccessTokensResult struct {
 	AccessTokens []GetGroupServiceAccountAccessTokensAccessToken `pulumi:"accessTokens"`
 	// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
 	Group string `pulumi:"group"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<group>:<user_id>`.
+	Id string `pulumi:"id"`
 	// The ID of the service account user.
 	ServiceAccountId int `pulumi:"serviceAccountId"`
 }
@@ -95,6 +96,7 @@ func (o GetGroupServiceAccountAccessTokensResultOutput) Group() pulumi.StringOut
 	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<group>:<user_id>`.
 func (o GetGroupServiceAccountAccessTokensResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -321,17 +321,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_merge_request_note`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_merge_request_note.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectMergeRequestNote`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -379,17 +369,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_merge_request_note`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_merge_request_note.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectMergeRequestNote`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

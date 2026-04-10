@@ -103,22 +103,11 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_runner`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_user_runner.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `UserRunner`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// # You can import a gitlab runner using its ID
-//
+// You can import a gitlab runner using its ID
 // Note: Importing a runner will not provide access to the `token` attribute
 //
 // ```sh

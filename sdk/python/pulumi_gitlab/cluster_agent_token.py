@@ -297,7 +297,7 @@ class ClusterAgentToken(pulumi.CustomResource):
             agent_id=this_cluster_agent.agent_id,
             name="my-agent-token",
             description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Release("gitlab_agent",
+        gitlab_agent = helm.Release("gitlab_agent",
             name=gitlab-agent,
             namespace=gitlab-agent,
             create_namespace=True,
@@ -312,17 +312,7 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_cluster_agent_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ClusterAgentToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -379,7 +369,7 @@ class ClusterAgentToken(pulumi.CustomResource):
             agent_id=this_cluster_agent.agent_id,
             name="my-agent-token",
             description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Release("gitlab_agent",
+        gitlab_agent = helm.Release("gitlab_agent",
             name=gitlab-agent,
             namespace=gitlab-agent,
             create_namespace=True,
@@ -394,17 +384,7 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_cluster_agent_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ClusterAgentToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

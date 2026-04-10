@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example Usage
-    ///     var example = new GitLab.GroupDeployToken("example", new()
+    ///     var example = new GitLab.Index.GroupDeployToken("example", new()
     ///     {
     ///         Group = "example/deploying",
     ///         Name = "Example group deploy token",
@@ -39,11 +39,11 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var example_two = new GitLab.GroupDeployToken("example-two", new()
+    ///     var example_two = new GitLab.Index.GroupDeployToken("example-two", new()
     ///     {
     ///         Group = "12345678",
     ///         Name = "Example group deploy token expires in 24h",
-    ///         ExpiresAt = Std.Timestamp.Invoke().Apply(invoke =&gt; Std.Timeadd.Invoke(new()
+    ///         ExpiresAt = Std.Index.Timestamp.Invoke().Apply(invoke =&gt; Std.Index.Timeadd.Invoke(new()
     ///         {
     ///             Duration = invoke.Result,
     ///             Timestamp = "24h",
@@ -60,17 +60,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_deploy_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_deploy_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupDeployToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -80,7 +70,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/groupDeployToken:GroupDeployToken group_token 1:4
     /// ```
     /// 
-    /// Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// Note: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupDeployToken:GroupDeployToken")]
     public partial class GroupDeployToken : global::Pulumi.CustomResource

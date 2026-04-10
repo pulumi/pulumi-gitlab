@@ -86,17 +86,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_value_stream_analytics.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ValueStreamAnalytics`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
@@ -104,9 +94,7 @@ import (
 //
 // ```sh
 // $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics group "group:people/engineers:42"
-// ```
 //
-// ```sh
 // $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics project "project:projects/sample:43"
 // ```
 type ValueStreamAnalytics struct {

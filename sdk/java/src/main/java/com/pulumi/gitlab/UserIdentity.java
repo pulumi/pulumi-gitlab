@@ -70,26 +70,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_identity`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_user_identity.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.UserIdentity`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/userIdentity:UserIdentity You can import a user identity to terraform state using `&lt;resource&gt; &lt;id&gt;`.
- * ```
- * 
  * The `id` must be a string for the id of the user and identity provider you want to import,
- * 
  * for example:
  * 
  * ```sh

@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.PersonalAccessToken("example", new()
+    ///     var example = new GitLab.Index.PersonalAccessToken("example", new()
     ///     {
     ///         UserId = 25,
     ///         Name = "Example personal access token",
@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleProjectVariable = new GitLab.ProjectVariable("example", new()
+    ///     var exampleProjectVariable = new GitLab.Index.ProjectVariable("example", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Key = "pat",
@@ -57,17 +57,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_personal_access_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_personal_access_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PersonalAccessToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -77,7 +67,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
     /// ```
     /// 
-    /// NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/personalAccessToken:PersonalAccessToken")]
     public partial class PersonalAccessToken : global::Pulumi.CustomResource

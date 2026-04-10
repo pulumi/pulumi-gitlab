@@ -19,6 +19,10 @@ public final class GetProjectAccessTokensResult {
      * 
      */
     private List<GetProjectAccessTokensAccessToken> accessTokens;
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     private String id;
     /**
      * @return The name or id of the project.
@@ -39,6 +43,10 @@ public final class GetProjectAccessTokensResult {
     public List<GetProjectAccessTokensAccessToken> accessTokens() {
         return this.accessTokens;
     }
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

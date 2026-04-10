@@ -26,12 +26,12 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Project("foo", new()
+    ///     var foo = new GitLab.Index.Project("foo", new()
     ///     {
     ///         Name = "foo-project",
     ///     });
     /// 
-    ///     var bar = new GitLab.ProjectCluster("bar", new()
+    ///     var bar = new GitLab.Index.ProjectCluster("bar", new()
     ///     {
     ///         Project = foo.Id,
     ///         Name = "bar-cluster",
@@ -51,17 +51,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cluster`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_cluster.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectCluster`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisProject = new GitLab.Project("this", new()
+        ///     var thisProject = new GitLab.Index.Project("this", new()
         ///     {
         ///         Name = "example",
         ///         InitializeWithReadme = true,
         ///     });
         /// 
-        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
+        ///     var @this = GitLab.Index.GetProjectEnvironments.Invoke(new()
         ///     {
         ///         Project = thisProject.PathWithNamespace,
         ///     });
@@ -58,13 +58,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisProject = new GitLab.Project("this", new()
+        ///     var thisProject = new GitLab.Index.Project("this", new()
         ///     {
         ///         Name = "example",
         ///         InitializeWithReadme = true,
         ///     });
         /// 
-        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
+        ///     var @this = GitLab.Index.GetProjectEnvironments.Invoke(new()
         ///     {
         ///         Project = thisProject.PathWithNamespace,
         ///     });
@@ -90,13 +90,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisProject = new GitLab.Project("this", new()
+        ///     var thisProject = new GitLab.Index.Project("this", new()
         ///     {
         ///         Name = "example",
         ///         InitializeWithReadme = true,
         ///     });
         /// 
-        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
+        ///     var @this = GitLab.Index.GetProjectEnvironments.Invoke(new()
         ///     {
         ///         Project = thisProject.PathWithNamespace,
         ///     });
@@ -181,6 +181,9 @@ namespace Pulumi.GitLab
         /// The list of environments.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectEnvironmentsEnvironmentResult> Environments;
+        /// <summary>
+        /// The ID of this Terraform resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Return the environment with this name. Mutually exclusive with search.

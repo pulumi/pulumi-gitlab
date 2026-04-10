@@ -31,9 +31,17 @@ public final class ProjectCicdCatalogState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     @Import(name="keepSettingsOnDestroy")
     private @Nullable Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     public Optional<Output<Boolean>> keepSettingsOnDestroy() {
         return Optional.ofNullable(this.keepSettingsOnDestroy);
     }
@@ -100,11 +108,23 @@ public final class ProjectCicdCatalogState extends com.pulumi.resources.Resource
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(@Nullable Output<Boolean> keepSettingsOnDestroy) {
             $.keepSettingsOnDestroy = keepSettingsOnDestroy;
             return this;
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(Boolean keepSettingsOnDestroy) {
             return keepSettingsOnDestroy(Output.of(keepSettingsOnDestroy));
         }

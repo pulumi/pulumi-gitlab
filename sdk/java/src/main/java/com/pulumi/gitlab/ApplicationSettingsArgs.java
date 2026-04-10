@@ -2699,9 +2699,17 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.maxSshKeyLifetime);
     }
 
+    /**
+     * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     * 
+     */
     @Import(name="maxTerraformStateSizeBytes")
     private @Nullable Output<Integer> maxTerraformStateSizeBytes;
 
+    /**
+     * @return Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     * 
+     */
     public Optional<Output<Integer>> maxTerraformStateSizeBytes() {
         return Optional.ofNullable(this.maxTerraformStateSizeBytes);
     }
@@ -8818,11 +8826,23 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
             return maxSshKeyLifetime(Output.of(maxSshKeyLifetime));
         }
 
+        /**
+         * @param maxTerraformStateSizeBytes Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxTerraformStateSizeBytes(@Nullable Output<Integer> maxTerraformStateSizeBytes) {
             $.maxTerraformStateSizeBytes = maxTerraformStateSizeBytes;
             return this;
         }
 
+        /**
+         * @param maxTerraformStateSizeBytes Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxTerraformStateSizeBytes(Integer maxTerraformStateSizeBytes) {
             return maxTerraformStateSizeBytes(Output.of(maxTerraformStateSizeBytes));
         }

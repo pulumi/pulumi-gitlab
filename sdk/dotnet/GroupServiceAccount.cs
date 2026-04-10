@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This must be a top-level group
-    ///     var example = new GitLab.Group("example", new()
+    ///     var example = new GitLab.Index.Group("example", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
@@ -33,7 +33,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // The service account against the top-level group
-    ///     var exampleSa = new GitLab.GroupServiceAccount("example_sa", new()
+    ///     var exampleSa = new GitLab.Index.GroupServiceAccount("example_sa", new()
     ///     {
     ///         Group = example.Id,
     ///         Name = "example-name",
@@ -41,7 +41,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
-    ///     var exampleSubgroup = new GitLab.Group("example_subgroup", new()
+    ///     var exampleSubgroup = new GitLab.Index.Group("example_subgroup", new()
     ///     {
     ///         Name = "subgroup",
     ///         Path = "example/subgroup",
@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // To assign the service account to a group
-    ///     var exampleMembership = new GitLab.GroupMembership("example_membership", new()
+    ///     var exampleMembership = new GitLab.Index.GroupMembership("example_membership", new()
     ///     {
     ///         GroupId = exampleSubgroup.Id,
     ///         UserId = exampleSa.ServiceAccountId,
@@ -62,25 +62,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_service_account.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupServiceAccount`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount You can import a group service account using `&lt;resource&gt; &lt;id&gt;`. The
-    /// ```
-    /// 
-    /// `id` is in the form of &lt;group_id&gt;:&lt;service_account_id&gt;
+    /// `Id` is in the form of &lt;group_id&gt;:&lt;service_account_id&gt;
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount example example

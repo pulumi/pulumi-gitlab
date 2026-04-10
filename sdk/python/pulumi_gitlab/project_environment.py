@@ -449,6 +449,15 @@ class ProjectEnvironment(pulumi.CustomResource):
                  tier: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `ProjectEnvironment` resource manages the lifecycle of an environment in a project.
+
+        > During a terraform destroy this resource by default will not attempt to stop the environment first.
+        An environment is required to be in a stopped state before a deletion of the environment can occur.
+        Set the `stop_before_destroy` flag to attempt to automatically stop the environment before deletion. If the
+        environment's `auto_stop_setting` is set to `with_action`, the environment will be force-stopped.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/)
+
         ## Example Usage
 
         ```python
@@ -471,17 +480,7 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_environment`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_environment.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectEnvironment`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -511,6 +510,15 @@ class ProjectEnvironment(pulumi.CustomResource):
                  args: ProjectEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `ProjectEnvironment` resource manages the lifecycle of an environment in a project.
+
+        > During a terraform destroy this resource by default will not attempt to stop the environment first.
+        An environment is required to be in a stopped state before a deletion of the environment can occur.
+        Set the `stop_before_destroy` flag to attempt to automatically stop the environment before deletion. If the
+        environment's `auto_stop_setting` is set to `with_action`, the environment will be force-stopped.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/)
+
         ## Example Usage
 
         ```python
@@ -533,17 +541,7 @@ class ProjectEnvironment(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_environment`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_environment.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectEnvironment`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

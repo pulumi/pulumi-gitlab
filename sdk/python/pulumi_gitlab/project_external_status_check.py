@@ -248,17 +248,7 @@ class ProjectExternalStatusCheck(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_external_status_check`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_external_status_check.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectExternalStatusCheck`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -314,17 +304,7 @@ class ProjectExternalStatusCheck(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_external_status_check`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_external_status_check.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectExternalStatusCheck`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

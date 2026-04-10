@@ -153,17 +153,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_trigger`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_pipeline_trigger.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `PipelineTrigger`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -202,17 +192,7 @@ class PipelineTrigger(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_trigger`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_pipeline_trigger.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `PipelineTrigger`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

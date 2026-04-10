@@ -79,6 +79,9 @@ namespace Pulumi.GitLab
         /// The name or id of the group.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format \n\n
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The list of group SAML links returned by the search

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+//			example, err := gitlab.GetUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {
@@ -40,7 +40,7 @@ import (
 //			}
 //			// Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
 //			_, err = gitlab.NewUserGpgKey(ctx, "example", &gitlab.UserGpgKeyArgs{
-//				UserId: pulumi.String(example.Id),
+//				UserId: pulumi.Int(pulumi.String(example.Id)),
 //				Key:    pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
 //			})
 //			if err != nil {
@@ -61,17 +61,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_gpgkey`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_user_gpgkey.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `UserGpgKey`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

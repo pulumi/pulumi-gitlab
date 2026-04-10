@@ -509,6 +509,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
+        :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -3399,6 +3400,9 @@ class ApplicationSettingsArgs:
     @_builtins.property
     @pulumi.getter(name="maxTerraformStateSizeBytes")
     def max_terraform_state_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        """
         return pulumi.get(self, "max_terraform_state_size_bytes")
 
     @max_terraform_state_size_bytes.setter
@@ -5449,6 +5453,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
+        :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -8367,6 +8372,9 @@ class _ApplicationSettingsState:
     @_builtins.property
     @pulumi.getter(name="maxTerraformStateSizeBytes")
     def max_terraform_state_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        """
         return pulumi.get(self, "max_terraform_state_size_bytes")
 
     @max_terraform_state_size_bytes.setter
@@ -10238,7 +10246,20 @@ class ApplicationSettings(pulumi.CustomResource):
                  wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        The `ApplicationSettings` resource manages the GitLab application settings.
+
+        > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+           Feel free to join the discussion if you have any
+           ideas or questions regarding this resource.
+
+        > All `ApplicationSettings` use the same ID `gitlab`.
+
+        !> This resource does not implement any destroy logic, it's a no-op at this point.
+           It's also not possible to revert to the previous settings.
+
+        > Requires at administrative privileges on GitLab.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -10420,6 +10441,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
+        :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -10557,7 +10579,20 @@ class ApplicationSettings(pulumi.CustomResource):
                  args: Optional[ApplicationSettingsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        The `ApplicationSettings` resource manages the GitLab application settings.
+
+        > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+           Feel free to join the discussion if you have any
+           ideas or questions regarding this resource.
+
+        > All `ApplicationSettings` use the same ID `gitlab`.
+
+        !> This resource does not implement any destroy logic, it's a no-op at this point.
+           It's also not possible to revert to the previous settings.
+
+        > Requires at administrative privileges on GitLab.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
         :param str resource_name: The name of the resource.
         :param ApplicationSettingsArgs args: The arguments to use to populate this resource's properties.
@@ -11710,6 +11745,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_pages_size: Maximum size of pages repositories in MB.
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
+        :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -13600,6 +13636,9 @@ class ApplicationSettings(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="maxTerraformStateSizeBytes")
     def max_terraform_state_size_bytes(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        """
         return pulumi.get(self, "max_terraform_state_size_bytes")
 
     @_builtins.property

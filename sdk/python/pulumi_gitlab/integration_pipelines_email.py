@@ -195,21 +195,11 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_pipelines_email`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_pipelines_email.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationPipelinesEmail`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_pipelines_email state using the project ID, e.g.
+        You can import a IntegrationPipelinesEmail state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail email 1
@@ -254,21 +244,11 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_pipelines_email`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_pipelines_email.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationPipelinesEmail`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_pipelines_email state using the project ID, e.g.
+        You can import a IntegrationPipelinesEmail state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail email 1

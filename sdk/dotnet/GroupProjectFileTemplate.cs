@@ -30,14 +30,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Group("foo", new()
+    ///     var foo = new GitLab.Index.Group("foo", new()
     ///     {
     ///         Name = "group",
     ///         Path = "group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var bar = new GitLab.Project("bar", new()
+    ///     var bar = new GitLab.Index.Project("bar", new()
     ///     {
     ///         Name = "template project",
     ///         Description = "contains file templates",
@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
     ///         NamespaceId = foo.Id,
     ///     });
     /// 
-    ///     var templateLink = new GitLab.GroupProjectFileTemplate("template_link", new()
+    ///     var templateLink = new GitLab.Index.GroupProjectFileTemplate("template_link", new()
     ///     {
     ///         GroupId = foo.Id,
     ///         FileTemplateProjectId = bar.Id,

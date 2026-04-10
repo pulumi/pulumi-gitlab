@@ -70,7 +70,8 @@ type GetProjectEnvironmentsArgs struct {
 type GetProjectEnvironmentsResult struct {
 	// The list of environments.
 	Environments []GetProjectEnvironmentsEnvironment `pulumi:"environments"`
-	Id           string                              `pulumi:"id"`
+	// The ID of this Terraform resource.
+	Id string `pulumi:"id"`
 	// Return the environment with this name. Mutually exclusive with search.
 	Name *string `pulumi:"name"`
 	// The ID or full path of the project.
@@ -126,6 +127,7 @@ func (o GetProjectEnvironmentsResultOutput) Environments() GetProjectEnvironment
 	return o.ApplyT(func(v GetProjectEnvironmentsResult) []GetProjectEnvironmentsEnvironment { return v.Environments }).(GetProjectEnvironmentsEnvironmentArrayOutput)
 }
 
+// The ID of this Terraform resource.
 func (o GetProjectEnvironmentsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectEnvironmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }

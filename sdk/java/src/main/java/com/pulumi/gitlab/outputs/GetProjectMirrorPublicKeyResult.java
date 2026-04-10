@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectMirrorPublicKeyResult {
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project_id&gt;:&lt;mirror_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The id of the remote mirror.
@@ -29,6 +33,10 @@ public final class GetProjectMirrorPublicKeyResult {
     private String publicKey;
 
     private GetProjectMirrorPublicKeyResult() {}
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project_id&gt;:&lt;mirror_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

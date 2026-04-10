@@ -18,6 +18,10 @@ public final class GetProjectApprovalRulesResult {
      * 
      */
     private @Nullable List<GetProjectApprovalRulesApprovalRule> approvalRules;
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     private String id;
     /**
      * @return The ID or path with namespace that identifies the project.
@@ -33,6 +37,10 @@ public final class GetProjectApprovalRulesResult {
     public List<GetProjectApprovalRulesApprovalRule> approvalRules() {
         return this.approvalRules == null ? List.of() : this.approvalRules;
     }
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

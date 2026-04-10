@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.Group` resource manages the lifecycle of a group.
+    /// 
+    /// &gt; On GitLab.com, you cannot use the `gitlab.Group` resource to create a [top-level group](https://docs.gitlab.com/user/group/#group-hierarchy). Instead, you must [create a group](https://docs.gitlab.com/user/group/#create-a-group) in the UI, then import the group into your Terraform configuration. From here, you can manage the group using the Terraform Provider.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -20,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Group("example", new()
+    ///     var example = new GitLab.Index.Group("example", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
@@ -28,7 +34,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Create a project in the example group
-    ///     var exampleProject = new GitLab.Project("example", new()
+    ///     var exampleProject = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
@@ -36,7 +42,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with custom push rules
-    ///     var example_two = new GitLab.Group("example-two", new()
+    ///     var example_two = new GitLab.Index.Group("example-two", new()
     ///     {
     ///         Name = "example-two",
     ///         Path = "example-two",
@@ -51,7 +57,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with custom default branch protection defaults
-    ///     var example_three = new GitLab.Group("example-three", new()
+    ///     var example_three = new GitLab.Index.Group("example-three", new()
     ///     {
     ///         Name = "example-three",
     ///         Path = "example-three",
@@ -73,7 +79,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with custom default branch protection defaults
-    ///     var example_four = new GitLab.Group("example-four", new()
+    ///     var example_four = new GitLab.Index.Group("example-four", new()
     ///     {
     ///         Name = "example-four",
     ///         Path = "example-four",
@@ -94,7 +100,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with a default branch name specified
-    ///     var example_five = new GitLab.Group("example-five", new()
+    ///     var example_five = new GitLab.Index.Group("example-five", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
@@ -107,26 +113,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Group`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/group:Group You can import a group state using `&lt;resource&gt; &lt;id&gt;`. The
-    /// ```
-    /// 
-    /// `id` can be whatever the [details of a group][details_of_a_group] api takes for
-    /// 
+    /// `Id` can be whatever the [details of a group][DetailsOfAGroup] api takes for
     /// its `:id` value, so for example:
     /// 
     /// ```sh

@@ -153,9 +153,17 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.jiraIssueRegex);
     }
 
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     * 
+     */
     @Import(name="jiraIssueTransitionAutomatic")
     private @Nullable Output<Boolean> jiraIssueTransitionAutomatic;
 
+    /**
+     * @return Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     * 
+     */
     public Optional<Output<Boolean>> jiraIssueTransitionAutomatic() {
         return Optional.ofNullable(this.jiraIssueTransitionAutomatic);
     }
@@ -542,11 +550,23 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
             return jiraIssueRegex(Output.of(jiraIssueRegex));
         }
 
+        /**
+         * @param jiraIssueTransitionAutomatic Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jiraIssueTransitionAutomatic(@Nullable Output<Boolean> jiraIssueTransitionAutomatic) {
             $.jiraIssueTransitionAutomatic = jiraIssueTransitionAutomatic;
             return this;
         }
 
+        /**
+         * @param jiraIssueTransitionAutomatic Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jiraIssueTransitionAutomatic(Boolean jiraIssueTransitionAutomatic) {
             return jiraIssueTransitionAutomatic(Output.of(jiraIssueTransitionAutomatic));
         }

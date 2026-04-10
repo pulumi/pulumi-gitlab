@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var @default = new GitLab.IntegrationTelegram("default", new()
+    ///     var @default = new GitLab.Index.IntegrationTelegram("default", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Token = "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
@@ -56,21 +56,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_telegram.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationTelegram`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab_integration_telegram state using the project ID, e.g.
+    /// You can import a gitlab.IntegrationTelegram state using the project ID, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationTelegram:IntegrationTelegram default 1

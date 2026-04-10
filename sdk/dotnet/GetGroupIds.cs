@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newGroup = new GitLab.Group("new_group", new()
+        ///     var newGroup = new GitLab.Index.Group("new_group", new()
         ///     {
         ///         Name = "example-group",
         ///         Path = "example-path",
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
         /// 
         ///     // use group IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
-        ///     var foo = GitLab.GetGroupIds.Invoke(new()
+        ///     var foo = GitLab.Index.GetGroupIds.Invoke(new()
         ///     {
         ///         Group = "gitlab_group.new_group.id",
         ///     });
@@ -65,7 +65,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newGroup = new GitLab.Group("new_group", new()
+        ///     var newGroup = new GitLab.Index.Group("new_group", new()
         ///     {
         ///         Name = "example-group",
         ///         Path = "example-path",
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
         /// 
         ///     // use group IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
-        ///     var foo = GitLab.GetGroupIds.Invoke(new()
+        ///     var foo = GitLab.Index.GetGroupIds.Invoke(new()
         ///     {
         ///         Group = "gitlab_group.new_group.id",
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newGroup = new GitLab.Group("new_group", new()
+        ///     var newGroup = new GitLab.Index.Group("new_group", new()
         ///     {
         ///         Name = "example-group",
         ///         Path = "example-path",
@@ -113,7 +113,7 @@ namespace Pulumi.GitLab
         /// 
         ///     // use group IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
-        ///     var foo = GitLab.GetGroupIds.Invoke(new()
+        ///     var foo = GitLab.Index.GetGroupIds.Invoke(new()
         ///     {
         ///         Group = "gitlab_group.new_group.id",
         ///     });
@@ -178,6 +178,9 @@ namespace Pulumi.GitLab
         /// The ID of the group.
         /// </summary>
         public readonly string GroupId;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;group_id&gt;`.
+        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

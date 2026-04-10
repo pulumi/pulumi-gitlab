@@ -51,6 +51,9 @@ export interface GetGroupAccessTokensResult {
      * The name or id of the group.
      */
     readonly group: string;
+    /**
+     * The ID of this Terraform resource.
+     */
     readonly id: string;
 }
 /**

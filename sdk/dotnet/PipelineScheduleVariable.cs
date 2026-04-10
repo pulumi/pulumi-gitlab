@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.PipelineSchedule("example", new()
+    ///     var example = new GitLab.Index.PipelineSchedule("example", new()
     ///     {
     ///         Project = "12345",
     ///         Description = "Used to schedule builds",
@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     ///         Cron = "0 1 * * *",
     ///     });
     /// 
-    ///     var examplePipelineScheduleVariable = new GitLab.PipelineScheduleVariable("example", new()
+    ///     var examplePipelineScheduleVariable = new GitLab.Index.PipelineScheduleVariable("example", new()
     ///     {
     ///         Project = example.Project,
     ///         PipelineScheduleId = example.PipelineScheduleId,
@@ -45,17 +45,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule_variable`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_pipeline_schedule_variable.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PipelineScheduleVariable`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

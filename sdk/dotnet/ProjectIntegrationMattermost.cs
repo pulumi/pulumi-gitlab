@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var mattermost = new GitLab.ProjectIntegrationMattermost("mattermost", new()
+    ///     var mattermost = new GitLab.Index.ProjectIntegrationMattermost("mattermost", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Webhook = "https://webhook.com",
@@ -45,17 +45,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_mattermost`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_integration_mattermost.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIntegrationMattermost`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

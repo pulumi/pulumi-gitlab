@@ -50,17 +50,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cicd_catalog`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_cicd_catalog.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectCicdCatalog`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
@@ -73,7 +63,8 @@ type ProjectCicdCatalog struct {
 	pulumi.CustomResourceState
 
 	// Whether the project should be enabled as a CI/CD Catalog resource.
-	Enabled               pulumi.BoolOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
 	KeepSettingsOnDestroy pulumi.BoolOutput `pulumi:"keepSettingsOnDestroy"`
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -116,7 +107,8 @@ func GetProjectCicdCatalog(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectCicdCatalog resources.
 type projectCicdCatalogState struct {
 	// Whether the project should be enabled as a CI/CD Catalog resource.
-	Enabled               *bool `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
+	// Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
 	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`
 	// The ID or URL-encoded path of the project.
 	Project *string `pulumi:"project"`
@@ -124,7 +116,8 @@ type projectCicdCatalogState struct {
 
 type ProjectCicdCatalogState struct {
 	// Whether the project should be enabled as a CI/CD Catalog resource.
-	Enabled               pulumi.BoolPtrInput
+	Enabled pulumi.BoolPtrInput
+	// Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
 	KeepSettingsOnDestroy pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringPtrInput
@@ -136,7 +129,8 @@ func (ProjectCicdCatalogState) ElementType() reflect.Type {
 
 type projectCicdCatalogArgs struct {
 	// Whether the project should be enabled as a CI/CD Catalog resource.
-	Enabled               bool  `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
+	// Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
 	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`
 	// The ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`
@@ -145,7 +139,8 @@ type projectCicdCatalogArgs struct {
 // The set of arguments for constructing a ProjectCicdCatalog resource.
 type ProjectCicdCatalogArgs struct {
 	// Whether the project should be enabled as a CI/CD Catalog resource.
-	Enabled               pulumi.BoolInput
+	Enabled pulumi.BoolInput
+	// Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
 	KeepSettingsOnDestroy pulumi.BoolPtrInput
 	// The ID or URL-encoded path of the project.
 	Project pulumi.StringInput
@@ -243,6 +238,7 @@ func (o ProjectCicdCatalogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectCicdCatalog) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
 func (o ProjectCicdCatalogOutput) KeepSettingsOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectCicdCatalog) pulumi.BoolOutput { return v.KeepSettingsOnDestroy }).(pulumi.BoolOutput)
 }

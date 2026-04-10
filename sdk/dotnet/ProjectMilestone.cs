@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project for the milestone to use
-    ///     var example = new GitLab.Project("example", new()
+    ///     var example = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
@@ -33,14 +33,14 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Basic milestone with required fields only
-    ///     var exampleProjectMilestone = new GitLab.ProjectMilestone("example", new()
+    ///     var exampleProjectMilestone = new GitLab.Index.ProjectMilestone("example", new()
     ///     {
     ///         Project = example.Id,
     ///         Title = "example",
     ///     });
     /// 
     ///     // Comprehensive milestone with all optional fields
-    ///     var comprehensive = new GitLab.ProjectMilestone("comprehensive", new()
+    ///     var comprehensive = new GitLab.Index.ProjectMilestone("comprehensive", new()
     ///     {
     ///         Project = example.Id,
     ///         Title = "Q4 2024 Release",
@@ -55,17 +55,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_milestone`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_milestone.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectMilestone`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

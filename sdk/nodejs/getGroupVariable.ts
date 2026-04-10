@@ -70,6 +70,9 @@ export interface GetGroupVariableResult {
      * The name or id of the group.
      */
     readonly group: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<group>:<key>:<environment_scope>`.
+     */
     readonly id: string;
     /**
      * The name of the variable.

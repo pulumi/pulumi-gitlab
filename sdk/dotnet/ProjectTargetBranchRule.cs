@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Project("example", new()
+    ///     var example = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Basic example
-    ///     var rule = new GitLab.ProjectTargetBranchRule("rule", new()
+    ///     var rule = new GitLab.Index.ProjectTargetBranchRule("rule", new()
     ///     {
     ///         Project = example.Id,
     ///         SourceBranchPattern = "develop",
@@ -44,17 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_target_branch_rule`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_target_branch_rule.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectTargetBranchRule`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

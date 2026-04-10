@@ -27,14 +27,14 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a project label by its ID
-        ///     var example = GitLab.GetProjectLabel.Invoke(new()
+        ///     var example = GitLab.Index.GetProjectLabel.Invoke(new()
         ///     {
         ///         Project = "385",
         ///         LabelId = 24,
         ///     });
         /// 
         ///     // Retrieve using project path
-        ///     var byPath = GitLab.GetProjectLabel.Invoke(new()
+        ///     var byPath = GitLab.Index.GetProjectLabel.Invoke(new()
         ///     {
         ///         Project = "group/project",
         ///         LabelId = 25,
@@ -62,14 +62,14 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a project label by its ID
-        ///     var example = GitLab.GetProjectLabel.Invoke(new()
+        ///     var example = GitLab.Index.GetProjectLabel.Invoke(new()
         ///     {
         ///         Project = "385",
         ///         LabelId = 24,
         ///     });
         /// 
         ///     // Retrieve using project path
-        ///     var byPath = GitLab.GetProjectLabel.Invoke(new()
+        ///     var byPath = GitLab.Index.GetProjectLabel.Invoke(new()
         ///     {
         ///         Project = "group/project",
         ///         LabelId = 25,
@@ -97,14 +97,14 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a project label by its ID
-        ///     var example = GitLab.GetProjectLabel.Invoke(new()
+        ///     var example = GitLab.Index.GetProjectLabel.Invoke(new()
         ///     {
         ///         Project = "385",
         ///         LabelId = 24,
         ///     });
         /// 
         ///     // Retrieve using project path
-        ///     var byPath = GitLab.GetProjectLabel.Invoke(new()
+        ///     var byPath = GitLab.Index.GetProjectLabel.Invoke(new()
         ///     {
         ///         Project = "group/project",
         ///         LabelId = 25,

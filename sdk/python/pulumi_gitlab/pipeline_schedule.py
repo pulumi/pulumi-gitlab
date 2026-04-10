@@ -34,6 +34,7 @@ class PipelineScheduleArgs:
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         :param pulumi.Input[_builtins.bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
+        :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         pulumi.set(__self__, "cron", cron)
         pulumi.set(__self__, "description", description)
@@ -121,6 +122,9 @@ class PipelineScheduleArgs:
     @_builtins.property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+        """
         return pulumi.get(self, "take_ownership")
 
     @take_ownership.setter
@@ -150,6 +154,7 @@ class _PipelineScheduleState:
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
+        :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -269,6 +274,9 @@ class _PipelineScheduleState:
     @_builtins.property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+        """
         return pulumi.get(self, "take_ownership")
 
     @take_ownership.setter
@@ -310,17 +318,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_pipeline_schedule.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `PipelineSchedule`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -338,6 +336,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
+        :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         ...
     @overload
@@ -365,17 +364,7 @@ class PipelineSchedule(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_pipeline_schedule.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `PipelineSchedule`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -467,6 +456,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
+        :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,5 +540,8 @@ class PipelineSchedule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+        """
         return pulumi.get(self, "take_ownership")
 

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRunnersResult {
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     private String id;
     /**
      * @return Filters for runners with the given paused value
@@ -43,6 +47,10 @@ public final class GetRunnersResult {
     private @Nullable String type;
 
     private GetRunnersResult() {}
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

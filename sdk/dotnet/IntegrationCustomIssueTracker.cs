@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var tracker = new GitLab.IntegrationCustomIssueTracker("tracker", new()
+    ///     var tracker = new GitLab.Index.IntegrationCustomIssueTracker("tracker", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         ProjectUrl = "https://customtracker.com/issues",
@@ -45,21 +45,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_custom_issue_tracker`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_custom_issue_tracker.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationCustomIssueTracker`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab_integration_custom_issue_tracker state using the project ID, e.g.
+    /// You can import a gitlab.IntegrationCustomIssueTracker state using the project ID, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1

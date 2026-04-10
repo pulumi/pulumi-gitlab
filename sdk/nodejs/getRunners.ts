@@ -72,6 +72,9 @@ export interface GetRunnersArgs {
  * A collection of values returned by getRunners.
  */
 export interface GetRunnersResult {
+    /**
+     * The ID of this Terraform resource.
+     */
     readonly id: string;
     /**
      * Filters for runners with the given paused value

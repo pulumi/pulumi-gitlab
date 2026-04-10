@@ -38,6 +38,9 @@ export interface GetGroupSamlLinksResult {
      * The name or id of the group.
      */
     readonly group: string;
+    /**
+     * The ID of this Terraform resource. In the format \n\n
+     */
     readonly id: string;
     /**
      * The list of group SAML links returned by the search

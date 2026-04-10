@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * The `gitlab.Group` resource manages the lifecycle of a group.
+ *
+ * > On GitLab.com, you cannot use the `gitlab.Group` resource to create a [top-level group](https://docs.gitlab.com/user/group/#group-hierarchy). Instead, you must [create a group](https://docs.gitlab.com/user/group/#create-a-group) in the UI, then import the group into your Terraform configuration. From here, you can manage the group using the Terraform Provider.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -74,26 +80,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_group.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Group`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * ```sh
- * $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
- * ```
- *
- * `id` can be whatever the [details of a group][details_of_a_group] api takes for
- *
+ * `id` can be whatever the [details of a group][detailsOfAGroup] api takes for
  * its `:id` value, so for example:
  *
  * ```sh

@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Basic example
-    ///     var test = new GitLab.GroupSamlLink("test", new()
+    ///     var test = new GitLab.Index.GroupSamlLink("test", new()
     ///     {
     ///         Group = "12345",
     ///         AccessLevel = "developer",
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
     ///     // Example using a Custom Role (Ultimate only)
     ///     // When using the custom role, the `access_level` must match the
     ///     // base role used to create the custom role.
-    ///     var testCustomRole = new GitLab.GroupSamlLink("test_custom_role", new()
+    ///     var testCustomRole = new GitLab.Index.GroupSamlLink("test_custom_role", new()
     ///     {
     ///         Group = "12345",
     ///         AccessLevel = "developer",
@@ -48,17 +48,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_saml_link`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_saml_link.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupSamlLink`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

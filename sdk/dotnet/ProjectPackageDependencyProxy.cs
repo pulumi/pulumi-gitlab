@@ -29,7 +29,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Configure the project package dependency proxy for Maven packages
-    ///     var example = new GitLab.ProjectPackageDependencyProxy("example", new()
+    ///     var example = new GitLab.Index.ProjectPackageDependencyProxy("example", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Enabled = true,
@@ -37,7 +37,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // With authentication credentials for the external registry
-    ///     var authenticated = new GitLab.ProjectPackageDependencyProxy("authenticated", new()
+    ///     var authenticated = new GitLab.Index.ProjectPackageDependencyProxy("authenticated", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Enabled = true,
@@ -51,24 +51,12 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_package_dependency_proxy`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_package_dependency_proxy.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPackageDependencyProxy`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
     /// You can import a project package dependency proxy using the project id. e.g. `{project-id}`
-    /// 
-    /// "maven_external_registry_password" will not populate when importing, but will still
-    /// 
+    /// "MavenExternalRegistryPassword" will not populate when importing, but will still
     /// be required in the configuration if credentials are used.
     /// 
     /// ```sh

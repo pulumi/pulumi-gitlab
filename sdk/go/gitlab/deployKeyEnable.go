@@ -69,31 +69,16 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key_enable`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_deploy_key_enable.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `DeployKeyEnable`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
 // GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
-//
-// `project_id` can be whatever the [get single project api][get_single_project] takes for
-//
+// `projectId` can be whatever the [get single project api][getSingleProject] takes for
 // its `:id` value, so for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
-// ```
-//
-// ```sh
 // $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
 // ```
 type DeployKeyEnable struct {

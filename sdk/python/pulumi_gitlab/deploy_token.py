@@ -277,17 +277,7 @@ class DeployToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_deploy_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `DeployToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -295,9 +285,6 @@ class DeployToken(pulumi.CustomResource):
 
         ```sh
         $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
-        ```
-
-        ```sh
         $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
         ```
 
@@ -327,17 +314,7 @@ class DeployToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_deploy_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `DeployToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -345,9 +322,6 @@ class DeployToken(pulumi.CustomResource):
 
         ```sh
         $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
-        ```
-
-        ```sh
         $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
         ```
 

@@ -70,21 +70,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_integration_jira.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationJira`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab_integration_jira state using the project ID, e.g.
+ * You can import a gitlab.IntegrationJira state using the project ID, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
@@ -219,9 +209,17 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> jiraIssueRegex() {
         return Codegen.optional(this.jiraIssueRegex);
     }
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     * 
+     */
     @Export(name="jiraIssueTransitionAutomatic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jiraIssueTransitionAutomatic;
 
+    /**
+     * @return Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     * 
+     */
     public Output<Optional<Boolean>> jiraIssueTransitionAutomatic() {
         return Codegen.optional(this.jiraIssueTransitionAutomatic);
     }

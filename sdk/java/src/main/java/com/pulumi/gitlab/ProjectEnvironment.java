@@ -17,6 +17,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `gitlab.ProjectEnvironment` resource manages the lifecycle of an environment in a project.
+ * 
+ * &gt; During a terraform destroy this resource by default will not attempt to stop the environment first.
+ * An environment is required to be in a stopped state before a deletion of the environment can occur.
+ * Set the `stopBeforeDestroy` flag to attempt to automatically stop the environment before deletion. If the
+ * environment&#39;s `autoStopSetting` is set to `withAction`, the environment will be force-stopped.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/environments/)
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -70,17 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_environment`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_environment.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectEnvironment`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

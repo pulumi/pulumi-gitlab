@@ -41,6 +41,9 @@ class GetPipelineSchedulesResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of this Terraform resource.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

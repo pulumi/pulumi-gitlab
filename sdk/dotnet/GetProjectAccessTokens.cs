@@ -85,6 +85,9 @@ namespace Pulumi.GitLab
         /// The list of access tokens returned by the search
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectAccessTokensAccessTokenResult> AccessTokens;
+        /// <summary>
+        /// The ID of this Terraform resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name or id of the project.

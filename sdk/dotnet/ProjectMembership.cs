@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.ProjectMembership("test", new()
+    ///     var test = new GitLab.Index.ProjectMembership("test", new()
     ///     {
     ///         Project = "12345",
     ///         UserId = 1337,
     ///         AccessLevel = "guest",
     ///     });
     /// 
-    ///     var example = new GitLab.ProjectMembership("example", new()
+    ///     var example = new GitLab.Index.ProjectMembership("example", new()
     ///     {
     ///         Project = "67890",
     ///         UserId = 1234,
@@ -46,17 +46,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_membership`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_membership.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectMembership`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

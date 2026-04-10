@@ -49,17 +49,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_share_group`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_group_share_group.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `GroupShareGroup`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

@@ -17,21 +17,18 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * The `gitlab.ProjectPagesSettings` resource manages project pages settings in GitLab.
+ * 
+ * &gt; This is an **experimental resource**. By nature it doesn&#39;t properly fit into how Terraform resources are meant to work.
+ * 
+ * &gt; When you destroy the resource, you can control if pages settings are saved or not. Set `keepSettingsOnDestroy` to `true` (default) to save changes to pages settings. Set `keepSettingsOnDestroy` to `false` to reset the pages settings to its original values.
+ * The original values are saved in state when you create the resource. You can change the `keepSettingsOnDestroy` value before destroying the resource to control this behavior.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pages_settings`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_pages_settings.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPagesSettings`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -86,9 +83,17 @@ public class ProjectPagesSettings extends com.pulumi.resources.CustomResource {
     public Output<Boolean> isUniqueDomainEnabled() {
         return this.isUniqueDomainEnabled;
     }
+    /**
+     * Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     @Export(name="keepSettingsOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     public Output<Boolean> keepSettingsOnDestroy() {
         return this.keepSettingsOnDestroy;
     }

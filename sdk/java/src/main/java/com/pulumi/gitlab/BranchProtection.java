@@ -21,21 +21,25 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `gitlab.BranchProtection` resource manages the lifecycle of a protected branch of a repository.
+ * 
+ * &gt; **Branch Protection Behavior for the default branch**
+ *    Depending on the GitLab instance, group or project setting the default branch of a project is created automatically by GitLab behind the scenes.
+ *    Due to some [limitations](https://discuss.hashicorp.com/t/ignore-the-order-of-a-complex-typed-list/42242) in the Terraform Provider SDK and the GitLab API,
+ *    when creating a new project and trying to manage the branch protection setting for its default branch the `gitlab.BranchProtection` resource will
+ *    automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
+ *    Having multiple `gitlab.BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
+ *    This behavior might change in the future.
+ * 
+ * &gt; The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
+ * 
  * ## Example Usage
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch_protection`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_branch_protection.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.BranchProtection`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

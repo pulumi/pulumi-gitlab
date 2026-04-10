@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupApplication(ctx, &gitlab.LookupApplicationArgs{
+//			_, err := gitlab.GetApplication(ctx, &gitlab.LookupApplicationArgs{
 //				Id: "1",
 //			}, nil)
 //			if err != nil {
@@ -52,6 +52,7 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationArgs struct {
+	// The ID of this Terraform resource. In the format of `<application_id>`.
 	Id string `pulumi:"id"`
 }
 
@@ -60,8 +61,9 @@ type LookupApplicationResult struct {
 	// Internal GitLab application id.
 	ApplicationId string `pulumi:"applicationId"`
 	// Indicates if the application is kept confidential.
-	Confidential bool   `pulumi:"confidential"`
-	Id           string `pulumi:"id"`
+	Confidential bool `pulumi:"confidential"`
+	// The ID of this Terraform resource. In the format of `<application_id>`.
+	Id string `pulumi:"id"`
 	// The name of the GitLab application.
 	Name string `pulumi:"name"`
 	// The redirect url of the application.
@@ -79,6 +81,7 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationOutputArgs struct {
+	// The ID of this Terraform resource. In the format of `<application_id>`.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -111,6 +114,7 @@ func (o LookupApplicationResultOutput) Confidential() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationResult) bool { return v.Confidential }).(pulumi.BoolOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<application_id>`.
 func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }

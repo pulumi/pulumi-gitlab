@@ -41,6 +41,9 @@ export interface GetProjectAccessTokensResult {
      * The list of access tokens returned by the search
      */
     readonly accessTokens: outputs.GetProjectAccessTokensAccessToken[];
+    /**
+     * The ID of this Terraform resource.
+     */
     readonly id: string;
     /**
      * The name or id of the project.

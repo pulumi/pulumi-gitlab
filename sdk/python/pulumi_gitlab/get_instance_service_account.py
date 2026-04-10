@@ -54,6 +54,9 @@ class GetInstanceServiceAccountResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of this Terraform resource. This matches the service account id.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

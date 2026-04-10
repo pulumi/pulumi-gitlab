@@ -384,17 +384,7 @@ class Runner(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_runner`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_runner.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Runner`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -437,17 +427,7 @@ class Runner(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_runner`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_runner.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Runner`. For example:
 
         Importing using the CLI is supported with the following syntax:
 

@@ -65,6 +65,9 @@ export interface GetGroupIdsResult {
      * The ID of the group.
      */
     readonly groupId: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<group_id>`.
+     */
     readonly id: string;
 }
 /**

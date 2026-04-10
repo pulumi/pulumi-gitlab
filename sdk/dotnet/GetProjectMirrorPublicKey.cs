@@ -87,6 +87,9 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetProjectMirrorPublicKeyResult
     {
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;project_id&gt;:&lt;mirror_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The id of the remote mirror.

@@ -374,23 +374,11 @@ class IntegrationJenkins(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jenkins`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_jenkins.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationJenkins`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins You can import a gitlab_integration_jenkins state using `<resource> <project_id>`:
-        ```
+        You can import a IntegrationJenkins state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins jenkins 1
@@ -439,23 +427,11 @@ class IntegrationJenkins(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jenkins`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_jenkins.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationJenkins`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins You can import a gitlab_integration_jenkins state using `<resource> <project_id>`:
-        ```
+        You can import a IntegrationJenkins state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins jenkins 1

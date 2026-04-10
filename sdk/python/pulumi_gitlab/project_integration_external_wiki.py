@@ -205,21 +205,11 @@ class ProjectIntegrationExternalWiki(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_external_wiki`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_external_wiki.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationExternalWiki`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_project_integration_external_wiki state using the project ID, e.g.
+        You can import a ProjectIntegrationExternalWiki state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki wiki 1
@@ -258,21 +248,11 @@ class ProjectIntegrationExternalWiki(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_external_wiki`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_external_wiki.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationExternalWiki`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_project_integration_external_wiki state using the project ID, e.g.
+        You can import a ProjectIntegrationExternalWiki state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki wiki 1

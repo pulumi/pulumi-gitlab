@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
+        ///     var example = GitLab.Index.GetComplianceFramework.Invoke(new()
         ///     {
         ///         NamespacePath = "top-level-group",
         ///         Name = "HIPAA",
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
+        ///     var example = GitLab.Index.GetComplianceFramework.Invoke(new()
         ///     {
         ///         NamespacePath = "top-level-group",
         ///         Name = "HIPAA",
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
+        ///     var example = GitLab.Index.GetComplianceFramework.Invoke(new()
         ///     {
         ///         NamespacePath = "top-level-group",
         ///         Name = "HIPAA",
@@ -154,6 +154,9 @@ namespace Pulumi.GitLab
         /// Globally unique ID of the compliance framework.
         /// </summary>
         public readonly string FrameworkId;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;namespace_path&gt;:&lt;framework_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Name for the compliance framework.

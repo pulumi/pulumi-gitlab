@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `gitlab.ProjectSecurityPolicyAttachment` resource allows to attach a security policy project to a project.
+ * This resource requires being an owner on the project that is having the security policy applied.
+ *
+ * > [Policies](https://docs.gitlab.com/user/application_security/policies/) are files stored in a policy project as raw YAML, to allow maximum flexibility with support of all kind of policy and all their options. See the examples for how to create a policy project, add a policy, and link it. Use the `gitlab.RepositoryFile` resource to create policies instead of a specific policy resource. This ensures all policy options are immediately via Terraform once released.
+ *
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/index/#mutationsecuritypolicyprojectassign)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,17 +63,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_security_policy_attachment`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_project_security_policy_attachment.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectSecurityPolicyAttachment`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *

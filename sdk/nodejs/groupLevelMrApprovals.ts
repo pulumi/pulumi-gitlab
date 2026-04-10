@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `gitlab.GroupLevelMrApprovals` resource manages the lifecycle of group merge request approval settings. More than one resource per group will conflict with each other.
+ *
+ * > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+ *
+ * > If `keepSettingsOnDestroy` is set to false, destroying the resource will revert settings to the values that were present when the resource was first created.
+ * You will need to apply the resource with the new setting before destroying the resource.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approval_settings/#group-mr-approval-settings)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,23 +38,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_group_level_mr_approvals.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupLevelMrApprovals`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
- *
- * ```sh
- * $ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals You can import an approval configuration state using `<resource> <group_id>`.
- * ```
  *
  * For example:
  *
@@ -97,6 +92,9 @@ export class GroupLevelMrApprovals extends pulumi.CustomResource {
      * The ID or URL-encoded path of the group.
      */
     declare public readonly group: pulumi.Output<string>;
+    /**
+     * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     */
     declare public readonly keepSettingsOnDestroy: pulumi.Output<boolean>;
     /**
      * Require approver to authenticate before adding the approval.
@@ -165,6 +163,9 @@ export interface GroupLevelMrApprovalsState {
      * The ID or URL-encoded path of the group.
      */
     group?: pulumi.Input<string>;
+    /**
+     * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     */
     keepSettingsOnDestroy?: pulumi.Input<boolean>;
     /**
      * Require approver to authenticate before adding the approval.
@@ -196,6 +197,9 @@ export interface GroupLevelMrApprovalsArgs {
      * The ID or URL-encoded path of the group.
      */
     group: pulumi.Input<string>;
+    /**
+     * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     */
     keepSettingsOnDestroy?: pulumi.Input<boolean>;
     /**
      * Require approver to authenticate before adding the approval.

@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .visibilityLevel("public")
  *             .build());
  * 
- *         final var password = config.get("password");
+ *         final var password = config.require("password");
  *         var harbor = new IntegrationHarbor("harbor", IntegrationHarborArgs.builder()
  *             .project(awesomeProject.id())
  *             .url("http://harbor.example.com")
@@ -71,23 +71,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_harbor`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_integration_harbor.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationHarbor`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor You can import a gitlab_integration_harbor state using `&lt;resource&gt; &lt;project_id&gt;`:
- * ```
+ * You can import a gitlab.IntegrationHarbor state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor harbor 1

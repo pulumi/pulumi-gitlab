@@ -395,26 +395,11 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_service_account_access_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupServiceAccountAccessToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `<resource> <id>`. The
-        ```
-
         `id` is in the form of <group_id>:<service_account_id>:<access_token_id>
-
         Importing an access token does not import the access token value.
 
         ```sh
@@ -499,26 +484,11 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_service_account_access_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupServiceAccountAccessToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `<resource> <id>`. The
-        ```
-
         `id` is in the form of <group_id>:<service_account_id>:<access_token_id>
-
         Importing an access token does not import the access token value.
 
         ```sh

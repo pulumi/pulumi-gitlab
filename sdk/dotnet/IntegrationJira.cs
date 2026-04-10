@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var jira = new GitLab.IntegrationJira("jira", new()
+    ///     var jira = new GitLab.Index.IntegrationJira("jira", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Url = "https://jira.example.com",
@@ -46,21 +46,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_jira.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationJira`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab_integration_jira state using the project ID, e.g.
+    /// You can import a gitlab.IntegrationJira state using the project ID, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
@@ -123,6 +113,9 @@ namespace Pulumi.GitLab
         [Output("jiraIssueRegex")]
         public Output<string?> JiraIssueRegex { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+        /// </summary>
         [Output("jiraIssueTransitionAutomatic")]
         public Output<bool?> JiraIssueTransitionAutomatic { get; private set; } = null!;
 
@@ -278,6 +271,9 @@ namespace Pulumi.GitLab
         [Input("jiraIssueRegex")]
         public Input<string>? JiraIssueRegex { get; set; }
 
+        /// <summary>
+        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+        /// </summary>
         [Input("jiraIssueTransitionAutomatic")]
         public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 
@@ -407,6 +403,9 @@ namespace Pulumi.GitLab
         [Input("jiraIssueRegex")]
         public Input<string>? JiraIssueRegex { get; set; }
 
+        /// <summary>
+        /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+        /// </summary>
         [Input("jiraIssueTransitionAutomatic")]
         public Input<bool>? JiraIssueTransitionAutomatic { get; set; }
 

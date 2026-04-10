@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Group("foo", new()
+    ///     var foo = new GitLab.Index.Group("foo", new()
     ///     {
     ///         Name = "foo-group",
     ///         Path = "foo-path",
     ///     });
     /// 
-    ///     var bar = new GitLab.GroupCluster("bar", new()
+    ///     var bar = new GitLab.Index.GroupCluster("bar", new()
     ///     {
     ///         Group = foo.Id,
     ///         Name = "bar-cluster",
@@ -51,17 +51,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_cluster`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_cluster.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupCluster`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

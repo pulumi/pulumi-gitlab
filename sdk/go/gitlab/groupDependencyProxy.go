@@ -49,24 +49,12 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_dependency_proxy`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_group_dependency_proxy.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `GroupDependencyProxy`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
 // You can import a group dependency proxy using the group id. e.g. `{group-id}`
-//
 // "secret" will not populate when importing the dependency proxy, but will still
-//
 // be required in the configuration.
 //
 // ```sh

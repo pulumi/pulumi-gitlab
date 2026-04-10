@@ -65,21 +65,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_external_wiki`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_integration_external_wiki.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationExternalWiki`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab_integration_external_wiki state using the project ID, e.g.
+ * You can import a gitlab.IntegrationExternalWiki state using the project ID, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationExternalWiki:IntegrationExternalWiki wiki 1

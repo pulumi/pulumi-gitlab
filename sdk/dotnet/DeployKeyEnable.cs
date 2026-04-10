@@ -25,19 +25,19 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // A repo to host the deployment key
-    ///     var parent = new GitLab.Project("parent", new()
+    ///     var parent = new GitLab.Index.Project("parent", new()
     ///     {
     ///         Name = "parent_project",
     ///     });
     /// 
     ///     // A second repo to use the deployment key from the parent project
-    ///     var foo = new GitLab.Project("foo", new()
+    ///     var foo = new GitLab.Index.Project("foo", new()
     ///     {
     ///         Name = "foo_project",
     ///     });
     /// 
     ///     // Upload a deployment key for the parent repo
-    ///     var parentDeployKey = new GitLab.DeployKey("parent", new()
+    ///     var parentDeployKey = new GitLab.Index.DeployKey("parent", new()
     ///     {
     ///         Project = parent.Id,
     ///         Title = "Example deploy key",
@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Enable the deployment key on the second repo
-    ///     var fooDeployKeyEnable = new GitLab.DeployKeyEnable("foo", new()
+    ///     var fooDeployKeyEnable = new GitLab.Index.DeployKeyEnable("foo", new()
     ///     {
     ///         Project = foo.Id,
     ///         KeyId = parentDeployKey.DeployKeyId,
@@ -56,31 +56,16 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key_enable`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_deploy_key_enable.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.DeployKeyEnable`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
     /// GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
-    /// 
-    /// `project_id` can be whatever the [get single project api][get_single_project] takes for
-    /// 
+    /// `ProjectId` can be whatever the [get single project api][GetSingleProject] takes for
     /// its `:id` value, so for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
     /// ```
     /// </summary>

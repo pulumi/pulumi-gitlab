@@ -19,6 +19,10 @@ public final class GetProjectEnvironmentsResult {
      * 
      */
     private List<GetProjectEnvironmentsEnvironment> environments;
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     private String id;
     /**
      * @return Return the environment with this name. Mutually exclusive with search.
@@ -49,6 +53,10 @@ public final class GetProjectEnvironmentsResult {
     public List<GetProjectEnvironmentsEnvironment> environments() {
         return this.environments;
     }
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

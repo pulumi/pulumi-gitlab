@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Group("example", new()
+    ///     var example = new GitLab.Index.Group("example", new()
     ///     {
     ///         Name = "example-group",
     ///         Path = "example-group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var mattermost = new GitLab.GroupIntegrationMattermost("mattermost", new()
+    ///     var mattermost = new GitLab.Index.GroupIntegrationMattermost("mattermost", new()
     ///     {
     ///         Group = example.Id,
     ///         Webhook = "https://mattermost.example.com/hooks/...",
@@ -43,17 +43,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_integration_mattermost`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_integration_mattermost.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupIntegrationMattermost`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -29,23 +29,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_harbor`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_project_integration_harbor.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIntegrationHarbor`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * ```sh
- * $ pulumi import gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor You can import a gitlab_project_integration_harbor state using `<resource> <project_id>`:
- * ```
+ * You can import a gitlab.ProjectIntegrationHarbor state using `terraform import <resource> <project_id>`:
  *
  * ```sh
  * $ pulumi import gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor harbor 1

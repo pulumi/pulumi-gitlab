@@ -226,23 +226,11 @@ class ProjectIntegrationRedmine(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_redmine`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_redmine.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationRedmine`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine You can import a gitlab_project_integration_redmine state using `<resource> <project_id>`:
-        ```
+        You can import a ProjectIntegrationRedmine state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine redmine 1
@@ -288,23 +276,11 @@ class ProjectIntegrationRedmine(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_redmine`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_redmine.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationRedmine`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine You can import a gitlab_project_integration_redmine state using `<resource> <project_id>`:
-        ```
+        You can import a ProjectIntegrationRedmine state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine redmine 1

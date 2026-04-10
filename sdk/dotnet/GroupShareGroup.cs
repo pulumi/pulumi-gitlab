@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.GroupShareGroup("test", new()
+    ///     var test = new GitLab.Index.GroupShareGroup("test", new()
     ///     {
     ///         GroupId = foo.Id,
     ///         ShareGroupId = bar.Id,
@@ -39,17 +39,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_share_group`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_share_group.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupShareGroup`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

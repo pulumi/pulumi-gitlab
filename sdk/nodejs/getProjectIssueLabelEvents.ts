@@ -58,6 +58,9 @@ export interface GetProjectIssueLabelEventsResult {
      * List of label events for the issue.
      */
     readonly events: outputs.GetProjectIssueLabelEventsEvent[];
+    /**
+     * The ID of this Terraform resource. In the format of `<project>:<issue_iid>`.
+     */
     readonly id: string;
     /**
      * The internal ID of the issue.

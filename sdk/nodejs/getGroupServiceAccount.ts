@@ -41,6 +41,9 @@ export interface GetGroupServiceAccountResult {
      * The ID or URL-encoded path of the target group. Must be a top-level group.
      */
     readonly group: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
+     */
     readonly id: string;
     /**
      * The name of the user. If not specified, the default Service account user name is used.

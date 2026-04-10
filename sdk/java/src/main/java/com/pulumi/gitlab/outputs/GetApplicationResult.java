@@ -21,6 +21,10 @@ public final class GetApplicationResult {
      * 
      */
     private Boolean confidential;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The name of the GitLab application.
@@ -48,6 +52,10 @@ public final class GetApplicationResult {
     public Boolean confidential() {
         return this.confidential;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

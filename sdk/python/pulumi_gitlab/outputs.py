@@ -9768,6 +9768,7 @@ class GetProjectsProjectResult(dict):
         :param _builtins.bool only_allow_merge_if_pipeline_succeeds: Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
         :param _builtins.bool only_mirror_protected_branches: Whether only_mirror_protected_branches is enabled for the project.
         :param _builtins.int open_issues_count: The number of open issies for the project.
+        :param Sequence['GetProjectsProjectOwnerArgs'] owners: The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
         :param _builtins.bool packages_enabled: Whether packages are enabled for the project.
         :param _builtins.str path: The path of the project.
         :param _builtins.str path_with_namespace: In `group/subgroup/project` or `user/project` format.
@@ -10496,6 +10497,9 @@ class GetProjectsProjectResult(dict):
     @_builtins.property
     @pulumi.getter
     def owners(self) -> Sequence['outputs.GetProjectsProjectOwnerResult']:
+        """
+        The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+        """
         return pulumi.get(self, "owners")
 
     @_builtins.property

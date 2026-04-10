@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve a project label by its ID
-//			_, err := gitlab.LookupProjectLabel(ctx, &gitlab.LookupProjectLabelArgs{
+//			_, err := gitlab.GetProjectLabel(ctx, &gitlab.LookupProjectLabelArgs{
 //				Project: "385",
 //				LabelId: 24,
 //			}, nil)
@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			// Retrieve using project path
-//			_, err = gitlab.LookupProjectLabel(ctx, &gitlab.LookupProjectLabelArgs{
+//			_, err = gitlab.GetProjectLabel(ctx, &gitlab.LookupProjectLabelArgs{
 //				Project: "group/project",
 //				LabelId: 25,
 //			}, nil)

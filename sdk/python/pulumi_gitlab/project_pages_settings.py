@@ -30,6 +30,7 @@ class ProjectPagesSettingsArgs:
         :param pulumi.Input[_builtins.str] project: The project ID or path.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
         """
         pulumi.set(__self__, "project", project)
         if force_https is not None:
@@ -78,6 +79,9 @@ class ProjectPagesSettingsArgs:
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
@@ -99,6 +103,7 @@ class _ProjectPagesSettingsState:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]] deployments: List of current active deployments.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] project: The project ID or path.
         :param pulumi.Input[_builtins.str] url: The URL to access the project pages.
         """
@@ -154,6 +159,9 @@ class _ProjectPagesSettingsState:
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
@@ -197,21 +205,18 @@ class ProjectPagesSettings(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        The `ProjectPagesSettings` resource manages project pages settings in GitLab.
+
+        > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+
+        > When you destroy the resource, you can control if pages settings are saved or not. Set `keep_settings_on_destroy` to `true` (default) to save changes to pages settings. Set `keep_settings_on_destroy` to `false` to reset the pages settings to its original values.
+        The original values are saved in state when you create the resource. You can change the `keep_settings_on_destroy` value before destroying the resource to control this behavior.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pages_settings`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_pages_settings.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectPagesSettings`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -225,6 +230,7 @@ class ProjectPagesSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] project: The project ID or path.
         """
         ...
@@ -234,21 +240,18 @@ class ProjectPagesSettings(pulumi.CustomResource):
                  args: ProjectPagesSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        The `ProjectPagesSettings` resource manages project pages settings in GitLab.
+
+        > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+
+        > When you destroy the resource, you can control if pages settings are saved or not. Set `keep_settings_on_destroy` to `true` (default) to save changes to pages settings. Set `keep_settings_on_destroy` to `false` to reset the pages settings to its original values.
+        The original values are saved in state when you create the resource. You can change the `keep_settings_on_destroy` value before destroying the resource to control this behavior.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pages_settings`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_pages_settings.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectPagesSettings`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -320,6 +323,7 @@ class ProjectPagesSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict']]]] deployments: List of current active deployments.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] project: The project ID or path.
         :param pulumi.Input[_builtins.str] url: The URL to access the project pages.
         """
@@ -362,6 +366,9 @@ class ProjectPagesSettings(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @_builtins.property

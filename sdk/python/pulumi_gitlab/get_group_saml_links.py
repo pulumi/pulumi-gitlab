@@ -49,6 +49,9 @@ class GetGroupSamlLinksResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of this Terraform resource. In the format \\n\\n
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -31,6 +31,9 @@ export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
+    /**
+     * The ID of this Terraform resource. In the format of `<application_id>`.
+     */
     id: string;
 }
 
@@ -46,6 +49,9 @@ export interface GetApplicationResult {
      * Indicates if the application is kept confidential.
      */
     readonly confidential: boolean;
+    /**
+     * The ID of this Terraform resource. In the format of `<application_id>`.
+     */
     readonly id: string;
     /**
      * The name of the GitLab application.
@@ -83,5 +89,8 @@ export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulu
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationOutputArgs {
+    /**
+     * The ID of this Terraform resource. In the format of `<application_id>`.
+     */
     id: pulumi.Input<string>;
 }

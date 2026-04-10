@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetPipelineSchedules.Invoke(new()
+        ///     var example = GitLab.Index.GetPipelineSchedules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetPipelineSchedules.Invoke(new()
+        ///     var example = GitLab.Index.GetPipelineSchedules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetPipelineSchedules.Invoke(new()
+        ///     var example = GitLab.Index.GetPipelineSchedules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
@@ -123,6 +123,9 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetPipelineSchedulesResult
     {
+        /// <summary>
+        /// The ID of this Terraform resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The list of pipeline schedules.

@@ -26,17 +26,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_member_role`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_member_role.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `MemberRole`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

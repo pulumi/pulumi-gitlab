@@ -305,6 +305,9 @@ namespace Pulumi.GitLab.Outputs
         /// The number of open issies for the project.
         /// </summary>
         public readonly int OpenIssuesCount;
+        /// <summary>
+        /// The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
         /// <summary>
         /// Whether packages are enabled for the project.

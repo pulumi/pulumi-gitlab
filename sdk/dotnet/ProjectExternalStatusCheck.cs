@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.ProjectExternalStatusCheck("foo", new()
+    ///     var foo = new GitLab.Index.ProjectExternalStatusCheck("foo", new()
     ///     {
     ///         ProjectId = 123,
     ///         Name = "foo",
     ///         ExternalUrl = "https://example.gitlab.com",
     ///     });
     /// 
-    ///     var bar = new GitLab.ProjectExternalStatusCheck("bar", new()
+    ///     var bar = new GitLab.Index.ProjectExternalStatusCheck("bar", new()
     ///     {
     ///         ProjectId = 456,
     ///         Name = "bar",
@@ -51,17 +51,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_external_status_check`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_external_status_check.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectExternalStatusCheck`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -71,7 +61,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck foo "123:42"
     /// ```
     /// 
-    /// NOTE: the `shared_secret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `SharedSecret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck")]
     public partial class ProjectExternalStatusCheck : global::Pulumi.CustomResource

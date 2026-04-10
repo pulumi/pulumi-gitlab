@@ -58,23 +58,11 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_integration_github.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `IntegrationGithub`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// ```sh
-// $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `<resource> <project_id>`:
-// ```
+// You can import a IntegrationGithub state using `terraform import <resource> <project_id>`:
 //
 // ```sh
 // $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
@@ -87,7 +75,8 @@ type IntegrationGithub struct {
 	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ID of the project you want to activate the integration on.
-	Project       pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl pulumi.StringOutput `pulumi:"repositoryUrl"`
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolOutput `pulumi:"staticContext"`
@@ -150,7 +139,8 @@ type integrationGithubState struct {
 	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
 	// ID of the project you want to activate the integration on.
-	Project       *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
@@ -168,7 +158,8 @@ type IntegrationGithubState struct {
 	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringPtrInput
 	// ID of the project you want to activate the integration on.
-	Project       pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl pulumi.StringPtrInput
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
@@ -186,7 +177,8 @@ func (IntegrationGithubState) ElementType() reflect.Type {
 
 type integrationGithubArgs struct {
 	// ID of the project you want to activate the integration on.
-	Project       string `pulumi:"project"`
+	Project string `pulumi:"project"`
+	// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl string `pulumi:"repositoryUrl"`
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext *bool `pulumi:"staticContext"`
@@ -197,7 +189,8 @@ type integrationGithubArgs struct {
 // The set of arguments for constructing a IntegrationGithub resource.
 type IntegrationGithubArgs struct {
 	// ID of the project you want to activate the integration on.
-	Project       pulumi.StringInput
+	Project pulumi.StringInput
+	// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
 	RepositoryUrl pulumi.StringInput
 	// Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
 	StaticContext pulumi.BoolPtrInput
@@ -307,6 +300,7 @@ func (o IntegrationGithubOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
 func (o IntegrationGithubOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationGithub) pulumi.StringOutput { return v.RepositoryUrl }).(pulumi.StringOutput)
 }

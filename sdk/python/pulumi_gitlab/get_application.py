@@ -62,6 +62,9 @@ class GetApplicationResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of this Terraform resource. In the format of `<application_id>`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -109,6 +112,9 @@ def get_application(id: Optional[_builtins.str] = None,
 
     oidc = gitlab.get_application(id="1")
     ```
+
+
+    :param _builtins.str id: The ID of this Terraform resource. In the format of `<application_id>`.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -136,6 +142,9 @@ def get_application_output(id: Optional[pulumi.Input[_builtins.str]] = None,
 
     oidc = gitlab.get_application(id="1")
     ```
+
+
+    :param _builtins.str id: The ID of this Terraform resource. In the format of `<application_id>`.
     """
     __args__ = dict()
     __args__['id'] = id

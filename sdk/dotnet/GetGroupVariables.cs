@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
+        ///     var vars = GitLab.Index.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
+        ///     var stagingVars = GitLab.Index.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         EnvironmentScope = "staging/*",
@@ -59,13 +59,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
+        ///     var vars = GitLab.Index.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
+        ///     var stagingVars = GitLab.Index.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         EnvironmentScope = "staging/*",
@@ -92,13 +92,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
+        ///     var vars = GitLab.Index.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
+        ///     var stagingVars = GitLab.Index.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         EnvironmentScope = "staging/*",
@@ -164,6 +164,9 @@ namespace Pulumi.GitLab
         /// The name or id of the group.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;service_account_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The list of variables returned by the search

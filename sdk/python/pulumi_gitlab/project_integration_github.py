@@ -26,6 +26,7 @@ class ProjectIntegrationGithubArgs:
         """
         The set of arguments for constructing a ProjectIntegrationGithub resource.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.str] repository_url: The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
         :param pulumi.Input[_builtins.bool] static_context: Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         """
@@ -50,6 +51,9 @@ class ProjectIntegrationGithubArgs:
     @_builtins.property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+        """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
@@ -97,6 +101,7 @@ class _ProjectIntegrationGithubState:
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.str] repository_url: The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[_builtins.bool] static_context: Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[_builtins.str] title: Title of the integration.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
@@ -158,6 +163,9 @@ class _ProjectIntegrationGithubState:
     @_builtins.property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+        """
         return pulumi.get(self, "repository_url")
 
     @repository_url.setter
@@ -249,23 +257,11 @@ class ProjectIntegrationGithub(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_github`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_github.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationGithub`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub You can import a gitlab_project_integration_github state using `<resource> <project_id>`:
-        ```
+        You can import a ProjectIntegrationGithub state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub github 1
@@ -274,6 +270,7 @@ class ProjectIntegrationGithub(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.str] repository_url: The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[_builtins.bool] static_context: Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
         """
@@ -308,23 +305,11 @@ class ProjectIntegrationGithub(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_github`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_github.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationGithub`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub You can import a gitlab_project_integration_github state using `<resource> <project_id>`:
-        ```
+        You can import a ProjectIntegrationGithub state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub github 1
@@ -402,6 +387,7 @@ class ProjectIntegrationGithub(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.str] repository_url: The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[_builtins.bool] static_context: Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
         :param pulumi.Input[_builtins.str] title: Title of the integration.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
@@ -448,6 +434,9 @@ class ProjectIntegrationGithub(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+        """
         return pulumi.get(self, "repository_url")
 
     @_builtins.property

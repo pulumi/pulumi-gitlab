@@ -5,21 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * The `gitlab.ApplicationAppearance` resource manages the GitLab application appearance.
+ *
+ * > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+ *
+ * > All `gitlab.ApplicationAppearance` resources use the same ID `gitlab`.
+ *
+ * > When you destroy the resource, you can control if appearance settings are saved or not. Set `keepSettingsOnDestroy` to `true` (default) to save changes to appearance settings. Set `keepSettingsOnDestroy` to `false` to reset the appearance to its original values.
+ * The original values are saved in state when you create the resource. You can change the `keepSettingsOnDestroy` value before destroying the resource to control this behavior.
+ *
+ * > Requires administrative privileges on GitLab.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application_appearance`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_application_appearance.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ApplicationAppearance`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
@@ -73,6 +74,9 @@ export class ApplicationAppearance extends pulumi.CustomResource {
      * Message in the system header bar.
      */
     declare public readonly headerMessage: pulumi.Output<string>;
+    /**
+     * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     */
     declare public readonly keepSettingsOnDestroy: pulumi.Output<boolean>;
     /**
      * Markdown text shown on the group or project member page for users with permission to change members.
@@ -180,6 +184,9 @@ export interface ApplicationAppearanceState {
      * Message in the system header bar.
      */
     headerMessage?: pulumi.Input<string>;
+    /**
+     * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     */
     keepSettingsOnDestroy?: pulumi.Input<boolean>;
     /**
      * Markdown text shown on the group or project member page for users with permission to change members.
@@ -239,6 +246,9 @@ export interface ApplicationAppearanceArgs {
      * Message in the system header bar.
      */
     headerMessage?: pulumi.Input<string>;
+    /**
+     * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     */
     keepSettingsOnDestroy?: pulumi.Input<boolean>;
     /**
      * Markdown text shown on the group or project member page for users with permission to change members.

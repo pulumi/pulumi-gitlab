@@ -77,7 +77,8 @@ type GetGroupIdsResult struct {
 	GroupGraphqlId string `pulumi:"groupGraphqlId"`
 	// The ID of the group.
 	GroupId string `pulumi:"groupId"`
-	Id      string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<group_id>`.
+	Id string `pulumi:"id"`
 }
 
 func GetGroupIdsOutput(ctx *pulumi.Context, args GetGroupIdsOutputArgs, opts ...pulumi.InvokeOption) GetGroupIdsResultOutput {
@@ -134,6 +135,7 @@ func (o GetGroupIdsResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupIdsResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<group_id>`.
 func (o GetGroupIdsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupIdsResult) string { return v.Id }).(pulumi.StringOutput)
 }

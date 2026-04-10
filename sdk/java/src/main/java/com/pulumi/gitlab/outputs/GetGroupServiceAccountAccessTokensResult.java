@@ -23,6 +23,10 @@ public final class GetGroupServiceAccountAccessTokensResult {
      * 
      */
     private String group;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;user_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the service account user.
@@ -45,6 +49,10 @@ public final class GetGroupServiceAccountAccessTokensResult {
     public String group() {
         return this.group;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;user_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

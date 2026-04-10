@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var wiki = new GitLab.IntegrationExternalWiki("wiki", new()
+    ///     var wiki = new GitLab.Index.IntegrationExternalWiki("wiki", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         ExternalWikiUrl = "https://MyAwesomeExternalWikiURL.com",
@@ -44,21 +44,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_external_wiki`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_external_wiki.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationExternalWiki`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab_integration_external_wiki state using the project ID, e.g.
+    /// You can import a gitlab.IntegrationExternalWiki state using the project ID, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationExternalWiki:IntegrationExternalWiki wiki 1

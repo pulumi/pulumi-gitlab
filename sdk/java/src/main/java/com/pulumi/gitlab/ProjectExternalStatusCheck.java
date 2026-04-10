@@ -71,17 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_external_status_check`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_external_status_check.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectExternalStatusCheck`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -91,7 +81,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck foo &#34;123:42&#34;
  * ```
  * 
- * NOTE: the `shared_secret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * NOTE: the `sharedSecret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  * 
  */
 @ResourceType(type="gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck")

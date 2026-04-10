@@ -11,7 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// The `ApplicationSettings` resource manages the GitLab application settings.
+//
+// > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+//
+//	Feel free to join the discussion if you have any
+//	ideas or questions regarding this resource.
+//
+// > All `ApplicationSettings` use the same ID `gitlab`.
+//
+// !> This resource does not implement any destroy logic, it's a no-op at this point.
+//
+//	It's also not possible to revert to the previous settings.
+//
+// > Requires at administrative privileges on GitLab.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 type ApplicationSettings struct {
 	pulumi.CustomResourceState
 
@@ -376,7 +391,8 @@ type ApplicationSettings struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime pulumi.IntOutput `pulumi:"maxPersonalAccessTokenLifetime"`
 	// Maximum allowable lifetime for SSH keys in days.
-	MaxSshKeyLifetime          pulumi.IntOutput `pulumi:"maxSshKeyLifetime"`
+	MaxSshKeyLifetime pulumi.IntOutput `pulumi:"maxSshKeyLifetime"`
+	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes pulumi.IntOutput `pulumi:"maxTerraformStateSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntOutput `pulumi:"metricsMethodCallThreshold"`
@@ -1100,7 +1116,8 @@ type applicationSettingsState struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime *int `pulumi:"maxPersonalAccessTokenLifetime"`
 	// Maximum allowable lifetime for SSH keys in days.
-	MaxSshKeyLifetime          *int `pulumi:"maxSshKeyLifetime"`
+	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
+	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes *int `pulumi:"maxTerraformStateSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
@@ -1724,7 +1741,8 @@ type ApplicationSettingsState struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime pulumi.IntPtrInput
 	// Maximum allowable lifetime for SSH keys in days.
-	MaxSshKeyLifetime          pulumi.IntPtrInput
+	MaxSshKeyLifetime pulumi.IntPtrInput
+	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
@@ -2348,7 +2366,8 @@ type applicationSettingsArgs struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime *int `pulumi:"maxPersonalAccessTokenLifetime"`
 	// Maximum allowable lifetime for SSH keys in days.
-	MaxSshKeyLifetime          *int `pulumi:"maxSshKeyLifetime"`
+	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
+	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes *int `pulumi:"maxTerraformStateSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
@@ -2969,7 +2988,8 @@ type ApplicationSettingsArgs struct {
 	// Maximum allowable lifetime for access tokens in days.
 	MaxPersonalAccessTokenLifetime pulumi.IntPtrInput
 	// Maximum allowable lifetime for SSH keys in days.
-	MaxSshKeyLifetime          pulumi.IntPtrInput
+	MaxSshKeyLifetime pulumi.IntPtrInput
+	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
@@ -4228,6 +4248,7 @@ func (o ApplicationSettingsOutput) MaxSshKeyLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxSshKeyLifetime }).(pulumi.IntOutput)
 }
 
+// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 func (o ApplicationSettingsOutput) MaxTerraformStateSizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxTerraformStateSizeBytes }).(pulumi.IntOutput)
 }

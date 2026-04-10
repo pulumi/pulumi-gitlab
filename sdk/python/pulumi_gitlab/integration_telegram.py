@@ -525,21 +525,11 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_telegram.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationTelegram`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_telegram state using the project ID, e.g.
+        You can import a IntegrationTelegram state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/integrationTelegram:IntegrationTelegram default 1
@@ -604,21 +594,11 @@ class IntegrationTelegram(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_telegram`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_telegram.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationTelegram`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_telegram state using the project ID, e.g.
+        You can import a IntegrationTelegram state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/integrationTelegram:IntegrationTelegram default 1

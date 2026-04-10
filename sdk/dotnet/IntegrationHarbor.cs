@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
@@ -36,7 +36,7 @@ namespace Pulumi.GitLab
     ///     var config = new Config();
     ///     // Harbor password
     ///     var password = config.Require("password");
-    ///     var harbor = new GitLab.IntegrationHarbor("harbor", new()
+    ///     var harbor = new GitLab.Index.IntegrationHarbor("harbor", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Url = "http://harbor.example.com",
@@ -50,23 +50,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_harbor`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_harbor.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationHarbor`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor You can import a gitlab_integration_harbor state using `&lt;resource&gt; &lt;project_id&gt;`:
-    /// ```
+    /// You can import a gitlab.IntegrationHarbor state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor harbor 1

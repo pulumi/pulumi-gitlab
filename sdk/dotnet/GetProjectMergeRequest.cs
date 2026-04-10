@@ -27,13 +27,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     var byProjectId = GitLab.Index.GetProjectMergeRequest.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         Iid = 456,
         ///     });
         /// 
-        ///     var byProjectName = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     var byProjectName = GitLab.Index.GetProjectMergeRequest.Invoke(new()
         ///     {
         ///         Project = "company/group/project1",
         ///         Iid = 3,
@@ -61,13 +61,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     var byProjectId = GitLab.Index.GetProjectMergeRequest.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         Iid = 456,
         ///     });
         /// 
-        ///     var byProjectName = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     var byProjectName = GitLab.Index.GetProjectMergeRequest.Invoke(new()
         ///     {
         ///         Project = "company/group/project1",
         ///         Iid = 3,
@@ -95,13 +95,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     var byProjectId = GitLab.Index.GetProjectMergeRequest.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         Iid = 456,
         ///     });
         /// 
-        ///     var byProjectName = GitLab.GetProjectMergeRequest.Invoke(new()
+        ///     var byProjectName = GitLab.Index.GetProjectMergeRequest.Invoke(new()
         ///     {
         ///         Project = "company/group/project1",
         ///         Iid = 3,

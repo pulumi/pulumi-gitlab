@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.GroupLevelMrApprovals` resource manages the lifecycle of group merge request approval settings. More than one resource per group will conflict with each other.
+    /// 
+    /// &gt; This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+    /// 
+    /// &gt; If `KeepSettingsOnDestroy` is set to false, destroying the resource will revert settings to the values that were present when the resource was first created.
+    /// You will need to apply the resource with the new setting before destroying the resource.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approval_settings/#group-mr-approval-settings)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -20,14 +29,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Group("foo", new()
+    ///     var foo = new GitLab.Index.Group("foo", new()
     ///     {
     ///         Name = "test_group",
     ///         Path = "test_group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var fooGroupLevelMrApprovals = new GitLab.GroupLevelMrApprovals("foo", new()
+    ///     var fooGroupLevelMrApprovals = new GitLab.Index.GroupLevelMrApprovals("foo", new()
     ///     {
     ///         Group = foo.Id,
     ///         AllowAuthorApproval = true,
@@ -43,23 +52,9 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_level_mr_approvals.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupLevelMrApprovals`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
-    /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;group_id&gt;`.
-    /// ```
     /// 
     /// For example:
     /// 
@@ -94,6 +89,9 @@ namespace Pulumi.GitLab
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+        /// </summary>
         [Output("keepSettingsOnDestroy")]
         public Output<bool> KeepSettingsOnDestroy { get; private set; } = null!;
 
@@ -179,6 +177,9 @@ namespace Pulumi.GitLab
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
 
+        /// <summary>
+        /// Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+        /// </summary>
         [Input("keepSettingsOnDestroy")]
         public Input<bool>? KeepSettingsOnDestroy { get; set; }
 
@@ -226,6 +227,9 @@ namespace Pulumi.GitLab
         [Input("group")]
         public Input<string>? Group { get; set; }
 
+        /// <summary>
+        /// Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+        /// </summary>
         [Input("keepSettingsOnDestroy")]
         public Input<bool>? KeepSettingsOnDestroy { get; set; }
 

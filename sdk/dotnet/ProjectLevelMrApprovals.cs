@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Project("foo", new()
+    ///     var foo = new GitLab.Index.Project("foo", new()
     ///     {
     ///         Name = "Example",
     ///         Description = "My example project",
     ///     });
     /// 
-    ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("foo", new()
+    ///     var fooProjectLevelMrApprovals = new GitLab.Index.ProjectLevelMrApprovals("foo", new()
     ///     {
     ///         Project = foo.Id,
     ///         ResetApprovalsOnPush = true,
@@ -46,23 +46,9 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_level_mr_approvals.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectLevelMrApprovals`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
-    /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;project_id&gt;`.
-    /// ```
     /// 
     /// For example:
     /// 

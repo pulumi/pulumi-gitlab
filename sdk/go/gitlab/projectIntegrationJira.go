@@ -55,21 +55,11 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_jira`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_integration_jira.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationJira`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a gitlab_project_integration_jira state using the project ID, e.g.
+// You can import a ProjectIntegrationJira state using the project ID, e.g.
 //
 // ```sh
 // $ pulumi import gitlab:index/projectIntegrationJira:ProjectIntegrationJira jira 1
@@ -94,8 +84,9 @@ type ProjectIntegrationJira struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrOutput `pulumi:"jiraIssuePrefix"`
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex               pulumi.StringPtrOutput `pulumi:"jiraIssueRegex"`
-	JiraIssueTransitionAutomatic pulumi.BoolPtrOutput   `pulumi:"jiraIssueTransitionAutomatic"`
+	JiraIssueRegex pulumi.StringPtrOutput `pulumi:"jiraIssueRegex"`
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+	JiraIssueTransitionAutomatic pulumi.BoolPtrOutput `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrOutput `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
@@ -181,8 +172,9 @@ type projectIntegrationJiraState struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex               *string `pulumi:"jiraIssueRegex"`
-	JiraIssueTransitionAutomatic *bool   `pulumi:"jiraIssueTransitionAutomatic"`
+	JiraIssueRegex *string `pulumi:"jiraIssueRegex"`
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+	JiraIssueTransitionAutomatic *bool `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
@@ -223,7 +215,8 @@ type ProjectIntegrationJiraState struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrInput
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex               pulumi.StringPtrInput
+	JiraIssueRegex pulumi.StringPtrInput
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
 	JiraIssueTransitionAutomatic pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
@@ -265,8 +258,9 @@ type projectIntegrationJiraArgs struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex               *string `pulumi:"jiraIssueRegex"`
-	JiraIssueTransitionAutomatic *bool   `pulumi:"jiraIssueTransitionAutomatic"`
+	JiraIssueRegex *string `pulumi:"jiraIssueRegex"`
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+	JiraIssueTransitionAutomatic *bool `pulumi:"jiraIssueTransitionAutomatic"`
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
@@ -300,7 +294,8 @@ type ProjectIntegrationJiraArgs struct {
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrInput
 	// Regular expression to match Jira issue keys.
-	JiraIssueRegex               pulumi.StringPtrInput
+	JiraIssueRegex pulumi.StringPtrInput
+	// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
 	JiraIssueTransitionAutomatic pulumi.BoolPtrInput
 	// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
 	JiraIssueTransitionId pulumi.StringPtrInput
@@ -452,6 +447,7 @@ func (o ProjectIntegrationJiraOutput) JiraIssueRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.StringPtrOutput { return v.JiraIssueRegex }).(pulumi.StringPtrOutput)
 }
 
+// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
 func (o ProjectIntegrationJiraOutput) JiraIssueTransitionAutomatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.BoolPtrOutput { return v.JiraIssueTransitionAutomatic }).(pulumi.BoolPtrOutput)
 }

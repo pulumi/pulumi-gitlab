@@ -45,6 +45,9 @@ export interface GetProjectIdsArgs {
  * A collection of values returned by getProjectIds.
  */
 export interface GetProjectIdsResult {
+    /**
+     * The ID of this Terraform resource. In the format of `<project_id>`.
+     */
     readonly id: string;
     /**
      * The ID or URL-encoded path of the project.

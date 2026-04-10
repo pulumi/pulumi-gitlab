@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // By project ID and tag_name
-        ///     var example = GitLab.GetRelease.Invoke(new()
+        ///     var example = GitLab.Index.GetRelease.Invoke(new()
         ///     {
         ///         ProjectId = "1234",
         ///         TagName = "v1.0",
@@ -55,7 +55,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // By project ID and tag_name
-        ///     var example = GitLab.GetRelease.Invoke(new()
+        ///     var example = GitLab.Index.GetRelease.Invoke(new()
         ///     {
         ///         ProjectId = "1234",
         ///         TagName = "v1.0",
@@ -83,7 +83,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // By project ID and tag_name
-        ///     var example = GitLab.GetRelease.Invoke(new()
+        ///     var example = GitLab.Index.GetRelease.Invoke(new()
         ///     {
         ///         ProjectId = "1234",
         ///         TagName = "v1.0",
@@ -165,6 +165,9 @@ namespace Pulumi.GitLab
         /// An HTML rendered description of the release.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;project_id:tag_name&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the release.

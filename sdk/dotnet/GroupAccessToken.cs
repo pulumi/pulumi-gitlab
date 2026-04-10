@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.GroupAccessToken("example", new()
+    ///     var example = new GitLab.Index.GroupAccessToken("example", new()
     ///     {
     ///         Group = "25",
     ///         Name = "Example group access token",
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleGroupVariable = new GitLab.GroupVariable("example", new()
+    ///     var exampleGroupVariable = new GitLab.Index.GroupVariable("example", new()
     ///     {
     ///         Group = "25",
     ///         Key = "gat",
@@ -54,17 +54,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_access_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_access_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupAccessToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -74,7 +64,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"
     /// ```
     /// 
-    /// ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// ATTENTION: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupAccessToken:GroupAccessToken")]
     public partial class GroupAccessToken : global::Pulumi.CustomResource

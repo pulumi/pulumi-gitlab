@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `gitlab.RepositoryFile` resource manages the lifecycle of a file within a repository.
+ *
+ * > **Timeouts** Default timeout for *Create*, *Update* and *Delete* is one minute and can be configured in the `timeouts` block.
+ *
+ * > **Implementation Detail** GitLab is unable to handle concurrent calls to the GitLab repository files API for the same project.
+ *    Therefore, this resource queues every call to the repository files API no matter of the project, which may slow down the terraform
+ *    execution time for some configurations. In addition, retries are performed in case a refresh is required because another application
+ *    changed the repository at the same time.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -59,17 +70,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_repository_file`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_repository_file.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.RepositoryFile`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
