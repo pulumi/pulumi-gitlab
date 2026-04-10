@@ -26,28 +26,28 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Group("example", new()
+    ///     var example = new GitLab.Index.Group("example", new()
     ///     {
     ///         Name = "test_group",
     ///         Path = "test_group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var label1 = new GitLab.GroupLabel("label_1", new()
+    ///     var label1 = new GitLab.Index.GroupLabel("label_1", new()
     ///     {
     ///         Group = example.Id,
     ///         Color = "#FF0000",
     ///         Name = "red-label",
     ///     });
     /// 
-    ///     var label3 = new GitLab.GroupLabel("label_3", new()
+    ///     var label3 = new GitLab.Index.GroupLabel("label_3", new()
     ///     {
     ///         Group = example.Id,
     ///         Name = "label-3",
     ///         Color = "#003000",
     ///     });
     /// 
-    ///     var epicBoard = new GitLab.GroupEpicBoard("epic_board", new()
+    ///     var epicBoard = new GitLab.Index.GroupEpicBoard("epic_board", new()
     ///     {
     ///         Name = "epic board 6",
     ///         Group = example.Path,
@@ -65,17 +65,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_epic_board`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_epic_board.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupEpicBoard`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -7,7 +7,20 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * The `gitlab.ApplicationSettings` resource manages the GitLab application settings.
+ *
+ * > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+ *    Feel free to join the discussion if you have any
+ *    ideas or questions regarding this resource.
+ *
+ * > All `gitlab.ApplicationSettings` use the same ID `gitlab`.
+ *
+ * !> This resource does not implement any destroy logic, it's a no-op at this point.
+ *    It's also not possible to revert to the previous settings.
+ *
+ * > Requires at administrative privileges on GitLab.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
  */
 export class ApplicationSettings extends pulumi.CustomResource {
     /**
@@ -759,6 +772,9 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Maximum allowable lifetime for SSH keys in days.
      */
     declare public readonly maxSshKeyLifetime: pulumi.Output<number>;
+    /**
+     * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     */
     declare public readonly maxTerraformStateSizeBytes: pulumi.Output<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
@@ -2646,6 +2662,9 @@ export interface ApplicationSettingsState {
      * Maximum allowable lifetime for SSH keys in days.
      */
     maxSshKeyLifetime?: pulumi.Input<number>;
+    /**
+     * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     */
     maxTerraformStateSizeBytes?: pulumi.Input<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
@@ -3883,6 +3902,9 @@ export interface ApplicationSettingsArgs {
      * Maximum allowable lifetime for SSH keys in days.
      */
     maxSshKeyLifetime?: pulumi.Input<number>;
+    /**
+     * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     */
     maxTerraformStateSizeBytes?: pulumi.Input<number>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.

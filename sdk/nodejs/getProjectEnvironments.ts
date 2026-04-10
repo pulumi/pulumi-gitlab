@@ -66,6 +66,9 @@ export interface GetProjectEnvironmentsResult {
      * The list of environments.
      */
     readonly environments: outputs.GetProjectEnvironmentsEnvironment[];
+    /**
+     * The ID of this Terraform resource.
+     */
     readonly id: string;
     /**
      * Return the environment with this name. Mutually exclusive with search.

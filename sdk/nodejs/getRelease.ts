@@ -67,6 +67,9 @@ export interface GetReleaseResult {
      * An HTML rendered description of the release.
      */
     readonly description: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<project_id:tag_name>`.
+     */
     readonly id: string;
     /**
      * The name of the release.

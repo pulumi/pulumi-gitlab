@@ -26,6 +26,7 @@ class ProjectMembershipArgs:
                  member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectMembership resource.
+
         :param pulumi.Input[_builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.int] user_id: The id of the user.
@@ -111,6 +112,7 @@ class _ProjectMembershipState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectMembership resources.
+
         :param pulumi.Input[_builtins.str] access_level: The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the project membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
@@ -227,17 +229,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_membership`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_membership.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectMembership`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -246,6 +238,7 @@ class ProjectMembership(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -287,17 +280,7 @@ class ProjectMembership(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_membership`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_membership.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectMembership`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -306,6 +289,7 @@ class ProjectMembership(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectMembershipArgs args: The arguments to use to populate this resource's properties.

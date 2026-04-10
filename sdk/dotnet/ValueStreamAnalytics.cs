@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new GitLab.ValueStreamAnalytics("project", new()
+    ///     var project = new GitLab.Index.ValueStreamAnalytics("project", new()
     ///     {
     ///         Name = "TEST",
     ///         ProjectFullPath = "test/project",
@@ -51,7 +51,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var @group = new GitLab.ValueStreamAnalytics("group", new()
+    ///     var @group = new GitLab.Index.ValueStreamAnalytics("group", new()
     ///     {
     ///         Name = "TEST",
     ///         GroupFullPath = "test/group",
@@ -81,17 +81,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_value_stream_analytics`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_value_stream_analytics.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ValueStreamAnalytics`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -99,9 +89,7 @@ namespace Pulumi.GitLab
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics group "group:people/engineers:42"
-    /// ```
     /// 
-    /// ```sh
     /// $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics project "project:projects/sample:43"
     /// ```
     /// </summary>

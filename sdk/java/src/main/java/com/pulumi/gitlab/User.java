@@ -69,26 +69,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_user.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.User`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/user:User You can import a user to terraform state using `&lt;resource&gt; &lt;id&gt;`.
- * ```
- * 
  * The `id` must be an integer for the id of the user you want to import,
- * 
  * for example:
  * 
  * ```sh

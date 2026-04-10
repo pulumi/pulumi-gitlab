@@ -25,6 +25,7 @@ class ProjectIntegrationPipelinesEmailArgs:
                  notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationPipelinesEmail resource.
+
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: ) email addresses where notifications are sent.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
@@ -95,6 +96,7 @@ class _ProjectIntegrationPipelinesEmailState:
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationPipelinesEmail resources.
+
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -193,25 +195,16 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_pipelines_email`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_pipelines_email.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationPipelinesEmail`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_project_integration_pipelines_email state using the project ID, e.g.
+        You can import a ProjectIntegrationPipelinesEmail state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail email 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -250,25 +243,16 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_pipelines_email`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_pipelines_email.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationPipelinesEmail`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_project_integration_pipelines_email state using the project ID, e.g.
+        You can import a ProjectIntegrationPipelinesEmail state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail email 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationPipelinesEmailArgs args: The arguments to use to populate this resource's properties.

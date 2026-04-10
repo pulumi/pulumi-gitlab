@@ -37,17 +37,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_project_level_notifications.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectLevelNotifications`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *

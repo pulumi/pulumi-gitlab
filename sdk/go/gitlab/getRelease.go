@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// By project ID and tag_name
-//			_, err := gitlab.LookupRelease(ctx, &gitlab.LookupReleaseArgs{
+//			_, err := gitlab.GetRelease(ctx, &gitlab.LookupReleaseArgs{
 //				ProjectId: "1234",
 //				TagName:   "v1.0",
 //			}, nil)
@@ -70,7 +70,8 @@ type LookupReleaseResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// An HTML rendered description of the release.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<project_id:tag_name>`.
+	Id string `pulumi:"id"`
 	// The name of the release.
 	Name string `pulumi:"name"`
 	// The ID or URL-encoded path of the project.
@@ -134,6 +135,7 @@ func (o LookupReleaseResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<project_id:tag_name>`.
 func (o LookupReleaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.Id }).(pulumi.StringOutput)
 }

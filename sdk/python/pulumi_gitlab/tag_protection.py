@@ -27,6 +27,7 @@ class TagProtectionArgs:
                  create_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TagProtection resource.
+
         :param pulumi.Input[_builtins.str] project: The id of the project.
         :param pulumi.Input[_builtins.str] tag: Name of the tag or wildcard.
         :param pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]] allowed_to_creates: Array of access levels/user(s)/group(s) allowed to create protected tags.
@@ -97,6 +98,7 @@ class _TagProtectionState:
                  tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagProtection resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]] allowed_to_creates: Array of access levels/user(s)/group(s) allowed to create protected tags.
         :param pulumi.Input[_builtins.str] create_access_level: Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[_builtins.str] project: The id of the project.
@@ -172,6 +174,13 @@ class TagProtection(pulumi.CustomResource):
                  tag: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `TagProtection` resource manages the lifecycle of a tag protection.
+
+        > As tag protections cannot be updated, they are deleted and recreated when a change is requested. This means that if the deletion succeeds but the creation fails, tags will be left unprotected.
+        If this is a potential issue for you, please use the `create_before_destroy` meta-argument: https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/)
+
         ## Example Usage
 
         ```python
@@ -194,17 +203,7 @@ class TagProtection(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_tag_protection`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_tag_protection.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `TagProtection`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -213,6 +212,7 @@ class TagProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,6 +228,13 @@ class TagProtection(pulumi.CustomResource):
                  args: TagProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `TagProtection` resource manages the lifecycle of a tag protection.
+
+        > As tag protections cannot be updated, they are deleted and recreated when a change is requested. This means that if the deletion succeeds but the creation fails, tags will be left unprotected.
+        If this is a potential issue for you, please use the `create_before_destroy` meta-argument: https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/)
+
         ## Example Usage
 
         ```python
@@ -250,17 +257,7 @@ class TagProtection(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_tag_protection`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_tag_protection.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `TagProtection`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -269,6 +266,7 @@ class TagProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagProtectionArgs args: The arguments to use to populate this resource's properties.

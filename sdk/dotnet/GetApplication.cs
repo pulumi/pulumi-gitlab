@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = GitLab.GetApplication.Invoke(new()
+        ///     var oidc = GitLab.Index.GetApplication.Invoke(new()
         ///     {
         ///         Id = "1",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = GitLab.GetApplication.Invoke(new()
+        ///     var oidc = GitLab.Index.GetApplication.Invoke(new()
         ///     {
         ///         Id = "1",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = GitLab.GetApplication.Invoke(new()
+        ///     var oidc = GitLab.Index.GetApplication.Invoke(new()
         ///     {
         ///         Id = "1",
         ///     });
@@ -93,6 +93,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetApplicationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -104,6 +107,9 @@ namespace Pulumi.GitLab
 
     public sealed class GetApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -125,6 +131,9 @@ namespace Pulumi.GitLab
         /// Indicates if the application is kept confidential.
         /// </summary>
         public readonly bool Confidential;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the GitLab application.

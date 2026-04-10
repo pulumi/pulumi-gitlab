@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `gitlab.ProjectApprovalRule` resource manages the lifecycle of a project-level approval rule.
+ *
+ * > This resource requires a GitLab Enterprise instance.
+ *
+ * > A project is limited to one "anyApprover" rule at a time, any attempt to create a second rule of type "anyApprover" will fail. As a result, if
+ *    an "anyApprover" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+ *    to prevent a common error with this resource.
+ *
+ * > Since a project is limited to one "anyApprover" rule, attempting to add two "anyApprover" rules to the same project in terraform will result in
+ *    terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
+ *
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-projects)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -49,7 +62,7 @@ import * as utilities from "./utilities";
  *     ],
  * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
  *     username: __value,
- * }) })));
+ * }) }), {}));
  * const example_three = new gitlab.ProjectApprovalRule("example-three", {
  *     project: "5",
  *     name: "Example Rule 3",
@@ -79,17 +92,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_project_approval_rule.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectApprovalRule`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *

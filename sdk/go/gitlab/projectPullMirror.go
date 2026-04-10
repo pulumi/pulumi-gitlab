@@ -77,17 +77,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pull_mirror`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_pull_mirror.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectPullMirror`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
@@ -97,10 +87,8 @@ import (
 // $ pulumi import gitlab:index/projectPullMirror:ProjectPullMirror example 123
 // ```
 //
-// # Import using project path
-//
+// Import using project path
 // Note: Import is not supported for disabled mirrors because the GitLab API returns
-//
 // http 400 for disabled mirrors.
 //
 // ```sh

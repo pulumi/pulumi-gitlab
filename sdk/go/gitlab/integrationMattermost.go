@@ -58,17 +58,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_mattermost`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_integration_mattermost.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `IntegrationMattermost`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

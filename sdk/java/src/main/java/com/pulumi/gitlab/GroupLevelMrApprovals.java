@@ -15,6 +15,15 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * The `gitlab.GroupLevelMrApprovals` resource manages the lifecycle of group merge request approval settings. More than one resource per group will conflict with each other.
+ * 
+ * &gt; This is an **experimental resource**. By nature it doesn&#39;t properly fit into how Terraform resources are meant to work.
+ * 
+ * &gt; If `keepSettingsOnDestroy` is set to false, destroying the resource will revert settings to the values that were present when the resource was first created.
+ * You will need to apply the resource with the new setting before destroying the resource.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approval_settings/#group-mr-approval-settings)
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -64,23 +73,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_level_mr_approvals`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_group_level_mr_approvals.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupLevelMrApprovals`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
- * 
- * ```sh
- * $ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals You can import an approval configuration state using `&lt;resource&gt; &lt;group_id&gt;`.
- * ```
  * 
  * For example:
  * 
@@ -147,9 +142,17 @@ public class GroupLevelMrApprovals extends com.pulumi.resources.CustomResource {
     public Output<String> group() {
         return this.group;
     }
+    /**
+     * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     @Export(name="keepSettingsOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     public Output<Boolean> keepSettingsOnDestroy() {
         return this.keepSettingsOnDestroy;
     }

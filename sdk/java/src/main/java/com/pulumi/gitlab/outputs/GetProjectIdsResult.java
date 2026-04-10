@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectIdsResult {
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The ID or URL-encoded path of the project.
@@ -33,6 +37,10 @@ public final class GetProjectIdsResult {
     private String projectId;
 
     private GetProjectIdsResult() {}
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

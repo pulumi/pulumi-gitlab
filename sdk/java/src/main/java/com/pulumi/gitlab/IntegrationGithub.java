@@ -69,23 +69,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_integration_github.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationGithub`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `&lt;resource&gt; &lt;project_id&gt;`:
- * ```
+ * You can import a gitlab.IntegrationGithub state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
@@ -136,9 +124,17 @@ public class IntegrationGithub extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+     * 
+     */
     @Export(name="repositoryUrl", refs={String.class}, tree="[0]")
     private Output<String> repositoryUrl;
 
+    /**
+     * @return The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+     * 
+     */
     public Output<String> repositoryUrl() {
         return this.repositoryUrl;
     }

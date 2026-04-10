@@ -60,24 +60,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_dependency_proxy`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_group_dependency_proxy.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupDependencyProxy`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
  * You can import a group dependency proxy using the group id. e.g. `{group-id}`
- * 
  * &#34;secret&#34; will not populate when importing the dependency proxy, but will still
- * 
  * be required in the configuration.
  * 
  * ```sh

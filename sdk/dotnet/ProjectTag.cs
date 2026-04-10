@@ -25,14 +25,14 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project for the tag to use
-    ///     var example = new GitLab.Project("example", new()
+    ///     var example = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
     ///         NamespaceId = exampleGitlabGroup.Id,
     ///     });
     /// 
-    ///     var exampleProjectTag = new GitLab.ProjectTag("example", new()
+    ///     var exampleProjectTag = new GitLab.Index.ProjectTag("example", new()
     ///     {
     ///         Name = "example",
     ///         Ref = "main",
@@ -44,17 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_tag`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_tag.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectTag`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -64,7 +54,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
     /// ```
     /// 
-    /// NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+    /// NOTE: the `Ref` attribute won't be available for imported `gitlab.ProjectTag` resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectTag:ProjectTag")]
     public partial class ProjectTag : global::Pulumi.CustomResource

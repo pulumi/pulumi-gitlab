@@ -36,6 +36,7 @@ type GetProjectMirrorPublicKeyArgs struct {
 
 // A collection of values returned by getProjectMirrorPublicKey.
 type GetProjectMirrorPublicKeyResult struct {
+	// The ID of this Terraform resource. In the format of `<project_id>:<mirror_id>`.
 	Id string `pulumi:"id"`
 	// The id of the remote mirror.
 	MirrorId int `pulumi:"mirrorId"`
@@ -81,6 +82,7 @@ func (o GetProjectMirrorPublicKeyResultOutput) ToGetProjectMirrorPublicKeyResult
 	return o
 }
 
+// The ID of this Terraform resource. In the format of `<project_id>:<mirror_id>`.
 func (o GetProjectMirrorPublicKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectMirrorPublicKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }

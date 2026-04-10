@@ -29,20 +29,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := gitlab.LookupProject(ctx, &gitlab.LookupProjectArgs{
+//			foo, err := gitlab.GetProject(ctx, &gitlab.LookupProjectArgs{
 //				PathWithNamespace: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.LookupProjectIssue(ctx, &gitlab.LookupProjectIssueArgs{
+//			_, err = gitlab.GetProjectIssue(ctx, &gitlab.LookupProjectIssueArgs{
 //				Project: foo.Id,
 //				Iid:     1,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("welcomeIssueWebUrl", webUrl)
+//			ctx.Export("welcomeIssueWebUrl", pulumi.Any(webUrl))
 //			return nil
 //		})
 //	}

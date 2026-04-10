@@ -28,6 +28,7 @@ class GroupLdapLinkArgs:
                  member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a GroupLdapLink resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group
         :param pulumi.Input[_builtins.str] group_access: Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] ldap_provider: The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
@@ -145,6 +146,7 @@ class _GroupLdapLinkState:
                  member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupLdapLink resources.
+
         :param pulumi.Input[_builtins.str] cn: The CN of the LDAP group to link with. Required if `filter` is not provided.
         :param pulumi.Input[_builtins.str] filter: The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         :param pulumi.Input[_builtins.bool] force: If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
@@ -287,17 +289,7 @@ class GroupLdapLink(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_ldap_link`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_ldap_link.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupLdapLink`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -314,6 +306,7 @@ class GroupLdapLink(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain::testfilter"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -351,17 +344,7 @@ class GroupLdapLink(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_ldap_link`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_ldap_link.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupLdapLink`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -378,6 +361,7 @@ class GroupLdapLink(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupLdapLink:GroupLdapLink test "12345:ldapmain::testfilter"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupLdapLinkArgs args: The arguments to use to populate this resource's properties.

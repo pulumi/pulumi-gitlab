@@ -27,14 +27,14 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var emails = new GitLab.IntegrationEmailsOnPush("emails", new()
+    ///     var emails = new GitLab.Index.IntegrationEmailsOnPush("emails", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Recipients = "myrecipient@example.com myotherrecipient@example.com",
@@ -45,21 +45,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_emails_on_push`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_emails_on_push.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationEmailsOnPush`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab_integration_emails_on_push state using the project ID, e.g.
+    /// You can import a gitlab.IntegrationEmailsOnPush state using the project ID, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush emails 1

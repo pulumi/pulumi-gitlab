@@ -37,6 +37,9 @@ export interface GetProjectMirrorPublicKeyArgs {
  * A collection of values returned by getProjectMirrorPublicKey.
  */
 export interface GetProjectMirrorPublicKeyResult {
+    /**
+     * The ID of this Terraform resource. In the format of `<project_id>:<mirror_id>`.
+     */
     readonly id: string;
     /**
      * The id of the remote mirror.

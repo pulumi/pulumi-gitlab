@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisUserRunner = new GitLab.UserRunner("this", new()
+        ///     var thisUserRunner = new GitLab.Index.UserRunner("this", new()
         ///     {
         ///         RunnerType = "instance_type",
         ///         TagLists = new[]
@@ -36,7 +36,7 @@ namespace Pulumi.GitLab
         ///         },
         ///     });
         /// 
-        ///     var @this = GitLab.GetRunners.Invoke(new()
+        ///     var @this = GitLab.Index.GetRunners.Invoke(new()
         ///     {
         ///         Paused = false,
         ///         Status = "online",
@@ -69,7 +69,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisUserRunner = new GitLab.UserRunner("this", new()
+        ///     var thisUserRunner = new GitLab.Index.UserRunner("this", new()
         ///     {
         ///         RunnerType = "instance_type",
         ///         TagLists = new[]
@@ -79,7 +79,7 @@ namespace Pulumi.GitLab
         ///         },
         ///     });
         /// 
-        ///     var @this = GitLab.GetRunners.Invoke(new()
+        ///     var @this = GitLab.Index.GetRunners.Invoke(new()
         ///     {
         ///         Paused = false,
         ///         Status = "online",
@@ -112,7 +112,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisUserRunner = new GitLab.UserRunner("this", new()
+        ///     var thisUserRunner = new GitLab.Index.UserRunner("this", new()
         ///     {
         ///         RunnerType = "instance_type",
         ///         TagLists = new[]
@@ -122,7 +122,7 @@ namespace Pulumi.GitLab
         ///         },
         ///     });
         /// 
-        ///     var @this = GitLab.GetRunners.Invoke(new()
+        ///     var @this = GitLab.Index.GetRunners.Invoke(new()
         ///     {
         ///         Paused = false,
         ///         Status = "online",
@@ -222,6 +222,9 @@ namespace Pulumi.GitLab
     [OutputType]
     public sealed class GetRunnersResult
     {
+        /// <summary>
+        /// The ID of this Terraform resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Filters for runners with the given paused value

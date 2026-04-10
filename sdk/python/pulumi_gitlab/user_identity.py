@@ -24,6 +24,7 @@ class UserIdentityArgs:
                  user_id: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a UserIdentity resource.
+
         :param pulumi.Input[_builtins.str] external_provider: The external provider name.
         :param pulumi.Input[_builtins.str] external_uid: A specific external authentication provider UID.
         :param pulumi.Input[_builtins.int] user_id: The GitLab ID of the user.
@@ -77,6 +78,7 @@ class _UserIdentityState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserIdentity resources.
+
         :param pulumi.Input[_builtins.str] external_provider: The external provider name.
         :param pulumi.Input[_builtins.str] external_uid: A specific external authentication provider UID.
         :param pulumi.Input[_builtins.int] user_id: The GitLab ID of the user.
@@ -164,31 +166,17 @@ class UserIdentity(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_identity`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_identity.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserIdentity`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/userIdentity:UserIdentity You can import a user identity to terraform state using `<resource> <id>`.
-        ```
-
         The `id` must be a string for the id of the user and identity provider you want to import,
-
         for example:
 
         ```sh
         $ pulumi import gitlab:index/userIdentity:UserIdentity example "42:google"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -231,31 +219,17 @@ class UserIdentity(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_identity`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_identity.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserIdentity`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/userIdentity:UserIdentity You can import a user identity to terraform state using `<resource> <id>`.
-        ```
-
         The `id` must be a string for the id of the user and identity provider you want to import,
-
         for example:
 
         ```sh
         $ pulumi import gitlab:index/userIdentity:UserIdentity example "42:google"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserIdentityArgs args: The arguments to use to populate this resource's properties.

@@ -18,21 +18,24 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `gitlab.ProjectApprovalRule` resource manages the lifecycle of a project-level approval rule.
+ * 
+ * &gt; This resource requires a GitLab Enterprise instance.
+ * 
+ * &gt; A project is limited to one &#34;anyApprover&#34; rule at a time, any attempt to create a second rule of type &#34;anyApprover&#34; will fail. As a result, if
+ *    an &#34;anyApprover&#34; rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+ *    to prevent a common error with this resource.
+ * 
+ * &gt; Since a project is limited to one &#34;anyApprover&#34; rule, attempting to add two &#34;anyApprover&#34; rules to the same project in terraform will result in
+ *    terraform identifying changes with every &#34;plan&#34; operation, and may result in an error during the &#34;apply&#34; operation.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-projects)
+ * 
  * ## Example Usage
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_approval_rule.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectApprovalRule`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

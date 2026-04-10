@@ -55,17 +55,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_tag`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_tag.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectTag`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
@@ -75,7 +65,7 @@ import (
 // $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
 // ```
 //
-// NOTE: the `ref` attribute won't be available for imported `gitlab_project_tag` resources.
+// NOTE: the `ref` attribute won't be available for imported `ProjectTag` resources.
 type ProjectTag struct {
 	pulumi.CustomResourceState
 

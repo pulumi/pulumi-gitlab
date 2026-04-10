@@ -30,6 +30,7 @@ class ProjectIssueBoardArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectIssueBoard resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[_builtins.int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
@@ -149,6 +150,7 @@ class _ProjectIssueBoardState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectIssueBoard resources.
+
         :param pulumi.Input[_builtins.int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]] lists: The list of issue board lists
@@ -328,17 +330,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue_board`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_issue_board.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIssueBoard`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -347,6 +339,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -421,17 +414,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue_board`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_issue_board.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIssueBoard`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -440,6 +423,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIssueBoardArgs args: The arguments to use to populate this resource's properties.

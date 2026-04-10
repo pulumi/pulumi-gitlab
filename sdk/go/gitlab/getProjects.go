@@ -34,14 +34,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// List projects within a group tree
-//			mygroup, err := gitlab.LookupGroup(ctx, &gitlab.LookupGroupArgs{
+//			mygroup, err := gitlab.GetGroup(ctx, &gitlab.LookupGroupArgs{
 //				FullPath: pulumi.StringRef("mygroup"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
-//				GroupId:          pulumi.IntRef(mygroup.Id),
+//				GroupId:          pulumi.IntRef(pulumi.Int(mygroup.Id)),
 //				OrderBy:          pulumi.StringRef("name"),
 //				IncludeSubgroups: pulumi.BoolRef(true),
 //				WithShared:       pulumi.BoolRef(false),

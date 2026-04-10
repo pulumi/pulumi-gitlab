@@ -27,6 +27,7 @@ class InstanceServiceAccountArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceServiceAccount resource.
+
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] username: The username of the user account. If not set, generates a name prepended with service*account*.
@@ -96,6 +97,7 @@ class _InstanceServiceAccountState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceServiceAccount resources.
+
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
@@ -211,29 +213,16 @@ class InstanceServiceAccount(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_service_account`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_instance_service_account.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `InstanceServiceAccount`. For example:
 
         Importing using the CLI is supported with the following syntax:
-
-        ```sh
-        $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount You can import a group service account using `<resource> <id>`. The
-        ```
 
         `id` is the id of the service account
 
         ```sh
         $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -277,29 +266,16 @@ class InstanceServiceAccount(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_service_account`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_instance_service_account.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `InstanceServiceAccount`. For example:
 
         Importing using the CLI is supported with the following syntax:
-
-        ```sh
-        $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount You can import a group service account using `<resource> <id>`. The
-        ```
 
         `id` is the id of the service account
 
         ```sh
         $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceServiceAccountArgs args: The arguments to use to populate this resource's properties.

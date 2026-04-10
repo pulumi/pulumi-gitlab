@@ -42,17 +42,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_personal_access_token`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_personal_access_token.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PersonalAccessToken`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *

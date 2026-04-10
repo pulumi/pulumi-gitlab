@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetProjectIssueLabelEvents.Invoke(new()
+        ///     var example = GitLab.Index.GetProjectIssueLabelEvents.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///         IssueIid = 42,
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetProjectIssueLabelEvents.Invoke(new()
+        ///     var example = GitLab.Index.GetProjectIssueLabelEvents.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///         IssueIid = 42,
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetProjectIssueLabelEvents.Invoke(new()
+        ///     var example = GitLab.Index.GetProjectIssueLabelEvents.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///         IssueIid = 42,
@@ -154,6 +154,9 @@ namespace Pulumi.GitLab
         /// List of label events for the issue.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectIssueLabelEventsEventResult> Events;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;project&gt;:&lt;issue_iid&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The internal ID of the issue.

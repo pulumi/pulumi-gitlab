@@ -59,7 +59,7 @@ import (
 //				Project:  pulumi.String("1234"),
 //				Ref:      "main",
 //				FilePath: pulumi.String(".gitlab/security-policies/policy.yml"),
-//				Content:  pulumi.String(scan.Yaml),
+//				Content:  pulumi.String(pulumi.String(scan.Yaml)),
 //			})
 //			if err != nil {
 //				return err

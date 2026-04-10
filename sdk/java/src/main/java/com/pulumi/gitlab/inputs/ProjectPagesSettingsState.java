@@ -63,9 +63,17 @@ public final class ProjectPagesSettingsState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.isUniqueDomainEnabled);
     }
 
+    /**
+     * Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     @Import(name="keepSettingsOnDestroy")
     private @Nullable Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     public Optional<Output<Boolean>> keepSettingsOnDestroy() {
         return Optional.ofNullable(this.keepSettingsOnDestroy);
     }
@@ -202,11 +210,23 @@ public final class ProjectPagesSettingsState extends com.pulumi.resources.Resour
             return isUniqueDomainEnabled(Output.of(isUniqueDomainEnabled));
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(@Nullable Output<Boolean> keepSettingsOnDestroy) {
             $.keepSettingsOnDestroy = keepSettingsOnDestroy;
             return this;
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(Boolean keepSettingsOnDestroy) {
             return keepSettingsOnDestroy(Output.of(keepSettingsOnDestroy));
         }

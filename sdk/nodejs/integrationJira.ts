@@ -32,21 +32,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_integration_jira.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationJira`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * You can import a gitlab_integration_jira state using the project ID, e.g.
+ * You can import a gitlab.IntegrationJira state using the project ID, e.g.
  *
  * ```sh
  * $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
@@ -116,6 +106,9 @@ export class IntegrationJira extends pulumi.CustomResource {
      * Regular expression to match Jira issue keys.
      */
     declare public readonly jiraIssueRegex: pulumi.Output<string | undefined>;
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     */
     declare public readonly jiraIssueTransitionAutomatic: pulumi.Output<boolean | undefined>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
@@ -270,6 +263,9 @@ export interface IntegrationJiraState {
      * Regular expression to match Jira issue keys.
      */
     jiraIssueRegex?: pulumi.Input<string>;
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     */
     jiraIssueTransitionAutomatic?: pulumi.Input<boolean>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
@@ -345,6 +341,9 @@ export interface IntegrationJiraArgs {
      * Regular expression to match Jira issue keys.
      */
     jiraIssueRegex?: pulumi.Input<string>;
+    /**
+     * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+     */
     jiraIssueTransitionAutomatic?: pulumi.Input<boolean>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.

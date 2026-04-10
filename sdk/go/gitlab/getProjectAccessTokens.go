@@ -36,7 +36,8 @@ type GetProjectAccessTokensArgs struct {
 type GetProjectAccessTokensResult struct {
 	// The list of access tokens returned by the search
 	AccessTokens []GetProjectAccessTokensAccessToken `pulumi:"accessTokens"`
-	Id           string                              `pulumi:"id"`
+	// The ID of this Terraform resource.
+	Id string `pulumi:"id"`
 	// The name or id of the project.
 	Project string `pulumi:"project"`
 	// List all project access token that match the specified state. Valid values are `active`, `inactive`. Returns all project access token if not set.
@@ -84,6 +85,7 @@ func (o GetProjectAccessTokensResultOutput) AccessTokens() GetProjectAccessToken
 	return o.ApplyT(func(v GetProjectAccessTokensResult) []GetProjectAccessTokensAccessToken { return v.AccessTokens }).(GetProjectAccessTokensAccessTokenArrayOutput)
 }
 
+// The ID of this Terraform resource.
 func (o GetProjectAccessTokensResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAccessTokensResult) string { return v.Id }).(pulumi.StringOutput)
 }

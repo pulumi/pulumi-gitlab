@@ -25,6 +25,7 @@ class UserSshKeyArgs:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a UserSshKey resource.
+
         :param pulumi.Input[_builtins.str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
         :param pulumi.Input[_builtins.str] title: The title of the ssh key.
         :param pulumi.Input[_builtins.str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
@@ -97,6 +98,7 @@ class _UserSshKeyState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserSshKey resources.
+
         :param pulumi.Input[_builtins.str] created_at: The time when this key was created in GitLab.
         :param pulumi.Input[_builtins.str] expires_at: The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
         :param pulumi.Input[_builtins.str] key: The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
@@ -222,17 +224,7 @@ class UserSshKey(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_sshkey`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_sshkey.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserSshKey`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -241,6 +233,7 @@ class UserSshKey(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -276,17 +269,7 @@ class UserSshKey(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_sshkey`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_sshkey.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserSshKey`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -295,6 +278,7 @@ class UserSshKey(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserSshKeyArgs args: The arguments to use to populate this resource's properties.

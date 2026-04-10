@@ -28,6 +28,7 @@ class InstanceVariableArgs:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceVariable resource.
+
         :param pulumi.Input[_builtins.str] key: The name of the variable.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
         :param pulumi.Input[_builtins.str] description: The description of the variable. Maximum of 255 characters.
@@ -146,6 +147,7 @@ class _InstanceVariableState:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceVariable resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the variable. Maximum of 255 characters.
         :param pulumi.Input[_builtins.str] key: The name of the variable.
         :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
@@ -288,17 +290,7 @@ class InstanceVariable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_variable`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_instance_variable.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `InstanceVariable`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -307,6 +299,7 @@ class InstanceVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -344,17 +337,7 @@ class InstanceVariable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_variable`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_instance_variable.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `InstanceVariable`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -363,6 +346,7 @@ class InstanceVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceVariableArgs args: The arguments to use to populate this resource's properties.

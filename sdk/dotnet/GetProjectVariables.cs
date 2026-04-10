@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.GetProjectVariables.Invoke(new()
+        ///     var vars = GitLab.Index.GetProjectVariables.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.GetProjectVariables.Invoke(new()
+        ///     var stagingVars = GitLab.Index.GetProjectVariables.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         EnvironmentScope = "staging/*",
@@ -59,13 +59,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.GetProjectVariables.Invoke(new()
+        ///     var vars = GitLab.Index.GetProjectVariables.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.GetProjectVariables.Invoke(new()
+        ///     var stagingVars = GitLab.Index.GetProjectVariables.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         EnvironmentScope = "staging/*",
@@ -92,13 +92,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.GetProjectVariables.Invoke(new()
+        ///     var vars = GitLab.Index.GetProjectVariables.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.GetProjectVariables.Invoke(new()
+        ///     var stagingVars = GitLab.Index.GetProjectVariables.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         EnvironmentScope = "staging/*",

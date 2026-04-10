@@ -24,6 +24,7 @@ class GroupCustomAttributeArgs:
                  value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupCustomAttribute resource.
+
         :param pulumi.Input[_builtins.int] group: The id of the group.
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
         :param pulumi.Input[_builtins.str] value: Value for the Custom Attribute.
@@ -77,6 +78,7 @@ class _GroupCustomAttributeState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupCustomAttribute resources.
+
         :param pulumi.Input[_builtins.int] group: The id of the group.
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
         :param pulumi.Input[_builtins.str] value: Value for the Custom Attribute.
@@ -154,17 +156,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_custom_attribute`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_custom_attribute.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupCustomAttribute`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -173,6 +165,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -205,17 +198,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_custom_attribute`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_custom_attribute.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupCustomAttribute`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -224,6 +207,7 @@ class GroupCustomAttribute(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupCustomAttributeArgs args: The arguments to use to populate this resource's properties.

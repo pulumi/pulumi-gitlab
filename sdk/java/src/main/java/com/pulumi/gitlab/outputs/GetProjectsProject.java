@@ -389,6 +389,10 @@ public final class GetProjectsProject {
      * 
      */
     private Integer openIssuesCount;
+    /**
+     * @return The owner of the project, due to Terraform aggregate types limitations, this field&#39;s attributes are accessed with the `owner.0` prefix. Structure is documented below.
+     * 
+     */
     private List<GetProjectsProjectOwner> owners;
     /**
      * @return Whether packages are enabled for the project.
@@ -1067,6 +1071,10 @@ public final class GetProjectsProject {
     public Integer openIssuesCount() {
         return this.openIssuesCount;
     }
+    /**
+     * @return The owner of the project, due to Terraform aggregate types limitations, this field&#39;s attributes are accessed with the `owner.0` prefix. Structure is documented below.
+     * 
+     */
     public List<GetProjectsProjectOwner> owners() {
         return this.owners;
     }

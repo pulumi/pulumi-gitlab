@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetPipelineSchedule.Invoke(new()
+        ///     var example = GitLab.Index.GetPipelineSchedule.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         PipelineScheduleId = 1,
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetPipelineSchedule.Invoke(new()
+        ///     var example = GitLab.Index.GetPipelineSchedule.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         PipelineScheduleId = 1,
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetPipelineSchedule.Invoke(new()
+        ///     var example = GitLab.Index.GetPipelineSchedule.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         PipelineScheduleId = 1,
@@ -170,6 +170,9 @@ namespace Pulumi.GitLab
         /// The description of the pipeline schedule.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;project-id&gt;:&lt;pipeline-schedule-id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The details of the last pipeline run by the schedule.

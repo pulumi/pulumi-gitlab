@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.TagProtection` resource manages the lifecycle of a tag protection.
+    /// 
+    /// &gt; As tag protections cannot be updated, they are deleted and recreated when a change is requested. This means that if the deletion succeeds but the creation fails, tags will be left unprotected.
+    /// If this is a potential issue for you, please use the `CreateBeforeDestroy` meta-argument: https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -20,7 +27,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tagProtect = new GitLab.TagProtection("TagProtect", new()
+    ///     var tagProtect = new GitLab.Index.TagProtection("TagProtect", new()
     ///     {
     ///         Project = "12345",
     ///         Tag = "TagProtected",
@@ -43,17 +50,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_tag_protection`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_tag_protection.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.TagProtection`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

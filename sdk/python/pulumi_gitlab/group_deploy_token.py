@@ -27,6 +27,7 @@ class GroupDeployTokenArgs:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupDeployToken resource.
+
         :param pulumi.Input[_builtins.str] group: The Id or full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] expires_at: Time the token expires in RFC3339 format. Not set by default.
@@ -132,6 +133,7 @@ class _GroupDeployTokenState:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupDeployToken resources.
+
         :param pulumi.Input[_builtins.bool] expired: True if the token is expired.
         :param pulumi.Input[_builtins.str] expires_at: Time the token expires in RFC3339 format. Not set by default.
         :param pulumi.Input[_builtins.str] group: The Id or full path of the group.
@@ -318,17 +320,7 @@ class GroupDeployToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_deploy_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_deploy_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupDeployToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -339,6 +331,7 @@ class GroupDeployToken(pulumi.CustomResource):
         ```
 
         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -390,17 +383,7 @@ class GroupDeployToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_deploy_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_deploy_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupDeployToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -411,6 +394,7 @@ class GroupDeployToken(pulumi.CustomResource):
         ```
 
         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param GroupDeployTokenArgs args: The arguments to use to populate this resource's properties.

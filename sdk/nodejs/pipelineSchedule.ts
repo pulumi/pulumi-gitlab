@@ -25,17 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_pipeline_schedule.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PipelineSchedule`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
@@ -105,6 +95,9 @@ export class PipelineSchedule extends pulumi.CustomResource {
      * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
     declare public readonly ref: pulumi.Output<string>;
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+     */
     declare public readonly takeOwnership: pulumi.Output<boolean>;
 
     /**
@@ -194,6 +187,9 @@ export interface PipelineScheduleState {
      * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
     ref?: pulumi.Input<string>;
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+     */
     takeOwnership?: pulumi.Input<boolean>;
 }
 
@@ -225,5 +221,8 @@ export interface PipelineScheduleArgs {
      * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
     ref: pulumi.Input<string>;
+    /**
+     * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+     */
     takeOwnership?: pulumi.Input<boolean>;
 }

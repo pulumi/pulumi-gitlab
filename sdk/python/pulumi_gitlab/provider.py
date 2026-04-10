@@ -33,12 +33,14 @@ class ProviderArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[_builtins.str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         :param pulumi.Input[_builtins.str] cacert_file: This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         :param pulumi.Input[_builtins.str] client_cert: File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         :param pulumi.Input[_builtins.str] config_file: The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
         :param pulumi.Input[_builtins.str] context: The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        :param pulumi.Input[_builtins.bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
         :param pulumi.Input[_builtins.bool] enable_auto_ci_support: If automatic CI support should be enabled or not. This only works when not providing a token.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
@@ -145,6 +147,9 @@ class ProviderArgs:
     @_builtins.property
     @pulumi.getter(name="earlyAuthCheck")
     def early_auth_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
+        """
         return pulumi.get(self, "early_auth_check")
 
     @early_auth_check.setter
@@ -237,6 +242,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_url: This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
@@ -245,6 +251,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] client_key: File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         :param pulumi.Input[_builtins.str] config_file: The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
         :param pulumi.Input[_builtins.str] context: The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
+        :param pulumi.Input[_builtins.bool] early_auth_check: (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
         :param pulumi.Input[_builtins.bool] enable_auto_ci_support: If automatic CI support should be enabled or not. This only works when not providing a token.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers to append to all API request to the GitLab instance.
         :param pulumi.Input[_builtins.bool] insecure: When set to true this disables SSL verification of the connection to the GitLab instance.
@@ -262,6 +269,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.

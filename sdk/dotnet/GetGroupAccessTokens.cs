@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accessTokens = GitLab.GetGroupAccessTokens.Invoke(new()
+        ///     var accessTokens = GitLab.Index.GetGroupAccessTokens.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accessTokens = GitLab.GetGroupAccessTokens.Invoke(new()
+        ///     var accessTokens = GitLab.Index.GetGroupAccessTokens.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accessTokens = GitLab.GetGroupAccessTokens.Invoke(new()
+        ///     var accessTokens = GitLab.Index.GetGroupAccessTokens.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
@@ -131,6 +131,9 @@ namespace Pulumi.GitLab
         /// The name or id of the group.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The ID of this Terraform resource.
+        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

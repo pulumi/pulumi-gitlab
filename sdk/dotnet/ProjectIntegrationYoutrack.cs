@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new GitLab.Project("my_project", new()
+    ///     var myProject = new GitLab.Index.Project("my_project", new()
     ///     {
     ///         Name = "my_project",
     ///         Description = "My project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var @default = new GitLab.ProjectIntegrationYoutrack("default", new()
+    ///     var @default = new GitLab.Index.ProjectIntegrationYoutrack("default", new()
     ///     {
     ///         Project = myProject.Id,
     ///         IssuesUrl = "https://my.youtrack.com/issue/:id",
@@ -43,21 +43,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_youtrack`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_integration_youtrack.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIntegrationYoutrack`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab_project_integration_youtrack state using the project ID, for example:
+    /// You can import a gitlab.ProjectIntegrationYoutrack state using the project ID, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack default 1

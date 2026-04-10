@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.SystemHook("example", new()
+    ///     var example = new GitLab.Index.SystemHook("example", new()
     ///     {
     ///         Url = "https://example.com/hook-%d",
     ///         Token = "secret-token",
@@ -40,17 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_system_hook`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_system_hook.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.SystemHook`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -60,7 +50,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/systemHook:SystemHook example 42
     /// ```
     /// 
-    /// NOTE: the `token` attribute won't be available for imported resources.
+    /// NOTE: the `Token` attribute won't be available for imported resources.
     /// </summary>
     [GitLabResourceType("gitlab:index/systemHook:SystemHook")]
     public partial class SystemHook : global::Pulumi.CustomResource

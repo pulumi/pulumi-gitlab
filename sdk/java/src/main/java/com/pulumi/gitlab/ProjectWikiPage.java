@@ -59,21 +59,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_wiki_page.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectWikiPage`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import gitlab_project_wiki_page state using the project ID, e.g.
+ * You can import gitlab.ProjectWikiPage state using the project ID, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectWikiPage:ProjectWikiPage test 12345:my-wiki-page

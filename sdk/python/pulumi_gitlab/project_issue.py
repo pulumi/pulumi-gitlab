@@ -42,6 +42,7 @@ class ProjectIssueArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectIssue resource.
+
         :param pulumi.Input[_builtins.str] project: The name or ID of the project.
         :param pulumi.Input[_builtins.str] title: The title of the issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] assignee_ids: The IDs of the users to assign the issue to.
@@ -373,6 +374,7 @@ class _ProjectIssueState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectIssue resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] assignee_ids: The IDs of the users to assign the issue to.
         :param pulumi.Input[_builtins.int] author_id: The ID of the author of the issue. Use `User` data source to get more information about the user.
         :param pulumi.Input[_builtins.str] closed_at: When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -1003,6 +1005,14 @@ class ProjectIssue(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        The `ProjectIssue` resource manages the lifecycle of an issue within a project.
+
+        > During a terraform destroy this resource will close the issue. Set the delete_on_destroy flag to true to delete the issue instead of closing it.
+
+        > **Experimental** While the base functionality of this resource works, it may be subject to minor change.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
+
         ## Example Usage
 
         ```python
@@ -1025,17 +1035,7 @@ class ProjectIssue(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_issue.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIssue`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -1044,6 +1044,7 @@ class ProjectIssue(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1074,6 +1075,14 @@ class ProjectIssue(pulumi.CustomResource):
                  args: ProjectIssueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `ProjectIssue` resource manages the lifecycle of an issue within a project.
+
+        > During a terraform destroy this resource will close the issue. Set the delete_on_destroy flag to true to delete the issue instead of closing it.
+
+        > **Experimental** While the base functionality of this resource works, it may be subject to minor change.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
+
         ## Example Usage
 
         ```python
@@ -1096,17 +1105,7 @@ class ProjectIssue(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_issue.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIssue`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -1115,6 +1114,7 @@ class ProjectIssue(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIssueArgs args: The arguments to use to populate this resource's properties.

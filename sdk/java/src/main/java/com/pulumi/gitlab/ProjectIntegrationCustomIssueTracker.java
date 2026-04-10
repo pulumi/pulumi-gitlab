@@ -64,21 +64,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_custom_issue_tracker`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_integration_custom_issue_tracker.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIntegrationCustomIssueTracker`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab_project_integration_custom_issue_tracker state using the project ID, e.g.
+ * You can import a gitlab.ProjectIntegrationCustomIssueTracker state using the project ID, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker tracker 1

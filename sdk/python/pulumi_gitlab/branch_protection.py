@@ -33,6 +33,7 @@ class BranchProtectionArgs:
                  unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BranchProtection resource.
+
         :param pulumi.Input[_builtins.str] branch: Name of the branch.
         :param pulumi.Input[_builtins.str] project: The id of the project.
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
@@ -200,6 +201,7 @@ class _BranchProtectionState:
                  unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BranchProtection resources.
+
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]] allowed_to_merges: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
@@ -386,6 +388,20 @@ class BranchProtection(pulumi.CustomResource):
                  unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `BranchProtection` resource manages the lifecycle of a protected branch of a repository.
+
+        > **Branch Protection Behavior for the default branch**
+           Depending on the GitLab instance, group or project setting the default branch of a project is created automatically by GitLab behind the scenes.
+           Due to some [limitations](https://discuss.hashicorp.com/t/ignore-the-order-of-a-complex-typed-list/42242) in the Terraform Provider SDK and the GitLab API,
+           when creating a new project and trying to manage the branch protection setting for its default branch the `BranchProtection` resource will
+           automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
+           Having multiple `BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
+           This behavior might change in the future.
+
+        > The `allowed_to_push`, `allowed_to_merge`, `allowed_to_unprotect`, `unprotect_access_level` and `code_owner_approval_required` attributes require a GitLab Enterprise instance.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
+
         ## Example Usage
 
         ```python
@@ -432,7 +448,7 @@ class BranchProtection(pulumi.CustomResource):
                 50,
                 55,
                 60,
-            ]]],
+            ].items()]],
             project="12345",
             branch="main",
             push_access_level="maintainer",
@@ -449,17 +465,7 @@ class BranchProtection(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch_protection`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_branch_protection.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `BranchProtection`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -468,6 +474,7 @@ class BranchProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -489,6 +496,20 @@ class BranchProtection(pulumi.CustomResource):
                  args: BranchProtectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `BranchProtection` resource manages the lifecycle of a protected branch of a repository.
+
+        > **Branch Protection Behavior for the default branch**
+           Depending on the GitLab instance, group or project setting the default branch of a project is created automatically by GitLab behind the scenes.
+           Due to some [limitations](https://discuss.hashicorp.com/t/ignore-the-order-of-a-complex-typed-list/42242) in the Terraform Provider SDK and the GitLab API,
+           when creating a new project and trying to manage the branch protection setting for its default branch the `BranchProtection` resource will
+           automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
+           Having multiple `BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
+           This behavior might change in the future.
+
+        > The `allowed_to_push`, `allowed_to_merge`, `allowed_to_unprotect`, `unprotect_access_level` and `code_owner_approval_required` attributes require a GitLab Enterprise instance.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
+
         ## Example Usage
 
         ```python
@@ -535,7 +556,7 @@ class BranchProtection(pulumi.CustomResource):
                 50,
                 55,
                 60,
-            ]]],
+            ].items()]],
             project="12345",
             branch="main",
             push_access_level="maintainer",
@@ -552,17 +573,7 @@ class BranchProtection(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch_protection`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_branch_protection.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `BranchProtection`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -571,6 +582,7 @@ class BranchProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BranchProtectionArgs args: The arguments to use to populate this resource's properties.

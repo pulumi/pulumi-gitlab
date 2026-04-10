@@ -36,7 +36,8 @@ type GetGroupSamlLinksArgs struct {
 type GetGroupSamlLinksResult struct {
 	// The name or id of the group.
 	Group string `pulumi:"group"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format \n\n
+	Id string `pulumi:"id"`
 	// The list of group SAML links returned by the search
 	SamlLinks []GetGroupSamlLinksSamlLink `pulumi:"samlLinks"`
 }
@@ -80,6 +81,7 @@ func (o GetGroupSamlLinksResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSamlLinksResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format \n\n
 func (o GetGroupSamlLinksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupSamlLinksResult) string { return v.Id }).(pulumi.StringOutput)
 }

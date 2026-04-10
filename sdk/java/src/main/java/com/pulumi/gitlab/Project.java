@@ -20,37 +20,33 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * The `gitlab.Project` resource manages the lifecycle of a project.
+ * 
+ * A project can either be created in a group or user namespace.
+ * 
+ * &gt; **Default Branch Protection Workaround** Projects are created with default branch protection.
+ * Since this default branch protection is not currently managed via Terraform, to workaround this limitation,
+ * you can remove the default branch protection via the API and create your desired Terraform managed branch protection.
+ * In the `gitlab.Project` resource, define a `local-exec` provisioner which invokes
+ * the `/projects/:id/protected_branches/:name` API via curl to delete the branch protection on the default
+ * branch using a `DELETE` request. Then define the desired branch protection using the `gitlab.BranchProtection` resource.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Project`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/project:Project You can import a project state using `&lt;resource&gt; &lt;id&gt;`. The
- * ```
- * 
- * `id` can be whatever the [get single project api][get_single_project] takes for
- * 
+ * `id` can be whatever the [get single project api][getSingleProject] takes for
  * its `:id` value, so for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/project:Project example richardc/example
  * ```
  * 
- * NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+ * NOTE: the `importUrlUsername` and `importUrlPassword` cannot be imported.
  * 
  */
 @ResourceType(type="gitlab:index/project:Project")

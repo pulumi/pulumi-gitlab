@@ -80,6 +80,7 @@ type GetRunnersArgs struct {
 
 // A collection of values returned by getRunners.
 type GetRunnersResult struct {
+	// The ID of this Terraform resource.
 	Id string `pulumi:"id"`
 	// Filters for runners with the given paused value
 	Paused *bool `pulumi:"paused"`
@@ -133,6 +134,7 @@ func (o GetRunnersResultOutput) ToGetRunnersResultOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of this Terraform resource.
 func (o GetRunnersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRunnersResult) string { return v.Id }).(pulumi.StringOutput)
 }

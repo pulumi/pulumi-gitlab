@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupMemberRole(ctx, &gitlab.LookupMemberRoleArgs{
+//			_, err := gitlab.GetMemberRole(ctx, &gitlab.LookupMemberRoleArgs{
 //				Id: "gid://gitlab/MemberRole/1",
 //			}, nil)
 //			if err != nil {

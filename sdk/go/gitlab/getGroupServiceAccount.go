@@ -38,7 +38,8 @@ type LookupGroupServiceAccountArgs struct {
 type LookupGroupServiceAccountResult struct {
 	// The ID or URL-encoded path of the target group. Must be a top-level group.
 	Group string `pulumi:"group"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
+	Id string `pulumi:"id"`
 	// The name of the user. If not specified, the default Service account user name is used.
 	Name string `pulumi:"name"`
 	// The service account id.
@@ -88,6 +89,7 @@ func (o LookupGroupServiceAccountResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupServiceAccountResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
 func (o LookupGroupServiceAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
+//			_, err := gitlab.GetGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
 //				Group: "my/example/group",
 //				Key:   "foo",
 //			}, nil)
@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			// Using an environment scope
-//			_, err = gitlab.LookupGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
+//			_, err = gitlab.GetGroupVariable(ctx, &gitlab.LookupGroupVariableArgs{
 //				Group:            "my/example/group",
 //				Key:              "bar",
 //				EnvironmentScope: pulumi.StringRef("staging/*"),
@@ -78,7 +78,8 @@ type LookupGroupVariableResult struct {
 	EnvironmentScope string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<group>:<key>:<environment_scope>`.
+	Id string `pulumi:"id"`
 	// The name of the variable.
 	Key string `pulumi:"key"`
 	// If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
@@ -146,6 +147,7 @@ func (o LookupGroupVariableResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<group>:<key>:<environment_scope>`.
 func (o LookupGroupVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }

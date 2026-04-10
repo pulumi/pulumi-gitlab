@@ -68,17 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_tag`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_tag.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectTag`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -88,7 +78,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gitlab:index/projectTag:ProjectTag example &#34;12345:develop&#34;
  * ```
  * 
- * NOTE: the `ref` attribute won&#39;t be available for imported `gitlab_project_tag` resources.
+ * NOTE: the `ref` attribute won&#39;t be available for imported `gitlab.ProjectTag` resources.
  * 
  */
 @ResourceType(type="gitlab:index/projectTag:ProjectTag")

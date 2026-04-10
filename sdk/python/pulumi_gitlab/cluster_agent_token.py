@@ -25,6 +25,7 @@ class ClusterAgentTokenArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterAgentToken resource.
+
         :param pulumi.Input[_builtins.int] agent_id: The ID of the agent.
         :param pulumi.Input[_builtins.str] project: ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[_builtins.str] description: The Description for the agent.
@@ -101,6 +102,7 @@ class _ClusterAgentTokenState:
                  token_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ClusterAgentToken resources.
+
         :param pulumi.Input[_builtins.int] agent_id: The ID of the agent.
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 datetime when the agent was created.
         :param pulumi.Input[_builtins.int] created_by_user_id: The ID of the user who created the agent.
@@ -297,7 +299,7 @@ class ClusterAgentToken(pulumi.CustomResource):
             agent_id=this_cluster_agent.agent_id,
             name="my-agent-token",
             description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Release("gitlab_agent",
+        gitlab_agent = helm.Release("gitlab_agent",
             name=gitlab-agent,
             namespace=gitlab-agent,
             create_namespace=True,
@@ -312,17 +314,7 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_cluster_agent_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ClusterAgentToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -333,6 +325,7 @@ class ClusterAgentToken(pulumi.CustomResource):
         ```
 
         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -379,7 +372,7 @@ class ClusterAgentToken(pulumi.CustomResource):
             agent_id=this_cluster_agent.agent_id,
             name="my-agent-token",
             description="Token for the my-agent used with `gitlab-agent` Helm Chart")
-        gitlab_agent = helm.index.Release("gitlab_agent",
+        gitlab_agent = helm.Release("gitlab_agent",
             name=gitlab-agent,
             namespace=gitlab-agent,
             create_namespace=True,
@@ -394,17 +387,7 @@ class ClusterAgentToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_cluster_agent_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ClusterAgentToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -415,6 +398,7 @@ class ClusterAgentToken(pulumi.CustomResource):
         ```
 
         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param ClusterAgentTokenArgs args: The arguments to use to populate this resource's properties.

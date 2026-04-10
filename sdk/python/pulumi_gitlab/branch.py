@@ -27,6 +27,7 @@ class BranchArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Branch resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the branch is created against.
         :param pulumi.Input[_builtins.str] ref: The ref which the branch is created from.
         :param pulumi.Input[_builtins.bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
@@ -105,6 +106,7 @@ class _BranchState:
                  web_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Branch resources.
+
         :param pulumi.Input[_builtins.bool] can_push: Bool, true if you can push to the branch.
         :param pulumi.Input[Sequence[pulumi.Input['BranchCommitArgs']]] commits: The commit associated with the branch ref.
         :param pulumi.Input[_builtins.bool] default: Bool, true if branch is the default branch for the project.
@@ -300,6 +302,12 @@ class Branch(pulumi.CustomResource):
                  ref: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `Branch` resource manages the lifecycle of a repository branch.
+
+        !> The `ref` attribute is only set in state on resource creation. Imports or divergent branches can lead Terraform to destroy and recreate the resource. Use the lifecycle meta-argument to ignore changes to avoid this behavior.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
+
         ## Example Usage
 
         ```python
@@ -319,17 +327,7 @@ class Branch(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_branch.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Branch`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -338,6 +336,7 @@ class Branch(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/branch:Branch example "12345:develop"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -353,6 +352,12 @@ class Branch(pulumi.CustomResource):
                  args: BranchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `Branch` resource manages the lifecycle of a repository branch.
+
+        !> The `ref` attribute is only set in state on resource creation. Imports or divergent branches can lead Terraform to destroy and recreate the resource. Use the lifecycle meta-argument to ignore changes to avoid this behavior.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
+
         ## Example Usage
 
         ```python
@@ -372,17 +377,7 @@ class Branch(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_branch.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Branch`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -391,6 +386,7 @@ class Branch(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/branch:Branch example "12345:develop"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BranchArgs args: The arguments to use to populate this resource's properties.

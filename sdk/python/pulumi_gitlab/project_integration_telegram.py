@@ -35,6 +35,7 @@ class ProjectIntegrationTelegramArgs:
                  notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationTelegram resource.
+
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issues events.
@@ -255,6 +256,7 @@ class _ProjectIntegrationTelegramState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationTelegram resources.
+
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
@@ -522,25 +524,16 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_telegram`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_telegram.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationTelegram`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_project_integration_telegram state using the project ID, e.g.
+        You can import a ProjectIntegrationTelegram state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram default 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -598,25 +591,16 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_telegram`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_telegram.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationTelegram`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_project_integration_telegram state using the project ID, e.g.
+        You can import a ProjectIntegrationTelegram state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram default 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationTelegramArgs args: The arguments to use to populate this resource's properties.

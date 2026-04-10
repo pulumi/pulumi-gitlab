@@ -61,6 +61,9 @@ export interface GetGroupVariablesResult {
      * The name or id of the group.
      */
     readonly group: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
+     */
     readonly id: string;
     /**
      * The list of variables returned by the search

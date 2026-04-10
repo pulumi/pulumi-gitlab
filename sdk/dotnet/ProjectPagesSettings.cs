@@ -10,21 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## Example Usage
+    /// The `gitlab.ProjectPagesSettings` resource manages project pages settings in GitLab.
+    /// 
+    /// &gt; This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+    /// 
+    /// &gt; When you destroy the resource, you can control if pages settings are saved or not. Set `KeepSettingsOnDestroy` to `True` (default) to save changes to pages settings. Set `KeepSettingsOnDestroy` to `False` to reset the pages settings to its original values.
+    /// The original values are saved in state when you create the resource. You can change the `KeepSettingsOnDestroy` value before destroying the resource to control this behavior.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pages_settings`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_pages_settings.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPagesSettings`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -55,6 +52,9 @@ namespace Pulumi.GitLab
         [Output("isUniqueDomainEnabled")]
         public Output<bool> IsUniqueDomainEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+        /// </summary>
         [Output("keepSettingsOnDestroy")]
         public Output<bool> KeepSettingsOnDestroy { get; private set; } = null!;
 
@@ -128,6 +128,9 @@ namespace Pulumi.GitLab
         [Input("isUniqueDomainEnabled")]
         public Input<bool>? IsUniqueDomainEnabled { get; set; }
 
+        /// <summary>
+        /// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+        /// </summary>
         [Input("keepSettingsOnDestroy")]
         public Input<bool>? KeepSettingsOnDestroy { get; set; }
 
@@ -169,6 +172,9 @@ namespace Pulumi.GitLab
         [Input("isUniqueDomainEnabled")]
         public Input<bool>? IsUniqueDomainEnabled { get; set; }
 
+        /// <summary>
+        /// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
+        /// </summary>
         [Input("keepSettingsOnDestroy")]
         public Input<bool>? KeepSettingsOnDestroy { get; set; }
 

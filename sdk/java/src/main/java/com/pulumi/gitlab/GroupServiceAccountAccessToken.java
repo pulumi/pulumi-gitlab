@@ -120,26 +120,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_group_service_account_access_token.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupServiceAccountAccessToken`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `&lt;resource&gt; &lt;id&gt;`. The
- * ```
- * 
  * `id` is in the form of &lt;group_id&gt;:&lt;service_account_id&gt;:&lt;access_token_id&gt;
- * 
  * Importing an access token does not import the access token value.
  * 
  * ```sh

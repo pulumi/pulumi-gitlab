@@ -26,6 +26,7 @@ class ProjectJobTokenScopesArgs:
                  target_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a ProjectJobTokenScopes resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[_builtins.int] project_id: The ID of the project. Use `project` instead. To be removed in 19.0.
@@ -118,6 +119,7 @@ class _ProjectJobTokenScopesState:
                  target_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering ProjectJobTokenScopes resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[_builtins.int] project_id: The ID of the project. Use `project` instead. To be removed in 19.0.
@@ -271,17 +273,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scopes`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_job_token_scopes.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectJobTokenScopes`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -290,6 +282,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -364,17 +357,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_job_token_scopes`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_job_token_scopes.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectJobTokenScopes`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -383,6 +366,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectJobTokenScopesArgs args: The arguments to use to populate this resource's properties.

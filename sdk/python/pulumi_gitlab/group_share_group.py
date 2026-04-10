@@ -26,6 +26,7 @@ class GroupShareGroupArgs:
                  member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a GroupShareGroup resource.
+
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] group_id: The id of the main group to be shared.
         :param pulumi.Input[_builtins.int] share_group_id: The id of the additional group with which the main group will be shared.
@@ -111,6 +112,7 @@ class _GroupShareGroupState:
                  share_group_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupShareGroup resources.
+
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] group_id: The id of the main group to be shared.
@@ -223,17 +225,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_share_group`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_share_group.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupShareGroup`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -242,6 +234,7 @@ class GroupShareGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -279,17 +272,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_share_group`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_share_group.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupShareGroup`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -298,6 +281,7 @@ class GroupShareGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupShareGroupArgs args: The arguments to use to populate this resource's properties.

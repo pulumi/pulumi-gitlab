@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.ProjectMirror("foo", new()
+    ///     var foo = new GitLab.Index.ProjectMirror("foo", new()
     ///     {
     ///         Project = "1",
     ///         Url = "https://username:password@github.com/org/repository.git",
@@ -43,17 +43,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_mirror`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_mirror.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectMirror`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

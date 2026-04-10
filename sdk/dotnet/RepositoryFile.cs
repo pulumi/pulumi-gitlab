@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.RepositoryFile` resource manages the lifecycle of a file within a repository.
+    /// 
+    /// &gt; **Timeouts** Default timeout for *Create*, *Update* and *Delete* is one minute and can be configured in the `Timeouts` block.
+    /// 
+    /// &gt; **Implementation Detail** GitLab is unable to handle concurrent calls to the GitLab repository files API for the same project.
+    ///    Therefore, this resource queues every call to the repository files API no matter of the project, which may slow down the terraform
+    ///    execution time for some configurations. In addition, retries are performed in case a refresh is required because another application
+    ///    changed the repository at the same time.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/repository_files/)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -21,27 +32,27 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Group("this", new()
+    ///     var @this = new GitLab.Index.Group("this", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Project("this", new()
+    ///     var thisProject = new GitLab.Index.Project("this", new()
     ///     {
     ///         Name = "example",
     ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisRepositoryFile = new GitLab.RepositoryFile("this", new()
+    ///     var thisRepositoryFile = new GitLab.Index.RepositoryFile("this", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         FilePath = "meow.txt",
     ///         Branch = "main",
     ///         Encoding = "base64",
-    ///         Content = Std.Base64encode.Invoke(new()
+    ///         Content = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = "Meow goes the cat",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -50,7 +61,7 @@ namespace Pulumi.GitLab
     ///         CommitMessage = "feature: add meow file",
     ///     });
     /// 
-    ///     var readme = new GitLab.RepositoryFile("readme", new()
+    ///     var readme = new GitLab.Index.RepositoryFile("readme", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         FilePath = "readme.txt",
@@ -62,7 +73,7 @@ namespace Pulumi.GitLab
     ///         CommitMessage = "feature: add readme file",
     ///     });
     /// 
-    ///     var readmeForDogs = new GitLab.RepositoryFile("readme_for_dogs", new()
+    ///     var readmeForDogs = new GitLab.Index.RepositoryFile("readme_for_dogs", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         FilePath = "readme.txt",
@@ -80,17 +91,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_repository_file`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_repository_file.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.RepositoryFile`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

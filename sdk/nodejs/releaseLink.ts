@@ -31,17 +31,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_release_link`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_release_link.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ReleaseLink`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *

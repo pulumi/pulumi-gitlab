@@ -26,6 +26,7 @@ class TopicArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.str] title: The topic's description.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -114,6 +115,7 @@ class _TopicState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] avatar_url: The URL of the avatar image.
@@ -228,31 +230,17 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_topic`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_topic.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Topic`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.
-        ```
-
         The `id` must be an integer for the id of the topic you want to import,
-
         for example:
 
         ```sh
         $ pulumi import gitlab:index/topic:Topic functional_programming 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -277,31 +265,17 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_topic`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_topic.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Topic`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/topic:Topic You can import a topic to terraform state using `<resource> <id>`.
-        ```
-
         The `id` must be an integer for the id of the topic you want to import,
-
         for example:
 
         ```sh
         $ pulumi import gitlab:index/topic:Topic functional_programming 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

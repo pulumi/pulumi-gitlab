@@ -49,7 +49,7 @@ import (
 //				Url:         pulumi.String("http://harbor.example.com"),
 //				ProjectName: pulumi.String("my_project_name"),
 //				Username:    pulumi.String("username"),
-//				Password:    pulumi.String(password),
+//				Password:    pulumi.String(pulumi.String(password)),
 //			})
 //			if err != nil {
 //				return err
@@ -62,23 +62,11 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_harbor`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_integration_harbor.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `IntegrationHarbor`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// ```sh
-// $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor You can import a gitlab_integration_harbor state using `<resource> <project_id>`:
-// ```
+// You can import a IntegrationHarbor state using `terraform import <resource> <project_id>`:
 //
 // ```sh
 // $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor harbor 1

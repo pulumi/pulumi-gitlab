@@ -48,6 +48,7 @@ class GroupIntegrationMattermostArgs:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupIntegrationMattermost resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group to integrate with Mattermost.
         :param pulumi.Input[_builtins.str] webhook: Mattermost notifications webhook (for example, http://mattermost.example.com/hooks/...).
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid values are `all`, `default`, `protected`, `default_and_protected`.
@@ -486,6 +487,7 @@ class _GroupIntegrationMattermostState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupIntegrationMattermost resources.
+
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid values are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[_builtins.str] channel: Default channel to use if no other channel is configured.
         :param pulumi.Input[_builtins.str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
@@ -951,17 +953,7 @@ class GroupIntegrationMattermost(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_integration_mattermost`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_integration_mattermost.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupIntegrationMattermost`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -970,6 +962,7 @@ class GroupIntegrationMattermost(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost mattermost 12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1030,17 +1023,7 @@ class GroupIntegrationMattermost(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_integration_mattermost`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_integration_mattermost.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupIntegrationMattermost`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -1049,6 +1032,7 @@ class GroupIntegrationMattermost(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost mattermost 12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupIntegrationMattermostArgs args: The arguments to use to populate this resource's properties.

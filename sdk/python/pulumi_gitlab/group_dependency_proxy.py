@@ -25,6 +25,7 @@ class GroupDependencyProxyArgs:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupDependencyProxy resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the proxy is enabled.
         :param pulumi.Input[_builtins.str] identity: Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)).
@@ -96,6 +97,7 @@ class _GroupDependencyProxyState:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupDependencyProxy resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the proxy is enabled.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group.
         :param pulumi.Input[_builtins.str] identity: Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)).
@@ -192,29 +194,18 @@ class GroupDependencyProxy(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_dependency_proxy`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_dependency_proxy.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupDependencyProxy`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
         You can import a group dependency proxy using the group id. e.g. `{group-id}`
-
         "secret" will not populate when importing the dependency proxy, but will still
-
         be required in the configuration.
 
         ```sh
         $ pulumi import gitlab:index/groupDependencyProxy:GroupDependencyProxy foo 42
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -251,29 +242,18 @@ class GroupDependencyProxy(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_dependency_proxy`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_dependency_proxy.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupDependencyProxy`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
         You can import a group dependency proxy using the group id. e.g. `{group-id}`
-
         "secret" will not populate when importing the dependency proxy, but will still
-
         be required in the configuration.
 
         ```sh
         $ pulumi import gitlab:index/groupDependencyProxy:GroupDependencyProxy foo 42
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupDependencyProxyArgs args: The arguments to use to populate this resource's properties.

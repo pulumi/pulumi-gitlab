@@ -31,6 +31,7 @@ class ProjectAccessTokenArgs:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectAccessToken resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
@@ -170,6 +171,7 @@ class _ProjectAccessTokenState:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectAccessToken resources.
+
         :param pulumi.Input[_builtins.str] access_level: The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
@@ -414,17 +416,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_access_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_access_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectAccessToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -435,6 +427,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         ```
 
         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -484,17 +477,7 @@ class ProjectAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_access_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_access_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectAccessToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -505,6 +488,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         ```
 
         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param ProjectAccessTokenArgs args: The arguments to use to populate this resource's properties.

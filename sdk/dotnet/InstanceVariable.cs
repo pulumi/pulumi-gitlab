@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.InstanceVariable("example", new()
+    ///     var example = new GitLab.Index.InstanceVariable("example", new()
     ///     {
     ///         Key = "instance_variable_key",
     ///         Value = "instance_variable_value",
@@ -37,21 +37,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_variable`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_instance_variable.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.InstanceVariable`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab instance variables can be imported using an id made up of `variablename`, e.g.
+    /// GitLab instance variables can be imported using an id made up of `Variablename`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/instanceVariable:InstanceVariable example instance_variable_key

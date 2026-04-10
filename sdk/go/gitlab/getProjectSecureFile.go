@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupProjectSecureFile(ctx, &gitlab.LookupProjectSecureFileArgs{
+//			_, err := gitlab.GetProjectSecureFile(ctx, &gitlab.LookupProjectSecureFileArgs{
 //				Project:      "123",
 //				SecureFileId: pulumi.IntRef(123),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.LookupProjectSecureFile(ctx, &gitlab.LookupProjectSecureFileArgs{
+//			_, err = gitlab.GetProjectSecureFile(ctx, &gitlab.LookupProjectSecureFileArgs{
 //				Project: "123",
 //				Name:    pulumi.StringRef("secret.pem"),
 //			}, nil)

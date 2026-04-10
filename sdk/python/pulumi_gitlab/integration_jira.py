@@ -37,6 +37,7 @@ class IntegrationJiraArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IntegrationJira resource.
+
         :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
@@ -47,6 +48,7 @@ class IntegrationJiraArgs:
         :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
@@ -206,6 +208,9 @@ class IntegrationJiraArgs:
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
     def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+        """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @jira_issue_transition_automatic.setter
@@ -298,6 +303,7 @@ class _IntegrationJiraState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationJira resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[_builtins.bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
@@ -307,6 +313,7 @@ class _IntegrationJiraState:
         :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
@@ -470,6 +477,9 @@ class _IntegrationJiraState:
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
     def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+        """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @jira_issue_transition_automatic.setter
@@ -646,25 +656,16 @@ class IntegrationJira(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_jira.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationJira`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_jira state using the project ID, e.g.
+        You can import a IntegrationJira state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -675,6 +676,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
@@ -716,25 +718,16 @@ class IntegrationJira(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jira`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_integration_jira.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `IntegrationJira`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_jira state using the project ID, e.g.
+        You can import a IntegrationJira state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationJiraArgs args: The arguments to use to populate this resource's properties.
@@ -850,6 +843,7 @@ class IntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
+        :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
@@ -962,6 +956,9 @@ class IntegrationJira(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
     def jira_issue_transition_automatic(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
+        """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @_builtins.property

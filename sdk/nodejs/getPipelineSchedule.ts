@@ -74,6 +74,9 @@ export interface GetPipelineScheduleResult {
      * The description of the pipeline schedule.
      */
     readonly description: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<project-id>:<pipeline-schedule-id>`.
+     */
     readonly id: string;
     /**
      * The details of the last pipeline run by the schedule.

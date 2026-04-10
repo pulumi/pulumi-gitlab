@@ -16014,8 +16014,9 @@ type GetProjectsProject struct {
 	// Whether onlyMirrorProtectedBranches is enabled for the project.
 	OnlyMirrorProtectedBranches bool `pulumi:"onlyMirrorProtectedBranches"`
 	// The number of open issies for the project.
-	OpenIssuesCount int                       `pulumi:"openIssuesCount"`
-	Owners          []GetProjectsProjectOwner `pulumi:"owners"`
+	OpenIssuesCount int `pulumi:"openIssuesCount"`
+	// The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+	Owners []GetProjectsProjectOwner `pulumi:"owners"`
 	// Whether packages are enabled for the project.
 	PackagesEnabled bool `pulumi:"packagesEnabled"`
 	// The path of the project.
@@ -16241,8 +16242,9 @@ type GetProjectsProjectArgs struct {
 	// Whether onlyMirrorProtectedBranches is enabled for the project.
 	OnlyMirrorProtectedBranches pulumi.BoolInput `pulumi:"onlyMirrorProtectedBranches"`
 	// The number of open issies for the project.
-	OpenIssuesCount pulumi.IntInput                   `pulumi:"openIssuesCount"`
-	Owners          GetProjectsProjectOwnerArrayInput `pulumi:"owners"`
+	OpenIssuesCount pulumi.IntInput `pulumi:"openIssuesCount"`
+	// The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+	Owners GetProjectsProjectOwnerArrayInput `pulumi:"owners"`
 	// Whether packages are enabled for the project.
 	PackagesEnabled pulumi.BoolInput `pulumi:"packagesEnabled"`
 	// The path of the project.
@@ -16729,6 +16731,7 @@ func (o GetProjectsProjectOutput) OpenIssuesCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectsProject) int { return v.OpenIssuesCount }).(pulumi.IntOutput)
 }
 
+// The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
 func (o GetProjectsProjectOutput) Owners() GetProjectsProjectOwnerArrayOutput {
 	return o.ApplyT(func(v GetProjectsProject) []GetProjectsProjectOwner { return v.Owners }).(GetProjectsProjectOwnerArrayOutput)
 }

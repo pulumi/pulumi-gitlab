@@ -20,6 +20,10 @@ public final class GetProjectIssueLabelEventsResult {
      * 
      */
     private List<GetProjectIssueLabelEventsEvent> events;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project&gt;:&lt;issue_iid&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The internal ID of the issue.
@@ -45,6 +49,10 @@ public final class GetProjectIssueLabelEventsResult {
     public List<GetProjectIssueLabelEventsEvent> events() {
         return this.events;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project&gt;:&lt;issue_iid&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

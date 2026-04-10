@@ -77,9 +77,17 @@ public final class GroupLevelMrApprovalsArgs extends com.pulumi.resources.Resour
         return this.group;
     }
 
+    /**
+     * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     @Import(name="keepSettingsOnDestroy")
     private @Nullable Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     public Optional<Output<Boolean>> keepSettingsOnDestroy() {
         return Optional.ofNullable(this.keepSettingsOnDestroy);
     }
@@ -228,11 +236,23 @@ public final class GroupLevelMrApprovalsArgs extends com.pulumi.resources.Resour
             return group(Output.of(group));
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(@Nullable Output<Boolean> keepSettingsOnDestroy) {
             $.keepSettingsOnDestroy = keepSettingsOnDestroy;
             return this;
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(Boolean keepSettingsOnDestroy) {
             return keepSettingsOnDestroy(Output.of(keepSettingsOnDestroy));
         }

@@ -10,6 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.BranchProtection` resource manages the lifecycle of a protected branch of a repository.
+    /// 
+    /// &gt; **Branch Protection Behavior for the default branch**
+    ///    Depending on the GitLab instance, group or project setting the default branch of a project is created automatically by GitLab behind the scenes.
+    ///    Due to some [limitations](https://discuss.hashicorp.com/t/ignore-the-order-of-a-complex-typed-list/42242) in the Terraform Provider SDK and the GitLab API,
+    ///    when creating a new project and trying to manage the branch protection setting for its default branch the `gitlab.BranchProtection` resource will
+    ///    automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
+    ///    Having multiple `gitlab.BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
+    ///    This behavior might change in the future.
+    /// 
+    /// &gt; The `AllowedToPush`, `AllowedToMerge`, `AllowedToUnprotect`, `UnprotectAccessLevel` and `CodeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -20,7 +34,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var branchProtect = new GitLab.BranchProtection("BranchProtect", new()
+    ///     var branchProtect = new GitLab.Index.BranchProtection("BranchProtect", new()
     ///     {
     ///         Project = "12345",
     ///         Branch = "BranchProtected",
@@ -65,7 +79,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using dynamic block
-    ///     var main = new GitLab.BranchProtection("main", new()
+    ///     var main = new GitLab.Index.BranchProtection("main", new()
     ///     {
     ///         AllowedToPushes = new[]
     ///         {
@@ -87,7 +101,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example with admin push access level
-    ///     var adminPush = new GitLab.BranchProtection("admin_push", new()
+    ///     var adminPush = new GitLab.Index.BranchProtection("admin_push", new()
     ///     {
     ///         Project = "12345",
     ///         Branch = "admin-protected",
@@ -101,17 +115,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch_protection`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_branch_protection.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.BranchProtection`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -35,6 +35,7 @@ class UserArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] email: The e-mail address of the user.
         :param pulumi.Input[_builtins.str] username: The username of the user.
         :param pulumi.Input[_builtins.bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
@@ -265,6 +266,7 @@ class _UserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[_builtins.str] email: The e-mail address of the user.
         :param pulumi.Input[_builtins.bool] force_random_password: Set user password to a random value
@@ -528,31 +530,17 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `User`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
-        ```
-
         The `id` must be an integer for the id of the user you want to import,
-
         for example:
 
         ```sh
         $ pulumi import gitlab:index/user:User example 42
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -606,31 +594,17 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `User`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
-        ```
-
         The `id` must be an integer for the id of the user you want to import,
-
         for example:
 
         ```sh
         $ pulumi import gitlab:index/user:User example 42
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

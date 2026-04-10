@@ -130,6 +130,7 @@ class ProjectArgs:
                  wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1921,6 +1922,7 @@ class _ProjectState:
                  wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3813,30 +3815,26 @@ class Project(pulumi.CustomResource):
                  wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        The `Project` resource manages the lifecycle of a project.
+
+        A project can either be created in a group or user namespace.
+
+        > **Default Branch Protection Workaround** Projects are created with default branch protection.
+        Since this default branch protection is not currently managed via Terraform, to workaround this limitation,
+        you can remove the default branch protection via the API and create your desired Terraform managed branch protection.
+        In the `Project` resource, define a `local-exec` provisioner which invokes
+        the `/projects/:id/protected_branches/:name` API via curl to delete the branch protection on the default
+        branch using a `DELETE` request. Then define the desired branch protection using the `BranchProtection` resource.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Project`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
-        ```
-
         `id` can be whatever the [get single project api][get_single_project] takes for
-
         its `:id` value, so for example:
 
         ```sh
@@ -3844,6 +3842,7 @@ class Project(pulumi.CustomResource):
         ```
 
         NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -3966,30 +3965,26 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        The `Project` resource manages the lifecycle of a project.
+
+        A project can either be created in a group or user namespace.
+
+        > **Default Branch Protection Workaround** Projects are created with default branch protection.
+        Since this default branch protection is not currently managed via Terraform, to workaround this limitation,
+        you can remove the default branch protection via the API and create your desired Terraform managed branch protection.
+        In the `Project` resource, define a `local-exec` provisioner which invokes
+        the `/projects/:id/protected_branches/:name` API via curl to delete the branch protection on the default
+        branch using a `DELETE` request. Then define the desired branch protection using the `BranchProtection` resource.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Project`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/project:Project You can import a project state using `<resource> <id>`. The
-        ```
-
         `id` can be whatever the [get single project api][get_single_project] takes for
-
         its `:id` value, so for example:
 
         ```sh
@@ -3997,6 +3992,7 @@ class Project(pulumi.CustomResource):
         ```
 
         NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

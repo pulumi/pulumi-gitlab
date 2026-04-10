@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.ProjectHook("example", new()
+    ///     var example = new GitLab.Index.ProjectHook("example", new()
     ///     {
     ///         Project = "example/hooked",
     ///         Url = "https://example.com/hook/example",
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     /// 
     ///     // Using Custom Headers
     ///     // Values of headers can't be imported
-    ///     var customHeaders = new GitLab.ProjectHook("custom_headers", new()
+    ///     var customHeaders = new GitLab.Index.ProjectHook("custom_headers", new()
     ///     {
     ///         Project = "example/hooked",
     ///         Url = "https://example.com/hook/example",
@@ -63,17 +63,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_hook`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_hook.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectHook`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -83,7 +73,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
     /// ```
     /// 
-    /// NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectHook:ProjectHook")]
     public partial class ProjectHook : global::Pulumi.CustomResource

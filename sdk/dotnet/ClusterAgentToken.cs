@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create token for an agent
-    ///     var example = new GitLab.ClusterAgentToken("example", new()
+    ///     var example = new GitLab.Index.ClusterAgentToken("example", new()
     ///     {
     ///         Project = "12345",
     ///         AgentId = 42,
@@ -39,18 +39,18 @@ namespace Pulumi.GitLab
     ///     // The following example creates a GitLab Agent for Kubernetes in a given project,
     ///     // creates a token and install the `gitlab-agent` Helm Chart.
     ///     // (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
-    ///     var @this = GitLab.GetProject.Invoke(new()
+    ///     var @this = GitLab.Index.GetProject.Invoke(new()
     ///     {
     ///         PathWithNamespace = "my-org/example",
     ///     });
     /// 
-    ///     var thisClusterAgent = new GitLab.ClusterAgent("this", new()
+    ///     var thisClusterAgent = new GitLab.Index.ClusterAgent("this", new()
     ///     {
     ///         Project = @this.Apply(@this =&gt; @this.Apply(getProjectResult =&gt; getProjectResult.Id)),
     ///         Name = "my-agent",
     ///     });
     /// 
-    ///     var thisClusterAgentToken = new GitLab.ClusterAgentToken("this", new()
+    ///     var thisClusterAgentToken = new GitLab.Index.ClusterAgentToken("this", new()
     ///     {
     ///         Project = @this.Apply(@this =&gt; @this.Apply(getProjectResult =&gt; getProjectResult.Id)),
     ///         AgentId = thisClusterAgent.AgentId,
@@ -81,17 +81,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_cluster_agent_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ClusterAgentToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -101,7 +91,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/clusterAgentToken:ClusterAgentToken example '12345:42:1'
     /// ```
     /// 
-    /// ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// ATTENTION: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/clusterAgentToken:ClusterAgentToken")]
     public partial class ClusterAgentToken : global::Pulumi.CustomResource

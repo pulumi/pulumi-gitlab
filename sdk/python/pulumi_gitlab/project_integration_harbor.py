@@ -27,6 +27,7 @@ class ProjectIntegrationHarborArgs:
                  use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationHarbor resource.
+
         :param pulumi.Input[_builtins.str] password: Password for authentication with the Harbor server, if authentication is required by the server.
         :param pulumi.Input[_builtins.str] project: ID of the GitLab project you want to activate integration on.
         :param pulumi.Input[_builtins.str] project_name: The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
@@ -127,6 +128,7 @@ class _ProjectIntegrationHarborState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationHarbor resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] password: Password for authentication with the Harbor server, if authentication is required by the server.
         :param pulumi.Input[_builtins.str] project: ID of the GitLab project you want to activate integration on.
@@ -271,27 +273,16 @@ class ProjectIntegrationHarbor(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_harbor`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_harbor.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationHarbor`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor You can import a gitlab_project_integration_harbor state using `<resource> <project_id>`:
-        ```
+        You can import a ProjectIntegrationHarbor state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor harbor 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -331,27 +322,16 @@ class ProjectIntegrationHarbor(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_harbor`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_integration_harbor.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectIntegrationHarbor`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor You can import a gitlab_project_integration_harbor state using `<resource> <project_id>`:
-        ```
+        You can import a ProjectIntegrationHarbor state using `terraform import <resource> <project_id>`:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor harbor 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationHarborArgs args: The arguments to use to populate this resource's properties.

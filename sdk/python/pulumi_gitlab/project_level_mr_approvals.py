@@ -28,6 +28,7 @@ class ProjectLevelMrApprovalsArgs:
                  selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectLevelMrApprovals resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of a project to change MR approval configuration.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
@@ -147,6 +148,7 @@ class _ProjectLevelMrApprovalsState:
                  selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectLevelMrApprovals resources.
+
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
         :param pulumi.Input[_builtins.bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
@@ -295,29 +297,16 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_level_mr_approvals.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectLevelMrApprovals`. For example:
 
         Importing using the CLI is supported with the following syntax:
-
-        ```sh
-        $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
-        ```
 
         For example:
 
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -361,29 +350,16 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_mr_approvals`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_level_mr_approvals.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectLevelMrApprovals`. For example:
 
         Importing using the CLI is supported with the following syntax:
-
-        ```sh
-        $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals You can import an approval configuration state using `<resource> <project_id>`.
-        ```
 
         For example:
 
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectLevelMrApprovalsArgs args: The arguments to use to populate this resource's properties.

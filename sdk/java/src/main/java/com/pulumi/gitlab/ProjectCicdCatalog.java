@@ -60,17 +60,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cicd_catalog`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_cicd_catalog.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectCicdCatalog`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -97,9 +87,17 @@ public class ProjectCicdCatalog extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enabled() {
         return this.enabled;
     }
+    /**
+     * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     @Export(name="keepSettingsOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+     * 
+     */
     public Output<Boolean> keepSettingsOnDestroy() {
         return this.keepSettingsOnDestroy;
     }

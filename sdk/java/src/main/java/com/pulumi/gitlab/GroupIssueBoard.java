@@ -26,17 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_issue_board`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_group_issue_board.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupIssueBoard`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

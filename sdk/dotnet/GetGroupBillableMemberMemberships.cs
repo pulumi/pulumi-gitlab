@@ -31,7 +31,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testUserMembership = GitLab.GetGroupBillableMemberMemberships.Invoke(new()
+        ///     var testUserMembership = GitLab.Index.GetGroupBillableMemberMemberships.Invoke(new()
         ///     {
         ///         UserId = 21,
         ///         GroupId = "42",
@@ -63,7 +63,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testUserMembership = GitLab.GetGroupBillableMemberMemberships.Invoke(new()
+        ///     var testUserMembership = GitLab.Index.GetGroupBillableMemberMemberships.Invoke(new()
         ///     {
         ///         UserId = 21,
         ///         GroupId = "42",
@@ -95,7 +95,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testUserMembership = GitLab.GetGroupBillableMemberMemberships.Invoke(new()
+        ///     var testUserMembership = GitLab.Index.GetGroupBillableMemberMemberships.Invoke(new()
         ///     {
         ///         UserId = 21,
         ///         GroupId = "42",

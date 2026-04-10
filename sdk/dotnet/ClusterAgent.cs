@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.ClusterAgent("example", new()
+    ///     var example = new GitLab.Index.ClusterAgent("example", new()
     ///     {
     ///         Project = "12345",
     ///         Name = "agent-1",
@@ -40,13 +40,13 @@ namespace Pulumi.GitLab
     /// 
     ///     // Optionally, configure the agent as described in
     ///     // https://docs.gitlab.com/user/clusters/agent/install/index/#create-an-agent-configuration-file
-    ///     var exampleAgentConfig = new GitLab.RepositoryFile("example_agent_config", new()
+    ///     var exampleAgentConfig = new GitLab.Index.RepositoryFile("example_agent_config", new()
     ///     {
     ///         Project = example.Project,
     ///         Branch = "main",
     ///         FilePath = example.Name.Apply(name =&gt; $".gitlab/agents/{name}/config.yaml"),
     ///         Encoding = "base64",
-    ///         Content = Std.Base64encode.Invoke(new()
+    ///         Content = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"# the GitLab Agent for Kubernetes configuration goes here ...
     /// ",
@@ -61,17 +61,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_cluster_agent`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_cluster_agent.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ClusterAgent`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

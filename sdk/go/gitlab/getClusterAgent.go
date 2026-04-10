@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupClusterAgent(ctx, &gitlab.LookupClusterAgentArgs{
+//			_, err := gitlab.GetClusterAgent(ctx, &gitlab.LookupClusterAgentArgs{
 //				Project: "12345",
 //				AgentId: 1,
 //			}, nil)

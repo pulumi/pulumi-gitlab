@@ -27,6 +27,7 @@ class GroupProtectedEnvironmentArgs:
                  approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GroupProtectedEnvironment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group which the protected environment is created against.
@@ -96,6 +97,7 @@ class _GroupProtectedEnvironmentState:
                  group: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupProtectedEnvironment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
@@ -182,17 +184,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_protected_environment`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_protected_environment.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupProtectedEnvironment`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -201,6 +193,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,17 +220,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_protected_environment`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_protected_environment.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupProtectedEnvironment`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -246,6 +229,7 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment bar 123:production
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupProtectedEnvironmentArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class GroupServiceAccountAccessTokenArgs:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupServiceAccountAccessToken resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.
@@ -151,6 +152,7 @@ class _GroupServiceAccountAccessTokenState:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupServiceAccountAccessToken resources.
+
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
@@ -395,31 +397,17 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_service_account_access_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupServiceAccountAccessToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `<resource> <id>`. The
-        ```
-
         `id` is in the form of <group_id>:<service_account_id>:<access_token_id>
-
         Importing an access token does not import the access token value.
 
         ```sh
         $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken example 1:2:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -499,31 +487,17 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_service_account_access_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_service_account_access_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupServiceAccountAccessToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken You can import a service account access token using `<resource> <id>`. The
-        ```
-
         `id` is in the form of <group_id>:<service_account_id>:<access_token_id>
-
         Importing an access token does not import the access token value.
 
         ```sh
         $ pulumi import gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken example 1:2:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupServiceAccountAccessTokenArgs args: The arguments to use to populate this resource's properties.

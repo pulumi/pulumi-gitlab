@@ -63,6 +63,9 @@ export interface GetComplianceFrameworkResult {
      * Globally unique ID of the compliance framework.
      */
     readonly frameworkId: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<namespace_path>:<framework_id>`.
+     */
     readonly id: string;
     /**
      * Name for the compliance framework.

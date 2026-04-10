@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupPipelineSchedule(ctx, &gitlab.LookupPipelineScheduleArgs{
+//			_, err := gitlab.GetPipelineSchedule(ctx, &gitlab.LookupPipelineScheduleArgs{
 //				Project:            "12345",
 //				PipelineScheduleId: 1,
 //			}, nil)
@@ -73,7 +73,8 @@ type LookupPipelineScheduleResult struct {
 	CronTimezone string `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<project-id>:<pipeline-schedule-id>`.
+	Id string `pulumi:"id"`
 	// The details of the last pipeline run by the schedule.
 	LastPipeline GetPipelineScheduleLastPipeline `pulumi:"lastPipeline"`
 	// The datetime of when the schedule will next run.
@@ -155,6 +156,7 @@ func (o LookupPipelineScheduleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineScheduleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<project-id>:<pipeline-schedule-id>`.
 func (o LookupPipelineScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }

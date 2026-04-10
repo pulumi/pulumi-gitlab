@@ -25,6 +25,7 @@ class ProjectWikiPageArgs:
                  format: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectWikiPage resource.
+
         :param pulumi.Input[_builtins.str] content: Content of the wiki page. Must be at least 1 character long.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] title: Title of the wiki page.
@@ -96,6 +97,7 @@ class _ProjectWikiPageState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectWikiPage resources.
+
         :param pulumi.Input[_builtins.str] content: Content of the wiki page. Must be at least 1 character long.
         :param pulumi.Input[_builtins.str] encoding: The encoding used for the wiki page content.
         :param pulumi.Input[_builtins.str] format: Format of the wiki page (auto-generated if not provided). Valid values are: `markdown`, `rdoc`, `asciidoc`, `org`.
@@ -222,25 +224,16 @@ class ProjectWikiPage(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_wiki_page.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectWikiPage`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import gitlab_project_wiki_page state using the project ID, e.g.
+        You can import ProjectWikiPage state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectWikiPage:ProjectWikiPage test 12345:my-wiki-page
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -277,25 +270,16 @@ class ProjectWikiPage(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_wiki_page`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_wiki_page.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectWikiPage`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import gitlab_project_wiki_page state using the project ID, e.g.
+        You can import ProjectWikiPage state using the project ID, e.g.
 
         ```sh
         $ pulumi import gitlab:index/projectWikiPage:ProjectWikiPage test 12345:my-wiki-page
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectWikiPageArgs args: The arguments to use to populate this resource's properties.

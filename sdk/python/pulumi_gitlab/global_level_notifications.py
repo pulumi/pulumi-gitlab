@@ -39,6 +39,7 @@ class GlobalLevelNotificationsArgs:
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GlobalLevelNotifications resource.
+
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] close_merge_request: Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] failed_pipeline: Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
@@ -335,6 +336,7 @@ class _GlobalLevelNotificationsState:
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GlobalLevelNotifications resources.
+
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] close_merge_request: Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] failed_pipeline: Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
@@ -640,29 +642,18 @@ class GlobalLevelNotifications(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_global_level_notifications`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_global_level_notifications.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GlobalLevelNotifications`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
         Note: You can import a global notification state using "gitlab" as the ID.
-
         The ID will always be gitlab, because the global notificatio only exists
-
         once per user
 
         ```sh
         $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -698,29 +689,18 @@ class GlobalLevelNotifications(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_global_level_notifications`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_global_level_notifications.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GlobalLevelNotifications`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
         Note: You can import a global notification state using "gitlab" as the ID.
-
         The ID will always be gitlab, because the global notificatio only exists
-
         once per user
 
         ```sh
         $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalLevelNotificationsArgs args: The arguments to use to populate this resource's properties.

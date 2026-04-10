@@ -18,17 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_hook`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_group_hook.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupHook`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -38,7 +28,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
     /// ```
     /// 
-    /// NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/groupHook:GroupHook")]
     public partial class GroupHook : global::Pulumi.CustomResource

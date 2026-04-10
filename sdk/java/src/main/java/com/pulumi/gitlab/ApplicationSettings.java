@@ -21,7 +21,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * The `gitlab.ApplicationSettings` resource manages the GitLab application settings.
+ * 
+ * &gt; This is an **experimental resource**. By nature it doesn&#39;t properly fit into how Terraform resources are meant to work.
+ *    Feel free to join the discussion if you have any
+ *    ideas or questions regarding this resource.
+ * 
+ * &gt; All `gitlab.ApplicationSettings` use the same ID `gitlab`.
+ * 
+ * !&gt; This resource does not implement any destroy logic, it&#39;s a no-op at this point.
+ *    It&#39;s also not possible to revert to the previous settings.
+ * 
+ * &gt; Requires at administrative privileges on GitLab.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
  * 
  */
 @ResourceType(type="gitlab:index/applicationSettings:ApplicationSettings")
@@ -2550,9 +2563,17 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
     public Output<Integer> maxSshKeyLifetime() {
         return this.maxSshKeyLifetime;
     }
+    /**
+     * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     * 
+     */
     @Export(name="maxTerraformStateSizeBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxTerraformStateSizeBytes;
 
+    /**
+     * @return Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+     * 
+     */
     public Output<Integer> maxTerraformStateSizeBytes() {
         return this.maxTerraformStateSizeBytes;
     }

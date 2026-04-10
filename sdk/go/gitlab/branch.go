@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Branch` resource manages the lifecycle of a repository branch.
+//
+// !> The `ref` attribute is only set in state on resource creation. Imports or divergent branches can lead Terraform to destroy and recreate the resource. Use the lifecycle meta-argument to ignore changes to avoid this behavior.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/branches/)
+//
 // ## Example Usage
 //
 // ```go
@@ -51,17 +57,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_branch`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_branch.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `Branch`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

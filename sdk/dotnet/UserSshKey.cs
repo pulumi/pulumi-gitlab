@@ -24,12 +24,12 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = GitLab.GetUser.Invoke(new()
+    ///     var example = GitLab.Index.GetUser.Invoke(new()
     ///     {
     ///         Username = "example-user",
     ///     });
     /// 
-    ///     var exampleUserSshKey = new GitLab.UserSshKey("example", new()
+    ///     var exampleUserSshKey = new GitLab.Index.UserSshKey("example", new()
     ///     {
     ///         UserId = example.Apply(getUserResult =&gt; getUserResult.Id),
     ///         Title = "example-key",
@@ -42,17 +42,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_sshkey`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_user_sshkey.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.UserSshKey`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

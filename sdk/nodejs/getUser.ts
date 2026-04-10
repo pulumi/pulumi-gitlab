@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     ],
  * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
  *     username: __value,
- * }) })));
+ * }) }), {}));
  * ```
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -230,7 +230,7 @@ export interface GetUserResult {
  *     ],
  * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
  *     username: __value,
- * }) })));
+ * }) }), {}));
  * ```
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {

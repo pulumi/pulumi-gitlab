@@ -14,9 +14,17 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApplicationArgs Empty = new GetApplicationArgs();
 
+    /**
+     * The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -45,11 +53,23 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetApplicationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID of this Terraform resource. In the format of `&lt;application_id&gt;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

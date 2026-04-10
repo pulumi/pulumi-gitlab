@@ -62,7 +62,8 @@ type GetGroupAccessTokensResult struct {
 	AccessTokens []GetGroupAccessTokensAccessToken `pulumi:"accessTokens"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource.
+	Id string `pulumi:"id"`
 }
 
 func GetGroupAccessTokensOutput(ctx *pulumi.Context, args GetGroupAccessTokensOutputArgs, opts ...pulumi.InvokeOption) GetGroupAccessTokensResultOutput {
@@ -109,6 +110,7 @@ func (o GetGroupAccessTokensResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupAccessTokensResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource.
 func (o GetGroupAccessTokensResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupAccessTokensResult) string { return v.Id }).(pulumi.StringOutput)
 }

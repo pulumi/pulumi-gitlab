@@ -26,6 +26,7 @@ class PipelineScheduleVariableArgs:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PipelineScheduleVariable resource.
+
         :param pulumi.Input[_builtins.str] key: Name of the variable.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[_builtins.str] project: The id of the project to add the schedule to.
@@ -110,6 +111,7 @@ class _PipelineScheduleVariableState:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineScheduleVariable resources.
+
         :param pulumi.Input[_builtins.str] key: Name of the variable.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[_builtins.str] project: The id of the project to add the schedule to.
@@ -225,17 +227,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule_variable`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_pipeline_schedule_variable.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `PipelineScheduleVariable`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -244,6 +236,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -284,17 +277,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule_variable`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_pipeline_schedule_variable.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `PipelineScheduleVariable`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -303,6 +286,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineScheduleVariableArgs args: The arguments to use to populate this resource's properties.

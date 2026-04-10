@@ -68,21 +68,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_emails_on_push`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_integration_emails_on_push.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIntegrationEmailsOnPush`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab_project_integration_emails_on_push state using the project ID, e.g.
+ * You can import a gitlab.ProjectIntegrationEmailsOnPush state using the project ID, e.g.
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush emails 1

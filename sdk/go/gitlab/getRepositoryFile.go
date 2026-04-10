@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupRepositoryFile(ctx, &gitlab.LookupRepositoryFileArgs{
+//			_, err := gitlab.GetRepositoryFile(ctx, &gitlab.LookupRepositoryFileArgs{
 //				Project:  "example",
 //				Ref:      "main",
 //				FilePath: "README.md",

@@ -27,14 +27,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var redmine = new GitLab.IntegrationRedmine("redmine", new()
+    ///     var redmine = new GitLab.Index.IntegrationRedmine("redmine", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         NewIssueUrl = "https://redmine.example.com/issue",
@@ -47,23 +47,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_integration_redmine.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationRedmine`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `&lt;resource&gt; &lt;project_id&gt;`:
-    /// ```
+    /// You can import a gitlab.IntegrationRedmine state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1

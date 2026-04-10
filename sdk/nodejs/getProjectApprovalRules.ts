@@ -55,6 +55,9 @@ export interface GetProjectApprovalRulesResult {
      * A list of project approval rules, as defined below.
      */
     readonly approvalRules?: outputs.GetProjectApprovalRulesApprovalRule[];
+    /**
+     * The ID of this Terraform resource.
+     */
     readonly id: string;
     /**
      * The ID or path with namespace that identifies the project.

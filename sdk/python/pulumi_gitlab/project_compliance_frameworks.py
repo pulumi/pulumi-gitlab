@@ -23,6 +23,7 @@ class ProjectComplianceFrameworksArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectComplianceFrameworks resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compliance_framework_ids: Globally unique IDs of the compliance frameworks to assign to the project.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project to change the compliance frameworks of.
         """
@@ -61,6 +62,7 @@ class _ProjectComplianceFrameworksState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectComplianceFrameworks resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compliance_framework_ids: Globally unique IDs of the compliance frameworks to assign to the project.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project to change the compliance frameworks of.
         """
@@ -138,17 +140,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_compliance_frameworks`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_compliance_frameworks.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectComplianceFrameworks`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -157,6 +149,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks sample "42"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -204,17 +197,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_compliance_frameworks`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_compliance_frameworks.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectComplianceFrameworks`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -223,6 +206,7 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks sample "42"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectComplianceFrameworksArgs args: The arguments to use to populate this resource's properties.

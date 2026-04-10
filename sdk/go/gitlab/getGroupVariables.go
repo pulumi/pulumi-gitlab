@@ -72,7 +72,8 @@ type GetGroupVariablesResult struct {
 	EnvironmentScope *string `pulumi:"environmentScope"`
 	// The name or id of the group.
 	Group string `pulumi:"group"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
+	Id string `pulumi:"id"`
 	// The list of variables returned by the search
 	Variables []GetGroupVariablesVariable `pulumi:"variables"`
 }
@@ -123,6 +124,7 @@ func (o GetGroupVariablesResultOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
 func (o GetGroupVariablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupVariablesResult) string { return v.Id }).(pulumi.StringOutput)
 }

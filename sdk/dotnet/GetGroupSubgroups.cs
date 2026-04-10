@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var subgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     var subgroups = GitLab.Index.GetGroupSubgroups.Invoke(new()
         ///     {
         ///         GroupId = 123456,
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var subgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     var subgroups = GitLab.Index.GetGroupSubgroups.Invoke(new()
         ///     {
         ///         GroupId = 123456,
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var subgroups = GitLab.GetGroupSubgroups.Invoke(new()
+        ///     var subgroups = GitLab.Index.GetGroupSubgroups.Invoke(new()
         ///     {
         ///         GroupId = 123456,
         ///     });

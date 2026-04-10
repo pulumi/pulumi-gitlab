@@ -171,20 +171,20 @@ using GitLab = Pulumi.GitLab;
 return await Deployment.RunAsync(() =>
 {
     // Add a project owned by the user
-    var sampleProject = new GitLab.Project("sample_project", new()
+    var sampleProject = new GitLab.Index.Project("sample_project", new()
     {
         Name = "example",
     });
 
     // Add a hook to the project
-    var sampleProjectHook = new GitLab.ProjectHook("sample_project_hook", new()
+    var sampleProjectHook = new GitLab.Index.ProjectHook("sample_project_hook", new()
     {
         Project = sampleProject.Id,
         Url = "https://example.com/project_hook",
     });
 
     // Add a variable to the project
-    var sampleProjectVariable = new GitLab.ProjectVariable("sample_project_variable", new()
+    var sampleProjectVariable = new GitLab.Index.ProjectVariable("sample_project_variable", new()
     {
         Project = sampleProject.Id,
         Key = "project_variable_key",
@@ -192,7 +192,7 @@ return await Deployment.RunAsync(() =>
     });
 
     // Add a deploy key to the project
-    var sampleDeployKey = new GitLab.DeployKey("sample_deploy_key", new()
+    var sampleDeployKey = new GitLab.Index.DeployKey("sample_deploy_key", new()
     {
         Project = sampleProject.Id,
         Title = "pulumi example",
@@ -200,7 +200,7 @@ return await Deployment.RunAsync(() =>
     });
 
     // Add a group
-    var sampleGroup = new GitLab.Group("sample_group", new()
+    var sampleGroup = new GitLab.Index.Group("sample_group", new()
     {
         Name = "example",
         Path = "example",
@@ -208,7 +208,7 @@ return await Deployment.RunAsync(() =>
     });
 
     // Add a project to the group - example/example
-    var sampleGroupProject = new GitLab.Project("sample_group_project", new()
+    var sampleGroupProject = new GitLab.Index.Project("sample_group_project", new()
     {
         Name = "example",
         NamespaceId = sampleGroup.Id,

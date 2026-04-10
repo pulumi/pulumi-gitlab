@@ -67,6 +67,7 @@ type GetProjectIdsArgs struct {
 
 // A collection of values returned by getProjectIds.
 type GetProjectIdsResult struct {
+	// The ID of this Terraform resource. In the format of `<project_id>`.
 	Id string `pulumi:"id"`
 	// The ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`
@@ -112,6 +113,7 @@ func (o GetProjectIdsResultOutput) ToGetProjectIdsResultOutputWithContext(ctx co
 	return o
 }
 
+// The ID of this Terraform resource. In the format of `<project_id>`.
 func (o GetProjectIdsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectIdsResult) string { return v.Id }).(pulumi.StringOutput)
 }

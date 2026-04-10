@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.PipelineTrigger("example", new()
+    ///     var example = new GitLab.Index.PipelineTrigger("example", new()
     ///     {
     ///         Project = "12345",
     ///         Description = "Used to trigger builds",
@@ -35,17 +35,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_trigger`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_pipeline_trigger.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PipelineTrigger`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

@@ -26,12 +26,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectId = GitLab.Index.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
         /// 
-        ///     var byProjectPath = GitLab.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectPath = GitLab.Index.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///     });
@@ -57,12 +57,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectId = GitLab.Index.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
         /// 
-        ///     var byProjectPath = GitLab.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectPath = GitLab.Index.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///     });
@@ -88,12 +88,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectId = GitLab.Index.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
         /// 
-        ///     var byProjectPath = GitLab.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectPath = GitLab.Index.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///     });
@@ -166,6 +166,9 @@ namespace Pulumi.GitLab
         /// A list of project approval rules, as defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectApprovalRulesApprovalRuleResult> ApprovalRules;
+        /// <summary>
+        /// The ID of this Terraform resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID or path with namespace that identifies the project.

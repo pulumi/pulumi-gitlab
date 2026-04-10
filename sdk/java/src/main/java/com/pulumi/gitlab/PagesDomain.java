@@ -23,17 +23,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pages_domain`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_pages_domain.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PagesDomain`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

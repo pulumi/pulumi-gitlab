@@ -10,25 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## Example Usage
+    /// The `gitlab.ApplicationAppearance` resource manages the GitLab application appearance.
+    /// 
+    /// &gt; This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+    /// 
+    /// &gt; All `gitlab.ApplicationAppearance` resources use the same ID `Gitlab`.
+    /// 
+    /// &gt; When you destroy the resource, you can control if appearance settings are saved or not. Set `KeepSettingsOnDestroy` to `True` (default) to save changes to appearance settings. Set `KeepSettingsOnDestroy` to `False` to reset the appearance to its original values.
+    /// The original values are saved in state when you create the resource. You can change the `KeepSettingsOnDestroy` value before destroying the resource to control this behavior.
+    /// 
+    /// &gt; Requires administrative privileges on GitLab.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application_appearance`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_application_appearance.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ApplicationAppearance`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab application appearance can be imported with the hard-coded key `gitlab`, for example:
+    /// Gitlab application appearance can be imported with the hard-coded key `Gitlab`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/applicationAppearance:ApplicationAppearance example "gitlab"
@@ -61,6 +62,9 @@ namespace Pulumi.GitLab
         [Output("headerMessage")]
         public Output<string> HeaderMessage { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+        /// </summary>
         [Output("keepSettingsOnDestroy")]
         public Output<bool> KeepSettingsOnDestroy { get; private set; } = null!;
 
@@ -188,6 +192,9 @@ namespace Pulumi.GitLab
         [Input("headerMessage")]
         public Input<string>? HeaderMessage { get; set; }
 
+        /// <summary>
+        /// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+        /// </summary>
         [Input("keepSettingsOnDestroy")]
         public Input<bool>? KeepSettingsOnDestroy { get; set; }
 
@@ -277,6 +284,9 @@ namespace Pulumi.GitLab
         [Input("headerMessage")]
         public Input<string>? HeaderMessage { get; set; }
 
+        /// <summary>
+        /// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+        /// </summary>
         [Input("keepSettingsOnDestroy")]
         public Input<bool>? KeepSettingsOnDestroy { get; set; }
 

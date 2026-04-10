@@ -58,6 +58,7 @@ type GetPipelineSchedulesArgs struct {
 
 // A collection of values returned by getPipelineSchedules.
 type GetPipelineSchedulesResult struct {
+	// The ID of this Terraform resource.
 	Id string `pulumi:"id"`
 	// The list of pipeline schedules.
 	PipelineSchedules []GetPipelineSchedulesPipelineSchedule `pulumi:"pipelineSchedules"`
@@ -99,6 +100,7 @@ func (o GetPipelineSchedulesResultOutput) ToGetPipelineSchedulesResultOutputWith
 	return o
 }
 
+// The ID of this Terraform resource.
 func (o GetPipelineSchedulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineSchedulesResult) string { return v.Id }).(pulumi.StringOutput)
 }

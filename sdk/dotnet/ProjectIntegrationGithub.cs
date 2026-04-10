@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var github = new GitLab.ProjectIntegrationGithub("github", new()
+    ///     var github = new GitLab.Index.ProjectIntegrationGithub("github", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Token = "REDACTED",
@@ -45,23 +45,11 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_integration_github`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_integration_github.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIntegrationGithub`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// ```sh
-    /// $ pulumi import gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub You can import a gitlab_project_integration_github state using `&lt;resource&gt; &lt;project_id&gt;`:
-    /// ```
+    /// You can import a gitlab.ProjectIntegrationGithub state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub github 1
@@ -88,6 +76,9 @@ namespace Pulumi.GitLab
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+        /// </summary>
         [Output("repositoryUrl")]
         public Output<string> RepositoryUrl { get; private set; } = null!;
 
@@ -171,6 +162,9 @@ namespace Pulumi.GitLab
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+        /// </summary>
         [Input("repositoryUrl", required: true)]
         public Input<string> RepositoryUrl { get; set; } = null!;
 
@@ -222,6 +216,9 @@ namespace Pulumi.GitLab
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+        /// </summary>
         [Input("repositoryUrl")]
         public Input<string>? RepositoryUrl { get; set; }
 

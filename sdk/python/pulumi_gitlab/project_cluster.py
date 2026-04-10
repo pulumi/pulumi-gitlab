@@ -33,6 +33,7 @@ class ProjectClusterArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectCluster resource.
+
         :param pulumi.Input[_builtins.str] kubernetes_api_url: The URL to access the Kubernetes API.
         :param pulumi.Input[_builtins.str] kubernetes_token: The token to authenticate against Kubernetes.
         :param pulumi.Input[_builtins.str] project: The id of the project to add the cluster to.
@@ -234,6 +235,7 @@ class _ProjectClusterState:
                  provider_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCluster resources.
+
         :param pulumi.Input[_builtins.str] cluster_type: Cluster type.
         :param pulumi.Input[_builtins.str] created_at: Create time.
         :param pulumi.Input[_builtins.str] domain: The base domain of the cluster.
@@ -526,17 +528,7 @@ class ProjectCluster(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cluster`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_cluster.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectCluster`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -545,6 +537,7 @@ class ProjectCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -597,17 +590,7 @@ class ProjectCluster(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cluster`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_cluster.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectCluster`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -616,6 +599,7 @@ class ProjectCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectCluster:ProjectCluster bar 123:321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectClusterArgs args: The arguments to use to populate this resource's properties.

@@ -36,17 +36,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_external_status_check`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_project_external_status_check.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectExternalStatusCheck`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
@@ -56,7 +46,7 @@ import * as utilities from "./utilities";
  * $ pulumi import gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck foo "123:42"
  * ```
  *
- * NOTE: the `shared_secret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+ * NOTE: the `sharedSecret` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
  */
 export class ProjectExternalStatusCheck extends pulumi.CustomResource {
     /**

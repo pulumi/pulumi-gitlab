@@ -49,6 +49,9 @@ export interface GetGroupServiceAccountAccessTokensResult {
      * The ID or URL-encoded path of the group containing the service account. Must be a top level group.
      */
     readonly group: string;
+    /**
+     * The ID of this Terraform resource. In the format of `<group>:<user_id>`.
+     */
     readonly id: string;
     /**
      * The ID of the service account user.

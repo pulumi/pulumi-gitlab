@@ -28,6 +28,10 @@ public final class GetReleaseResult {
      * 
      */
     private String description;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project_id:tag_name&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The name of the release.
@@ -72,6 +76,10 @@ public final class GetReleaseResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project_id:tag_name&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

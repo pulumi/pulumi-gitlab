@@ -68,23 +68,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_integration_redmine.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationRedmine`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `&lt;resource&gt; &lt;project_id&gt;`:
- * ```
+ * You can import a gitlab.IntegrationRedmine state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1

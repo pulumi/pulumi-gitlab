@@ -50,17 +50,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_container_repository_protection`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_container_repository_protection.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectContainerRepositoryProtection`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

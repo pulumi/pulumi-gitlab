@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetRepositoryFile.Invoke(new()
+        ///     var example = GitLab.Index.GetRepositoryFile.Invoke(new()
         ///     {
         ///         Project = "example",
         ///         Ref = "main",
@@ -54,7 +54,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetRepositoryFile.Invoke(new()
+        ///     var example = GitLab.Index.GetRepositoryFile.Invoke(new()
         ///     {
         ///         Project = "example",
         ///         Ref = "main",
@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetRepositoryFile.Invoke(new()
+        ///     var example = GitLab.Index.GetRepositoryFile.Invoke(new()
         ///     {
         ///         Project = "example",
         ///         Ref = "main",

@@ -30,13 +30,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetGroups.Invoke(new()
+        ///     var example = GitLab.Index.GetGroups.Invoke(new()
         ///     {
         ///         Sort = "desc",
         ///         OrderBy = "name",
         ///     });
         /// 
-        ///     var example_two = GitLab.GetGroups.Invoke(new()
+        ///     var example_two = GitLab.Index.GetGroups.Invoke(new()
         ///     {
         ///         Search = "GitLab",
         ///     });
@@ -66,13 +66,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetGroups.Invoke(new()
+        ///     var example = GitLab.Index.GetGroups.Invoke(new()
         ///     {
         ///         Sort = "desc",
         ///         OrderBy = "name",
         ///     });
         /// 
-        ///     var example_two = GitLab.GetGroups.Invoke(new()
+        ///     var example_two = GitLab.Index.GetGroups.Invoke(new()
         ///     {
         ///         Search = "GitLab",
         ///     });
@@ -102,13 +102,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetGroups.Invoke(new()
+        ///     var example = GitLab.Index.GetGroups.Invoke(new()
         ///     {
         ///         Sort = "desc",
         ///         OrderBy = "name",
         ///     });
         /// 
-        ///     var example_two = GitLab.GetGroups.Invoke(new()
+        ///     var example_two = GitLab.Index.GetGroups.Invoke(new()
         ///     {
         ///         Search = "GitLab",
         ///     });

@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.PipelineSchedule("example", new()
+    ///     var example = new GitLab.Index.PipelineSchedule("example", new()
     ///     {
     ///         Project = "12345",
     ///         Description = "Used to schedule builds",
@@ -37,17 +37,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_pipeline_schedule`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_pipeline_schedule.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.PipelineSchedule`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -108,6 +98,9 @@ namespace Pulumi.GitLab
         [Output("ref")]
         public Output<string> Ref { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to `True`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+        /// </summary>
         [Output("takeOwnership")]
         public Output<bool> TakeOwnership { get; private set; } = null!;
 
@@ -193,6 +186,9 @@ namespace Pulumi.GitLab
         [Input("ref", required: true)]
         public Input<string> Ref { get; set; } = null!;
 
+        /// <summary>
+        /// When set to `True`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+        /// </summary>
         [Input("takeOwnership")]
         public Input<bool>? TakeOwnership { get; set; }
 
@@ -252,6 +248,9 @@ namespace Pulumi.GitLab
         [Input("ref")]
         public Input<string>? Ref { get; set; }
 
+        /// <summary>
+        /// When set to `True`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
+        /// </summary>
         [Input("takeOwnership")]
         public Input<bool>? TakeOwnership { get; set; }
 

@@ -23,6 +23,7 @@ class GroupSecurityPolicyAttachmentArgs:
                  policy_project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupSecurityPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
         """
@@ -63,6 +64,7 @@ class _GroupSecurityPolicyAttachmentState:
                  policy_project_graphql_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupSecurityPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
         :param pulumi.Input[_builtins.str] group_graphql_id: The GraphQL ID of the group to which the security policty project will be attached.
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
@@ -136,6 +138,13 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
                  policy_project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
+        This resource requires being an owner on the group that is having the security policy applied.
+
+        > [Policies](https://docs.gitlab.com/user/application_security/policies/) are files stored in a policy project as raw YAML, to allow maximum flexibility with support of all kind of policy and all their options. See the examples for how to create a policy project, add a policy, and link it. Use the `RepositoryFile` resource to create policies instead of a specific policy resource. This ensures all policy options are immediately via Terraform once released.
+
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/index/#mutationsecuritypolicyprojectassign)
+
         ## Example Usage
 
         ```python
@@ -188,17 +197,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_security_policy_attachment`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_security_policy_attachment.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupSecurityPolicyAttachment`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -207,6 +206,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -220,6 +220,13 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
                  args: GroupSecurityPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
+        This resource requires being an owner on the group that is having the security policy applied.
+
+        > [Policies](https://docs.gitlab.com/user/application_security/policies/) are files stored in a policy project as raw YAML, to allow maximum flexibility with support of all kind of policy and all their options. See the examples for how to create a policy project, add a policy, and link it. Use the `RepositoryFile` resource to create policies instead of a specific policy resource. This ensures all policy options are immediately via Terraform once released.
+
+        **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/index/#mutationsecuritypolicyprojectassign)
+
         ## Example Usage
 
         ```python
@@ -272,17 +279,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_security_policy_attachment`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_security_policy_attachment.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupSecurityPolicyAttachment`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -291,6 +288,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupSecurityPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

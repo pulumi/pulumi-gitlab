@@ -76,9 +76,17 @@ public final class ApplicationAppearanceArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.headerMessage);
     }
 
+    /**
+     * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     @Import(name="keepSettingsOnDestroy")
     private @Nullable Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     public Optional<Output<Boolean>> keepSettingsOnDestroy() {
         return Optional.ofNullable(this.keepSettingsOnDestroy);
     }
@@ -339,11 +347,23 @@ public final class ApplicationAppearanceArgs extends com.pulumi.resources.Resour
             return headerMessage(Output.of(headerMessage));
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(@Nullable Output<Boolean> keepSettingsOnDestroy) {
             $.keepSettingsOnDestroy = keepSettingsOnDestroy;
             return this;
         }
 
+        /**
+         * @param keepSettingsOnDestroy Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepSettingsOnDestroy(Boolean keepSettingsOnDestroy) {
             return keepSettingsOnDestroy(Output.of(keepSettingsOnDestroy));
         }

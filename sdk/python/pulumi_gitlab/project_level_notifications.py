@@ -40,6 +40,7 @@ class ProjectLevelNotificationsArgs:
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectLevelNotifications resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of a project where notifications will be configured.
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] close_merge_request: Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
@@ -351,6 +352,7 @@ class _ProjectLevelNotificationsState:
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectLevelNotifications resources.
+
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] close_merge_request: Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] failed_pipeline: Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
@@ -695,17 +697,7 @@ class ProjectLevelNotifications(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_level_notifications.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectLevelNotifications`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -714,6 +706,7 @@ class ProjectLevelNotifications(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -773,17 +766,7 @@ class ProjectLevelNotifications(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_level_notifications.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectLevelNotifications`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -792,6 +775,7 @@ class ProjectLevelNotifications(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectLevelNotificationsArgs args: The arguments to use to populate this resource's properties.

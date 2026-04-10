@@ -18,17 +18,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_deploy_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.DeployToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -36,13 +26,10 @@ namespace Pulumi.GitLab
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/deployToken:DeployToken group_token group:1:3
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import gitlab:index/deployToken:DeployToken project_token project:1:4
     /// ```
     /// 
-    /// Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// Note: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/deployToken:DeployToken")]
     public partial class DeployToken : global::Pulumi.CustomResource

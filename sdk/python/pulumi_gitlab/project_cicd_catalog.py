@@ -24,8 +24,10 @@ class ProjectCicdCatalogArgs:
                  keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectCicdCatalog resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "project", project)
@@ -59,6 +61,9 @@ class ProjectCicdCatalogArgs:
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
@@ -74,7 +79,9 @@ class _ProjectCicdCatalogState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCicdCatalog resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
         if enabled is not None:
@@ -99,6 +106,9 @@ class _ProjectCicdCatalogState:
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
@@ -151,17 +161,7 @@ class ProjectCicdCatalog(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cicd_catalog`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_cicd_catalog.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectCicdCatalog`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -171,9 +171,11 @@ class ProjectCicdCatalog(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectCicdCatalog:ProjectCicdCatalog example "1"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
         ...
@@ -205,17 +207,7 @@ class ProjectCicdCatalog(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_cicd_catalog`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_cicd_catalog.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectCicdCatalog`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -224,6 +216,7 @@ class ProjectCicdCatalog(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectCicdCatalog:ProjectCicdCatalog example "1"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectCicdCatalogArgs args: The arguments to use to populate this resource's properties.
@@ -280,6 +273,7 @@ class ProjectCicdCatalog(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -302,6 +296,9 @@ class ProjectCicdCatalog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @_builtins.property

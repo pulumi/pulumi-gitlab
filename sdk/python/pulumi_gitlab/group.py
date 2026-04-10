@@ -58,6 +58,7 @@ class GroupArgs:
                  wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
@@ -634,6 +635,7 @@ class _GroupState:
                  wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
@@ -1284,6 +1286,12 @@ class Group(pulumi.CustomResource):
                  wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `Group` resource manages the lifecycle of a group.
+
+        > On GitLab.com, you cannot use the `Group` resource to create a [top-level group](https://docs.gitlab.com/user/group/#group-hierarchy). Instead, you must [create a group](https://docs.gitlab.com/user/group/#create-a-group) in the UI, then import the group into your Terraform configuration. From here, you can manage the group using the Terraform Provider.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
+
         ## Example Usage
 
         ```python
@@ -1345,31 +1353,17 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Group`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
-        ```
-
         `id` can be whatever the [details of a group][details_of_a_group] api takes for
-
         its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/group:Group example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1416,6 +1410,12 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `Group` resource manages the lifecycle of a group.
+
+        > On GitLab.com, you cannot use the `Group` resource to create a [top-level group](https://docs.gitlab.com/user/group/#group-hierarchy). Instead, you must [create a group](https://docs.gitlab.com/user/group/#create-a-group) in the UI, then import the group into your Terraform configuration. From here, you can manage the group using the Terraform Provider.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/groups/)
+
         ## Example Usage
 
         ```python
@@ -1477,31 +1477,17 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Group`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
-        ```sh
-        $ pulumi import gitlab:index/group:Group You can import a group state using `<resource> <id>`. The
-        ```
-
         `id` can be whatever the [details of a group][details_of_a_group] api takes for
-
         its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/group:Group example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

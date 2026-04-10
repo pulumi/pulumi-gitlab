@@ -21,17 +21,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_avatar`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_user_avatar.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.UserAvatar`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -41,7 +31,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/userAvatar:UserAvatar example "12345"
     /// ```
     /// 
-    /// NOTE: the `token` and `avatar` resource attributes are not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `Token` and `Avatar` resource attributes are not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/userAvatar:UserAvatar")]
     public partial class UserAvatar : global::Pulumi.CustomResource

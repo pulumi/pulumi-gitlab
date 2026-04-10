@@ -2695,6 +2695,9 @@ export interface GetProjectsProject {
      * The number of open issies for the project.
      */
     openIssuesCount: number;
+    /**
+     * The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+     */
     owners: outputs.GetProjectsProjectOwner[];
     /**
      * Whether packages are enabled for the project.

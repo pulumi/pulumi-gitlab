@@ -30,6 +30,10 @@ public final class GetGroupIdsResult {
      * 
      */
     private String groupId;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group_id&gt;`.
+     * 
+     */
     private String id;
 
     private GetGroupIdsResult() {}
@@ -61,6 +65,10 @@ public final class GetGroupIdsResult {
     public String groupId() {
         return this.groupId;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

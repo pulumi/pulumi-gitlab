@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
+        ///     var foo = GitLab.Index.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
+        ///     var bar = GitLab.Index.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "bar",
@@ -61,14 +61,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
+        ///     var foo = GitLab.Index.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
+        ///     var bar = GitLab.Index.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "bar",
@@ -96,14 +96,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
+        ///     var foo = GitLab.Index.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
+        ///     var bar = GitLab.Index.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "bar",
@@ -186,6 +186,9 @@ namespace Pulumi.GitLab
         /// The name or id of the group.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;key&gt;:&lt;environment_scope&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the variable.

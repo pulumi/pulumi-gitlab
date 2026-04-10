@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupProjectVariable(ctx, &gitlab.LookupProjectVariableArgs{
+//			_, err := gitlab.GetProjectVariable(ctx, &gitlab.LookupProjectVariableArgs{
 //				Project: "my/example/project",
 //				Key:     "foo",
 //			}, nil)
@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			// Using an environment scope
-//			_, err = gitlab.LookupProjectVariable(ctx, &gitlab.LookupProjectVariableArgs{
+//			_, err = gitlab.GetProjectVariable(ctx, &gitlab.LookupProjectVariableArgs{
 //				Project:          "my/example/project",
 //				Key:              "bar",
 //				EnvironmentScope: pulumi.StringRef("staging/*"),

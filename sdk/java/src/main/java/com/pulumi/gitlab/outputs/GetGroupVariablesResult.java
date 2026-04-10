@@ -24,6 +24,10 @@ public final class GetGroupVariablesResult {
      * 
      */
     private String group;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;service_account_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The list of variables returned by the search
@@ -46,6 +50,10 @@ public final class GetGroupVariablesResult {
     public String group() {
         return this.group;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;service_account_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

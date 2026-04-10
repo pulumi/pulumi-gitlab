@@ -33,23 +33,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_github`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_integration_github.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationGithub`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * ```sh
- * $ pulumi import gitlab:index/integrationGithub:IntegrationGithub You can import a gitlab_integration_github state using `<resource> <project_id>`:
- * ```
+ * You can import a gitlab.IntegrationGithub state using `terraform import <resource> <project_id>`:
  *
  * ```sh
  * $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
@@ -95,6 +83,9 @@ export class IntegrationGithub extends pulumi.CustomResource {
      * ID of the project you want to activate the integration on.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+     */
     declare public readonly repositoryUrl: pulumi.Output<string>;
     /**
      * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
@@ -177,6 +168,9 @@ export interface IntegrationGithubState {
      * ID of the project you want to activate the integration on.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+     */
     repositoryUrl?: pulumi.Input<string>;
     /**
      * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.
@@ -204,6 +198,9 @@ export interface IntegrationGithubArgs {
      * ID of the project you want to activate the integration on.
      */
     project: pulumi.Input<string>;
+    /**
+     * The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
+     */
     repositoryUrl: pulumi.Input<string>;
     /**
      * Append the instance name instead of the branch to the status. Must enable to set a GitLab status check as *required* in GitHub. See [Static / dynamic status check names] to learn more.

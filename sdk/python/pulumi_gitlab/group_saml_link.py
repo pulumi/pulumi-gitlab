@@ -25,6 +25,7 @@ class GroupSamlLinkArgs:
                  member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a GroupSamlLink resource.
+
         :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[_builtins.str] saml_group_name: The name of the SAML group.
@@ -94,6 +95,7 @@ class _GroupSamlLinkState:
                  saml_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupSamlLink resources.
+
         :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
@@ -196,17 +198,7 @@ class GroupSamlLink(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_saml_link`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_saml_link.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupSamlLink`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -215,6 +207,7 @@ class GroupSamlLink(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test "12345:samlgroupname1"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -257,17 +250,7 @@ class GroupSamlLink(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_saml_link`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_saml_link.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupSamlLink`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -276,6 +259,7 @@ class GroupSamlLink(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupSamlLink:GroupSamlLink test "12345:samlgroupname1"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupSamlLinkArgs args: The arguments to use to populate this resource's properties.

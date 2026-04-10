@@ -33,23 +33,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_redmine`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_integration_redmine.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationRedmine`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * ```sh
- * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine You can import a gitlab_integration_redmine state using `<resource> <project_id>`:
- * ```
+ * You can import a gitlab.IntegrationRedmine state using `terraform import <resource> <project_id>`:
  *
  * ```sh
  * $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1

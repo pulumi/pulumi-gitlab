@@ -10,7 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// ## Example Usage
+    /// The `gitlab.ApplicationSettings` resource manages the GitLab application settings.
+    /// 
+    /// &gt; This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+    ///    Feel free to join the discussion if you have any
+    ///    ideas or questions regarding this resource.
+    /// 
+    /// &gt; All `gitlab.ApplicationSettings` use the same ID `Gitlab`.
+    /// 
+    /// !&gt; This resource does not implement any destroy logic, it's a no-op at this point.
+    ///    It's also not possible to revert to the previous settings.
+    /// 
+    /// &gt; Requires at administrative privileges on GitLab.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
     /// </summary>
     [GitLabResourceType("gitlab:index/applicationSettings:ApplicationSettings")]
     public partial class ApplicationSettings : global::Pulumi.CustomResource
@@ -1095,6 +1108,9 @@ namespace Pulumi.GitLab
         [Output("maxSshKeyLifetime")]
         public Output<int> MaxSshKeyLifetime { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        /// </summary>
         [Output("maxTerraformStateSizeBytes")]
         public Output<int> MaxTerraformStateSizeBytes { get; private set; } = null!;
 
@@ -3166,6 +3182,9 @@ namespace Pulumi.GitLab
         [Input("maxSshKeyLifetime")]
         public Input<int>? MaxSshKeyLifetime { get; set; }
 
+        /// <summary>
+        /// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        /// </summary>
         [Input("maxTerraformStateSizeBytes")]
         public Input<int>? MaxTerraformStateSizeBytes { get; set; }
 
@@ -5291,6 +5310,9 @@ namespace Pulumi.GitLab
         [Input("maxSshKeyLifetime")]
         public Input<int>? MaxSshKeyLifetime { get; set; }
 
+        /// <summary>
+        /// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        /// </summary>
         [Input("maxTerraformStateSizeBytes")]
         public Input<int>? MaxTerraformStateSizeBytes { get; set; }
 

@@ -31,6 +31,7 @@ class ProjectApprovalRuleArgs:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a ProjectApprovalRule resource.
+
         :param pulumi.Input[_builtins.int] approvals_required: The number of approvals required for this rule.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[_builtins.bool] applies_to_all_protected_branches: Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
@@ -197,6 +198,7 @@ class _ProjectApprovalRuleState:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering ProjectApprovalRule resources.
+
         :param pulumi.Input[_builtins.bool] applies_to_all_protected_branches: Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
         :param pulumi.Input[_builtins.int] approvals_required: The number of approvals required for this rule.
         :param pulumi.Input[_builtins.bool] disable_importing_default_any_approver_rule_on_create: When this flag is set, the default `any_approver` rule will not be imported if present.
@@ -368,6 +370,19 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
+        The `ProjectApprovalRule` resource manages the lifecycle of a project-level approval rule.
+
+        > This resource requires a GitLab Enterprise instance.
+
+        > A project is limited to one "any_approver" rule at a time, any attempt to create a second rule of type "any_approver" will fail. As a result, if
+           an "any_approver" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+           to prevent a common error with this resource.
+
+        > Since a project is limited to one "any_approver" rule, attempting to add two "any_approver" rules to the same project in terraform will result in
+           terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-projects)
+
         ## Example Usage
 
         ```python
@@ -401,16 +416,16 @@ class ProjectApprovalRule(pulumi.CustomResource):
             group_ids=[51],
             protected_branch_ids=[example.branch_protection_id])
         # Example using `data.gitlab_user` and `for` loop
-        users = {__key: gitlab.get_user(username=__value) for __key, __value in std.toset(input=[
+        users = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
             "user1",
             "user2",
             "user3",
-        ]).result}
+        ]).result)}
         example_three = gitlab.ProjectApprovalRule("example-three",
             project="5",
             name="Example Rule 3",
             approvals_required=3,
-            user_ids=[user.id for user in users])
+            user_ids=[user.id for user in users.values()])
         # Example using `approval_rule` using `any_approver` as rule type
         any_approver = gitlab.ProjectApprovalRule("any_approver",
             project="5",
@@ -432,17 +447,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_approval_rule.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectApprovalRule`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -451,6 +456,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -472,6 +478,19 @@ class ProjectApprovalRule(pulumi.CustomResource):
                  args: ProjectApprovalRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `ProjectApprovalRule` resource manages the lifecycle of a project-level approval rule.
+
+        > This resource requires a GitLab Enterprise instance.
+
+        > A project is limited to one "any_approver" rule at a time, any attempt to create a second rule of type "any_approver" will fail. As a result, if
+           an "any_approver" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+           to prevent a common error with this resource.
+
+        > Since a project is limited to one "any_approver" rule, attempting to add two "any_approver" rules to the same project in terraform will result in
+           terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-projects)
+
         ## Example Usage
 
         ```python
@@ -505,16 +524,16 @@ class ProjectApprovalRule(pulumi.CustomResource):
             group_ids=[51],
             protected_branch_ids=[example.branch_protection_id])
         # Example using `data.gitlab_user` and `for` loop
-        users = {__key: gitlab.get_user(username=__value) for __key, __value in std.toset(input=[
+        users = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
             "user1",
             "user2",
             "user3",
-        ]).result}
+        ]).result)}
         example_three = gitlab.ProjectApprovalRule("example-three",
             project="5",
             name="Example Rule 3",
             approvals_required=3,
-            user_ids=[user.id for user in users])
+            user_ids=[user.id for user in users.values()])
         # Example using `approval_rule` using `any_approver` as rule type
         any_approver = gitlab.ProjectApprovalRule("any_approver",
             project="5",
@@ -536,17 +555,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_approval_rule.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectApprovalRule`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -555,6 +564,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectApprovalRuleArgs args: The arguments to use to populate this resource's properties.

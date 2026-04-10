@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sample = new GitLab.ComplianceFramework("sample", new()
+    ///     var sample = new GitLab.Index.ComplianceFramework("sample", new()
     ///     {
     ///         NamespacePath = "top-level-group",
     ///         Name = "HIPAA",
@@ -45,17 +45,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_compliance_framework`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_compliance_framework.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ComplianceFramework`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

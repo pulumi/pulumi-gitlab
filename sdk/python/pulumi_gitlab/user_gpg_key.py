@@ -23,6 +23,7 @@ class UserGpgKeyArgs:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a UserGpgKey resource.
+
         :param pulumi.Input[_builtins.str] key: The armored GPG public key.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
@@ -64,6 +65,7 @@ class _UserGpgKeyState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserGpgKey resources.
+
         :param pulumi.Input[_builtins.str] created_at: The time when this key was created in GitLab.
         :param pulumi.Input[_builtins.str] key: The armored GPG public key.
         :param pulumi.Input[_builtins.int] key_id: The ID of the GPG key.
@@ -164,17 +166,7 @@ class UserGpgKey(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_gpgkey`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_gpgkey.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserGpgKey`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -189,6 +181,7 @@ class UserGpgKey(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,17 +222,7 @@ class UserGpgKey(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_gpgkey`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_gpgkey.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserGpgKey`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -254,6 +237,7 @@ class UserGpgKey(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserGpgKeyArgs args: The arguments to use to populate this resource's properties.

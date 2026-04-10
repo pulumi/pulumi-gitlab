@@ -43,6 +43,9 @@ export interface GetPipelineSchedulesArgs {
  * A collection of values returned by getPipelineSchedules.
  */
 export interface GetPipelineSchedulesResult {
+    /**
+     * The ID of this Terraform resource.
+     */
     readonly id: string;
     /**
      * The list of pipeline schedules.

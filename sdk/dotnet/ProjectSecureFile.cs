@@ -25,35 +25,35 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Group("this", new()
+    ///     var @this = new GitLab.Index.Group("this", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Project("this", new()
+    ///     var thisProject = new GitLab.Index.Project("this", new()
     ///     {
     ///         Name = "example",
     ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisProjectSecureFile = new GitLab.ProjectSecureFile("this", new()
+    ///     var thisProjectSecureFile = new GitLab.Index.ProjectSecureFile("this", new()
     ///     {
     ///         Name = "my-secure-file",
     ///         Project = thisProject.Id,
-    ///         Content = Std.File.Invoke(new()
+    ///         Content = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "example.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var disablePollForMetadata = new GitLab.ProjectSecureFile("disable_poll_for_metadata", new()
+    ///     var disablePollForMetadata = new GitLab.Index.ProjectSecureFile("disable_poll_for_metadata", new()
     ///     {
     ///         Name = "my-secure-file",
     ///         Project = thisProject.Id,
-    ///         Content = Std.File.Invoke(new()
+    ///         Content = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "example.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -65,17 +65,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_secure_file`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_secure_file.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectSecureFile`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

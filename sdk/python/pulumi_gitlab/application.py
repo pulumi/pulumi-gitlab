@@ -25,6 +25,7 @@ class ApplicationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
+
         :param pulumi.Input[_builtins.str] redirect_url: The URL gitlab should send the user to after authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `api`, `read_api`, `read_user`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `sudo`, `admin_mode`, `openid`, `profile`, `email`.
                This is only populated when creating a new application. This attribute is not available for imported resources
@@ -99,6 +100,7 @@ class _ApplicationState:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
+
         :param pulumi.Input[_builtins.str] application_id: Internal name of the application.
         :param pulumi.Input[_builtins.bool] confidential: The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied
         :param pulumi.Input[_builtins.str] name: Name of the application.
@@ -228,17 +230,7 @@ class Application(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_application.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Application`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -249,6 +241,7 @@ class Application(pulumi.CustomResource):
         ```
 
         NOTE: the secret and scopes cannot be imported
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -287,17 +280,7 @@ class Application(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_application.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Application`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -308,6 +291,7 @@ class Application(pulumi.CustomResource):
         ```
 
         NOTE: the secret and scopes cannot be imported
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

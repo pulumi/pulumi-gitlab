@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example Usage
-    ///     var example = new GitLab.ProjectDeployToken("example", new()
+    ///     var example = new GitLab.Index.ProjectDeployToken("example", new()
     ///     {
     ///         Project = "example/deploying",
     ///         Name = "Example project deploy token",
@@ -39,11 +39,11 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var example_two = new GitLab.ProjectDeployToken("example-two", new()
+    ///     var example_two = new GitLab.Index.ProjectDeployToken("example-two", new()
     ///     {
     ///         Project = "12345678",
     ///         Name = "Example project deploy token expires in 24h",
-    ///         ExpiresAt = Std.Timestamp.Invoke().Apply(invoke =&gt; Std.Timeadd.Invoke(new()
+    ///         ExpiresAt = Std.Index.Timestamp.Invoke().Apply(invoke =&gt; Std.Index.Timeadd.Invoke(new()
     ///         {
     ///             Duration = invoke.Result,
     ///             Timestamp = "24h",
@@ -60,17 +60,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_deploy_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_deploy_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectDeployToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -80,7 +70,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectDeployToken:ProjectDeployToken project_token 1:4
     /// ```
     /// 
-    /// Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// Note: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectDeployToken:ProjectDeployToken")]
     public partial class ProjectDeployToken : global::Pulumi.CustomResource

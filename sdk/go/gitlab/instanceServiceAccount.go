@@ -62,23 +62,9 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_instance_service_account`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_instance_service_account.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `InstanceServiceAccount`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
-//
-// ```sh
-// $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount You can import a group service account using `<resource> <id>`. The
-// ```
 //
 // `id` is the id of the service account
 //

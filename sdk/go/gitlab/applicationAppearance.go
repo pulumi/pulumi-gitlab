@@ -11,21 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// The `ApplicationAppearance` resource manages the GitLab application appearance.
+//
+// > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+//
+// > All `ApplicationAppearance` resources use the same ID `gitlab`.
+//
+// > When you destroy the resource, you can control if appearance settings are saved or not. Set `keepSettingsOnDestroy` to `true` (default) to save changes to appearance settings. Set `keepSettingsOnDestroy` to `false` to reset the appearance to its original values.
+// The original values are saved in state when you create the resource. You can change the `keepSettingsOnDestroy` value before destroying the resource to control this behavior.
+//
+// > Requires administrative privileges on GitLab.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application_appearance`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_application_appearance.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ApplicationAppearance`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
@@ -44,8 +45,9 @@ type ApplicationAppearance struct {
 	// Message in the system footer bar.
 	FooterMessage pulumi.StringOutput `pulumi:"footerMessage"`
 	// Message in the system header bar.
-	HeaderMessage         pulumi.StringOutput `pulumi:"headerMessage"`
-	KeepSettingsOnDestroy pulumi.BoolOutput   `pulumi:"keepSettingsOnDestroy"`
+	HeaderMessage pulumi.StringOutput `pulumi:"headerMessage"`
+	// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+	KeepSettingsOnDestroy pulumi.BoolOutput `pulumi:"keepSettingsOnDestroy"`
 	// Markdown text shown on the group or project member page for users with permission to change members.
 	MemberGuidelines pulumi.StringOutput `pulumi:"memberGuidelines"`
 	// Background color for the system header or footer bar, in CSS hex notation.
@@ -103,8 +105,9 @@ type applicationAppearanceState struct {
 	// Message in the system footer bar.
 	FooterMessage *string `pulumi:"footerMessage"`
 	// Message in the system header bar.
-	HeaderMessage         *string `pulumi:"headerMessage"`
-	KeepSettingsOnDestroy *bool   `pulumi:"keepSettingsOnDestroy"`
+	HeaderMessage *string `pulumi:"headerMessage"`
+	// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`
 	// Markdown text shown on the group or project member page for users with permission to change members.
 	MemberGuidelines *string `pulumi:"memberGuidelines"`
 	// Background color for the system header or footer bar, in CSS hex notation.
@@ -133,7 +136,8 @@ type ApplicationAppearanceState struct {
 	// Message in the system footer bar.
 	FooterMessage pulumi.StringPtrInput
 	// Message in the system header bar.
-	HeaderMessage         pulumi.StringPtrInput
+	HeaderMessage pulumi.StringPtrInput
+	// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy pulumi.BoolPtrInput
 	// Markdown text shown on the group or project member page for users with permission to change members.
 	MemberGuidelines pulumi.StringPtrInput
@@ -167,8 +171,9 @@ type applicationAppearanceArgs struct {
 	// Message in the system footer bar.
 	FooterMessage *string `pulumi:"footerMessage"`
 	// Message in the system header bar.
-	HeaderMessage         *string `pulumi:"headerMessage"`
-	KeepSettingsOnDestroy *bool   `pulumi:"keepSettingsOnDestroy"`
+	HeaderMessage *string `pulumi:"headerMessage"`
+	// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`
 	// Markdown text shown on the group or project member page for users with permission to change members.
 	MemberGuidelines *string `pulumi:"memberGuidelines"`
 	// Background color for the system header or footer bar, in CSS hex notation.
@@ -198,7 +203,8 @@ type ApplicationAppearanceArgs struct {
 	// Message in the system footer bar.
 	FooterMessage pulumi.StringPtrInput
 	// Message in the system header bar.
-	HeaderMessage         pulumi.StringPtrInput
+	HeaderMessage pulumi.StringPtrInput
+	// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy pulumi.BoolPtrInput
 	// Markdown text shown on the group or project member page for users with permission to change members.
 	MemberGuidelines pulumi.StringPtrInput
@@ -327,6 +333,7 @@ func (o ApplicationAppearanceOutput) HeaderMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationAppearance) pulumi.StringOutput { return v.HeaderMessage }).(pulumi.StringOutput)
 }
 
+// Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
 func (o ApplicationAppearanceOutput) KeepSettingsOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationAppearance) pulumi.BoolOutput { return v.KeepSettingsOnDestroy }).(pulumi.BoolOutput)
 }

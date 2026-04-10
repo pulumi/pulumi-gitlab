@@ -41,6 +41,10 @@ public final class GetPipelineScheduleResult {
      * 
      */
     private String description;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project-id&gt;:&lt;pipeline-schedule-id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The details of the last pipeline run by the schedule.
@@ -119,6 +123,10 @@ public final class GetPipelineScheduleResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;project-id&gt;:&lt;pipeline-schedule-id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

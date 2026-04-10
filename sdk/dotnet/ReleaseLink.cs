@@ -25,14 +25,14 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project
-    ///     var example = new GitLab.Project("example", new()
+    ///     var example = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
     ///     });
     /// 
     ///     // Can create release link only to a tag associated with a release
-    ///     var exampleReleaseLink = new GitLab.ReleaseLink("example", new()
+    ///     var exampleReleaseLink = new GitLab.Index.ReleaseLink("example", new()
     ///     {
     ///         Project = example.Id,
     ///         TagName = "tag_name_associated_with_release",
@@ -45,17 +45,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_release_link`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_release_link.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ReleaseLink`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

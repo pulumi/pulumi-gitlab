@@ -15,21 +15,22 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * The `gitlab.ApplicationAppearance` resource manages the GitLab application appearance.
+ * 
+ * &gt; This is an **experimental resource**. By nature it doesn&#39;t properly fit into how Terraform resources are meant to work.
+ * 
+ * &gt; All `gitlab.ApplicationAppearance` resources use the same ID `gitlab`.
+ * 
+ * &gt; When you destroy the resource, you can control if appearance settings are saved or not. Set `keepSettingsOnDestroy` to `true` (default) to save changes to appearance settings. Set `keepSettingsOnDestroy` to `false` to reset the appearance to its original values.
+ * The original values are saved in state when you create the resource. You can change the `keepSettingsOnDestroy` value before destroying the resource to control this behavior.
+ * 
+ * &gt; Requires administrative privileges on GitLab.
+ * 
+ * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application_appearance`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_application_appearance.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ApplicationAppearance`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
@@ -98,9 +99,17 @@ public class ApplicationAppearance extends com.pulumi.resources.CustomResource {
     public Output<String> headerMessage() {
         return this.headerMessage;
     }
+    /**
+     * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     @Export(name="keepSettingsOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepSettingsOnDestroy;
 
+    /**
+     * @return Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+     * 
+     */
     public Output<Boolean> keepSettingsOnDestroy() {
         return this.keepSettingsOnDestroy;
     }

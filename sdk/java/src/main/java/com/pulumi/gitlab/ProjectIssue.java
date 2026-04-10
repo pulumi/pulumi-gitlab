@@ -20,6 +20,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `gitlab.ProjectIssue` resource manages the lifecycle of an issue within a project.
+ * 
+ * &gt; During a terraform destroy this resource will close the issue. Set the deleteOnDestroy flag to true to delete the issue instead of closing it.
+ * 
+ * &gt; **Experimental** While the base functionality of this resource works, it may be subject to minor change.
+ * 
+ * **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/issues/)
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -70,17 +78,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_issue`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_issue.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectIssue`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 

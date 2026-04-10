@@ -26,6 +26,7 @@ class UserImpersonationTokenArgs:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UserImpersonationToken resource.
+
         :param pulumi.Input[_builtins.str] expires_at: Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Array of scopes of the impersonation token. valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
@@ -117,6 +118,7 @@ class _UserImpersonationTokenState:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering UserImpersonationToken resources.
+
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
@@ -318,17 +320,7 @@ class UserImpersonationToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_impersonation_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_impersonation_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserImpersonationToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -339,6 +331,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         ```
 
         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -375,17 +368,7 @@ class UserImpersonationToken(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_impersonation_token`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_impersonation_token.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserImpersonationToken`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -396,6 +379,7 @@ class UserImpersonationToken(pulumi.CustomResource):
         ```
 
         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param UserImpersonationTokenArgs args: The arguments to use to populate this resource's properties.

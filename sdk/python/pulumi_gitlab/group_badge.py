@@ -25,6 +25,7 @@ class GroupBadgeArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupBadge resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group to add the badge to.
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
@@ -96,6 +97,7 @@ class _GroupBadgeState:
                  rendered_link_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupBadge resources.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group to add the badge to.
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on group overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
@@ -237,17 +239,7 @@ class GroupBadge(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_badge`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_badge.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupBadge`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -256,6 +248,7 @@ class GroupBadge(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -307,17 +300,7 @@ class GroupBadge(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_badge`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_badge.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupBadge`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -326,6 +309,7 @@ class GroupBadge(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupBadgeArgs args: The arguments to use to populate this resource's properties.

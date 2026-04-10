@@ -72,24 +72,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_package_dependency_proxy`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_project_package_dependency_proxy.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPackageDependencyProxy`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
  * You can import a project package dependency proxy using the project id. e.g. `{project-id}`
- * 
- * &#34;maven_external_registry_password&#34; will not populate when importing, but will still
- * 
+ * &#34;mavenExternalRegistryPassword&#34; will not populate when importing, but will still
  * be required in the configuration if credentials are used.
  * 
  * ```sh

@@ -30,14 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := gitlab.LookupUser(ctx, &gitlab.LookupUserArgs{
+//			example, err := gitlab.GetUser(ctx, &gitlab.LookupUserArgs{
 //				Username: pulumi.StringRef("example-user"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewUserSshKey(ctx, "example", &gitlab.UserSshKeyArgs{
-//				UserId:    pulumi.String(example.Id),
+//				UserId:    pulumi.Int(pulumi.String(example.Id)),
 //				Title:     pulumi.String("example-key"),
 //				Key:       pulumi.String("ssh-ed25519 AAAA..."),
 //				ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),
@@ -53,17 +53,7 @@ import (
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_sshkey`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_user_sshkey.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `UserSshKey`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //

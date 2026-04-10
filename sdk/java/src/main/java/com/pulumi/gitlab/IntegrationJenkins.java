@@ -68,23 +68,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_integration_jenkins`. For example:
- * 
- * terraform
- * 
- * import {
- * 
- *   to = gitlab_integration_jenkins.example
- * 
- *   id = &#34;see CLI command below for ID&#34;
- * 
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.IntegrationJenkins`. For example:
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * ```sh
- * $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins You can import a gitlab_integration_jenkins state using `&lt;resource&gt; &lt;project_id&gt;`:
- * ```
+ * You can import a gitlab.IntegrationJenkins state using `terraform import &lt;resource&gt; &lt;project_id&gt;`:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationJenkins:IntegrationJenkins jenkins 1

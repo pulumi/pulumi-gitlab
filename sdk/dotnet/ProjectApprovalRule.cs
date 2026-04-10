@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
+    /// The `gitlab.ProjectApprovalRule` resource manages the lifecycle of a project-level approval rule.
+    /// 
+    /// &gt; This resource requires a GitLab Enterprise instance.
+    /// 
+    /// &gt; A project is limited to one "AnyApprover" rule at a time, any attempt to create a second rule of type "AnyApprover" will fail. As a result, if
+    ///    an "AnyApprover" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+    ///    to prevent a common error with this resource.
+    /// 
+    /// &gt; Since a project is limited to one "AnyApprover" rule, attempting to add two "AnyApprover" rules to the same project in terraform will result in
+    ///    terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
+    /// 
+    /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#approval-rules-for-projects)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -21,7 +34,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_one = new GitLab.ProjectApprovalRule("example-one", new()
+    ///     var example_one = new GitLab.Index.ProjectApprovalRule("example-one", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule",
@@ -38,7 +51,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // With Protected Branch IDs
-    ///     var example = new GitLab.BranchProtection("example", new()
+    ///     var example = new GitLab.Index.BranchProtection("example", new()
     ///     {
     ///         Project = "5",
     ///         Branch = "release/*",
@@ -46,7 +59,7 @@ namespace Pulumi.GitLab
     ///         MergeAccessLevel = "developer",
     ///     });
     /// 
-    ///     var example_two = new GitLab.ProjectApprovalRule("example-two", new()
+    ///     var example_two = new GitLab.Index.ProjectApprovalRule("example-two", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 2",
@@ -67,7 +80,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using `data.gitlab_user` and `for` loop
-    ///     var users = Std.Toset.Invoke(new()
+    ///     var users = Std.Index.Toset.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -77,7 +90,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     }).Apply(invoke =&gt; );
     /// 
-    ///     var example_three = new GitLab.ProjectApprovalRule("example-three", new()
+    ///     var example_three = new GitLab.Index.ProjectApprovalRule("example-three", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 3",
@@ -89,7 +102,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using `approval_rule` using `any_approver` as rule type
-    ///     var anyApprover = new GitLab.ProjectApprovalRule("any_approver", new()
+    ///     var anyApprover = new GitLab.Index.ProjectApprovalRule("any_approver", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Any name",
@@ -98,7 +111,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using `applies_to_all_protected_branches`
-    ///     var example_four = new GitLab.ProjectApprovalRule("example-four", new()
+    ///     var example_four = new GitLab.Index.ProjectApprovalRule("example-four", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 4",
@@ -120,17 +133,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_approval_rule`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_approval_rule.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectApprovalRule`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

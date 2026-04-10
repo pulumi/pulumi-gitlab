@@ -17,6 +17,10 @@ public final class GetGroupSamlLinksResult {
      * 
      */
     private String group;
+    /**
+     * @return The ID of this Terraform resource. In the format \n\n
+     * 
+     */
     private String id;
     /**
      * @return The list of group SAML links returned by the search
@@ -32,6 +36,10 @@ public final class GetGroupSamlLinksResult {
     public String group() {
         return this.group;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format \n\n
+     * 
+     */
     public String id() {
         return this.id;
     }

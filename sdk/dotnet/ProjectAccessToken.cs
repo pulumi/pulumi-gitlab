@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.ProjectAccessToken("example", new()
+    ///     var example = new GitLab.Index.ProjectAccessToken("example", new()
     ///     {
     ///         Project = "25",
     ///         Name = "Example project access token",
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleProjectVariable = new GitLab.ProjectVariable("example", new()
+    ///     var exampleProjectVariable = new GitLab.Index.ProjectVariable("example", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Key = "pat",
@@ -54,17 +54,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_access_token`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_access_token.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectAccessToken`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
@@ -74,7 +64,7 @@ namespace Pulumi.GitLab
     /// $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
     /// ```
     /// 
-    /// NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+    /// NOTE: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectAccessToken:ProjectAccessToken")]
     public partial class ProjectAccessToken : global::Pulumi.CustomResource

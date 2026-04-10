@@ -26,6 +26,7 @@ class GroupEpicBoardArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupEpicBoard resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]] lists: The list of epic board lists.
         :param pulumi.Input[_builtins.str] name: The name of the board.
@@ -81,6 +82,7 @@ class _GroupEpicBoardState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupEpicBoard resources.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]] lists: The list of epic board lists.
         :param pulumi.Input[_builtins.str] name: The name of the board.
@@ -174,17 +176,7 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_epic_board`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_epic_board.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupEpicBoard`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -193,6 +185,7 @@ class GroupEpicBoard(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -241,17 +234,7 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_group_epic_board`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_group_epic_board.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `GroupEpicBoard`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -260,6 +243,7 @@ class GroupEpicBoard(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupEpicBoardArgs args: The arguments to use to populate this resource's properties.

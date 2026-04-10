@@ -35,6 +35,7 @@ class ProjectPushRulesInitArgs:
                  reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPushRules resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[_builtins.str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
@@ -266,6 +267,7 @@ class _ProjectPushRulesState:
                  reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectPushRules resources.
+
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[_builtins.str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param pulumi.Input[_builtins.bool] commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
@@ -501,6 +503,17 @@ class ProjectPushRules(pulumi.CustomResource):
                  reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        The `ProjectPushRules` resource manages the lifecycle of push rules on a project.
+
+        > This resource will compete with the `Project` resource if push rules are also defined as
+           part of that resource, since this resource will take over ownership of the project push rules created for the referenced project.
+           It is recommended to define push rules using this resource OR in the `Project` resource,
+           but not in both as it may result in terraform identifying changes with every "plan" operation.
+
+        > This resource requires a GitLab Enterprise instance with a Premium license to set the push rules on a project.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/project_push_rules/)
+
         ## Example Usage
 
         ```python
@@ -525,17 +538,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_push_rules`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_push_rules.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectPushRules`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -544,6 +547,7 @@ class ProjectPushRules(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectPushRules:ProjectPushRules sample "42"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -569,6 +573,17 @@ class ProjectPushRules(pulumi.CustomResource):
                  args: ProjectPushRulesInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `ProjectPushRules` resource manages the lifecycle of push rules on a project.
+
+        > This resource will compete with the `Project` resource if push rules are also defined as
+           part of that resource, since this resource will take over ownership of the project push rules created for the referenced project.
+           It is recommended to define push rules using this resource OR in the `Project` resource,
+           but not in both as it may result in terraform identifying changes with every "plan" operation.
+
+        > This resource requires a GitLab Enterprise instance with a Premium license to set the push rules on a project.
+
+        **Upstream API**: [GitLab API docs](https://docs.gitlab.com/api/project_push_rules/)
+
         ## Example Usage
 
         ```python
@@ -593,17 +608,7 @@ class ProjectPushRules(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_push_rules`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_project_push_rules.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ProjectPushRules`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -612,6 +617,7 @@ class ProjectPushRules(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectPushRules:ProjectPushRules sample "42"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectPushRulesInitArgs args: The arguments to use to populate this resource's properties.

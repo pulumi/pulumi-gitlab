@@ -34,26 +34,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user`. For example:
- *
- * terraform
- *
- * import {
- *
- *   to = gitlab_user.example
- *
- *   id = "see CLI command below for ID"
- *
- * }
+ * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.User`. For example:
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * ```sh
- * $ pulumi import gitlab:index/user:User You can import a user to terraform state using `<resource> <id>`.
- * ```
- *
  * The `id` must be an integer for the id of the user you want to import,
- *
  * for example:
  *
  * ```sh

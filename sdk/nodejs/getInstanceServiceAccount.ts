@@ -47,6 +47,9 @@ export interface GetInstanceServiceAccountResult {
      * The email of the user.
      */
     readonly email: string;
+    /**
+     * The ID of this Terraform resource. This matches the service account id.
+     */
     readonly id: string;
     /**
      * The name of the user.

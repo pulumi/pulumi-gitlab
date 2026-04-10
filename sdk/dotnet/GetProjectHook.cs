@@ -26,12 +26,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetProject.Invoke(new()
+        ///     var example = GitLab.Index.GetProject.Invoke(new()
         ///     {
         ///         Id = "foo/bar/baz",
         ///     });
         /// 
-        ///     var exampleGetProjectHook = GitLab.GetProjectHook.Invoke(new()
+        ///     var exampleGetProjectHook = GitLab.Index.GetProjectHook.Invoke(new()
         ///     {
         ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         HookId = 1,
@@ -58,12 +58,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetProject.Invoke(new()
+        ///     var example = GitLab.Index.GetProject.Invoke(new()
         ///     {
         ///         Id = "foo/bar/baz",
         ///     });
         /// 
-        ///     var exampleGetProjectHook = GitLab.GetProjectHook.Invoke(new()
+        ///     var exampleGetProjectHook = GitLab.Index.GetProjectHook.Invoke(new()
         ///     {
         ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         HookId = 1,
@@ -90,12 +90,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetProject.Invoke(new()
+        ///     var example = GitLab.Index.GetProject.Invoke(new()
         ///     {
         ///         Id = "foo/bar/baz",
         ///     });
         /// 
-        ///     var exampleGetProjectHook = GitLab.GetProjectHook.Invoke(new()
+        ///     var exampleGetProjectHook = GitLab.Index.GetProjectHook.Invoke(new()
         ///     {
         ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         HookId = 1,

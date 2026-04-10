@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetInstanceServiceAccount.Invoke(new()
+        ///     var example = GitLab.Index.GetInstanceServiceAccount.Invoke(new()
         ///     {
         ///         ServiceAccountId = "123",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetInstanceServiceAccount.Invoke(new()
+        ///     var example = GitLab.Index.GetInstanceServiceAccount.Invoke(new()
         ///     {
         ///         ServiceAccountId = "123",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.GetInstanceServiceAccount.Invoke(new()
+        ///     var example = GitLab.Index.GetInstanceServiceAccount.Invoke(new()
         ///     {
         ///         ServiceAccountId = "123",
         ///     });
@@ -133,6 +133,9 @@ namespace Pulumi.GitLab
         /// The email of the user.
         /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// The ID of this Terraform resource. This matches the service account id.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the user.

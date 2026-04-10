@@ -24,12 +24,12 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Project("foo", new()
+    ///     var foo = new GitLab.Index.Project("foo", new()
     ///     {
     ///         Name = "foo-project",
     ///     });
     /// 
-    ///     var example = new GitLab.ProjectBadge("example", new()
+    ///     var example = new GitLab.Index.ProjectBadge("example", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://example.com/badge-123",
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Pipeline status badges with placeholders will be enabled
-    ///     var gitlabPipeline = new GitLab.ProjectBadge("gitlab_pipeline", new()
+    ///     var gitlabPipeline = new GitLab.Index.ProjectBadge("gitlab_pipeline", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}",
@@ -47,7 +47,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Test coverage report badges with placeholders will be enabled
-    ///     var gitlabCoverage = new GitLab.ProjectBadge("gitlab_coverage", new()
+    ///     var gitlabCoverage = new GitLab.Index.ProjectBadge("gitlab_coverage", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/jobs",
@@ -56,7 +56,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Latest release badges with placeholders will be enabled
-    ///     var gitlabRelease = new GitLab.ProjectBadge("gitlab_release", new()
+    ///     var gitlabRelease = new GitLab.Index.ProjectBadge("gitlab_release", new()
     ///     {
     ///         Project = foo.Id,
     ///         LinkUrl = "https://gitlab.example.com/%{project_path}/-/releases",
@@ -69,17 +69,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_badge`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_badge.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectBadge`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

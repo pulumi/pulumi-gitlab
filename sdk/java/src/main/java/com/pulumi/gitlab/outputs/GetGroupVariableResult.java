@@ -26,6 +26,10 @@ public final class GetGroupVariableResult {
      * 
      */
     private String group;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;key&gt;:&lt;environment_scope&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The name of the variable.
@@ -80,6 +84,10 @@ public final class GetGroupVariableResult {
     public String group() {
         return this.group;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;key&gt;:&lt;environment_scope&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupComplianceFramework(ctx, &gitlab.LookupComplianceFrameworkArgs{
+//			_, err := gitlab.GetComplianceFramework(ctx, &gitlab.LookupComplianceFrameworkArgs{
 //				NamespacePath: "top-level-group",
 //				Name:          "HIPAA",
 //			}, nil)
@@ -69,7 +69,8 @@ type LookupComplianceFrameworkResult struct {
 	Description string `pulumi:"description"`
 	// Globally unique ID of the compliance framework.
 	FrameworkId string `pulumi:"frameworkId"`
-	Id          string `pulumi:"id"`
+	// The ID of this Terraform resource. In the format of `<namespace_path>:<framework_id>`.
+	Id string `pulumi:"id"`
 	// Name for the compliance framework.
 	Name string `pulumi:"name"`
 	// Full path of the namespace to where the compliance framework is.
@@ -134,6 +135,7 @@ func (o LookupComplianceFrameworkResultOutput) FrameworkId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupComplianceFrameworkResult) string { return v.FrameworkId }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. In the format of `<namespace_path>:<framework_id>`.
 func (o LookupComplianceFrameworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComplianceFrameworkResult) string { return v.Id }).(pulumi.StringOutput)
 }

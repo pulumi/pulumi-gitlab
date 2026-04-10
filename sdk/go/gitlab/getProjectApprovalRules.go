@@ -68,7 +68,8 @@ type GetProjectApprovalRulesArgs struct {
 type GetProjectApprovalRulesResult struct {
 	// A list of project approval rules, as defined below.
 	ApprovalRules []GetProjectApprovalRulesApprovalRule `pulumi:"approvalRules"`
-	Id            string                                `pulumi:"id"`
+	// The ID of this Terraform resource.
+	Id string `pulumi:"id"`
 	// The ID or path with namespace that identifies the project.
 	Project string `pulumi:"project"`
 }
@@ -114,6 +115,7 @@ func (o GetProjectApprovalRulesResultOutput) ApprovalRules() GetProjectApprovalR
 	return o.ApplyT(func(v GetProjectApprovalRulesResult) []GetProjectApprovalRulesApprovalRule { return v.ApprovalRules }).(GetProjectApprovalRulesApprovalRuleArrayOutput)
 }
 
+// The ID of this Terraform resource.
 func (o GetProjectApprovalRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectApprovalRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }

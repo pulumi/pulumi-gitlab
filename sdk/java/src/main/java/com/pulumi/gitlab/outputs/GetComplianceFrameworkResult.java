@@ -31,6 +31,10 @@ public final class GetComplianceFrameworkResult {
      * 
      */
     private String frameworkId;
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;namespace_path&gt;:&lt;framework_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return Name for the compliance framework.
@@ -77,6 +81,10 @@ public final class GetComplianceFrameworkResult {
     public String frameworkId() {
         return this.frameworkId;
     }
+    /**
+     * @return The ID of this Terraform resource. In the format of `&lt;namespace_path&gt;:&lt;framework_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

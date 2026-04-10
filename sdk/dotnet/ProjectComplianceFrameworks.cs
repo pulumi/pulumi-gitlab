@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alpha = new GitLab.ComplianceFramework("alpha", new()
+    ///     var alpha = new GitLab.Index.ComplianceFramework("alpha", new()
     ///     {
     ///         NamespacePath = "top-level-group",
     ///         Name = "HIPAA",
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
     ///         Default = false,
     ///     });
     /// 
-    ///     var beta = new GitLab.ComplianceFramework("beta", new()
+    ///     var beta = new GitLab.Index.ComplianceFramework("beta", new()
     ///     {
     ///         NamespacePath = "top-level-group",
     ///         Name = "SOC",
@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     ///         Default = false,
     ///     });
     /// 
-    ///     var sample = new GitLab.ProjectComplianceFrameworks("sample", new()
+    ///     var sample = new GitLab.Index.ProjectComplianceFrameworks("sample", new()
     ///     {
     ///         ComplianceFrameworkIds = new[]
     ///         {
@@ -59,17 +59,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_compliance_frameworks`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_compliance_frameworks.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectComplianceFrameworks`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

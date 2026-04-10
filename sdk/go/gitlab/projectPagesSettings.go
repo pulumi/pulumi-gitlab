@@ -12,21 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// The `ProjectPagesSettings` resource manages project pages settings in GitLab.
+//
+// > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+//
+// > When you destroy the resource, you can control if pages settings are saved or not. Set `keepSettingsOnDestroy` to `true` (default) to save changes to pages settings. Set `keepSettingsOnDestroy` to `false` to reset the pages settings to its original values.
+// The original values are saved in state when you create the resource. You can change the `keepSettingsOnDestroy` value before destroying the resource to control this behavior.
+//
+// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
 //
 // ## Import
 //
-// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_pages_settings`. For example:
-//
-// terraform
-//
-// import {
-//
-//	to = gitlab_project_pages_settings.example
-//
-//	id = "see CLI command below for ID"
-//
-// }
+// Starting in Terraform v1.5.0, you can use an import block to import `ProjectPagesSettings`. For example:
 //
 // Importing using the CLI is supported with the following syntax:
 //
@@ -44,6 +41,7 @@ type ProjectPagesSettings struct {
 	ForceHttps pulumi.BoolOutput `pulumi:"forceHttps"`
 	// Boolean indicating if a unique domain is enabled.
 	IsUniqueDomainEnabled pulumi.BoolOutput `pulumi:"isUniqueDomainEnabled"`
+	// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy pulumi.BoolOutput `pulumi:"keepSettingsOnDestroy"`
 	// The project ID or path.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -90,6 +88,7 @@ type projectPagesSettingsState struct {
 	ForceHttps *bool `pulumi:"forceHttps"`
 	// Boolean indicating if a unique domain is enabled.
 	IsUniqueDomainEnabled *bool `pulumi:"isUniqueDomainEnabled"`
+	// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`
 	// The project ID or path.
 	Project *string `pulumi:"project"`
@@ -104,6 +103,7 @@ type ProjectPagesSettingsState struct {
 	ForceHttps pulumi.BoolPtrInput
 	// Boolean indicating if a unique domain is enabled.
 	IsUniqueDomainEnabled pulumi.BoolPtrInput
+	// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy pulumi.BoolPtrInput
 	// The project ID or path.
 	Project pulumi.StringPtrInput
@@ -120,6 +120,7 @@ type projectPagesSettingsArgs struct {
 	ForceHttps *bool `pulumi:"forceHttps"`
 	// Boolean indicating if a unique domain is enabled.
 	IsUniqueDomainEnabled *bool `pulumi:"isUniqueDomainEnabled"`
+	// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`
 	// The project ID or path.
 	Project string `pulumi:"project"`
@@ -131,6 +132,7 @@ type ProjectPagesSettingsArgs struct {
 	ForceHttps pulumi.BoolPtrInput
 	// Boolean indicating if a unique domain is enabled.
 	IsUniqueDomainEnabled pulumi.BoolPtrInput
+	// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
 	KeepSettingsOnDestroy pulumi.BoolPtrInput
 	// The project ID or path.
 	Project pulumi.StringInput
@@ -238,6 +240,7 @@ func (o ProjectPagesSettingsOutput) IsUniqueDomainEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectPagesSettings) pulumi.BoolOutput { return v.IsUniqueDomainEnabled }).(pulumi.BoolOutput)
 }
 
+// Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
 func (o ProjectPagesSettingsOutput) KeepSettingsOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectPagesSettings) pulumi.BoolOutput { return v.KeepSettingsOnDestroy }).(pulumi.BoolOutput)
 }

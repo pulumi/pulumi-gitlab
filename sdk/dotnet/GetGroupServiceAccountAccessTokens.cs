@@ -101,6 +101,9 @@ namespace Pulumi.GitLab
         /// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// The ID of this Terraform resource. In the format of `&lt;group&gt;:&lt;user_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the service account user.

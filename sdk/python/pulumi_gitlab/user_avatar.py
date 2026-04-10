@@ -25,6 +25,7 @@ class UserAvatarArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserAvatar resource.
+
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: the avatar is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image.  This is used to track changes to the avatar image if the image contents change but the image name remains the same. Use `filesha256("path/to/avatar.png")` whenever possible.
@@ -96,6 +97,7 @@ class _UserAvatarState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserAvatar resources.
+
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: the avatar is not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image.  This is used to track changes to the avatar image if the image contents change but the image name remains the same. Use `filesha256("path/to/avatar.png")` whenever possible.
         :param pulumi.Input[_builtins.str] avatar_url: The URL of the avatar image.
@@ -197,17 +199,7 @@ class UserAvatar(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_avatar`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_avatar.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserAvatar`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -218,6 +210,7 @@ class UserAvatar(pulumi.CustomResource):
         ```
 
         NOTE: the `token` and `avatar` resource attributes are not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -244,17 +237,7 @@ class UserAvatar(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_user_avatar`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_user_avatar.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `UserAvatar`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -265,6 +248,7 @@ class UserAvatar(pulumi.CustomResource):
         ```
 
         NOTE: the `token` and `avatar` resource attributes are not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param UserAvatarArgs args: The arguments to use to populate this resource's properties.

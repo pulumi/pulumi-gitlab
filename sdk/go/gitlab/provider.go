@@ -69,8 +69,9 @@ type providerArgs struct {
 	// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
 	ConfigFile *string `pulumi:"configFile"`
 	// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
-	Context        *string `pulumi:"context"`
-	EarlyAuthCheck *bool   `pulumi:"earlyAuthCheck"`
+	Context *string `pulumi:"context"`
+	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
+	EarlyAuthCheck *bool `pulumi:"earlyAuthCheck"`
 	// If automatic CI support should be enabled or not. This only works when not providing a token.
 	EnableAutoCiSupport *bool `pulumi:"enableAutoCiSupport"`
 	// A map of headers to append to all API request to the GitLab instance.
@@ -96,7 +97,8 @@ type ProviderArgs struct {
 	// The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
 	ConfigFile pulumi.StringPtrInput
 	// The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
-	Context        pulumi.StringPtrInput
+	Context pulumi.StringPtrInput
+	// (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
 	EarlyAuthCheck pulumi.BoolPtrInput
 	// If automatic CI support should be enabled or not. This only works when not providing a token.
 	EnableAutoCiSupport pulumi.BoolPtrInput

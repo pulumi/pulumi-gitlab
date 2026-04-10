@@ -35,10 +35,12 @@ class ApplicationAppearanceArgs:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationAppearance resource.
+
         :param pulumi.Input[_builtins.str] description: Markdown text shown on the sign-in and sign-up page.
         :param pulumi.Input[_builtins.bool] email_header_and_footer_enabled: Add header and footer to all outgoing emails if enabled.
         :param pulumi.Input[_builtins.str] footer_message: Message in the system footer bar.
         :param pulumi.Input[_builtins.str] header_message: Message in the system header bar.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] member_guidelines: Markdown text shown on the group or project member page for users with permission to change members.
         :param pulumi.Input[_builtins.str] message_background_color: Background color for the system header or footer bar, in CSS hex notation.
         :param pulumi.Input[_builtins.str] message_font_color: Font color for the system header or footer bar, in CSS hex notation.
@@ -129,6 +131,9 @@ class ApplicationAppearanceArgs:
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
@@ -263,10 +268,12 @@ class _ApplicationAppearanceState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationAppearance resources.
+
         :param pulumi.Input[_builtins.str] description: Markdown text shown on the sign-in and sign-up page.
         :param pulumi.Input[_builtins.bool] email_header_and_footer_enabled: Add header and footer to all outgoing emails if enabled.
         :param pulumi.Input[_builtins.str] footer_message: Message in the system footer bar.
         :param pulumi.Input[_builtins.str] header_message: Message in the system header bar.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] member_guidelines: Markdown text shown on the group or project member page for users with permission to change members.
         :param pulumi.Input[_builtins.str] message_background_color: Background color for the system header or footer bar, in CSS hex notation.
         :param pulumi.Input[_builtins.str] message_font_color: Font color for the system header or footer bar, in CSS hex notation.
@@ -357,6 +364,9 @@ class _ApplicationAppearanceState:
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
@@ -494,21 +504,22 @@ class ApplicationAppearance(pulumi.CustomResource):
                  title: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        The `ApplicationAppearance` resource manages the GitLab application appearance.
+
+        > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+
+        > All `ApplicationAppearance` resources use the same ID `gitlab`.
+
+        > When you destroy the resource, you can control if appearance settings are saved or not. Set `keep_settings_on_destroy` to `true` (default) to save changes to appearance settings. Set `keep_settings_on_destroy` to `false` to reset the appearance to its original values.
+        The original values are saved in state when you create the resource. You can change the `keep_settings_on_destroy` value before destroying the resource to control this behavior.
+
+        > Requires administrative privileges on GitLab.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application_appearance`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_application_appearance.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ApplicationAppearance`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -518,12 +529,14 @@ class ApplicationAppearance(pulumi.CustomResource):
         $ pulumi import gitlab:index/applicationAppearance:ApplicationAppearance example "gitlab"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Markdown text shown on the sign-in and sign-up page.
         :param pulumi.Input[_builtins.bool] email_header_and_footer_enabled: Add header and footer to all outgoing emails if enabled.
         :param pulumi.Input[_builtins.str] footer_message: Message in the system footer bar.
         :param pulumi.Input[_builtins.str] header_message: Message in the system header bar.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] member_guidelines: Markdown text shown on the group or project member page for users with permission to change members.
         :param pulumi.Input[_builtins.str] message_background_color: Background color for the system header or footer bar, in CSS hex notation.
         :param pulumi.Input[_builtins.str] message_font_color: Font color for the system header or footer bar, in CSS hex notation.
@@ -541,21 +554,22 @@ class ApplicationAppearance(pulumi.CustomResource):
                  args: Optional[ApplicationAppearanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        The `ApplicationAppearance` resource manages the GitLab application appearance.
+
+        > This is an **experimental resource**. By nature it doesn't properly fit into how Terraform resources are meant to work.
+
+        > All `ApplicationAppearance` resources use the same ID `gitlab`.
+
+        > When you destroy the resource, you can control if appearance settings are saved or not. Set `keep_settings_on_destroy` to `true` (default) to save changes to appearance settings. Set `keep_settings_on_destroy` to `false` to reset the appearance to its original values.
+        The original values are saved in state when you create the resource. You can change the `keep_settings_on_destroy` value before destroying the resource to control this behavior.
+
+        > Requires administrative privileges on GitLab.
+
+        **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_application_appearance`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_application_appearance.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `ApplicationAppearance`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -564,6 +578,7 @@ class ApplicationAppearance(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/applicationAppearance:ApplicationAppearance example "gitlab"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationAppearanceArgs args: The arguments to use to populate this resource's properties.
@@ -652,6 +667,7 @@ class ApplicationAppearance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] email_header_and_footer_enabled: Add header and footer to all outgoing emails if enabled.
         :param pulumi.Input[_builtins.str] footer_message: Message in the system footer bar.
         :param pulumi.Input[_builtins.str] header_message: Message in the system header bar.
+        :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
         :param pulumi.Input[_builtins.str] member_guidelines: Markdown text shown on the group or project member page for users with permission to change members.
         :param pulumi.Input[_builtins.str] message_background_color: Background color for the system header or footer bar, in CSS hex notation.
         :param pulumi.Input[_builtins.str] message_font_color: Font color for the system header or footer bar, in CSS hex notation.
@@ -717,6 +733,9 @@ class ApplicationAppearance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
+        """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @_builtins.property

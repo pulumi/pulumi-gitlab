@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Project("example", new()
+    ///     var example = new GitLab.Index.Project("example", new()
     ///     {
     ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
@@ -34,14 +34,14 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Basic example
-    ///     var notifications = new GitLab.ProjectLevelNotifications("notifications", new()
+    ///     var notifications = new GitLab.Index.ProjectLevelNotifications("notifications", new()
     ///     {
     ///         Project = example.Id,
     ///         Level = "global",
     ///     });
     /// 
     ///     // Custom notification example
-    ///     var custom = new GitLab.ProjectLevelNotifications("custom", new()
+    ///     var custom = new GitLab.Index.ProjectLevelNotifications("custom", new()
     ///     {
     ///         Project = example.Id,
     ///         Level = "custom",
@@ -53,17 +53,7 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab_project_level_notifications`. For example:
-    /// 
-    /// terraform
-    /// 
-    /// import {
-    /// 
-    ///   to = gitlab_project_level_notifications.example
-    /// 
-    ///   id = "see CLI command below for ID"
-    /// 
-    /// }
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectLevelNotifications`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 

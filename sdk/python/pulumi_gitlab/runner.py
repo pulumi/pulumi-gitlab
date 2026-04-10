@@ -30,6 +30,7 @@ class RunnerArgs:
                  tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Runner resource.
+
         :param pulumi.Input[_builtins.str] registration_token: The registration token used to register the runner.
         :param pulumi.Input[_builtins.str] access_level: The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
         :param pulumi.Input[_builtins.str] description: The runner's description.
@@ -183,6 +184,7 @@ class _RunnerState:
                  tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Runner resources.
+
         :param pulumi.Input[_builtins.str] access_level: The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
         :param pulumi.Input[_builtins.str] authentication_token: The authentication token used for building a config.toml file. This value is not present when imported.
         :param pulumi.Input[_builtins.str] description: The runner's description.
@@ -384,17 +386,7 @@ class Runner(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_runner`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_runner.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Runner`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -403,6 +395,7 @@ class Runner(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/runner:Runner this 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -437,17 +430,7 @@ class Runner(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_runner`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_runner.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `Runner`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
@@ -456,6 +439,7 @@ class Runner(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/runner:Runner this 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RunnerArgs args: The arguments to use to populate this resource's properties.

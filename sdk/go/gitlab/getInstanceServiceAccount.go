@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.LookupInstanceServiceAccount(ctx, &gitlab.LookupInstanceServiceAccountArgs{
+//			_, err := gitlab.GetInstanceServiceAccount(ctx, &gitlab.LookupInstanceServiceAccountArgs{
 //				ServiceAccountId: "123",
 //			}, nil)
 //			if err != nil {
@@ -62,7 +62,8 @@ type LookupInstanceServiceAccountArgs struct {
 type LookupInstanceServiceAccountResult struct {
 	// The email of the user.
 	Email string `pulumi:"email"`
-	Id    string `pulumi:"id"`
+	// The ID of this Terraform resource. This matches the service account id.
+	Id string `pulumi:"id"`
 	// The name of the user.
 	Name string `pulumi:"name"`
 	// The service account id.
@@ -110,6 +111,7 @@ func (o LookupInstanceServiceAccountResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceServiceAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// The ID of this Terraform resource. This matches the service account id.
 func (o LookupInstanceServiceAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -24,6 +24,7 @@ class DeployKeyEnableArgs:
                  can_push: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DeployKeyEnable resource.
+
         :param pulumi.Input[_builtins.str] key_id: The Gitlab key id for the pre-existing deploy key
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[_builtins.bool] can_push: Can deploy key push to the project's repository.
@@ -80,6 +81,7 @@ class _DeployKeyEnableState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeployKeyEnable resources.
+
         :param pulumi.Input[_builtins.bool] can_push: Can deploy key push to the project's repository.
         :param pulumi.Input[_builtins.str] key: Deploy key.
         :param pulumi.Input[_builtins.str] key_id: The Gitlab key id for the pre-existing deploy key
@@ -196,33 +198,19 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key_enable`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_deploy_key_enable.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `DeployKeyEnable`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
         GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
-
         `project_id` can be whatever the [get single project api][get_single_project] takes for
-
         its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
-        ```
-
-        ```sh
         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -264,33 +252,19 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         ## Import
 
-        Starting in Terraform v1.5.0, you can use an import block to import `gitlab_deploy_key_enable`. For example:
-
-        terraform
-
-        import {
-
-          to = gitlab_deploy_key_enable.example
-
-          id = "see CLI command below for ID"
-
-        }
+        Starting in Terraform v1.5.0, you can use an import block to import `DeployKeyEnable`. For example:
 
         Importing using the CLI is supported with the following syntax:
 
         GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
-
         `project_id` can be whatever the [get single project api][get_single_project] takes for
-
         its `:id` value, so for example:
 
         ```sh
         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example 12345:67890
-        ```
-
-        ```sh
         $ pulumi import gitlab:index/deployKeyEnable:DeployKeyEnable example richardc/example:67890
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeployKeyEnableArgs args: The arguments to use to populate this resource's properties.

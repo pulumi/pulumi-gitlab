@@ -22,6 +22,10 @@ public final class GetGroupAccessTokensResult {
      * 
      */
     private String group;
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     private String id;
 
     private GetGroupAccessTokensResult() {}
@@ -39,6 +43,10 @@ public final class GetGroupAccessTokensResult {
     public String group() {
         return this.group;
     }
+    /**
+     * @return The ID of this Terraform resource.
+     * 
+     */
     public String id() {
         return this.id;
     }
