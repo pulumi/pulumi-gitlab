@@ -25,6 +25,7 @@ class ProjectFreezePeriodArgs:
                  cron_timezone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectFreezePeriod resource.
+
         :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (for example, `0 2 * * *`).
         :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the freeze period to.
@@ -94,6 +95,7 @@ class _ProjectFreezePeriodState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectFreezePeriod resources.
+
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         :param pulumi.Input[_builtins.str] freeze_end: End of the Freeze Period in cron format (for example, `0 2 * * *`).
         :param pulumi.Input[_builtins.str] freeze_start: Start of the Freeze Period in cron format (for example, `0 1 * * *`).
@@ -198,6 +200,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
@@ -240,6 +243,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectFreezePeriodArgs args: The arguments to use to populate this resource's properties.

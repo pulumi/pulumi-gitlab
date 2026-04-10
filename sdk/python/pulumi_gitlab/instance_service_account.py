@@ -27,6 +27,7 @@ class InstanceServiceAccountArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceServiceAccount resource.
+
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] username: The username of the user account. If not set, generates a name prepended with service*account*.
@@ -96,6 +97,7 @@ class _InstanceServiceAccountState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceServiceAccount resources.
+
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
@@ -221,6 +223,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
         $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
@@ -272,6 +275,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/instanceServiceAccount:InstanceServiceAccount example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceServiceAccountArgs args: The arguments to use to populate this resource's properties.

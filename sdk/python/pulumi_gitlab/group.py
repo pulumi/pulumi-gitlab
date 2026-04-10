@@ -58,6 +58,7 @@ class GroupArgs:
                  wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
@@ -634,6 +635,7 @@ class _GroupState:
                  wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
@@ -1362,6 +1364,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import gitlab:index/group:Group example example
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
@@ -1484,6 +1487,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/group:Group example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

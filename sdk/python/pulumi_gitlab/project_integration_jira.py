@@ -37,6 +37,7 @@ class ProjectIntegrationJiraArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationJira resource.
+
         :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
@@ -302,6 +303,7 @@ class _ProjectIntegrationJiraState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationJira resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         :param pulumi.Input[_builtins.bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
@@ -662,6 +664,7 @@ class ProjectIntegrationJira(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIntegrationJira:ProjectIntegrationJira jira 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
@@ -720,6 +723,7 @@ class ProjectIntegrationJira(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIntegrationJira:ProjectIntegrationJira jira 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationJiraArgs args: The arguments to use to populate this resource's properties.

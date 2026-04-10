@@ -27,6 +27,7 @@ class ReleaseLinkArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReleaseLink resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project.
         :param pulumi.Input[_builtins.str] tag_name: The tag associated with the Release.
         :param pulumi.Input[_builtins.str] url: The URL of the link. Link URLs must be unique within the release.
@@ -131,6 +132,7 @@ class _ReleaseLinkState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReleaseLink resources.
+
         :param pulumi.Input[_builtins.str] direct_asset_url: Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         :param pulumi.Input[_builtins.bool] external: External or internal link.
         :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
@@ -317,6 +319,7 @@ class ReleaseLink(pulumi.CustomResource):
         $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] filepath: Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
@@ -366,6 +369,7 @@ class ReleaseLink(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReleaseLinkArgs args: The arguments to use to populate this resource's properties.

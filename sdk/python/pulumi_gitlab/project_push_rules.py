@@ -35,6 +35,7 @@ class ProjectPushRulesInitArgs:
                  reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPushRules resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[_builtins.str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
@@ -266,6 +267,7 @@ class _ProjectPushRulesState:
                  reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectPushRules resources.
+
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[_builtins.str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         :param pulumi.Input[_builtins.bool] commit_committer_check: Users can only push commits to this repository that were committed with one of their own verified emails.
@@ -546,6 +548,7 @@ class ProjectPushRules(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectPushRules:ProjectPushRules sample "42"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
@@ -614,6 +617,7 @@ class ProjectPushRules(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectPushRules:ProjectPushRules sample "42"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectPushRulesInitArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class ProjectMilestoneArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectMilestone resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.str] title: The title of a milestone.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
@@ -136,6 +137,7 @@ class _ProjectMilestoneState:
                  web_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMilestone resources.
+
         :param pulumi.Input[_builtins.str] created_at: The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
         :param pulumi.Input[_builtins.str] due_date: The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
@@ -389,6 +391,7 @@ class ProjectMilestone(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the milestone.
@@ -445,6 +448,7 @@ class ProjectMilestone(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectMilestoneArgs args: The arguments to use to populate this resource's properties.

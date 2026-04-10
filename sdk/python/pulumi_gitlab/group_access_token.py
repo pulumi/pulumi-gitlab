@@ -31,6 +31,7 @@ class GroupAccessTokenArgs:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupAccessToken resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
@@ -170,6 +171,7 @@ class _GroupAccessTokenState:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupAccessToken resources.
+
         :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
@@ -426,6 +428,7 @@ class GroupAccessToken(pulumi.CustomResource):
 
         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
@@ -485,6 +488,7 @@ class GroupAccessToken(pulumi.CustomResource):
         ```
 
         ATTENTION: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param GroupAccessTokenArgs args: The arguments to use to populate this resource's properties.

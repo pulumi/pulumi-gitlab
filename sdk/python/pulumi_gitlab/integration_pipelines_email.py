@@ -25,6 +25,7 @@ class IntegrationPipelinesEmailArgs:
                  notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationPipelinesEmail resource.
+
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: ) email addresses where notifications are sent.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
@@ -95,6 +96,7 @@ class _IntegrationPipelinesEmailState:
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IntegrationPipelinesEmail resources.
+
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -205,6 +207,7 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
         $ pulumi import gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail email 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
@@ -253,6 +256,7 @@ class IntegrationPipelinesEmail(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail email 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationPipelinesEmailArgs args: The arguments to use to populate this resource's properties.

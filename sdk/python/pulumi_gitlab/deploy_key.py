@@ -26,6 +26,7 @@ class DeployKeyArgs:
                  expires_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeployKey resource.
+
         :param pulumi.Input[_builtins.str] key: The public ssh key body.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the deploy key to.
         :param pulumi.Input[_builtins.str] title: A title to describe the deploy key with.
@@ -112,6 +113,7 @@ class _DeployKeyState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeployKey resources.
+
         :param pulumi.Input[_builtins.bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         :param pulumi.Input[_builtins.int] deploy_key_id: The id of the project deploy key.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
@@ -258,6 +260,7 @@ class DeployKey(pulumi.CustomResource):
         $ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] can_push: Allow this deploy key to be used to push changes to the project. Defaults to `false`.
@@ -312,6 +315,7 @@ class DeployKey(pulumi.CustomResource):
         $ pulumi import gitlab:index/deployKey:DeployKey test 1:3
         $ pulumi import gitlab:index/deployKey:DeployKey test richardc/example:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeployKeyArgs args: The arguments to use to populate this resource's properties.

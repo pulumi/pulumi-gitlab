@@ -24,6 +24,7 @@ class ProjectJobTokenScopeArgs:
                  target_project_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectJobTokenScope resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[_builtins.int] target_group_id: The ID of the group that is in the CI/CD job token inbound allowlist.
         :param pulumi.Input[_builtins.int] target_project_id: The ID of the project that is in the CI/CD job token inbound allowlist.
@@ -79,6 +80,7 @@ class _ProjectJobTokenScopeState:
                  target_project_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectJobTokenScope resources.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[_builtins.int] target_group_id: The ID of the group that is in the CI/CD job token inbound allowlist.
         :param pulumi.Input[_builtins.int] target_project_id: The ID of the project that is in the CI/CD job token inbound allowlist.
@@ -167,6 +169,7 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:group:321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
@@ -208,6 +211,7 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectJobTokenScope:ProjectJobTokenScope bar 123:group:321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectJobTokenScopeArgs args: The arguments to use to populate this resource's properties.

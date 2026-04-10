@@ -23,6 +23,7 @@ class GroupProjectFileTemplateArgs:
                  group_id: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a GroupProjectFileTemplate resource.
+
         :param pulumi.Input[_builtins.int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
                			child of the project defined by the group_id
         :param pulumi.Input[_builtins.int] group_id: The ID of the group that will use the file template project. This group must be the direct
@@ -65,6 +66,7 @@ class _GroupProjectFileTemplateState:
                  group_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupProjectFileTemplate resources.
+
         :param pulumi.Input[_builtins.int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
                			child of the project defined by the group_id
         :param pulumi.Input[_builtins.int] group_id: The ID of the group that will use the file template project. This group must be the direct
@@ -142,6 +144,7 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
             file_template_project_id=bar.id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] file_template_project_id: The ID of the project that will be used for file templates. This project must be the direct
@@ -185,6 +188,7 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
             group_id=foo.id,
             file_template_project_id=bar.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupProjectFileTemplateArgs args: The arguments to use to populate this resource's properties.

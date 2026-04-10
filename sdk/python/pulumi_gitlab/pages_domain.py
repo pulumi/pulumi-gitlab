@@ -27,6 +27,7 @@ class PagesDomainArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PagesDomain resource.
+
         :param pulumi.Input[_builtins.str] domain: The custom domain indicated by the user.
         :param pulumi.Input[_builtins.str] project: The ID or Namespace path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
@@ -132,6 +133,7 @@ class _PagesDomainState:
                  verified: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
+
         :param pulumi.Input[_builtins.bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         :param pulumi.Input[_builtins.str] certificate: The certificate in PEM format with intermediates following in most specific to least specific order.
         :param pulumi.Input[_builtins.str] domain: The custom domain indicated by the user.
@@ -300,6 +302,7 @@ class PagesDomain(pulumi.CustomResource):
         $ pulumi import gitlab:index/pagesDomain:PagesDomain this 123:example.com
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_ssl_enabled: Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
@@ -331,6 +334,7 @@ class PagesDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/pagesDomain:PagesDomain this 123:example.com
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PagesDomainArgs args: The arguments to use to populate this resource's properties.

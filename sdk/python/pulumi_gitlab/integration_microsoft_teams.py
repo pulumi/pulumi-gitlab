@@ -34,6 +34,7 @@ class IntegrationMicrosoftTeamsArgs:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationMicrosoftTeams resource.
+
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
@@ -251,6 +252,7 @@ class _IntegrationMicrosoftTeamsState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IntegrationMicrosoftTeams resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events
@@ -549,6 +551,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         $ pulumi import gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams teams 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
@@ -605,6 +608,7 @@ class IntegrationMicrosoftTeams(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams teams 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationMicrosoftTeamsArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class BranchProtectionArgs:
                  unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BranchProtection resource.
+
         :param pulumi.Input[_builtins.str] branch: Name of the branch.
         :param pulumi.Input[_builtins.str] project: The id of the project.
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
@@ -200,6 +201,7 @@ class _BranchProtectionState:
                  unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BranchProtection resources.
+
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]] allowed_to_merges: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         :param pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]] allowed_to_pushes: Array of access levels and user(s)/group(s) allowed to push to protected branch.
@@ -473,6 +475,7 @@ class BranchProtection(pulumi.CustomResource):
         $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
@@ -579,6 +582,7 @@ class BranchProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BranchProtectionArgs args: The arguments to use to populate this resource's properties.

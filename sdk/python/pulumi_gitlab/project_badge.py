@@ -25,6 +25,7 @@ class ProjectBadgeArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectBadge resource.
+
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project to add the badge to.
@@ -96,6 +97,7 @@ class _ProjectBadgeState:
                  rendered_link_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectBadge resources.
+
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
         :param pulumi.Input[_builtins.str] link_url: The url linked with the badge.
         :param pulumi.Input[_builtins.str] name: The name of the badge.
@@ -249,6 +251,7 @@ class ProjectBadge(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_url: The image url which will be presented on project overview.
@@ -310,6 +313,7 @@ class ProjectBadge(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectBadgeArgs args: The arguments to use to populate this resource's properties.

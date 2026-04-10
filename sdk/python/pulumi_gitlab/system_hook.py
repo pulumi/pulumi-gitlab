@@ -28,6 +28,7 @@ class SystemHookArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SystemHook resource.
+
         :param pulumi.Input[_builtins.str] url: The hook URL.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Trigger hook on merge requests events.
@@ -148,6 +149,7 @@ class _SystemHookState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SystemHook resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time the hook was created in ISO8601 format.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Trigger hook on merge requests events.
@@ -320,6 +322,7 @@ class SystemHook(pulumi.CustomResource):
 
         NOTE: the `token` attribute won't be available for imported resources.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
@@ -370,6 +373,7 @@ class SystemHook(pulumi.CustomResource):
         ```
 
         NOTE: the `token` attribute won't be available for imported resources.
+
 
         :param str resource_name: The name of the resource.
         :param SystemHookArgs args: The arguments to use to populate this resource's properties.

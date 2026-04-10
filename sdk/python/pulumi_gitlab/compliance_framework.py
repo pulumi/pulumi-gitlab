@@ -27,6 +27,7 @@ class ComplianceFrameworkArgs:
                  pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComplianceFramework resource.
+
         :param pulumi.Input[_builtins.str] color: New color representation of the compliance framework in hex format. e.g. #FCA121.
         :param pulumi.Input[_builtins.str] description: Description for the compliance framework.
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace to add the compliance framework to.
@@ -129,6 +130,7 @@ class _ComplianceFrameworkState:
                  pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComplianceFramework resources.
+
         :param pulumi.Input[_builtins.str] color: New color representation of the compliance framework in hex format. e.g. #FCA121.
         :param pulumi.Input[_builtins.bool] default: Set this compliance framework as the default framework for the group. Default: `false`
         :param pulumi.Input[_builtins.str] description: Description for the compliance framework.
@@ -288,6 +290,7 @@ class ComplianceFramework(pulumi.CustomResource):
         $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample "top-level-group:gid://gitlab/ComplianceManagement::Framework/12345"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: New color representation of the compliance framework in hex format. e.g. #FCA121.
@@ -340,6 +343,7 @@ class ComplianceFramework(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample "top-level-group:gid://gitlab/ComplianceManagement::Framework/12345"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ComplianceFrameworkArgs args: The arguments to use to populate this resource's properties.

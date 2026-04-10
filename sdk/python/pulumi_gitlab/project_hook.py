@@ -48,6 +48,7 @@ class ProjectHookArgs:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectHook resource.
+
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the hook to.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
@@ -456,6 +457,7 @@ class _ProjectHookState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectHook resources.
+
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
@@ -948,6 +950,7 @@ class ProjectHook(pulumi.CustomResource):
 
         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
@@ -1033,6 +1036,7 @@ class ProjectHook(pulumi.CustomResource):
         ```
 
         NOTE: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param ProjectHookArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class ProjectCicdCatalogArgs:
                  keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectCicdCatalog resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
@@ -78,6 +79,7 @@ class _ProjectCicdCatalogState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCicdCatalog resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
         :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
@@ -169,6 +171,7 @@ class ProjectCicdCatalog(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectCicdCatalog:ProjectCicdCatalog example "1"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the project should be enabled as a CI/CD Catalog resource.
@@ -213,6 +216,7 @@ class ProjectCicdCatalog(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectCicdCatalog:ProjectCicdCatalog example "1"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectCicdCatalogArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class PipelineScheduleArgs:
                  take_ownership: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PipelineSchedule resource.
+
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
@@ -146,6 +147,7 @@ class _PipelineScheduleState:
                  take_ownership: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PipelineSchedule resources.
+
         :param pulumi.Input[_builtins.bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
@@ -328,6 +330,7 @@ class PipelineSchedule(pulumi.CustomResource):
         $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
@@ -373,6 +376,7 @@ class PipelineSchedule(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineScheduleArgs args: The arguments to use to populate this resource's properties.

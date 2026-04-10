@@ -23,6 +23,7 @@ class ProjectSecurityPolicyAttachmentArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectSecurityPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
         :param pulumi.Input[_builtins.str] project: The ID or Full Path of the project which will have the security policy project assigned to it.
         """
@@ -63,6 +64,7 @@ class _ProjectSecurityPolicyAttachmentState:
                  project_graphql_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectSecurityPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
         :param pulumi.Input[_builtins.str] policy_project_graphql_id: The GraphQL ID of the security policy project.
         :param pulumi.Input[_builtins.str] project: The ID or Full Path of the project which will have the security policy project assigned to it.
@@ -201,6 +203,7 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment foo 1:2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
@@ -277,6 +280,7 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment foo 1:2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectSecurityPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

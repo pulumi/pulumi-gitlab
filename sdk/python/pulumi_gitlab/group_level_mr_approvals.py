@@ -28,6 +28,7 @@ class GroupLevelMrApprovalsArgs:
                  retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupLevelMrApprovals resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group.
         :param pulumi.Input[_builtins.bool] allow_author_approval: Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
         :param pulumi.Input[_builtins.bool] allow_committer_approval: Allow or prevent committers from self approving merge requests.
@@ -147,6 +148,7 @@ class _GroupLevelMrApprovalsState:
                  retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupLevelMrApprovals resources.
+
         :param pulumi.Input[_builtins.bool] allow_author_approval: Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
         :param pulumi.Input[_builtins.bool] allow_committer_approval: Allow or prevent committers from self approving merge requests.
         :param pulumi.Input[_builtins.bool] allow_overrides_to_approver_list_per_merge_request: Allow or prevent overriding approvers per merge request.
@@ -311,6 +313,7 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals foo 1234
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_author_approval: Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
@@ -368,6 +371,7 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals foo 1234
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupLevelMrApprovalsArgs args: The arguments to use to populate this resource's properties.

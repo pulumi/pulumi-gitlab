@@ -130,6 +130,7 @@ class ProjectArgs:
                  wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1921,6 +1922,7 @@ class _ProjectState:
                  wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
         :param pulumi.Input[_builtins.bool] allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3841,6 +3843,7 @@ class Project(pulumi.CustomResource):
 
         NOTE: the `import_url_username` and `import_url_password` cannot be imported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Set to true if you want to treat skipped pipelines as if they finished with success.
@@ -3989,6 +3992,7 @@ class Project(pulumi.CustomResource):
         ```
 
         NOTE: the `import_url_username` and `import_url_password` cannot be imported.
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

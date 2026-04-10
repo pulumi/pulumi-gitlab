@@ -32,6 +32,7 @@ class ReleaseArgs:
                  tag_message: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Release resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[_builtins.str] tag_name: The tag where the release is created from.
         :param pulumi.Input['ReleaseAssetsArgs'] assets: The release assets.
@@ -190,6 +191,7 @@ class _ReleaseState:
                  upcoming_release: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Release resources.
+
         :param pulumi.Input['ReleaseAssetsArgs'] assets: The release assets.
         :param pulumi.Input['ReleaseAuthorArgs'] author: The author of the release.
         :param pulumi.Input['ReleaseCommitArgs'] commit: The release commit.
@@ -500,6 +502,7 @@ class Release(pulumi.CustomResource):
         $ pulumi import gitlab:index/release:Release example "12345:test"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']] assets: The release assets.
@@ -553,6 +556,7 @@ class Release(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/release:Release example "12345:test"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReleaseArgs args: The arguments to use to populate this resource's properties.

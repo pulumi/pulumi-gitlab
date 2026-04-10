@@ -24,6 +24,7 @@ class ProjectSecureFileArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectSecureFile resource.
+
         :param pulumi.Input[_builtins.str] content: The contents of the secure file
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project to environment is created for.
         :param pulumi.Input[_builtins.str] name: The name for the secure file, unique per project
@@ -83,6 +84,7 @@ class _ProjectSecureFileState:
                  secure_file_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectSecureFile resources.
+
         :param pulumi.Input[_builtins.str] checksum: The checksum of the file
         :param pulumi.Input[_builtins.str] checksum_algorithm: The checksum algorithm used
         :param pulumi.Input[_builtins.str] content: The contents of the secure file
@@ -259,6 +261,7 @@ class ProjectSecureFile(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectSecureFile:ProjectSecureFile bar 123:321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content: The contents of the secure file
@@ -313,6 +316,7 @@ class ProjectSecureFile(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectSecureFile:ProjectSecureFile bar 123:321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectSecureFileArgs args: The arguments to use to populate this resource's properties.

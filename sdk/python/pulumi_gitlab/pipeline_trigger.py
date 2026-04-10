@@ -23,6 +23,7 @@ class PipelineTriggerArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PipelineTrigger resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the pipeline trigger.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the trigger to.
         """
@@ -63,6 +64,7 @@ class _PipelineTriggerState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineTrigger resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the pipeline trigger.
         :param pulumi.Input[_builtins.int] pipeline_trigger_id: The pipeline trigger id.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the trigger to.
@@ -163,6 +165,7 @@ class PipelineTrigger(pulumi.CustomResource):
         $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the pipeline trigger.
@@ -201,6 +204,7 @@ class PipelineTrigger(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/pipelineTrigger:PipelineTrigger test 1:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineTriggerArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class GroupMembershipArgs:
                  unassign_issuables_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupMembership resource.
+
         :param pulumi.Input[_builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.int] group_id: The ID of the group.
         :param pulumi.Input[_builtins.int] user_id: The ID of the user.
@@ -145,6 +146,7 @@ class _GroupMembershipState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
+
         :param pulumi.Input[_builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] expires_at: Expiration date for the group membership. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.int] group_id: The ID of the group.
@@ -299,6 +301,7 @@ class GroupMembership(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
@@ -346,6 +349,7 @@ class GroupMembership(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.

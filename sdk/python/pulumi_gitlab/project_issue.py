@@ -42,6 +42,7 @@ class ProjectIssueArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectIssue resource.
+
         :param pulumi.Input[_builtins.str] project: The name or ID of the project.
         :param pulumi.Input[_builtins.str] title: The title of the issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] assignee_ids: The IDs of the users to assign the issue to.
@@ -373,6 +374,7 @@ class _ProjectIssueState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectIssue resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] assignee_ids: The IDs of the users to assign the issue to.
         :param pulumi.Input[_builtins.int] author_id: The ID of the author of the issue. Use `User` data source to get more information about the user.
         :param pulumi.Input[_builtins.str] closed_at: When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
@@ -1043,6 +1045,7 @@ class ProjectIssue(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] assignee_ids: The IDs of the users to assign the issue to.
@@ -1111,6 +1114,7 @@ class ProjectIssue(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIssue:ProjectIssue welcome_issue 42:1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIssueArgs args: The arguments to use to populate this resource's properties.

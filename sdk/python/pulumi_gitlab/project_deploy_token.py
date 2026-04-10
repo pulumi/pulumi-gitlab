@@ -27,6 +27,7 @@ class ProjectDeployTokenArgs:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectDeployToken resource.
+
         :param pulumi.Input[_builtins.str] project: The Id or full path of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] expires_at: Time the token expires in RFC3339 format. Not set by default.
@@ -132,6 +133,7 @@ class _ProjectDeployTokenState:
                  validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectDeployToken resources.
+
         :param pulumi.Input[_builtins.bool] expired: True if the token is expired.
         :param pulumi.Input[_builtins.str] expires_at: Time the token expires in RFC3339 format. Not set by default.
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
@@ -330,6 +332,7 @@ class ProjectDeployToken(pulumi.CustomResource):
 
         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expires_at: Time the token expires in RFC3339 format. Not set by default.
@@ -391,6 +394,7 @@ class ProjectDeployToken(pulumi.CustomResource):
         ```
 
         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param ProjectDeployTokenArgs args: The arguments to use to populate this resource's properties.

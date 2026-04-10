@@ -28,6 +28,7 @@ class ProjectLevelMrApprovalsArgs:
                  selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectLevelMrApprovals resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of a project to change MR approval configuration.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
@@ -147,6 +148,7 @@ class _ProjectLevelMrApprovalsState:
                  selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectLevelMrApprovals resources.
+
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
         :param pulumi.Input[_builtins.bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
@@ -305,6 +307,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
@@ -356,6 +359,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals foo 1234
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectLevelMrApprovalsArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class MemberRoleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MemberRole resource.
+
         :param pulumi.Input[_builtins.str] base_access_level: The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_permissions: All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PROTECTED_ENVIRONMENTS`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_GROUPS`, `READ_ADMIN_PROJECTS`, `READ_ADMIN_SUBSCRIPTION`, `READ_ADMIN_MONITORING`, `READ_ADMIN_USERS`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
         :param pulumi.Input[_builtins.str] description: Description for the member role.
@@ -115,6 +116,7 @@ class _MemberRoleState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MemberRole resources.
+
         :param pulumi.Input[_builtins.str] base_access_level: The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the member role was created.
         :param pulumi.Input[_builtins.str] description: Description for the member role.
@@ -275,6 +277,7 @@ class MemberRole(pulumi.CustomResource):
         $ pulumi import gitlab:index/memberRole:MemberRole example 'gid://gitlab/MemberRole/123'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_access_level: The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
@@ -313,6 +316,7 @@ class MemberRole(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/memberRole:MemberRole example 'gid://gitlab/MemberRole/123'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MemberRoleArgs args: The arguments to use to populate this resource's properties.

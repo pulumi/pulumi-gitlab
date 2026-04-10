@@ -25,6 +25,7 @@ class IntegrationGithubArgs:
                  static_context: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationGithub resource.
+
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
         :param pulumi.Input[_builtins.str] repository_url: The URL of the GitHub repo to integrate with. For example, https://github.com/gitlabhq/terraform-provider-gitlab.
         :param pulumi.Input[_builtins.str] token: A GitHub personal access token with at least the `repo:status` scope.
@@ -98,6 +99,7 @@ class _IntegrationGithubState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationGithub resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
@@ -269,6 +271,7 @@ class IntegrationGithub(pulumi.CustomResource):
         $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
@@ -318,6 +321,7 @@ class IntegrationGithub(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/integrationGithub:IntegrationGithub github 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationGithubArgs args: The arguments to use to populate this resource's properties.

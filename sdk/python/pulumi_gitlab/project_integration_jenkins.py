@@ -30,6 +30,7 @@ class ProjectIntegrationJenkinsArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationJenkins resource.
+
         :param pulumi.Input[_builtins.str] jenkins_url: Jenkins URL like `http://jenkins.example.com`
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] project_name: The URL-friendly project name. Example: `my_project_name`.
@@ -180,6 +181,7 @@ class _ProjectIntegrationJenkinsState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationJenkins resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification. Defaults to `true` (enabled).
         :param pulumi.Input[_builtins.str] jenkins_url: Jenkins URL like `http://jenkins.example.com`
@@ -382,6 +384,7 @@ class ProjectIntegrationJenkins(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins jenkins 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification. Defaults to `true` (enabled).
@@ -432,6 +435,7 @@ class ProjectIntegrationJenkins(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins jenkins 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationJenkinsArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class ProjectIssueLinkArgs:
                  target_project_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectIssueLink resource.
+
         :param pulumi.Input[_builtins.int] issue_iid: The internal ID of a project's issue.
         :param pulumi.Input[_builtins.str] link_type: Type of the relationship. Valid values are `relates_to`, `blocks`, `is_blocked_by`.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
@@ -110,6 +111,7 @@ class _ProjectIssueLinkState:
                  target_project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIssueLink resources.
+
         :param pulumi.Input[_builtins.int] issue_iid: The internal ID of a project's issue.
         :param pulumi.Input[_builtins.int] issue_link_id: ID of an issue relationship.
         :param pulumi.Input[_builtins.str] link_type: Type of the relationship. Valid values are `relates_to`, `blocks`, `is_blocked_by`.
@@ -273,6 +275,7 @@ class ProjectIssueLink(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIssueLink:ProjectIssueLink example 42:1001:1002
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] issue_iid: The internal ID of a project's issue.
@@ -344,6 +347,7 @@ class ProjectIssueLink(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIssueLink:ProjectIssueLink example 42:1001:1002
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIssueLinkArgs args: The arguments to use to populate this resource's properties.

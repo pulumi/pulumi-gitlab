@@ -30,6 +30,7 @@ class ProjectPullMirrorArgs:
                  only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPullMirror resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project owned by the authenticated user.
         :param pulumi.Input[_builtins.str] url: The URL of the remote repository to mirror from. While the API call allows including username and password as basic authentication in the URL, this resourcedoes not for security and idempotency reasons. Use `auth_user` and `auth_password` instead.
         :param pulumi.Input[_builtins.str] auth_password: Authentication password or token for the remote repository.
@@ -186,6 +187,7 @@ class _ProjectPullMirrorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPullMirror resources.
+
         :param pulumi.Input[_builtins.str] auth_password: Authentication password or token for the remote repository.
         :param pulumi.Input[_builtins.str] auth_user: Authentication username for the remote repository.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the pull mirror. Defaults to `true`.
@@ -490,6 +492,7 @@ class ProjectPullMirror(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectPullMirror:ProjectPullMirror example "group/project"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_password: Authentication password or token for the remote repository.
@@ -567,6 +570,7 @@ class ProjectPullMirror(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectPullMirror:ProjectPullMirror example "group/project"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectPullMirrorArgs args: The arguments to use to populate this resource's properties.

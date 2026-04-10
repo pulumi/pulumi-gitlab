@@ -44,6 +44,7 @@ class ProjectIntegrationMattermostArgs:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationMattermost resource.
+
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] webhook: Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -418,6 +419,7 @@ class _ProjectIntegrationMattermostState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationMattermost resources.
+
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
         :param pulumi.Input[_builtins.str] confidential_issue_channel: The name of the channel to receive confidential issue events notifications.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issues events.
@@ -831,6 +833,7 @@ class ProjectIntegrationMattermost(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost mattermost 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
@@ -897,6 +900,7 @@ class ProjectIntegrationMattermost(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost mattermost 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationMattermostArgs args: The arguments to use to populate this resource's properties.

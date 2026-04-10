@@ -31,6 +31,7 @@ class GroupVariableArgs:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupVariable resource.
+
         :param pulumi.Input[_builtins.str] group: The name or id of the group.
         :param pulumi.Input[_builtins.str] key: The name of the variable.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
@@ -196,6 +197,7 @@ class _GroupVariableState:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupVariable resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the variable.
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.str] group: The name or id of the group.
@@ -383,6 +385,7 @@ class GroupVariable(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the variable.
@@ -418,6 +421,7 @@ class GroupVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupVariableArgs args: The arguments to use to populate this resource's properties.

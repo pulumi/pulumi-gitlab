@@ -32,6 +32,7 @@ class UserRunnerArgs:
                  untagged: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UserRunner resource.
+
         :param pulumi.Input[_builtins.str] runner_type: The scope of the runner. Valid values are: `instance_type`, `group_type`, `project_type`.
         :param pulumi.Input[_builtins.str] access_level: The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
         :param pulumi.Input[_builtins.str] description: Description of the runner.
@@ -216,6 +217,7 @@ class _UserRunnerState:
                  untagged: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering UserRunner resources.
+
         :param pulumi.Input[_builtins.str] access_level: The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
         :param pulumi.Input[_builtins.str] description: Description of the runner.
         :param pulumi.Input[_builtins.int] group_id: The ID of the group that the runner is created in. Required if runner*type is group*type.
@@ -486,6 +488,7 @@ class UserRunner(pulumi.CustomResource):
         $ pulumi import gitlab:index/userRunner:UserRunner example 12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: The access level of the runner. Valid values are: `not_protected`, `ref_protected`.
@@ -574,6 +577,7 @@ class UserRunner(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userRunner:UserRunner example 12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserRunnerArgs args: The arguments to use to populate this resource's properties.

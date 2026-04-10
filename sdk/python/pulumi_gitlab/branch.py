@@ -27,6 +27,7 @@ class BranchArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Branch resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the branch is created against.
         :param pulumi.Input[_builtins.str] ref: The ref which the branch is created from.
         :param pulumi.Input[_builtins.bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
@@ -105,6 +106,7 @@ class _BranchState:
                  web_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Branch resources.
+
         :param pulumi.Input[_builtins.bool] can_push: Bool, true if you can push to the branch.
         :param pulumi.Input[Sequence[pulumi.Input['BranchCommitArgs']]] commits: The commit associated with the branch ref.
         :param pulumi.Input[_builtins.bool] default: Bool, true if branch is the default branch for the project.
@@ -335,6 +337,7 @@ class Branch(pulumi.CustomResource):
         $ pulumi import gitlab:index/branch:Branch example "12345:develop"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] keep_on_destroy: Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
@@ -383,6 +386,7 @@ class Branch(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/branch:Branch example "12345:develop"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BranchArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class GroupSecurityPolicyAttachmentArgs:
                  policy_project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupSecurityPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
         """
@@ -63,6 +64,7 @@ class _GroupSecurityPolicyAttachmentState:
                  policy_project_graphql_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupSecurityPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
         :param pulumi.Input[_builtins.str] group_graphql_id: The GraphQL ID of the group to which the security policty project will be attached.
         :param pulumi.Input[_builtins.str] policy_project: The ID or Full Path of the security policy project.
@@ -205,6 +207,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: The ID or Full Path of the group which will have the security policy project assigned to it.
@@ -285,6 +288,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupSecurityPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

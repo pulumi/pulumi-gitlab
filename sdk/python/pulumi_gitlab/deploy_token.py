@@ -27,6 +27,7 @@ class DeployTokenArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeployToken resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[_builtins.str] group: The name or id of the group to add the deploy token to.
@@ -132,6 +133,7 @@ class _DeployTokenState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeployToken resources.
+
         :param pulumi.Input[_builtins.int] deploy_token_id: The id of the deploy token.
         :param pulumi.Input[_builtins.str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
         :param pulumi.Input[_builtins.str] group: The name or id of the group to add the deploy token to.
@@ -290,6 +292,7 @@ class DeployToken(pulumi.CustomResource):
 
         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expires_at: Time the token will expire it, RFC3339 format. Will not expire per default.
@@ -326,6 +329,7 @@ class DeployToken(pulumi.CustomResource):
         ```
 
         Note: the `token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
+
 
         :param str resource_name: The name of the resource.
         :param DeployTokenArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class IntegrationCustomIssueTrackerArgs:
                  project_url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IntegrationCustomIssueTracker resource.
+
         :param pulumi.Input[_builtins.str] issues_url: The URL to view an issue in the external issue tracker. Must contain :id.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project for the custom issue tracker.
         :param pulumi.Input[_builtins.str] project_url: The URL to the project in the external issue tracker.
@@ -81,6 +82,7 @@ class _IntegrationCustomIssueTrackerState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationCustomIssueTracker resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.str] issues_url: The URL to view an issue in the external issue tracker. Must contain :id.
@@ -234,6 +236,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] issues_url: The URL to view an issue in the external issue tracker. Must contain :id.
@@ -280,6 +283,7 @@ class IntegrationCustomIssueTracker(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationCustomIssueTrackerArgs args: The arguments to use to populate this resource's properties.

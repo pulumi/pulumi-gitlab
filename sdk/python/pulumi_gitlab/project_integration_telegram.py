@@ -35,6 +35,7 @@ class ProjectIntegrationTelegramArgs:
                  notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationTelegram resource.
+
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
         :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issues events.
@@ -255,6 +256,7 @@ class _ProjectIntegrationTelegramState:
                  wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationTelegram resources.
+
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issues events.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
@@ -532,6 +534,7 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram default 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
@@ -597,6 +600,7 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram default 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationTelegramArgs args: The arguments to use to populate this resource's properties.

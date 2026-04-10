@@ -28,6 +28,7 @@ class GroupIssueBoardArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupIssueBoard resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to.
         :param pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]] lists: The list of issue board lists.
@@ -115,6 +116,7 @@ class _GroupIssueBoardState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupIssueBoard resources.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to.
         :param pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]] lists: The list of issue board lists.
@@ -224,6 +226,7 @@ class GroupIssueBoard(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupIssueBoard:GroupIssueBoard example "12345:1"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
@@ -256,6 +259,7 @@ class GroupIssueBoard(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupIssueBoard:GroupIssueBoard example "12345:1"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupIssueBoardArgs args: The arguments to use to populate this resource's properties.

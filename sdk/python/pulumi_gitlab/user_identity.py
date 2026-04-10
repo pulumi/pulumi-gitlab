@@ -24,6 +24,7 @@ class UserIdentityArgs:
                  user_id: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a UserIdentity resource.
+
         :param pulumi.Input[_builtins.str] external_provider: The external provider name.
         :param pulumi.Input[_builtins.str] external_uid: A specific external authentication provider UID.
         :param pulumi.Input[_builtins.int] user_id: The GitLab ID of the user.
@@ -77,6 +78,7 @@ class _UserIdentityState:
                  user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserIdentity resources.
+
         :param pulumi.Input[_builtins.str] external_provider: The external provider name.
         :param pulumi.Input[_builtins.str] external_uid: A specific external authentication provider UID.
         :param pulumi.Input[_builtins.int] user_id: The GitLab ID of the user.
@@ -175,6 +177,7 @@ class UserIdentity(pulumi.CustomResource):
         $ pulumi import gitlab:index/userIdentity:UserIdentity example "42:google"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] external_provider: The external provider name.
@@ -226,6 +229,7 @@ class UserIdentity(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userIdentity:UserIdentity example "42:google"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserIdentityArgs args: The arguments to use to populate this resource's properties.

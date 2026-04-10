@@ -24,6 +24,7 @@ class ProjectIntegrationYoutrackArgs:
                  project_url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectIntegrationYoutrack resource.
+
         :param pulumi.Input[_builtins.str] issues_url: URL to view an issue in the external issue tracker. Must contain :id.
         :param pulumi.Input[_builtins.str] project: ID or namespace of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] project_url: URL of the project in the external issue tracker.
@@ -77,6 +78,7 @@ class _ProjectIntegrationYoutrackState:
                  project_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationYoutrack resources.
+
         :param pulumi.Input[_builtins.str] issues_url: URL to view an issue in the external issue tracker. Must contain :id.
         :param pulumi.Input[_builtins.str] project: ID or namespace of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] project_url: URL of the project in the external issue tracker.
@@ -168,6 +170,7 @@ class ProjectIntegrationYoutrack(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack default 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] issues_url: URL to view an issue in the external issue tracker. Must contain :id.
@@ -212,6 +215,7 @@ class ProjectIntegrationYoutrack(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack default 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectIntegrationYoutrackArgs args: The arguments to use to populate this resource's properties.

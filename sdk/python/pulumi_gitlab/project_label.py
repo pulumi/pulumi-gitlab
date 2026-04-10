@@ -25,6 +25,7 @@ class ProjectLabelArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectLabel resource.
+
         :param pulumi.Input[_builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the label to.
         :param pulumi.Input[_builtins.str] description: The description of the label.
@@ -97,6 +98,7 @@ class _ProjectLabelState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectLabel resources.
+
         :param pulumi.Input[_builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
         :param pulumi.Input[_builtins.str] color_hex: Read-only, used by the provider to store the API response color. This is always in the 6-digit hex notation with leading '#' sign (e.g. #FFAABB). If `color` contains a color name, this attribute contains the hex notation equivalent. Otherwise, the value of this attribute is the same as `color`.
         :param pulumi.Input[_builtins.str] description: The description of the label.
@@ -238,6 +240,7 @@ class ProjectLabel(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:101010
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
@@ -287,6 +290,7 @@ class ProjectLabel(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:101010
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectLabelArgs args: The arguments to use to populate this resource's properties.

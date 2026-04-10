@@ -23,6 +23,7 @@ class ClusterAgentArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterAgent resource.
+
         :param pulumi.Input[_builtins.str] project: ID or full path of the project maintained by the authenticated user.
         :param pulumi.Input[_builtins.str] name: The Name of the agent.
         """
@@ -65,6 +66,7 @@ class _ClusterAgentState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterAgent resources.
+
         :param pulumi.Input[_builtins.int] agent_id: The ID of the agent.
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 datetime when the agent was created.
         :param pulumi.Input[_builtins.int] created_by_user_id: The ID of the user who created the agent.
@@ -199,6 +201,7 @@ class ClusterAgent(pulumi.CustomResource):
         $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The Name of the agent.
@@ -256,6 +259,7 @@ class ClusterAgent(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/clusterAgent:ClusterAgent example '12345:42'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterAgentArgs args: The arguments to use to populate this resource's properties.

@@ -39,6 +39,7 @@ class GlobalLevelNotificationsArgs:
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GlobalLevelNotifications resource.
+
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] close_merge_request: Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] failed_pipeline: Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
@@ -335,6 +336,7 @@ class _GlobalLevelNotificationsState:
                  success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GlobalLevelNotifications resources.
+
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] close_merge_request: Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         :param pulumi.Input[_builtins.bool] failed_pipeline: Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
@@ -652,6 +654,7 @@ class GlobalLevelNotifications(pulumi.CustomResource):
         $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] close_issue: Enable notifications for closed issues. Can only be used when `level` is `custom`.
@@ -697,6 +700,7 @@ class GlobalLevelNotifications(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/globalLevelNotifications:GlobalLevelNotifications example gitlab
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalLevelNotificationsArgs args: The arguments to use to populate this resource's properties.

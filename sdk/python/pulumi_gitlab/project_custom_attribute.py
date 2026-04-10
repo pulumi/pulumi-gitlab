@@ -24,6 +24,7 @@ class ProjectCustomAttributeArgs:
                  value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProjectCustomAttribute resource.
+
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
         :param pulumi.Input[_builtins.int] project: The id of the project.
         :param pulumi.Input[_builtins.str] value: Value for the Custom Attribute.
@@ -77,6 +78,7 @@ class _ProjectCustomAttributeState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCustomAttribute resources.
+
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
         :param pulumi.Input[_builtins.int] project: The id of the project.
         :param pulumi.Input[_builtins.str] value: Value for the Custom Attribute.
@@ -164,6 +166,7 @@ class ProjectCustomAttribute(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectCustomAttribute:ProjectCustomAttribute attr 42:location
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
@@ -204,6 +207,7 @@ class ProjectCustomAttribute(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectCustomAttribute:ProjectCustomAttribute attr 42:location
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectCustomAttributeArgs args: The arguments to use to populate this resource's properties.

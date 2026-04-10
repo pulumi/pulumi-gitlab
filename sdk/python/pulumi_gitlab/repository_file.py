@@ -35,6 +35,7 @@ class RepositoryFileArgs:
                  update_commit_message: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryFile resource.
+
         :param pulumi.Input[_builtins.str] branch: Name of the branch to which to commit to.
         :param pulumi.Input[_builtins.str] content: File content.
         :param pulumi.Input[_builtins.str] encoding: The file content encoding. Valid values are: `base64`, `text`.
@@ -269,6 +270,7 @@ class _RepositoryFileState:
                  update_commit_message: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryFile resources.
+
         :param pulumi.Input[_builtins.str] author_email: Email of the commit author.
         :param pulumi.Input[_builtins.str] author_name: Name of the commit author.
         :param pulumi.Input[_builtins.str] blob_id: The blob id.
@@ -677,6 +679,7 @@ class RepositoryFile(pulumi.CustomResource):
         $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] author_email: Email of the commit author.
@@ -768,6 +771,7 @@ class RepositoryFile(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RepositoryFileArgs args: The arguments to use to populate this resource's properties.

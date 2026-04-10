@@ -26,6 +26,7 @@ class IntegrationRedmineArgs:
                  use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationRedmine resource.
+
         :param pulumi.Input[_builtins.str] issues_url: The URL to the Redmine project issue to link to this GitLab project.
         :param pulumi.Input[_builtins.str] new_issue_url: The URL to use to create a new issue in the Redmine project linked to this GitLab project.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -110,6 +111,7 @@ class _IntegrationRedmineState:
                  use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IntegrationRedmine resources.
+
         :param pulumi.Input[_builtins.str] issues_url: The URL to the Redmine project issue to link to this GitLab project.
         :param pulumi.Input[_builtins.str] new_issue_url: The URL to use to create a new issue in the Redmine project linked to this GitLab project.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -237,6 +239,7 @@ class IntegrationRedmine(pulumi.CustomResource):
         $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] issues_url: The URL to the Redmine project issue to link to this GitLab project.
@@ -287,6 +290,7 @@ class IntegrationRedmine(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/integrationRedmine:IntegrationRedmine redmine 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationRedmineArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class PipelineScheduleVariableArgs:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PipelineScheduleVariable resource.
+
         :param pulumi.Input[_builtins.str] key: Name of the variable.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[_builtins.str] project: The id of the project to add the schedule to.
@@ -110,6 +111,7 @@ class _PipelineScheduleVariableState:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineScheduleVariable resources.
+
         :param pulumi.Input[_builtins.str] key: Name of the variable.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The id of the pipeline schedule.
         :param pulumi.Input[_builtins.str] project: The id of the project to add the schedule to.
@@ -235,6 +237,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: Name of the variable.
@@ -283,6 +286,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PipelineScheduleVariableArgs args: The arguments to use to populate this resource's properties.

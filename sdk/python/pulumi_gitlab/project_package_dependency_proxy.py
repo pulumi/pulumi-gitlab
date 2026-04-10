@@ -26,6 +26,7 @@ class ProjectPackageDependencyProxyArgs:
                  maven_external_registry_username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectPackageDependencyProxy resource.
+
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the dependency proxy is enabled for packages.
         :param pulumi.Input[_builtins.str] maven_external_registry_password: The password to authenticate with the external Maven registry. Must be set together with `maven_external_registry_username`. Cannot be imported.
@@ -113,6 +114,7 @@ class _ProjectPackageDependencyProxyState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPackageDependencyProxy resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the dependency proxy is enabled for packages.
         :param pulumi.Input[_builtins.str] maven_external_registry_password: The password to authenticate with the external Maven registry. Must be set together with `maven_external_registry_username`. Cannot be imported.
         :param pulumi.Input[_builtins.str] maven_external_registry_url: The URL of the external Maven registry.
@@ -246,6 +248,7 @@ class ProjectPackageDependencyProxy(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy example 42
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the dependency proxy is enabled for packages.
@@ -302,6 +305,7 @@ class ProjectPackageDependencyProxy(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy example 42
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectPackageDependencyProxyArgs args: The arguments to use to populate this resource's properties.

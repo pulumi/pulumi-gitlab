@@ -24,6 +24,7 @@ class UserCustomAttributeArgs:
                  value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserCustomAttribute resource.
+
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
         :param pulumi.Input[_builtins.int] user: The id of the user.
         :param pulumi.Input[_builtins.str] value: Value for the Custom Attribute.
@@ -77,6 +78,7 @@ class _UserCustomAttributeState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserCustomAttribute resources.
+
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
         :param pulumi.Input[_builtins.int] user: The id of the user.
         :param pulumi.Input[_builtins.str] value: Value for the Custom Attribute.
@@ -164,6 +166,7 @@ class UserCustomAttribute(pulumi.CustomResource):
         $ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: Key for the Custom Attribute.
@@ -204,6 +207,7 @@ class UserCustomAttribute(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/userCustomAttribute:UserCustomAttribute attr 42:location
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserCustomAttributeArgs args: The arguments to use to populate this resource's properties.

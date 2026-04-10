@@ -27,6 +27,7 @@ class ProjectMergeRequestNoteArgs:
                  merge_request_diff_head_sha: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectMergeRequestNote resource.
+
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
         :param pulumi.Input[_builtins.int] merge_request_iid: The IID of the merge request to add the note to.
         :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the note to.
@@ -132,6 +133,7 @@ class _ProjectMergeRequestNoteState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMergeRequestNote resources.
+
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
         :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
         :param pulumi.Input[_builtins.bool] internal: Indicates if the merge request note is internal.
@@ -331,6 +333,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote example "12345:1:3"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
@@ -378,6 +381,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote example "12345:1:3"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectMergeRequestNoteArgs args: The arguments to use to populate this resource's properties.

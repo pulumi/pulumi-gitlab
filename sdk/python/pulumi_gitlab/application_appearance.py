@@ -35,6 +35,7 @@ class ApplicationAppearanceArgs:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationAppearance resource.
+
         :param pulumi.Input[_builtins.str] description: Markdown text shown on the sign-in and sign-up page.
         :param pulumi.Input[_builtins.bool] email_header_and_footer_enabled: Add header and footer to all outgoing emails if enabled.
         :param pulumi.Input[_builtins.str] footer_message: Message in the system footer bar.
@@ -267,6 +268,7 @@ class _ApplicationAppearanceState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationAppearance resources.
+
         :param pulumi.Input[_builtins.str] description: Markdown text shown on the sign-in and sign-up page.
         :param pulumi.Input[_builtins.bool] email_header_and_footer_enabled: Add header and footer to all outgoing emails if enabled.
         :param pulumi.Input[_builtins.str] footer_message: Message in the system footer bar.
@@ -527,6 +529,7 @@ class ApplicationAppearance(pulumi.CustomResource):
         $ pulumi import gitlab:index/applicationAppearance:ApplicationAppearance example "gitlab"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Markdown text shown on the sign-in and sign-up page.
@@ -575,6 +578,7 @@ class ApplicationAppearance(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/applicationAppearance:ApplicationAppearance example "gitlab"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationAppearanceArgs args: The arguments to use to populate this resource's properties.

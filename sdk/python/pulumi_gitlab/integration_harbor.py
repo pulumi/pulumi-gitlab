@@ -27,6 +27,7 @@ class IntegrationHarborArgs:
                  use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationHarbor resource.
+
         :param pulumi.Input[_builtins.str] password: Password for authentication with the Harbor server, if authentication is required by the server.
         :param pulumi.Input[_builtins.str] project: ID of the GitLab project you want to activate integration on.
         :param pulumi.Input[_builtins.str] project_name: The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `my_project_name`.
@@ -127,6 +128,7 @@ class _IntegrationHarborState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationHarbor resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
         :param pulumi.Input[_builtins.str] password: Password for authentication with the Harbor server, if authentication is required by the server.
         :param pulumi.Input[_builtins.str] project: ID of the GitLab project you want to activate integration on.
@@ -288,6 +290,7 @@ class IntegrationHarbor(pulumi.CustomResource):
         $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor harbor 1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: Password for authentication with the Harbor server, if authentication is required by the server.
@@ -342,6 +345,7 @@ class IntegrationHarbor(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/integrationHarbor:IntegrationHarbor harbor 1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationHarborArgs args: The arguments to use to populate this resource's properties.

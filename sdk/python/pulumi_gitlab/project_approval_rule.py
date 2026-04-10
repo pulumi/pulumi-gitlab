@@ -31,6 +31,7 @@ class ProjectApprovalRuleArgs:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a ProjectApprovalRule resource.
+
         :param pulumi.Input[_builtins.int] approvals_required: The number of approvals required for this rule.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[_builtins.bool] applies_to_all_protected_branches: Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
@@ -197,6 +198,7 @@ class _ProjectApprovalRuleState:
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering ProjectApprovalRule resources.
+
         :param pulumi.Input[_builtins.bool] applies_to_all_protected_branches: Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
         :param pulumi.Input[_builtins.int] approvals_required: The number of approvals required for this rule.
         :param pulumi.Input[_builtins.bool] disable_importing_default_any_approver_rule_on_create: When this flag is set, the default `any_approver` rule will not be imported if present.
@@ -455,6 +457,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] applies_to_all_protected_branches: Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
@@ -561,6 +564,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example "12345:6"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectApprovalRuleArgs args: The arguments to use to populate this resource's properties.

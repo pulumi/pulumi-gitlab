@@ -25,6 +25,7 @@ class ProjectContainerRepositoryProtectionArgs:
                  minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectContainerRepositoryProtection resource.
+
         :param pulumi.Input[_builtins.str] project: ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] repository_path_pattern: Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
         :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
@@ -96,6 +97,7 @@ class _ProjectContainerRepositoryProtectionState:
                  repository_path_pattern: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectContainerRepositoryProtection resources.
+
         :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
         :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
         :param pulumi.Input[_builtins.str] project: ID or URL-encoded path of the project.
@@ -218,6 +220,7 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection this 123:321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
@@ -263,6 +266,7 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection this 123:321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectContainerRepositoryProtectionArgs args: The arguments to use to populate this resource's properties.

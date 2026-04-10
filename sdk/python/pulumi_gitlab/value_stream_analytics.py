@@ -27,6 +27,7 @@ class ValueStreamAnalyticsArgs:
                  project_full_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ValueStreamAnalytics resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]] stages: Stages of the value stream
         :param pulumi.Input[_builtins.str] group_full_path: Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         :param pulumi.Input[_builtins.str] name: The name of the value stream
@@ -98,6 +99,7 @@ class _ValueStreamAnalyticsState:
                  stages: Optional[pulumi.Input[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]] = None):
         """
         Input properties used for looking up and filtering ValueStreamAnalytics resources.
+
         :param pulumi.Input[_builtins.str] group_full_path: Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         :param pulumi.Input[_builtins.str] name: The name of the value stream
         :param pulumi.Input[_builtins.str] project_full_path: Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
@@ -239,6 +241,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
         $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics project "project:projects/sample:43"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_full_path: Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
@@ -318,6 +321,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
 
         $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics project "project:projects/sample:43"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ValueStreamAnalyticsArgs args: The arguments to use to populate this resource's properties.

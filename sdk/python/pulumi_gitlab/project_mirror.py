@@ -28,6 +28,7 @@ class ProjectMirrorArgs:
                  only_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectMirror resource.
+
         :param pulumi.Input[_builtins.str] project: The id of the project.
         :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored.
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
@@ -147,6 +148,7 @@ class _ProjectMirrorState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMirror resources.
+
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[_builtins.bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[_builtins.bool] keep_divergent_refs: Determines if divergent refs are skipped.
@@ -320,6 +322,7 @@ class ProjectMirror(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
@@ -371,6 +374,7 @@ class ProjectMirror(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectMirrorArgs args: The arguments to use to populate this resource's properties.

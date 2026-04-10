@@ -31,6 +31,7 @@ class ProjectVariableArgs:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectVariable resource.
+
         :param pulumi.Input[_builtins.str] key: The name of the variable.
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.str] value: The value of the variable.
@@ -196,6 +197,7 @@ class _ProjectVariableState:
                  variable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectVariable resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the variable.
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
@@ -396,6 +398,7 @@ class ProjectVariable(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the variable.
@@ -444,6 +447,7 @@ class ProjectVariable(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectVariable:ProjectVariable example '12345:project_variable_key:*'
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectVariableArgs args: The arguments to use to populate this resource's properties.

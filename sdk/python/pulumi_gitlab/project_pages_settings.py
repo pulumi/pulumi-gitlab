@@ -27,6 +27,7 @@ class ProjectPagesSettingsArgs:
                  keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPagesSettings resource.
+
         :param pulumi.Input[_builtins.str] project: The project ID or path.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
@@ -100,6 +101,7 @@ class _ProjectPagesSettingsState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPagesSettings resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]] deployments: List of current active deployments.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
@@ -226,6 +228,7 @@ class ProjectPagesSettings(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectPagesSettings:ProjectPagesSettings example 12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
@@ -260,6 +263,7 @@ class ProjectPagesSettings(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectPagesSettings:ProjectPagesSettings example 12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectPagesSettingsArgs args: The arguments to use to populate this resource's properties.

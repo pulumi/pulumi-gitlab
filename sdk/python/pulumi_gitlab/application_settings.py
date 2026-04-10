@@ -331,6 +331,7 @@ class ApplicationSettingsArgs:
                  wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ApplicationSettings resource.
+
         :param pulumi.Input[_builtins.str] abuse_notification_email: If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
         :param pulumi.Input[_builtins.bool] admin_mode: Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         :param pulumi.Input[_builtins.str] after_sign_out_path: Where to redirect users after logout.
@@ -5273,6 +5274,7 @@ class _ApplicationSettingsState:
                  wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ApplicationSettings resources.
+
         :param pulumi.Input[_builtins.str] abuse_notification_email: If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
         :param pulumi.Input[_builtins.bool] admin_mode: Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         :param pulumi.Input[_builtins.str] after_sign_out_path: Where to redirect users after logout.
@@ -10261,6 +10263,7 @@ class ApplicationSettings(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] abuse_notification_email: If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
@@ -10593,6 +10596,7 @@ class ApplicationSettings(pulumi.CustomResource):
         > Requires at administrative privileges on GitLab.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationSettingsArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class ProjectProtectedEnvironmentArgs:
                  deploy_access_levels_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a ProjectProtectedEnvironment resource.
+
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
@@ -118,6 +119,7 @@ class _ProjectProtectedEnvironmentState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
@@ -235,6 +237,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
@@ -271,6 +274,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectProtectedEnvironmentArgs args: The arguments to use to populate this resource's properties.

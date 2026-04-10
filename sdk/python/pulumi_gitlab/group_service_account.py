@@ -28,6 +28,7 @@ class GroupServiceAccountArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupServiceAccount resource.
+
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
@@ -112,6 +113,7 @@ class _GroupServiceAccountState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupServiceAccount resources.
+
         :param pulumi.Input[_builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
@@ -259,6 +261,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount example example
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
@@ -317,6 +320,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import gitlab:index/groupServiceAccount:GroupServiceAccount example example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupServiceAccountArgs args: The arguments to use to populate this resource's properties.
