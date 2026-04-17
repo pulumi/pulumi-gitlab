@@ -10,9 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.PipelineScheduleArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.PipelineScheduleState;
+import com.pulumi.gitlab.outputs.PipelineScheduleInput;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -31,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gitlab.PipelineSchedule;
  * import com.pulumi.gitlab.PipelineScheduleArgs;
+ * import com.pulumi.gitlab.inputs.PipelineScheduleInputArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,6 +53,15 @@ import javax.annotation.Nullable;
  *             .description("Used to schedule builds")
  *             .ref("refs/heads/main")
  *             .cron("0 1 * * *")
+ *             .inputs(            
+ *                 PipelineScheduleInputArgs.builder()
+ *                     .name("deploy_strategy")
+ *                     .value("rolling")
+ *                     .build(),
+ *                 PipelineScheduleInputArgs.builder()
+ *                     .name("environment")
+ *                     .value("production")
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -126,6 +139,20 @@ public class PipelineSchedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     * 
+     */
+    @Export(name="inputs", refs={List.class,PipelineScheduleInput.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<PipelineScheduleInput>> inputs;
+
+    /**
+     * @return List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     * 
+     */
+    public Output<Optional<List<PipelineScheduleInput>>> inputs() {
+        return Codegen.optional(this.inputs);
     }
     /**
      * The ID of the user that owns the pipeline schedule.

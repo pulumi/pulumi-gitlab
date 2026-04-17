@@ -52,7 +52,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetUserArgs {
     /**
-     * The public email address of the user.
+     * The email address of the user.
      */
     email?: string;
     /**
@@ -106,7 +106,7 @@ export interface GetUserResult {
      */
     readonly currentSignInAt: string;
     /**
-     * The public email address of the user.
+     * The email address of the user.
      */
     readonly email: string;
     /**
@@ -165,6 +165,10 @@ export interface GetUserResult {
      * Number of projects the user can create.
      */
     readonly projectsLimit: number;
+    /**
+     * The public email address of the user.
+     */
+    readonly publicEmail: string;
     /**
      * Skype username of the user.
      */
@@ -250,7 +254,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  */
 export interface GetUserOutputArgs {
     /**
-     * The public email address of the user.
+     * The email address of the user.
      */
     email?: pulumi.Input<string>;
     /**

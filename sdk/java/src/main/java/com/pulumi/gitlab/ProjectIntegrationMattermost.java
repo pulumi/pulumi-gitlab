@@ -12,7 +12,7 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectIntegrationMattermostState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost")
 public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomResource {
     /**
-     * Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
+     * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
     private Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
+     * @return Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     public Output<String> branchesToBeNotified() {
@@ -99,14 +99,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="confidentialIssueChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> confidentialIssueChannel;
+    private Output<String> confidentialIssueChannel;
 
     /**
      * @return The name of the channel to receive confidential issue events notifications.
      * 
      */
-    public Output<Optional<String>> confidentialIssueChannel() {
-        return Codegen.optional(this.confidentialIssueChannel);
+    public Output<String> confidentialIssueChannel() {
+        return this.confidentialIssueChannel;
     }
     /**
      * Enable notifications for confidential issues events.
@@ -127,14 +127,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="confidentialNoteChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> confidentialNoteChannel;
+    private Output<String> confidentialNoteChannel;
 
     /**
      * @return The name of the channel to receive confidential note events notifications.
      * 
      */
-    public Output<Optional<String>> confidentialNoteChannel() {
-        return Codegen.optional(this.confidentialNoteChannel);
+    public Output<String> confidentialNoteChannel() {
+        return this.confidentialNoteChannel;
     }
     /**
      * Enable notifications for confidential note events.
@@ -155,14 +155,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="issueChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> issueChannel;
+    private Output<String> issueChannel;
 
     /**
      * @return The name of the channel to receive issue events notifications.
      * 
      */
-    public Output<Optional<String>> issueChannel() {
-        return Codegen.optional(this.issueChannel);
+    public Output<String> issueChannel() {
+        return this.issueChannel;
     }
     /**
      * Enable notifications for issues events.
@@ -183,14 +183,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="mergeRequestChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mergeRequestChannel;
+    private Output<String> mergeRequestChannel;
 
     /**
      * @return The name of the channel to receive merge request events notifications.
      * 
      */
-    public Output<Optional<String>> mergeRequestChannel() {
-        return Codegen.optional(this.mergeRequestChannel);
+    public Output<String> mergeRequestChannel() {
+        return this.mergeRequestChannel;
     }
     /**
      * Enable notifications for merge requests events.
@@ -211,14 +211,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="noteChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> noteChannel;
+    private Output<String> noteChannel;
 
     /**
      * @return The name of the channel to receive note events notifications.
      * 
      */
-    public Output<Optional<String>> noteChannel() {
-        return Codegen.optional(this.noteChannel);
+    public Output<String> noteChannel() {
+        return this.noteChannel;
     }
     /**
      * Enable notifications for note events.
@@ -253,14 +253,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="pipelineChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> pipelineChannel;
+    private Output<String> pipelineChannel;
 
     /**
      * @return The name of the channel to receive pipeline events notifications.
      * 
      */
-    public Output<Optional<String>> pipelineChannel() {
-        return Codegen.optional(this.pipelineChannel);
+    public Output<String> pipelineChannel() {
+        return this.pipelineChannel;
     }
     /**
      * Enable notifications for pipeline events.
@@ -295,14 +295,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="pushChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> pushChannel;
+    private Output<String> pushChannel;
 
     /**
      * @return The name of the channel to receive push events notifications.
      * 
      */
-    public Output<Optional<String>> pushChannel() {
-        return Codegen.optional(this.pushChannel);
+    public Output<String> pushChannel() {
+        return this.pushChannel;
     }
     /**
      * Enable notifications for push events.
@@ -323,14 +323,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="tagPushChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tagPushChannel;
+    private Output<String> tagPushChannel;
 
     /**
      * @return The name of the channel to receive tag push events notifications.
      * 
      */
-    public Output<Optional<String>> tagPushChannel() {
-        return Codegen.optional(this.tagPushChannel);
+    public Output<String> tagPushChannel() {
+        return this.tagPushChannel;
     }
     /**
      * Enable notifications for tag push events.
@@ -351,14 +351,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> username;
+    private Output<String> username;
 
     /**
      * @return Username to use.
      * 
      */
-    public Output<Optional<String>> username() {
-        return Codegen.optional(this.username);
+    public Output<String> username() {
+        return this.username;
     }
     /**
      * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
@@ -379,14 +379,14 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="wikiPageChannel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> wikiPageChannel;
+    private Output<String> wikiPageChannel;
 
     /**
      * @return The name of the channel to receive wiki page events notifications.
      * 
      */
-    public Output<Optional<String>> wikiPageChannel() {
-        return Codegen.optional(this.wikiPageChannel);
+    public Output<String> wikiPageChannel() {
+        return this.wikiPageChannel;
     }
     /**
      * Enable notifications for wiki page events.
@@ -442,6 +442,9 @@ public class ProjectIntegrationMattermost extends com.pulumi.resources.CustomRes
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "webhook"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

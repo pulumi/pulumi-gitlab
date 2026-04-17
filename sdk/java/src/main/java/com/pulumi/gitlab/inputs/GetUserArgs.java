@@ -18,14 +18,14 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserArgs Empty = new GetUserArgs();
 
     /**
-     * The public email address of the user.
+     * The email address of the user.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The public email address of the user.
+     * @return The email address of the user.
      * 
      */
     public Optional<Output<String>> email() {
@@ -121,7 +121,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email The public email address of the user.
+         * @param email The email address of the user.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email The public email address of the user.
+         * @param email The email address of the user.
          * 
          * @return builder
          * 

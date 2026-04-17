@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.IntegrationPipelinesEmail` resource manages the lifecycle of a project integration with the Pipeline Emails Service.
     /// 
-    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationPipelinesEmail`instead!
+    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationPipelinesEmail` instead.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#pipeline-status-emails)
     /// 
@@ -63,16 +63,16 @@ namespace Pulumi.GitLab
     public partial class IntegrationPipelinesEmail : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, and `DefaultAndProtected`. Default is `Default`
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Default is `Default`.
         /// </summary>
         [Output("branchesToBeNotified")]
-        public Output<string?> BranchesToBeNotified { get; private set; } = null!;
+        public Output<string> BranchesToBeNotified { get; private set; } = null!;
 
         /// <summary>
         /// Notify only broken pipelines. Default is true.
         /// </summary>
         [Output("notifyOnlyBrokenPipelines")]
-        public Output<bool?> NotifyOnlyBrokenPipelines { get; private set; } = null!;
+        public Output<bool> NotifyOnlyBrokenPipelines { get; private set; } = null!;
 
         /// <summary>
         /// ID of the project you want to activate integration on.
@@ -81,7 +81,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// ) email addresses where notifications are sent.
+        /// Email addresses where notifications are sent.
         /// </summary>
         [Output("recipients")]
         public Output<ImmutableArray<string>> Recipients { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationPipelinesEmailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, and `DefaultAndProtected`. Default is `Default`
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Default is `Default`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _recipients;
 
         /// <summary>
-        /// ) email addresses where notifications are sent.
+        /// Email addresses where notifications are sent.
         /// </summary>
         public InputList<string> Recipients
         {
@@ -171,7 +171,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationPipelinesEmailState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, and `DefaultAndProtected`. Default is `Default`
+        /// Branches to send notifications for. Valid options are `All`, `Default`, `Protected`, `DefaultAndProtected`. Default is `Default`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         private InputList<string>? _recipients;
 
         /// <summary>
-        /// ) email addresses where notifications are sent.
+        /// Email addresses where notifications are sent.
         /// </summary>
         public InputList<string> Recipients
         {

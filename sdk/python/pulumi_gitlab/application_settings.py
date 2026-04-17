@@ -49,6 +49,7 @@ class ApplicationSettingsArgs:
                  bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
                  can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
@@ -86,6 +87,7 @@ class ApplicationSettingsArgs:
                  diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -172,6 +174,7 @@ class ApplicationSettingsArgs:
                  inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
                  include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
@@ -182,6 +185,7 @@ class ApplicationSettingsArgs:
                  local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
+                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -226,6 +230,8 @@ class ApplicationSettingsArgs:
                  plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
@@ -360,6 +366,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer.
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
@@ -397,6 +404,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
+        :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -483,6 +491,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
         :param pulumi.Input[_builtins.int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
         :param pulumi.Input[_builtins.int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
+        :param pulumi.Input[_builtins.int] inactive_resource_access_tokens_delete_after_days: Specifies retention period for inactive project and group access tokens. Default is 30.
         :param pulumi.Input[_builtins.bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping.
         :param pulumi.Input[_builtins.bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[_builtins.int] issues_create_limit: Max number of issue creation requests per minute per user.
@@ -493,6 +502,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] lock_memberships_to_saml: Set to true to lock all memberships to SAML. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[_builtins.str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[_builtins.bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -537,6 +547,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
@@ -697,6 +709,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
+        if ci_job_live_trace_enabled is not None:
+            pulumi.set(__self__, "ci_job_live_trace_enabled", ci_job_live_trace_enabled)
         if ci_max_includes is not None:
             pulumi.set(__self__, "ci_max_includes", ci_max_includes)
         if ci_max_total_yaml_size_bytes is not None:
@@ -774,6 +788,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "disable_admin_oauth_scopes", disable_admin_oauth_scopes)
         if disable_feed_token is not None:
             pulumi.set(__self__, "disable_feed_token", disable_feed_token)
+        if disable_overriding_approvers_per_merge_request is not None:
+            pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
         if disable_personal_access_tokens is not None:
             pulumi.set(__self__, "disable_personal_access_tokens", disable_personal_access_tokens)
         if disabled_oauth_sign_in_sources is not None:
@@ -946,6 +962,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "inactive_projects_min_size_mb", inactive_projects_min_size_mb)
         if inactive_projects_send_warning_email_after_months is not None:
             pulumi.set(__self__, "inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
+        if inactive_resource_access_tokens_delete_after_days is not None:
+            pulumi.set(__self__, "inactive_resource_access_tokens_delete_after_days", inactive_resource_access_tokens_delete_after_days)
         if include_optional_metrics_in_service_ping is not None:
             pulumi.set(__self__, "include_optional_metrics_in_service_ping", include_optional_metrics_in_service_ping)
         if invisible_captcha_enabled is not None:
@@ -966,6 +984,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
         if lock_memberships_to_ldap is not None:
             pulumi.set(__self__, "lock_memberships_to_ldap", lock_memberships_to_ldap)
+        if lock_memberships_to_saml is not None:
+            pulumi.set(__self__, "lock_memberships_to_saml", lock_memberships_to_saml)
         if mailgun_events_enabled is not None:
             pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
@@ -1054,6 +1074,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "plantuml_url", plantuml_url)
         if polling_interval_multiplier is not None:
             pulumi.set(__self__, "polling_interval_multiplier", polling_interval_multiplier)
+        if prevent_merge_requests_author_approval is not None:
+            pulumi.set(__self__, "prevent_merge_requests_author_approval", prevent_merge_requests_author_approval)
+        if prevent_merge_requests_committers_approval is not None:
+            pulumi.set(__self__, "prevent_merge_requests_committers_approval", prevent_merge_requests_committers_approval)
         if project_export_enabled is not None:
             pulumi.set(__self__, "project_export_enabled", project_export_enabled)
         if project_jobs_api_rate_limit is not None:
@@ -1598,6 +1622,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "check_namespace_plan", value)
 
     @_builtins.property
+    @pulumi.getter(name="ciJobLiveTraceEnabled")
+    def ci_job_live_trace_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        """
+        return pulumi.get(self, "ci_job_live_trace_enabled")
+
+    @ci_job_live_trace_enabled.setter
+    def ci_job_live_trace_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ci_job_live_trace_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
     def ci_max_includes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -2041,6 +2077,18 @@ class ApplicationSettingsArgs:
     @disable_feed_token.setter
     def disable_feed_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_feed_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
+    def disable_overriding_approvers_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent editing approval rules in projects and merge requests.
+        """
+        return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
+
+    @disable_overriding_approvers_per_merge_request.setter
+    def disable_overriding_approvers_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
@@ -3075,6 +3123,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "inactive_projects_send_warning_email_after_months", value)
 
     @_builtins.property
+    @pulumi.getter(name="inactiveResourceAccessTokensDeleteAfterDays")
+    def inactive_resource_access_tokens_delete_after_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies retention period for inactive project and group access tokens. Default is 30.
+        """
+        return pulumi.get(self, "inactive_resource_access_tokens_delete_after_days")
+
+    @inactive_resource_access_tokens_delete_after_days.setter
+    def inactive_resource_access_tokens_delete_after_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "inactive_resource_access_tokens_delete_after_days", value)
+
+    @_builtins.property
     @pulumi.getter(name="includeOptionalMetricsInServicePing")
     def include_optional_metrics_in_service_ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -3193,6 +3253,18 @@ class ApplicationSettingsArgs:
     @lock_memberships_to_ldap.setter
     def lock_memberships_to_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "lock_memberships_to_ldap", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockMembershipsToSaml")
+    def lock_memberships_to_saml(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_memberships_to_saml")
+
+    @lock_memberships_to_saml.setter
+    def lock_memberships_to_saml(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "lock_memberships_to_saml", value)
 
     @_builtins.property
     @pulumi.getter(name="mailgunEventsEnabled")
@@ -3721,6 +3793,30 @@ class ApplicationSettingsArgs:
     @polling_interval_multiplier.setter
     def polling_interval_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "polling_interval_multiplier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preventMergeRequestsAuthorApproval")
+    def prevent_merge_requests_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent approval by merge request creator (author).
+        """
+        return pulumi.get(self, "prevent_merge_requests_author_approval")
+
+    @prevent_merge_requests_author_approval.setter
+    def prevent_merge_requests_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_merge_requests_author_approval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preventMergeRequestsCommittersApproval")
+    def prevent_merge_requests_committers_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent approval by committers to merge requests.
+        """
+        return pulumi.get(self, "prevent_merge_requests_committers_approval")
+
+    @prevent_merge_requests_committers_approval.setter
+    def prevent_merge_requests_committers_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_merge_requests_committers_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
@@ -4990,6 +5086,7 @@ class _ApplicationSettingsState:
                  bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
                  can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
@@ -5027,6 +5124,7 @@ class _ApplicationSettingsState:
                  diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -5115,6 +5213,7 @@ class _ApplicationSettingsState:
                  inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
                  include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
@@ -5125,6 +5224,7 @@ class _ApplicationSettingsState:
                  local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
+                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -5169,6 +5269,8 @@ class _ApplicationSettingsState:
                  plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
@@ -5303,6 +5405,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer.
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
@@ -5340,6 +5443,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
+        :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -5428,6 +5532,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
         :param pulumi.Input[_builtins.int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
         :param pulumi.Input[_builtins.int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
+        :param pulumi.Input[_builtins.int] inactive_resource_access_tokens_delete_after_days: Specifies retention period for inactive project and group access tokens. Default is 30.
         :param pulumi.Input[_builtins.bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping.
         :param pulumi.Input[_builtins.bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[_builtins.int] issues_create_limit: Max number of issue creation requests per minute per user.
@@ -5438,6 +5543,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] lock_memberships_to_saml: Set to true to lock all memberships to SAML. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[_builtins.str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[_builtins.bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -5482,6 +5588,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
@@ -5642,6 +5750,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "can_create_group", can_create_group)
         if check_namespace_plan is not None:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
+        if ci_job_live_trace_enabled is not None:
+            pulumi.set(__self__, "ci_job_live_trace_enabled", ci_job_live_trace_enabled)
         if ci_max_includes is not None:
             pulumi.set(__self__, "ci_max_includes", ci_max_includes)
         if ci_max_total_yaml_size_bytes is not None:
@@ -5719,6 +5829,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "disable_admin_oauth_scopes", disable_admin_oauth_scopes)
         if disable_feed_token is not None:
             pulumi.set(__self__, "disable_feed_token", disable_feed_token)
+        if disable_overriding_approvers_per_merge_request is not None:
+            pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
         if disable_personal_access_tokens is not None:
             pulumi.set(__self__, "disable_personal_access_tokens", disable_personal_access_tokens)
         if disabled_oauth_sign_in_sources is not None:
@@ -5895,6 +6007,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "inactive_projects_min_size_mb", inactive_projects_min_size_mb)
         if inactive_projects_send_warning_email_after_months is not None:
             pulumi.set(__self__, "inactive_projects_send_warning_email_after_months", inactive_projects_send_warning_email_after_months)
+        if inactive_resource_access_tokens_delete_after_days is not None:
+            pulumi.set(__self__, "inactive_resource_access_tokens_delete_after_days", inactive_resource_access_tokens_delete_after_days)
         if include_optional_metrics_in_service_ping is not None:
             pulumi.set(__self__, "include_optional_metrics_in_service_ping", include_optional_metrics_in_service_ping)
         if invisible_captcha_enabled is not None:
@@ -5915,6 +6029,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
         if lock_memberships_to_ldap is not None:
             pulumi.set(__self__, "lock_memberships_to_ldap", lock_memberships_to_ldap)
+        if lock_memberships_to_saml is not None:
+            pulumi.set(__self__, "lock_memberships_to_saml", lock_memberships_to_saml)
         if mailgun_events_enabled is not None:
             pulumi.set(__self__, "mailgun_events_enabled", mailgun_events_enabled)
         if mailgun_signing_key is not None:
@@ -6003,6 +6119,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "plantuml_url", plantuml_url)
         if polling_interval_multiplier is not None:
             pulumi.set(__self__, "polling_interval_multiplier", polling_interval_multiplier)
+        if prevent_merge_requests_author_approval is not None:
+            pulumi.set(__self__, "prevent_merge_requests_author_approval", prevent_merge_requests_author_approval)
+        if prevent_merge_requests_committers_approval is not None:
+            pulumi.set(__self__, "prevent_merge_requests_committers_approval", prevent_merge_requests_committers_approval)
         if project_export_enabled is not None:
             pulumi.set(__self__, "project_export_enabled", project_export_enabled)
         if project_jobs_api_rate_limit is not None:
@@ -6547,6 +6667,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "check_namespace_plan", value)
 
     @_builtins.property
+    @pulumi.getter(name="ciJobLiveTraceEnabled")
+    def ci_job_live_trace_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        """
+        return pulumi.get(self, "ci_job_live_trace_enabled")
+
+    @ci_job_live_trace_enabled.setter
+    def ci_job_live_trace_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ci_job_live_trace_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
     def ci_max_includes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -6990,6 +7122,18 @@ class _ApplicationSettingsState:
     @disable_feed_token.setter
     def disable_feed_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_feed_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
+    def disable_overriding_approvers_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent editing approval rules in projects and merge requests.
+        """
+        return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
+
+    @disable_overriding_approvers_per_merge_request.setter
+    def disable_overriding_approvers_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
@@ -8048,6 +8192,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "inactive_projects_send_warning_email_after_months", value)
 
     @_builtins.property
+    @pulumi.getter(name="inactiveResourceAccessTokensDeleteAfterDays")
+    def inactive_resource_access_tokens_delete_after_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies retention period for inactive project and group access tokens. Default is 30.
+        """
+        return pulumi.get(self, "inactive_resource_access_tokens_delete_after_days")
+
+    @inactive_resource_access_tokens_delete_after_days.setter
+    def inactive_resource_access_tokens_delete_after_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "inactive_resource_access_tokens_delete_after_days", value)
+
+    @_builtins.property
     @pulumi.getter(name="includeOptionalMetricsInServicePing")
     def include_optional_metrics_in_service_ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -8166,6 +8322,18 @@ class _ApplicationSettingsState:
     @lock_memberships_to_ldap.setter
     def lock_memberships_to_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "lock_memberships_to_ldap", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockMembershipsToSaml")
+    def lock_memberships_to_saml(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_memberships_to_saml")
+
+    @lock_memberships_to_saml.setter
+    def lock_memberships_to_saml(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "lock_memberships_to_saml", value)
 
     @_builtins.property
     @pulumi.getter(name="mailgunEventsEnabled")
@@ -8694,6 +8862,30 @@ class _ApplicationSettingsState:
     @polling_interval_multiplier.setter
     def polling_interval_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "polling_interval_multiplier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preventMergeRequestsAuthorApproval")
+    def prevent_merge_requests_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent approval by merge request creator (author).
+        """
+        return pulumi.get(self, "prevent_merge_requests_author_approval")
+
+    @prevent_merge_requests_author_approval.setter
+    def prevent_merge_requests_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_merge_requests_author_approval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preventMergeRequestsCommittersApproval")
+    def prevent_merge_requests_committers_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent approval by committers to merge requests.
+        """
+        return pulumi.get(self, "prevent_merge_requests_committers_approval")
+
+    @prevent_merge_requests_committers_approval.setter
+    def prevent_merge_requests_committers_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_merge_requests_committers_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
@@ -9966,6 +10158,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
                  can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
@@ -10003,6 +10196,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -10089,6 +10283,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
                  include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
@@ -10099,6 +10294,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
+                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -10143,6 +10339,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
@@ -10294,6 +10492,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer.
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
@@ -10331,6 +10530,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
+        :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -10417,6 +10617,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
         :param pulumi.Input[_builtins.int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
         :param pulumi.Input[_builtins.int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
+        :param pulumi.Input[_builtins.int] inactive_resource_access_tokens_delete_after_days: Specifies retention period for inactive project and group access tokens. Default is 30.
         :param pulumi.Input[_builtins.bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping.
         :param pulumi.Input[_builtins.bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[_builtins.int] issues_create_limit: Max number of issue creation requests per minute per user.
@@ -10427,6 +10628,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] lock_memberships_to_saml: Set to true to lock all memberships to SAML. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[_builtins.str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[_builtins.bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -10471,6 +10673,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
@@ -10641,6 +10845,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
                  can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
                  check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
@@ -10678,6 +10883,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -10764,6 +10970,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
                  include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
                  invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
@@ -10774,6 +10981,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
                  lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
+                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -10818,6 +11026,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
                  polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
@@ -10958,6 +11168,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["bulk_import_max_download_file_size"] = bulk_import_max_download_file_size
             __props__.__dict__["can_create_group"] = can_create_group
             __props__.__dict__["check_namespace_plan"] = check_namespace_plan
+            __props__.__dict__["ci_job_live_trace_enabled"] = ci_job_live_trace_enabled
             __props__.__dict__["ci_max_includes"] = ci_max_includes
             __props__.__dict__["ci_max_total_yaml_size_bytes"] = ci_max_total_yaml_size_bytes
             __props__.__dict__["commit_email_hostname"] = commit_email_hostname
@@ -10995,6 +11206,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["diff_max_patch_bytes"] = diff_max_patch_bytes
             __props__.__dict__["disable_admin_oauth_scopes"] = disable_admin_oauth_scopes
             __props__.__dict__["disable_feed_token"] = disable_feed_token
+            __props__.__dict__["disable_overriding_approvers_per_merge_request"] = disable_overriding_approvers_per_merge_request
             __props__.__dict__["disable_personal_access_tokens"] = disable_personal_access_tokens
             __props__.__dict__["disabled_oauth_sign_in_sources"] = disabled_oauth_sign_in_sources
             __props__.__dict__["dns_rebinding_protection_enabled"] = dns_rebinding_protection_enabled
@@ -11081,6 +11293,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["inactive_projects_delete_after_months"] = inactive_projects_delete_after_months
             __props__.__dict__["inactive_projects_min_size_mb"] = inactive_projects_min_size_mb
             __props__.__dict__["inactive_projects_send_warning_email_after_months"] = inactive_projects_send_warning_email_after_months
+            __props__.__dict__["inactive_resource_access_tokens_delete_after_days"] = inactive_resource_access_tokens_delete_after_days
             __props__.__dict__["include_optional_metrics_in_service_ping"] = include_optional_metrics_in_service_ping
             __props__.__dict__["invisible_captcha_enabled"] = invisible_captcha_enabled
             __props__.__dict__["issues_create_limit"] = issues_create_limit
@@ -11091,6 +11304,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["local_markdown_version"] = local_markdown_version
             __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
             __props__.__dict__["lock_memberships_to_ldap"] = lock_memberships_to_ldap
+            __props__.__dict__["lock_memberships_to_saml"] = lock_memberships_to_saml
             __props__.__dict__["mailgun_events_enabled"] = mailgun_events_enabled
             __props__.__dict__["mailgun_signing_key"] = None if mailgun_signing_key is None else pulumi.Output.secret(mailgun_signing_key)
             __props__.__dict__["maintenance_mode"] = maintenance_mode
@@ -11135,6 +11349,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["plantuml_enabled"] = plantuml_enabled
             __props__.__dict__["plantuml_url"] = plantuml_url
             __props__.__dict__["polling_interval_multiplier"] = polling_interval_multiplier
+            __props__.__dict__["prevent_merge_requests_author_approval"] = prevent_merge_requests_author_approval
+            __props__.__dict__["prevent_merge_requests_committers_approval"] = prevent_merge_requests_committers_approval
             __props__.__dict__["project_export_enabled"] = project_export_enabled
             __props__.__dict__["project_jobs_api_rate_limit"] = project_jobs_api_rate_limit
             __props__.__dict__["projects_api_rate_limit_unauthenticated"] = projects_api_rate_limit_unauthenticated
@@ -11280,6 +11496,7 @@ class ApplicationSettings(pulumi.CustomResource):
             bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
             can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
             check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
+            ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
             ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
             commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
@@ -11317,6 +11534,7 @@ class ApplicationSettings(pulumi.CustomResource):
             diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
             disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
+            disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
             disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -11405,6 +11623,7 @@ class ApplicationSettings(pulumi.CustomResource):
             inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
             inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
             inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
+            inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
             include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
             invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
@@ -11415,6 +11634,7 @@ class ApplicationSettings(pulumi.CustomResource):
             local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
             lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
+            lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
             mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
             maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -11459,6 +11679,8 @@ class ApplicationSettings(pulumi.CustomResource):
             plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
             polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
+            prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
+            prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
             project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
             projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
@@ -11597,6 +11819,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] bulk_import_max_download_file_size: Maximum download file size when importing from source GitLab instances by direct transfer.
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
+        :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
@@ -11634,6 +11857,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] diff_max_patch_bytes: Maximum diff patch size, in bytes.
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
+        :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -11722,6 +11946,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
         :param pulumi.Input[_builtins.int] inactive_projects_min_size_mb: If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
         :param pulumi.Input[_builtins.int] inactive_projects_send_warning_email_after_months: If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
+        :param pulumi.Input[_builtins.int] inactive_resource_access_tokens_delete_after_days: Specifies retention period for inactive project and group access tokens. Default is 30.
         :param pulumi.Input[_builtins.bool] include_optional_metrics_in_service_ping: Whether or not optional metrics are enabled in Service Ping.
         :param pulumi.Input[_builtins.bool] invisible_captcha_enabled: Enable Invisible CAPTCHA spam detection during sign-up.
         :param pulumi.Input[_builtins.int] issues_create_limit: Max number of issue creation requests per minute per user.
@@ -11732,6 +11957,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] local_markdown_version: Increase this value when any cached Markdown should be invalidated.
         :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] lock_memberships_to_ldap: Set to true to lock all memberships to LDAP. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] lock_memberships_to_saml: Set to true to lock all memberships to SAML. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mailgun_events_enabled: Enable Mailgun event receiver.
         :param pulumi.Input[_builtins.str] mailgun_signing_key: The Mailgun HTTP webhook signing key for receiving events from webhook.
         :param pulumi.Input[_builtins.bool] maintenance_mode: When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
@@ -11776,6 +12002,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
+        :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
@@ -11912,6 +12140,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["bulk_import_max_download_file_size"] = bulk_import_max_download_file_size
         __props__.__dict__["can_create_group"] = can_create_group
         __props__.__dict__["check_namespace_plan"] = check_namespace_plan
+        __props__.__dict__["ci_job_live_trace_enabled"] = ci_job_live_trace_enabled
         __props__.__dict__["ci_max_includes"] = ci_max_includes
         __props__.__dict__["ci_max_total_yaml_size_bytes"] = ci_max_total_yaml_size_bytes
         __props__.__dict__["commit_email_hostname"] = commit_email_hostname
@@ -11949,6 +12178,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["diff_max_patch_bytes"] = diff_max_patch_bytes
         __props__.__dict__["disable_admin_oauth_scopes"] = disable_admin_oauth_scopes
         __props__.__dict__["disable_feed_token"] = disable_feed_token
+        __props__.__dict__["disable_overriding_approvers_per_merge_request"] = disable_overriding_approvers_per_merge_request
         __props__.__dict__["disable_personal_access_tokens"] = disable_personal_access_tokens
         __props__.__dict__["disabled_oauth_sign_in_sources"] = disabled_oauth_sign_in_sources
         __props__.__dict__["dns_rebinding_protection_enabled"] = dns_rebinding_protection_enabled
@@ -12037,6 +12267,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["inactive_projects_delete_after_months"] = inactive_projects_delete_after_months
         __props__.__dict__["inactive_projects_min_size_mb"] = inactive_projects_min_size_mb
         __props__.__dict__["inactive_projects_send_warning_email_after_months"] = inactive_projects_send_warning_email_after_months
+        __props__.__dict__["inactive_resource_access_tokens_delete_after_days"] = inactive_resource_access_tokens_delete_after_days
         __props__.__dict__["include_optional_metrics_in_service_ping"] = include_optional_metrics_in_service_ping
         __props__.__dict__["invisible_captcha_enabled"] = invisible_captcha_enabled
         __props__.__dict__["issues_create_limit"] = issues_create_limit
@@ -12047,6 +12278,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["local_markdown_version"] = local_markdown_version
         __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
         __props__.__dict__["lock_memberships_to_ldap"] = lock_memberships_to_ldap
+        __props__.__dict__["lock_memberships_to_saml"] = lock_memberships_to_saml
         __props__.__dict__["mailgun_events_enabled"] = mailgun_events_enabled
         __props__.__dict__["mailgun_signing_key"] = mailgun_signing_key
         __props__.__dict__["maintenance_mode"] = maintenance_mode
@@ -12091,6 +12323,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["plantuml_enabled"] = plantuml_enabled
         __props__.__dict__["plantuml_url"] = plantuml_url
         __props__.__dict__["polling_interval_multiplier"] = polling_interval_multiplier
+        __props__.__dict__["prevent_merge_requests_author_approval"] = prevent_merge_requests_author_approval
+        __props__.__dict__["prevent_merge_requests_committers_approval"] = prevent_merge_requests_committers_approval
         __props__.__dict__["project_export_enabled"] = project_export_enabled
         __props__.__dict__["project_jobs_api_rate_limit"] = project_jobs_api_rate_limit
         __props__.__dict__["projects_api_rate_limit_unauthenticated"] = projects_api_rate_limit_unauthenticated
@@ -12421,6 +12655,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "check_namespace_plan")
 
     @_builtins.property
+    @pulumi.getter(name="ciJobLiveTraceEnabled")
+    def ci_job_live_trace_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        """
+        return pulumi.get(self, "ci_job_live_trace_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
     def ci_max_includes(self) -> pulumi.Output[_builtins.int]:
         """
@@ -12716,6 +12958,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Disable display of RSS/Atom and calendar feed tokens.
         """
         return pulumi.get(self, "disable_feed_token")
+
+    @_builtins.property
+    @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
+    def disable_overriding_approvers_per_merge_request(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Prevent editing approval rules in projects and merge requests.
+        """
+        return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
@@ -13422,6 +13672,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
     @_builtins.property
+    @pulumi.getter(name="inactiveResourceAccessTokensDeleteAfterDays")
+    def inactive_resource_access_tokens_delete_after_days(self) -> pulumi.Output[_builtins.int]:
+        """
+        Specifies retention period for inactive project and group access tokens. Default is 30.
+        """
+        return pulumi.get(self, "inactive_resource_access_tokens_delete_after_days")
+
+    @_builtins.property
     @pulumi.getter(name="includeOptionalMetricsInServicePing")
     def include_optional_metrics_in_service_ping(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -13500,6 +13758,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_memberships_to_ldap")
+
+    @_builtins.property
+    @pulumi.getter(name="lockMembershipsToSaml")
+    def lock_memberships_to_saml(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "lock_memberships_to_saml")
 
     @_builtins.property
     @pulumi.getter(name="mailgunEventsEnabled")
@@ -13852,6 +14118,22 @@ class ApplicationSettings(pulumi.CustomResource):
         Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         """
         return pulumi.get(self, "polling_interval_multiplier")
+
+    @_builtins.property
+    @pulumi.getter(name="preventMergeRequestsAuthorApproval")
+    def prevent_merge_requests_author_approval(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Prevent approval by merge request creator (author).
+        """
+        return pulumi.get(self, "prevent_merge_requests_author_approval")
+
+    @_builtins.property
+    @pulumi.getter(name="preventMergeRequestsCommittersApproval")
+    def prevent_merge_requests_committers_approval(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Prevent approval by committers to merge requests.
+        """
+        return pulumi.get(self, "prevent_merge_requests_committers_approval")
 
     @_builtins.property
     @pulumi.getter(name="projectExportEnabled")

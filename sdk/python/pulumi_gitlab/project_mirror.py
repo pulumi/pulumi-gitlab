@@ -30,7 +30,7 @@ class ProjectMirrorArgs:
         The set of arguments for constructing a ProjectMirror resource.
 
         :param pulumi.Input[_builtins.str] project: The id of the project.
-        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored.
+        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[_builtins.bool] enabled: Determines if the mirror is enabled.
         :param pulumi.Input[_builtins.bool] keep_divergent_refs: Determines if divergent refs are skipped.
@@ -66,7 +66,7 @@ class ProjectMirrorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[_builtins.str]:
         """
-        The URL of the remote repository to be mirrored.
+        The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         """
         return pulumi.get(self, "url")
 
@@ -156,7 +156,7 @@ class _ProjectMirrorState:
         :param pulumi.Input[_builtins.int] mirror_id: Mirror ID.
         :param pulumi.Input[_builtins.bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[_builtins.str] project: The id of the project.
-        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored.
+        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         """
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
@@ -263,7 +263,7 @@ class _ProjectMirrorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The URL of the remote repository to be mirrored.
+        The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         """
         return pulumi.get(self, "url")
 
@@ -331,7 +331,7 @@ class ProjectMirror(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[_builtins.str] project: The id of the project.
-        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored.
+        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         """
         ...
     @overload
@@ -453,7 +453,7 @@ class ProjectMirror(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mirror_id: Mirror ID.
         :param pulumi.Input[_builtins.bool] only_protected_branches: Determines if only protected branches are mirrored.
         :param pulumi.Input[_builtins.str] project: The id of the project.
-        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored.
+        :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -529,7 +529,7 @@ class ProjectMirror(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[_builtins.str]:
         """
-        The URL of the remote repository to be mirrored.
+        The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         """
         return pulumi.get(self, "url")
 

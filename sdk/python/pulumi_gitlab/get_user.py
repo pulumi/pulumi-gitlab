@@ -26,7 +26,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, email_exact_match=None, extern_uid=None, external=None, id=None, is_admin=None, is_bot=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
+    def __init__(__self__, avatar_url=None, bio=None, can_create_group=None, can_create_project=None, color_scheme_id=None, created_at=None, current_sign_in_at=None, email=None, email_exact_match=None, extern_uid=None, external=None, id=None, is_admin=None, is_bot=None, last_sign_in_at=None, linkedin=None, location=None, name=None, namespace_id=None, note=None, organization=None, projects_limit=None, public_email=None, skype=None, state=None, theme_id=None, twitter=None, two_factor_enabled=None, user_id=None, user_provider=None, username=None, website_url=None):
         if avatar_url and not isinstance(avatar_url, str):
             raise TypeError("Expected argument 'avatar_url' to be a str")
         pulumi.set(__self__, "avatar_url", avatar_url)
@@ -93,6 +93,9 @@ class GetUserResult:
         if projects_limit and not isinstance(projects_limit, int):
             raise TypeError("Expected argument 'projects_limit' to be a int")
         pulumi.set(__self__, "projects_limit", projects_limit)
+        if public_email and not isinstance(public_email, str):
+            raise TypeError("Expected argument 'public_email' to be a str")
+        pulumi.set(__self__, "public_email", public_email)
         if skype and not isinstance(skype, str):
             raise TypeError("Expected argument 'skype' to be a str")
         pulumi.set(__self__, "skype", skype)
@@ -181,7 +184,7 @@ class GetUserResult:
     @pulumi.getter
     def email(self) -> _builtins.str:
         """
-        The public email address of the user.
+        The email address of the user.
         """
         return pulumi.get(self, "email")
 
@@ -298,6 +301,14 @@ class GetUserResult:
         return pulumi.get(self, "projects_limit")
 
     @_builtins.property
+    @pulumi.getter(name="publicEmail")
+    def public_email(self) -> _builtins.str:
+        """
+        The public email address of the user.
+        """
+        return pulumi.get(self, "public_email")
+
+    @_builtins.property
     @pulumi.getter
     def skype(self) -> _builtins.str:
         """
@@ -398,6 +409,7 @@ class AwaitableGetUserResult(GetUserResult):
             note=self.note,
             organization=self.organization,
             projects_limit=self.projects_limit,
+            public_email=self.public_email,
             skype=self.skype,
             state=self.state,
             theme_id=self.theme_id,
@@ -441,7 +453,7 @@ def get_user(email: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str email: The public email address of the user.
+    :param _builtins.str email: The email address of the user.
     :param _builtins.bool email_exact_match: (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
     :param _builtins.int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
     :param _builtins.int user_id: The ID of the user.
@@ -479,6 +491,7 @@ def get_user(email: Optional[_builtins.str] = None,
         note=pulumi.get(__ret__, 'note'),
         organization=pulumi.get(__ret__, 'organization'),
         projects_limit=pulumi.get(__ret__, 'projects_limit'),
+        public_email=pulumi.get(__ret__, 'public_email'),
         skype=pulumi.get(__ret__, 'skype'),
         state=pulumi.get(__ret__, 'state'),
         theme_id=pulumi.get(__ret__, 'theme_id'),
@@ -520,7 +533,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
     ```
 
 
-    :param _builtins.str email: The public email address of the user.
+    :param _builtins.str email: The email address of the user.
     :param _builtins.bool email_exact_match: (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
     :param _builtins.int namespace_id: The ID of the user's namespace. Requires admin token to access this field.
     :param _builtins.int user_id: The ID of the user.
@@ -557,6 +570,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
         note=pulumi.get(__response__, 'note'),
         organization=pulumi.get(__response__, 'organization'),
         projects_limit=pulumi.get(__response__, 'projects_limit'),
+        public_email=pulumi.get(__response__, 'public_email'),
         skype=pulumi.get(__response__, 'skype'),
         state=pulumi.get(__response__, 'state'),
         theme_id=pulumi.get(__response__, 'theme_id'),

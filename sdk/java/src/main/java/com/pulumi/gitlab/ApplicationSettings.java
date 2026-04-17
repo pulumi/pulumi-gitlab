@@ -432,6 +432,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.checkNamespacePlan;
     }
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    @Export(name="ciJobLiveTraceEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ciJobLiveTraceEnabled;
+
+    /**
+     * @return Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    public Output<Boolean> ciJobLiveTraceEnabled() {
+        return this.ciJobLiveTraceEnabled;
+    }
+    /**
      * The maximum number of includes per pipeline.
      * 
      */
@@ -952,6 +966,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> disableFeedToken() {
         return this.disableFeedToken;
+    }
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    @Export(name="disableOverridingApproversPerMergeRequest", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disableOverridingApproversPerMergeRequest;
+
+    /**
+     * @return Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    public Output<Boolean> disableOverridingApproversPerMergeRequest() {
+        return this.disableOverridingApproversPerMergeRequest;
     }
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -2186,6 +2214,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.inactiveProjectsSendWarningEmailAfterMonths;
     }
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    @Export(name="inactiveResourceAccessTokensDeleteAfterDays", refs={Integer.class}, tree="[0]")
+    private Output<Integer> inactiveResourceAccessTokensDeleteAfterDays;
+
+    /**
+     * @return Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    public Output<Integer> inactiveResourceAccessTokensDeleteAfterDays() {
+        return this.inactiveResourceAccessTokensDeleteAfterDays;
+    }
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      * 
      */
@@ -2324,6 +2366,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> lockMembershipsToLdap() {
         return this.lockMembershipsToLdap;
+    }
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="lockMembershipsToSaml", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> lockMembershipsToSaml;
+
+    /**
+     * @return Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> lockMembershipsToSaml() {
+        return this.lockMembershipsToSaml;
     }
     /**
      * Enable Mailgun event receiver.
@@ -2940,6 +2996,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Double> pollingIntervalMultiplier() {
         return this.pollingIntervalMultiplier;
+    }
+    /**
+     * Prevent approval by merge request creator (author).
+     * 
+     */
+    @Export(name="preventMergeRequestsAuthorApproval", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventMergeRequestsAuthorApproval;
+
+    /**
+     * @return Prevent approval by merge request creator (author).
+     * 
+     */
+    public Output<Boolean> preventMergeRequestsAuthorApproval() {
+        return this.preventMergeRequestsAuthorApproval;
+    }
+    /**
+     * Prevent approval by committers to merge requests.
+     * 
+     */
+    @Export(name="preventMergeRequestsCommittersApproval", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventMergeRequestsCommittersApproval;
+
+    /**
+     * @return Prevent approval by committers to merge requests.
+     * 
+     */
+    public Output<Boolean> preventMergeRequestsCommittersApproval() {
+        return this.preventMergeRequestsCommittersApproval;
     }
     /**
      * Enable project export.

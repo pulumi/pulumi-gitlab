@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,6 +22,16 @@ import * as utilities from "./utilities";
  *     description: "Used to schedule builds",
  *     ref: "refs/heads/main",
  *     cron: "0 1 * * *",
+ *     inputs: [
+ *         {
+ *             name: "deploy_strategy",
+ *             value: "rolling",
+ *         },
+ *         {
+ *             name: "environment",
+ *             value: "production",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -80,6 +92,10 @@ export class PipelineSchedule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     */
+    declare public readonly inputs: pulumi.Output<outputs.PipelineScheduleInput[] | undefined>;
+    /**
      * The ID of the user that owns the pipeline schedule.
      */
     declare public /*out*/ readonly owner: pulumi.Output<number>;
@@ -117,6 +133,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
             resourceInputs["cron"] = state?.cron;
             resourceInputs["cronTimezone"] = state?.cronTimezone;
             resourceInputs["description"] = state?.description;
+            resourceInputs["inputs"] = state?.inputs;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["pipelineScheduleId"] = state?.pipelineScheduleId;
             resourceInputs["project"] = state?.project;
@@ -140,6 +157,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
             resourceInputs["cron"] = args?.cron;
             resourceInputs["cronTimezone"] = args?.cronTimezone;
             resourceInputs["description"] = args?.description;
+            resourceInputs["inputs"] = args?.inputs;
             resourceInputs["project"] = args?.project;
             resourceInputs["ref"] = args?.ref;
             resourceInputs["takeOwnership"] = args?.takeOwnership;
@@ -171,6 +189,10 @@ export interface PipelineScheduleState {
      * The description of the pipeline schedule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     */
+    inputs?: pulumi.Input<pulumi.Input<inputs.PipelineScheduleInput>[]>;
     /**
      * The ID of the user that owns the pipeline schedule.
      */
@@ -213,6 +235,10 @@ export interface PipelineScheduleArgs {
      * The description of the pipeline schedule.
      */
     description: pulumi.Input<string>;
+    /**
+     * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     */
+    inputs?: pulumi.Input<pulumi.Input<inputs.PipelineScheduleInput>[]>;
     /**
      * The name or id of the project to add the schedule to.
      */

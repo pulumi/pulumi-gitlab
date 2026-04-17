@@ -5,6 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.outputs.GetPipelineScheduleInput;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleLastPipeline;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleOwner;
 import com.pulumi.gitlab.outputs.GetPipelineScheduleVariable;
@@ -46,6 +47,11 @@ public final class GetPipelineScheduleResult {
      * 
      */
     private String id;
+    /**
+     * @return List of pipeline schedule inputs. Each element has `name` and `value`.
+     * 
+     */
+    private List<GetPipelineScheduleInput> inputs;
     /**
      * @return The details of the last pipeline run by the schedule.
      * 
@@ -131,6 +137,13 @@ public final class GetPipelineScheduleResult {
         return this.id;
     }
     /**
+     * @return List of pipeline schedule inputs. Each element has `name` and `value`.
+     * 
+     */
+    public List<GetPipelineScheduleInput> inputs() {
+        return this.inputs;
+    }
+    /**
      * @return The details of the last pipeline run by the schedule.
      * 
      */
@@ -202,6 +215,7 @@ public final class GetPipelineScheduleResult {
         private String cronTimezone;
         private String description;
         private String id;
+        private List<GetPipelineScheduleInput> inputs;
         private GetPipelineScheduleLastPipeline lastPipeline;
         private String nextRunAt;
         private GetPipelineScheduleOwner owner;
@@ -219,6 +233,7 @@ public final class GetPipelineScheduleResult {
     	      this.cronTimezone = defaults.cronTimezone;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.inputs = defaults.inputs;
     	      this.lastPipeline = defaults.lastPipeline;
     	      this.nextRunAt = defaults.nextRunAt;
     	      this.owner = defaults.owner;
@@ -276,6 +291,17 @@ public final class GetPipelineScheduleResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder inputs(List<GetPipelineScheduleInput> inputs) {
+            if (inputs == null) {
+              throw new MissingRequiredPropertyException("GetPipelineScheduleResult", "inputs");
+            }
+            this.inputs = inputs;
+            return this;
+        }
+        public Builder inputs(GetPipelineScheduleInput... inputs) {
+            return inputs(List.of(inputs));
         }
         @CustomType.Setter
         public Builder lastPipeline(GetPipelineScheduleLastPipeline lastPipeline) {
@@ -352,6 +378,7 @@ public final class GetPipelineScheduleResult {
             _resultValue.cronTimezone = cronTimezone;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.inputs = inputs;
             _resultValue.lastPipeline = lastPipeline;
             _resultValue.nextRunAt = nextRunAt;
             _resultValue.owner = owner;

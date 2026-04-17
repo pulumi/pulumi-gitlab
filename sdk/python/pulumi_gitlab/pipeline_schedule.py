@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PipelineScheduleArgs', 'PipelineSchedule']
 
@@ -25,6 +27,7 @@ class PipelineScheduleArgs:
                  ref: pulumi.Input[_builtins.str],
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]] = None,
                  take_ownership: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PipelineSchedule resource.
@@ -35,6 +38,7 @@ class PipelineScheduleArgs:
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         :param pulumi.Input[_builtins.bool] active: The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         pulumi.set(__self__, "cron", cron)
@@ -45,6 +49,8 @@ class PipelineScheduleArgs:
             pulumi.set(__self__, "active", active)
         if cron_timezone is not None:
             pulumi.set(__self__, "cron_timezone", cron_timezone)
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
         if take_ownership is not None:
             pulumi.set(__self__, "take_ownership", take_ownership)
 
@@ -121,6 +127,18 @@ class PipelineScheduleArgs:
         pulumi.set(self, "cron_timezone", value)
 
     @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]:
+        """
+        List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+        """
+        return pulumi.get(self, "inputs")
+
+    @inputs.setter
+    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]):
+        pulumi.set(self, "inputs", value)
+
+    @_builtins.property
     @pulumi.getter(name="takeOwnership")
     def take_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -140,6 +158,7 @@ class _PipelineScheduleState:
                  cron: Optional[pulumi.Input[_builtins.str]] = None,
                  cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]] = None,
                  owner: Optional[pulumi.Input[_builtins.int]] = None,
                  pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -152,6 +171,7 @@ class _PipelineScheduleState:
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         :param pulumi.Input[_builtins.int] owner: The ID of the user that owns the pipeline schedule.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
@@ -166,6 +186,8 @@ class _PipelineScheduleState:
             pulumi.set(__self__, "cron_timezone", cron_timezone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if pipeline_schedule_id is not None:
@@ -224,6 +246,18 @@ class _PipelineScheduleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]:
+        """
+        List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+        """
+        return pulumi.get(self, "inputs")
+
+    @inputs.setter
+    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]):
+        pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -296,6 +330,7 @@ class PipelineSchedule(pulumi.CustomResource):
                  cron: Optional[pulumi.Input[_builtins.str]] = None,
                  cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  ref: Optional[pulumi.Input[_builtins.str]] = None,
                  take_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -315,7 +350,17 @@ class PipelineSchedule(pulumi.CustomResource):
             project="12345",
             description="Used to schedule builds",
             ref="refs/heads/main",
-            cron="0 1 * * *")
+            cron="0 1 * * *",
+            inputs=[
+                {
+                    "name": "deploy_strategy",
+                    "value": "rolling",
+                },
+                {
+                    "name": "environment",
+                    "value": "production",
+                },
+            ])
         ```
 
         ## Import
@@ -337,6 +382,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
@@ -362,7 +408,17 @@ class PipelineSchedule(pulumi.CustomResource):
             project="12345",
             description="Used to schedule builds",
             ref="refs/heads/main",
-            cron="0 1 * * *")
+            cron="0 1 * * *",
+            inputs=[
+                {
+                    "name": "deploy_strategy",
+                    "value": "rolling",
+                },
+                {
+                    "name": "environment",
+                    "value": "production",
+                },
+            ])
         ```
 
         ## Import
@@ -397,6 +453,7 @@ class PipelineSchedule(pulumi.CustomResource):
                  cron: Optional[pulumi.Input[_builtins.str]] = None,
                  cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  ref: Optional[pulumi.Input[_builtins.str]] = None,
                  take_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -417,6 +474,7 @@ class PipelineSchedule(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["inputs"] = inputs
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -440,6 +498,7 @@ class PipelineSchedule(pulumi.CustomResource):
             cron: Optional[pulumi.Input[_builtins.str]] = None,
             cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
             owner: Optional[pulumi.Input[_builtins.int]] = None,
             pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -456,6 +515,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         :param pulumi.Input[_builtins.int] owner: The ID of the user that owns the pipeline schedule.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
@@ -470,6 +530,7 @@ class PipelineSchedule(pulumi.CustomResource):
         __props__.__dict__["cron"] = cron
         __props__.__dict__["cron_timezone"] = cron_timezone
         __props__.__dict__["description"] = description
+        __props__.__dict__["inputs"] = inputs
         __props__.__dict__["owner"] = owner
         __props__.__dict__["pipeline_schedule_id"] = pipeline_schedule_id
         __props__.__dict__["project"] = project
@@ -508,6 +569,14 @@ class PipelineSchedule(pulumi.CustomResource):
         The description of the pipeline schedule.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> pulumi.Output[Optional[Sequence['outputs.PipelineScheduleInput']]]:
+        """
+        List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+        """
+        return pulumi.get(self, "inputs")
 
     @_builtins.property
     @pulumi.getter

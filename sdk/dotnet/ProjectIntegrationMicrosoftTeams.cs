@@ -63,79 +63,79 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        /// Branches to send notifications for. Valid values are: `All`, `Default`, `Protected`, `DefaultAndProtected`
         /// </summary>
         [Output("branchesToBeNotified")]
-        public Output<string?> BranchesToBeNotified { get; private set; } = null!;
+        public Output<string> BranchesToBeNotified { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for confidential issue events
+        /// Enable notifications for confidential issue events.
         /// </summary>
         [Output("confidentialIssuesEvents")]
-        public Output<bool?> ConfidentialIssuesEvents { get; private set; } = null!;
+        public Output<bool> ConfidentialIssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for confidential note events
+        /// Enable notifications for confidential note events.
         /// </summary>
         [Output("confidentialNoteEvents")]
-        public Output<bool?> ConfidentialNoteEvents { get; private set; } = null!;
+        public Output<bool> ConfidentialNoteEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Create time.
+        /// The ISO8601 date/time that this integration was activated at in UTC.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for issue events
+        /// Enable notifications for issue events.
         /// </summary>
         [Output("issuesEvents")]
-        public Output<bool?> IssuesEvents { get; private set; } = null!;
+        public Output<bool> IssuesEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for merge request events
+        /// Enable notifications for merge request events.
         /// </summary>
         [Output("mergeRequestsEvents")]
-        public Output<bool?> MergeRequestsEvents { get; private set; } = null!;
+        public Output<bool> MergeRequestsEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for note events
+        /// Enable notifications for note events.
         /// </summary>
         [Output("noteEvents")]
-        public Output<bool?> NoteEvents { get; private set; } = null!;
+        public Output<bool> NoteEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Send notifications for broken pipelines
+        /// Send notifications for broken pipelines.
         /// </summary>
         [Output("notifyOnlyBrokenPipelines")]
-        public Output<bool?> NotifyOnlyBrokenPipelines { get; private set; } = null!;
+        public Output<bool> NotifyOnlyBrokenPipelines { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for pipeline events
+        /// Enable notifications for pipeline events.
         /// </summary>
         [Output("pipelineEvents")]
-        public Output<bool?> PipelineEvents { get; private set; } = null!;
+        public Output<bool> PipelineEvents { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the project you want to activate integration on.
+        /// ID of the project you want to activate the integration on.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for push events
+        /// Enable notifications for push events.
         /// </summary>
         [Output("pushEvents")]
-        public Output<bool?> PushEvents { get; private set; } = null!;
+        public Output<bool> PushEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for tag push events
+        /// Enable notifications for tag push events.
         /// </summary>
         [Output("tagPushEvents")]
-        public Output<bool?> TagPushEvents { get; private set; } = null!;
+        public Output<bool> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Update time.
+        /// The ISO8601 date/time that this integration was last updated at in UTC.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -147,10 +147,10 @@ namespace Pulumi.GitLab
         public Output<string> Webhook { get; private set; } = null!;
 
         /// <summary>
-        /// Enable notifications for wiki page events
+        /// Enable notifications for wiki page events.
         /// </summary>
         [Output("wikiPageEvents")]
-        public Output<bool?> WikiPageEvents { get; private set; } = null!;
+        public Output<bool> WikiPageEvents { get; private set; } = null!;
 
 
         /// <summary>
@@ -175,6 +175,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "webhook",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -199,79 +203,89 @@ namespace Pulumi.GitLab
     public sealed class ProjectIntegrationMicrosoftTeamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        /// Branches to send notifications for. Valid values are: `All`, `Default`, `Protected`, `DefaultAndProtected`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
 
         /// <summary>
-        /// Enable notifications for confidential issue events
+        /// Enable notifications for confidential issue events.
         /// </summary>
         [Input("confidentialIssuesEvents")]
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for confidential note events
+        /// Enable notifications for confidential note events.
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for issue events
+        /// Enable notifications for issue events.
         /// </summary>
         [Input("issuesEvents")]
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for merge request events
+        /// Enable notifications for merge request events.
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for note events
+        /// Enable notifications for note events.
         /// </summary>
         [Input("noteEvents")]
         public Input<bool>? NoteEvents { get; set; }
 
         /// <summary>
-        /// Send notifications for broken pipelines
+        /// Send notifications for broken pipelines.
         /// </summary>
         [Input("notifyOnlyBrokenPipelines")]
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
 
         /// <summary>
-        /// Enable notifications for pipeline events
+        /// Enable notifications for pipeline events.
         /// </summary>
         [Input("pipelineEvents")]
         public Input<bool>? PipelineEvents { get; set; }
 
         /// <summary>
-        /// ID of the project you want to activate integration on.
+        /// ID of the project you want to activate the integration on.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Enable notifications for push events
+        /// Enable notifications for push events.
         /// </summary>
         [Input("pushEvents")]
         public Input<bool>? PushEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for tag push events
+        /// Enable notifications for tag push events.
         /// </summary>
         [Input("tagPushEvents")]
         public Input<bool>? TagPushEvents { get; set; }
 
+        [Input("webhook", required: true)]
+        private Input<string>? _webhook;
+
         /// <summary>
         /// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
         /// </summary>
-        [Input("webhook", required: true)]
-        public Input<string> Webhook { get; set; } = null!;
+        public Input<string>? Webhook
+        {
+            get => _webhook;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webhook = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// Enable notifications for wiki page events
+        /// Enable notifications for wiki page events.
         /// </summary>
         [Input("wikiPageEvents")]
         public Input<bool>? WikiPageEvents { get; set; }
@@ -291,91 +305,101 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        /// Branches to send notifications for. Valid values are: `All`, `Default`, `Protected`, `DefaultAndProtected`
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
 
         /// <summary>
-        /// Enable notifications for confidential issue events
+        /// Enable notifications for confidential issue events.
         /// </summary>
         [Input("confidentialIssuesEvents")]
         public Input<bool>? ConfidentialIssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for confidential note events
+        /// Enable notifications for confidential note events.
         /// </summary>
         [Input("confidentialNoteEvents")]
         public Input<bool>? ConfidentialNoteEvents { get; set; }
 
         /// <summary>
-        /// Create time.
+        /// The ISO8601 date/time that this integration was activated at in UTC.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Enable notifications for issue events
+        /// Enable notifications for issue events.
         /// </summary>
         [Input("issuesEvents")]
         public Input<bool>? IssuesEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for merge request events
+        /// Enable notifications for merge request events.
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for note events
+        /// Enable notifications for note events.
         /// </summary>
         [Input("noteEvents")]
         public Input<bool>? NoteEvents { get; set; }
 
         /// <summary>
-        /// Send notifications for broken pipelines
+        /// Send notifications for broken pipelines.
         /// </summary>
         [Input("notifyOnlyBrokenPipelines")]
         public Input<bool>? NotifyOnlyBrokenPipelines { get; set; }
 
         /// <summary>
-        /// Enable notifications for pipeline events
+        /// Enable notifications for pipeline events.
         /// </summary>
         [Input("pipelineEvents")]
         public Input<bool>? PipelineEvents { get; set; }
 
         /// <summary>
-        /// ID of the project you want to activate integration on.
+        /// ID of the project you want to activate the integration on.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Enable notifications for push events
+        /// Enable notifications for push events.
         /// </summary>
         [Input("pushEvents")]
         public Input<bool>? PushEvents { get; set; }
 
         /// <summary>
-        /// Enable notifications for tag push events
+        /// Enable notifications for tag push events.
         /// </summary>
         [Input("tagPushEvents")]
         public Input<bool>? TagPushEvents { get; set; }
 
         /// <summary>
-        /// Update time.
+        /// The ISO8601 date/time that this integration was last updated at in UTC.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        [Input("webhook")]
+        private Input<string>? _webhook;
+
         /// <summary>
         /// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
         /// </summary>
-        [Input("webhook")]
-        public Input<string>? Webhook { get; set; }
+        public Input<string>? Webhook
+        {
+            get => _webhook;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webhook = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// Enable notifications for wiki page events
+        /// Enable notifications for wiki page events.
         /// </summary>
         [Input("wikiPageEvents")]
         public Input<bool>? WikiPageEvents { get; set; }

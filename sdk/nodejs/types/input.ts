@@ -19,6 +19,10 @@ export interface ApplicationSettingsDefaultBranchProtectionDefaults {
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * Require code owner approval before merging.
+     */
+    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    /**
      * Allow developers to initial push.
      */
     developerCanInitialPush?: pulumi.Input<boolean>;
@@ -989,6 +993,10 @@ export interface GroupDefaultBranchProtectionDefaults {
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Require code owner approval before merging.
+     */
+    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    /**
      * Allow developers to initial push.
      */
     developerCanInitialPush?: pulumi.Input<boolean>;
@@ -1182,6 +1190,17 @@ export interface PersonalAccessTokenRotationConfiguration {
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
     rotateBeforeDays: pulumi.Input<number>;
+}
+
+export interface PipelineScheduleInput {
+    /**
+     * The name of the input.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value of the input.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface ProjectAccessTokenRotationConfiguration {

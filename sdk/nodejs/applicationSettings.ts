@@ -163,6 +163,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly checkNamespacePlan: pulumi.Output<boolean>;
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     */
+    declare public readonly ciJobLiveTraceEnabled: pulumi.Output<boolean>;
+    /**
      * The maximum number of includes per pipeline.
      */
     declare public readonly ciMaxIncludes: pulumi.Output<number>;
@@ -312,6 +316,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Disable display of RSS/Atom and calendar feed tokens.
      */
     declare public readonly disableFeedToken: pulumi.Output<boolean>;
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     */
+    declare public readonly disableOverridingApproversPerMergeRequest: pulumi.Output<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -665,6 +673,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly inactiveProjectsSendWarningEmailAfterMonths: pulumi.Output<number>;
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     */
+    declare public readonly inactiveResourceAccessTokensDeleteAfterDays: pulumi.Output<number>;
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
     declare public readonly includeOptionalMetricsInServicePing: pulumi.Output<boolean>;
@@ -704,6 +716,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
     declare public readonly lockMembershipsToLdap: pulumi.Output<boolean>;
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     */
+    declare public readonly lockMembershipsToSaml: pulumi.Output<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -880,6 +896,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
     declare public readonly pollingIntervalMultiplier: pulumi.Output<number>;
+    /**
+     * Prevent approval by merge request creator (author).
+     */
+    declare public readonly preventMergeRequestsAuthorApproval: pulumi.Output<boolean>;
+    /**
+     * Prevent approval by committers to merge requests.
+     */
+    declare public readonly preventMergeRequestsCommittersApproval: pulumi.Output<boolean>;
     /**
      * Enable project export.
      */
@@ -1334,6 +1358,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["bulkImportMaxDownloadFileSize"] = state?.bulkImportMaxDownloadFileSize;
             resourceInputs["canCreateGroup"] = state?.canCreateGroup;
             resourceInputs["checkNamespacePlan"] = state?.checkNamespacePlan;
+            resourceInputs["ciJobLiveTraceEnabled"] = state?.ciJobLiveTraceEnabled;
             resourceInputs["ciMaxIncludes"] = state?.ciMaxIncludes;
             resourceInputs["ciMaxTotalYamlSizeBytes"] = state?.ciMaxTotalYamlSizeBytes;
             resourceInputs["commitEmailHostname"] = state?.commitEmailHostname;
@@ -1371,6 +1396,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["diffMaxPatchBytes"] = state?.diffMaxPatchBytes;
             resourceInputs["disableAdminOauthScopes"] = state?.disableAdminOauthScopes;
             resourceInputs["disableFeedToken"] = state?.disableFeedToken;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = state?.disableOverridingApproversPerMergeRequest;
             resourceInputs["disablePersonalAccessTokens"] = state?.disablePersonalAccessTokens;
             resourceInputs["disabledOauthSignInSources"] = state?.disabledOauthSignInSources;
             resourceInputs["dnsRebindingProtectionEnabled"] = state?.dnsRebindingProtectionEnabled;
@@ -1459,6 +1485,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["inactiveProjectsDeleteAfterMonths"] = state?.inactiveProjectsDeleteAfterMonths;
             resourceInputs["inactiveProjectsMinSizeMb"] = state?.inactiveProjectsMinSizeMb;
             resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = state?.inactiveProjectsSendWarningEmailAfterMonths;
+            resourceInputs["inactiveResourceAccessTokensDeleteAfterDays"] = state?.inactiveResourceAccessTokensDeleteAfterDays;
             resourceInputs["includeOptionalMetricsInServicePing"] = state?.includeOptionalMetricsInServicePing;
             resourceInputs["invisibleCaptchaEnabled"] = state?.invisibleCaptchaEnabled;
             resourceInputs["issuesCreateLimit"] = state?.issuesCreateLimit;
@@ -1469,6 +1496,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["localMarkdownVersion"] = state?.localMarkdownVersion;
             resourceInputs["lockDuoFeaturesEnabled"] = state?.lockDuoFeaturesEnabled;
             resourceInputs["lockMembershipsToLdap"] = state?.lockMembershipsToLdap;
+            resourceInputs["lockMembershipsToSaml"] = state?.lockMembershipsToSaml;
             resourceInputs["mailgunEventsEnabled"] = state?.mailgunEventsEnabled;
             resourceInputs["mailgunSigningKey"] = state?.mailgunSigningKey;
             resourceInputs["maintenanceMode"] = state?.maintenanceMode;
@@ -1513,6 +1541,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["plantumlEnabled"] = state?.plantumlEnabled;
             resourceInputs["plantumlUrl"] = state?.plantumlUrl;
             resourceInputs["pollingIntervalMultiplier"] = state?.pollingIntervalMultiplier;
+            resourceInputs["preventMergeRequestsAuthorApproval"] = state?.preventMergeRequestsAuthorApproval;
+            resourceInputs["preventMergeRequestsCommittersApproval"] = state?.preventMergeRequestsCommittersApproval;
             resourceInputs["projectExportEnabled"] = state?.projectExportEnabled;
             resourceInputs["projectJobsApiRateLimit"] = state?.projectJobsApiRateLimit;
             resourceInputs["projectsApiRateLimitUnauthenticated"] = state?.projectsApiRateLimitUnauthenticated;
@@ -1646,6 +1676,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["bulkImportMaxDownloadFileSize"] = args?.bulkImportMaxDownloadFileSize;
             resourceInputs["canCreateGroup"] = args?.canCreateGroup;
             resourceInputs["checkNamespacePlan"] = args?.checkNamespacePlan;
+            resourceInputs["ciJobLiveTraceEnabled"] = args?.ciJobLiveTraceEnabled;
             resourceInputs["ciMaxIncludes"] = args?.ciMaxIncludes;
             resourceInputs["ciMaxTotalYamlSizeBytes"] = args?.ciMaxTotalYamlSizeBytes;
             resourceInputs["commitEmailHostname"] = args?.commitEmailHostname;
@@ -1683,6 +1714,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["diffMaxPatchBytes"] = args?.diffMaxPatchBytes;
             resourceInputs["disableAdminOauthScopes"] = args?.disableAdminOauthScopes;
             resourceInputs["disableFeedToken"] = args?.disableFeedToken;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = args?.disableOverridingApproversPerMergeRequest;
             resourceInputs["disablePersonalAccessTokens"] = args?.disablePersonalAccessTokens;
             resourceInputs["disabledOauthSignInSources"] = args?.disabledOauthSignInSources;
             resourceInputs["dnsRebindingProtectionEnabled"] = args?.dnsRebindingProtectionEnabled;
@@ -1769,6 +1801,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["inactiveProjectsDeleteAfterMonths"] = args?.inactiveProjectsDeleteAfterMonths;
             resourceInputs["inactiveProjectsMinSizeMb"] = args?.inactiveProjectsMinSizeMb;
             resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = args?.inactiveProjectsSendWarningEmailAfterMonths;
+            resourceInputs["inactiveResourceAccessTokensDeleteAfterDays"] = args?.inactiveResourceAccessTokensDeleteAfterDays;
             resourceInputs["includeOptionalMetricsInServicePing"] = args?.includeOptionalMetricsInServicePing;
             resourceInputs["invisibleCaptchaEnabled"] = args?.invisibleCaptchaEnabled;
             resourceInputs["issuesCreateLimit"] = args?.issuesCreateLimit;
@@ -1779,6 +1812,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["localMarkdownVersion"] = args?.localMarkdownVersion;
             resourceInputs["lockDuoFeaturesEnabled"] = args?.lockDuoFeaturesEnabled;
             resourceInputs["lockMembershipsToLdap"] = args?.lockMembershipsToLdap;
+            resourceInputs["lockMembershipsToSaml"] = args?.lockMembershipsToSaml;
             resourceInputs["mailgunEventsEnabled"] = args?.mailgunEventsEnabled;
             resourceInputs["mailgunSigningKey"] = args?.mailgunSigningKey ? pulumi.secret(args.mailgunSigningKey) : undefined;
             resourceInputs["maintenanceMode"] = args?.maintenanceMode;
@@ -1823,6 +1857,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["plantumlEnabled"] = args?.plantumlEnabled;
             resourceInputs["plantumlUrl"] = args?.plantumlUrl;
             resourceInputs["pollingIntervalMultiplier"] = args?.pollingIntervalMultiplier;
+            resourceInputs["preventMergeRequestsAuthorApproval"] = args?.preventMergeRequestsAuthorApproval;
+            resourceInputs["preventMergeRequestsCommittersApproval"] = args?.preventMergeRequestsCommittersApproval;
             resourceInputs["projectExportEnabled"] = args?.projectExportEnabled;
             resourceInputs["projectJobsApiRateLimit"] = args?.projectJobsApiRateLimit;
             resourceInputs["projectsApiRateLimitUnauthenticated"] = args?.projectsApiRateLimitUnauthenticated;
@@ -2053,6 +2089,10 @@ export interface ApplicationSettingsState {
      */
     checkNamespacePlan?: pulumi.Input<boolean>;
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     */
+    ciJobLiveTraceEnabled?: pulumi.Input<boolean>;
+    /**
      * The maximum number of includes per pipeline.
      */
     ciMaxIncludes?: pulumi.Input<number>;
@@ -2202,6 +2242,10 @@ export interface ApplicationSettingsState {
      * Disable display of RSS/Atom and calendar feed tokens.
      */
     disableFeedToken?: pulumi.Input<boolean>;
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     */
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -2555,6 +2599,10 @@ export interface ApplicationSettingsState {
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     */
+    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number>;
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
     includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
@@ -2594,6 +2642,10 @@ export interface ApplicationSettingsState {
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
     lockMembershipsToLdap?: pulumi.Input<boolean>;
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     */
+    lockMembershipsToSaml?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -2770,6 +2822,14 @@ export interface ApplicationSettingsState {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
     pollingIntervalMultiplier?: pulumi.Input<number>;
+    /**
+     * Prevent approval by merge request creator (author).
+     */
+    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    /**
+     * Prevent approval by committers to merge requests.
+     */
+    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean>;
     /**
      * Enable project export.
      */
@@ -3301,6 +3361,10 @@ export interface ApplicationSettingsArgs {
      */
     checkNamespacePlan?: pulumi.Input<boolean>;
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     */
+    ciJobLiveTraceEnabled?: pulumi.Input<boolean>;
+    /**
      * The maximum number of includes per pipeline.
      */
     ciMaxIncludes?: pulumi.Input<number>;
@@ -3450,6 +3514,10 @@ export interface ApplicationSettingsArgs {
      * Disable display of RSS/Atom and calendar feed tokens.
      */
     disableFeedToken?: pulumi.Input<boolean>;
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     */
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -3795,6 +3863,10 @@ export interface ApplicationSettingsArgs {
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     */
+    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number>;
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
     includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
@@ -3834,6 +3906,10 @@ export interface ApplicationSettingsArgs {
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
     lockMembershipsToLdap?: pulumi.Input<boolean>;
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     */
+    lockMembershipsToSaml?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -4010,6 +4086,14 @@ export interface ApplicationSettingsArgs {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
     pollingIntervalMultiplier?: pulumi.Input<number>;
+    /**
+     * Prevent approval by merge request creator (author).
+     */
+    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    /**
+     * Prevent approval by committers to merge requests.
+     */
+    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean>;
     /**
      * Enable project export.
      */

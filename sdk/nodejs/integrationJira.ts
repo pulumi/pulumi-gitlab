@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationJira` resource manages the lifecycle of a project integration with Jira.
  *
- * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationJira`instead!
+ * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationJira` instead.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
  *
@@ -87,25 +87,25 @@ export class IntegrationJira extends pulumi.CustomResource {
      */
     declare public readonly commitEvents: pulumi.Output<boolean>;
     /**
-     * Create time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Enable viewing Jira issues in GitLab.
      */
-    declare public readonly issuesEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly issuesEnabled: pulumi.Output<boolean>;
     /**
      * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
      */
-    declare public readonly jiraAuthType: pulumi.Output<number | undefined>;
+    declare public readonly jiraAuthType: pulumi.Output<number>;
     /**
      * Prefix to match Jira issue keys.
      */
-    declare public readonly jiraIssuePrefix: pulumi.Output<string | undefined>;
+    declare public readonly jiraIssuePrefix: pulumi.Output<string>;
     /**
      * Regular expression to match Jira issue keys.
      */
-    declare public readonly jiraIssueRegex: pulumi.Output<string | undefined>;
+    declare public readonly jiraIssueRegex: pulumi.Output<string>;
     /**
      * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
      */
@@ -113,7 +113,7 @@ export class IntegrationJira extends pulumi.CustomResource {
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
-    declare public readonly jiraIssueTransitionId: pulumi.Output<string | undefined>;
+    declare public readonly jiraIssueTransitionId: pulumi.Output<string>;
     /**
      * Enable notifications for merge request events
      */
@@ -131,11 +131,11 @@ export class IntegrationJira extends pulumi.CustomResource {
      */
     declare public readonly projectKeys: pulumi.Output<string[] | undefined>;
     /**
-     * Title.
+     * Title of the integration.
      */
     declare public /*out*/ readonly title: pulumi.Output<string>;
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
@@ -145,11 +145,11 @@ export class IntegrationJira extends pulumi.CustomResource {
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    declare public readonly useInheritedSettings: pulumi.Output<boolean | undefined>;
+    declare public readonly useInheritedSettings: pulumi.Output<boolean>;
     /**
      * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      */
-    declare public readonly username: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a IntegrationJira resource with the given unique name, arguments, and options.
@@ -244,7 +244,7 @@ export interface IntegrationJiraState {
      */
     commitEvents?: pulumi.Input<boolean>;
     /**
-     * Create time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -288,11 +288,11 @@ export interface IntegrationJiraState {
      */
     projectKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Title.
+     * Title of the integration.
      */
     title?: pulumi.Input<string>;
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      */
     updatedAt?: pulumi.Input<string>;
     /**

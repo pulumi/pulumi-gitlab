@@ -79,6 +79,10 @@ export interface GetPipelineScheduleResult {
      */
     readonly id: string;
     /**
+     * List of pipeline schedule inputs. Each element has `name` and `value`.
+     */
+    readonly inputs: outputs.GetPipelineScheduleInput[];
+    /**
      * The details of the last pipeline run by the schedule.
      */
     readonly lastPipeline: outputs.GetPipelineScheduleLastPipeline;

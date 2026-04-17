@@ -62,6 +62,8 @@ type ProjectShareGroup struct {
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
+	// Share expiration date. Format: `YYYY-MM-DD`
+	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess pulumi.StringPtrOutput `pulumi:"groupAccess"`
 	// The id of the group.
@@ -110,6 +112,8 @@ type projectShareGroupState struct {
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// Share expiration date. Format: `YYYY-MM-DD`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
@@ -123,6 +127,8 @@ type ProjectShareGroupState struct {
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrInput
+	// Share expiration date. Format: `YYYY-MM-DD`
+	ExpiresAt pulumi.StringPtrInput
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
@@ -140,6 +146,8 @@ type projectShareGroupArgs struct {
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// Share expiration date. Format: `YYYY-MM-DD`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess *string `pulumi:"groupAccess"`
 	// The id of the group.
@@ -154,6 +162,8 @@ type ProjectShareGroupArgs struct {
 	//
 	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 	AccessLevel pulumi.StringPtrInput
+	// Share expiration date. Format: `YYYY-MM-DD`
+	ExpiresAt pulumi.StringPtrInput
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
 	GroupAccess pulumi.StringPtrInput
 	// The id of the group.
@@ -254,6 +264,11 @@ func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx contex
 // Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
 func (o ProjectShareGroupOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Share expiration date. Format: `YYYY-MM-DD`
+func (o ProjectShareGroupOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 // The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`

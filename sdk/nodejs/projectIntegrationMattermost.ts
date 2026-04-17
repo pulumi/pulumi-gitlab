@@ -70,13 +70,13 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     }
 
     /**
-     * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+     * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
     declare public readonly branchesToBeNotified: pulumi.Output<string>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    declare public readonly confidentialIssueChannel: pulumi.Output<string | undefined>;
+    declare public readonly confidentialIssueChannel: pulumi.Output<string>;
     /**
      * Enable notifications for confidential issues events.
      */
@@ -84,7 +84,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive confidential note events notifications.
      */
-    declare public readonly confidentialNoteChannel: pulumi.Output<string | undefined>;
+    declare public readonly confidentialNoteChannel: pulumi.Output<string>;
     /**
      * Enable notifications for confidential note events.
      */
@@ -92,7 +92,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive issue events notifications.
      */
-    declare public readonly issueChannel: pulumi.Output<string | undefined>;
+    declare public readonly issueChannel: pulumi.Output<string>;
     /**
      * Enable notifications for issues events.
      */
@@ -100,7 +100,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    declare public readonly mergeRequestChannel: pulumi.Output<string | undefined>;
+    declare public readonly mergeRequestChannel: pulumi.Output<string>;
     /**
      * Enable notifications for merge requests events.
      */
@@ -108,7 +108,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive note events notifications.
      */
-    declare public readonly noteChannel: pulumi.Output<string | undefined>;
+    declare public readonly noteChannel: pulumi.Output<string>;
     /**
      * Enable notifications for note events.
      */
@@ -120,7 +120,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    declare public readonly pipelineChannel: pulumi.Output<string | undefined>;
+    declare public readonly pipelineChannel: pulumi.Output<string>;
     /**
      * Enable notifications for pipeline events.
      */
@@ -132,7 +132,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive push events notifications.
      */
-    declare public readonly pushChannel: pulumi.Output<string | undefined>;
+    declare public readonly pushChannel: pulumi.Output<string>;
     /**
      * Enable notifications for push events.
      */
@@ -140,7 +140,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    declare public readonly tagPushChannel: pulumi.Output<string | undefined>;
+    declare public readonly tagPushChannel: pulumi.Output<string>;
     /**
      * Enable notifications for tag push events.
      */
@@ -148,7 +148,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * Username to use.
      */
-    declare public readonly username: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
@@ -156,7 +156,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    declare public readonly wikiPageChannel: pulumi.Output<string | undefined>;
+    declare public readonly wikiPageChannel: pulumi.Output<string>;
     /**
      * Enable notifications for wiki page events.
      */
@@ -226,11 +226,13 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
             resourceInputs["tagPushChannel"] = args?.tagPushChannel;
             resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["username"] = args?.username;
-            resourceInputs["webhook"] = args?.webhook;
+            resourceInputs["webhook"] = args?.webhook ? pulumi.secret(args.webhook) : undefined;
             resourceInputs["wikiPageChannel"] = args?.wikiPageChannel;
             resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["webhook"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectIntegrationMattermost.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -240,7 +242,7 @@ export class ProjectIntegrationMattermost extends pulumi.CustomResource {
  */
 export interface ProjectIntegrationMattermostState {
     /**
-     * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+     * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -338,7 +340,7 @@ export interface ProjectIntegrationMattermostState {
  */
 export interface ProjectIntegrationMattermostArgs {
     /**
-     * Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+     * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**

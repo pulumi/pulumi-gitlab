@@ -158,7 +158,7 @@ type Group struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolOutput `pulumi:"emailsEnabled"`
-	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntOutput `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
@@ -202,7 +202,7 @@ type Group struct {
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Prevent sharing a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolOutput `pulumi:"shareWithGroupLock"`
-	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit pulumi.IntOutput `pulumi:"sharedRunnersMinutesLimit"`
 	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting pulumi.StringOutput `pulumi:"sharedRunnersSetting"`
@@ -279,7 +279,7 @@ type groupState struct {
 	Description *string `pulumi:"description"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
-	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName *string `pulumi:"fullName"`
@@ -323,7 +323,7 @@ type groupState struct {
 	RunnersToken *string `pulumi:"runnersToken"`
 	// Prevent sharing a project with another group within this group.
 	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
-	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit *int `pulumi:"sharedRunnersMinutesLimit"`
 	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting *string `pulumi:"sharedRunnersSetting"`
@@ -364,7 +364,7 @@ type GroupState struct {
 	Description pulumi.StringPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
-	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// The full name of the group.
 	FullName pulumi.StringPtrInput
@@ -408,7 +408,7 @@ type GroupState struct {
 	RunnersToken pulumi.StringPtrInput
 	// Prevent sharing a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrInput
-	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit pulumi.IntPtrInput
 	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting pulumi.StringPtrInput
@@ -451,7 +451,7 @@ type groupArgs struct {
 	Description *string `pulumi:"description"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
-	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
 	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
@@ -489,7 +489,7 @@ type groupArgs struct {
 	RequireTwoFactorAuthentication *bool `pulumi:"requireTwoFactorAuthentication"`
 	// Prevent sharing a project with another group within this group.
 	ShareWithGroupLock *bool `pulumi:"shareWithGroupLock"`
-	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit *int `pulumi:"sharedRunnersMinutesLimit"`
 	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting *string `pulumi:"sharedRunnersSetting"`
@@ -527,7 +527,7 @@ type GroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
-	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
 	IpRestrictionRanges pulumi.StringArrayInput
@@ -565,7 +565,7 @@ type GroupArgs struct {
 	RequireTwoFactorAuthentication pulumi.BoolPtrInput
 	// Prevent sharing a project with another group within this group.
 	ShareWithGroupLock pulumi.BoolPtrInput
-	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit pulumi.IntPtrInput
 	// Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting pulumi.StringPtrInput
@@ -723,7 +723,7 @@ func (o GroupOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.EmailsEnabled }).(pulumi.BoolOutput)
 }
 
-// Can be set by administrators only. Additional CI/CD minutes for this group.
+// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 func (o GroupOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }
@@ -833,7 +833,7 @@ func (o GroupOutput) ShareWithGroupLock() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.ShareWithGroupLock }).(pulumi.BoolOutput)
 }
 
-// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 func (o GroupOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.SharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }

@@ -19,6 +19,10 @@ export interface ApplicationSettingsDefaultBranchProtectionDefaults {
      */
     allowedToPushes: number[];
     /**
+     * Require code owner approval before merging.
+     */
+    codeOwnerApprovalRequired: boolean;
+    /**
      * Allow developers to initial push.
      */
     developerCanInitialPush: boolean;
@@ -854,6 +858,17 @@ export interface GetMetadataKas {
      * Version of KAS. It’s null if kas.enabled is false.
      */
     version: string;
+}
+
+export interface GetPipelineScheduleInput {
+    /**
+     * The name of the input.
+     */
+    name: string;
+    /**
+     * The value of the input.
+     */
+    value: string;
 }
 
 export interface GetPipelineScheduleLastPipeline {
@@ -3080,6 +3095,55 @@ export interface GetRepositoryTreeTree {
     type: string;
 }
 
+export interface GetRunnerControllerScopesInstanceLevelScoping {
+    /**
+     * The time the scope was created.
+     */
+    createdAt: string;
+    /**
+     * The time the scope was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetRunnerControllerScopesRunnerLevelScoping {
+    /**
+     * The time the scope was created.
+     */
+    createdAt: string;
+    /**
+     * The ID of the runner.
+     */
+    runnerId: number;
+    /**
+     * The time the scope was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetRunnerControllersRunnerController {
+    /**
+     * The time the runner controller was created.
+     */
+    createdAt: string;
+    /**
+     * The description of the runner controller.
+     */
+    description: string;
+    /**
+     * The ID of the runner controller.
+     */
+    id: number;
+    /**
+     * The state of the runner controller. Valid values are: `disabled`, `enabled`, `dryRun`.
+     */
+    state: string;
+    /**
+     * The time the runner controller was last updated.
+     */
+    updatedAt: string;
+}
+
 export interface GetRunnersRunner {
     /**
      * The description of the runner.
@@ -3392,6 +3456,10 @@ export interface GroupDefaultBranchProtectionDefaults {
      */
     allowedToPushes: string[];
     /**
+     * Require code owner approval before merging.
+     */
+    codeOwnerApprovalRequired: boolean;
+    /**
      * Allow developers to initial push.
      */
     developerCanInitialPush: boolean;
@@ -3585,6 +3653,17 @@ export interface PersonalAccessTokenRotationConfiguration {
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
     rotateBeforeDays: number;
+}
+
+export interface PipelineScheduleInput {
+    /**
+     * The name of the input.
+     */
+    name: string;
+    /**
+     * The value of the input.
+     */
+    value: string;
 }
 
 export interface ProjectAccessTokenRotationConfiguration {

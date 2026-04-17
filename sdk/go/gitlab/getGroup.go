@@ -40,7 +40,7 @@ type LookupGroupResult struct {
 	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
 	// The description of the group.
 	Description string `pulumi:"description"`
-	// Can be set by administrators only. Additional CI/CD minutes for this group.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
 	FullName string `pulumi:"fullName"`
@@ -68,7 +68,7 @@ type LookupGroupResult struct {
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
 	// The group level registration token to use during runner setup.
 	RunnersToken string `pulumi:"runnersToken"`
-	// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit int `pulumi:"sharedRunnersMinutesLimit"`
 	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
@@ -133,7 +133,7 @@ func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Can be set by administrators only. Additional CI/CD minutes for this group.
+// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 func (o LookupGroupResultOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }
@@ -203,7 +203,7 @@ func (o LookupGroupResultOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.RunnersToken }).(pulumi.StringOutput)
 }
 
-// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 func (o LookupGroupResultOutput) SharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.SharedRunnersMinutesLimit }).(pulumi.IntOutput)
 }

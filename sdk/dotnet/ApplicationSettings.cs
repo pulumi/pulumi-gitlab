@@ -197,6 +197,12 @@ namespace Pulumi.GitLab
         public Output<bool> CheckNamespacePlan { get; private set; } = null!;
 
         /// <summary>
+        /// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        /// </summary>
+        [Output("ciJobLiveTraceEnabled")]
+        public Output<bool> CiJobLiveTraceEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of includes per pipeline.
         /// </summary>
         [Output("ciMaxIncludes")]
@@ -417,6 +423,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("disableFeedToken")]
         public Output<bool> DisableFeedToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevent editing approval rules in projects and merge requests.
+        /// </summary>
+        [Output("disableOverridingApproversPerMergeRequest")]
+        public Output<bool> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -947,6 +959,12 @@ namespace Pulumi.GitLab
         public Output<int> InactiveProjectsSendWarningEmailAfterMonths { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies retention period for inactive project and group access tokens. Default is 30.
+        /// </summary>
+        [Output("inactiveResourceAccessTokensDeleteAfterDays")]
+        public Output<int> InactiveResourceAccessTokensDeleteAfterDays { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not optional metrics are enabled in Service Ping.
         /// </summary>
         [Output("includeOptionalMetricsInServicePing")]
@@ -1005,6 +1023,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("lockMembershipsToLdap")]
         public Output<bool> LockMembershipsToLdap { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        /// </summary>
+        [Output("lockMembershipsToSaml")]
+        public Output<bool> LockMembershipsToSaml { get; private set; } = null!;
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -1269,6 +1293,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("pollingIntervalMultiplier")]
         public Output<double> PollingIntervalMultiplier { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevent approval by merge request creator (author).
+        /// </summary>
+        [Output("preventMergeRequestsAuthorApproval")]
+        public Output<bool> PreventMergeRequestsAuthorApproval { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevent approval by committers to merge requests.
+        /// </summary>
+        [Output("preventMergeRequestsCommittersApproval")]
+        public Output<bool> PreventMergeRequestsCommittersApproval { get; private set; } = null!;
 
         /// <summary>
         /// Enable project export.
@@ -2149,6 +2185,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CheckNamespacePlan { get; set; }
 
         /// <summary>
+        /// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        /// </summary>
+        [Input("ciJobLiveTraceEnabled")]
+        public Input<bool>? CiJobLiveTraceEnabled { get; set; }
+
+        /// <summary>
         /// The maximum number of includes per pipeline.
         /// </summary>
         [Input("ciMaxIncludes")]
@@ -2369,6 +2411,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("disableFeedToken")]
         public Input<bool>? DisableFeedToken { get; set; }
+
+        /// <summary>
+        /// Prevent editing approval rules in projects and merge requests.
+        /// </summary>
+        [Input("disableOverridingApproversPerMergeRequest")]
+        public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -3011,6 +3059,12 @@ namespace Pulumi.GitLab
         public Input<int>? InactiveProjectsSendWarningEmailAfterMonths { get; set; }
 
         /// <summary>
+        /// Specifies retention period for inactive project and group access tokens. Default is 30.
+        /// </summary>
+        [Input("inactiveResourceAccessTokensDeleteAfterDays")]
+        public Input<int>? InactiveResourceAccessTokensDeleteAfterDays { get; set; }
+
+        /// <summary>
         /// Whether or not optional metrics are enabled in Service Ping.
         /// </summary>
         [Input("includeOptionalMetricsInServicePing")]
@@ -3069,6 +3123,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lockMembershipsToLdap")]
         public Input<bool>? LockMembershipsToLdap { get; set; }
+
+        /// <summary>
+        /// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        /// </summary>
+        [Input("lockMembershipsToSaml")]
+        public Input<bool>? LockMembershipsToSaml { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -3355,6 +3415,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pollingIntervalMultiplier")]
         public Input<double>? PollingIntervalMultiplier { get; set; }
+
+        /// <summary>
+        /// Prevent approval by merge request creator (author).
+        /// </summary>
+        [Input("preventMergeRequestsAuthorApproval")]
+        public Input<bool>? PreventMergeRequestsAuthorApproval { get; set; }
+
+        /// <summary>
+        /// Prevent approval by committers to merge requests.
+        /// </summary>
+        [Input("preventMergeRequestsCommittersApproval")]
+        public Input<bool>? PreventMergeRequestsCommittersApproval { get; set; }
 
         /// <summary>
         /// Enable project export.
@@ -4265,6 +4337,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CheckNamespacePlan { get; set; }
 
         /// <summary>
+        /// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        /// </summary>
+        [Input("ciJobLiveTraceEnabled")]
+        public Input<bool>? CiJobLiveTraceEnabled { get; set; }
+
+        /// <summary>
         /// The maximum number of includes per pipeline.
         /// </summary>
         [Input("ciMaxIncludes")]
@@ -4485,6 +4563,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("disableFeedToken")]
         public Input<bool>? DisableFeedToken { get; set; }
+
+        /// <summary>
+        /// Prevent editing approval rules in projects and merge requests.
+        /// </summary>
+        [Input("disableOverridingApproversPerMergeRequest")]
+        public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -5139,6 +5223,12 @@ namespace Pulumi.GitLab
         public Input<int>? InactiveProjectsSendWarningEmailAfterMonths { get; set; }
 
         /// <summary>
+        /// Specifies retention period for inactive project and group access tokens. Default is 30.
+        /// </summary>
+        [Input("inactiveResourceAccessTokensDeleteAfterDays")]
+        public Input<int>? InactiveResourceAccessTokensDeleteAfterDays { get; set; }
+
+        /// <summary>
         /// Whether or not optional metrics are enabled in Service Ping.
         /// </summary>
         [Input("includeOptionalMetricsInServicePing")]
@@ -5197,6 +5287,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lockMembershipsToLdap")]
         public Input<bool>? LockMembershipsToLdap { get; set; }
+
+        /// <summary>
+        /// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        /// </summary>
+        [Input("lockMembershipsToSaml")]
+        public Input<bool>? LockMembershipsToSaml { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -5483,6 +5579,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pollingIntervalMultiplier")]
         public Input<double>? PollingIntervalMultiplier { get; set; }
+
+        /// <summary>
+        /// Prevent approval by merge request creator (author).
+        /// </summary>
+        [Input("preventMergeRequestsAuthorApproval")]
+        public Input<bool>? PreventMergeRequestsAuthorApproval { get; set; }
+
+        /// <summary>
+        /// Prevent approval by committers to merge requests.
+        /// </summary>
+        [Input("preventMergeRequestsCommittersApproval")]
+        public Input<bool>? PreventMergeRequestsCommittersApproval { get; set; }
 
         /// <summary>
         /// Enable project export.

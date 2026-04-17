@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         public Output<bool> CommitEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Create time.
+        /// The ISO8601 date/time that this integration was activated at in UTC.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -91,25 +91,25 @@ namespace Pulumi.GitLab
         /// Enable viewing Jira issues in GitLab.
         /// </summary>
         [Output("issuesEnabled")]
-        public Output<bool?> IssuesEnabled { get; private set; } = null!;
+        public Output<bool> IssuesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         /// </summary>
         [Output("jiraAuthType")]
-        public Output<int?> JiraAuthType { get; private set; } = null!;
+        public Output<int> JiraAuthType { get; private set; } = null!;
 
         /// <summary>
         /// Prefix to match Jira issue keys.
         /// </summary>
         [Output("jiraIssuePrefix")]
-        public Output<string?> JiraIssuePrefix { get; private set; } = null!;
+        public Output<string> JiraIssuePrefix { get; private set; } = null!;
 
         /// <summary>
         /// Regular expression to match Jira issue keys.
         /// </summary>
         [Output("jiraIssueRegex")]
-        public Output<string?> JiraIssueRegex { get; private set; } = null!;
+        public Output<string> JiraIssueRegex { get; private set; } = null!;
 
         /// <summary>
         /// Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
@@ -121,7 +121,7 @@ namespace Pulumi.GitLab
         /// The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         /// </summary>
         [Output("jiraIssueTransitionId")]
-        public Output<string?> JiraIssueTransitionId { get; private set; } = null!;
+        public Output<string> JiraIssueTransitionId { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for merge request events
@@ -148,13 +148,13 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> ProjectKeys { get; private set; } = null!;
 
         /// <summary>
-        /// Title.
+        /// Title of the integration.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// Update time.
+        /// The ISO8601 date/time that this integration was last updated at in UTC.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -169,13 +169,13 @@ namespace Pulumi.GitLab
         /// Indicates whether or not to inherit default settings. Defaults to false.
         /// </summary>
         [Output("useInheritedSettings")]
-        public Output<bool?> UseInheritedSettings { get; private set; } = null!;
+        public Output<bool> UseInheritedSettings { get; private set; } = null!;
 
         /// <summary>
         /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         /// </summary>
         [Output("username")]
-        public Output<string?> Username { get; private set; } = null!;
+        public Output<string> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -372,7 +372,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CommitEvents { get; set; }
 
         /// <summary>
-        /// Create time.
+        /// The ISO8601 date/time that this integration was activated at in UTC.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -454,13 +454,13 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
-        /// Title.
+        /// Title of the integration.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// Update time.
+        /// The ISO8601 date/time that this integration was last updated at in UTC.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

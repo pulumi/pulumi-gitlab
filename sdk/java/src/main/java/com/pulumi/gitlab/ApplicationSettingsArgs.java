@@ -442,6 +442,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    @Import(name="ciJobLiveTraceEnabled")
+    private @Nullable Output<Boolean> ciJobLiveTraceEnabled;
+
+    /**
+     * @return Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    public Optional<Output<Boolean>> ciJobLiveTraceEnabled() {
+        return Optional.ofNullable(this.ciJobLiveTraceEnabled);
+    }
+
+    /**
      * The maximum number of includes per pipeline.
      * 
      */
@@ -1002,6 +1017,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<Boolean>> disableFeedToken() {
         return Optional.ofNullable(this.disableFeedToken);
+    }
+
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    @Import(name="disableOverridingApproversPerMergeRequest")
+    private @Nullable Output<Boolean> disableOverridingApproversPerMergeRequest;
+
+    /**
+     * @return Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    public Optional<Output<Boolean>> disableOverridingApproversPerMergeRequest() {
+        return Optional.ofNullable(this.disableOverridingApproversPerMergeRequest);
     }
 
     /**
@@ -2295,6 +2325,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    @Import(name="inactiveResourceAccessTokensDeleteAfterDays")
+    private @Nullable Output<Integer> inactiveResourceAccessTokensDeleteAfterDays;
+
+    /**
+     * @return Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    public Optional<Output<Integer>> inactiveResourceAccessTokensDeleteAfterDays() {
+        return Optional.ofNullable(this.inactiveResourceAccessTokensDeleteAfterDays);
+    }
+
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      * 
      */
@@ -2442,6 +2487,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<Boolean>> lockMembershipsToLdap() {
         return Optional.ofNullable(this.lockMembershipsToLdap);
+    }
+
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="lockMembershipsToSaml")
+    private @Nullable Output<Boolean> lockMembershipsToSaml;
+
+    /**
+     * @return Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> lockMembershipsToSaml() {
+        return Optional.ofNullable(this.lockMembershipsToSaml);
     }
 
     /**
@@ -3102,6 +3162,36 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<Double>> pollingIntervalMultiplier() {
         return Optional.ofNullable(this.pollingIntervalMultiplier);
+    }
+
+    /**
+     * Prevent approval by merge request creator (author).
+     * 
+     */
+    @Import(name="preventMergeRequestsAuthorApproval")
+    private @Nullable Output<Boolean> preventMergeRequestsAuthorApproval;
+
+    /**
+     * @return Prevent approval by merge request creator (author).
+     * 
+     */
+    public Optional<Output<Boolean>> preventMergeRequestsAuthorApproval() {
+        return Optional.ofNullable(this.preventMergeRequestsAuthorApproval);
+    }
+
+    /**
+     * Prevent approval by committers to merge requests.
+     * 
+     */
+    @Import(name="preventMergeRequestsCommittersApproval")
+    private @Nullable Output<Boolean> preventMergeRequestsCommittersApproval;
+
+    /**
+     * @return Prevent approval by committers to merge requests.
+     * 
+     */
+    public Optional<Output<Boolean>> preventMergeRequestsCommittersApproval() {
+        return Optional.ofNullable(this.preventMergeRequestsCommittersApproval);
     }
 
     /**
@@ -4680,6 +4770,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.bulkImportMaxDownloadFileSize = $.bulkImportMaxDownloadFileSize;
         this.canCreateGroup = $.canCreateGroup;
         this.checkNamespacePlan = $.checkNamespacePlan;
+        this.ciJobLiveTraceEnabled = $.ciJobLiveTraceEnabled;
         this.ciMaxIncludes = $.ciMaxIncludes;
         this.ciMaxTotalYamlSizeBytes = $.ciMaxTotalYamlSizeBytes;
         this.commitEmailHostname = $.commitEmailHostname;
@@ -4717,6 +4808,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.diffMaxPatchBytes = $.diffMaxPatchBytes;
         this.disableAdminOauthScopes = $.disableAdminOauthScopes;
         this.disableFeedToken = $.disableFeedToken;
+        this.disableOverridingApproversPerMergeRequest = $.disableOverridingApproversPerMergeRequest;
         this.disablePersonalAccessTokens = $.disablePersonalAccessTokens;
         this.disabledOauthSignInSources = $.disabledOauthSignInSources;
         this.dnsRebindingProtectionEnabled = $.dnsRebindingProtectionEnabled;
@@ -4803,6 +4895,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.inactiveProjectsDeleteAfterMonths = $.inactiveProjectsDeleteAfterMonths;
         this.inactiveProjectsMinSizeMb = $.inactiveProjectsMinSizeMb;
         this.inactiveProjectsSendWarningEmailAfterMonths = $.inactiveProjectsSendWarningEmailAfterMonths;
+        this.inactiveResourceAccessTokensDeleteAfterDays = $.inactiveResourceAccessTokensDeleteAfterDays;
         this.includeOptionalMetricsInServicePing = $.includeOptionalMetricsInServicePing;
         this.invisibleCaptchaEnabled = $.invisibleCaptchaEnabled;
         this.issuesCreateLimit = $.issuesCreateLimit;
@@ -4813,6 +4906,7 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.localMarkdownVersion = $.localMarkdownVersion;
         this.lockDuoFeaturesEnabled = $.lockDuoFeaturesEnabled;
         this.lockMembershipsToLdap = $.lockMembershipsToLdap;
+        this.lockMembershipsToSaml = $.lockMembershipsToSaml;
         this.mailgunEventsEnabled = $.mailgunEventsEnabled;
         this.mailgunSigningKey = $.mailgunSigningKey;
         this.maintenanceMode = $.maintenanceMode;
@@ -4857,6 +4951,8 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.plantumlEnabled = $.plantumlEnabled;
         this.plantumlUrl = $.plantumlUrl;
         this.pollingIntervalMultiplier = $.pollingIntervalMultiplier;
+        this.preventMergeRequestsAuthorApproval = $.preventMergeRequestsAuthorApproval;
+        this.preventMergeRequestsCommittersApproval = $.preventMergeRequestsCommittersApproval;
         this.projectExportEnabled = $.projectExportEnabled;
         this.projectJobsApiRateLimit = $.projectJobsApiRateLimit;
         this.projectsApiRateLimitUnauthenticated = $.projectsApiRateLimitUnauthenticated;
@@ -5576,6 +5672,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder checkNamespacePlan(Boolean checkNamespacePlan) {
             return checkNamespacePlan(Output.of(checkNamespacePlan));
+        }
+
+        /**
+         * @param ciJobLiveTraceEnabled Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciJobLiveTraceEnabled(@Nullable Output<Boolean> ciJobLiveTraceEnabled) {
+            $.ciJobLiveTraceEnabled = ciJobLiveTraceEnabled;
+            return this;
+        }
+
+        /**
+         * @param ciJobLiveTraceEnabled Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciJobLiveTraceEnabled(Boolean ciJobLiveTraceEnabled) {
+            return ciJobLiveTraceEnabled(Output.of(ciJobLiveTraceEnabled));
         }
 
         /**
@@ -6361,6 +6478,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder disableFeedToken(Boolean disableFeedToken) {
             return disableFeedToken(Output.of(disableFeedToken));
+        }
+
+        /**
+         * @param disableOverridingApproversPerMergeRequest Prevent editing approval rules in projects and merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableOverridingApproversPerMergeRequest(@Nullable Output<Boolean> disableOverridingApproversPerMergeRequest) {
+            $.disableOverridingApproversPerMergeRequest = disableOverridingApproversPerMergeRequest;
+            return this;
+        }
+
+        /**
+         * @param disableOverridingApproversPerMergeRequest Prevent editing approval rules in projects and merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableOverridingApproversPerMergeRequest(Boolean disableOverridingApproversPerMergeRequest) {
+            return disableOverridingApproversPerMergeRequest(Output.of(disableOverridingApproversPerMergeRequest));
         }
 
         /**
@@ -8260,6 +8398,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param inactiveResourceAccessTokensDeleteAfterDays Specifies retention period for inactive project and group access tokens. Default is 30.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inactiveResourceAccessTokensDeleteAfterDays(@Nullable Output<Integer> inactiveResourceAccessTokensDeleteAfterDays) {
+            $.inactiveResourceAccessTokensDeleteAfterDays = inactiveResourceAccessTokensDeleteAfterDays;
+            return this;
+        }
+
+        /**
+         * @param inactiveResourceAccessTokensDeleteAfterDays Specifies retention period for inactive project and group access tokens. Default is 30.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inactiveResourceAccessTokensDeleteAfterDays(Integer inactiveResourceAccessTokensDeleteAfterDays) {
+            return inactiveResourceAccessTokensDeleteAfterDays(Output.of(inactiveResourceAccessTokensDeleteAfterDays));
+        }
+
+        /**
          * @param includeOptionalMetricsInServicePing Whether or not optional metrics are enabled in Service Ping.
          * 
          * @return builder
@@ -8467,6 +8626,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder lockMembershipsToLdap(Boolean lockMembershipsToLdap) {
             return lockMembershipsToLdap(Output.of(lockMembershipsToLdap));
+        }
+
+        /**
+         * @param lockMembershipsToSaml Set to true to lock all memberships to SAML. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMembershipsToSaml(@Nullable Output<Boolean> lockMembershipsToSaml) {
+            $.lockMembershipsToSaml = lockMembershipsToSaml;
+            return this;
+        }
+
+        /**
+         * @param lockMembershipsToSaml Set to true to lock all memberships to SAML. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMembershipsToSaml(Boolean lockMembershipsToSaml) {
+            return lockMembershipsToSaml(Output.of(lockMembershipsToSaml));
         }
 
         /**
@@ -9411,6 +9591,48 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder pollingIntervalMultiplier(Double pollingIntervalMultiplier) {
             return pollingIntervalMultiplier(Output.of(pollingIntervalMultiplier));
+        }
+
+        /**
+         * @param preventMergeRequestsAuthorApproval Prevent approval by merge request creator (author).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsAuthorApproval(@Nullable Output<Boolean> preventMergeRequestsAuthorApproval) {
+            $.preventMergeRequestsAuthorApproval = preventMergeRequestsAuthorApproval;
+            return this;
+        }
+
+        /**
+         * @param preventMergeRequestsAuthorApproval Prevent approval by merge request creator (author).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsAuthorApproval(Boolean preventMergeRequestsAuthorApproval) {
+            return preventMergeRequestsAuthorApproval(Output.of(preventMergeRequestsAuthorApproval));
+        }
+
+        /**
+         * @param preventMergeRequestsCommittersApproval Prevent approval by committers to merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsCommittersApproval(@Nullable Output<Boolean> preventMergeRequestsCommittersApproval) {
+            $.preventMergeRequestsCommittersApproval = preventMergeRequestsCommittersApproval;
+            return this;
+        }
+
+        /**
+         * @param preventMergeRequestsCommittersApproval Prevent approval by committers to merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsCommittersApproval(Boolean preventMergeRequestsCommittersApproval) {
+            return preventMergeRequestsCommittersApproval(Output.of(preventMergeRequestsCommittersApproval));
         }
 
         /**

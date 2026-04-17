@@ -69,13 +69,13 @@ import (
 type ProjectIntegrationPipelinesEmail struct {
 	pulumi.CustomResourceState
 
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
-	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
+	BranchesToBeNotified pulumi.StringOutput `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
-	NotifyOnlyBrokenPipelines pulumi.BoolPtrOutput `pulumi:"notifyOnlyBrokenPipelines"`
+	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// ) email addresses where notifications are sent.
+	// Email addresses where notifications are sent.
 	Recipients pulumi.StringArrayOutput `pulumi:"recipients"`
 }
 
@@ -115,24 +115,24 @@ func GetProjectIntegrationPipelinesEmail(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectIntegrationPipelinesEmail resources.
 type projectIntegrationPipelinesEmailState struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
 	// ID of the project you want to activate integration on.
 	Project *string `pulumi:"project"`
-	// ) email addresses where notifications are sent.
+	// Email addresses where notifications are sent.
 	Recipients []string `pulumi:"recipients"`
 }
 
 type ProjectIntegrationPipelinesEmailState struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringPtrInput
-	// ) email addresses where notifications are sent.
+	// Email addresses where notifications are sent.
 	Recipients pulumi.StringArrayInput
 }
 
@@ -141,25 +141,25 @@ func (ProjectIntegrationPipelinesEmailState) ElementType() reflect.Type {
 }
 
 type projectIntegrationPipelinesEmailArgs struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
 	// ID of the project you want to activate integration on.
 	Project string `pulumi:"project"`
-	// ) email addresses where notifications are sent.
+	// Email addresses where notifications are sent.
 	Recipients []string `pulumi:"recipients"`
 }
 
 // The set of arguments for constructing a ProjectIntegrationPipelinesEmail resource.
 type ProjectIntegrationPipelinesEmailArgs struct {
-	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
 	BranchesToBeNotified pulumi.StringPtrInput
 	// Notify only broken pipelines. Default is true.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringInput
-	// ) email addresses where notifications are sent.
+	// Email addresses where notifications are sent.
 	Recipients pulumi.StringArrayInput
 }
 
@@ -250,14 +250,14 @@ func (o ProjectIntegrationPipelinesEmailOutput) ToProjectIntegrationPipelinesEma
 	return o
 }
 
-// Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
-func (o ProjectIntegrationPipelinesEmailOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationPipelinesEmail) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
+// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
+func (o ProjectIntegrationPipelinesEmailOutput) BranchesToBeNotified() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationPipelinesEmail) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
 }
 
 // Notify only broken pipelines. Default is true.
-func (o ProjectIntegrationPipelinesEmailOutput) NotifyOnlyBrokenPipelines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationPipelinesEmail) pulumi.BoolPtrOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolPtrOutput)
+func (o ProjectIntegrationPipelinesEmailOutput) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationPipelinesEmail) pulumi.BoolOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolOutput)
 }
 
 // ID of the project you want to activate integration on.
@@ -265,7 +265,7 @@ func (o ProjectIntegrationPipelinesEmailOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationPipelinesEmail) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// ) email addresses where notifications are sent.
+// Email addresses where notifications are sent.
 func (o ProjectIntegrationPipelinesEmailOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectIntegrationPipelinesEmail) pulumi.StringArrayOutput { return v.Recipients }).(pulumi.StringArrayOutput)
 }

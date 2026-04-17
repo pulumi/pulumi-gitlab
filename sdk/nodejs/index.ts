@@ -380,6 +380,21 @@ export const getRepositoryTree: typeof import("./getRepositoryTree").getReposito
 export const getRepositoryTreeOutput: typeof import("./getRepositoryTree").getRepositoryTreeOutput = null as any;
 utilities.lazyLoad(exports, ["getRepositoryTree","getRepositoryTreeOutput"], () => require("./getRepositoryTree"));
 
+export { GetRunnerControllerArgs, GetRunnerControllerResult, GetRunnerControllerOutputArgs } from "./getRunnerController";
+export const getRunnerController: typeof import("./getRunnerController").getRunnerController = null as any;
+export const getRunnerControllerOutput: typeof import("./getRunnerController").getRunnerControllerOutput = null as any;
+utilities.lazyLoad(exports, ["getRunnerController","getRunnerControllerOutput"], () => require("./getRunnerController"));
+
+export { GetRunnerControllerScopesArgs, GetRunnerControllerScopesResult, GetRunnerControllerScopesOutputArgs } from "./getRunnerControllerScopes";
+export const getRunnerControllerScopes: typeof import("./getRunnerControllerScopes").getRunnerControllerScopes = null as any;
+export const getRunnerControllerScopesOutput: typeof import("./getRunnerControllerScopes").getRunnerControllerScopesOutput = null as any;
+utilities.lazyLoad(exports, ["getRunnerControllerScopes","getRunnerControllerScopesOutput"], () => require("./getRunnerControllerScopes"));
+
+export { GetRunnerControllersResult } from "./getRunnerControllers";
+export const getRunnerControllers: typeof import("./getRunnerControllers").getRunnerControllers = null as any;
+export const getRunnerControllersOutput: typeof import("./getRunnerControllers").getRunnerControllersOutput = null as any;
+utilities.lazyLoad(exports, ["getRunnerControllers","getRunnerControllersOutput"], () => require("./getRunnerControllers"));
+
 export { GetRunnersArgs, GetRunnersResult, GetRunnersOutputArgs } from "./getRunners";
 export const getRunners: typeof import("./getRunners").getRunners = null as any;
 export const getRunnersOutput: typeof import("./getRunners").getRunnersOutput = null as any;
@@ -459,6 +474,11 @@ export { GroupIntegrationMattermostArgs, GroupIntegrationMattermostState } from 
 export type GroupIntegrationMattermost = import("./groupIntegrationMattermost").GroupIntegrationMattermost;
 export const GroupIntegrationMattermost: typeof import("./groupIntegrationMattermost").GroupIntegrationMattermost = null as any;
 utilities.lazyLoad(exports, ["GroupIntegrationMattermost"], () => require("./groupIntegrationMattermost"));
+
+export { GroupIntegrationMicrosoftTeamsArgs, GroupIntegrationMicrosoftTeamsState } from "./groupIntegrationMicrosoftTeams";
+export type GroupIntegrationMicrosoftTeams = import("./groupIntegrationMicrosoftTeams").GroupIntegrationMicrosoftTeams;
+export const GroupIntegrationMicrosoftTeams: typeof import("./groupIntegrationMicrosoftTeams").GroupIntegrationMicrosoftTeams = null as any;
+utilities.lazyLoad(exports, ["GroupIntegrationMicrosoftTeams"], () => require("./groupIntegrationMicrosoftTeams"));
 
 export { GroupIssueBoardArgs, GroupIssueBoardState } from "./groupIssueBoard";
 export type GroupIssueBoard = import("./groupIssueBoard").GroupIssueBoard;
@@ -745,6 +765,11 @@ export type ProjectIntegrationJira = import("./projectIntegrationJira").ProjectI
 export const ProjectIntegrationJira: typeof import("./projectIntegrationJira").ProjectIntegrationJira = null as any;
 utilities.lazyLoad(exports, ["ProjectIntegrationJira"], () => require("./projectIntegrationJira"));
 
+export { ProjectIntegrationMatrixArgs, ProjectIntegrationMatrixState } from "./projectIntegrationMatrix";
+export type ProjectIntegrationMatrix = import("./projectIntegrationMatrix").ProjectIntegrationMatrix;
+export const ProjectIntegrationMatrix: typeof import("./projectIntegrationMatrix").ProjectIntegrationMatrix = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationMatrix"], () => require("./projectIntegrationMatrix"));
+
 export { ProjectIntegrationMattermostArgs, ProjectIntegrationMattermostState } from "./projectIntegrationMattermost";
 export type ProjectIntegrationMattermost = import("./projectIntegrationMattermost").ProjectIntegrationMattermost;
 export const ProjectIntegrationMattermost: typeof import("./projectIntegrationMattermost").ProjectIntegrationMattermost = null as any;
@@ -928,6 +953,26 @@ export type Runner = import("./runner").Runner;
 export const Runner: typeof import("./runner").Runner = null as any;
 utilities.lazyLoad(exports, ["Runner"], () => require("./runner"));
 
+export { RunnerControllerArgs, RunnerControllerState } from "./runnerController";
+export type RunnerController = import("./runnerController").RunnerController;
+export const RunnerController: typeof import("./runnerController").RunnerController = null as any;
+utilities.lazyLoad(exports, ["RunnerController"], () => require("./runnerController"));
+
+export { RunnerControllerInstanceScopeArgs, RunnerControllerInstanceScopeState } from "./runnerControllerInstanceScope";
+export type RunnerControllerInstanceScope = import("./runnerControllerInstanceScope").RunnerControllerInstanceScope;
+export const RunnerControllerInstanceScope: typeof import("./runnerControllerInstanceScope").RunnerControllerInstanceScope = null as any;
+utilities.lazyLoad(exports, ["RunnerControllerInstanceScope"], () => require("./runnerControllerInstanceScope"));
+
+export { RunnerControllerRunnerScopeArgs, RunnerControllerRunnerScopeState } from "./runnerControllerRunnerScope";
+export type RunnerControllerRunnerScope = import("./runnerControllerRunnerScope").RunnerControllerRunnerScope;
+export const RunnerControllerRunnerScope: typeof import("./runnerControllerRunnerScope").RunnerControllerRunnerScope = null as any;
+utilities.lazyLoad(exports, ["RunnerControllerRunnerScope"], () => require("./runnerControllerRunnerScope"));
+
+export { RunnerControllerTokenArgs, RunnerControllerTokenState } from "./runnerControllerToken";
+export type RunnerControllerToken = import("./runnerControllerToken").RunnerControllerToken;
+export const RunnerControllerToken: typeof import("./runnerControllerToken").RunnerControllerToken = null as any;
+utilities.lazyLoad(exports, ["RunnerControllerToken"], () => require("./runnerControllerToken"));
+
 export { SystemHookArgs, SystemHookState } from "./systemHook";
 export type SystemHook = import("./systemHook").SystemHook;
 export const SystemHook: typeof import("./systemHook").SystemHook = null as any;
@@ -1046,6 +1091,8 @@ const _module = {
                 return new GroupHook(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
                 return new GroupIntegrationMattermost(name, <any>undefined, { urn })
+            case "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams":
+                return new GroupIntegrationMicrosoftTeams(name, <any>undefined, { urn })
             case "gitlab:index/groupIssueBoard:GroupIssueBoard":
                 return new GroupIssueBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupLabel:GroupLabel":
@@ -1160,6 +1207,8 @@ const _module = {
                 return new ProjectIntegrationJenkins(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationJira:ProjectIntegrationJira":
                 return new ProjectIntegrationJira(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationMatrix:ProjectIntegrationMatrix":
+                return new ProjectIntegrationMatrix(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost":
                 return new ProjectIntegrationMattermost(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams":
@@ -1232,6 +1281,14 @@ const _module = {
                 return new RepositoryFile(name, <any>undefined, { urn })
             case "gitlab:index/runner:Runner":
                 return new Runner(name, <any>undefined, { urn })
+            case "gitlab:index/runnerController:RunnerController":
+                return new RunnerController(name, <any>undefined, { urn })
+            case "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope":
+                return new RunnerControllerInstanceScope(name, <any>undefined, { urn })
+            case "gitlab:index/runnerControllerRunnerScope:RunnerControllerRunnerScope":
+                return new RunnerControllerRunnerScope(name, <any>undefined, { urn })
+            case "gitlab:index/runnerControllerToken:RunnerControllerToken":
+                return new RunnerControllerToken(name, <any>undefined, { urn })
             case "gitlab:index/systemHook:SystemHook":
                 return new SystemHook(name, <any>undefined, { urn })
             case "gitlab:index/tagProtection:TagProtection":
@@ -1283,6 +1340,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupDeployToken", _modul
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMattermost", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLabel", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupLdapLink", _module)
@@ -1340,6 +1398,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationGithub"
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationHarbor", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationJenkins", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationJira", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationMatrix", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationPipelinesEmail", _module)
@@ -1376,6 +1435,10 @@ pulumi.runtime.registerResourceModule("gitlab", "index/release", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runner", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/runnerController", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerInstanceScope", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerRunnerScope", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/systemHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/tagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/topic", _module)

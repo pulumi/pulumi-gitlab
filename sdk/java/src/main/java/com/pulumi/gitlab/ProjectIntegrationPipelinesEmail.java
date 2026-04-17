@@ -13,7 +13,6 @@ import com.pulumi.gitlab.inputs.ProjectIntegrationPipelinesEmailState;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -81,32 +80,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail")
 public class ProjectIntegrationPipelinesEmail extends com.pulumi.resources.CustomResource {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> branchesToBeNotified;
+    private Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      * 
      */
-    public Output<Optional<String>> branchesToBeNotified() {
-        return Codegen.optional(this.branchesToBeNotified);
+    public Output<String> branchesToBeNotified() {
+        return this.branchesToBeNotified;
     }
     /**
      * Notify only broken pipelines. Default is true.
      * 
      */
     @Export(name="notifyOnlyBrokenPipelines", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> notifyOnlyBrokenPipelines;
+    private Output<Boolean> notifyOnlyBrokenPipelines;
 
     /**
      * @return Notify only broken pipelines. Default is true.
      * 
      */
-    public Output<Optional<Boolean>> notifyOnlyBrokenPipelines() {
-        return Codegen.optional(this.notifyOnlyBrokenPipelines);
+    public Output<Boolean> notifyOnlyBrokenPipelines() {
+        return this.notifyOnlyBrokenPipelines;
     }
     /**
      * ID of the project you want to activate integration on.
@@ -123,14 +122,14 @@ public class ProjectIntegrationPipelinesEmail extends com.pulumi.resources.Custo
         return this.project;
     }
     /**
-     * ) email addresses where notifications are sent.
+     * Email addresses where notifications are sent.
      * 
      */
     @Export(name="recipients", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> recipients;
 
     /**
-     * @return ) email addresses where notifications are sent.
+     * @return Email addresses where notifications are sent.
      * 
      */
     public Output<List<String>> recipients() {

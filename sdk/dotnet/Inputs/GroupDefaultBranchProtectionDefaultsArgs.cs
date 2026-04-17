@@ -43,6 +43,12 @@ namespace Pulumi.GitLab.Inputs
         }
 
         /// <summary>
+        /// Require code owner approval before merging.
+        /// </summary>
+        [Input("codeOwnerApprovalRequired")]
+        public Input<bool>? CodeOwnerApprovalRequired { get; set; }
+
+        /// <summary>
         /// Allow developers to initial push.
         /// </summary>
         [Input("developerCanInitialPush")]

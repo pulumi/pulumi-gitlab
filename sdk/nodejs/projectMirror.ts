@@ -98,7 +98,7 @@ export class ProjectMirror extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The URL of the remote repository to be mirrored.
+     * The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      */
     declare public readonly url: pulumi.Output<string>;
 
@@ -180,7 +180,7 @@ export interface ProjectMirrorState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The URL of the remote repository to be mirrored.
+     * The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      */
     url?: pulumi.Input<string>;
 }
@@ -214,7 +214,7 @@ export interface ProjectMirrorArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The URL of the remote repository to be mirrored.
+     * The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      */
     url: pulumi.Input<string>;
 }

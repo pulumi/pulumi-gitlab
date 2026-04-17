@@ -194,7 +194,7 @@ namespace Pulumi.GitLab
         public Output<bool> EmailsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         [Output("extraSharedRunnersMinutesLimit")]
         public Output<int> ExtraSharedRunnersMinutesLimit { get; private set; } = null!;
@@ -326,7 +326,7 @@ namespace Pulumi.GitLab
         public Output<bool> ShareWithGroupLock { get; private set; } = null!;
 
         /// <summary>
-        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
         /// </summary>
         [Output("sharedRunnersMinutesLimit")]
         public Output<int> SharedRunnersMinutesLimit { get; private set; } = null!;
@@ -484,7 +484,7 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsEnabled { get; set; }
 
         /// <summary>
-        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         [Input("extraSharedRunnersMinutesLimit")]
         public Input<int>? ExtraSharedRunnersMinutesLimit { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.GitLab
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
-        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
         /// </summary>
         [Input("sharedRunnersMinutesLimit")]
         public Input<int>? SharedRunnersMinutesLimit { get; set; }
@@ -720,7 +720,7 @@ namespace Pulumi.GitLab
         public Input<bool>? EmailsEnabled { get; set; }
 
         /// <summary>
-        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         [Input("extraSharedRunnersMinutesLimit")]
         public Input<int>? ExtraSharedRunnersMinutesLimit { get; set; }
@@ -868,7 +868,7 @@ namespace Pulumi.GitLab
         public Input<bool>? ShareWithGroupLock { get; set; }
 
         /// <summary>
-        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
         /// </summary>
         [Input("sharedRunnersMinutesLimit")]
         public Input<int>? SharedRunnersMinutesLimit { get; set; }

@@ -124,6 +124,12 @@ namespace Pulumi.GitLab
         public Output<bool> JobEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for member events. Defaults to `False`.
+        /// </summary>
+        [Output("memberEvents")]
+        public Output<bool> MemberEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for merge requests events. Defaults to `False`.
         /// </summary>
         [Output("mergeRequestsEvents")]
@@ -336,6 +342,12 @@ namespace Pulumi.GitLab
         public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for member events. Defaults to `False`.
+        /// </summary>
+        [Input("memberEvents")]
+        public Input<bool>? MemberEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for merge requests events. Defaults to `False`.
         /// </summary>
         [Input("mergeRequestsEvents")]
@@ -526,6 +538,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("jobEvents")]
         public Input<bool>? JobEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for member events. Defaults to `False`.
+        /// </summary>
+        [Input("memberEvents")]
+        public Input<bool>? MemberEvents { get; set; }
 
         /// <summary>
         /// Invoke the hook for merge requests events. Defaults to `False`.

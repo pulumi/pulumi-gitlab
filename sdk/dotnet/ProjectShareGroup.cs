@@ -56,6 +56,12 @@ namespace Pulumi.GitLab
         public Output<string?> AccessLevel { get; private set; } = null!;
 
         /// <summary>
+        /// Share expiration date. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string?> ExpiresAt { get; private set; } = null!;
+
+        /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Output("groupAccess")]
@@ -126,6 +132,12 @@ namespace Pulumi.GitLab
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
+        /// Share expiration date. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
+
+        /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Input("groupAccess")]
@@ -156,6 +168,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
+
+        /// <summary>
+        /// Share expiration date. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`

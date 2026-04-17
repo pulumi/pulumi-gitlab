@@ -86,6 +86,8 @@ type ApplicationSettings struct {
 	CanCreateGroup pulumi.BoolOutput `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolOutput `pulumi:"checkNamespacePlan"`
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled pulumi.BoolOutput `pulumi:"ciJobLiveTraceEnabled"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntOutput `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -162,6 +164,8 @@ type ApplicationSettings struct {
 	DisableAdminOauthScopes pulumi.BoolOutput `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken pulumi.BoolOutput `pulumi:"disableFeedToken"`
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest pulumi.BoolOutput `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens pulumi.BoolOutput `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
@@ -338,6 +342,8 @@ type ApplicationSettings struct {
 	InactiveProjectsMinSizeMb pulumi.IntOutput `pulumi:"inactiveProjectsMinSizeMb"`
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths pulumi.IntOutput `pulumi:"inactiveProjectsSendWarningEmailAfterMonths"`
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays pulumi.IntOutput `pulumi:"inactiveResourceAccessTokensDeleteAfterDays"`
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing pulumi.BoolOutput `pulumi:"includeOptionalMetricsInServicePing"`
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -358,6 +364,8 @@ type ApplicationSettings struct {
 	LockDuoFeaturesEnabled pulumi.BoolOutput `pulumi:"lockDuoFeaturesEnabled"`
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap pulumi.BoolOutput `pulumi:"lockMembershipsToLdap"`
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml pulumi.BoolOutput `pulumi:"lockMembershipsToSaml"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolOutput `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -446,6 +454,10 @@ type ApplicationSettings struct {
 	PlantumlUrl pulumi.StringOutput `pulumi:"plantumlUrl"`
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier pulumi.Float64Output `pulumi:"pollingIntervalMultiplier"`
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval pulumi.BoolOutput `pulumi:"preventMergeRequestsAuthorApproval"`
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval pulumi.BoolOutput `pulumi:"preventMergeRequestsCommittersApproval"`
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolOutput `pulumi:"projectExportEnabled"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -811,6 +823,8 @@ type applicationSettingsState struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled *bool `pulumi:"ciJobLiveTraceEnabled"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -887,6 +901,8 @@ type applicationSettingsState struct {
 	DisableAdminOauthScopes *bool `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken *bool `pulumi:"disableFeedToken"`
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens *bool `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
@@ -1063,6 +1079,8 @@ type applicationSettingsState struct {
 	InactiveProjectsMinSizeMb *int `pulumi:"inactiveProjectsMinSizeMb"`
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths *int `pulumi:"inactiveProjectsSendWarningEmailAfterMonths"`
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays *int `pulumi:"inactiveResourceAccessTokensDeleteAfterDays"`
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing *bool `pulumi:"includeOptionalMetricsInServicePing"`
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -1083,6 +1101,8 @@ type applicationSettingsState struct {
 	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap *bool `pulumi:"lockMembershipsToLdap"`
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml *bool `pulumi:"lockMembershipsToSaml"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled *bool `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -1171,6 +1191,10 @@ type applicationSettingsState struct {
 	PlantumlUrl *string `pulumi:"plantumlUrl"`
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier *float64 `pulumi:"pollingIntervalMultiplier"`
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval *bool `pulumi:"preventMergeRequestsAuthorApproval"`
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval *bool `pulumi:"preventMergeRequestsCommittersApproval"`
 	// Enable project export.
 	ProjectExportEnabled *bool `pulumi:"projectExportEnabled"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -1436,6 +1460,8 @@ type ApplicationSettingsState struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolPtrInput
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled pulumi.BoolPtrInput
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntPtrInput
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -1512,6 +1538,8 @@ type ApplicationSettingsState struct {
 	DisableAdminOauthScopes pulumi.BoolPtrInput
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken pulumi.BoolPtrInput
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens pulumi.BoolPtrInput
 	// Disabled OAuth sign-in sources.
@@ -1688,6 +1716,8 @@ type ApplicationSettingsState struct {
 	InactiveProjectsMinSizeMb pulumi.IntPtrInput
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths pulumi.IntPtrInput
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays pulumi.IntPtrInput
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing pulumi.BoolPtrInput
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -1708,6 +1738,8 @@ type ApplicationSettingsState struct {
 	LockDuoFeaturesEnabled pulumi.BoolPtrInput
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap pulumi.BoolPtrInput
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml pulumi.BoolPtrInput
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolPtrInput
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -1796,6 +1828,10 @@ type ApplicationSettingsState struct {
 	PlantumlUrl pulumi.StringPtrInput
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier pulumi.Float64PtrInput
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval pulumi.BoolPtrInput
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval pulumi.BoolPtrInput
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolPtrInput
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -2065,6 +2101,8 @@ type applicationSettingsArgs struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled *bool `pulumi:"ciJobLiveTraceEnabled"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -2141,6 +2179,8 @@ type applicationSettingsArgs struct {
 	DisableAdminOauthScopes *bool `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken *bool `pulumi:"disableFeedToken"`
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens *bool `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
@@ -2313,6 +2353,8 @@ type applicationSettingsArgs struct {
 	InactiveProjectsMinSizeMb *int `pulumi:"inactiveProjectsMinSizeMb"`
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths *int `pulumi:"inactiveProjectsSendWarningEmailAfterMonths"`
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays *int `pulumi:"inactiveResourceAccessTokensDeleteAfterDays"`
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing *bool `pulumi:"includeOptionalMetricsInServicePing"`
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -2333,6 +2375,8 @@ type applicationSettingsArgs struct {
 	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap *bool `pulumi:"lockMembershipsToLdap"`
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml *bool `pulumi:"lockMembershipsToSaml"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled *bool `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -2421,6 +2465,10 @@ type applicationSettingsArgs struct {
 	PlantumlUrl *string `pulumi:"plantumlUrl"`
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier *float64 `pulumi:"pollingIntervalMultiplier"`
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval *bool `pulumi:"preventMergeRequestsAuthorApproval"`
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval *bool `pulumi:"preventMergeRequestsCommittersApproval"`
 	// Enable project export.
 	ProjectExportEnabled *bool `pulumi:"projectExportEnabled"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -2687,6 +2735,8 @@ type ApplicationSettingsArgs struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolPtrInput
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled pulumi.BoolPtrInput
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntPtrInput
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -2763,6 +2813,8 @@ type ApplicationSettingsArgs struct {
 	DisableAdminOauthScopes pulumi.BoolPtrInput
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken pulumi.BoolPtrInput
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens pulumi.BoolPtrInput
 	// Disabled OAuth sign-in sources.
@@ -2935,6 +2987,8 @@ type ApplicationSettingsArgs struct {
 	InactiveProjectsMinSizeMb pulumi.IntPtrInput
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths pulumi.IntPtrInput
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays pulumi.IntPtrInput
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing pulumi.BoolPtrInput
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -2955,6 +3009,8 @@ type ApplicationSettingsArgs struct {
 	LockDuoFeaturesEnabled pulumi.BoolPtrInput
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap pulumi.BoolPtrInput
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml pulumi.BoolPtrInput
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolPtrInput
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -3043,6 +3099,10 @@ type ApplicationSettingsArgs struct {
 	PlantumlUrl pulumi.StringPtrInput
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier pulumi.Float64PtrInput
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval pulumi.BoolPtrInput
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval pulumi.BoolPtrInput
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolPtrInput
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -3478,6 +3538,11 @@ func (o ApplicationSettingsOutput) CheckNamespacePlan() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CheckNamespacePlan }).(pulumi.BoolOutput)
 }
 
+// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+func (o ApplicationSettingsOutput) CiJobLiveTraceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CiJobLiveTraceEnabled }).(pulumi.BoolOutput)
+}
+
 // The maximum number of includes per pipeline.
 func (o ApplicationSettingsOutput) CiMaxIncludes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.CiMaxIncludes }).(pulumi.IntOutput)
@@ -3669,6 +3734,11 @@ func (o ApplicationSettingsOutput) DisableAdminOauthScopes() pulumi.BoolOutput {
 // Disable display of RSS/Atom and calendar feed tokens.
 func (o ApplicationSettingsOutput) DisableFeedToken() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisableFeedToken }).(pulumi.BoolOutput)
+}
+
+// Prevent editing approval rules in projects and merge requests.
+func (o ApplicationSettingsOutput) DisableOverridingApproversPerMergeRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisableOverridingApproversPerMergeRequest }).(pulumi.BoolOutput)
 }
 
 // Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -4113,6 +4183,11 @@ func (o ApplicationSettingsOutput) InactiveProjectsSendWarningEmailAfterMonths()
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.InactiveProjectsSendWarningEmailAfterMonths }).(pulumi.IntOutput)
 }
 
+// Specifies retention period for inactive project and group access tokens. Default is 30.
+func (o ApplicationSettingsOutput) InactiveResourceAccessTokensDeleteAfterDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.InactiveResourceAccessTokensDeleteAfterDays }).(pulumi.IntOutput)
+}
+
 // Whether or not optional metrics are enabled in Service Ping.
 func (o ApplicationSettingsOutput) IncludeOptionalMetricsInServicePing() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.IncludeOptionalMetricsInServicePing }).(pulumi.BoolOutput)
@@ -4161,6 +4236,11 @@ func (o ApplicationSettingsOutput) LockDuoFeaturesEnabled() pulumi.BoolOutput {
 // Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 func (o ApplicationSettingsOutput) LockMembershipsToLdap() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.LockMembershipsToLdap }).(pulumi.BoolOutput)
+}
+
+// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+func (o ApplicationSettingsOutput) LockMembershipsToSaml() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.LockMembershipsToSaml }).(pulumi.BoolOutput)
 }
 
 // Enable Mailgun event receiver.
@@ -4381,6 +4461,16 @@ func (o ApplicationSettingsOutput) PlantumlUrl() pulumi.StringOutput {
 // Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 func (o ApplicationSettingsOutput) PollingIntervalMultiplier() pulumi.Float64Output {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.Float64Output { return v.PollingIntervalMultiplier }).(pulumi.Float64Output)
+}
+
+// Prevent approval by merge request creator (author).
+func (o ApplicationSettingsOutput) PreventMergeRequestsAuthorApproval() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.PreventMergeRequestsAuthorApproval }).(pulumi.BoolOutput)
+}
+
+// Prevent approval by committers to merge requests.
+func (o ApplicationSettingsOutput) PreventMergeRequestsCommittersApproval() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.PreventMergeRequestsCommittersApproval }).(pulumi.BoolOutput)
 }
 
 // Enable project export.

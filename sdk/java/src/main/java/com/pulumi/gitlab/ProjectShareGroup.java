@@ -89,6 +89,20 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessLevel);
     }
     /**
+     * Share expiration date. Format: `YYYY-MM-DD`
+     * 
+     */
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expiresAt;
+
+    /**
+     * @return Share expiration date. Format: `YYYY-MM-DD`
+     * 
+     */
+    public Output<Optional<String>> expiresAt() {
+        return Codegen.optional(this.expiresAt);
+    }
+    /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */

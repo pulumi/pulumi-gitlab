@@ -78,7 +78,7 @@ type ProjectPushMirror struct {
 	OnlyProtectedBranches pulumi.BoolOutput `pulumi:"onlyProtectedBranches"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The URL of the remote repository to be mirrored.
+	// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -139,7 +139,7 @@ type projectPushMirrorState struct {
 	OnlyProtectedBranches *bool `pulumi:"onlyProtectedBranches"`
 	// The id of the project.
 	Project *string `pulumi:"project"`
-	// The URL of the remote repository to be mirrored.
+	// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
 	Url *string `pulumi:"url"`
 }
 
@@ -158,7 +158,7 @@ type ProjectPushMirrorState struct {
 	OnlyProtectedBranches pulumi.BoolPtrInput
 	// The id of the project.
 	Project pulumi.StringPtrInput
-	// The URL of the remote repository to be mirrored.
+	// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
 	Url pulumi.StringPtrInput
 }
 
@@ -179,7 +179,7 @@ type projectPushMirrorArgs struct {
 	OnlyProtectedBranches *bool `pulumi:"onlyProtectedBranches"`
 	// The id of the project.
 	Project string `pulumi:"project"`
-	// The URL of the remote repository to be mirrored.
+	// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
 	Url string `pulumi:"url"`
 }
 
@@ -197,7 +197,7 @@ type ProjectPushMirrorArgs struct {
 	OnlyProtectedBranches pulumi.BoolPtrInput
 	// The id of the project.
 	Project pulumi.StringInput
-	// The URL of the remote repository to be mirrored.
+	// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
 	Url pulumi.StringInput
 }
 
@@ -323,7 +323,7 @@ func (o ProjectPushMirrorOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectPushMirror) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The URL of the remote repository to be mirrored.
+// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
 func (o ProjectPushMirrorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectPushMirror) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

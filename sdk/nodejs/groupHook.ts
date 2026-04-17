@@ -116,6 +116,10 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly jobEvents: pulumi.Output<boolean>;
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     */
+    declare public readonly memberEvents: pulumi.Output<boolean>;
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
@@ -196,6 +200,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["hookId"] = state?.hookId;
             resourceInputs["issuesEvents"] = state?.issuesEvents;
             resourceInputs["jobEvents"] = state?.jobEvents;
+            resourceInputs["memberEvents"] = state?.memberEvents;
             resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
             resourceInputs["name"] = state?.name;
             resourceInputs["noteEvents"] = state?.noteEvents;
@@ -230,6 +235,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["group"] = args?.group;
             resourceInputs["issuesEvents"] = args?.issuesEvents;
             resourceInputs["jobEvents"] = args?.jobEvents;
+            resourceInputs["memberEvents"] = args?.memberEvents;
             resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
             resourceInputs["name"] = args?.name;
             resourceInputs["noteEvents"] = args?.noteEvents;
@@ -317,6 +323,10 @@ export interface GroupHookState {
      * Invoke the hook for job events. Defaults to `false`.
      */
     jobEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for member events. Defaults to `false`.
+     */
+    memberEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
@@ -427,6 +437,10 @@ export interface GroupHookArgs {
      * Invoke the hook for job events. Defaults to `false`.
      */
     jobEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for member events. Defaults to `false`.
+     */
+    memberEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */

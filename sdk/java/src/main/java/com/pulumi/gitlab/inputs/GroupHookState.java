@@ -245,6 +245,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    @Import(name="memberEvents")
+    private @Nullable Output<Boolean> memberEvents;
+
+    /**
+     * @return Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> memberEvents() {
+        return Optional.ofNullable(this.memberEvents);
+    }
+
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
@@ -457,6 +472,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.hookId = $.hookId;
         this.issuesEvents = $.issuesEvents;
         this.jobEvents = $.jobEvents;
+        this.memberEvents = $.memberEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
         this.name = $.name;
         this.noteEvents = $.noteEvents;
@@ -813,6 +829,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder jobEvents(Boolean jobEvents) {
             return jobEvents(Output.of(jobEvents));
+        }
+
+        /**
+         * @param memberEvents Invoke the hook for member events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberEvents(@Nullable Output<Boolean> memberEvents) {
+            $.memberEvents = memberEvents;
+            return this;
+        }
+
+        /**
+         * @param memberEvents Invoke the hook for member events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberEvents(Boolean memberEvents) {
+            return memberEvents(Output.of(memberEvents));
         }
 
         /**

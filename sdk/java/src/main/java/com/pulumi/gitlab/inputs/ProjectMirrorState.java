@@ -123,14 +123,14 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The URL of the remote repository to be mirrored.
+     * The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL of the remote repository to be mirrored.
+     * @return The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      * 
      */
     public Optional<Output<String>> url() {
@@ -316,7 +316,7 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param url The URL of the remote repository to be mirrored.
+         * @param url The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ProjectMirrorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param url The URL of the remote repository to be mirrored.
+         * @param url The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
          * 
          * @return builder
          * 

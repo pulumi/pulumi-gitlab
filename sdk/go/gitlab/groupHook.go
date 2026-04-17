@@ -64,6 +64,8 @@ type GroupHook struct {
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents pulumi.BoolOutput `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
 	// Name of the group webhook.
@@ -165,6 +167,8 @@ type groupHookState struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents *bool `pulumi:"jobEvents"`
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents *bool `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
 	// Name of the group webhook.
@@ -224,6 +228,8 @@ type GroupHookState struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolPtrInput
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolPtrInput
 	// Name of the group webhook.
@@ -283,6 +289,8 @@ type groupHookArgs struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents *bool `pulumi:"jobEvents"`
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents *bool `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
 	// Name of the group webhook.
@@ -339,6 +347,8 @@ type GroupHookArgs struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolPtrInput
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolPtrInput
 	// Name of the group webhook.
@@ -527,6 +537,11 @@ func (o GroupHookOutput) IssuesEvents() pulumi.BoolOutput {
 // Invoke the hook for job events. Defaults to `false`.
 func (o GroupHookOutput) JobEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for member events. Defaults to `false`.
+func (o GroupHookOutput) MemberEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.MemberEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for merge requests events. Defaults to `false`.

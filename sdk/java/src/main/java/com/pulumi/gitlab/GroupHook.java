@@ -253,6 +253,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
         return this.jobEvents;
     }
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    @Export(name="memberEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> memberEvents;
+
+    /**
+     * @return Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> memberEvents() {
+        return this.memberEvents;
+    }
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */

@@ -50,7 +50,7 @@ public final class GetUserResult {
      */
     private String currentSignInAt;
     /**
-     * @return The public email address of the user.
+     * @return The email address of the user.
      * 
      */
     private String email;
@@ -124,6 +124,11 @@ public final class GetUserResult {
      * 
      */
     private Integer projectsLimit;
+    /**
+     * @return The public email address of the user.
+     * 
+     */
+    private String publicEmail;
     /**
      * @return Skype username of the user.
      * 
@@ -221,7 +226,7 @@ public final class GetUserResult {
         return this.currentSignInAt;
     }
     /**
-     * @return The public email address of the user.
+     * @return The email address of the user.
      * 
      */
     public String email() {
@@ -326,6 +331,13 @@ public final class GetUserResult {
         return this.projectsLimit;
     }
     /**
+     * @return The public email address of the user.
+     * 
+     */
+    public String publicEmail() {
+        return this.publicEmail;
+    }
+    /**
      * @return Skype username of the user.
      * 
      */
@@ -420,6 +432,7 @@ public final class GetUserResult {
         private String note;
         private String organization;
         private Integer projectsLimit;
+        private String publicEmail;
         private String skype;
         private String state;
         private Integer themeId;
@@ -454,6 +467,7 @@ public final class GetUserResult {
     	      this.note = defaults.note;
     	      this.organization = defaults.organization;
     	      this.projectsLimit = defaults.projectsLimit;
+    	      this.publicEmail = defaults.publicEmail;
     	      this.skype = defaults.skype;
     	      this.state = defaults.state;
     	      this.themeId = defaults.themeId;
@@ -640,6 +654,14 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder publicEmail(String publicEmail) {
+            if (publicEmail == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "publicEmail");
+            }
+            this.publicEmail = publicEmail;
+            return this;
+        }
+        @CustomType.Setter
         public Builder skype(String skype) {
             if (skype == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "skype");
@@ -735,6 +757,7 @@ public final class GetUserResult {
             _resultValue.note = note;
             _resultValue.organization = organization;
             _resultValue.projectsLimit = projectsLimit;
+            _resultValue.publicEmail = publicEmail;
             _resultValue.skype = skype;
             _resultValue.state = state;
             _resultValue.themeId = themeId;

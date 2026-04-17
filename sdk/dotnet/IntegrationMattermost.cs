@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.IntegrationMattermost` resource manages the lifecycle of a project integration with Mattermost.
     /// 
-    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationMattermost`instead!
+    /// &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationMattermost` instead.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#mattermost-notifications)
     /// 
@@ -61,7 +61,7 @@ namespace Pulumi.GitLab
     public partial class IntegrationMattermost : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+        /// Branches to send notifications for. Valid values are `All`, `Default`, `Protected`, `DefaultAndProtected`.
         /// </summary>
         [Output("branchesToBeNotified")]
         public Output<string> BranchesToBeNotified { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive confidential issue events notifications.
         /// </summary>
         [Output("confidentialIssueChannel")]
-        public Output<string?> ConfidentialIssueChannel { get; private set; } = null!;
+        public Output<string> ConfidentialIssueChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for confidential issues events.
@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive confidential note events notifications.
         /// </summary>
         [Output("confidentialNoteChannel")]
-        public Output<string?> ConfidentialNoteChannel { get; private set; } = null!;
+        public Output<string> ConfidentialNoteChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for confidential note events.
@@ -94,7 +94,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive issue events notifications.
         /// </summary>
         [Output("issueChannel")]
-        public Output<string?> IssueChannel { get; private set; } = null!;
+        public Output<string> IssueChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for issues events.
@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive merge request events notifications.
         /// </summary>
         [Output("mergeRequestChannel")]
-        public Output<string?> MergeRequestChannel { get; private set; } = null!;
+        public Output<string> MergeRequestChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for merge requests events.
@@ -118,7 +118,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive note events notifications.
         /// </summary>
         [Output("noteChannel")]
-        public Output<string?> NoteChannel { get; private set; } = null!;
+        public Output<string> NoteChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for note events.
@@ -136,7 +136,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive pipeline events notifications.
         /// </summary>
         [Output("pipelineChannel")]
-        public Output<string?> PipelineChannel { get; private set; } = null!;
+        public Output<string> PipelineChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for pipeline events.
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive push events notifications.
         /// </summary>
         [Output("pushChannel")]
-        public Output<string?> PushChannel { get; private set; } = null!;
+        public Output<string> PushChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for push events.
@@ -166,7 +166,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive tag push events notifications.
         /// </summary>
         [Output("tagPushChannel")]
-        public Output<string?> TagPushChannel { get; private set; } = null!;
+        public Output<string> TagPushChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for tag push events.
@@ -178,7 +178,7 @@ namespace Pulumi.GitLab
         /// Username to use.
         /// </summary>
         [Output("username")]
-        public Output<string?> Username { get; private set; } = null!;
+        public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
         /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
@@ -190,7 +190,7 @@ namespace Pulumi.GitLab
         /// The name of the channel to receive wiki page events notifications.
         /// </summary>
         [Output("wikiPageChannel")]
-        public Output<string?> WikiPageChannel { get; private set; } = null!;
+        public Output<string> WikiPageChannel { get; private set; } = null!;
 
         /// <summary>
         /// Enable notifications for wiki page events.
@@ -221,6 +221,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "webhook",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -245,7 +249,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationMattermostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+        /// Branches to send notifications for. Valid values are `All`, `Default`, `Protected`, `DefaultAndProtected`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -364,11 +368,21 @@ namespace Pulumi.GitLab
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        [Input("webhook", required: true)]
+        private Input<string>? _webhook;
+
         /// <summary>
         /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         /// </summary>
-        [Input("webhook", required: true)]
-        public Input<string> Webhook { get; set; } = null!;
+        public Input<string>? Webhook
+        {
+            get => _webhook;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webhook = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the channel to receive wiki page events notifications.
@@ -391,7 +405,7 @@ namespace Pulumi.GitLab
     public sealed class IntegrationMattermostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+        /// Branches to send notifications for. Valid values are `All`, `Default`, `Protected`, `DefaultAndProtected`.
         /// </summary>
         [Input("branchesToBeNotified")]
         public Input<string>? BranchesToBeNotified { get; set; }
@@ -510,11 +524,21 @@ namespace Pulumi.GitLab
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        [Input("webhook")]
+        private Input<string>? _webhook;
+
         /// <summary>
         /// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         /// </summary>
-        [Input("webhook")]
-        public Input<string>? Webhook { get; set; }
+        public Input<string>? Webhook
+        {
+            get => _webhook;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webhook = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the channel to receive wiki page events notifications.

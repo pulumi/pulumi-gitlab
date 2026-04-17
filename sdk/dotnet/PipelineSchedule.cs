@@ -30,6 +30,19 @@ namespace Pulumi.GitLab
     ///         Description = "Used to schedule builds",
     ///         Ref = "refs/heads/main",
     ///         Cron = "0 1 * * *",
+    ///         Inputs = new[]
+    ///         {
+    ///             new GitLab.Inputs.PipelineScheduleInputArgs
+    ///             {
+    ///                 Name = "deploy_strategy",
+    ///                 Value = "rolling",
+    ///             },
+    ///             new GitLab.Inputs.PipelineScheduleInputArgs
+    ///             {
+    ///                 Name = "environment",
+    ///                 Value = "production",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -73,6 +86,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// List of pipeline schedule inputs. Each element in `Inputs` has `Name` and `Value`. Maximum of 20 inputs allowed.
+        /// </summary>
+        [Output("inputs")]
+        public Output<ImmutableArray<Outputs.PipelineScheduleInput>> Inputs { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the user that owns the pipeline schedule.
@@ -174,6 +193,18 @@ namespace Pulumi.GitLab
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        [Input("inputs")]
+        private InputList<Inputs.PipelineScheduleInputArgs>? _inputs;
+
+        /// <summary>
+        /// List of pipeline schedule inputs. Each element in `Inputs` has `Name` and `Value`. Maximum of 20 inputs allowed.
+        /// </summary>
+        public InputList<Inputs.PipelineScheduleInputArgs> Inputs
+        {
+            get => _inputs ?? (_inputs = new InputList<Inputs.PipelineScheduleInputArgs>());
+            set => _inputs = value;
+        }
+
         /// <summary>
         /// The name or id of the project to add the schedule to.
         /// </summary>
@@ -223,6 +254,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("inputs")]
+        private InputList<Inputs.PipelineScheduleInputGetArgs>? _inputs;
+
+        /// <summary>
+        /// List of pipeline schedule inputs. Each element in `Inputs` has `Name` and `Value`. Maximum of 20 inputs allowed.
+        /// </summary>
+        public InputList<Inputs.PipelineScheduleInputGetArgs> Inputs
+        {
+            get => _inputs ?? (_inputs = new InputList<Inputs.PipelineScheduleInputGetArgs>());
+            set => _inputs = value;
+        }
 
         /// <summary>
         /// The ID of the user that owns the pipeline schedule.

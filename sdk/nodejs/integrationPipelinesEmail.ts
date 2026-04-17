@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.IntegrationPipelinesEmail` resource manages the lifecycle of a project integration with the Pipeline Emails Service.
  *
- * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationPipelinesEmail`instead!
+ * > This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationPipelinesEmail` instead.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#pipeline-status-emails)
  *
@@ -71,19 +71,19 @@ export class IntegrationPipelinesEmail extends pulumi.CustomResource {
     }
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      */
-    declare public readonly branchesToBeNotified: pulumi.Output<string | undefined>;
+    declare public readonly branchesToBeNotified: pulumi.Output<string>;
     /**
      * Notify only broken pipelines. Default is true.
      */
-    declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean | undefined>;
+    declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean>;
     /**
      * ID of the project you want to activate integration on.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * ) email addresses where notifications are sent.
+     * Email addresses where notifications are sent.
      */
     declare public readonly recipients: pulumi.Output<string[]>;
 
@@ -127,7 +127,7 @@ export class IntegrationPipelinesEmail extends pulumi.CustomResource {
  */
 export interface IntegrationPipelinesEmailState {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -139,7 +139,7 @@ export interface IntegrationPipelinesEmailState {
      */
     project?: pulumi.Input<string>;
     /**
-     * ) email addresses where notifications are sent.
+     * Email addresses where notifications are sent.
      */
     recipients?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -149,7 +149,7 @@ export interface IntegrationPipelinesEmailState {
  */
 export interface IntegrationPipelinesEmailArgs {
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      */
     branchesToBeNotified?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface IntegrationPipelinesEmailArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * ) email addresses where notifications are sent.
+     * Email addresses where notifications are sent.
      */
     recipients: pulumi.Input<pulumi.Input<string>[]>;
 }
