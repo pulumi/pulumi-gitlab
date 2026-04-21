@@ -49,10 +49,14 @@ __all__ = [
     'InstanceServiceAccountTimeoutsArgsDict',
     'PersonalAccessTokenRotationConfigurationArgs',
     'PersonalAccessTokenRotationConfigurationArgsDict',
+    'PipelineScheduleInputArgs',
+    'PipelineScheduleInputArgsDict',
     'ProjectAccessTokenRotationConfigurationArgs',
     'ProjectAccessTokenRotationConfigurationArgsDict',
     'ProjectContainerExpirationPolicyArgs',
     'ProjectContainerExpirationPolicyArgsDict',
+    'ProjectContainerTagProtectionTimeoutsArgs',
+    'ProjectContainerTagProtectionTimeoutsArgsDict',
     'ProjectHookCustomHeaderArgs',
     'ProjectHookCustomHeaderArgsDict',
     'ProjectIssueBoardListArgs',
@@ -132,6 +136,10 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict(TypedDict):
     """
     An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
     """
+    code_owner_approval_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require code owner approval before merging.
+    """
     developer_can_initial_push: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Allow developers to initial push.
@@ -143,11 +151,13 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
                  allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  developer_can_initial_push: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_force_push: Allow force push for all users with push access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        :param pulumi.Input[_builtins.bool] code_owner_approval_required: Require code owner approval before merging.
         :param pulumi.Input[_builtins.bool] developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -156,6 +166,8 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
             pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
             pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if code_owner_approval_required is not None:
+            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
         if developer_can_initial_push is not None:
             pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
 
@@ -194,6 +206,18 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
     @allowed_to_pushes.setter
     def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_to_pushes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @code_owner_approval_required.setter
+    def code_owner_approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "code_owner_approval_required", value)
 
     @_builtins.property
     @pulumi.getter(name="developerCanInitialPush")
@@ -784,6 +808,10 @@ class GroupDefaultBranchProtectionDefaultsArgsDict(TypedDict):
     """
     An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
     """
+    code_owner_approval_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Require code owner approval before merging.
+    """
     developer_can_initial_push: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Allow developers to initial push.
@@ -795,11 +823,13 @@ class GroupDefaultBranchProtectionDefaultsArgs:
                  allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  developer_can_initial_push: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_force_push: Allow force push for all users with push access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
+        :param pulumi.Input[_builtins.bool] code_owner_approval_required: Require code owner approval before merging.
         :param pulumi.Input[_builtins.bool] developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -808,6 +838,8 @@ class GroupDefaultBranchProtectionDefaultsArgs:
             pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
             pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if code_owner_approval_required is not None:
+            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
         if developer_can_initial_push is not None:
             pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
 
@@ -846,6 +878,18 @@ class GroupDefaultBranchProtectionDefaultsArgs:
     @allowed_to_pushes.setter
     def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_to_pushes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @code_owner_approval_required.setter
+    def code_owner_approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "code_owner_approval_required", value)
 
     @_builtins.property
     @pulumi.getter(name="developerCanInitialPush")
@@ -1745,6 +1789,53 @@ class PersonalAccessTokenRotationConfigurationArgs:
         pulumi.set(self, "rotate_before_days", value)
 
 
+class PipelineScheduleInputArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the input.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the input.
+    """
+
+@pulumi.input_type
+class PipelineScheduleInputArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the input.
+        :param pulumi.Input[_builtins.str] value: The value of the input.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the input.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the input.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
 class ProjectAccessTokenRotationConfigurationArgsDict(TypedDict):
     expiration_days: pulumi.Input[_builtins.int]
     """
@@ -1939,6 +2030,35 @@ class ProjectContainerExpirationPolicyArgs:
     @older_than.setter
     def older_than(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "older_than", value)
+
+
+class ProjectContainerTagProtectionTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+    """
+
+@pulumi.input_type
+class ProjectContainerTagProtectionTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
 
 
 class ProjectHookCustomHeaderArgsDict(TypedDict):

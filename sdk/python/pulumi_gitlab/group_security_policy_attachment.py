@@ -201,7 +201,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
+        GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, for example:
 
         ```sh
         $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2
@@ -283,7 +283,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, e.g.
+        GitLab group security policy attachments can be imported using an id made up of `group:policy_project_id` where the policy project ID is the project ID of the policy project, for example:
 
         ```sh
         $ pulumi import gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment foo 1:2

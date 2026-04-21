@@ -63,7 +63,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab project compliance frameworks can be imported with a key composed of `&lt;project_id&gt;`, e.g.
+    /// Gitlab project compliance frameworks can be imported with a key composed of `&lt;project_id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks sample "42"

@@ -35,19 +35,19 @@ class ProjectIntegrationMicrosoftTeamsArgs:
         """
         The set of arguments for constructing a ProjectIntegrationMicrosoftTeams resource.
 
-        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
+        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
         :param pulumi.Input[_builtins.str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
-        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events
-        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events
-        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events
-        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events
-        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines
-        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events
-        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events
-        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events
-        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
+        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events.
+        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
+        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events.
+        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events.
+        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
+        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
+        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events.
+        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events.
+        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "webhook", webhook)
@@ -78,7 +78,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the project you want to activate integration on.
+        ID of the project you want to activate the integration on.
         """
         return pulumi.get(self, "project")
 
@@ -102,7 +102,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -114,7 +114,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="confidentialIssuesEvents")
     def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for confidential issue events
+        Enable notifications for confidential issue events.
         """
         return pulumi.get(self, "confidential_issues_events")
 
@@ -126,7 +126,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for confidential note events
+        Enable notifications for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
@@ -138,7 +138,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="issuesEvents")
     def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for issue events
+        Enable notifications for issue events.
         """
         return pulumi.get(self, "issues_events")
 
@@ -150,7 +150,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for merge request events
+        Enable notifications for merge request events.
         """
         return pulumi.get(self, "merge_requests_events")
 
@@ -162,7 +162,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="noteEvents")
     def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for note events
+        Enable notifications for note events.
         """
         return pulumi.get(self, "note_events")
 
@@ -174,7 +174,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
     def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Send notifications for broken pipelines
+        Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
@@ -186,7 +186,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="pipelineEvents")
     def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for pipeline events
+        Enable notifications for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
 
@@ -198,7 +198,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="pushEvents")
     def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for push events
+        Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
@@ -210,7 +210,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for tag push events
+        Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
@@ -222,7 +222,7 @@ class ProjectIntegrationMicrosoftTeamsArgs:
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for wiki page events
+        Enable notifications for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
 
@@ -254,21 +254,21 @@ class _ProjectIntegrationMicrosoftTeamsState:
         Input properties used for looking up and filtering ProjectIntegrationMicrosoftTeams resources.
 
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
-        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events
-        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events
-        :param pulumi.Input[_builtins.str] created_at: Create time.
-        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events
-        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events
-        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines
-        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events
-        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events
-        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events
-        :param pulumi.Input[_builtins.str] updated_at: Update time.
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
+        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events.
+        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
+        :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
+        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events.
+        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events.
+        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
+        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
+        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events.
+        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events.
+        :param pulumi.Input[_builtins.str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         :param pulumi.Input[_builtins.str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
-        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events
+        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -319,7 +319,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -331,7 +331,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="confidentialIssuesEvents")
     def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for confidential issue events
+        Enable notifications for confidential issue events.
         """
         return pulumi.get(self, "confidential_issues_events")
 
@@ -343,7 +343,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="confidentialNoteEvents")
     def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for confidential note events
+        Enable notifications for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
@@ -355,7 +355,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Create time.
+        The ISO8601 date/time that this integration was activated at in UTC.
         """
         return pulumi.get(self, "created_at")
 
@@ -367,7 +367,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="issuesEvents")
     def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for issue events
+        Enable notifications for issue events.
         """
         return pulumi.get(self, "issues_events")
 
@@ -379,7 +379,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for merge request events
+        Enable notifications for merge request events.
         """
         return pulumi.get(self, "merge_requests_events")
 
@@ -391,7 +391,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="noteEvents")
     def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for note events
+        Enable notifications for note events.
         """
         return pulumi.get(self, "note_events")
 
@@ -403,7 +403,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
     def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Send notifications for broken pipelines
+        Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
@@ -415,7 +415,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="pipelineEvents")
     def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for pipeline events
+        Enable notifications for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
 
@@ -427,7 +427,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the project you want to activate integration on.
+        ID of the project you want to activate the integration on.
         """
         return pulumi.get(self, "project")
 
@@ -439,7 +439,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="pushEvents")
     def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for push events
+        Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
@@ -451,7 +451,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for tag push events
+        Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
@@ -463,7 +463,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Update time.
+        The ISO8601 date/time that this integration was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 
@@ -487,7 +487,7 @@ class _ProjectIntegrationMicrosoftTeamsState:
     @pulumi.getter(name="wikiPageEvents")
     def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable notifications for wiki page events
+        Enable notifications for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
 
@@ -543,7 +543,7 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationMicrosoftTeams state using the project ID, e.g.
+        You can import a ProjectIntegrationMicrosoftTeams state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams teams 1
@@ -552,19 +552,19 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
-        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events
-        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events
-        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events
-        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events
-        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines
-        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events
-        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events
-        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
+        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events.
+        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
+        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events.
+        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events.
+        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
+        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
+        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events.
+        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events.
         :param pulumi.Input[_builtins.str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
-        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events
+        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events.
         """
         ...
     @overload
@@ -599,7 +599,7 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationMicrosoftTeams state using the project ID, e.g.
+        You can import a ProjectIntegrationMicrosoftTeams state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams teams 1
@@ -658,11 +658,13 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
             __props__.__dict__["tag_push_events"] = tag_push_events
             if webhook is None and not opts.urn:
                 raise TypeError("Missing required property 'webhook'")
-            __props__.__dict__["webhook"] = webhook
+            __props__.__dict__["webhook"] = None if webhook is None else pulumi.Output.secret(webhook)
             __props__.__dict__["wiki_page_events"] = wiki_page_events
             __props__.__dict__["active"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["webhook"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProjectIntegrationMicrosoftTeams, __self__).__init__(
             'gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams',
             resource_name,
@@ -697,21 +699,21 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
-        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events
-        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events
-        :param pulumi.Input[_builtins.str] created_at: Create time.
-        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events
-        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events
-        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines
-        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events
-        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events
-        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events
-        :param pulumi.Input[_builtins.str] updated_at: Update time.
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
+        :param pulumi.Input[_builtins.bool] confidential_issues_events: Enable notifications for confidential issue events.
+        :param pulumi.Input[_builtins.bool] confidential_note_events: Enable notifications for confidential note events.
+        :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
+        :param pulumi.Input[_builtins.bool] issues_events: Enable notifications for issue events.
+        :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events.
+        :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
+        :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
+        :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
+        :param pulumi.Input[_builtins.str] project: ID of the project you want to activate the integration on.
+        :param pulumi.Input[_builtins.bool] push_events: Enable notifications for push events.
+        :param pulumi.Input[_builtins.bool] tag_push_events: Enable notifications for tag push events.
+        :param pulumi.Input[_builtins.str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         :param pulumi.Input[_builtins.str] webhook: The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
-        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events
+        :param pulumi.Input[_builtins.bool] wiki_page_events: Enable notifications for wiki page events.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -745,25 +747,25 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:
         """
-        Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+        Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `default_and_protected`
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def confidential_issues_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for confidential issue events
+        Enable notifications for confidential issue events.
         """
         return pulumi.get(self, "confidential_issues_events")
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def confidential_note_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for confidential note events
+        Enable notifications for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
@@ -771,47 +773,47 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Create time.
+        The ISO8601 date/time that this integration was activated at in UTC.
         """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def issues_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for issue events
+        Enable notifications for issue events.
         """
         return pulumi.get(self, "issues_events")
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for merge request events
+        Enable notifications for merge request events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def note_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for note events
+        Enable notifications for note events.
         """
         return pulumi.get(self, "note_events")
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Output[_builtins.bool]:
         """
-        Send notifications for broken pipelines
+        Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @_builtins.property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def pipeline_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for pipeline events
+        Enable notifications for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
 
@@ -819,23 +821,23 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the project you want to activate integration on.
+        ID of the project you want to activate the integration on.
         """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def push_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for push events
+        Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for tag push events
+        Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
@@ -843,7 +845,7 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Update time.
+        The ISO8601 date/time that this integration was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 
@@ -857,9 +859,9 @@ class ProjectIntegrationMicrosoftTeams(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def wiki_page_events(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable notifications for wiki page events
+        Enable notifications for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
 

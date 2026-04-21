@@ -28,8 +28,8 @@ class ProjectContainerRepositoryProtectionArgs:
 
         :param pulumi.Input[_builtins.str] project: ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] repository_path_pattern: Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "repository_path_pattern", repository_path_pattern)
@@ -66,7 +66,7 @@ class ProjectContainerRepositoryProtectionArgs:
     @pulumi.getter(name="minimumAccessLevelForDelete")
     def minimum_access_level_for_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
+        Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
@@ -78,7 +78,7 @@ class ProjectContainerRepositoryProtectionArgs:
     @pulumi.getter(name="minimumAccessLevelForPush")
     def minimum_access_level_for_push(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 
@@ -98,8 +98,8 @@ class _ProjectContainerRepositoryProtectionState:
         """
         Input properties used for looking up and filtering ProjectContainerRepositoryProtection resources.
 
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         :param pulumi.Input[_builtins.str] project: ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.int] protection_rule_id: Unique ID of the protection rule.
         :param pulumi.Input[_builtins.str] repository_path_pattern: Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
@@ -119,7 +119,7 @@ class _ProjectContainerRepositoryProtectionState:
     @pulumi.getter(name="minimumAccessLevelForDelete")
     def minimum_access_level_for_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
+        Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
@@ -131,7 +131,7 @@ class _ProjectContainerRepositoryProtectionState:
     @pulumi.getter(name="minimumAccessLevelForPush")
     def minimum_access_level_for_push(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 
@@ -214,7 +214,7 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project container repository protection rules can be imported using an id made up of `<project_id>:<protection_rule_id>`, e.g.
+        GitLab project container repository protection rules can be imported using an id made up of `<project_id>:<protection_rule_id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection this 123:321
@@ -223,8 +223,8 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         :param pulumi.Input[_builtins.str] project: ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] repository_path_pattern: Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
         """
@@ -261,7 +261,7 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project container repository protection rules can be imported using an id made up of `<project_id>:<protection_rule_id>`, e.g.
+        GitLab project container repository protection rules can be imported using an id made up of `<project_id>:<protection_rule_id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection this 123:321
@@ -327,8 +327,8 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
-        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_delete: Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
+        :param pulumi.Input[_builtins.str] minimum_access_level_for_push: Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         :param pulumi.Input[_builtins.str] project: ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.int] protection_rule_id: Unique ID of the protection rule.
         :param pulumi.Input[_builtins.str] repository_path_pattern: Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
@@ -348,7 +348,7 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
     @pulumi.getter(name="minimumAccessLevelForDelete")
     def minimum_access_level_for_delete(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimum_access_level_for_push` is not set.
+        Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
@@ -356,7 +356,7 @@ class ProjectContainerRepositoryProtection(pulumi.CustomResource):
     @pulumi.getter(name="minimumAccessLevelForPush")
     def minimum_access_level_for_push(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimum_access_level_for_delete` is not set.
+        Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 

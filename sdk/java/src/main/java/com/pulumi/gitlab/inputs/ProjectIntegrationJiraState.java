@@ -79,14 +79,14 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Create time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Create time.
+     * @return The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -244,14 +244,14 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Title.
+     * Title of the integration.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return Title.
+     * @return Title of the integration.
      * 
      */
     public Optional<Output<String>> title() {
@@ -259,14 +259,14 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Update time.
+     * @return The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -446,7 +446,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createdAt Create time.
+         * @param createdAt The ISO8601 date/time that this integration was activated at in UTC.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createdAt Create time.
+         * @param createdAt The ISO8601 date/time that this integration was activated at in UTC.
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param title Title.
+         * @param title Title of the integration.
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param title Title.
+         * @param title Title of the integration.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt Update time.
+         * @param updatedAt The ISO8601 date/time that this integration was last updated at in UTC.
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ProjectIntegrationJiraState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt Update time.
+         * @param updatedAt The ISO8601 date/time that this integration was last updated at in UTC.
          * 
          * @return builder
          * 

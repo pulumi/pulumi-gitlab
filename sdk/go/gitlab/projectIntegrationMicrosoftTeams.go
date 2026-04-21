@@ -58,7 +58,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a ProjectIntegrationMicrosoftTeams state using the project ID, e.g.
+// You can import a ProjectIntegrationMicrosoftTeams state using the project ID, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams teams 1
@@ -68,36 +68,36 @@ type ProjectIntegrationMicrosoftTeams struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
-	BranchesToBeNotified pulumi.StringPtrOutput `pulumi:"branchesToBeNotified"`
-	// Enable notifications for confidential issue events
-	ConfidentialIssuesEvents pulumi.BoolPtrOutput `pulumi:"confidentialIssuesEvents"`
-	// Enable notifications for confidential note events
-	ConfidentialNoteEvents pulumi.BoolPtrOutput `pulumi:"confidentialNoteEvents"`
-	// Create time.
+	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
+	BranchesToBeNotified pulumi.StringOutput `pulumi:"branchesToBeNotified"`
+	// Enable notifications for confidential issue events.
+	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
+	// Enable notifications for confidential note events.
+	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
+	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Enable notifications for issue events
-	IssuesEvents pulumi.BoolPtrOutput `pulumi:"issuesEvents"`
-	// Enable notifications for merge request events
-	MergeRequestsEvents pulumi.BoolPtrOutput `pulumi:"mergeRequestsEvents"`
-	// Enable notifications for note events
-	NoteEvents pulumi.BoolPtrOutput `pulumi:"noteEvents"`
-	// Send notifications for broken pipelines
-	NotifyOnlyBrokenPipelines pulumi.BoolPtrOutput `pulumi:"notifyOnlyBrokenPipelines"`
-	// Enable notifications for pipeline events
-	PipelineEvents pulumi.BoolPtrOutput `pulumi:"pipelineEvents"`
-	// ID of the project you want to activate integration on.
+	// Enable notifications for issue events.
+	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
+	// Enable notifications for merge request events.
+	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
+	// Enable notifications for note events.
+	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
+	// Send notifications for broken pipelines.
+	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
+	// Enable notifications for pipeline events.
+	PipelineEvents pulumi.BoolOutput `pulumi:"pipelineEvents"`
+	// ID of the project you want to activate the integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Enable notifications for push events
-	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
-	// Enable notifications for tag push events
-	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
-	// Update time.
+	// Enable notifications for push events.
+	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
+	// Enable notifications for tag push events.
+	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
+	// The ISO8601 date/time that this integration was last updated at in UTC.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
-	// Enable notifications for wiki page events
-	WikiPageEvents pulumi.BoolPtrOutput `pulumi:"wikiPageEvents"`
+	// Enable notifications for wiki page events.
+	WikiPageEvents pulumi.BoolOutput `pulumi:"wikiPageEvents"`
 }
 
 // NewProjectIntegrationMicrosoftTeams registers a new resource with the given unique name, arguments, and options.
@@ -113,6 +113,13 @@ func NewProjectIntegrationMicrosoftTeams(ctx *pulumi.Context,
 	if args.Webhook == nil {
 		return nil, errors.New("invalid value for required argument 'Webhook'")
 	}
+	if args.Webhook != nil {
+		args.Webhook = pulumi.ToSecret(args.Webhook).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"webhook",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectIntegrationMicrosoftTeams
 	err := ctx.RegisterResource("gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams", name, args, &resource, opts...)
@@ -138,70 +145,70 @@ func GetProjectIntegrationMicrosoftTeams(ctx *pulumi.Context,
 type projectIntegrationMicrosoftTeamsState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
-	// Enable notifications for confidential issue events
+	// Enable notifications for confidential issue events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
-	// Enable notifications for confidential note events
+	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
-	// Create time.
+	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Enable notifications for issue events
+	// Enable notifications for issue events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// Enable notifications for merge request events
+	// Enable notifications for merge request events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// Enable notifications for note events
+	// Enable notifications for note events.
 	NoteEvents *bool `pulumi:"noteEvents"`
-	// Send notifications for broken pipelines
+	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// Enable notifications for pipeline events
+	// Enable notifications for pipeline events.
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project *string `pulumi:"project"`
-	// Enable notifications for push events
+	// Enable notifications for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tag push events
+	// Enable notifications for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// Update time.
+	// The ISO8601 date/time that this integration was last updated at in UTC.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook *string `pulumi:"webhook"`
-	// Enable notifications for wiki page events
+	// Enable notifications for wiki page events.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
 }
 
 type ProjectIntegrationMicrosoftTeamsState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
 	BranchesToBeNotified pulumi.StringPtrInput
-	// Enable notifications for confidential issue events
+	// Enable notifications for confidential issue events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for confidential note events
+	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
-	// Create time.
+	// The ISO8601 date/time that this integration was activated at in UTC.
 	CreatedAt pulumi.StringPtrInput
-	// Enable notifications for issue events
+	// Enable notifications for issue events.
 	IssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for merge request events
+	// Enable notifications for merge request events.
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// Enable notifications for note events
+	// Enable notifications for note events.
 	NoteEvents pulumi.BoolPtrInput
-	// Send notifications for broken pipelines
+	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// Enable notifications for pipeline events
+	// Enable notifications for pipeline events.
 	PipelineEvents pulumi.BoolPtrInput
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project pulumi.StringPtrInput
-	// Enable notifications for push events
+	// Enable notifications for push events.
 	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tag push events
+	// Enable notifications for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
-	// Update time.
+	// The ISO8601 date/time that this integration was last updated at in UTC.
 	UpdatedAt pulumi.StringPtrInput
 	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook pulumi.StringPtrInput
-	// Enable notifications for wiki page events
+	// Enable notifications for wiki page events.
 	WikiPageEvents pulumi.BoolPtrInput
 }
 
@@ -210,61 +217,61 @@ func (ProjectIntegrationMicrosoftTeamsState) ElementType() reflect.Type {
 }
 
 type projectIntegrationMicrosoftTeamsArgs struct {
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
-	// Enable notifications for confidential issue events
+	// Enable notifications for confidential issue events.
 	ConfidentialIssuesEvents *bool `pulumi:"confidentialIssuesEvents"`
-	// Enable notifications for confidential note events
+	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents *bool `pulumi:"confidentialNoteEvents"`
-	// Enable notifications for issue events
+	// Enable notifications for issue events.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
-	// Enable notifications for merge request events
+	// Enable notifications for merge request events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// Enable notifications for note events
+	// Enable notifications for note events.
 	NoteEvents *bool `pulumi:"noteEvents"`
-	// Send notifications for broken pipelines
+	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// Enable notifications for pipeline events
+	// Enable notifications for pipeline events.
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project string `pulumi:"project"`
-	// Enable notifications for push events
+	// Enable notifications for push events.
 	PushEvents *bool `pulumi:"pushEvents"`
-	// Enable notifications for tag push events
+	// Enable notifications for tag push events.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook string `pulumi:"webhook"`
-	// Enable notifications for wiki page events
+	// Enable notifications for wiki page events.
 	WikiPageEvents *bool `pulumi:"wikiPageEvents"`
 }
 
 // The set of arguments for constructing a ProjectIntegrationMicrosoftTeams resource.
 type ProjectIntegrationMicrosoftTeamsArgs struct {
-	// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
 	BranchesToBeNotified pulumi.StringPtrInput
-	// Enable notifications for confidential issue events
+	// Enable notifications for confidential issue events.
 	ConfidentialIssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for confidential note events
+	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolPtrInput
-	// Enable notifications for issue events
+	// Enable notifications for issue events.
 	IssuesEvents pulumi.BoolPtrInput
-	// Enable notifications for merge request events
+	// Enable notifications for merge request events.
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// Enable notifications for note events
+	// Enable notifications for note events.
 	NoteEvents pulumi.BoolPtrInput
-	// Send notifications for broken pipelines
+	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// Enable notifications for pipeline events
+	// Enable notifications for pipeline events.
 	PipelineEvents pulumi.BoolPtrInput
-	// ID of the project you want to activate integration on.
+	// ID of the project you want to activate the integration on.
 	Project pulumi.StringInput
-	// Enable notifications for push events
+	// Enable notifications for push events.
 	PushEvents pulumi.BoolPtrInput
-	// Enable notifications for tag push events
+	// Enable notifications for tag push events.
 	TagPushEvents pulumi.BoolPtrInput
 	// The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
 	Webhook pulumi.StringInput
-	// Enable notifications for wiki page events
+	// Enable notifications for wiki page events.
 	WikiPageEvents pulumi.BoolPtrInput
 }
 
@@ -360,67 +367,67 @@ func (o ProjectIntegrationMicrosoftTeamsOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
-func (o ProjectIntegrationMicrosoftTeamsOutput) BranchesToBeNotified() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.StringPtrOutput { return v.BranchesToBeNotified }).(pulumi.StringPtrOutput)
+// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
+func (o ProjectIntegrationMicrosoftTeamsOutput) BranchesToBeNotified() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
 }
 
-// Enable notifications for confidential issue events
-func (o ProjectIntegrationMicrosoftTeamsOutput) ConfidentialIssuesEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for confidential issue events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for confidential note events
-func (o ProjectIntegrationMicrosoftTeamsOutput) ConfidentialNoteEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for confidential note events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
 }
 
-// Create time.
+// The ISO8601 date/time that this integration was activated at in UTC.
 func (o ProjectIntegrationMicrosoftTeamsOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Enable notifications for issue events
-func (o ProjectIntegrationMicrosoftTeamsOutput) IssuesEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.IssuesEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for issue events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) IssuesEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.IssuesEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for merge request events
-func (o ProjectIntegrationMicrosoftTeamsOutput) MergeRequestsEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.MergeRequestsEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for merge request events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) MergeRequestsEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for note events
-func (o ProjectIntegrationMicrosoftTeamsOutput) NoteEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.NoteEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for note events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) NoteEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.NoteEvents }).(pulumi.BoolOutput)
 }
 
-// Send notifications for broken pipelines
-func (o ProjectIntegrationMicrosoftTeamsOutput) NotifyOnlyBrokenPipelines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolPtrOutput)
+// Send notifications for broken pipelines.
+func (o ProjectIntegrationMicrosoftTeamsOutput) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for pipeline events
-func (o ProjectIntegrationMicrosoftTeamsOutput) PipelineEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.PipelineEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for pipeline events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) PipelineEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
 }
 
-// ID of the project you want to activate integration on.
+// ID of the project you want to activate the integration on.
 func (o ProjectIntegrationMicrosoftTeamsOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Enable notifications for push events
-func (o ProjectIntegrationMicrosoftTeamsOutput) PushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for push events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) PushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
 }
 
-// Enable notifications for tag push events
-func (o ProjectIntegrationMicrosoftTeamsOutput) TagPushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for tag push events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) TagPushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// Update time.
+// The ISO8601 date/time that this integration was last updated at in UTC.
 func (o ProjectIntegrationMicrosoftTeamsOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -430,9 +437,9 @@ func (o ProjectIntegrationMicrosoftTeamsOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.StringOutput { return v.Webhook }).(pulumi.StringOutput)
 }
 
-// Enable notifications for wiki page events
-func (o ProjectIntegrationMicrosoftTeamsOutput) WikiPageEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolPtrOutput { return v.WikiPageEvents }).(pulumi.BoolPtrOutput)
+// Enable notifications for wiki page events.
+func (o ProjectIntegrationMicrosoftTeamsOutput) WikiPageEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMicrosoftTeams) pulumi.BoolOutput { return v.WikiPageEvents }).(pulumi.BoolOutput)
 }
 
 type ProjectIntegrationMicrosoftTeamsArrayOutput struct{ *pulumi.OutputState }

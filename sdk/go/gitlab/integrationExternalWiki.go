@@ -59,7 +59,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a IntegrationExternalWiki state using the project ID, e.g.
+// You can import a IntegrationExternalWiki state using the project ID, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/integrationExternalWiki:IntegrationExternalWiki wiki 1

@@ -20,6 +20,8 @@ type ApplicationSettingsDefaultBranchProtectionDefaults struct {
 	AllowedToMerges []int `pulumi:"allowedToMerges"`
 	// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
 	AllowedToPushes []int `pulumi:"allowedToPushes"`
+	// Require code owner approval before merging.
+	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush *bool `pulumi:"developerCanInitialPush"`
 }
@@ -42,6 +44,8 @@ type ApplicationSettingsDefaultBranchProtectionDefaultsArgs struct {
 	AllowedToMerges pulumi.IntArrayInput `pulumi:"allowedToMerges"`
 	// An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
 	AllowedToPushes pulumi.IntArrayInput `pulumi:"allowedToPushes"`
+	// Require code owner approval before merging.
+	CodeOwnerApprovalRequired pulumi.BoolPtrInput `pulumi:"codeOwnerApprovalRequired"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush pulumi.BoolPtrInput `pulumi:"developerCanInitialPush"`
 }
@@ -138,6 +142,11 @@ func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) AllowedToPushe
 	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) []int { return v.AllowedToPushes }).(pulumi.IntArrayOutput)
 }
 
+// Require code owner approval before merging.
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) CodeOwnerApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) *bool { return v.CodeOwnerApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
 // Allow developers to initial push.
 func (o ApplicationSettingsDefaultBranchProtectionDefaultsOutput) DeveloperCanInitialPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationSettingsDefaultBranchProtectionDefaults) *bool { return v.DeveloperCanInitialPush }).(pulumi.BoolPtrOutput)
@@ -195,6 +204,16 @@ func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) AllowedToPu
 		}
 		return v.AllowedToPushes
 	}).(pulumi.IntArrayOutput)
+}
+
+// Require code owner approval before merging.
+func (o ApplicationSettingsDefaultBranchProtectionDefaultsPtrOutput) CodeOwnerApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationSettingsDefaultBranchProtectionDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CodeOwnerApprovalRequired
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Allow developers to initial push.
@@ -938,6 +957,8 @@ type GroupDefaultBranchProtectionDefaults struct {
 	AllowedToMerges []string `pulumi:"allowedToMerges"`
 	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
 	AllowedToPushes []string `pulumi:"allowedToPushes"`
+	// Require code owner approval before merging.
+	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush *bool `pulumi:"developerCanInitialPush"`
 }
@@ -960,6 +981,8 @@ type GroupDefaultBranchProtectionDefaultsArgs struct {
 	AllowedToMerges pulumi.StringArrayInput `pulumi:"allowedToMerges"`
 	// An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
 	AllowedToPushes pulumi.StringArrayInput `pulumi:"allowedToPushes"`
+	// Require code owner approval before merging.
+	CodeOwnerApprovalRequired pulumi.BoolPtrInput `pulumi:"codeOwnerApprovalRequired"`
 	// Allow developers to initial push.
 	DeveloperCanInitialPush pulumi.BoolPtrInput `pulumi:"developerCanInitialPush"`
 }
@@ -1056,6 +1079,11 @@ func (o GroupDefaultBranchProtectionDefaultsOutput) AllowedToPushes() pulumi.Str
 	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) []string { return v.AllowedToPushes }).(pulumi.StringArrayOutput)
 }
 
+// Require code owner approval before merging.
+func (o GroupDefaultBranchProtectionDefaultsOutput) CodeOwnerApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) *bool { return v.CodeOwnerApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
 // Allow developers to initial push.
 func (o GroupDefaultBranchProtectionDefaultsOutput) DeveloperCanInitialPush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupDefaultBranchProtectionDefaults) *bool { return v.DeveloperCanInitialPush }).(pulumi.BoolPtrOutput)
@@ -1113,6 +1141,16 @@ func (o GroupDefaultBranchProtectionDefaultsPtrOutput) AllowedToPushes() pulumi.
 		}
 		return v.AllowedToPushes
 	}).(pulumi.StringArrayOutput)
+}
+
+// Require code owner approval before merging.
+func (o GroupDefaultBranchProtectionDefaultsPtrOutput) CodeOwnerApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupDefaultBranchProtectionDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CodeOwnerApprovalRequired
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Allow developers to initial push.
@@ -2705,6 +2743,112 @@ func (o PersonalAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pu
 	}).(pulumi.IntPtrOutput)
 }
 
+type PipelineScheduleInputType struct {
+	// The name of the input.
+	Name string `pulumi:"name"`
+	// The value of the input.
+	Value string `pulumi:"value"`
+}
+
+// PipelineScheduleInputTypeInput is an input type that accepts PipelineScheduleInputTypeArgs and PipelineScheduleInputTypeOutput values.
+// You can construct a concrete instance of `PipelineScheduleInputTypeInput` via:
+//
+//	PipelineScheduleInputTypeArgs{...}
+type PipelineScheduleInputTypeInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleInputTypeOutput() PipelineScheduleInputTypeOutput
+	ToPipelineScheduleInputTypeOutputWithContext(context.Context) PipelineScheduleInputTypeOutput
+}
+
+type PipelineScheduleInputTypeArgs struct {
+	// The name of the input.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the input.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (PipelineScheduleInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScheduleInputType)(nil)).Elem()
+}
+
+func (i PipelineScheduleInputTypeArgs) ToPipelineScheduleInputTypeOutput() PipelineScheduleInputTypeOutput {
+	return i.ToPipelineScheduleInputTypeOutputWithContext(context.Background())
+}
+
+func (i PipelineScheduleInputTypeArgs) ToPipelineScheduleInputTypeOutputWithContext(ctx context.Context) PipelineScheduleInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleInputTypeOutput)
+}
+
+// PipelineScheduleInputTypeArrayInput is an input type that accepts PipelineScheduleInputTypeArray and PipelineScheduleInputTypeArrayOutput values.
+// You can construct a concrete instance of `PipelineScheduleInputTypeArrayInput` via:
+//
+//	PipelineScheduleInputTypeArray{ PipelineScheduleInputTypeArgs{...} }
+type PipelineScheduleInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToPipelineScheduleInputTypeArrayOutput() PipelineScheduleInputTypeArrayOutput
+	ToPipelineScheduleInputTypeArrayOutputWithContext(context.Context) PipelineScheduleInputTypeArrayOutput
+}
+
+type PipelineScheduleInputTypeArray []PipelineScheduleInputTypeInput
+
+func (PipelineScheduleInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScheduleInputType)(nil)).Elem()
+}
+
+func (i PipelineScheduleInputTypeArray) ToPipelineScheduleInputTypeArrayOutput() PipelineScheduleInputTypeArrayOutput {
+	return i.ToPipelineScheduleInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineScheduleInputTypeArray) ToPipelineScheduleInputTypeArrayOutputWithContext(ctx context.Context) PipelineScheduleInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineScheduleInputTypeArrayOutput)
+}
+
+type PipelineScheduleInputTypeOutput struct{ *pulumi.OutputState }
+
+func (PipelineScheduleInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineScheduleInputType)(nil)).Elem()
+}
+
+func (o PipelineScheduleInputTypeOutput) ToPipelineScheduleInputTypeOutput() PipelineScheduleInputTypeOutput {
+	return o
+}
+
+func (o PipelineScheduleInputTypeOutput) ToPipelineScheduleInputTypeOutputWithContext(ctx context.Context) PipelineScheduleInputTypeOutput {
+	return o
+}
+
+// The name of the input.
+func (o PipelineScheduleInputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineScheduleInputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the input.
+func (o PipelineScheduleInputTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineScheduleInputType) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type PipelineScheduleInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineScheduleInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineScheduleInputType)(nil)).Elem()
+}
+
+func (o PipelineScheduleInputTypeArrayOutput) ToPipelineScheduleInputTypeArrayOutput() PipelineScheduleInputTypeArrayOutput {
+	return o
+}
+
+func (o PipelineScheduleInputTypeArrayOutput) ToPipelineScheduleInputTypeArrayOutputWithContext(ctx context.Context) PipelineScheduleInputTypeArrayOutput {
+	return o
+}
+
+func (o PipelineScheduleInputTypeArrayOutput) Index(i pulumi.IntInput) PipelineScheduleInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineScheduleInputType {
+		return vs[0].([]PipelineScheduleInputType)[vs[1].(int)]
+	}).(PipelineScheduleInputTypeOutput)
+}
+
 type ProjectAccessTokenRotationConfiguration struct {
 	// The duration (in days) the new token should be valid for.
 	ExpirationDays int `pulumi:"expirationDays"`
@@ -3109,6 +3253,143 @@ func (o ProjectContainerExpirationPolicyPtrOutput) OlderThan() pulumi.StringPtrO
 			return nil
 		}
 		return v.OlderThan
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProjectContainerTagProtectionTimeouts struct {
+	// How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+	Create *string `pulumi:"create"`
+}
+
+// ProjectContainerTagProtectionTimeoutsInput is an input type that accepts ProjectContainerTagProtectionTimeoutsArgs and ProjectContainerTagProtectionTimeoutsOutput values.
+// You can construct a concrete instance of `ProjectContainerTagProtectionTimeoutsInput` via:
+//
+//	ProjectContainerTagProtectionTimeoutsArgs{...}
+type ProjectContainerTagProtectionTimeoutsInput interface {
+	pulumi.Input
+
+	ToProjectContainerTagProtectionTimeoutsOutput() ProjectContainerTagProtectionTimeoutsOutput
+	ToProjectContainerTagProtectionTimeoutsOutputWithContext(context.Context) ProjectContainerTagProtectionTimeoutsOutput
+}
+
+type ProjectContainerTagProtectionTimeoutsArgs struct {
+	// How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+	Create pulumi.StringPtrInput `pulumi:"create"`
+}
+
+func (ProjectContainerTagProtectionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectContainerTagProtectionTimeouts)(nil)).Elem()
+}
+
+func (i ProjectContainerTagProtectionTimeoutsArgs) ToProjectContainerTagProtectionTimeoutsOutput() ProjectContainerTagProtectionTimeoutsOutput {
+	return i.ToProjectContainerTagProtectionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i ProjectContainerTagProtectionTimeoutsArgs) ToProjectContainerTagProtectionTimeoutsOutputWithContext(ctx context.Context) ProjectContainerTagProtectionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectContainerTagProtectionTimeoutsOutput)
+}
+
+func (i ProjectContainerTagProtectionTimeoutsArgs) ToProjectContainerTagProtectionTimeoutsPtrOutput() ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return i.ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectContainerTagProtectionTimeoutsArgs) ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(ctx context.Context) ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectContainerTagProtectionTimeoutsOutput).ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// ProjectContainerTagProtectionTimeoutsPtrInput is an input type that accepts ProjectContainerTagProtectionTimeoutsArgs, ProjectContainerTagProtectionTimeoutsPtr and ProjectContainerTagProtectionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `ProjectContainerTagProtectionTimeoutsPtrInput` via:
+//
+//	        ProjectContainerTagProtectionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectContainerTagProtectionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToProjectContainerTagProtectionTimeoutsPtrOutput() ProjectContainerTagProtectionTimeoutsPtrOutput
+	ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(context.Context) ProjectContainerTagProtectionTimeoutsPtrOutput
+}
+
+type projectContainerTagProtectionTimeoutsPtrType ProjectContainerTagProtectionTimeoutsArgs
+
+func ProjectContainerTagProtectionTimeoutsPtr(v *ProjectContainerTagProtectionTimeoutsArgs) ProjectContainerTagProtectionTimeoutsPtrInput {
+	return (*projectContainerTagProtectionTimeoutsPtrType)(v)
+}
+
+func (*projectContainerTagProtectionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectContainerTagProtectionTimeouts)(nil)).Elem()
+}
+
+func (i *projectContainerTagProtectionTimeoutsPtrType) ToProjectContainerTagProtectionTimeoutsPtrOutput() ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return i.ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *projectContainerTagProtectionTimeoutsPtrType) ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(ctx context.Context) ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectContainerTagProtectionTimeoutsPtrOutput)
+}
+
+type ProjectContainerTagProtectionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (ProjectContainerTagProtectionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectContainerTagProtectionTimeouts)(nil)).Elem()
+}
+
+func (o ProjectContainerTagProtectionTimeoutsOutput) ToProjectContainerTagProtectionTimeoutsOutput() ProjectContainerTagProtectionTimeoutsOutput {
+	return o
+}
+
+func (o ProjectContainerTagProtectionTimeoutsOutput) ToProjectContainerTagProtectionTimeoutsOutputWithContext(ctx context.Context) ProjectContainerTagProtectionTimeoutsOutput {
+	return o
+}
+
+func (o ProjectContainerTagProtectionTimeoutsOutput) ToProjectContainerTagProtectionTimeoutsPtrOutput() ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return o.ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectContainerTagProtectionTimeoutsOutput) ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(ctx context.Context) ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectContainerTagProtectionTimeouts) *ProjectContainerTagProtectionTimeouts {
+		return &v
+	}).(ProjectContainerTagProtectionTimeoutsPtrOutput)
+}
+
+// How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+func (o ProjectContainerTagProtectionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectContainerTagProtectionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+type ProjectContainerTagProtectionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectContainerTagProtectionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectContainerTagProtectionTimeouts)(nil)).Elem()
+}
+
+func (o ProjectContainerTagProtectionTimeoutsPtrOutput) ToProjectContainerTagProtectionTimeoutsPtrOutput() ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return o
+}
+
+func (o ProjectContainerTagProtectionTimeoutsPtrOutput) ToProjectContainerTagProtectionTimeoutsPtrOutputWithContext(ctx context.Context) ProjectContainerTagProtectionTimeoutsPtrOutput {
+	return o
+}
+
+func (o ProjectContainerTagProtectionTimeoutsPtrOutput) Elem() ProjectContainerTagProtectionTimeoutsOutput {
+	return o.ApplyT(func(v *ProjectContainerTagProtectionTimeouts) ProjectContainerTagProtectionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectContainerTagProtectionTimeouts
+		return ret
+	}).(ProjectContainerTagProtectionTimeoutsOutput)
+}
+
+// How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+func (o ProjectContainerTagProtectionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectContainerTagProtectionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9046,6 +9327,112 @@ func (o GetMetadataKasOutput) ExternalUrl() pulumi.StringOutput {
 // Version of KAS. It’s null if kas.enabled is false.
 func (o GetMetadataKasOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetadataKas) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPipelineScheduleInput struct {
+	// The name of the input.
+	Name string `pulumi:"name"`
+	// The value of the input.
+	Value string `pulumi:"value"`
+}
+
+// GetPipelineScheduleInputInput is an input type that accepts GetPipelineScheduleInputArgs and GetPipelineScheduleInputOutput values.
+// You can construct a concrete instance of `GetPipelineScheduleInputInput` via:
+//
+//	GetPipelineScheduleInputArgs{...}
+type GetPipelineScheduleInputInput interface {
+	pulumi.Input
+
+	ToGetPipelineScheduleInputOutput() GetPipelineScheduleInputOutput
+	ToGetPipelineScheduleInputOutputWithContext(context.Context) GetPipelineScheduleInputOutput
+}
+
+type GetPipelineScheduleInputArgs struct {
+	// The name of the input.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the input.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetPipelineScheduleInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleInput)(nil)).Elem()
+}
+
+func (i GetPipelineScheduleInputArgs) ToGetPipelineScheduleInputOutput() GetPipelineScheduleInputOutput {
+	return i.ToGetPipelineScheduleInputOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScheduleInputArgs) ToGetPipelineScheduleInputOutputWithContext(ctx context.Context) GetPipelineScheduleInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScheduleInputOutput)
+}
+
+// GetPipelineScheduleInputArrayInput is an input type that accepts GetPipelineScheduleInputArray and GetPipelineScheduleInputArrayOutput values.
+// You can construct a concrete instance of `GetPipelineScheduleInputArrayInput` via:
+//
+//	GetPipelineScheduleInputArray{ GetPipelineScheduleInputArgs{...} }
+type GetPipelineScheduleInputArrayInput interface {
+	pulumi.Input
+
+	ToGetPipelineScheduleInputArrayOutput() GetPipelineScheduleInputArrayOutput
+	ToGetPipelineScheduleInputArrayOutputWithContext(context.Context) GetPipelineScheduleInputArrayOutput
+}
+
+type GetPipelineScheduleInputArray []GetPipelineScheduleInputInput
+
+func (GetPipelineScheduleInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScheduleInput)(nil)).Elem()
+}
+
+func (i GetPipelineScheduleInputArray) ToGetPipelineScheduleInputArrayOutput() GetPipelineScheduleInputArrayOutput {
+	return i.ToGetPipelineScheduleInputArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineScheduleInputArray) ToGetPipelineScheduleInputArrayOutputWithContext(ctx context.Context) GetPipelineScheduleInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineScheduleInputArrayOutput)
+}
+
+type GetPipelineScheduleInputOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScheduleInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineScheduleInput)(nil)).Elem()
+}
+
+func (o GetPipelineScheduleInputOutput) ToGetPipelineScheduleInputOutput() GetPipelineScheduleInputOutput {
+	return o
+}
+
+func (o GetPipelineScheduleInputOutput) ToGetPipelineScheduleInputOutputWithContext(ctx context.Context) GetPipelineScheduleInputOutput {
+	return o
+}
+
+// The name of the input.
+func (o GetPipelineScheduleInputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleInput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the input.
+func (o GetPipelineScheduleInputOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineScheduleInput) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPipelineScheduleInputArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineScheduleInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineScheduleInput)(nil)).Elem()
+}
+
+func (o GetPipelineScheduleInputArrayOutput) ToGetPipelineScheduleInputArrayOutput() GetPipelineScheduleInputArrayOutput {
+	return o
+}
+
+func (o GetPipelineScheduleInputArrayOutput) ToGetPipelineScheduleInputArrayOutputWithContext(ctx context.Context) GetPipelineScheduleInputArrayOutput {
+	return o
+}
+
+func (o GetPipelineScheduleInputArrayOutput) Index(i pulumi.IntInput) GetPipelineScheduleInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineScheduleInput {
+		return vs[0].([]GetPipelineScheduleInput)[vs[1].(int)]
+	}).(GetPipelineScheduleInputOutput)
 }
 
 type GetPipelineScheduleLastPipeline struct {
@@ -18436,6 +18823,360 @@ func (o GetRepositoryTreeTreeArrayOutput) Index(i pulumi.IntInput) GetRepository
 	}).(GetRepositoryTreeTreeOutput)
 }
 
+type GetRunnerControllerScopesInstanceLevelScoping struct {
+	// The time the scope was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The time the scope was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetRunnerControllerScopesInstanceLevelScopingInput is an input type that accepts GetRunnerControllerScopesInstanceLevelScopingArgs and GetRunnerControllerScopesInstanceLevelScopingOutput values.
+// You can construct a concrete instance of `GetRunnerControllerScopesInstanceLevelScopingInput` via:
+//
+//	GetRunnerControllerScopesInstanceLevelScopingArgs{...}
+type GetRunnerControllerScopesInstanceLevelScopingInput interface {
+	pulumi.Input
+
+	ToGetRunnerControllerScopesInstanceLevelScopingOutput() GetRunnerControllerScopesInstanceLevelScopingOutput
+	ToGetRunnerControllerScopesInstanceLevelScopingOutputWithContext(context.Context) GetRunnerControllerScopesInstanceLevelScopingOutput
+}
+
+type GetRunnerControllerScopesInstanceLevelScopingArgs struct {
+	// The time the scope was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The time the scope was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetRunnerControllerScopesInstanceLevelScopingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRunnerControllerScopesInstanceLevelScoping)(nil)).Elem()
+}
+
+func (i GetRunnerControllerScopesInstanceLevelScopingArgs) ToGetRunnerControllerScopesInstanceLevelScopingOutput() GetRunnerControllerScopesInstanceLevelScopingOutput {
+	return i.ToGetRunnerControllerScopesInstanceLevelScopingOutputWithContext(context.Background())
+}
+
+func (i GetRunnerControllerScopesInstanceLevelScopingArgs) ToGetRunnerControllerScopesInstanceLevelScopingOutputWithContext(ctx context.Context) GetRunnerControllerScopesInstanceLevelScopingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRunnerControllerScopesInstanceLevelScopingOutput)
+}
+
+// GetRunnerControllerScopesInstanceLevelScopingArrayInput is an input type that accepts GetRunnerControllerScopesInstanceLevelScopingArray and GetRunnerControllerScopesInstanceLevelScopingArrayOutput values.
+// You can construct a concrete instance of `GetRunnerControllerScopesInstanceLevelScopingArrayInput` via:
+//
+//	GetRunnerControllerScopesInstanceLevelScopingArray{ GetRunnerControllerScopesInstanceLevelScopingArgs{...} }
+type GetRunnerControllerScopesInstanceLevelScopingArrayInput interface {
+	pulumi.Input
+
+	ToGetRunnerControllerScopesInstanceLevelScopingArrayOutput() GetRunnerControllerScopesInstanceLevelScopingArrayOutput
+	ToGetRunnerControllerScopesInstanceLevelScopingArrayOutputWithContext(context.Context) GetRunnerControllerScopesInstanceLevelScopingArrayOutput
+}
+
+type GetRunnerControllerScopesInstanceLevelScopingArray []GetRunnerControllerScopesInstanceLevelScopingInput
+
+func (GetRunnerControllerScopesInstanceLevelScopingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRunnerControllerScopesInstanceLevelScoping)(nil)).Elem()
+}
+
+func (i GetRunnerControllerScopesInstanceLevelScopingArray) ToGetRunnerControllerScopesInstanceLevelScopingArrayOutput() GetRunnerControllerScopesInstanceLevelScopingArrayOutput {
+	return i.ToGetRunnerControllerScopesInstanceLevelScopingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRunnerControllerScopesInstanceLevelScopingArray) ToGetRunnerControllerScopesInstanceLevelScopingArrayOutputWithContext(ctx context.Context) GetRunnerControllerScopesInstanceLevelScopingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRunnerControllerScopesInstanceLevelScopingArrayOutput)
+}
+
+type GetRunnerControllerScopesInstanceLevelScopingOutput struct{ *pulumi.OutputState }
+
+func (GetRunnerControllerScopesInstanceLevelScopingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRunnerControllerScopesInstanceLevelScoping)(nil)).Elem()
+}
+
+func (o GetRunnerControllerScopesInstanceLevelScopingOutput) ToGetRunnerControllerScopesInstanceLevelScopingOutput() GetRunnerControllerScopesInstanceLevelScopingOutput {
+	return o
+}
+
+func (o GetRunnerControllerScopesInstanceLevelScopingOutput) ToGetRunnerControllerScopesInstanceLevelScopingOutputWithContext(ctx context.Context) GetRunnerControllerScopesInstanceLevelScopingOutput {
+	return o
+}
+
+// The time the scope was created.
+func (o GetRunnerControllerScopesInstanceLevelScopingOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllerScopesInstanceLevelScoping) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The time the scope was last updated.
+func (o GetRunnerControllerScopesInstanceLevelScopingOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllerScopesInstanceLevelScoping) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetRunnerControllerScopesInstanceLevelScopingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRunnerControllerScopesInstanceLevelScopingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRunnerControllerScopesInstanceLevelScoping)(nil)).Elem()
+}
+
+func (o GetRunnerControllerScopesInstanceLevelScopingArrayOutput) ToGetRunnerControllerScopesInstanceLevelScopingArrayOutput() GetRunnerControllerScopesInstanceLevelScopingArrayOutput {
+	return o
+}
+
+func (o GetRunnerControllerScopesInstanceLevelScopingArrayOutput) ToGetRunnerControllerScopesInstanceLevelScopingArrayOutputWithContext(ctx context.Context) GetRunnerControllerScopesInstanceLevelScopingArrayOutput {
+	return o
+}
+
+func (o GetRunnerControllerScopesInstanceLevelScopingArrayOutput) Index(i pulumi.IntInput) GetRunnerControllerScopesInstanceLevelScopingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRunnerControllerScopesInstanceLevelScoping {
+		return vs[0].([]GetRunnerControllerScopesInstanceLevelScoping)[vs[1].(int)]
+	}).(GetRunnerControllerScopesInstanceLevelScopingOutput)
+}
+
+type GetRunnerControllerScopesRunnerLevelScoping struct {
+	// The time the scope was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The ID of the runner.
+	RunnerId int `pulumi:"runnerId"`
+	// The time the scope was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetRunnerControllerScopesRunnerLevelScopingInput is an input type that accepts GetRunnerControllerScopesRunnerLevelScopingArgs and GetRunnerControllerScopesRunnerLevelScopingOutput values.
+// You can construct a concrete instance of `GetRunnerControllerScopesRunnerLevelScopingInput` via:
+//
+//	GetRunnerControllerScopesRunnerLevelScopingArgs{...}
+type GetRunnerControllerScopesRunnerLevelScopingInput interface {
+	pulumi.Input
+
+	ToGetRunnerControllerScopesRunnerLevelScopingOutput() GetRunnerControllerScopesRunnerLevelScopingOutput
+	ToGetRunnerControllerScopesRunnerLevelScopingOutputWithContext(context.Context) GetRunnerControllerScopesRunnerLevelScopingOutput
+}
+
+type GetRunnerControllerScopesRunnerLevelScopingArgs struct {
+	// The time the scope was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The ID of the runner.
+	RunnerId pulumi.IntInput `pulumi:"runnerId"`
+	// The time the scope was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetRunnerControllerScopesRunnerLevelScopingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRunnerControllerScopesRunnerLevelScoping)(nil)).Elem()
+}
+
+func (i GetRunnerControllerScopesRunnerLevelScopingArgs) ToGetRunnerControllerScopesRunnerLevelScopingOutput() GetRunnerControllerScopesRunnerLevelScopingOutput {
+	return i.ToGetRunnerControllerScopesRunnerLevelScopingOutputWithContext(context.Background())
+}
+
+func (i GetRunnerControllerScopesRunnerLevelScopingArgs) ToGetRunnerControllerScopesRunnerLevelScopingOutputWithContext(ctx context.Context) GetRunnerControllerScopesRunnerLevelScopingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRunnerControllerScopesRunnerLevelScopingOutput)
+}
+
+// GetRunnerControllerScopesRunnerLevelScopingArrayInput is an input type that accepts GetRunnerControllerScopesRunnerLevelScopingArray and GetRunnerControllerScopesRunnerLevelScopingArrayOutput values.
+// You can construct a concrete instance of `GetRunnerControllerScopesRunnerLevelScopingArrayInput` via:
+//
+//	GetRunnerControllerScopesRunnerLevelScopingArray{ GetRunnerControllerScopesRunnerLevelScopingArgs{...} }
+type GetRunnerControllerScopesRunnerLevelScopingArrayInput interface {
+	pulumi.Input
+
+	ToGetRunnerControllerScopesRunnerLevelScopingArrayOutput() GetRunnerControllerScopesRunnerLevelScopingArrayOutput
+	ToGetRunnerControllerScopesRunnerLevelScopingArrayOutputWithContext(context.Context) GetRunnerControllerScopesRunnerLevelScopingArrayOutput
+}
+
+type GetRunnerControllerScopesRunnerLevelScopingArray []GetRunnerControllerScopesRunnerLevelScopingInput
+
+func (GetRunnerControllerScopesRunnerLevelScopingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRunnerControllerScopesRunnerLevelScoping)(nil)).Elem()
+}
+
+func (i GetRunnerControllerScopesRunnerLevelScopingArray) ToGetRunnerControllerScopesRunnerLevelScopingArrayOutput() GetRunnerControllerScopesRunnerLevelScopingArrayOutput {
+	return i.ToGetRunnerControllerScopesRunnerLevelScopingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRunnerControllerScopesRunnerLevelScopingArray) ToGetRunnerControllerScopesRunnerLevelScopingArrayOutputWithContext(ctx context.Context) GetRunnerControllerScopesRunnerLevelScopingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRunnerControllerScopesRunnerLevelScopingArrayOutput)
+}
+
+type GetRunnerControllerScopesRunnerLevelScopingOutput struct{ *pulumi.OutputState }
+
+func (GetRunnerControllerScopesRunnerLevelScopingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRunnerControllerScopesRunnerLevelScoping)(nil)).Elem()
+}
+
+func (o GetRunnerControllerScopesRunnerLevelScopingOutput) ToGetRunnerControllerScopesRunnerLevelScopingOutput() GetRunnerControllerScopesRunnerLevelScopingOutput {
+	return o
+}
+
+func (o GetRunnerControllerScopesRunnerLevelScopingOutput) ToGetRunnerControllerScopesRunnerLevelScopingOutputWithContext(ctx context.Context) GetRunnerControllerScopesRunnerLevelScopingOutput {
+	return o
+}
+
+// The time the scope was created.
+func (o GetRunnerControllerScopesRunnerLevelScopingOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllerScopesRunnerLevelScoping) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The ID of the runner.
+func (o GetRunnerControllerScopesRunnerLevelScopingOutput) RunnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRunnerControllerScopesRunnerLevelScoping) int { return v.RunnerId }).(pulumi.IntOutput)
+}
+
+// The time the scope was last updated.
+func (o GetRunnerControllerScopesRunnerLevelScopingOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllerScopesRunnerLevelScoping) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetRunnerControllerScopesRunnerLevelScopingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRunnerControllerScopesRunnerLevelScopingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRunnerControllerScopesRunnerLevelScoping)(nil)).Elem()
+}
+
+func (o GetRunnerControllerScopesRunnerLevelScopingArrayOutput) ToGetRunnerControllerScopesRunnerLevelScopingArrayOutput() GetRunnerControllerScopesRunnerLevelScopingArrayOutput {
+	return o
+}
+
+func (o GetRunnerControllerScopesRunnerLevelScopingArrayOutput) ToGetRunnerControllerScopesRunnerLevelScopingArrayOutputWithContext(ctx context.Context) GetRunnerControllerScopesRunnerLevelScopingArrayOutput {
+	return o
+}
+
+func (o GetRunnerControllerScopesRunnerLevelScopingArrayOutput) Index(i pulumi.IntInput) GetRunnerControllerScopesRunnerLevelScopingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRunnerControllerScopesRunnerLevelScoping {
+		return vs[0].([]GetRunnerControllerScopesRunnerLevelScoping)[vs[1].(int)]
+	}).(GetRunnerControllerScopesRunnerLevelScopingOutput)
+}
+
+type GetRunnerControllersRunnerController struct {
+	// The time the runner controller was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the runner controller.
+	Description string `pulumi:"description"`
+	// The ID of the runner controller.
+	Id int `pulumi:"id"`
+	// The state of the runner controller. Valid values are: `disabled`, `enabled`, `dryRun`.
+	State string `pulumi:"state"`
+	// The time the runner controller was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetRunnerControllersRunnerControllerInput is an input type that accepts GetRunnerControllersRunnerControllerArgs and GetRunnerControllersRunnerControllerOutput values.
+// You can construct a concrete instance of `GetRunnerControllersRunnerControllerInput` via:
+//
+//	GetRunnerControllersRunnerControllerArgs{...}
+type GetRunnerControllersRunnerControllerInput interface {
+	pulumi.Input
+
+	ToGetRunnerControllersRunnerControllerOutput() GetRunnerControllersRunnerControllerOutput
+	ToGetRunnerControllersRunnerControllerOutputWithContext(context.Context) GetRunnerControllersRunnerControllerOutput
+}
+
+type GetRunnerControllersRunnerControllerArgs struct {
+	// The time the runner controller was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The description of the runner controller.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the runner controller.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The state of the runner controller. Valid values are: `disabled`, `enabled`, `dryRun`.
+	State pulumi.StringInput `pulumi:"state"`
+	// The time the runner controller was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetRunnerControllersRunnerControllerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRunnerControllersRunnerController)(nil)).Elem()
+}
+
+func (i GetRunnerControllersRunnerControllerArgs) ToGetRunnerControllersRunnerControllerOutput() GetRunnerControllersRunnerControllerOutput {
+	return i.ToGetRunnerControllersRunnerControllerOutputWithContext(context.Background())
+}
+
+func (i GetRunnerControllersRunnerControllerArgs) ToGetRunnerControllersRunnerControllerOutputWithContext(ctx context.Context) GetRunnerControllersRunnerControllerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRunnerControllersRunnerControllerOutput)
+}
+
+// GetRunnerControllersRunnerControllerArrayInput is an input type that accepts GetRunnerControllersRunnerControllerArray and GetRunnerControllersRunnerControllerArrayOutput values.
+// You can construct a concrete instance of `GetRunnerControllersRunnerControllerArrayInput` via:
+//
+//	GetRunnerControllersRunnerControllerArray{ GetRunnerControllersRunnerControllerArgs{...} }
+type GetRunnerControllersRunnerControllerArrayInput interface {
+	pulumi.Input
+
+	ToGetRunnerControllersRunnerControllerArrayOutput() GetRunnerControllersRunnerControllerArrayOutput
+	ToGetRunnerControllersRunnerControllerArrayOutputWithContext(context.Context) GetRunnerControllersRunnerControllerArrayOutput
+}
+
+type GetRunnerControllersRunnerControllerArray []GetRunnerControllersRunnerControllerInput
+
+func (GetRunnerControllersRunnerControllerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRunnerControllersRunnerController)(nil)).Elem()
+}
+
+func (i GetRunnerControllersRunnerControllerArray) ToGetRunnerControllersRunnerControllerArrayOutput() GetRunnerControllersRunnerControllerArrayOutput {
+	return i.ToGetRunnerControllersRunnerControllerArrayOutputWithContext(context.Background())
+}
+
+func (i GetRunnerControllersRunnerControllerArray) ToGetRunnerControllersRunnerControllerArrayOutputWithContext(ctx context.Context) GetRunnerControllersRunnerControllerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRunnerControllersRunnerControllerArrayOutput)
+}
+
+type GetRunnerControllersRunnerControllerOutput struct{ *pulumi.OutputState }
+
+func (GetRunnerControllersRunnerControllerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRunnerControllersRunnerController)(nil)).Elem()
+}
+
+func (o GetRunnerControllersRunnerControllerOutput) ToGetRunnerControllersRunnerControllerOutput() GetRunnerControllersRunnerControllerOutput {
+	return o
+}
+
+func (o GetRunnerControllersRunnerControllerOutput) ToGetRunnerControllersRunnerControllerOutputWithContext(ctx context.Context) GetRunnerControllersRunnerControllerOutput {
+	return o
+}
+
+// The time the runner controller was created.
+func (o GetRunnerControllersRunnerControllerOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllersRunnerController) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the runner controller.
+func (o GetRunnerControllersRunnerControllerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllersRunnerController) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the runner controller.
+func (o GetRunnerControllersRunnerControllerOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRunnerControllersRunnerController) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The state of the runner controller. Valid values are: `disabled`, `enabled`, `dryRun`.
+func (o GetRunnerControllersRunnerControllerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllersRunnerController) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The time the runner controller was last updated.
+func (o GetRunnerControllersRunnerControllerOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRunnerControllersRunnerController) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetRunnerControllersRunnerControllerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRunnerControllersRunnerControllerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRunnerControllersRunnerController)(nil)).Elem()
+}
+
+func (o GetRunnerControllersRunnerControllerArrayOutput) ToGetRunnerControllersRunnerControllerArrayOutput() GetRunnerControllersRunnerControllerArrayOutput {
+	return o
+}
+
+func (o GetRunnerControllersRunnerControllerArrayOutput) ToGetRunnerControllersRunnerControllerArrayOutputWithContext(ctx context.Context) GetRunnerControllersRunnerControllerArrayOutput {
+	return o
+}
+
+func (o GetRunnerControllersRunnerControllerArrayOutput) Index(i pulumi.IntInput) GetRunnerControllersRunnerControllerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRunnerControllersRunnerController {
+		return vs[0].([]GetRunnerControllersRunnerController)[vs[1].(int)]
+	}).(GetRunnerControllersRunnerControllerOutput)
+}
+
 type GetRunnersRunner struct {
 	// The description of the runner.
 	Description string `pulumi:"description"`
@@ -20000,10 +20741,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServiceAccountTimeoutsPtrInput)(nil)).Elem(), InstanceServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersonalAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), PersonalAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleInputTypeInput)(nil)).Elem(), PipelineScheduleInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleInputTypeArrayInput)(nil)).Elem(), PipelineScheduleInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerTagProtectionTimeoutsInput)(nil)).Elem(), ProjectContainerTagProtectionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerTagProtectionTimeoutsPtrInput)(nil)).Elem(), ProjectContainerTagProtectionTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookCustomHeaderInput)(nil)).Elem(), ProjectHookCustomHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookCustomHeaderArrayInput)(nil)).Elem(), ProjectHookCustomHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectIssueBoardListInput)(nil)).Elem(), ProjectIssueBoardListArgs{})
@@ -20070,6 +20815,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceVariablesVariableInput)(nil)).Elem(), GetInstanceVariablesVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceVariablesVariableArrayInput)(nil)).Elem(), GetInstanceVariablesVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetadataKasInput)(nil)).Elem(), GetMetadataKasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleInputInput)(nil)).Elem(), GetPipelineScheduleInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleInputArrayInput)(nil)).Elem(), GetPipelineScheduleInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleLastPipelineInput)(nil)).Elem(), GetPipelineScheduleLastPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleOwnerInput)(nil)).Elem(), GetPipelineScheduleOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineScheduleVariableTypeInput)(nil)).Elem(), GetPipelineScheduleVariableTypeArgs{})
@@ -20176,6 +20923,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseLinksReleaseLinkArrayInput)(nil)).Elem(), GetReleaseLinksReleaseLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryTreeTreeInput)(nil)).Elem(), GetRepositoryTreeTreeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryTreeTreeArrayInput)(nil)).Elem(), GetRepositoryTreeTreeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnerControllerScopesInstanceLevelScopingInput)(nil)).Elem(), GetRunnerControllerScopesInstanceLevelScopingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnerControllerScopesInstanceLevelScopingArrayInput)(nil)).Elem(), GetRunnerControllerScopesInstanceLevelScopingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnerControllerScopesRunnerLevelScopingInput)(nil)).Elem(), GetRunnerControllerScopesRunnerLevelScopingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnerControllerScopesRunnerLevelScopingArrayInput)(nil)).Elem(), GetRunnerControllerScopesRunnerLevelScopingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnerControllersRunnerControllerInput)(nil)).Elem(), GetRunnerControllersRunnerControllerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnerControllersRunnerControllerArrayInput)(nil)).Elem(), GetRunnerControllersRunnerControllerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnersRunnerInput)(nil)).Elem(), GetRunnersRunnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunnersRunnerArrayInput)(nil)).Elem(), GetRunnersRunnerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyDocumentScanExecutionPolicyInput)(nil)).Elem(), GetSecurityPolicyDocumentScanExecutionPolicyArgs{})
@@ -20228,10 +20981,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceServiceAccountTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(PersonalAccessTokenRotationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PipelineScheduleInputTypeOutput{})
+	pulumi.RegisterOutputType(PipelineScheduleInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ProjectContainerTagProtectionTimeoutsOutput{})
+	pulumi.RegisterOutputType(ProjectContainerTagProtectionTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectHookCustomHeaderOutput{})
 	pulumi.RegisterOutputType(ProjectHookCustomHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ProjectIssueBoardListOutput{})
@@ -20298,6 +21055,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceVariablesVariableOutput{})
 	pulumi.RegisterOutputType(GetInstanceVariablesVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetMetadataKasOutput{})
+	pulumi.RegisterOutputType(GetPipelineScheduleInputOutput{})
+	pulumi.RegisterOutputType(GetPipelineScheduleInputArrayOutput{})
 	pulumi.RegisterOutputType(GetPipelineScheduleLastPipelineOutput{})
 	pulumi.RegisterOutputType(GetPipelineScheduleOwnerOutput{})
 	pulumi.RegisterOutputType(GetPipelineScheduleVariableTypeOutput{})
@@ -20404,6 +21163,12 @@ func init() {
 	pulumi.RegisterOutputType(GetReleaseLinksReleaseLinkArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryTreeTreeOutput{})
 	pulumi.RegisterOutputType(GetRepositoryTreeTreeArrayOutput{})
+	pulumi.RegisterOutputType(GetRunnerControllerScopesInstanceLevelScopingOutput{})
+	pulumi.RegisterOutputType(GetRunnerControllerScopesInstanceLevelScopingArrayOutput{})
+	pulumi.RegisterOutputType(GetRunnerControllerScopesRunnerLevelScopingOutput{})
+	pulumi.RegisterOutputType(GetRunnerControllerScopesRunnerLevelScopingArrayOutput{})
+	pulumi.RegisterOutputType(GetRunnerControllersRunnerControllerOutput{})
+	pulumi.RegisterOutputType(GetRunnerControllersRunnerControllerArrayOutput{})
 	pulumi.RegisterOutputType(GetRunnersRunnerOutput{})
 	pulumi.RegisterOutputType(GetRunnersRunnerArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyDocumentScanExecutionPolicyOutput{})

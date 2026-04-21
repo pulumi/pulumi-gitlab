@@ -35,6 +35,16 @@ import (
 //				Description: pulumi.String("Used to schedule builds"),
 //				Ref:         pulumi.String("refs/heads/main"),
 //				Cron:        pulumi.String("0 1 * * *"),
+//				Inputs: gitlab.PipelineScheduleInputTypeArray{
+//					&gitlab.PipelineScheduleInputTypeArgs{
+//						Name:  pulumi.String("deploy_strategy"),
+//						Value: pulumi.String("rolling"),
+//					},
+//					&gitlab.PipelineScheduleInputTypeArgs{
+//						Name:  pulumi.String("environment"),
+//						Value: pulumi.String("production"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +61,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, e.g.
+// GitLab pipeline schedules can be imported using an id made up of `{project_id}:{pipeline_schedule_id}`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/pipelineSchedule:PipelineSchedule test 1:3
@@ -67,6 +77,8 @@ type PipelineSchedule struct {
 	CronTimezone pulumi.StringOutput `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+	Inputs PipelineScheduleInputTypeArrayOutput `pulumi:"inputs"`
 	// The ID of the user that owns the pipeline schedule.
 	Owner pulumi.IntOutput `pulumi:"owner"`
 	// The pipeline schedule id.
@@ -129,6 +141,8 @@ type pipelineScheduleState struct {
 	CronTimezone *string `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description *string `pulumi:"description"`
+	// List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+	Inputs []PipelineScheduleInputType `pulumi:"inputs"`
 	// The ID of the user that owns the pipeline schedule.
 	Owner *int `pulumi:"owner"`
 	// The pipeline schedule id.
@@ -150,6 +164,8 @@ type PipelineScheduleState struct {
 	CronTimezone pulumi.StringPtrInput
 	// The description of the pipeline schedule.
 	Description pulumi.StringPtrInput
+	// List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+	Inputs PipelineScheduleInputTypeArrayInput
 	// The ID of the user that owns the pipeline schedule.
 	Owner pulumi.IntPtrInput
 	// The pipeline schedule id.
@@ -175,6 +191,8 @@ type pipelineScheduleArgs struct {
 	CronTimezone *string `pulumi:"cronTimezone"`
 	// The description of the pipeline schedule.
 	Description string `pulumi:"description"`
+	// List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+	Inputs []PipelineScheduleInputType `pulumi:"inputs"`
 	// The name or id of the project to add the schedule to.
 	Project string `pulumi:"project"`
 	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
@@ -193,6 +211,8 @@ type PipelineScheduleArgs struct {
 	CronTimezone pulumi.StringPtrInput
 	// The description of the pipeline schedule.
 	Description pulumi.StringInput
+	// List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+	Inputs PipelineScheduleInputTypeArrayInput
 	// The name or id of the project to add the schedule to.
 	Project pulumi.StringInput
 	// The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
@@ -306,6 +326,11 @@ func (o PipelineScheduleOutput) CronTimezone() pulumi.StringOutput {
 // The description of the pipeline schedule.
 func (o PipelineScheduleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSchedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+func (o PipelineScheduleOutput) Inputs() PipelineScheduleInputTypeArrayOutput {
+	return o.ApplyT(func(v *PipelineSchedule) PipelineScheduleInputTypeArrayOutput { return v.Inputs }).(PipelineScheduleInputTypeArrayOutput)
 }
 
 // The ID of the user that owns the pipeline schedule.

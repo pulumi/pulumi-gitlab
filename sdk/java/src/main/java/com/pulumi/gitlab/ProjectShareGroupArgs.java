@@ -41,6 +41,21 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Share expiration date. Format: `YYYY-MM-DD`
+     * 
+     */
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
+
+    /**
+     * @return Share expiration date. Format: `YYYY-MM-DD`
+     * 
+     */
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
+    }
+
+    /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
@@ -89,6 +104,7 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
 
     private ProjectShareGroupArgs(ProjectShareGroupArgs $) {
         this.accessLevel = $.accessLevel;
+        this.expiresAt = $.expiresAt;
         this.groupAccess = $.groupAccess;
         this.groupId = $.groupId;
         this.project = $.project;
@@ -139,6 +155,27 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
         @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
+        }
+
+        /**
+         * @param expiresAt Share expiration date. Format: `YYYY-MM-DD`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+            $.expiresAt = expiresAt;
+            return this;
+        }
+
+        /**
+         * @param expiresAt Share expiration date. Format: `YYYY-MM-DD`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(String expiresAt) {
+            return expiresAt(Output.of(expiresAt));
         }
 
         /**

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+ * GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectMirror:ProjectMirror foo &#34;12345:1337&#34;
@@ -177,14 +177,14 @@ public class ProjectMirror extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The URL of the remote repository to be mirrored.
+     * The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the remote repository to be mirrored.
+     * @return The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      * 
      */
     public Output<String> url() {

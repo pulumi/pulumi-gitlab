@@ -39,7 +39,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project runners can be imported using an id made up of `project:runner_id`, e.g.
+    /// GitLab project runners can be imported using an id made up of `project:runner_id`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement foo 5:7

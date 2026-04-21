@@ -126,7 +126,7 @@ class GetGroupResult:
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
     def extra_shared_runners_minutes_limit(self) -> _builtins.int:
         """
-        Can be set by administrators only. Additional CI/CD minutes for this group.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
@@ -238,7 +238,7 @@ class GetGroupResult:
     @pulumi.getter(name="sharedRunnersMinutesLimit")
     def shared_runners_minutes_limit(self) -> _builtins.int:
         """
-        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
         return pulumi.get(self, "shared_runners_minutes_limit")
 

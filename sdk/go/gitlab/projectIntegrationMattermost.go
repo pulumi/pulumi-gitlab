@@ -60,7 +60,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a gitlab_project_integration_mattermost.mattermost state using the project ID, e.g.
+// You can import a gitlab_project_integration_mattermost.mattermost state using the project ID, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost mattermost 1
@@ -68,50 +68,50 @@ import (
 type ProjectIntegrationMattermost struct {
 	pulumi.CustomResourceState
 
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified pulumi.StringOutput `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
-	ConfidentialIssueChannel pulumi.StringPtrOutput `pulumi:"confidentialIssueChannel"`
+	ConfidentialIssueChannel pulumi.StringOutput `pulumi:"confidentialIssueChannel"`
 	// Enable notifications for confidential issues events.
 	ConfidentialIssuesEvents pulumi.BoolOutput `pulumi:"confidentialIssuesEvents"`
 	// The name of the channel to receive confidential note events notifications.
-	ConfidentialNoteChannel pulumi.StringPtrOutput `pulumi:"confidentialNoteChannel"`
+	ConfidentialNoteChannel pulumi.StringOutput `pulumi:"confidentialNoteChannel"`
 	// Enable notifications for confidential note events.
 	ConfidentialNoteEvents pulumi.BoolOutput `pulumi:"confidentialNoteEvents"`
 	// The name of the channel to receive issue events notifications.
-	IssueChannel pulumi.StringPtrOutput `pulumi:"issueChannel"`
+	IssueChannel pulumi.StringOutput `pulumi:"issueChannel"`
 	// Enable notifications for issues events.
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
 	// The name of the channel to receive merge request events notifications.
-	MergeRequestChannel pulumi.StringPtrOutput `pulumi:"mergeRequestChannel"`
+	MergeRequestChannel pulumi.StringOutput `pulumi:"mergeRequestChannel"`
 	// Enable notifications for merge requests events.
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
 	// The name of the channel to receive note events notifications.
-	NoteChannel pulumi.StringPtrOutput `pulumi:"noteChannel"`
+	NoteChannel pulumi.StringOutput `pulumi:"noteChannel"`
 	// Enable notifications for note events.
 	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
 	// The name of the channel to receive pipeline events notifications.
-	PipelineChannel pulumi.StringPtrOutput `pulumi:"pipelineChannel"`
+	PipelineChannel pulumi.StringOutput `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
 	PipelineEvents pulumi.BoolOutput `pulumi:"pipelineEvents"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the channel to receive push events notifications.
-	PushChannel pulumi.StringPtrOutput `pulumi:"pushChannel"`
+	PushChannel pulumi.StringOutput `pulumi:"pushChannel"`
 	// Enable notifications for push events.
 	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
 	// The name of the channel to receive tag push events notifications.
-	TagPushChannel pulumi.StringPtrOutput `pulumi:"tagPushChannel"`
+	TagPushChannel pulumi.StringOutput `pulumi:"tagPushChannel"`
 	// Enable notifications for tag push events.
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Username to use.
-	Username pulumi.StringPtrOutput `pulumi:"username"`
+	Username pulumi.StringOutput `pulumi:"username"`
 	// Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
 	Webhook pulumi.StringOutput `pulumi:"webhook"`
 	// The name of the channel to receive wiki page events notifications.
-	WikiPageChannel pulumi.StringPtrOutput `pulumi:"wikiPageChannel"`
+	WikiPageChannel pulumi.StringOutput `pulumi:"wikiPageChannel"`
 	// Enable notifications for wiki page events.
 	WikiPageEvents pulumi.BoolOutput `pulumi:"wikiPageEvents"`
 }
@@ -129,6 +129,13 @@ func NewProjectIntegrationMattermost(ctx *pulumi.Context,
 	if args.Webhook == nil {
 		return nil, errors.New("invalid value for required argument 'Webhook'")
 	}
+	if args.Webhook != nil {
+		args.Webhook = pulumi.ToSecret(args.Webhook).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"webhook",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectIntegrationMattermost
 	err := ctx.RegisterResource("gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost", name, args, &resource, opts...)
@@ -152,7 +159,7 @@ func GetProjectIntegrationMattermost(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectIntegrationMattermost resources.
 type projectIntegrationMattermostState struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
@@ -201,7 +208,7 @@ type projectIntegrationMattermostState struct {
 }
 
 type ProjectIntegrationMattermostState struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified pulumi.StringPtrInput
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrInput
@@ -254,7 +261,7 @@ func (ProjectIntegrationMattermostState) ElementType() reflect.Type {
 }
 
 type projectIntegrationMattermostArgs struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel *string `pulumi:"confidentialIssueChannel"`
@@ -304,7 +311,7 @@ type projectIntegrationMattermostArgs struct {
 
 // The set of arguments for constructing a ProjectIntegrationMattermost resource.
 type ProjectIntegrationMattermostArgs struct {
-	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified pulumi.StringPtrInput
 	// The name of the channel to receive confidential issue events notifications.
 	ConfidentialIssueChannel pulumi.StringPtrInput
@@ -439,14 +446,14 @@ func (o ProjectIntegrationMattermostOutput) ToProjectIntegrationMattermostOutput
 	return o
 }
 
-// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
+// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 func (o ProjectIntegrationMattermostOutput) BranchesToBeNotified() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.BranchesToBeNotified }).(pulumi.StringOutput)
 }
 
 // The name of the channel to receive confidential issue events notifications.
-func (o ProjectIntegrationMattermostOutput) ConfidentialIssueChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.ConfidentialIssueChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) ConfidentialIssueChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.ConfidentialIssueChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for confidential issues events.
@@ -455,8 +462,8 @@ func (o ProjectIntegrationMattermostOutput) ConfidentialIssuesEvents() pulumi.Bo
 }
 
 // The name of the channel to receive confidential note events notifications.
-func (o ProjectIntegrationMattermostOutput) ConfidentialNoteChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.ConfidentialNoteChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) ConfidentialNoteChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.ConfidentialNoteChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for confidential note events.
@@ -465,8 +472,8 @@ func (o ProjectIntegrationMattermostOutput) ConfidentialNoteEvents() pulumi.Bool
 }
 
 // The name of the channel to receive issue events notifications.
-func (o ProjectIntegrationMattermostOutput) IssueChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.IssueChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) IssueChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.IssueChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for issues events.
@@ -475,8 +482,8 @@ func (o ProjectIntegrationMattermostOutput) IssuesEvents() pulumi.BoolOutput {
 }
 
 // The name of the channel to receive merge request events notifications.
-func (o ProjectIntegrationMattermostOutput) MergeRequestChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.MergeRequestChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) MergeRequestChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.MergeRequestChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for merge requests events.
@@ -485,8 +492,8 @@ func (o ProjectIntegrationMattermostOutput) MergeRequestsEvents() pulumi.BoolOut
 }
 
 // The name of the channel to receive note events notifications.
-func (o ProjectIntegrationMattermostOutput) NoteChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.NoteChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) NoteChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.NoteChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for note events.
@@ -500,8 +507,8 @@ func (o ProjectIntegrationMattermostOutput) NotifyOnlyBrokenPipelines() pulumi.B
 }
 
 // The name of the channel to receive pipeline events notifications.
-func (o ProjectIntegrationMattermostOutput) PipelineChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.PipelineChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) PipelineChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.PipelineChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for pipeline events.
@@ -515,8 +522,8 @@ func (o ProjectIntegrationMattermostOutput) Project() pulumi.StringOutput {
 }
 
 // The name of the channel to receive push events notifications.
-func (o ProjectIntegrationMattermostOutput) PushChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.PushChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) PushChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.PushChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for push events.
@@ -525,8 +532,8 @@ func (o ProjectIntegrationMattermostOutput) PushEvents() pulumi.BoolOutput {
 }
 
 // The name of the channel to receive tag push events notifications.
-func (o ProjectIntegrationMattermostOutput) TagPushChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.TagPushChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) TagPushChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.TagPushChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for tag push events.
@@ -535,8 +542,8 @@ func (o ProjectIntegrationMattermostOutput) TagPushEvents() pulumi.BoolOutput {
 }
 
 // Username to use.
-func (o ProjectIntegrationMattermostOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 // Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
@@ -545,8 +552,8 @@ func (o ProjectIntegrationMattermostOutput) Webhook() pulumi.StringOutput {
 }
 
 // The name of the channel to receive wiki page events notifications.
-func (o ProjectIntegrationMattermostOutput) WikiPageChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringPtrOutput { return v.WikiPageChannel }).(pulumi.StringPtrOutput)
+func (o ProjectIntegrationMattermostOutput) WikiPageChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectIntegrationMattermost) pulumi.StringOutput { return v.WikiPageChannel }).(pulumi.StringOutput)
 }
 
 // Enable notifications for wiki page events.

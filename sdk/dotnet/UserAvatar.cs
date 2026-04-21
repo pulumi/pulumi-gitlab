@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab User Avatar can be imported using the user id, e.g.
+    /// A GitLab User Avatar can be imported using the user id, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/userAvatar:UserAvatar example "12345"

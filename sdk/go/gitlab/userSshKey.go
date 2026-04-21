@@ -57,7 +57,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a user ssh key using an id made up of `{user-id}:{key}`, e.g.
+// You can import a user ssh key using an id made up of `{user-id}:{key}`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/userSshKey:UserSshKey example 42:1

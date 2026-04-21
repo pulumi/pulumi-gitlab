@@ -94,7 +94,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Can be set by administrators only. Additional CI/CD minutes for this group.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
         public readonly int ExtraSharedRunnersMinutesLimit;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string RunnersToken;
         /// <summary>
-        /// Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+        /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
         /// </summary>
         public readonly int SharedRunnersMinutesLimit;
         /// <summary>

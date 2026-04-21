@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * GitLab group membership can be imported using an id made up of `group_id:user_id`, e.g.
+ * GitLab group membership can be imported using an id made up of `group_id:user_id`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/groupMembership:GroupMembership test "12345:1337"

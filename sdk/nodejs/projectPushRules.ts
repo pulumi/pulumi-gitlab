@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * Gitlab project push rules can be imported with a key composed of `<project_id>`, e.g.
+ * Gitlab project push rules can be imported with a key composed of `<project_id>`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/projectPushRules:ProjectPushRules sample "42"

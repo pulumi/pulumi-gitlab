@@ -70,7 +70,7 @@ class GroupArgs:
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
-        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
@@ -88,7 +88,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[_builtins.bool] share_with_group_lock: Prevent sharing a project with another group within this group.
-        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[_builtins.str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         :param pulumi.Input[_builtins.str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[_builtins.int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -305,7 +305,7 @@ class GroupArgs:
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
     def extra_shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Can be set by administrators only. Additional CI/CD minutes for this group.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
@@ -521,7 +521,7 @@ class GroupArgs:
     @pulumi.getter(name="sharedRunnersMinutesLimit")
     def shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
         return pulumi.get(self, "shared_runners_minutes_limit")
 
@@ -647,7 +647,7 @@ class _GroupState:
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
-        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[_builtins.str] full_name: The full name of the group.
         :param pulumi.Input[_builtins.str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
@@ -669,7 +669,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[_builtins.str] runners_token: The group level registration token to use during runner setup.
         :param pulumi.Input[_builtins.bool] share_with_group_lock: Prevent sharing a project with another group within this group.
-        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[_builtins.str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         :param pulumi.Input[_builtins.str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[_builtins.int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -898,7 +898,7 @@ class _GroupState:
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
     def extra_shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Can be set by administrators only. Additional CI/CD minutes for this group.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
@@ -1162,7 +1162,7 @@ class _GroupState:
     @pulumi.getter(name="sharedRunnersMinutesLimit")
     def shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
         return pulumi.get(self, "shared_runners_minutes_limit")
 
@@ -1377,7 +1377,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
-        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
         :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
@@ -1396,7 +1396,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[_builtins.bool] share_with_group_lock: Prevent sharing a project with another group within this group.
-        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[_builtins.str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         :param pulumi.Input[_builtins.str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[_builtins.int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -1660,7 +1660,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
-        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[_builtins.str] full_name: The full name of the group.
         :param pulumi.Input[_builtins.str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
@@ -1682,7 +1682,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[_builtins.str] runners_token: The group level registration token to use during runner setup.
         :param pulumi.Input[_builtins.bool] share_with_group_lock: Prevent sharing a project with another group within this group.
-        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        :param pulumi.Input[_builtins.int] shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param pulumi.Input[_builtins.str] shared_runners_setting: Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         :param pulumi.Input[_builtins.str] subgroup_creation_level: Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         :param pulumi.Input[_builtins.int] two_factor_grace_period: Defaults to 48. Time before Two-factor authentication is enforced (in hours).
@@ -1829,7 +1829,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
     def extra_shared_runners_minutes_limit(self) -> pulumi.Output[_builtins.int]:
         """
-        Can be set by administrators only. Additional CI/CD minutes for this group.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
@@ -2005,7 +2005,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="sharedRunnersMinutesLimit")
     def shared_runners_minutes_limit(self) -> pulumi.Output[_builtins.int]:
         """
-        Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
         return pulumi.get(self, "shared_runners_minutes_limit")
 

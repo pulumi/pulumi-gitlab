@@ -48,11 +48,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab Project targer branch rule can be imported using a key composed of `&lt;project-id&gt;:&lt;target-branch-rule-id&gt;`, for example:
+    /// A GitLab Project targer branch rule can be imported using a key composed of `&lt;project&gt;:&lt;target-branch-rule-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"
     /// ```
+    /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule")]
     public partial class ProjectTargetBranchRule : global::Pulumi.CustomResource

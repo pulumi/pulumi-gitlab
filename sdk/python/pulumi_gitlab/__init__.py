@@ -81,6 +81,9 @@ from .get_release_link import *
 from .get_release_links import *
 from .get_repository_file import *
 from .get_repository_tree import *
+from .get_runner_controller import *
+from .get_runner_controller_scopes import *
+from .get_runner_controllers import *
 from .get_runners import *
 from .get_security_policy_document import *
 from .get_user import *
@@ -97,6 +100,7 @@ from .group_deploy_token import *
 from .group_epic_board import *
 from .group_hook import *
 from .group_integration_mattermost import *
+from .group_integration_microsoft_teams import *
 from .group_issue_board import *
 from .group_label import *
 from .group_ldap_link import *
@@ -141,6 +145,7 @@ from .project_cicd_catalog import *
 from .project_cluster import *
 from .project_compliance_frameworks import *
 from .project_container_repository_protection import *
+from .project_container_tag_protection import *
 from .project_custom_attribute import *
 from .project_deploy_token import *
 from .project_environment import *
@@ -154,6 +159,7 @@ from .project_integration_github import *
 from .project_integration_harbor import *
 from .project_integration_jenkins import *
 from .project_integration_jira import *
+from .project_integration_matrix import *
 from .project_integration_mattermost import *
 from .project_integration_microsoft_teams import *
 from .project_integration_pipelines_email import *
@@ -173,6 +179,7 @@ from .project_merge_request_note import *
 from .project_milestone import *
 from .project_mirror import *
 from .project_package_dependency_proxy import *
+from .project_package_protection_rule import *
 from .project_pages_settings import *
 from .project_protected_environment import *
 from .project_pull_mirror import *
@@ -191,6 +198,10 @@ from .release import *
 from .release_link import *
 from .repository_file import *
 from .runner import *
+from .runner_controller import *
+from .runner_controller_instance_scope import *
+from .runner_controller_runner_scope import *
+from .runner_controller_token import *
 from .system_hook import *
 from .tag_protection import *
 from .topic import *
@@ -390,6 +401,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost": "GroupIntegrationMattermost"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupIntegrationMicrosoftTeams",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams": "GroupIntegrationMicrosoftTeams"
   }
  },
  {
@@ -746,6 +765,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectContainerTagProtection",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection": "ProjectContainerTagProtection"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectCustomAttribute",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -846,6 +873,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectIntegrationJira:ProjectIntegrationJira": "ProjectIntegrationJira"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationMatrix",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationMatrix:ProjectIntegrationMatrix": "ProjectIntegrationMatrix"
   }
  },
  {
@@ -1002,6 +1037,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectPackageProtectionRule",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectPackageProtectionRule:ProjectPackageProtectionRule": "ProjectPackageProtectionRule"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectPagesSettings",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -1134,6 +1177,38 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/runner:Runner": "Runner"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/runnerController",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/runnerController:RunnerController": "RunnerController"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/runnerControllerInstanceScope",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope": "RunnerControllerInstanceScope"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/runnerControllerRunnerScope",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/runnerControllerRunnerScope:RunnerControllerRunnerScope": "RunnerControllerRunnerScope"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/runnerControllerToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/runnerControllerToken:RunnerControllerToken": "RunnerControllerToken"
   }
  },
  {

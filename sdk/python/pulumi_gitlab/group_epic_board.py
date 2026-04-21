@@ -180,7 +180,7 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
+        You can import this resource with an id made up of `{group-id}:{epic-board-id}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156
@@ -238,7 +238,7 @@ class GroupEpicBoard(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import this resource with an id made up of `{group-id}:{epic-board-id}`, e.g.
+        You can import this resource with an id made up of `{group-id}:{epic-board-id}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/groupEpicBoard:GroupEpicBoard agile 70:156

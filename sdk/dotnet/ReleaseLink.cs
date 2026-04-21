@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, e.g.
+    /// Gitlab release link can be imported with a key composed of `&lt;project&gt;:&lt;tag_name&gt;:&lt;link_id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"

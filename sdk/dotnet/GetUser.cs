@@ -142,7 +142,7 @@ namespace Pulumi.GitLab
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The public email address of the user.
+        /// The email address of the user.
         /// </summary>
         [Input("email")]
         public string? Email { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.GitLab
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The public email address of the user.
+        /// The email address of the user.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string CurrentSignInAt;
         /// <summary>
-        /// The public email address of the user.
+        /// The email address of the user.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -307,6 +307,10 @@ namespace Pulumi.GitLab
         /// Number of projects the user can create.
         /// </summary>
         public readonly int ProjectsLimit;
+        /// <summary>
+        /// The public email address of the user.
+        /// </summary>
+        public readonly string PublicEmail;
         /// <summary>
         /// Skype username of the user.
         /// </summary>
@@ -390,6 +394,8 @@ namespace Pulumi.GitLab
 
             int projectsLimit,
 
+            string publicEmail,
+
             string skype,
 
             string state,
@@ -430,6 +436,7 @@ namespace Pulumi.GitLab
             Note = note;
             Organization = organization;
             ProjectsLimit = projectsLimit;
+            PublicEmail = publicEmail;
             Skype = skype;
             State = state;
             ThemeId = themeId;

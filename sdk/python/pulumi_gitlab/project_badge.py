@@ -245,7 +245,7 @@ class ProjectBadge(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
+        GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3
@@ -308,7 +308,7 @@ class ProjectBadge(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, e.g.
+        GitLab project badges can be imported using an id made up of `{project_id}:{badge_id}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectBadge:ProjectBadge foo 1:3

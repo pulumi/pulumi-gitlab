@@ -165,11 +165,13 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        A GitLab Project targer branch rule can be imported using a key composed of `<project-id>:<target-branch-rule-id>`, for example:
+        A GitLab Project targer branch rule can be imported using a key composed of `<project>:<target-branch-rule-id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"
         ```
+
+        Where `project` may be the product ID or path with namespace depending on what you have in your config.
 
 
         :param str resource_name: The name of the resource.
@@ -212,11 +214,13 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        A GitLab Project targer branch rule can be imported using a key composed of `<project-id>:<target-branch-rule-id>`, for example:
+        A GitLab Project targer branch rule can be imported using a key composed of `<project>:<target-branch-rule-id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"
         ```
+
+        Where `project` may be the product ID or path with namespace depending on what you have in your config.
 
 
         :param str resource_name: The name of the resource.

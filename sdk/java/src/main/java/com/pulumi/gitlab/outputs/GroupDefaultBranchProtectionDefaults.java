@@ -29,6 +29,11 @@ public final class GroupDefaultBranchProtectionDefaults {
      */
     private @Nullable List<String> allowedToPushes;
     /**
+     * @return Require code owner approval before merging.
+     * 
+     */
+    private @Nullable Boolean codeOwnerApprovalRequired;
+    /**
      * @return Allow developers to initial push.
      * 
      */
@@ -57,6 +62,13 @@ public final class GroupDefaultBranchProtectionDefaults {
         return this.allowedToPushes == null ? List.of() : this.allowedToPushes;
     }
     /**
+     * @return Require code owner approval before merging.
+     * 
+     */
+    public Optional<Boolean> codeOwnerApprovalRequired() {
+        return Optional.ofNullable(this.codeOwnerApprovalRequired);
+    }
+    /**
      * @return Allow developers to initial push.
      * 
      */
@@ -76,6 +88,7 @@ public final class GroupDefaultBranchProtectionDefaults {
         private @Nullable Boolean allowForcePush;
         private @Nullable List<String> allowedToMerges;
         private @Nullable List<String> allowedToPushes;
+        private @Nullable Boolean codeOwnerApprovalRequired;
         private @Nullable Boolean developerCanInitialPush;
         public Builder() {}
         public Builder(GroupDefaultBranchProtectionDefaults defaults) {
@@ -83,6 +96,7 @@ public final class GroupDefaultBranchProtectionDefaults {
     	      this.allowForcePush = defaults.allowForcePush;
     	      this.allowedToMerges = defaults.allowedToMerges;
     	      this.allowedToPushes = defaults.allowedToPushes;
+    	      this.codeOwnerApprovalRequired = defaults.codeOwnerApprovalRequired;
     	      this.developerCanInitialPush = defaults.developerCanInitialPush;
         }
 
@@ -111,6 +125,12 @@ public final class GroupDefaultBranchProtectionDefaults {
             return allowedToPushes(List.of(allowedToPushes));
         }
         @CustomType.Setter
+        public Builder codeOwnerApprovalRequired(@Nullable Boolean codeOwnerApprovalRequired) {
+
+            this.codeOwnerApprovalRequired = codeOwnerApprovalRequired;
+            return this;
+        }
+        @CustomType.Setter
         public Builder developerCanInitialPush(@Nullable Boolean developerCanInitialPush) {
 
             this.developerCanInitialPush = developerCanInitialPush;
@@ -121,6 +141,7 @@ public final class GroupDefaultBranchProtectionDefaults {
             _resultValue.allowForcePush = allowForcePush;
             _resultValue.allowedToMerges = allowedToMerges;
             _resultValue.allowedToPushes = allowedToPushes;
+            _resultValue.codeOwnerApprovalRequired = codeOwnerApprovalRequired;
             _resultValue.developerCanInitialPush = developerCanInitialPush;
             return _resultValue;
         }

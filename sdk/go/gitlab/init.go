@@ -65,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupHook{}
 	case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
 		r = &GroupIntegrationMattermost{}
+	case "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams":
+		r = &GroupIntegrationMicrosoftTeams{}
 	case "gitlab:index/groupIssueBoard:GroupIssueBoard":
 		r = &GroupIssueBoard{}
 	case "gitlab:index/groupLabel:GroupLabel":
@@ -153,6 +155,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectComplianceFrameworks{}
 	case "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection":
 		r = &ProjectContainerRepositoryProtection{}
+	case "gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection":
+		r = &ProjectContainerTagProtection{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
 		r = &ProjectCustomAttribute{}
 	case "gitlab:index/projectDeployToken:ProjectDeployToken":
@@ -179,6 +183,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectIntegrationJenkins{}
 	case "gitlab:index/projectIntegrationJira:ProjectIntegrationJira":
 		r = &ProjectIntegrationJira{}
+	case "gitlab:index/projectIntegrationMatrix:ProjectIntegrationMatrix":
+		r = &ProjectIntegrationMatrix{}
 	case "gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost":
 		r = &ProjectIntegrationMattermost{}
 	case "gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams":
@@ -217,6 +223,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMirror{}
 	case "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy":
 		r = &ProjectPackageDependencyProxy{}
+	case "gitlab:index/projectPackageProtectionRule:ProjectPackageProtectionRule":
+		r = &ProjectPackageProtectionRule{}
 	case "gitlab:index/projectPagesSettings:ProjectPagesSettings":
 		r = &ProjectPagesSettings{}
 	case "gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment":
@@ -251,6 +259,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RepositoryFile{}
 	case "gitlab:index/runner:Runner":
 		r = &Runner{}
+	case "gitlab:index/runnerController:RunnerController":
+		r = &RunnerController{}
+	case "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope":
+		r = &RunnerControllerInstanceScope{}
+	case "gitlab:index/runnerControllerRunnerScope:RunnerControllerRunnerScope":
+		r = &RunnerControllerRunnerScope{}
+	case "gitlab:index/runnerControllerToken:RunnerControllerToken":
+		r = &RunnerControllerToken{}
 	case "gitlab:index/systemHook:SystemHook":
 		r = &SystemHook{}
 	case "gitlab:index/tagProtection:TagProtection":
@@ -414,6 +430,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupIntegrationMattermost",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupIntegrationMicrosoftTeams",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -638,6 +659,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectContainerTagProtection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectCustomAttribute",
 		&module{version},
 	)
@@ -699,6 +725,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectIntegrationJira",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationMatrix",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -798,6 +829,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectPackageProtectionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectPagesSettings",
 		&module{version},
 	)
@@ -879,6 +915,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/runner",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/runnerController",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/runnerControllerInstanceScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/runnerControllerRunnerScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/runnerControllerToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

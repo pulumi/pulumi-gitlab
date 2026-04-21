@@ -50,7 +50,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project membership can be imported using an id made up of `project_id:user_id`, e.g.
+    /// GitLab project membership can be imported using an id made up of `project_id:user_id`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectMembership:ProjectMembership test "12345:1337"

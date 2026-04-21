@@ -22,7 +22,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, e.g.
+    /// A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
@@ -124,6 +124,12 @@ namespace Pulumi.GitLab
         public Output<bool> JobEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for member events. Defaults to `False`.
+        /// </summary>
+        [Output("memberEvents")]
+        public Output<bool> MemberEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for merge requests events. Defaults to `False`.
         /// </summary>
         [Output("mergeRequestsEvents")]
@@ -146,6 +152,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("pipelineEvents")]
         public Output<bool> PipelineEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for project events. Defaults to `False`.
+        /// </summary>
+        [Output("projectEvents")]
+        public Output<bool> ProjectEvents { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for push events. Defaults to `True`.
@@ -336,6 +348,12 @@ namespace Pulumi.GitLab
         public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for member events. Defaults to `False`.
+        /// </summary>
+        [Input("memberEvents")]
+        public Input<bool>? MemberEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for merge requests events. Defaults to `False`.
         /// </summary>
         [Input("mergeRequestsEvents")]
@@ -358,6 +376,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pipelineEvents")]
         public Input<bool>? PipelineEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for project events. Defaults to `False`.
+        /// </summary>
+        [Input("projectEvents")]
+        public Input<bool>? ProjectEvents { get; set; }
 
         /// <summary>
         /// Invoke the hook for push events. Defaults to `True`.
@@ -528,6 +552,12 @@ namespace Pulumi.GitLab
         public Input<bool>? JobEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for member events. Defaults to `False`.
+        /// </summary>
+        [Input("memberEvents")]
+        public Input<bool>? MemberEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for merge requests events. Defaults to `False`.
         /// </summary>
         [Input("mergeRequestsEvents")]
@@ -550,6 +580,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pipelineEvents")]
         public Input<bool>? PipelineEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for project events. Defaults to `False`.
+        /// </summary>
+        [Input("projectEvents")]
+        public Input<bool>? ProjectEvents { get; set; }
 
         /// <summary>
         /// Invoke the hook for push events. Defaults to `True`.

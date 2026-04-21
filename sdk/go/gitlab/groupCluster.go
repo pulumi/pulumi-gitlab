@@ -66,7 +66,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, e.g.
+// GitLab group clusters can be imported using an id made up of `groupid:clusterid`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/groupCluster:GroupCluster bar 123:321

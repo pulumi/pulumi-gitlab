@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab instance clusters can be imported using a `Clusterid`, e.g.
+    /// GitLab instance clusters can be imported using a `Clusterid`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123

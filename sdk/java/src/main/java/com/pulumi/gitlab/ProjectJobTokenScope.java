@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab project job token scopes can be imported using an id made up of `projectId:type:targetId`, e.g.
+ * GitLab project job token scopes can be imported using an id made up of `projectId:type:targetId`, for example:
  * 
  * For target_project_id:
  * 

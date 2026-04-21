@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  *    when creating a new project and trying to manage the branch protection setting for its default branch the `gitlab.BranchProtection` resource will
  *    automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
  *    Having multiple `gitlab.BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
- *    This behavior might change in the future.
  * 
  * &gt; The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
  * 
@@ -43,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, e.g.
+ * Gitlab protected branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect &#34;12345:main&#34;

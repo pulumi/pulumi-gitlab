@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * Gitlab Project labels can be imported using an id made up of `{project_id}:{label_id}`, e.g.
+ * Gitlab Project labels can be imported using an id made up of `{project_id}:{label_id}`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectLabel:ProjectLabel example 12345:101010

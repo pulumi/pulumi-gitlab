@@ -374,7 +374,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
+        A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"
@@ -437,7 +437,7 @@ class PersonalAccessToken(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
+        A GitLab Personal Access Token can be imported using a key composed of `<user-id>:<token-id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/personalAccessToken:PersonalAccessToken example "12345:1"

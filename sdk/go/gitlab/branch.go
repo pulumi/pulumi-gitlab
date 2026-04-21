@@ -61,7 +61,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, e.g.
+// Gitlab branches can be imported with a key composed of `<project_id>:<branch_name>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/branch:Branch example "12345:develop"

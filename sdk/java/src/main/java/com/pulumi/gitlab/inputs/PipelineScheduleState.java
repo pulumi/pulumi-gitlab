@@ -5,9 +5,11 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.PipelineScheduleInputArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -75,6 +77,21 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     * 
+     */
+    @Import(name="inputs")
+    private @Nullable Output<List<PipelineScheduleInputArgs>> inputs;
+
+    /**
+     * @return List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+     * 
+     */
+    public Optional<Output<List<PipelineScheduleInputArgs>>> inputs() {
+        return Optional.ofNullable(this.inputs);
     }
 
     /**
@@ -159,6 +176,7 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
         this.cron = $.cron;
         this.cronTimezone = $.cronTimezone;
         this.description = $.description;
+        this.inputs = $.inputs;
         this.owner = $.owner;
         this.pipelineScheduleId = $.pipelineScheduleId;
         this.project = $.project;
@@ -266,6 +284,37 @@ public final class PipelineScheduleState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param inputs List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputs(@Nullable Output<List<PipelineScheduleInputArgs>> inputs) {
+            $.inputs = inputs;
+            return this;
+        }
+
+        /**
+         * @param inputs List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputs(List<PipelineScheduleInputArgs> inputs) {
+            return inputs(Output.of(inputs));
+        }
+
+        /**
+         * @param inputs List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputs(PipelineScheduleInputArgs... inputs) {
+            return inputs(List.of(inputs));
         }
 
         /**

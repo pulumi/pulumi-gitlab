@@ -296,14 +296,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.emailsEnabled;
     }
     /**
-     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     @Export(name="extraSharedRunnersMinutesLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> extraSharedRunnersMinutesLimit;
 
     /**
-     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     public Output<Integer> extraSharedRunnersMinutesLimit() {
@@ -604,14 +604,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.shareWithGroupLock;
     }
     /**
-     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     @Export(name="sharedRunnersMinutesLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> sharedRunnersMinutesLimit;
 
     /**
-     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     public Output<Integer> sharedRunnersMinutesLimit() {

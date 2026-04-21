@@ -77,11 +77,13 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * A GitLab Project level notification can be imported using a key composed of `&lt;project-id&gt;`, for example:
+ * A GitLab Project level notification can be imported using a key composed of `&lt;project&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example &#34;12345&#34;
  * ```
+ * 
+ * Where `project` may be the product ID or path with namespace depending on what you have in your config.
  * 
  */
 @ResourceType(type="gitlab:index/projectLevelNotifications:ProjectLevelNotifications")

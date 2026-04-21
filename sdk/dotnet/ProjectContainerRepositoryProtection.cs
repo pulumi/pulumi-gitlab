@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project container repository protection rules can be imported using an id made up of `&lt;project_id&gt;:&lt;protection_rule_id&gt;`, e.g.
+    /// GitLab project container repository protection rules can be imported using an id made up of `&lt;project_id&gt;:&lt;protection_rule_id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection this 123:321
@@ -54,13 +54,13 @@ namespace Pulumi.GitLab
     public partial class ProjectContainerRepositoryProtection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `MinimumAccessLevelForPush` is not set.
+        /// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `Maintainer`, `Owner`, `Admin`. Must be provided when `MinimumAccessLevelForPush` is not set.
         /// </summary>
         [Output("minimumAccessLevelForDelete")]
         public Output<string?> MinimumAccessLevelForDelete { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `MinimumAccessLevelForDelete` is not set.
+        /// Minimum GitLab access level required to push container images to the container registry. Valid values are: `Maintainer`, `Owner`, `Admin`. Must be provided when `MinimumAccessLevelForDelete` is not set.
         /// </summary>
         [Output("minimumAccessLevelForPush")]
         public Output<string?> MinimumAccessLevelForPush { get; private set; } = null!;
@@ -130,13 +130,13 @@ namespace Pulumi.GitLab
     public sealed class ProjectContainerRepositoryProtectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `MinimumAccessLevelForPush` is not set.
+        /// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `Maintainer`, `Owner`, `Admin`. Must be provided when `MinimumAccessLevelForPush` is not set.
         /// </summary>
         [Input("minimumAccessLevelForDelete")]
         public Input<string>? MinimumAccessLevelForDelete { get; set; }
 
         /// <summary>
-        /// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `MinimumAccessLevelForDelete` is not set.
+        /// Minimum GitLab access level required to push container images to the container registry. Valid values are: `Maintainer`, `Owner`, `Admin`. Must be provided when `MinimumAccessLevelForDelete` is not set.
         /// </summary>
         [Input("minimumAccessLevelForPush")]
         public Input<string>? MinimumAccessLevelForPush { get; set; }
@@ -162,13 +162,13 @@ namespace Pulumi.GitLab
     public sealed class ProjectContainerRepositoryProtectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `MinimumAccessLevelForPush` is not set.
+        /// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `Maintainer`, `Owner`, `Admin`. Must be provided when `MinimumAccessLevelForPush` is not set.
         /// </summary>
         [Input("minimumAccessLevelForDelete")]
         public Input<string>? MinimumAccessLevelForDelete { get; set; }
 
         /// <summary>
-        /// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `MinimumAccessLevelForDelete` is not set.
+        /// Minimum GitLab access level required to push container images to the container registry. Valid values are: `Maintainer`, `Owner`, `Admin`. Must be provided when `MinimumAccessLevelForDelete` is not set.
         /// </summary>
         [Input("minimumAccessLevelForPush")]
         public Input<string>? MinimumAccessLevelForPush { get; set; }

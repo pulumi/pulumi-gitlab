@@ -202,7 +202,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, for example:
         `project_id` can be whatever the [get single project api][get_single_project] takes for
         its `:id` value, so for example:
 
@@ -256,7 +256,7 @@ class DeployKeyEnable(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+        GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, for example:
         `project_id` can be whatever the [get single project api][get_single_project] takes for
         its `:id` value, so for example:
 

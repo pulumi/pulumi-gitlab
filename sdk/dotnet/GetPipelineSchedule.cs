@@ -175,6 +175,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// List of pipeline schedule inputs. Each element has `Name` and `Value`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPipelineScheduleInputResult> Inputs;
+        /// <summary>
         /// The details of the last pipeline run by the schedule.
         /// </summary>
         public readonly Outputs.GetPipelineScheduleLastPipelineResult LastPipeline;
@@ -221,6 +225,8 @@ namespace Pulumi.GitLab
 
             string id,
 
+            ImmutableArray<Outputs.GetPipelineScheduleInputResult> inputs,
+
             Outputs.GetPipelineScheduleLastPipelineResult lastPipeline,
 
             string nextRunAt,
@@ -243,6 +249,7 @@ namespace Pulumi.GitLab
             CronTimezone = cronTimezone;
             Description = description;
             Id = id;
+            Inputs = inputs;
             LastPipeline = lastPipeline;
             NextRunAt = nextRunAt;
             Owner = owner;

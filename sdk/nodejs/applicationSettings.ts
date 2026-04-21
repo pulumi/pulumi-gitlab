@@ -163,6 +163,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly checkNamespacePlan: pulumi.Output<boolean>;
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     */
+    declare public readonly ciJobLiveTraceEnabled: pulumi.Output<boolean>;
+    /**
      * The maximum number of includes per pipeline.
      */
     declare public readonly ciMaxIncludes: pulumi.Output<number>;
@@ -312,6 +316,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Disable display of RSS/Atom and calendar feed tokens.
      */
     declare public readonly disableFeedToken: pulumi.Output<boolean>;
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     */
+    declare public readonly disableOverridingApproversPerMergeRequest: pulumi.Output<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -665,6 +673,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly inactiveProjectsSendWarningEmailAfterMonths: pulumi.Output<number>;
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     */
+    declare public readonly inactiveResourceAccessTokensDeleteAfterDays: pulumi.Output<number>;
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
     declare public readonly includeOptionalMetricsInServicePing: pulumi.Output<boolean>;
@@ -693,6 +705,18 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly keepLatestArtifact: pulumi.Output<boolean>;
     /**
+     * (If enabled, requires: kroki_url) Enable Kroki integration.
+     */
+    declare public readonly krokiEnabled: pulumi.Output<boolean>;
+    /**
+     * Configuration for formats supported by the Kroki instance.
+     */
+    declare public readonly krokiFormats: pulumi.Output<{[key: string]: boolean}>;
+    /**
+     * The Kroki instance URL for integration.
+     */
+    declare public readonly krokiUrl: pulumi.Output<string>;
+    /**
      * Increase this value when any cached Markdown should be invalidated.
      */
     declare public readonly localMarkdownVersion: pulumi.Output<number>;
@@ -704,6 +728,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
     declare public readonly lockMembershipsToLdap: pulumi.Output<boolean>;
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     */
+    declare public readonly lockMembershipsToSaml: pulumi.Output<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -880,6 +908,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
     declare public readonly pollingIntervalMultiplier: pulumi.Output<number>;
+    /**
+     * Prevent approval by merge request creator (author).
+     */
+    declare public readonly preventMergeRequestsAuthorApproval: pulumi.Output<boolean>;
+    /**
+     * Prevent approval by committers to merge requests.
+     */
+    declare public readonly preventMergeRequestsCommittersApproval: pulumi.Output<boolean>;
     /**
      * Enable project export.
      */
@@ -1153,6 +1189,18 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly throttleAuthenticatedApiRequestsPerPeriod: pulumi.Output<number>;
     /**
+     * Enable authenticated Git LFS request rate limit.
+     */
+    declare public readonly throttleAuthenticatedGitLfsEnabled: pulumi.Output<boolean>;
+    /**
+     * Rate limit period (in seconds).
+     */
+    declare public readonly throttleAuthenticatedGitLfsPeriodInSeconds: pulumi.Output<number>;
+    /**
+     * Maximum requests per period per user.
+     */
+    declare public readonly throttleAuthenticatedGitLfsRequestsPerPeriod: pulumi.Output<number>;
+    /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
     declare public readonly throttleAuthenticatedPackagesApiEnabled: pulumi.Output<boolean>;
@@ -1240,6 +1288,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Fetch GitLab Runner release version data from GitLab.com.
      */
     declare public readonly updateRunnerVersionsEnabled: pulumi.Output<boolean>;
+    /**
+     * Disable user profile name changes.
+     */
+    declare public readonly updatingNameDisabledForUsers: pulumi.Output<boolean>;
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
@@ -1334,6 +1386,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["bulkImportMaxDownloadFileSize"] = state?.bulkImportMaxDownloadFileSize;
             resourceInputs["canCreateGroup"] = state?.canCreateGroup;
             resourceInputs["checkNamespacePlan"] = state?.checkNamespacePlan;
+            resourceInputs["ciJobLiveTraceEnabled"] = state?.ciJobLiveTraceEnabled;
             resourceInputs["ciMaxIncludes"] = state?.ciMaxIncludes;
             resourceInputs["ciMaxTotalYamlSizeBytes"] = state?.ciMaxTotalYamlSizeBytes;
             resourceInputs["commitEmailHostname"] = state?.commitEmailHostname;
@@ -1371,6 +1424,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["diffMaxPatchBytes"] = state?.diffMaxPatchBytes;
             resourceInputs["disableAdminOauthScopes"] = state?.disableAdminOauthScopes;
             resourceInputs["disableFeedToken"] = state?.disableFeedToken;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = state?.disableOverridingApproversPerMergeRequest;
             resourceInputs["disablePersonalAccessTokens"] = state?.disablePersonalAccessTokens;
             resourceInputs["disabledOauthSignInSources"] = state?.disabledOauthSignInSources;
             resourceInputs["dnsRebindingProtectionEnabled"] = state?.dnsRebindingProtectionEnabled;
@@ -1459,6 +1513,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["inactiveProjectsDeleteAfterMonths"] = state?.inactiveProjectsDeleteAfterMonths;
             resourceInputs["inactiveProjectsMinSizeMb"] = state?.inactiveProjectsMinSizeMb;
             resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = state?.inactiveProjectsSendWarningEmailAfterMonths;
+            resourceInputs["inactiveResourceAccessTokensDeleteAfterDays"] = state?.inactiveResourceAccessTokensDeleteAfterDays;
             resourceInputs["includeOptionalMetricsInServicePing"] = state?.includeOptionalMetricsInServicePing;
             resourceInputs["invisibleCaptchaEnabled"] = state?.invisibleCaptchaEnabled;
             resourceInputs["issuesCreateLimit"] = state?.issuesCreateLimit;
@@ -1466,9 +1521,13 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["jiraConnectProxyUrl"] = state?.jiraConnectProxyUrl;
             resourceInputs["jiraConnectPublicKeyStorageEnabled"] = state?.jiraConnectPublicKeyStorageEnabled;
             resourceInputs["keepLatestArtifact"] = state?.keepLatestArtifact;
+            resourceInputs["krokiEnabled"] = state?.krokiEnabled;
+            resourceInputs["krokiFormats"] = state?.krokiFormats;
+            resourceInputs["krokiUrl"] = state?.krokiUrl;
             resourceInputs["localMarkdownVersion"] = state?.localMarkdownVersion;
             resourceInputs["lockDuoFeaturesEnabled"] = state?.lockDuoFeaturesEnabled;
             resourceInputs["lockMembershipsToLdap"] = state?.lockMembershipsToLdap;
+            resourceInputs["lockMembershipsToSaml"] = state?.lockMembershipsToSaml;
             resourceInputs["mailgunEventsEnabled"] = state?.mailgunEventsEnabled;
             resourceInputs["mailgunSigningKey"] = state?.mailgunSigningKey;
             resourceInputs["maintenanceMode"] = state?.maintenanceMode;
@@ -1513,6 +1572,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["plantumlEnabled"] = state?.plantumlEnabled;
             resourceInputs["plantumlUrl"] = state?.plantumlUrl;
             resourceInputs["pollingIntervalMultiplier"] = state?.pollingIntervalMultiplier;
+            resourceInputs["preventMergeRequestsAuthorApproval"] = state?.preventMergeRequestsAuthorApproval;
+            resourceInputs["preventMergeRequestsCommittersApproval"] = state?.preventMergeRequestsCommittersApproval;
             resourceInputs["projectExportEnabled"] = state?.projectExportEnabled;
             resourceInputs["projectJobsApiRateLimit"] = state?.projectJobsApiRateLimit;
             resourceInputs["projectsApiRateLimitUnauthenticated"] = state?.projectsApiRateLimitUnauthenticated;
@@ -1581,6 +1642,9 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["throttleAuthenticatedApiEnabled"] = state?.throttleAuthenticatedApiEnabled;
             resourceInputs["throttleAuthenticatedApiPeriodInSeconds"] = state?.throttleAuthenticatedApiPeriodInSeconds;
             resourceInputs["throttleAuthenticatedApiRequestsPerPeriod"] = state?.throttleAuthenticatedApiRequestsPerPeriod;
+            resourceInputs["throttleAuthenticatedGitLfsEnabled"] = state?.throttleAuthenticatedGitLfsEnabled;
+            resourceInputs["throttleAuthenticatedGitLfsPeriodInSeconds"] = state?.throttleAuthenticatedGitLfsPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedGitLfsRequestsPerPeriod"] = state?.throttleAuthenticatedGitLfsRequestsPerPeriod;
             resourceInputs["throttleAuthenticatedPackagesApiEnabled"] = state?.throttleAuthenticatedPackagesApiEnabled;
             resourceInputs["throttleAuthenticatedPackagesApiPeriodInSeconds"] = state?.throttleAuthenticatedPackagesApiPeriodInSeconds;
             resourceInputs["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = state?.throttleAuthenticatedPackagesApiRequestsPerPeriod;
@@ -1603,6 +1667,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["uniqueIpsLimitPerUser"] = state?.uniqueIpsLimitPerUser;
             resourceInputs["uniqueIpsLimitTimeWindow"] = state?.uniqueIpsLimitTimeWindow;
             resourceInputs["updateRunnerVersionsEnabled"] = state?.updateRunnerVersionsEnabled;
+            resourceInputs["updatingNameDisabledForUsers"] = state?.updatingNameDisabledForUsers;
             resourceInputs["usagePingEnabled"] = state?.usagePingEnabled;
             resourceInputs["useClickhouseForAnalytics"] = state?.useClickhouseForAnalytics;
             resourceInputs["userDeactivationEmailsEnabled"] = state?.userDeactivationEmailsEnabled;
@@ -1646,6 +1711,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["bulkImportMaxDownloadFileSize"] = args?.bulkImportMaxDownloadFileSize;
             resourceInputs["canCreateGroup"] = args?.canCreateGroup;
             resourceInputs["checkNamespacePlan"] = args?.checkNamespacePlan;
+            resourceInputs["ciJobLiveTraceEnabled"] = args?.ciJobLiveTraceEnabled;
             resourceInputs["ciMaxIncludes"] = args?.ciMaxIncludes;
             resourceInputs["ciMaxTotalYamlSizeBytes"] = args?.ciMaxTotalYamlSizeBytes;
             resourceInputs["commitEmailHostname"] = args?.commitEmailHostname;
@@ -1683,6 +1749,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["diffMaxPatchBytes"] = args?.diffMaxPatchBytes;
             resourceInputs["disableAdminOauthScopes"] = args?.disableAdminOauthScopes;
             resourceInputs["disableFeedToken"] = args?.disableFeedToken;
+            resourceInputs["disableOverridingApproversPerMergeRequest"] = args?.disableOverridingApproversPerMergeRequest;
             resourceInputs["disablePersonalAccessTokens"] = args?.disablePersonalAccessTokens;
             resourceInputs["disabledOauthSignInSources"] = args?.disabledOauthSignInSources;
             resourceInputs["dnsRebindingProtectionEnabled"] = args?.dnsRebindingProtectionEnabled;
@@ -1769,6 +1836,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["inactiveProjectsDeleteAfterMonths"] = args?.inactiveProjectsDeleteAfterMonths;
             resourceInputs["inactiveProjectsMinSizeMb"] = args?.inactiveProjectsMinSizeMb;
             resourceInputs["inactiveProjectsSendWarningEmailAfterMonths"] = args?.inactiveProjectsSendWarningEmailAfterMonths;
+            resourceInputs["inactiveResourceAccessTokensDeleteAfterDays"] = args?.inactiveResourceAccessTokensDeleteAfterDays;
             resourceInputs["includeOptionalMetricsInServicePing"] = args?.includeOptionalMetricsInServicePing;
             resourceInputs["invisibleCaptchaEnabled"] = args?.invisibleCaptchaEnabled;
             resourceInputs["issuesCreateLimit"] = args?.issuesCreateLimit;
@@ -1776,9 +1844,13 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["jiraConnectProxyUrl"] = args?.jiraConnectProxyUrl;
             resourceInputs["jiraConnectPublicKeyStorageEnabled"] = args?.jiraConnectPublicKeyStorageEnabled;
             resourceInputs["keepLatestArtifact"] = args?.keepLatestArtifact;
+            resourceInputs["krokiEnabled"] = args?.krokiEnabled;
+            resourceInputs["krokiFormats"] = args?.krokiFormats;
+            resourceInputs["krokiUrl"] = args?.krokiUrl;
             resourceInputs["localMarkdownVersion"] = args?.localMarkdownVersion;
             resourceInputs["lockDuoFeaturesEnabled"] = args?.lockDuoFeaturesEnabled;
             resourceInputs["lockMembershipsToLdap"] = args?.lockMembershipsToLdap;
+            resourceInputs["lockMembershipsToSaml"] = args?.lockMembershipsToSaml;
             resourceInputs["mailgunEventsEnabled"] = args?.mailgunEventsEnabled;
             resourceInputs["mailgunSigningKey"] = args?.mailgunSigningKey ? pulumi.secret(args.mailgunSigningKey) : undefined;
             resourceInputs["maintenanceMode"] = args?.maintenanceMode;
@@ -1823,6 +1895,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["plantumlEnabled"] = args?.plantumlEnabled;
             resourceInputs["plantumlUrl"] = args?.plantumlUrl;
             resourceInputs["pollingIntervalMultiplier"] = args?.pollingIntervalMultiplier;
+            resourceInputs["preventMergeRequestsAuthorApproval"] = args?.preventMergeRequestsAuthorApproval;
+            resourceInputs["preventMergeRequestsCommittersApproval"] = args?.preventMergeRequestsCommittersApproval;
             resourceInputs["projectExportEnabled"] = args?.projectExportEnabled;
             resourceInputs["projectJobsApiRateLimit"] = args?.projectJobsApiRateLimit;
             resourceInputs["projectsApiRateLimitUnauthenticated"] = args?.projectsApiRateLimitUnauthenticated;
@@ -1891,6 +1965,9 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["throttleAuthenticatedApiEnabled"] = args?.throttleAuthenticatedApiEnabled;
             resourceInputs["throttleAuthenticatedApiPeriodInSeconds"] = args?.throttleAuthenticatedApiPeriodInSeconds;
             resourceInputs["throttleAuthenticatedApiRequestsPerPeriod"] = args?.throttleAuthenticatedApiRequestsPerPeriod;
+            resourceInputs["throttleAuthenticatedGitLfsEnabled"] = args?.throttleAuthenticatedGitLfsEnabled;
+            resourceInputs["throttleAuthenticatedGitLfsPeriodInSeconds"] = args?.throttleAuthenticatedGitLfsPeriodInSeconds;
+            resourceInputs["throttleAuthenticatedGitLfsRequestsPerPeriod"] = args?.throttleAuthenticatedGitLfsRequestsPerPeriod;
             resourceInputs["throttleAuthenticatedPackagesApiEnabled"] = args?.throttleAuthenticatedPackagesApiEnabled;
             resourceInputs["throttleAuthenticatedPackagesApiPeriodInSeconds"] = args?.throttleAuthenticatedPackagesApiPeriodInSeconds;
             resourceInputs["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = args?.throttleAuthenticatedPackagesApiRequestsPerPeriod;
@@ -1913,6 +1990,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["uniqueIpsLimitPerUser"] = args?.uniqueIpsLimitPerUser;
             resourceInputs["uniqueIpsLimitTimeWindow"] = args?.uniqueIpsLimitTimeWindow;
             resourceInputs["updateRunnerVersionsEnabled"] = args?.updateRunnerVersionsEnabled;
+            resourceInputs["updatingNameDisabledForUsers"] = args?.updatingNameDisabledForUsers;
             resourceInputs["usagePingEnabled"] = args?.usagePingEnabled;
             resourceInputs["useClickhouseForAnalytics"] = args?.useClickhouseForAnalytics;
             resourceInputs["userDeactivationEmailsEnabled"] = args?.userDeactivationEmailsEnabled;
@@ -2052,6 +2130,10 @@ export interface ApplicationSettingsState {
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
     checkNamespacePlan?: pulumi.Input<boolean>;
+    /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     */
+    ciJobLiveTraceEnabled?: pulumi.Input<boolean>;
     /**
      * The maximum number of includes per pipeline.
      */
@@ -2202,6 +2284,10 @@ export interface ApplicationSettingsState {
      * Disable display of RSS/Atom and calendar feed tokens.
      */
     disableFeedToken?: pulumi.Input<boolean>;
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     */
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -2555,6 +2641,10 @@ export interface ApplicationSettingsState {
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     */
+    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number>;
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
     includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
@@ -2583,6 +2673,18 @@ export interface ApplicationSettingsState {
      */
     keepLatestArtifact?: pulumi.Input<boolean>;
     /**
+     * (If enabled, requires: kroki_url) Enable Kroki integration.
+     */
+    krokiEnabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration for formats supported by the Kroki instance.
+     */
+    krokiFormats?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    /**
+     * The Kroki instance URL for integration.
+     */
+    krokiUrl?: pulumi.Input<string>;
+    /**
      * Increase this value when any cached Markdown should be invalidated.
      */
     localMarkdownVersion?: pulumi.Input<number>;
@@ -2594,6 +2696,10 @@ export interface ApplicationSettingsState {
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
     lockMembershipsToLdap?: pulumi.Input<boolean>;
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     */
+    lockMembershipsToSaml?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -2770,6 +2876,14 @@ export interface ApplicationSettingsState {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
     pollingIntervalMultiplier?: pulumi.Input<number>;
+    /**
+     * Prevent approval by merge request creator (author).
+     */
+    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    /**
+     * Prevent approval by committers to merge requests.
+     */
+    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean>;
     /**
      * Enable project export.
      */
@@ -3043,6 +3157,18 @@ export interface ApplicationSettingsState {
      */
     throttleAuthenticatedApiRequestsPerPeriod?: pulumi.Input<number>;
     /**
+     * Enable authenticated Git LFS request rate limit.
+     */
+    throttleAuthenticatedGitLfsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Rate limit period (in seconds).
+     */
+    throttleAuthenticatedGitLfsPeriodInSeconds?: pulumi.Input<number>;
+    /**
+     * Maximum requests per period per user.
+     */
+    throttleAuthenticatedGitLfsRequestsPerPeriod?: pulumi.Input<number>;
+    /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
     throttleAuthenticatedPackagesApiEnabled?: pulumi.Input<boolean>;
@@ -3130,6 +3256,10 @@ export interface ApplicationSettingsState {
      * Fetch GitLab Runner release version data from GitLab.com.
      */
     updateRunnerVersionsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Disable user profile name changes.
+     */
+    updatingNameDisabledForUsers?: pulumi.Input<boolean>;
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
@@ -3301,6 +3431,10 @@ export interface ApplicationSettingsArgs {
      */
     checkNamespacePlan?: pulumi.Input<boolean>;
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     */
+    ciJobLiveTraceEnabled?: pulumi.Input<boolean>;
+    /**
      * The maximum number of includes per pipeline.
      */
     ciMaxIncludes?: pulumi.Input<number>;
@@ -3450,6 +3584,10 @@ export interface ApplicationSettingsArgs {
      * Disable display of RSS/Atom and calendar feed tokens.
      */
     disableFeedToken?: pulumi.Input<boolean>;
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     */
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -3795,6 +3933,10 @@ export interface ApplicationSettingsArgs {
      */
     inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     */
+    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number>;
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
     includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
@@ -3823,6 +3965,18 @@ export interface ApplicationSettingsArgs {
      */
     keepLatestArtifact?: pulumi.Input<boolean>;
     /**
+     * (If enabled, requires: kroki_url) Enable Kroki integration.
+     */
+    krokiEnabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration for formats supported by the Kroki instance.
+     */
+    krokiFormats?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    /**
+     * The Kroki instance URL for integration.
+     */
+    krokiUrl?: pulumi.Input<string>;
+    /**
      * Increase this value when any cached Markdown should be invalidated.
      */
     localMarkdownVersion?: pulumi.Input<number>;
@@ -3834,6 +3988,10 @@ export interface ApplicationSettingsArgs {
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
     lockMembershipsToLdap?: pulumi.Input<boolean>;
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     */
+    lockMembershipsToSaml?: pulumi.Input<boolean>;
     /**
      * Enable Mailgun event receiver.
      */
@@ -4010,6 +4168,14 @@ export interface ApplicationSettingsArgs {
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
     pollingIntervalMultiplier?: pulumi.Input<number>;
+    /**
+     * Prevent approval by merge request creator (author).
+     */
+    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    /**
+     * Prevent approval by committers to merge requests.
+     */
+    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean>;
     /**
      * Enable project export.
      */
@@ -4283,6 +4449,18 @@ export interface ApplicationSettingsArgs {
      */
     throttleAuthenticatedApiRequestsPerPeriod?: pulumi.Input<number>;
     /**
+     * Enable authenticated Git LFS request rate limit.
+     */
+    throttleAuthenticatedGitLfsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Rate limit period (in seconds).
+     */
+    throttleAuthenticatedGitLfsPeriodInSeconds?: pulumi.Input<number>;
+    /**
+     * Maximum requests per period per user.
+     */
+    throttleAuthenticatedGitLfsRequestsPerPeriod?: pulumi.Input<number>;
+    /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
     throttleAuthenticatedPackagesApiEnabled?: pulumi.Input<boolean>;
@@ -4370,6 +4548,10 @@ export interface ApplicationSettingsArgs {
      * Fetch GitLab Runner release version data from GitLab.com.
      */
     updateRunnerVersionsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Disable user profile name changes.
+     */
+    updatingNameDisabledForUsers?: pulumi.Input<boolean>;
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */

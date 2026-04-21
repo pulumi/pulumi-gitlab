@@ -211,7 +211,7 @@ class ProjectIntegrationExternalWiki(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationExternalWiki state using the project ID, e.g.
+        You can import a ProjectIntegrationExternalWiki state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki wiki 1
@@ -255,7 +255,7 @@ class ProjectIntegrationExternalWiki(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationExternalWiki state using the project ID, e.g.
+        You can import a ProjectIntegrationExternalWiki state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki wiki 1

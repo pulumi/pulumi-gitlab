@@ -39,13 +39,13 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, e.g.
+ * You can import a GPG key for a specific user using an id made up of `{user-id}:{key}`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/userGpgKey:UserGpgKey example 42:1
  * ```
  *
- * Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, e.g.
+ * Alternatively, you can import a GPG key for the current user using an id made up of `{key}`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/userGpgKey:UserGpgKey example_user 1

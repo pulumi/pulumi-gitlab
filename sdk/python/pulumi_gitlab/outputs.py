@@ -33,8 +33,10 @@ __all__ = [
     'GroupServiceAccountTimeouts',
     'InstanceServiceAccountTimeouts',
     'PersonalAccessTokenRotationConfiguration',
+    'PipelineScheduleInput',
     'ProjectAccessTokenRotationConfiguration',
     'ProjectContainerExpirationPolicy',
+    'ProjectContainerTagProtectionTimeouts',
     'ProjectHookCustomHeader',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
@@ -69,6 +71,7 @@ __all__ = [
     'GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult',
     'GetInstanceVariablesVariableResult',
     'GetMetadataKasResult',
+    'GetPipelineScheduleInputResult',
     'GetPipelineScheduleLastPipelineResult',
     'GetPipelineScheduleOwnerResult',
     'GetPipelineScheduleVariableResult',
@@ -128,6 +131,9 @@ __all__ = [
     'GetReleaseAssetsSourceResult',
     'GetReleaseLinksReleaseLinkResult',
     'GetRepositoryTreeTreeResult',
+    'GetRunnerControllerScopesInstanceLevelScopingResult',
+    'GetRunnerControllerScopesRunnerLevelScopingResult',
+    'GetRunnerControllersRunnerControllerResult',
     'GetRunnersRunnerResult',
     'GetSecurityPolicyDocumentScanExecutionPolicyResult',
     'GetSecurityPolicyDocumentScanExecutionPolicyActionResult',
@@ -150,6 +156,8 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
             suggest = "allowed_to_merges"
         elif key == "allowedToPushes":
             suggest = "allowed_to_pushes"
+        elif key == "codeOwnerApprovalRequired":
+            suggest = "code_owner_approval_required"
         elif key == "developerCanInitialPush":
             suggest = "developer_can_initial_push"
 
@@ -168,11 +176,13 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
                  allow_force_push: Optional[_builtins.bool] = None,
                  allowed_to_merges: Optional[Sequence[_builtins.int]] = None,
                  allowed_to_pushes: Optional[Sequence[_builtins.int]] = None,
+                 code_owner_approval_required: Optional[_builtins.bool] = None,
                  developer_can_initial_push: Optional[_builtins.bool] = None):
         """
         :param _builtins.bool allow_force_push: Allow force push for all users with push access.
         :param Sequence[_builtins.int] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         :param Sequence[_builtins.int] allowed_to_pushes: An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
+        :param _builtins.bool code_owner_approval_required: Require code owner approval before merging.
         :param _builtins.bool developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -181,6 +191,8 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
             pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
             pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if code_owner_approval_required is not None:
+            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
         if developer_can_initial_push is not None:
             pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
 
@@ -207,6 +219,14 @@ class ApplicationSettingsDefaultBranchProtectionDefaults(dict):
         An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         """
         return pulumi.get(self, "allowed_to_pushes")
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> Optional[_builtins.bool]:
+        """
+        Require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
 
     @_builtins.property
     @pulumi.getter(name="developerCanInitialPush")
@@ -694,6 +714,8 @@ class GroupDefaultBranchProtectionDefaults(dict):
             suggest = "allowed_to_merges"
         elif key == "allowedToPushes":
             suggest = "allowed_to_pushes"
+        elif key == "codeOwnerApprovalRequired":
+            suggest = "code_owner_approval_required"
         elif key == "developerCanInitialPush":
             suggest = "developer_can_initial_push"
 
@@ -712,11 +734,13 @@ class GroupDefaultBranchProtectionDefaults(dict):
                  allow_force_push: Optional[_builtins.bool] = None,
                  allowed_to_merges: Optional[Sequence[_builtins.str]] = None,
                  allowed_to_pushes: Optional[Sequence[_builtins.str]] = None,
+                 code_owner_approval_required: Optional[_builtins.bool] = None,
                  developer_can_initial_push: Optional[_builtins.bool] = None):
         """
         :param _builtins.bool allow_force_push: Allow force push for all users with push access.
         :param Sequence[_builtins.str] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
         :param Sequence[_builtins.str] allowed_to_pushes: An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
+        :param _builtins.bool code_owner_approval_required: Require code owner approval before merging.
         :param _builtins.bool developer_can_initial_push: Allow developers to initial push.
         """
         if allow_force_push is not None:
@@ -725,6 +749,8 @@ class GroupDefaultBranchProtectionDefaults(dict):
             pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
         if allowed_to_pushes is not None:
             pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        if code_owner_approval_required is not None:
+            pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
         if developer_can_initial_push is not None:
             pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
 
@@ -751,6 +777,14 @@ class GroupDefaultBranchProtectionDefaults(dict):
         An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_pushes")
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> Optional[_builtins.bool]:
+        """
+        Require code owner approval before merging.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
 
     @_builtins.property
     @pulumi.getter(name="developerCanInitialPush")
@@ -1472,6 +1506,35 @@ class PersonalAccessTokenRotationConfiguration(dict):
 
 
 @pulumi.output_type
+class PipelineScheduleInput(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of the input.
+        :param _builtins.str value: The value of the input.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the input.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the input.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ProjectAccessTokenRotationConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1633,6 +1696,25 @@ class ProjectContainerExpirationPolicy(dict):
         The number of days to keep images.
         """
         return pulumi.get(self, "older_than")
+
+
+@pulumi.output_type
+class ProjectContainerTagProtectionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "create")
 
 
 @pulumi.output_type
@@ -5336,6 +5418,35 @@ class GetMetadataKasResult(dict):
         Version of KAS. It’s null if kas.enabled is false.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetPipelineScheduleInputResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of the input.
+        :param _builtins.str value: The value of the input.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the input.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the input.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -11431,6 +11542,137 @@ class GetRepositoryTreeTreeResult(dict):
         Type of object in the repository. Can be either type tree or of type blob
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRunnerControllerScopesInstanceLevelScopingResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str created_at: The time the scope was created.
+        :param _builtins.str updated_at: The time the scope was last updated.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The time the scope was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The time the scope was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetRunnerControllerScopesRunnerLevelScopingResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 runner_id: _builtins.int,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str created_at: The time the scope was created.
+        :param _builtins.int runner_id: The ID of the runner.
+        :param _builtins.str updated_at: The time the scope was last updated.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "runner_id", runner_id)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The time the scope was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerId")
+    def runner_id(self) -> _builtins.int:
+        """
+        The ID of the runner.
+        """
+        return pulumi.get(self, "runner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The time the scope was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetRunnerControllersRunnerControllerResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.int,
+                 state: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str created_at: The time the runner controller was created.
+        :param _builtins.str description: The description of the runner controller.
+        :param _builtins.int id: The ID of the runner controller.
+        :param _builtins.str state: The state of the runner controller. Valid values are: `disabled`, `enabled`, `dry_run`.
+        :param _builtins.str updated_at: The time the runner controller was last updated.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The time the runner controller was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the runner controller.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the runner controller.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the runner controller. Valid values are: `disabled`, `enabled`, `dry_run`.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The time the runner controller was last updated.
+        """
+        return pulumi.get(self, "updated_at")
 
 
 @pulumi.output_type

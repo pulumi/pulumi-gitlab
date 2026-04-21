@@ -17,14 +17,14 @@ public final class IntegrationMattermostState extends com.pulumi.resources.Resou
     public static final IntegrationMattermostState Empty = new IntegrationMattermostState();
 
     /**
-     * Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
+     * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
+     * @return Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -408,7 +408,7 @@ public final class IntegrationMattermostState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
+         * @param branchesToBeNotified Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class IntegrationMattermostState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are &#34;all&#34;, &#34;default&#34;, &#34;protected&#34;, and &#34;default*and*protected&#34;.
+         * @param branchesToBeNotified Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
          * 
          * @return builder
          * 

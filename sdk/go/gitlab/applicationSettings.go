@@ -86,6 +86,8 @@ type ApplicationSettings struct {
 	CanCreateGroup pulumi.BoolOutput `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolOutput `pulumi:"checkNamespacePlan"`
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled pulumi.BoolOutput `pulumi:"ciJobLiveTraceEnabled"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntOutput `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -162,6 +164,8 @@ type ApplicationSettings struct {
 	DisableAdminOauthScopes pulumi.BoolOutput `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken pulumi.BoolOutput `pulumi:"disableFeedToken"`
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest pulumi.BoolOutput `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens pulumi.BoolOutput `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
@@ -338,6 +342,8 @@ type ApplicationSettings struct {
 	InactiveProjectsMinSizeMb pulumi.IntOutput `pulumi:"inactiveProjectsMinSizeMb"`
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths pulumi.IntOutput `pulumi:"inactiveProjectsSendWarningEmailAfterMonths"`
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays pulumi.IntOutput `pulumi:"inactiveResourceAccessTokensDeleteAfterDays"`
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing pulumi.BoolOutput `pulumi:"includeOptionalMetricsInServicePing"`
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -352,12 +358,20 @@ type ApplicationSettings struct {
 	JiraConnectPublicKeyStorageEnabled pulumi.BoolOutput `pulumi:"jiraConnectPublicKeyStorageEnabled"`
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact pulumi.BoolOutput `pulumi:"keepLatestArtifact"`
+	// (If enabled, requires: kroki_url) Enable Kroki integration.
+	KrokiEnabled pulumi.BoolOutput `pulumi:"krokiEnabled"`
+	// Configuration for formats supported by the Kroki instance.
+	KrokiFormats pulumi.BoolMapOutput `pulumi:"krokiFormats"`
+	// The Kroki instance URL for integration.
+	KrokiUrl pulumi.StringOutput `pulumi:"krokiUrl"`
 	// Increase this value when any cached Markdown should be invalidated.
 	LocalMarkdownVersion pulumi.IntOutput `pulumi:"localMarkdownVersion"`
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled pulumi.BoolOutput `pulumi:"lockDuoFeaturesEnabled"`
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap pulumi.BoolOutput `pulumi:"lockMembershipsToLdap"`
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml pulumi.BoolOutput `pulumi:"lockMembershipsToSaml"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolOutput `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -446,6 +460,10 @@ type ApplicationSettings struct {
 	PlantumlUrl pulumi.StringOutput `pulumi:"plantumlUrl"`
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier pulumi.Float64Output `pulumi:"pollingIntervalMultiplier"`
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval pulumi.BoolOutput `pulumi:"preventMergeRequestsAuthorApproval"`
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval pulumi.BoolOutput `pulumi:"preventMergeRequestsCommittersApproval"`
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolOutput `pulumi:"projectExportEnabled"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -582,6 +600,12 @@ type ApplicationSettings struct {
 	ThrottleAuthenticatedApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedApiPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedApiRequestsPerPeriod"`
+	// Enable authenticated Git LFS request rate limit.
+	ThrottleAuthenticatedGitLfsEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedGitLfsEnabled"`
+	// Rate limit period (in seconds).
+	ThrottleAuthenticatedGitLfsPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedGitLfsPeriodInSeconds"`
+	// Maximum requests per period per user.
+	ThrottleAuthenticatedGitLfsRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedGitLfsRequestsPerPeriod"`
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -626,6 +650,8 @@ type ApplicationSettings struct {
 	UniqueIpsLimitTimeWindow pulumi.IntOutput `pulumi:"uniqueIpsLimitTimeWindow"`
 	// Fetch GitLab Runner release version data from GitLab.com.
 	UpdateRunnerVersionsEnabled pulumi.BoolOutput `pulumi:"updateRunnerVersionsEnabled"`
+	// Disable user profile name changes.
+	UpdatingNameDisabledForUsers pulumi.BoolOutput `pulumi:"updatingNameDisabledForUsers"`
 	// Every week GitLab reports license usage back to GitLab, Inc.
 	UsagePingEnabled pulumi.BoolOutput `pulumi:"usagePingEnabled"`
 	// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
@@ -811,6 +837,8 @@ type applicationSettingsState struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled *bool `pulumi:"ciJobLiveTraceEnabled"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -887,6 +915,8 @@ type applicationSettingsState struct {
 	DisableAdminOauthScopes *bool `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken *bool `pulumi:"disableFeedToken"`
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens *bool `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
@@ -1063,6 +1093,8 @@ type applicationSettingsState struct {
 	InactiveProjectsMinSizeMb *int `pulumi:"inactiveProjectsMinSizeMb"`
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths *int `pulumi:"inactiveProjectsSendWarningEmailAfterMonths"`
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays *int `pulumi:"inactiveResourceAccessTokensDeleteAfterDays"`
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing *bool `pulumi:"includeOptionalMetricsInServicePing"`
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -1077,12 +1109,20 @@ type applicationSettingsState struct {
 	JiraConnectPublicKeyStorageEnabled *bool `pulumi:"jiraConnectPublicKeyStorageEnabled"`
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact *bool `pulumi:"keepLatestArtifact"`
+	// (If enabled, requires: kroki_url) Enable Kroki integration.
+	KrokiEnabled *bool `pulumi:"krokiEnabled"`
+	// Configuration for formats supported by the Kroki instance.
+	KrokiFormats map[string]bool `pulumi:"krokiFormats"`
+	// The Kroki instance URL for integration.
+	KrokiUrl *string `pulumi:"krokiUrl"`
 	// Increase this value when any cached Markdown should be invalidated.
 	LocalMarkdownVersion *int `pulumi:"localMarkdownVersion"`
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap *bool `pulumi:"lockMembershipsToLdap"`
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml *bool `pulumi:"lockMembershipsToSaml"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled *bool `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -1171,6 +1211,10 @@ type applicationSettingsState struct {
 	PlantumlUrl *string `pulumi:"plantumlUrl"`
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier *float64 `pulumi:"pollingIntervalMultiplier"`
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval *bool `pulumi:"preventMergeRequestsAuthorApproval"`
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval *bool `pulumi:"preventMergeRequestsCommittersApproval"`
 	// Enable project export.
 	ProjectExportEnabled *bool `pulumi:"projectExportEnabled"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -1307,6 +1351,12 @@ type applicationSettingsState struct {
 	ThrottleAuthenticatedApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedApiPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedApiRequestsPerPeriod"`
+	// Enable authenticated Git LFS request rate limit.
+	ThrottleAuthenticatedGitLfsEnabled *bool `pulumi:"throttleAuthenticatedGitLfsEnabled"`
+	// Rate limit period (in seconds).
+	ThrottleAuthenticatedGitLfsPeriodInSeconds *int `pulumi:"throttleAuthenticatedGitLfsPeriodInSeconds"`
+	// Maximum requests per period per user.
+	ThrottleAuthenticatedGitLfsRequestsPerPeriod *int `pulumi:"throttleAuthenticatedGitLfsRequestsPerPeriod"`
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled *bool `pulumi:"throttleAuthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -1351,6 +1401,8 @@ type applicationSettingsState struct {
 	UniqueIpsLimitTimeWindow *int `pulumi:"uniqueIpsLimitTimeWindow"`
 	// Fetch GitLab Runner release version data from GitLab.com.
 	UpdateRunnerVersionsEnabled *bool `pulumi:"updateRunnerVersionsEnabled"`
+	// Disable user profile name changes.
+	UpdatingNameDisabledForUsers *bool `pulumi:"updatingNameDisabledForUsers"`
 	// Every week GitLab reports license usage back to GitLab, Inc.
 	UsagePingEnabled *bool `pulumi:"usagePingEnabled"`
 	// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
@@ -1436,6 +1488,8 @@ type ApplicationSettingsState struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolPtrInput
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled pulumi.BoolPtrInput
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntPtrInput
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -1512,6 +1566,8 @@ type ApplicationSettingsState struct {
 	DisableAdminOauthScopes pulumi.BoolPtrInput
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken pulumi.BoolPtrInput
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens pulumi.BoolPtrInput
 	// Disabled OAuth sign-in sources.
@@ -1688,6 +1744,8 @@ type ApplicationSettingsState struct {
 	InactiveProjectsMinSizeMb pulumi.IntPtrInput
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths pulumi.IntPtrInput
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays pulumi.IntPtrInput
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing pulumi.BoolPtrInput
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -1702,12 +1760,20 @@ type ApplicationSettingsState struct {
 	JiraConnectPublicKeyStorageEnabled pulumi.BoolPtrInput
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact pulumi.BoolPtrInput
+	// (If enabled, requires: kroki_url) Enable Kroki integration.
+	KrokiEnabled pulumi.BoolPtrInput
+	// Configuration for formats supported by the Kroki instance.
+	KrokiFormats pulumi.BoolMapInput
+	// The Kroki instance URL for integration.
+	KrokiUrl pulumi.StringPtrInput
 	// Increase this value when any cached Markdown should be invalidated.
 	LocalMarkdownVersion pulumi.IntPtrInput
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled pulumi.BoolPtrInput
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap pulumi.BoolPtrInput
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml pulumi.BoolPtrInput
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolPtrInput
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -1796,6 +1862,10 @@ type ApplicationSettingsState struct {
 	PlantumlUrl pulumi.StringPtrInput
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier pulumi.Float64PtrInput
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval pulumi.BoolPtrInput
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval pulumi.BoolPtrInput
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolPtrInput
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -1932,6 +2002,12 @@ type ApplicationSettingsState struct {
 	ThrottleAuthenticatedApiPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// Enable authenticated Git LFS request rate limit.
+	ThrottleAuthenticatedGitLfsEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds).
+	ThrottleAuthenticatedGitLfsPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user.
+	ThrottleAuthenticatedGitLfsRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -1976,6 +2052,8 @@ type ApplicationSettingsState struct {
 	UniqueIpsLimitTimeWindow pulumi.IntPtrInput
 	// Fetch GitLab Runner release version data from GitLab.com.
 	UpdateRunnerVersionsEnabled pulumi.BoolPtrInput
+	// Disable user profile name changes.
+	UpdatingNameDisabledForUsers pulumi.BoolPtrInput
 	// Every week GitLab reports license usage back to GitLab, Inc.
 	UsagePingEnabled pulumi.BoolPtrInput
 	// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
@@ -2065,6 +2143,8 @@ type applicationSettingsArgs struct {
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled *bool `pulumi:"ciJobLiveTraceEnabled"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -2141,6 +2221,8 @@ type applicationSettingsArgs struct {
 	DisableAdminOauthScopes *bool `pulumi:"disableAdminOauthScopes"`
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken *bool `pulumi:"disableFeedToken"`
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens *bool `pulumi:"disablePersonalAccessTokens"`
 	// Disabled OAuth sign-in sources.
@@ -2313,6 +2395,8 @@ type applicationSettingsArgs struct {
 	InactiveProjectsMinSizeMb *int `pulumi:"inactiveProjectsMinSizeMb"`
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths *int `pulumi:"inactiveProjectsSendWarningEmailAfterMonths"`
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays *int `pulumi:"inactiveResourceAccessTokensDeleteAfterDays"`
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing *bool `pulumi:"includeOptionalMetricsInServicePing"`
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -2327,12 +2411,20 @@ type applicationSettingsArgs struct {
 	JiraConnectPublicKeyStorageEnabled *bool `pulumi:"jiraConnectPublicKeyStorageEnabled"`
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact *bool `pulumi:"keepLatestArtifact"`
+	// (If enabled, requires: kroki_url) Enable Kroki integration.
+	KrokiEnabled *bool `pulumi:"krokiEnabled"`
+	// Configuration for formats supported by the Kroki instance.
+	KrokiFormats map[string]bool `pulumi:"krokiFormats"`
+	// The Kroki instance URL for integration.
+	KrokiUrl *string `pulumi:"krokiUrl"`
 	// Increase this value when any cached Markdown should be invalidated.
 	LocalMarkdownVersion *int `pulumi:"localMarkdownVersion"`
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap *bool `pulumi:"lockMembershipsToLdap"`
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml *bool `pulumi:"lockMembershipsToSaml"`
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled *bool `pulumi:"mailgunEventsEnabled"`
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -2421,6 +2513,10 @@ type applicationSettingsArgs struct {
 	PlantumlUrl *string `pulumi:"plantumlUrl"`
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier *float64 `pulumi:"pollingIntervalMultiplier"`
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval *bool `pulumi:"preventMergeRequestsAuthorApproval"`
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval *bool `pulumi:"preventMergeRequestsCommittersApproval"`
 	// Enable project export.
 	ProjectExportEnabled *bool `pulumi:"projectExportEnabled"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -2557,6 +2653,12 @@ type applicationSettingsArgs struct {
 	ThrottleAuthenticatedApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedApiPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedApiRequestsPerPeriod"`
+	// Enable authenticated Git LFS request rate limit.
+	ThrottleAuthenticatedGitLfsEnabled *bool `pulumi:"throttleAuthenticatedGitLfsEnabled"`
+	// Rate limit period (in seconds).
+	ThrottleAuthenticatedGitLfsPeriodInSeconds *int `pulumi:"throttleAuthenticatedGitLfsPeriodInSeconds"`
+	// Maximum requests per period per user.
+	ThrottleAuthenticatedGitLfsRequestsPerPeriod *int `pulumi:"throttleAuthenticatedGitLfsRequestsPerPeriod"`
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled *bool `pulumi:"throttleAuthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -2601,6 +2703,8 @@ type applicationSettingsArgs struct {
 	UniqueIpsLimitTimeWindow *int `pulumi:"uniqueIpsLimitTimeWindow"`
 	// Fetch GitLab Runner release version data from GitLab.com.
 	UpdateRunnerVersionsEnabled *bool `pulumi:"updateRunnerVersionsEnabled"`
+	// Disable user profile name changes.
+	UpdatingNameDisabledForUsers *bool `pulumi:"updatingNameDisabledForUsers"`
 	// Every week GitLab reports license usage back to GitLab, Inc.
 	UsagePingEnabled *bool `pulumi:"usagePingEnabled"`
 	// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
@@ -2687,6 +2791,8 @@ type ApplicationSettingsArgs struct {
 	CanCreateGroup pulumi.BoolPtrInput
 	// Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
 	CheckNamespacePlan pulumi.BoolPtrInput
+	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+	CiJobLiveTraceEnabled pulumi.BoolPtrInput
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntPtrInput
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -2763,6 +2869,8 @@ type ApplicationSettingsArgs struct {
 	DisableAdminOauthScopes pulumi.BoolPtrInput
 	// Disable display of RSS/Atom and calendar feed tokens.
 	DisableFeedToken pulumi.BoolPtrInput
+	// Prevent editing approval rules in projects and merge requests.
+	DisableOverridingApproversPerMergeRequest pulumi.BoolPtrInput
 	// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
 	DisablePersonalAccessTokens pulumi.BoolPtrInput
 	// Disabled OAuth sign-in sources.
@@ -2935,6 +3043,8 @@ type ApplicationSettingsArgs struct {
 	InactiveProjectsMinSizeMb pulumi.IntPtrInput
 	// If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
 	InactiveProjectsSendWarningEmailAfterMonths pulumi.IntPtrInput
+	// Specifies retention period for inactive project and group access tokens. Default is 30.
+	InactiveResourceAccessTokensDeleteAfterDays pulumi.IntPtrInput
 	// Whether or not optional metrics are enabled in Service Ping.
 	IncludeOptionalMetricsInServicePing pulumi.BoolPtrInput
 	// Enable Invisible CAPTCHA spam detection during sign-up.
@@ -2949,12 +3059,20 @@ type ApplicationSettingsArgs struct {
 	JiraConnectPublicKeyStorageEnabled pulumi.BoolPtrInput
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact pulumi.BoolPtrInput
+	// (If enabled, requires: kroki_url) Enable Kroki integration.
+	KrokiEnabled pulumi.BoolPtrInput
+	// Configuration for formats supported by the Kroki instance.
+	KrokiFormats pulumi.BoolMapInput
+	// The Kroki instance URL for integration.
+	KrokiUrl pulumi.StringPtrInput
 	// Increase this value when any cached Markdown should be invalidated.
 	LocalMarkdownVersion pulumi.IntPtrInput
 	// Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
 	LockDuoFeaturesEnabled pulumi.BoolPtrInput
 	// Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 	LockMembershipsToLdap pulumi.BoolPtrInput
+	// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+	LockMembershipsToSaml pulumi.BoolPtrInput
 	// Enable Mailgun event receiver.
 	MailgunEventsEnabled pulumi.BoolPtrInput
 	// The Mailgun HTTP webhook signing key for receiving events from webhook.
@@ -3043,6 +3161,10 @@ type ApplicationSettingsArgs struct {
 	PlantumlUrl pulumi.StringPtrInput
 	// Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 	PollingIntervalMultiplier pulumi.Float64PtrInput
+	// Prevent approval by merge request creator (author).
+	PreventMergeRequestsAuthorApproval pulumi.BoolPtrInput
+	// Prevent approval by committers to merge requests.
+	PreventMergeRequestsCommittersApproval pulumi.BoolPtrInput
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolPtrInput
 	// Maximum authenticated requests to /project/:id/jobs per minute.
@@ -3179,6 +3301,12 @@ type ApplicationSettingsArgs struct {
 	ThrottleAuthenticatedApiPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// Enable authenticated Git LFS request rate limit.
+	ThrottleAuthenticatedGitLfsEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds).
+	ThrottleAuthenticatedGitLfsPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user.
+	ThrottleAuthenticatedGitLfsRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -3223,6 +3351,8 @@ type ApplicationSettingsArgs struct {
 	UniqueIpsLimitTimeWindow pulumi.IntPtrInput
 	// Fetch GitLab Runner release version data from GitLab.com.
 	UpdateRunnerVersionsEnabled pulumi.BoolPtrInput
+	// Disable user profile name changes.
+	UpdatingNameDisabledForUsers pulumi.BoolPtrInput
 	// Every week GitLab reports license usage back to GitLab, Inc.
 	UsagePingEnabled pulumi.BoolPtrInput
 	// Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
@@ -3478,6 +3608,11 @@ func (o ApplicationSettingsOutput) CheckNamespacePlan() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CheckNamespacePlan }).(pulumi.BoolOutput)
 }
 
+// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+func (o ApplicationSettingsOutput) CiJobLiveTraceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CiJobLiveTraceEnabled }).(pulumi.BoolOutput)
+}
+
 // The maximum number of includes per pipeline.
 func (o ApplicationSettingsOutput) CiMaxIncludes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.CiMaxIncludes }).(pulumi.IntOutput)
@@ -3669,6 +3804,11 @@ func (o ApplicationSettingsOutput) DisableAdminOauthScopes() pulumi.BoolOutput {
 // Disable display of RSS/Atom and calendar feed tokens.
 func (o ApplicationSettingsOutput) DisableFeedToken() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisableFeedToken }).(pulumi.BoolOutput)
+}
+
+// Prevent editing approval rules in projects and merge requests.
+func (o ApplicationSettingsOutput) DisableOverridingApproversPerMergeRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.DisableOverridingApproversPerMergeRequest }).(pulumi.BoolOutput)
 }
 
 // Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -4113,6 +4253,11 @@ func (o ApplicationSettingsOutput) InactiveProjectsSendWarningEmailAfterMonths()
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.InactiveProjectsSendWarningEmailAfterMonths }).(pulumi.IntOutput)
 }
 
+// Specifies retention period for inactive project and group access tokens. Default is 30.
+func (o ApplicationSettingsOutput) InactiveResourceAccessTokensDeleteAfterDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.InactiveResourceAccessTokensDeleteAfterDays }).(pulumi.IntOutput)
+}
+
 // Whether or not optional metrics are enabled in Service Ping.
 func (o ApplicationSettingsOutput) IncludeOptionalMetricsInServicePing() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.IncludeOptionalMetricsInServicePing }).(pulumi.BoolOutput)
@@ -4148,6 +4293,21 @@ func (o ApplicationSettingsOutput) KeepLatestArtifact() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.KeepLatestArtifact }).(pulumi.BoolOutput)
 }
 
+// (If enabled, requires: kroki_url) Enable Kroki integration.
+func (o ApplicationSettingsOutput) KrokiEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.KrokiEnabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for formats supported by the Kroki instance.
+func (o ApplicationSettingsOutput) KrokiFormats() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolMapOutput { return v.KrokiFormats }).(pulumi.BoolMapOutput)
+}
+
+// The Kroki instance URL for integration.
+func (o ApplicationSettingsOutput) KrokiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.KrokiUrl }).(pulumi.StringOutput)
+}
+
 // Increase this value when any cached Markdown should be invalidated.
 func (o ApplicationSettingsOutput) LocalMarkdownVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.LocalMarkdownVersion }).(pulumi.IntOutput)
@@ -4161,6 +4321,11 @@ func (o ApplicationSettingsOutput) LockDuoFeaturesEnabled() pulumi.BoolOutput {
 // Set to true to lock all memberships to LDAP. Premium and Ultimate only.
 func (o ApplicationSettingsOutput) LockMembershipsToLdap() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.LockMembershipsToLdap }).(pulumi.BoolOutput)
+}
+
+// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+func (o ApplicationSettingsOutput) LockMembershipsToSaml() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.LockMembershipsToSaml }).(pulumi.BoolOutput)
 }
 
 // Enable Mailgun event receiver.
@@ -4381,6 +4546,16 @@ func (o ApplicationSettingsOutput) PlantumlUrl() pulumi.StringOutput {
 // Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
 func (o ApplicationSettingsOutput) PollingIntervalMultiplier() pulumi.Float64Output {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.Float64Output { return v.PollingIntervalMultiplier }).(pulumi.Float64Output)
+}
+
+// Prevent approval by merge request creator (author).
+func (o ApplicationSettingsOutput) PreventMergeRequestsAuthorApproval() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.PreventMergeRequestsAuthorApproval }).(pulumi.BoolOutput)
+}
+
+// Prevent approval by committers to merge requests.
+func (o ApplicationSettingsOutput) PreventMergeRequestsCommittersApproval() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.PreventMergeRequestsCommittersApproval }).(pulumi.BoolOutput)
 }
 
 // Enable project export.
@@ -4723,6 +4898,21 @@ func (o ApplicationSettingsOutput) ThrottleAuthenticatedApiRequestsPerPeriod() p
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedApiRequestsPerPeriod }).(pulumi.IntOutput)
 }
 
+// Enable authenticated Git LFS request rate limit.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitLfsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedGitLfsEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period (in seconds).
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitLfsPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedGitLfsPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum requests per period per user.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitLfsRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedGitLfsRequestsPerPeriod }).(pulumi.IntOutput)
+}
+
 // (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 func (o ApplicationSettingsOutput) ThrottleAuthenticatedPackagesApiEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedPackagesApiEnabled }).(pulumi.BoolOutput)
@@ -4839,6 +5029,11 @@ func (o ApplicationSettingsOutput) UniqueIpsLimitTimeWindow() pulumi.IntOutput {
 // Fetch GitLab Runner release version data from GitLab.com.
 func (o ApplicationSettingsOutput) UpdateRunnerVersionsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.UpdateRunnerVersionsEnabled }).(pulumi.BoolOutput)
+}
+
+// Disable user profile name changes.
+func (o ApplicationSettingsOutput) UpdatingNameDisabledForUsers() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.UpdatingNameDisabledForUsers }).(pulumi.BoolOutput)
 }
 
 // Every week GitLab reports license usage back to GitLab, Inc.

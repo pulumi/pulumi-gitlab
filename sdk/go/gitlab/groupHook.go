@@ -24,7 +24,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.
+// A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
@@ -64,6 +64,8 @@ type GroupHook struct {
 	IssuesEvents pulumi.BoolOutput `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents pulumi.BoolOutput `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
 	// Name of the group webhook.
@@ -72,6 +74,8 @@ type GroupHook struct {
 	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events. Defaults to `false`.
 	PipelineEvents pulumi.BoolOutput `pulumi:"pipelineEvents"`
+	// Invoke the hook for project events. Defaults to `false`.
+	ProjectEvents pulumi.BoolOutput `pulumi:"projectEvents"`
 	// Invoke the hook for push events. Defaults to `true`.
 	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
@@ -165,6 +169,8 @@ type groupHookState struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents *bool `pulumi:"jobEvents"`
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents *bool `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
 	// Name of the group webhook.
@@ -173,6 +179,8 @@ type groupHookState struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events. Defaults to `false`.
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
+	// Invoke the hook for project events. Defaults to `false`.
+	ProjectEvents *bool `pulumi:"projectEvents"`
 	// Invoke the hook for push events. Defaults to `true`.
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
@@ -224,6 +232,8 @@ type GroupHookState struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolPtrInput
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolPtrInput
 	// Name of the group webhook.
@@ -232,6 +242,8 @@ type GroupHookState struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Invoke the hook for pipeline events. Defaults to `false`.
 	PipelineEvents pulumi.BoolPtrInput
+	// Invoke the hook for project events. Defaults to `false`.
+	ProjectEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events. Defaults to `true`.
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
@@ -283,6 +295,8 @@ type groupHookArgs struct {
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents *bool `pulumi:"jobEvents"`
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents *bool `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
 	// Name of the group webhook.
@@ -291,6 +305,8 @@ type groupHookArgs struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events. Defaults to `false`.
 	PipelineEvents *bool `pulumi:"pipelineEvents"`
+	// Invoke the hook for project events. Defaults to `false`.
+	ProjectEvents *bool `pulumi:"projectEvents"`
 	// Invoke the hook for push events. Defaults to `true`.
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
@@ -339,6 +355,8 @@ type GroupHookArgs struct {
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolPtrInput
+	// Invoke the hook for member events. Defaults to `false`.
+	MemberEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolPtrInput
 	// Name of the group webhook.
@@ -347,6 +365,8 @@ type GroupHookArgs struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Invoke the hook for pipeline events. Defaults to `false`.
 	PipelineEvents pulumi.BoolPtrInput
+	// Invoke the hook for project events. Defaults to `false`.
+	ProjectEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events. Defaults to `true`.
 	PushEvents pulumi.BoolPtrInput
 	// Invoke the hook for push events on matching branches only.
@@ -529,6 +549,11 @@ func (o GroupHookOutput) JobEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.JobEvents }).(pulumi.BoolOutput)
 }
 
+// Invoke the hook for member events. Defaults to `false`.
+func (o GroupHookOutput) MemberEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.MemberEvents }).(pulumi.BoolOutput)
+}
+
 // Invoke the hook for merge requests events. Defaults to `false`.
 func (o GroupHookOutput) MergeRequestsEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
@@ -547,6 +572,11 @@ func (o GroupHookOutput) NoteEvents() pulumi.BoolOutput {
 // Invoke the hook for pipeline events. Defaults to `false`.
 func (o GroupHookOutput) PipelineEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.PipelineEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for project events. Defaults to `false`.
+func (o GroupHookOutput) ProjectEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GroupHook) pulumi.BoolOutput { return v.ProjectEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for push events. Defaults to `true`.

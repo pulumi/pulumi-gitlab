@@ -55,7 +55,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project external status checks can be imported using an id made up of `&lt;project-id&gt;:&lt;external-check-id&gt;`, e.g.
+    /// GitLab project external status checks can be imported using an id made up of `&lt;project-id&gt;:&lt;external-check-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck foo "123:42"

@@ -884,7 +884,7 @@ class IntegrationSlack(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+        You can import a gitlab_integration_slack.slack state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1
@@ -953,7 +953,7 @@ class IntegrationSlack(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a gitlab_integration_slack.slack state using the project ID, e.g.
+        You can import a gitlab_integration_slack.slack state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/integrationSlack:IntegrationSlack slack 1

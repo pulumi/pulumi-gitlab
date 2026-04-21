@@ -113,11 +113,13 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// A Repository File can be imported using an id made up of `<project-id>:<branch-name>:<file-path>`, e.g.
+// A Repository File can be imported using an id made up of `<project>:<branch-name>:<file-path>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
 // ```
+//
+// Where `project` may be the product ID or path with namespace depending on what you have in your config.
 type RepositoryFile struct {
 	pulumi.CustomResourceState
 

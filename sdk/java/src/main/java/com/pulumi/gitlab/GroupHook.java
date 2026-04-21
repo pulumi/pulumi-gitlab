@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, e.g.
+ * A GitLab Group Hook can be imported using a key composed of `&lt;group-id&gt;:&lt;hook-id&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupHook:GroupHook example &#34;12345:1&#34;
@@ -253,6 +253,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
         return this.jobEvents;
     }
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    @Export(name="memberEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> memberEvents;
+
+    /**
+     * @return Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> memberEvents() {
+        return this.memberEvents;
+    }
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
@@ -307,6 +321,20 @@ public class GroupHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> pipelineEvents() {
         return this.pipelineEvents;
+    }
+    /**
+     * Invoke the hook for project events. Defaults to `false`.
+     * 
+     */
+    @Export(name="projectEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> projectEvents;
+
+    /**
+     * @return Invoke the hook for project events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> projectEvents() {
+        return this.projectEvents;
     }
     /**
      * Invoke the hook for push events. Defaults to `true`.

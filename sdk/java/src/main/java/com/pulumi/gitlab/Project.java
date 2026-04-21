@@ -862,6 +862,34 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.mergePipelinesEnabled;
     }
     /**
+     * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     * 
+     */
+    @Export(name="mergeRequestTitleRegex", refs={String.class}, tree="[0]")
+    private Output<String> mergeRequestTitleRegex;
+
+    /**
+     * @return Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     * 
+     */
+    public Output<String> mergeRequestTitleRegex() {
+        return this.mergeRequestTitleRegex;
+    }
+    /**
+     * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     * 
+     */
+    @Export(name="mergeRequestTitleRegexDescription", refs={String.class}, tree="[0]")
+    private Output<String> mergeRequestTitleRegexDescription;
+
+    /**
+     * @return Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     * 
+     */
+    public Output<String> mergeRequestTitleRegexDescription() {
+        return this.mergeRequestTitleRegexDescription;
+    }
+    /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */

@@ -56,7 +56,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// Gitlab applications can be imported with their id, e.g.
+// Gitlab applications can be imported with their id, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/application:Application example "1"

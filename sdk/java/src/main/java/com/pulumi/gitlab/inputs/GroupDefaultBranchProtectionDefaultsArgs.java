@@ -63,6 +63,21 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
     }
 
     /**
+     * Require code owner approval before merging.
+     * 
+     */
+    @Import(name="codeOwnerApprovalRequired")
+    private @Nullable Output<Boolean> codeOwnerApprovalRequired;
+
+    /**
+     * @return Require code owner approval before merging.
+     * 
+     */
+    public Optional<Output<Boolean>> codeOwnerApprovalRequired() {
+        return Optional.ofNullable(this.codeOwnerApprovalRequired);
+    }
+
+    /**
      * Allow developers to initial push.
      * 
      */
@@ -83,6 +98,7 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
         this.allowForcePush = $.allowForcePush;
         this.allowedToMerges = $.allowedToMerges;
         this.allowedToPushes = $.allowedToPushes;
+        this.codeOwnerApprovalRequired = $.codeOwnerApprovalRequired;
         this.developerCanInitialPush = $.developerCanInitialPush;
     }
 
@@ -185,6 +201,27 @@ public final class GroupDefaultBranchProtectionDefaultsArgs extends com.pulumi.r
          */
         public Builder allowedToPushes(String... allowedToPushes) {
             return allowedToPushes(List.of(allowedToPushes));
+        }
+
+        /**
+         * @param codeOwnerApprovalRequired Require code owner approval before merging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeOwnerApprovalRequired(@Nullable Output<Boolean> codeOwnerApprovalRequired) {
+            $.codeOwnerApprovalRequired = codeOwnerApprovalRequired;
+            return this;
+        }
+
+        /**
+         * @param codeOwnerApprovalRequired Require code owner approval before merging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeOwnerApprovalRequired(Boolean codeOwnerApprovalRequired) {
+            return codeOwnerApprovalRequired(Output.of(codeOwnerApprovalRequired));
         }
 
         /**

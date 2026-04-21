@@ -95,11 +95,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.
+    /// A Repository File can be imported using an id made up of `&lt;project&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
     /// ```
+    /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// </summary>
     [GitLabResourceType("gitlab:index/repositoryFile:RepositoryFile")]
     public partial class RepositoryFile : global::Pulumi.CustomResource

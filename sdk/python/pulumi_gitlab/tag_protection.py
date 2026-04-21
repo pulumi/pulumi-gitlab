@@ -176,8 +176,10 @@ class TagProtection(pulumi.CustomResource):
         """
         The `TagProtection` resource manages the lifecycle of a tag protection.
 
-        > As tag protections cannot be updated, they are deleted and recreated when a change is requested. This means that if the deletion succeeds but the creation fails, tags will be left unprotected.
-        If this is a potential issue for you, please use the `create_before_destroy` meta-argument: https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle
+        > If a tag protection already exists for the given tag when creating this resource, the `TagProtection` resource will
+           automatically take ownership of the existing tag protection without an explicit import by unprotecting and properly protecting it again.
+           Having multiple `TagProtection` resources for the same project and tag will result in them overriding each other -
+           make sure to only have a single one.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/)
 
@@ -207,7 +209,7 @@ class TagProtection(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+        Tag protections can be imported using an id made up of `project_id:tag_name`, for example:
 
         ```sh
         $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0
@@ -230,8 +232,10 @@ class TagProtection(pulumi.CustomResource):
         """
         The `TagProtection` resource manages the lifecycle of a tag protection.
 
-        > As tag protections cannot be updated, they are deleted and recreated when a change is requested. This means that if the deletion succeeds but the creation fails, tags will be left unprotected.
-        If this is a potential issue for you, please use the `create_before_destroy` meta-argument: https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle
+        > If a tag protection already exists for the given tag when creating this resource, the `TagProtection` resource will
+           automatically take ownership of the existing tag protection without an explicit import by unprotecting and properly protecting it again.
+           Having multiple `TagProtection` resources for the same project and tag will result in them overriding each other -
+           make sure to only have a single one.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_tags/)
 
@@ -261,7 +265,7 @@ class TagProtection(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Tag protections can be imported using an id made up of `project_id:tag_name`, e.g.
+        Tag protections can be imported using an id made up of `project_id:tag_name`, for example:
 
         ```sh
         $ pulumi import gitlab:index/tagProtection:TagProtection example 123456789:v1.0.0

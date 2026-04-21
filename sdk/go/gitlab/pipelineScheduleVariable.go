@@ -60,7 +60,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, e.g.
+// Pipeline schedule variables can be imported using an id made up of `project_id:pipeline_schedule_id:key`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable example 123456789:13:mykey

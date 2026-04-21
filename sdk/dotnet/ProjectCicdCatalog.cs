@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab Project CICD Catalogs can be imported with their id, e.g.
+    /// Gitlab Project CICD Catalogs can be imported with their id, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectCicdCatalog:ProjectCicdCatalog example "1"

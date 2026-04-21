@@ -166,7 +166,7 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly emailsEnabled: pulumi.Output<boolean>;
     /**
-     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
     declare public readonly extraSharedRunnersMinutesLimit: pulumi.Output<number>;
     /**
@@ -254,7 +254,7 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly shareWithGroupLock: pulumi.Output<boolean>;
     /**
-     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
     declare public readonly sharedRunnersMinutesLimit: pulumi.Output<number>;
     /**
@@ -439,7 +439,7 @@ export interface GroupState {
      */
     emailsEnabled?: pulumi.Input<boolean>;
     /**
-     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
     extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
     /**
@@ -527,7 +527,7 @@ export interface GroupState {
      */
     shareWithGroupLock?: pulumi.Input<boolean>;
     /**
-     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
     sharedRunnersMinutesLimit?: pulumi.Input<number>;
     /**
@@ -603,7 +603,7 @@ export interface GroupArgs {
      */
     emailsEnabled?: pulumi.Input<boolean>;
     /**
-     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
     extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
     /**
@@ -679,7 +679,7 @@ export interface GroupArgs {
      */
     shareWithGroupLock?: pulumi.Input<boolean>;
     /**
-     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
     sharedRunnersMinutesLimit?: pulumi.Input<number>;
     /**

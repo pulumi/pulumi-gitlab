@@ -85,7 +85,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab value stream analytics can be imported with a key composed of `&lt;full_path_type&gt;:&lt;full_path&gt;:&lt;value_stream_id&gt;`, e.g.
+    /// Gitlab value stream analytics can be imported with a key composed of `&lt;full_path_type&gt;:&lt;full_path&gt;:&lt;value_stream_id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/valueStreamAnalytics:ValueStreamAnalytics group "group:people/engineers:42"

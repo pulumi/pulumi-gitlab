@@ -442,6 +442,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    @Import(name="ciJobLiveTraceEnabled")
+    private @Nullable Output<Boolean> ciJobLiveTraceEnabled;
+
+    /**
+     * @return Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    public Optional<Output<Boolean>> ciJobLiveTraceEnabled() {
+        return Optional.ofNullable(this.ciJobLiveTraceEnabled);
+    }
+
+    /**
      * The maximum number of includes per pipeline.
      * 
      */
@@ -1002,6 +1017,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> disableFeedToken() {
         return Optional.ofNullable(this.disableFeedToken);
+    }
+
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    @Import(name="disableOverridingApproversPerMergeRequest")
+    private @Nullable Output<Boolean> disableOverridingApproversPerMergeRequest;
+
+    /**
+     * @return Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    public Optional<Output<Boolean>> disableOverridingApproversPerMergeRequest() {
+        return Optional.ofNullable(this.disableOverridingApproversPerMergeRequest);
     }
 
     /**
@@ -2325,6 +2355,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    @Import(name="inactiveResourceAccessTokensDeleteAfterDays")
+    private @Nullable Output<Integer> inactiveResourceAccessTokensDeleteAfterDays;
+
+    /**
+     * @return Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    public Optional<Output<Integer>> inactiveResourceAccessTokensDeleteAfterDays() {
+        return Optional.ofNullable(this.inactiveResourceAccessTokensDeleteAfterDays);
+    }
+
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      * 
      */
@@ -2430,6 +2475,51 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (If enabled, requires: kroki_url) Enable Kroki integration.
+     * 
+     */
+    @Import(name="krokiEnabled")
+    private @Nullable Output<Boolean> krokiEnabled;
+
+    /**
+     * @return (If enabled, requires: kroki_url) Enable Kroki integration.
+     * 
+     */
+    public Optional<Output<Boolean>> krokiEnabled() {
+        return Optional.ofNullable(this.krokiEnabled);
+    }
+
+    /**
+     * Configuration for formats supported by the Kroki instance.
+     * 
+     */
+    @Import(name="krokiFormats")
+    private @Nullable Output<Map<String,Boolean>> krokiFormats;
+
+    /**
+     * @return Configuration for formats supported by the Kroki instance.
+     * 
+     */
+    public Optional<Output<Map<String,Boolean>>> krokiFormats() {
+        return Optional.ofNullable(this.krokiFormats);
+    }
+
+    /**
+     * The Kroki instance URL for integration.
+     * 
+     */
+    @Import(name="krokiUrl")
+    private @Nullable Output<String> krokiUrl;
+
+    /**
+     * @return The Kroki instance URL for integration.
+     * 
+     */
+    public Optional<Output<String>> krokiUrl() {
+        return Optional.ofNullable(this.krokiUrl);
+    }
+
+    /**
      * Increase this value when any cached Markdown should be invalidated.
      * 
      */
@@ -2472,6 +2562,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> lockMembershipsToLdap() {
         return Optional.ofNullable(this.lockMembershipsToLdap);
+    }
+
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="lockMembershipsToSaml")
+    private @Nullable Output<Boolean> lockMembershipsToSaml;
+
+    /**
+     * @return Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> lockMembershipsToSaml() {
+        return Optional.ofNullable(this.lockMembershipsToSaml);
     }
 
     /**
@@ -3132,6 +3237,36 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Double>> pollingIntervalMultiplier() {
         return Optional.ofNullable(this.pollingIntervalMultiplier);
+    }
+
+    /**
+     * Prevent approval by merge request creator (author).
+     * 
+     */
+    @Import(name="preventMergeRequestsAuthorApproval")
+    private @Nullable Output<Boolean> preventMergeRequestsAuthorApproval;
+
+    /**
+     * @return Prevent approval by merge request creator (author).
+     * 
+     */
+    public Optional<Output<Boolean>> preventMergeRequestsAuthorApproval() {
+        return Optional.ofNullable(this.preventMergeRequestsAuthorApproval);
+    }
+
+    /**
+     * Prevent approval by committers to merge requests.
+     * 
+     */
+    @Import(name="preventMergeRequestsCommittersApproval")
+    private @Nullable Output<Boolean> preventMergeRequestsCommittersApproval;
+
+    /**
+     * @return Prevent approval by committers to merge requests.
+     * 
+     */
+    public Optional<Output<Boolean>> preventMergeRequestsCommittersApproval() {
+        return Optional.ofNullable(this.preventMergeRequestsCommittersApproval);
     }
 
     /**
@@ -4155,6 +4290,51 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable authenticated Git LFS request rate limit.
+     * 
+     */
+    @Import(name="throttleAuthenticatedGitLfsEnabled")
+    private @Nullable Output<Boolean> throttleAuthenticatedGitLfsEnabled;
+
+    /**
+     * @return Enable authenticated Git LFS request rate limit.
+     * 
+     */
+    public Optional<Output<Boolean>> throttleAuthenticatedGitLfsEnabled() {
+        return Optional.ofNullable(this.throttleAuthenticatedGitLfsEnabled);
+    }
+
+    /**
+     * Rate limit period (in seconds).
+     * 
+     */
+    @Import(name="throttleAuthenticatedGitLfsPeriodInSeconds")
+    private @Nullable Output<Integer> throttleAuthenticatedGitLfsPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds).
+     * 
+     */
+    public Optional<Output<Integer>> throttleAuthenticatedGitLfsPeriodInSeconds() {
+        return Optional.ofNullable(this.throttleAuthenticatedGitLfsPeriodInSeconds);
+    }
+
+    /**
+     * Maximum requests per period per user.
+     * 
+     */
+    @Import(name="throttleAuthenticatedGitLfsRequestsPerPeriod")
+    private @Nullable Output<Integer> throttleAuthenticatedGitLfsRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per user.
+     * 
+     */
+    public Optional<Output<Integer>> throttleAuthenticatedGitLfsRequestsPerPeriod() {
+        return Optional.ofNullable(this.throttleAuthenticatedGitLfsRequestsPerPeriod);
+    }
+
+    /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      * 
      */
@@ -4485,6 +4665,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Disable user profile name changes.
+     * 
+     */
+    @Import(name="updatingNameDisabledForUsers")
+    private @Nullable Output<Boolean> updatingNameDisabledForUsers;
+
+    /**
+     * @return Disable user profile name changes.
+     * 
+     */
+    public Optional<Output<Boolean>> updatingNameDisabledForUsers() {
+        return Optional.ofNullable(this.updatingNameDisabledForUsers);
+    }
+
+    /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      * 
      */
@@ -4710,6 +4905,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.bulkImportMaxDownloadFileSize = $.bulkImportMaxDownloadFileSize;
         this.canCreateGroup = $.canCreateGroup;
         this.checkNamespacePlan = $.checkNamespacePlan;
+        this.ciJobLiveTraceEnabled = $.ciJobLiveTraceEnabled;
         this.ciMaxIncludes = $.ciMaxIncludes;
         this.ciMaxTotalYamlSizeBytes = $.ciMaxTotalYamlSizeBytes;
         this.commitEmailHostname = $.commitEmailHostname;
@@ -4747,6 +4943,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.diffMaxPatchBytes = $.diffMaxPatchBytes;
         this.disableAdminOauthScopes = $.disableAdminOauthScopes;
         this.disableFeedToken = $.disableFeedToken;
+        this.disableOverridingApproversPerMergeRequest = $.disableOverridingApproversPerMergeRequest;
         this.disablePersonalAccessTokens = $.disablePersonalAccessTokens;
         this.disabledOauthSignInSources = $.disabledOauthSignInSources;
         this.dnsRebindingProtectionEnabled = $.dnsRebindingProtectionEnabled;
@@ -4835,6 +5032,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.inactiveProjectsDeleteAfterMonths = $.inactiveProjectsDeleteAfterMonths;
         this.inactiveProjectsMinSizeMb = $.inactiveProjectsMinSizeMb;
         this.inactiveProjectsSendWarningEmailAfterMonths = $.inactiveProjectsSendWarningEmailAfterMonths;
+        this.inactiveResourceAccessTokensDeleteAfterDays = $.inactiveResourceAccessTokensDeleteAfterDays;
         this.includeOptionalMetricsInServicePing = $.includeOptionalMetricsInServicePing;
         this.invisibleCaptchaEnabled = $.invisibleCaptchaEnabled;
         this.issuesCreateLimit = $.issuesCreateLimit;
@@ -4842,9 +5040,13 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.jiraConnectProxyUrl = $.jiraConnectProxyUrl;
         this.jiraConnectPublicKeyStorageEnabled = $.jiraConnectPublicKeyStorageEnabled;
         this.keepLatestArtifact = $.keepLatestArtifact;
+        this.krokiEnabled = $.krokiEnabled;
+        this.krokiFormats = $.krokiFormats;
+        this.krokiUrl = $.krokiUrl;
         this.localMarkdownVersion = $.localMarkdownVersion;
         this.lockDuoFeaturesEnabled = $.lockDuoFeaturesEnabled;
         this.lockMembershipsToLdap = $.lockMembershipsToLdap;
+        this.lockMembershipsToSaml = $.lockMembershipsToSaml;
         this.mailgunEventsEnabled = $.mailgunEventsEnabled;
         this.mailgunSigningKey = $.mailgunSigningKey;
         this.maintenanceMode = $.maintenanceMode;
@@ -4889,6 +5091,8 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.plantumlEnabled = $.plantumlEnabled;
         this.plantumlUrl = $.plantumlUrl;
         this.pollingIntervalMultiplier = $.pollingIntervalMultiplier;
+        this.preventMergeRequestsAuthorApproval = $.preventMergeRequestsAuthorApproval;
+        this.preventMergeRequestsCommittersApproval = $.preventMergeRequestsCommittersApproval;
         this.projectExportEnabled = $.projectExportEnabled;
         this.projectJobsApiRateLimit = $.projectJobsApiRateLimit;
         this.projectsApiRateLimitUnauthenticated = $.projectsApiRateLimitUnauthenticated;
@@ -4957,6 +5161,9 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.throttleAuthenticatedApiEnabled = $.throttleAuthenticatedApiEnabled;
         this.throttleAuthenticatedApiPeriodInSeconds = $.throttleAuthenticatedApiPeriodInSeconds;
         this.throttleAuthenticatedApiRequestsPerPeriod = $.throttleAuthenticatedApiRequestsPerPeriod;
+        this.throttleAuthenticatedGitLfsEnabled = $.throttleAuthenticatedGitLfsEnabled;
+        this.throttleAuthenticatedGitLfsPeriodInSeconds = $.throttleAuthenticatedGitLfsPeriodInSeconds;
+        this.throttleAuthenticatedGitLfsRequestsPerPeriod = $.throttleAuthenticatedGitLfsRequestsPerPeriod;
         this.throttleAuthenticatedPackagesApiEnabled = $.throttleAuthenticatedPackagesApiEnabled;
         this.throttleAuthenticatedPackagesApiPeriodInSeconds = $.throttleAuthenticatedPackagesApiPeriodInSeconds;
         this.throttleAuthenticatedPackagesApiRequestsPerPeriod = $.throttleAuthenticatedPackagesApiRequestsPerPeriod;
@@ -4979,6 +5186,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.uniqueIpsLimitPerUser = $.uniqueIpsLimitPerUser;
         this.uniqueIpsLimitTimeWindow = $.uniqueIpsLimitTimeWindow;
         this.updateRunnerVersionsEnabled = $.updateRunnerVersionsEnabled;
+        this.updatingNameDisabledForUsers = $.updatingNameDisabledForUsers;
         this.usagePingEnabled = $.usagePingEnabled;
         this.useClickhouseForAnalytics = $.useClickhouseForAnalytics;
         this.userDeactivationEmailsEnabled = $.userDeactivationEmailsEnabled;
@@ -5608,6 +5816,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder checkNamespacePlan(Boolean checkNamespacePlan) {
             return checkNamespacePlan(Output.of(checkNamespacePlan));
+        }
+
+        /**
+         * @param ciJobLiveTraceEnabled Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciJobLiveTraceEnabled(@Nullable Output<Boolean> ciJobLiveTraceEnabled) {
+            $.ciJobLiveTraceEnabled = ciJobLiveTraceEnabled;
+            return this;
+        }
+
+        /**
+         * @param ciJobLiveTraceEnabled Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciJobLiveTraceEnabled(Boolean ciJobLiveTraceEnabled) {
+            return ciJobLiveTraceEnabled(Output.of(ciJobLiveTraceEnabled));
         }
 
         /**
@@ -6393,6 +6622,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder disableFeedToken(Boolean disableFeedToken) {
             return disableFeedToken(Output.of(disableFeedToken));
+        }
+
+        /**
+         * @param disableOverridingApproversPerMergeRequest Prevent editing approval rules in projects and merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableOverridingApproversPerMergeRequest(@Nullable Output<Boolean> disableOverridingApproversPerMergeRequest) {
+            $.disableOverridingApproversPerMergeRequest = disableOverridingApproversPerMergeRequest;
+            return this;
+        }
+
+        /**
+         * @param disableOverridingApproversPerMergeRequest Prevent editing approval rules in projects and merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableOverridingApproversPerMergeRequest(Boolean disableOverridingApproversPerMergeRequest) {
+            return disableOverridingApproversPerMergeRequest(Output.of(disableOverridingApproversPerMergeRequest));
         }
 
         /**
@@ -8334,6 +8584,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param inactiveResourceAccessTokensDeleteAfterDays Specifies retention period for inactive project and group access tokens. Default is 30.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inactiveResourceAccessTokensDeleteAfterDays(@Nullable Output<Integer> inactiveResourceAccessTokensDeleteAfterDays) {
+            $.inactiveResourceAccessTokensDeleteAfterDays = inactiveResourceAccessTokensDeleteAfterDays;
+            return this;
+        }
+
+        /**
+         * @param inactiveResourceAccessTokensDeleteAfterDays Specifies retention period for inactive project and group access tokens. Default is 30.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inactiveResourceAccessTokensDeleteAfterDays(Integer inactiveResourceAccessTokensDeleteAfterDays) {
+            return inactiveResourceAccessTokensDeleteAfterDays(Output.of(inactiveResourceAccessTokensDeleteAfterDays));
+        }
+
+        /**
          * @param includeOptionalMetricsInServicePing Whether or not optional metrics are enabled in Service Ping.
          * 
          * @return builder
@@ -8481,6 +8752,69 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param krokiEnabled (If enabled, requires: kroki_url) Enable Kroki integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder krokiEnabled(@Nullable Output<Boolean> krokiEnabled) {
+            $.krokiEnabled = krokiEnabled;
+            return this;
+        }
+
+        /**
+         * @param krokiEnabled (If enabled, requires: kroki_url) Enable Kroki integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder krokiEnabled(Boolean krokiEnabled) {
+            return krokiEnabled(Output.of(krokiEnabled));
+        }
+
+        /**
+         * @param krokiFormats Configuration for formats supported by the Kroki instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder krokiFormats(@Nullable Output<Map<String,Boolean>> krokiFormats) {
+            $.krokiFormats = krokiFormats;
+            return this;
+        }
+
+        /**
+         * @param krokiFormats Configuration for formats supported by the Kroki instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder krokiFormats(Map<String,Boolean> krokiFormats) {
+            return krokiFormats(Output.of(krokiFormats));
+        }
+
+        /**
+         * @param krokiUrl The Kroki instance URL for integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder krokiUrl(@Nullable Output<String> krokiUrl) {
+            $.krokiUrl = krokiUrl;
+            return this;
+        }
+
+        /**
+         * @param krokiUrl The Kroki instance URL for integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder krokiUrl(String krokiUrl) {
+            return krokiUrl(Output.of(krokiUrl));
+        }
+
+        /**
          * @param localMarkdownVersion Increase this value when any cached Markdown should be invalidated.
          * 
          * @return builder
@@ -8541,6 +8875,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder lockMembershipsToLdap(Boolean lockMembershipsToLdap) {
             return lockMembershipsToLdap(Output.of(lockMembershipsToLdap));
+        }
+
+        /**
+         * @param lockMembershipsToSaml Set to true to lock all memberships to SAML. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMembershipsToSaml(@Nullable Output<Boolean> lockMembershipsToSaml) {
+            $.lockMembershipsToSaml = lockMembershipsToSaml;
+            return this;
+        }
+
+        /**
+         * @param lockMembershipsToSaml Set to true to lock all memberships to SAML. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMembershipsToSaml(Boolean lockMembershipsToSaml) {
+            return lockMembershipsToSaml(Output.of(lockMembershipsToSaml));
         }
 
         /**
@@ -9485,6 +9840,48 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder pollingIntervalMultiplier(Double pollingIntervalMultiplier) {
             return pollingIntervalMultiplier(Output.of(pollingIntervalMultiplier));
+        }
+
+        /**
+         * @param preventMergeRequestsAuthorApproval Prevent approval by merge request creator (author).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsAuthorApproval(@Nullable Output<Boolean> preventMergeRequestsAuthorApproval) {
+            $.preventMergeRequestsAuthorApproval = preventMergeRequestsAuthorApproval;
+            return this;
+        }
+
+        /**
+         * @param preventMergeRequestsAuthorApproval Prevent approval by merge request creator (author).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsAuthorApproval(Boolean preventMergeRequestsAuthorApproval) {
+            return preventMergeRequestsAuthorApproval(Output.of(preventMergeRequestsAuthorApproval));
+        }
+
+        /**
+         * @param preventMergeRequestsCommittersApproval Prevent approval by committers to merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsCommittersApproval(@Nullable Output<Boolean> preventMergeRequestsCommittersApproval) {
+            $.preventMergeRequestsCommittersApproval = preventMergeRequestsCommittersApproval;
+            return this;
+        }
+
+        /**
+         * @param preventMergeRequestsCommittersApproval Prevent approval by committers to merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventMergeRequestsCommittersApproval(Boolean preventMergeRequestsCommittersApproval) {
+            return preventMergeRequestsCommittersApproval(Output.of(preventMergeRequestsCommittersApproval));
         }
 
         /**
@@ -10926,6 +11323,69 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param throttleAuthenticatedGitLfsEnabled Enable authenticated Git LFS request rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throttleAuthenticatedGitLfsEnabled(@Nullable Output<Boolean> throttleAuthenticatedGitLfsEnabled) {
+            $.throttleAuthenticatedGitLfsEnabled = throttleAuthenticatedGitLfsEnabled;
+            return this;
+        }
+
+        /**
+         * @param throttleAuthenticatedGitLfsEnabled Enable authenticated Git LFS request rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throttleAuthenticatedGitLfsEnabled(Boolean throttleAuthenticatedGitLfsEnabled) {
+            return throttleAuthenticatedGitLfsEnabled(Output.of(throttleAuthenticatedGitLfsEnabled));
+        }
+
+        /**
+         * @param throttleAuthenticatedGitLfsPeriodInSeconds Rate limit period (in seconds).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throttleAuthenticatedGitLfsPeriodInSeconds(@Nullable Output<Integer> throttleAuthenticatedGitLfsPeriodInSeconds) {
+            $.throttleAuthenticatedGitLfsPeriodInSeconds = throttleAuthenticatedGitLfsPeriodInSeconds;
+            return this;
+        }
+
+        /**
+         * @param throttleAuthenticatedGitLfsPeriodInSeconds Rate limit period (in seconds).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throttleAuthenticatedGitLfsPeriodInSeconds(Integer throttleAuthenticatedGitLfsPeriodInSeconds) {
+            return throttleAuthenticatedGitLfsPeriodInSeconds(Output.of(throttleAuthenticatedGitLfsPeriodInSeconds));
+        }
+
+        /**
+         * @param throttleAuthenticatedGitLfsRequestsPerPeriod Maximum requests per period per user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throttleAuthenticatedGitLfsRequestsPerPeriod(@Nullable Output<Integer> throttleAuthenticatedGitLfsRequestsPerPeriod) {
+            $.throttleAuthenticatedGitLfsRequestsPerPeriod = throttleAuthenticatedGitLfsRequestsPerPeriod;
+            return this;
+        }
+
+        /**
+         * @param throttleAuthenticatedGitLfsRequestsPerPeriod Maximum requests per period per user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throttleAuthenticatedGitLfsRequestsPerPeriod(Integer throttleAuthenticatedGitLfsRequestsPerPeriod) {
+            return throttleAuthenticatedGitLfsRequestsPerPeriod(Output.of(throttleAuthenticatedGitLfsRequestsPerPeriod));
+        }
+
+        /**
          * @param throttleAuthenticatedPackagesApiEnabled (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
          * 
          * @return builder
@@ -11385,6 +11845,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder updateRunnerVersionsEnabled(Boolean updateRunnerVersionsEnabled) {
             return updateRunnerVersionsEnabled(Output.of(updateRunnerVersionsEnabled));
+        }
+
+        /**
+         * @param updatingNameDisabledForUsers Disable user profile name changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatingNameDisabledForUsers(@Nullable Output<Boolean> updatingNameDisabledForUsers) {
+            $.updatingNameDisabledForUsers = updatingNameDisabledForUsers;
+            return this;
+        }
+
+        /**
+         * @param updatingNameDisabledForUsers Disable user profile name changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatingNameDisabledForUsers(Boolean updatingNameDisabledForUsers) {
+            return updatingNameDisabledForUsers(Output.of(updatingNameDisabledForUsers));
         }
 
         /**

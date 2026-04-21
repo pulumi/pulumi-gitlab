@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * Gitlab release link can be imported with a key composed of `<project>:<tag_name>`, e.g.
+ * Gitlab release link can be imported with a key composed of `<project>:<tag_name>`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/release:Release example "12345:test"

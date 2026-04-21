@@ -54,7 +54,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// A GitLab User Impersonation Token can be imported using a key composed of `<user-id>:<token-id>`, e.g.
+// A GitLab User Impersonation Token can be imported using a key composed of `<user-id>:<token-id>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/userImpersonationToken:UserImpersonationToken example "12345:1"

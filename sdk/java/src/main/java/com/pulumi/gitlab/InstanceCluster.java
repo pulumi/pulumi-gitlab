@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab instance clusters can be imported using a `clusterid`, e.g.
+ * GitLab instance clusters can be imported using a `clusterid`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/instanceCluster:InstanceCluster bar 123

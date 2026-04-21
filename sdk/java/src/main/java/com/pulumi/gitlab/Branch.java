@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * Gitlab branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch_name&gt;`, e.g.
+ * Gitlab branches can be imported with a key composed of `&lt;project_id&gt;:&lt;branch_name&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/branch:Branch example &#34;12345:develop&#34;

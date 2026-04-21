@@ -30,7 +30,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/<ID>` e.g.
+// GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/<ID>` for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/memberRole:MemberRole example 'gid://gitlab/MemberRole/123'

@@ -180,14 +180,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     @Import(name="extraSharedRunnersMinutesLimit")
     private @Nullable Output<Integer> extraSharedRunnersMinutesLimit;
 
     /**
-     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     public Optional<Output<Integer>> extraSharedRunnersMinutesLimit() {
@@ -465,14 +465,14 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     @Import(name="sharedRunnersMinutesLimit")
     private @Nullable Output<Integer> sharedRunnersMinutesLimit;
 
     /**
-     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     public Optional<Output<Integer>> sharedRunnersMinutesLimit() {
@@ -841,7 +841,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraSharedRunnersMinutesLimit Can be set by administrators only. Additional CI/CD minutes for this group.
+         * @param extraSharedRunnersMinutesLimit Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
          * 
          * @return builder
          * 
@@ -852,7 +852,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraSharedRunnersMinutesLimit Can be set by administrators only. Additional CI/CD minutes for this group.
+         * @param extraSharedRunnersMinutesLimit Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
          * 
          * @return builder
          * 
@@ -1250,7 +1250,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedRunnersMinutesLimit Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+         * @param sharedRunnersMinutesLimit Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
          * 
          * @return builder
          * 
@@ -1261,7 +1261,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedRunnersMinutesLimit Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+         * @param sharedRunnersMinutesLimit Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
          * 
          * @return builder
          * 
