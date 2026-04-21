@@ -298,6 +298,14 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly mergePipelinesEnabled: pulumi.Output<boolean>;
     /**
+     * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     */
+    declare public readonly mergeRequestTitleRegex: pulumi.Output<string>;
+    /**
+     * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     */
+    declare public readonly mergeRequestTitleRegexDescription: pulumi.Output<string>;
+    /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
     declare public readonly mergeRequestsAccessLevel: pulumi.Output<string>;
@@ -622,6 +630,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeCommitTemplate"] = state?.mergeCommitTemplate;
             resourceInputs["mergeMethod"] = state?.mergeMethod;
             resourceInputs["mergePipelinesEnabled"] = state?.mergePipelinesEnabled;
+            resourceInputs["mergeRequestTitleRegex"] = state?.mergeRequestTitleRegex;
+            resourceInputs["mergeRequestTitleRegexDescription"] = state?.mergeRequestTitleRegexDescription;
             resourceInputs["mergeRequestsAccessLevel"] = state?.mergeRequestsAccessLevel;
             resourceInputs["mergeRequestsEnabled"] = state?.mergeRequestsEnabled;
             resourceInputs["mergeRequestsTemplate"] = state?.mergeRequestsTemplate;
@@ -735,6 +745,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeCommitTemplate"] = args?.mergeCommitTemplate;
             resourceInputs["mergeMethod"] = args?.mergeMethod;
             resourceInputs["mergePipelinesEnabled"] = args?.mergePipelinesEnabled;
+            resourceInputs["mergeRequestTitleRegex"] = args?.mergeRequestTitleRegex;
+            resourceInputs["mergeRequestTitleRegexDescription"] = args?.mergeRequestTitleRegexDescription;
             resourceInputs["mergeRequestsAccessLevel"] = args?.mergeRequestsAccessLevel;
             resourceInputs["mergeRequestsEnabled"] = args?.mergeRequestsEnabled;
             resourceInputs["mergeRequestsTemplate"] = args?.mergeRequestsTemplate;
@@ -1041,6 +1053,14 @@ export interface ProjectState {
      * Enable or disable merge pipelines.
      */
     mergePipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     */
+    mergeRequestTitleRegex?: pulumi.Input<string>;
+    /**
+     * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     */
+    mergeRequestTitleRegexDescription?: pulumi.Input<string>;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1523,6 +1543,14 @@ export interface ProjectArgs {
      * Enable or disable merge pipelines.
      */
     mergePipelinesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     */
+    mergeRequestTitleRegex?: pulumi.Input<string>;
+    /**
+     * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     */
+    mergeRequestTitleRegexDescription?: pulumi.Input<string>;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */

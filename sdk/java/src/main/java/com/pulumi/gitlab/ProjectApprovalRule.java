@@ -39,11 +39,13 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab project approval rules can be imported using a key composed of `&lt;project-id&gt;:&lt;rule-id&gt;`, e.g.
+ * GitLab project approval rules can be imported using a key composed of `&lt;project&gt;:&lt;rule-id&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectApprovalRule:ProjectApprovalRule example &#34;12345:6&#34;
  * ```
+ * 
+ * Where `project` may be the product ID or path with namespace depending on what you have in your config.
  * 
  */
 @ResourceType(type="gitlab:index/projectApprovalRule:ProjectApprovalRule")

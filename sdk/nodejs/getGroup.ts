@@ -51,7 +51,7 @@ export interface GetGroupResult {
      */
     readonly description: string;
     /**
-     * Can be set by administrators only. Additional CI/CD minutes for this group.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
     readonly extraSharedRunnersMinutesLimit: number;
     /**
@@ -107,7 +107,7 @@ export interface GetGroupResult {
      */
     readonly runnersToken: string;
     /**
-     * Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
     readonly sharedRunnersMinutesLimit: number;
     /**

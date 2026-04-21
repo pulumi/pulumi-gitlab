@@ -432,6 +432,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.checkNamespacePlan;
     }
     /**
+     * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    @Export(name="ciJobLiveTraceEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ciJobLiveTraceEnabled;
+
+    /**
+     * @return Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+     * 
+     */
+    public Output<Boolean> ciJobLiveTraceEnabled() {
+        return this.ciJobLiveTraceEnabled;
+    }
+    /**
      * The maximum number of includes per pipeline.
      * 
      */
@@ -952,6 +966,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> disableFeedToken() {
         return this.disableFeedToken;
+    }
+    /**
+     * Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    @Export(name="disableOverridingApproversPerMergeRequest", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disableOverridingApproversPerMergeRequest;
+
+    /**
+     * @return Prevent editing approval rules in projects and merge requests.
+     * 
+     */
+    public Output<Boolean> disableOverridingApproversPerMergeRequest() {
+        return this.disableOverridingApproversPerMergeRequest;
     }
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -2186,6 +2214,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.inactiveProjectsSendWarningEmailAfterMonths;
     }
     /**
+     * Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    @Export(name="inactiveResourceAccessTokensDeleteAfterDays", refs={Integer.class}, tree="[0]")
+    private Output<Integer> inactiveResourceAccessTokensDeleteAfterDays;
+
+    /**
+     * @return Specifies retention period for inactive project and group access tokens. Default is 30.
+     * 
+     */
+    public Output<Integer> inactiveResourceAccessTokensDeleteAfterDays() {
+        return this.inactiveResourceAccessTokensDeleteAfterDays;
+    }
+    /**
      * Whether or not optional metrics are enabled in Service Ping.
      * 
      */
@@ -2284,6 +2326,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.keepLatestArtifact;
     }
     /**
+     * (If enabled, requires: kroki_url) Enable Kroki integration.
+     * 
+     */
+    @Export(name="krokiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> krokiEnabled;
+
+    /**
+     * @return (If enabled, requires: kroki_url) Enable Kroki integration.
+     * 
+     */
+    public Output<Boolean> krokiEnabled() {
+        return this.krokiEnabled;
+    }
+    /**
+     * Configuration for formats supported by the Kroki instance.
+     * 
+     */
+    @Export(name="krokiFormats", refs={Map.class,String.class,Boolean.class}, tree="[0,1,2]")
+    private Output<Map<String,Boolean>> krokiFormats;
+
+    /**
+     * @return Configuration for formats supported by the Kroki instance.
+     * 
+     */
+    public Output<Map<String,Boolean>> krokiFormats() {
+        return this.krokiFormats;
+    }
+    /**
+     * The Kroki instance URL for integration.
+     * 
+     */
+    @Export(name="krokiUrl", refs={String.class}, tree="[0]")
+    private Output<String> krokiUrl;
+
+    /**
+     * @return The Kroki instance URL for integration.
+     * 
+     */
+    public Output<String> krokiUrl() {
+        return this.krokiUrl;
+    }
+    /**
      * Increase this value when any cached Markdown should be invalidated.
      * 
      */
@@ -2324,6 +2408,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> lockMembershipsToLdap() {
         return this.lockMembershipsToLdap;
+    }
+    /**
+     * Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="lockMembershipsToSaml", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> lockMembershipsToSaml;
+
+    /**
+     * @return Set to true to lock all memberships to SAML. Premium and Ultimate only.
+     * 
+     */
+    public Output<Boolean> lockMembershipsToSaml() {
+        return this.lockMembershipsToSaml;
     }
     /**
      * Enable Mailgun event receiver.
@@ -2940,6 +3038,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Double> pollingIntervalMultiplier() {
         return this.pollingIntervalMultiplier;
+    }
+    /**
+     * Prevent approval by merge request creator (author).
+     * 
+     */
+    @Export(name="preventMergeRequestsAuthorApproval", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventMergeRequestsAuthorApproval;
+
+    /**
+     * @return Prevent approval by merge request creator (author).
+     * 
+     */
+    public Output<Boolean> preventMergeRequestsAuthorApproval() {
+        return this.preventMergeRequestsAuthorApproval;
+    }
+    /**
+     * Prevent approval by committers to merge requests.
+     * 
+     */
+    @Export(name="preventMergeRequestsCommittersApproval", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventMergeRequestsCommittersApproval;
+
+    /**
+     * @return Prevent approval by committers to merge requests.
+     * 
+     */
+    public Output<Boolean> preventMergeRequestsCommittersApproval() {
+        return this.preventMergeRequestsCommittersApproval;
     }
     /**
      * Enable project export.
@@ -3894,6 +4020,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.throttleAuthenticatedApiRequestsPerPeriod;
     }
     /**
+     * Enable authenticated Git LFS request rate limit.
+     * 
+     */
+    @Export(name="throttleAuthenticatedGitLfsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleAuthenticatedGitLfsEnabled;
+
+    /**
+     * @return Enable authenticated Git LFS request rate limit.
+     * 
+     */
+    public Output<Boolean> throttleAuthenticatedGitLfsEnabled() {
+        return this.throttleAuthenticatedGitLfsEnabled;
+    }
+    /**
+     * Rate limit period (in seconds).
+     * 
+     */
+    @Export(name="throttleAuthenticatedGitLfsPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedGitLfsPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds).
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedGitLfsPeriodInSeconds() {
+        return this.throttleAuthenticatedGitLfsPeriodInSeconds;
+    }
+    /**
+     * Maximum requests per period per user.
+     * 
+     */
+    @Export(name="throttleAuthenticatedGitLfsRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedGitLfsRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per user.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedGitLfsRequestsPerPeriod() {
+        return this.throttleAuthenticatedGitLfsRequestsPerPeriod;
+    }
+    /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      * 
      */
@@ -4200,6 +4368,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> updateRunnerVersionsEnabled() {
         return this.updateRunnerVersionsEnabled;
+    }
+    /**
+     * Disable user profile name changes.
+     * 
+     */
+    @Export(name="updatingNameDisabledForUsers", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> updatingNameDisabledForUsers;
+
+    /**
+     * @return Disable user profile name changes.
+     * 
+     */
+    public Output<Boolean> updatingNameDisabledForUsers() {
+        return this.updatingNameDisabledForUsers;
     }
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.

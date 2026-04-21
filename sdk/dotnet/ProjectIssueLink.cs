@@ -87,11 +87,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import this resource with an id made up of `{project-id}:{source-issue-iid}:{target-issue-iid}`, e.g.
+    /// You can import this resource with an id made up of `{project}:{source-issue-iid}:{target-issue-iid}`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectIssueLink:ProjectIssueLink example 42:1001:1002
     /// ```
+    /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectIssueLink:ProjectIssueLink")]
     public partial class ProjectIssueLink : global::Pulumi.CustomResource

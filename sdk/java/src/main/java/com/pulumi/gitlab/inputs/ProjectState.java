@@ -900,6 +900,36 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     * 
+     */
+    @Import(name="mergeRequestTitleRegex")
+    private @Nullable Output<String> mergeRequestTitleRegex;
+
+    /**
+     * @return Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+     * 
+     */
+    public Optional<Output<String>> mergeRequestTitleRegex() {
+        return Optional.ofNullable(this.mergeRequestTitleRegex);
+    }
+
+    /**
+     * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     * 
+     */
+    @Import(name="mergeRequestTitleRegexDescription")
+    private @Nullable Output<String> mergeRequestTitleRegexDescription;
+
+    /**
+     * @return Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+     * 
+     */
+    public Optional<Output<String>> mergeRequestTitleRegexDescription() {
+        return Optional.ofNullable(this.mergeRequestTitleRegexDescription);
+    }
+
+    /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -1910,6 +1940,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.mergeCommitTemplate = $.mergeCommitTemplate;
         this.mergeMethod = $.mergeMethod;
         this.mergePipelinesEnabled = $.mergePipelinesEnabled;
+        this.mergeRequestTitleRegex = $.mergeRequestTitleRegex;
+        this.mergeRequestTitleRegexDescription = $.mergeRequestTitleRegexDescription;
         this.mergeRequestsAccessLevel = $.mergeRequestsAccessLevel;
         this.mergeRequestsEnabled = $.mergeRequestsEnabled;
         this.mergeRequestsTemplate = $.mergeRequestsTemplate;
@@ -3216,6 +3248,48 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mergePipelinesEnabled(Boolean mergePipelinesEnabled) {
             return mergePipelinesEnabled(Output.of(mergePipelinesEnabled));
+        }
+
+        /**
+         * @param mergeRequestTitleRegex Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeRequestTitleRegex(@Nullable Output<String> mergeRequestTitleRegex) {
+            $.mergeRequestTitleRegex = mergeRequestTitleRegex;
+            return this;
+        }
+
+        /**
+         * @param mergeRequestTitleRegex Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeRequestTitleRegex(String mergeRequestTitleRegex) {
+            return mergeRequestTitleRegex(Output.of(mergeRequestTitleRegex));
+        }
+
+        /**
+         * @param mergeRequestTitleRegexDescription Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeRequestTitleRegexDescription(@Nullable Output<String> mergeRequestTitleRegexDescription) {
+            $.mergeRequestTitleRegexDescription = mergeRequestTitleRegexDescription;
+            return this;
+        }
+
+        /**
+         * @param mergeRequestTitleRegexDescription Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeRequestTitleRegexDescription(String mergeRequestTitleRegexDescription) {
+            return mergeRequestTitleRegexDescription(Output.of(mergeRequestTitleRegexDescription));
         }
 
         /**

@@ -32,7 +32,7 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	// The public email address of the user.
+	// The email address of the user.
 	Email *string `pulumi:"email"`
 	// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
 	EmailExactMatch *bool `pulumi:"emailExactMatch"`
@@ -60,7 +60,7 @@ type LookupUserResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Current user's sign-in date.
 	CurrentSignInAt string `pulumi:"currentSignInAt"`
-	// The public email address of the user.
+	// The email address of the user.
 	Email string `pulumi:"email"`
 	// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
 	EmailExactMatch *bool `pulumi:"emailExactMatch"`
@@ -90,6 +90,8 @@ type LookupUserResult struct {
 	Organization string `pulumi:"organization"`
 	// Number of projects the user can create.
 	ProjectsLimit int `pulumi:"projectsLimit"`
+	// The public email address of the user.
+	PublicEmail string `pulumi:"publicEmail"`
 	// Skype username of the user.
 	Skype string `pulumi:"skype"`
 	// Whether the user is active or blocked.
@@ -121,7 +123,7 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	// The public email address of the user.
+	// The email address of the user.
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
 	EmailExactMatch pulumi.BoolPtrInput `pulumi:"emailExactMatch"`
@@ -187,7 +189,7 @@ func (o LookupUserResultOutput) CurrentSignInAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.CurrentSignInAt }).(pulumi.StringOutput)
 }
 
-// The public email address of the user.
+// The email address of the user.
 func (o LookupUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -260,6 +262,11 @@ func (o LookupUserResultOutput) Organization() pulumi.StringOutput {
 // Number of projects the user can create.
 func (o LookupUserResultOutput) ProjectsLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupUserResult) int { return v.ProjectsLimit }).(pulumi.IntOutput)
+}
+
+// The public email address of the user.
+func (o LookupUserResultOutput) PublicEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.PublicEmail }).(pulumi.StringOutput)
 }
 
 // Skype username of the user.

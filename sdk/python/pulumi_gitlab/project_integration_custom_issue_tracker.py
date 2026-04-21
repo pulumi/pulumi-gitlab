@@ -228,7 +228,7 @@ class ProjectIntegrationCustomIssueTracker(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationCustomIssueTracker state using the project ID, e.g.
+        You can import a ProjectIntegrationCustomIssueTracker state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker tracker 1
@@ -274,7 +274,7 @@ class ProjectIntegrationCustomIssueTracker(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationCustomIssueTracker state using the project ID, e.g.
+        You can import a ProjectIntegrationCustomIssueTracker state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker tracker 1

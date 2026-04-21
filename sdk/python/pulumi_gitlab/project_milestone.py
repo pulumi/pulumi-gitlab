@@ -385,7 +385,7 @@ class ProjectMilestone(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
+        Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"
@@ -443,7 +443,7 @@ class ProjectMilestone(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, e.g.
+        Gitlab project milestone can be imported with a key composed of `<project>:<milestone_id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"

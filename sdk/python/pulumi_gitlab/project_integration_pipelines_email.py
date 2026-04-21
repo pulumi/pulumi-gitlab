@@ -27,8 +27,8 @@ class ProjectIntegrationPipelinesEmailArgs:
         The set of arguments for constructing a ProjectIntegrationPipelinesEmail resource.
 
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: ) email addresses where notifications are sent.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: Email addresses where notifications are sent.
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         """
         pulumi.set(__self__, "project", project)
@@ -54,7 +54,7 @@ class ProjectIntegrationPipelinesEmailArgs:
     @pulumi.getter
     def recipients(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        ) email addresses where notifications are sent.
+        Email addresses where notifications are sent.
         """
         return pulumi.get(self, "recipients")
 
@@ -66,7 +66,7 @@ class ProjectIntegrationPipelinesEmailArgs:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -97,10 +97,10 @@ class _ProjectIntegrationPipelinesEmailState:
         """
         Input properties used for looking up and filtering ProjectIntegrationPipelinesEmail resources.
 
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: ) email addresses where notifications are sent.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: Email addresses where notifications are sent.
         """
         if branches_to_be_notified is not None:
             pulumi.set(__self__, "branches_to_be_notified", branches_to_be_notified)
@@ -115,7 +115,7 @@ class _ProjectIntegrationPipelinesEmailState:
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
@@ -151,7 +151,7 @@ class _ProjectIntegrationPipelinesEmailState:
     @pulumi.getter
     def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        ) email addresses where notifications are sent.
+        Email addresses where notifications are sent.
         """
         return pulumi.get(self, "recipients")
 
@@ -199,7 +199,7 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationPipelinesEmail state using the project ID, e.g.
+        You can import a ProjectIntegrationPipelinesEmail state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail email 1
@@ -208,10 +208,10 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: ) email addresses where notifications are sent.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: Email addresses where notifications are sent.
         """
         ...
     @overload
@@ -247,7 +247,7 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationPipelinesEmail state using the project ID, e.g.
+        You can import a ProjectIntegrationPipelinesEmail state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail email 1
@@ -311,10 +311,10 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        :param pulumi.Input[_builtins.str] branches_to_be_notified: Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Notify only broken pipelines. Default is true.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: ) email addresses where notifications are sent.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] recipients: Email addresses where notifications are sent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -328,15 +328,15 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:
         """
-        Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `default_and_protected`. Default is `default`
+        Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Output[_builtins.bool]:
         """
         Notify only broken pipelines. Default is true.
         """
@@ -354,7 +354,7 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
     @pulumi.getter
     def recipients(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        ) email addresses where notifications are sent.
+        Email addresses where notifications are sent.
         """
         return pulumi.get(self, "recipients")
 

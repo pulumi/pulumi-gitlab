@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, e.g.
+ * A GitLab Group Hook can be imported using a key composed of `<group-id>:<hook-id>`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/groupHook:GroupHook example "12345:1"
@@ -116,6 +116,10 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly jobEvents: pulumi.Output<boolean>;
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     */
+    declare public readonly memberEvents: pulumi.Output<boolean>;
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
@@ -131,6 +135,10 @@ export class GroupHook extends pulumi.CustomResource {
      * Invoke the hook for pipeline events. Defaults to `false`.
      */
     declare public readonly pipelineEvents: pulumi.Output<boolean>;
+    /**
+     * Invoke the hook for project events. Defaults to `false`.
+     */
+    declare public readonly projectEvents: pulumi.Output<boolean>;
     /**
      * Invoke the hook for push events. Defaults to `true`.
      */
@@ -196,10 +204,12 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["hookId"] = state?.hookId;
             resourceInputs["issuesEvents"] = state?.issuesEvents;
             resourceInputs["jobEvents"] = state?.jobEvents;
+            resourceInputs["memberEvents"] = state?.memberEvents;
             resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
             resourceInputs["name"] = state?.name;
             resourceInputs["noteEvents"] = state?.noteEvents;
             resourceInputs["pipelineEvents"] = state?.pipelineEvents;
+            resourceInputs["projectEvents"] = state?.projectEvents;
             resourceInputs["pushEvents"] = state?.pushEvents;
             resourceInputs["pushEventsBranchFilter"] = state?.pushEventsBranchFilter;
             resourceInputs["releasesEvents"] = state?.releasesEvents;
@@ -230,10 +240,12 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["group"] = args?.group;
             resourceInputs["issuesEvents"] = args?.issuesEvents;
             resourceInputs["jobEvents"] = args?.jobEvents;
+            resourceInputs["memberEvents"] = args?.memberEvents;
             resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
             resourceInputs["name"] = args?.name;
             resourceInputs["noteEvents"] = args?.noteEvents;
             resourceInputs["pipelineEvents"] = args?.pipelineEvents;
+            resourceInputs["projectEvents"] = args?.projectEvents;
             resourceInputs["pushEvents"] = args?.pushEvents;
             resourceInputs["pushEventsBranchFilter"] = args?.pushEventsBranchFilter;
             resourceInputs["releasesEvents"] = args?.releasesEvents;
@@ -318,6 +330,10 @@ export interface GroupHookState {
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     */
+    memberEvents?: pulumi.Input<boolean>;
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
@@ -333,6 +349,10 @@ export interface GroupHookState {
      * Invoke the hook for pipeline events. Defaults to `false`.
      */
     pipelineEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for project events. Defaults to `false`.
+     */
+    projectEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for push events. Defaults to `true`.
      */
@@ -428,6 +448,10 @@ export interface GroupHookArgs {
      */
     jobEvents?: pulumi.Input<boolean>;
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     */
+    memberEvents?: pulumi.Input<boolean>;
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean>;
@@ -443,6 +467,10 @@ export interface GroupHookArgs {
      * Invoke the hook for pipeline events. Defaults to `false`.
      */
     pipelineEvents?: pulumi.Input<boolean>;
+    /**
+     * Invoke the hook for project events. Defaults to `false`.
+     */
+    projectEvents?: pulumi.Input<boolean>;
     /**
      * Invoke the hook for push events. Defaults to `true`.
      */

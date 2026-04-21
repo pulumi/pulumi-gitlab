@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+    /// GitLab deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, for example:
     /// `ProjectId` can be whatever the [get single project api][GetSingleProject] takes for
     /// its `:id` value, so for example:
     /// 

@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+ * GitLab project group shares can be imported using an id made up of `projectid:groupid`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
@@ -69,6 +69,10 @@ export class ProjectShareGroup extends pulumi.CustomResource {
      */
     declare public readonly accessLevel: pulumi.Output<string | undefined>;
     /**
+     * Share expiration date. Format: `YYYY-MM-DD`
+     */
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
+    /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
     declare public readonly groupAccess: pulumi.Output<string | undefined>;
@@ -95,6 +99,7 @@ export class ProjectShareGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectShareGroupState | undefined;
             resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["groupAccess"] = state?.groupAccess;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["project"] = state?.project;
@@ -107,6 +112,7 @@ export class ProjectShareGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["groupAccess"] = args?.groupAccess;
             resourceInputs["groupId"] = args?.groupId;
             resourceInputs["project"] = args?.project;
@@ -126,6 +132,10 @@ export interface ProjectShareGroupState {
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * Share expiration date. Format: `YYYY-MM-DD`
+     */
+    expiresAt?: pulumi.Input<string>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
@@ -150,6 +160,10 @@ export interface ProjectShareGroupArgs {
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * Share expiration date. Format: `YYYY-MM-DD`
+     */
+    expiresAt?: pulumi.Input<string>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */

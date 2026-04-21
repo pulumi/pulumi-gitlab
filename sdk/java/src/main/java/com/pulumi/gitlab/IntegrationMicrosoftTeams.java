@@ -12,13 +12,13 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.IntegrationMicrosoftTeamsState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
  * The `gitlab.IntegrationMicrosoftTeams` resource manages the lifecycle of a project integration with Microsoft Teams.
  * 
- * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationMicrosoftTeams`instead!
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationMicrosoftTeams` instead.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#microsoft-teams-notifications)
  * 
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab.IntegrationMicrosoftTeams state using the project ID, e.g.
+ * You can import a gitlab.IntegrationMicrosoftTeams state using the project ID, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams teams 1
@@ -95,182 +95,182 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
         return this.active;
     }
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
      * 
      */
     @Export(name="branchesToBeNotified", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> branchesToBeNotified;
+    private Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * @return Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
      * 
      */
-    public Output<Optional<String>> branchesToBeNotified() {
-        return Codegen.optional(this.branchesToBeNotified);
+    public Output<String> branchesToBeNotified() {
+        return this.branchesToBeNotified;
     }
     /**
-     * Enable notifications for confidential issue events
+     * Enable notifications for confidential issue events.
      * 
      */
     @Export(name="confidentialIssuesEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> confidentialIssuesEvents;
+    private Output<Boolean> confidentialIssuesEvents;
 
     /**
-     * @return Enable notifications for confidential issue events
+     * @return Enable notifications for confidential issue events.
      * 
      */
-    public Output<Optional<Boolean>> confidentialIssuesEvents() {
-        return Codegen.optional(this.confidentialIssuesEvents);
+    public Output<Boolean> confidentialIssuesEvents() {
+        return this.confidentialIssuesEvents;
     }
     /**
-     * Enable notifications for confidential note events
+     * Enable notifications for confidential note events.
      * 
      */
     @Export(name="confidentialNoteEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> confidentialNoteEvents;
+    private Output<Boolean> confidentialNoteEvents;
 
     /**
-     * @return Enable notifications for confidential note events
+     * @return Enable notifications for confidential note events.
      * 
      */
-    public Output<Optional<Boolean>> confidentialNoteEvents() {
-        return Codegen.optional(this.confidentialNoteEvents);
+    public Output<Boolean> confidentialNoteEvents() {
+        return this.confidentialNoteEvents;
     }
     /**
-     * Create time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Create time.
+     * @return The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * Enable notifications for issue events
+     * Enable notifications for issue events.
      * 
      */
     @Export(name="issuesEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> issuesEvents;
+    private Output<Boolean> issuesEvents;
 
     /**
-     * @return Enable notifications for issue events
+     * @return Enable notifications for issue events.
      * 
      */
-    public Output<Optional<Boolean>> issuesEvents() {
-        return Codegen.optional(this.issuesEvents);
+    public Output<Boolean> issuesEvents() {
+        return this.issuesEvents;
     }
     /**
-     * Enable notifications for merge request events
+     * Enable notifications for merge request events.
      * 
      */
     @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeRequestsEvents;
+    private Output<Boolean> mergeRequestsEvents;
 
     /**
-     * @return Enable notifications for merge request events
+     * @return Enable notifications for merge request events.
      * 
      */
-    public Output<Optional<Boolean>> mergeRequestsEvents() {
-        return Codegen.optional(this.mergeRequestsEvents);
+    public Output<Boolean> mergeRequestsEvents() {
+        return this.mergeRequestsEvents;
     }
     /**
-     * Enable notifications for note events
+     * Enable notifications for note events.
      * 
      */
     @Export(name="noteEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> noteEvents;
+    private Output<Boolean> noteEvents;
 
     /**
-     * @return Enable notifications for note events
+     * @return Enable notifications for note events.
      * 
      */
-    public Output<Optional<Boolean>> noteEvents() {
-        return Codegen.optional(this.noteEvents);
+    public Output<Boolean> noteEvents() {
+        return this.noteEvents;
     }
     /**
-     * Send notifications for broken pipelines
+     * Send notifications for broken pipelines.
      * 
      */
     @Export(name="notifyOnlyBrokenPipelines", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> notifyOnlyBrokenPipelines;
+    private Output<Boolean> notifyOnlyBrokenPipelines;
 
     /**
-     * @return Send notifications for broken pipelines
+     * @return Send notifications for broken pipelines.
      * 
      */
-    public Output<Optional<Boolean>> notifyOnlyBrokenPipelines() {
-        return Codegen.optional(this.notifyOnlyBrokenPipelines);
+    public Output<Boolean> notifyOnlyBrokenPipelines() {
+        return this.notifyOnlyBrokenPipelines;
     }
     /**
-     * Enable notifications for pipeline events
+     * Enable notifications for pipeline events.
      * 
      */
     @Export(name="pipelineEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pipelineEvents;
+    private Output<Boolean> pipelineEvents;
 
     /**
-     * @return Enable notifications for pipeline events
+     * @return Enable notifications for pipeline events.
      * 
      */
-    public Output<Optional<Boolean>> pipelineEvents() {
-        return Codegen.optional(this.pipelineEvents);
+    public Output<Boolean> pipelineEvents() {
+        return this.pipelineEvents;
     }
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return ID of the project you want to activate integration on.
+     * @return ID of the project you want to activate the integration on.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Enable notifications for push events
+     * Enable notifications for push events.
      * 
      */
     @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pushEvents;
+    private Output<Boolean> pushEvents;
 
     /**
-     * @return Enable notifications for push events
+     * @return Enable notifications for push events.
      * 
      */
-    public Output<Optional<Boolean>> pushEvents() {
-        return Codegen.optional(this.pushEvents);
+    public Output<Boolean> pushEvents() {
+        return this.pushEvents;
     }
     /**
-     * Enable notifications for tag push events
+     * Enable notifications for tag push events.
      * 
      */
     @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tagPushEvents;
+    private Output<Boolean> tagPushEvents;
 
     /**
-     * @return Enable notifications for tag push events
+     * @return Enable notifications for tag push events.
      * 
      */
-    public Output<Optional<Boolean>> tagPushEvents() {
-        return Codegen.optional(this.tagPushEvents);
+    public Output<Boolean> tagPushEvents() {
+        return this.tagPushEvents;
     }
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return Update time.
+     * @return The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     public Output<String> updatedAt() {
@@ -291,18 +291,18 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
         return this.webhook;
     }
     /**
-     * Enable notifications for wiki page events
+     * Enable notifications for wiki page events.
      * 
      */
     @Export(name="wikiPageEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> wikiPageEvents;
+    private Output<Boolean> wikiPageEvents;
 
     /**
-     * @return Enable notifications for wiki page events
+     * @return Enable notifications for wiki page events.
      * 
      */
-    public Output<Optional<Boolean>> wikiPageEvents() {
-        return Codegen.optional(this.wikiPageEvents);
+    public Output<Boolean> wikiPageEvents() {
+        return this.wikiPageEvents;
     }
 
     /**
@@ -344,6 +344,9 @@ public class IntegrationMicrosoftTeams extends com.pulumi.resources.CustomResour
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "webhook"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -19,14 +19,14 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
     public static final ProjectIntegrationPipelinesEmailArgs Empty = new ProjectIntegrationPipelinesEmailArgs();
 
     /**
-     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+     * @return Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -64,14 +64,14 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
     }
 
     /**
-     * ) email addresses where notifications are sent.
+     * Email addresses where notifications are sent.
      * 
      */
     @Import(name="recipients", required=true)
     private Output<List<String>> recipients;
 
     /**
-     * @return ) email addresses where notifications are sent.
+     * @return Email addresses where notifications are sent.
      * 
      */
     public Output<List<String>> recipients() {
@@ -106,7 +106,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, and `defaultAndProtected`. Default is `default`
+         * @param branchesToBeNotified Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param recipients ) email addresses where notifications are sent.
+         * @param recipients Email addresses where notifications are sent.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param recipients ) email addresses where notifications are sent.
+         * @param recipients Email addresses where notifications are sent.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ProjectIntegrationPipelinesEmailArgs extends com.pulumi.resou
         }
 
         /**
-         * @param recipients ) email addresses where notifications are sent.
+         * @param recipients Email addresses where notifications are sent.
          * 
          * @return builder
          * 

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab.ProjectIntegrationExternalWiki state using the project ID, e.g.
+ * You can import a gitlab.ProjectIntegrationExternalWiki state using the project ID, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki wiki 1

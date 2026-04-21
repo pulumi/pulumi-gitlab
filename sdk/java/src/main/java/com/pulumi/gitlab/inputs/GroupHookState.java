@@ -245,6 +245,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    @Import(name="memberEvents")
+    private @Nullable Output<Boolean> memberEvents;
+
+    /**
+     * @return Invoke the hook for member events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> memberEvents() {
+        return Optional.ofNullable(this.memberEvents);
+    }
+
+    /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      * 
      */
@@ -302,6 +317,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> pipelineEvents() {
         return Optional.ofNullable(this.pipelineEvents);
+    }
+
+    /**
+     * Invoke the hook for project events. Defaults to `false`.
+     * 
+     */
+    @Import(name="projectEvents")
+    private @Nullable Output<Boolean> projectEvents;
+
+    /**
+     * @return Invoke the hook for project events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> projectEvents() {
+        return Optional.ofNullable(this.projectEvents);
     }
 
     /**
@@ -457,10 +487,12 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.hookId = $.hookId;
         this.issuesEvents = $.issuesEvents;
         this.jobEvents = $.jobEvents;
+        this.memberEvents = $.memberEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
         this.name = $.name;
         this.noteEvents = $.noteEvents;
         this.pipelineEvents = $.pipelineEvents;
+        this.projectEvents = $.projectEvents;
         this.pushEvents = $.pushEvents;
         this.pushEventsBranchFilter = $.pushEventsBranchFilter;
         this.releasesEvents = $.releasesEvents;
@@ -816,6 +848,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param memberEvents Invoke the hook for member events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberEvents(@Nullable Output<Boolean> memberEvents) {
+            $.memberEvents = memberEvents;
+            return this;
+        }
+
+        /**
+         * @param memberEvents Invoke the hook for member events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberEvents(Boolean memberEvents) {
+            return memberEvents(Output.of(memberEvents));
+        }
+
+        /**
          * @param mergeRequestsEvents Invoke the hook for merge requests events. Defaults to `false`.
          * 
          * @return builder
@@ -897,6 +950,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pipelineEvents(Boolean pipelineEvents) {
             return pipelineEvents(Output.of(pipelineEvents));
+        }
+
+        /**
+         * @param projectEvents Invoke the hook for project events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectEvents(@Nullable Output<Boolean> projectEvents) {
+            $.projectEvents = projectEvents;
+            return this;
+        }
+
+        /**
+         * @param projectEvents Invoke the hook for project events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectEvents(Boolean projectEvents) {
+            return projectEvents(Output.of(projectEvents));
         }
 
         /**

@@ -47,7 +47,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, e.g.
+    /// GitLab project mirror can be imported using an id made up of `project_id:mirror_id`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectMirror:ProjectMirror foo "12345:1337"
@@ -99,7 +99,7 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the remote repository to be mirrored.
+        /// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.GitLab
         private Input<string>? _url;
 
         /// <summary>
-        /// The URL of the remote repository to be mirrored.
+        /// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         /// </summary>
         public Input<string>? Url
         {
@@ -260,7 +260,7 @@ namespace Pulumi.GitLab
         private Input<string>? _url;
 
         /// <summary>
-        /// The URL of the remote repository to be mirrored.
+        /// The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         /// </summary>
         public Input<string>? Url
         {

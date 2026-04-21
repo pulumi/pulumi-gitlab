@@ -265,7 +265,7 @@ class ProjectTag(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
+        Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"
@@ -315,7 +315,7 @@ class ProjectTag(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, e.g.
+        Gitlab project tags can be imported with a key composed of `<project_id>:<tag_name>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"

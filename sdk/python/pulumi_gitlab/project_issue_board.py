@@ -334,11 +334,13 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
+        You can import this resource with an id made up of `{project}:{issue-board-id}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
         ```
+
+        Where `project` may be the product ID or path with namespace depending on what you have in your config.
 
 
         :param str resource_name: The name of the resource.
@@ -418,11 +420,13 @@ class ProjectIssueBoard(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
+        You can import this resource with an id made up of `{project}:{issue-board-id}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
         ```
+
+        Where `project` may be the product ID or path with namespace depending on what you have in your config.
 
 
         :param str resource_name: The name of the resource.

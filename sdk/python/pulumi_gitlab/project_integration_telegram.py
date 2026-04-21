@@ -528,7 +528,7 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationTelegram state using the project ID, e.g.
+        You can import a ProjectIntegrationTelegram state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram default 1
@@ -595,7 +595,7 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        You can import a ProjectIntegrationTelegram state using the project ID, e.g.
+        You can import a ProjectIntegrationTelegram state using the project ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram default 1

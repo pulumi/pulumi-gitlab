@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, e.g.
+ * A GitLab Group Access Token can be imported using a key composed of `<group-id>:<token-id>`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"

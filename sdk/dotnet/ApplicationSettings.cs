@@ -197,6 +197,12 @@ namespace Pulumi.GitLab
         public Output<bool> CheckNamespacePlan { get; private set; } = null!;
 
         /// <summary>
+        /// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        /// </summary>
+        [Output("ciJobLiveTraceEnabled")]
+        public Output<bool> CiJobLiveTraceEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of includes per pipeline.
         /// </summary>
         [Output("ciMaxIncludes")]
@@ -417,6 +423,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("disableFeedToken")]
         public Output<bool> DisableFeedToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevent editing approval rules in projects and merge requests.
+        /// </summary>
+        [Output("disableOverridingApproversPerMergeRequest")]
+        public Output<bool> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -947,6 +959,12 @@ namespace Pulumi.GitLab
         public Output<int> InactiveProjectsSendWarningEmailAfterMonths { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies retention period for inactive project and group access tokens. Default is 30.
+        /// </summary>
+        [Output("inactiveResourceAccessTokensDeleteAfterDays")]
+        public Output<int> InactiveResourceAccessTokensDeleteAfterDays { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not optional metrics are enabled in Service Ping.
         /// </summary>
         [Output("includeOptionalMetricsInServicePing")]
@@ -989,6 +1007,24 @@ namespace Pulumi.GitLab
         public Output<bool> KeepLatestArtifact { get; private set; } = null!;
 
         /// <summary>
+        /// (If enabled, requires: kroki_url) Enable Kroki integration.
+        /// </summary>
+        [Output("krokiEnabled")]
+        public Output<bool> KrokiEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for formats supported by the Kroki instance.
+        /// </summary>
+        [Output("krokiFormats")]
+        public Output<ImmutableDictionary<string, bool>> KrokiFormats { get; private set; } = null!;
+
+        /// <summary>
+        /// The Kroki instance URL for integration.
+        /// </summary>
+        [Output("krokiUrl")]
+        public Output<string> KrokiUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Increase this value when any cached Markdown should be invalidated.
         /// </summary>
         [Output("localMarkdownVersion")]
@@ -1005,6 +1041,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("lockMembershipsToLdap")]
         public Output<bool> LockMembershipsToLdap { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        /// </summary>
+        [Output("lockMembershipsToSaml")]
+        public Output<bool> LockMembershipsToSaml { get; private set; } = null!;
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -1269,6 +1311,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("pollingIntervalMultiplier")]
         public Output<double> PollingIntervalMultiplier { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevent approval by merge request creator (author).
+        /// </summary>
+        [Output("preventMergeRequestsAuthorApproval")]
+        public Output<bool> PreventMergeRequestsAuthorApproval { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevent approval by committers to merge requests.
+        /// </summary>
+        [Output("preventMergeRequestsCommittersApproval")]
+        public Output<bool> PreventMergeRequestsCommittersApproval { get; private set; } = null!;
 
         /// <summary>
         /// Enable project export.
@@ -1679,6 +1733,24 @@ namespace Pulumi.GitLab
         public Output<int> ThrottleAuthenticatedApiRequestsPerPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Enable authenticated Git LFS request rate limit.
+        /// </summary>
+        [Output("throttleAuthenticatedGitLfsEnabled")]
+        public Output<bool> ThrottleAuthenticatedGitLfsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Rate limit period (in seconds).
+        /// </summary>
+        [Output("throttleAuthenticatedGitLfsPeriodInSeconds")]
+        public Output<int> ThrottleAuthenticatedGitLfsPeriodInSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum requests per period per user.
+        /// </summary>
+        [Output("throttleAuthenticatedGitLfsRequestsPerPeriod")]
+        public Output<int> ThrottleAuthenticatedGitLfsRequestsPerPeriod { get; private set; } = null!;
+
+        /// <summary>
         /// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         /// </summary>
         [Output("throttleAuthenticatedPackagesApiEnabled")]
@@ -1809,6 +1881,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("updateRunnerVersionsEnabled")]
         public Output<bool> UpdateRunnerVersionsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Disable user profile name changes.
+        /// </summary>
+        [Output("updatingNameDisabledForUsers")]
+        public Output<bool> UpdatingNameDisabledForUsers { get; private set; } = null!;
 
         /// <summary>
         /// Every week GitLab reports license usage back to GitLab, Inc.
@@ -2149,6 +2227,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CheckNamespacePlan { get; set; }
 
         /// <summary>
+        /// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        /// </summary>
+        [Input("ciJobLiveTraceEnabled")]
+        public Input<bool>? CiJobLiveTraceEnabled { get; set; }
+
+        /// <summary>
         /// The maximum number of includes per pipeline.
         /// </summary>
         [Input("ciMaxIncludes")]
@@ -2369,6 +2453,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("disableFeedToken")]
         public Input<bool>? DisableFeedToken { get; set; }
+
+        /// <summary>
+        /// Prevent editing approval rules in projects and merge requests.
+        /// </summary>
+        [Input("disableOverridingApproversPerMergeRequest")]
+        public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -3011,6 +3101,12 @@ namespace Pulumi.GitLab
         public Input<int>? InactiveProjectsSendWarningEmailAfterMonths { get; set; }
 
         /// <summary>
+        /// Specifies retention period for inactive project and group access tokens. Default is 30.
+        /// </summary>
+        [Input("inactiveResourceAccessTokensDeleteAfterDays")]
+        public Input<int>? InactiveResourceAccessTokensDeleteAfterDays { get; set; }
+
+        /// <summary>
         /// Whether or not optional metrics are enabled in Service Ping.
         /// </summary>
         [Input("includeOptionalMetricsInServicePing")]
@@ -3053,6 +3149,30 @@ namespace Pulumi.GitLab
         public Input<bool>? KeepLatestArtifact { get; set; }
 
         /// <summary>
+        /// (If enabled, requires: kroki_url) Enable Kroki integration.
+        /// </summary>
+        [Input("krokiEnabled")]
+        public Input<bool>? KrokiEnabled { get; set; }
+
+        [Input("krokiFormats")]
+        private InputMap<bool>? _krokiFormats;
+
+        /// <summary>
+        /// Configuration for formats supported by the Kroki instance.
+        /// </summary>
+        public InputMap<bool> KrokiFormats
+        {
+            get => _krokiFormats ?? (_krokiFormats = new InputMap<bool>());
+            set => _krokiFormats = value;
+        }
+
+        /// <summary>
+        /// The Kroki instance URL for integration.
+        /// </summary>
+        [Input("krokiUrl")]
+        public Input<string>? KrokiUrl { get; set; }
+
+        /// <summary>
         /// Increase this value when any cached Markdown should be invalidated.
         /// </summary>
         [Input("localMarkdownVersion")]
@@ -3069,6 +3189,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lockMembershipsToLdap")]
         public Input<bool>? LockMembershipsToLdap { get; set; }
+
+        /// <summary>
+        /// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        /// </summary>
+        [Input("lockMembershipsToSaml")]
+        public Input<bool>? LockMembershipsToSaml { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -3355,6 +3481,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pollingIntervalMultiplier")]
         public Input<double>? PollingIntervalMultiplier { get; set; }
+
+        /// <summary>
+        /// Prevent approval by merge request creator (author).
+        /// </summary>
+        [Input("preventMergeRequestsAuthorApproval")]
+        public Input<bool>? PreventMergeRequestsAuthorApproval { get; set; }
+
+        /// <summary>
+        /// Prevent approval by committers to merge requests.
+        /// </summary>
+        [Input("preventMergeRequestsCommittersApproval")]
+        public Input<bool>? PreventMergeRequestsCommittersApproval { get; set; }
 
         /// <summary>
         /// Enable project export.
@@ -3847,6 +3985,24 @@ namespace Pulumi.GitLab
         public Input<int>? ThrottleAuthenticatedApiRequestsPerPeriod { get; set; }
 
         /// <summary>
+        /// Enable authenticated Git LFS request rate limit.
+        /// </summary>
+        [Input("throttleAuthenticatedGitLfsEnabled")]
+        public Input<bool>? ThrottleAuthenticatedGitLfsEnabled { get; set; }
+
+        /// <summary>
+        /// Rate limit period (in seconds).
+        /// </summary>
+        [Input("throttleAuthenticatedGitLfsPeriodInSeconds")]
+        public Input<int>? ThrottleAuthenticatedGitLfsPeriodInSeconds { get; set; }
+
+        /// <summary>
+        /// Maximum requests per period per user.
+        /// </summary>
+        [Input("throttleAuthenticatedGitLfsRequestsPerPeriod")]
+        public Input<int>? ThrottleAuthenticatedGitLfsRequestsPerPeriod { get; set; }
+
+        /// <summary>
         /// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         /// </summary>
         [Input("throttleAuthenticatedPackagesApiEnabled")]
@@ -3977,6 +4133,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("updateRunnerVersionsEnabled")]
         public Input<bool>? UpdateRunnerVersionsEnabled { get; set; }
+
+        /// <summary>
+        /// Disable user profile name changes.
+        /// </summary>
+        [Input("updatingNameDisabledForUsers")]
+        public Input<bool>? UpdatingNameDisabledForUsers { get; set; }
 
         /// <summary>
         /// Every week GitLab reports license usage back to GitLab, Inc.
@@ -4265,6 +4427,12 @@ namespace Pulumi.GitLab
         public Input<bool>? CheckNamespacePlan { get; set; }
 
         /// <summary>
+        /// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        /// </summary>
+        [Input("ciJobLiveTraceEnabled")]
+        public Input<bool>? CiJobLiveTraceEnabled { get; set; }
+
+        /// <summary>
         /// The maximum number of includes per pipeline.
         /// </summary>
         [Input("ciMaxIncludes")]
@@ -4485,6 +4653,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("disableFeedToken")]
         public Input<bool>? DisableFeedToken { get; set; }
+
+        /// <summary>
+        /// Prevent editing approval rules in projects and merge requests.
+        /// </summary>
+        [Input("disableOverridingApproversPerMergeRequest")]
+        public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -5139,6 +5313,12 @@ namespace Pulumi.GitLab
         public Input<int>? InactiveProjectsSendWarningEmailAfterMonths { get; set; }
 
         /// <summary>
+        /// Specifies retention period for inactive project and group access tokens. Default is 30.
+        /// </summary>
+        [Input("inactiveResourceAccessTokensDeleteAfterDays")]
+        public Input<int>? InactiveResourceAccessTokensDeleteAfterDays { get; set; }
+
+        /// <summary>
         /// Whether or not optional metrics are enabled in Service Ping.
         /// </summary>
         [Input("includeOptionalMetricsInServicePing")]
@@ -5181,6 +5361,30 @@ namespace Pulumi.GitLab
         public Input<bool>? KeepLatestArtifact { get; set; }
 
         /// <summary>
+        /// (If enabled, requires: kroki_url) Enable Kroki integration.
+        /// </summary>
+        [Input("krokiEnabled")]
+        public Input<bool>? KrokiEnabled { get; set; }
+
+        [Input("krokiFormats")]
+        private InputMap<bool>? _krokiFormats;
+
+        /// <summary>
+        /// Configuration for formats supported by the Kroki instance.
+        /// </summary>
+        public InputMap<bool> KrokiFormats
+        {
+            get => _krokiFormats ?? (_krokiFormats = new InputMap<bool>());
+            set => _krokiFormats = value;
+        }
+
+        /// <summary>
+        /// The Kroki instance URL for integration.
+        /// </summary>
+        [Input("krokiUrl")]
+        public Input<string>? KrokiUrl { get; set; }
+
+        /// <summary>
         /// Increase this value when any cached Markdown should be invalidated.
         /// </summary>
         [Input("localMarkdownVersion")]
@@ -5197,6 +5401,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lockMembershipsToLdap")]
         public Input<bool>? LockMembershipsToLdap { get; set; }
+
+        /// <summary>
+        /// Set to true to lock all memberships to SAML. Premium and Ultimate only.
+        /// </summary>
+        [Input("lockMembershipsToSaml")]
+        public Input<bool>? LockMembershipsToSaml { get; set; }
 
         /// <summary>
         /// Enable Mailgun event receiver.
@@ -5483,6 +5693,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("pollingIntervalMultiplier")]
         public Input<double>? PollingIntervalMultiplier { get; set; }
+
+        /// <summary>
+        /// Prevent approval by merge request creator (author).
+        /// </summary>
+        [Input("preventMergeRequestsAuthorApproval")]
+        public Input<bool>? PreventMergeRequestsAuthorApproval { get; set; }
+
+        /// <summary>
+        /// Prevent approval by committers to merge requests.
+        /// </summary>
+        [Input("preventMergeRequestsCommittersApproval")]
+        public Input<bool>? PreventMergeRequestsCommittersApproval { get; set; }
 
         /// <summary>
         /// Enable project export.
@@ -5975,6 +6197,24 @@ namespace Pulumi.GitLab
         public Input<int>? ThrottleAuthenticatedApiRequestsPerPeriod { get; set; }
 
         /// <summary>
+        /// Enable authenticated Git LFS request rate limit.
+        /// </summary>
+        [Input("throttleAuthenticatedGitLfsEnabled")]
+        public Input<bool>? ThrottleAuthenticatedGitLfsEnabled { get; set; }
+
+        /// <summary>
+        /// Rate limit period (in seconds).
+        /// </summary>
+        [Input("throttleAuthenticatedGitLfsPeriodInSeconds")]
+        public Input<int>? ThrottleAuthenticatedGitLfsPeriodInSeconds { get; set; }
+
+        /// <summary>
+        /// Maximum requests per period per user.
+        /// </summary>
+        [Input("throttleAuthenticatedGitLfsRequestsPerPeriod")]
+        public Input<int>? ThrottleAuthenticatedGitLfsRequestsPerPeriod { get; set; }
+
+        /// <summary>
         /// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         /// </summary>
         [Input("throttleAuthenticatedPackagesApiEnabled")]
@@ -6105,6 +6345,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("updateRunnerVersionsEnabled")]
         public Input<bool>? UpdateRunnerVersionsEnabled { get; set; }
+
+        /// <summary>
+        /// Disable user profile name changes.
+        /// </summary>
+        [Input("updatingNameDisabledForUsers")]
+        public Input<bool>? UpdatingNameDisabledForUsers { get; set; }
 
         /// <summary>
         /// Every week GitLab reports license usage back to GitLab, Inc.

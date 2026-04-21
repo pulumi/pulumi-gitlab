@@ -161,6 +161,10 @@ type Project struct {
 	MergeMethod pulumi.StringOutput `pulumi:"mergeMethod"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled pulumi.BoolOutput `pulumi:"mergePipelinesEnabled"`
+	// Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+	MergeRequestTitleRegex pulumi.StringOutput `pulumi:"mergeRequestTitleRegex"`
+	// Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+	MergeRequestTitleRegexDescription pulumi.StringOutput `pulumi:"mergeRequestTitleRegexDescription"`
 	// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
 	MergeRequestsAccessLevel pulumi.StringOutput `pulumi:"mergeRequestsAccessLevel"`
 	// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
@@ -461,6 +465,10 @@ type projectState struct {
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled *bool `pulumi:"mergePipelinesEnabled"`
+	// Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+	MergeRequestTitleRegex *string `pulumi:"mergeRequestTitleRegex"`
+	// Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+	MergeRequestTitleRegexDescription *string `pulumi:"mergeRequestTitleRegexDescription"`
 	// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
 	MergeRequestsAccessLevel *string `pulumi:"mergeRequestsAccessLevel"`
 	// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
@@ -724,6 +732,10 @@ type ProjectState struct {
 	MergeMethod pulumi.StringPtrInput
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled pulumi.BoolPtrInput
+	// Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+	MergeRequestTitleRegex pulumi.StringPtrInput
+	// Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+	MergeRequestTitleRegexDescription pulumi.StringPtrInput
 	// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
 	MergeRequestsAccessLevel pulumi.StringPtrInput
 	// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
@@ -985,6 +997,10 @@ type projectArgs struct {
 	MergeMethod *string `pulumi:"mergeMethod"`
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled *bool `pulumi:"mergePipelinesEnabled"`
+	// Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+	MergeRequestTitleRegex *string `pulumi:"mergeRequestTitleRegex"`
+	// Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+	MergeRequestTitleRegexDescription *string `pulumi:"mergeRequestTitleRegexDescription"`
 	// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
 	MergeRequestsAccessLevel *string `pulumi:"mergeRequestsAccessLevel"`
 	// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
@@ -1235,6 +1251,10 @@ type ProjectArgs struct {
 	MergeMethod pulumi.StringPtrInput
 	// Enable or disable merge pipelines.
 	MergePipelinesEnabled pulumi.BoolPtrInput
+	// Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+	MergeRequestTitleRegex pulumi.StringPtrInput
+	// Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+	MergeRequestTitleRegexDescription pulumi.StringPtrInput
 	// Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
 	MergeRequestsAccessLevel pulumi.StringPtrInput
 	// Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
@@ -1745,6 +1765,16 @@ func (o ProjectOutput) MergeMethod() pulumi.StringOutput {
 // Enable or disable merge pipelines.
 func (o ProjectOutput) MergePipelinesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.MergePipelinesEnabled }).(pulumi.BoolOutput)
+}
+
+// Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
+func (o ProjectOutput) MergeRequestTitleRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.MergeRequestTitleRegex }).(pulumi.StringOutput)
+}
+
+// Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
+func (o ProjectOutput) MergeRequestTitleRegexDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.MergeRequestTitleRegexDescription }).(pulumi.StringOutput)
 }
 
 // Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.

@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a system hook using the hook id `{hook-id}`, e.g.
+    /// You can import a system hook using the hook id `{hook-id}`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/systemHook:SystemHook example 42

@@ -70,11 +70,13 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * A GitLab Project Merge Request Note can be imported using a key composed of `&lt;project-id&gt;:&lt;merge-request-iid&gt;:&lt;note-id&gt;`, for example:
+ * A GitLab Project Merge Request Note can be imported using a key composed of `&lt;project&gt;:&lt;merge-request-iid&gt;:&lt;note-id&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote example &#34;12345:1:3&#34;
  * ```
+ * 
+ * Where `project` may be the product ID or path with namespace depending on what you have in your config.
  * 
  */
 @ResourceType(type="gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote")

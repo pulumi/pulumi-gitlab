@@ -396,7 +396,6 @@ class BranchProtection(pulumi.CustomResource):
            when creating a new project and trying to manage the branch protection setting for its default branch the `BranchProtection` resource will
            automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
            Having multiple `BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
-           This behavior might change in the future.
 
         > The `allowed_to_push`, `allowed_to_merge`, `allowed_to_unprotect`, `unprotect_access_level` and `code_owner_approval_required` attributes require a GitLab Enterprise instance.
 
@@ -469,7 +468,7 @@ class BranchProtection(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
+        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"
@@ -504,7 +503,6 @@ class BranchProtection(pulumi.CustomResource):
            when creating a new project and trying to manage the branch protection setting for its default branch the `BranchProtection` resource will
            automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
            Having multiple `BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
-           This behavior might change in the future.
 
         > The `allowed_to_push`, `allowed_to_merge`, `allowed_to_unprotect`, `unprotect_access_level` and `code_owner_approval_required` attributes require a GitLab Enterprise instance.
 
@@ -577,7 +575,7 @@ class BranchProtection(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, e.g.
+        Gitlab protected branches can be imported with a key composed of `<project_id>:<branch>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/branchProtection:BranchProtection BranchProtect "12345:main"

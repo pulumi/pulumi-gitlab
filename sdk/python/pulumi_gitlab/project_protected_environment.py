@@ -231,7 +231,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
+        GitLab protected environments can be imported using an id made up of `projectId:environmentName`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production
@@ -269,7 +269,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab protected environments can be imported using an id made up of `projectId:environmentName`, e.g.
+        GitLab protected environments can be imported using an id made up of `projectId:environmentName`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment bar 123:production

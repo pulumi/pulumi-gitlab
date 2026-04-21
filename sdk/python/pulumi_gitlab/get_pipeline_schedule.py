@@ -27,7 +27,7 @@ class GetPipelineScheduleResult:
     """
     A collection of values returned by getPipelineSchedule.
     """
-    def __init__(__self__, active=None, created_at=None, cron=None, cron_timezone=None, description=None, id=None, last_pipeline=None, next_run_at=None, owner=None, pipeline_schedule_id=None, project=None, ref=None, updated_at=None, variables=None):
+    def __init__(__self__, active=None, created_at=None, cron=None, cron_timezone=None, description=None, id=None, inputs=None, last_pipeline=None, next_run_at=None, owner=None, pipeline_schedule_id=None, project=None, ref=None, updated_at=None, variables=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         pulumi.set(__self__, "active", active)
@@ -46,6 +46,9 @@ class GetPipelineScheduleResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if inputs and not isinstance(inputs, list):
+            raise TypeError("Expected argument 'inputs' to be a list")
+        pulumi.set(__self__, "inputs", inputs)
         if last_pipeline and not isinstance(last_pipeline, dict):
             raise TypeError("Expected argument 'last_pipeline' to be a dict")
         pulumi.set(__self__, "last_pipeline", last_pipeline)
@@ -118,6 +121,14 @@ class GetPipelineScheduleResult:
         The ID of this Terraform resource. In the format of `<project-id>:<pipeline-schedule-id>`.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> Sequence['outputs.GetPipelineScheduleInputResult']:
+        """
+        List of pipeline schedule inputs. Each element has `name` and `value`.
+        """
+        return pulumi.get(self, "inputs")
 
     @_builtins.property
     @pulumi.getter(name="lastPipeline")
@@ -196,6 +207,7 @@ class AwaitableGetPipelineScheduleResult(GetPipelineScheduleResult):
             cron_timezone=self.cron_timezone,
             description=self.description,
             id=self.id,
+            inputs=self.inputs,
             last_pipeline=self.last_pipeline,
             next_run_at=self.next_run_at,
             owner=self.owner,
@@ -244,6 +256,7 @@ def get_pipeline_schedule(cron_timezone: Optional[_builtins.str] = None,
         cron_timezone=pulumi.get(__ret__, 'cron_timezone'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        inputs=pulumi.get(__ret__, 'inputs'),
         last_pipeline=pulumi.get(__ret__, 'last_pipeline'),
         next_run_at=pulumi.get(__ret__, 'next_run_at'),
         owner=pulumi.get(__ret__, 'owner'),
@@ -289,6 +302,7 @@ def get_pipeline_schedule_output(cron_timezone: Optional[pulumi.Input[Optional[_
         cron_timezone=pulumi.get(__response__, 'cron_timezone'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        inputs=pulumi.get(__response__, 'inputs'),
         last_pipeline=pulumi.get(__response__, 'last_pipeline'),
         next_run_at=pulumi.get(__response__, 'next_run_at'),
         owner=pulumi.get(__response__, 'owner'),

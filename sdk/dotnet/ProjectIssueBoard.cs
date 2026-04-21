@@ -109,11 +109,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import this resource with an id made up of `{project-id}:{issue-board-id}`, e.g.
+    /// You can import this resource with an id made up of `{project}:{issue-board-id}`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectIssueBoard:ProjectIssueBoard kanban 42:1
     /// ```
+    /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectIssueBoard:ProjectIssueBoard")]
     public partial class ProjectIssueBoard : global::Pulumi.CustomResource

@@ -32,14 +32,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
      * 
      */
     @Import(name="branchesToBeNotified")
     private @Nullable Output<String> branchesToBeNotified;
 
     /**
-     * @return Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+     * @return Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
      * 
      */
     public Optional<Output<String>> branchesToBeNotified() {
@@ -47,14 +47,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for confidential issue events
+     * Enable notifications for confidential issue events.
      * 
      */
     @Import(name="confidentialIssuesEvents")
     private @Nullable Output<Boolean> confidentialIssuesEvents;
 
     /**
-     * @return Enable notifications for confidential issue events
+     * @return Enable notifications for confidential issue events.
      * 
      */
     public Optional<Output<Boolean>> confidentialIssuesEvents() {
@@ -62,14 +62,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for confidential note events
+     * Enable notifications for confidential note events.
      * 
      */
     @Import(name="confidentialNoteEvents")
     private @Nullable Output<Boolean> confidentialNoteEvents;
 
     /**
-     * @return Enable notifications for confidential note events
+     * @return Enable notifications for confidential note events.
      * 
      */
     public Optional<Output<Boolean>> confidentialNoteEvents() {
@@ -77,14 +77,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Create time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Create time.
+     * @return The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -92,14 +92,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for issue events
+     * Enable notifications for issue events.
      * 
      */
     @Import(name="issuesEvents")
     private @Nullable Output<Boolean> issuesEvents;
 
     /**
-     * @return Enable notifications for issue events
+     * @return Enable notifications for issue events.
      * 
      */
     public Optional<Output<Boolean>> issuesEvents() {
@@ -107,14 +107,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for merge request events
+     * Enable notifications for merge request events.
      * 
      */
     @Import(name="mergeRequestsEvents")
     private @Nullable Output<Boolean> mergeRequestsEvents;
 
     /**
-     * @return Enable notifications for merge request events
+     * @return Enable notifications for merge request events.
      * 
      */
     public Optional<Output<Boolean>> mergeRequestsEvents() {
@@ -122,14 +122,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for note events
+     * Enable notifications for note events.
      * 
      */
     @Import(name="noteEvents")
     private @Nullable Output<Boolean> noteEvents;
 
     /**
-     * @return Enable notifications for note events
+     * @return Enable notifications for note events.
      * 
      */
     public Optional<Output<Boolean>> noteEvents() {
@@ -137,14 +137,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Send notifications for broken pipelines
+     * Send notifications for broken pipelines.
      * 
      */
     @Import(name="notifyOnlyBrokenPipelines")
     private @Nullable Output<Boolean> notifyOnlyBrokenPipelines;
 
     /**
-     * @return Send notifications for broken pipelines
+     * @return Send notifications for broken pipelines.
      * 
      */
     public Optional<Output<Boolean>> notifyOnlyBrokenPipelines() {
@@ -152,14 +152,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for pipeline events
+     * Enable notifications for pipeline events.
      * 
      */
     @Import(name="pipelineEvents")
     private @Nullable Output<Boolean> pipelineEvents;
 
     /**
-     * @return Enable notifications for pipeline events
+     * @return Enable notifications for pipeline events.
      * 
      */
     public Optional<Output<Boolean>> pipelineEvents() {
@@ -167,14 +167,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * ID of the project you want to activate integration on.
+     * ID of the project you want to activate the integration on.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return ID of the project you want to activate integration on.
+     * @return ID of the project you want to activate the integration on.
      * 
      */
     public Optional<Output<String>> project() {
@@ -182,14 +182,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for push events
+     * Enable notifications for push events.
      * 
      */
     @Import(name="pushEvents")
     private @Nullable Output<Boolean> pushEvents;
 
     /**
-     * @return Enable notifications for push events
+     * @return Enable notifications for push events.
      * 
      */
     public Optional<Output<Boolean>> pushEvents() {
@@ -197,14 +197,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for tag push events
+     * Enable notifications for tag push events.
      * 
      */
     @Import(name="tagPushEvents")
     private @Nullable Output<Boolean> tagPushEvents;
 
     /**
-     * @return Enable notifications for tag push events
+     * @return Enable notifications for tag push events.
      * 
      */
     public Optional<Output<Boolean>> tagPushEvents() {
@@ -212,14 +212,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Update time.
+     * @return The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -242,14 +242,14 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
     }
 
     /**
-     * Enable notifications for wiki page events
+     * Enable notifications for wiki page events.
      * 
      */
     @Import(name="wikiPageEvents")
     private @Nullable Output<Boolean> wikiPageEvents;
 
     /**
-     * @return Enable notifications for wiki page events
+     * @return Enable notifications for wiki page events.
      * 
      */
     public Optional<Output<Boolean>> wikiPageEvents() {
@@ -317,7 +317,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+         * @param branchesToBeNotified Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param branchesToBeNotified Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default*and*protected”. The default value is “default”
+         * @param branchesToBeNotified Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param confidentialIssuesEvents Enable notifications for confidential issue events
+         * @param confidentialIssuesEvents Enable notifications for confidential issue events.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param confidentialIssuesEvents Enable notifications for confidential issue events
+         * @param confidentialIssuesEvents Enable notifications for confidential issue events.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param confidentialNoteEvents Enable notifications for confidential note events
+         * @param confidentialNoteEvents Enable notifications for confidential note events.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param confidentialNoteEvents Enable notifications for confidential note events
+         * @param confidentialNoteEvents Enable notifications for confidential note events.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param createdAt Create time.
+         * @param createdAt The ISO8601 date/time that this integration was activated at in UTC.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param createdAt Create time.
+         * @param createdAt The ISO8601 date/time that this integration was activated at in UTC.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param issuesEvents Enable notifications for issue events
+         * @param issuesEvents Enable notifications for issue events.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param issuesEvents Enable notifications for issue events
+         * @param issuesEvents Enable notifications for issue events.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param mergeRequestsEvents Enable notifications for merge request events
+         * @param mergeRequestsEvents Enable notifications for merge request events.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param mergeRequestsEvents Enable notifications for merge request events
+         * @param mergeRequestsEvents Enable notifications for merge request events.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param noteEvents Enable notifications for note events
+         * @param noteEvents Enable notifications for note events.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param noteEvents Enable notifications for note events
+         * @param noteEvents Enable notifications for note events.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param notifyOnlyBrokenPipelines Send notifications for broken pipelines
+         * @param notifyOnlyBrokenPipelines Send notifications for broken pipelines.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param notifyOnlyBrokenPipelines Send notifications for broken pipelines
+         * @param notifyOnlyBrokenPipelines Send notifications for broken pipelines.
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param pipelineEvents Enable notifications for pipeline events
+         * @param pipelineEvents Enable notifications for pipeline events.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param pipelineEvents Enable notifications for pipeline events
+         * @param pipelineEvents Enable notifications for pipeline events.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param project ID of the project you want to activate integration on.
+         * @param project ID of the project you want to activate the integration on.
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param project ID of the project you want to activate integration on.
+         * @param project ID of the project you want to activate the integration on.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param pushEvents Enable notifications for push events
+         * @param pushEvents Enable notifications for push events.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param pushEvents Enable notifications for push events
+         * @param pushEvents Enable notifications for push events.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param tagPushEvents Enable notifications for tag push events
+         * @param tagPushEvents Enable notifications for tag push events.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param tagPushEvents Enable notifications for tag push events
+         * @param tagPushEvents Enable notifications for tag push events.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param updatedAt Update time.
+         * @param updatedAt The ISO8601 date/time that this integration was last updated at in UTC.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param updatedAt Update time.
+         * @param updatedAt The ISO8601 date/time that this integration was last updated at in UTC.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param wikiPageEvents Enable notifications for wiki page events
+         * @param wikiPageEvents Enable notifications for wiki page events.
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class IntegrationMicrosoftTeamsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param wikiPageEvents Enable notifications for wiki page events
+         * @param wikiPageEvents Enable notifications for wiki page events.
          * 
          * @return builder
          * 

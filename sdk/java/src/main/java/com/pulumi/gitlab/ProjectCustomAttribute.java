@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a project custom attribute using an id made up of `{project-id}:{key}`, e.g.
+ * You can import a project custom attribute using an id made up of `{project-id}:{key}`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectCustomAttribute:ProjectCustomAttribute attr 42:location

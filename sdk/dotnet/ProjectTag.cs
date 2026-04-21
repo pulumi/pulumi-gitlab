@@ -48,7 +48,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab project tags can be imported with a key composed of `&lt;project_id&gt;:&lt;tag_name&gt;`, e.g.
+    /// Gitlab project tags can be imported with a key composed of `&lt;project_id&gt;:&lt;tag_name&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectTag:ProjectTag example "12345:develop"

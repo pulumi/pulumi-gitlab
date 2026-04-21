@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * Gitlab compliance frameworks can be imported with a key composed of `&lt;namespace_path&gt;:&lt;framework_id&gt;`, e.g.
+ * Gitlab compliance frameworks can be imported with a key composed of `&lt;namespace_path&gt;:&lt;framework_id&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample &#34;top-level-group:gid://gitlab/ComplianceManagement::Framework/12345&#34;

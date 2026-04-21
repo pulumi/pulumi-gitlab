@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project group shares can be imported using an id made up of `projectid:groupid`, e.g.
+    /// GitLab project group shares can be imported using an id made up of `projectid:groupid`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectShareGroup:ProjectShareGroup test 12345:1337
@@ -54,6 +54,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("accessLevel")]
         public Output<string?> AccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Share expiration date. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
@@ -126,6 +132,12 @@ namespace Pulumi.GitLab
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
+        /// Share expiration date. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
+
+        /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Input("groupAccess")]
@@ -156,6 +168,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
+
+        /// <summary>
+        /// Share expiration date. Format: `YYYY-MM-DD`
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`

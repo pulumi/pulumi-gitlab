@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.IntegrationJira` resource manages the lifecycle of a project integration with Jira.
  * 
- * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationJira`instead!
+ * &gt; This resource is deprecated and will be removed in 19.0. Use `gitlab.ProjectIntegrationJira` instead.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_integrations/#jira-issues)
  * 
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a gitlab.IntegrationJira state using the project ID, e.g.
+ * You can import a gitlab.IntegrationJira state using the project ID, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/integrationJira:IntegrationJira jira 1
@@ -140,14 +140,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return this.commitEvents;
     }
     /**
-     * Create time.
+     * The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Create time.
+     * @return The ISO8601 date/time that this integration was activated at in UTC.
      * 
      */
     public Output<String> createdAt() {
@@ -158,56 +158,56 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="issuesEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> issuesEnabled;
+    private Output<Boolean> issuesEnabled;
 
     /**
      * @return Enable viewing Jira issues in GitLab.
      * 
      */
-    public Output<Optional<Boolean>> issuesEnabled() {
-        return Codegen.optional(this.issuesEnabled);
+    public Output<Boolean> issuesEnabled() {
+        return this.issuesEnabled;
     }
     /**
      * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
      * 
      */
     @Export(name="jiraAuthType", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> jiraAuthType;
+    private Output<Integer> jiraAuthType;
 
     /**
      * @return The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
      * 
      */
-    public Output<Optional<Integer>> jiraAuthType() {
-        return Codegen.optional(this.jiraAuthType);
+    public Output<Integer> jiraAuthType() {
+        return this.jiraAuthType;
     }
     /**
      * Prefix to match Jira issue keys.
      * 
      */
     @Export(name="jiraIssuePrefix", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> jiraIssuePrefix;
+    private Output<String> jiraIssuePrefix;
 
     /**
      * @return Prefix to match Jira issue keys.
      * 
      */
-    public Output<Optional<String>> jiraIssuePrefix() {
-        return Codegen.optional(this.jiraIssuePrefix);
+    public Output<String> jiraIssuePrefix() {
+        return this.jiraIssuePrefix;
     }
     /**
      * Regular expression to match Jira issue keys.
      * 
      */
     @Export(name="jiraIssueRegex", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> jiraIssueRegex;
+    private Output<String> jiraIssueRegex;
 
     /**
      * @return Regular expression to match Jira issue keys.
      * 
      */
-    public Output<Optional<String>> jiraIssueRegex() {
-        return Codegen.optional(this.jiraIssueRegex);
+    public Output<String> jiraIssueRegex() {
+        return this.jiraIssueRegex;
     }
     /**
      * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
@@ -228,14 +228,14 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="jiraIssueTransitionId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> jiraIssueTransitionId;
+    private Output<String> jiraIssueTransitionId;
 
     /**
      * @return The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration &gt; Issues &gt; Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      * 
      */
-    public Output<Optional<String>> jiraIssueTransitionId() {
-        return Codegen.optional(this.jiraIssueTransitionId);
+    public Output<String> jiraIssueTransitionId() {
+        return this.jiraIssueTransitionId;
     }
     /**
      * Enable notifications for merge request events
@@ -294,28 +294,28 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectKeys);
     }
     /**
-     * Title.
+     * Title of the integration.
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
-     * @return Title.
+     * @return Title of the integration.
      * 
      */
     public Output<String> title() {
         return this.title;
     }
     /**
-     * Update time.
+     * The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return Update time.
+     * @return The ISO8601 date/time that this integration was last updated at in UTC.
      * 
      */
     public Output<String> updatedAt() {
@@ -340,28 +340,28 @@ public class IntegrationJira extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="useInheritedSettings", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> useInheritedSettings;
+    private Output<Boolean> useInheritedSettings;
 
     /**
      * @return Indicates whether or not to inherit default settings. Defaults to false.
      * 
      */
-    public Output<Optional<Boolean>> useInheritedSettings() {
-        return Codegen.optional(this.useInheritedSettings);
+    public Output<Boolean> useInheritedSettings() {
+        return this.useInheritedSettings;
     }
     /**
      * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> username;
+    private Output<String> username;
 
     /**
      * @return The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      * 
      */
-    public Output<Optional<String>> username() {
-        return Codegen.optional(this.username);
+    public Output<String> username() {
+        return this.username;
     }
 
     /**

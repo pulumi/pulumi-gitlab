@@ -54,7 +54,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// GitLab project container repository protection rules can be imported using an id made up of `<project_id>:<protection_rule_id>`, e.g.
+// GitLab project container repository protection rules can be imported using an id made up of `<project_id>:<protection_rule_id>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection this 123:321
@@ -62,9 +62,9 @@ import (
 type ProjectContainerRepositoryProtection struct {
 	pulumi.CustomResourceState
 
-	// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
+	// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete pulumi.StringPtrOutput `pulumi:"minimumAccessLevelForDelete"`
-	// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
+	// Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
 	MinimumAccessLevelForPush pulumi.StringPtrOutput `pulumi:"minimumAccessLevelForPush"`
 	// ID or URL-encoded path of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -110,9 +110,9 @@ func GetProjectContainerRepositoryProtection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectContainerRepositoryProtection resources.
 type projectContainerRepositoryProtectionState struct {
-	// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
+	// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete *string `pulumi:"minimumAccessLevelForDelete"`
-	// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
+	// Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
 	MinimumAccessLevelForPush *string `pulumi:"minimumAccessLevelForPush"`
 	// ID or URL-encoded path of the project.
 	Project *string `pulumi:"project"`
@@ -123,9 +123,9 @@ type projectContainerRepositoryProtectionState struct {
 }
 
 type ProjectContainerRepositoryProtectionState struct {
-	// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
+	// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete pulumi.StringPtrInput
-	// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
+	// Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
 	MinimumAccessLevelForPush pulumi.StringPtrInput
 	// ID or URL-encoded path of the project.
 	Project pulumi.StringPtrInput
@@ -140,9 +140,9 @@ func (ProjectContainerRepositoryProtectionState) ElementType() reflect.Type {
 }
 
 type projectContainerRepositoryProtectionArgs struct {
-	// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
+	// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete *string `pulumi:"minimumAccessLevelForDelete"`
-	// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
+	// Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
 	MinimumAccessLevelForPush *string `pulumi:"minimumAccessLevelForPush"`
 	// ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`
@@ -152,9 +152,9 @@ type projectContainerRepositoryProtectionArgs struct {
 
 // The set of arguments for constructing a ProjectContainerRepositoryProtection resource.
 type ProjectContainerRepositoryProtectionArgs struct {
-	// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
+	// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete pulumi.StringPtrInput
-	// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
+	// Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
 	MinimumAccessLevelForPush pulumi.StringPtrInput
 	// ID or URL-encoded path of the project.
 	Project pulumi.StringInput
@@ -249,14 +249,14 @@ func (o ProjectContainerRepositoryProtectionOutput) ToProjectContainerRepository
 	return o
 }
 
-// Minimum GitLab access level required to delete container images in the container registry. For example maintainer, owner, admin. Must be provided when `minimumAccessLevelForPush` is not set.
+// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 func (o ProjectContainerRepositoryProtectionOutput) MinimumAccessLevelForDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectContainerRepositoryProtection) pulumi.StringPtrOutput {
 		return v.MinimumAccessLevelForDelete
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum GitLab access level required to push container images to the container registry. For example maintainer, owner or admin. Must be provided when `minimumAccessLevelForDelete` is not set.
+// Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
 func (o ProjectContainerRepositoryProtectionOutput) MinimumAccessLevelForPush() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectContainerRepositoryProtection) pulumi.StringPtrOutput {
 		return v.MinimumAccessLevelForPush

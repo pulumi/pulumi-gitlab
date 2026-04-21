@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab project environments can be imported using an id made up of `projectId:environmenId`, e.g.
+ * GitLab project environments can be imported using an id made up of `projectId:environmenId`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectEnvironment:ProjectEnvironment bar 123:321

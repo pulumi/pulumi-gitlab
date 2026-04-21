@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * Gitlab compliance frameworks can be imported with a key composed of `<namespace_path>:<framework_id>`, e.g.
+ * Gitlab compliance frameworks can be imported with a key composed of `<namespace_path>:<framework_id>`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample "top-level-group:gid://gitlab/ComplianceManagement::Framework/12345"

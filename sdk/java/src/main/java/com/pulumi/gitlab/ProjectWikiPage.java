@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import gitlab.ProjectWikiPage state using the project ID, e.g.
+ * You can import gitlab.ProjectWikiPage state using the project ID, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectWikiPage:ProjectWikiPage test 12345:my-wiki-page

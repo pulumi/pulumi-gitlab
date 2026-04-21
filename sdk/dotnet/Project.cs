@@ -384,6 +384,18 @@ namespace Pulumi.GitLab
         public Output<bool> MergePipelinesEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Set the regex pattern that merge request titles must match. Use `MergeRequestTitleRegexDescription` to provide a hint to the user.
+        /// </summary>
+        [Output("mergeRequestTitleRegex")]
+        public Output<string> MergeRequestTitleRegex { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the description shown to users when a merge request title does not match `MergeRequestTitleRegex`.
+        /// </summary>
+        [Output("mergeRequestTitleRegexDescription")]
+        public Output<string> MergeRequestTitleRegexDescription { get; private set; } = null!;
+
+        /// <summary>
         /// Set the merge requests access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Output("mergeRequestsAccessLevel")]
@@ -1121,6 +1133,18 @@ namespace Pulumi.GitLab
         public Input<bool>? MergePipelinesEnabled { get; set; }
 
         /// <summary>
+        /// Set the regex pattern that merge request titles must match. Use `MergeRequestTitleRegexDescription` to provide a hint to the user.
+        /// </summary>
+        [Input("mergeRequestTitleRegex")]
+        public Input<string>? MergeRequestTitleRegex { get; set; }
+
+        /// <summary>
+        /// Set the description shown to users when a merge request title does not match `MergeRequestTitleRegex`.
+        /// </summary>
+        [Input("mergeRequestTitleRegexDescription")]
+        public Input<string>? MergeRequestTitleRegexDescription { get; set; }
+
+        /// <summary>
         /// Set the merge requests access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Input("mergeRequestsAccessLevel")]
@@ -1820,6 +1844,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergePipelinesEnabled")]
         public Input<bool>? MergePipelinesEnabled { get; set; }
+
+        /// <summary>
+        /// Set the regex pattern that merge request titles must match. Use `MergeRequestTitleRegexDescription` to provide a hint to the user.
+        /// </summary>
+        [Input("mergeRequestTitleRegex")]
+        public Input<string>? MergeRequestTitleRegex { get; set; }
+
+        /// <summary>
+        /// Set the description shown to users when a merge request title does not match `MergeRequestTitleRegex`.
+        /// </summary>
+        [Input("mergeRequestTitleRegexDescription")]
+        public Input<string>? MergeRequestTitleRegexDescription { get; set; }
 
         /// <summary>
         /// Set the merge requests access level. Valid values are `Disabled`, `Private`, `Enabled`.

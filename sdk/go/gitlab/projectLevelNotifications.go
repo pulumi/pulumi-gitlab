@@ -69,11 +69,13 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// A GitLab Project level notification can be imported using a key composed of `<project-id>`, for example:
+// A GitLab Project level notification can be imported using a key composed of `<project>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/projectLevelNotifications:ProjectLevelNotifications example "12345"
 // ```
+//
+// Where `project` may be the product ID or path with namespace depending on what you have in your config.
 type ProjectLevelNotifications struct {
 	pulumi.CustomResourceState
 

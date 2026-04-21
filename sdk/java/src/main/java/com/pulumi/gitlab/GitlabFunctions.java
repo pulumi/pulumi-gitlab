@@ -131,6 +131,10 @@ import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryFilePlainArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
 import com.pulumi.gitlab.inputs.GetRepositoryTreePlainArgs;
+import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
+import com.pulumi.gitlab.inputs.GetRunnerControllerPlainArgs;
+import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
+import com.pulumi.gitlab.inputs.GetRunnerControllerScopesPlainArgs;
 import com.pulumi.gitlab.inputs.GetRunnersArgs;
 import com.pulumi.gitlab.inputs.GetRunnersPlainArgs;
 import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
@@ -205,6 +209,9 @@ import com.pulumi.gitlab.outputs.GetReleaseLinksResult;
 import com.pulumi.gitlab.outputs.GetReleaseResult;
 import com.pulumi.gitlab.outputs.GetRepositoryFileResult;
 import com.pulumi.gitlab.outputs.GetRepositoryTreeResult;
+import com.pulumi.gitlab.outputs.GetRunnerControllerResult;
+import com.pulumi.gitlab.outputs.GetRunnerControllerScopesResult;
+import com.pulumi.gitlab.outputs.GetRunnerControllersResult;
 import com.pulumi.gitlab.outputs.GetRunnersResult;
 import com.pulumi.gitlab.outputs.GetSecurityPolicyDocumentResult;
 import com.pulumi.gitlab.outputs.GetUserResult;
@@ -11070,6 +11077,767 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetRepositoryTreeResult> getRepositoryTreePlain(GetRepositoryTreePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getRepositoryTree:getRepositoryTree", TypeShape.of(GetRepositoryTreeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.RunnerController` data source retrieves details about a single runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#retrieve-a-single-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerController(GetRunnerControllerArgs.builder()
+     *             .id(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllerResult> getRunnerController(GetRunnerControllerArgs args) {
+        return getRunnerController(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.RunnerController` data source retrieves details about a single runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#retrieve-a-single-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerController(GetRunnerControllerArgs.builder()
+     *             .id(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllerResult> getRunnerControllerPlain(GetRunnerControllerPlainArgs args) {
+        return getRunnerControllerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.RunnerController` data source retrieves details about a single runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#retrieve-a-single-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerController(GetRunnerControllerArgs.builder()
+     *             .id(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllerResult> getRunnerController(GetRunnerControllerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunnerController:getRunnerController", TypeShape.of(GetRunnerControllerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.RunnerController` data source retrieves details about a single runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#retrieve-a-single-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerController(GetRunnerControllerArgs.builder()
+     *             .id(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllerResult> getRunnerController(GetRunnerControllerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunnerController:getRunnerController", TypeShape.of(GetRunnerControllerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.RunnerController` data source retrieves details about a single runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#retrieve-a-single-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerController(GetRunnerControllerArgs.builder()
+     *             .id(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllerResult> getRunnerControllerPlain(GetRunnerControllerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getRunnerController:getRunnerController", TypeShape.of(GetRunnerControllerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunnerControllerScopes` data source retrieves scopes for a runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.10.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-scopes-for-a-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerControllerScopes(GetRunnerControllerScopesArgs.builder()
+     *             .runnerControllerId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllerScopesResult> getRunnerControllerScopes(GetRunnerControllerScopesArgs args) {
+        return getRunnerControllerScopes(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunnerControllerScopes` data source retrieves scopes for a runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.10.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-scopes-for-a-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerControllerScopes(GetRunnerControllerScopesArgs.builder()
+     *             .runnerControllerId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllerScopesResult> getRunnerControllerScopesPlain(GetRunnerControllerScopesPlainArgs args) {
+        return getRunnerControllerScopesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunnerControllerScopes` data source retrieves scopes for a runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.10.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-scopes-for-a-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerControllerScopes(GetRunnerControllerScopesArgs.builder()
+     *             .runnerControllerId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllerScopesResult> getRunnerControllerScopes(GetRunnerControllerScopesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunnerControllerScopes:getRunnerControllerScopes", TypeShape.of(GetRunnerControllerScopesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunnerControllerScopes` data source retrieves scopes for a runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.10.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-scopes-for-a-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerControllerScopes(GetRunnerControllerScopesArgs.builder()
+     *             .runnerControllerId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllerScopesResult> getRunnerControllerScopes(GetRunnerControllerScopesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunnerControllerScopes:getRunnerControllerScopes", TypeShape.of(GetRunnerControllerScopesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunnerControllerScopes` data source retrieves scopes for a runner controller.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.10.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-scopes-for-a-runner-controller)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getRunnerControllerScopes(GetRunnerControllerScopesArgs.builder()
+     *             .runnerControllerId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllerScopesResult> getRunnerControllerScopesPlain(GetRunnerControllerScopesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getRunnerControllerScopes:getRunnerControllerScopes", TypeShape.of(GetRunnerControllerScopesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllersResult> getRunnerControllers() {
+        return getRunnerControllers(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllersResult> getRunnerControllersPlain() {
+        return getRunnerControllersPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllersResult> getRunnerControllers(InvokeArgs args) {
+        return getRunnerControllers(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllersResult> getRunnerControllersPlain(InvokeArgs args) {
+        return getRunnerControllersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllersResult> getRunnerControllers(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunnerControllers:getRunnerControllers", TypeShape.of(GetRunnerControllersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRunnerControllersResult> getRunnerControllers(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getRunnerControllers:getRunnerControllers", TypeShape.of(GetRunnerControllersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getRunnerControllers` data source retrieves all runner controllers.
+     * 
+     * &gt; This data source is **experimental** and may change or be removed in future versions. Introduced in GitLab 18.9.
+     * 
+     * &gt; This data source requires administration privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/runner_controllers/#list-all-runner-controllers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getRunnerControllers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRunnerControllersResult> getRunnerControllersPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getRunnerControllers:getRunnerControllers", TypeShape.of(GetRunnerControllersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getRunners` data source retrieves information about all gitlab runners.

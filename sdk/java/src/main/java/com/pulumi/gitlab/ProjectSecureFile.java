@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab secure files can be imported using an id made up of `projectId:secureFileId`, e.g.
+ * GitLab secure files can be imported using an id made up of `projectId:secureFileId`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectSecureFile:ProjectSecureFile bar 123:321

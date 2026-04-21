@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, e.g.
+ * GitLab enabled deploy keys can be imported using an id made up of `{project_id}:{deploy_key_id}`, for example:
  * `projectId` can be whatever the [get single project api][getSingleProject] takes for
  * its `:id` value, so for example:
  * 

@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, e.g.
+ * GitLab group badges can be imported using an id made up of `{group_id}:{badge_id}`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupBadge:GroupBadge foo 1:3

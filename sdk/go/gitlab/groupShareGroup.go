@@ -53,7 +53,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, e.g.
+// GitLab group shares can be imported using an id made up of `mainGroupId:shareGroupId`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/groupShareGroup:GroupShareGroup test 12345:1337

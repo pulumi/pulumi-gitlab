@@ -20,7 +20,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, e.g.
+    /// GitLab group variables can be imported using an id made up of `groupid:variablename:scope`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/groupVariable:GroupVariable example 12345:group_variable_key:*

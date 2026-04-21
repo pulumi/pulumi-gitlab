@@ -957,7 +957,7 @@ class GroupIntegrationMattermost(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab group Mattermost integrations can be imported using the group ID, e.g.
+        GitLab group Mattermost integrations can be imported using the group ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost mattermost 12345
@@ -1027,7 +1027,7 @@ class GroupIntegrationMattermost(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab group Mattermost integrations can be imported using the group ID, e.g.
+        GitLab group Mattermost integrations can be imported using the group ID, for example:
 
         ```sh
         $ pulumi import gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost mattermost 12345

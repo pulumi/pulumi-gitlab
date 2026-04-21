@@ -194,7 +194,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
+        GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"
@@ -238,7 +238,7 @@ class ProjectFreezePeriod(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, e.g.
+        GitLab project freeze periods can be imported using an id made up of `project_id:freeze_period_id`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectFreezePeriod:ProjectFreezePeriod schedule "12345:1337"

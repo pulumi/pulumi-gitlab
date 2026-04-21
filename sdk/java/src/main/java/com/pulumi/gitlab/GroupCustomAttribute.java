@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * You can import a group custom attribute using the an id made up of `{group-id}:{key}`, e.g.
+ * You can import a group custom attribute using the an id made up of `{group-id}:{key}`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupCustomAttribute:GroupCustomAttribute attr 42:location

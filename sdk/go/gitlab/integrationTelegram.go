@@ -71,7 +71,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// You can import a IntegrationTelegram state using the project ID, e.g.
+// You can import a IntegrationTelegram state using the project ID, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/integrationTelegram:IntegrationTelegram default 1

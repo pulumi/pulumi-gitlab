@@ -30,7 +30,7 @@ public final class GetGroupResult {
      */
     private String description;
     /**
-     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     private Integer extraSharedRunnersMinutesLimit;
@@ -100,7 +100,7 @@ public final class GetGroupResult {
      */
     private String runnersToken;
     /**
-     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     private Integer sharedRunnersMinutesLimit;
@@ -153,7 +153,7 @@ public final class GetGroupResult {
         return this.description;
     }
     /**
-     * @return Can be set by administrators only. Additional CI/CD minutes for this group.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
      */
     public Integer extraSharedRunnersMinutesLimit() {
@@ -251,7 +251,7 @@ public final class GetGroupResult {
         return this.runnersToken;
     }
     /**
-     * @return Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
+     * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or &gt; 0.
      * 
      */
     public Integer sharedRunnersMinutesLimit() {

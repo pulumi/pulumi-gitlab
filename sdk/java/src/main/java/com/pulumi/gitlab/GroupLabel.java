@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, e.g.
+ * Gitlab group labels can be imported using an id made up of `{group_id}:{group_label_id}`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/groupLabel:GroupLabel example 12345:fixme

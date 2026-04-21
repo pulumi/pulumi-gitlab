@@ -26,6 +26,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedToPushes;
         /// <summary>
+        /// Require code owner approval before merging.
+        /// </summary>
+        public readonly bool? CodeOwnerApprovalRequired;
+        /// <summary>
         /// Allow developers to initial push.
         /// </summary>
         public readonly bool? DeveloperCanInitialPush;
@@ -38,11 +42,14 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<string> allowedToPushes,
 
+            bool? codeOwnerApprovalRequired,
+
             bool? developerCanInitialPush)
         {
             AllowForcePush = allowForcePush;
             AllowedToMerges = allowedToMerges;
             AllowedToPushes = allowedToPushes;
+            CodeOwnerApprovalRequired = codeOwnerApprovalRequired;
             DeveloperCanInitialPush = developerCanInitialPush;
         }
     }

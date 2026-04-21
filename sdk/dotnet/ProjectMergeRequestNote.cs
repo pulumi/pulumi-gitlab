@@ -47,11 +47,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab Project Merge Request Note can be imported using a key composed of `&lt;project-id&gt;:&lt;merge-request-iid&gt;:&lt;note-id&gt;`, for example:
+    /// A GitLab Project Merge Request Note can be imported using a key composed of `&lt;project&gt;:&lt;merge-request-iid&gt;:&lt;note-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote example "12345:1:3"
     /// ```
+    /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote")]
     public partial class ProjectMergeRequestNote : global::Pulumi.CustomResource

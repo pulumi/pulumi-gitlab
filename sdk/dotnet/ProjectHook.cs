@@ -67,12 +67,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab Project Hook can be imported using a key composed of `&lt;project-id&gt;:&lt;hook-id&gt;`, e.g.
+    /// A GitLab Project Hook can be imported using a key composed of `&lt;project&gt;:&lt;hook-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectHook:ProjectHook example "12345:1"
     /// ```
     /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// NOTE: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectHook:ProjectHook")]

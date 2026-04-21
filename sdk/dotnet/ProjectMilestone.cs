@@ -59,7 +59,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab project milestone can be imported with a key composed of `&lt;project&gt;:&lt;milestone_id&gt;`, e.g.
+    /// Gitlab project milestone can be imported with a key composed of `&lt;project&gt;:&lt;milestone_id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectMilestone:ProjectMilestone example "12345:11"

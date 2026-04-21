@@ -313,7 +313,7 @@ class ReleaseLink(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
+        Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"
@@ -364,7 +364,7 @@ class ReleaseLink(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, e.g.
+        Gitlab release link can be imported with a key composed of `<project>:<tag_name>:<link_id>`, for example:
 
         ```sh
         $ pulumi import gitlab:index/releaseLink:ReleaseLink example "12345:test:2"

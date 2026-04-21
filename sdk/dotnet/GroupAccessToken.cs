@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, e.g.
+    /// A GitLab Group Access Token can be imported using a key composed of `&lt;group-id&gt;:&lt;token-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/groupAccessToken:GroupAccessToken example "12345:1"

@@ -58,12 +58,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// A GitLab Project Access Token can be imported using a key composed of `&lt;project-id&gt;:&lt;token-id&gt;`, e.g.
+    /// A GitLab Project Access Token can be imported using a key composed of `&lt;project&gt;:&lt;token-id&gt;`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectAccessToken:ProjectAccessToken example "12345:1"
     /// ```
     /// 
+    /// Where `Project` may be the product ID or path with namespace depending on what you have in your config.
     /// NOTE: the `Token` resource attribute is not available for imported resources as this information cannot be read from the GitLab API.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectAccessToken:ProjectAccessToken")]

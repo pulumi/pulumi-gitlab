@@ -75,6 +75,8 @@ type LookupPipelineScheduleResult struct {
 	Description string `pulumi:"description"`
 	// The ID of this Terraform resource. In the format of `<project-id>:<pipeline-schedule-id>`.
 	Id string `pulumi:"id"`
+	// List of pipeline schedule inputs. Each element has `name` and `value`.
+	Inputs []GetPipelineScheduleInput `pulumi:"inputs"`
 	// The details of the last pipeline run by the schedule.
 	LastPipeline GetPipelineScheduleLastPipeline `pulumi:"lastPipeline"`
 	// The datetime of when the schedule will next run.
@@ -159,6 +161,11 @@ func (o LookupPipelineScheduleResultOutput) Description() pulumi.StringOutput {
 // The ID of this Terraform resource. In the format of `<project-id>:<pipeline-schedule-id>`.
 func (o LookupPipelineScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineScheduleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of pipeline schedule inputs. Each element has `name` and `value`.
+func (o LookupPipelineScheduleResultOutput) Inputs() GetPipelineScheduleInputArrayOutput {
+	return o.ApplyT(func(v LookupPipelineScheduleResult) []GetPipelineScheduleInput { return v.Inputs }).(GetPipelineScheduleInputArrayOutput)
 }
 
 // The details of the last pipeline run by the schedule.

@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/&lt;ID&gt;` e.g.
+ * GitLab member role can be imported using the id made up of `gid://gitlab/MemberRole/&lt;ID&gt;` for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/memberRole:MemberRole example &#39;gid://gitlab/MemberRole/123&#39;

@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// You can import a gitlab.IntegrationCustomIssueTracker state using the project ID, e.g.
+    /// You can import a gitlab.IntegrationCustomIssueTracker state using the project ID, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker tracker 1

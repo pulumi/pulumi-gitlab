@@ -117,11 +117,13 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * A Repository File can be imported using an id made up of `&lt;project-id&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, e.g.
+ * A Repository File can be imported using an id made up of `&lt;project&gt;:&lt;branch-name&gt;:&lt;file-path&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/repositoryFile:RepositoryFile this 1:main:foo/bar.txt
  * ```
+ * 
+ * Where `project` may be the product ID or path with namespace depending on what you have in your config.
  * 
  */
 @ResourceType(type="gitlab:index/repositoryFile:RepositoryFile")
