@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byId = GitLab.Index.GetProjectSecureFile.Invoke(new()
+        ///     var byId = GitLab.GetProjectSecureFile.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         SecureFileId = 123,
         ///     });
         /// 
-        ///     var byName = GitLab.Index.GetProjectSecureFile.Invoke(new()
+        ///     var byName = GitLab.GetProjectSecureFile.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         Name = "secret.pem",
@@ -59,13 +59,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byId = GitLab.Index.GetProjectSecureFile.Invoke(new()
+        ///     var byId = GitLab.GetProjectSecureFile.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         SecureFileId = 123,
         ///     });
         /// 
-        ///     var byName = GitLab.Index.GetProjectSecureFile.Invoke(new()
+        ///     var byName = GitLab.GetProjectSecureFile.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         Name = "secret.pem",
@@ -92,13 +92,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byId = GitLab.Index.GetProjectSecureFile.Invoke(new()
+        ///     var byId = GitLab.GetProjectSecureFile.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         SecureFileId = 123,
         ///     });
         /// 
-        ///     var byName = GitLab.Index.GetProjectSecureFile.Invoke(new()
+        ///     var byName = GitLab.GetProjectSecureFile.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         Name = "secret.pem",

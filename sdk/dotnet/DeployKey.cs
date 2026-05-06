@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // No expiry
-    ///     var example = new GitLab.Index.DeployKey("example", new()
+    ///     var example = new GitLab.DeployKey("example", new()
     ///     {
     ///         Project = "example/deploying",
     ///         Title = "Example deploy key",
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // With expiry
-    ///     var exampleExpires = new GitLab.Index.DeployKey("example_expires", new()
+    ///     var exampleExpires = new GitLab.DeployKey("example_expires", new()
     ///     {
     ///         Project = "example/deploying",
     ///         Title = "Example deploy key",

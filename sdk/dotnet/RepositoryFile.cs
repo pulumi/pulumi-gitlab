@@ -32,27 +32,27 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Index.Group("this", new()
+    ///     var @this = new GitLab.Group("this", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Index.Project("this", new()
+    ///     var thisProject = new GitLab.Project("this", new()
     ///     {
     ///         Name = "example",
     ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisRepositoryFile = new GitLab.Index.RepositoryFile("this", new()
+    ///     var thisRepositoryFile = new GitLab.RepositoryFile("this", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         FilePath = "meow.txt",
     ///         Branch = "main",
     ///         Encoding = "base64",
-    ///         Content = Std.Index.Base64encode.Invoke(new()
+    ///         Content = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = "Meow goes the cat",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -61,7 +61,7 @@ namespace Pulumi.GitLab
     ///         CommitMessage = "feature: add meow file",
     ///     });
     /// 
-    ///     var readme = new GitLab.Index.RepositoryFile("readme", new()
+    ///     var readme = new GitLab.RepositoryFile("readme", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         FilePath = "readme.txt",
@@ -73,7 +73,7 @@ namespace Pulumi.GitLab
     ///         CommitMessage = "feature: add readme file",
     ///     });
     /// 
-    ///     var readmeForDogs = new GitLab.Index.RepositoryFile("readme_for_dogs", new()
+    ///     var readmeForDogs = new GitLab.RepositoryFile("readme_for_dogs", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         FilePath = "readme.txt",

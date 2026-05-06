@@ -28,14 +28,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.Project("foo", new()
+    ///     var foo = new GitLab.Project("foo", new()
     ///     {
     ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var welcomeIssue = new GitLab.Index.ProjectIssue("welcome_issue", new()
+    ///     var welcomeIssue = new GitLab.ProjectIssue("welcome_issue", new()
     ///     {
     ///         Project = foo.Id,
     ///         Title = "Welcome!",

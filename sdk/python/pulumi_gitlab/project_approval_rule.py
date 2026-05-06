@@ -416,7 +416,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             group_ids=[51],
             protected_branch_ids=[example.branch_protection_id])
         # Example using `data.gitlab_user` and `for` loop
-        users = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
+        users = {str(__key): gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
             "user1",
             "user2",
             "user3",
@@ -425,7 +425,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             project="5",
             name="Example Rule 3",
             approvals_required=3,
-            user_ids=[user.id for user in users.values()])
+            user_ids=[int(user.id) for user in users.values()])
         # Example using `approval_rule` using `any_approver` as rule type
         any_approver = gitlab.ProjectApprovalRule("any_approver",
             project="5",
@@ -526,7 +526,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             group_ids=[51],
             protected_branch_ids=[example.branch_protection_id])
         # Example using `data.gitlab_user` and `for` loop
-        users = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
+        users = {str(__key): gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
             "user1",
             "user2",
             "user3",
@@ -535,7 +535,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
             project="5",
             name="Example Rule 3",
             approvals_required=3,
-            user_ids=[user.id for user in users.values()])
+            user_ids=[int(user.id) for user in users.values()])
         # Example using `approval_rule` using `any_approver` as rule type
         any_approver = gitlab.ProjectApprovalRule("any_approver",
             project="5",

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     fullPath: "mygroup",
  * });
  * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
- *     groupId: mygroup.id,
+ *     groupId: Number(mygroup.id),
  *     orderBy: "name",
  *     includeSubgroups: true,
  *     withShared: false,
@@ -282,7 +282,7 @@ export interface GetProjectsResult {
  *     fullPath: "mygroup",
  * });
  * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
- *     groupId: mygroup.id,
+ *     groupId: Number(mygroup.id),
  *     orderBy: "name",
  *     includeSubgroups: true,
  *     withShared: false,

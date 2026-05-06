@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Download a text artifact file from the latest successful pipeline
-        ///     var config = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var config = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download a binary artifact file using base64 encoding
-        ///     var binary = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var binary = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download artifact from a specific tag
-        ///     var release = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var release = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         Job = "release-job",
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download a larger artifact with custom size limit
-        ///     var largeArtifact = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var largeArtifact = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -88,7 +88,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Download a text artifact file from the latest successful pipeline
-        ///     var config = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var config = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -97,7 +97,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download a binary artifact file using base64 encoding
-        ///     var binary = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var binary = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -106,7 +106,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download artifact from a specific tag
-        ///     var release = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var release = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         Job = "release-job",
@@ -115,7 +115,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download a larger artifact with custom size limit
-        ///     var largeArtifact = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var largeArtifact = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -150,7 +150,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Download a text artifact file from the latest successful pipeline
-        ///     var config = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var config = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -159,7 +159,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download a binary artifact file using base64 encoding
-        ///     var binary = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var binary = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",
@@ -168,7 +168,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download artifact from a specific tag
-        ///     var release = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var release = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         Job = "release-job",
@@ -177,7 +177,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // Download a larger artifact with custom size limit
-        ///     var largeArtifact = GitLab.Index.GetArtifactFile.Invoke(new()
+        ///     var largeArtifact = GitLab.GetArtifactFile.Invoke(new()
         ///     {
         ///         Project = "namespace/myproject",
         ///         Job = "build-job",

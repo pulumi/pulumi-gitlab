@@ -155,7 +155,7 @@ class RunnerControllerRunnerScope(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.RunnerControllerRunnerScope("example",
-            runner_controller_id=example_gitlab_runner_controller["id"],
+            runner_controller_id=int(example_gitlab_runner_controller["id"]),
             runner_id=42)
         ```
 
@@ -189,7 +189,7 @@ class RunnerControllerRunnerScope(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.RunnerControllerRunnerScope("example",
-            runner_controller_id=example_gitlab_runner_controller["id"],
+            runner_controller_id=int(example_gitlab_runner_controller["id"]),
             runner_id=42)
         ```
 

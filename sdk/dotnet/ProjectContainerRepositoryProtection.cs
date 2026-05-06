@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Index.ProjectContainerRepositoryProtection("this", new()
+    ///     var @this = new GitLab.ProjectContainerRepositoryProtection("this", new()
     ///     {
     ///         Project = "123",
     ///         RepositoryPathPattern = "my_namespace/project*",

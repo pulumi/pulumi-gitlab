@@ -218,7 +218,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         test = gitlab.GroupShareGroup("test",
             group_id=foo["id"],
-            share_group_id=bar["id"],
+            share_group_id=int(bar["id"]),
             group_access="guest",
             expires_at="2099-01-01")
         ```
@@ -265,7 +265,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         test = gitlab.GroupShareGroup("test",
             group_id=foo["id"],
-            share_group_id=bar["id"],
+            share_group_id=int(bar["id"]),
             group_access="guest",
             expires_at="2099-01-01")
         ```

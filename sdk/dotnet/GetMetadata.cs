@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = GitLab.Index.GetMetadata.Invoke();
+        ///     var @this = GitLab.GetMetadata.Invoke();
         /// 
         /// });
         /// ```
@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = GitLab.Index.GetMetadata.Invoke();
+        ///     var @this = GitLab.GetMetadata.Invoke();
         /// 
         /// });
         /// ```
@@ -72,7 +72,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = GitLab.Index.GetMetadata.Invoke();
+        ///     var @this = GitLab.GetMetadata.Invoke();
         /// 
         /// });
         /// ```

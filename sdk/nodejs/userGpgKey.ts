@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * });
  * // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
  * const exampleUserGpgKey = new gitlab.UserGpgKey("example", {
- *     userId: example.then(example => example.id),
+ *     userId: output(example.then(example => example.id)).apply(x =>Number(x)),
  *     key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...
  * -----END PGP PUBLIC KEY BLOCK-----`,

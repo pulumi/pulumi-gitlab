@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * // Enable the deployment key on the second repo
  * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("foo", {
  *     project: foo.id,
- *     keyId: parentDeployKey.deployKeyId,
+ *     keyId: parentDeployKey.deployKeyId.apply(x =>String(x)),
  * });
  * ```
  *

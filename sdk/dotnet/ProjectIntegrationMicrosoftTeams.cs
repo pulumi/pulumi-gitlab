@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var teams = new GitLab.Index.ProjectIntegrationMicrosoftTeams("teams", new()
+    ///     var teams = new GitLab.ProjectIntegrationMicrosoftTeams("teams", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Webhook = "https://testurl.com/?token=XYZ",

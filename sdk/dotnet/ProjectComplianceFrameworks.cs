@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alpha = new GitLab.Index.ComplianceFramework("alpha", new()
+    ///     var alpha = new GitLab.ComplianceFramework("alpha", new()
     ///     {
     ///         NamespacePath = "top-level-group",
     ///         Name = "HIPAA",
@@ -35,7 +35,7 @@ namespace Pulumi.GitLab
     ///         Default = false,
     ///     });
     /// 
-    ///     var beta = new GitLab.Index.ComplianceFramework("beta", new()
+    ///     var beta = new GitLab.ComplianceFramework("beta", new()
     ///     {
     ///         NamespacePath = "top-level-group",
     ///         Name = "SOC",
@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     ///         Default = false,
     ///     });
     /// 
-    ///     var sample = new GitLab.Index.ProjectComplianceFrameworks("sample", new()
+    ///     var sample = new GitLab.ProjectComplianceFrameworks("sample", new()
     ///     {
     ///         ComplianceFrameworkIds = new[]
     ///         {

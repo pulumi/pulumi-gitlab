@@ -442,12 +442,12 @@ class BranchProtection(pulumi.CustomResource):
         # Example using dynamic block
         main = gitlab.BranchProtection("main",
             allowed_to_pushes=[{
-                "user_id": entry["value"],
-            } for entry in [{"key": k, "value": v} for k, v in [
+                "user_id": int(entry["value"]),
+            } for entry in [{"key": k, "value": v} for k, v in sorted([
                 50,
                 55,
                 60,
-            ].items()]],
+            ].items())]],
             project="12345",
             branch="main",
             push_access_level="maintainer",
@@ -549,12 +549,12 @@ class BranchProtection(pulumi.CustomResource):
         # Example using dynamic block
         main = gitlab.BranchProtection("main",
             allowed_to_pushes=[{
-                "user_id": entry["value"],
-            } for entry in [{"key": k, "value": v} for k, v in [
+                "user_id": int(entry["value"]),
+            } for entry in [{"key": k, "value": v} for k, v in sorted([
                 50,
                 55,
                 60,
-            ].items()]],
+            ].items())]],
             project="12345",
             branch="main",
             push_access_level="maintainer",

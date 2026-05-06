@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fixme = new GitLab.Index.GroupLabel("fixme", new()
+    ///     var fixme = new GitLab.GroupLabel("fixme", new()
     ///     {
     ///         Group = "example",
     ///         Name = "fixme",

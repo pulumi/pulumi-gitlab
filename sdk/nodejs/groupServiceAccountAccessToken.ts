@@ -39,22 +39,22 @@ import * as utilities from "./utilities";
  * });
  * // To assign the service account to a group
  * const exampleMembership = new gitlab.GroupMembership("example_membership", {
- *     groupId: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     groupId: example.id.apply(x =>Number(x)),
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     accessLevel: "developer",
  *     expiresAt: "2020-03-14",
  * });
  * // The service account access token with no expiry
  * const exampleSaTokenNoExpiry = new gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry", {
  *     group: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
  *     scopes: ["api"],
  * });
  * // The service account access token with expires at
  * const exampleSaTokenExpiresAt = new gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at", {
  *     group: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
  *     expiresAt: "2020-03-14",
  *     scopes: ["api"],
@@ -62,7 +62,7 @@ import * as utilities from "./utilities";
  * // The service account access token with rotation configuration
  * const exampleSaTokenRotationConfiguration = new gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", {
  *     group: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
  *     rotationConfiguration: {
  *         rotateBeforeDays: 2,

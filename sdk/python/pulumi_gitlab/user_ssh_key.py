@@ -216,7 +216,7 @@ class UserSshKey(pulumi.CustomResource):
 
         example = gitlab.get_user(username="example-user")
         example_user_ssh_key = gitlab.UserSshKey("example",
-            user_id=example.id,
+            user_id=output(example.id).apply(lambda x: int(x)),
             title="example-key",
             key="ssh-ed25519 AAAA...",
             expires_at="2016-01-21T00:00:00.000Z")
@@ -261,7 +261,7 @@ class UserSshKey(pulumi.CustomResource):
 
         example = gitlab.get_user(username="example-user")
         example_user_ssh_key = gitlab.UserSshKey("example",
-            user_id=example.id,
+            user_id=output(example.id).apply(lambda x: int(x)),
             title="example-key",
             key="ssh-ed25519 AAAA...",
             expires_at="2016-01-21T00:00:00.000Z")

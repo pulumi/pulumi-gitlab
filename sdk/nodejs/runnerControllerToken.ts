@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.RunnerControllerToken("example", {
- *     runnerControllerId: exampleGitlabRunnerController.id,
+ *     runnerControllerId: Number(exampleGitlabRunnerController.id),
  *     description: "My controller token",
  * });
  * ```

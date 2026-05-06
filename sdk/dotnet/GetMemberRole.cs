@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetMemberRole.Invoke(new()
+        ///     var example = GitLab.GetMemberRole.Invoke(new()
         ///     {
         ///         Id = "gid://gitlab/MemberRole/1",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetMemberRole.Invoke(new()
+        ///     var example = GitLab.GetMemberRole.Invoke(new()
         ///     {
         ///         Id = "gid://gitlab/MemberRole/1",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetMemberRole.Invoke(new()
+        ///     var example = GitLab.GetMemberRole.Invoke(new()
         ///     {
         ///         Id = "gid://gitlab/MemberRole/1",
         ///     });

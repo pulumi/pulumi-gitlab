@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.ProjectMirror("foo", new()
+    ///     var foo = new GitLab.ProjectMirror("foo", new()
     ///     {
     ///         Project = "1",
     ///         Url = "https://username:password@github.com/org/repository.git",

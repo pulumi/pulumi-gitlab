@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.PipelineTrigger("example", new()
+    ///     var example = new GitLab.PipelineTrigger("example", new()
     ///     {
     ///         Project = "12345",
     ///         Description = "Used to trigger builds",

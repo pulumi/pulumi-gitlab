@@ -66,7 +66,7 @@ import * as utilities from "./utilities";
  *         55,
  *         60,
  *     ].map((v, k) => ({key: k, value: v})).map(entry => ({
- *         userId: entry.value,
+ *         userId: Number(entry.value),
  *     })),
  *     project: "12345",
  *     branch: "main",

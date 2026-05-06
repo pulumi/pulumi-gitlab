@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Use this with `gitlab_repository_file` to manage your policies using native HCL
-        ///     var scan = GitLab.Index.GetSecurityPolicyDocument.Invoke(new()
+        ///     var scan = GitLab.GetSecurityPolicyDocument.Invoke(new()
         ///     {
         ///         ScanExecutionPolicies = new[]
         ///         {
@@ -57,7 +57,7 @@ namespace Pulumi.GitLab
         /// 
         ///     // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
         ///     // for how to link a security policy project to a project or group.
-        ///     var policy = new GitLab.Index.RepositoryFile("policy", new()
+        ///     var policy = new GitLab.RepositoryFile("policy", new()
         ///     {
         ///         Project = "1234",
         ///         Ref = "main",
@@ -88,7 +88,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Use this with `gitlab_repository_file` to manage your policies using native HCL
-        ///     var scan = GitLab.Index.GetSecurityPolicyDocument.Invoke(new()
+        ///     var scan = GitLab.GetSecurityPolicyDocument.Invoke(new()
         ///     {
         ///         ScanExecutionPolicies = new[]
         ///         {
@@ -117,7 +117,7 @@ namespace Pulumi.GitLab
         /// 
         ///     // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
         ///     // for how to link a security policy project to a project or group.
-        ///     var policy = new GitLab.Index.RepositoryFile("policy", new()
+        ///     var policy = new GitLab.RepositoryFile("policy", new()
         ///     {
         ///         Project = "1234",
         ///         Ref = "main",
@@ -148,7 +148,7 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Use this with `gitlab_repository_file` to manage your policies using native HCL
-        ///     var scan = GitLab.Index.GetSecurityPolicyDocument.Invoke(new()
+        ///     var scan = GitLab.GetSecurityPolicyDocument.Invoke(new()
         ///     {
         ///         ScanExecutionPolicies = new[]
         ///         {
@@ -177,7 +177,7 @@ namespace Pulumi.GitLab
         /// 
         ///     // See `gitlab_project_security_policy_attachment` or `gitlab_group_security_policy_attachment`
         ///     // for how to link a security policy project to a project or group.
-        ///     var policy = new GitLab.Index.RepositoryFile("policy", new()
+        ///     var policy = new GitLab.RepositoryFile("policy", new()
         ///     {
         ///         Project = "1234",
         ///         Ref = "main",

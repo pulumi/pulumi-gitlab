@@ -159,7 +159,7 @@ class UserIdentity(pulumi.CustomResource):
             can_create_group=False,
             is_external=True)
         example_user_identity = gitlab.UserIdentity("example",
-            user_id=example.id,
+            user_id=example.id.apply(lambda x: int(x)),
             external_provider="google",
             external_uid="1234567890")
         ```
@@ -212,7 +212,7 @@ class UserIdentity(pulumi.CustomResource):
             can_create_group=False,
             is_external=True)
         example_user_identity = gitlab.UserIdentity("example",
-            user_id=example.id,
+            user_id=example.id.apply(lambda x: int(x)),
             external_provider="google",
             external_uid="1234567890")
         ```

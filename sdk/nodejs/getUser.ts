@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         "user2",
  *         "user3",
  *     ],
- * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: gitlab.getUser({
  *     username: __value,
  * }) }), {}));
  * ```
@@ -232,7 +232,7 @@ export interface GetUserResult {
  *         "user2",
  *         "user3",
  *     ],
- * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: gitlab.getUser({
  *     username: __value,
  * }) }), {}));
  * ```

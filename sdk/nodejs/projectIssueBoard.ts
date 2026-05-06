@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleProjectMembership = new gitlab.ProjectMembership("example", {
  *     project: example.id,
- *     userId: exampleUser.id,
+ *     userId: exampleUser.id.apply(x =>Number(x)),
  *     accessLevel: "developer",
  * });
  * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *     name: "Test Issue Board",
  *     lists: [
  *         {
- *             assigneeId: exampleUser.id,
+ *             assigneeId: exampleUser.id.apply(x =>Number(x)),
  *         },
  *         {
  *             milestoneId: exampleProjectMilestone.milestoneId,
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *     name: "Test Issue Board with list syntax",
  *     lists: [
  *         {
- *             assigneeId: exampleUser.id,
+ *             assigneeId: exampleUser.id.apply(x =>Number(x)),
  *         },
  *         {
  *             milestoneId: exampleProjectMilestone.milestoneId,

@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetProjectVariable.Invoke(new()
+        ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.Index.GetProjectVariable.Invoke(new()
+        ///     var bar = GitLab.GetProjectVariable.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         Key = "bar",
@@ -61,14 +61,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetProjectVariable.Invoke(new()
+        ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.Index.GetProjectVariable.Invoke(new()
+        ///     var bar = GitLab.GetProjectVariable.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         Key = "bar",
@@ -96,14 +96,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetProjectVariable.Invoke(new()
+        ///     var foo = GitLab.GetProjectVariable.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.Index.GetProjectVariable.Invoke(new()
+        ///     var bar = GitLab.GetProjectVariable.Invoke(new()
         ///     {
         ///         Project = "my/example/project",
         ///         Key = "bar",

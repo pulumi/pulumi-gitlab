@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accessTokens = GitLab.Index.GetGroupAccessTokens.Invoke(new()
+        ///     var accessTokens = GitLab.GetGroupAccessTokens.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accessTokens = GitLab.Index.GetGroupAccessTokens.Invoke(new()
+        ///     var accessTokens = GitLab.GetGroupAccessTokens.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accessTokens = GitLab.Index.GetGroupAccessTokens.Invoke(new()
+        ///     var accessTokens = GitLab.GetGroupAccessTokens.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });

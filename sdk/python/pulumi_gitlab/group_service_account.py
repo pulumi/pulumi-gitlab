@@ -243,8 +243,8 @@ class GroupServiceAccount(pulumi.CustomResource):
             description="An example subgroup")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example_subgroup.id,
-            user_id=example_sa.service_account_id,
+            group_id=example_subgroup.id.apply(lambda x: int(x)),
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             access_level="developer",
             expires_at="2020-03-14")
         ```
@@ -303,8 +303,8 @@ class GroupServiceAccount(pulumi.CustomResource):
             description="An example subgroup")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example_subgroup.id,
-            user_id=example_sa.service_account_id,
+            group_id=example_subgroup.id.apply(lambda x: int(x)),
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             access_level="developer",
             expires_at="2020-03-14")
         ```

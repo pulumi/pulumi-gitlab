@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.ProjectRunnerEnablement("foo", new()
+    ///     var foo = new GitLab.ProjectRunnerEnablement("foo", new()
     ///     {
     ///         Project = "5",
     ///         RunnerId = 7,

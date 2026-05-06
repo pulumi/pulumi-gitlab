@@ -154,7 +154,7 @@ class UserGpgKey(pulumi.CustomResource):
         example = gitlab.get_user(username="example-user")
         # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
         example_user_gpg_key = gitlab.UserGpgKey("example",
-            user_id=example.id,
+            user_id=output(example.id).apply(lambda x: int(x)),
             key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
@@ -210,7 +210,7 @@ class UserGpgKey(pulumi.CustomResource):
         example = gitlab.get_user(username="example-user")
         # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
         example_user_gpg_key = gitlab.UserGpgKey("example",
-            user_id=example.id,
+            user_id=output(example.id).apply(lambda x: int(x)),
             key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")

@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Index.ProjectPackageProtectionRule("this", new()
+    ///     var @this = new GitLab.ProjectPackageProtectionRule("this", new()
     ///     {
     ///         Project = "123",
     ///         PackageNamePattern = "@scope/package-*",

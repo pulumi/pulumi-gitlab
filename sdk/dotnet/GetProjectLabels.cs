@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetProjectLabels.Invoke(new()
+        ///     var example = GitLab.GetProjectLabels.Invoke(new()
         ///     {
         ///         Project = "385",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetProjectLabels.Invoke(new()
+        ///     var example = GitLab.GetProjectLabels.Invoke(new()
         ///     {
         ///         Project = "385",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetProjectLabels.Invoke(new()
+        ///     var example = GitLab.GetProjectLabels.Invoke(new()
         ///     {
         ///         Project = "385",
         ///     });

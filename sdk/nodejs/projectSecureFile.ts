@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * const thisProject = new gitlab.Project("this", {
  *     name: "example",
- *     namespaceId: _this.id,
+ *     namespaceId: _this.id.apply(x =>Number(x)),
  *     initializeWithReadme: true,
  * });
  * const thisProjectSecureFile = new gitlab.ProjectSecureFile("this", {

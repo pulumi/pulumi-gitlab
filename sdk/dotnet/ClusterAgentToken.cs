@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create token for an agent
-    ///     var example = new GitLab.Index.ClusterAgentToken("example", new()
+    ///     var example = new GitLab.ClusterAgentToken("example", new()
     ///     {
     ///         Project = "12345",
     ///         AgentId = 42,
@@ -39,18 +39,18 @@ namespace Pulumi.GitLab
     ///     // The following example creates a GitLab Agent for Kubernetes in a given project,
     ///     // creates a token and install the `gitlab-agent` Helm Chart.
     ///     // (see https://gitlab.com/gitlab-org/charts/gitlab-agent)
-    ///     var @this = GitLab.Index.GetProject.Invoke(new()
+    ///     var @this = GitLab.GetProject.Invoke(new()
     ///     {
     ///         PathWithNamespace = "my-org/example",
     ///     });
     /// 
-    ///     var thisClusterAgent = new GitLab.Index.ClusterAgent("this", new()
+    ///     var thisClusterAgent = new GitLab.ClusterAgent("this", new()
     ///     {
     ///         Project = @this.Apply(@this =&gt; @this.Apply(getProjectResult =&gt; getProjectResult.Id)),
     ///         Name = "my-agent",
     ///     });
     /// 
-    ///     var thisClusterAgentToken = new GitLab.Index.ClusterAgentToken("this", new()
+    ///     var thisClusterAgentToken = new GitLab.ClusterAgentToken("this", new()
     ///     {
     ///         Project = @this.Apply(@this =&gt; @this.Apply(getProjectResult =&gt; getProjectResult.Id)),
     ///         AgentId = thisClusterAgent.AgentId,
@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
     ///         Description = "Token for the my-agent used with `gitlab-agent` Helm Chart",
     ///     });
     /// 
-    ///     var gitlabAgent = new Helm.Index.Release("gitlab_agent", new()
+    ///     var gitlabAgent = new Helm.Release("gitlab_agent", new()
     ///     {
     ///         Name = "gitlab-agent",
     ///         Namespace = "gitlab-agent",

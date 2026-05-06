@@ -236,7 +236,7 @@ class ProjectSecureFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_project_secure_file = gitlab.ProjectSecureFile("this",
             name="my-secure-file",
@@ -292,7 +292,7 @@ class ProjectSecureFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_project_secure_file = gitlab.ProjectSecureFile("this",
             name="my-secure-file",

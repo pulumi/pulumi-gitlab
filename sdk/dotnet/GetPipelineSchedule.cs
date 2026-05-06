@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetPipelineSchedule.Invoke(new()
+        ///     var example = GitLab.GetPipelineSchedule.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         PipelineScheduleId = 1,
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetPipelineSchedule.Invoke(new()
+        ///     var example = GitLab.GetPipelineSchedule.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         PipelineScheduleId = 1,
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetPipelineSchedule.Invoke(new()
+        ///     var example = GitLab.GetPipelineSchedule.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         PipelineScheduleId = 1,

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     isExternal: true,
  * });
  * const exampleUserIdentity = new gitlab.UserIdentity("example", {
- *     userId: example.id,
+ *     userId: example.id.apply(x =>Number(x)),
  *     externalProvider: "google",
  *     externalUid: "1234567890",
  * });

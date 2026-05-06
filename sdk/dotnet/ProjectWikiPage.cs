@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.ProjectWikiPage("example", new()
+    ///     var example = new GitLab.ProjectWikiPage("example", new()
     ///     {
     ///         Project = "12345",
     ///         Slug = "test-wiki-page",

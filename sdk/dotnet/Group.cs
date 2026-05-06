@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.Group("example", new()
+    ///     var example = new GitLab.Group("example", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Create a project in the example group
-    ///     var exampleProject = new GitLab.Index.Project("example", new()
+    ///     var exampleProject = new GitLab.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with custom push rules
-    ///     var example_two = new GitLab.Index.Group("example-two", new()
+    ///     var example_two = new GitLab.Group("example-two", new()
     ///     {
     ///         Name = "example-two",
     ///         Path = "example-two",
@@ -57,7 +57,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with custom default branch protection defaults
-    ///     var example_three = new GitLab.Index.Group("example-three", new()
+    ///     var example_three = new GitLab.Group("example-three", new()
     ///     {
     ///         Name = "example-three",
     ///         Path = "example-three",
@@ -79,7 +79,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with custom default branch protection defaults
-    ///     var example_four = new GitLab.Index.Group("example-four", new()
+    ///     var example_four = new GitLab.Group("example-four", new()
     ///     {
     ///         Name = "example-four",
     ///         Path = "example-four",
@@ -100,7 +100,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Group with a default branch name specified
-    ///     var example_five = new GitLab.Index.Group("example-five", new()
+    ///     var example_five = new GitLab.Group("example-five", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",

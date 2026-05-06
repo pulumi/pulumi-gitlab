@@ -30,11 +30,11 @@ import * as utilities from "./utilities";
  *     name: "template project",
  *     description: "contains file templates",
  *     visibilityLevel: "public",
- *     namespaceId: foo.id,
+ *     namespaceId: foo.id.apply(x =>Number(x)),
  * });
  * const templateLink = new gitlab.GroupProjectFileTemplate("template_link", {
- *     groupId: foo.id,
- *     fileTemplateProjectId: bar.id,
+ *     groupId: foo.id.apply(x =>Number(x)),
+ *     fileTemplateProjectId: bar.id.apply(x =>Number(x)),
  * });
  * ```
  */

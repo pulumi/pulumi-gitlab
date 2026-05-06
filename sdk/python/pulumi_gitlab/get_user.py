@@ -445,7 +445,7 @@ def get_user(email: Optional[_builtins.str] = None,
 
     example = gitlab.get_user(username="myuser")
     # Example using `for_each`
-    example_two = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
+    example_two = {str(__key): gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
         "user1",
         "user2",
         "user3",
@@ -525,7 +525,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
 
     example = gitlab.get_user(username="myuser")
     # Example using `for_each`
-    example_two = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
+    example_two = {str(__key): gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
         "user1",
         "user2",
         "user3",

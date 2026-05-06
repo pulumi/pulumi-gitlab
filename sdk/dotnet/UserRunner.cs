@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project runner
-    ///     var projectRunner = new GitLab.Index.UserRunner("project_runner", new()
+    ///     var projectRunner = new GitLab.UserRunner("project_runner", new()
     ///     {
     ///         RunnerType = "project_type",
     ///         ProjectId = 123456,
@@ -39,14 +39,14 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Create a group runner
-    ///     var groupRunner = new GitLab.Index.UserRunner("group_runner", new()
+    ///     var groupRunner = new GitLab.UserRunner("group_runner", new()
     ///     {
     ///         RunnerType = "group_type",
     ///         GroupId = 123456,
     ///     });
     /// 
     ///     // Create a instance runner
-    ///     var instanceRunner = new GitLab.Index.UserRunner("instance_runner", new()
+    ///     var instanceRunner = new GitLab.UserRunner("instance_runner", new()
     ///     {
     ///         RunnerType = "instance_type",
     ///     });

@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const exampleToken = new gitlab.PersonalAccessToken("example_token", {
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example personal access token for a service account",
  *     expiresAt: "2026-01-01",
  *     scopes: ["api"],

@@ -205,7 +205,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                 "delete": "3m",
             })
         example_token = gitlab.PersonalAccessToken("example_token",
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example personal access token for a service account",
             expires_at="2026-01-01",
             scopes=["api"])
@@ -258,7 +258,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                 "delete": "3m",
             })
         example_token = gitlab.PersonalAccessToken("example_token",
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example personal access token for a service account",
             expires_at="2026-01-01",
             scopes=["api"])

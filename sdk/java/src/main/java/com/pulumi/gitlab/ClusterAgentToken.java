@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.ClusterAgentArgs;
  * import com.pulumi.helm.Release;
  * import com.pulumi.helm.ReleaseArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .repository("https://charts.gitlab.io")
  *             .chart("gitlab-agent")
  *             .version("1.2.0")
- *             .set(List.of(Map.ofEntries(
+ *             .set(Arrays.asList(Map.ofEntries(
  *                 Map.entry("name", "config.token"),
  *                 Map.entry("value", thisClusterAgentToken.token())
  *             )))

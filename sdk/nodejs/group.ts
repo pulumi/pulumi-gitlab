@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * const exampleProject = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: example.id,
+ *     namespaceId: example.id.apply(x =>Number(x)),
  * });
  * // Group with custom push rules
  * const example_two = new gitlab.Group("example-two", {

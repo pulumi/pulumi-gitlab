@@ -34,14 +34,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.ProjectContainerTagProtection("example", new()
+    ///     var example = new GitLab.ProjectContainerTagProtection("example", new()
     ///     {
     ///         Project = "123",
     ///         TagNameRegex = "^v[0-9]+$",
     ///         Immutable = true,
     ///     });
     /// 
-    ///     var @protected = new GitLab.Index.ProjectContainerTagProtection("protected", new()
+    ///     var @protected = new GitLab.ProjectContainerTagProtection("protected", new()
     ///     {
     ///         Project = "123",
     ///         TagNameRegex = "^v[0-9]+\\-rc[0-9]+$",

@@ -366,7 +366,7 @@ def get_projects(archived: Optional[_builtins.bool] = None,
 
     # List projects within a group tree
     mygroup = gitlab.get_group(full_path="mygroup")
-    group_projects = gitlab.get_projects(group_id=mygroup.id,
+    group_projects = gitlab.get_projects(group_id=output(mygroup.id).apply(lambda x: int(x)),
         order_by="name",
         include_subgroups=True,
         with_shared=False)
@@ -490,7 +490,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[_builtins.bool]
 
     # List projects within a group tree
     mygroup = gitlab.get_group(full_path="mygroup")
-    group_projects = gitlab.get_projects(group_id=mygroup.id,
+    group_projects = gitlab.get_projects(group_id=output(mygroup.id).apply(lambda x: int(x)),
         order_by="name",
         include_subgroups=True,
         with_shared=False)

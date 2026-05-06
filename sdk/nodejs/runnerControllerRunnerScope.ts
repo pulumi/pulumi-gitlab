@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.RunnerControllerRunnerScope("example", {
- *     runnerControllerId: exampleGitlabRunnerController.id,
+ *     runnerControllerId: Number(exampleGitlabRunnerController.id),
  *     runnerId: 42,
  * });
  * ```

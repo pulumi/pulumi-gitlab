@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     username: "example-user",
  * });
  * const exampleUserSshKey = new gitlab.UserSshKey("example", {
- *     userId: example.then(example => example.id),
+ *     userId: output(example.then(example => example.id)).apply(x =>Number(x)),
  *     title: "example-key",
  *     key: "ssh-ed25519 AAAA...",
  *     expiresAt: "2016-01-21T00:00:00.000Z",

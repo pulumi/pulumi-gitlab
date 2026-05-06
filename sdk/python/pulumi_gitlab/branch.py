@@ -318,7 +318,7 @@ class Branch(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_branch = gitlab.Branch("example",
             name="example",
             ref="main",
@@ -368,7 +368,7 @@ class Branch(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_branch = gitlab.Branch("example",
             name="example",
             ref="main",

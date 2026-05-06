@@ -29,7 +29,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Configure the project package dependency proxy for Maven packages
-    ///     var example = new GitLab.Index.ProjectPackageDependencyProxy("example", new()
+    ///     var example = new GitLab.ProjectPackageDependencyProxy("example", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Enabled = true,
@@ -37,7 +37,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // With authentication credentials for the external registry
-    ///     var authenticated = new GitLab.Index.ProjectPackageDependencyProxy("authenticated", new()
+    ///     var authenticated = new GitLab.ProjectPackageDependencyProxy("authenticated", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Enabled = true,

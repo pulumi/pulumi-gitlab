@@ -252,7 +252,7 @@ class ProjectTag(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_project_tag = gitlab.ProjectTag("example",
             name="example",
             ref="main",
@@ -302,7 +302,7 @@ class ProjectTag(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_project_tag = gitlab.ProjectTag("example",
             name="example",
             ref="main",

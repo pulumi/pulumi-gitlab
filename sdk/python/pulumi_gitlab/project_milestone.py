@@ -364,7 +364,7 @@ class ProjectMilestone(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         # Basic milestone with required fields only
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
@@ -422,7 +422,7 @@ class ProjectMilestone(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         # Basic milestone with required fields only
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,

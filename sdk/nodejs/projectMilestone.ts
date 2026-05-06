@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: exampleGitlabGroup.id,
+ *     namespaceId: Number(exampleGitlabGroup.id),
  * });
  * // Basic milestone with required fields only
  * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {

@@ -297,7 +297,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             password="example1$$$")
         example_project_membership = gitlab.ProjectMembership("example",
             project=example.id,
-            user_id=example_user.id,
+            user_id=example_user.id.apply(lambda x: int(x)),
             access_level="developer")
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
@@ -307,7 +307,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -319,7 +319,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board with list syntax",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -383,7 +383,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             password="example1$$$")
         example_project_membership = gitlab.ProjectMembership("example",
             project=example.id,
-            user_id=example_user.id,
+            user_id=example_user.id.apply(lambda x: int(x)),
             access_level="developer")
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
@@ -393,7 +393,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -405,7 +405,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board with list syntax",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,

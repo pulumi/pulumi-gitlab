@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetClusterAgent.Invoke(new()
+        ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         AgentId = 1,
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetClusterAgent.Invoke(new()
+        ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         AgentId = 1,
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetClusterAgent.Invoke(new()
+        ///     var example = GitLab.GetClusterAgent.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///         AgentId = 1,

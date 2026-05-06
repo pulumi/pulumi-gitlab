@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.RunnerControllerToken("example", new()
+    ///     var example = new GitLab.RunnerControllerToken("example", new()
     ///     {
     ///         RunnerControllerId = exampleGitlabRunnerController.Id,
     ///         Description = "My controller token",

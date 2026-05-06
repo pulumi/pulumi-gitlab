@@ -1306,7 +1306,7 @@ class Group(pulumi.CustomResource):
         example_project = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example.id)
+            namespace_id=example.id.apply(lambda x: int(x)))
         # Group with custom push rules
         example_two = gitlab.Group("example-two",
             name="example-two",
@@ -1430,7 +1430,7 @@ class Group(pulumi.CustomResource):
         example_project = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example.id)
+            namespace_id=example.id.apply(lambda x: int(x)))
         # Group with custom push rules
         example_two = gitlab.Group("example-two",
             name="example-two",

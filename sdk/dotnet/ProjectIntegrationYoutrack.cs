@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new GitLab.Index.Project("my_project", new()
+    ///     var myProject = new GitLab.Project("my_project", new()
     ///     {
     ///         Name = "my_project",
     ///         Description = "My project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var @default = new GitLab.Index.ProjectIntegrationYoutrack("default", new()
+    ///     var @default = new GitLab.ProjectIntegrationYoutrack("default", new()
     ///     {
     ///         Project = myProject.Id,
     ///         IssuesUrl = "https://my.youtrack.com/issue/:id",

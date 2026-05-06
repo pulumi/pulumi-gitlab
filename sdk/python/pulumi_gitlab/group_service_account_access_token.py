@@ -366,27 +366,27 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             username="example-username")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example.id,
-            user_id=example_sa.service_account_id,
+            group_id=example.id.apply(lambda x: int(x)),
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             access_level="developer",
             expires_at="2020-03-14")
         # The service account access token with no expiry
         example_sa_token_no_expiry = gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             scopes=["api"])
         # The service account access token with expires at
         example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             expires_at="2020-03-14",
             scopes=["api"])
         # The service account access token with rotation configuration
         example_sa_token_rotation_configuration = gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             rotation_configuration={
                 "rotate_before_days": 2,
@@ -456,27 +456,27 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             username="example-username")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example.id,
-            user_id=example_sa.service_account_id,
+            group_id=example.id.apply(lambda x: int(x)),
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             access_level="developer",
             expires_at="2020-03-14")
         # The service account access token with no expiry
         example_sa_token_no_expiry = gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             scopes=["api"])
         # The service account access token with expires at
         example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             expires_at="2020-03-14",
             scopes=["api"])
         # The service account access token with rotation configuration
         example_sa_token_rotation_configuration = gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             rotation_configuration={
                 "rotate_before_days": 2,

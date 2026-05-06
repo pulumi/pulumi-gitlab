@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: exampleGitlabGroup.id,
+ *     namespaceId: Number(exampleGitlabGroup.id),
  * });
  * const exampleProjectTag = new gitlab.ProjectTag("example", {
  *     name: "example",

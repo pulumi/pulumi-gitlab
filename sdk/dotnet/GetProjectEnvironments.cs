@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisProject = new GitLab.Index.Project("this", new()
+        ///     var thisProject = new GitLab.Project("this", new()
         ///     {
         ///         Name = "example",
         ///         InitializeWithReadme = true,
         ///     });
         /// 
-        ///     var @this = GitLab.Index.GetProjectEnvironments.Invoke(new()
+        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
         ///     {
         ///         Project = thisProject.PathWithNamespace,
         ///     });
@@ -58,13 +58,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisProject = new GitLab.Index.Project("this", new()
+        ///     var thisProject = new GitLab.Project("this", new()
         ///     {
         ///         Name = "example",
         ///         InitializeWithReadme = true,
         ///     });
         /// 
-        ///     var @this = GitLab.Index.GetProjectEnvironments.Invoke(new()
+        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
         ///     {
         ///         Project = thisProject.PathWithNamespace,
         ///     });
@@ -90,13 +90,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisProject = new GitLab.Index.Project("this", new()
+        ///     var thisProject = new GitLab.Project("this", new()
         ///     {
         ///         Name = "example",
         ///         InitializeWithReadme = true,
         ///     });
         /// 
-        ///     var @this = GitLab.Index.GetProjectEnvironments.Invoke(new()
+        ///     var @this = GitLab.GetProjectEnvironments.Invoke(new()
         ///     {
         ///         Project = thisProject.PathWithNamespace,
         ///     });

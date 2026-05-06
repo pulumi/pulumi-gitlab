@@ -31,12 +31,12 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // List projects within a group tree
-        ///     var mygroup = GitLab.Index.GetGroup.Invoke(new()
+        ///     var mygroup = GitLab.GetGroup.Invoke(new()
         ///     {
         ///         FullPath = "mygroup",
         ///     });
         /// 
-        ///     var groupProjects = GitLab.Index.GetProjects.Invoke(new()
+        ///     var groupProjects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         OrderBy = "name",
@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // List projects using the search syntax
-        ///     var projects = GitLab.Index.GetProjects.Invoke(new()
+        ///     var projects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         Search = "postgresql",
         ///         Visibility = "private",
@@ -77,12 +77,12 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // List projects within a group tree
-        ///     var mygroup = GitLab.Index.GetGroup.Invoke(new()
+        ///     var mygroup = GitLab.GetGroup.Invoke(new()
         ///     {
         ///         FullPath = "mygroup",
         ///     });
         /// 
-        ///     var groupProjects = GitLab.Index.GetProjects.Invoke(new()
+        ///     var groupProjects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         OrderBy = "name",
@@ -91,7 +91,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // List projects using the search syntax
-        ///     var projects = GitLab.Index.GetProjects.Invoke(new()
+        ///     var projects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         Search = "postgresql",
         ///         Visibility = "private",
@@ -123,12 +123,12 @@ namespace Pulumi.GitLab
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // List projects within a group tree
-        ///     var mygroup = GitLab.Index.GetGroup.Invoke(new()
+        ///     var mygroup = GitLab.GetGroup.Invoke(new()
         ///     {
         ///         FullPath = "mygroup",
         ///     });
         /// 
-        ///     var groupProjects = GitLab.Index.GetProjects.Invoke(new()
+        ///     var groupProjects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         OrderBy = "name",
@@ -137,7 +137,7 @@ namespace Pulumi.GitLab
         ///     });
         /// 
         ///     // List projects using the search syntax
-        ///     var projects = GitLab.Index.GetProjects.Invoke(new()
+        ///     var projects = GitLab.GetProjects.Invoke(new()
         ///     {
         ///         Search = "postgresql",
         ///         Visibility = "private",

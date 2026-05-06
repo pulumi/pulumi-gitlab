@@ -635,7 +635,7 @@ class RepositoryFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_repository_file = gitlab.RepositoryFile("this",
             project=this_project.id,
@@ -730,7 +730,7 @@ class RepositoryFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_repository_file = gitlab.RepositoryFile("this",
             project=this_project.id,

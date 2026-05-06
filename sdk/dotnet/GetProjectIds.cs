@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newProject = new GitLab.Index.Project("new_project", new()
+        ///     var newProject = new GitLab.Project("new_project", new()
         ///     {
         ///         Name = "project",
         ///     });
         /// 
         ///     // use project IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
-        ///     var foo = GitLab.Index.GetProjectIds.Invoke(new()
+        ///     var foo = GitLab.GetProjectIds.Invoke(new()
         ///     {
         ///         Project = "gitlab_project.new_project.id",
         ///     });
@@ -63,14 +63,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newProject = new GitLab.Index.Project("new_project", new()
+        ///     var newProject = new GitLab.Project("new_project", new()
         ///     {
         ///         Name = "project",
         ///     });
         /// 
         ///     // use project IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
-        ///     var foo = GitLab.Index.GetProjectIds.Invoke(new()
+        ///     var foo = GitLab.GetProjectIds.Invoke(new()
         ///     {
         ///         Project = "gitlab_project.new_project.id",
         ///     });
@@ -100,14 +100,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var newProject = new GitLab.Index.Project("new_project", new()
+        ///     var newProject = new GitLab.Project("new_project", new()
         ///     {
         ///         Name = "project",
         ///     });
         /// 
         ///     // use project IDs to get additional information, such as the GraphQL ID
         ///     // for other resources
-        ///     var foo = GitLab.Index.GetProjectIds.Invoke(new()
+        ///     var foo = GitLab.GetProjectIds.Invoke(new()
         ///     {
         ///         Project = "gitlab_project.new_project.id",
         ///     });

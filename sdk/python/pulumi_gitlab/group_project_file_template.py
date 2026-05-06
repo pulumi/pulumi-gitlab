@@ -138,10 +138,10 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
             name="template project",
             description="contains file templates",
             visibility_level="public",
-            namespace_id=foo.id)
+            namespace_id=foo.id.apply(lambda x: int(x)))
         template_link = gitlab.GroupProjectFileTemplate("template_link",
-            group_id=foo.id,
-            file_template_project_id=bar.id)
+            group_id=foo.id.apply(lambda x: int(x)),
+            file_template_project_id=bar.id.apply(lambda x: int(x)))
         ```
 
 
@@ -183,10 +183,10 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
             name="template project",
             description="contains file templates",
             visibility_level="public",
-            namespace_id=foo.id)
+            namespace_id=foo.id.apply(lambda x: int(x)))
         template_link = gitlab.GroupProjectFileTemplate("template_link",
-            group_id=foo.id,
-            file_template_project_id=bar.id)
+            group_id=foo.id.apply(lambda x: int(x)),
+            file_template_project_id=bar.id.apply(lambda x: int(x)))
         ```
 
 

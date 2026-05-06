@@ -37,8 +37,8 @@ import * as utilities from "./utilities";
  * });
  * // To assign the service account to a group
  * const exampleMembership = new gitlab.GroupMembership("example_membership", {
- *     groupId: exampleSubgroup.id,
- *     userId: exampleSa.serviceAccountId,
+ *     groupId: exampleSubgroup.id.apply(x =>Number(x)),
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     accessLevel: "developer",
  *     expiresAt: "2020-03-14",
  * });

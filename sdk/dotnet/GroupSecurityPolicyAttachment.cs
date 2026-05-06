@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This resource can be used to attach a security policy to a pre-existing group
-    ///     var foo = new GitLab.Index.GroupSecurityPolicyAttachment("foo", new()
+    ///     var foo = new GitLab.GroupSecurityPolicyAttachment("foo", new()
     ///     {
     ///         Group = "1234",
     ///         PolicyProject = "4567",
@@ -36,12 +36,12 @@ namespace Pulumi.GitLab
     /// 
     ///     // Or Terraform can create a new project, add a policy to that project,
     ///     // then attach that policy project to other groups.
-    ///     var my_policy_project = new GitLab.Index.Project("my-policy-project", new()
+    ///     var my_policy_project = new GitLab.Project("my-policy-project", new()
     ///     {
     ///         Name = "security-policy-project",
     ///     });
     /// 
-    ///     var policy_yml = new GitLab.Index.RepositoryFile("policy-yml", new()
+    ///     var policy_yml = new GitLab.RepositoryFile("policy-yml", new()
     ///     {
     ///         Project = my_policy_project.Id,
     ///         FilePath = ".gitlab/security-policies/my-policy.yml",
@@ -76,7 +76,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Multiple policies can be attached to a single project by repeating this resource or using a `for_each`
-    ///     var my_policy = new GitLab.Index.GroupSecurityPolicyAttachment("my-policy", new()
+    ///     var my_policy = new GitLab.GroupSecurityPolicyAttachment("my-policy", new()
     ///     {
     ///         Group = "1234",
     ///         PolicyProject = my_policy_project.Id,

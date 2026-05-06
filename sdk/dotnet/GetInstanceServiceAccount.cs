@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetInstanceServiceAccount.Invoke(new()
+        ///     var example = GitLab.GetInstanceServiceAccount.Invoke(new()
         ///     {
         ///         ServiceAccountId = "123",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetInstanceServiceAccount.Invoke(new()
+        ///     var example = GitLab.GetInstanceServiceAccount.Invoke(new()
         ///     {
         ///         ServiceAccountId = "123",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetInstanceServiceAccount.Invoke(new()
+        ///     var example = GitLab.GetInstanceServiceAccount.Invoke(new()
         ///     {
         ///         ServiceAccountId = "123",
         ///     });

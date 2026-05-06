@@ -170,7 +170,7 @@ class RunnerControllerToken(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.RunnerControllerToken("example",
-            runner_controller_id=example_gitlab_runner_controller["id"],
+            runner_controller_id=int(example_gitlab_runner_controller["id"]),
             description="My controller token")
         ```
 
@@ -202,7 +202,7 @@ class RunnerControllerToken(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.RunnerControllerToken("example",
-            runner_controller_id=example_gitlab_runner_controller["id"],
+            runner_controller_id=int(example_gitlab_runner_controller["id"]),
             description="My controller token")
         ```
 

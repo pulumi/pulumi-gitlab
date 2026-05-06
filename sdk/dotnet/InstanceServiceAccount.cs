@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // create a service account
-    ///     var exampleSa = new GitLab.Index.InstanceServiceAccount("example_sa", new()
+    ///     var exampleSa = new GitLab.InstanceServiceAccount("example_sa", new()
     ///     {
     ///         Name = "example-name",
     ///         Username = "example-username",
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleToken = new GitLab.Index.PersonalAccessToken("example_token", new()
+    ///     var exampleToken = new GitLab.PersonalAccessToken("example_token", new()
     ///     {
     ///         UserId = exampleSa.ServiceAccountId,
     ///         Name = "Example personal access token for a service account",

@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attr = new GitLab.Index.UserCustomAttribute("attr", new()
+    ///     var attr = new GitLab.UserCustomAttribute("attr", new()
     ///     {
     ///         User = 42,
     ///         Key = "location",

@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.Project("example", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
     ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var exampleProjectMergeRequestNote = new GitLab.Index.ProjectMergeRequestNote("example", new()
+    ///     var exampleProjectMergeRequestNote = new GitLab.ProjectMergeRequestNote("example", new()
     ///     {
     ///         Project = example.Id,
     ///         MergeRequestIid = 456,

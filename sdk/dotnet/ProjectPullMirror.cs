@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// {
     ///     // Basic pull mirror from GitHub
     ///     // Note: Unspecified options will use GitLab's defaults
-    ///     var github = new GitLab.Index.ProjectPullMirror("github", new()
+    ///     var github = new GitLab.ProjectPullMirror("github", new()
     ///     {
     ///         Project = example.Id,
     ///         Url = "https://github.com/example/repo.git",
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     /// 
     ///     // Pull mirror with explicit options
     ///     // Only specify options you want to control; omit others to use GitLab defaults
-    ///     var advanced = new GitLab.Index.ProjectPullMirror("advanced", new()
+    ///     var advanced = new GitLab.ProjectPullMirror("advanced", new()
     ///     {
     ///         Project = example.Id,
     ///         Url = "https://github.com/example/repo.git",
@@ -51,7 +51,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Pull mirror with branch regex (Premium/Ultimate)
-    ///     var regex = new GitLab.Index.ProjectPullMirror("regex", new()
+    ///     var regex = new GitLab.ProjectPullMirror("regex", new()
     ///     {
     ///         Project = example.Id,
     ///         Url = "https://github.com/example/repo.git",

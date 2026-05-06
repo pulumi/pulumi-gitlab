@@ -24,12 +24,12 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = GitLab.Index.GetUser.Invoke(new()
+    ///     var example = GitLab.GetUser.Invoke(new()
     ///     {
     ///         Username = "example-user",
     ///     });
     /// 
-    ///     var exampleUserSshKey = new GitLab.Index.UserSshKey("example", new()
+    ///     var exampleUserSshKey = new GitLab.UserSshKey("example", new()
     ///     {
     ///         UserId = example.Apply(getUserResult =&gt; getUserResult.Id),
     ///         Title = "example-key",

@@ -29,14 +29,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.Group("foo", new()
+    ///     var foo = new GitLab.Group("foo", new()
     ///     {
     ///         Name = "test_group",
     ///         Path = "test_group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var fooGroupLevelMrApprovals = new GitLab.Index.GroupLevelMrApprovals("foo", new()
+    ///     var fooGroupLevelMrApprovals = new GitLab.GroupLevelMrApprovals("foo", new()
     ///     {
     ///         Group = foo.Id,
     ///         AllowAuthorApproval = true,

@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.ProjectExternalStatusCheck("foo", new()
+    ///     var foo = new GitLab.ProjectExternalStatusCheck("foo", new()
     ///     {
     ///         ProjectId = 123,
     ///         Name = "foo",
     ///         ExternalUrl = "https://example.gitlab.com",
     ///     });
     /// 
-    ///     var bar = new GitLab.Index.ProjectExternalStatusCheck("bar", new()
+    ///     var bar = new GitLab.ProjectExternalStatusCheck("bar", new()
     ///     {
     ///         ProjectId = 456,
     ///         Name = "bar",

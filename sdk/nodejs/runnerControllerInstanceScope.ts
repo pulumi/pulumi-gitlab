@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const example = new gitlab.RunnerControllerInstanceScope("example", {runnerControllerId: exampleGitlabRunnerController.id});
+ * const example = new gitlab.RunnerControllerInstanceScope("example", {runnerControllerId: Number(exampleGitlabRunnerController.id)});
  * ```
  */
 export class RunnerControllerInstanceScope extends pulumi.CustomResource {

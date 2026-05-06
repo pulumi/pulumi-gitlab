@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = GitLab.Index.GetApplication.Invoke(new()
+        ///     var oidc = GitLab.GetApplication.Invoke(new()
         ///     {
         ///         Id = "1",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = GitLab.Index.GetApplication.Invoke(new()
+        ///     var oidc = GitLab.GetApplication.Invoke(new()
         ///     {
         ///         Id = "1",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = GitLab.Index.GetApplication.Invoke(new()
+        ///     var oidc = GitLab.GetApplication.Invoke(new()
         ///     {
         ///         Id = "1",
         ///     });

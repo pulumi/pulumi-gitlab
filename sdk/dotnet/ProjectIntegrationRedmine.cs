@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var redmine = new GitLab.Index.ProjectIntegrationRedmine("redmine", new()
+    ///     var redmine = new GitLab.ProjectIntegrationRedmine("redmine", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         NewIssueUrl = "https://redmine.example.com/issue",
